@@ -114,6 +114,10 @@
             href: '/pricing'
         },
         {
+            label: 'Customers',
+            href: '/blog/category/customer-stories'
+        },
+        {
             label: 'Enterprise',
             href: '/contact-us/enterprise'
         }

@@ -38,19 +38,17 @@
 </svelte:head>
 
 <Main>
-    <div class="pt-10">
-        <div class="web-big-padding-section-level-2">
+    <div class="pt-6">
+        <div class="web-big-padding-section-level-2 web-category-page">
             <div class="container">
-                <a class="web-link web-u-color-text-secondary items-baseline" href="/blog">
-                    <span class="web-icon-chevron-left" aria-hidden="true"></span>
-                    <span>Back to blog</span>
-                </a>
-                <div class="web-category-header mt-6">
-                    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-center">
-                        <h1 class="text-display font-aeonik-pro text-primary">
+                <div class="web-category-header">
+                    <div class="web-category-header-content">
+                        <h1
+                            class="web-category-header-title text-display font-aeonik-pro text-primary"
+                        >
                             {name}
                         </h1>
-                        <p class="text-secondary text-description">
+                        <p class="web-category-header-description text-secondary text-description">
                             {description}
                         </p>
                     </div>
@@ -77,13 +75,13 @@
                         {/each}
                     </ul>
                 </div>
-                <div class="relative overflow-hidden pt-[7.5rem]">
-                    <div class="container">
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
+            </div>
+            <div class="relative mt-0 overflow-hidden">
+                <div class="container">
+                    <FooterNav />
+                    <MainFooter />
                 </div>
             </div>
         </div>
-    </div></Main
->
+    </div>
+</Main>

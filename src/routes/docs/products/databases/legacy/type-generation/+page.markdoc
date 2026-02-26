@@ -55,7 +55,7 @@ Suppose you want to generate types for a collection with data on books with the 
             "attributes": [
                 {
                     "key": "name",
-                    "type": "string",
+                    "type": "varchar",
                     "required": true,
                     "array": false,
                     "size": 255,
@@ -63,7 +63,7 @@ Suppose you want to generate types for a collection with data on books with the 
                 },
                 {
                     "key": "author",
-                    "type": "string",
+                    "type": "varchar",
                     "required": true,
                     "array": false,
                     "size": 255,
@@ -79,7 +79,7 @@ Suppose you want to generate types for a collection with data on books with the 
                 },
                 {
                     "key": "category",
-                    "type": "string",
+                    "type": "varchar",
                     "required": false,
                     "array": false,
                     "elements": [
@@ -91,7 +91,7 @@ Suppose you want to generate types for a collection with data on books with the 
                 },
                 {
                     "key": "genre",
-                    "type": "string",
+                    "type": "varchar",
                     "required": false,
                     "array": true,
                     "size": 100,

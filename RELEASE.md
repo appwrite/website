@@ -54,8 +54,8 @@ git add compose env
 rm -rf appwrite
 cd -
 
-# Bump appwrite repo so latest main commit is used
-bun update @appwrite.io/repo
+# Bump appwrite/specs repo so latest main commit is used
+bun update @appwrite.io/specs
 git add bun.lock
 
 git commit -m "Bump Appwrite version to $VERSION"
