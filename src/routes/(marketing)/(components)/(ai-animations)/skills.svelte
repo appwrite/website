@@ -1,8 +1,72 @@
 <script lang="ts">
+    import { hover, inView } from 'motion';
+    import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../grid-paper.svelte';
+
+    let container: HTMLElement;
+    let piece: SVGGElement;
+
+    let rafId: number;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let fromX = 0;
+    let fromY = 0;
+    let animStart = 0;
+
+    const DOCK_X = -3.5;
+    const DOCK_Y = 7;
+    const DURATION = 400;
+
+    function easeOut(t: number) {
+        return 1 - (1 - t) ** 3;
+    }
+
+    function tick(now: number) {
+        const t = Math.min((now - animStart) / DURATION, 1);
+        const eased = easeOut(t);
+        currentX = fromX + (targetX - fromX) * eased;
+        currentY = fromY + (targetY - fromY) * eased;
+        piece.setAttribute('transform', `translate(${currentX}, ${currentY})`);
+        if (t < 1) {
+            rafId = requestAnimationFrame(tick);
+        }
+    }
+
+    function animateTo(x: number, y: number) {
+        cancelAnimationFrame(rafId);
+        fromX = currentX;
+        fromY = currentY;
+        targetX = x;
+        targetY = y;
+        animStart = performance.now();
+        rafId = requestAnimationFrame(tick);
+    }
+
+    $effect(() => {
+        hover(container, () => {
+            if (isMobile()) return;
+            animateTo(DOCK_X, DOCK_Y);
+            return () => animateTo(0, 0);
+        });
+
+        inView(
+            container,
+            () => {
+                if (!isMobile()) return;
+                animateTo(DOCK_X, DOCK_Y);
+                return () => animateTo(0, 0);
+            },
+            { amount: 'all' }
+        );
+    });
 </script>
 
-<div class="relative flex h-72 items-center justify-center overflow-hidden">
+<div
+    bind:this={container}
+    class="relative flex h-56 items-center justify-center overflow-hidden sm:h-72"
+>
     <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/11)]" />
     <svg
         width="100%"
@@ -13,23 +77,39 @@
         preserveAspectRatio="xMidYMid meet"
     >
         <defs>
-            <linearGradient id="skillsGradient" x1="270" y1="336.5" x2="270" y2="56.5" gradientUnits="userSpaceOnUse">
+            <linearGradient id="skillsAccentGradient" x1="269.5" y1="176" x2="269.5" y2="86" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FD366E" />
+                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="skillsPieceGradient" x1="346" y1="98" x2="346" y2="79" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#FD366E" />
                 <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
             </linearGradient>
         </defs>
 
-        <!-- Bottom layer (neutral) -->
-        <path d="M175.018 117.024L365.926 117.024L417.989 218.563L123 218.563Z" fill="#19191C" />
-        <path d="M365.62 117.524L417.17 218.063L123.818 218.063L175.323 117.524Z" stroke="#2A2A2D" />
+        <!-- Bottom layer: depth body (single combined shape) -->
+        <path d="M175.018 93.024 L123 194.563 L123 206.563 L417.989 206.563 L417.989 194.563 L365.926 93.024 Z" fill="#151517" />
+        <!-- Bottom layer: depth front edges -->
+        <line x1="123" y1="194.563" x2="123" y2="206.563" stroke="#2A2A2D" />
+        <line x1="123" y1="206.563" x2="417.989" y2="206.563" stroke="#2A2A2D" />
+        <line x1="417.989" y1="194.563" x2="417.989" y2="206.563" stroke="#2A2A2D" />
+        <!-- Bottom layer: top face -->
+        <path d="M175.018 93.0239L365.926 93.0239L417.989 194.563L123 194.563Z" fill="#19191C" />
+        <path d="M365.62 93.5239L417.17 194.063L123.818 194.063L175.323 93.5239Z" stroke="#2A2A2D" />
 
-        <!-- Accent / middle layer -->
-        <path d="M175.018 85.5122L365.926 85.5122L417.989 187.051L123 187.051Z" fill="#19191C" />
-        <path d="M175.018 85.5122L365.926 85.5122L417.989 187.051L123 187.051Z" fill="#FD366E" fill-opacity="0.12" />
-        <path d="M365.62 86.0122L417.17 186.551L123.818 186.551L175.323 86.0122Z" stroke="url(#skillsGradient)" stroke-opacity="0.48" />
+        <!-- Main accent layer -->
+        <path d="M319.346 86L325.5 104H363.148L400 176H139L185.024 86H319.346Z" fill="#19191C" />
+        <path d="M319.346 86L325.5 104H363.148L400 176H139L185.024 86H319.346Z" fill="#FD366E" fill-opacity="0.12" />
+        <path d="M319.346 86L325.5 104H363.148L400 176H139L185.024 86H319.346Z" fill="none" stroke="url(#skillsAccentGradient)" stroke-opacity="0.48" />
 
-        <!-- Top layer (neutral) -->
-        <path d="M175.018 54L365.926 54L417.989 155.539L123 155.539Z" fill="#19191C" />
-        <path d="M365.62 54.5L417.17 155.039L123.818 155.039L175.323 54.5Z" stroke="#2A2A2D" />
+        <!-- Labels -->
+        <text x="270" y="140" text-anchor="middle" font-family="'Aeonik Pro', sans-serif" font-size="10" letter-spacing="2" fill="#ADADB0">AGENT</text>
+        <text x="123" y="226" font-family="'Aeonik Pro', sans-serif" font-size="10" letter-spacing="2" fill="#ADADB0">RULES</text>
+        <!-- Floating skill piece (docks into slot on hover) -->
+        <g bind:this={piece}>
+            <path d="M323 79H359.816L369 98L329 98.3693L323 79Z" fill="#19191C" />
+            <path d="M323 79H359.816L369 98L329 98.3693L323 79Z" fill="#FD366E" fill-opacity="0.12" />
+            <text x="375" y="88" font-family="'Aeonik Pro', sans-serif" font-size="10" letter-spacing="2" fill="#ADADB0">SKILLS</text>
+        </g>
     </svg>
 </div>

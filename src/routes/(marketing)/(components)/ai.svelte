@@ -25,7 +25,7 @@
             <!-- MCP -->
             <div class="border-smooth flex flex-col border-dashed sm:border-r">
                 <McpAnimation />
-                <div class="px-8 pt-6 pb-10">
+                <div class="px-5 pt-6 pb-10 sm:px-8">
                     <h3 class="font-aeonik-pro text-label text-primary">
                         Use MCP to connect AI agents to your Appwrite backend.
                         <span class="text-secondary">No custom integrations required.</span>
@@ -36,7 +36,7 @@
             <!-- Agent Skills & Rules -->
             <div class="flex flex-col">
                 <SkillsAnimation />
-                <div class="px-8 pt-6 pb-10">
+                <div class="px-5 pt-6 pb-10 sm:px-8">
                     <h3 class="font-aeonik-pro text-label text-primary">
                         Define what AI agents can do, and how they should behave,
                         <span class="text-secondary">before shipping them to production.</span>
