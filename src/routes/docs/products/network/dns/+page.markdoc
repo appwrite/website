@@ -83,7 +83,7 @@ To use this method:
 1. In the Appwrite Console, add your apex domain and copy the provided CNAME and CAA records
 2. In your DNS provider's settings, create an ALIAS, ANAME, or CNAME record at the apex (depending on what your provider supports)
 3. Point the record to the Appwrite hostname provided in the console
-4. Add the CAA record to your DNS provider's settings, also pointed at the apex
+4. Add the CAA record at the apex level in your DNS provider's settings
 5. Wait for DNS propagation (may take up to 48 hours)
 6. Return to Appwrite Console to verify the domain
 
