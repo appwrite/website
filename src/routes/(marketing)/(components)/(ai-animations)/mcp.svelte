@@ -86,29 +86,65 @@
                 <g>
                     <path d="M399 82L481 52L481 221L399 191Z" fill="#19191C" />
                     <path d="M399 82L481 52L481 221L399 191Z" fill="#FD366E" fill-opacity="0.12" />
-                    <path d="M399.5 82.3L480.5 52.7L480.5 220.3L399.5 190.7Z" stroke="url(#mcpAccentGradient)" stroke-opacity="0.32" />
+                    <path
+                        d="M399.5 82.3L480.5 52.7L480.5 220.3L399.5 190.7Z"
+                        stroke="url(#mcpAccentGradient)"
+                        stroke-opacity="0.32"
+                    />
                 </g>
             </g>
 
             <!-- Labels -->
-            <text x="35" y="248" font-family="'Aeonik Pro', sans-serif" font-size="10" letter-spacing="2" fill="#ADADB0">BACKEND</text>
-            <text x="513" y="248" text-anchor="end" font-family="'Aeonik Pro', sans-serif" font-size="10" letter-spacing="2" fill="#ADADB0">AGENTS</text>
+            <text
+                x="35"
+                y="248"
+                font-family="'Aeonik Pro', sans-serif"
+                font-size="10"
+                letter-spacing="2"
+                fill="#ADADB0">BACKEND</text
+            >
+            <text
+                x="513"
+                y="248"
+                text-anchor="end"
+                font-family="'Aeonik Pro', sans-serif"
+                font-size="10"
+                letter-spacing="2"
+                fill="#ADADB0">AGENTS</text
+            >
 
             <!-- MCP connector (accent gradient line) -->
             <path d="M149 136.5L399 136.5" stroke="url(#mcpConnectorGradient)" />
 
             <!-- MCP label (centered between block and cluster) -->
             <g transform="translate(-48, 0)">
-                <path d="M310.908 129H309.96V120.6H311.184L313.248 125.424L315.288 120.6H316.476V129H315.528V122.268L313.644 126.672H312.804L310.908 122.268V129ZM322.574 129.072C320.33 129.072 319.034 127.488 319.034 124.8C319.034 122.1 320.342 120.528 322.622 120.528C324.29 120.528 325.466 121.56 325.79 123.348H324.686C324.398 122.112 323.69 121.488 322.61 121.488C321.002 121.488 320.102 122.7 320.102 124.8C320.102 126.924 320.966 128.112 322.574 128.112C323.666 128.112 324.374 127.5 324.674 126.252H325.778C325.454 128.052 324.29 129.072 322.574 129.072ZM329.342 129H328.298V120.6H331.37C333.074 120.6 334.202 121.608 334.202 123.18C334.202 124.752 333.074 125.772 331.37 125.772H329.342V129ZM329.342 121.56V124.812H331.274C332.402 124.812 333.134 124.176 333.134 123.18C333.134 122.184 332.414 121.56 331.286 121.56H329.342Z" fill="#ADADB0" />
+                <path
+                    d="M310.908 129H309.96V120.6H311.184L313.248 125.424L315.288 120.6H316.476V129H315.528V122.268L313.644 126.672H312.804L310.908 122.268V129ZM322.574 129.072C320.33 129.072 319.034 127.488 319.034 124.8C319.034 122.1 320.342 120.528 322.622 120.528C324.29 120.528 325.466 121.56 325.79 123.348H324.686C324.398 122.112 323.69 121.488 322.61 121.488C321.002 121.488 320.102 122.7 320.102 124.8C320.102 126.924 320.966 128.112 322.574 128.112C323.666 128.112 324.374 127.5 324.674 126.252H325.778C325.454 128.052 324.29 129.072 322.574 129.072ZM329.342 129H328.298V120.6H331.37C333.074 120.6 334.202 121.608 334.202 123.18C334.202 124.752 333.074 125.772 331.37 125.772H329.342V129ZM329.342 121.56V124.812H331.274C332.402 124.812 333.134 124.176 333.134 123.18C333.134 122.184 332.414 121.56 331.286 121.56H329.342Z"
+                    fill="#ADADB0"
+                />
             </g>
         </g>
 
         <defs>
-            <linearGradient id="mcpAccentGradient" x1="481" y1="136.5" x2="399" y2="136.5" gradientUnits="userSpaceOnUse">
+            <linearGradient
+                id="mcpAccentGradient"
+                x1="481"
+                y1="136.5"
+                x2="399"
+                y2="136.5"
+                gradientUnits="userSpaceOnUse"
+            >
                 <stop stop-color="#FD366E" />
                 <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
             </linearGradient>
-            <linearGradient id="mcpConnectorGradient" x1="149" y1="136.5" x2="399" y2="136.5" gradientUnits="userSpaceOnUse">
+            <linearGradient
+                id="mcpConnectorGradient"
+                x1="149"
+                y1="136.5"
+                x2="399"
+                y2="136.5"
+                gradientUnits="userSpaceOnUse"
+            >
                 <stop stop-color="#FD366E" stop-opacity="0" />
                 <stop offset="0.3" stop-color="#FD366E" stop-opacity="0.5" />
                 <stop offset="0.5" stop-color="#FD366E" stop-opacity="0.8" />
