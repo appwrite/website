@@ -91,7 +91,7 @@ This method allows you to maintain control over your remaining DNS configuration
 
 # Adding records in Appwrite {% #adding-records %}
 
-After delegating your domain to Appwrite's DNS servers, you can add and manage records:
+If you delegated your domain to Appwrite's DNS servers using NS records, you can add and manage records:
 
 1. Navigate to your organization's **Domains** tab in the Appwrite Console
 2. Find your domain and click **Manage Records**
