@@ -1,0 +1,18 @@
+---
+layout: article
+title: Limitations
+description: Learn about the current limitations of the Appwrite Realtime API and how to work around them.
+---
+
+While the Realtime API offers robust capabilities, there are currently some limitations to be aware of in its implementation.
+
+# Subscription changes {% #subscription-changes %}
+
+The SDK creates a single WebSocket connection for all subscribed channels.
+Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one.
+Therefore, subscriptions to channels should always be done in conjunction with state management so as not to be unnecessarily
+built up several times by multiple components' life cycles.
+
+# Server SDKs {% #server-sdks %}
+
+We currently are not offering access to realtime with Server SDKs and an API key.
