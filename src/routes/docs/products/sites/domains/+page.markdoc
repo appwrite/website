@@ -46,7 +46,7 @@ You can add your own domain to your Appwrite site to provide a branded experienc
 
 Apex domains (also known as root domains) are domains without a subdomain prefix, like `example.com` instead of `www.example.com`. Unlike subdomains, apex domains cannot use CNAME records due to DNS protocol limitations.
 
-To add an apex domain:
+To add an apex domain via NS records:
 
 1. Navigate to your site in the Appwrite Console.
 2. Head to the **Domains** tab and click on **Add domain**.
@@ -56,13 +56,18 @@ To add an apex domain:
 6. Go to your domain registrar and update the NS records for your domain to point to `ns1.appwrite.zone` and `ns2.appwrite.zone`.
 7. Return to the Appwrite Console and wait for the verification process to complete.
 
+{% only_dark %}
+![Add domain](/images/docs/sites/dark/add-domain-ns.png)
+{% /only_dark %}
+{% only_light %}
+![Add domain](/images/docs/sites/add-domain-ns.png)
+{% /only_light %}
+
 DNS changes can take up to 48 hours to fully propagate across the internet. During this time, your domain might not be accessible or might show inconsistent behavior.
 
 ### Why Appwrite uses NS records instead of A records
 
 By [DNS standards (RFC)](https://datatracker.ietf.org/doc/html/rfc1035), apex domains cannot use CNAME records, only A or AAAA records, which require pointing to fixed IP addresses. Using A records would lock Appwrite into specific IP addresses, limiting our ability to optimize routing, scale our infrastructure, or make changes as needed. To avoid this constraint and maintain flexibility, Appwrite offers DNS delegation through NS records so we can manage routing on your behalf.
-
-Some DNS providers support CNAME-like behavior at the apex through custom setups. If your provider allows it, you can point your apex domain to `appwrite.network` without using Appwrite's nameservers.
 
 Using Appwrite's DNS servers for your apex domain provides several benefits:
 - Proper SSL certificate management
@@ -74,6 +79,30 @@ When you change your domain's NS records, you're delegating DNS management to Ap
 {% arrow_link href="/docs/products/network/dns" %}
 Learn more about Appwrite DNS server
 {% /arrow_link %}
+
+## Add an apex domain without changing nameservers
+
+To add an apex domain without changing your NS records via [CNAME flattening](/docs/products/network/dns#using-cname-flattening):
+
+1. Navigate to your site in the Appwrite Console.
+2. Head to the **Domains** tab and click on **Add domain**.
+3. Enter your apex domain (e.g., `example.com`).
+4. Select the appropriate domain rule type (Active deployment, Git branch, or Redirect) and configure its settings. See the [Domain rule types](#domain-rule-types) section for details.
+5. Copy the **CNAME** record provided by Appwrite.
+6. Copy the **CAA** record provided by Appwrite.
+7. In your DNS provider's settings, create an ALIAS, ANAME, or CNAME record at the apex (depending on what your provider supports).
+8. Point the record to the Appwrite hostname provided in the console.
+9. Add the CAA record to your DNS provider's settings, also pointed at the apex.
+10. Return to the Site settings and wait for verification status.
+
+{% only_dark %}
+![Add domain](/images/docs/sites/dark/add-domain-cname.png)
+{% /only_dark %}
+{% only_light %}
+![Add domain](/images/docs/sites/add-domain-cname.png)
+{% /only_light %}
+
+DNS changes can take up to 48 hours to propagate. Once verified, your apex domain will be ready to use with full control over your remaining DNS configuration.
 
 ## Add a subdomain with CNAME
 
