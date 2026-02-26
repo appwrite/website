@@ -28,14 +28,6 @@ To add the Appwrite MCP server, open Zenflow and go to the **Settings** > **MCP 
 {% tabs %}
 {% tabsitem #api-only title="API server" %}
 
-Update the 
-```json
-{
-  "mcpServers": {}
-}
-``` 
-to include the API server:
-
 ```json
 {
   "mcpServers": {
