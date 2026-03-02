@@ -771,5 +771,45 @@
     {
         "link": "/docs/products/auth/preferences-storage",
         "redirect": "/docs/products/auth/preferences"
+    },
+    {
+        "link": "/docs/tooling/mcp",
+        "redirect": "/docs/tooling/ai"
+    },
+    {
+        "link": "/docs/tooling/mcp/cursor",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/cursor"
+    },
+    {
+        "link": "/docs/tooling/mcp/vscode",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/vscode"
+    },
+    {
+        "link": "/docs/tooling/mcp/windsurf",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/windsurf"
+    },
+    {
+        "link": "/docs/tooling/mcp/opencode",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/opencode"
+    },
+    {
+        "link": "/docs/tooling/mcp/antigravity",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/antigravity"
+    },
+    {
+        "link": "/docs/tooling/mcp/claude-code",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-code"
+    },
+    {
+        "link": "/docs/tooling/mcp/claude-desktop",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-desktop"
+    },
+    {
+        "link": "/docs/tooling/mcp/api",
+        "redirect": "/docs/tooling/ai/mcp-servers/api"
+    },
+    {
+        "link": "/docs/tooling/mcp/docs",
+        "redirect": "/docs/tooling/ai/mcp-servers/docs"
     }
 ]

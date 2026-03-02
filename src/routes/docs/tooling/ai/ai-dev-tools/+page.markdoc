@@ -1,0 +1,92 @@
+---
+layout: article
+title: AI Dev Tools
+description: AI-powered development tools for building with Appwrite.
+---
+
+AI-powered development tools can dramatically accelerate how you build applications with Appwrite. From intelligent code completion to full application generation, these tools help you write better code faster and integrate with Appwrite services more efficiently.
+
+This guide covers the major categories of AI development tools and how to use them effectively with Appwrite.
+
+# IDEs {% #ides %}
+
+AI-powered IDEs and code editors provide intelligent code completion, inline suggestions, and context-aware assistance as you write code. These tools understand Appwrite's SDKs and APIs, helping you implement features correctly and efficiently. These tools also support our MCP servers, which provides these agents access to your Appwrite project directly, making AI-assisted development seamless.
+
+{% only_light %}
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/vscode" title="VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/cursor" title="Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/windsurf" title="Windsurf" image="/images/docs/mcp/logos/windsurf.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/opencode" title="OpenCode" image="/images/docs/mcp/logos/opencode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/antigravity" title="Antigravity" image="/images/docs/mcp/logos/google-antigravity.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-code" title="Claude Code" image="/images/docs/mcp/logos/claude.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/claude.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/vscode" title="VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/cursor" title="Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/windsurf" title="Windsurf" image="/images/docs/mcp/logos/dark/windsurf.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/opencode" title="OpenCode" image="/images/docs/mcp/logos/dark/opencode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/antigravity" title="Antigravity" image="/images/docs/mcp/logos/dark/google-antigravity.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-code" title="Claude Code" image="/images/docs/mcp/logos/dark/claude.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/dark/claude.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_dark %}
+
+# AGENTS.md {% #agents-md %}
+
+`AGENTS.md` files are instruction files that developers place in their repositories to provide context and guidelines to AI agents. These files help AI tools understand your project structure, coding conventions, and preferences, resulting in more accurate and consistent code suggestions. Most of the IDEs and agents do support this file.
+
+When an AI agent encounters an `AGENTS.md` file, it uses the instructions to tailor its responses to your specific project requirements. This includes details about your tech stack, file organization, naming conventions, and architectural patterns.
+
+Generate your own `AGENTS.md` file depending on the Appwrite services you use in your application.
+
+# Vibe coding {% #vibe-coding %}
+
+Vibe coding platforms let you build applications through natural language conversations. Instead of writing code manually, you describe what you want to build and the AI generates the application for you. These platforms can scaffold entire projects, create UI components, and integrate with backend services like Appwrite.
+
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/lovable" title="Lovable" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/emergent" title="Emergent" %}
+{% /cards_item %}
+
+{% /cards %}
