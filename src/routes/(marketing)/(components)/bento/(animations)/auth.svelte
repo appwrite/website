@@ -6,13 +6,14 @@
     import { isMobile } from '$lib/utils/is-mobile';
     import { cn } from '$lib/utils/cn';
     import GridPaper from '../../grid-paper.svelte';
-    import { unwrite, write } from '$lib/animations';
+    import { unwrite, write, type WriteAnimation } from '$lib/animations';
     import { trackEvent } from '$lib/actions/analytics';
 
     let container: HTMLElement;
 
     let password = $state('');
     let button: HTMLButtonElement;
+    let currentAnimation: WriteAnimation | null = null;
 
     $effect(() => {
         inView(
@@ -20,11 +21,23 @@
             () => {
                 if (!isMobile()) return;
 
-                write('•••••••••••••', (v) => (password = v), 1000).then(() => {
+                currentAnimation?.cancel();
+                currentAnimation = write(
+                    '•••••••••••••',
+                    (v) => (password = v),
+                    1000,
+                    password.length
+                );
+                currentAnimation.then(() => {
                     animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
                 });
                 return () => {
-                    unwrite('•••••••••••••', (v) => (password = v));
+                    currentAnimation?.cancel();
+                    currentAnimation = unwrite(
+                        password,
+                        (v) => (password = v),
+                        (password.length / 13) * 1000
+                    );
                 };
             },
             { amount: 'all' }
@@ -33,11 +46,18 @@
         hover(container, () => {
             if (isMobile()) return;
 
-            write('•••••••••••••', (v) => (password = v), 1000).then(() => {
+            currentAnimation?.cancel();
+            currentAnimation = write('•••••••••••••', (v) => (password = v), 1000, password.length);
+            currentAnimation.then(() => {
                 animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
             });
             return () => {
-                unwrite('•••••••••••••', (v) => (password = v));
+                currentAnimation?.cancel();
+                currentAnimation = unwrite(
+                    password,
+                    (v) => (password = v),
+                    (password.length / 13) * 1000
+                );
             };
         });
     });
