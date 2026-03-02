@@ -21,6 +21,39 @@
 
     async function handleSubmit() {
         error = undefined;
+
+        const trimmedFirstName = firstName.trim();
+        const trimmedEmail = email.trim();
+        const trimmedSubject = subject.trim();
+        const trimmedMessage = message.trim();
+
+        const validationRules = {
+            required: [
+                { value: trimmedFirstName, name: 'Name' },
+                { value: trimmedEmail, name: 'Email' },
+                { value: trimmedSubject, name: 'Subject' },
+                { value: trimmedMessage, name: 'Message' }
+            ],
+            textOnly: [
+                { value: trimmedFirstName, name: 'Name' },
+                { value: trimmedSubject, name: 'Subject' }
+            ]
+        };
+
+        for (const field of validationRules.required) {
+            if (!field.value) {
+                error = `${field.name} cannot be empty or contain only spaces.`;
+                return;
+            }
+        }
+
+        for (const field of validationRules.textOnly) {
+            if (!/\D/.test(field.value)) {
+                error = `${field.name} cannot contain only numbers.`;
+                return;
+            }
+        }
+
         submitting = true;
 
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback`, {
@@ -29,10 +62,10 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email,
-                firstName,
-                subject,
-                message,
+                email: trimmedEmail,
+                firstName: trimmedFirstName,
+                subject: trimmedSubject,
+                message: trimmedMessage,
                 ...getReferrerAndUtmSource()
             })
         });
