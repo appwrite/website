@@ -4,9 +4,12 @@ Do exactly these steps in order. Confirm each step succeeds before continuing. I
 
 Respect user's package manager at all time. Don't use NPM if the user uses something else.
 
-1. Create Next.js app
-    - Run: npx create-next-app@latest my-app --use-npm --no-tailwind --eslint
-    - Change dir: cd my-app
+1. Create or use existing Next.js app
+    - First, check if the current working directory contains files that appear unrelated to a development workspace (e.g., personal files, downloads, random documents, media files). If so, ask the user: 'This directory contains files that don't look like a development project. Would you like to proceed here anyway, or create a subdirectory with a specific folder name?'
+    - If the directory is empty OR contains an existing project (package.json, source code, config files, etc.), proceed with integration without asking.
+    - Create the project in the current working directory (.) - do NOT use cd to switch directories.
+    - If you already have a Next.js project open, stay in it and integrate Appwrite into it (App Router required).
+    - Otherwise, run: npx create-next-app@latest . --use-npm --no-tailwind --eslint
     - When prompted: TypeScript = No, ESLint = Yes, Tailwind = No, src dir = your choice, App Router = Yes, Import alias = No.
 
 2. Install Appwrite SDK
@@ -16,7 +19,7 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
     - Ask the user for:
         - Appwrite Cloud Region (e.g. fra, nyc)
         - Project ID (from Console -> Settings)
-          If the user doesn’t know, guide them to Appwrite Console to copy these. Do not attempt to infer or access their project.
+          If the user doesn't know, guide them to Appwrite Console to copy these. Do not attempt to infer or access their project.
     - Hardcode the endpoint and project ID in the file: app/appwrite.js (or app/appwrite.ts if TS) if provided, else leave placeholder and ask the user to provide them.
     - Create file: app/appwrite.js (or app/appwrite.ts if TS) with key snippet:
         ```js
@@ -30,7 +33,8 @@ Respect user's package manager at all time. Don't use NPM if the user uses somet
         ```
 
 4. Build the login page (client component)
-    - Create/replace app/page.js with this component using "use client".
+    - If this is a fresh project you just created above, you may replace `app/page.js` with this component using "use client".
+    - If you are working in an existing project, create a new route `app/auth/page.js` (or .tsx) instead of overriding the default route.
     - It must render:
         - Email/password inputs
         - Name input for registration

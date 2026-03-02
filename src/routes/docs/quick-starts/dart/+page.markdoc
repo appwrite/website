@@ -90,7 +90,7 @@ Future<void> main() async {
 Once the Appwrite Client is initialized, create a function to configure a todo table.
 
 ```dart
-var databases;
+var tablesDB;
 var todoDatabase;
 var todoTable;
 
