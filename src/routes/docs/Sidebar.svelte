@@ -107,7 +107,8 @@
                 {
                     label: 'Realtime',
                     href: '/docs/apis/realtime',
-                    icon: 'icon-clock'
+                    icon: 'icon-clock',
+                    isParent: true
                 },
                 {
                     label: 'REST',
