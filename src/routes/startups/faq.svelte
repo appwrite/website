@@ -38,7 +38,7 @@
         },
         {
             question: 'Are OTP SMS costs covered by Appwrite?',
-            answer: 'All Appwrite plans include 10 free SMS messages per month, which allows you to test and implement OTP functionality without immediate costs. After this, you will have to pay the costs for SMS OTP. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
+            answer: 'OTP SMS messages are billed per message sent. You can use <a class="web-link underline" href="/docs/products/auth/security#mock-phone-numbers">mock phone numbers</a> to test OTP functionality without incurring costs. Please refer to our <a class="web-link underline" href="/docs/advanced/platform/phone-otp#rates">rates page</a> for a breakdown of the pricing, including rates by region and specific SMS costs.'
         },
         {
             question: 'What happens if we scale overnight?',
