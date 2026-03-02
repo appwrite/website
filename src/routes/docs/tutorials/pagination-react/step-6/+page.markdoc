@@ -1,0 +1,232 @@
+---
+layout: tutorial
+title: Adding todos
+description: Add todos to your React application using Appwrite.
+step: 6
+---
+# Add todos contexts {% #add-todos-contexts %}
+
+We'll now display our Todos in our app. In React, [context](https://reactjs.org/docs/context.html) allows us to share data across components. 
+We'll leverage context and create two custom contexts to manage our todos. One for each pagination method.
+
+Create a new file named `src/lib/context/OffsetProvider.jsx` and insert the following code:
+
+```js
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+const TodosContext = createContext();
+
+export function useTodos() {
+  return useContext(TodosContext);
+}
+
+export function OffsetProvider(props) {
+  const [todos, setTodos] = useState([]);
+
+  async function init() {
+    try {
+      const response = await databases.listDocuments(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+        [Query.orderAsc("$createdAt"), Query.limit(4)],
+      );
+      setTodos(response.documents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <TodosContext.Provider value={{ current: todos }}>
+      {props.children}
+    </TodosContext.Provider>
+  );
+}
+```
+Also create a new file named `src/lib/context/CursorProvider.jsx` and insert the following code:
+
+```js
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+const TodosContext = createContext();
+
+export function useTodos() {
+  return useContext(TodosContext);
+}
+
+export function CursorProvider(props) {
+  const [todos, setTodos] = useState([]);
+
+  async function init() {
+    try {
+      const response = await databases.listDocuments(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+        [Query.orderAsc("$createdAt"), Query.limit(4)],
+      );
+      setTodos(response.documents);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <TodosContext.Provider value={{ current: todos }}>
+      {props.children}
+    </TodosContext.Provider>
+  );
+}
+```
+We'll expand on these contexts' functionality later.
+
+## Basic Routing {% #basic-routing %}
+The todo app will have a header that displays links to the different pagination methods so you can select each method and view the example in the container below it.
+The `App` fragment returns the `Header` component along with other components wrapped in `OffsetProvider` and `CursorProvider` components.
+These providers are used to provide data to the components that they wrap.
+
+Update `src/App.jsx` with the following code:
+
+```js
+import React from "react";
+import { OffsetProvider } from "./lib/context/OffsetProvider";
+import { CursorProvider } from "./lib/context/CursorProvider";
+import { TodosWithOffsetPagination } from "./pages/TodosWithOffsetPagination";
+import { TodosWithOffsetPaginationAndNumbers } from "./pages/TodosWithOffsetPaginationAndNumbers";
+import { TodosWithBasicCursorPagination } from "./pages/TodosWithBasicCursorPagination";
+import { TodosWithBidirectionalCursorPagination } from "./pages/TodosWithBidirectionalCursorPagination";
+const Header = () => (
+  <div >
+    <p>
+      <a href='/basicOffsetPagination'>Basic Offset Pagination</a>
+    </p>
+    <p>
+      <a href='/offsetPaginationWithPageNumbers'>Offset Pagination With Page Numbers</a>
+    </p>
+    <p>
+      <a href='/basicCursorPagination'>Basic Cursor Pagination</a>
+    </p>
+    <p>
+      <a href="/bidirectionalPagination">Bidirectional Pagination</a>
+    </p>
+  </div>
+);
+
+function App() {
+  const showBasicOffsetPagination = () => {
+    if (window.location.pathname === "/basicOffsetPagination") {
+      return <TodosWithOffsetPagination />;
+    }
+  };
+
+  const showOffsetPaginationWithPageNumbers = () => {
+    if (window.location.pathname === "/offsetPaginationWithPageNumbers") {
+      return <TodosWithOffsetPaginationAndNumbers />;
+    }
+  };
+
+  const showBasicCursorPagination = () => {
+    if (window.location.pathname === "/basicCursorPagination") {
+      return <TodosWithBasicCursorPagination />;
+    }
+  };
+
+    const showBidirecionalPagination = () => {
+    if (window.location.pathname === "/bidirectionalPagination") {
+      return <TodosWithBidirectionalCursorPagination />;
+    }
+  };
+
+  return (
+    <div>
+      <Header />
+      <div>
+        <OffsetProvider>
+          {showBasicOffsetPagination()}
+          {showOffsetPaginationWithPageNumbers()}
+        </OffsetProvider>
+        <CursorProvider>
+          {showBasicCursorPagination()}
+          {showBidirecionalPagination()}
+        </CursorProvider>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Todos page {% #todos-page %}
+
+Now, we can craft our Todos pages, which will present users with a list of todos-a small chuck of the large dataset in three different ways.
+
+Create four new files in `src/pages/` folder, name them `TodosWithOffsetPagination`, `TodosWithOffsetPaginationAndNumbers`, `TodosWithBasicCursorPagination`, and `TodosWithBidirectionalCursorPagination`. Then insert this placeholder code in each file:
+
+{% tabs %}
+{% tabsitem #todos-with-offset-pagination title="TodosWithOffsetPagination" %}
+```js
+import { useTodos } from "../lib/context/OffsetProvider";
+export function TodosWithOffsetPagination() {
+  const todos = useTodos();
+  return (
+    <section>
+      <h2>Todos with offset pagination</h2>
+    </section>
+  );
+}
+```
+{% /tabsitem %}
+{% tabsitem #todos-with-offset-pagination-and-numbers title="TodosWithOffsetPaginationAndNumbers" %}
+```js
+import { useTodos } from "../lib/context/OffsetProvider";
+export function TodosWithOffsetPaginationAndNumbers() {
+  const todos = useTodos();
+  return (
+    <section>
+      <h2>Todos with offset pagination and page numbers</h2>
+    </section>
+  );
+}
+```
+{% /tabsitem %}
+{% tabsitem #todos-with-basic-cursor-pagination title="TodosWithBasicCursorPagination" %}
+```js
+import { useTodos } from "../lib/context/CursorProvider";
+export function TodosWithBasicCursorPagination() {
+  const todos = useTodos();
+  return (
+    <section>
+      <h2>Todos with basic cursor pagination</h2>
+    </section>
+  );
+}
+```
+{% /tabsitem %}
+{% tabsitem #todos-with-bidirectional-cursor-pagination title="TodosWithBidirectionalCursorPagination" %}
+```js
+import { useTodos } from "../lib/context/CursorProvider";
+export function TodosWithBidirectionalCursorPagination() {
+  const todos = useTodos();
+  return (
+    <section>
+      <h2>Todos with bidirectional cursor pagination</h2>
+    </section>
+  );
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+We will expand these and add UI next.

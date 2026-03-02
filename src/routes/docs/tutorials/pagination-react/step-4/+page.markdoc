@@ -1,0 +1,57 @@
+---
+layout: tutorial
+title: Add database
+description: Add a database to your React application using Appwrite Web SDK.
+step: 4
+---
+Before we can talk about pagination, we need to create some mock data to paginate.
+
+# Create a database {% #create-a-database %}
+In Appwrite's console, navigate to the **Databases** page and click **Create database** and name it "Development".
+
+# Create a collection {% #create-collection %}
+To create a collection, head to the **Databases** page, find your database, and click **Create collection**. Name the collection "Todos".
+
+Create the following attributes in your collection.
+
+{% table %}
+* &nbsp; {% width=10 %}
+* Field {% width=10 %}
+* Type {% width=10 %}
+* Required {% width=10 %}
+* Size {% width=10 %}
+* Min {% width=10 %}
+* Max {% width=10 %}
+---
+* &nbsp;
+* taskId
+* Integer
+* Yes
+* -
+* 0
+* 500
+---
+* &nbsp;
+* title
+* String
+* Yes
+* 248
+* -
+* -
+---
+* &nbsp;
+* completed
+* Boolean
+* Yes
+* -
+* -
+* -
+{% /table %}
+
+# Add Permissions {% #add-permissions %}
+1. Go to the **Settings** tab.
+2. Scroll to the **Permissions** section.
+3. Add the **Any** role, ensuring you select both **CREATE** and **READ** permissions.
+{% info title="Any role" %}
+  The **Any** role is used in this tutorial for demonstration purposes. Remember to protect your user's data in production applications by configuring proper [permissions](/docs/advanced/platform/permissions).
+{% /info %}
