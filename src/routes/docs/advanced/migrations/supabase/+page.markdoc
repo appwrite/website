@@ -16,14 +16,20 @@ When you migrate data from Supabase to Appwrite Cloud, the resource usage during
 
 Find all of the following credentials from your Supabase project.
 
+1. Go to your Supabase project dashboard and click the **Connect** button in the top right corner.
+
+1. A modal will appear with several connection options. Select **Transaction pooler** (recommended for migrations).
+
+1. Copy the connection details from the modal to retrieve the **Host**, **Port** and **Username** fields below.
+
 | Field          | Description                                                                                                    |
 | ---------------| -------------------------------------------------------------------------------------------------------------- |
-| **Host**       | The host of your Supabase Database, this can be found in your Supabase project settings under **Database Settings** and **Host**. |
-| **Port**       | The port of your Supabase Database, this can be found in your Supabase project settings under **Database Settings** and **Port**. By default, this is **5432**. |
-| **Username**   | The username of your Supabase Database, this can be found in your Supabase project settings under **Database Settings** and **Username**. |
-| **Password**   | The password of your Supabase Database, this was set when you created your Supabase project. If you forgot your password, you can reset it within **Database Settings**. |
-| **Endpoint**   | This is the endpoint of your Supabase instance under **Project Settings > API**. This is used to migrate your files. |
-| **API Key**    | This is the key of your Supabase instance under **Project Settings > API**. This is used to migrate your files. Make sure to use the hidden **service_role** key. |
+| **Host**       | The host of your Supabase Database, found in the **Transaction pooler** connection string from the **Connect** modal. |
+| **Port**       | The port of your Supabase Database, found in the **Transaction pooler** connection string. |
+| **Username**   | The username of your Supabase Database, found in the **Transaction pooler** connection string from the **Connect** modal. |
+| **Password**   | The password of your Supabase Database, this was set when you created your Supabase project. If you forgot your password, you can reset it in **Database Settings**. |
+| **Endpoint**   | This is the endpoint of your Supabase instance under **Project Settings > API > Project URL**. This is used to migrate your files. |
+| **API Key**    | This is the key of your Supabase instance under **Project Settings > API keys**. This is used to migrate your files. Make sure to use the hidden **service_role** key. |
 
 {% /section %}
 
