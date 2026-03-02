@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
-import { getMarkdownContent } from '$lib/server/markdown';
+import { getMarkdownContent, processMarkdownWithPartials } from '$lib/server/markdown';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
@@ -24,7 +24,9 @@ const markdownHandler: Handle = async ({ event, resolve }) => {
         return new Response('Not found', { status: 404 });
     }
 
-    return new Response(content, {
+    const processedContent = await processMarkdownWithPartials(content);
+
+    return new Response(processedContent, {
         status: 200,
         headers: {
             'Content-Type': 'text/markdown; charset=utf-8'
