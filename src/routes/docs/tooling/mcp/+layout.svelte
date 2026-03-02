@@ -44,6 +44,10 @@
                     href: '/docs/tooling/mcp/claude-code'
                 },
                 {
+                    label: 'Zenflow',
+                    href: '/docs/tooling/mcp/zenflow'
+                },
+                {
                     label: 'Cursor',
                     href: '/docs/tooling/mcp/cursor'
                 },
