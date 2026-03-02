@@ -6,6 +6,7 @@ const partialsCache = new Map<string, string>();
 
 export async function processMarkdownWithPartials(content: string): Promise<string> {
     const partialsDir = join(process.cwd(), 'src', 'partials');
+    const resolvedPartialsDir = resolve(partialsDir);
     const partialRegex = /\{%\s*partial\s+file="([^"]+)"\s*\/%\}/g;
 
     const matches = [...content.matchAll(partialRegex)];
@@ -18,17 +19,31 @@ export async function processMarkdownWithPartials(content: string): Promise<stri
 
         if (!partialsCache.has(partialFile)) {
             try {
-                const partialPath = join(partialsDir, partialFile);
+                const normalizedPartialFile = normalize(partialFile).replace(
+                    /^(\.\.(\/|\\|$))+/,
+                    ''
+                );
+                const partialPath = resolve(partialsDir, normalizedPartialFile);
+
+                if (
+                    !partialPath.startsWith(resolvedPartialsDir + '/') &&
+                    partialPath !== resolvedPartialsDir
+                ) {
+                    console.warn(`Partial path traversal attempt detected: ${partialFile}`);
+                    partialsCache.set(partialFile, '');
+                    continue;
+                }
+
                 const partialContent = await readFile(partialPath, 'utf-8');
                 partialsCache.set(partialFile, partialContent);
-            } catch (e) {
+            } catch {
                 console.warn(`Partial not found: ${partialFile}`);
                 partialsCache.set(partialFile, '');
             }
         }
 
         const partialContent = partialsCache.get(partialFile) || '';
-        result = result.replace(fullMatch, partialContent);
+        result = result.replaceAll(fullMatch, partialContent);
     }
 
     return result;
