@@ -12,7 +12,7 @@ If you're looking to migrate existing projects to Appwrite, Migrations can help 
 
 Appwrite supports multiple source destinations for migrating your data. You can transfer data from these sources to a new or existing Appwrite project. Resources marked as 'enabled' are migrated automatically. Resources marked as 'partial' can be migrated but with limitations or caveats; please refer to the guide for each source to learn more. Resources marked as 'manual' require manual migration.
 
-| Source | Users | Databases | Documents | Files | Functions | Sites |
+| Source | Users | Databases | Rows | Files | Functions | Sites |
 |--------|-------|-----------|-----------|-------|-----------|-------|
 | [Firebase](/docs/advanced/migrations/firebase) | enabled | enabled | partial | enabled | manual | - |
 | [Supabase](/docs/advanced/migrations/supabase) | enabled | enabled | partial | enabled | manual | - |
