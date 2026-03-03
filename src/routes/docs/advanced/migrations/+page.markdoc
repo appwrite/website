@@ -12,13 +12,13 @@ If you're looking to migrate existing projects to Appwrite, Migrations can help 
 
 Appwrite supports multiple source destinations for migrating your data. You can transfer data from these sources to a new or existing Appwrite project. Resources marked as 'enabled' are migrated automatically. Resources marked as 'partial' can be migrated but with limitations or caveats; please refer to the guide for each source to learn more. Resources marked as 'manual' require manual migration.
 
-| Source | Users | Databases | Documents | Files | Functions |
-|--------|-------|-----------|-----------|-------|-----------|
-| [Firebase](/docs/advanced/migrations/firebase) | enabled | enabled | partial | enabled | manual |
-| [Supabase](/docs/advanced/migrations/supabase) | enabled | enabled | partial | enabled | manual |
-| [Nhost](/docs/advanced/migrations/nhost) | enabled | enabled | partial | enabled | manual |
-| [Cloud](/docs/advanced/migrations/cloud) | enabled | enabled | enabled | enabled | enabled |
-| [Self hosted](/docs/advanced/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled |
+| Source | Users | Databases | Documents | Files | Functions | Sites |
+|--------|-------|-----------|-----------|-------|-----------|-------|
+| [Firebase](/docs/advanced/migrations/firebase) | enabled | enabled | partial | enabled | manual | - |
+| [Supabase](/docs/advanced/migrations/supabase) | enabled | enabled | partial | enabled | manual | - |
+| [Nhost](/docs/advanced/migrations/nhost) | enabled | enabled | partial | enabled | manual | - |
+| [Cloud](/docs/advanced/migrations/cloud) | enabled | enabled | enabled | enabled | enabled | enabled |
+| [Self hosted](/docs/advanced/migrations/self-hosted) | enabled | enabled | enabled | enabled | enabled | enabled |
 
 # Limitations {% #limitations %}
 
