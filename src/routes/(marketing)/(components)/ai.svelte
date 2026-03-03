@@ -24,13 +24,68 @@
     ];
 
     const models = [
-        { name: 'Claude Opus 4.6', provider: 'Anthropic', score: '99.9%' },
-        { name: 'GPT-5.3 Codex', provider: 'OpenAI', score: '99.2%' },
-        { name: 'Gemini 3.1 Pro', provider: 'Google', score: '98.1%' },
-        { name: 'Claude Sonnet 4.6', provider: 'Anthropic', score: '97.8%' },
-        { name: 'GPT-5.3', provider: 'OpenAI', score: '96.5%' },
-        { name: 'Llama 4 Maverick', provider: 'Meta', score: '94.2%' }
+        {
+            name: 'Claude Opus 4.6',
+            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            colorLogo: '/images/docs/mcp/logos/color/claude.svg',
+            cost: '$5.00',
+            overall: 99.9,
+            categories: {
+                Auth: 100,
+                Databases: 100,
+                Functions: 100,
+                Storage: 99.5,
+                Sites: 100,
+                Messaging: 100
+            }
+        },
+        {
+            name: 'GPT 5.3 Codex',
+            logo: '/images/docs/mcp/logos/dark/openai.svg',
+            colorLogo: '/images/docs/mcp/logos/color/openai.svg',
+            cost: '$1.75',
+            overall: 99.2,
+            categories: {
+                Auth: 97.5,
+                Databases: 99,
+                Functions: 98.5,
+                Storage: 100,
+                Sites: 100,
+                Messaging: 99.5
+            }
+        },
+        {
+            name: 'Kimi K2.5',
+            logo: '/images/docs/mcp/logos/dark/kimi.svg',
+            colorLogo: '/images/docs/mcp/logos/color/kimi.svg',
+            cost: '$0.45',
+            overall: 99.2,
+            categories: {
+                Auth: 98.5,
+                Databases: 99.5,
+                Functions: 99.5,
+                Storage: 100,
+                Sites: 100,
+                Messaging: 97
+            }
+        },
+        {
+            name: 'Gemini 3.1 Pro',
+            logo: '/images/docs/mcp/logos/dark/gemini.svg',
+            colorLogo: '/images/docs/mcp/logos/color/gemini.svg',
+            cost: '$2.00',
+            overall: 98.1,
+            categories: {
+                Auth: 97,
+                Databases: 98.5,
+                Functions: 100,
+                Storage: 99,
+                Sites: 92,
+                Messaging: 100
+            }
+        }
     ];
+    const categoryKeys = Object.keys(models[0].categories);
 
     // Score count-up animation
     const START_VALUE = 90;
@@ -46,7 +101,7 @@
         if (hasAnimated) return;
         hasAnimated = true;
 
-        const targets = models.map((m) => parseFloat(m.score));
+        const targets = models.map((m) => m.overall);
         const duration = 1000;
         const stagger = 100;
 
@@ -108,33 +163,33 @@
     });
 </script>
 
-<div class="border-smooth border-t border-dashed pb-16">
-    <div class="container pt-16 pb-0">
-        <h2 class="font-aeonik-pro text-subtitle text-primary mb-12">
+<div class="border-smooth border-t pb-16">
+    <div class="container pt-20 pb-0">
+        <h2 class="font-aeonik-pro text-title text-primary sm:text-subtitle mb-12">
             Streamline your AI workflows<span class="text-accent">_</span>
         </h2>
 
-        <div
-            class="border-smooth grid grid-cols-1 overflow-hidden border-t border-dashed sm:grid-cols-2"
-        >
+        <div class="grid grid-cols-1 overflow-hidden sm:grid-cols-2">
             <!-- MCP -->
-            <div class="border-smooth flex flex-col border-dashed sm:border-r">
+            <div class="border-smooth flex flex-col border border-dashed">
                 <McpAnimation />
                 <div class="px-5 pt-6 pb-10 sm:px-8">
                     <h3 class="font-aeonik-pro text-label text-primary">
-                        Use MCP to connect AI agents to your Appwrite backend.
+                        MCP - Connect AI agents to your Appwrite backend.
                         <span class="text-secondary">No custom integrations required.</span>
                     </h3>
                 </div>
             </div>
 
-            <!-- Agent Skills & Rules -->
-            <div class="flex flex-col">
+            <!-- Appwrite Skills -->
+            <div
+                class="border-smooth flex flex-col border border-t-0 border-dashed sm:border-t sm:border-l-0"
+            >
                 <SkillsAnimation />
                 <div class="px-5 pt-6 pb-10 sm:px-8">
                     <h3 class="font-aeonik-pro text-label text-primary">
-                        Define what AI agents can do, and how they should behave,
-                        <span class="text-secondary">before shipping them to production.</span>
+                        Skills - Teach AI agents your backend,
+                        <span class="text-secondary">so they always make the right call.</span>
                     </h3>
                 </div>
             </div>
@@ -235,61 +290,88 @@
     </div>
 
     <!-- Agent Skill + LLM Compatibility -->
-    <div class="container pt-10 md:pt-16">
-        <div class="grid grid-cols-1 gap-6 overflow-hidden md:grid-cols-2 md:gap-8">
-            <!-- Left: Skill pitch -->
-            <div class="flex flex-col px-5 py-6 sm:px-6 md:px-0">
-                <h3 class="font-aeonik-pro text-label text-primary mb-0">
-                    Boost compatibility across AI models
-                </h3>
-                <p class="text-secondary mt-3 mb-0 max-w-[420px] text-base font-medium">
-                    Install the Appwrite Agent Skill to teach AI models how to work with your
-                    backend.
-                </p>
-                <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                    <Button href="/docs/agents/skills" class="is-full-width-mobile"
-                        >Install skill</Button
-                    >
-                    <Button
-                        variant="secondary"
-                        href="https://arena.appwrite.network/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="is-full-width-mobile">View full benchmark</Button
-                    >
-                </div>
-            </div>
-
-            <!-- Right: Score proof -->
-            <div
-                class="border-smooth flex flex-col overflow-hidden border border-dashed"
-                bind:this={scoreSection}
-            >
-                <div
-                    class="border-smooth flex items-center justify-between border-b border-dashed px-4 py-2.5 sm:px-5"
+    <div class="container pt-14 md:pt-20">
+        <!-- Pitch -->
+        <div
+            class="mb-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between"
+        >
+            <h3 class="font-aeonik-pro text-label text-primary mb-0 max-w-[480px]">
+                Works with every major LLM.
+                <span class="text-secondary"
+                    >Find out how well your model integrates with Appwrite.</span
                 >
-                    <span class="text-xs text-white/40">Model</span>
-                    <span class="text-xs text-white/40">Compatibility</span>
-                </div>
-                <div class="flex flex-1 flex-col">
-                    {#each models.slice(0, 3) as model, i (model.name)}
-                        {@const isLast = i === 2}
-                        <div
-                            class="border-smooth flex items-center justify-between px-4 sm:px-5 {!isLast
-                                ? 'border-b border-dashed'
-                                : ''}"
-                        >
-                            <span class="flex items-baseline gap-1.5 py-4">
-                                <span class="text-primary text-sm font-medium">{model.name}</span>
-                                <span class="text-xs text-white/40">{model.provider}</span>
-                            </span>
-                            <span class="font-aeonik-pro text-lg font-medium text-[#85DBD8]"
-                                >{animatedScores[i].toFixed(1)}<span class="text-sm">%</span></span
-                            >
-                        </div>
-                    {/each}
-                </div>
+            </h3>
+            <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+                <Button href="/docs/agents/skills" class="is-full-width-mobile"
+                    >Install skill</Button
+                >
+                <Button
+                    variant="secondary"
+                    href="https://arena.appwrite.network/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="is-full-width-mobile">View full benchmark</Button
+                >
             </div>
+        </div>
+
+        <!-- Benchmark table -->
+        <div class="border-smooth overflow-x-auto border border-dashed" bind:this={scoreSection}>
+            <table class="w-full">
+                <thead>
+                    <tr class="border-smooth border-b border-dashed bg-[#232325]">
+                        <td class="px-4 py-3 text-left text-xs text-white/50 sm:px-5">Model</td>
+                        <td class="hidden px-5 py-3 text-left text-xs text-white/50 sm:table-cell"
+                            >Cost/1M</td
+                        >
+                        <td class="px-4 py-3 text-right text-xs text-white/50 sm:px-5 sm:text-left"
+                            >Overall</td
+                        >
+                        {#each categoryKeys as cat}
+                            <td
+                                class="hidden px-5 py-3 text-center text-xs text-white/50 md:table-cell"
+                                >{cat}</td
+                            >
+                        {/each}
+                    </tr>
+                </thead>
+                <tbody>
+                    {#each models as model, i (model.name)}
+                        {@const isLast = i === models.length - 1}
+                        <tr class="group border-smooth {!isLast ? 'border-b border-dashed' : ''}">
+                            <td class="px-4 py-3 sm:px-5">
+                                <div class="flex items-center gap-3">
+                                    <img
+                                        src={model.colorLogo}
+                                        alt=""
+                                        class="h-5 w-5 opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                                    />
+                                    <span class="text-primary text-sm font-medium sm:text-base"
+                                        >{model.name}</span
+                                    >
+                                </div>
+                            </td>
+                            <td class="hidden px-5 py-3 text-base text-white/40 sm:table-cell"
+                                >{model.cost}</td
+                            >
+                            <td class="px-4 py-3 text-right sm:px-5 sm:text-left">
+                                <span class="font-aeonik-pro text-lg font-medium text-[#85DBD8]"
+                                    >{animatedScores[i].toFixed(1)}<span class="text-sm">%</span
+                                    ></span
+                                >
+                            </td>
+                            {#each categoryKeys as cat}
+                                <td class="hidden px-5 py-3 text-center md:table-cell">
+                                    <span
+                                        class="text-sm text-white/60 transition-colors duration-300 group-hover:text-[#85DBD8]"
+                                        >{model.categories[cat]}%</span
+                                    >
+                                </td>
+                            {/each}
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

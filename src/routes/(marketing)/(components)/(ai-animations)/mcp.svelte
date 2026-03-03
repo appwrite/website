@@ -1,156 +1,189 @@
 <script lang="ts">
-    import { hover, inView } from 'motion';
     import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../grid-paper.svelte';
+    import { hover, inView } from 'motion';
+    import { write, unwrite, type WriteAnimation } from '$lib/animations';
 
     let container: HTMLElement;
-    let leftBlock: SVGGElement;
-    let rightCluster: SVGGElement;
+    let typedText = $state('');
+    let active = $state(false);
+    let currentAnimation: WriteAnimation | null = null;
 
-    let rafId: number;
-    let slideCurrent = 0;
-    let slideFrom = 0;
-    let slideTarget = 0;
-    let slideStart = 0;
+    const TYPED_MESSAGE = 'Add a password attribute';
 
-    const SLIDE_PX = 8;
-    const SLIDE_DURATION = 400;
-
-    function easeOut(t: number) {
-        return 1 - (1 - t) ** 3;
-    }
-
-    function tick(now: number) {
-        const st = Math.min((now - slideStart) / SLIDE_DURATION, 1);
-        slideCurrent = slideFrom + (slideTarget - slideFrom) * easeOut(st);
-        leftBlock.setAttribute('transform', `translate(${slideCurrent * SLIDE_PX}, 0)`);
-        rightCluster.setAttribute('transform', `translate(${-slideCurrent * SLIDE_PX}, 0)`);
-        if (st < 1) {
-            rafId = requestAnimationFrame(tick);
-        }
-    }
-
-    function slideTo(val: number) {
-        cancelAnimationFrame(rafId);
-        slideFrom = slideCurrent;
-        slideTarget = val;
-        slideStart = performance.now();
-        rafId = requestAnimationFrame(tick);
-    }
+    const codeLines = [
+        { w: '60%' },
+        { w: '45%', indent: true },
+        { w: '0' },
+        { w: '70%' },
+        { w: '55%', indent: true },
+        { w: '50%', indent: true },
+        { w: '0' },
+        { w: '65%' },
+        { w: '0' },
+        { w: '40%' },
+        { w: '55%', indent: true }
+    ];
 
     $effect(() => {
         hover(container, () => {
             if (isMobile()) return;
-            slideTo(1);
-            return () => slideTo(0);
+            active = true;
+            currentAnimation?.cancel();
+            currentAnimation = write(TYPED_MESSAGE, (v) => (typedText = v), 500, typedText.length);
+            return () => {
+                active = false;
+                currentAnimation?.cancel();
+                currentAnimation = unwrite(
+                    typedText,
+                    (v) => (typedText = v),
+                    (typedText.length / TYPED_MESSAGE.length) * 500
+                );
+            };
         });
 
         inView(
             container,
             () => {
                 if (!isMobile()) return;
-                slideTo(1);
-                return () => slideTo(0);
+                active = true;
+                currentAnimation?.cancel();
+                currentAnimation = write(
+                    TYPED_MESSAGE,
+                    (v) => (typedText = v),
+                    500,
+                    typedText.length
+                );
+                return () => {
+                    active = false;
+                    currentAnimation?.cancel();
+                    currentAnimation = unwrite(
+                        typedText,
+                        (v) => (typedText = v),
+                        (typedText.length / TYPED_MESSAGE.length) * 500
+                    );
+                };
             },
             { amount: 'all' }
         );
     });
 </script>
 
-<div
-    bind:this={container}
-    class="relative flex h-56 items-center justify-center overflow-hidden sm:h-72"
->
-    <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/11)]" />
-    <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 541 273"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
+<div bind:this={container} class="relative flex h-56 flex-col overflow-hidden sm:h-72">
+    <!-- IDE Window -->
+    <div
+        class="mx-5 mt-4 flex flex-1 flex-col overflow-hidden rounded-[1.25rem] bg-[#232325]/90 mask-b-from-70% mask-b-to-100% px-1 pb-1 backdrop-blur-md sm:mx-10 sm:mt-6"
     >
-        <g transform="translate(270.5 136.5) scale(0.88) translate(-270.5 -136.5)">
-            <!-- Left: Backend standing block -->
-            <g bind:this={leftBlock}>
-                <!-- Left side face (depth) -->
-                <path d="M35 50L21 57L21 216L35 223Z" fill="#151517" stroke="#2A2A2D" />
-                <!-- Front face -->
-                <path d="M135 191L35 223L35 50L135 82Z" fill="#19191C" stroke="#2A2A2D" />
-            </g>
+        <!-- Title bar -->
+        <div class="flex h-7 w-full items-center gap-1 pl-2">
+            {#each Array(3) as _}
+                <div class="size-2 rounded-full bg-[#D9D9D9]"></div>
+            {/each}
+        </div>
 
-            <!-- Right: AI Agents (3 mirrored panels, lean left) -->
-            <g bind:this={rightCluster}>
-                <path d="M431 82L513 52L513 221L431 191Z" fill="#19191C" stroke="#2A2A2D" />
-                <path d="M415 82L497 52L497 221L415 191Z" fill="#19191C" stroke="#2A2A2D" />
-                <g>
-                    <path d="M399 82L481 52L481 221L399 191Z" fill="#19191C" />
-                    <path d="M399 82L481 52L481 221L399 191Z" fill="#FD366E" fill-opacity="0.12" />
-                    <path
-                        d="M399.5 82.3L480.5 52.7L480.5 220.3L399.5 190.7Z"
-                        stroke="url(#mcpAccentGradient)"
-                        stroke-opacity="0.32"
-                    />
-                </g>
-            </g>
+        <!-- Content: File tree + Code + Chat -->
+        <div class="flex flex-1 overflow-hidden rounded-2xl bg-[#19191C]">
+            <!-- File tree hint -->
+            <div class="flex w-14 shrink-0 flex-col gap-2 border-r border-white/[0.04] px-2 pt-3">
+                <!-- Folder -->
+                <div class="flex items-center gap-1">
+                    <div class="size-1.5 shrink-0 rounded-sm bg-white/10"></div>
+                    <div class="h-1 w-full rounded-full bg-white/[0.08]"></div>
+                </div>
+                <!-- Nested file -->
+                <div class="flex items-center gap-1 pl-2">
+                    <div class="size-1 shrink-0 rounded-full bg-white/[0.06]"></div>
+                    <div class="h-1 w-3/4 rounded-full bg-white/[0.06]"></div>
+                </div>
+                <!-- Nested file (active) -->
+                <div class="flex items-center gap-1 pl-2">
+                    <div class="size-1 shrink-0 rounded-full bg-white/10"></div>
+                    <div class="h-1 w-full rounded-full bg-white/10"></div>
+                </div>
+                <!-- Nested file -->
+                <div class="flex items-center gap-1 pl-2">
+                    <div class="size-1 shrink-0 rounded-full bg-white/[0.06]"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-white/[0.06]"></div>
+                </div>
+                <!-- Folder -->
+                <div class="flex items-center gap-1">
+                    <div class="size-1.5 shrink-0 rounded-sm bg-white/10"></div>
+                    <div class="h-1 w-4/5 rounded-full bg-white/[0.08]"></div>
+                </div>
+                <!-- Nested file -->
+                <div class="flex items-center gap-1 pl-2">
+                    <div class="size-1 shrink-0 rounded-full bg-white/[0.06]"></div>
+                    <div class="h-1 w-3/5 rounded-full bg-white/[0.06]"></div>
+                </div>
+            </div>
 
-            <!-- Labels -->
-            <text
-                x="35"
-                y="248"
-                font-family="'Aeonik Pro', sans-serif"
-                font-size="10"
-                letter-spacing="2"
-                fill="#ADADB0">BACKEND</text
+            <!-- Code pane (hint lines) -->
+            <div class="flex flex-1 flex-col gap-[7px] px-3 pt-3 pb-2">
+                {#each codeLines as line}
+                    <div class="flex">
+                        {#if line.w !== '0'}
+                            <div
+                                class="h-1 rounded-full bg-white/[0.08] {line.indent ? 'ml-3' : ''}"
+                                style:width={line.w}
+                            ></div>
+                        {:else}
+                            <div class="h-1"></div>
+                        {/if}
+                    </div>
+                {/each}
+            </div>
+
+            <!-- Chat pane -->
+            <div
+                class="flex w-[42%] flex-col gap-2 border-l border-white/[0.04] px-3 py-3 tracking-normal"
+                style="font-family: 'Inter', sans-serif; font-size: 11px"
             >
-            <text
-                x="513"
-                y="248"
-                text-anchor="end"
-                font-family="'Aeonik Pro', sans-serif"
-                font-size="10"
-                letter-spacing="2"
-                fill="#ADADB0">AGENTS</text
-            >
+                <!-- User message bubble -->
+                <span class="text-primary mt-1 w-fit rounded-md bg-white/[0.05] px-2.5 py-1"
+                    >Create a collection for user profiles</span
+                >
 
-            <!-- MCP connector (accent gradient line) -->
-            <path d="M149 136.5L399 136.5" stroke="url(#mcpConnectorGradient)" />
+                <!-- AI response -->
+                <div class="text-secondary flex gap-2 leading-relaxed">
+                    <div class="mt-[6px] size-1.5 shrink-0 rounded-full bg-white/12"></div>
+                    <span>Setting up collection with email and name attributes.</span>
+                </div>
 
-            <!-- MCP label (centered between block and cluster) -->
-            <g transform="translate(-48, 0)">
-                <path
-                    d="M310.908 129H309.96V120.6H311.184L313.248 125.424L315.288 120.6H316.476V129H315.528V122.268L313.644 126.672H312.804L310.908 122.268V129ZM322.574 129.072C320.33 129.072 319.034 127.488 319.034 124.8C319.034 122.1 320.342 120.528 322.622 120.528C324.29 120.528 325.466 121.56 325.79 123.348H324.686C324.398 122.112 323.69 121.488 322.61 121.488C321.002 121.488 320.102 122.7 320.102 124.8C320.102 126.924 320.966 128.112 322.574 128.112C323.666 128.112 324.374 127.5 324.674 126.252H325.778C325.454 128.052 324.29 129.072 322.574 129.072ZM329.342 129H328.298V120.6H331.37C333.074 120.6 334.202 121.608 334.202 123.18C334.202 124.752 333.074 125.772 331.37 125.772H329.342V129ZM329.342 121.56V124.812H331.274C332.402 124.812 333.134 124.176 333.134 123.18C333.134 122.184 332.414 121.56 331.286 121.56H329.342Z"
-                    fill="#ADADB0"
-                />
-            </g>
-        </g>
+                <!-- Input field with send button -->
+                <div
+                    class="mt-auto flex items-start gap-1 rounded-lg border border-white/[0.06] px-2 py-1.5"
+                >
+                    <span class="min-h-[2lh] flex-1"
+                        >{#if typedText}<span class="text-primary">{typedText}</span>{:else}<span
+                                class="text-white/20">Ask anything...</span
+                            >{/if}</span
+                    >
+                    <div
+                        class="ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors duration-500"
+                        style="background: {active ? '#FD366E' : 'rgba(255,255,255,0.1)'}"
+                    >
+                        <svg
+                            width="8"
+                            height="8"
+                            viewBox="0 0 8 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M4 7V1M4 1L1.5 3.5M4 1L6.5 3.5"
+                                style="stroke: {active
+                                    ? '#ffffff'
+                                    : '#ADADB0'}; transition: stroke 0.5s ease"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <defs>
-            <linearGradient
-                id="mcpAccentGradient"
-                x1="481"
-                y1="136.5"
-                x2="399"
-                y2="136.5"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="#FD366E" />
-                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient
-                id="mcpConnectorGradient"
-                x1="149"
-                y1="136.5"
-                x2="399"
-                y2="136.5"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stop-color="#FD366E" stop-opacity="0" />
-                <stop offset="0.3" stop-color="#FD366E" stop-opacity="0.5" />
-                <stop offset="0.5" stop-color="#FD366E" stop-opacity="0.8" />
-                <stop offset="0.7" stop-color="#FD366E" stop-opacity="0.5" />
-                <stop offset="1" stop-color="#FD366E" stop-opacity="0" />
-            </linearGradient>
-        </defs>
-    </svg>
+    <GridPaper class="absolute inset-0 -z-10 bg-size-[calc(100%/11)] opacity-90" />
 </div>
