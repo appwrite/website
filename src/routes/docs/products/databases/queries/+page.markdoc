@@ -1242,7 +1242,11 @@ Query.notContains("name", "Tom")
 
 ### Search {% #search %}
 
-Searches string columns for provided keywords. Requires a [full-text index](/docs/products/databases/tables#indexes) on queried columns.
+Searches string columns for provided keywords. Requires a [full-text index](/docs/products/databases/tables#indexes) on queried columns. The search string must be at least **3 characters** to perform a search.
+
+{% info title="Searching values with hyphens" %}
+The hyphen (`-`) is treated as a stop character by the underlying search engine. To search for exact values that contain hyphens (for example, ticket or SKU codes like `SWT-2621-44`), wrap the value in quotes inside the search string: `Query.search(attribute, '"SWT-2621-44"')`.
+{% /info %}
 
 {% multicode %}
 ```client-web
@@ -1278,7 +1282,11 @@ query.Search("text", "key words")
 
 Returns rows if a string column does not match the full-text search
 query. Requires a [full-text index](/docs/products/databases/tables#indexes)
-on queried columns.
+on queried columns. The search string must be at least **3 characters** to perform a search.
+
+{% info title="Searching values with hyphens" %}
+The hyphen (`-`) is treated as a stop character by the underlying search engine. To exclude exact values that contain hyphens (for example, ticket or SKU codes like `SWT-2621-44`), wrap the value in quotes inside the search string: `Query.notSearch(attribute, '"SWT-2621-44"')`.
+{% /info %}
 
 {% multicode %}
 ```client-web
