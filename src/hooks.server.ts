@@ -100,7 +100,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
         'font-src': "'self'",
         'object-src': "'none'",
         'base-uri': "'self'",
-        'form-action': "'self'",
+        'form-action': "'self' https://github.com",
         'frame-ancestors': join(["'self'", 'https://www.youtube.com', 'https://*.vimeo.com']),
         'block-all-mixed-content': '',
         'upgrade-insecure-requests': '',
@@ -118,7 +118,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://hemsync.clickagy.com',
             'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            'https://api.github.com'
         ]),
         'frame-src': join([
             "'self'",
