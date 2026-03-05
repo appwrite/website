@@ -171,7 +171,6 @@
                                                 'lg:border-l': i === 0
                                             }
                                         )}
-                                        aria-hidden={i < platforms.length - 1}
                                     >
                                         <a
                                             href={platform.href}
