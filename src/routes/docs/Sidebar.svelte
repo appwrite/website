@@ -125,6 +125,12 @@
             label: 'Tooling',
             items: [
                 {
+                    label: 'AI',
+                    href: '/docs/tooling/ai',
+                    icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
@@ -139,11 +145,6 @@
                     label: 'Assistant',
                     href: '/docs/tooling/assistant',
                     icon: 'icon-sparkles'
-                },
-                {
-                    label: 'MCP Server',
-                    href: '/docs/tooling/mcp',
-                    icon: 'web-icon-mcp'
                 },
                 {
                     label: 'The Appwriter',
