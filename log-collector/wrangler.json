@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "log-collector",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-29",
+  "observability": {
+    "enabled": true
+  },
+  "route": {
+    "pattern": "appwrite.io/*",
+    "zone_name": "appwrite.io"
+  },
+  "vars": {
+    "PROFOUND_API_URL": "https://artemis.api.tryprofound.com/v1/logs/cloudflare_worker"
+  }
+}
