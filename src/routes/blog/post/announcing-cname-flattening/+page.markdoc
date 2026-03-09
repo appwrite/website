@@ -1,0 +1,47 @@
+---
+layout: post
+title: "Announcing CNAME flattening support: Connect your domain without changing nameservers"
+description: Appwrite Sites now supports CNAME flattening, so you can connect custom domains by adding a DNS record with your existing provider instead of migrating nameservers.
+date: 2026-03-06
+cover: /images/blog/announcing-cname-flattening/cover.png
+timeToRead: 4
+author: matej-baco
+category: announcement
+featured: false
+---
+
+If you've connected a custom domain to Appwrite Sites, you know the process required changing your nameservers to Appwrite. For developers already managing DNS through Cloudflare or similar providers, that meant giving up control over caching, security, email routing, and other configurations just to connect a single site.
+
+Appwrite Sites now supports **CNAME flattening**, so you can connect your domain by adding a DNS record with your existing provider instead of migrating nameservers.
+
+# Add a record, not a migration
+
+With CNAME flattening support, connecting a custom domain is just a DNS record away. Keep your existing provider, add a CNAME or ALIAS/ANAME record pointing to Appwrite, and verify the domain in the Console. Once DNS propagates, your site is live with SSL automatically configured. DNS propagation can take anywhere from a few minutes to a few hours depending on your provider and TTL settings.
+
+This is especially useful for teams that rely on their DNS provider for more than just domain resolution. If Cloudflare handles your caching, security headers, or MX records, you no longer have to choose between that setup and Appwrite Sites.
+
+# How CNAME flattening works
+
+Standard DNS rules don't allow CNAME records at the root domain (`example.com`). Only subdomains (`www.example.com`) can use CNAME. CNAME flattening works around this: your DNS provider accepts a CNAME-like configuration at the root, resolves the target internally, and returns the corresponding IP addresses to the client.
+
+Depending on your provider, this goes by different names. Cloudflare calls it **CNAME flattening**, Route 53 uses **ALIAS records**, and some providers support **ANAME records**. The implementation varies, but the result is the same: your root domain can point to a hostname without breaking DNS standards.
+
+# Connect your domain
+
+1. Open your site's domains tab in the Appwrite Console.
+2. Add your custom domain.
+3. Appwrite provides a CNAME record details.
+4. Go to your DNS provider and create a DNS record as described by Appwrite. Providers like Cloudflare will handle CNAME flattening at the root automatically. On other providers, you may need to use an ALIAS or ANAME record for the root domain.
+5. Return to Appwrite and verify the domain.
+
+# Available now
+
+CNAME flattening support is available today on **Appwrite Cloud**. Head to your site dashboard, add a custom domain, and follow the updated DNS instructions.
+
+As always, we'd love to hear your feedback. If you run into any issues, join the [Appwrite community](https://appwrite.io/discord) and let us know.
+
+# More resources
+
+- [Read the custom domains documentation](/docs/products/sites/domains)
+- [Learn about Appwrite DNS](/docs/products/network/dns)
+- [Set up a custom domain for your Appwrite project](/docs/advanced/platform/custom-domains)
