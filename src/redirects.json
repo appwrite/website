@@ -811,5 +811,9 @@
     {
         "link": "/docs/tooling/mcp/docs",
         "redirect": "/docs/tooling/ai/mcp-servers/docs"
+    },
+    {
+        "link": "/docs/tooling/skills",
+        "redirect": "/docs/tooling/ai/skills"
     }
 ]

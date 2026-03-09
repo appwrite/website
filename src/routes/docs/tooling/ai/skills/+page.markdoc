@@ -4,9 +4,16 @@ title: Skills
 description: Install Appwrite skills to give AI agents pre-built knowledge of Appwrite SDKs and services for your preferred language.
 ---
 
-Skills are open source markdown files that give AI agents deep knowledge of Appwrite SDKs and services. When installed, skills provide your AI tools with accurate, language-specific context about Appwrite APIs, so they generate correct code without needing to look up documentation. You can find all Appwrite skills on [GitHub](https://github.com/appwrite/agent-skills/).
+Skills are open-source Markdown files that give AI agents deep knowledge of Appwrite SDKs and services. When installed, skills provide your AI tools with accurate, language-specific context about Appwrite APIs, so they generate correct code without needing to look up documentation. You can find all Appwrite skills on [GitHub](https://github.com/appwrite/agent-skills/).
 
-Skills work across all major AI dev tools that support them, including Claude Code, Cursor, and other compatible agents. They are installed per-project or globally, and are available for all Appwrite client and server SDKs.
+Skills work across all major AI dev tools that support them. They are installed per-project or globally, and are available for all Appwrite client and server SDKs. Supported tools include but not limited to:
+
+- Cursor
+- Claude Code
+- Windsurf Editor
+- Google Antigravity
+- OpenCode
+- *and more...*
 
 # Benefits {% #benefits %}
 
@@ -27,9 +34,8 @@ npx skills add appwrite/agent-skills
 {% /section %}
 
 {% section #step-2 step=2 title="Select skills" %}
-You will be prompted to select which skills to install. Skills are available for the following SDKs:
+You will be prompted to select which skills to install. Skills are available for the Appwrite CLI and the following SDKs:
 
-- CLI
 - TypeScript
 - Dart
 - .NET
@@ -41,10 +47,14 @@ You will be prompted to select which skills to install. Skills are available for
 - Swift
 
 Select the skills that match the SDKs you use in your project.
+
+![Skill selection prompt](/images/docs/skills/skills.png)
 {% /section %}
 
 {% section #step-3 step=3 title="Select tools" %}
 Choose which AI tools should use the installed skills. This configures the skills for the agents you work with.
+
+![Tool selection prompt](/images/docs/skills/tools.png)
 {% /section %}
 
 {% section #step-4 step=4 title="Select scope" %}
@@ -52,8 +62,12 @@ Choose whether to install the skills at the **project** level or **globally**:
 
 - **Project**: Skills are available only in the current project. This is useful when different projects use different Appwrite SDKs.
 - **Global**: Skills are available across all your projects. This is useful if you use the same SDKs everywhere.
+
+![Scope selection prompt](/images/docs/skills/scope.png)
 {% /section %}
 
 {% section #step-5 step=5 title="Choose installation method" %}
-Select **symlink** as the installation method. This creates a symbolic link to the skills, so they stay up to date when the source is updated.
+Select **symlink** as the installation method. This creates a symbolic link to the skills, so they stay in sync across all your AI tools.
+
+![Installation method prompt](/images/docs/skills/method.png)
 {% /section %}
