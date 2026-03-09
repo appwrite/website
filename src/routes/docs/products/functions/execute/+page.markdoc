@@ -18,14 +18,14 @@ You can execute a function through HTTP requests, using a browser or by sending 
 1. Under the **Domains** tab, you'll find the generated domain from Appwrite and your custom domains. [Learn about adding a custom domain](/docs/products/functions/domains).
 
 ```bash
-https://64d4d22db370ae41a32e.appwrite.global
+https://64d4d22db370ae41a32e.fra.appwrite.run
 ```
 
-When requests are made to this domain, whether through a browser or through an HTTP requests,
+When requests are made to this domain, whether through a browser or through an HTTP request,
 the request information like request URL, request headers, and request body will be passed to the function.
 
 ```bash
-curl -X POST https://64d4d22db370ae41a32e.appwrite.global \
+curl -X POST https://64d4d22db370ae41a32e.fra.appwrite.run \
 -H "X-Custom-Header: 123" \
 -H "x-appwrite-user-jwt: <YOUR_JWT_KEY>" \
 -H "Content-Type: application/json" \
