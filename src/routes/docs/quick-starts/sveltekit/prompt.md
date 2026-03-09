@@ -1,118 +1,126 @@
+## Add Appwrite Auth to a New SvelteKit App
+
 Goal: Add Appwrite auth to a new SvelteKit app with a working login/register/logout page.
 
 Do exactly these steps in order. Confirm each step succeeds before continuing. If any command fails, show the error and fix it automatically.
 
-Respect user's package manager at all time. Don't use NPM if the user uses something else.
+Respect user's package manager at all times. Don't use NPM if the user uses something else.
 
-1. Create or use existing SvelteKit app
-    - First, check the contents of the current working directory.
-    - If the directory contains files that appear unrelated to a development workspace (e.g., personal documents, downloads, photos, random files that don't belong in a code project), ask the user: 'The current directory contains files that don't appear to be part of a development project. Would you like to: (1) proceed here anyway, or (2) create it in a subdirectory with a specific folder name?' and proceed based on their choice.
-    - If the directory is empty OR contains an existing project (package.json, src folder, config files, etc.), proceed directly with integration - do NOT ask the user, just integrate into the existing project.
-    - Run: npx sv create . (this creates the project in the current directory)
-    - Do NOT use cd to switch directories - always work in the current directory (.).
-    - Follow the prompts to create your project.
+## Step 1: Create or Use Existing SvelteKit App
 
-2. Install Appwrite SDK
-    - Run: npm install appwrite
+- First, check the contents of the current working directory.
+- If the directory contains files that appear unrelated to a development workspace (e.g., personal documents, downloads, photos, random files that don't belong in a code project), ask the user: "The current directory contains files that don't appear to be part of a development project. Would you like to: (1) proceed here anyway, or (2) create it in a subdirectory with a specific folder name?" and proceed based on their choice.
+- If the directory is empty OR contains an existing project (`package.json`, `src` folder, config files, etc.), proceed directly with integration — do NOT ask the user, just integrate into the existing project.
+- Run: `npx sv create .` (this creates the project in the current directory)
+- Do NOT use `cd` to switch directories — always work in the current directory (`.`).
+- Follow the prompts to create your project.
 
-3. Create Appwrite client module (ask user for details; never assume)
-    - Ask the user for:
-        - Appwrite Cloud Region (e.g. fra, nyc)
-        - Project ID (from Console -> Settings)
-    - Hardcode the endpoint and project ID in the file: src/lib/appwrite.js (or .ts) if provided, else leave placeholder and ask the user to provide them.
-    - Create file: src/lib/appwrite.js (or .ts) with key snippet:
+## Step 2: Install Appwrite SDK
 
-        ```js
-        import { Client, Account } from 'appwrite';
+- Run: `npm install appwrite`
 
-        export const client = new Client();
+## Step 3: Create Appwrite Client Module (Ask User for Details; Never Assume)
 
-        client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
+- Ask the user for:
+    - **Appwrite Cloud Region** (e.g. `fra`, `nyc`)
+    - **Project ID** (from Console -> Settings)
+- Hardcode the endpoint and project ID in the file `src/lib/appwrite.js` (or `.ts`) if provided, else leave placeholder and ask the user to provide them.
+- Create file `src/lib/appwrite.js` (or `.ts`) with key snippet:
 
-        export const account = new Account(client);
-        export { ID } from 'appwrite';
-        ```
+```js
+import { Client, Account } from 'appwrite';
 
-4. Build the login page
-    - If this is a fresh project, replace the contents of `src/routes/+page.svelte` with the login page component.
-    - If you are working in an existing project, add a new route/page instead of overriding the default route (e.g., `src/routes/auth/+page.svelte`).
-    - The component should render:
-        - Email/password inputs
-        - Buttons: Login, Register, Logout
-        - Shows "Logged in as <name>" when a session exists, otherwise "Not logged in"
-    - Implement functions:
-        - login(email, password): account.createEmailPasswordSession({ email, password }) then set loggedInUser via account.get()
-        - register(email, password): account.create({ userId: ID.unique(), email, password }) then call login
-        - logout(): account.deleteSession({ sessionId: 'current' }) then set loggedInUser to null
-    - Key snippet for src/routes/+page.svelte:
+export const client = new Client();
 
-        ```html
-        <script>
-            import { account, ID } from '$lib/appwrite';
+client.setEndpoint('https://<REGION>.cloud.appwrite.io/v1').setProject('<PROJECT_ID>'); // Replace with your project ID
 
-            let loggedInUser = null;
+export const account = new Account(client);
+export { ID } from 'appwrite';
+```
 
-            async function login(email, password) {
-                await account.createEmailPasswordSession({
-                    email,
-                    password
-                });
-                loggedInUser = await account.get();
-            }
+## Step 4: Build the Login Page
 
-            async function register(email, password) {
-                await account.create({
-                    userId: ID.unique(),
-                    email,
-                    password
-                });
-                login(email, password);
-            }
+- If this is a fresh project, replace the contents of `src/routes/+page.svelte` with the login page component.
+- If you are working in an existing project, add a new route/page instead of overriding the default route (e.g., `src/routes/auth/+page.svelte`).
+- The component should render:
+    - Email/password inputs
+    - Buttons: **Login**, **Register**, **Logout**
+    - Shows "Logged in as \<name>" when a session exists, otherwise "Not logged in"
+- Implement functions:
+    - `login(email, password)`: `account.createEmailPasswordSession({ email, password })` then set `loggedInUser` via `account.get()`
+    - `register(email, password)`: `account.create({ userId: ID.unique(), email, password })` then call `login`
+    - `logout()`: `account.deleteSession({ sessionId: 'current' })` then set `loggedInUser` to `null`
+- Key snippet for `src/routes/+page.svelte`:
 
-            function submit(e) {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const type = e.submitter.dataset.type;
+```html
+<script>
+    import { account, ID } from '$lib/appwrite';
 
-                if (type === 'login') {
-                    login(formData.get('email'), formData.get('password'));
-                } else if (type === 'register') {
-                    register(formData.get('email'), formData.get('password'));
-                }
-            }
+    let loggedInUser = null;
 
-            async function logout() {
-                await account.deleteSession({ sessionId: 'current' });
-                loggedInUser = null;
-            }
-        </script>
+    async function login(email, password) {
+        await account.createEmailPasswordSession({
+            email,
+            password
+        });
+        loggedInUser = await account.get();
+    }
 
-        <p>{loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}</p>
+    async function register(email, password) {
+        await account.create({
+            userId: ID.unique(),
+            email,
+            password
+        });
+        login(email, password);
+    }
 
-        <form on:submit="{submit}">
-            <input type="email" placeholder="Email" name="email" required />
-            <input type="password" placeholder="Password" name="password" required />
+    function submit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const type = e.submitter.dataset.type;
 
-            <button type="submit" data-type="login">Login</button>
-            <button type="submit" data-type="register">Register</button>
-        </form>
+        if (type === 'login') {
+            login(formData.get('email'), formData.get('password'));
+        } else if (type === 'register') {
+            register(formData.get('email'), formData.get('password'));
+        }
+    }
 
-        <button on:click="{logout}">Logout</button>
-        ```
+    async function logout() {
+        await account.deleteSession({ sessionId: 'current' });
+        loggedInUser = null;
+    }
+</script>
 
-5. Verify environment (ask user to confirm)
-    - Confirm endpoint and project ID are set in `src/lib/appwrite.js`.
-    - Ensure the Web app platform exists in Appwrite Console with Hostname = `localhost`. If missing, guide the user to add it.
+<p>{loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}</p>
 
-6. Run and test
-    - Run: npm run dev
-    - Open: http://localhost:5173
-    - Test flows:
-        - Register a new user and auto login works
-        - Logout then login again
-    - Surface any Appwrite errors (invalid project, endpoint, CORS/hostname) and fix by guiding updates to appwrite.js and Console settings.
+<form on:submit="{submit}">
+    <input type="email" placeholder="Email" name="email" required />
+    <input type="password" placeholder="Password" name="password" required />
 
-Deliverables
+    <button type="submit" data-type="login">Login</button>
+    <button type="submit" data-type="register">Register</button>
+</form>
+
+<button on:click="{logout}">Logout</button>
+```
+
+## Step 5: Verify Environment (Ask User to Confirm)
+
+- Confirm **endpoint** and **Project ID** are set in `src/lib/appwrite.js`.
+- Ensure the Web app platform exists in **Appwrite Console** with **Hostname** = `localhost`. If missing, guide the user to add it.
+
+## Step 6: Run and Test
+
+- Run: `npm run dev`
+- Open: `http://localhost:5173`
+- Test flows:
+    - Register a new user and auto login works
+    - Logout then login again
+- Surface any Appwrite errors (invalid project, endpoint, CORS/hostname) and fix by guiding updates to `appwrite.js` and Console settings.
+
+## Deliverables
 
 - A running SvelteKit app with working Appwrite auth (register/login/logout)
-- Files created/updated: package.json (deps), src/lib/appwrite.js, src/routes/+page.svelte
+- Files created/updated: `package.json` (deps), `src/lib/appwrite.js`, `src/routes/+page.svelte`

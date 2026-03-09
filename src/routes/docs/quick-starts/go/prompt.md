@@ -1,259 +1,270 @@
-Goal: Create a Go backend application integrated with Appwrite, with a working todo database that can create, seed, and retrieve data.
+## Create a Go backend application integrated with Appwrite, with a working todo database that can create, seed, and retrieve data
 
 Do exactly these steps in order. Confirm each step succeeds before continuing. If any command fails, show the error and fix it automatically.
 
-1. Create project in Appwrite Console
-    - Head to the Appwrite Console (https://cloud.appwrite.io/console).
-    - If this is the user's first time using Appwrite, guide them to create an account and create their first project.
-    - Under "Integrate with your server", add an API Key with the following scopes:
-      | Category | Required scopes | Purpose |
-      |-----------|-----------------------|---------|
-      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
-      | | `tables.write` | Allows API key to create, update, and delete tables. |
-      | | `columns.write` | Allows API key to create, update, and delete columns. |
-      | | `rows.read` | Allows API key to read rows. |
-      | | `rows.write` | Allows API key to create, update, and delete rows. |
-    - Other scopes are optional.
+## Step 1: Create project in Appwrite Console
 
-2. Create Go project
-    - If you already have a Go project open, stay in it and use it.
-    - Otherwise, run:
-        ```sh
-        mkdir my-app
-        cd my-app
-        go mod init go-appwrite/main
-        ```
+- Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+- If this is the user's first time using Appwrite, guide them to create an account and create their first project.
+- Under **Integrate with your server**, add an **API Key** with the following scopes:
 
-3. Install Appwrite SDK
-    - Run: go get github.com/appwrite/sdk-for-go
+| Category | Required scopes   | Purpose                                                 |
+| -------- | ----------------- | ------------------------------------------------------- |
+| Database | `databases.write` | Allows API key to create, update, and delete databases. |
+|          | `tables.write`    | Allows API key to create, update, and delete tables.    |
+|          | `columns.write`   | Allows API key to create, update, and delete columns.   |
+|          | `rows.read`       | Allows API key to read rows.                            |
+|          | `rows.write`      | Allows API key to create, update, and delete rows.      |
 
-4. Import Appwrite and initialize client (ask user for details; never assume)
-    - Ask the user for:
-        - Project ID (from Console -> Settings)
-        - API Key (from Console -> View API Keys)
-    - Create file: app.go with the following code. Replace `<PROJECT_KEY>` with their project ID and `<API_KEY>` with their API key:
+- Other scopes are optional.
 
-        ```go
-        package main
+## Step 2: Create Go project
 
-        import (
-            "github.com/appwrite/sdk-for-go/appwrite"
-            "github.com/appwrite/sdk-for-go/client"
-            "github.com/appwrite/sdk-for-go/tablesdb"
-            "github.com/appwrite/sdk-for-go/models"
-            "github.com/appwrite/sdk-for-go/query"
-        )
+- If you already have a Go project open, stay in it and use it.
+- Otherwise, run:
 
-        var (
-            appwriteClient    client.Client
-            todoDatabase      *models.Database
-            todoTable    *models.Table
-            tablesDB *tablesdb.TablesDB
-        )
+```sh
+mkdir my-app
+cd my-app
+go mod init go-appwrite/main
+```
 
-        func main() {
-            appwriteClient = appwrite.NewClient(
-                appwrite.WithProject("<PROJECT_KEY>"),
-                appwrite.WithKey("<API_KEY>"),
-            )
-        }
-        ```
+## Step 3: Install Appwrite SDK
 
-5. Initialize database
-    - Add import for id: `"github.com/appwrite/sdk-for-go/id"`
-    - Add the prepareDatabase function to create a todo database and table with columns:
+- Run: `go get github.com/appwrite/sdk-for-go`
 
-        ```go
-        func prepareDatabase() {
-            tablesDB = appwrite.NewTablesDB(appwriteClient)
+## Step 4: Import Appwrite and initialize client (ask user for details; never assume)
 
-            todoDatabase, _ = tablesDB.Create(
-                id.Unique(),
-                "TodosDB",
-            )
+- Ask the user for:
+    - **Project ID** (from Console -> Settings)
+    - **API Key** (from Console -> View API Keys)
+- Create file: `app.go` with the following code. Replace `<PROJECT_KEY>` with their project ID and `<API_KEY>` with their API key:
 
-            todoTable, _ = tablesDB.CreateTable(
-                todoDatabase.Id,
-                id.Unique(),
-                "Todos",
-            )
+```go
+package main
 
-            tablesDB.CreateVarcharColumn(
-                todoDatabase.Id,
-                todoTable.Id,
-                "title",
-                255,
-                true,
-            )
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/tablesdb"
+    "github.com/appwrite/sdk-for-go/models"
+    "github.com/appwrite/sdk-for-go/query"
+)
 
-            tablesDB.CreateTextColumn(
-                todoDatabase.Id,
-                todoTable.Id,
-                "description",
-                false,
-            )
+var (
+    appwriteClient    client.Client
+    todoDatabase      *models.Database
+    todoTable    *models.Table
+    tablesDB *tablesdb.TablesDB
+)
 
-            tablesDB.CreateBooleanColumn(
-                todoDatabase.Id,
-                todoTable.Id,
-                "isComplete",
-                true,
-            )
-        }
-        ```
+func main() {
+    appwriteClient = appwrite.NewClient(
+        appwrite.WithProject("<PROJECT_KEY>"),
+        appwrite.WithKey("<API_KEY>"),
+    )
+}
+```
 
-6. Add rows (seed database)
-    - Add the seedDatabase function to insert mock todo data:
+## Step 5: Initialize database
 
-        ```go
-        func seedDatabase() {
-            testTodo1 := map[string]interface{}{
-                "title":       "Buy apples",
-                "description": "At least 2KGs",
-                "isComplete":  true,
-            }
+- Add import for id: `"github.com/appwrite/sdk-for-go/id"`
+- Add the `prepareDatabase` function to create a todo database and table with columns:
 
-            testTodo2 := map[string]interface{}{
-                "title":      "Wash the apples",
-                "isComplete": true,
-            }
+```go
+func prepareDatabase() {
+    tablesDB = appwrite.NewTablesDB(appwriteClient)
 
-            testTodo3 := map[string]interface{}{
-                "title":       "Cut the apples",
-                "description": "Don't forget to pack them in a box",
-                "isComplete":  false,
-            }
+    todoDatabase, _ = tablesDB.Create(
+        id.Unique(),
+        "TodosDB",
+    )
 
-            tablesDB.CreateRow(
-                todoDatabase.Id,
-                todoTable.Id,
-                id.Unique(),
-                testTodo1,
-            )
+    todoTable, _ = tablesDB.CreateTable(
+        todoDatabase.Id,
+        id.Unique(),
+        "Todos",
+    )
 
-            tablesDB.CreateRow(
-                todoDatabase.Id,
-                todoTable.Id,
-                id.Unique(),
-                testTodo2,
-            )
+    tablesDB.CreateVarcharColumn(
+        todoDatabase.Id,
+        todoTable.Id,
+        "title",
+        255,
+        true,
+    )
 
-            tablesDB.CreateRow(
-                todoDatabase.Id,
-                todoTable.Id,
-                id.Unique(),
-                testTodo3,
-            )
-        }
-        ```
+    tablesDB.CreateTextColumn(
+        todoDatabase.Id,
+        todoTable.Id,
+        "description",
+        false,
+    )
 
-7. Retrieve rows
-    - Add Todo and TodoList structs:
+    tablesDB.CreateBooleanColumn(
+        todoDatabase.Id,
+        todoTable.Id,
+        "isComplete",
+        true,
+    )
+}
+```
 
-        ```go
-        type Todo struct {
-            Title       string `json:"title"`
-            Description string `json:"description"`
-            IsComplete  bool   `json:"isComplete"`
-        }
+## Step 6: Add rows (seed database)
 
-        type TodoList struct {
-            *models.DocumentList
-            Documents []Todo `json:"rows"`
-        }
-        ```
+- Add the `seedDatabase` function to insert mock todo data:
 
-    - Add getTodos function to retrieve all todos:
+```go
+func seedDatabase() {
+    testTodo1 := map[string]interface{}{
+        "title":       "Buy apples",
+        "description": "At least 2KGs",
+        "isComplete":  true,
+    }
 
-        ```go
-        func getTodos() {
-            todoResponse, _ := tablesDB.ListRows(
-                todoDatabase.Id,
-                todoTable.Id,
-            )
+    testTodo2 := map[string]interface{}{
+        "title":      "Wash the apples",
+        "isComplete": true,
+    }
 
-            var todos TodoList
-            todoResponse.Decode(&todos)
+    testTodo3 := map[string]interface{}{
+        "title":       "Cut the apples",
+        "description": "Don't forget to pack them in a box",
+        "isComplete":  false,
+    }
 
-            fmt.Println("Todos:")
-            for _, todo := range todos.Documents {
-                fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
-            }
-        }
-        ```
+    tablesDB.CreateRow(
+        todoDatabase.Id,
+        todoTable.Id,
+        id.Unique(),
+        testTodo1,
+    )
 
-    - Add getCompletedTodos function with query filtering:
+    tablesDB.CreateRow(
+        todoDatabase.Id,
+        todoTable.Id,
+        id.Unique(),
+        testTodo2,
+    )
 
-        ```go
-        func getCompletedTodos() {
-            todoResponse, _ := tablesDB.ListRows(
-                todoDatabase.Id,
-                todoTable.Id,
-                tablesDB.WithListRowsQueries([]string{
-                    query.Equal("isComplete", true),
-                    query.OrderDesc("$createdAt"),
-                    query.Limit(5),
-                }),
-            )
+    tablesDB.CreateRow(
+        todoDatabase.Id,
+        todoTable.Id,
+        id.Unique(),
+        testTodo3,
+    )
+}
+```
 
-            var todos TodoList
-            todoResponse.Decode(&todos)
+## Step 7: Retrieve rows
 
-            fmt.Println("Completed todos (limited to 5):")
-            for _, todo := range todos.Documents {
-                fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
-            }
-        }
-        ```
+- Add `Todo` and `TodoList` structs:
 
-    - Add getIncompleteTodos function:
+```go
+type Todo struct {
+    Title       string `json:"title"`
+    Description string `json:"description"`
+    IsComplete  bool   `json:"isComplete"`
+}
 
-        ```go
-        func getIncompleteTodos() {
-            todoResponse, _ := tablesDB.ListRows(
-                todoDatabase.Id,
-                todoTable.Id,
-                tablesDB.WithListRowsQueries([]string{
-                    query.Equal("isComplete", false),
-                    query.OrderAsc("title"),
-                }),
-            )
+type TodoList struct {
+    *models.DocumentList
+    Documents []Todo `json:"rows"`
+}
+```
 
-            var todos TodoList
-            todoResponse.Decode(&todos)
+- Add `getTodos` function to retrieve all todos:
 
-            fmt.Println("Incomplete todos (ordered by title):")
-            for _, todo := range todos.Documents {
-                fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
-            }
-        }
-        ```
+```go
+func getTodos() {
+    todoResponse, _ := tablesDB.ListRows(
+        todoDatabase.Id,
+        todoTable.Id,
+    )
 
-8. Update main function and run
-    - Update main() to call all functions:
+    var todos TodoList
+    todoResponse.Decode(&todos)
 
-        ```go
-        func main() {
-            appwriteClient = appwrite.NewClient(
-                appwrite.WithProject("<PROJECT_KEY>"),
-                appwrite.WithKey("<API_KEY>"),
-            )
+    fmt.Println("Todos:")
+    for _, todo := range todos.Documents {
+        fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+    }
+}
+```
 
-            prepareDatabase()
-            seedDatabase()
-            getTodos()
-            getCompletedTodos()
-            getIncompleteTodos()
-        }
-        ```
+- Add `getCompletedTodos` function with query filtering:
 
-    - Add "fmt" to the imports
-    - Run: go run .
-    - View the response in the console
+```go
+func getCompletedTodos() {
+    todoResponse, _ := tablesDB.ListRows(
+        todoDatabase.Id,
+        todoTable.Id,
+        tablesDB.WithListRowsQueries([]string{
+            query.Equal("isComplete", true),
+            query.OrderDesc("$createdAt"),
+            query.Limit(5),
+        }),
+    )
 
-Deliverables
+    var todos TodoList
+    todoResponse.Decode(&todos)
+
+    fmt.Println("Completed todos (limited to 5):")
+    for _, todo := range todos.Documents {
+        fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+    }
+}
+```
+
+- Add `getIncompleteTodos` function:
+
+```go
+func getIncompleteTodos() {
+    todoResponse, _ := tablesDB.ListRows(
+        todoDatabase.Id,
+        todoTable.Id,
+        tablesDB.WithListRowsQueries([]string{
+            query.Equal("isComplete", false),
+            query.OrderAsc("title"),
+        }),
+    )
+
+    var todos TodoList
+    todoResponse.Decode(&todos)
+
+    fmt.Println("Incomplete todos (ordered by title):")
+    for _, todo := range todos.Documents {
+        fmt.Printf("Title: %s\nDescription: %s\nIs Todo Complete: %t\n\n", todo.Title, todo.Description, todo.IsComplete)
+    }
+}
+```
+
+## Step 8: Update main function and run
+
+- Update `main()` to call all functions:
+
+```go
+func main() {
+    appwriteClient = appwrite.NewClient(
+        appwrite.WithProject("<PROJECT_KEY>"),
+        appwrite.WithKey("<API_KEY>"),
+    )
+
+    prepareDatabase()
+    seedDatabase()
+    getTodos()
+    getCompletedTodos()
+    getIncompleteTodos()
+}
+```
+
+- Add `"fmt"` to the imports
+- Run: `go run .`
+- View the response in the console
+
+## Deliverables
 
 - A running Go application with Appwrite integration
-- Files created/updated: go.mod, go.sum (deps), app.go
+- Files created/updated: `go.mod`, `go.sum` (deps), `app.go`
 - Working todo database with tables and columns
 - Functions to create, seed, and query todo data with filtering capabilities

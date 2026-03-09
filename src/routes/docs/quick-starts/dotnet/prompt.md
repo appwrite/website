@@ -1,160 +1,170 @@
-Goal: Create a .NET console application with Appwrite server integration that sets up a todo database with tables and rows.
+## Create a .NET console application with Appwrite server integration that sets up a todo database with tables and rows
 
 Do exactly these steps in order. Confirm each step succeeds before continuing. If any command fails, show the error and fix it automatically.
 
-1. Create project in Appwrite Console
-    - Head to the Appwrite Console (https://cloud.appwrite.io/console).
-    - If this is the user's first time, guide them to create an account and create their first project.
-    - Under **Integrate with your server**, add an **API Key** with the following scopes:
-      | Category | Required scopes | Purpose |
-      |-----------|-----------------------|---------|
-      | Database | `databases.write` | Allows API key to create, update, and delete databases. |
-      | | `tables.write` | Allows API key to create, update, and delete tables. |
-      | | `columns.write` | Allows API key to create, update, and delete columns. |
-      | | `rows.read` | Allows API key to read rows. |
-      | | `rows.write` | Allows API key to create, update, and delete rows. |
-    - Other scopes are optional.
+## Step 1: Create project in Appwrite Console
 
-2. Create .NET project
-    - Run: dotnet new console -o MyApp
-    - Change dir: cd MyApp
+- Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+- If this is the user's first time, guide them to create an account and create their first project.
+- Under **Integrate with your server**, add an **API Key** with the following scopes:
 
-3. Install Appwrite SDK
-    - Run: dotnet add package Appwrite --version 0.13.0
+| Category | Required scopes   | Purpose                                                 |
+| -------- | ----------------- | ------------------------------------------------------- |
+| Database | `databases.write` | Allows API key to create, update, and delete databases. |
+|          | `tables.write`    | Allows API key to create, update, and delete tables.    |
+|          | `columns.write`   | Allows API key to create, update, and delete columns.   |
+|          | `rows.read`       | Allows API key to read rows.                            |
+|          | `rows.write`      | Allows API key to create, update, and delete rows.      |
 
-4. Import Appwrite and initialize client (ask user for details; never assume)
-    - Ask the user for:
-        - Appwrite Cloud Region (e.g. fra, nyc)
-        - Project ID (from Console -> Settings)
-        - API Key (from Console -> View API Keys)
-    - Open `Program.cs` and initialize the Appwrite Client.
-    - Create/update file: Program.cs with key snippet:
+- Other scopes are optional.
 
-        ```csharp
-        using Appwrite;
-        using Appwrite.Models;
-        using Appwrite.Services;
+## Step 2: Create .NET project
 
-        var client = new Client();
+- Run: `dotnet new console -o MyApp`
+- Change dir: `cd MyApp`
 
-        client
-            .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-            .SetProject("<PROJECT_ID>")
-            .SetKey("<YOUR_API_KEY>");
-        ```
+## Step 3: Install Appwrite SDK
 
-5. Initialize database
-    - Add code to create a todo database and table with columns:
+- Run: `dotnet add package Appwrite --version 0.13.0`
 
-        ```csharp
-        var tablesDB = new TablesDB(client);
+## Step 4: Import Appwrite and initialize client (ask user for details; never assume)
 
-        Database todoDatabase;
-        Table todoTable;
+- Ask the user for:
+    - Appwrite **Cloud Region** (e.g. `fra`, `nyc`)
+    - **Project ID** (from Console -> Settings)
+    - **API Key** (from Console -> View API Keys)
+- Open `Program.cs` and initialize the Appwrite Client.
+- Create/update file: `Program.cs` with key snippet:
 
-        todoDatabase = await tablesDB.Create(
-            databaseId: ID.Unique(),
-            name: "TodosDB"
-        );
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
 
-        todoTable = await tablesDB.CreateTable(
-            databaseId: todoDatabase.Id,
-            tableId: ID.Unique(),
-            name: "Todos"
-        );
+var client = new Client();
 
-        await tablesDB.CreateVarcharColumn(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            key: "title",
-            size: 255,
-            required: true
-        );
+client
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+```
 
-        await tablesDB.CreateTextColumn(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            key: "description",
-            required: false,
-            xdefault: "This is a test description"
-        );
+## Step 5: Initialize database
 
-        await tablesDB.CreateBooleanColumn(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            key: "isComplete",
-            required: true
-        );
-        ```
+- Add code to create a todo database and table with columns:
 
-6. Add rows
-    - Add code to insert mock todo data:
+```csharp
+var tablesDB = new TablesDB(client);
 
-        ```csharp
-        var testTodo1 = new Dictionary<string, object>()
-        {
-            {"title", "Buy apples"},
-            {"description", "At least 2KGs"},
-            {"isComplete", true}
-        };
+Database todoDatabase;
+Table todoTable;
 
-        var testTodo2 = new Dictionary<string, object>()
-        {
-            {"title", "Wash the apples"},
-            {"isComplete", true}
-        };
+todoDatabase = await tablesDB.Create(
+    databaseId: ID.Unique(),
+    name: "TodosDB"
+);
 
-        var testTodo3 = new Dictionary<string, object>()
-        {
-            {"title", "Cut the apples"},
-            {"description", "Don't forget to pack them in a box"},
-            {"isComplete", false}
-        };
+todoTable = await tablesDB.CreateTable(
+    databaseId: todoDatabase.Id,
+    tableId: ID.Unique(),
+    name: "Todos"
+);
 
-        await tablesDB.CreateRow(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            rowId: ID.Unique(),
-            data: testTodo1
-        );
+await tablesDB.CreateVarcharColumn(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    key: "title",
+    size: 255,
+    required: true
+);
 
-        await tablesDB.CreateRow(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            rowId: ID.Unique(),
-            data: testTodo2
-        );
+await tablesDB.CreateTextColumn(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    key: "description",
+    required: false,
+    xdefault: "This is a test description"
+);
 
-        await tablesDB.CreateRow(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id,
-            rowId: ID.Unique(),
-            data: testTodo3
-        );
-        ```
+await tablesDB.CreateBooleanColumn(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    key: "isComplete",
+    required: true
+);
+```
 
-7. Retrieve rows
-    - Add code to retrieve and display the todo data:
+## Step 6: Add rows
 
-        ```csharp
-        var todos = await tablesDB.ListRows(
-            databaseId: todoDatabase.Id,
-            tableId: todoTable.Id
-        );
+- Add code to insert mock todo data:
 
-        foreach (var todo in todos.Rows)
-        {
-            Console.WriteLine($"Title: {todo.Data["title"]}\nDescription: {todo.Data["description"]}\nIs Todo Complete: {todo.Data["isComplete"]}\n\n");
-        }
-        ```
+```csharp
+var testTodo1 = new Dictionary<string, object>()
+{
+    {"title", "Buy apples"},
+    {"description", "At least 2KGs"},
+    {"isComplete", true}
+};
 
-8. Run and test
-    - Run: dotnet run
-    - View the response in the console.
-    - Surface any Appwrite errors (invalid project, endpoint, API key) and fix by guiding updates to Program.cs and Console settings.
+var testTodo2 = new Dictionary<string, object>()
+{
+    {"title", "Wash the apples"},
+    {"isComplete", true}
+};
 
-Deliverables
+var testTodo3 = new Dictionary<string, object>()
+{
+    {"title", "Cut the apples"},
+    {"description", "Don't forget to pack them in a box"},
+    {"isComplete", false}
+};
+
+await tablesDB.CreateRow(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
+    data: testTodo1
+);
+
+await tablesDB.CreateRow(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
+    data: testTodo2
+);
+
+await tablesDB.CreateRow(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id,
+    rowId: ID.Unique(),
+    data: testTodo3
+);
+```
+
+## Step 7: Retrieve rows
+
+- Add code to retrieve and display the todo data:
+
+```csharp
+var todos = await tablesDB.ListRows(
+    databaseId: todoDatabase.Id,
+    tableId: todoTable.Id
+);
+
+foreach (var todo in todos.Rows)
+{
+    Console.WriteLine($"Title: {todo.Data["title"]}\nDescription: {todo.Data["description"]}\nIs Todo Complete: {todo.Data["isComplete"]}\n\n");
+}
+```
+
+## Step 8: Run and test
+
+- Run: `dotnet run`
+- View the response in the console.
+- Surface any Appwrite errors (invalid project, endpoint, API key) and fix by guiding updates to `Program.cs` and Console settings.
+
+## Deliverables
 
 - A running .NET console application with working Appwrite server integration
-- Files created/updated: MyApp.csproj (deps), Program.cs
-- A TodosDB database with a Todos table containing three sample todo items
+- Files created/updated: `MyApp.csproj` (deps), `Program.cs`
+- A **TodosDB** database with a **Todos** table containing three sample todo items
