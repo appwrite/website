@@ -67,6 +67,10 @@ Run it in your project directory, and you'll be prompted to:
 
 That's it. Your agent now has Appwrite expertise.
 
+# What's next?
+
+We've been running experiments to find out which AI models work best with Appwrite, how they handle SDK patterns, function deployments, database operations, and more. We'll be sharing our findings soon, so stay tuned.
+
 # Resources
 
 Visit our documentation to learn more, check out the skills repo on GitHub, or join us on Discord to let us know what you think.
