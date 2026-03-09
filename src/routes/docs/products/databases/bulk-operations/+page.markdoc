@@ -10,6 +10,11 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 
 For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
+{% info title="Important notes" %}
+- Bulk operations trigger Functions, Webhooks, or Realtime events for each row manipulated. Rather than a single event for the entire bulk operation, each row generates a separate event on the existing realtime channels for its operation type.
+- Tables that contain relationship columns are not supported via bulk operations. Use individual row operations for tables with relationships.
+{% /info %}
+
 # Atomic behavior {% #atomic-behavior %}
 
 Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all rows in your bulk request succeed, or all rows fail.
@@ -21,12 +26,23 @@ This atomicity ensures:
 
 For example, if you attempt to create 100 rows and one fails due to a validation error, none of the 100 rows will be created.
 
+# Plan limits {% #plan-limits %}
+
+Bulk operations have different limits based on your Appwrite plan:
+
+| Plan | Rows per request |
+|------|----------------------|
+| Free | 100 |
+| Pro  | 1,000 |
+
+These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can [inquire](/contact-us/enterprise) about a custom plan.
+
 # Create rows {% #create-rows %}
 
 You can create multiple rows in a single request using the `createRows` method.
 
 {% info title="Custom timestamps" %}
-When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
+When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each row in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
 {% /info %}
 
 {% multicode %}

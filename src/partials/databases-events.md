@@ -5,114 +5,126 @@
 
 ---
 
-- `databases.*`
+- `tablesdb.*`
 - This event triggers on any database event.
   Returns [Database Object](/docs/references/cloud/models/database)
 
 ---
 
-- `databases.*.tables.*`
+- `tablesdb.*.tables.*`
 - This event triggers on any table event.
   Returns [Table Object](/docs/references/cloud/models/table)
 
 ---
 
-- `databases.*.tables.*.columns.*`
+- `tablesdb.*.tables.*.columns.*`
 - This event triggers on any columns event.
   Returns [Column Object](/docs/references/cloud/models/columnList)
 
 ---
 
-- `databases.*.tables.*.columns.*.create`
-- This event triggers when an column is created.
+- `tablesdb.*.tables.*.columns.*.create`
+- This event triggers when a column is created.
   Returns [Column Object](/docs/references/cloud/models/columnList)
 
 ---
 
-- `databases.*.tables.*.columns.*.delete`
-- This event triggers when an column is deleted.
+- `tablesdb.*.tables.*.columns.*.update`
+- This event triggers when a column is updated.
   Returns [Column Object](/docs/references/cloud/models/columnList)
 
 ---
 
-- `databases.*.tables.*.create`
+- `tablesdb.*.tables.*.columns.*.delete`
+- This event triggers when a column is deleted.
+  Returns [Column Object](/docs/references/cloud/models/columnList)
+
+---
+
+- `tablesdb.*.tables.*.create`
 - This event triggers when a table is created.
   Returns [Table Object](/docs/references/cloud/models/table)
 
 ---
 
-- `databases.*.tables.*.delete`
+- `tablesdb.*.tables.*.delete`
 - This event triggers when a table is deleted.
   Returns [Table Object](/docs/references/cloud/models/table)
 
 ---
 
-- `databases.*.tables.*.rows.*`
+- `tablesdb.*.tables.*.rows.*`
 - This event triggers on any rows event.
   Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 
-- `databases.*.tables.*.rows.*.create`
+- `tablesdb.*.tables.*.rows.*.create`
 - This event triggers when a row is created.
   Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 
-- `databases.*.tables.*.rows.*.delete`
+- `tablesdb.*.tables.*.rows.*.delete`
 - This event triggers when a row is deleted.
   Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 
-- `databases.*.tables.*.rows.*.update`
+- `tablesdb.*.tables.*.rows.*.update`
 - This event triggers when a row is updated.
   Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 
-- `databases.*.tables.*.rows.*.upsert`
+- `tablesdb.*.tables.*.rows.*.upsert`
 - This event triggers when a row is upserted.
   Returns [Row Object](/docs/references/cloud/models/row)
 
 ---
 
-- `databases.*.tables.*.indexes.*`
+- `tablesdb.*.tables.*.indexes.*`
 - This event triggers on any indexes event.
-  Returns [Index Object](/docs/references/cloud/models/index)
+  Returns [Index Object](/docs/references/cloud/models/columnIndex)
 
 ---
 
-- `databases.*.tables.*.indexes.*.create`
+- `tablesdb.*.tables.*.indexes.*.create`
 - This event triggers when an index is created.
-  Returns [Index Object](/docs/references/cloud/models/index)
+  Returns [Index Object](/docs/references/cloud/models/columnIndex)
 
 ---
 
-- `databases.*.tables.*.indexes.*.delete`
+- `tablesdb.*.tables.*.indexes.*.update`
+- This event triggers when an index is updated.
+  Returns [Index Object](/docs/references/cloud/models/columnIndex)
+
+---
+
+- `tablesdb.*.tables.*.indexes.*.delete`
 - This event triggers when an index is deleted.
-  Returns [Index Object](/docs/references/cloud/models/index)
+  Returns [Index Object](/docs/references/cloud/models/columnIndex)
 
 ---
 
-- `databases.*.tables.*.update`
+- `tablesdb.*.tables.*.update`
 - This event triggers when a table is updated.
   Returns [Table Object](/docs/references/cloud/models/table)
 
 ---
 
-- `databases.*.create`
+- `tablesdb.*.create`
 - This event triggers when a database is created.
   Returns [Database Object](/docs/references/cloud/models/database)
 
 ---
 
-- `databases.*.delete`
+- `tablesdb.*.delete`
 - This event triggers when a database is deleted.
   Returns [Database Object](/docs/references/cloud/models/database)
 
 ---
 
-- `databases.*.update`
+- `tablesdb.*.update`
 - This event triggers when a database is updated.
   Returns [Database Object](/docs/references/cloud/models/database){% /table %}
