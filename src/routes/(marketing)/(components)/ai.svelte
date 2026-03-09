@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { VARS } from '$lib/system';
     import { Button } from '$lib/components/ui';
     import Icon from '$lib/components/ui/icon/icon.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
@@ -85,7 +86,8 @@
             }
         }
     ];
-    const categoryKeys = Object.keys(models[0].categories);
+    type ModelCategory = keyof (typeof models)[0]['categories'];
+    const categoryKeys = Object.keys(models[0].categories) as ModelCategory[];
 
     // Score count-up animation
     const START_VALUE = 90;
@@ -302,12 +304,12 @@
                 >
             </h3>
             <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
-                <Button href="/docs/agents/skills" class="is-full-width-mobile"
+                <Button href="/docs/tooling/skills" class="is-full-width-mobile"
                     >Install skill</Button
                 >
                 <Button
                     variant="secondary"
-                    href="https://arena.appwrite.network/"
+                    href={VARS.ARENA_ENDPOINT}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="is-full-width-mobile">View full benchmark</Button
