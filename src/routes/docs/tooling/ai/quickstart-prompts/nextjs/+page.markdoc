@@ -7,4 +7,4 @@ prompt: /docs/quick-starts/nextjs
 
 Quickstart prompt for integrating Appwrite with Next.js.
 
-{% prompt_content %}{% /prompt_content %}
+{% prompt_content /%}
