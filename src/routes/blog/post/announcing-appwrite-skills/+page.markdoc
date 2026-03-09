@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Announcing Appwrite Skills: Give your AI agents Appwrite expertise"
+title: "Introducing Appwrite Skills: Give your AI agents Appwrite expertise"
 description: Appwrite Skills are open source markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Install once, and your agents generate correct Appwrite code automatically.
-date: 2026-03-06
-cover: /images/blog/ai-announcement.png
+date: 2026-03-09
+cover: /images/blog/introducing-appwrite-skills/cover.png
 timeToRead: 4
 author: atharva
 category: product, announcement
@@ -36,9 +36,8 @@ Here's what that means for you:
 
 # Supported SDKs
 
-Skills are available for all major Appwrite SDKs:
+Skills are available for the Appwrite CLI and all major SDKs:
 
-- CLI
 - TypeScript
 - Dart
 - .NET
