@@ -201,7 +201,10 @@
         <table class="w-full">
             <thead>
                 <tr class="border-smooth border-b border-dashed bg-[#232325]">
-                    <td class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-white/50 sm:px-5">Model</td>
+                    <td
+                        class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-white/50 sm:px-5"
+                        >Model</td
+                    >
                     <td class="hidden px-5 py-3 text-left text-xs text-white/50 sm:table-cell"
                         >Cost/1M</td
                     >
@@ -226,7 +229,8 @@
                                     alt=""
                                     class="h-5 w-5 shrink-0 opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
                                 />
-                                <span class="whitespace-nowrap text-primary text-sm font-medium sm:text-base"
+                                <span
+                                    class="text-primary text-sm font-medium whitespace-nowrap sm:text-base"
                                     >{model.name}</span
                                 >
                             </div>
