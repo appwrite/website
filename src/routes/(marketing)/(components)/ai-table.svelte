@@ -180,7 +180,12 @@
             >
         </h3>
         <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
-            <Button href="/docs/tooling/skills" class="is-full-width-mobile">Install skill</Button>
+            <Button
+                href="/docs/tooling/skills"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="is-full-width-mobile">Install skill</Button
+            >
             <Button
                 variant="secondary"
                 href={VARS.ARENA_ENDPOINT}
