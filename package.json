@@ -6,7 +6,7 @@
     "scripts": {
         "build": "bun ./scripts/build.js",
         "fetch:stars": "node scripts/fetch-github-stars.js",
-        "prebuild": "npm run fetch:stars",
+        "prebuild": "bun run fetch:stars",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "clean": "rm -rf node_modules && rm -rf .svelte_kit && bun install",
