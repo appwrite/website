@@ -108,6 +108,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             "'self'",
             'https://*.appwrite.io',
             'https://*.appwrite.org',
+            'https://*.appwrite.network',
             'https://*.posthog.com',
             'https://*.sentry.io',
             'https://*.plausible.io',

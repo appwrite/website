@@ -1,12 +1,12 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { PUBLIC_APPWRITE_ENDPOINT } from '$env/static/public';
+import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
 import { iterateAllThreads } from '../helpers';
 
 /* short-circuit for build runs on CI from external contributors */
 function shouldSkipThreadsPrerender(): boolean {
     const endpoint = PUBLIC_APPWRITE_ENDPOINT;
-    return !endpoint || endpoint.includes('appwrite.test');
+    return !endpoint || !PUBLIC_APPWRITE_PROJECT_ID || endpoint.includes('appwrite.test');
 }
 
 export const prerender = true;
