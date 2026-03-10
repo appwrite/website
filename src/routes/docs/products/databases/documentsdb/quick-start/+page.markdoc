@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Start with Databases
-description: Get started with Appwrite Databases. Follow a step-by-step guide to create your first database, define tables, and perform basic data operations.
+title: Start with Documents DB
+description: Get started with Appwrite Documents DB (MongoDB). Follow a step-by-step guide to create your first database, define collections, and perform basic data operations.
 ---
 
 
@@ -10,39 +10,39 @@ Head to your [Appwrite Console](https://cloud.appwrite.io/console/) and create a
 Optionally, add a custom database ID.
 {% /section %}
 
-{% section #create-table step=2 title="Create table" %}
-Create a table and name it `My books`. Optionally, add a custom table ID.
+{% section #create-collection step=2 title="Create collection" %}
+Create a collection and name it `My books`. Optionally, add a custom collection ID.
 
-Navigate to **Columns** and create columns by clicking **Create column** and select **String**.
-Columns define the structure of your table's rows. Enter **Column key** and **Size**. For example, `title` and `100`.
+Navigate to **Attributes** and create attributes by clicking **Create attribute** and select **String**.
+Attributes define the structure of your collection's documents. Enter **Attribute key** and **Size**. For example, `title` and `100`.
 
 Navigate to **Settings** > **Permissions** and add a new role **Any**.
-Check the **CREATE** and **READ** permissions, so anyone can create and read rows.
+Check the **CREATE** and **READ** permissions, so anyone can create and read documents.
 {% /section %}
 
 
-{% section #create-rows step=3 title="Create rows" %}
-To create a row use the `createRow` method.
+{% section #create-documents step=3 title="Create documents" %}
+To create a document use the `createDocument` method.
 
 In the **Settings** menu, find your project ID and replace `<PROJECT_ID>` in the example.
 
 Navigate to the `Oscar` database, copy the database ID, and replace `<DATABASE_ID>`.
-Then, in the `My books` table, copy the table ID, and replace `<TABLE_ID>`.
+Then, in the `My books` collection, copy the collection ID, and replace `<COLLECTION_ID>`.
 
 {% multicode %}
 ```client-web
-import { Client, ID, TablesDB } from "appwrite";
+import { Client, ID, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const promise = tablesDB.createRow({
+const promise = documentsDB.createDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: ID.unique(),
+    collectionId: '<COLLECTION_ID>',
+    documentId: ID.unique(),
     data: { title: "Hamlet" }
 });
 
@@ -60,13 +60,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final row = tablesDB.createRow(
+        final document = documentsDB.createDocument(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
-            rowId: ID.unique(),
+            collectionId: '<COLLECTION_ID>',
+            documentId: ID.unique(),
             data: { "title": "Hamlet" }
         );
     } on AppwriteException catch(e) {
@@ -83,13 +83,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let row = try await tablesDB.createRow(
+        let document = try await documentsDB.createDocument(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
-            rowId: ID.unique(),
+            collectionId: "<COLLECTION_ID>",
+            documentId: ID.unique(),
             data: ["title" : "hamlet"]
         )
     } catch {
@@ -99,20 +99,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val row = tablesDB.createRow(
+        val document = documentsDB.createDocument(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
-            rowId = ID.unique(),
+            collectionId = "<COLLECTION_ID>",
+            documentId = ID.unique(),
             data = mapOf("title" to "hamlet"),
         )
     } catch (e: Exception) {
@@ -132,29 +132,29 @@ The response should look similar to this.
     "$createdAt": "2023-09-13T03:49:12.905+00:00",
     "$updatedAt": "2023-09-13T03:49:12.905+00:00",
     "$databaseId": "650125c64b3c25ce4bc4",
-    "$tableId": "650125cff227cf9f95ad"
+    "$collectionId": "650125cff227cf9f95ad"
 }
 ```
 
 {% /section %}
 
-{% section #list-rows step=4 title="List rows" %}
-To read and query data from your table, use the `listRows` endpoint.
+{% section #list-documents step=4 title="List documents" %}
+To read and query data from your collection, use the `listDocuments` endpoint.
 
-Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and `<TABLE_ID>` with their respective IDs.
+Like the previous step, replace `<PROJECT_ID>`, `<DATABASE_ID>`, and `<COLLECTION_ID>` with their respective IDs.
 {% multicode %}
 ```client-web
-import { Client, Query, TablesDB } from "appwrite";
+import { Client, Query, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const promise = tablesDB.listRows({
+const promise = documentsDB.listDocuments({
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
+    collectionId: "<COLLECTION_ID>",
     queries: [
         Query.equal('title', 'Hamlet')
     ]
@@ -174,12 +174,12 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final rows = await tablesDB.listRows(
+        final documents = await documentsDB.listDocuments(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.equal('title', 'Hamlet')
             ]
@@ -198,12 +198,12 @@ func main() async throws{
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let rows = try await tablesDB.listRows(
+        let documents = try await documentsDB.listDocuments(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", value: "Hamlet")
             ]
@@ -216,19 +216,19 @@ func main() async throws{
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val rows = tablesDB.listRows(
+        val documents = documentsDB.listDocuments(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", "Hamlet")
             )
@@ -245,7 +245,7 @@ suspend fun main() {
 {% section #type-safety step=5 title="Type safety with models" %}
 For added type safety and better development experience, mobile and native SDKs support custom model types with the `nestedType` parameter.
 
-Define a data class or model that matches your table structure:
+Define a data class or model that matches your collection structure:
 
 {% multicode %}
 ```client-android-kotlin
@@ -256,17 +256,17 @@ data class Book(
     val isAvailable: Boolean = true
 )
 
-val tablesDB = TablesDB(client)
+val documentsDB = DocumentsDB(client)
 
 try {
     // Use nestedType for type-safe responses
-    val books = tablesDB.listRows(
+    val books = documentsDB.listDocuments(
         databaseId = "<DATABASE_ID>",
-        tableId = "<TABLE_ID>",
+        collectionId = "<COLLECTION_ID>",
         nestedType = Book::class.java
     )
 
-    for (book in books.rows) {
+    for (book in books.documents) {
         Log.d("Appwrite", "Book: ${book.title} by ${book.author}")
     }
 } catch (e: AppwriteException) {
@@ -281,17 +281,17 @@ struct Book: Codable {
     let isAvailable: Bool
 }
 
-let tablesDB = TablesDB(client)
+let documentsDB = DocumentsDB(client)
 
 do {
     // Use nestedType for type-safe responses
-    let books = try await tablesDB.listRows(
+    let books = try await documentsDB.listDocuments(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
+        collectionId: "<COLLECTION_ID>",
         nestedType: Book.self
     )
 
-    for book in books.rows {
+    for book in books.documents {
         print("Book: \(book.title) by \(book.author ?? "Unknown")")
     }
 } catch {
@@ -307,15 +307,15 @@ interface Book {
     isAvailable: boolean;
 }
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
 try {
-    const books = await tablesDB.listRows<Book>({
+    const books = await documentsDB.listDocuments<Book>({
         databaseId: '<DATABASE_ID>',
-        tableId: '<TABLE_ID>'
+        collectionId: '<COLLECTION_ID>'
     });
 
-    books.rows.forEach(book => {
+    books.documents.forEach(book => {
         console.log(`Book: ${book.title} by ${book.author}`);
     });
 } catch (error) {
@@ -325,7 +325,7 @@ try {
 {% /multicode %}
 
 {% info title="Automatic type generation" %}
-You can automatically generate type definitions for your tables using the [Appwrite CLI type generation](/docs/products/databases/type-generation) feature. Run `appwrite types collection` to generate models for your collections.
+You can generate types for your collections. Learn more in [Type generation](/docs/products/databases/documentsdb/type-generation).
 {% /info %}
 
 ### Model methods
@@ -335,7 +335,7 @@ Models returned by native SDKs include helpful methods for data manipulation:
 {% tabs %}
 {% tabsitem #kotlin title="Kotlin/Java" %}
 ```kotlin
-val book = books.rows.first()
+val book = books.documents.first()
 
 // Convert to Map for debugging or manual manipulation
 val bookMap = book.toMap()
@@ -352,7 +352,7 @@ val newBook = Book.from(bookData, Book::class.java)
 
 {% tabsitem #swift title="Swift" %}
 ```swift
-let book = books.rows.first!
+let book = books.documents.first!
 
 // Convert to dictionary for debugging
 let bookMap = book.toMap()

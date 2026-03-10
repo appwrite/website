@@ -4,6 +4,10 @@ title: Operators
 description: Update multiple fields atomically without fetching the full row. Perform numeric, array, string, and date updates in a single, consistent workflow.
 ---
 
+{% info title="Terminology mapping" %}
+Code examples on this page use Tables DB (`TablesDB`, `tableId`, `updateRow`). For Documents DB, use `DocumentsDB` instead of `TablesDB`, `collectionId` instead of `tableId`, `updateDocument` instead of `updateRow`, etc.
+{% /info %}
+
 Database operators let you update fields directly on the server without fetching the full row. Instead of sending new values, you describe the action you want: increment, append, replace, or adjust. This eliminates race conditions and reduces bandwidth usage when updating any values that need to be modified atomically. The operation is applied atomically at the storage layer for safe, concurrent updates.
 
 - Atomic by field: Each operation is applied safely at the storage layer to prevent lost updates under concurrency.
