@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "bun ./scripts/build.js",
-        "fetch:stars": "node scripts/fetch-github-stars.mjs",
+        "fetch:stars": "node scripts/fetch-github-stars.js",
         "prebuild": "npm run fetch:stars",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
