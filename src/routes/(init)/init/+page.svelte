@@ -13,13 +13,17 @@
     import Hero from './(components)/hero.svelte';
     import Schedule from './(components)/schedule.svelte';
     import DayDetails from './(components)/day-details.svelte';
+    import InitStickyNav from './(components)/init-sticky-nav.svelte';
     import IllustrationConsole from './(assets)/card-illustration-console.svg';
+    import { FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
     let { data } = $props();
+
+    let scrollY = $state(0);
 
     const now = new Date();
     const detailDays = [
@@ -207,8 +211,19 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
+<svelte:window bind:scrollY={scrollY} />
+
+<InitStickyNav {scrollY} claimed={data.claimed} ticketId={data.ticketId} />
+
 <Hero ticketId={data.ticketId} claimed={data.claimed} />
 
 <Schedule days={scheduleDays} />
 
 <DayDetails days={detailDays} />
+
+<div class="bg-[#19191C]">
+    <div class="mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
+        <FooterNav />
+        <MainFooter />
+    </div>
+</div>

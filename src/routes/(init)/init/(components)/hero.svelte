@@ -1,7 +1,6 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
     import { Icon } from '$lib/components/ui';
-    import HeroCrosshairs from '../(assets)/hero-crosshairs.svg';
     import HeroDivider from '../(assets)/hero-divider.svg';
     import { type PageData } from '../$types';
     import { enhance } from '$app/forms';
@@ -12,23 +11,9 @@
     let claiming: boolean = $state(false);
 </script>
 
-<section class="relative h-[900px] w-full overflow-hidden bg-[#19191C]">
-    <!-- Gradient background (top portion) -->
-    <div
-        class="pointer-events-none absolute inset-x-0 top-0 h-[411px] w-full select-none"
-        style="background: linear-gradient(180deg, #19191C 8.94%, #7E1935 31.7%, #FD366E 54.47%, #FEAFC5 77.92%, #EDEDF0 100%);"
-        aria-hidden="true"
-    >
-        <img
-            src={HeroCrosshairs}
-            alt=""
-            class="h-full w-full object-cover"
-            aria-hidden="true"
-        />
-    </div>
-
+<section class="relative h-[788px] w-full overflow-hidden bg-[#19191C]">
     <!-- Main hero content area -->
-    <div class="absolute inset-x-0 top-[491px] mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
+    <div class="absolute inset-x-0 top-[418px] mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
         <div class="flex flex-col gap-16">
             <!-- Large INIT wordmark row: 5 outlined left, 1 filled, 5 outlined right -->
             <!-- Offset left by 5 * (469 + 32) = 2505px so the filled logo aligns to left edge -->

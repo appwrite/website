@@ -44,7 +44,7 @@
     const isRevealed = $derived(revealed || timerDone);
 </script>
 
-<div id="day-{dayNumber}" class="flex flex-col gap-6">
+<div id="day-{dayNumber}" class="scroll-mt-[180px] flex flex-col gap-6">
     <!-- Date header -->
     <div class="flex flex-col gap-3">
         <hr class="border-t border-[rgba(255,255,255,0.06)]" />

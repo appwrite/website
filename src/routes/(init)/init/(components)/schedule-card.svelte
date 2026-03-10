@@ -56,7 +56,10 @@
             isFlipped = true;
         } else if (showContent) {
             const el = document.getElementById(`day-${dayNumber}`);
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
+            if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY - 180;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
         }
     }
 </script>
