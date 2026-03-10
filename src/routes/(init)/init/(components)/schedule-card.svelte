@@ -9,9 +9,10 @@
         illustration?: string;
         release: Date;
         revealed?: boolean;
+        dayNumber: number;
     }
 
-    let { title = '', illustration = '', release, revealed = false }: Props = $props();
+    let { title = '', illustration = '', release, revealed = false, dayNumber }: Props = $props();
 
     const { hours, minutes, seconds } = createCountdown(release);
 
@@ -53,29 +54,32 @@
     function handleClick() {
         if (showRevealButton && !isFlipped) {
             isFlipped = true;
+        } else if (showContent) {
+            const el = document.getElementById(`day-${dayNumber}`);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
     }
 </script>
 
 <div
     class="group relative h-[272px] [perspective:600px]"
-    class:flip-cursor={showRevealButton}
+    class:custom-cursor={true}
     bind:this={cardEl}
     onmousemove={handleMouseMove}
     onmouseenter={handleMouseEnter}
     onmouseleave={handleMouseLeave}
-    role={showRevealButton ? 'button' : undefined}
-    tabindex={showRevealButton ? 0 : -1}
+    role={showRevealButton || showContent ? 'button' : undefined}
+    tabindex={showRevealButton || showContent ? 0 : -1}
     onclick={handleClick}
     onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(); }}
 >
-    <!-- Custom "Flip" pill cursor -->
-    {#if showRevealButton && isHovering}
+    <!-- Custom pill cursor -->
+    {#if isHovering}
         <span
-            class="font-aeonik-fono pointer-events-none absolute z-50 rounded-full bg-[#FD366E] px-3.5 py-1.5 text-xs uppercase tracking-wider text-white"
-            style="left: {mouseX}px; top: {mouseY}px; transform: translate(-50%, -50%);"
+            class="font-aeonik-fono pointer-events-none absolute z-50 rounded-full px-3.5 py-1.5 text-xs uppercase tracking-wider text-white"
+            style="left: {mouseX}px; top: {mouseY}px; transform: translate(-50%, -50%); background: {showContent ? '#FD366E' : showRevealButton ? '#FFFFFF' : 'rgba(255, 255, 255, 0.06)'}; {showRevealButton && !showContent ? 'color: #19191C;' : ''} {showTimer ? 'backdrop-filter: blur(8px);' : ''}"
         >
-            Flip
+            {showContent ? 'View' : showRevealButton ? 'Reveal' : 'Locked'}
         </span>
     {/if}
     <div
@@ -89,7 +93,7 @@
         <div
             class="absolute inset-0 overflow-hidden [backface-visibility:hidden]"
             style="
-                background: {showContent ? '#19191C' : 'rgba(253, 54, 110, 0.08)'};
+                background: {showContent || showTimer ? '#19191C' : 'rgba(253, 54, 110, 0.08)'};
                 border: 3px solid transparent;
                 border-image: linear-gradient(43deg, rgba(25, 25, 28, 1) 0%, rgba(126, 25, 53, 1) 22%, rgba(253, 54, 110, 1) 49%, rgba(254, 175, 197, 1) 77%, rgba(237, 237, 240, 1) 100%) 1;
             "
@@ -114,26 +118,29 @@
             {/if}
 
             {#if showContent}
-                <!-- Revealed card: show illustration + title -->
-                <div class="flex h-full w-full flex-col items-center justify-end pb-6">
-                    {#if illustration}
+                <!-- Revealed card: day label + illustration + title -->
+                <p class="font-aeonik-fono absolute left-1/2 top-4 -translate-x-1/2 text-center text-sm uppercase leading-[1] tracking-tight text-[#E4E4E7]">
+                    <span class="text-[#FD366E]">/</span>DAY {dayNumber}
+                </p>
+                {#if illustration}
+                    <div class="absolute inset-0 flex items-center justify-center">
                         <img
                             src={illustration}
                             alt={title}
                             class="h-auto w-full max-w-[216px]"
                         />
-                    {/if}
-                    {#if title}
-                        <p class="font-aeonik-fono mt-2 text-center text-sm uppercase leading-[2] tracking-tight text-[#E4E4E7]">
-                            {title}
-                        </p>
-                    {/if}
-                </div>
+                    </div>
+                {/if}
+                {#if title}
+                    <p class="font-aeonik-fono absolute bottom-6 left-0 right-0 text-center text-sm uppercase leading-[1] tracking-tight text-[#E4E4E7]">
+                        {title}
+                    </p>
+                {/if}
             {:else if showRevealButton}
                 <!-- Flippable card: show REVEAL button -->
                 <div class="flex h-full w-full items-center justify-center">
                     <span
-                        class="font-aeonik-fono border-2 border-dashed border-[#FD366E] bg-white/6 px-3.5 py-2 text-xl leading-[1.1] text-[#E4E4E7]"
+                        class="font-aeonik-fono border-2 border-dashed border-[#FD366E] bg-[#19191C] px-3.5 py-2 text-xl leading-[1.1] text-[#E4E4E7] transition-colors group-hover:bg-white/6"
                     >
                         REVEAL
                     </span>
@@ -165,20 +172,23 @@
                 class="pointer-events-none absolute left-0 top-0 h-full select-none opacity-[0.02]"
                 aria-hidden="true"
             />
-            <div class="flex h-full w-full flex-col items-center justify-end pb-6">
-                {#if illustration}
+            <p class="font-aeonik-fono absolute left-1/2 top-4 -translate-x-1/2 text-center text-sm uppercase leading-[1] tracking-tight text-[#E4E4E7]">
+                <span class="text-[#FD366E]">/</span>DAY {dayNumber}
+            </p>
+            {#if illustration}
+                <div class="absolute inset-0 flex items-center justify-center">
                     <img
                         src={illustration}
                         alt={title}
                         class="h-auto w-full max-w-[216px]"
                     />
-                {/if}
-                {#if title}
-                    <p class="font-aeonik-fono mt-2 text-center text-sm uppercase leading-[2] tracking-tight text-[#E4E4E7]">
-                        {title}
-                    </p>
-                {/if}
-            </div>
+                </div>
+            {/if}
+            {#if title}
+                <p class="font-aeonik-fono absolute bottom-6 left-0 right-0 text-center text-sm uppercase leading-[1] tracking-tight text-[#E4E4E7]">
+                    {title}
+                </p>
+            {/if}
         </div>
     </div>
 </div>
@@ -188,7 +198,7 @@
         font-variant-numeric: tabular-nums;
     }
 
-    .flip-cursor {
+    .custom-cursor {
         cursor: none;
     }
 </style>

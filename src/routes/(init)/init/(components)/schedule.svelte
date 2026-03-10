@@ -7,6 +7,7 @@
         illustration: string;
         release: Date;
         revealed?: boolean;
+        dayNumber: number;
     }
 
     interface Props {
@@ -21,18 +22,13 @@
         <div class="flex flex-col gap-6">
             <!-- Header -->
             <div class="flex flex-col gap-3">
-                <img
-                    src={ScheduleLine}
-                    alt=""
-                    class="w-full opacity-10"
-                    aria-hidden="true"
-                />
-                <div class="flex flex-col gap-5">
+                <hr class="border-t border-[rgba(255,255,255,0.06)]" />
+                <div class="flex items-center justify-between gap-5">
                     <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-[#E4E4E7]">
-                        // schedule
+                        <span class="text-[#FD366E]">//</span> schedule
                     </p>
                     <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-[#E4E4E7]">
-                        // MARCH 12 - 18
+                        <span class="text-[#FD366E]">//</span> MARCH 23 - 27
                     </p>
                 </div>
             </div>
@@ -45,6 +41,7 @@
                         illustration={day.illustration}
                         release={day.release}
                         revealed={day.revealed ?? false}
+                        dayNumber={day.dayNumber}
                     />
                 {/each}
             </div>

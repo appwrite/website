@@ -1,7 +1,7 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
     import { Icon } from '$lib/components/ui';
-    import HeroGradientBg from '../(assets)/hero-gradient-bg.svg';
+    import HeroCrosshairs from '../(assets)/hero-crosshairs.svg';
     import HeroDivider from '../(assets)/hero-divider.svg';
     import { type PageData } from '../$types';
     import { enhance } from '$app/forms';
@@ -14,12 +14,18 @@
 
 <section class="relative h-[900px] w-full overflow-hidden bg-[#19191C]">
     <!-- Gradient background (top portion) -->
-    <img
-        src={HeroGradientBg}
-        alt=""
-        class="pointer-events-none absolute inset-x-0 top-0 h-[411px] w-full select-none object-cover"
+    <div
+        class="pointer-events-none absolute inset-x-0 top-0 h-[411px] w-full select-none"
+        style="background: linear-gradient(180deg, #19191C 8.94%, #7E1935 31.7%, #FD366E 54.47%, #FEAFC5 77.92%, #EDEDF0 100%);"
         aria-hidden="true"
-    />
+    >
+        <img
+            src={HeroCrosshairs}
+            alt=""
+            class="h-full w-full object-cover"
+            aria-hidden="true"
+        />
+    </div>
 
     <!-- Main hero content area -->
     <div class="absolute inset-x-0 top-[491px] mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
@@ -73,7 +79,7 @@
                     <div class="max-w-[379px]">
                         <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-white">
                             APPWRITE LAUNCH WEEK 4.0<br />
-                            MARCH 12 - 18<br />
+                            MARCH 23 - 27<br />
                             2026
                         </p>
                     </div>
