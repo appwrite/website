@@ -127,7 +127,7 @@ class ViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @StateObject var viewModel = ViewModel()
     let appwrite = Appwrite()
 
     var body: some View {

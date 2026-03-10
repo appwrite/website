@@ -84,7 +84,7 @@ const App = () => {
             password,
             name
         });
-        login(email, password);
+        await login(email, password);
     }
 
     async function logout() {

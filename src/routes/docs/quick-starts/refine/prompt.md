@@ -61,11 +61,11 @@ import {
     ThemedLayoutV2,
     useNotificationProvider
 } from '@refinedev/antd';
-import routerProvider, { CatchAllNavigate, NavigateToResource } from '@refinedev/react-router-v6';
+import routerProvider, { CatchAllNavigate } from '@refinedev/react-router-v6';
 import '@refinedev/antd/dist/reset.css';
 
 import { App as AntdApp, ConfigProvider } from 'antd';
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 import { appwriteClient } from './utility';
 import { authProvider } from './authProvider';
@@ -100,7 +100,7 @@ const App: React.FC = () => {
                             <Route
                                 element={
                                     <Authenticated fallback={<Outlet />}>
-                                        <NavigateToResource resource="<APPWRITE_TABLE_ID>" />
+                                        <Navigate to="/" />
                                     </Authenticated>
                                 }
                             >
@@ -130,7 +130,7 @@ const App: React.FC = () => {
 export default App;
 ```
 
-- Ask the user for their **Appwrite Database ID** and **Table ID** to replace `<APPWRITE_DATABASE_ID>` and `<APPWRITE_TABLE_ID>` placeholders.
+- Ask the user for their **Appwrite Database ID** to replace the `<APPWRITE_DATABASE_ID>` placeholder.
 
 ## Step 6: Run and test
 

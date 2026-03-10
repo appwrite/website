@@ -77,7 +77,7 @@ export { ID } from 'appwrite';
             password: password.value,
             name: name.value
         });
-        login(email.value, password.value);
+        await login(email.value, password.value);
     };
 
     const logout = async () => {

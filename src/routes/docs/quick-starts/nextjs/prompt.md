@@ -11,7 +11,7 @@ Add Appwrite auth to a new Next.js app (**App Router**), with a working login/re
 - If the directory is empty OR contains an existing project (`package.json`, source code, config files, etc.), proceed with integration without asking.
 - Create the project in the current working directory (`.`) - do NOT use `cd` to switch directories.
 - If you already have a Next.js project open, stay in it and integrate Appwrite into it (**App Router** required).
-- Otherwise, run: `npx create-next-app@latest . --use-npm --no-tailwind --eslint`
+- Otherwise, run: `npx create-next-app@latest . --eslint`
 - When prompted: **TypeScript** = No, **ESLint** = Yes, **Tailwind** = No, **src dir** = your choice, **App Router** = Yes, **Import alias** = No.
 
 ## Step 2: Install Appwrite SDK
