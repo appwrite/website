@@ -24,8 +24,8 @@ terraform/**/**/*.tfstate*
 /.cache
 /test-results
 
-# Build-time generated data
-src/lib/generated/
+# # Build-time generated data
+# src/lib/generated/
 
 # Sentry Config File
 .env.sentry-build-plugin
