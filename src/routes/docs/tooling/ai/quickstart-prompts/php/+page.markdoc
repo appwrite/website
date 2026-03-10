@@ -2,6 +2,7 @@
 layout: article
 title: PHP
 description: Quickstart prompt for integrating Appwrite with PHP.
+prompt: /docs/quick-starts/php
 ---
 
-Quickstart prompt for integrating Appwrite with PHP.
+{% prompt_content /%}

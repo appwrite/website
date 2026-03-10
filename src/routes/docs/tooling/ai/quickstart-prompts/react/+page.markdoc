@@ -2,6 +2,7 @@
 layout: article
 title: React
 description: Quickstart prompt for integrating Appwrite with React.
+prompt: /docs/quick-starts/react
 ---
 
-Quickstart prompt for integrating Appwrite with React.
+{% prompt_content /%}

@@ -49,6 +49,9 @@ Use the following quickstart prompts with your preferred AI assistant to integra
 {% cards_item href="/docs/tooling/ai/quickstart-prompts/tanstack-start" title="TanStack Start" icon="web-icon-tanstack" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/web" title="Web" icon="icon-js" %}
+{% /cards_item %}
+
 {% /cards %}
 
 ## Mobile {% #mobile %}
@@ -98,6 +101,12 @@ Use the following quickstart prompts with your preferred AI assistant to integra
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/quickstart-prompts/dotnet" title=".NET" icon="icon-dotnet" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/swift" title="Swift" icon="icon-swift" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/kotlin" title="Kotlin" icon="icon-kotlin" %}
 {% /cards_item %}
 
 {% /cards %}

@@ -2,6 +2,7 @@
 layout: article
 title: Android (Java)
 description: Quickstart prompt for integrating Appwrite with Android using Java.
+prompt: /docs/quick-starts/android-java
 ---
 
-Quickstart prompt for integrating Appwrite with Android using Java.
+{% prompt_content /%}

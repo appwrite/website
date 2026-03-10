@@ -2,6 +2,7 @@
 layout: article
 title: TanStack Start
 description: Quickstart prompt for integrating Appwrite with TanStack Start.
+prompt: /docs/quick-starts/tanstack-start
 ---
 
-Quickstart prompt for integrating Appwrite with TanStack Start.
+{% prompt_content /%}

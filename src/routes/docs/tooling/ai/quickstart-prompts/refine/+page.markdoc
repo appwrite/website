@@ -2,6 +2,7 @@
 layout: article
 title: Refine
 description: Quickstart prompt for integrating Appwrite with Refine.
+prompt: /docs/quick-starts/refine
 ---
 
-Quickstart prompt for integrating Appwrite with Refine.
+{% prompt_content /%}

@@ -2,6 +2,7 @@
 layout: article
 title: React Native
 description: Quickstart prompt for integrating Appwrite with React Native.
+prompt: /docs/quick-starts/react-native
 ---
 
-Quickstart prompt for integrating Appwrite with React Native.
+{% prompt_content /%}

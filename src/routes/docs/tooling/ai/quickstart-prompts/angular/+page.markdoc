@@ -2,6 +2,7 @@
 layout: article
 title: Angular
 description: Quickstart prompt for integrating Appwrite with Angular.
+prompt: /docs/quick-starts/angular
 ---
 
-Quickstart prompt for integrating Appwrite with Angular.
+{% prompt_content /%}

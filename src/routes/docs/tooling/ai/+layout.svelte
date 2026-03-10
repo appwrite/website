@@ -79,6 +79,10 @@
                     href: '/docs/tooling/ai/quickstart-prompts/tanstack-start'
                 },
                 {
+                    label: 'Web',
+                    href: '/docs/tooling/ai/quickstart-prompts/web'
+                },
+                {
                     label: 'React Native',
                     href: '/docs/tooling/ai/quickstart-prompts/react-native'
                 },
@@ -129,6 +133,14 @@
                 {
                     label: '.NET',
                     href: '/docs/tooling/ai/quickstart-prompts/dotnet'
+                },
+                {
+                    label: 'Swift',
+                    href: '/docs/tooling/ai/quickstart-prompts/swift'
+                },
+                {
+                    label: 'Kotlin',
+                    href: '/docs/tooling/ai/quickstart-prompts/kotlin'
                 }
             ]
         },

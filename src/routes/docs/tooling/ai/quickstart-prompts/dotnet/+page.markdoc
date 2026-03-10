@@ -2,6 +2,7 @@
 layout: article
 title: .NET
 description: Quickstart prompt for integrating Appwrite with .NET.
+prompt: /docs/quick-starts/dotnet
 ---
 
-Quickstart prompt for integrating Appwrite with .NET.
+{% prompt_content /%}
