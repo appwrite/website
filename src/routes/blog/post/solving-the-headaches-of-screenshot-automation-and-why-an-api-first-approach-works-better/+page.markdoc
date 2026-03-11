@@ -58,7 +58,7 @@ Most teams start with one of these options.
 
 Tools like **Playwright** and **Puppeteer** are powerful and flexible, making them an obvious first choice. Browser automation tools like Playwright, Selenium, and Puppeteer are popular choices for automating screenshots, especially for UI testing.
 
-## What works:
+### What works:
 
 - Full control over browser rendering and page state
 - Can wait for dynamic content to load before capturing
