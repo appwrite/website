@@ -67,7 +67,7 @@ Tools like **Playwright** and **Puppeteer** are powerful and flexible, makin
 
 Developers can use Python code and libraries like pyautogui, or APIs, to automate website screenshots.
 
-## Where it breaks
+### Where it breaks
 
 - Browser updates introduce breaking changes
 - Scripts become timing-sensitive and flaky
