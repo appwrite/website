@@ -339,7 +339,9 @@
                                 {#each categories as category (category.name)}
                                     <li class="flex items-center">
                                         <a
-                                            href={base + '/blog?category=' + encodeURIComponent(category.name)}
+                                            href={base +
+                                                '/blog?category=' +
+                                                encodeURIComponent(category.name)}
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
                                         >
