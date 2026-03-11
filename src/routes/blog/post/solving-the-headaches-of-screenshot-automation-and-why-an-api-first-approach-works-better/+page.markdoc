@@ -203,7 +203,7 @@ What that means in practice:
 
 - **No browser infrastructure to manage**
     
-    You don't need to run or maintain headless browsers, workers, or rendering pipelines. One API call handles capture, rendering, and delivery.
+    You don't need to run or maintain headless browsers, workers, or rendering pipelines. One API call handles capture and delivery.
     
 - **Consistent results across environments**
     
