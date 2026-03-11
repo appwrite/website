@@ -87,7 +87,7 @@ Most hosted screenshot APIs return data in JSON format, making it easy to proces
 
 To use these services, users usually need to create an account, and many providers offer a free account tier to get started. Documentation and guides are often provided as a post to help users get started. These tools reduce setup effort, but introduce their own tradeoffs.
 
-## Browserless
+### Browserless
 
 **Pricing (approx.)**
 
