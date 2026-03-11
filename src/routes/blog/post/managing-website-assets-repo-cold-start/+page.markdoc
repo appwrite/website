@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Managing your endless website assets on your repo has a price and it's called cold start"
-description: Storing all website assets in version control is convenient, but it has hidden costs. Learn when cold starts, CI time, and duplicated storage bite-and when solutions like Appwrite Storage are a better fit.
+description: Storing all website assets in version control is convenient, but it has hidden costs. Learn when cold starts, CI time, and duplicated storage cause drawbacks, and when solutions like Appwrite Storage are a better fit.
 date: 2026-03-11
 cover: /images/blog/managing-website-assets-repo-cold-start/cover.png
 timeToRead: 8
