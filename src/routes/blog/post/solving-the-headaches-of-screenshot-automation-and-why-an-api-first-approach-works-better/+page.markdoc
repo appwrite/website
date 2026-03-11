@@ -185,7 +185,7 @@ Most third-party screenshot APIs:
 - Handle infrastructure, but not **render consistency**
 - Restrict advanced configuration to paid tiers with higher pricing
 
-While most APIs offer basic functionality, some provide advanced options and other options for customization, such as output type, delays, and element targeting, which may be plan-gated or require higher tiers. For example, certain APIs allow users to 'scroll' to specific elements or positions on the page to capture full-page screenshots. The Screenshot API can also be accessed via the SDK's screenshot() method and configured using the ScreenshotConfig object for advanced customization.
+While most APIs offer basic functionality, some provide advanced options and other options for customization, such as output type, delays, and element targeting, which may be plan-gated or require higher tiers. For example, certain APIs allow users to 'scroll' to specific elements or positions on the page to capture full-page screenshots.
 
 They reduce setup time, but many teams still encounter issues once screenshots become **part of their production workflows**.
 
