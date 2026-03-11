@@ -23,6 +23,8 @@
     let isHovering = $state(false);
     let mouseX = $state(0);
     let mouseY = $state(0);
+    let holoAngle = $state(135);
+    let holoPosY = $state(50);
 
     // Card states: revealed (already shown), flippable (timer done, click to reveal), locked (timer counting)
     const timerDone = $derived($hours <= 0 && $minutes <= 0 && $seconds <= 0);
@@ -39,6 +41,13 @@
         tiltY = (x - 0.5) * 30;
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
+
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = mouseX - cx;
+        const dy = mouseY - cy;
+        holoAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+        holoPosY = (mouseY / rect.height) * 100;
     }
 
     function handleMouseEnter() {
@@ -160,6 +169,24 @@
             {/if}
         </div>
 
+        <!-- Front face holo border overlay -->
+        <div
+            class="pointer-events-none absolute inset-0 [backface-visibility:hidden]"
+            style="
+                opacity: {isHovering ? 1 : 0};
+                transition: opacity 0.5s ease;
+                background: linear-gradient({holoAngle}deg, rgba(25,25,28,0) 0%, #7E1935 25%, #FD366E 45%, #FEAFC5 65%, rgba(237,237,240,0) 100%);
+                background-size: 200% 300%;
+                background-position: 50% {holoPosY}%;
+                mix-blend-mode: screen;
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                mask-composite: exclude;
+                padding: 3px;
+            "
+        ></div>
+
         <!-- Back face (revealed content after flip) -->
         <div
             class="absolute inset-0 overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]"
@@ -193,6 +220,24 @@
                 </p>
             {/if}
         </div>
+
+        <!-- Back face holo border overlay -->
+        <div
+            class="pointer-events-none absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            style="
+                opacity: {isHovering ? 1 : 0};
+                transition: opacity 0.5s ease;
+                background: linear-gradient({holoAngle}deg, rgba(25,25,28,0) 0%, #7E1935 25%, #FD366E 45%, #FEAFC5 65%, rgba(237,237,240,0) 100%);
+                background-size: 200% 300%;
+                background-position: 50% {holoPosY}%;
+                mix-blend-mode: screen;
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                mask-composite: exclude;
+                padding: 3px;
+            "
+        ></div>
     </div>
 </div>
 

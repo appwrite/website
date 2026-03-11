@@ -33,7 +33,7 @@
     class="relative w-full"
     style="background: rgba(35, 35, 37, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.06);"
 >
-    <div class="mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)] py-[120px]">
+    <div class="mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)] py-[120px]">
         <div class="flex flex-col gap-12">
             {#each days as day}
                 <DayDetail

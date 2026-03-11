@@ -13,7 +13,7 @@
 
 <section class="relative h-[788px] w-full overflow-hidden bg-[#19191C]">
     <!-- Main hero content area -->
-    <div class="absolute inset-x-0 top-[418px] mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
+    <div class="absolute inset-x-0 top-[418px] mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)]">
         <div class="flex flex-col gap-16">
             <!-- Large INIT wordmark row: 5 outlined left, 1 filled, 5 outlined right -->
             <!-- Offset left by 5 * (469 + 32) = 2505px so the filled logo aligns to left edge -->
@@ -62,7 +62,7 @@
                 <div class="flex items-start justify-between gap-8">
                     <!-- Left: date text -->
                     <div class="max-w-[379px]">
-                        <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-white">
+                        <p class="font-aeonik-fono text-[18px] uppercase leading-[1.25] tracking-tight text-white">
                             APPWRITE LAUNCH WEEK 4.0<br />
                             MARCH 23 - 27<br />
                             2026

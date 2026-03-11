@@ -78,7 +78,7 @@
             class="pointer-events-auto absolute inset-x-0 bottom-0 top-[72px] flex items-center transition-opacity duration-100 ease-out"
             style="opacity: {navContentOpacity};"
         >
-            <div class="mx-auto flex w-full max-w-[1728px] items-center justify-between px-[clamp(1.25rem,4vw,120rem)]">
+            <div class="mx-auto flex w-full max-w-[1280px] items-center justify-between px-[clamp(1.25rem,4vw,120rem)]">
                 <!-- Left: Init lockup (logo + date text) -->
                 <div class="flex items-center gap-4">
                     <img

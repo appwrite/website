@@ -181,8 +181,7 @@
         {
             title: 'HYPERLOOP B',
             illustration: IllustrationConsole,
-            release: new Date('2026-03-26T07:00:00.000Z'),
-            revealed: true,
+            release: new Date('2026-03-01T07:00:00.000Z'),
             dayNumber: 3
         },
         {
@@ -222,7 +221,7 @@
 <DayDetails days={detailDays} />
 
 <div class="bg-[#19191C]">
-    <div class="mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)]">
+    <div class="mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)]">
         <FooterNav />
         <MainFooter />
     </div>

@@ -18,7 +18,7 @@
 </script>
 
 <section class="relative w-full bg-[#19191C]">
-    <div class="mx-auto w-full max-w-[1728px] px-[clamp(1.25rem,4vw,120rem)] py-20">
+    <div class="mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)] py-20">
         <div class="flex flex-col gap-6">
             <!-- Header -->
             <div class="flex flex-col gap-3">
