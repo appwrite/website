@@ -226,7 +226,7 @@ The result is a screenshot solution that stays boring, in the best way possible.
 
 Here's a simple code snippet that shows how to capture a screenshot of a website:
 
-```jsx
+```js
 import { Client, Avatars } from "appwrite";
 
 const client = new Client()
