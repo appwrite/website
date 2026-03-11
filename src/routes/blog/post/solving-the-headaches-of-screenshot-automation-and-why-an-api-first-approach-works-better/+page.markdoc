@@ -77,7 +77,7 @@ Developers can use Python code and libraries like pyautogui, or APIs, to automat
 
 Over time, screenshot scripts become maintenance work instead of something teams can rely on.
 
-# 2. Hosted screenshot APIs (Pricing, pros, and cons)
+## 2. Hosted screenshot APIs (Pricing, pros, and cons)
 
 *(Pricing and limits may vary by plan and can change over time.)*
 
