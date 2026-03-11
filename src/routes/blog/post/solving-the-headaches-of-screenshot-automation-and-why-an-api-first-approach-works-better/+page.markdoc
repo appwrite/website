@@ -18,7 +18,7 @@ From flaky headless browsers to inconsistent rendering across devices, locales, 
 
 That's why **Appwrite includes a Screenshots API**, so you can generate consistent screenshots without maintaining your own browser infrastructure.
 
-Let's break down why screenshot automation is so painful, where existing solutions fall short, and why treating screenshots as **an API instead of infrastructure** works better.
+Let's break down why screenshot automation is so painful, where existing solutions fall short, and how Appwrite's Screenshots API simplifies workflows more effectively than maintaining your own infrastructure.
 
 # When a screenshots API makes sense
 
