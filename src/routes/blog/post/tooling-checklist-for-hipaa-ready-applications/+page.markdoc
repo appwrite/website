@@ -21,7 +21,7 @@ Note: This article is for educational purposes and does not constitute legal adv
 
 # Introduction to HIPAA Compliance
 
-The Health Insurance Portability and Accountability Act (HIPAA) is a cornerstone of data protection in the U.S. healthcare system. HIPAA compliance is not optional for organizations that handle health data, it's a legal requirement enforced by the Department of Health and Human Services (HHS) and its Office for Civil Rights (OCR).
+The Health Insurance Portability and Accountability Act (HIPAA) is a cornerstone of data protection in the U.S. healthcare system. For covered entities and business associates that create, receive, maintain, or transmit PHI or ePHI, compliance is a legal requirement enforced by the Department of Health and Human Services (HHS) and its Office for Civil Rights (OCR).
 
 Covered entities, including healthcare providers, health plans, and health care clearinghouses, must protect individually identifiable health information, whether it's in paper, oral, or electronic form. This includes both protected health information (PHI) and electronic protected health information (ePHI). HIPAA regulations require these organizations to implement a combination of administrative safeguards (like policies and training), physical safeguards (such as facility access controls), and technical safeguards (including encryption and access controls) to ensure the confidentiality, integrity, and availability of patient data.
 
