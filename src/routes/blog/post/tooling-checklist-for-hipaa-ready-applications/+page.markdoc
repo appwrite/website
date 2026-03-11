@@ -226,4 +226,4 @@ If you're building a healthcare web app, your backend needs to handle core requi
 
 Appwrite provides backend primitives teams commonly need when building modern applications, including authentication, databases, storage, and server-side functions. That makes it easier to create a secure baseline and focus on what matters most: delivering a reliable experience for patients and providers.
 
-If you're evaluating tooling for HIPAA-ready applications, explore Appwrite as part of your backend stack and review the [**Appwrite HIPAA documentation](https://appwrite.io/docs/advanced/security/hipaa)** for guidance on building secure healthcare applications.
+If you're evaluating tooling for HIPAA-ready applications, explore Appwrite as part of your backend stack and review the [**Appwrite HIPAA documentation**](/docs/advanced/security/hipaa) for guidance on building secure healthcare applications.
