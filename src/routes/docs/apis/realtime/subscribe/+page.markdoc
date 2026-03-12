@@ -40,7 +40,7 @@ final subscription = realtime.subscribe([Channel.account()]);
 subscription.stream.listen((response) {
     // Callback will be executed on all account events.
     print(response);
-})
+});
 ```
 
 ```client-apple
@@ -120,7 +120,7 @@ final subscription = realtime.subscribe([
 subscription.stream.listen((response) {
     // Callback will be executed on changes for the row and all files.
     print(response);
-})
+});
 ```
 
 ```client-apple
@@ -200,7 +200,7 @@ final subscription = realtime.subscribe([Channel.files()]);
 subscription.stream.listen((response) {
     // Callback will be executed on changes for all files.
     print(response);
-})
+});
 
 // Closes the subscription.
 subscription.close();

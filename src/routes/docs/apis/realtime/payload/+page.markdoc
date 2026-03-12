@@ -8,7 +8,7 @@ When you receive an update from a Realtime subscription, the payload contains in
 
 # Response structure {% #response-structure %}
 
-The payload from the subscription will contain following properties:
+The payload from the subscription will contain the following properties:
 
 {% table %}
 * Name
@@ -69,7 +69,7 @@ The response will look like this:
     "tablesdb.default.tables.sample.rows",
     "tablesdb.default.tables.sample.rows.63c98b9baea0938e1206"
   ],
-  "timestamp": "2023-01-19 18:30:04.051",
+  "timestamp": "2023-01-19T18:30:04.051+00:00",
   "payload": {
     "ip": "127.0.0.1",
     "stringArray": [
