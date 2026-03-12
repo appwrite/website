@@ -1,3 +1,10 @@
+import githubStarsData from '$lib/generated/github-stars.json';
+
+function formatStars(n: number): string {
+    if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
+    return String(n);
+}
+
 type SocialStats = {
     [K in 'GITHUB' | 'DISCORD' | 'TWITTER' | 'YOUTUBE']: {
         STAT: string;
@@ -8,7 +15,7 @@ type SocialStats = {
 
 export const SOCIAL_STATS: SocialStats = {
     GITHUB: {
-        STAT: '53K',
+        STAT: formatStars(githubStarsData.stars),
         LINK: 'https://github.com/appwrite/appwrite',
         EXTRA: {
             COMMITS: '27K+',

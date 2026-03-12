@@ -896,7 +896,11 @@ Query.contains("name", value: "Tom")
 
 ### Search {% #search %}
 
-Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/legacy/collections#indexes) on queried attributes.
+Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/legacy/collections#indexes) on queried attributes. The search string must be at least **3 characters** to perform a search.
+
+{% info title="Searching values with hyphens" %}
+The hyphen (`-`) is treated as a stop character by the underlying search engine. To search for exact values that contain hyphens (for example, ticket or SKU codes like `SWT-2621-44`), wrap the value in quotes inside the search string: `Query.search(attribute, '"SWT-2621-44"')`.
+{% /info %}
 
 {% multicode %}
 ```client-web
