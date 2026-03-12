@@ -76,6 +76,31 @@ val subscription = realtime.subscribe(Channel.account()) {
 }
 ```
 
+```client-android-java
+import io.appwrite.Channel;
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+String accountChannel = Channel.Companion.account();
+
+RealtimeSubscription subscription = realtime.subscribe(
+    new String[] {accountChannel},
+    (RealtimeResponseEvent<Object> response) -> {
+        // Callback will be executed on all account events.
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+```
+
 {% /multicode %}
 
 # Subscribe to multiple channels  {% #subscribe-to-multiple-channels %}
@@ -161,6 +186,31 @@ realtime.subscribe(
 }
 ```
 
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+Realtime realtime = new Realtime(client);
+
+RealtimeSubscription subscription = realtime.subscribe(
+    new String[] {
+        "tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>",
+        "files"
+    },
+    (RealtimeResponseEvent<Object> response) -> {
+        // Callback will be executed on changes for the row and all files.
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+```
+
 {% /multicode %}
 
 # Unsubscribe {% #unsubscribe %}
@@ -239,6 +289,32 @@ val subscription = realtime.subscribe(Channel.files()) {
 
 // Closes the subscription.
 subscription.close()
+```
+
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+
+RealtimeSubscription subscription = realtime.subscribe(
+    new String[] {"files"},
+    (RealtimeResponseEvent<Object> response) -> {
+        // Callback will be executed on changes for all files.
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+
+// Closes the subscription.
+subscription.close();
 ```
 
 {% /multicode %}

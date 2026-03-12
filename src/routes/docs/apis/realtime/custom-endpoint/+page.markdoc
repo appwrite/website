@@ -37,4 +37,11 @@ val client = Client(context)
 client.setEndpointRealtime("wss://<REGION>.cloud.appwrite.io/v1/realtime")
 ```
 
+```client-android-java
+import io.appwrite.Client;
+
+Client client = new Client(context);
+client.setEndpointRealtime("wss://<REGION>.cloud.appwrite.io/v1/realtime");
+```
+
 {% /multicode %}

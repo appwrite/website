@@ -88,6 +88,28 @@ val subscription = realtime.subscribe(Channel.files()) {
 }
 ```
 
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+
+// Subscribe to files channel
+realtime.subscribe(new String[] {"files"}, (RealtimeResponseEvent<Object> response) -> {
+    if (response.getEvents().contains("buckets.*.files.*.create")) {
+        // Log when a new file is uploaded
+        System.out.println(response.getPayload());
+    }
+    return Unit.INSTANCE;
+});
+```
+
 {% /multicode %}
 
 To subscribe to updates from different Appwrite resources, you need to specify one or more [channels](/docs/apis/realtime/channels). The channels offer a wide and powerful selection that will allow you to listen to all possible resources. This allows you to receive updates not only from the database, but from _all_ the services that Appwrite offers.

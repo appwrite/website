@@ -98,6 +98,46 @@ val docSubscription = realtime.subscribe(
 }
 ```
 
+```client-android-java
+import io.appwrite.Channel;
+import io.appwrite.ChannelKt;
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+
+// Subscribe to account channel
+String accountChannel = Channel.Companion.account();
+RealtimeSubscription subscription = realtime.subscribe(
+    new String[] {accountChannel},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+
+// Subscribe to a specific row
+Channel<?> rowChannel = ChannelKt.row(
+    ChannelKt.table(Channel.Companion.tablesdb("<DATABASE_ID>"), "<TABLE_ID>"),
+    "<ROW_ID>"
+);
+
+RealtimeSubscription rowSubscription = realtime.subscribe(
+    new Channel[] {rowChannel},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+```
+
 {% /multicode %}
 
 The `Channel` helper supports all available channels and allows you to:

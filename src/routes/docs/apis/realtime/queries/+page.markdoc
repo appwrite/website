@@ -156,6 +156,54 @@ val otherVotes = realtime.subscribe(
 }
 ```
 
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.Query;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import java.util.Arrays;
+import java.util.HashSet;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+
+// Subscribe to all updates
+RealtimeSubscription allVotes = realtime.subscribe(
+    new String[] {"tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows"},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response.getPayload());
+        return Unit.INSTANCE;
+    }
+);
+
+// Subscribe to updates where person equals 'person1'
+RealtimeSubscription person1Votes = realtime.subscribe(
+    new String[] {"tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows"},
+    Object.class,
+    new HashSet<>(Arrays.asList(Query.equal("person", Arrays.asList("person1")))),
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response.getPayload());
+        return Unit.INSTANCE;
+    }
+);
+
+// Subscribe to updates where person is not 'person1'
+RealtimeSubscription otherVotes = realtime.subscribe(
+    new String[] {"tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows"},
+    Object.class,
+    new HashSet<>(Arrays.asList(Query.notEqual("person", "person1"))),
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response.getPayload());
+        return Unit.INSTANCE;
+    }
+);
+```
+
 {% /multicode %}
 
 # Supported queries {% #supported-queries %}
