@@ -31,21 +31,21 @@
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales/enterprise`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/v1/conversations/enterprises`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                firstName,
+                lastName,
                 email,
-                subject: companyName,
-                cloudEmail,
+                message: useCase,
                 companyName,
                 companySize,
                 companyWebsite,
-                firstName,
-                lastName,
-                message: useCase,
+                cloudEmail,
+                platform: 'appwrite',
                 ...getReferrerAndUtmSource()
             })
         });
