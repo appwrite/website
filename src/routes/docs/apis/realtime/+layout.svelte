@@ -16,12 +16,12 @@
                     href: '/docs/apis/realtime'
                 },
                 {
-                    label: 'Subscribe',
-                    href: '/docs/apis/realtime/subscribe'
-                },
-                {
                     label: 'Authentication',
                     href: '/docs/apis/realtime/authentication'
+                },
+                {
+                    label: 'Subscribe',
+                    href: '/docs/apis/realtime/subscribe'
                 }
             ]
         },
@@ -48,10 +48,6 @@
                 {
                     label: 'Custom endpoint',
                     href: '/docs/apis/realtime/custom-endpoint'
-                },
-                {
-                    label: 'Limitations',
-                    href: '/docs/apis/realtime/limitations'
                 }
             ]
         }
