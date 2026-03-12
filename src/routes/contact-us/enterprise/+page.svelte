@@ -31,7 +31,7 @@
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/v1/conversations/enterprises`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/enterprises`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
