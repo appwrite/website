@@ -146,6 +146,11 @@
                     icon: 'web-icon-mcp'
                 },
                 {
+                    label: 'Skills',
+                    href: '/docs/tooling/skills',
+                    icon: 'web-icon-skills'
+                },
+                {
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
