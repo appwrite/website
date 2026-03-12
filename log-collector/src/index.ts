@@ -21,8 +21,8 @@ async function handleRequest(request: Request, response: Response, env: Env) {
         0
     );
 
-    const responseBody = await response.blob();
-    const bodySize = responseBody.size;
+    const contentLength = response.headers.get('content-length');
+    const bodySize = contentLength ? Number.parseInt(contentLength, 10) || 0 : 0;
     const totalBytesSent = headerSize + bodySize;
 
     const logData = {
