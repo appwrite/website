@@ -134,13 +134,14 @@ public class AppwriteHelper {
         account.createEmailPasswordSession(
             email,
             password,
-            new CoroutineCallback<>(result -> {
-            callback.onSuccess(result);
-            return null;
-        }, error -> {
-            callback.onError(error);
-            return null;
-        }));
+            new CoroutineCallback<>((result, error) -> {
+                if (error != null) {
+                    callback.onError(error);
+                    return;
+                }
+                callback.onSuccess(result);
+            })
+        );
     }
 
     public void register(String email, String password, final AuthCallback<User<Map<String, Object>>> callback) {
@@ -148,24 +149,27 @@ public class AppwriteHelper {
             ID.unique(),
             email,
             password,
-                new CoroutineCallback<>(result -> {
-                    callback.onSuccess(result);
-                    return null;
-                }, error -> {
+            new CoroutineCallback<>((result, error) -> {
+                if (error != null) {
                     callback.onError(error);
-                    return null;
-                })
+                    return;
+                }
+                callback.onSuccess(result);
+            })
         );
     }
 
     public void logout(final AuthCallback<Object> callback) {
-        account.deleteSession("current", new CoroutineCallback<>(result -> {
-            callback.onSuccess(result);
-            return null;
-        }, error -> {
-            callback.onError(error);
-            return null;
-        }));
+        account.deleteSession(
+            "current",
+            new CoroutineCallback<>((result, error) -> {
+                if (error != null) {
+                    callback.onError(error);
+                    return;
+                }
+                callback.onSuccess(result);
+            })
+        );
     }
 }
 ```
