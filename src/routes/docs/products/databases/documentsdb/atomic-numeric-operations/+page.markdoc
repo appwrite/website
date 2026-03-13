@@ -4,19 +4,19 @@ title: Atomic numeric operations
 description: Safely increment and decrement numeric fields without race conditions. Perfect for counters, quotas, inventory, and usage metrics in high-concurrency applications.
 ---
 
-Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full row. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
+Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full document. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
 
 # How atomic operations work {% #how-atomic-operations-work %}
 
 Instead of the traditional read-modify-write pattern, atomic numeric operations use dedicated methods to modify values directly on the server. The server applies the change atomically under concurrency control and returns the new value.
 
 **Traditional approach:**
-1. Fetch row → `{ likes: 42 }`
+1. Fetch document → `{ likes: 42 }`
 2. Update client-side → `likes: 43`
 3. Write back → `{ likes: 43 }`
 
 **Atomic approach:**
-1. Call `incrementRowColumn()` with the column name and the value to increment by
+1. Call `incrementDocumentAttribute()` with the attribute name and the value to increment by
 2. Server applies atomically → `likes: 43`
 
 # When to use atomic operations {% #when-to-use-atomic-operations %}
@@ -32,25 +32,25 @@ Atomic numeric operations work well for:
 
 # Perform atomic operations {% #perform-atomic-operations %}
 
-Use the `incrementRowColumn` and `decrementRowColumn` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
+Use the `incrementDocumentAttribute` and `decrementDocumentAttribute` methods to perform atomic numeric operations. The server will apply these changes atomically under concurrency control.
 
 ## Increment a field {% #increment-field %}
 
 {% multicode %}
 ```client-web
-import { Client, TablesDB } from "appwrite";
+import { Client, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const result = await tablesDB.incrementRowColumn({
+const result = await documentsDB.incrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'likes', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes', // attribute
     value: 1 // value
 });
 ```
@@ -61,13 +61,13 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDB = TablesDB(client);
+final documentsDB = DocumentsDB(client);
 
-final row = await tablesDB.incrementRowColumn(
+final document = await documentsDB.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'likes',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes',
     value: 1
 );
 ```
@@ -79,31 +79,31 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDB = TablesDB(client)
+let documentsDB = DocumentsDB(client)
 
-let row = try await tablesDB.incrementRowColumn(
+let document = try await documentsDB.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    column: "likes",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "likes",
     value: 1
 )
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDB = TablesDB(client)
+val documentsDB = DocumentsDB(client)
 
-val row = tablesDB.incrementRowColumn(
+val document = documentsDB.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
-    column = "likes",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "likes",
     value = 1
 )
 ```
@@ -115,46 +115,46 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const tablesDB = new sdk.TablesDB(client);
+const documentsDB = new sdk.DocumentsDB(client);
 
-const result = await tablesDB.incrementRowColumn({
+const result = await documentsDB.incrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'likes', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes', // attribute
     value: 1 // value
 });
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tables_db import TablesDB
+from appwrite.services.documents_db import DocumentsDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-tablesDB = TablesDB(client)
+documentsDB = DocumentsDB(client)
 
-result = tablesDB.increment_row_column(
+result = documentsDB.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
-    column = 'likes', # column
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'likes', # attribute
     value = 1 # value
 )
 ```
 ```graphql
 mutation {
-    databasesIncrementRowColumn(
+    databasesIncrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: "<ROW_ID>",
-        column: "likes",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
+        attribute: "likes",
         value: 1
     ) {
         _id
-        _tableId
+        _collectionId
         _databaseId
         _createdAt
         _updatedAt
@@ -167,23 +167,23 @@ mutation {
 
 ## Decrement a field {% #decrement-field %}
 
-Use the `decrementRowColumn` method to decrease numeric fields:
+Use the `decrementDocumentAttribute` method to decrease numeric fields:
 
 {% multicode %}
 ```client-web
-import { Client, TablesDB } from "appwrite";
+import { Client, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const result = await tablesDB.decrementRowColumn({
+const result = await documentsDB.decrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 5 // value
 });
 ```
@@ -194,13 +194,13 @@ final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-final tablesDB = TablesDB(client);
+final documentsDB = DocumentsDB(client);
 
-final row = await tablesDB.decrementRowColumn(
+final document = await documentsDB.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits',
     value: 5
 );
 ```
@@ -212,31 +212,31 @@ let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-let tablesDB = TablesDB(client)
+let documentsDB = DocumentsDB(client)
 
-let row = try await tablesDB.decrementRowColumn(
+let document = try await documentsDB.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    column: "credits",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "credits",
     value: 5
 )
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 val client = Client(applicationContext)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-val tablesDB = TablesDB(client)
+val documentsDB = DocumentsDB(client)
 
-val row = tablesDB.decrementRowColumn(
+val document = documentsDB.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
-    column = "credits",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "credits",
     value = 5
 )
 ```
@@ -248,46 +248,46 @@ const client = new sdk.Client()
     .setProject('<PROJECT_ID>') // Your project ID
     .setKey('<API_KEY>'); // Your secret API key
 
-const tablesDB = new sdk.TablesDB(client);
+const documentsDB = new sdk.DocumentsDB(client);
 
-const result = await tablesDB.decrementRowColumn({
+const result = await documentsDB.decrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 5 // value
 });
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.services.tables_db import TablesDB
+from appwrite.services.documents_db import DocumentsDB
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
 client.set_project('<PROJECT_ID>') # Your project ID
 client.set_key('<API_KEY>') # Your secret API key
 
-tablesDB = TablesDB(client)
+documentsDB = DocumentsDB(client)
 
-result = tablesDB.decrement_row_column(
+result = documentsDB.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
-    column = 'credits', # column
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'credits', # attribute
     value = 5 # value
 )
 ```
 ```graphql
 mutation {
-    databasesDecrementRowColumn(
+    databasesDecrementDocumentAttribute(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: "<ROW_ID>",
-        column: "credits",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
+        attribute: "credits",
         value: 5
     ) {
         _id
-        _tableId
+        _collectionId
         _databaseId
         _createdAt
         _updatedAt
@@ -307,126 +307,126 @@ You can set minimum and maximum bounds for individual operations to prevent inva
 {% multicode %}
 ```client-web
 // Increment with maximum constraint
-const result = await tablesDB.incrementRowColumn({
+const result = await documentsDB.incrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 100, // value
     max: 1000 // max (optional)
 });
 
 // Decrement with minimum constraint
-const result2 = await tablesDB.decrementRowColumn({
+const result2 = await documentsDB.decrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 50, // value
     min: 0 // min (optional)
 });
 ```
 ```client-flutter
 // Increment with maximum constraint
-final row = await tablesDB.incrementRowColumn(
+final document = await documentsDB.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits',
     value: 100,
     max: 1000
 );
 
 // Decrement with minimum constraint
-final row2 = await tablesDB.decrementRowColumn(
+final document2 = await documentsDB.decrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits',
     value: 50,
     min: 0
 );
 ```
 ```client-apple
 // Increment with maximum constraint
-let row = try await tablesDB.incrementRowColumn(
+let document = try await documentsDB.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    column: "credits",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "credits",
     value: 100,
     max: 1000
 )
 
 // Decrement with minimum constraint
-let row2 = try await tablesDB.decrementRowColumn(
+let document2 = try await documentsDB.decrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    column: "credits",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "credits",
     value: 50,
     min: 0
 )
 ```
 ```client-android-kotlin
 // Increment with maximum constraint
-val row = tablesDB.incrementRowColumn(
+val document = documentsDB.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
-    column = "credits",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "credits",
     value = 100,
     max = 1000
 )
 
 // Decrement with minimum constraint
-val row2 = tablesDB.decrementRowColumn(
+val document2 = documentsDB.decrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
-    column = "credits",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "credits",
     value = 50,
     min = 0
 )
 ```
 ```server-nodejs
 // Increment with maximum constraint
-const result = await tablesDB.incrementRowColumn({
+const result = await documentsDB.incrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 100, // value
     max: 1000 // max (optional)
 });
 
 // Decrement with minimum constraint
-const result2 = await tablesDB.decrementRowColumn({
+const result2 = await documentsDB.decrementDocumentAttribute({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'credits', // column
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'credits', // attribute
     value: 50, // value
     min: 0 // min (optional)
 });
 ```
 ```server-python
 # Increment with maximum constraint
-result = tablesDB.increment_row_column(
+result = documentsDB.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
-    column = 'credits', # column
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'credits', # attribute
     value = 100, # value
     max = 1000 # max (optional)
 )
 
 # Decrement with minimum constraint
-result2 = tablesDB.decrement_row_column(
+result2 = documentsDB.decrement_document_attribute(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
-    column = 'credits', # column
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'credits', # attribute
     value = 50, # value
     min = 0 # min (optional)
 )
@@ -446,19 +446,19 @@ For complex updates that include both atomic operations and regular field change
 {% multicode %}
 ```client-web
 // First, increment the likes atomically
-const likeResult = await tablesDB.incrementRowColumn(
+const likeResult = await documentsDB.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'likes', // column
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await tablesDB.updateRow(
+const updateResult = await documentsDB.updateDocument(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
     {
         lastLikedBy: userId,
         lastLikedAt: new Date().toISOString()
@@ -467,19 +467,19 @@ const updateResult = await tablesDB.updateRow(
 ```
 ```client-flutter
 // First, increment the likes atomically
-final likeResult = await tablesDB.incrementRowColumn(
+final likeResult = await documentsDB.incrementDocumentAttribute(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
-    column: 'likes',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
+    attribute: 'likes',
     value: 1
 );
 
 // Then, update other fields
-final updateResult = await tablesDB.updateRow(
+final updateResult = await documentsDB.updateDocument(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: {
         'lastLikedBy': userId,
         'lastLikedAt': DateTime.now().toIso8601String()
@@ -488,19 +488,19 @@ final updateResult = await tablesDB.updateRow(
 ```
 ```client-apple
 // First, increment the likes atomically
-let likeResult = try await tablesDB.incrementRowColumn(
+let likeResult = try await documentsDB.incrementDocumentAttribute(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
-    column: "likes",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
+    attribute: "likes",
     value: 1
 )
 
 // Then, update other fields
-let updateResult = try await tablesDB.updateRow(
+let updateResult = try await documentsDB.updateDocument(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
     data: [
         "lastLikedBy": userId,
         "lastLikedAt": ISO8601DateFormatter().string(from: Date())
@@ -509,19 +509,19 @@ let updateResult = try await tablesDB.updateRow(
 ```
 ```client-android-kotlin
 // First, increment the likes atomically
-val likeResult = tablesDB.incrementRowColumn(
+val likeResult = documentsDB.incrementDocumentAttribute(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
-    column = "likes",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
+    attribute = "likes",
     value = 1
 )
 
 // Then, update other fields
-val updateResult = tablesDB.updateRow(
+val updateResult = documentsDB.updateDocument(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
     data = mapOf(
         "lastLikedBy" to userId,
         "lastLikedAt" to Instant.now().toString()
@@ -530,19 +530,19 @@ val updateResult = tablesDB.updateRow(
 ```
 ```server-nodejs
 // First, increment the likes atomically
-const likeResult = await tablesDB.incrementRowColumn(
+const likeResult = await documentsDB.incrementDocumentAttribute(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
-    'likes', // column
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
+    'likes', // attribute
     1 // value
 );
 
 // Then, update other fields
-const updateResult = await tablesDB.updateRow(
+const updateResult = await documentsDB.updateDocument(
     '<DATABASE_ID>',
-    '<TABLE_ID>',
-    '<ROW_ID>',
+    '<COLLECTION_ID>',
+    '<DOCUMENT_ID>',
     {
         lastLikedBy: userId,
         lastLikedAt: new Date().toISOString()
@@ -551,19 +551,19 @@ const updateResult = await tablesDB.updateRow(
 ```
 ```server-python
 # First, increment the likes atomically
-like_result = tablesDB.increment_row_column(
+like_result = documentsDB.increment_document_attribute(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
-    column = 'likes', # column
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
+    attribute = 'likes', # attribute
     value = 1 # value
 )
 
 # Then, update other fields
-update_result = tablesDB.update_row(
+update_result = documentsDB.update_document(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
     data = {
         'lastLikedBy': user_id,
         'lastLikedAt': datetime.now().isoformat()
@@ -578,50 +578,50 @@ Atomic numeric operations accept `transactionId`. When provided, increments/decr
 
 {% multicode %}
 ```client-web
-await tablesDB.incrementRowColumn({
+await documentsDB.incrementDocumentAttribute({
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```client-flutter
-await tablesDB.incrementRowColumn(
+await documentsDB.incrementDocumentAttribute(
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```client-apple
-try await tablesDB.incrementRowColumn(
+try await documentsDB.incrementDocumentAttribute(
   databaseId: "<DATABASE_ID>",
-  tableId: "<TABLE_ID>",
-  rowId: "<ROW_ID>",
-  column: "likes",
+  collectionId: "<COLLECTION_ID>",
+  documentId: "<DOCUMENT_ID>",
+  attribute: "likes",
   value: 1,
   transactionId: "<TRANSACTION_ID>"
 )
 ```
 ```client-android-kotlin
-tablesDB.incrementRowColumn(
+documentsDB.incrementDocumentAttribute(
   databaseId = "<DATABASE_ID>",
-  tableId = "<TABLE_ID>",
-  rowId = "<ROW_ID>",
-  column = "likes",
+  collectionId = "<COLLECTION_ID>",
+  documentId = "<DOCUMENT_ID>",
+  attribute = "likes",
   value = 1,
   transactionId = "<TRANSACTION_ID>"
 )
 ```
 ```client-android-java
-tablesDB.incrementRowColumn(
+documentsDB.incrementDocumentAttribute(
   "<DATABASE_ID>",
-  "<TABLE_ID>",
-  "<ROW_ID>",
+  "<COLLECTION_ID>",
+  "<DOCUMENT_ID>",
   "likes",
   1,
   "<TRANSACTION_ID>",
@@ -636,110 +636,110 @@ tablesDB.incrementRowColumn(
 );
 ```
 ```client-react-native
-await tablesDB.incrementRowColumn({
+await documentsDB.incrementDocumentAttribute({
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-nodejs
-await tablesDB.incrementRowColumn({
+await documentsDB.incrementDocumentAttribute({
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-deno
-await tablesDB.incrementRowColumn({
+await documentsDB.incrementDocumentAttribute({
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-python
-tablesDB.increment_row_column(
+documentsDB.increment_document_attribute(
   database_id = '<DATABASE_ID>',
-  table_id = '<TABLE_ID>',
-  row_id = '<ROW_ID>',
-  column = 'likes',
+  collection_id = '<COLLECTION_ID>',
+  document_id = '<DOCUMENT_ID>',
+  attribute = 'likes',
   value = 1,
   transaction_id = '<TRANSACTION_ID>'
 )
 ```
 ```server-php
-$tablesDB->incrementRowColumn(
+$documentsDB->incrementDocumentAttribute(
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```server-ruby
-tablesDB.increment_row_column(
+documentsDB.increment_document_attribute(
   database_id: '<DATABASE_ID>',
-  table_id: '<TABLE_ID>',
-  row_id: '<ROW_ID>',
-  column: 'likes',
+  collection_id: '<COLLECTION_ID>',
+  document_id: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transaction_id: '<TRANSACTION_ID>'
 )
 ```
 ```server-dotnet
-await tablesDB.IncrementRowColumn(
+await documentsDB.IncrementDocumentAttribute(
   databaseId: "<DATABASE_ID>",
-  tableId: "<TABLE_ID>",
-  rowId: "<ROW_ID>",
-  column: "likes",
+  collectionId: "<COLLECTION_ID>",
+  documentId: "<DOCUMENT_ID>",
+  attribute: "likes",
   value: 1,
   transactionId: "<TRANSACTION_ID>"
 );
 ```
 ```server-dart
-await tablesDB.incrementRowColumn(
+await documentsDB.incrementDocumentAttribute(
   databaseId: '<DATABASE_ID>',
-  tableId: '<TABLE_ID>',
-  rowId: '<ROW_ID>',
-  column: 'likes',
+  collectionId: '<COLLECTION_ID>',
+  documentId: '<DOCUMENT_ID>',
+  attribute: 'likes',
   value: 1,
   transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```server-swift
-try await tablesDB.incrementRowColumn(
+try await documentsDB.incrementDocumentAttribute(
   databaseId: "<DATABASE_ID>",
-  tableId: "<TABLE_ID>",
-  rowId: "<ROW_ID>",
-  column: "likes",
+  collectionId: "<COLLECTION_ID>",
+  documentId: "<DOCUMENT_ID>",
+  attribute: "likes",
   value: 1,
   transactionId: "<TRANSACTION_ID>"
 )
 ```
 ```server-kotlin
-tablesDB.incrementRowColumn(
+documentsDB.incrementDocumentAttribute(
   databaseId = "<DATABASE_ID>",
-  tableId = "<TABLE_ID>",
-  rowId = "<ROW_ID>",
-  column = "likes",
+  collectionId = "<COLLECTION_ID>",
+  documentId = "<DOCUMENT_ID>",
+  attribute = "likes",
   value = 1,
   transactionId = "<TRANSACTION_ID>"
 )
 ```
 ```server-java
-tablesDB.incrementRowColumn(
+documentsDB.incrementDocumentAttribute(
   "<DATABASE_ID>",
-  "<TABLE_ID>",
-  "<ROW_ID>",
+  "<COLLECTION_ID>",
+  "<DOCUMENT_ID>",
   "likes",
   1,
   "<TRANSACTION_ID>",
@@ -757,7 +757,7 @@ tablesDB.incrementRowColumn(
 
 ## Explore related features
 
-- [Bulk operations](/docs/products/databases/bulk-operations) - Update multiple rows at once
-- [Permissions](/docs/products/databases/permissions) - Control access to rows
-- [Queries](/docs/products/databases/queries) - Find rows to update
-- [Relationships](/docs/products/databases/relationships) - Update related rows
+- [Bulk operations](/docs/products/databases/bulk-operations) - Update multiple documents at once
+- [Permissions](/docs/products/databases/permissions) - Control access to documents
+- [Queries](/docs/products/databases/queries) - Find documents to update
+- [Relationships](/docs/products/databases/relationships) - Update related documents

@@ -4,6 +4,10 @@ title: CSV imports
 description: Master row imports with Appwrite's CSV Import feature. Learn how to create rows within your tables by uploading a CSV file.
 ---
 
+{% info title="Tables DB only" %}
+CSV imports are only available with **Tables DB** (MariaDB). Documents DB (MongoDB) does not support CSV imports.
+{% /info %}
+
 Appwrite's CSV Import feature allows you to create multiple rows in a table by uploading a single CSV file. This is especially useful for importing existing data, seeding test environments, or migrating from other systems.
 
 This feature is available in both Appwrite Cloud and the self-hosted version.

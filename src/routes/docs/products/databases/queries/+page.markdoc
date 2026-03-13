@@ -1,8 +1,12 @@
 ---
 layout: article
 title: Queries
-description: Harness the power of querying with Appwrite tablesDB. Discover various query options, filtering, sorting, and advanced querying techniques.
+description: Harness the power of querying with Appwrite Databases. Discover various query options, filtering, sorting, and advanced querying techniques.
 ---
+
+{% info title="Terminology mapping" %}
+Code examples on this page use Tables DB (`TablesDB`, `tableId`, `listRows`). For Documents DB, use `DocumentsDB` instead of `TablesDB`, `collectionId` instead of `tableId`, `listDocuments` instead of `listRows`, etc. Spatial query operators (distance, intersects, etc.) are Tables DB only.
+{% /info %}
 
 Many list endpoints in Appwrite allow you to filter, sort, and paginate results using queries. Appwrite provides a common set of syntax to build queries.
 
@@ -197,7 +201,7 @@ $client
 
 $tablesDB = new TablesDB($client);
 
-$result = $tables->listRows(
+$result = $tablesDB->listRows(
     '<DATABASE_ID>',
     '<TABLE_ID>',
     [
@@ -1865,7 +1869,7 @@ Query.updatedAfter("2025-01-01T00:00:00Z")
 {% /multicode %}
 # Geo queries and spatial operations {% #geo-queries %}
 
-Geo queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
+Geo queries enable geographic operations on [spatial columns](/docs/products/databases/geo-queries). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
 
 For conceptual information about spatial data types, spatial columns and indexing, see [Geo queries](/docs/products/databases/geo-queries).
 

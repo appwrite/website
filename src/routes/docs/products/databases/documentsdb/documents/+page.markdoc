@@ -1,33 +1,33 @@
 ---
 layout: article
-title: Rows
-description: Master row management with Appwrite Databases. Learn how to create, update, upsert, and query rows within your tables for dynamic data storage.
+title: Documents
+description: Master document management with Appwrite Databases. Learn how to create, update, upsert, and query documents within your collections for dynamic data storage.
 ---
-Each piece of data or information in Appwrite Databases is a row.
-Rows have a structure defined by the parent table.
+Each piece of data or information in Appwrite Databases is a document.
+Documents have a structure defined by the parent collection.
 
-# Create rows {% #create-rows %}
+# Create documents {% #create-documents %}
 {% info title="Permissions required" %}
-You must grant _create_ permissions to users at the _table level_ before users can create rows.
+You must grant _create_ permissions to users at the _collection level_ before users can create documents.
 [Learn more about permissions](#permissions)
 {% /info %}
 
-In most use cases, you will create rows programmatically.
+In most use cases, you will create documents programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, ID, TablesDB } from "appwrite";
+import { Client, ID, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const promise = tablesDB.createRow({
+const promise = documentsDB.createDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: ID.unique(),
+    collectionId: '<COLLECTION_ID>',
+    documentId: ID.unique(),
     data: {}
 });
 
@@ -45,13 +45,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final row = tablesDB.createRow(
+        final document = documentsDB.createDocument(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
-            rowId: ID.unique(),
+            collectionId: '<COLLECTION_ID>',
+            documentId: ID.unique(),
             data: {}
         );
     } on AppwriteException catch(e) {
@@ -68,13 +68,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let row = try await tablesDB.createRow(
+        let document = try await documentsDB.createDocument(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
-            rowId: ID.unique(),
+            collectionId: "<COLLECTION_ID>",
+            documentId: ID.unique(),
             data: [:]
         )
     } catch {
@@ -84,20 +84,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val row = tablesDB.createRow(
+        val document = documentsDB.createDocument(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
-            rowId = ID.unique(),
+            collectionId = "<COLLECTION_ID>",
+            documentId = ID.unique(),
             data = mapOf("a" to "b"),
         )
     } catch (e: AppwriteException) {
@@ -107,14 +107,14 @@ suspend fun main() {
 ```
 ```graphql
 mutation {
-    tablesCreateRow(
+    documentsCreateDocument(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: "<ROW_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
         data: "{}"
     ) {
         _id
-        _tableId
+        _collectionId
         _databaseId
         _createdAt
         _updatedAt
@@ -125,17 +125,17 @@ mutation {
 ```
 {% /multicode %}
 
-During testing, you might prefer to create rows in the Appwrite Console.
-To do so, navigate to the **Rows** tab of your table and click the **Add row** button.
+During testing, you might prefer to create documents in the Appwrite Console.
+To do so, navigate to the **Documents** tab of your collection and click the **Add document** button.
 
-# List rows {% #list-rows %}
+# List documents {% #list-documents %}
 
 {% info title="Permissions required" %}
-You must grant _read_ permissions to users at the _table level_ before users can read rows.
+You must grant _read_ permissions to users at the _collection level_ before users can read documents.
 [Learn more about permissions](#permissions)
 {% /info %}
 
-Rows can be retrieved using the [List rows](/docs/references/cloud/client-web/tables#listRows) endpoint.
+Documents can be retrieved using the [List documents](/docs/references/cloud/client-web/documents-db#listDocuments) endpoint.
 
 Results can be filtered, sorted, and paginated using Appwrite's shared set of query methods.
 You can find a full guide on querying in the [Queries Guide](/docs/products/databases/queries).
@@ -145,22 +145,22 @@ You can change this through [pagination](/docs/products/databases/pagination).
 
 {% info title="Speed up lists by skipping totals" %}
 If your UI doesn't need an exact total, set the `total` flag to `false` on list calls. The response keeps the same shape and sets `total` to `0`.
-This reduces latency for large tables and filtered queries. Learn more in [Pagination: Skip totals](/docs/products/databases/pagination#skip-totals).
+This reduces latency for large collections and filtered queries. Learn more in [Pagination: Skip totals](/docs/products/databases/pagination#skip-totals).
 {% /info %}
 
 {% multicode %}
 ```client-web
-import { Client, Query, TablesDB } from "appwrite";
+import { Client, Query, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
     .setProject("<PROJECT_ID>")
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-let promise = tablesDB.listRows({
+let promise = documentsDB.listDocuments({
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
+    collectionId: "<COLLECTION_ID>",
     queries: [
         Query.equal('title', 'Avatar')
     ]
@@ -180,12 +180,12 @@ void main() async {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final rows = await tablesDB.listRows(
+        final documents = await documentsDB.listDocuments(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
+            collectionId: '<COLLECTION_ID>',
             queries: [
                 Query.equal('title', 'Avatar')
             ]
@@ -204,12 +204,12 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let rows = try await tablesDB.listRows(
+        let documents = try await documentsDB.listDocuments(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
+            collectionId: "<COLLECTION_ID>",
             queries: [
                 Query.equal("title", value: "Avatar")
             ]
@@ -222,19 +222,19 @@ func main() async throws {
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.Query
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val rows = tablesDB.listRows(
+        val documents = documentsDB.listDocuments(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
+            collectionId = "<COLLECTION_ID>",
             queries = listOf(
                 Query.equal("title", "Avatar")
             )
@@ -246,13 +246,13 @@ suspend fun main() {
 ```
 ```graphql
 query {
-    tablesListRows(
+    documentsListDocuments(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
+        collectionId: "<COLLECTION_ID>",
         queries: ["equal(\"title\", [\"Avatar\"])"]
     ) {
         total
-        rows {
+        documents {
             _id
             data
         }
@@ -261,28 +261,28 @@ query {
 ```
 {% /multicode %}
 
-# Update row {% #update-row %}
+# Update document {% #update-document %}
 {% info title="Permissions required" %}
-You must grant _update_ permissions to users at the _table level_ or _row level_ before users can update rows.
+You must grant _update_ permissions to users at the _collection level_ or _document level_ before users can update documents.
 [Learn more about permissions](#permissions)
 {% /info %}
 
-In most use cases, you will update rows programmatically.
+In most use cases, you will update documents programmatically.
 
 {% multicode %}
 ```client-web
-import { Client, TablesDB } from "appwrite";
+import { Client, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const promise = tablesDB.updateRow({
+const promise = documentsDB.updateDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { title: 'Updated Title' }
 });
 
@@ -300,13 +300,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final row = await tablesDB.updateRow(
+        final document = await documentsDB.updateDocument(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
-            rowId: '<ROW_ID>',
+            collectionId: '<COLLECTION_ID>',
+            documentId: '<DOCUMENT_ID>',
             data: { 'title': 'Updated Title' }
         );
     } on AppwriteException catch(e) {
@@ -323,13 +323,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let row = try await tablesDB.updateRow(
+        let document = try await documentsDB.updateDocument(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
-            rowId: "<ROW_ID>",
+            collectionId: "<COLLECTION_ID>",
+            documentId: "<DOCUMENT_ID>",
             data: ["title": "Updated Title"]
         )
     } catch {
@@ -339,20 +339,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val row = tablesDB.updateRow(
+        val document = documentsDB.updateDocument(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
-            rowId = "<ROW_ID>",
+            collectionId = "<COLLECTION_ID>",
+            documentId = "<DOCUMENT_ID>",
             data = mapOf("title" to "Updated Title"),
         )
     } catch (e: AppwriteException) {
@@ -361,14 +361,14 @@ suspend fun main() {
 }
 ```graphql
 mutation {
-    tablesDBUpdateRow(
+    documentsDBUpdateDocument(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: "<ROW_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
         data: "{\"title\": \"Updated Title\"}"
     ) {
         _id
-        _tableId
+        _collectionId
         _databaseId
         _createdAt
         _updatedAt
@@ -379,30 +379,30 @@ mutation {
 ```
 {% /multicode %}
 
-# Upsert rows {% #upsert-rows %}
+# Upsert documents {% #upsert-documents %}
 
-Upsert is a combination of "update" and "insert" operations. It creates a new row if one doesn't exist with the given ID, or updates an existing row if it does exist.
+Upsert is a combination of "update" and "insert" operations. It creates a new document if one doesn't exist with the given ID, or updates an existing document if it does exist.
 
-In most use cases, you will upsert rows programmatically.
+In most use cases, you will upsert documents programmatically.
 
 {% info title="Permissions required" %}
-You must grant _create_ permissions to users at the _table level_, and _update_ permissions to users at the _table_ or _row_ level before users can upsert rows.
+You must grant _create_ permissions to users at the _collection level_, and _update_ permissions to users at the _collection_ or _document_ level before users can upsert documents.
 [Learn more about permissions](#permissions)
 {% /info %}
 {% multicode %}
 ```client-web
-import { Client, ID, TablesDB } from "appwrite";
+import { Client, ID, DocumentsDB } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
-const promise = tablesDB.upsertRow({
+const promise = documentsDB.upsertDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: ID.unique(),
+    collectionId: '<COLLECTION_ID>',
+    documentId: ID.unique(),
     data: {}
 });
 
@@ -420,13 +420,13 @@ void main() async {
         .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
         .setProject('<PROJECT_ID>');
 
-    final tablesDB = TablesDB(client);
+    final documentsDB = DocumentsDB(client);
 
     try {
-        final row = tablesDB.upsertRow(
+        final document = documentsDB.upsertDocument(
             databaseId: '<DATABASE_ID>',
-            tableId: '<TABLE_ID>',
-            rowId: ID.unique(),
+            collectionId: '<COLLECTION_ID>',
+            documentId: ID.unique(),
             data: {}
         );
     } on AppwriteException catch(e) {
@@ -443,13 +443,13 @@ func main() async throws {
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    let tablesDB = TablesDB(client)
+    let documentsDB = DocumentsDB(client)
 
     do {
-        let row = try await tablesDB.upsertRow(
+        let document = try await documentsDB.upsertDocument(
             databaseId: "<DATABASE_ID>",
-            tableId: "<TABLE_ID>",
-            rowId: ID.unique(),
+            collectionId: "<COLLECTION_ID>",
+            documentId: ID.unique(),
             data: [:]
         )
     } catch {
@@ -459,20 +459,20 @@ func main() async throws {
 ```
 ```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.services.TablesDB
+import io.appwrite.services.DocumentsDB
 
 suspend fun main() {
     val client = Client(applicationContext)
         .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
         .setProject("<PROJECT_ID>")
 
-    val tablesDB = TablesDB(client)
+    val documentsDB = DocumentsDB(client)
 
     try {
-        val row = tablesDB.upsertRow(
+        val document = documentsDB.upsertDocument(
             databaseId = "<DATABASE_ID>",
-            tableId = "<TABLE_ID>",
-            rowId = ID.unique(),
+            collectionId = "<COLLECTION_ID>",
+            documentId = ID.unique(),
             data = mapOf("a" to "b"),
         )
     } catch (e: AppwriteException) {
@@ -482,14 +482,14 @@ suspend fun main() {
 ```
 ```graphql
 mutation {
-    tablesUpsertRow(
+    documentsUpsertDocument(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: "<ROW_ID>",
+        collectionId: "<COLLECTION_ID>",
+        documentId: "<DOCUMENT_ID>",
         data: "{}"
     ) {
         _id
-        _tableId
+        _collectionId
         _databaseId
         _createdAt
         _updatedAt
@@ -502,11 +502,11 @@ mutation {
 
 # Type safety with models {% #type-safety %}
 
-Mobile and native SDKs provide type safety when working with rows through the `nestedType` parameter. This allows you to specify custom model types for complete auto-completion and type safety.
+Mobile and native SDKs provide type safety when working with documents through the `nestedType` parameter. This allows you to specify custom model types for complete auto-completion and type safety.
 
 ## Define your model
 
-Create a data class or struct that matches your table structure:
+Create a data class or struct that matches your collection structure:
 
 {% tabs %}
 {% tabsitem #kotlin title="Kotlin/Java" %}
@@ -552,14 +552,14 @@ Use the `nestedType` parameter for full type safety in native SDKs, or generics 
 
 {% multicode %}
 ```client-android-kotlin
-val tablesDB = TablesDB(client)
+val documentsDB = DocumentsDB(client)
 
 try {
     // Create with type safety
-    val newBook = tablesDB.createRow(
+    val newBook = documentsDB.createDocument(
         databaseId = "<DATABASE_ID>",
-        tableId = "<TABLE_ID>",
-        rowId = ID.unique(),
+        collectionId = "<COLLECTION_ID>",
+        documentId = ID.unique(),
         data = mapOf(
             "title" to "The Great Gatsby",
             "author" to "F. Scott Fitzgerald",
@@ -569,14 +569,14 @@ try {
     )
 
     // List with type safety
-    val books = tablesDB.listRows(
+    val books = documentsDB.listDocuments(
         databaseId = "<DATABASE_ID>",
-        tableId = "<TABLE_ID>",
+        collectionId = "<COLLECTION_ID>",
         nestedType = Book::class.java
     )
 
     // Now you have full type safety
-    for (book in books.rows) {
+    for (book in books.documents) {
         Log.d("Appwrite", "Book: ${book.title} by ${book.author}")
         if (book.isAvailable) {
             Log.d("Appwrite", "Available for checkout")
@@ -587,14 +587,14 @@ try {
 }
 ```
 ```client-apple
-let tablesDB = TablesDB(client)
+let documentsDB = DocumentsDB(client)
 
 do {
     // Create with type safety
-    let newBook = try await tablesDB.createRow(
+    let newBook = try await documentsDB.createDocument(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
-        rowId: ID.unique(),
+        collectionId: "<COLLECTION_ID>",
+        documentId: ID.unique(),
         data: [
             "title": "The Great Gatsby",
             "author": "F. Scott Fitzgerald",
@@ -604,14 +604,14 @@ do {
     )
 
     // List with type safety
-    let books = try await tablesDB.listRows(
+    let books = try await documentsDB.listDocuments(
         databaseId: "<DATABASE_ID>",
-        tableId: "<TABLE_ID>",
+        collectionId: "<COLLECTION_ID>",
         nestedType: Book.self
     )
 
     // Now you have full type safety
-    for book in books.rows {
+    for book in books.documents {
         print("Book: \(book.title) by \(book.author)")
         if book.isAvailable {
             print("Available for checkout")
@@ -622,14 +622,14 @@ do {
 }
 ```
 ```client-web
-const tablesDB = new TablesDB(client);
+const documentsDB = new DocumentsDB(client);
 
 try {
     // Create with generics
-    const newBook = await tablesDB.createRow<Book>({
+    const newBook = await documentsDB.createDocument<Book>({
         databaseId: '<DATABASE_ID>',
-        tableId: '<TABLE_ID>',
-        rowId: ID.unique(),
+        collectionId: '<COLLECTION_ID>',
+        documentId: ID.unique(),
         data: {
             title: "The Great Gatsby",
             author: "F. Scott Fitzgerald",
@@ -638,13 +638,13 @@ try {
     });
 
     // List with generics
-    const books = await tablesDB.listRows<Book>({
+    const books = await documentsDB.listDocuments<Book>({
         databaseId: '<DATABASE_ID>',
-        tableId: '<TABLE_ID>'
+        collectionId: '<COLLECTION_ID>'
     });
 
     // TypeScript provides full type safety
-    books.rows.forEach(book => {
+    books.documents.forEach(book => {
         console.log(`Book: ${book.title} by ${book.author}`);
         if (book.isAvailable) {
             console.log("Available for checkout");
@@ -663,7 +663,7 @@ Models returned by native SDKs include helpful utility methods:
 {% tabs %}
 {% tabsitem #kotlin-methods title="Kotlin/Java" %}
 ```kotlin
-val book = books.rows.first()
+val book = books.documents.first()
 
 // Convert model to Map for debugging or manual manipulation
 val bookMap = book.toMap()
@@ -687,7 +687,7 @@ val bookFromJson = gson.fromJson(jsonString, Book::class.java)
 
 {% tabsitem #swift-methods title="Swift" %}
 ```swift
-let book = books.rows.first!
+let book = books.documents.first!
 
 // Convert model to dictionary for debugging
 let bookMap = book.toMap()
@@ -715,108 +715,108 @@ if let jsonString = jsonString,
 {% /tabs %}
 
 {% info title="Generate types automatically" %}
-You can generate types for your tables. Learn more in [Type generation](/docs/products/databases/tablesdb/type-generation).
+You can generate types for your collections. Learn more in [Type generation](/docs/products/databases/documentsdb/type-generation).
 {% /info %}
 
 # Permissions {% #permissions %}
-In Appwrite, permissions can be granted at the table level and the row level.
-Before a user can create a row, you need to grant create permissions to the user.
+In Appwrite, permissions can be granted at the collection level and the document level.
+Before a user can create a document, you need to grant create permissions to the user.
 
-Read, update, and delete permissions can be granted at both the table and row level.
-Users only need to be granted access at either the table or row level to access rows.
+Read, update, and delete permissions can be granted at both the collection and document level.
+Users only need to be granted access at either the collection or document level to access documents.
 
 [Learn about configuring permissions](/docs/products/databases/permissions).
 
 # Use transactions {% #use-transactions %}
 
-All row operations support `transactionId`. When provided, operations are staged to an internal log and not applied until the transaction is committed. Learn more in the [Transactions guide](/docs/products/databases/tablesdb/transactions).
+All document operations support `transactionId`. When provided, operations are staged to an internal log and not applied until the transaction is committed. Learn more in the [Transactions guide](/docs/products/databases/documentsdb/transactions).
 
 {% multicode %}
 ```client-web
-// Create row inside a transaction
-await tablesDB.createRow({
+// Create document inside a transaction
+await documentsDB.createDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { title: 'Draft' },
     transactionId: '<TRANSACTION_ID>'
 });
 
-// Update row inside a transaction
-await tablesDB.updateRow({
+// Update document inside a transaction
+await documentsDB.updateDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { title: 'Published' },
     transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```client-flutter
-// Create row inside a transaction
-await tablesDB.createRow(
+// Create document inside a transaction
+await documentsDB.createDocument(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { 'title': 'Draft' },
     transactionId: '<TRANSACTION_ID>'
 );
 
-// Update row inside a transaction
-await tablesDB.updateRow(
+// Update document inside a transaction
+await documentsDB.updateDocument(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { 'title': 'Published' },
     transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```client-apple
-// Create row inside a transaction
-let _ = try await tablesDB.createRow(
+// Create document inside a transaction
+let _ = try await documentsDB.createDocument(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
     data: ["title": "Draft"],
     transactionId: "<TRANSACTION_ID>"
 )
 
-// Update row inside a transaction
-let _2 = try await tablesDB.updateRow(
+// Update document inside a transaction
+let _2 = try await documentsDB.updateDocument(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
     data: ["title": "Published"],
     transactionId: "<TRANSACTION_ID>"
 )
 ```
 ```client-android-kotlin
-// Create row inside a transaction
-val _ = tablesDB.createRow(
+// Create document inside a transaction
+val _ = documentsDB.createDocument(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
     data = mapOf("title" to "Draft"),
     transactionId = "<TRANSACTION_ID>"
 )
 
-// Update row inside a transaction
-val _2 = tablesDB.updateRow(
+// Update document inside a transaction
+val _2 = documentsDB.updateDocument(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
     data = mapOf("title" to "Published"),
     transactionId = "<TRANSACTION_ID>"
 )
 ```
 ```client-android-java
-// Create row inside a transaction (asynchronous)
+// Create document inside a transaction (asynchronous)
 Map<String, Object> data = new HashMap<>();
 data.put("title", "Draft");
 
-tablesDB.createRow(
+documentsDB.createDocument(
     "<DATABASE_ID>",
-    "<TABLE_ID>",
-    "<ROW_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
     data,
     "<TRANSACTION_ID>",
     new CoroutineCallback<>((result, error) -> {
@@ -829,14 +829,14 @@ tablesDB.createRow(
     })
 );
 
-// Update row inside a transaction (asynchronous)
+// Update document inside a transaction (asynchronous)
 Map<String, Object> update = new HashMap<>();
 update.put("title", "Published");
 
-tablesDB.updateRow(
+documentsDB.updateDocument(
     "<DATABASE_ID>",
-    "<TABLE_ID>",
-    "<ROW_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
     update,
     "<TRANSACTION_ID>",
     new CoroutineCallback<>((result, error) -> {
@@ -850,111 +850,111 @@ tablesDB.updateRow(
 );
 ```
 ```client-react-native
-// Create row inside a transaction
-await tablesDB.createRow({
+// Create document inside a transaction
+await documentsDB.createDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { title: 'Draft' },
     transactionId: '<TRANSACTION_ID>'
 });
 
-// Update row inside a transaction
-await tablesDB.updateRow({
+// Update document inside a transaction
+await documentsDB.updateDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     data: { title: 'Published' },
     transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-nodejs
-// Delete row inside a transaction
-await tablesDB.deleteRow({
+// Delete document inside a transaction
+await documentsDB.deleteDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-deno
-// Delete row inside a transaction
-await tablesDB.deleteRow({
+// Delete document inside a transaction
+await documentsDB.deleteDocument({
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     transactionId: '<TRANSACTION_ID>'
 });
 ```
 ```server-python
-# Delete row inside a transaction
-tablesDB.delete_row(
+# Delete document inside a transaction
+documentsDB.delete_document(
     database_id = '<DATABASE_ID>',
-    table_id = '<TABLE_ID>',
-    row_id = '<ROW_ID>',
+    collection_id = '<COLLECTION_ID>',
+    document_id = '<DOCUMENT_ID>',
     transaction_id = '<TRANSACTION_ID>'
 )
 ```
 ```server-php
-// Delete row inside a transaction
-$tablesDB->deleteRow(
+// Delete document inside a transaction
+$documentsDB->deleteDocument(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```server-ruby
-# Delete row inside a transaction
-tablesDB.delete_row(
+# Delete document inside a transaction
+documentsDB.delete_document(
     database_id: '<DATABASE_ID>',
-    table_id: '<TABLE_ID>',
-    row_id: '<ROW_ID>',
+    collection_id: '<COLLECTION_ID>',
+    document_id: '<DOCUMENT_ID>',
     transaction_id: '<TRANSACTION_ID>'
 )
 ```
 ```server-dotnet
-// Delete row inside a transaction
-await tablesDB.DeleteRow(
+// Delete document inside a transaction
+await documentsDB.DeleteDocument(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
     transactionId: "<TRANSACTION_ID>"
 );
 ```
 ```server-dart
-// Delete row inside a transaction
-await tablesDB.deleteRow(
+// Delete document inside a transaction
+await documentsDB.deleteDocument(
     databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    rowId: '<ROW_ID>',
+    collectionId: '<COLLECTION_ID>',
+    documentId: '<DOCUMENT_ID>',
     transactionId: '<TRANSACTION_ID>'
 );
 ```
 ```server-swift
-// Delete row inside a transaction
-let _ = try await tablesDB.deleteRow(
+// Delete document inside a transaction
+let _ = try await documentsDB.deleteDocument(
     databaseId: "<DATABASE_ID>",
-    tableId: "<TABLE_ID>",
-    rowId: "<ROW_ID>",
+    collectionId: "<COLLECTION_ID>",
+    documentId: "<DOCUMENT_ID>",
     transactionId: "<TRANSACTION_ID>"
 )
 ```
 ```server-kotlin
-// Delete row inside a transaction
-val _ = tablesDB.deleteRow(
+// Delete document inside a transaction
+val _ = documentsDB.deleteDocument(
     databaseId = "<DATABASE_ID>",
-    tableId = "<TABLE_ID>",
-    rowId = "<ROW_ID>",
+    collectionId = "<COLLECTION_ID>",
+    documentId = "<DOCUMENT_ID>",
     transactionId = "<TRANSACTION_ID>"
 )
 ```
 ```server-java
-// Delete row inside a transaction (asynchronous)
-tablesDB.deleteRow(
+// Delete document inside a transaction (asynchronous)
+documentsDB.deleteDocument(
     "<DATABASE_ID>",
-    "<TABLE_ID>",
-    "<ROW_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
     "<TRANSACTION_ID>",
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -974,19 +974,18 @@ Continue learning with these related guides:
 
 {% cards %}
 {% cards_item href="/docs/products/databases/queries" title="Queries" %}
-Learn how to filter, sort, and search your rows with various query operators.
+Learn how to filter, sort, and search your documents with various query operators.
 {% /cards_item %}
 
 {% cards_item href="/docs/products/databases/pagination" title="Pagination" %}
-Handle large datasets by implementing pagination in your row queries.
+Handle large datasets by implementing pagination in your document queries.
 {% /cards_item %}
 
-{% cards_item href="/docs/products/databases/tablesdb/bulk-operations" title="Bulk operations" %}
-Perform create, update, and delete operations on multiple rows simultaneously.
+{% cards_item href="/docs/products/databases/documentsdb/bulk-operations" title="Bulk operations" %}
+Perform create, update, and delete operations on multiple documents simultaneously.
 {% /cards_item %}
 
-{% cards_item href="/docs/products/databases/tablesdb/timestamp-overrides" title="Timestamp overrides" %}
+{% cards_item href="/docs/products/databases/documentsdb/timestamp-overrides" title="Timestamp overrides" %}
 Set custom creation and update timestamps when migrating data or backdating records.
 {% /cards_item %}
 {% /cards %}
-

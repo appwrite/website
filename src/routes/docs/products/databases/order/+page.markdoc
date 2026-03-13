@@ -4,6 +4,10 @@ title: Order
 description: Understand how to do data ordering in Appwrite Databases. Learn how to order and sort your database records for efficient data retrieval.
 ---
 
+{% info title="Terminology mapping" %}
+Code examples on this page use Tables DB (`TablesDB`, `tableId`, `listRows`). For Documents DB, use `DocumentsDB` instead of `TablesDB`, `collectionId` instead of `tableId`, `listDocuments` instead of `listRows`, etc.
+{% /info %}
+
 You can order results returned by Appwrite Databases by using an order query.
 For best performance, create an [index](/docs/products/databases/tables#indexes) on the column you plan to order by.
 

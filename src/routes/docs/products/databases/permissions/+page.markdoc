@@ -4,29 +4,29 @@ title: Database permissions
 description: Enhance data security and access control with Appwrite Database Permissions. Learn how to set permissions and access rules for your database tables
 ---
 
-Permissions define who can access rows in a table. By default **no permissions** are granted to any users, so no user can access any rows.
-Permissions exist at two levels, table level and row level permissions.
+Permissions define who can access rows (Tables DB) or documents (Documents DB) in a table or collection. By default **no permissions** are granted to any users, so no user can access any data.
+Permissions exist at two levels: table/collection level and row/document level permissions.
 
 In Appwrite, permissions are **granted**, meaning a user has no access by default and receive access when granted.
-A user with access granted at either table level or row level will be able to access a row.
-Users **don't need access at both levels** to access rows.
+A user with access granted at either level will be able to access the data.
+Users **don't need access at both levels** to access rows or documents.
 
-# Table level {% #table-level %}
-Table level permissions apply to every row in the table.
-If a user has read, create, update, or delete permissions at the table level, the user can access **all rows** inside the table.
+# Table / collection level {% #table-level %}
+Table-level (or collection-level) permissions apply to every row or document in the table or collection.
+If a user has read, create, update, or delete permissions at this level, the user can access **all rows/documents** inside.
 
-Configure table level permissions by navigating to **Your table** > **Settings** > **Permissions**.
+Configure these permissions by navigating to **Your table or collection** > **Settings** > **Permissions**.
 
 [Learn more about permissions and roles](/docs/advanced/platform/permissions)
 
-# Row level {% #row-level %}
-Row level permissions grant access to individual rows.
-If a user has read, create, update, or delete permissions at the row level, the user can access the **individual row**.
+# Row / document level {% #row-level %}
+Row-level (or document-level) permissions grant access to individual rows or documents.
+If a user has read, create, update, or delete permissions at this level, the user can access the **individual row or document**.
 
-Row level permissions are only applied if Row Security is enabled in the settings of your table.
-Enable row level permissions by navigating to **Your table** > **Settings** > **Row security**.
+Row/document level permissions are only applied if **Row Security** (Tables DB, `rowSecurity`) or **Document Security** (Documents DB, `documentSecurity`) is enabled in the settings.
+Enable this by navigating to **Your table or collection** > **Settings** > **Row security** (or **Document security**).
 
-Row level permissions are configured in individual rows.
+Row/document level permissions are configured in individual rows or documents.
 
 [Learn more about permissions and roles](/docs/advanced/platform/permissions)
 

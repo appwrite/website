@@ -96,16 +96,16 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.createRelationshipColumn(
-    'marvel',     // Database ID
-    'movies',     // Table ID
-    'reviews',    // Related table ID
-    'oneToMany',  // Relationship type
-    true,         // Is two-way
-    'reviews',    // Column key
-    'movie',      // Two-way column key
-    'cascade'     // On delete action
-);
+tablesDB.createRelationshipColumn({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    relatedTableId: 'reviews',
+    type: 'oneToMany',
+    twoWay: true,
+    key: 'reviews',
+    twoWayKey: 'movie',
+    onDelete: 'cascade'
+});
 ```
 
 
@@ -119,7 +119,7 @@ $client = (new Client())
 
 $tablesDB = new TablesDB($client);
 
-$tables->createRelationshipColumn(
+$tablesDB->createRelationshipColumn(
     databaseId: 'marvel',           // Database ID
     tableId: 'movies',         // Table ID
     relatedTableId: 'reviews', // Related table ID
@@ -188,16 +188,16 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.createRelationshipColumn(
-    "marvel",    // Database ID
-    "movies",    // Table ID
-    "reviews",   // Related table ID
-    "oneToMany", // Relationship type
-    true,        // Is two-way
-    "reviews",   // Column key
-    "movie",     // Two-way column key
-    "cascade"    // On delete action
-);
+tablesDB.createRelationshipColumn({
+    databaseId: "marvel",
+    tableId: "movies",
+    relatedTableId: "reviews",
+    type: "oneToMany",
+    twoWay: true,
+    key: "reviews",
+    twoWayKey: "movie",
+    onDelete: "cascade"
+});
 ```
 
 
@@ -610,11 +610,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.updateRow(
-    'marvel',
-    'movies',
-    'spiderman',
-    {
+await tablesDB.updateRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: 'spiderman',
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
@@ -622,7 +622,7 @@ await tablesDB.updateRow(
             'review5'
         ]
     }
-);
+});
 ```
 
 ```dart
@@ -729,11 +729,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.deleteRow(
-    'marvel',
-    'movies',
-    'spiderman'
-);
+await tablesDB.deleteRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: 'spiderman'
+});
 ```
 
 ```dart
@@ -804,11 +804,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.createRow(
-    'marvel',
-    'movies',
-    ID.unique(),
-    {
+await tablesDB.createRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: ID.unique(),
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
@@ -821,7 +821,7 @@ await tablesDB.createRow(
             },
         ]
     }
-);
+});
 ```
 ```dart
 import 'package:appwrite/appwrite.dart';
