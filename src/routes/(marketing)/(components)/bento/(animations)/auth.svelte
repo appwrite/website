@@ -65,7 +65,7 @@
 
 <a
     href="/products/auth"
-    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6"
+    class="border-smooth col-span-12 flex flex-col rounded-2xl border bg-white/2 p-2 transition-shadow duration-300 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)] md:col-span-6 lg:col-span-5"
     onclick={() => {
         trackEvent(`bento-auth-click`);
     }}
@@ -82,9 +82,7 @@
             <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
-            <span class="text-secondary"
-                >Authenticate users securely with multiple login methods like</span
-            > Email/Password, SMS, OAuth, Anonymous, and Magic URLs.
+            <span class="text-secondary">Authenticate users with</span> Email/Password, SMS, OAuth, Anonymous, and Magic URLs.
         </p>
     </div>
     <div
