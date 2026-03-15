@@ -11,6 +11,41 @@ Appwrite Functions can be executed in several ways.
 Executions can be invoked through the Appwrite SDK and visiting its REST endpoint. Functions can also be triggered by events and scheduled executions.
 Here are all the different ways to consume your Appwrite Functions.
 
+# Execution modes {% #execution-modes %}
+
+Appwrite Functions support two execution modes: **synchronous** and **asynchronous**.
+
+## Synchronous executions {% #synchronous-executions %}
+
+Synchronous executions are those where Appwrite makes the request to the function runtime synchronously and waits for the response. The client making the request will wait until the function completes and receives the response directly.
+
+Synchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `false`
+- Requests to custom or auto-generated [domains](/docs/products/functions/execute#domains)
+
+Synchronous executions:
+- Return response bodies and headers directly to the client
+- Have a **30-second timeout limit** to discourage slow API calls from apps causing poor user experience
+- Are ideal for real-time operations where you need immediate response data
+
+## Asynchronous executions {% #asynchronous-executions %}
+
+Asynchronous executions are added to a queue and processed by the function worker as background jobs.
+
+Asynchronous executions are created via:
+- The [Create execution](/docs/references/cloud/client-web/functions#createExecution) endpoint where the `async` parameter is `true`
+- Event triggers (when functions are triggered by [platform events](/docs/advanced/platform/events))
+- Scheduled executions (cron jobs or delayed executions)
+
+Asynchronous executions:
+- Have no timeout limitations beyond your function's configured timeout
+- Do **not store** response bodies and headers and cannot be retrieved later
+- Are ideal for background processing and event-driven workflows
+
+{% info title="Response body storage" %}
+Response bodies and headers are not stored anywhere, so they are only ever returned via synchronous executions.
+{% /info %}
+
 # Domains {% #domains %}
 You can execute a function through HTTP requests, using a browser or by sending an HTTP request.
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -35,7 +70,7 @@ curl -X POST https://64d4d22db370ae41a32e.fra.appwrite.run \
 Notice how a `x-appwrite-user-jwt` header is passed in the request, you will use this to authenticate users.
 [Learn more about JWTs](/docs/products/auth/jwt).
 
-This unlocks ability for you to develop custom HTTP endpoints with Appwrite Functions.
+This unlocks the ability for you to develop custom HTTP endpoints with Appwrite Functions.
 It also allows accepting incoming webhooks for handling online payments, hosting social platform bots, and much more.
 
 # SDK {% #sdk %}
@@ -440,7 +475,7 @@ let execution = try await functions.createExecution(
 
 # Console {% #console %}
 Another easy way to test a function is directly in the Appwrite Console.
-You test a function by hitting the **Execute now** button, which will display with modal below.
+You test a function by hitting the **Execute now** button, which will display a modal below.
 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
