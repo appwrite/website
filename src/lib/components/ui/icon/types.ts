@@ -29,6 +29,7 @@ export type IconType =
     | 'github'
     | 'google'
     | 'hamburger-menu'
+    | 'info'
     | 'instagram'
     | 'light'
     | 'linkedin'

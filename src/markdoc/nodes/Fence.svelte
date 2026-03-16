@@ -87,7 +87,9 @@
             <div class="web-code-snippet-header-start">
                 {#if badgeValue}
                     <div class="flex gap-4">
-                        <div class="web-tag"><span class="text">{badgeValue}</span></div>
+                        <div class="web-tag rounded-full!">
+                            <span class="text text-caption">{badgeValue}</span>
+                        </div>
                     </div>
                 {/if}
             </div>
