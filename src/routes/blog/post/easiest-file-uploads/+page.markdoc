@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Easiest Way to Add File Uploads to Your App"
+title: "The easiest way to add file uploads to your app"
 description: A practical guide to implementing file uploads in your application using Appwrite Storage, covering setup, upload, access control, and image transformations.
 date: 2024-08-16
 cover: /images/blog/easiest-file-uploads/cover.png
