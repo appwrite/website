@@ -47,7 +47,7 @@ That means if Appwrite's IPs ever change, your domain stays correct automaticall
 
 Cloudflare calls this **CNAME Flattening**. AWS Route 53 calls it **ALIAS records**. DNSimple and NS1 call it **ANAME**.
 
-Different names, same idea. And now it's built into Appwrite.
+Different names, same idea. And now it's supported by Appwrite.
 
 # What this unlocks for your projects
 
