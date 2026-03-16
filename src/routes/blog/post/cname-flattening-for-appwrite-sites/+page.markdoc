@@ -11,114 +11,98 @@ featured: false
 unlisted: true
 ---
 
-Setting up a custom domain should be simple. Add a record, wait a bit, and your site is live. This process involves a DNS lookup, where the fully qualified domain name (FQDN) is resolved to an IP address.
+You've built something worth shipping. The code works. The app is live. All that's left is pointing `yourdomain.com` to it, and then DNS reminds you who's really in charge.
 
-But in practice, DNS can get complicated, especially when different tools expect you to manage nameservers in different places. DNS records are managed by DNS servers as part of the domain name system, which maps domain names to IP addresses and handles various record types like CNAME, A, and others. We've heard this feedback from many developers using Appwrite Sites, and we've made an improvement to make the process smoother.
+You can't put a CNAME on your root domain. Not without consequences. So you settle for `www`, bolt on a redirect, and ship anyway. It works. But it's never felt right.
 
-Appwrite Sites now supports configurations that work with CNAME flattening and similar apex-domain features provided by modern DNS providers. This means you can connect your domain using standard DNS records, without transferring your nameservers to Appwrite.
+**That changes today.** Appwrite Sites now supports CNAME flattening, which means `yourdomain.com` can point directly to your Appwrite project. No subdomain. No redirect. No compromise.
 
-# The previous setup
+[Read the official announcement.](https://appwrite.io/blog/post/announcing-cname-flattening)
 
-Until now, connecting a custom domain to an Appwrite Site required a nameserver change.
+# The DNS rule that's been slowing you down
 
-The process looked something like this:
+DNS has a hard rule: **You cannot place a CNAME record at the root of your domain.**
 
-1. Buy a domain from a provider like Namecheap or GoDaddy.
-2. Open the domain's DNS settings.
-3. Change the domain's **nameservers** to Appwrite.
-4. Wait for DNS propagation.
-5. Finish the domain setup inside Appwrite.
+A CNAME record says "this name is an alias for another name, go look that up instead." That works perfectly on subdomains:
 
-This worked, but it came with trade-offs.
+`yourproject.yourdomain.com` → CNAME → `yourproject.appwrite.io`
 
-Many developers manage their DNS through services like **Cloudflare**. They use it for:
+But at the root, your domain needs other critical records to exist alongside it: your MX records (email delivery), SPF and DKIM (email authentication), TXT records for domain verification.
 
-- DNS management
-- Caching and performance
-- Security features
-- Email and other subdomain configurations
-- Mail (handled by MX records, which direct email to the correct mail server)
+A CNAME at the root conflicts with all of them. Put one there and you risk silently breaking your email setup, landing in spam folders, or failing domain verification entirely.
 
-Switching nameservers just to connect a single site meant handing over full DNS control. For some users, this felt unnecessary, especially on domains that were already in production.
+The old workarounds? Use `www`. Set a static A record and hope the IP never changes. Redirect from root to subdomain and explain it away in a support ticket. None of them are real solutions.
 
-When configuring subdomains, it's common to use the 'www' subdomain with a CNAME record pointing to the hosting environment, while the root domain (naked domain) cannot use a CNAME due to DNS restrictions.
+# What CNAME flattening actually does
 
-# What is CNAME flattening?
+CNAME flattening is a clean fix to a decades-old problem.
 
-CNAME flattening is a DNS feature that allows a domain's apex (root domain) to behave like a CNAME, even though standard DNS rules normally prohibit CNAME records at the root. Instead of returning the CNAME itself, the DNS provider resolves the target internally and returns the corresponding IP addresses (A/AAAA records) to the client. This process is called CNAME flattening and is especially useful for handling DNS at the zone apex, where traditional CNAME records are not allowed.
+Instead of storing a CNAME record at the root, your DNS resolver **follows the CNAME chain at query time** and returns only the final A or AAAA IP address, as if you'd hardcoded the IP directly.
 
-Traditionally:
+No alias chain exposed to the client. No RFC violation. No conflict with your other apex records.
 
-- **CNAME records** are used to point one domain to another; specifically, a CNAME record maps a hostname (such as a fully qualified domain name) to a canonical name (the true or canonical domain). For example, you might have a CNAME record for `foo.example.com` pointing to `bar.example.net`.
-- But they're not allowed at the root domain (like `example.com`), as per DNS specification and RFC standards (see RFC 1034, RFC 2181). Using a CNAME record at the root is considered bad practice and is technically disallowed.
-- Only subdomains (like `subdomain.example.com`) could use CNAME.
+From the outside, it looks like a normal root record. Under the hood, it's dynamically resolving through the alias chain every time.
 
-CNAME records must always point to another domain name, never directly to an IP address. A CNAME points DNS lookups to the target domain, and multiple domains or subdomains can resolve to the same IP address through CNAME records and server configuration.
+That means if Appwrite's IPs ever change, your domain stays correct automatically. No manual updates. No downtime.
 
-# So what does CNAME flattening do?
+Cloudflare calls this **CNAME Flattening**. AWS Route 53 calls it **ALIAS records**. DNSimple and NS1 call it **ANAME**.
 
-CNAME flattening solves this limitation. It allows DNS providers to:
+Different names, same idea. And now it's built into Appwrite.
 
-- Accept a CNAME-like configuration at the root domain (zone apex).
-- Resolve it internally.
-- Return the correct IP addresses to the browser.
+# What this unlocks for your projects
 
-In addition, CNAME flattening allows you to create a CNAME record at the root of your domain without violating the RFC's rules. However, CNAME records cannot coexist with other CNAME records or other DNS records (such as MX, TXT, or A) at the same name, except in special cases involving CNAME flattening. Only one DNS record can exist with the same name, and CNAME records must not share the same name with other records, as specified in the RFCs.
+With CNAME flattening support in Appwrite, you get:
 
-When a DNS lookup occurs on a CNAME record, the DNS resolver performs another DNS lookup on the target domain, restarting the query using the canonical name instead of the original name, and returns the answer to the client. CNAMEs introduce an extra DNS lookup, though this usually causes negligible latency. CNAMEs also facilitate failover by allowing traffic to be redirected to a backup server if the primary one goes down. However, CNAME looping (when a CNAME points to another CNAME) should be avoided to prevent inefficiencies.
+- **A clean root domain:** `yourdomain.com` loads your app exactly as intended
+- **Zero redirect overhead:** no bouncing through `www` before landing on your content
+- **Intact DNS records:** MX, SPF, DKIM, TXT records all coexist at the apex without conflict
+- **Automatic IP resolution:** if Appwrite infrastructure changes, your domain follows automatically
 
-CNAME records are very common and help administrators avoid repeating IP addresses or other information across multiple DNS records.
+| Situation | Without CNAME Flattening | With CNAME Flattening |
+|---|---|---|
+| Domain URL | Must use `www.yourdomain.com` | Use `yourdomain.com` directly |
+| Performance | Redirect chain adds latency | Direct resolution, no redirect |
+| DNS Records | Risk of breaking MX / TXT records | All DNS records coexist cleanly |
+| Maintenance | Update A records if IP changes | Resolves dynamically, always current |
+| Configuration | Manual workarounds required | Automatic |
 
-From the developer's perspective, it behaves just like a normal CNAME setup, but works at the root domain too.
+# Setting it up
 
-Depending on your DNS provider, apex-domain CNAME-like behavior may be supported through **CNAME records**, **ALIAS records**, or **ANAME records**.
+There's no special toggle. No extra configuration.
 
-- **CNAME flattening** (used by providers like Cloudflare) resolves the target hostname internally and returns A/AAAA records for the root domain.
-- **ALIAS records** (used by providers like Route 53 and others) behave similarly by dynamically resolving a hostname and returning its IP addresses at the apex.
-- **ANAME records** are another variation that achieves the same goal, allowing the root domain to point to a hostname while remaining DNS-compliant.
-- The exact implementation varies by provider, but the outcome is the same: your root domain can point to another hostname without breaking DNS standards.
+Just add your root domain the same way you'd add any custom domain in Appwrite:
 
-# What changed in Appwrite sites
+1. Open your **Appwrite Console** and select your project
+2. Go to **Settings → Domains**
+3. Click **Add Domain** and enter your root domain: `yourdomain.com`
+4. Add the DNS records Appwrite provides to your DNS provider
+5. Wait for propagation (typically a few minutes to a few hours)
 
-With CNAME flattening support, you no longer need to switch your nameservers to Appwrite.
+That's it. Appwrite handles CNAME flattening on its end once your domain is verified.
 
-You can now:
+Full setup details are available in the [Appwrite custom domains documentation.](https://appwrite.io/docs/advanced/platform/custom-domains)
 
-1. Keep your existing DNS provider.
-2. Add a DNS record pointing to Appwrite.
-3. Verify the domain in Appwrite.
-4. Go live.
+# Which DNS providers support this?
 
-When creating the DNS record, note that the default TTL (Time To Live) is often set to 24 hours unless overridden. It is recommended to set the TTL to 5 minutes for quick propagation. A lower TTL allows DNS changes to propagate faster across DNS servers, which improves resolution time and ensures updates take effect more quickly. DNS servers and resolvers use cache to temporarily store DNS answers, which can affect how quickly changes to CNAME records take effect.
+Most modern DNS providers support CNAME flattening or an equivalent feature:
 
-No nameserver migration. No full DNS handover.
+- **Cloudflare:** CNAME Flattening (enabled by default on proxied records)
+- **AWS Route 53:** ALIAS records at the zone apex
+- **DNSimple:** ALIAS records
+- **NS1:** ANAME records
+- **Google Cloud DNS:** supported via forwarding zones
 
-This makes Appwrite Sites much easier to integrate into existing setups, especially for teams using Cloudflare or other advanced DNS configurations.
+If your DNS provider doesn't support flattening, you can also manage your domain through Appwrite by pointing your nameservers to Appwrite.
 
-Read the [full CNAME flattening announcement](https://appwrite.io/blog/post/announcing-cname-flattening) for more details.
+# One less thing to work around
 
-# How to connect your domain now
+The best developer tools are the ones that make you forget the problem ever existed.
 
-When you add a custom domain to your Appwrite Site:
+CNAME flattening is one of those things. Small on the surface, meaningful in practice.
 
-1. Open your site settings in the Appwrite console.
-2. Add your custom domain.
-3. Appwrite will provide a DNS target, which is typically a fully qualified domain name (FQDN) or hostname.
-4. Go to your DNS provider (Cloudflare, Namecheap, etc.).
-5. Create the required DNS record directly, using the correct record type (CNAME or ANAME). 
-6. Return to Appwrite and verify the domain.
+Your root domain now works the way you always expected it to.
 
-Once the DNS propagates, your site will be available on your custom domain with SSL automatically configured.
-
-# Before vs now
-
-Before, connecting a custom domain meant transferring full DNS control to Appwrite. You'd migrate your nameservers, wait out propagation, and hope nothing broke on the domains you already had in production. For teams using Cloudflare for security, caching, or email, it meant walking away from a setup that was already working.
-
-Now, none of that is required. Add a single DNS record, verify the domain in Appwrite, and you're live. Your nameservers stay where they are. Your existing records stay untouched. The rest of your DNS configuration , email routing, CDN rules, security settings, carries on exactly as before.
-
-# Try it out
-
-Head to your [Appwrite Console](https://cloud.appwrite.io/), open your site settings, add a custom domain, and follow the updated DNS instructions. No nameserver changes required.
+Ship with confidence.
 
 # Resources
 
