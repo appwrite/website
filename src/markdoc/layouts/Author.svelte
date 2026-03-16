@@ -6,6 +6,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import type { PostsData, AuthorData } from '$routes/blog/content';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { getPostAuthors } from '$lib/utils/blog-authors';
     import FloatingHead from '$lib/components/FloatingHead.svelte';
 
     export let name: string;
@@ -169,15 +170,26 @@
 
                 <div class="mt-12">
                     <ul class="web-grid-articles">
-                        {#each posts.filter((p) => p.author === author?.slug) as post}
+                        {#each posts.filter( (p) => (Array.isArray(p.author) ? p.author.includes(author?.slug ?? '') : p.author === author?.slug) ) as post}
+                            {@const authorData = getPostAuthors(post.author, authors)}
+                            {@const primaryAuthor = authorData.primaryAuthor ?? author}
                             <Article
                                 title={post.title}
                                 href={post.href}
                                 cover={post.cover}
                                 date={post.date}
                                 timeToRead={post.timeToRead}
-                                {avatar}
-                                author={name}
+                                avatars={authorData.authorAvatars.length > 0
+                                    ? authorData.authorAvatars
+                                    : [primaryAuthor?.avatar ?? avatar]}
+                                authors={authorData.postAuthors.length > 0
+                                    ? authorData.postAuthors
+                                    : [
+                                          {
+                                              name: primaryAuthor?.name || name,
+                                              href: primaryAuthor?.href || ''
+                                          }
+                                      ]}
                             />
                         {/each}
                     </ul>

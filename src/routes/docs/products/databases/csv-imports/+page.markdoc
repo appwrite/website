@@ -37,7 +37,7 @@ x0v4p8ncq2,To Kill a Mockingbird,Harper Lee,1960,false
 
 Different column types handle empty values differently:
 
-- **String columns:** Empty values are interpreted as empty strings. To add null values to a string column, use the value `null` without quotes.
+- **Text columns (varchar, text, mediumtext, longtext):** Empty values are interpreted as empty strings. To add null values to a text column, use the value `null` without quotes.
 - **Integer columns:** Empty values are interpreted as `null`.
 - **Boolean columns:** Empty values are interpreted as `null`.
 - **Array of any type:** Empty values are interpreted as empty arrays.
@@ -115,12 +115,13 @@ If your CSV file contains characters like double quotes (`"`) or commas (`,`), y
 
 There are different ways to escape commas based on different scenarios.
 
-- If your column type is a **string**, you can enclose the value in double quotes (`"comma,used,here"`).
-- If your column type is a **string array**, you need to escape double quotes within the array to use a comma (`"one,two,""comma,allowed,here"""`).
+- If your column type is a **text type** (varchar, text, mediumtext, or longtext), you can enclose the value in double quotes (`"comma,used,here"`).
+- If your column type is a **text type array** (varchar, text, mediumtext, or longtext), you need to escape double quotes within the array to use a comma (`"one,two,""comma,allowed,here"""`).
+
 
 ## Double quotes
 
-If you want to add double quotes to a string column, you need to escape them by doubling them (`""`), otherwise it will be treated as an array.
+If you want to add double quotes to a text column (varchar, text, mediumtext, or longtext), you need to escape them by doubling them (`""`), otherwise it will be treated as an array.
 
 # Import rows from the Console {% #import-console %}
 

@@ -113,7 +113,6 @@
                                         </header>
                                         <div class="web-pricing-cards-content">
                                             <ul class="web-checked-list-circle">
-                                                <li><span>Unlimited sites</span></li>
                                                 <li><span>5GB bandwidth</span></li>
                                                 <li><span>2GB storage</span></li>
                                                 <li><span>750K executions</span></li>
@@ -121,17 +120,14 @@
                                                 <li><span>Community support</span></li>
                                                 <li>
                                                     <span
-                                                        >1 Database, 1 Bucket, 5 Functions per
+                                                        >1 Database, 1 Bucket, 2 Functions per
                                                         project</span
                                                     >
                                                 </li>
                                             </ul>
-                                            <hr
-                                                class="mt-4 mb-4 border-t border-gray-600 opacity-12"
-                                            />
-                                            <p class="text-caption text-secondary font-small">
-                                                Limit of two projects.<br />
-                                                Never paused.
+                                            <p class="text-caption text-secondary mt-4">
+                                                Free projects are paused after 1 week of inactivity.
+                                                Limit of 2 projects.
                                             </p>
                                         </div>
                                     </div>

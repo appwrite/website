@@ -100,8 +100,45 @@
         --p-main-header-border-color: rgb(0, 0, 0, 0.1);
     }
 
-    @media  #{$break2} {
-        display: none;
+    @media #{$break2} {
+        --p-main-header-padding-block: #{pxToRem(10)};
+
+        padding-inline: pxToRem(20);
+
+        .#{$p}-main-header-wrapper {
+            gap: pxToRem(12);
+        }
+
+        .#{$p}-main-header-nav {
+            font-size: pxToRem(15);
+        }
+
+        .#{$p}-main-header-nav-list {
+            gap: pxToRem(20);
+        }
+
+        .#{$p}-main-header-end {
+            gap: pxToRem(6);
+        }
+
+        .web-logo {
+            margin-inline-end: pxToRem(24);
+        }
+
+        .#{$p}-inline-tag {
+            display: none;
+        }
+
+        .#{$p}-button {
+            min-block-size: pxToRem(36);
+            padding-inline: pxToRem(12);
+            font-size: pxToRem(14);
+        }
+
+        .web-main-header-cta {
+            .cta-full { display: none; }
+            .cta-short { display: inline; }
+        }
     }
     
     @media  #{$break1} {

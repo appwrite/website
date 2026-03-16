@@ -195,8 +195,8 @@
                                     <header class="flex flex-col gap-1">
                                         <h2 class="text-label text-primary">Search results</h2>
                                         <p class="text-description">
-                                            {result.length > 0 ? result.length : 'No'} results found
-                                            for "{$query}"
+                                            {result.length > 0 ? result.length : 'No'} results found for
+                                            "{$query}"
                                         </p>
                                     </header>
                                     <div class="l-max-size-list-cards flex flex-col gap-8">

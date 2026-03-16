@@ -12,17 +12,18 @@
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
+    import Ai from './(components)/ai.svelte';
 </script>
 
-<Head title="Appwrite - The developers' cloud" />
+<Head title="Appwrite - Built for the first solocorn" />
 
 <Main>
-    <Hero title="The developers' cloud" />
-    <Platforms headline="Designed for the tools you work with" />
-    <LogoList
-        class="border-smooth border-b"
-        title="Loved by developers from the world's leading organizations"
+    <Hero
+        title="Built for the first solocorn"
+        subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale affordably. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
     />
+    <Platforms headline="Designed for the tools you work with" />
+    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
     <Bento />
     <Pullquote
         name="Phil McCluskey"
@@ -32,6 +33,7 @@
         <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
         that you need with Appwrite.</Pullquote
     >
+    <Ai />
     <CaseStudies />
     <Features theme="light" />
     <div class="light bg-[#EDEDF0]">

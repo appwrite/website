@@ -108,7 +108,7 @@
 </svelte:head>
 <main class="contents" id="main">
     <article class="web-article contents">
-        <header class="web-article-header">
+        <header class="web-article-header flex items-start justify-between">
             <div class="web-article-header-start web-u-cross-start flex flex-col">
                 {#if back}
                     <a
@@ -147,7 +147,9 @@
                     </h1>
                 </div>
             </div>
-            <div class="web-article-header-end"></div>
+            <div class="web-article-header-end self-start md:self-auto">
+                <CopyAsMarkdown class="ml-0" />
+            </div>
         </header>
         <div class="web-article-content prose">
             <section class="web-article-content-section">
@@ -270,7 +272,6 @@
                         <span class="text-caption">Back to top</span>
                     </button>
                 </div>
-                <CopyAsMarkdown class="mt-4 ml-0" />
             </div>
         </aside>
     </article>

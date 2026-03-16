@@ -142,7 +142,7 @@
                             <form
                                 method="post"
                                 on:submit|preventDefault={handleSubmit}
-                                class="flex flex-col gap-4"
+                                class="mx-auto flex w-full max-w-xl flex-col gap-4"
                             >
                                 <div class="flex justify-end">
                                     <ul
@@ -192,7 +192,7 @@
                                     </ul>
                                 </div>
                                 <div
-                                    class="web-u-flex-vertical-reverse-mobile flex justify-between gap-4"
+                                    class="web-u-flex-vertical-reverse-mobile mx-auto flex w-full max-w-xl justify-between gap-4"
                                 >
                                     <p class="text-caption web-u-max-width-380">
                                         {#if error}
@@ -210,7 +210,7 @@
                                     <Button
                                         type="submit"
                                         disabled={submitting}
-                                        class="web-u-inline-width-100-percent-mobile-break1 self-center"
+                                        class="w-full! self-center lg:w-auto!"
                                     >
                                         <span>Submit</span>
                                     </Button>

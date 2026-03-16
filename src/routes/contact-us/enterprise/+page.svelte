@@ -31,21 +31,21 @@
 
         const cloudEmail = loggedIn && $user?.email ? $user.email : undefined;
 
-        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/feedback/sales/enterprise`, {
+        const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/conversations/enterprises`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                firstName,
+                lastName,
                 email,
-                subject: companyName,
-                cloudEmail,
+                message: useCase,
                 companyName,
                 companySize,
                 companyWebsite,
-                firstName,
-                lastName,
-                message: useCase,
+                cloudEmail,
+                platform: 'appwrite',
                 ...getReferrerAndUtmSource()
             })
         });
@@ -124,8 +124,8 @@
                                             development, and launch faster.
                                             <br />
                                             <br />
-                                            Ready to talk? Fill out the form, and one of our experts
-                                            will be in touch.
+                                            Ready to talk? Fill out the form, and one of our experts will
+                                            be in touch.
                                         </p>
                                     </section>
                                 {/if}

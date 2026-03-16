@@ -22,7 +22,7 @@
 </script>
 
 <a
-    class="web-card is-white web-flex flex-col gap-2"
+    class="web-card is-white web-flex h-full flex-col gap-2"
     style="--card-padding: 0.5rem;"
     {href}
     target="_blank"
@@ -35,7 +35,7 @@
             {description}
         </p>
     </div>
-    <div class="img-wrapper">
+    <div class="img-wrapper mt-auto">
         <img src={image.src} alt={image.alt} />
     </div>
 </a>

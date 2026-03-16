@@ -81,5 +81,4 @@
             style:transform={`translateY(${position}px)`}
         ></div>
     </div>
-    <CopyAsMarkdown />
 </nav>

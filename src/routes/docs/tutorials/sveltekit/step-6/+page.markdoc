@@ -18,9 +18,9 @@ Create a table inside a database in the [Appwrite Console](https://cloud.appwrit
 Create the following columns within the table:
 | Field       | Type   | Size | Required |
 | ----------- | ------ | ---- | -------- |
-| userId      | String | 36   | Yes      |
-| title       | String | 128  | Yes      |
-| description | String | 1024 | No       |
+| userId      | Varchar | 36   | Yes      |
+| title       | Varchar | 128  | Yes      |
+| description | Text    | -    | No       |
 
 For this tutorial, we'll also set the permissions to allow any users to read and write to the table.
 In a real-world scenario, you would probably want to restrict access to a certain group of users.

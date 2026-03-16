@@ -18,9 +18,9 @@ Create a new database and table in the [Appwrite Console](https://cloud.appwrite
 Create a new table with the following columns:
 | Field       | Type   | Required | Size     |
 |-------------|--------|----------|----------|
-| userId      | String | Yes      | 200      |
-| title       | String | Yes      | 200      |
-| description | String | No       | 500      |
+| userId      | Varchar | Yes      | 200      |
+| title       | Varchar | Yes      | 200      |
+| description | Text    | No       | -        |
 
 Change the table's permissions in the settings to give access.
 

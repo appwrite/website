@@ -425,6 +425,22 @@
                             <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
                         </a>
                     </li>
+                    <li>
+                        <a
+                            href="/docs/tooling/mcp/antigravity"
+                            class="web-card is-normal flex flex-row! items-center gap-2!"
+                            onclick={() => trackEvent(`docs-mcp-click`)}
+                        >
+                            <img
+                                src="/images/docs/mcp/logos/dark/google-antigravity.svg"
+                                alt="Google Antigravity"
+                                class="w-6"
+                            />
+                            <h4 class="text-sub-body text-primary font-medium">
+                                Google Antigravity
+                            </h4>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>

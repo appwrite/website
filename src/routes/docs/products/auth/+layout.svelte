@@ -116,10 +116,6 @@
                 {
                     label: 'Multi-tenancy',
                     href: '/docs/products/auth/multi-tenancy'
-                },
-                {
-                    label: 'Preferences storage',
-                    href: '/docs/products/auth/preferences-storage'
                 }
             ]
         },

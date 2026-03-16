@@ -71,6 +71,14 @@
                     pro: '3.5M / month',
                     scale: '3.5M / month',
                     enterprise: 'Custom'
+                },
+                {
+                    title: 'Execution logs',
+                    free: '100',
+                    pro: '1000',
+                    scale: 'Unlimited',
+                    enterprise: 'Custom',
+                    info: 'Number of execution logs retained per function/site'
                 }
             ]
         },
@@ -90,13 +98,6 @@
                     pro: '$15',
                     scale: '$15',
                     enterprise: 'Custom'
-                },
-                {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
                 },
                 {
                     title: 'Organization members',
@@ -317,7 +318,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '5 per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -405,7 +406,7 @@
             rows: [
                 {
                     title: 'Messages',
-                    free: '1000 per month',
+                    free: '1000 / month',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -486,6 +487,25 @@
                     pro: 'Coming soon',
                     scale: 'Coming soon',
                     enterprise: 'Coming soon'
+                }
+            ]
+        },
+        {
+            title: 'Others',
+            rows: [
+                {
+                    title: 'Screenshots',
+                    free: '50 / month',
+                    pro: '5,000 / month',
+                    scale: '5,000 / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional screenshots',
+                    free: '-',
+                    pro: '$0.004 per screenshot',
+                    scale: '$0.004 per screenshot',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -874,6 +894,7 @@
 <style>
     .web-u-grid-auto-column-1fr {
         grid-template-columns: var(--columns-template);
+        overflow: hidden;
     }
 
     .web-mini-card {
