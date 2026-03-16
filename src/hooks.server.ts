@@ -263,7 +263,7 @@ export const handle = sequence(
     wwwRedirecter,
     securityheaders,
     initSession,
-	seoOptimization,
-	profoundAnalytics
+    seoOptimization,
+    profoundAnalytics
 );
 export const handleError = Sentry.handleErrorWithSentry();
