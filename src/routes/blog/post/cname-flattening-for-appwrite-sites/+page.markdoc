@@ -11,11 +11,14 @@ featured: false
 unlisted: true
 ---
 
-You've built something worth shipping. The code works. The app is live. All that's left is pointing `yourdomain.com` to it, and then DNS reminds you who's really in charge.
+For most developers, the last step of deploying a site is connecting a custom domain. It should be the easiest part, but DNS often makes it the hardest. Previously, when using Appwrite Sites, pointing an apex domain to your site required changing your nameservers to Appwrite. While this approach worked, migrating nameservers comes with several inconveniences:
 
-Previously, when using Appwrite Sites, pointing an apex domain to your site required changing your nameservers to Appwrite. This was a substantial change, especially if your domain already had other DNS records configured, since migrating records like email configuration (MX records) could add unnecessary hassle and risk.
+- **Downtime during migration:** Your site may remain unavailable until DNS propagation fully completes, which can cause brief but noticeable periods of downtime.
+- **Misconfigured DNS records:** Manually recreating all existing DNS records under a new nameserver is error-prone, and a single mistake can break services tied to your domain.
+- **Proxied DNS conflicts:** If you rely on a provider like Cloudflare for proxied DNS (DDoS protection, caching, etc.), switching nameservers away means losing those features.
+- **Mail forwarding disruption:** Providers like Cloudflare offer built-in email routing and forwarding. Migrating nameservers can silently break these configurations, causing missed emails.
 
-**That changes today.** Appwrite Sites now supports CNAME flattening, which means `yourdomain.com` can point directly to your Appwrite project. No subdomain. No redirect. No compromise.
+Appwrite Sites now supports CNAME flattening, which means `yourdomain.com` can point directly to your Appwrite project. No subdomain. No redirect. No compromise.
 
 [Read the official announcement.](https://appwrite.io/blog/post/announcing-cname-flattening)
 
@@ -31,17 +34,13 @@ But at the root, your domain needs other critical records to exist alongside it:
 
 A CNAME at the root conflicts with all of them. Put one there and you risk silently breaking your email setup, landing in spam folders, or failing domain verification entirely.
 
-The old workarounds? Use `www`. Set a static A record and hope the IP never changes. Redirect from root to subdomain and explain it away in a support ticket. None of them are real solutions.
-
 # What CNAME flattening actually does
 
-CNAME flattening is a clean fix to a decades-old problem.
+CNAME flattening solves the apex domain problem without requiring you to change nameservers.
 
 Instead of storing a CNAME record at the root, your DNS resolver **follows the CNAME chain at query time** and returns only the final A or AAAA IP address, as if you'd hardcoded the IP directly.
 
-No alias chain exposed to the client. No RFC violation. No conflict with your other apex records.
-
-From the outside, it looks like a normal root record. Under the hood, it's dynamically resolving through the alias chain every time.
+From the outside, it looks like a normal A/AAAA record. Under the hood, your DNS provider is dynamically resolving the alias and returning the final IP address every time.
 
 That means if Appwrite's IPs ever change, your domain stays correct automatically. No manual updates. No downtime.
 
@@ -66,6 +65,18 @@ With CNAME flattening support in Appwrite, you get:
 | Maintenance | Update A records if IP changes | Resolves dynamically, always current |
 | Configuration | Manual workarounds required | Automatic |
 
+# Which DNS providers support this?
+
+Most modern DNS providers support CNAME flattening or an equivalent feature:
+
+- **Cloudflare:** CNAME Flattening (enabled by default on proxied records)
+- **AWS Route 53:** ALIAS records at the zone apex
+- **DNSimple:** ALIAS records
+- **NS1:** ANAME records
+- **Google Cloud DNS:** supported via forwarding zones
+
+If your DNS provider doesn't support flattening, you can also manage your domain through Appwrite by pointing your nameservers to Appwrite.
+
 # Setting it up
 
 There's no special toggle. No extra configuration.
@@ -81,18 +92,6 @@ Just add your root domain the same way you'd add any custom domain in Appwrite:
 That's it. Appwrite handles CNAME flattening on its end once your domain is verified.
 
 Full setup details are available in the [Appwrite custom domains documentation.](https://appwrite.io/docs/advanced/platform/custom-domains)
-
-# Which DNS providers support this?
-
-Most modern DNS providers support CNAME flattening or an equivalent feature:
-
-- **Cloudflare:** CNAME Flattening (enabled by default on proxied records)
-- **AWS Route 53:** ALIAS records at the zone apex
-- **DNSimple:** ALIAS records
-- **NS1:** ANAME records
-- **Google Cloud DNS:** supported via forwarding zones
-
-If your DNS provider doesn't support flattening, you can also manage your domain through Appwrite by pointing your nameservers to Appwrite.
 
 # One less thing to work around
 
