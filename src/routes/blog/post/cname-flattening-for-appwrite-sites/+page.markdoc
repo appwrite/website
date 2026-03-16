@@ -2,7 +2,7 @@
 layout: post
 title: CNAME flattening for Appwrite sites
 description: Appwrite Sites now supports CNAME flattening, making it easier to connect custom domains without transferring DNS control or changing nameservers.
-date: 2026-03-12
+date: 2026-03-16
 cover: /images/blog/cname-flattening-for-appwrite-sites/cover.png
 timeToRead: 5
 author: aishwari
