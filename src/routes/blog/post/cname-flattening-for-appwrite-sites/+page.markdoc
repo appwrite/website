@@ -13,7 +13,7 @@ unlisted: true
 
 You've built something worth shipping. The code works. The app is live. All that's left is pointing `yourdomain.com` to it, and then DNS reminds you who's really in charge.
 
-You can't put a CNAME on your root domain. Not without consequences. So you settle for `www`, bolt on a redirect, and ship anyway. It works. But it's never felt right.
+Previously, when using Appwrite Sites, pointing an apex domain to your site required changing your nameservers to Appwrite. This was a substantial change, especially if your domain already had other DNS records configured, since migrating records like email configuration (MX records) could add unnecessary hassle and risk.
 
 **That changes today.** Appwrite Sites now supports CNAME flattening, which means `yourdomain.com` can point directly to your Appwrite project. No subdomain. No redirect. No compromise.
 
@@ -100,9 +100,7 @@ The best developer tools are the ones that make you forget the problem ever exis
 
 CNAME flattening is one of those things. Small on the surface, meaningful in practice.
 
-Your root domain now works the way you always expected it to.
-
-Ship with confidence.
+Your root domain now works the way you always expected it to. Ship with confidence.
 
 # Resources
 
