@@ -1,0 +1,50 @@
+---
+layout: post
+title: "How we reduced cold start times on Appwrite Sites"
+description: Learn how we improved cold start performance for Appwrite Sites, delivering faster load times for your web applications.
+date: 2026-03-12
+cover: /images/blog/reducing-cold-starts-appwrite-sites/cover.png
+timeToRead: 5
+author: levi-van-noort
+category: product
+---
+
+If you've ever deployed a site and noticed that first request taking just a bit too long, you've experienced a cold start. It's one of those things that's easy to overlook during development but quickly becomes noticeable in production, especially when your users are the ones waiting.
+
+At Appwrite, we've been paying close attention to the performance of [Sites](https://appwrite.io/products/sites), and cold starts were high on our list of things to improve. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold start times.
+
+In this post, we'll walk you through what was causing the slowdown, the approach we took to fix it, and the results we're seeing now.
+
+# Adding observability {% #adding-observability %}
+
+Before we could fix anything, we needed to understand what was actually happening. We started by adding observability across the full request lifecycle, instrumenting each step from the moment a request hits our edge to when the response is sent back. This gave us a clear breakdown of where time was being spent and, more importantly, where it was being wasted. Without that visibility, we would have been guessing, and in performance work, guessing is how you end up optimizing the wrong thing.
+
+# Compression and decompression
+
+With that visibility in place, one pattern stood out immediately: compression and decompression of build output was taking up a significant share of the cold start time. Build artifacts were being compressed with tar and extracted using gzip, which worked fine functionally, but the extraction step was eating up a noticeable chunk of every first request.
+
+We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/isa-l), an optimized implementation from Intel's Intelligent Storage Acceleration Library. The results were immediate: extraction times improved by 50–100%, making it one of the highest-impact changes we made. We also evaluated [zstd](https://github.com/facebook/zstd) as an alternative, but its performance was more variable and only showed improvements for certain build output sizes, so we stuck with igzip for its consistent gains across the board.
+
+# Node file tracing
+
+Faster decompression was a big win, but it also raised an obvious next question: why were we extracting so much in the first place? Many build outputs included dependencies and files that were never actually used at runtime. To tackle this, we implemented [Node file tracing](https://github.com/vercel/nft), which statically analyzes a Node.js application to determine exactly which files are required to run it.
+
+The impact was dramatic. Smaller artifacts mean less to compress, less to transfer, and less to extract, compounding the gains we had already made on the decompression side.
+
+Some examples of reductions in size for the templates offered:
+
+| Templates | Before | After | Reduction |
+| --- | --- | --- | --- |
+| Nuxt Playground | 38.9 MB | 768 KB | 98.1% |
+| Analog Playground | 174.0 MB | 1.6 MB | 99.1% |
+| TanStack Starter | 72.0 MB | 2.3 MB | 96.8% |
+| Astro Playground | 38.7 MB | 16.1 MB | 58.4% |
+| Remix Playground | 36.1 MB | 1.6 MB | 95.6% |
+| Svelte Starter | 27.9 MB | 381 KB | 98.7% |
+| Store Template | 31.1 MB | 4.7 MB | 84.9% |
+
+# Cold starts
+
+Those smaller artifacts translated directly into faster cold starts. With build outputs reduced by up to 97%, the download phase of a cold start — previously one of the more costly steps — dropped from multiple seconds down to around 243 ms. The extraction phase saw a similar improvement, going from regular 4–6 second spikes down to around 235 ms. Together, these two phases went from dominating the cold start timeline to being barely noticeable.
+
+The overall effect was a roughly 40–50% reduction in cold start duration across the board. The remaining time is now largely spent on runtime initialization rather than transferring and unpacking artifacts, which means we've shifted the bottleneck to a fundamentally different part of the stack — and that's exactly where we want to focus next.

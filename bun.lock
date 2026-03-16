@@ -130,7 +130,7 @@
 
     "@appwrite.io/pink-icons": ["@appwrite.io/pink-icons@0.26.0", "", {}, "sha512-abLQdT0zlDkEEwvgU1ymFq0ztxuRerwx7t1oeUGFgXlm9gXrxt6nce2f5GRqg9Rb7hM3F3nyc1ds8zRRWHQOyw=="],
 
-    "@appwrite.io/specs": ["@appwrite.io/specs@github:appwrite/specs#63057a4", {}, "appwrite-specs-63057a4"],
+    "@appwrite.io/specs": ["@appwrite.io/specs@github:appwrite/specs#63057a4", {}, "appwrite-specs-63057a4", "sha512-gW7J5folTS45RCdyNdlfj8YuZpsEkCEzge/co1U9bFfgA92vYi/QlOcOP81AeHMOF6r8SK2fpC4o8qriqNLCIA=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.27.1", "", { "dependencies": { "@babel/helper-validator-identifier": "7.27.1", "js-tokens": "4.0.0", "picocolors": "1.1.1" } }, "sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg=="],
 
