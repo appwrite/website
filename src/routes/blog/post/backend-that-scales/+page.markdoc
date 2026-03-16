@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Build a Backend That Scales Without Stress"
+title: "How to build a backend that scales without stress"
 description: The architectural decisions and platform choices that let small teams build backends that scale gracefully without managing complex infrastructure.
 date: 2024-09-06
 cover: /images/blog/backend-that-scales/cover.png
