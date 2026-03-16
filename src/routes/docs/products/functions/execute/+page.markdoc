@@ -39,7 +39,6 @@ Asynchronous executions are created via:
 
 Asynchronous executions:
 - Have no timeout limitations beyond your function's configured timeout
-- Do **not store** response bodies and headers and cannot be retrieved later
 - Are ideal for background processing and event-driven workflows
 
 {% info title="Response body storage" %}
