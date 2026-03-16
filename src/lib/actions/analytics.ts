@@ -60,7 +60,11 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     if (!eventArgs || ENV.TEST) return;
 
     const path = page.url.pathname;
-    const route = page.route.id?.replace(/\(([^()]*)\)/g, '') ?? '';
+    const route =
+        page.route.id
+            ?.replace(/\/\([^/]+\)/g, '') // remove grouped segments including leading slash
+            .replace(/\/{2,}/g, '/') // normalize accidental double slashes
+        ?? '';
     const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
     const data =
         typeof eventArgs === 'string' ? { path, route } : { ...eventArgs.data, path, route };
