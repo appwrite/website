@@ -66,7 +66,7 @@ export const posts = Object.entries(postsGlob)
             description: frontmatter.description,
             featured: frontmatter.featured,
             date: new Date(frontmatter.date),
-            lastUpdated: new Date(frontmatter.lastUpdated),
+            lastUpdated: new Date(frontmatter.lastUpdated ?? frontmatter.date),
             cover: frontmatter.cover,
             timeToRead: frontmatter.timeToRead,
             author: frontmatter.author,
