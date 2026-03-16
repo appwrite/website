@@ -57,14 +57,6 @@ With CNAME flattening support in Appwrite, you get:
 - **Intact DNS records:** MX, SPF, DKIM, TXT records all coexist at the apex without conflict
 - **Automatic IP resolution:** if Appwrite infrastructure changes, your domain follows automatically
 
-| Situation | Without CNAME Flattening | With CNAME Flattening |
-|---|---|---|
-| Domain URL | Must use `www.yourdomain.com` | Use `yourdomain.com` directly |
-| Performance | Redirect chain adds latency | Direct resolution, no redirect |
-| DNS Records | Risk of breaking MX / TXT records | All DNS records coexist cleanly |
-| Maintenance | Update A records if IP changes | Resolves dynamically, always current |
-| Configuration | Manual workarounds required | Automatic |
-
 # Which DNS providers support this?
 
 Most modern DNS providers support CNAME flattening or an equivalent feature:
