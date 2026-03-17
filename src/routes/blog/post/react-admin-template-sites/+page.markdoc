@@ -11,13 +11,13 @@ featured: false
 callToAction: true
 ---
 
-Admin dashboards are at the heart of most business applications. Whether you're managing customers, tracking orders, or reviewing invoices, having a well-structured internal tool can make or break your team's productivity. However, building one from scratch — with data grids, filters, forms, and CRUD operations — takes significant time and effort.
+Admin dashboards are at the heart of most business applications. Whether you're managing customers, tracking orders, or reviewing invoices, having a well-structured internal tool can make or break your team's productivity. However, building one from scratch, with data grids, filters, forms, and CRUD operations, takes significant time and effort.
 
 That's where the new **CRM dashboard with React Admin** site template comes in. Built on top of [React Admin](https://marmelab.com/react-admin/), one of the most popular open-source frameworks for building admin interfaces, this template gives you a fully functional CRM dashboard that connects directly to your Appwrite backend. And with Appwrite Sites, you can deploy it in just a few clicks.
 
 # What is React Admin?
 
-React Admin is an open-source framework, licensed under the MIT license, for building B2B applications and internal tools on top of REST or GraphQL APIs. It provides a rich set of UI components powered by Material-UI — data grids, forms, filters, authentication, and more — all following best practices for enterprise-grade admin interfaces. While React Admin also offers an Enterprise Edition with additional features, the open-source version is fully functional and is what this template uses.
+React Admin is an open-source framework, licensed under the MIT license, for building B2B applications and internal tools on top of REST or GraphQL APIs. It provides a rich set of UI components powered by Material-UI, including data grids, forms, filters, authentication, and more, all following best practices for enterprise-grade admin interfaces. While React Admin also offers an Enterprise Edition with additional features, the open-source version is fully functional and is what this template uses.
 
 When combined with Appwrite's backend services (TablesDB, authentication), React Admin becomes a powerful foundation for building full-stack admin dashboards without reinventing the wheel.
 
