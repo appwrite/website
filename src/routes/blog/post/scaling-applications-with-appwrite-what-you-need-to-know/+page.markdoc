@@ -107,7 +107,7 @@ When traffic spikes, your functions absorb the load. Your users notice nothing.
 
 Scaling shouldn't trap you. As your application matures, your infrastructure needs will change, and you need the freedom to adapt.
 
-Because Appwrite is open source:
+Because Appwrite is open-source, you can:
 
 - Self-host on your own infrastructure, or use Appwrite Cloud
 - Migrate and evolve your infrastructure as needs change
