@@ -2,7 +2,7 @@
 layout: post
 title: "Introducing Appwrite Arena: Which AI model knows Appwrite best?"
 description: Appwrite Arena is an open-source benchmark that tests how well AI models understand Appwrite's services, SDKs, and APIs. 191 questions across 9 service categories, fully transparent scoring, and all results open source.
-date: 2026-03-16
+date: 2026-03-17
 cover: /images/blog/announcing-appwrite-arena/cover.png
 timeToRead: 4
 author: matej-baco
