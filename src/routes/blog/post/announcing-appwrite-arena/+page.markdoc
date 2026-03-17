@@ -13,7 +13,7 @@ callToAction: true
 
 AI coding agents are everywhere. They write your functions, scaffold your database schemas, and wire up authentication flows. But here's the question nobody was answering: **which AI model actually knows Appwrite best?**
 
-We built [Appwrite Arena](https://arena.appwrite.network) to find out.
+We built [Appwrite Arena](https://arena.appwrite.io) to find out.
 
 # What is Arena?
 
@@ -46,7 +46,7 @@ Each model is tested in two contexts:
 - **Without Skills**: The model answers using only its built-in training data.
 - **With Skills**: The model answers with access to Appwrite's [Skills files](/docs/tooling/skills), which provide up-to-date SDK and API context.
 
-This comparison reveals something important: how much a model improves when given the right documentation. Some models see dramatic improvements. Others barely move. That gap tells you a lot about which models are best at leveraging context and which ones rely more on memorized patterns.
+This comparison reveals something important: how much a model improves when given the right documentation. Some models see dramatic improvements. Others barely move and context gets bloated. That gap tells you a lot about which models are best at leveraging context and which ones rely more on memorized patterns.
 
 # Scoring
 
@@ -68,7 +68,13 @@ If you're using AI agents to build with Appwrite, the model you choose directly 
 
 Arena gives you the data to make that choice. Instead of guessing which model works best, you can see exactly how each one performs across every Appwrite service.
 
-And if you've installed [Appwrite Skills](/docs/tooling/skills), Arena shows you exactly how much they improve your model's performance, so you can decide whether skills are worth adding to your workflow (spoiler: they are).
+**Cost vs. performance.** The best-in-class models are expensive. Arena helps you answer whether a top-tier model is actually worth the price for your project, or whether a model that's significantly cheaper or faster gets you close enough.
+
+**Always up to date.** Because Arena is a benchmark, we can rerun it whenever new models or updates drop. This isn't a one-time comparison. It's a living source of truth you can come back to anytime you're evaluating models.
+
+**Response duration matters.** Two models with similar token throughput can have very different benchmark durations. A slower run often means the model is spending more tokens to reach the same answer, which translates to a slower developer experience in practice.
+
+And if you've installed [Appwrite Skills](/docs/tooling/skills), Arena shows you exactly how much they improve your model's performance, so you can decide whether skills are worth adding to your workflow.
 
 # Open source, fully transparent
 
@@ -76,13 +82,21 @@ Every part of Arena is open source. The questions, the reference answers, the sc
 
 You can also contribute. If you think a question is missing, a rubric could be improved, or a new model should be added, open a PR on the [Arena GitHub repository](https://github.com/appwrite/arena).
 
-# See the results
+# Early results
 
-Head to [arena.appwrite.network](https://arena.appwrite.network) to explore the full leaderboard. Compare models side by side, see how they perform across individual services, and find the best fit for your Appwrite development workflow.
+Here are some highlights from the first round of benchmarks:
+
+- **GPT-5.4** currently ranks as the best model with skills, while **Claude Opus 4.6** leads without skills.
+- **GPT-5.3 Codex** used surprisingly few tokens compared to other models, roughly 50% less.
+- **Open-source models** like Grok, DeepSeek, and MiniMax offer the best balance between intelligence and cost.
+- **Skills have a massive impact on MiniMax**, making it one of the biggest improvers with added context.
+- Most recent models tend to perform best with **Databases** questions.
+
+Head to [arena.appwrite.io](https://arena.appwrite.io) to explore the full leaderboard, compare models side by side, and find the best fit for your Appwrite development workflow.
 
 # Resources
 
-- [Arena leaderboard](https://arena.appwrite.network)
+- [Arena leaderboard](https://arena.appwrite.io)
 - [Arena on GitHub](https://github.com/appwrite/arena)
 - [Arena documentation](/docs/tooling/arena)
 - [Appwrite Skills](/docs/tooling/skills)
