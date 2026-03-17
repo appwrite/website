@@ -82,6 +82,8 @@ Every part of Arena is open source. The questions, the reference answers, the sc
 
 You can also contribute. If you think a question is missing, a rubric could be improved, or a new model should be added, open a PR on the [Arena GitHub repository](https://github.com/appwrite/arena).
 
+Big shout-out to [Abhi Varde](https://github.com/AbhiVarde), who already [contributed a bug fix](https://github.com/appwrite/arena/pull/24) to Arena before launch.
+
 # Early results
 
 Here are some highlights from the first round of benchmarks:
