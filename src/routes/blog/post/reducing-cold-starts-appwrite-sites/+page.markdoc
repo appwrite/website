@@ -51,4 +51,4 @@ The overall effect was a roughly 30–50% reduction in cold start duration acros
 
 # What's next
 
-These improvements are just the beginning. We're actively working on the next round of optimizations targeting runtime initialization, smarter caching strategies, and tighter integration between our build pipeline and edge infrastructure. Performance is not a one-time fix - it's an ongoing effort, and we're committed to making every deploy on Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
+These improvements are just the beginning. We're actively working on the next round of optimizations targeting runtime initialization, smarter caching strategies, and tighter integration between our build pipeline and edge infrastructure. Performance is not a one-time fix - it's an ongoing effort, and we're committed to making every deploy on Appwrite Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
