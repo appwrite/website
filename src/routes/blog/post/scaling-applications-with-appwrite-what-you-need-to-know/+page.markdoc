@@ -84,7 +84,7 @@ Auth is where scaling debt tends to accumulate silently. A system that handles t
 [Appwrite Auth](https://appwrite.io/docs/products/auth) is designed to handle scale from day one:
 
 - Millions of users, without architectural changes
-- Multiple auth methods: [OAuth](https://appwrite.io/docs/products/auth/oauth2), [email/password](https://appwrite.io/docs/products/auth/email-password), [magic links](https://appwrite.io/docs/products/auth/magic-url), [phone OTP](https://appwrite.io/docs/products/auth/phone-sms), and more
+- Multiple auth methods: [OAuth](/docs/products/auth/oauth2), [email/password](/docs/products/auth/email-password), [magic links](/docs/products/auth/magic-url), [phone OTP](/docs/products/auth/phone-sms), and more
 - Fine-grained [roles and permissions](https://appwrite.io/docs/advanced/platform/permissions)
 - Secure, scalable session handling
 
