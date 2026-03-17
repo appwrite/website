@@ -72,7 +72,7 @@ Appwrite Databases are built for this reality:
 
 - High-performance querying with support for indexing to keep things fast as data grows
 - Horizontal scalability support out of the box
-- Built-in access control at the document level, no separate permissions layer to maintain
+- Built-in access control at the row level, no separate permissions layer to maintain
 - Consistent data across distributed systems, so users always see accurate state
 
 You can iterate on your data model without breaking production or slowing down your team.
