@@ -94,7 +94,7 @@ Your auth system should be the last thing you worry about at scale. With Appwrit
 
 Not everything belongs in your core application. Background jobs, webhook processing, scheduled tasks, and compute-heavy operations are better handled asynchronously, so your app stays responsive no matter the load.
 
-[Appwrite Functions](https://appwrite.io/docs/products/functions) let you:
+[Appwrite Functions](/docs/products/functions) let you:
 
 - Offload heavy processing to background workers
 - Trigger logic from database events, auth events, and HTTP requests
