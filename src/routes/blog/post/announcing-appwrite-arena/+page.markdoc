@@ -90,7 +90,7 @@ Here are some highlights from the first round of benchmarks:
 
 - **GPT-5.4** currently ranks as the best model with skills, while **Claude Opus 4.6** leads without skills.
 - **GPT-5.3 Codex** used surprisingly few tokens compared to other models, roughly 50% less.
-- **Open-source models** like Grok, DeepSeek, and MiniMax offer the best balance between intelligence and cost.
+- **Open-source models** like DeepSeek and MiniMax offer the best balance between intelligence and cost.
 - **Skills have a massive impact on MiniMax**, making it one of the biggest improvers with added context.
 - Most recent models tend to perform best with **Databases** questions.
 
