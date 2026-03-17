@@ -54,7 +54,7 @@ This is where your backend platform matters just as much as your servers.
 
 # How Appwrite is built for scale
 
-Appwrite isn't a collection of stitched-together services. It's a cohesive backend platform built on microservices principles, where every product, [Auth](https://appwrite.io/docs/products/auth), [Databases](https://appwrite.io/docs/products/databases), [Storage](https://appwrite.io/docs/products/storage), [Functions](https://appwrite.io/docs/products/functions), and [Messaging](https://appwrite.io/docs/products/messaging), is modular, independently deployable, and designed to scale without dragging the rest of your system with it.
+Appwrite isn't a collection of stitched-together services. It's a cohesive backend platform built on microservices principles, where every product, [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Messaging](https://appwrite.io/docs/products/messaging), and [Sites](/docs/products/sites) is modular, independently deployable, and designed to scale without dragging the rest of your system with it.
 
 ## 1. Modular services that scale independently
 
