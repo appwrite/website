@@ -69,7 +69,7 @@ If your team is spending more time maintaining backend wiring than building prod
 
 # How Appwrite helps small teams avoid these backend mistakes
 
-Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It provides authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, all designed to work together in a single platform, alongside a fully integrated frontend hosting solution through [Appwrite Sites](https://appwrite.io/docs/products/sites). Appwrite can be self-hosted on any Docker-compatible infrastructure or used as a managed service through Appwrite Cloud.
+Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It provides authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, all designed to work together in a single platform, alongside a fully integrated frontend hosting solution. Appwrite can be used as a managed service through Appwrite Cloud or self-hosted on any Docker-compatible infrastructure.
 
 For small teams, Appwrite directly addresses the backend mistakes outlined above:
 
