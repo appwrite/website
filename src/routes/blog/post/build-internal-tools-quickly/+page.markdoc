@@ -120,8 +120,6 @@ const execution = await functions.createExecution(
     'POST'     // method
 );
 
-This pattern keeps privileged operations as server-side Functions with their own access policies, rather than exposing them as direct database operations from the admin panel.
-
 # Appwrite for internal tools
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
