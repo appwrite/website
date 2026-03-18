@@ -1,5 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
+import { building } from '$app/environment';
 
 const { PROFOUND_API_URL, PROFOUND_API_KEY } = env;
 
@@ -82,12 +83,18 @@ class LogBatcher {
 const logBatcher = new LogBatcher();
 
 export const profoundAnalytics: Handle = async ({ event, resolve }) => {
-    // Short circuit if analytics is not configured
-    if (!PROFOUND_API_URL || !PROFOUND_API_KEY) {
+    // Short circuit if analytics is not configured or during pre-render
+    if (building || !PROFOUND_API_URL || !PROFOUND_API_KEY) {
         return resolve(event);
     }
 
     const response = await resolve(event);
+
+    // Only track HTML pages, not API responses or static assets
+    const contentType = response.headers.get('content-type');
+    if (!contentType?.includes('text/html')) {
+        return resolve(event);
+    }
 
     // Calculate header size
     const headerSize = Array.from(response.headers.entries()).reduce(
