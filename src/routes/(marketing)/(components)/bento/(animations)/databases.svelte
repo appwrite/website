@@ -121,9 +121,9 @@
                     {#if activeType === 'Documents'}
                         <!-- Documents: frame within frame -->
                         <div class="p-1.5">
-                            <div class="overflow-hidden rounded-xl bg-[#19191C] flex">
-                                <!-- Left: narrow ID list, first row selected -->
-                                <div class="border-smooth divide-smooth w-36 shrink-0 divide-y border-r pt-1.5">
+                            <div class="@container overflow-hidden rounded-xl bg-[#19191C] flex">
+                                <!-- Left: narrow ID list, hidden on small containers -->
+                                <div class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block">
                                     {#each movies as movie}
                                         <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
                                             {movie.id}<span class="font-sans text-secondary/60">…</span>
@@ -176,8 +176,8 @@
                     {:else}
                         <!-- Vector: frame within frame -->
                         <div class="p-1.5">
-                            <div class="overflow-hidden rounded-xl bg-[#19191C] flex">
-                                <div class="border-smooth divide-smooth w-36 shrink-0 divide-y border-r pt-1.5">
+                            <div class="@container overflow-hidden rounded-xl bg-[#19191C] flex">
+                                <div class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block">
                                     {#each movies as movie}
                                         <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
                                             {movie.id}<span class="font-sans text-secondary/60">…</span>
