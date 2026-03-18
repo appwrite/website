@@ -261,12 +261,9 @@
   "images/blog/baas-vs-custom-backend/messaging.png": "54a574317afa9ed22728aa3e10aa1ca1157a29bdfea61909a5260ca1f79d4f4f",
   "images/blog/baas-vs-custom-backend/storage.png": "6ed39797b1d5f67299c55b1be3944912860811564c38e849adb31a0d4a23ec46",
   "images/blog/baas.png": "e5353595cc9c6c8037a7b9b3a8ff25552cb39f61a120ecb867c63de46f14aa74",
-<<<<<<< add-new-blogs-aditya
+  "images/blog/backend-mistakes-that-quietly-cost-small-teams-weeks/cover.png": "c804b93ac334b4224c612fc5c177469f30a6a6e548db1c93e90fb95b35544bda",
   "images/blog/backend-platform-security-responsibilities/cover.png": "030e20752d00612ff677b28c2fd30665ed34fcd77ee80a6efa89d9d789cb9d94",
   "images/blog/backend-that-scales/cover.png": "1d6ee39bc41387024bb9beded27137e7f135293c654add113ca9ee3fd4b8c9cb",
-=======
-  "images/blog/backend-mistakes-that-quietly-cost-small-teams-weeks/cover.png": "c804b93ac334b4224c612fc5c177469f30a6a6e548db1c93e90fb95b35544bda",
->>>>>>> main
   "images/blog/backup-encryption/cover.png": "4a3b2f9f2acc75681669c1dcefa407455e6f7ee29f2dc04bd4e9cae5f9d646c9",
   "images/blog/badge.png": "2d1852c6f826d55c40cb848cc3813f25a4d3d982a6f56d2738c9e5b3d0ac9694",
   "images/blog/Behind_the_pull_request_Stories_from_contributors.png": "16d81aff97deaded8b03c33f4498d3bf6f8ec392fee8edff6dc273d0cafbd132",
