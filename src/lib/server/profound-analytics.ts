@@ -93,7 +93,7 @@ export const profoundAnalytics: Handle = async ({ event, resolve }) => {
     // Only track HTML pages, not API responses or static assets
     const contentType = response.headers.get('content-type');
     if (!contentType?.includes('text/html')) {
-        return resolve(event);
+        return response;
     }
 
     // Calculate header size
