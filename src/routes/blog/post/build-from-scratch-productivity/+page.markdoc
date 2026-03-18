@@ -68,9 +68,9 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 
 Appwrite directly replaces the categories of infrastructure that teams most commonly rebuild from scratch unnecessarily:
 
-- **Authentication**: Email/password with Argon2 hashing, 30+ OAuth providers, phone/SMS, anonymous sessions, MFA, password history, dictionary checks, and brute-force protection, implemented correctly and maintained by the Appwrite team, not yours.
-- **Database with API**: Create collections, define schema and indexes, and query immediately. No custom API layer to build or maintain.
-- **File storage**: Managed uploads with per-user access controls, image transformations, and antivirus scanning. No S3 configuration, no upload URL generation, no access control middleware.
+- **Authentication**: Email/password with Argon2 hashing, 30+ OAuth providers, phone/SMS, anonymous sessions, MFA, password history, dictionary checks, and brute-force protection, [designed following security best practices](/docs/advanced/security) and maintained by the Appwrite team.
+- **Database with API**: Create tables, define schema and indexes, and query immediately via REST or GraphQL, reducing the need for a custom API layer.
+- **File storage**: Managed uploads with per-user access controls, image transformations, and antivirus scanning, reducing the need for manual S3 configuration, upload URL generation, and access control middleware.
 - **Background functions**: Serverless functions triggered by HTTP, events, or schedules, covering the asynchronous processing that most applications need without a custom job queue.
 - **Real-time**: WebSocket subscriptions that let your UI react to data changes, without building a real-time server.
 - **Messaging**: Push notifications, email, and SMS sending through a unified API with topic-based subscriber management.
