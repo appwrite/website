@@ -15,11 +15,11 @@ Developer time is the most constrained resource in most software projects. When 
 
 Managed backend platforms have changed the economics of this decision significantly. What used to require weeks of backend infrastructure work can now be set up in hours. This post makes that concrete: a realistic accounting of what it takes to build common backend components from scratch versus using a managed platform.
 
-## The time cost of building backend infrastructure from scratch
+# The time cost of building backend infrastructure from scratch
 
 Let's walk through the backend components a typical web application needs and a realistic estimate of the development time required to build each from scratch, correctly.
 
-### User authentication system
+## User authentication system
 
 Implementing authentication from scratch means:
 
@@ -36,25 +36,25 @@ Implementing authentication from scratch means:
 
 A rigorous implementation of all of the above for a production application: **2-4 weeks** for an experienced backend developer. A partial implementation that misses some security requirements: faster, but not acceptable for a production application.
 
-### Database setup and API layer
+## Database setup and API layer
 
 Setting up a database, designing a schema, building a CRUD API with proper validation, pagination, filtering, and access control: **1-2 weeks** depending on the complexity of the data model.
 
-### File upload and storage
+## File upload and storage
 
 Implementing file uploads with proper validation, storage configuration, CDN integration, access control, and handling of large files: **3-5 days**.
 
-### Email notifications
+## Email notifications
 
 Integrating an email provider, building email templates, handling delivery failures, and managing unsubscribes: **2-4 days**.
 
-### Serverless functions / background jobs
+## Serverless functions / background jobs
 
 Setting up a queue-based job processing system or serverless function infrastructure for background operations: **3-5 days** depending on the platform.
 
 **Total: roughly 4-7 weeks** of backend development work before the first meaningful product feature is built.
 
-## The time cost with a managed backend platform
+# The time cost with a managed backend platform
 
 With a managed backend platform like Appwrite, the same components are available on day one:
 
@@ -66,7 +66,7 @@ With a managed backend platform like Appwrite, the same components are available
 
 The setup time for all of the above on Appwrite, to a level equivalent in functionality to the from-scratch implementations described above: **1-2 days** for an experienced developer, including reading documentation for unfamiliar features.
 
-## What happens with the saved time
+# What happens with the saved time
 
 The 4-6 weeks of development time saved by using a managed backend doesn't disappear; it redirects. For a typical product, this is the difference between:
 
@@ -76,7 +76,7 @@ The 4-6 weeks of development time saved by using a managed backend doesn't disap
 
 For indie developers and small teams where engineering time is directly connected to business outcomes, this compounding effect is significant.
 
-## The ongoing maintenance savings
+# The ongoing maintenance savings
 
 The savings don't stop at initial development. Managed backend platforms also reduce ongoing maintenance:
 
@@ -87,7 +87,7 @@ The savings don't stop at initial development. Managed backend platforms also re
 
 A rough estimate: a self-managed backend authentication and database system for a mid-scale application requires 1-2 days of engineering time per month for maintenance, updates, and incident response. A managed backend platform reduces this to near zero for most months.
 
-## What managed backends don't eliminate
+# What managed backends don't eliminate
 
 Using a managed backend platform doesn't remove all backend engineering work:
 
@@ -98,7 +98,7 @@ Using a managed backend platform doesn't remove all backend engineering work:
 
 The managed platform handles the commodity infrastructure. The custom work that's unique to your product remains yours.
 
-## How Appwrite saves development time
+# How Appwrite saves development time
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -112,7 +112,7 @@ The time savings described in this post are concrete when using Appwrite:
 
 The **1-2 day setup estimate** for a production-ready backend is achievable with Appwrite precisely because these components are designed to be configured and used immediately, not assembled from parts.
 
-## Replace weeks of backend infrastructure work with hours of configuration
+# Replace weeks of backend infrastructure work with hours of configuration
 
 The decision to use a managed backend platform is a decision about where to spend development time. Teams that use managed backends for solved infrastructure problems ship faster, launch earlier, and put more engineering capacity into the product work that actually matters.
 

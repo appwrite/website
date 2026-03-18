@@ -15,15 +15,15 @@ Compliance conversations usually happen in one of two ways. Either a legal or co
 
 The developers who navigate compliance well think about it early, from a technical perspective, before the legal team is in the room. Developing that habit starts with understanding the frameworks that are most likely to apply to your application.
 
-## Why developers should think about compliance first
+# Why developers should think about compliance first
 
 Legal teams interpret compliance requirements. Developers implement them. The gap between "our data handling must comply with GDPR" and "here's how we configure our database, API, and third-party integrations to accomplish that" is entirely a technical problem.
 
 By the time a developer understands what a compliance requirement actually means in code, they've already made architectural decisions that may need to be unwound. Getting a working mental model of the common frameworks before those decisions are made saves significant rework.
 
-## The frameworks that matter most for most developers
+# The frameworks that matter most for most developers
 
-### GDPR (General Data Protection Regulation)
+## GDPR (General Data Protection Regulation)
 
 Applicable if you're processing personal data of EU residents, regardless of where your company is based. The core developer-relevant requirements are:
 
@@ -35,7 +35,7 @@ Applicable if you're processing personal data of EU residents, regardless of whe
 
 In practice, GDPR compliance touches your user registration flow, your data model, your third-party integrations, your logging and analytics setup, and your support processes.
 
-### HIPAA (Health Insurance Portability and Accountability Act)
+## HIPAA (Health Insurance Portability and Accountability Act)
 
 Applicable if you're processing Protected Health Information (PHI) in the United States. The core technical requirements, known as the Security Rule, cover:
 
@@ -46,19 +46,19 @@ Applicable if you're processing Protected Health Information (PHI) in the United
 
 HIPAA compliance requires a comprehensive risk analysis of your system, documented policies and procedures, and Business Associate Agreements with every vendor that touches PHI.
 
-### PCI DSS (Payment Card Industry Data Security Standard)
+## PCI DSS (Payment Card Industry Data Security Standard)
 
 Applicable if you store, process, or transmit cardholder data. The most developer-relevant guidance: don't store raw cardholder data if you can avoid it. Use a PCI-compliant payment processor (like Stripe or Braintree) and let them handle the cardholder data. Your PCI scope shrinks dramatically when cardholder data never touches your own systems.
 
 If you do store cardholder data, PCI DSS requires network segmentation, encryption, access controls, regular security testing, and annual assessments.
 
-### SOC 2 (Service Organization Control 2)
+## SOC 2 (Service Organization Control 2)
 
 Not a legal requirement but increasingly a commercial one. Enterprise buyers (especially in the US) often require vendors to have SOC 2 Type II certification before signing contracts. SOC 2 covers five Trust Services Criteria: security, availability, processing integrity, confidentiality, and privacy.
 
 Getting SOC 2 certified requires documented controls across your engineering, security, and operations practices. It's a significant process but increasingly table stakes for selling to enterprise customers.
 
-## Questions developers should be able to answer before the legal review
+# Questions developers should be able to answer before the legal review
 
 Before bringing compliance questions to legal, a developer should be able to clearly answer:
 
@@ -72,14 +72,14 @@ Before bringing compliance questions to legal, a developer should be able to cle
 
 Having answers to these questions makes the legal review faster and more productive. Legal teams can interpret requirements; they can't reverse-engineer your database schema.
 
-## Practical steps for developer-led compliance thinking
+# Practical steps for developer-led compliance thinking
 
 - **Build a data map early.** A simple diagram or spreadsheet that lists every data type your application processes, where it's stored, who accesses it, and what third parties receive it. This is the foundation of almost every compliance framework's requirements.
 - **Read the relevant frameworks directly.** GDPR, HIPAA, and PCI DSS all have published guidance that is more readable than it sounds. Understanding the intent behind requirements helps you make better implementation decisions than following a checklist mechanically.
 - **Pick backend tools with compliance-relevant features.** Authentication systems with built-in MFA, audit logging, password policies, and data deletion support reduce the amount of compliance-relevant code you write yourself.
 - **Document architectural decisions as you make them.** A brief explanation of why you chose a particular storage approach, what access controls are in place, and how data is protected is invaluable during audits.
 
-## Appwrite for compliance-ready applications
+# Appwrite for compliance-ready applications
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -90,7 +90,7 @@ For developers thinking through compliance requirements before engaging legal, A
 - **SOC 2**: Appwrite's permission system, audit logging, and encryption at rest and in transit provide a documented, implementable foundation for SOC 2's security and availability criteria.
 - **Answering the hard questions**: When an auditor asks "who has access to this data and how is it controlled?", Appwrite's explicit permission model gives you a concrete, reviewable answer rather than custom code that needs to be explained from scratch.
 
-## Map your compliance requirements to your architecture before the legal review
+# Map your compliance requirements to your architecture before the legal review
 
 Compliance doesn't have to be a surprise. Developers who understand the frameworks that apply to their application make better technical decisions and have more productive conversations with legal teams, security reviewers, and enterprise customers.
 

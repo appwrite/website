@@ -15,18 +15,18 @@ Adding file uploads to an application is one of those features that looks simple
 
 This post walks through the fastest path from "we need file uploads" to "file uploads are working in production" using Appwrite Storage.
 
-## What is Appwrite?
+# What is Appwrite?
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
 Appwrite Storage is the file management component of the Appwrite platform. It handles the infrastructure concerns of file uploads (chunking large files automatically, enforcing file type and size validation, managing per-user access controls, performing on-the-fly image transformations, and integrating antivirus scanning) so that adding file uploads to your application is a configuration and SDK task rather than a backend engineering project.
 
-## What you'll need
+# What you'll need
 
 - An [Appwrite Cloud](https://cloud.appwrite.io) account or a self-hosted Appwrite instance
 - The Appwrite SDK for your platform (we'll use JavaScript/Web in this guide)
 
-## Setting up a storage bucket
+# Setting up a storage bucket
 
 In Appwrite, files are organized into buckets. Each bucket has its own permission settings, file type restrictions, and size limits. Think of a bucket as a folder with configurable access control.
 
@@ -66,7 +66,7 @@ const bucket = await storage.createBucket(
 );
 ```
 
-## Uploading a file from the browser
+# Uploading a file from the browser
 
 With the bucket created, file uploads from the browser use the Appwrite Web SDK:
 
@@ -100,7 +100,7 @@ document.getElementById('file-input').addEventListener('change', async (event) =
 
 The `createFile` method handles chunking for large files automatically. Files up to 5GB are supported with automatic chunked upload handling built into the SDK.
 
-## Retrieving and displaying files
+# Retrieving and displaying files
 
 Once uploaded, you can get a file's URL for display using the `getFileView` method:
 
@@ -123,7 +123,7 @@ const thumbnailUrl = storage.getFilePreview(
 );
 ```
 
-## Restricting file access
+# Restricting file access
 
 Appwrite's permission system controls who can read, create, update, and delete files. Permissions can be set at the bucket level (applying to all files in the bucket) or at the individual file level.
 
@@ -145,7 +145,7 @@ const response = await storage.createFile(
 
 With this configuration, only the user who uploaded the file can view or delete it. Other authenticated users won't be able to access it. Unauthenticated requests will receive a 401 response.
 
-## Handling file deletions
+# Handling file deletions
 
 Deleting a file is straightforward:
 
@@ -155,7 +155,7 @@ await storage.deleteFile('profile-photos', fileId);
 
 For applications that need to clean up orphaned files (files whose associated database records have been deleted), Appwrite Functions can be used to trigger file deletions on database document delete events.
 
-## Implement production-ready file uploads in hours, not days
+# Implement production-ready file uploads in hours, not days
 
 File uploads don't have to be a week of backend work. Appwrite Storage handles the infrastructure: chunked uploads, access control, image transformations, file validation. You write the feature, not the plumbing.
 

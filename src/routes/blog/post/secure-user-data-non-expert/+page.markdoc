@@ -15,7 +15,7 @@ Security is one of those topics that can feel overwhelming for developers who di
 
 The practical steps below move a typical web application from "probably has exploitable vulnerabilities" to "applies current best practices" without requiring a security engineering background.
 
-## Why security feels harder than it is
+# Why security feels harder than it is
 
 Security has a communication problem. The field produces an enormous volume of material about advanced adversarial techniques, nation-state threats, zero-day exploits, and sophisticated attack chains. This is interesting and important in certain contexts, but it's not what most application developers need to think about.
 
@@ -29,9 +29,9 @@ Most application security incidents involve:
 
 None of these require advanced security knowledge to prevent. They require consistent application of well-documented practices.
 
-## The fundamentals that prevent most incidents
+# The fundamentals that prevent most incidents
 
-### Use a managed authentication system
+## Use a managed authentication system
 
 Authentication is one of the most security-critical pieces of any application, and one of the most frequently implemented incorrectly. Password hashing, brute-force protection, session management, token rotation, and secure password reset flows each have well-known failure modes.
 
@@ -45,7 +45,7 @@ What to look for in an authentication system:
 - Password strength enforcement
 - Email verification for new accounts
 
-### Apply least-privilege access control
+## Apply least-privilege access control
 
 Every user in your system should have access to exactly the data and actions they need. No more. This seems obvious but is frequently violated:
 
@@ -55,7 +55,7 @@ Every user in your system should have access to exactly the data and actions the
 
 Implementing access control correctly means defining your permission model explicitly: which users can read which resources, which users can modify which resources, and enforcing those rules at the data layer, not just the UI.
 
-### Keep dependencies updated
+## Keep dependencies updated
 
 A significant portion of application security vulnerabilities are in third-party dependencies, not in code you wrote. CVEs (Common Vulnerabilities and Exposures) are published regularly for popular libraries. Applications that don't update dependencies accumulate known vulnerabilities over time.
 
@@ -65,25 +65,25 @@ Practical steps:
 - Integrate a dependency vulnerability scanner into your CI/CD pipeline
 - Treat dependency updates as routine maintenance, not an interruption
 
-### Use HTTPS everywhere
+## Use HTTPS everywhere
 
 All application traffic should be encrypted in transit. This is table stakes and is easy to verify: check that your application does not serve anything over HTTP, including APIs, image endpoints, and redirect flows. Check that all your backend service-to-service communication is also encrypted.
 
 Most hosting platforms (Vercel, Netlify, Railway, etc.) and cloud providers handle TLS certificate provisioning automatically. There's very little reason for any modern web application to have unencrypted traffic paths.
 
-### Never store secrets in code
+## Never store secrets in code
 
 API keys, database connection strings, OAuth client secrets, and encryption keys should never appear in source code, configuration files committed to version control, or client-side JavaScript bundles.
 
 Use environment variables for secrets in all environments. Review your `.gitignore` to ensure `.env` files are excluded. Audit your repository history if you suspect a secret was ever committed, as git history is public on public repositories and can be scraped.
 
-### Hash passwords, always
+## Hash passwords, always
 
 If you're implementing any custom credential handling, passwords must be hashed using a modern, slow hashing algorithm: bcrypt, scrypt, or Argon2. Never store plaintext passwords. Never use MD5, SHA-1, or SHA-256 for password storage; these are fast algorithms designed for integrity checking, not password hashing.
 
 If you're using a managed authentication system, this is handled for you. Verify that it is.
 
-### Validate and sanitize inputs
+## Validate and sanitize inputs
 
 Data from users (form submissions, URL parameters, file uploads) must be validated before being used. At minimum:
 - Validate that data matches the expected format before processing
@@ -91,7 +91,7 @@ Data from users (form submissions, URL parameters, file uploads) must be validat
 - Use parameterized queries instead of string concatenation for database queries (this prevents SQL injection)
 - Validate file uploads by type and content, not just by file extension
 
-## What managed backend platforms handle for you
+# What managed backend platforms handle for you
 
 A significant share of the security work described above is in the authentication and data access layer. Backend-as-a-service platforms that implement security correctly by default take this burden off application developers:
 
@@ -101,7 +101,7 @@ A significant share of the security work described above is in the authenticatio
 
 The security that remains (input validation, dependency updates, secrets management, HTTPS configuration) is still your responsibility, but it's a much smaller surface area.
 
-## Appwrite's built-in security features
+# Appwrite's built-in security features
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -114,7 +114,7 @@ For developers who aren't security specialists, Appwrite handles the authenticat
 - **Granular permissions**: Appwrite's permission system lets you define exactly which users or teams can read, create, update, or delete each resource. Authorization bugs (users accessing data they shouldn't) are prevented at the data layer, not just the UI.
 - **Password policies**: Minimum password length, password history, and dictionary checks can be configured to prevent weak or reused credentials.
 
-## Apply consistent security practices to protect users without a security team
+# Apply consistent security practices to protect users without a security team
 
 Securing user data doesn't require becoming a security specialist. It requires applying a set of well-documented practices consistently: use managed authentication, enforce least-privilege access, update dependencies, use HTTPS, protect secrets, and validate inputs. With Appwrite handling the authentication and access control layer, your security surface area shrinks to the parts of your application that are genuinely unique.
 

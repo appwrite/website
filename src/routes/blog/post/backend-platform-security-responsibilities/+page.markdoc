@@ -15,7 +15,7 @@ When you build on a backend platform (whether that's a cloud provider, a BaaS so
 
 Get it wrong in one direction and you'll over-invest in controls the platform already handles. Get it wrong in the other and you'll ship an application with critical security gaps you didn't know existed.
 
-## What is the shared responsibility model?
+# What is the shared responsibility model?
 
 The shared responsibility model is a framework, originally formalized by cloud providers like AWS and Azure, that divides security duties between the infrastructure provider and the customer. At a high level:
 
@@ -24,7 +24,7 @@ The shared responsibility model is a framework, originally formalized by cloud p
 
 The line shifts depending on the service model. With IaaS (Infrastructure as a Service), you manage almost everything above the virtual machine. With PaaS (Platform as a Service) and SaaS-like BaaS platforms, the provider manages more, but you still own your application logic and data security.
 
-## What backend platforms typically handle
+# What backend platforms typically handle
 
 When using a well-maintained backend platform, you can generally expect the provider to take responsibility for:
 
@@ -35,7 +35,7 @@ When using a well-maintained backend platform, you can generally expect the prov
 - **High availability and redundancy.** Uptime SLAs, failover, and backup infrastructure are generally managed by the platform.
 - **Authentication service security.** If the platform provides authentication, it should handle password hashing, brute-force protection, and secure session management internally.
 
-## What you are responsible for
+# What you are responsible for
 
 No matter how capable the platform, these responsibilities remain yours:
 
@@ -47,7 +47,7 @@ No matter how capable the platform, these responsibilities remain yours:
 - **User account policies.** Enforcing strong password policies, requiring multi-factor authentication, and managing account recovery flows is your team's decision, not the platform's default.
 - **Monitoring and incident response.** Platform providers may offer logging and alerting tools, but configuring those tools and responding to alerts falls to your team.
 
-## Common misconceptions that lead to security gaps
+# Common misconceptions that lead to security gaps
 
 **"The platform handles security."** This is the most dangerous misunderstanding. The platform handles its security. Your application security is still entirely yours.
 
@@ -57,7 +57,7 @@ No matter how capable the platform, these responsibilities remain yours:
 
 **"We'll add security later."** Security controls are cheapest when built in. Authentication bypass bugs, insecure direct object references, and exposed admin endpoints discovered post-launch are expensive to fix and damaging to user trust.
 
-## Choosing a platform with clear security documentation
+# Choosing a platform with clear security documentation
 
 When evaluating backend platforms, look for those that:
 
@@ -67,7 +67,7 @@ When evaluating backend platforms, look for those that:
 - Are transparent about their own security certifications and third-party audits
 - Support security best practices by default, like Argon2 password hashing, session expiration, and rate limiting on authentication endpoints
 
-## Appwrite's security model
+# Appwrite's security model
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -80,7 +80,7 @@ Within the shared responsibility model, Appwrite clearly defines what the platfo
 
 Your responsibilities remain: your application logic, your access control configuration, your API key management, and your input validation. But Appwrite handles the platform-layer security correctly so you can focus on what's uniquely yours.
 
-## Apply your application security on top of a platform you can verify
+# Apply your application security on top of a platform you can verify
 
 No backend platform removes your responsibility for application security. But choosing a platform that handles its layer correctly, is transparent about what it does, and gives you the primitives to enforce least-privilege access makes your job significantly smaller. With Appwrite, you can verify every security-relevant decision in the open-source codebase rather than trusting vendor claims.
 

@@ -15,7 +15,7 @@ Early-stage product development has a seductive enemy: the urge to build infrast
 
 This is backend overengineering, and it's one of the most reliable ways for a small team to burn months of development time on problems they don't actually have.
 
-## What overengineering costs
+# What overengineering costs
 
 The cost of overengineered backend architecture isn't just the time spent building it. The compounding costs are:
 
@@ -24,33 +24,33 @@ The cost of overengineered backend architecture isn't just the time spent buildi
 - **Delayed market feedback.** The longer it takes to ship something users can interact with, the longer it takes to learn whether you're building the right thing.
 - **False confidence in infrastructure.** Teams that have invested heavily in infrastructure sometimes continue building around it even when the product hypothesis isn't working, because stopping feels like admitting the infrastructure investment was wasted.
 
-## The common overengineering patterns
+# The common overengineering patterns
 
-### Premature microservices
+## Premature microservices
 
 Microservices architecture has real advantages, for large teams with mature, well-understood systems where independent deployment and scaling of individual services creates meaningful value. For an early-stage product with a team of one to five people, microservices mostly add operational complexity with no corresponding benefit.
 
 A monolith or a small number of well-structured services is almost always the right architecture for an early-stage product. You can split later, when you have a concrete reason to do so.
 
-### Building for theoretical scale
+## Building for theoretical scale
 
 "We might have a million users" is not a design requirement. Actual scale requirements come from actual load data. Building distributed systems, eventual consistency patterns, and sharding strategies for load that might never materialize is engineering time that could go into the product.
 
 Design for the scale you have plus a reasonable buffer. Optimize when you have data showing you need to.
 
-### Over-abstracting too early
+## Over-abstracting too early
 
 Generic frameworks, plugin architectures, and highly abstracted database layers seem like they'll enable flexibility. In practice, they create indirection that makes the system harder to understand and change. The abstraction that seemed like it would help in six months often just makes the current six months slower.
 
-### Custom authentication
+## Custom authentication
 
 Implementing authentication from scratch (session management, password hashing, brute-force protection, OAuth integrations, MFA) is a significant engineering investment that most teams don't need to make. Authentication is a solved problem. Using a backend platform that handles it correctly is not cutting corners; it's good engineering judgment.
 
-### Building admin tooling before you need it
+## Building admin tooling before you need it
 
 Admin panels, data dashboards, and internal tooling are genuinely useful, eventually. In the earliest stages of a product, most of these can be handled by the management interface of whatever backend platform you're using. Custom admin tooling built before there's a clear need for it is often rebuilt or abandoned as the product evolves.
 
-## What "appropriately simple" looks like
+# What "appropriately simple" looks like
 
 An appropriately simple early-stage backend:
 
@@ -63,7 +63,7 @@ An appropriately simple early-stage backend:
 
 The test of appropriate simplicity is not "could this scale to a million users"; it's "could we add an important new feature next week without a major architectural change."
 
-## When to add complexity
+# When to add complexity
 
 Complexity should be added when there's a concrete, measured reason to add it. Not when you anticipate a problem, but when you're experiencing one.
 
@@ -75,7 +75,7 @@ The right triggers for adding backend complexity:
 
 Without one of these concrete triggers, the cost of added complexity is almost always higher than the benefit.
 
-## Appwrite keeps your backend appropriately simple
+# Appwrite keeps your backend appropriately simple
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -89,7 +89,7 @@ Appwrite is built around the same "appropriately simple" philosophy described ab
 
 The result is a backend that covers what you need at launch and grows with your product, without requiring you to design a distributed system before you have users.
 
-## Keep your early-stage backend boring on purpose
+# Keep your early-stage backend boring on purpose
 
 The best thing a small team can do for their backend is make it boring as quickly as possible. Use managed services for solved problems: authentication, database, storage, functions. Keep the architecture as simple as the actual requirements allow. Add complexity only when real constraints demand it.
 

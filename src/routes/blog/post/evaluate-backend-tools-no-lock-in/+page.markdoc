@@ -17,7 +17,7 @@ Developers who've been through a painful migration know the feeling: a decision 
 
 Evaluating backend tools with the migration cost in mind from the start is the best way to avoid that trap.
 
-## What lock-in actually means in practice
+# What lock-in actually means in practice
 
 Lock-in is not binary. There are degrees:
 
@@ -27,9 +27,9 @@ Lock-in is not binary. There are degrees:
 
 Most decisions fall somewhere in the middle. The goal is to be thoughtful about which kinds of lock-in you're accepting and why.
 
-## The evaluation framework
+# The evaluation framework
 
-### 1. Data portability
+## 1. Data portability
 
 The most important lock-in question: how easy is it to get your data out?
 
@@ -41,7 +41,7 @@ Ask:
 
 Platforms that store your data in proprietary formats or require vendor assistance to export are high lock-in. Platforms that use standard data formats with straightforward export are low lock-in.
 
-### 2. API standardization
+## 2. API standardization
 
 Custom proprietary APIs create higher switching costs than standard ones.
 
@@ -50,7 +50,7 @@ Ask:
 - Are the data query patterns platform-specific, or could a similar query be run against a standard database?
 - If you replaced this service with a different one, how much of your application code would need to change?
 
-### 3. Open source and self-hosting
+## 3. Open source and self-hosting
 
 Open-source platforms with self-hosting support offer a specific kind of insurance: even if the vendor's managed cloud service changes pricing, changes terms, or shuts down, the software continues to exist and can be operated independently.
 
@@ -59,7 +59,7 @@ Ask:
 - Can you self-host if needed?
 - If the vendor's cloud service goes away, can you continue operating the software?
 
-### 4. Feature isolation
+## 4. Feature isolation
 
 The more of your application's functionality is built around a single platform's specific features, the higher the switching cost. Evaluate how deeply any given platform's unique abstractions penetrate your application code.
 
@@ -68,7 +68,7 @@ Ask:
 - Are your security rules written in a proprietary syntax?
 - Is your authentication model tied to vendor-specific tokens or session formats?
 
-### 5. The migration path from the alternative
+## 5. The migration path from the alternative
 
 Before committing to a platform, spend an hour thinking about the migration path away from it. Not because you plan to migrate, but because understanding the migration cost clarifies what you're actually signing up for.
 
@@ -79,7 +79,7 @@ Ask:
 
 If the answers are "a few hours of configuration changes," that's acceptable lock-in. If the answers are "three months of engineering and significant downtime risk," that's worth factoring into your decision.
 
-### 6. Pricing predictability
+## 6. Pricing predictability
 
 Unexpected cost increases are a form of lock-in. If a platform's pricing changes significantly after you've built your application around it, the cost to migrate may exceed the cost to absorb the price increase.
 
@@ -88,7 +88,7 @@ Ask:
 - Have there been significant pricing changes in the platform's history?
 - At what usage level would this platform become expensive relative to alternatives?
 
-## Applying this framework to backend platforms
+# Applying this framework to backend platforms
 
 | Criterion | High lock-in signals | Low lock-in signals |
 |---|---|---|
@@ -98,7 +98,7 @@ Ask:
 | Feature dependencies | Proprietary security rules, custom query language | Standard query patterns, interchangeable features |
 | Pricing | Variable per-operation pricing | Predictable compute/storage pricing |
 
-## Appwrite and the lock-in question
+# Appwrite and the lock-in question
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -110,7 +110,7 @@ Scoring Appwrite against the evaluation framework above:
 - **Feature isolation**: Appwrite's APIs follow standard conventions. Its authentication tokens are standard JWTs. Its database queries use a documented query syntax. The level of proprietary abstraction is low compared to platforms like Firebase.
 - **Pricing**: Appwrite Cloud prices on compute and storage. Self-hosted Appwrite has only infrastructure costs. Neither model involves per-operation billing that scales unpredictably with data access patterns.
 
-## Evaluate lock-in trade-offs before you're deep in a migration
+# Evaluate lock-in trade-offs before you're deep in a migration
 
 Evaluating backend tools with lock-in in mind doesn't mean being paralyzed or avoiding decisions. It means being clear-eyed about the dependencies you're taking on and choosing platforms where the lock-in trade-offs are reasonable given your situation.
 

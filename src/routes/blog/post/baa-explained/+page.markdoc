@@ -15,7 +15,7 @@ If you've ever built a product that touches healthcare data, you've probably hea
 
 This post breaks it down from a developer and technical lead perspective, so you can make informed decisions before the lawyers get involved.
 
-## What is a BAA?
+# What is a BAA?
 
 A Business Associate Agreement (BAA) is a legally binding contract required under the Health Insurance Portability and Accountability Act (HIPAA) in the United States. It governs how a "business associate" (any vendor or third party that handles Protected Health Information (PHI) on behalf of a covered entity) can access, use, and safeguard that information.
 
@@ -23,7 +23,7 @@ In plain terms: if your software processes, stores, or transmits any data that c
 
 Covered entities under HIPAA include health plans, healthcare clearinghouses, and healthcare providers. Business associates include anyone who works on their behalf: cloud providers, software vendors, analytics platforms, and backend-as-a-service providers.
 
-## When do you need a BAA?
+# When do you need a BAA?
 
 The short answer: whenever PHI is in scope and you're using a third-party service to handle it. Here are the most common scenarios:
 
@@ -35,7 +35,7 @@ The short answer: whenever PHI is in scope and you're using a third-party servic
 
 If none of these apply (if you're building a general SaaS product with no health-related data), you likely don't need a BAA. But the moment healthcare-related data enters your system, the requirement applies.
 
-## What a BAA actually covers
+# What a BAA actually covers
 
 A properly drafted BAA typically includes:
 
@@ -48,7 +48,7 @@ A properly drafted BAA typically includes:
 
 The BAA does not, on its own, make your system HIPAA compliant. It's a contractual mechanism that formalizes responsibilities; actual compliance requires implementing the underlying security controls in your application and infrastructure.
 
-## How teams approach BAA agreements in practice
+# How teams approach BAA agreements in practice
 
 **1. Audit your vendor stack early**
 
@@ -70,7 +70,7 @@ Maintaining a document that lists every vendor with PHI access, the BAA status w
 
 If a prospective customer asks whether you have BAAs in place and you don't, the deal is over. Enterprise healthcare customers require documentation before onboarding, not as a post-sale formality.
 
-## Choosing a backend that supports compliance
+# Choosing a backend that supports compliance
 
 When selecting backend infrastructure for a HIPAA-relevant application, look for vendors who:
 
@@ -79,7 +79,7 @@ When selecting backend infrastructure for a HIPAA-relevant application, look for
 - Are transparent about sub-processors, meaning other vendors they use who may also touch your data
 - Provide SOC 2 Type II reports or equivalent third-party audit documentation
 
-## Appwrite for compliance-sensitive applications
+# Appwrite for compliance-sensitive applications
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -87,7 +87,7 @@ For teams building in compliance-sensitive environments, Appwrite's self-hosting
 
 Appwrite's built-in authentication handles session management, Argon2 password hashing, and OAuth integrations. Its database and file storage operate within your own deployment boundary. Its serverless functions execute within your infrastructure perimeter. For healthcare teams that need to demonstrate control over where PHI lives and who can access it, Appwrite's self-hosting model provides a practical, auditable path forward.
 
-## Build your HIPAA-compliant backend with full data control
+# Build your HIPAA-compliant backend with full data control
 
 BAAs are not a checkbox, they're a signal that your infrastructure was designed with data accountability in mind. When you self-host Appwrite within your own cloud account or on-premise infrastructure, your data never leaves your controlled environment. The primary BAA relationship becomes the underlying cloud provider where Appwrite runs, not a separate backend vendor with its own sub-processors and data handling policies. This makes the compliance conversation cleaner and the audit trail shorter.
 

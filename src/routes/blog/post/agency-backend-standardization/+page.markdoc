@@ -15,7 +15,7 @@ Running a development agency means context-switching constantly. One client need
 
 The most efficient agencies solve this by standardizing. Not by forcing every project into the same shape, but by choosing a backend platform flexible enough to serve diverse client needs while being familiar enough that every developer on the team can hit the ground running.
 
-## The hidden cost of backend fragmentation
+# The hidden cost of backend fragmentation
 
 When each client project uses a different backend technology, the costs compound quickly:
 
@@ -25,7 +25,7 @@ When each client project uses a different backend technology, the costs compound
 - **Inconsistent security posture.** Different platforms have different security defaults. Standardizing means your security practices travel with your stack.
 - **Longer estimation and scoping.** When a developer scopes a new project on a familiar platform, they can estimate accurately. Unfamiliar platforms introduce risk that's hard to price.
 
-## What agencies actually need from a backend platform
+# What agencies actually need from a backend platform
 
 Agencies have a distinct set of requirements compared to product companies:
 
@@ -36,7 +36,7 @@ Agencies have a distinct set of requirements compared to product companies:
 - **Reasonable pricing at varying scale.** Agency clients range from early-stage startups to mid-market businesses. The backend platform needs to be economical at small scale and not punitive at medium scale.
 - **Good documentation and community.** Developers solve problems faster when the platform has thorough documentation and an active community.
 
-## How standardization works in practice
+# How standardization works in practice
 
 Agencies that have standardized their backend stack typically follow a pattern:
 
@@ -50,7 +50,7 @@ Agencies that have standardized their backend stack typically follow a pattern:
 
 **5. Document your patterns, not just the platform.** Your team's specific conventions (how you name collections, how you structure permissions, how you handle file uploads) should be documented alongside the platform documentation.
 
-## Evaluating a backend platform for agency use
+# Evaluating a backend platform for agency use
 
 When choosing a platform to standardize on, test it against a realistic agency project:
 
@@ -61,7 +61,7 @@ When choosing a platform to standardize on, test it against a realistic agency p
 - How are credentials and secrets managed across multiple projects?
 - Can clients get access to their own data without accessing your team's account?
 
-## Appwrite for agency teams
+# Appwrite for agency teams
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -73,7 +73,7 @@ Appwrite is particularly well-suited to agency workflows:
 - **Self-hosting for regulated clients**: Agencies working with enterprise or compliance-sensitive clients can deploy Appwrite within those clients' own cloud accounts, satisfying data residency requirements without switching to a different backend stack.
 - **Client access controls**: Appwrite's team and membership system lets you give client stakeholders read or admin access to their own project without exposing your team's other client environments.
 
-## Start standardizing your agency's backend stack
+# Start standardizing your agency's backend stack
 
 Standardization is one of the highest-leverage decisions an agency can make. The right backend platform becomes a multiplier on every developer's productivity across every client engagement.
 

@@ -15,7 +15,7 @@ Compliance has a reputation for slowing teams down. Ask any developer who has sh
 
 The good news is that building for compliance from the start doesn't have to mean building slowly. With the right architectural decisions made early, teams can move fast and stay compliant at the same time.
 
-## Why compliance-by-design matters
+# Why compliance-by-design matters
 
 Tacking compliance onto an existing system is expensive. When data flows are already established, storage decisions have been made, and access controls are loosely defined, auditing and remediating those systems can take months. Worse, it often requires breaking changes that affect production systems.
 
@@ -26,33 +26,33 @@ By contrast, building with compliance in mind from the beginning means:
 - **Fewer blockers.** Engineers don't have to stop and redesign systems when enterprise customers or regulators ask compliance questions.
 - **Credibility with enterprise buyers.** For teams selling into regulated industries (healthcare, finance, government), demonstrating compliance posture is a prerequisite for getting into procurement conversations.
 
-## Key architectural decisions that affect compliance
+# Key architectural decisions that affect compliance
 
-### Data classification and separation
+## Data classification and separation
 
 Not all data is equal from a compliance perspective. PHI (Protected Health Information) under HIPAA, personal data under GDPR, and cardholder data under PCI DSS each carry different requirements. Designing your system to classify and separate these types of data early simplifies the controls you need to apply.
 
 A practical approach: treat sensitive data as its own domain within your architecture. Separate databases, separate services, and separate access policies for regulated data. This limits the blast radius of any breach and makes it easier to apply appropriate controls without over-engineering the rest of your system.
 
-### Access control by design
+## Access control by design
 
 Role-based access control (RBAC) and attribute-based access control (ABAC) should be designed at the system level, not added as an afterthought. Compliance frameworks like HIPAA and SOC 2 require demonstrating that only authorized users can access sensitive resources.
 
 Define your permission model early: who can read what, who can write what, and under what conditions. Document it. Implement it at the service layer, not just the UI layer.
 
-### Encryption at rest and in transit
+## Encryption at rest and in transit
 
 This should be non-negotiable for any system handling regulated data. TLS for all data in transit, AES-256 or equivalent encryption for data at rest. Most modern cloud providers and backend platforms handle this by default, but verify it explicitly for every service in your stack.
 
-### Audit logging
+## Audit logging
 
 Regulatory frameworks require audit trails: who accessed what, when, from where, and what they did with it. Build logging into your authentication and data access layers from the start. Logs should be immutable, timestamped, and retained for the period required by the relevant regulation (typically 6 years under HIPAA).
 
-### Data residency and sovereignty
+## Data residency and sovereignty
 
 GDPR and many other regional regulations restrict where personal data can be stored and processed. If you're serving users in the EU, you may need to ensure data stays within EU infrastructure. Design for this before you've already stored millions of user records in a single region.
 
-## Compliance and development velocity: making them coexist
+# Compliance and development velocity: making them coexist
 
 The key tension is between moving fast and building correctly. Here are patterns that help reconcile the two:
 
@@ -61,7 +61,7 @@ The key tension is between moving fast and building correctly. Here are patterns
 - **Pick backend services that handle compliance controls for you.** Not every team has the bandwidth to implement authentication security, password policies, session management, and audit logging from scratch. Managed backend services that implement these correctly by default reduce your compliance surface area significantly.
 - **Document as you build.** Architecture decision records (ADRs) and data flow diagrams maintained alongside your code are invaluable during audits. Writing them while the decisions are fresh takes minutes; reconstructing them later takes days.
 
-## Appwrite for compliant architectures
+# Appwrite for compliant architectures
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -73,7 +73,7 @@ Appwrite addresses several compliance-by-design concerns at the platform level, 
 - **Data residency**: Appwrite can be deployed within a specific cloud region or on-premise, putting data location entirely under your control.
 - **Self-hosting**: Because Appwrite is open source and self-hostable, your data can stay entirely within your own infrastructure, eliminating a class of third-party data handling concerns before they arise.
 
-## Embed compliance in your architecture before the first audit
+# Embed compliance in your architecture before the first audit
 
 Compliance doesn't have to be a speed bump. When it's embedded in your architecture rather than imposed on top of it, it becomes a competitive advantage: a signal to enterprise customers that your team builds trustworthy systems.
 

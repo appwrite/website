@@ -15,7 +15,7 @@ Internal tools (admin panels, operations dashboards, data management interfaces,
 
 The challenge is that "quickly" and "correctly" are often in tension. Quick internal tools are often insecure (shared credentials, no access logging) or fragile (one developer's laptop away from going down). The right approach builds internal tools that are genuinely fast to build and production-ready at the same time.
 
-## What most internal tools actually need
+# What most internal tools actually need
 
 Before choosing an approach, it's worth being specific about the requirements:
 
@@ -26,7 +26,7 @@ Before choosing an approach, it's worth being specific about the requirements:
 - **Audit trail.** Who did what, and when.
 - **Simple deployment.** The tool needs to run reliably without its own complex infrastructure.
 
-## Approach 1: Use the Appwrite Console directly
+# Approach 1: Use the Appwrite Console directly
 
 For many internal use cases, the [Appwrite Console](https://appwrite.io/docs/tooling/console) covers the requirement without any additional development. Appwrite's console provides:
 
@@ -40,7 +40,7 @@ Access to the Appwrite Console is controlled by team membership. You can add sup
 
 For teams using Appwrite, "build an admin panel" sometimes means "set up the right team access in the Appwrite Console," saving days of development time.
 
-## Approach 2: Build a custom admin UI on the Appwrite API
+# Approach 2: Build a custom admin UI on the Appwrite API
 
 When the Console's generic interface doesn't meet your needs (you want domain-specific workflows, custom views, or an interface accessible to non-technical staff), building a lightweight custom UI on top of the Appwrite API is straightforward.
 
@@ -84,11 +84,11 @@ async function getUserOrders(userId) {
 
 For the front end, a component library like shadcn/ui or Mantine provides the table, form, and filter components that make admin panels feel professional without substantial CSS work.
 
-## Approach 3: Use a low-code builder on top of Appwrite's API
+# Approach 3: Use a low-code builder on top of Appwrite's API
 
 For teams that want an even faster path to a functional admin interface, tools like Appsmith, Budibase, or Retool can connect to Appwrite's REST API and build interfaces with drag-and-drop components. This approach trades flexibility for speed; you'll hit the low-code tool's limits eventually, but for standard CRUD interfaces, it can produce something useful in hours.
 
-## Security considerations that matter for internal tools
+# Security considerations that matter for internal tools
 
 Internal tools are often less secure than customer-facing applications, because the assumption is that only trusted people use them. This assumption is worth questioning:
 
@@ -97,7 +97,7 @@ Internal tools are often less secure than customer-facing applications, because 
 - **API keys used by the admin panel should have limited scope.** Don't use a master API key for admin panel requests if a more limited key works.
 - **Log significant actions.** When someone deletes a record, resets a user's password, or triggers a backend action from the admin panel, that should appear in an audit log.
 
-## Triggering backend actions from the admin panel
+# Triggering backend actions from the admin panel
 
 Some internal tool operations go beyond data editing; they need to trigger backend logic. Appwrite Functions are well-suited for this:
 
@@ -118,7 +118,7 @@ const execution = await functions.createExecution(
 
 This pattern keeps privileged operations as server-side Functions with their own access policies, rather than exposing them as direct database operations from the admin panel.
 
-## Appwrite for internal tools
+# Appwrite for internal tools
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -130,7 +130,7 @@ Appwrite is particularly well-suited to internal tool development because it sol
 - **Serverless functions for privileged actions**: Sensitive operations that shouldn't be exposed as direct database writes (bulk updates, account resets, notification sends) are implemented as Appwrite Functions with their own API key and access scope.
 - **Audit logging**: Appwrite logs events with user and timestamp context, giving you the audit trail that enterprise clients and internal compliance teams require.
 
-## Build internal tools that are fast, secure, and maintainable
+# Build internal tools that are fast, secure, and maintainable
 
 Internal tools are worth building quickly. They pay back in operational efficiency and team capability. The mistake is treating them as throwaway tools that don't need proper authentication and access control. Building on a managed backend platform means you get both speed and correctness without having to choose.
 

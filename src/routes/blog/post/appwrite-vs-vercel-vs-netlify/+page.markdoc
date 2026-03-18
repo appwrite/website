@@ -15,7 +15,7 @@ If you ask a developer what Vercel and Netlify do, you'll get a clear answer: th
 
 The key question is not which hosting platform is better. It is what each layer of your stack is actually responsible for, and whether your current setup covers the complete surface area of your application's needs.
 
-## What Vercel and Netlify are (and aren't)
+# What Vercel and Netlify are (and aren't)
 
 Vercel and Netlify are frontend deployment and hosting platforms. Their primary value is in the delivery layer:
 
@@ -35,11 +35,11 @@ What they are **not** is a complete backend. Specifically, they don't provide ou
 
 The result is that building a full application on Vercel or Netlify means stitching together multiple third-party services (one for auth, one for database, one for storage, one for email), each with its own API, SDK, billing, and maintenance burden.
 
-## What Appwrite is
+# What Appwrite is
 
 Appwrite is a full-stack platform. [Appwrite Sites](https://appwrite.io/docs/products/sites) handles frontend hosting and deployment, while the rest of the platform covers the complete backend: authentication, databases, file storage, serverless functions, messaging, and real-time.
 
-### Frontend hosting with Appwrite Sites
+## Frontend hosting with Appwrite Sites
 
 Appwrite Sites handles frontend deployment with the features you'd expect from a modern hosting platform:
 
@@ -51,7 +51,7 @@ Appwrite Sites handles frontend deployment with the features you'd expect from a
 - **Framework support.** Starter kits for Next.js, Nuxt, SvelteKit, Astro, Vue, TanStack Start, and more.
 - **CLI and manual deploy.** Beyond Git, you can deploy via the Appwrite CLI or by uploading a `.tar.gz` build artifact directly.
 
-### Backend services
+## Backend services
 
 Appwrite's backend covers everything a production application needs without reaching for separate services:
 
@@ -64,11 +64,11 @@ Appwrite's backend covers everything a production application needs without reac
 
 Appwrite is fully open source and can be self-hosted on any Docker-compatible infrastructure.
 
-## How Appwrite fits into your architecture
+# How Appwrite fits into your architecture
 
 Depending on your situation, there are two ways to use Appwrite.
 
-### Appwrite as your entire stack
+## Appwrite as your entire stack
 
 Your frontend deploys to Appwrite Sites; your backend (auth, database, storage, functions) runs in the same Appwrite project. One platform, one dashboard, one billing relationship. Your frontend and backend share the same environment variables and can be managed from a single console with no cross-platform configuration to maintain.
 
@@ -87,7 +87,7 @@ const user = await account.get();
 const posts = await databases.listDocuments('<DATABASE_ID>', '<COLLECTION_ID>');
 ```
 
-### Appwrite backend with Vercel or Netlify for frontend
+## Appwrite backend with Vercel or Netlify for frontend
 
 If your frontend is already on Vercel or Netlify, or your use case benefits from their specific ecosystem (Next.js optimizations on Vercel, for example), Appwrite works cleanly as the backend layer alongside either platform.
 
@@ -111,7 +111,7 @@ const user = await account.get();
 
 Both architectures are well-supported. The choice comes down to whether you want full platform consolidation or prefer to keep a specific hosting setup you're already invested in.
 
-## The backend gap problem
+# The backend gap problem
 
 Regardless of where your frontend lives, the more important architectural question is: what handles your backend?
 
@@ -127,7 +127,7 @@ Common manifestations:
 
 Each of these is solvable, but each requires adding another service, learning another API, and maintaining another integration. Appwrite was designed to cover all of these from the start, alongside the frontend hosting layer.
 
-## Choose your stack based on backend coverage, not just frontend delivery
+# Choose your stack based on backend coverage, not just frontend delivery
 
 Vercel and Netlify are excellent at frontend delivery. They're not replacements for a backend. The teams that build most efficiently are those that understand what each layer of their stack is responsible for and pick tools that cover the complete surface area of their application's needs.
 

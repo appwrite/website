@@ -15,7 +15,7 @@ Scaling is the word that makes early-stage developers nervous. The fear is some 
 
 This fear is mostly misplaced, not because scaling is trivial, but because the things that cause applications to break under load are predictable, and the decisions that prevent those breakdowns are straightforward. You don't need to be a distributed systems engineer to build a backend that handles growth gracefully.
 
-## Why most scaling problems are actually architecture problems
+# Why most scaling problems are actually architecture problems
 
 When applications fall over under load, the cause is usually one of a small set of architectural patterns:
 
@@ -26,33 +26,33 @@ When applications fall over under load, the cause is usually one of a small set 
 
 None of these problems require predicting future scale to prevent. They're recognizable antipatterns that can be avoided during initial design.
 
-## The decisions that enable scaling
+# The decisions that enable scaling
 
-### Design for stateless servers from the start
+## Design for stateless servers from the start
 
 A stateless server is one that doesn't store any local state between requests. All state (user sessions, data, files) lives in external stores: a database, a cache, or file storage. Stateless servers can be scaled horizontally by adding instances without synchronization overhead.
 
 The practical implication: don't store session data in server memory. Don't write files to the local filesystem as part of request handling. Don't use server-local caching for data that needs to be consistent across multiple instances.
 
-### Index your data access patterns
+## Index your data access patterns
 
 Database performance at scale almost always comes down to indexing. A query that does a collection scan on a 1,000-row table takes milliseconds; the same query on a 10-million-row table without an index takes seconds or minutes.
 
 The rule of thumb: every field you query on, filter by, or sort on should have an index. Define these indexes during schema design, not after performance problems appear.
 
-### Move slow operations out of the request cycle
+## Move slow operations out of the request cycle
 
 Operations that take more than a few hundred milliseconds don't belong in the synchronous request-response cycle. Sending welcome emails, generating reports, processing uploaded files, calling third-party APIs with variable latency; these should be queued and processed asynchronously.
 
 In practice, this means using serverless functions triggered by events or message queues, rather than executing slow operations inline. The request returns quickly; the work happens in the background.
 
-### Use a managed backend to avoid infrastructure scaling work
+## Use a managed backend to avoid infrastructure scaling work
 
 The biggest scaling simplification for small teams is using a managed backend platform whose infrastructure scales automatically. When authentication, database, and storage are managed services, you're not responsible for provisioning database replicas, configuring connection pools, or managing server capacity. The platform handles this.
 
 This doesn't mean infinite scale for free; managed platforms have their own limits and costs at high volume, but it means your team doesn't have to solve the infrastructure scaling problem while also building the product.
 
-## What to optimize early (and what not to)
+# What to optimize early (and what not to)
 
 **Optimize early:**
 - Database schema and indexes: these are hard to change after data exists
@@ -65,7 +65,7 @@ This doesn't mean infinite scale for free; managed platforms have their own limi
 - Microservices decomposition: adds operational complexity without benefit until you have a concrete need
 - CDN configuration for every asset: relevant for media-heavy applications, not for most early-stage products
 
-## Practical scaling indicators to watch
+# Practical scaling indicators to watch
 
 Before you experience a performance problem, you want to see it coming. A few metrics worth tracking from early in an application's life:
 
@@ -76,7 +76,7 @@ Before you experience a performance problem, you want to see it coming. A few me
 
 These indicators give you enough warning to address scaling issues before they become user-facing outages.
 
-## Appwrite for scalable applications
+# Appwrite for scalable applications
 
 Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes both a backend server, providing authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging, and a fully integrated hosting solution for deploying static and server-side rendered frontends. Appwrite can be fully self-hosted on any Docker-compatible infrastructure or used as a managed service through [Appwrite Cloud](https://cloud.appwrite.io).
 
@@ -88,7 +88,7 @@ Appwrite's architecture aligns with the scaling principles outlined in this post
 - **Managed scaling on Appwrite Cloud**: Appwrite Cloud handles infrastructure scaling automatically. You're not responsible for provisioning database read replicas, scaling connection pools, or adjusting compute capacity as your user count grows.
 - **Self-hosted horizontal scaling**: If you self-host, Appwrite's Docker-based architecture supports horizontal scaling of individual services using standard container orchestration tools like Docker Swarm or Kubernetes.
 
-## Build on a platform designed to scale with your application
+# Build on a platform designed to scale with your application
 
 Building a backend that scales is about avoiding known antipatterns: stateful servers, unindexed queries, synchronous slow operations. Choose infrastructure that scales without requiring you to manage it directly.
 
