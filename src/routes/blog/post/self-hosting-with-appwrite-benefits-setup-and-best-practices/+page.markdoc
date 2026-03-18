@@ -61,7 +61,7 @@ The default Appwrite setup is designed for quick starts, not production. Before 
 
 **Set your encryption key.** Appwrite uses the `_APP_OPENSSL_KEY_V1` environment variable to encrypt sensitive data like API keys and webhook passwords. Set this immediately after installation and store it securely. Changing this key later means losing access to all previously encrypted data.
 
-**Enforce HTTPS.** Always use HTTPS in production. You can force this with the `_APP_OPTIONS_FORCE_HTTPS` environment variable. Appwrite generates TLS certificates automatically using your configured hostname.
+**Enforce HTTPS.** Always use HTTPS in production. You can force this with the `_APP_OPTIONS_FORCE_HTTPS` environment variable. Appwrite can auto-generate TLS certificates for a public domain, but this requires production mode, a valid `_APP_SYSTEM_SECURITY_EMAIL_ADDRESS`, and ports 80/443 reachable from the internet.
 
 **Restrict console access.** By default, only the first user who signs up can access the Appwrite Console. For additional security, use `_APP_CONSOLE_WHITELIST_IPS` or `_APP_CONSOLE_WHITELIST_EMAILS` to limit who can reach your dashboard. The [security documentation](/docs/advanced/self-hosting/production/security) covers these options in detail.
 
