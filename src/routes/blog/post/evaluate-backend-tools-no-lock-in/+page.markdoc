@@ -2,7 +2,7 @@
 layout: post
 title: "How to evaluate backend tools without locking yourself in"
 description: A practical framework for evaluating backend platforms and services in a way that minimizes lock-in and preserves your team's ability to change direction.
-date: 2024-07-19
+date: 2026-03-19
 cover: /images/blog/evaluate-backend-tools-no-lock-in/cover.png
 timeToRead: 6
 author: aditya-oberai

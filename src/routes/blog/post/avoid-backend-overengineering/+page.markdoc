@@ -2,7 +2,7 @@
 layout: post
 title: "How to avoid backend overengineering in early-stage products"
 description: The patterns that lead early-stage teams to overengineer their backend and the decisions that keep systems simple while still being production-ready.
-date: 2024-08-09
+date: 2026-03-19
 cover: /images/blog/avoid-backend-overengineering/cover.png
 timeToRead: 6
 author: aditya-oberai

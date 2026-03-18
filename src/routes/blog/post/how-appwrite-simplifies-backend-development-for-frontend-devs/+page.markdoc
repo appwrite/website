@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How Appwrite Simplifies Backend Development for Frontend Devs
+title: How Appwrite simplifies backend development for frontend devs
 description: See how Appwrite makes backend development easier for frontend developers by handling auth, databases, storage, and server-side logic through simple APIs and tools. This guide shows how you can build full-stack apps faster without getting buried in backend complexity or infrastructure setup.
 date: 2026-03-17
 cover: /images/blog/how-appwrite-simplifies-backend-development-for-frontend-devs/cover.png

@@ -2,13 +2,12 @@
 layout: post
 title: "Appwrite vs Vercel vs Netlify: where does your stack live?"
 description: What Vercel and Netlify actually provide versus Appwrite's full-stack platform, and how to decide between consolidating your stack or mixing services.
-date: 2024-06-14
+date: 2026-03-19
 cover: /images/blog/appwrite-vs-vercel-vs-netlify/cover.png
 timeToRead: 7
 author: aditya-oberai
 category: product
 featured: false
-unlisted: true
 ---
 
 If you ask a developer what Vercel and Netlify do, you'll get a clear answer: they host frontend applications. Fast deployments, CDN-delivered static assets, serverless functions for edge logic. They're excellent at what they do. But they're not full-stack platforms, and treating them as the foundation of your entire stack creates architectural gaps that show up later as bugs, security incidents, or features that are much harder to build than they should have been.
@@ -81,10 +80,14 @@ const client = new Client()
     .setProject('<PROJECT_ID>');
 
 const account = new Account(client);
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 const user = await account.get();
-const posts = await databases.listDocuments('<DATABASE_ID>', '<COLLECTION_ID>');
+const posts = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>'
+    }
+);
 ```
 
 ## Appwrite backend with Vercel or Netlify for frontend

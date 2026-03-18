@@ -2,7 +2,7 @@
 layout: post
 title: "How to build internal tools quickly: Admin panels"
 description: A practical guide to building admin panels and operations dashboards quickly using Appwrite as the backend, without sacrificing security or reliability.
-date: 2024-09-13
+date: 2026-03-19
 cover: /images/blog/build-internal-tools-quickly/cover.png
 timeToRead: 7
 author: aditya-oberai
@@ -49,7 +49,7 @@ The key advantage of building on Appwrite is that you're not also building the b
 Here's a minimal admin panel example that lists users and their associated data:
 
 ```js
-import { Client, Users, Databases, Query } from 'node-appwrite';
+import { Client, Users, TablesDB, Query } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -57,7 +57,7 @@ const client = new Client()
     .setKey('<API_KEY>');
 
 const users = new Users(client);
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // List users with pagination
 async function getUsers(page = 0) {
@@ -70,15 +70,15 @@ async function getUsers(page = 0) {
 
 // Get a user's associated records
 async function getUserOrders(userId) {
-    return await databases.listDocuments(
-        '<DATABASE_ID>',
-        'orders',
-        [
+    return await tablesDB.listRows({
+        databaseId: '<DATABASE_ID>',
+        tableId: 'orders',
+        queries: [
             Query.equal('userId', userId),
             Query.orderDesc('$createdAt'),
             Query.limit(50)
         ]
-    );
+    });
 }
 ```
 

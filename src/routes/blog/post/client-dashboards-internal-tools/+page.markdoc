@@ -2,7 +2,7 @@
 layout: post
 title: "Building client dashboards and internal tools faster"
 description: How to ship admin panels, dashboards, and internal tools quickly for clients without rebuilding the same backend infrastructure from scratch each time.
-date: 2024-05-10
+date: 2026-03-19
 cover: /images/blog/client-dashboards-internal-tools/cover.png
 timeToRead: 6
 author: aditya-oberai
@@ -57,24 +57,24 @@ For cases where a custom UI is required, the platform provides the API layer, au
 Appwrite's console already handles a significant portion of what agencies need for client-facing admin tools. For the cases where you need a custom interface, the Appwrite SDK makes it straightforward to build on top of:
 
 ```js
-import { Client, Databases, Query } from 'appwrite';
+import { Client, TablesDB, Query } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>');
 
-const databases = new Databases(client);
+const tablesDB = new TablesDB(client);
 
 // Fetch users with pending status for review
-const result = await databases.listDocuments(
-    '<DATABASE_ID>',
-    '<COLLECTION_ID>',
-    [
+const result = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
         Query.equal('status', 'pending'),
         Query.orderDesc('$createdAt'),
         Query.limit(25)
     ]
-);
+});
 ```
 
 Combined with Appwrite's built-in authentication and team-based permissions, you can give the client's operations team their own login to a custom dashboard that only shows them the data they're authorized to see, without building an authentication system from scratch.
