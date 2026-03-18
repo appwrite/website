@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How we reduced cold start times on Appwrite Sites"
-description: Learn how we improved cold start performance for Appwrite Sites, delivering faster load times for your web applications.
+description: Learn how we improved cold-start performance for Appwrite Sites, delivering faster load times for your web applications.
 date: 2026-03-12
 cover: /images/blog/reducing-cold-starts-appwrite-sites/cover.png
 timeToRead: 5
@@ -11,19 +11,19 @@ category: product
 
 If you've ever deployed a site and noticed that first request taking just a bit too long, you've experienced a cold start. It's one of those things that's easy to overlook during development but quickly becomes noticeable in production, especially when your users are the ones waiting.
 
-At Appwrite, we've been paying close attention to the performance of [Sites](https://appwrite.io/products/sites), and cold starts were high on our list of things to improve. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold start times.
+At Appwrite, we've been paying close attention to the performance of [Sites](https://appwrite.io/products/sites), and cold starts were high on our list of things to improve. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold-start times.
 
 In this post, we'll walk you through what was causing the slowdown, the approach we took to fix it, and the results we're seeing now.
 
 # Adding observability {% #adding-observability %}
 
-Before we could fix anything, we needed to understand what was actually happening. We started by adding observability across the full request lifecycle, instrumenting each step from the moment a request hits our edge to when the response is sent back. This gave us a clear breakdown of where time was being spent and, more importantly, where it was being wasted. Without that visibility, we would have been guessing, and in performance work, guessing is how you end up optimizing the wrong thing.
+Before we could fix anything, we needed to understand what was actually happening. We started by adding observability across the full request lifecycle, instrumenting each step from the moment a request hits our edge to when the response is sent back. This gave us a clear breakdown of where time was being spent and where it was being wasted. Without that visibility, we would have been guessing, and in performance work, guessing is how you end up optimizing the wrong thing.
 
 # Compression and decompression
 
-With that visibility in place, one pattern stood out immediately: compression and decompression of build output was taking up a significant share of the cold start time. Build artifacts were being compressed with tar and extracted using gzip, which worked fine functionally, but the extraction step was eating up a noticeable chunk of every first request.
+With that visibility in place, one pattern stood out immediately: compression and decompression of build output was taking up a significant share of the cold-start time. Build artifacts were being compressed with tar and extracted using gzip, which worked fine functionally, but the extraction step was eating up a noticeable chunk of every first request.
 
-We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/isa-l), an optimized implementation from Intel's Intelligent Storage Acceleration Library. The results were immediate: extraction times improved by 50–100%, making it one of the highest-impact changes we made. We also evaluated [zstd](https://github.com/facebook/zstd) as an alternative, but its performance was more variable and only showed improvements for certain build output sizes, so we stuck with igzip for its consistent gains across the board.
+We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/isa-l), an optimized implementation from Intel's Intelligent Storage Acceleration Library. The results were immediate: extraction times improved by 50–100%, making it one of the highest-impact changes we made. We also evaluated [zstd](https://github.com/facebook/zstd) as an alternative, but its performance was more variable and only showed improvements for certain build output sizes, so we stuck with igzip for its universally consistent gains.
 
 # Node file tracing
 
@@ -45,10 +45,14 @@ Some examples of reductions in size for the templates offered:
 
 # Cold starts
 
-Those smaller artifacts translated directly into faster cold starts. With build outputs reduced by up to 99%, the download phase - previously one of the more costly steps - dropped from multiple seconds to just 100–200 milliseconds. Extraction saw a similar improvement, going from regular 4–7 second spikes down to around 200–400 milliseconds. Together, these two phases went from dominating the cold start timeline to being barely noticeable.
+Those smaller artifacts translated directly into faster cold starts. With build outputs reduced by up to 99%, the download phase - previously one of the more costly steps-dropped from multiple seconds to just 100–200 milliseconds. Extraction saw a similar improvement, going from regular 4–7 second spikes down to around 200–400 milliseconds. Together, these two phases went from dominating the cold-start timeline to being barely noticeable.
 
-The overall effect was a roughly 30–50% reduction in cold start duration across the board. The remaining time is now largely spent on runtime initialization rather than transferring and unpacking artifacts, meaning we've shifted the bottleneck to a fundamentally different part of the stack - and that's exactly where we want to focus next. With targeted work there, we expect to bring P95 timings below what P50 used to be.
+The overall effect was a roughly 30–50% reduction in cold-start duration across the board. The remaining time is now largely spent on runtime initialization rather than transferring and unpacking artifacts. We've shifted the bottleneck to a fundamentally different part of the stack - and that's exactly where we want to focus next. With targeted work there, we expect to bring P95 timings below what P50 used to be.
+
+# Benefit from this change
+
+If you're running an SSR-based site on Appwrite Sites, all you need to do is redeploy your latest active deployment. The updated build process will automatically apply the optimizations described above, reducing your build output size and improving cold-start times - no code changes required.
 
 # What's next
 
-These improvements are just the beginning. We're actively working on the next round of optimizations targeting runtime initialization, smarter caching strategies, and tighter integration between our build pipeline and edge infrastructure. Performance is not a one-time fix - it's an ongoing effort, and we're committed to making every deploy on Appwrite Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
+These improvements are just the beginning. We're actively working on the next round of optimizations. Performance is not a one-time fix - it's an ongoing effort, and we're committed to making every deploy on Appwrite Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
