@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Firebase vs open source: the trade-offs developers miss"
-description: An honest look at the trade-offs developers make when choosing Firebase: vendor lock-in, pricing at scale, and data ownership versus open-source alternatives.
+description: "An honest look at the trade-offs developers make when choosing Firebase: vendor lock-in, pricing at scale, and data ownership versus open-source alternatives."
 date: 2026-03-19
 cover: /images/blog/firebase-vs-open-source-tradeoffs/cover.png
 timeToRead: 7
