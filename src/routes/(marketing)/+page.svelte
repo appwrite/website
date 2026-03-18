@@ -12,6 +12,7 @@
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
+    import Ai from './(components)/ai.svelte';
 </script>
 
 <Head title="Appwrite - Built for the first solocorn" />
@@ -32,6 +33,7 @@
         <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
         that you need with Appwrite.</Pullquote
     >
+    <Ai />
     <CaseStudies />
     <Features theme="light" />
     <div class="light bg-[#EDEDF0]">
