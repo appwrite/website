@@ -152,6 +152,11 @@
                     icon: 'web-icon-skills'
                 },
                 {
+                    label: 'Arena',
+                    href: '/docs/tooling/arena',
+                    icon: 'web-icon-arena'
+                },
+                {
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'

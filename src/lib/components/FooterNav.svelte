@@ -63,6 +63,12 @@
                     rel: 'noopener noreferrer'
                 },
                 {
+                    label: 'Arena',
+                    href: 'https://arena.appwrite.io',
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
+                },
+                {
                     label: 'Tech news',
                     href: 'https://refetch.io',
                     target: '_blank',

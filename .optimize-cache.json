@@ -153,6 +153,7 @@
   "images/blog/ai-vibe-coding-insights/cover.png": "05e455d9c7b07c4f8a0b1647435798ad2c6eba2adebcd5cf232bc32bb5de9a95",
   "images/blog/ai-vibe-coding-insights/tweet.png": "4025c2236fcfc74d6435911a26239a8fef889005908ab83b6ee5f010ad3533cd",
   "images/blog/announcing-2fa.png": "1df5ba12c2de318f858c36a3804b7170844cb74bdb73e1ea37895d674208b9e0",
+  "images/blog/announcing-appwrite-arena/cover.png": "3934fbf6ee24c468b715b1839bc49c335a47a68f7fc99a763b109b2446f97379",
   "images/blog/announcing-appwrite-daily-dot-dev-squad/daily.dev-squad.png": "c69fdc687770e5562097fb30bf3f82ba54d7208faae9805faf3677480ba73857",
   "images/blog/announcing-appwrite-databases-new-ui/cover.png": "9318e0034f7c069246429429c08cc9f87032c34ad040c1f05f75449c4f28ffe9",
   "images/blog/announcing-appwrite-is-gdpr-compliant/dpa-card.png": "d458c425437bac34930587234f8e239cd39217c9fcd04f135f4cfbecd90627d1",
@@ -260,8 +261,12 @@
   "images/blog/baas-vs-custom-backend/messaging.png": "54a574317afa9ed22728aa3e10aa1ca1157a29bdfea61909a5260ca1f79d4f4f",
   "images/blog/baas-vs-custom-backend/storage.png": "6ed39797b1d5f67299c55b1be3944912860811564c38e849adb31a0d4a23ec46",
   "images/blog/baas.png": "e5353595cc9c6c8037a7b9b3a8ff25552cb39f61a120ecb867c63de46f14aa74",
+<<<<<<< add-new-blogs-aditya
   "images/blog/backend-platform-security-responsibilities/cover.png": "030e20752d00612ff677b28c2fd30665ed34fcd77ee80a6efa89d9d789cb9d94",
   "images/blog/backend-that-scales/cover.png": "1d6ee39bc41387024bb9beded27137e7f135293c654add113ca9ee3fd4b8c9cb",
+=======
+  "images/blog/backend-mistakes-that-quietly-cost-small-teams-weeks/cover.png": "c804b93ac334b4224c612fc5c177469f30a6a6e548db1c93e90fb95b35544bda",
+>>>>>>> main
   "images/blog/backup-encryption/cover.png": "4a3b2f9f2acc75681669c1dcefa407455e6f7ee29f2dc04bd4e9cae5f9d646c9",
   "images/blog/badge.png": "2d1852c6f826d55c40cb848cc3813f25a4d3d982a6f56d2738c9e5b3d0ac9694",
   "images/blog/Behind_the_pull_request_Stories_from_contributors.png": "16d81aff97deaded8b03c33f4498d3bf6f8ec392fee8edff6dc273d0cafbd132",
@@ -862,6 +867,7 @@
   "images/blog/runtimes.png": "ef87c9f81144bdb94469d65b11c921a44e7ca332e12723374750223adcbca503",
   "images/blog/save-weeks-managed-backends/cover.png": "3f1d7e5013fd73db2a8b4e85f73f3d9cf64dc1aa2af80c81ba97131907a4c9c1",
   "images/blog/scale-plan.png": "b4d945f876c918fb008aea7ce4dab52a98a354e86d9fdc60f3acbebbffd44995",
+  "images/blog/scaling-applications-with-appwrite-what-you-need-to-know/cover.png": "798f8c59a54818a0117ef75bd677b09801c22b2c2e89497e96e7a329a752a046",
   "images/blog/scan-receipts-with-appwrite-functions/environment-variables.png": "9282cc7fdd201939e274c67421ffc796a818fbe9309c1b75a624bdc662be6fa6",
   "images/blog/scan-receipts-with-appwrite-functions/events.png": "e7901570861d7497c7b2088d4c655c5278ba4e52b914188c34e05ae0eea136fd",
   "images/blog/scan-receipts-with-appwrite-functions/scan-function.png": "1223d882682d8c34406526e5764968f0de32a5668bd6339cffd4bff0efb75485",
