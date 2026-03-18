@@ -104,6 +104,11 @@ Some internal tool operations go beyond data editing; they need to trigger backe
 ```js
 import { Client, Functions } from 'node-appwrite';
 
+const client = new Client()
+   .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+   .setProject('<PROJECT_ID>')
+   .setKey('<API_KEY>');
+
 const functions = new Functions(client);
 
 // Trigger a function that sends a password reset email to a user
@@ -114,7 +119,6 @@ const execution = await functions.createExecution(
     '/',       // path
     'POST'     // method
 );
-```
 
 This pattern keeps privileged operations as server-side Functions with their own access policies, rather than exposing them as direct database operations from the admin panel.
 
