@@ -11,12 +11,54 @@
     const types: DBType[] = ['Tables', 'Documents', 'Vectors'];
 
     const movies = [
-        { id: '3397fec2uj', title: 'Toy Story', genre: 'Animation', year: 1995, rating: 8.3, embedding: '[0.0701, 0.0049, ...]' },
-        { id: '2224gab8kp', title: 'Star Wars', genre: 'Sci-Fi', year: 1977, rating: 8.6, embedding: '[0.0234, 0.0812, ...]' },
-        { id: '5689fdo4lm', title: 'The Matrix', genre: 'Action', year: 1999, rating: 8.7, embedding: '[0.0445, 0.0178, ...]' },
-        { id: '1193cda7nt', title: 'Inception', genre: 'Sci-Fi', year: 2010, rating: 8.8, embedding: '[0.0923, 0.0067, ...]' },
-        { id: '8821bfe3qr', title: 'Titanic', genre: 'Romance', year: 1997, rating: 7.9, embedding: '[0.0156, 0.0634, ...]' },
-        { id: '9912abc6ws', title: 'Interstellar', genre: 'Sci-Fi', year: 2014, rating: 8.6, embedding: '[0.0789, 0.0345, ...]' }
+        {
+            id: '3397fec2uj',
+            title: 'Toy Story',
+            genre: 'Animation',
+            year: 1995,
+            rating: 8.3,
+            embedding: '[0.0701, 0.0049, ...]'
+        },
+        {
+            id: '2224gab8kp',
+            title: 'Star Wars',
+            genre: 'Sci-Fi',
+            year: 1977,
+            rating: 8.6,
+            embedding: '[0.0234, 0.0812, ...]'
+        },
+        {
+            id: '5689fdo4lm',
+            title: 'The Matrix',
+            genre: 'Action',
+            year: 1999,
+            rating: 8.7,
+            embedding: '[0.0445, 0.0178, ...]'
+        },
+        {
+            id: '1193cda7nt',
+            title: 'Inception',
+            genre: 'Sci-Fi',
+            year: 2010,
+            rating: 8.8,
+            embedding: '[0.0923, 0.0067, ...]'
+        },
+        {
+            id: '8821bfe3qr',
+            title: 'Titanic',
+            genre: 'Romance',
+            year: 1997,
+            rating: 7.9,
+            embedding: '[0.0156, 0.0634, ...]'
+        },
+        {
+            id: '9912abc6ws',
+            title: 'Interstellar',
+            genre: 'Sci-Fi',
+            year: 2014,
+            rating: 8.6,
+            embedding: '[0.0789, 0.0345, ...]'
+        }
     ];
 
     const tableColumns = ['ID', 'Name', 'Genre', 'Year', 'Rating'];
@@ -108,7 +150,7 @@
 
         <!-- Card below tabs -->
         <div
-            class="border-smooth absolute inset-x-10 top-22 overflow-hidden rounded-2xl border bg-[#232325]/90 shadow-[0px_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md mask-b-from-60% mask-b-to-100%"
+            class="border-smooth absolute inset-x-10 top-22 overflow-hidden rounded-2xl border bg-[#232325]/90 mask-b-from-60% mask-b-to-100% shadow-[0px_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md"
         >
             <!-- Header: collection name only -->
             <div class="px-3 pt-1.5 pb-0">
@@ -121,25 +163,67 @@
                     {#if activeType === 'Documents'}
                         <!-- Documents: frame within frame -->
                         <div class="p-1.5">
-                            <div class="@container overflow-hidden rounded-xl bg-[#19191C] flex">
+                            <div class="@container flex overflow-hidden rounded-xl bg-[#19191C]">
                                 <!-- Left: narrow ID list, hidden on small containers -->
-                                <div class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block">
+                                <div
+                                    class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block"
+                                >
                                     {#each movies as movie}
-                                        <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
-                                            {movie.id}<span class="font-sans text-secondary/60">…</span>
+                                        <div
+                                            class={cn(
+                                                'text-secondary px-3 py-1.5 font-mono text-[0.6rem]'
+                                            )}
+                                        >
+                                            {movie.id}<span class="text-secondary/60 font-sans"
+                                                >…</span
+                                            >
                                         </div>
                                     {/each}
                                 </div>
 
                                 <!-- Right: JSON document viewer -->
-                                <div class="flex-1 px-3 py-2.5 font-fira-code text-[0.6rem] leading-[1.6]">
+                                <div
+                                    class="font-fira-code flex-1 px-3 py-2.5 text-[0.6rem] leading-[1.6]"
+                                >
                                     <div class="text-secondary">{'{'}</div>
                                     <div class="flex flex-col pl-3">
-                                        <div><span class="text-primary">"$id"</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"3397fec2uj..."</span><span class="text-secondary">,</span></div>
-                                        <div><span class="text-primary">"title"</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"Toy Story"</span><span class="text-secondary">,</span></div>
-                                        <div><span class="text-primary">"genre"</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"Animation"</span><span class="text-secondary">,</span></div>
-                                        <div><span class="text-primary">"year"</span><span class="text-secondary">: </span><span class="text-[#79B8FF]">1995</span><span class="text-secondary">,</span></div>
-                                        <div><span class="text-primary">"$createdAt"</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"Jan 15, 2026"</span></div>
+                                        <div>
+                                            <span class="text-primary">"$id"</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]"
+                                                >"3397fec2uj..."</span
+                                            ><span class="text-secondary">,</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">"title"</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"Toy Story"</span
+                                            ><span class="text-secondary">,</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">"genre"</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"Animation"</span
+                                            ><span class="text-secondary">,</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">"year"</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#79B8FF]">1995</span><span
+                                                class="text-secondary">,</span
+                                            >
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">"$createdAt"</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"Jan 15, 2026"</span
+                                            >
+                                        </div>
                                     </div>
                                     <div class="text-secondary">{'}'}</div>
                                 </div>
@@ -152,21 +236,50 @@
                                 <table class="w-full">
                                     <thead>
                                         <tr class="border-smooth border-b">
-                                            <th class="text-[0.6rem] min-w-[80px] px-3 py-2 text-left font-normal text-secondary">ID</th>
-                                            <th class="text-[0.6rem] min-w-[65px] px-3 py-2 text-left font-normal text-secondary">Name</th>
-                                            <th class="hidden @xs:table-cell text-[0.6rem] min-w-[55px] px-3 py-2 text-left font-normal text-secondary">Genre</th>
-                                            <th class="hidden @sm:table-cell text-[0.6rem] min-w-[40px] px-3 py-2 text-left font-normal text-secondary">Year</th>
-                                            <th class="hidden @sm:table-cell text-[0.6rem] min-w-[45px] px-3 py-2 text-left font-normal text-secondary">Rating</th>
+                                            <th
+                                                class="text-secondary min-w-[80px] px-3 py-2 text-left text-[0.6rem] font-normal"
+                                                >ID</th
+                                            >
+                                            <th
+                                                class="text-secondary min-w-[65px] px-3 py-2 text-left text-[0.6rem] font-normal"
+                                                >Name</th
+                                            >
+                                            <th
+                                                class="text-secondary hidden min-w-[55px] px-3 py-2 text-left text-[0.6rem] font-normal @xs:table-cell"
+                                                >Genre</th
+                                            >
+                                            <th
+                                                class="text-secondary hidden min-w-[40px] px-3 py-2 text-left text-[0.6rem] font-normal @sm:table-cell"
+                                                >Year</th
+                                            >
+                                            <th
+                                                class="text-secondary hidden min-w-[45px] px-3 py-2 text-left text-[0.6rem] font-normal @sm:table-cell"
+                                                >Rating</th
+                                            >
                                         </tr>
                                     </thead>
                                     <tbody class="divide-smooth divide-y">
                                         {#each movies as movie}
-                                            <tr class="text-[0.6rem] text-primary">
-                                                <td class="truncate px-3 py-1.5 font-mono text-secondary">{movie.id}<span class="font-sans text-secondary/60">…</span></td>
+                                            <tr class="text-primary text-[0.6rem]">
+                                                <td
+                                                    class="text-secondary truncate px-3 py-1.5 font-mono"
+                                                    >{movie.id}<span
+                                                        class="text-secondary/60 font-sans">…</span
+                                                    ></td
+                                                >
                                                 <td class="truncate px-3 py-1.5">{movie.title}</td>
-                                                <td class="hidden @xs:table-cell truncate px-3 py-1.5">{movie.genre}</td>
-                                                <td class="hidden @sm:table-cell truncate px-3 py-1.5">{movie.year}</td>
-                                                <td class="hidden @sm:table-cell truncate px-3 py-1.5">{movie.rating}</td>
+                                                <td
+                                                    class="hidden truncate px-3 py-1.5 @xs:table-cell"
+                                                    >{movie.genre}</td
+                                                >
+                                                <td
+                                                    class="hidden truncate px-3 py-1.5 @sm:table-cell"
+                                                    >{movie.year}</td
+                                                >
+                                                <td
+                                                    class="hidden truncate px-3 py-1.5 @sm:table-cell"
+                                                    >{movie.rating}</td
+                                                >
                                             </tr>
                                         {/each}
                                     </tbody>
@@ -176,29 +289,77 @@
                     {:else}
                         <!-- Vector: frame within frame -->
                         <div class="p-1.5">
-                            <div class="@container overflow-hidden rounded-xl bg-[#19191C] flex">
-                                <div class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block">
+                            <div class="@container flex overflow-hidden rounded-xl bg-[#19191C]">
+                                <div
+                                    class="border-smooth divide-smooth hidden w-36 shrink-0 divide-y border-r pt-1.5 @xs:block"
+                                >
                                     {#each movies as movie}
-                                        <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
-                                            {movie.id}<span class="font-sans text-secondary/60">…</span>
+                                        <div
+                                            class={cn(
+                                                'text-secondary px-3 py-1.5 font-mono text-[0.6rem]'
+                                            )}
+                                        >
+                                            {movie.id}<span class="text-secondary/60 font-sans"
+                                                >…</span
+                                            >
                                         </div>
                                     {/each}
                                 </div>
 
-                            <!-- Right: JSON with nested Metadata + Embeddings -->
-                            <div class="flex-1 px-3 py-2.5 font-fira-code text-[0.6rem] leading-[1.6]">
-                                <div class="text-secondary">{'{'}</div>
-                                <div class="flex flex-col pl-3">
-                                    <div><span class="text-primary">$id</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"3397fec2uj..."</span><span class="text-secondary">,</span></div>
-                                    <div><span class="text-primary">Metadata</span><span class="text-secondary">: {'{'}</span></div>
-                                    <div class="pl-3"><span class="text-primary">title</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"Toy Story"</span><span class="text-secondary">,</span></div>
-                                    <div class="pl-3"><span class="text-primary">releaseYear</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"1995"</span></div>
-                                    <div><span class="text-secondary">{'  },'}</span></div>
-                                    <div><span class="text-primary">Embeddings</span><span class="text-secondary">: </span><span class="text-secondary">[</span><span class="text-[#79B8FF]">0.0701, 0.0049, 0.1031, 0.0071, -0.0088, ...</span><span class="text-secondary">]</span><span class="text-secondary">,</span></div>
-                                    <div><span class="text-primary">$createdAt</span><span class="text-secondary">: </span><span class="text-[#E8C07D]">"Jan 15, 2026"</span></div>
+                                <!-- Right: JSON with nested Metadata + Embeddings -->
+                                <div
+                                    class="font-fira-code flex-1 px-3 py-2.5 text-[0.6rem] leading-[1.6]"
+                                >
+                                    <div class="text-secondary">{'{'}</div>
+                                    <div class="flex flex-col pl-3">
+                                        <div>
+                                            <span class="text-primary">$id</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]"
+                                                >"3397fec2uj..."</span
+                                            ><span class="text-secondary">,</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">Metadata</span><span
+                                                class="text-secondary">: {'{'}</span
+                                            >
+                                        </div>
+                                        <div class="pl-3">
+                                            <span class="text-primary">title</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"Toy Story"</span
+                                            ><span class="text-secondary">,</span>
+                                        </div>
+                                        <div class="pl-3">
+                                            <span class="text-primary">releaseYear</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"1995"</span>
+                                        </div>
+                                        <div><span class="text-secondary">{'  },'}</span></div>
+                                        <div>
+                                            <span class="text-primary">Embeddings</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-secondary">[</span><span
+                                                class="text-[#79B8FF]"
+                                                >0.0701, 0.0049, 0.1031, 0.0071, -0.0088, ...</span
+                                            ><span class="text-secondary">]</span><span
+                                                class="text-secondary">,</span
+                                            >
+                                        </div>
+                                        <div>
+                                            <span class="text-primary">$createdAt</span><span
+                                                class="text-secondary"
+                                                >:
+                                            </span><span class="text-[#E8C07D]">"Jan 15, 2026"</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="text-secondary">{'}'}</div>
                                 </div>
-                                <div class="text-secondary">{'}'}</div>
-                            </div>
                             </div>
                         </div>
                     {/if}

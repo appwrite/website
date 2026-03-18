@@ -82,7 +82,8 @@
             <h3 class="font-aeonik-pro text-label text-primary">Auth</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
-            <span class="text-secondary">Authenticate users with</span> Email/Password, SMS, OAuth, Anonymous, and Magic URLs.
+            <span class="text-secondary">Authenticate users with</span> Email/Password, SMS, OAuth, Anonymous,
+            and Magic URLs.
         </p>
     </div>
     <div
