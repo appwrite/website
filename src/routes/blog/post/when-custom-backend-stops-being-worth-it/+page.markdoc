@@ -59,7 +59,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 What makes Appwrite a strong candidate for teams migrating away from a custom backend:
 
 - **Breadth of coverage**: Authentication, database, storage, functions, real-time, and messaging in one platform means fewer migration steps and fewer new vendors to evaluate separately.
-- **No proprietary lock-in**: Appwrite is Apache 2.0 licensed and fully open source. The APIs follow standard REST conventions. If you ever need to move again, the migration path exists.
+- **No proprietary lock-in**: Appwrite is BSD 3-Clause licensed and fully open source. The APIs follow standard REST conventions. If you ever need to move again, the migration path exists.
 - **Self-hosting option**: Teams that built a custom backend to keep data on their own infrastructure don't have to give that up. Appwrite can be deployed within your own cloud account, satisfying data control requirements while eliminating the maintenance burden of a custom implementation.
 - **Security handled correctly**: The concerns that make custom backends risky (password hashing, brute-force protection, session management) are handled at the platform level using proven implementations (Argon2 for password hashing, configurable rate limiting, secure session tokens).
 - **Gradual migration support**: Appwrite's REST API means your existing frontend can call Appwrite endpoints without a full rewrite. Authentication, storage, and database can be migrated service by service rather than all at once.

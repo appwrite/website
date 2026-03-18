@@ -83,7 +83,7 @@ Against the evaluation criteria outlined above, Appwrite performs well for regul
 
 - **Project health**: Appwrite has an active core development team, frequent releases with a public changelog, and a formal security disclosure process. It is backed by a commercial entity that continues to fund ongoing development.
 - **Self-hosting**: Appwrite is designed first and foremost to be self-hosted. A Docker-based installation runs the full platform within your own infrastructure, in the regions you specify, under your operational control, directly addressing data residency requirements.
-- **License**: Appwrite uses the Apache 2.0 license, which imposes no restrictions on commercial use and does not require open-sourcing your application code.
+- **License**: Appwrite uses the BSD 3-Clause license, which imposes no restrictions on commercial use and does not require open-sourcing your application code.
 - **Vulnerability management**: Appwrite maintains a public security policy and releases security patches promptly. The open-source codebase means vulnerabilities can be identified through community review, not only internal audits.
 - **Commercial support**: Teams that need formal support agreements or SLAs can engage through Appwrite Cloud, which provides a managed hosting option with defined service terms.
 

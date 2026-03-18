@@ -78,7 +78,7 @@ Appwrite is purpose-built for the path described in this post, starting managed,
 
 - **Start managed**: [Appwrite Cloud](https://cloud.appwrite.io) provides a fully managed experience with no infrastructure to configure. The free tier is sufficient for most early-stage applications.
 - **Move to self-hosted**: When data residency, compliance, cost at scale, or customization requirements change the calculus, Appwrite can be deployed on your own infrastructure. The APIs, SDKs, and data models are identical; your application code doesn't change.
-- **Open source, Apache 2.0**: Appwrite's code is publicly available and permissively licensed. Your investment in learning the platform and building on its APIs is not at risk from vendor pricing changes or product discontinuation.
+- **Open source, BSD 3-Clause**: Appwrite's code is publicly available and permissively licensed. Your investment in learning the platform and building on its APIs is not at risk from vendor pricing changes or product discontinuation.
 - **Data portability**: Appwrite stores data in standard formats. If you ever need to move, the migration path is your own infrastructure or another data store, not a vendor export format.
 
 # Start managed, migrate to self-hosted when the economics shift

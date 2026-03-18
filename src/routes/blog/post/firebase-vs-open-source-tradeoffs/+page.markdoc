@@ -73,7 +73,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 
 Appwrite directly addresses each of the Firebase trade-offs outlined above:
 
-- **Lock-in**: Appwrite uses standard REST APIs and open-source SDKs. Its Apache 2.0 license and self-hosting support mean you're never dependent on a single vendor's pricing or product decisions.
+- **Lock-in**: Appwrite uses standard REST APIs and open-source SDKs. Its BSD 3-Clause license and self-hosting support mean you're never dependent on a single vendor's pricing or product decisions.
 - **Pricing**: Appwrite Cloud pricing is based on compute and storage, not per-document operations. Self-hosted Appwrite has only infrastructure costs. Neither model produces per-query billing surprises.
 - **Data ownership**: Self-hosted Appwrite stores data in your own infrastructure. Even on Appwrite Cloud, the data model is standard and exportable. There is no Google-owned infrastructure between you and your data.
 - **Feature breadth**: Appwrite provides authentication (email, OAuth2 with 30+ providers, phone, anonymous, MFA), a document database with real-time subscriptions, file storage with permissions and antivirus scanning, serverless functions, and messaging, covering the same surface area as Firebase's main services.

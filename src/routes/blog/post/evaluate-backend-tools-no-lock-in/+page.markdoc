@@ -106,7 +106,7 @@ Scoring Appwrite against the evaluation framework above:
 
 - **Data portability**: Appwrite stores data in standard JSON document format. Data can be exported without contacting the vendor, and the format is immediately usable in other systems.
 - **API design**: Appwrite exposes a standard REST API alongside native SDKs. The query patterns are well-documented and map to standard database concepts. Replacing Appwrite with another service would require updating your data access calls, but not rewriting your application's business logic.
-- **Open source and self-hosting**: Appwrite is Apache 2.0 licensed and fully self-hostable. If Appwrite Cloud ceased to exist, you could operate the same software on your own infrastructure without any code changes.
+- **Open source and self-hosting**: Appwrite is BSD 3-Clause licensed and fully self-hostable. If Appwrite Cloud ceased to exist, you could operate the same software on your own infrastructure without any code changes.
 - **Feature isolation**: Appwrite's APIs follow standard conventions. Its authentication tokens are standard JWTs. Its database queries use a documented query syntax. The level of proprietary abstraction is low compared to platforms like Firebase.
 - **Pricing**: Appwrite Cloud prices on compute and storage. Self-hosted Appwrite has only infrastructure costs. Neither model involves per-operation billing that scales unpredictably with data access patterns.
 
@@ -114,7 +114,7 @@ Scoring Appwrite against the evaluation framework above:
 
 Evaluating backend tools with lock-in in mind doesn't mean being paralyzed or avoiding decisions. It means being clear-eyed about the dependencies you're taking on and choosing platforms where the lock-in trade-offs are reasonable given your situation.
 
-[Appwrite](https://appwrite.io) is designed to minimize these concerns: it's open source (Apache 2.0 licensed), fully self-hostable, uses standard REST APIs alongside native SDKs, stores data in portable formats, and offers a managed cloud service ([Appwrite Cloud](https://cloud.appwrite.io)) that can be migrated to self-hosted without code changes. It's a deliberate choice for teams that want a capable backend platform without accepting deep vendor lock-in.
+[Appwrite](https://appwrite.io) is designed to minimize these concerns: it's open source (BSD 3-Clause licensed), fully self-hostable, uses standard REST APIs alongside native SDKs, stores data in portable formats, and offers a managed cloud service ([Appwrite Cloud](https://cloud.appwrite.io)) that can be migrated to self-hosted without code changes. It's a deliberate choice for teams that want a capable backend platform without accepting deep vendor lock-in.
 
 - [Appwrite Self-Hosting docs](https://appwrite.io/docs/advanced/self-hosting)
 - [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
