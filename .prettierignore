@@ -7,7 +7,6 @@ node_modules
 .env.*
 !.env.example
 deploy
-src/lib/generated
 
 # Ignore files for Bun
 bun.lock
