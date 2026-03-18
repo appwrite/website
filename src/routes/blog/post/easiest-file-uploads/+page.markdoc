@@ -41,7 +41,7 @@ To create a bucket:
 You can also create buckets programmatically using the Appwrite Server SDK:
 
 ```js
-import { Client, Storage } from 'node-appwrite';
+import { Client, Storage, Permission, Role } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
