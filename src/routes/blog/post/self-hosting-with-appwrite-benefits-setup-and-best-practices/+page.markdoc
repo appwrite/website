@@ -103,7 +103,7 @@ Choosing between self-hosting and Appwrite Cloud depends on your team's prioriti
 
 Self-hosting makes sense when data sovereignty, regulatory compliance, or deep customization are non-negotiable. Appwrite Cloud is the better choice when you want to ship fast without managing infrastructure, especially if your team is small or lacks dedicated DevOps capacity.
 
-The APIs and SDKs are identical between Cloud and self-hosted instances. You can start on Cloud and migrate to self-hosting later if your requirements change.
+Appwrite Cloud and self-hosted Appwrite use the same API/SDK model within supported versions, and you can migrate from Cloud to self-hosting later if your requirements change. Cloud receives new features first, so exact parity depends on the self-hosted version you're running.
 
 # Getting started with self-hosted Appwrite
 
