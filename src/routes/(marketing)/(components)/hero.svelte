@@ -34,7 +34,10 @@
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
-            <HeroBanner title="Introducing Imagine" href="/blog/post/introducing-imagine" />
+            <HeroBanner
+                title="Introducing Appwrite Arena"
+                href="/blog/post/announcing-appwrite-arena"
+            />
 
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-headline text-pretty">

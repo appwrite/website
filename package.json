@@ -5,11 +5,11 @@
     "type": "module",
     "scripts": {
         "build": "bun ./scripts/build.js",
-        "fetch:stars": "node scripts/fetch-github-stars.js",
+        "fetch:stars": "bun scripts/fetch-github-stars.js",
         "prebuild": "bun run fetch:stars",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-        "clean": "rm -rf node_modules && rm -rf .svelte_kit && bun install",
+        "clean": "rm -rf node_modules && rm -rf .svelte_kit",
         "dev": "vite dev",
         "format": "prettier --write --cache .",
         "format:check": "prettier --check .",

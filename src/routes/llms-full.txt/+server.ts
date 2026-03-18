@@ -85,7 +85,7 @@ function sectionWeight(href: string): number {
     }
 }
 
-export const GET: RequestHandler = ({ request }) => {
+export const GET: RequestHandler = () => {
     try {
         const base = 'https://appwrite.io';
         type Item = { href: string; title: string; block: string };

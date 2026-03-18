@@ -6,6 +6,7 @@ import { getMarkdownContent, processMarkdownWithPartials } from '$lib/server/mar
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
+import { profoundAnalytics } from '$lib/server/profound-analytics';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
 
@@ -262,6 +263,7 @@ export const handle = sequence(
     wwwRedirecter,
     securityheaders,
     initSession,
-    seoOptimization
+    seoOptimization,
+    profoundAnalytics
 );
 export const handleError = Sentry.handleErrorWithSentry();
