@@ -1,22 +1,30 @@
 ---
 layout: article
-title: Quickstart Prompts
-description: Use AI assistants and code-generation tools to build Appwrite-powered applications faster using quickstart prompts.
+title: Quick start prompts
+description: Use AI assistants and code-generation tools to build Appwrite-powered applications faster using quick start prompts.
 ---
 
-**Quickstart prompts** are pre-built instructions designed to help AI assistants integrate Appwrite into your project. These prompts guide AI tools like Cursor, Claude Code, Windsurf, and others through the process of setting up authentication, databases, and other Appwrite services in your application.
+**Quick start prompts** are pre-built instructions designed to help AI assistants integrate Appwrite into your project. These prompts guide AI tools like Cursor, Claude Code, Windsurf, and others through the process of setting up authentication, databases, and other Appwrite services in your application.
 
-# Benefits {% #benefits %}
 
-Quickstart prompts offer several advantages when building with Appwrite:
+Quick start prompts offer several advantages when building with Appwrite:
 
 - **Faster setup**: Skip the manual configuration and let AI handle the boilerplate code and SDK integration.
 - **Best practices**: Prompts are crafted to follow Appwrite's recommended patterns and conventions.
 - **Interactive guidance**: AI assistants will ask for necessary details like your project ID and region rather than making assumptions.
 
-# Available quickstart prompts {% #available-quickstart-prompts %}
+# How to use quick start prompts {% #how-to-use-quick-start-prompts %}
 
-Use the following quickstart prompts with your preferred AI assistant to integrate Appwrite into your project:
+1. Open your preferred AI assistant or code editor with AI capabilities (such as Claude Desktop, Cursor, or Windsurf) in an existing project or an empty directory.
+2. Copy the quickstart prompt for your chosen framework.
+3. Paste the prompt and let the AI guide you through the setup process.
+4. When prompted, provide your Appwrite project details (region and project ID) from the Appwrite Console.
+
+For the best experience, consider using Appwrite's MCP servers alongside quick start prompts. MCP servers allow AI assistants to directly interact with your Appwrite project and access up-to-date documentation.
+
+# Available quick start prompts {% #available-quick-start-prompts %}
+
+Use the following quick start prompts with your preferred AI assistant to integrate Appwrite into your project:
 
 ## Web {% #web %}
 
@@ -110,12 +118,3 @@ Use the following quickstart prompts with your preferred AI assistant to integra
 {% /cards_item %}
 
 {% /cards %}
-
-# How to use quickstart prompts {% #how-to-use-quickstart-prompts %}
-
-1. Open your preferred AI assistant or code editor with AI capabilities (such as Claude Desktop, Cursor, or Windsurf) in an existing project or an empty directory.
-2. Copy the quickstart prompt for your chosen framework.
-3. Paste the prompt and let the AI guide you through the setup process.
-4. When prompted, provide your Appwrite project details (region and project ID) from the Appwrite Console.
-
-For the best experience, consider using Appwrite's MCP servers alongside quickstart prompts. MCP servers allow AI assistants to directly interact with your Appwrite project and access up-to-date documentation.
