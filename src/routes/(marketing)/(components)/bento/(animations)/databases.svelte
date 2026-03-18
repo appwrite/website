@@ -6,9 +6,9 @@
     import { hover, inView } from 'motion';
     import { fade } from 'svelte/transition';
 
-    type DBType = 'Tables' | 'Documents' | 'Vector';
+    type DBType = 'Tables' | 'Documents' | 'Vectors';
 
-    const types: DBType[] = ['Tables', 'Documents', 'Vector'];
+    const types: DBType[] = ['Tables', 'Documents', 'Vectors'];
 
     const movies = [
         { id: '3397fec2uj', title: 'Toy Story', genre: 'Animation', year: 1995, rating: 8.3, embedding: '[0.0701, 0.0049, ...]' },
@@ -123,7 +123,7 @@
                         <div class="p-1.5">
                             <div class="overflow-hidden rounded-xl bg-[#19191C] flex">
                                 <!-- Left: narrow ID list, first row selected -->
-                                <div class="border-smooth w-36 shrink-0 border-r pt-1.5">
+                                <div class="border-smooth divide-smooth w-36 shrink-0 divide-y border-r pt-1.5">
                                     {#each movies as movie}
                                         <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
                                             {movie.id}<span class="font-sans text-secondary/60">…</span>
@@ -148,23 +148,25 @@
                     {:else if activeType === 'Tables'}
                         <!-- Tables: frame within frame (Sites-style) -->
                         <div class="p-1.5">
-                            <div class="overflow-hidden rounded-xl bg-[#19191C]">
+                            <div class="@container overflow-hidden rounded-xl bg-[#19191C]">
                                 <table class="w-full">
                                     <thead>
                                         <tr class="border-smooth border-b">
-                                            {#each tableColumns as col}
-                                                <th class="text-[0.6rem] px-3 py-2 text-left font-normal text-secondary">{col}</th>
-                                            {/each}
+                                            <th class="text-[0.6rem] min-w-[80px] px-3 py-2 text-left font-normal text-secondary">ID</th>
+                                            <th class="text-[0.6rem] min-w-[65px] px-3 py-2 text-left font-normal text-secondary">Name</th>
+                                            <th class="hidden @xs:table-cell text-[0.6rem] min-w-[55px] px-3 py-2 text-left font-normal text-secondary">Genre</th>
+                                            <th class="hidden @sm:table-cell text-[0.6rem] min-w-[40px] px-3 py-2 text-left font-normal text-secondary">Year</th>
+                                            <th class="hidden @sm:table-cell text-[0.6rem] min-w-[45px] px-3 py-2 text-left font-normal text-secondary">Rating</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-smooth divide-y">
                                         {#each movies as movie}
                                             <tr class="text-[0.6rem] text-primary">
-                                                <td class="px-3 py-1.5 font-mono text-secondary">{movie.id}<span class="font-sans text-secondary/60">…</span></td>
-                                                <td class="px-3 py-1.5">{movie.title}</td>
-                                                <td class="px-3 py-1.5">{movie.genre}</td>
-                                                <td class="px-3 py-1.5">{movie.year}</td>
-                                                <td class="px-3 py-1.5">{movie.rating}</td>
+                                                <td class="truncate px-3 py-1.5 font-mono text-secondary">{movie.id}<span class="font-sans text-secondary/60">…</span></td>
+                                                <td class="truncate px-3 py-1.5">{movie.title}</td>
+                                                <td class="hidden @xs:table-cell truncate px-3 py-1.5">{movie.genre}</td>
+                                                <td class="hidden @sm:table-cell truncate px-3 py-1.5">{movie.year}</td>
+                                                <td class="hidden @sm:table-cell truncate px-3 py-1.5">{movie.rating}</td>
                                             </tr>
                                         {/each}
                                     </tbody>
@@ -175,7 +177,7 @@
                         <!-- Vector: frame within frame -->
                         <div class="p-1.5">
                             <div class="overflow-hidden rounded-xl bg-[#19191C] flex">
-                                <div class="border-smooth w-36 shrink-0 border-r pt-1.5">
+                                <div class="border-smooth divide-smooth w-36 shrink-0 divide-y border-r pt-1.5">
                                     {#each movies as movie}
                                         <div class={cn('text-[0.6rem] font-mono px-3 py-1.5 text-secondary')}>
                                             {movie.id}<span class="font-sans text-secondary/60">…</span>
