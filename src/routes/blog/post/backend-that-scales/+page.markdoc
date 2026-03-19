@@ -95,6 +95,6 @@ Building a backend that scales is about avoiding known antipatterns: stateful se
 [Appwrite](https://appwrite.io) is designed to support this model. Its managed database system handles indexes and query optimization at the platform level. Its serverless functions run asynchronously and scale based on invocation volume without requiring you to manage server capacity. File storage is managed independently of your compute layer. [Appwrite Cloud](https://cloud.appwrite.io) scales the infrastructure automatically; if you self-host, Appwrite's Docker-based deployment can be scaled horizontally using standard container orchestration.
 
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
-- [Appwrite Self-Hosting guide](https://appwrite.io/docs/advanced/self-hosting)
+- [Appwrite Databases docs](/docs/products/databases)
+- [Appwrite Functions docs](/docs/products/functions)
+- [Appwrite Self-Hosting guide](/docs/advanced/self-hosting)

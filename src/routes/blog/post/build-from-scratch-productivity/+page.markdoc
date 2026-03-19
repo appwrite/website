@@ -83,7 +83,7 @@ The discipline of knowing what not to build is as important as the ability to bu
 
 Appwrite is built around this philosophy: a single platform that handles authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging. Development time goes toward what makes your application unique. Try [Appwrite Cloud](https://cloud.appwrite.io) for free or review the [documentation](https://appwrite.io/docs) to see how much backend infrastructure you can stop building from scratch.
 
-- [Appwrite Storage docs](https://appwrite.io/docs/products/storage)
+- [Appwrite Storage docs](/docs/products/storage)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite Functions docs](/docs/products/functions)
