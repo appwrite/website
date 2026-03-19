@@ -91,9 +91,9 @@ Firebase remains a strong choice for:
 
 Choosing Firebase is not a mistake. It's a trade-off: lock-in for developer experience, pricing variability for managed scale, and Google's platform choices for infrastructure quality. Whether those trade-offs are worth it depends on your specific situation.
 
-[Appwrite](https://appwrite.io) is a Firebase alternative that's open source, self-hostable, and actively developed. It provides authentication with 30+ OAuth providers, a document-oriented database with real-time subscriptions, file storage with permission controls, serverless functions, and messaging. Start on [Appwrite Cloud](https://cloud.appwrite.io) for a managed experience, or self-host when your requirements demand it.
+Appwrite is a Firebase alternative that's open-source, self-hostable, and actively developed. It provides authentication with 30+ OAuth providers, a document-oriented database with real-time subscriptions, file storage with permission controls, serverless functions, and messaging. Start on [Appwrite Cloud](https://cloud.appwrite.io) for a managed experience, or self-host when your requirements demand it.
 
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
-- [Appwrite Self-Hosting guide](https://appwrite.io/docs/advanced/self-hosting)
+- [Appwrite Authentication docs](docs/products/auth)
+- [Appwrite Databases docs](/docs/products/databases)
+- [Appwrite self-hosting guide](/docs/advanced/self-hosting)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

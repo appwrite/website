@@ -95,7 +95,7 @@ For client dashboard and internal tool work, Appwrite covers the entire backend 
 
 Internal tools don't have to be slow to build. The key is separating the logic that needs to be custom from the infrastructure that can be handled by a platform. Authentication, data storage, file handling, and access control are solved problems. You should not be rebuilding them for every client engagement.
 
-[Appwrite](https://appwrite.io) gives you all of these as a unified platform. Its console handles a large portion of the administrative interface needs directly. When you need a custom front end, the Appwrite SDKs for JavaScript, Flutter, iOS, Android, and multiple server-side languages let you build on top of a solid foundation without starting from zero.
+Appwrite gives you all of these as a unified platform. Its console handles a large portion of the administrative interface needs directly. When you need a custom front end, the Appwrite SDKs for JavaScript, Flutter, iOS, Android, and multiple server-side languages let you build on top of a solid foundation without starting from zero.
 
 - [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)

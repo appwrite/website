@@ -94,9 +94,9 @@ For developers thinking through compliance requirements before engaging legal, A
 
 Compliance doesn't have to be a surprise. Developers who understand the frameworks that apply to their application make better technical decisions and have more productive conversations with legal teams, security reviewers, and enterprise customers.
 
-[Appwrite](https://appwrite.io) is an open-source backend platform built with security and privacy controls as first-class features. Its support for self-hosting, built-in GDPR-relevant features like data deletion, granular permissions, and comprehensive audit logging make it a practical foundation for applications with real compliance requirements. Explore the [Appwrite compliance documentation](https://appwrite.io/docs/advanced/security#compliance) to see how its features map to the security controls your compliance framework requires.
+Appwrite is an open-source backend platform built with security and privacy controls as first-class features. Its support for self-hosting, built-in GDPR-relevant features like data deletion, granular permissions, and comprehensive audit logging make it a practical foundation for applications with real compliance requirements. Explore the [Appwrite compliance documentation](/docs/advanced/security#compliance) to see how its features map to the security controls your compliance framework requires.
 
-- [Appwrite GDPR compliance](https://appwrite.io/docs/advanced/security/gdpr)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite GDPR compliance](/docs/advanced/security/gdpr)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [GDPR official text](https://gdpr-info.eu/)
 - [HHS HIPAA Security Rule](https://www.hhs.gov/hipaa/for-professionals/security/index.html)

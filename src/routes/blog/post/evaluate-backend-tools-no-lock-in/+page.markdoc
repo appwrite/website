@@ -68,7 +68,7 @@ Ask:
 - Are your security rules written in a proprietary syntax?
 - Is your authentication model tied to vendor-specific tokens or session formats?
 
-## 5. The migration path from the alternative
+## 5. The migration path
 
 Before committing to a platform, spend an hour thinking about the migration path away from it. Not because you plan to migrate, but because understanding the migration cost clarifies what you're actually signing up for.
 
@@ -114,9 +114,9 @@ Scoring Appwrite against the evaluation framework above:
 
 Evaluating backend tools with lock-in in mind doesn't mean being paralyzed or avoiding decisions. It means being clear-eyed about the dependencies you're taking on and choosing platforms where the lock-in trade-offs are reasonable given your situation.
 
-[Appwrite](https://appwrite.io) is designed to minimize these concerns: it's open source (BSD 3-Clause licensed), fully self-hostable, uses standard REST APIs alongside native SDKs, stores data in portable formats, and offers a managed cloud service ([Appwrite Cloud](https://cloud.appwrite.io)) that can be migrated to self-hosted without code changes. It's a deliberate choice for teams that want a capable backend platform without accepting deep vendor lock-in.
+Appwrite is designed to minimize these concerns: it's open source (BSD 3-Clause licensed), fully self-hostable, uses standard REST APIs alongside native SDKs, stores data in portable formats, and offers a managed cloud service ([Appwrite Cloud](https://cloud.appwrite.io)) that can be migrated to self-hosted without code changes. It's a deliberate choice for teams that want a capable backend platform without accepting deep vendor lock-in.
 
-- [Appwrite Self-Hosting docs](https://appwrite.io/docs/advanced/self-hosting)
-- [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite Self-Hosting docs](/docs/advanced/self-hosting)
+- [Appwrite Databases docs](/docs/products/databases)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

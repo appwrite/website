@@ -39,9 +39,9 @@ The point is that you shouldn't have to become a security expert to add login to
 
 Traditional backend development often means setting up a database server, writing an ORM layer, building REST endpoints, and managing migrations. That's a lot of plumbing before you can even store a user's first piece of data.
 
-[Appwrite Databases](/docs/products/databases) lets you create collections, define attributes, and query data directly through the client SDK. You structure your data in the Appwrite Console or through the API, set up indexes for performance, and start reading and writing from your frontend immediately. Permissions are built in at the document level, so you control exactly who can access what.
+[Appwrite Databases](/docs/products/databases) lets you create tables, define columns, and query data directly through the client SDK. You structure your data in the Appwrite Console or through the API, set up indexes for performance, and start reading and writing from your frontend immediately. Permissions are built in at the row level, so you control exactly who can access what.
 
-Need relationships between collections? Appwrite supports those too, with one-to-one, one-to-many, and many-to-many [relationship attributes](/docs/products/databases/relationships). And if your project outgrows a single database model, you can [integrate external databases](https://appwrite.io/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) like PostgreSQL, MongoDB, or any SQL/NoSQL store into your Appwrite project.
+Need relationships between collections? Appwrite supports those too, with one-to-one, one-to-many, and many-to-many [relationship attributes](/docs/products/databases/relationships). And if your project outgrows a single database model, you can [integrate external databases](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) like PostgreSQL, MongoDB, or any SQL/NoSQL store into your Appwrite project.
 
 # File storage that handles the hard parts
 

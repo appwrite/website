@@ -77,9 +77,9 @@ Appwrite addresses several compliance-by-design concerns at the platform level, 
 
 Compliance doesn't have to be a speed bump. When it's embedded in your architecture rather than imposed on top of it, it becomes a competitive advantage: a signal to enterprise customers that your team builds trustworthy systems.
 
-[Appwrite](https://appwrite.io) is an open-source developer infrastructure platform that provides built-in authentication, databases, file storage, serverless functions, web hosting, and more, with security controls built in from the ground up. Its permission system, session management, password policies, and support for self-hosting make it a practical choice for teams building in regulated environments. Whether you're running Appwrite on your own infrastructure or using [Appwrite Cloud](https://cloud.appwrite.io), the platform gives you the controls you need to build compliantly without building everything yourself.
+Appwrite is an open-source developer infrastructure platform that provides built-in authentication, databases, file storage, serverless functions, web hosting, and more, with security controls built in from the ground up. Its permission system, session management, password policies, and support for self-hosting make it a practical choice for teams building in regulated environments. Whether you're running Appwrite on your own infrastructure or using [Appwrite Cloud](https://cloud.appwrite.io), the platform gives you the controls you need to build compliantly without building everything yourself.
 
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite Self-Hosting guide](https://appwrite.io/docs/advanced/self-hosting)
-- [Appwrite Security overview](https://appwrite.io/docs/advanced/security)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite Self-Hosting guide](/docs/advanced/self-hosting)
+- [Appwrite Security overview](/docs/advanced/security)
