@@ -81,7 +81,7 @@ At the end of three days, you have something real. Not a prototype. Not a concep
 
 One of the most common mistakes developers make is treating a side project like a full-scale production system before a single user has signed up, worrying about scaling to millions of users, perfect backend architecture, and a complete feature set before anything exists.
 
-This is the problem Appwrite is built to solve. Appwrite is an open-source developer platform that gives you the backend pieces most side projects need out of the box: authentication, databases, storage, functions, realtime, and messaging. Everything works together without extra integration work. Instead of spending days on infrastructure, you can have a working backend in minutes and move straight to the part that makes your side project worth building.
+This is the problem Appwrite is built to solve. Appwrite is an open-source developer platform that gives you the pieces most side projects need out of the box: authentication, databases, storage, functions, real-time, messaging, and web hosting with Appwrite Sites. Everything works together without extra integration work. Instead of spending days wiring up infrastructure and deployment, you can have a working foundation in minutes and move straight to the part that makes your side project worth building.
 
 Your first version should feel small. Maybe even a little rough. Its job isn't to impress, its job is to exist. Once it exists, you can iterate based on what real users actually need rather than what you assumed they'd need. A useful question to ask at every decision point: *does this need to exist in version one?* If the answer is no, it doesn't get built yet.
 
