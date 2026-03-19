@@ -45,7 +45,7 @@ The fastest way to get started with Appwrite self-hosting:
 
 1. **Use a one-click deployment** - Choose from [marketplace installations](#one-click-deployments) for instant setup
 2. **Or follow the manual installation** - Use our [Docker installation guide](/docs/advanced/self-hosting/installation) for custom setups
-3. **Configure services** - Set up [email](/docs/advanced/self-hosting/configuration/email), [storage](/docs/advanced/self-hosting/configuration/storage), and other services
+3. **Configure services** - Set up [email](/docs/advanced/self-hosting#configuration), [storage](/docs/advanced/self-hosting#configuration), and other services
 
 # Deployment options {% #deployment-options %}
 
@@ -118,20 +118,23 @@ Open-source platform for easy self-hosting with one-click deployments.
 After deployment, configure Appwrite to enable additional features:
 
 {% cards %}
-{% cards_item href="/docs/advanced/self-hosting/configuration/email" title="Email delivery" %}
+{% cards_item href="/docs/advanced/self-hosting#configuration" title="Email delivery" %}
 Set up SMTP providers for user verification, password recovery, and notifications.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/self-hosting/configuration/sms" title="SMS Delivery" %}
+{% cards_item href="/docs/advanced/self-hosting#configuration" title="SMS Delivery" %}
 Configure SMS providers for phone authentication and two-factor authentication.
 {% /cards_item %}
 
-{% cards_item href="/docs/advanced/self-hosting/configuration/storage" title="Storage Backends" %}
+{% cards_item href="/docs/advanced/self-hosting#configuration" title="Storage Backends" %}
 Connect external storage providers like AWS S3, Backblaze, or Wasabi.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/self-hosting/configuration/functions" title="Functions Runtime" %}
 Enable serverless functions with custom runtimes and execution environments.
+{% /cards_item %}
+{% cards_item href="/docs/products/sites" title="Appwrite Sites" %}
+Deploy and manage your web apps with ease using Appwrite's hosting solution.
 {% /cards_item %}
 {% /cards %}
 
