@@ -35,7 +35,7 @@ For teams that need custom authentication flows like Web3 wallets or enterprise 
 
 Designing and optimizing a database is one of the most time-consuming parts of backend development. [Appwrite Databases](/docs/products/databases) simplifies this with a document-based model that you can configure through the console or API.
 
-Create collections, define attributes, set up indexes, and start querying data immediately. The built-in permission system lets you control access at the document level without writing custom middleware.
+Create tables, define columns, set up indexes, and start querying data immediately. The built-in permission system lets you control access at the row level without writing custom middleware.
 
 If your app outgrows Appwrite's built-in database or you need a specialized solution, you can [integrate external databases](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) like PostgreSQL, MongoDB, or vector databases into your project. There's no lock-in forcing you to stay on one system.
 
@@ -63,7 +63,7 @@ Your entire stack, backend and frontend, lives in one platform. No separate host
 
 Startups often evaluate Appwrite alongside Firebase, Supabase, and custom backend setups. A few things set Appwrite apart for early-stage teams:
 
-- **Open source**: Appwrite is 100% open source. You can inspect the code, contribute to it, and [self-host](/docs/advanced/self-hosting) if your requirements change.
+- **Open-source**: Appwrite is 100% open-source. You can inspect the code, contribute to it, and [self-host](/docs/advanced/self-hosting) if your requirements change.
 - **No vendor lock-in**: Your data stays yours. If you ever need to migrate, there are no proprietary formats or ecosystems trapping you in.
 - **All-in-one platform**: Auth, databases, storage, functions, and hosting in a single console. Fewer tools means fewer integration issues and less context switching.
 - **Predictable pricing**: Appwrite's [pricing](/pricing) is straightforward, with no surprise bills as your usage grows.
@@ -78,6 +78,6 @@ Here's how to get moving:
 
 - **Create your project** on [Appwrite Cloud](https://cloud.appwrite.io/) and follow the [quickstart guide](/docs/quick-starts) to connect your app
 - **Apply** to the [Startups Program](/startups) for credits, priority support, and a dedicated program manager
-- **Explore the docs** for [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) to see what fits your stack
+- **Explore the docs** for [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Sites](/docs/products/sites) to see what fits your stack
 
 If your team is spending more time on backend plumbing than on your actual product, that's the problem Appwrite was built to solve. Skip the infrastructure grind and start shipping.

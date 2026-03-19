@@ -26,9 +26,9 @@ Vercel and Netlify are frontend deployment and hosting platforms. Their primary 
 
 What they are **not** is a complete backend. Specifically, they don't provide out of the box:
 
-- **A persistent database.** Serverless functions on Vercel or Netlify don't have a built-in database. You bring your own: Postgres on PlanetScale or Neon, a NoSQL database on MongoDB Atlas, or another service.
+- **A persistent database.** Serverless functions on Vercel don't have a built-in database. You bring your own: Postgres on PlanetScale or Neon, a NoSQL database on MongoDB Atlas, or another service.
 - **User authentication.** There is no built-in user management, session handling, or OAuth integration. You bring your own: Auth0, Clerk, NextAuth, or another service.
-- **File storage.** No built-in file upload or storage system. Developers typically reach for AWS S3, Cloudflare R2, or similar.
+- **File storage.** No built-in file upload or storage system on Netlify. Developers typically reach for AWS S3, Cloudflare R2, or similar.
 - **Real-time.** No native WebSocket or real-time subscription primitives.
 - **Server-side business logic with persistent state.** Serverless functions are stateless and short-lived by design.
 
@@ -36,7 +36,7 @@ The result is that building a full application on Vercel or Netlify means stitch
 
 # What Appwrite is
 
-Appwrite is a full-stack platform. [Appwrite Sites](https://appwrite.io/docs/products/sites) handles frontend hosting and deployment, while the rest of the platform covers the complete backend: authentication, databases, file storage, serverless functions, messaging, and real-time.
+Appwrite is a full-stack platform. [Appwrite Sites](/docs/products/sites) handles frontend hosting and deployment, while the rest of the platform covers the complete backend: authentication, databases, file storage, serverless functions, messaging, and real-time.
 
 ## Frontend hosting with Appwrite Sites
 
@@ -73,7 +73,7 @@ Your frontend deploys to Appwrite Sites; your backend (auth, database, storage, 
 
 ```js
 // In a Next.js app deployed to Appwrite Sites
-import { Client, Account, Databases } from 'appwrite';
+import { Client, Account, TablesDB } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -134,7 +134,7 @@ Each of these is solvable, but each requires adding another service, learning an
 
 Vercel and Netlify are excellent at frontend delivery. They're not replacements for a backend. The teams that build most efficiently are those that understand what each layer of their stack is responsible for and pick tools that cover the complete surface area of their application's needs.
 
-[Appwrite](https://appwrite.io) covers the full stack: frontend hosting with [Appwrite Sites](https://appwrite.io/docs/products/sites) and a complete backend in a single platform. If you prefer a separate hosting setup, Appwrite fills the backend layer cleanly alongside Vercel, Netlify, Cloudflare Pages, or anything else. Try [Appwrite Cloud](https://cloud.appwrite.io) for free or self-host using the [installation guide](https://appwrite.io/docs/advanced/self-hosting).
+Appwrite covers the full stack: frontend hosting with [Appwrite Sites](https://appwrite.io/docs/products/sites) and a complete backend in a single platform. If you prefer a separate hosting setup, Appwrite fills the backend layer cleanly alongside Vercel, Netlify, Cloudflare Pages, or anything else. Try [Appwrite Cloud](https://cloud.appwrite.io) for free or self-host using the [installation guide](/docs/advanced/self-hosting).
 
 - [Appwrite Sites documentation](https://appwrite.io/docs/products/sites)
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
