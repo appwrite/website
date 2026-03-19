@@ -68,7 +68,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 Appwrite is particularly well-suited to agency workflows:
 
 - **Project isolation**: Appwrite's project-based structure gives each client their own authentication system, database, storage, and functions within a clean, isolated boundary, while remaining manageable from a single Appwrite installation or organization.
-- **Fast project setup**: The [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation) supports scripted project creation and configuration, making it straightforward to automate new client environment setup from a template.
+- **Fast project setup**: The [Appwrite CLI](/docs/tooling/command-line/installation) supports scripted project creation and configuration, making it straightforward to automate new client environment setup from a template.
 - **Full-stack coverage**: Authentication, databases, storage, functions, real-time, and messaging in one platform means fewer third-party integrations to manage per project and a consistent mental model across all client work.
 - **Self-hosting for regulated clients**: Agencies working with enterprise or compliance-sensitive clients can deploy Appwrite within those clients' own cloud accounts, satisfying data residency requirements without switching to a different backend stack.
 - **Client access controls**: Appwrite's team and membership system lets you give client stakeholders read or admin access to their own project without exposing your team's other client environments.
@@ -77,9 +77,9 @@ Appwrite is particularly well-suited to agency workflows:
 
 Standardization is one of the highest-leverage decisions an agency can make. The right backend platform becomes a multiplier on every developer's productivity across every client engagement.
 
-[Appwrite](https://appwrite.io) is particularly well-suited for agency use. Its project-based structure isolates each client's data, authentication, storage, and functions within a clean boundary. The [Appwrite CLI](https://appwrite.io/docs/tooling/command-line/installation) supports scripted project setup, making it straightforward to automate the creation of new client environments. Appwrite's self-hosting option means agencies working with enterprise or regulated clients can deploy within those clients' own cloud accounts when required. With authentication, databases, storage, functions, and messaging all in one platform, there's very little that a typical agency project requires that Appwrite doesn't cover.
+Appwrite is particularly well-suited for agency use. Its project-based structure isolates each client's data, authentication, storage, and functions within a clean boundary. The [Appwrite CLI](/docs/tooling/command-line/installation) supports scripted project setup, making it straightforward to automate the creation of new client environments. Appwrite's self-hosting option means agencies working with enterprise or regulated clients can deploy within those clients' own cloud accounts when required. With authentication, databases, storage, functions, messaging, and web hosting all in one platform, there's very little that a typical agency project requires that Appwrite doesn't cover.
 
-- [Appwrite Teams documentation](https://appwrite.io/docs/products/auth/teams)
-- [Appwrite CLI docs](https://appwrite.io/docs/tooling/command-line/installation)
-- [Appwrite Sites documentation](https://appwrite.io/docs/products/sites)
+- [Appwrite Teams documentation](/docs/products/auth/teams)
+- [Appwrite CLI docs](/docs/tooling/command-line/installation)
+- [Appwrite Sites documentation](/docs/products/sites)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
