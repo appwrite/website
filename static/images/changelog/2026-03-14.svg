@@ -1,0 +1,125 @@
+<svg
+    width="1463"
+    height="822"
+    viewBox="0 0 1463 822"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <rect width="1463" height="822" rx="32" fill="#0D1021" />
+    <rect width="1463" height="822" rx="32" fill="url(#bg)" />
+    <circle cx="1156" cy="180" r="190" fill="url(#accentA)" opacity="0.55" />
+    <circle cx="250" cy="690" r="250" fill="url(#accentB)" opacity="0.36" />
+    <rect
+        x="104"
+        y="104"
+        width="1255"
+        height="614"
+        rx="30"
+        fill="#FFFFFF"
+        fill-opacity="0.05"
+        stroke="#FFFFFF"
+        stroke-opacity="0.14"
+    />
+    <text
+        x="152"
+        y="198"
+        fill="#AEB8E8"
+        font-family="Inter, Arial, sans-serif"
+        font-size="28"
+        font-weight="700"
+    >
+        Changelog
+    </text>
+    <text
+        x="152"
+        y="320"
+        fill="#FFFFFF"
+        font-family="Inter, Arial, sans-serif"
+        font-size="80"
+        font-weight="800"
+    >
+        User impersonation
+    </text>
+    <text
+        x="152"
+        y="396"
+        fill="#D5D9F1"
+        font-family="Inter, Arial, sans-serif"
+        font-size="36"
+        font-weight="500"
+    >
+        Trusted operators can now act as users
+    </text>
+    <text
+        x="152"
+        y="446"
+        fill="#D5D9F1"
+        font-family="Inter, Arial, sans-serif"
+        font-size="36"
+        font-weight="500"
+    >
+        for support, QA, and troubleshooting.
+    </text>
+    <rect
+        x="152"
+        y="530"
+        width="286"
+        height="74"
+        rx="22"
+        fill="#FFFFFF"
+        fill-opacity="0.1"
+        stroke="#FFFFFF"
+        stroke-opacity="0.16"
+    />
+    <text
+        x="188"
+        y="576"
+        fill="#FFFFFF"
+        font-family="Inter, Arial, sans-serif"
+        font-size="30"
+        font-weight="700"
+    >
+        Appwrite Auth
+    </text>
+    <g opacity="0.95">
+        <circle cx="1104" cy="428" r="112" fill="#151B38" />
+        <circle cx="1104" cy="384" r="34" fill="#F5F7FF" />
+        <path
+            d="M1022 514c19-54 66-80 82-80 16 0 63 26 82 80"
+            stroke="#F5F7FF"
+            stroke-width="24"
+            stroke-linecap="round"
+        />
+        <path d="M900 428h86" stroke="#FF5EA5" stroke-width="18" stroke-linecap="round" />
+        <path d="M1222 428h86" stroke="#8B5CF6" stroke-width="18" stroke-linecap="round" />
+    </g>
+    <defs>
+        <linearGradient id="bg" x1="100" y1="70" x2="1320" y2="760" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#12172D" />
+            <stop offset="0.55" stop-color="#1A1E38" />
+            <stop offset="1" stop-color="#0B1222" />
+        </linearGradient>
+        <radialGradient
+            id="accentA"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(1156 180) rotate(90) scale(190)"
+        >
+            <stop stop-color="#FF4F9E" />
+            <stop offset="1" stop-color="#FF4F9E" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient
+            id="accentB"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(250 690) rotate(90) scale(250)"
+        >
+            <stop stop-color="#7C3AED" />
+            <stop offset="1" stop-color="#7C3AED" stop-opacity="0" />
+        </radialGradient>
+    </defs>
+</svg>
