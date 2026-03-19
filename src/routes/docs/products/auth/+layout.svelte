@@ -33,6 +33,10 @@
                     href: '/docs/products/auth/users'
                 },
                 {
+                    label: 'Impersonation',
+                    href: '/docs/products/auth/impersonation'
+                },
+                {
                     label: 'Teams',
                     href: '/docs/products/auth/teams'
                 },
