@@ -402,8 +402,8 @@
                 {
                     title: 'Additional messages',
                     free: '-',
-                    pro: '$2.50 per million',
-                    scale: '$2.50 per million',
+                    pro: '$2.50 per 1m',
+                    scale: '$2.50 per 1m',
                     enterprise: 'Custom'
                 },
                 {
