@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Self-Hosting with Appwrite: Benefits, Setup, and Best Practices"
+title: "Self-hosting with Appwrite: benefits, setup, and best practices"
 description: Explore the advantages of self-hosting Appwrite, from greater control over your infrastructure and data to more flexible customization for your product needs. This guide covers the setup process, key operational considerations, and best practices to help you run Appwrite reliably and securely in production.
 date: 2026-03-17
 cover: /images/blog/self-hosting-with-appwrite-benefits-setup-and-best-practices/cover.png

@@ -91,9 +91,9 @@ Against the evaluation criteria outlined above, Appwrite performs well for regul
 
 Choosing open-source tools for regulated environments is not inherently riskier than choosing proprietary ones. It requires a different evaluation process, one focused on project health, maintainability, and your ability to operate and support the software in production.
 
-[Appwrite](https://appwrite.io) is an open-source backend platform designed with regulated environments in mind. It supports full self-hosting, meaning you can deploy it entirely within your own infrastructure and cloud account. Appwrite's authentication, databases, file storage, and functions all run within your environment, giving you complete data control. Its active development community, regular releases, and commercial support options through [Appwrite Cloud](https://cloud.appwrite.io) make it a strong candidate for teams evaluating open-source backends for compliance-sensitive applications.
+Appwrite is an open-source backend platform designed with regulated environments in mind. It supports full self-hosting, meaning you can deploy it entirely within your own infrastructure and cloud account. Appwrite's authentication, databases, file storage, and functions all run within your environment, giving you complete data control. Its active development community, regular releases, and commercial support options through [Appwrite Cloud](https://cloud.appwrite.io) make it a strong candidate for teams evaluating open-source backends for compliance-sensitive applications.
 
-- [Appwrite Self-Hosting docs](https://appwrite.io/docs/advanced/self-hosting)
-- [Appwrite Security overview](https://appwrite.io/docs/advanced/security)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite Self-Hosting docs](/docs/advanced/self-hosting)
+- [Appwrite Security overview](/docs/advanced/security)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

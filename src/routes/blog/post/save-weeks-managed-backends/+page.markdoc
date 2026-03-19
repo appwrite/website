@@ -105,7 +105,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 The time savings described in this post are concrete when using Appwrite:
 
 - **Authentication in hours, not weeks**: Email/password, OAuth2 (Google, GitHub, Apple, and 30+ others), phone/SMS, anonymous sessions, and MFA are all available via configuration and SDK calls. No custom implementation, no security gaps to discover later.
-- **Database and query API immediately**: Create a collection, define your attributes and indexes in the console or via the CLI, and start querying. Filtering, ordering, and pagination are built into the SDK. No API layer to build.
+- **Database and query API immediately**: Create a table, define your columns and indexes in the console or via the CLI, and start querying. Filtering, ordering, and pagination are built into the platform.
 - **File storage without infrastructure work**: Storage buckets with permission controls, image transformations via `getFilePreview`, and antivirus scanning are available immediately. No S3 policies, no upload URL generation, no CDN configuration required for basic use.
 - **Serverless functions via Git**: Connect a repository, define your function's entry point, and deploy. Functions are triggered by HTTP, events, or schedules. No job queue infrastructure to maintain.
 - **Messaging for notifications**: Push notifications (FCM, APNS), email, and SMS are available through Appwrite's Messaging service. Integrate notification sending in hours rather than days.
@@ -116,9 +116,9 @@ The **1-2 day setup estimate** for a production-ready backend is achievable with
 
 The decision to use a managed backend platform is a decision about where to spend development time. Teams that use managed backends for solved infrastructure problems ship faster, launch earlier, and put more engineering capacity into the product work that actually matters.
 
-[Appwrite](https://appwrite.io) covers the full backend layer: authentication, databases, file storage, serverless functions, real-time, and messaging. It can be set up in hours and extended as your application grows. [Appwrite Cloud](https://cloud.appwrite.io) provides a fully managed hosting experience; self-hosting is available when control or compliance requirements demand it.
+Appwrite covers the full backend layer: authentication, databases, file storage, serverless functions, real-time, and messaging. It can be set up in hours and extended as your application grows. [Appwrite Cloud](https://cloud.appwrite.io) provides a fully managed hosting experience; self-hosting is available when control or compliance requirements demand it.
 
-- [Appwrite Documentation](https://appwrite.io/docs)
+- [Appwrite Documentation](/docs)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite Functions docs](/docs/products/functions)

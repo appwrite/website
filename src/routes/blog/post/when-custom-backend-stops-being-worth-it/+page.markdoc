@@ -70,7 +70,7 @@ The question isn't whether building a custom backend was wrong. It was probably 
 
 [Appwrite](https://appwrite.io) is an open-source backend platform that covers authentication, databases, file storage, serverless functions, and real-time subscriptions in a single, self-hostable platform. It handles the infrastructure concerns: security patches, scaling configurations, session management, password policies. Your team focuses on the product. Because it's open source, you're not locked into a pricing model or a vendor's roadmap. Explore the [Appwrite documentation](https://appwrite.io/docs) to see what migrating to a managed backend platform could look like for your project.
 
-- [Appwrite Documentation](https://appwrite.io/docs)
-- [Appwrite Self-Hosting docs](https://appwrite.io/docs/advanced/self-hosting)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite Documentation](/docs)
+- [Appwrite Self-Hosting docs](/docs/advanced/self-hosting)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
