@@ -102,13 +102,13 @@ Every trend covered here points in the same direction: less assembly, more coher
 
 Appwrite is an open-source backend platform that brings authentication, databases, file storage, serverless functions, realtime subscriptions, messaging, and frontend hosting with Appwrite Sites into a single, unified foundation. Not services that happen to share a dashboard, primitives that were designed to work together from day one.
 
-**One permission model across everything.** Auth rules, database access, storage permissions, and function triggers all share the same system. No synchronization logic, no mismatched SDKs, no gaps where things quietly break.
+- **One permission model across everything.** Auth rules, database access, storage permissions, and function triggers all share the same system. No synchronization logic, no mismatched SDKs, no gaps where things quietly break.
 
-**Realtime as a first-class primitive.** Structured, server-side filtered subscriptions are built in, not a third-party integration bolted on after the fact. Live dashboards and collaborative features work the way developers now expect them to.
+- **Realtime as a first-class primitive.** Structured, server-side filtered subscriptions are built in, not a third-party integration bolted on after the fact. Live dashboards and collaborative features work the way developers now expect them to.
 
-**Type safety without the maintenance.** Auto-generated SDKs stay in sync with your backend schema automatically. What's defined in the backend is what the client sees, no drift, no surprises as the product evolves.
+- **Type safety without the maintenance.** Auto-generated SDKs stay in sync with your backend schema automatically. What's defined in the backend is what the client sees, no drift, no surprises as the product evolves.
 
-**Ship anywhere, without trade-offs.** Appwrite is fully open-source and container-native. Run it locally during development, self-host it for compliance or data residency, or use Appwrite Cloud when you'd rather skip the infrastructure entirely. The platform follows your team's needs, not the other way around.
+- **Ship anywhere, without trade-offs.** Appwrite is fully open-source and container-native. Run it locally during development, self-host it for compliance or data residency, or use Appwrite Cloud when you'd rather skip the infrastructure entirely. The platform follows your team's needs, not the other way around.
 
 The glue code never gets written because the parts were never disconnected to begin with. Less time configuring infrastructure. More time building the product.
 
