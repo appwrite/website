@@ -16,19 +16,19 @@
                     href: '/docs/tooling/ai/'
                 },
                 {
-                    label: 'Docs as Markdown',
-                    href: '/docs/tooling/ai/docs-as-markdown'
-                },
-                {
-                    label: 'Quickstart Prompts',
-                    href: '/docs/tooling/ai/quickstart-prompts'
-                },
-                {
-                    label: 'AI Dev Tools',
+                    label: 'AI dev tools',
                     href: '/docs/tooling/ai/ai-dev-tools'
                 },
                 {
-                    label: 'Skills',
+                    label: 'Quick start prompts',
+                    href: '/docs/tooling/ai/quickstart-prompts'
+                },
+                {
+                    label: 'MCP servers',
+                    href: '/'
+                },
+                {
+                    label: 'Agent skills',
                     href: '/docs/tooling/ai/skills'
                 },
                 {
@@ -40,13 +40,62 @@
                     href: '/docs/tooling/ai/assistant'
                 },
                 {
+                    label: 'Docs as Markdown',
+                    href: '/docs/tooling/ai/docs-as-markdown'
+                },
+                {
                     label: 'Responsible AI',
                     href: '/docs/tooling/ai/responsible-ai'
                 }
             ]
         },
         {
-            label: 'Quickstart Prompts',
+            label: 'Integrate with AI Tools',
+            items: [
+                {
+                    label: 'VS Code',
+                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
+                },
+                {
+                    label: 'Cursor',
+                    href: '/docs/tooling/ai/ai-dev-tools/cursor'
+                },
+                {
+                    label: 'Windsurf',
+                    href: '/docs/tooling/ai/ai-dev-tools/windsurf'
+                },
+                {
+                    label: 'OpenCode',
+                    href: '/docs/tooling/ai/ai-dev-tools/opencode'
+                },
+                {
+                    label: 'Google Antigravity',
+                    href: '/docs/tooling/ai/ai-dev-tools/antigravity'
+                },
+                {
+                    label: 'Claude Code',
+                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
+                },
+                {
+                    label: 'Claude Desktop',
+                    href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
+                },
+                {
+                    label: 'Imagine',
+                    href: '/docs/tooling/ai/ai-dev-tools/imagine'
+                },
+                {
+                    label: 'Lovable',
+                    href: '/docs/tooling/ai/ai-dev-tools/lovable'
+                },
+                {
+                    label: 'Emergent',
+                    href: '/docs/tooling/ai/ai-dev-tools/emergent'
+                }
+            ]
+        },
+        {
+            label: 'Quick start prompts',
             collapsible: true,
             initiallyCollapsed: true,
             items: [
@@ -153,53 +202,6 @@
             ]
         },
         {
-            label: 'AI Dev Tools',
-            collapsible: true,
-            initiallyCollapsed: true,
-            items: [
-                {
-                    label: 'VS Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
-                },
-                {
-                    label: 'Cursor',
-                    href: '/docs/tooling/ai/ai-dev-tools/cursor'
-                },
-                {
-                    label: 'Windsurf',
-                    href: '/docs/tooling/ai/ai-dev-tools/windsurf'
-                },
-                {
-                    label: 'OpenCode',
-                    href: '/docs/tooling/ai/ai-dev-tools/opencode'
-                },
-                {
-                    label: 'Antigravity',
-                    href: '/docs/tooling/ai/ai-dev-tools/antigravity'
-                },
-                {
-                    label: 'Claude Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
-                },
-                {
-                    label: 'Claude Desktop',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
-                },
-                {
-                    label: 'Imagine',
-                    href: '/docs/tooling/ai/ai-dev-tools/imagine'
-                },
-                {
-                    label: 'Lovable',
-                    href: '/docs/tooling/ai/ai-dev-tools/lovable'
-                },
-                {
-                    label: 'Emergent',
-                    href: '/docs/tooling/ai/ai-dev-tools/emergent'
-                }
-            ]
-        },
-        {
             label: 'MCP Servers',
             collapsible: true,
             initiallyCollapsed: true,
@@ -216,7 +218,13 @@
         },
         {
             label: 'AI Implementation',
+            collapsible: true,
+            initiallyCollapsed: true,
             items: [
+                {
+                    label: 'AI in Functions',
+                    href: '/docs/tooling/ai/ai-in-functions'
+                },
                 {
                     label: 'Vector DB and Embeddings',
                     href: '/docs/tooling/ai/vector-db-and-embeddings'
@@ -226,11 +234,7 @@
                     href: '/docs/tooling/ai/rag'
                 },
                 {
-                    label: 'AI in Functions',
-                    href: '/docs/tooling/ai/ai-in-functions'
-                },
-                {
-                    label: 'Persistent Agents with Realtime',
+                    label: 'Persistent agents with Realtime',
                     href: '/docs/tooling/ai/persistent-agents-with-realtime'
                 }
             ]
