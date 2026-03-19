@@ -395,9 +395,23 @@
                 {
                     title: 'Messages',
                     free: '3M',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    pro: '6M',
+                    scale: '6M',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional messages',
+                    free: '-',
+                    pro: '$2.50 per million',
+                    scale: '$2.50 per million',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Max message size',
+                    free: '256 KB',
+                    pro: '3 MB',
+                    scale: '3 MB',
+                    enterprise: 'Custom'
                 }
             ]
         },
