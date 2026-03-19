@@ -59,9 +59,14 @@ export type TrackEventArgs = { name: string; data?: object };
 export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     if (!eventArgs || ENV.TEST) return;
 
-    const path = page.route.id?.replace(/\(([^()]*)\)/g, '') ?? '';
+    const path = page.url.pathname;
+    const route =
+        page.route.id
+            ?.replace(/\/\([^/]+\)/g, '') // remove grouped segments including leading slash
+            .replace(/\/{2,}/g, '/') ?? ''; // normalize accidental double slashes
     const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
-    const data = typeof eventArgs === 'string' ? { path } : { ...eventArgs.data, path };
+    const data =
+        typeof eventArgs === 'string' ? { path, route } : { ...eventArgs.data, path, route };
 
     if (ENV.DEV || ENV.PREVIEW) {
         console.log(`[Analytics] Event:`, name, data);
