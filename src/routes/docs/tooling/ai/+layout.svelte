@@ -36,6 +36,10 @@
                     href: '/docs/tooling/ai/arena'
                 },
                 {
+                    label: 'Assistant',
+                    href: '/docs/tooling/ai/assistant'
+                },
+                {
                     label: 'Responsible AI',
                     href: '/docs/tooling/ai/responsible-ai'
                 }

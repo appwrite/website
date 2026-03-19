@@ -819,5 +819,9 @@
     {
         "link": "/docs/tooling/arena",
         "redirect": "/docs/tooling/ai/arena"
+    },
+    {
+        "link": "/docs/tooling/assistant",
+        "redirect": "/docs/tooling/ai/assistant"
     }
 ]
