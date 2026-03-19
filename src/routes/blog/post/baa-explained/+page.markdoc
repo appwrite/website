@@ -50,23 +50,23 @@ The BAA does not, on its own, make your system HIPAA compliant. It's a contractu
 
 # How teams approach BAA agreements in practice
 
-**1. Audit your vendor stack early**
+1. **Audit your vendor stack early**
 
 The most common mistake is waiting until a customer asks for proof of HIPAA compliance to start reviewing vendor BAAs. Smart teams audit their infrastructure stack at the architecture stage: cloud provider, database, authentication, file storage, email and messaging, and analytics. Each of these may need a BAA.
 
-**2. Use vendors that already support BAAs**
+2. **Use vendors that already support BAAs**
 
 Most major cloud providers offer BAAs as part of their enterprise or business plans. AWS, Google Cloud, and Microsoft Azure all offer them. For application-layer services, it varies; some offer them freely, others only on paid plans, and some don't offer them at all. This makes vendor selection a compliance decision, not just a technical one.
 
-**3. Separate PHI from non-PHI workloads where possible**
+3. **Separate PHI from non-PHI workloads where possible**
 
 Teams often structure their architecture to minimize the surface area of PHI exposure. If only a subset of services touch protected data, fewer BAAs are required. This is both a legal and operational simplification that pays off at scale.
 
-**4. Keep a BAA register**
+4. **Keep a BAA register**
 
 Maintaining a document that lists every vendor with PHI access, the BAA status with each, and the review dates is basic hygiene. For small teams, a spreadsheet works. For larger organizations, dedicated compliance management tooling may be worthwhile.
 
-**5. Get BAAs in place before the sales conversation**
+5. **Get BAAs in place before the sales conversation**
 
 If a prospective customer asks whether you have BAAs in place and you don't, the deal is over. Enterprise healthcare customers require documentation before onboarding, not as a post-sale formality.
 
@@ -91,7 +91,7 @@ Appwrite's built-in authentication handles session management, Argon2 password h
 
 BAAs are not a checkbox, they're a signal that your infrastructure was designed with data accountability in mind. When you self-host Appwrite within your own cloud account or on-premise infrastructure, and when PHI is not routed through external services such as third-party email or SMS providers, analytics platforms, backup vendors, or support tooling, PHI can remain within your controlled environment. In that configuration, the primary BAA relationship can be scoped to the underlying cloud provider rather than a separate backend vendor with its own sub-processors and data handling policies. The compliance conversation becomes simpler in proportion to how tightly you constrain which services touch PHI.
 
-- [Appwrite HIPAA compliance](https://appwrite.io/docs/advanced/security/hipaa)
-- [Appwrite Self-Hosting guide](https://appwrite.io/docs/advanced/self-hosting)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite HIPAA compliance](/docs/advanced/security/hipaa)
+- [Appwrite Self-Hosting guide](/docs/advanced/self-hosting)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [HHS HIPAA Business Associate Guidance](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/business-associates/index.html)

@@ -84,7 +84,7 @@ Your responsibilities remain: your application logic, your access control config
 
 No backend platform removes your responsibility for application security. But choosing a platform that handles its layer correctly, is transparent about what it does, and gives you the primitives to enforce least-privilege access makes your job significantly smaller. With Appwrite, you can verify every security-relevant decision in the open-source codebase rather than trusting vendor claims.
 
-- [Appwrite Security overview](https://appwrite.io/docs/advanced/security)
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
-- [Appwrite Databases permissions](https://appwrite.io/docs/products/databases/permissions)
-- [Appwrite Audit Logs](https://appwrite.io/docs/advanced/security/audit-logs)
+- [Appwrite Security overview](/docs/advanced/security)
+- [Appwrite Authentication docs](/docs/products/auth)
+- [Appwrite Databases permissions](/docs/products/databases/permissions)
+- [Appwrite Audit Logs](/docs/advanced/security/audit-logs)

@@ -83,8 +83,8 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 Appwrite's architecture aligns with the scaling principles outlined in this post:
 
 - **Stateless by design**: Appwrite's API layer is stateless. Session state, user data, and files are all stored in external managed stores (the database and object storage layers). This means the Appwrite API can be scaled horizontally without session synchronization issues.
-- **Indexed queries**: Appwrite Databases allow you to define indexes on your collections during schema setup. The platform enforces that queries run against indexed fields, preventing the full collection scans that break performance at scale.
-- **Asynchronous functions**: Appwrite Functions are inherently asynchronous, designed for event-driven and scheduled execution. Slow operations (sending notifications, processing uploads, calling external APIs) are a natural fit for Functions rather than inline request handlers.
+- **Indexed queries**: Appwrite Databases allow you to define indexes on your tables during schema setup. The platform enforces that queries run against indexed fields, preventing the full table scans that break performance at scale.
+- **Asynchronous functions**: Appwrite Functions can optionally be executed asynchronously. Slow operations (sending notifications, processing uploads, calling external APIs) are a natural fit for Functions rather than inline request handlers.
 - **Managed scaling on Appwrite Cloud**: Appwrite Cloud handles infrastructure scaling automatically. You're not responsible for provisioning database read replicas, scaling connection pools, or adjusting compute capacity as your user count grows.
 - **Self-hosted horizontal scaling**: If you self-host, Appwrite's Docker-based architecture supports horizontal scaling of individual services using standard container orchestration tools like Docker Swarm or Kubernetes.
 

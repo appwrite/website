@@ -28,13 +28,12 @@ Before choosing an approach, it's worth being specific about the requirements:
 
 # Approach 1: Use the Appwrite Console directly
 
-For many internal use cases, the [Appwrite Console](https://appwrite.io/docs/tooling/console) covers the requirement without any additional development. Appwrite's console provides:
+For many internal use cases, the Appwrite Console covers the requirement without any additional development. Appwrite's console provides:
 
-- A visual database browser with the ability to view, create, edit, and delete documents
+- A visual database browser with the ability to view, create, edit, and delete rows
 - User management: view user accounts, create accounts, manage sessions, edit labels
 - File storage browsing: view and download files in any storage bucket
 - Function execution logs and manual invocation
-- Real-time event logs
 
 Access to the Appwrite Console is controlled by team membership. You can add support staff or operations team members with appropriate permission levels without giving them access to the codebase or deployment infrastructure.
 
@@ -126,9 +125,9 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 
 Appwrite is particularly well-suited to internal tool development because it solves the recurring backend requirements that every internal tool shares:
 
-- **Built-in console**: The [Appwrite Console](https://appwrite.io/docs/tooling/console) provides a fully functional interface for browsing databases, managing user accounts, viewing files, and monitoring function executions, covering many internal tool requirements without any custom development.
+- **Built-in console**: The Appwrite Console provides a fully functional interface for browsing databases, managing user accounts, viewing files, and monitoring function executions, covering many internal tool requirements without any custom development.
 - **Teams and roles**: Appwrite's teams and membership system gives different staff members appropriate access levels. Support agents, operations staff, and administrators can each have their own login with scoped permissions. No shared credentials.
-- **Rich query API**: Filter, sort, and paginate records across any collection using Appwrite's query system. Building a filtered view of production data for operations staff is a frontend exercise, not a backend one.
+- **Rich query API**: Filter, sort, and paginate records across any table using Appwrite's query system. Building a filtered view of production data for operations staff is a frontend exercise, not a backend one.
 - **Serverless functions for privileged actions**: Sensitive operations that shouldn't be exposed as direct database writes (bulk updates, account resets, notification sends) are implemented as Appwrite Functions with their own API key and access scope.
 - **Audit logging**: Appwrite logs events with user and timestamp context, giving you the audit trail that enterprise clients and internal compliance teams require.
 
@@ -139,6 +138,6 @@ Internal tools are worth building quickly. They pay back in operational efficien
 [Appwrite](https://appwrite.io) provides the foundation for internal tools that work: authentication with team-based access, a database with a rich query system, file storage, and serverless functions for backend operations. The [Appwrite Console](https://appwrite.io/docs/tooling/console) handles many internal tool needs directly. When you need a custom interface, the Appwrite SDKs give you a clean, well-documented API to build on.
 
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Users API docs](https://appwrite.io/docs/products/auth/manage-users)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
-- [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
+- [Appwrite Auth docs](/docs/products/auth)
+- [Appwrite Functions docs](/docs/products/functions)
+- [Appwrite Databases docs](/docs/products/databases)

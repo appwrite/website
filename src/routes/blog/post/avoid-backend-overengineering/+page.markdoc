@@ -82,7 +82,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 Appwrite is built around the same "appropriately simple" philosophy described above. Rather than requiring teams to configure and connect multiple individual services, it provides a single platform with sensible defaults:
 
 - **No auth service to configure separately**: Email/password, OAuth2, phone, and MFA are built in. Brute-force protection and session expiration are enabled by default.
-- **No separate database and API layer to build**: Create collections, define your schema, and query immediately. The query system handles filtering, ordering, and pagination without custom API endpoints.
+- **No separate database and API layer to build**: Create tables, define your schema, and query immediately. The query system handles filtering, ordering, and pagination without custom API endpoints.
 - **No file upload infrastructure to set up**: Storage buckets with permission controls and image transformations are ready to use. No S3 policies, no upload URL generation logic.
 - **Serverless functions for the logic that needs a server**: When you need server-side processing, Appwrite Functions run without a separate server to maintain.
 - **Built-in management console**: The Appwrite Console handles the admin tooling use case out of the box for most early-stage products, eliminating one common source of premature tooling.
@@ -93,9 +93,9 @@ The result is a backend that covers what you need at launch and grows with your 
 
 The best thing a small team can do for their backend is make it boring as quickly as possible. Use managed services for solved problems: authentication, database, storage, functions. Keep the architecture as simple as the actual requirements allow. Add complexity only when real constraints demand it.
 
-[Appwrite](https://appwrite.io) is built around this philosophy. Instead of asking development teams to assemble and maintain multiple backend services, it provides authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging in a single, unified platform. Your team writes the code that matters for your product and delegates the solved infrastructure problems to a platform that handles them correctly. Start on [Appwrite Cloud](https://cloud.appwrite.io) to get set up in minutes, or explore the [documentation](https://appwrite.io/docs) to see the full capabilities.
+Appwrite is built around this philosophy. Instead of asking development teams to assemble and maintain multiple backend services, it provides authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging in a single, unified platform. Your team writes the code that matters for your product and delegates the solved infrastructure problems to a platform that handles them correctly. Start on [Appwrite Cloud](https://cloud.appwrite.io) to get set up in minutes, or explore the [documentation](https://appwrite.io/docs) to see the full capabilities.
 
-- [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
+- [Appwrite Authentication docs](/docs/products/auth)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
-- [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
+- [Appwrite Functions docs](/docs/products/functions)
+- [Appwrite Databases docs](/docs/products/databases)

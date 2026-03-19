@@ -38,9 +38,9 @@ You configure these through the Appwrite Console or SDKs. No custom middleware, 
 
 # Structured databases with enforced permissions
 
-Appwrite [Databases](/docs/products/databases) give you structured collections with defined schemas, query support, pagination, and relationships between documents. You can model one-to-one, one-to-many, and many-to-many relationships directly in Appwrite, reducing data redundancy and keeping your schema maintainable.
+Appwrite [Databases](/docs/products/databases) give you structured tables with defined schemas, query support, pagination, and relationships between rows. You can model one-to-one, one-to-many, and many-to-many relationships directly in Appwrite, reducing data redundancy and keeping your schema maintainable.
 
-The critical production detail is **document-level permissions**. Every document can have its own read and write rules, so access control lives in your data layer, not just your application code. This means a misconfigured frontend route cannot expose data it should not.
+The critical production detail is **row-level permissions**. Every row can have its own read and write rules, so access control lives in your data layer, not just your application code. This means a misconfigured frontend route cannot expose data it should not.
 
 Other features that matter at scale:
 
