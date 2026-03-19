@@ -50,20 +50,20 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const bucket = await storage.createBucket(
-    'profile-photos',         // Bucket ID
-    'Profile Photos',         // Name
-    [
+const bucket = await storage.createBucket({
+    bucketId: 'profile-photos',
+    name: 'Profile Photos',
+    permissions: [
         Permission.read(Role.user('<USER_ID>')),
         Permission.create(Role.user('<USER_ID>')),
         Permission.update(Role.user('<USER_ID>')),
         Permission.delete(Role.user('<USER_ID>'))
     ],
-    false,                    // fileSecurity
-    true,                     // enabled
-    10000000,                 // maximumFileSize (10MB)
-    ['jpg', 'jpeg', 'png', 'gif', 'webp'] // allowedFileExtensions
-);
+    fileSecurity: false,
+    enabled: true,
+    maximumFileSize: 10000000, // 10MB
+    allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp']
+});
 ```
 
 # Uploading a file from the browser
@@ -80,11 +80,11 @@ const client = new Client()
 const storage = new Storage(client);
 
 async function uploadFile(file) {
-    const response = await storage.createFile(
-        'profile-photos',    // Bucket ID
-        ID.unique(),         // File ID. Let Appwrite generate one
-        file                 // The File object from an <input type="file">
-    );
+    const response = await storage.createFile({
+        bucketId: 'profile-photos',
+        fileId: ID.unique(),
+        file: file
+    });
     return response.$id;     // Store this ID to retrieve the file later
 }
 
@@ -105,7 +105,7 @@ The `createFile` method handles chunking for large files automatically. Files up
 Once uploaded, you can get a file's URL for display using the `getFileView` method:
 
 ```js
-const fileUrl = storage.getFileView('profile-photos', fileId);
+const fileUrl = storage.getFileView({ bucketId: 'profile-photos', fileId: fileId });
 // Use fileUrl as the src of an img tag or href for download links
 ```
 
@@ -113,14 +113,14 @@ For images, Appwrite Storage supports on-the-fly transformations via URL paramet
 
 ```js
 // Get a 200x200 thumbnail of a profile photo
-const thumbnailUrl = storage.getFilePreview(
-    'profile-photos',
-    fileId,
-    200,   // width
-    200,   // height
-    'center', // gravity
-    100    // quality (0-100)
-);
+const thumbnailUrl = storage.getFilePreview({
+    bucketId: 'profile-photos',
+    fileId: fileId,
+    width: 200,
+    height: 200,
+    gravity: 'center',
+    quality: 100
+});
 ```
 
 # Restricting file access
@@ -132,15 +132,15 @@ For user-owned files, set `fileSecurity` to `true` on the bucket and pass per-fi
 ```js
 import { Permission, Role, ID } from 'appwrite';
 
-const response = await storage.createFile(
-    'user-documents',
-    ID.unique(),
-    file,
-    [
+const response = await storage.createFile({
+    bucketId: 'user-documents',
+    fileId: ID.unique(),
+    file: file,
+    permissions: [
         Permission.read(Role.user(currentUserId)),
         Permission.delete(Role.user(currentUserId))
     ]
-);
+});
 ```
 
 With this configuration, only the user who uploaded the file can view or delete it. Other authenticated users won't be able to access it. Unauthenticated requests will receive a 401 response.
@@ -150,7 +150,7 @@ With this configuration, only the user who uploaded the file can view or delete 
 Deleting a file is straightforward:
 
 ```js
-await storage.deleteFile('profile-photos', fileId);
+await storage.deleteFile({ bucketId: 'profile-photos', fileId: fileId });
 ```
 
 For applications that need to clean up orphaned files (files whose associated database records have been deleted), Appwrite Functions can be used to trigger file deletions on database document delete events.
@@ -159,9 +159,9 @@ For applications that need to clean up orphaned files (files whose associated da
 
 File uploads don't have to be a week of backend work. Appwrite Storage handles the infrastructure: chunked uploads, access control, image transformations, file validation. You write the feature, not the plumbing.
 
-To go further with [Appwrite Storage](https://appwrite.io/docs/products/storage), explore the documentation for advanced topics like bucket encryption settings, antivirus scanning configuration, and integrating uploads with Appwrite Functions for post-upload processing.
+To go further with [Appwrite Storage](/docs/products/storage), explore the documentation for advanced topics like bucket encryption settings, antivirus scanning configuration, and integrating uploads with Appwrite Functions for post-upload processing.
 
-- [Appwrite Storage documentation](https://appwrite.io/docs/products/storage)
-- [Appwrite Web SDK docs](https://appwrite.io/docs/sdks)
-- [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+- [Appwrite Storage documentation](/docs/products/storage)
+- [Appwrite Web SDK docs](/docs/sdks)
+- [Appwrite Functions docs](/docs/products/functions)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

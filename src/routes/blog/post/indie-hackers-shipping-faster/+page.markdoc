@@ -41,7 +41,7 @@ GitHub Copilot, Cursor, and other AI coding tools have become genuine productivi
 
 ## Managed deployment and hosting
 
-Vercel, Railway, Fly.io, and similar platforms have made deployment a solved problem. Push to GitHub, deployment happens automatically. No server management, no nginx configuration, no SSL certificate renewal.
+Vercel, Railway, Fly.io, and similar platforms have made deployment a solved problem for teams that need to host their frontend separately. Push to GitHub, deployment happens automatically. No server management, no nginx configuration, no SSL certificate renewal. Appwrite goes further by bundling frontend hosting directly into the same platform as your backend, so you're not wiring together separate accounts and pipelines just to get a deploy out the door.
 
 # The habits that matter as much as the tools
 
@@ -60,9 +60,10 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 For indie developers and small teams, Appwrite's value proposition is direct: one platform replaces the collection of individual backend services that would otherwise each need their own account, API key, billing setup, and learning curve.
 
 - **Authentication with 30+ OAuth providers**: Google, GitHub, Apple, Discord, and many more, configured in minutes, with no custom OAuth implementation required.
-- **Document database**: Create collections, define your schema, and start querying immediately. Real-time subscriptions let your UI react to data changes without polling.
+- **Relational database**: Create tables, define your schema, and start querying immediately. Real-time subscriptions let your UI react to data changes without polling.
 - **File storage**: Upload, serve, and transform images. Restrict access to specific users. No S3 configuration required.
 - **Serverless functions**: Server-side logic in Node.js, Python, Go, and more, triggered by HTTP, events, or schedules, without managing a separate server.
+- **Web hosting**: Deploy static sites and server-side rendered frontends directly from a Git repository, with automatic deployments on every push. No separate hosting account or pipeline configuration needed.
 - **Free tier on Appwrite Cloud**: Sufficient for most indie projects at launch, with predictable costs as scale grows.
 
 The result: the infrastructure layer is behind you in hours, not days, leaving the time for what actually makes your product worth using.
@@ -80,9 +81,10 @@ Across the indie hacker community (on Twitter, on Indie Hackers, in product-focu
 
 Shipping fast is a skill, but it's also a set of choices. The choice to use a backend platform instead of a custom API, a component library instead of custom CSS, and a managed deployment service instead of a custom server configuration: each of these is a compound decision that multiplies across every hour spent building.
 
-[Appwrite](https://appwrite.io) covers authentication with 30+ OAuth providers, a document-oriented database, file storage, serverless functions, and messaging in one integration. [Appwrite Cloud](https://cloud.appwrite.io) has a free tier sufficient for most early-stage applications, and SDK support for web, mobile, and server environments means you're not rewriting backend logic for different clients.
+[Appwrite](https://appwrite.io) covers authentication with 30+ OAuth providers, a document-oriented database, file storage, serverless functions, messaging, and frontend hosting in one integration. You get your backend and your deployment pipeline from the same platform, with no need to wire together separate accounts. [Appwrite Cloud](https://cloud.appwrite.io) has a free tier sufficient for most early-stage applications, and SDK support for web, mobile, and server environments means you're not rewriting backend logic for different clients.
 
 - [Appwrite Documentation](https://appwrite.io/docs)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
 - [Appwrite Authentication docs](https://appwrite.io/docs/products/auth)
 - [Appwrite Functions docs](https://appwrite.io/docs/products/functions)
+- [Appwrite Sites docs](https://appwrite.io/docs/products/sites)
