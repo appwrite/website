@@ -66,13 +66,13 @@ Launching quickly doesn't mean cutting corners. It means being deliberate about 
 
 A realistic fast-launch timeline using Appwrite:
 
-**Day 1: Foundation**
+## Day 1: Foundation
 Define the problem and the MVP scope. Set up your Appwrite project, configure authentication, and create your database collections. At the end of day one, users can sign up and your data layer is ready.
 
-**Day 2: Core feature**
+## Day 2: Core feature
 Build the one feature that proves your idea has value. With authentication and database already handled, your entire focus goes into product logic, the thing only you are building.
 
-**Day 3: Interface and launch**
+## Day 3: Interface and launch
 Add a simple, functional UI. Deploy your frontend with Appwrite Sites or your preferred hosting. Share it with a small group of real users.
 
 At the end of three days, you have something real. Not a prototype. Not a concept. A live product that users can interact with and give you feedback on.
