@@ -394,7 +394,7 @@
                 },
                 {
                     title: 'Messages',
-                    free: '3M',
+                    free: '2M',
                     pro: '6M',
                     scale: '6M',
                     enterprise: 'Custom'
