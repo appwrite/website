@@ -23,7 +23,11 @@ Your Appwrite installation has several components that need backing up:
 
 # Database backups {% #database-backup %}
 
-Appwrite uses MariaDB. Use `mysqldump` for most installations:
+Appwrite supports MariaDB and MongoDB as database backends. Use the backup method that matches your installation.
+
+## MariaDB backups {% #mariadb-backup %}
+
+Use `mysqldump` for MariaDB installations:
 
 ```bash
 # Create database backup (all databases)
@@ -33,11 +37,23 @@ docker compose exec mariadb sh -c 'exec mysqldump --all-databases --add-drop-dat
 docker compose exec -T mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < dump.sql
 ```
 
+For large databases, consider `mariabackup` for physical backups.
+
+## MongoDB backups {% #mongodb-backup %}
+
+Use `mongodump` for MongoDB installations:
+
+```bash
+# Create database backup
+docker compose exec mongodb sh -c 'exec mongodump --username=root --password="$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase=admin --archive' > ./dump.archive
+
+# Restore (fresh installation only)
+docker compose exec -T mongodb sh -c 'exec mongorestore --username=root --password="$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase=admin --archive' < dump.archive
+```
+
 {% info title="Fresh installation only" %}
 Only restore to fresh Appwrite installations to avoid data corruption.
 {% /info %}
-
-For large databases, consider `mariabackup` for physical backups.
 
 # Storage volume backups {% #storage-backup %}
 
@@ -52,7 +68,8 @@ Appwrite uses these Docker volumes:
 - `appwrite-certificates` - SSL certificates
 - `appwrite-config` - Configuration
 - `appwrite-cache` and `appwrite-redis` - Cache data
-- `appwrite-mariadb` - Database files
+- `appwrite-mariadb` - Database files (MariaDB installations)
+- `appwrite-mongodb` - Database files (MongoDB installations)
 
 ## Backup methods
 
