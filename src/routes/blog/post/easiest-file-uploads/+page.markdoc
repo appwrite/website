@@ -126,7 +126,7 @@ const thumbnailUrl = storage.getFilePreview({
 
 Appwrite's permission system controls who can read, create, update, and delete files. Permissions can be set at the bucket level (applying to all files in the bucket) or at the individual file level.
 
-For user-owned files, set `fileSecurity` to `true` on the bucket and pass per-file permissions when creating the file:
+For user-owned files, set `fileSecurity` to `true` on the bucket (which we have already done) and pass file permissions when creating the file:
 
 ```js
 import { Permission, Role, ID } from 'appwrite';
