@@ -73,7 +73,7 @@ This is particularly useful for transactional messages like password resets, ord
 
 # Hosting with Appwrite Sites
 
-If your frontend needs a home, [Appwrite Sites](/docs/products/sites) provides hosting with Git-based deployments, global CDN distribution, DDoS protection, a web application firewall, and automatic TLS. It supports frameworks like Next.js, Nuxt, SvelteKit, and Astro out of the box.
+If your frontend needs a home, [Appwrite Sites](/docs/products/sites) provides hosting with Git-based deployments, global CDN distribution, DDoS protection, a web application firewall, and automatic TLS. It supports frameworks like Next.js, TanStack Start, Nuxt, SvelteKit, and Astro out of the box.
 
 Having your frontend and backend on the same platform simplifies deployment pipelines and reduces the number of services you manage. Instant rollbacks let you recover from bad deployments in seconds.
 
