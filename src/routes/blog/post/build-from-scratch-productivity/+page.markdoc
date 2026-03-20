@@ -81,7 +81,7 @@ The code your team writes is the unique business logic that makes your applicati
 
 The discipline of knowing what not to build is as important as the ability to build. The developers and teams who ship the most are not the ones who build the most infrastructure. They build exactly the infrastructure they need to build, and use everything else from tools that already exist.
 
-Appwrite is built around this philosophy: a single platform that handles authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging. Development time goes toward what makes your application unique. Try [Appwrite Cloud](https://cloud.appwrite.io) for free or review the [documentation](https://appwrite.io/docs) to see how much backend infrastructure you can stop building from scratch.
+Appwrite is built around this philosophy: a single platform that handles authentication, databases, file storage, serverless functions, real-time subscriptions, and messaging. Development time goes toward what makes your application unique. Try [Appwrite Cloud](https://cloud.appwrite.io) for free or review the [documentation](/docs) to see how much backend infrastructure you can stop building from scratch.
 
 - [Appwrite Storage docs](/docs/products/storage)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
