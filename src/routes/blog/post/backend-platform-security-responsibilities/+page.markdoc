@@ -74,7 +74,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 Within the shared responsibility model, Appwrite clearly defines what the platform handles versus what you handle:
 
 - **Authentication security**: Appwrite handles password hashing using Argon2, brute-force protection with configurable thresholds, secure session token management, and multi-factor authentication, all implemented correctly at the platform layer so you don't have to.
-- **Granular permissions**: Appwrite's permission system lets you define access at the database collection, document, storage bucket, and individual file level, making it practical to enforce least-privilege access across your entire data layer.
+- **Granular permissions**: Appwrite's permission system lets you define access at the database table, row, storage bucket, and individual file level, making it practical to enforce least-privilege access across your entire data layer.
 - **Transparent codebase**: Because Appwrite is open source, you can review every line of security-relevant code. There is no need to trust vendor claims about what the platform does or doesn't do; you can verify the implementation directly.
 - **Audit visibility**: Appwrite logs resource events with timestamps and user context, giving your team the trail needed for incident response and compliance reviews.
 
