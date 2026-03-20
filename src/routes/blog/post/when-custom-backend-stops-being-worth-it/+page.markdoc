@@ -68,7 +68,7 @@ What makes Appwrite a strong candidate for teams migrating away from a custom ba
 
 The question isn't whether building a custom backend was wrong. It was probably the right decision at the time. The question is whether continuing to maintain it is the highest-value use of your team's engineering time right now.
 
-[Appwrite](https://appwrite.io) is an open-source backend platform that covers authentication, databases, file storage, serverless functions, and real-time subscriptions in a single, self-hostable platform. It handles the infrastructure concerns: security patches, scaling configurations, session management, password policies. Your team focuses on the product. Because it's open source, you're not locked into a pricing model or a vendor's roadmap. Explore the [Appwrite documentation](https://appwrite.io/docs) to see what migrating to a managed backend platform could look like for your project.
+[Appwrite](https://appwrite.io) is an open-source backend platform that covers authentication, databases, file storage, serverless functions, and real-time subscriptions in a single, self-hostable platform. It handles the infrastructure concerns: security patches, scaling configurations, session management, password policies. Your team focuses on the product. Because it's open source, you're not locked into a pricing model or a vendor's roadmap. Explore the [Appwrite documentation](/docs) to see what migrating to a managed backend platform could look like for your project.
 
 - [Appwrite Documentation](/docs)
 - [Appwrite Self-Hosting docs](/docs/advanced/self-hosting)
