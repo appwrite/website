@@ -33,7 +33,7 @@ For teams that need custom authentication flows like Web3 wallets or enterprise 
 
 # A database you can set up in minutes
 
-Designing and optimizing a database is one of the most time-consuming parts of backend development. [Appwrite Databases](/docs/products/databases) simplifies this with a document-based model that you can configure through the console or API.
+Designing and optimizing a database is one of the most time-consuming parts of backend development. [Appwrite Databases](/docs/products/databases) simplifies this with a relational table-based model that you can configure through the console or API.
 
 Create tables, define columns, set up indexes, and start querying data immediately. The built-in permission system lets you control access at the row level without writing custom middleware.
 
