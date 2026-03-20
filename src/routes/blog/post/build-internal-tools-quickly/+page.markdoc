@@ -2,7 +2,7 @@
 layout: post
 title: "How to build internal tools quickly: Admin panels"
 description: A practical guide to building admin panels and operations dashboards quickly using Appwrite as the backend, without sacrificing security or reliability.
-date: 2026-03-19
+date: 2026-03-18
 cover: /images/blog/build-internal-tools-quickly/cover.png
 timeToRead: 7
 author: aditya-oberai

@@ -2,7 +2,7 @@
 layout: post
 title: "Security responsibilities when using backend platforms"
 description: Understanding the shared responsibility model for security when building on backend-as-a-service platforms, and what that means for your application.
-date: 2026-03-19
+date: 2026-03-20
 cover: /images/blog/backend-platform-security-responsibilities/cover.png
 timeToRead: 6
 author: aditya-oberai

@@ -2,7 +2,7 @@
 layout: post
 title: "Building client dashboards and internal tools faster"
 description: How to ship admin panels, dashboards, and internal tools quickly for clients without rebuilding the same backend infrastructure from scratch each time.
-date: 2026-03-19
+date: 2026-03-20
 cover: /images/blog/client-dashboards-internal-tools/cover.png
 timeToRead: 6
 author: aditya-oberai

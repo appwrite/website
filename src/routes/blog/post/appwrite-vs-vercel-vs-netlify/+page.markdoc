@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite vs Vercel vs Netlify: where does your stack live?"
 description: What Vercel and Netlify actually provide versus Appwrite's full-stack platform, and how to decide between consolidating your stack or mixing services.
-date: 2026-03-19
+date: 2026-03-20
 cover: /images/blog/appwrite-vs-vercel-vs-netlify/cover.png
 timeToRead: 7
 author: aditya-oberai

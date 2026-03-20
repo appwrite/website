@@ -2,7 +2,7 @@
 layout: post
 title: "Why building from scratch is killing developer productivity"
 description: The hidden costs of building custom solutions for solved problems and how to develop better judgment about when to build versus when to use existing tools.
-date: 2026-03-19
+date: 2026-03-17
 cover: /images/blog/build-from-scratch-productivity/cover.png
 timeToRead: 6
 author: aditya-oberai

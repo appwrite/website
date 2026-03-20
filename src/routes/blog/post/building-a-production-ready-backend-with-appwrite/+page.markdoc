@@ -2,7 +2,7 @@
 layout: post
 title: Building a production-ready backend with Appwrite
 description: Discover how to build a scalable, secure, and production-ready backend with Appwrite using the tools modern teams need from day one. This guide walks through the core services, best practices, and setup choices that help you launch confidently and grow without backend chaos.
-date: 2026-03-20
+date: 2026-03-19
 cover: /images/blog/building-a-production-ready-backend-with-appwrite/cover.png
 timeToRead: 5
 author: atharva
