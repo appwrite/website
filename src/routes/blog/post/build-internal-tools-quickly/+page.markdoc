@@ -60,11 +60,12 @@ const tablesDB = new TablesDB(client);
 
 // List users with pagination
 async function getUsers(page = 0) {
-    return await users.list(
-        [],          // queries
-        25,          // limit
-        page * 25    // offset
-    );
+    return await users.list({
+        queries: [
+          Query.limit(25),
+          Query.offset(page*25)
+        ]
+    });
 }
 
 // Get a user's associated records
@@ -101,7 +102,7 @@ Internal tools are often less secure than customer-facing applications, because 
 Some internal tool operations go beyond data editing; they need to trigger backend logic. Appwrite Functions are well-suited for this:
 
 ```js
-import { Client, Functions } from 'node-appwrite';
+import { Client, Functions, ExecutionMethod } from 'node-appwrite';
 
 const client = new Client()
    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -111,13 +112,13 @@ const client = new Client()
 const functions = new Functions(client);
 
 // Trigger a function that sends a password reset email to a user
-const execution = await functions.createExecution(
-    '<FUNCTION_ID>',
-    JSON.stringify({ userId: '<USER_ID>', action: 'password_reset' }),
-    false,     // async
-    '/',       // path
-    'POST'     // method
-);
+const execution = await functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    data: JSON.stringify({ userId: '<USER_ID>', action: 'password_reset' }),
+    async: false,
+    path: '/',
+    method: ExecutionMethod.POST
+});
 
 # Appwrite for internal tools
 
