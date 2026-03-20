@@ -104,7 +104,7 @@ Appwrite is an open-source developer infrastructure platform for building web, m
 
 Scoring Appwrite against the evaluation framework above:
 
-- **Data portability**: Appwrite stores data in standard JSON document format. Data can be exported without contacting the vendor, and the format is immediately usable in other systems.
+- **Data portability**: Appwrite provides self-service migration tooling that lets you move project data between Cloud and self-hosted deployments without vendor intervention. Appwrite databases also support CSV exports for table data, making it straightforward to move data into external tools and workflows.
 - **API design**: Appwrite exposes a standard REST API alongside native SDKs. The query patterns are well-documented and map to standard database concepts. Replacing Appwrite with another service would require updating your data access calls, but not rewriting your application's business logic.
 - **Open source and self-hosting**: Appwrite is BSD 3-Clause licensed and fully self-hostable. If Appwrite Cloud ceased to exist, you could operate the same software on your own infrastructure without any code changes.
 - **Feature isolation**: Appwrite's APIs follow standard conventions. Its authentication tokens are standard JWTs. Its database queries use a documented query syntax. The level of proprietary abstraction is low compared to platforms like Firebase.
