@@ -21,7 +21,7 @@ This is the core problem [Appwrite](https://cloud.appwrite.io/) solves. It gives
 
 Building a custom backend sounds like the right move when you're starting out. Full control, no dependencies, no vendor constraints. But that control comes with serious overhead.
 
-Authentication alone can take weeks to build properly. You need password hashing, session management, OAuth integrations, rate limiting, and multi-factor authentication. Then you need to maintain all of it as security standards evolve. One mistake in any of these areas can compromise your users' data.
+Authentication alone can be substantially complex to build properly. You need password hashing, session management, OAuth integrations, rate limiting, and multi-factor authentication. Then you need to maintain all of it as security standards evolve. One mistake in any of these areas can compromise your users' data.
 
 Multiply that across databases, file storage, serverless functions, and hosting. A small team can easily spend months on backend infrastructure before writing a single line of product code. For startups, time is the scarcest resource. The question isn't whether you *can* build it yourself. It's whether you *should*.
 
