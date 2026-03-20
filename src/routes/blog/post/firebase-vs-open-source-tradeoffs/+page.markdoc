@@ -63,7 +63,7 @@ Open-source backend platforms like Appwrite address these trade-offs differently
 
 - **Portable data and APIs.** Open-source platforms use standard data formats and well-documented APIs. Migrating your data or switching deployment environments doesn't require rewriting your application.
 - **Self-hostable.** Your data stays in your infrastructure, in the regions you choose.
-- **Predictable pricing.** Infrastructure costs (compute and storage) are well-understood and competitive. There are no per-document pricing surprises.
+- **Predictable pricing.** Infrastructure costs (compute and storage) are well-understood and competitive. There are no per-row pricing surprises.
 - **Full customizability.** Open-source platforms can be modified, extended, and integrated with internal infrastructure in ways that closed-source platforms cannot.
 - **No Google dependency.** Your application's backend isn't subject to a single vendor's product decisions.
 
@@ -79,19 +79,7 @@ Appwrite directly addresses each of the Firebase trade-offs outlined above:
 - **Feature breadth**: Appwrite provides authentication (email, OAuth2 with 30+ providers, phone, anonymous, MFA), a document database with real-time subscriptions, file storage with permissions and antivirus scanning, serverless functions, and messaging, covering the same surface area as Firebase's main services.
 - **Self-hosting**: Appwrite can be deployed on any Docker-compatible infrastructure, including your own servers, your cloud account, or an on-premise environment. This is a hard requirement for many enterprise and compliance use cases that Firebase simply cannot satisfy.
 
-# Who should still consider Firebase
-
-Firebase remains a strong choice for:
-
-- **Rapid prototyping and MVPs.** The speed of Firebase's developer experience is genuinely useful when the goal is validating an idea, not building production infrastructure.
-- **Applications that stay small.** If your application has modest scale and your data access patterns are well-controlled, Firebase's pricing can be quite reasonable.
-- **Teams already deeply invested in Google Cloud.** If your team has expertise in Google Cloud and Firebase, the ecosystem integration value is real.
-
-# Switch from Firebase before lock-in compounds into a migration project
-
-Choosing Firebase is not a mistake. It's a trade-off: lock-in for developer experience, pricing variability for managed scale, and Google's platform choices for infrastructure quality. Whether those trade-offs are worth it depends on your specific situation.
-
-Appwrite is a Firebase alternative that's open-source, self-hostable, and actively developed. It provides authentication with 30+ OAuth providers, a document-oriented database with real-time subscriptions, file storage with permission controls, serverless functions, and messaging. Start on [Appwrite Cloud](https://cloud.appwrite.io) for a managed experience, or self-host when your requirements demand it.
+# Resources
 
 - [Appwrite Authentication docs](docs/products/auth)
 - [Appwrite Databases docs](/docs/products/databases)

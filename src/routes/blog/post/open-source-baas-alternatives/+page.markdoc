@@ -127,6 +127,6 @@ Among the platforms compared here, Appwrite covers the widest feature surface in
 
 Open-source BaaS platforms have closed most of the capability gap that once made proprietary platforms the default choice. For most applications, from MVPs to production-scale products, an open-source backend platform provides everything needed while giving teams significantly more control over their data, their costs, and their future migration options.
 
-- [Appwrite documentation](https://appwrite.io/docs)
+- [Appwrite documentation](/docs)
 - [Appwrite self-hosting docs](/docs/advanced/self-hosting)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

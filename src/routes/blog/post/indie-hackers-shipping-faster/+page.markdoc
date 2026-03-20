@@ -81,7 +81,7 @@ Across the indie hacker community (on Twitter, on Indie Hackers, in product-focu
 
 Shipping fast is a skill, but it's also a set of choices. The choice to use a backend platform instead of a custom API, a component library instead of custom CSS, and a managed deployment service instead of a custom server configuration: each of these is a compound decision that multiplies across every hour spent building.
 
-[Appwrite](https://appwrite.io) covers authentication with 30+ OAuth providers, a document-oriented database, file storage, serverless functions, messaging, and frontend hosting in one integration. You get your backend and your deployment pipeline from the same platform, with no need to wire together separate accounts. [Appwrite Cloud](https://cloud.appwrite.io) has a free tier sufficient for most early-stage applications, and SDK support for web, mobile, and server environments means you're not rewriting backend logic for different clients.
+[Appwrite](https://appwrite.io) covers authentication with 30+ OAuth providers, a table-oriented database, file storage, serverless functions, messaging, and frontend hosting in one integration. You get your backend and your deployment pipeline from the same platform, with no need to wire together separate accounts. [Appwrite Cloud](https://cloud.appwrite.io) has a free tier sufficient for most early-stage applications, and SDK support for web, mobile, and server environments means you're not rewriting backend logic for different clients.
 
 - [Appwrite Documentation](https://appwrite.io/docs)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)

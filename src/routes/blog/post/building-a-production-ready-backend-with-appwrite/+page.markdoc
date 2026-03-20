@@ -2,7 +2,7 @@
 layout: post
 title: Building a production-ready backend with Appwrite
 description: Discover how to build a scalable, secure, and production-ready backend with Appwrite using the tools modern teams need from day one. This guide walks through the core services, best practices, and setup choices that help you launch confidently and grow without backend chaos.
-date: 2026-03-17
+date: 2026-03-20
 cover: /images/blog/building-a-production-ready-backend-with-appwrite/cover.png
 timeToRead: 5
 author: atharva
@@ -81,7 +81,7 @@ Having your frontend and backend on the same platform simplifies deployment pipe
 
 A production-ready backend is not just about which services you use. It is about how you configure them. Here is a checklist for teams going live with Appwrite:
 
-- **Lock down permissions early.** Set document-level and bucket-level permissions before writing frontend code, not after.
+- **Lock down permissions early.** Set row-level and bucket-level permissions before writing frontend code, not after.
 - **Enable MFA** for admin accounts and sensitive user actions.
 - **Use API keys with minimal scopes.** Grant only the permissions each function or service actually needs.
 - **Set up realtime subscriptions** where your UI needs live data, rather than polling endpoints on intervals.
