@@ -54,17 +54,16 @@ const bucket = await storage.createBucket({
     bucketId: 'profile-photos',
     name: 'Profile Photos',
     permissions: [
-        Permission.read(Role.user('<USER_ID>')),
-        Permission.create(Role.user('<USER_ID>')),
-        Permission.update(Role.user('<USER_ID>')),
-        Permission.delete(Role.user('<USER_ID>'))
+        Permission.read(Role.users()),
+        Permission.create(Role.users()),
+        Permission.update(Role.users()),
+        Permission.delete(Role.users())
     ],
-    fileSecurity: false,
+    fileSecurity: true,
     enabled: true,
     maximumFileSize: 10000000, // 10MB
     allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp']
 });
-```
 
 # Uploading a file from the browser
 
