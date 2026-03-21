@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto, onNavigate } from '$app/navigation';
+    import { base } from '$app/paths';
     import { page } from '$app/state';
     import { Article, FooterNav, MainFooter } from '$lib/components';
     import { Button } from '$lib/components/ui';
@@ -326,30 +327,26 @@
                                 bind:this={categoriesElement}
                             >
                                 <li class="flex items-center">
-                                    <button
+                                    <a
+                                        href={base + '/blog'}
                                         class="web-interactive-tag web-caption-400 cursor-pointer"
                                         class:is-selected={selectedCategory === 'Latest'}
-                                        onclick={() => {
-                                            selectedCategory = 'Latest';
-                                            handleSearch();
-                                        }}
                                     >
                                         Latest
-                                    </button>
+                                    </a>
                                 </li>
 
                                 {#each categories as category (category.name)}
                                     <li class="flex items-center">
-                                        <button
+                                        <a
+                                            href={base +
+                                                '/blog?category=' +
+                                                encodeURIComponent(category.name)}
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
-                                            onclick={() => {
-                                                selectedCategory = category.name;
-                                                handleSearch();
-                                            }}
                                         >
                                             {category.name}
-                                        </button>
+                                        </a>
                                     </li>
                                 {/each}
                             </ul>
