@@ -4,6 +4,10 @@ title: Geo queries
 description: Query geographic data with distance, intersects, overlaps, and other location-based operations using spatial columns.
 ---
 
+{% info title="Tables DB only" %}
+Geo queries and spatial column types are only available with **Tables DB** (MariaDB). Documents DB (MongoDB) does not support spatial data types or geo queries.
+{% /info %}
+
 Geo queries let you perform location-based operations on geographic data stored in your database. Find nearby locations, check if coordinates fall within boundaries, calculate distances between points, and more.
 
 Appwrite supports geo queries through spatial columns that store coordinates, shapes, and areas as first-class data types.

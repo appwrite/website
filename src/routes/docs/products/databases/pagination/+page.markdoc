@@ -4,6 +4,10 @@ title: Pagination
 description: Implement pagination for large data sets in Appwrite Databases. Explore techniques for splitting and displaying data across multiple pages.
 ---
 
+{% info title="Terminology mapping" %}
+Code examples on this page use Tables DB (`TablesDB`, `tableId`, `listRows`). For Documents DB, use `DocumentsDB` instead of `TablesDB`, `collectionId` instead of `tableId`, `listDocuments` instead of `listRows`, etc.
+{% /info %}
+
 As your database grows in size, you'll need to paginate results returned.
 Pagination improves performance by returning a subset of results that match a query at a time, called a page.
 
@@ -292,7 +296,7 @@ Offset pagination allow you to create indicator of the current page number and t
 For example, a list with up to 20 pages or static data like a list of countries or currencies.
 Using offset pagination on large tables and frequently updated tables may result in slow performance and **missing and duplicate** results.
 
-Cursor pagination should be used for frequently updated tablesDB.
+Cursor pagination should be used for frequently updated tables.
 It is best suited for lazy-loaded pages with infinite scrolling.
 For example, a feed, comment section, chat history, or high volume datasets.
 

@@ -4,6 +4,10 @@ title: CSV exports
 description: Export table data to CSV files from the Console. Share clean datasets with your team without writing custom scripts.
 ---
 
+{% info title="Tables DB only" %}
+CSV exports are only available with **Tables DB** (MariaDB). Documents DB (MongoDB) does not support CSV exports.
+{% /info %}
+
 Appwrite's CSV Export feature allows you to export rows from a table to a CSV file. This is especially useful for reporting, sharing data with non-technical team members, creating custom backups, or handing off datasets to analytics tools.
 
 This feature is available in both Appwrite Cloud and the self-hosted version.

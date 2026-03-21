@@ -1,19 +1,19 @@
 ---
 layout: article
 title: AI suggestions
-description: Use AI suggestions to automatically generate database schemas. Learn how to create tables with recommended columns and indexes based on your table name and context.
+description: Use AI suggestions to automatically generate database schemas. Learn how to create tables or collections with recommended columns/attributes and indexes based on your name and context.
 ---
-AI suggestions generate columns and indexes for your tables based on the table name, existing database structure, and optional context you provide.
+AI suggestions generate columns (Tables DB) or attributes (Documents DB) and indexes for your tables or collections based on the name, existing database structure, and optional context you provide.
 This feature analyzes your database to recommend appropriate schema designs that follow best practices.
 
-{% section #create-table step=1 title="Create table" %}
-Navigate to **Databases** in the Appwrite Console, select your database, and click **Create table**.
+{% section #create-table step=1 title="Create table or collection" %}
+Navigate to **Databases** in the Appwrite Console, select your database, and click **Create table** (Tables DB) or **Create collection** (Documents DB).
 
-Enter a descriptive table name. AI suggestions will use this name to generate relevant columns and indexes.
+Enter a descriptive name. AI suggestions will use this name to generate relevant columns/attributes and indexes.
 {% /section %}
 
 {% section #enable-suggestions step=2 title="Enable AI suggestions" %}
-In the table creation dialog, enable **AI suggestions**.
+In the table or collection creation dialog, enable **AI suggestions**.
 
 {% only_dark %}
 ![Enable AI suggestions](/images/docs/databases/dark/ai-suggestions-enable.png)
@@ -22,13 +22,13 @@ In the table creation dialog, enable **AI suggestions**.
 ![Enable AI suggestions](/images/docs/databases/ai-suggestions-enable.png)
 {% /only_light %}
 
-Optionally, provide additional context about your use case to refine the suggestions. For example, if creating an `Orders` table, you might add context like "e-commerce orders with payment tracking."
+Optionally, provide additional context about your use case to refine the suggestions. For example, if creating an `Orders` table or collection, you might add context like "e-commerce orders with payment tracking."
 
-Click **Generate suggestions** to analyze your table name and database structure.
+Click **Generate suggestions** to analyze your table or collection name and database structure.
 {% /section %}
 
 {% section #review-suggestions step=3 title="Review suggestions" %}
-AI suggestions will generate recommended columns and indexes for your table.
+AI suggestions will generate recommended columns or attributes and indexes for your table or collection.
 
 {% only_dark %}
 ![Review AI suggestions](/images/docs/databases/dark/ai-suggestions-review.png)
@@ -52,7 +52,7 @@ You can modify any suggestion before applying:
 - Remove suggestions you don't need
 - Add additional columns manually
 
-Click **Apply** to apply your schema. The table will be created with your approved columns and indexes.
+Click **Apply** to apply your schema. The table or collection will be created with your approved columns or attributes and indexes.
 
 {% info title="Manual columns" %}
 You can always add, modify, or remove [columns](/docs/products/databases/tables#columns) after table creation by navigating to your table's **Columns** tab.

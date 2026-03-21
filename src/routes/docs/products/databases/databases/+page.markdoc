@@ -4,8 +4,11 @@ title: Databases
 description: Dive deeper into Appwrite Databases and their configuration. Learn how to create, manage, and optimize multiple databases for your application.
 ---
 Databases are the largest organizational unit in Appwrite.
-Each database contains a group of [tables](/docs/products/databases/tables).
-In future versions, different databases may be backed by a different database technology of your choosing.
+Each database contains a group of [tables](/docs/products/databases/tables) (Tables DB) or [collections](/docs/products/databases/documentsdb/collections) (Documents DB).
+
+{% info title="Terminology mapping" %}
+Code examples on this page use Tables DB (`TablesDB`). For Documents DB, use `DocumentsDB` instead of `TablesDB`.
+{% /info %}
 
 # Create in Console {% #create-in-console %}
 The easiest way to create a database using the Appwrite Console.

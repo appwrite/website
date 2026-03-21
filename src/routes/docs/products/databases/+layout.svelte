@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { setContext } from 'svelte';
     import { page } from '$app/state';
-    import { writable } from 'svelte/store';
     import Docs from '$lib/layouts/Docs.svelte';
     import { isNewUntil } from '$lib/utils/date';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
-    import type { HeaderSectionInfoAlert } from '$lib/layouts/DocsArticle.svelte';
 
     let { children } = $props();
 
@@ -23,8 +20,8 @@
                     href: '/docs/products/databases'
                 },
                 {
-                    label: 'Quick start',
-                    href: '/docs/products/databases/quick-start'
+                    label: 'Databases',
+                    href: '/docs/products/databases/databases'
                 }
             ]
         },
@@ -32,24 +29,8 @@
             label: 'Concepts',
             items: [
                 {
-                    label: 'Databases',
-                    href: '/docs/products/databases/databases'
-                },
-                {
-                    label: 'Tables',
-                    href: '/docs/products/databases/tables'
-                },
-                {
-                    label: 'Rows',
-                    href: '/docs/products/databases/rows'
-                },
-                {
                     label: 'Permissions',
                     href: '/docs/products/databases/permissions'
-                },
-                {
-                    label: 'Relationships',
-                    href: '/docs/products/databases/relationships'
                 },
                 {
                     label: 'Queries',
@@ -65,9 +46,8 @@
                     new: isNewUntil('31 Dec 2025')
                 },
                 {
-                    label: 'Geo queries',
-                    href: '/docs/products/databases/geo-queries',
-                    new: isNewUntil('30 Sep 2025')
+                    label: 'Pagination',
+                    href: '/docs/products/databases/pagination'
                 },
                 {
                     label: 'Backups',
@@ -76,54 +56,114 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Tables DB',
+            collapsible: true,
+            initiallyCollapsed: false,
             items: [
                 {
-                    label: 'Pagination',
-                    href: '/docs/products/databases/pagination'
+                    label: 'Quick start',
+                    href: '/docs/products/databases/tablesdb/quick-start'
+                },
+                {
+                    label: 'Tables',
+                    href: '/docs/products/databases/tables'
+                },
+                {
+                    label: 'Rows',
+                    href: '/docs/products/databases/rows'
+                },
+                {
+                    label: 'Relationships',
+                    href: '/docs/products/databases/tablesdb/relationships'
                 },
                 {
                     label: 'Transactions',
-                    href: '/docs/products/databases/transactions',
-                    new: isNewUntil('31 Oct 2025')
-                },
-                {
-                    label: 'Type generation',
-                    href: '/docs/products/databases/type-generation',
-                    new: isNewUntil('31 Jul 2025')
-                },
-                {
-                    label: 'Offline sync',
-                    href: '/docs/products/databases/offline'
+                    href: '/docs/products/databases/tablesdb/transactions'
                 },
                 {
                     label: 'Bulk operations',
-                    href: '/docs/products/databases/bulk-operations',
-                    new: isNewUntil('31 Jul 2025')
+                    href: '/docs/products/databases/tablesdb/bulk-operations'
                 },
                 {
                     label: 'Atomic numeric operations',
-                    href: '/docs/products/databases/atomic-numeric-operations',
-                    new: isNewUntil('31 Jul 2025')
+                    href: '/docs/products/databases/tablesdb/atomic-numeric-operations'
+                },
+                {
+                    label: 'Type generation',
+                    href: '/docs/products/databases/tablesdb/type-generation'
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/tablesdb/timestamp-overrides'
+                },
+                {
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/geo-queries'
                 },
                 {
                     label: 'CSV imports',
-                    href: '/docs/products/databases/csv-imports',
-                    new: isNewUntil('31 Jul 2025')
+                    href: '/docs/products/databases/csv-imports'
                 },
                 {
                     label: 'CSV exports',
-                    href: '/docs/products/databases/csv-exports',
-                    new: isNewUntil('28 Feb 2026')
+                    href: '/docs/products/databases/csv-exports'
+                }
+            ]
+        },
+        {
+            label: 'Documents DB',
+            collapsible: true,
+            initiallyCollapsed: true,
+            items: [
+                {
+                    label: 'Quick start',
+                    href: '/docs/products/databases/documentsdb/quick-start'
                 },
+                {
+                    label: 'Collections',
+                    href: '/docs/products/databases/documentsdb/collections'
+                },
+                {
+                    label: 'Documents',
+                    href: '/docs/products/databases/documentsdb/documents'
+                },
+                {
+                    label: 'Relationships',
+                    href: '/docs/products/databases/documentsdb/relationships'
+                },
+                {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/documentsdb/transactions'
+                },
+                {
+                    label: 'Bulk operations',
+                    href: '/docs/products/databases/documentsdb/bulk-operations'
+                },
+                {
+                    label: 'Atomic numeric operations',
+                    href: '/docs/products/databases/documentsdb/atomic-numeric-operations'
+                },
+                {
+                    label: 'Type generation',
+                    href: '/docs/products/databases/documentsdb/type-generation'
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/documentsdb/timestamp-overrides'
+                }
+            ]
+        },
+        {
+            label: 'Journeys',
+            items: [
                 {
                     label: 'AI suggestions',
                     href: '/docs/products/databases/ai-suggestions',
                     new: isNewUntil('31 Dec 2025')
                 },
                 {
-                    label: 'Timestamp overrides',
-                    href: '/docs/products/databases/timestamp-overrides'
+                    label: 'Offline sync',
+                    href: '/docs/products/databases/offline'
                 }
             ]
         },
@@ -134,6 +174,10 @@
                     label: 'TablesDB API',
                     href: '/docs/references/cloud/client-web/tablesDB',
                     new: isNewUntil('31 Oct 2025')
+                },
+                {
+                    label: 'DocumentsDB API',
+                    href: '/docs/references/cloud/client-web/documentsDB'
                 },
                 {
                     label: 'Legacy API',
@@ -149,28 +193,6 @@
             .replace('rows', 'documents')
             .replace('tables', 'collections')
     );
-
-    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
-
-    const shouldShowSubtitle = $derived(
-        !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
-            !page.url.pathname.endsWith('products/databases')
-    );
-
-    const headerSectionInfoAlert = writable<HeaderSectionInfoAlert | null>(null);
-
-    $effect(() => {
-        if (shouldShowSubtitle) {
-            headerSectionInfoAlert.set({
-                title: 'New API',
-                description: `This is a relatively new API. For details on the previous version and its terminology, see the legacy <a class="web-link underline" href="${legacyUrl}">Collections API documentation</a>.`
-            });
-        } else {
-            headerSectionInfoAlert.set(null);
-        }
-    });
-
-    setContext('headerSectionInfoAlert', headerSectionInfoAlert);
 </script>
 
 <Docs variant="two-side-navs">
