@@ -38,9 +38,9 @@ Instead of building the entire mechanism around impersonation, you can focus on 
 This release adds the building blocks needed to support impersonation safely inside Appwrite:
 
 - A new `impersonator` boolean on the user model
-- A dedicated endpoint to enable or disable impersonation for a user
+- A dedicated endpoint to enable or disable impersonation for a user from any of the server SDKs
 - Console support so trusted operators can be marked as impersonators directly from **Auth > Users**
-- Automatic `users.read` scope for impersonators so they can browse project users and build internal user-pickers
+- Automatic `users.read` scope for impersonators so they can browse project users and build internal user-pickers from either client or server side
 - Three client setters for selecting the target user by ID, email, or phone
 - Response models that expose `impersonatorUserId` when impersonation is active
 
@@ -48,7 +48,7 @@ In practice, the flow is simple:
 
 1. Mark a trusted operator as an impersonator.
 2. Have them sign in normally using Appwrite Auth.
-3. Set one impersonation value on the client.
+3. Set one impersonation target value on the client using the new client SDK methods.
 4. Appwrite resolves the target user and evaluates the request as that user.
 
 # Why this matters
@@ -241,7 +241,7 @@ That means support and QA teams can keep using the same Appwrite SDK patterns th
 
 # Built for controlled use
 
-Impersonation is intentionally designed to work from a **real user-authenticated session**, not from `X-Appwrite-Key` alone.
+Impersonation is intentionally designed to work from a **real user-authenticated session**, not from requests authenticated with your **server integration** (project API key) alone.
 
 That means operators still authenticate as themselves first. Appwrite then uses the impersonation setting on the client only to select the effective user for the request. This keeps the flow explicit and better aligned with internal support tooling, admin panels, and controlled QA environments.
 
