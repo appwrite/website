@@ -3,7 +3,7 @@ layout: post
 title: 'Introducing user impersonation for Appwrite Auth'
 description: Trusted operators can now act as another user in Appwrite Auth to debug issues, validate permissions, and support customers without sharing credentials.
 date: 2026-03-14
-cover: /images/blog/announcing-user-impersonation/cover.svg
+cover: /images/blog/announcing-user-impersonation/cover.png
 timeToRead: 4
 author: eldad-fux
 category: announcement, product
