@@ -53,9 +53,9 @@ The first screen asks you to configure the basics of your Appwrite instance.
 
 ![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.png)
 
-- **Hostname** - Enter the domain or IP address where your Appwrite instance will be accessible. If you're just testing locally, `localhost` works fine.
-- **Database** - This is the important part. Select **MongoDB**. It's already selected by default, but make sure it's the one highlighted.
-- **Advanced settings** - Expand this if you want to change the HTTP/HTTPS ports, set an SSL certificate email, or add an OpenAI key for the [Appwrite Assistant](/docs/tooling/assistant). For most setups, the defaults are fine.
+- **Hostname:** Enter the domain or IP address where your Appwrite instance will be accessible. If you're just testing locally, `localhost` works fine.
+- **Database:** This is the important part. Select **MongoDB**. It's already selected by default, but make sure it's the one highlighted.
+- **Advanced settings:** Expand this if you want to change the HTTP/HTTPS ports, set an SSL certificate email, or add an OpenAI key for the [Appwrite Assistant](/docs/tooling/assistant). For most setups, the defaults are fine.
 
 One thing to note here: the database choice is permanent. You cannot switch from MongoDB to MariaDB (or vice versa) after installation without starting fresh. So make sure you're happy with your choice before proceeding.
 
