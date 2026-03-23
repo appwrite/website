@@ -1,0 +1,67 @@
+---
+layout: post
+title: Appwrite and MongoDB partner to serve the open-source community with a better self-hosting solution.
+description: 
+date: 2026-03-24
+cover: /images/blog/appwrite-mongodb-partnership-self-hosted/cover.png
+timeToRead: 6
+author: tessa
+category: announcement
+---
+
+We're excited to share the big news: Appwrite and MongoDB are joining forces to serve the open-source community, as MongoDB is officially supported in Appwrite's open-source, self-hosted version. As of today, you can run Appwrite self-hosted directly on MongoDB instead of MariaDB, with no extra database to spin up and no added operational complexity. This is a big step in providing more flexibility to the open-source community and allowing you to use MongoDB and Appwrite with less friction.
+
+# Why MongoDB in open source matters
+
+Many **platforms and DevOps teams** have already standardized on MongoDB for their infrastructure. Until now, running Appwrite self-hosted meant deploying an additional datastore (MariaDB) just for Appwrite, even if MongoDB was already in place. By adding MongoDB support, we're removing that friction. You can now:
+
+- **Avoid running and maintaining a separate engine** just for Appwrite
+- **Reuse your existing MongoDB operations,** backups, monitoring, scaling, and security
+- **Leverage your team's existing expertise** instead of learning and supporting another database
+- **Stay fully open-source** and deploy Appwrite entirely in environments you control
+
+# What's new in the integration
+
+## Drop-in MongoDB database adapter
+
+We've built a **wire-protocol client** and a dedicated MongoDB database adapter for Appwrite. This means you can start a new project on MongoDB as the storage layer without changing a single line of code in your apps. API and SDK behaviour remain the same.
+
+## Improved developer and ops experience
+
+- **Automatic admin DB seeding:** Container entry-point now seeds an admin database user automatically, so you can get started faster.
+- **Readiness probe:** Handles initialization slow-downs gracefully, improving deployment reliability.
+- **Aligned index functionality:** MongoDB and MySQL adapters now handle indexes consistently.
+- **Normalized ID handling:** Primary keys are handled uniformly across adapters, with a move to a UUIDv7 for MongoDB to ensure better performance and scalability compared to traditional ObjectIDs.
+
+## Important notes
+
+- **Only available for new installations:** You can choose MongoDB during setup, but migrations from MariaDB are not currently supported.
+- **Open source and self-hosted only:** This release is specifically for the open-source edition of Appwrite.
+
+# For the open-source community
+
+We believe in providing the open-source community with the same powerful tools that drive Appwrite's managed services, and MongoDB support is a significant step in that direction.
+
+If you've been running Appwrite with MySQL/MariaDB, now is the time to try it with MongoDB. You'll get the same API experience but with the operational benefits of using the database your team already knows inside and out.
+
+We're also working toward giving developers a more idiomatic MongoDB experience, with an API that removes the need for attribute definitions and a console that adapts to MongoDB when running on Appwrite Cloud. More to announce soon.
+
+# Getting started
+
+1. Run the Appwrite Docker installation command
+2. Select MongoDB on the database screen
+3. Enter your admin credentials
+4. Start building. You'll be directed straight to the Appwrite console.
+
+Check out the full setup documentation if you need a step-by-step walkthrough.
+
+# What's next
+
+This release is more than just adding support for another database. It signals a new chapter in Appwrite's evolution. With MongoDB support, Appwrite is now more in tune with the databases developers use daily. Alongside the recent introduction of TablesDB, this demonstrates our commitment to making Appwrite more flexible, powerful, and better suited to the way modern teams build.
+
+Looking ahead, this flexibility also opens the door to supporting a wider range of data types. That means more ways to model your applications, more freedom in scaling them, and more opportunities to push what's possible with Appwrite.
+
+# Resources
+
+- [Setup your Appwrite + MongoDB self-hosted instance](/blog/post/self-hosting-appwrite-with-mongodb)
+- [MongoDB Partner Ecosystem - Appwrite](https://cloud.mongodb.com/ecosystem/appwrite)
