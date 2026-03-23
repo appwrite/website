@@ -36,32 +36,6 @@ The CRM dashboard template is a React-based admin panel designed for managing co
 
 The template uses Appwrite TablesDB as its data layer and comes with an automatic seeding script that creates the necessary database, tables, and a demo user during deployment, so you can explore the dashboard immediately.
 
-## Project structure
-
-Here's how the template source code is organized:
-
-```
-react-admin/
-├── src/
-│   ├── App.tsx          # Main application component
-│   ├── dashboard/       # Dashboard components
-│   ├── products/        # Product management views
-│   ├── categories/      # Category management views
-│   ├── visitors/        # Customer management views
-│   ├── orders/          # Order management views
-│   ├── invoices/        # Invoice management views
-│   ├── reviews/         # Review management views
-│   ├── segments/        # Customer segment views
-│   ├── layout/          # App layout components
-│   ├── themes/          # Custom themes
-│   └── ...
-├── public/              # Public assets
-├── .env                 # Environment variables
-├── setup.ts             # Database seeding script
-├── package.json         # Project dependencies
-└── README.md            # Project documentation
-```
-
 # Deploy the CRM dashboard on Appwrite
 
 To get started, head to [Appwrite Cloud](https://cloud.appwrite.io) and sign in (or [create an account](https://cloud.appwrite.io/console/register) if you haven't already). Create a project, then navigate to the **Sites** page from the left sidebar.
