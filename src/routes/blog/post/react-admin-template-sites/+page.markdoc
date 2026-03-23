@@ -110,7 +110,7 @@ React Admin's component library makes it straightforward to build list views, ed
 
 ## Connect to your own data
 
-If you already have data in Appwrite, you can point the environment variables to your existing database and table IDs. You'll also need to update the `setup.ts` file and remove the `generateData` function so the seed script doesn't overwrite your existing data. Once done, your dashboard will work directly with your production data.
+If you already have data in Appwrite (with the same schema), you can point the environment variables to your existing database and table IDs. You'll also need to update the `setup.ts` file and remove the `generateData` function so the seed script doesn't overwrite your existing data. Once done, your dashboard will work directly with your production data.
 
 # Next steps
 
