@@ -25,6 +25,8 @@ Before you begin, make sure you have the following ready:
 
 The installer is a single Docker command that launches a web-based setup wizard. Open your terminal and run:
 
+{% tabs %}
+{% tabsitem #unix title="macOS and Linux" %}
 ```bash
 docker run -it --rm \
     --publish 20080:20080 \
@@ -33,9 +35,10 @@ docker run -it --rm \
     --entrypoint="install" \
     appwrite/appwrite:1.9.0
 ```
+{% /tabsitem %}
 
-If you're on Windows, use the CMD version:
-
+{% tabsitem #windows title="Windows" %}
+## CMD
 ```cmd
 docker run -it --rm ^
     --publish 20080:20080 ^
@@ -44,6 +47,18 @@ docker run -it --rm ^
     --entrypoint="install" ^
     appwrite/appwrite:1.9.0
 ```
+
+## PowerShell
+```powershell
+docker run -it --rm `
+    --publish 20080:20080 `
+    --volume /var/run/docker.sock:/var/run/docker.sock `
+    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
+    --entrypoint="install" `
+    appwrite/appwrite:1.9.0
+```
+{% /tabsitem %}
+{% /tabs %}
 
 Once the command is running, open your browser and go to `http://localhost:20080` (or your server's IP address on port 20080).
 
@@ -130,3 +145,4 @@ If you have any questions, join our [Discord server](https://appwrite.io/discord
 - [Database configuration](/docs/advanced/self-hosting/configuration/databases)
 - [Backup guide](/docs/advanced/self-hosting/production/backups)
 - [Production readiness](/docs/advanced/self-hosting/production)
+- [MongoDB integration guide](/integrations/self-hosted-mongodb)
