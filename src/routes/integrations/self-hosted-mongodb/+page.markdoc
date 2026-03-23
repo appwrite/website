@@ -104,6 +104,6 @@ Once everything looks good, hit the **Install** button. The wizard will pull the
 
 If you would like to learn more about MongoDB and Appwrite, we have some resources that you should visit:
 
-- [Announcement blog: Self-hosting Appwrite with MongoDB](/blog/post/self-hosting-appwrite-with-mongodb)
+- [Announcement blog: Self-hosting Appwrite with MongoDB](/blog/post/appwrite-mongodb-partnership-self-hosted)
 - [MongoDB Partner Ecosystem Catalog: Appwrite](https://cloud.mongodb.com/ecosystem/appwrite)
 - [Appwrite's databases configuration docs](/docs/advanced/self-hosting/configuration/databases)
