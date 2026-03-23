@@ -9,7 +9,7 @@ author: atharva
 category: tutorial
 ---
 
-Appwrite has always supported self-hosting, but until now, MariaDB was the only database option. With Appwrite 1.9.0, you can now choose MongoDB as your database backend. This is a big deal if you prefer a document-based database or already have MongoDB expertise on your team.
+Appwrite is built on self-hosting, but until now, MariaDB was the only database option. With Appwrite 1.9.0, you can now choose MongoDB as your database backend. This is a big deal if you prefer a document-based database or already have MongoDB expertise on your team.
 
 In this article, you will learn how to self-host Appwrite with MongoDB from scratch using the new web-based installation wizard.
 
@@ -19,9 +19,7 @@ Before you begin, make sure you have the following ready:
 
 - A server or local machine with at least **2 CPU cores**, **4GB of RAM**, and **2GB of swap memory**
 - [Docker CLI](https://www.docker.com/products/docker-desktop) installed
-- Port **20080** open in your firewall (the installation wizard runs on this port)
-
-If you're installing on a remote server, make sure you can access port 20080 from your browser. You can close this port after installation is complete.
+- If you're installing on a remote server, port **20080** must be open in your firewall (the installation wizard runs on this port). You can close it after installation is complete.
 
 # Running the installer
 
@@ -71,7 +69,7 @@ Copy this key and store it somewhere safe. You won't be able to see it again aft
 
 # Step 3: Create your account
 
-Set up the email and password for your Appwrite account. These are the credentials you'll use to sign in to the Appwrite Console after installation.
+Set up the email and password for your Appwrite account. You can use these credentials to sign in to the Appwrite Console later, but you'll be automatically signed in when the installer completes.
 
 ![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.png)
 
@@ -87,9 +85,7 @@ If everything looks good, hit **Install**. The wizard will pull the necessary Do
 
 # What happens under the hood
 
-When you select MongoDB, Appwrite uses Docker Compose profiles to spin up the right containers.
-
-The cool part is that your Appwrite API stays exactly the same regardless of which database you pick. You still work with tables, columns, and rows through the Appwrite Console and SDKs. The database choice only affects the underlying storage engine.
+Your Appwrite API stays exactly the same regardless of which database you pick. You still work with tables, columns, and rows through the Appwrite Console and SDKs. The database choice only affects the underlying storage engine.
 
 Here are the environment variables that get configured for MongoDB:
 
@@ -120,7 +116,7 @@ Only restore to a fresh Appwrite installation to avoid data corruption.
 
 # Accessing the Console
 
-After installation completes, navigate to your hostname in the browser. Sign in with the credentials you created in step 3 and create your first project.
+After installation completes, you'll be automatically signed in to the Appwrite Console. From here, create your first project.
 
 From here, you can start building with Appwrite's full suite of features: Authentication, Databases, Storage, Functions, Messaging, and Sites. All powered by MongoDB under the hood.
 
