@@ -69,7 +69,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 - X-Appwrite-Impersonate-User-Phone: [PHONE]
 - optional
 - Resolves the effective user for an already authenticated impersonator request by phone number. Only works when the authenticated user has impersonation enabled.
-  {% /table %}
+{% /table %}
 
 # Authentication {% #authentication %}
 
