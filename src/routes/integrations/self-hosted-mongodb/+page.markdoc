@@ -54,7 +54,8 @@ docker run -it --rm \
 ```
 {% /tabsitem %}
 
-{% tabsitem #windows title="Windows" %}
+{% tabsitem #windows-cmd title="Windows (Command Prompt)" %}
+
 ```cmd
 docker run -it --rm ^
     --publish 20080:20080 ^
@@ -64,6 +65,19 @@ docker run -it --rm ^
     appwrite/appwrite:1.9.0
 ```
 {% /tabsitem %}
+
+{% tabsitem #windows-pwsh title="Windows (Powershell)" %}
+
+```powershell
+docker run -it --rm `
+    --publish 20080:20080 `
+    --volume /var/run/docker.sock:/var/run/docker.sock `
+    --volume ${pwd}/appwrite:/usr/src/code/appwrite:rw `
+    --entrypoint="install" `
+    appwrite/appwrite:1.9.0
+```
+{% /tabsitem %}
+
 {% /tabs %}
 
 Once the command is running, open your browser and go to `http://localhost:20080` (or your server's IP address on port 20080).
