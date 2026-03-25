@@ -32,22 +32,10 @@ When impersonation is active, the returned user model includes `impersonatorUser
 
 # Enable impersonation for an operator {% #enable-impersonation %}
 
-You can enable impersonation for a trusted operator in two places:
+You can grant a user the impersonator capability in two ways:
 
-- In the Appwrite Console under **Auth > Users**, by opening the user you want to trust and enabling their impersonator capability
-- In the Users API, by updating that user's `impersonator` field
-
-This capability should only be granted to internal support, QA, or operations users who need to inspect app behavior from an end-user perspective.
-
-{% info title="Recommended setup" %}
-Create a dedicated internal operator account for each team member instead of sharing one support account.
-
-This makes it easier to review internal audit activity and control access over time.
-{% /info %}
-
-When a user is marked as an impersonator, Appwrite also grants them the `users.read` scope.
-
-This allows trusted operators to list users in the project, which is especially useful when building internal admin-style tools that let support or QA teams search for a user and choose who to impersonate next.
+- In the Appwrite Console under **Auth > Users**, open the user's profile and toggle on the impersonator capability
+- Via the Users API, by setting the `impersonator` field to `true` on the user
 
 {% multicode %}
 ```server-nodejs
@@ -62,7 +50,7 @@ const users = new sdk.Users(client);
 
 const result = await users.updateImpersonator({
     userId: '<USER_ID>',
-    impersonator: false
+    impersonator: true
 });
 ```
 
@@ -78,7 +66,7 @@ const users = new sdk.Users(client);
 
 const result = await users.updateImpersonator({
     userId: '<USER_ID>',
-    impersonator: false
+    impersonator: true
 });
 ```
 
@@ -95,7 +83,7 @@ users = Users(client)
 
 result = users.update_impersonator(
     user_id='<USER_ID>',
-    impersonator=False
+    impersonator=True
 )
 ```
 
@@ -113,7 +101,7 @@ $users = new Users($client);
 
 $result = $users->updateImpersonator(
     userId: '<USER_ID>',
-    impersonator: false
+    impersonator: true
 );
 ```
 
@@ -131,7 +119,7 @@ users = Users.new(client)
 
 result = users.update_impersonator(
     user_id: '<USER_ID>',
-    impersonator: false
+    impersonator: true
 )
 ```
 
@@ -148,7 +136,7 @@ var users = new Users(client);
 
 var result = await users.UpdateImpersonator(
     userId: "<USER_ID>",
-    impersonator: false
+    impersonator: true
 );
 ```
 
@@ -164,7 +152,7 @@ final users = Users(client);
 
 final result = await users.updateImpersonator(
     userId: '<USER_ID>',
-    impersonator: false
+    impersonator: true
 );
 ```
 
@@ -180,7 +168,7 @@ let users = Users(client)
 
 let result = try await users.updateImpersonator(
     userId: "<USER_ID>",
-    impersonator: false
+    impersonator: true
 )
 ```
 
@@ -197,7 +185,7 @@ val users = Users(client)
 
 val result = users.updateImpersonator(
     userId = "<USER_ID>",
-    impersonator = false
+    impersonator = true
 )
 ```
 
@@ -215,7 +203,7 @@ Users users = new Users(client);
 
 users.updateImpersonator(
     "<USER_ID>",
-    false,
+    true,
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -227,6 +215,18 @@ users.updateImpersonator(
 );
 ```
 {% /multicode %}
+
+This capability should only be granted to internal support, QA, or operations users who need to inspect app behavior from an end-user perspective.
+
+{% info title="Recommended setup" %}
+Create a dedicated internal operator account for each team member instead of sharing one support account.
+
+This makes it easier to review internal audit activity and control access over time.
+{% /info %}
+
+When a user is marked as an impersonator, Appwrite also grants them the `users.read` scope.
+
+This allows trusted operators to list users in the project, which is especially useful when building internal admin-style tools that let support or QA teams search for a user and choose who to impersonate next.
 
 # Initialize an impersonated client {% #initialize-an-impersonated-client %}
 
