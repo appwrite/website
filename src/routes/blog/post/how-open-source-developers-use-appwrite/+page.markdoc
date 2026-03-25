@@ -17,7 +17,7 @@ Appwrite was built on a different premise: your backend should be something you 
 
 # What makes Appwrite different for open-source developers
 
-Appwrite is a self-hosted, open-source backend platform that gives developers authentication, databases, storage, functions, and real-time capabilities under one roof. The entire codebase is MIT-licensed and lives on GitHub. You can read it, fork it, run it on your own infrastructure, and open a pull request if something needs fixing.
+Appwrite is a self-hosted, open-source backend platform that gives developers authentication, databases, storage, functions, and real-time capabilities under one roof. The entire codebase is BSD-3-Clause licensed and lives on GitHub. You can read it, fork it, run it on your own infrastructure, and open a pull request if something needs fixing.
 
 That level of transparency isn't common in the BaaS space. Most platforms give you a polished dashboard and a set of APIs, but the thing running underneath is a black box. For developers who care about how their tools are made, that's a dealbreaker.
 
