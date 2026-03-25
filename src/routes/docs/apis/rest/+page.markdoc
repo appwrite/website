@@ -69,6 +69,7 @@ Appwrite's REST APIs expect certain headers to be included with each request:
 - X-Appwrite-Impersonate-User-Phone: [PHONE]
 - optional
 - Resolves the effective user for an already authenticated impersonator request by phone number. Only works when the authenticated user has impersonation enabled.
+
 {% /table %}
 
 # Authentication {% #authentication %}
@@ -189,7 +190,8 @@ Upload endpoints in Appwrite, such as [Create File](/docs/references/cloud/clien
 - X-Appwrite-Key: [API-KEY]
 - optional
 - API key used for server authentication. Your API key is a secret, **do not** use it in client applications.
-  {% /table %}
+  
+{% /table %}
 
 The multipart form data is structured as follows:
 
@@ -224,7 +226,8 @@ The multipart form data is structured as follows:
 - [PERMISSION ARRAY]
 - N/A
 - Contains an array of permission strings about who can access the new file.
-  {% /table %}
+  
+{% /table %}
 
 While cURL and fetch are great tools to explore other REST endpoints, it's impractical to use for chunked file uploads because you need to split files into chunks.
 
@@ -294,7 +297,8 @@ Appwrite SDKs have helpers to generate permission string formats, but when using
 
 - `Permission.write()`
 - `write("<PERMISSION_ROLE>")`
-  {% /table %}
+  
+{% /table %}
 
 ## Roles {% #roles %}
 
@@ -349,7 +353,8 @@ Appwrite SDKs have helpers to generate roles string formats, but when using Appw
 
 - `Role.member([MEMBERSHIP_ID])`
 - `member:[MEMBERSHIP_ID]`
-  {% /table %}
+  
+{% /table %}
 
 # Unique ID {% #unique-id %}
 
