@@ -8,9 +8,12 @@ User impersonation lets a trusted user temporarily act as another user in the sa
 
 With impersonation, the operator still signs in as themselves first. Appwrite then uses one impersonation setting on the client to resolve the target user and execute the request using that user's permissions.
 
-{% info title="Important" %}
-Impersonation only works on requests that are already authenticated as a user with impersonation enabled. `X-Appwrite-Key` alone is not enough.
-{% /info %}
+User impersonation is especially useful when you need to:
+
+- Reproduce a bug that only appears for a specific user
+- Verify permissions and feature access from the user's point of view
+- Help customer support teams troubleshoot account issues
+- Review onboarding or upgrade flows exactly as an end user sees them
 
 # How it works {% #how-it-works %}
 
@@ -20,6 +23,10 @@ Impersonation follows four steps:
 2. Have that operator sign in normally using any supported Appwrite Auth flow.
 3. Set exactly one impersonation target on the Appwrite client.
 4. Appwrite resolves the target user and evaluates the request as that user.
+
+{% info title="User authentication is required" %}
+Impersonation only works on requests that are already authenticated as a user with impersonation enabled. In server-side flows, an API key alone is not enough. You must also set a valid operator session on the client.
+{% /info %}
 
 When impersonation is active, the returned user model includes `impersonatorUserId`. Your app can use this to show a visible banner or disable risky actions while someone is acting on behalf of another user.
 
@@ -33,14 +40,193 @@ You can enable impersonation for a trusted operator in two places:
 This capability should only be granted to internal support, QA, or operations users who need to inspect app behavior from an end-user perspective.
 
 {% info title="Recommended setup" %}
-Create a dedicated internal operator account for each team member instead of sharing one support account. This makes it easier to review internal audit activity and control access over time.
+Create a dedicated internal operator account for each team member instead of sharing one support account.
+
+This makes it easier to review internal audit activity and control access over time.
 {% /info %}
 
-When a user is marked as an impersonator, Appwrite also grants them the `users.read` scope. This allows trusted operators to list users in the project, which is especially useful when building internal admin-style tools that let support or QA teams search for a user and choose who to impersonate next.
+When a user is marked as an impersonator, Appwrite also grants them the `users.read` scope.
 
-{% arrow_link href="/docs/references/cloud/server-nodejs/users#updateImpersonator" %}
-See the Users API reference for update impersonator
-{% /arrow_link %}
+This allows trusted operators to list users in the project, which is especially useful when building internal admin-style tools that let support or QA teams search for a user and choose who to impersonate next.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>'); // Your secret API key
+
+const users = new sdk.Users(client);
+
+const result = await users.updateImpersonator({
+    userId: '<USER_ID>',
+    impersonator: false
+});
+```
+
+```server-deno
+import * as sdk from "npm:node-appwrite";
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>'); // Your secret API key
+
+const users = new sdk.Users(client);
+
+const result = await users.updateImpersonator({
+    userId: '<USER_ID>',
+    impersonator: false
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.users import Users
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project('<YOUR_PROJECT_ID>') # Your project ID
+client.set_key('<YOUR_API_KEY>') # Your secret API key
+
+users = Users(client)
+
+result = users.update_impersonator(
+    user_id='<USER_ID>',
+    impersonator=False
+)
+```
+
+```server-php
+use Appwrite\Client;
+use Appwrite\Services\Users;
+
+$client = new Client();
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
+    ->setKey('<YOUR_API_KEY>'); // Your secret API key
+
+$users = new Users($client);
+
+$result = $users->updateImpersonator(
+    userId: '<USER_ID>',
+    impersonator: false
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<YOUR_PROJECT_ID>') # Your project ID
+    .set_key('<YOUR_API_KEY>') # Your secret API key
+
+users = Users.new(client)
+
+result = users.update_impersonator(
+    user_id: '<USER_ID>',
+    impersonator: false
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+var client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
+    .SetKey("<YOUR_API_KEY>"); // Your secret API key
+
+var users = new Users(client);
+
+var result = await users.UpdateImpersonator(
+    userId: "<USER_ID>",
+    impersonator: false
+);
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>') // Your project ID
+    .setKey('<YOUR_API_KEY>'); // Your secret API key
+
+final users = Users(client);
+
+final result = await users.updateImpersonator(
+    userId: '<USER_ID>',
+    impersonator: false
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+let users = Users(client)
+
+let result = try await users.updateImpersonator(
+    userId: "<USER_ID>",
+    impersonator: false
+)
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Users
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+val users = Users(client)
+
+val result = users.updateImpersonator(
+    userId = "<USER_ID>",
+    impersonator = false
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Users;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setKey("<YOUR_API_KEY>"); // Your secret API key
+
+Users users = new Users(client);
+
+users.updateImpersonator(
+    "<USER_ID>",
+    false,
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return null;
+        }
+        System.out.println(result);
+        return null;
+    })
+);
+```
+{% /multicode %}
 
 # Initialize an impersonated client {% #initialize-an-impersonated-client %}
 
@@ -49,7 +235,7 @@ After the operator signs in as themselves, initialize the Appwrite client the sa
 Use only one of them per request flow.
 
 {% info title="SDK support" %}
-Use an Appwrite SDK version that includes impersonation support. In client-side apps, the operator's session is typically already persisted for you after login, so impersonation becomes a small client configuration step.
+Make sure you are using an Appwrite SDK version that supports impersonation. In client SDKs, the operator's session is persisted automatically after login, so enabling impersonation is just a matter of setting the right option on the client before making requests.
 {% /info %}
 
 # By user ID {% #impersonate-by-id %}
@@ -259,15 +445,6 @@ Impersonation is most useful when you wrap it in explicit operator UX:
 - Let operators stop impersonating with one click
 - Limit impersonation features to internal tools and trusted roles
 
-# Common use cases {% #common-use-cases %}
-
-User impersonation is especially useful when you need to:
-
-- Reproduce a bug that only appears for a specific user
-- Verify permissions and feature access from the user's point of view
-- Help customer support teams troubleshoot account issues
-- Review onboarding or upgrade flows exactly as an end user sees them
-
 # Security and visibility {% #security-and-visibility %}
 
 Keep impersonation limited to trusted operators and internal tools.
@@ -277,7 +454,7 @@ Important behavior to know:
 - Impersonation must start from a real user session, not an API key by itself.
 - Users with impersonation enabled are automatically granted the `users.read` scope.
 - The target user's permissions are used for the impersonated request.
-- The user model exposes `impersonator` and `impersonatorUserId` so your app can react when impersonation is active.
+- The user model includes `impersonator`, which indicates whether that user can impersonate others, and `impersonatorUserId`, which is present only during an active impersonation session and identifies the operator performing the impersonation.
 - Internal audit logs attribute the action to the original impersonator and include the impersonated target in internal audit payload data.
 
 If you build an internal admin panel, use `impersonatorUserId` to make the impersonated state obvious at all times.
