@@ -2,7 +2,7 @@
 layout: post
 title: 'Introducing user impersonation for Appwrite Auth'
 description: Trusted operators can now act as another user in Appwrite Auth to debug issues, validate permissions, and support customers without sharing credentials.
-date: 2026-03-27
+date: 2026-03-26
 cover: /images/blog/announcing-user-impersonation/cover.png
 timeToRead: 4
 author: eldad-fux
@@ -86,6 +86,10 @@ const client = new Client()
 
 const account = new Account(client);
 const user = await account.get();
+
+if (user.impersonatorUserId) {
+    console.log(`Impersonating as ${user.name}`);
+}
 ```
 
 ```client-flutter
@@ -241,9 +245,12 @@ That means support and QA teams can keep using the same Appwrite SDK patterns th
 
 # Built for controlled use
 
-Impersonation is intentionally designed to work from a **real user-authenticated session**, not from requests authenticated with your **server integration** (project API key) alone.
+Impersonation requires a **real user-authenticated session**. An API key alone is not enough. Operators must sign in as themselves first, and Appwrite uses that session to verify who is performing the impersonation before resolving the target user.
 
-That means operators still authenticate as themselves first. Appwrite then uses the impersonation setting on the client only to select the effective user for the request. This keeps the flow explicit and better aligned with internal support tooling, admin panels, and controlled QA environments.
+A few constraints worth knowing:
+
+- Only one impersonation target can be active per request. To switch targets, replace the impersonation value on the client or create a fresh one.
+- Each operator should have their own dedicated account rather than sharing a single support login. This keeps audit activity attributable to individuals and makes it straightforward to revoke access when needed.
 
 # How logs are treated
 
