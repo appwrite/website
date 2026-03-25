@@ -4,11 +4,9 @@ title: User impersonation
 description: Let trusted operators act as another user in Appwrite Auth for support, QA, and troubleshooting while keeping the flow controlled and auditable.
 ---
 
-User impersonation lets a trusted user temporarily act as another user in the same Appwrite project. This is useful for support workflows, reproducing user-reported bugs, validating permissions, and checking how your app behaves from the user's point of view without sharing credentials.
+User impersonation lets a trusted operator temporarily act as another user in the same Appwrite project, without sharing credentials. The operator signs in as themselves first, then sets a single impersonation target on the client. Appwrite resolves that target and executes requests using their permissions.
 
-With impersonation, the operator still signs in as themselves first. Appwrite then uses one impersonation setting on the client to resolve the target user and execute the request using that user's permissions.
-
-User impersonation is especially useful when you need to:
+This is especially useful when you need to:
 
 - Reproduce a bug that only appears for a specific user
 - Verify permissions and feature access from the user's point of view
@@ -216,7 +214,7 @@ users.updateImpersonator(
 ```
 {% /multicode %}
 
-This capability should only be granted to internal support, QA, or operations users who need to inspect app behavior from an end-user perspective.
+Only grant this capability to internal users (support agents, QA engineers, or operations staff) who need to see the app exactly as a specific end user would.
 
 {% info title="Recommended setup" %}
 Create a dedicated internal operator account for each team member instead of sharing one support account.
@@ -230,9 +228,7 @@ This allows trusted operators to list users in the project, which is especially 
 
 # Initialize an impersonated client {% #initialize-an-impersonated-client %}
 
-After the operator signs in as themselves, initialize the Appwrite client the same way you normally would, then add exactly one impersonation setter on the client.
-
-Use only one of them per request flow.
+After the operator signs in, initialize the Appwrite client as usual and set exactly one impersonation target. Only one target can be active per request; using more than one is not supported.
 
 {% info title="SDK support" %}
 Make sure you are using an Appwrite SDK version that supports impersonation. In client SDKs, the operator's session is persisted automatically after login, so enabling impersonation is just a matter of setting the right option on the client before making requests.
@@ -426,7 +422,7 @@ println(user.phone)
 
 # Choosing the right identifier {% #choosing-the-right-identifier %}
 
-Each setter resolves the same effective user context, but each one fits a different operator workflow:
+All three options result in the same impersonated session. The difference is which identifier your operator workflow has available:
 
 - Use **user ID** when you already have the canonical Appwrite ID
 - Use **email** when support teams search by email address
