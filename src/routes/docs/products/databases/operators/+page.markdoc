@@ -2101,11 +2101,11 @@ result = tablesDB.update_row(
     'upvotes': Operator.increment(1),
     'lastModified': Operator.dateSetNow()
   },
-  transaction_id=tx['$id']
+  transaction_id=tx.id
 )
 
 # Commit the transaction
-tablesDB.update_transaction(tx['$id'], 'commit')
+tablesDB.update_transaction(tx.id, 'commit')
 ```
 ```server-dotnet
 using Appwrite;
@@ -2580,7 +2580,7 @@ tx = tablesDB.create_transaction()
 
 # Stage multiple operations at once using createOperations
 tablesDB.create_operations(
-  transaction_id=tx['$id'],
+  transaction_id=tx.id,
   operations=[
     {
       'action': 'update',
@@ -2605,7 +2605,7 @@ tablesDB.create_operations(
 )
 
 # Commit the transaction
-tablesDB.update_transaction(tx['$id'], 'commit')
+tablesDB.update_transaction(tx.id, 'commit')
 ```
 ```server-dotnet
 using Appwrite;
