@@ -2,7 +2,7 @@
 layout: post
 title: Self-hosting Appwrite with MongoDB as the underlying database
 description: Learn how to self-host Appwrite with MongoDB as the database backend using the new installation wizard.
-date: 2026-03-24
+date: 2026-03-31
 cover: /images/blog/self-hosting-appwrite-with-mongodb/cover.png
 timeToRead: 6
 author: atharva
