@@ -43,7 +43,7 @@ These SDKs are built around the `Account` service. Users sign up, log in, manage
 A basic client-side login and data fetch in JavaScript looks like this:
 
 ```js
-import { Client, Account, Databases, Query } from "appwrite";
+import { Client, Account, TablesDB, Query } from "appwrite";
 
 const client = new Client()
   .setEndpoint("https://cloud.appwrite.io/v1")
