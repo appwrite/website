@@ -136,7 +136,7 @@ In practice, an SSR setup requires two separate clients:
 **Session client:** initialized with the user's session token from the request cookie. Used for all data fetching on behalf of the user. This client respects permissions the same way the browser Client SDK would.
 
 ```js
-import { Client, Account, Databases } from "node-appwrite";
+import { Client, Account } from "node-appwrite";
 
 // Admin client: used to create sessions (e.g. on login)
 const adminClient = new Client()

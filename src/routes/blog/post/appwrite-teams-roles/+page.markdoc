@@ -95,7 +95,7 @@ Once you have a team, you use it in [permission](/docs/advanced/platform/permiss
 Here's how to create a database row that only team members can read, but only editors and admins can update:
 
 ```js
-import { Databases, ID, Permission, Role } from 'appwrite';
+import { TablesDB, ID, Permission, Role } from 'appwrite';
 
 const tablesDB = new TablesDB(client);
 

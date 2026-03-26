@@ -46,7 +46,7 @@ const bucket = await storage.createBucket(
   true,             // fileSecurity
   true,              // enabled
   10000000,          // maximumFileSize (10 MB)
-  ['image/jpeg', 'image/png', 'application/pdf'] // allowedFileExtensions
+  ['image/jpeg', 'image/png', 'application/pdf'] // allowedFileExtensions (MIME types or extensions, e.g. 'jpg')
 );
 ```
 
