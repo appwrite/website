@@ -82,7 +82,7 @@ The defaults differ between Server SDK and Client SDK usage, and this is a commo
 To create a row that only the owner can access:
 
 ```js
-import { Databases, Permission, Role } from "appwrite";
+import { TablesDB, Permission, Role } from "appwrite";
 
 const tablesDB = new TablesDB(client);
 
