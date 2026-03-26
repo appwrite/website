@@ -823,5 +823,9 @@
     {
         "link": "/docs/tooling/assistant",
         "redirect": "/docs/tooling/ai/assistant"
+    },
+    {
+        "link": "/docs/tooling/mcp/zenflow",
+        "redirect": "/docs/tooling/ai/ai-dev-tools/zenflow"
     }
 ]

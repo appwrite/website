@@ -14,12 +14,14 @@ AI agents that maintain conversation history across sessions provide more contex
 
 ## Set up the messages table
 
-Create a table to store conversation messages with the following attributes:
+Create a table to store conversation messages with the following columns:
 
-- `conversationId` (string): Groups messages by conversation
-- `role` (string): Either "user" or "assistant"
-- `content` (string): The message content
-- `$createdAt` (automatic): Timestamp for ordering
+| Key | Type | Description |
+| --- | --- | --- |
+| `conversationId` | varchar | Groups messages by conversation |
+| `role` | varchar | Either "user" or "assistant" |
+| `content` | longtext | The message content |
+| `$createdAt` | automatic | Timestamp for ordering |
 
 ## Store messages in the database
 

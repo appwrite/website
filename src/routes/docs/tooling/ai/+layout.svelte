@@ -95,6 +95,10 @@
                 {
                     label: 'Emergent',
                     href: '/docs/tooling/ai/ai-dev-tools/emergent'
+                },
+                {
+                    label: 'Zenflow',
+                    href: '/docs/tooling/ai/ai-dev-tools/zenflow'
                 }
             ]
         },
