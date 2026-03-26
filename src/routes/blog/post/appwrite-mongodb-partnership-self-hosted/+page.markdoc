@@ -24,17 +24,13 @@ What we're formalizing now is the natural next step: two open-source-first compa
 
 The goal is a backend platform that doesn't force tradeoffs. One where you can choose your database, own your infrastructure, and still get the developer experience you'd expect from a managed service.
 
-# The larger vision
+# How we're starting: MongoDB on self-hosted Appwrite
 
-The end goal is a backend platform where the database is never a constraint. One where you choose the data layer that fits your team, your stack, and your scale, and Appwrite works seamlessly on top of it.
+The first concrete result of this partnership is that **MongoDB is now officially supported in Appwrite's self-hosted, open-source edition** and Appwrite is now listed in the [MongoDB Partner Ecosystem](https://cloud.mongodb.com/ecosystem/appwrite).
 
-This means moving beyond a single database engine. It means giving developers a truly schema-flexible, cloud-native backend that doesn't force tradeoffs between ownership, flexibility, and experience. And it means building that future alongside the companies whose technology already powers the way developers work.
+When you select MongoDB during setup, Appwrite spins up a MongoDB Community Edition container and manages everything alongside your other services. Your app talks to Appwrite through the same APIs and SDKs as always. Appwrite handles schema management, connections, and the full lifecycle.
 
-Here's what's on the roadmap:
-
-- **MongoDB on Appwrite Cloud.** MongoDB will be available in a fully managed environment. The console will adapt dynamically when running on MongoDB, and the experience will feel first-class from day one.
-- **A more idiomatic NoSQL experience.** We're working on an API that removes the need for rigid attribute definitions, giving developers a schema-flexible workflow that matches how people actually build with document databases.
-- **Broader database flexibility across the platform.** Alongside the recent introduction of TablesDB, this partnership signals the direction Appwrite is heading: a platform where you bring the database that fits your team, and Appwrite works seamlessly on top of it.
+**Ready to get started?** Our [self-hosting tutorial](/blog/post/self-hosting-appwrite-with-mongodb) walks you through everything you need to spin up an Appwrite instance powered by MongoDB.
 
 # How both communities benefit
 
@@ -44,13 +40,17 @@ For the **MongoDB community**, this partnership opens a new door. Appwrite is a 
 
 Both communities benefit from something the open-source ecosystem rarely gets: two major platforms actively investing in making each other work better.
 
-# How we're starting: MongoDB on self-hosted Appwrite
+# The larger vision
 
-The first concrete result of this partnership is that **MongoDB is now officially supported in Appwrite's self-hosted, open-source edition** and Appwrite is now listed in the [MongoDB Partner Ecosystem](https://cloud.mongodb.com/ecosystem/appwrite).
+The end goal is a developer cloud where the database is never a constraint. One where you choose the data layer that fits your team, your stack, and your scale, and Appwrite works seamlessly on top of it.
 
-When you select MongoDB during setup, Appwrite spins up a MongoDB Community Edition container and manages everything alongside your other services. Your app talks to Appwrite through the same APIs and SDKs as always. Appwrite handles schema management, connections, and the full lifecycle.
+Moving beyond a single database engine means giving developers a truly schema-flexible, cloud-native backend that doesn't force tradeoffs between ownership, flexibility, and experience. And it means building that future alongside the companies whose technology already powers the way developers work.
 
-**Ready to get started?** Our [self-hosting tutorial](/blog/post/self-hosting-appwrite-with-mongodb) walks you through everything you need to spin up an Appwrite instance powered by MongoDB.
+Here's what's on the roadmap:
+
+- **MongoDB on Appwrite Cloud.** MongoDB will be available in a fully managed environment. The console will adapt dynamically when running on MongoDB, and the experience will feel first-class from day one.
+- **A more idiomatic NoSQL experience.** We're working on an API that removes the need for rigid attribute definitions, giving developers a schema-flexible workflow that matches how people actually build with document databases.
+- **Broader database flexibility across the platform.** Alongside the recent introduction of TablesDB, this partnership signals the direction Appwrite is heading: a platform where you bring the database that fits your team, and Appwrite works seamlessly on top of it.
 
 # What comes next
 
