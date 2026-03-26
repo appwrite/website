@@ -26,7 +26,7 @@ Connect AI-powered IDEs and code editors like VS Code, Cursor, Windsurf, and Cla
 Pre-built instructions to help AI assistants integrate Appwrite into your project quickly.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/ai/docs-as-markdown" title="Docs as Markdown" %}
-Access Appwrite documentation as markdown for AI consumption and better context.
+Access Appwrite documentation as Markdown for AI consumption and better context.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/ai/mcp-servers/api" title="MCP servers" %}
 Connect AI tools to your Appwrite project and documentation through MCP servers.
@@ -39,7 +39,7 @@ Appwrite provides the infrastructure you need to build AI-powered applications. 
 
 {% cards %}
 {% cards_item href="/docs/tooling/ai/ai-in-functions" title="AI in Functions" %}
-Run AI models and integrate with AI providers using Appwrite Functions.
+Integrate AI models into Appwrite Functions using providers like OpenAI and Anthropic.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/ai/vector-db-and-embeddings" title="Vector DB and embeddings" %}
 Store and query vector embeddings for semantic search and AI applications.

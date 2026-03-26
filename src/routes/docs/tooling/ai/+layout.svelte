@@ -9,7 +9,7 @@
 
     const navigation: NavTree = [
         {
-            label: 'Getting started',
+            label: 'Explore',
             items: [
                 {
                     label: 'Overview',
@@ -25,14 +25,18 @@
                 },
                 {
                     label: 'MCP servers',
-                    href: '/'
+                    href: '/docs/tooling/ai/mcp-servers'
                 },
                 {
                     label: 'Agent skills',
                     href: '/docs/tooling/ai/skills'
                 },
                 {
-                    label: 'Arena',
+                    label: 'AGENTS.md',
+                    href: '/docs/tooling/ai/agents-md'
+                },
+                {
+                    label: 'Appwrite Arena',
                     href: '/docs/tooling/ai/arena'
                 },
                 {

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Arena
+title: Appwrite Arena
 description: An open-source benchmark that evaluates how well AI models understand Appwrite's services, SDKs, and APIs.
 ---
 

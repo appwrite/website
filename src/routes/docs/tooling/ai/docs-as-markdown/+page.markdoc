@@ -4,13 +4,13 @@ title: Docs as Markdown
 description: Access Appwrite documentation as Markdown for AI consumption.
 ---
 
-Appwrite documentation is available as markdown, making it easy to use with AI-powered development tools, code editors, and LLMs.
+Appwrite documentation is available as Markdown, making it easy to use with AI-powered development tools, code editors, and LLMs.
 
 Markdown lets AI tools process more content within their context limits and focus on the documentation itself instead of parsing HTML. This leads to more accurate responses based on official documentation.
 
-# Copy as markdown
+# Copy as Markdown
 
-Every page in the Appwrite documentation includes a **Copy page** button that copies the entire page content as markdown to your clipboard.
+Every page in the Appwrite documentation includes a **Copy page** button that copies the entire page content as Markdown to your clipboard.
 
 This is useful when you want to:
 
@@ -37,12 +37,10 @@ Some pages, like the quick start guides, include prompts designed for AI agents.
 
 # Markdown URLs
 
-You can access any documentation page as raw markdown by appending `.md` to the URL.
+You can access any documentation page as raw Markdown by appending `.md` to the URL. Here are some examples:
 
-| Page | Markdown |
-| --- | --- |
-| `https://appwrite.io/docs/apis/graphql` | `https://appwrite.io/docs/apis/graphql.md` |
-| `https://appwrite.io/docs/products/auth` | `https://appwrite.io/docs/products/auth.md` |
-| `https://appwrite.io/docs/quick-starts/nextjs` | `https://appwrite.io/docs/quick-starts/nextjs.md` |
+- `https://appwrite.io/docs/apis/graphql` → `https://appwrite.io/docs/apis/graphql.md`
+- `https://appwrite.io/docs/products/auth` → `https://appwrite.io/docs/products/auth.md`
+- `https://appwrite.io/docs/quick-starts/nextjs` → `https://appwrite.io/docs/quick-starts/nextjs.md`
 
 This allows AI tools and scripts to fetch documentation directly without parsing HTML.

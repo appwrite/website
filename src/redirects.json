@@ -774,7 +774,7 @@
     },
     {
         "link": "/docs/tooling/mcp",
-        "redirect": "/docs/tooling/ai"
+        "redirect": "/docs/tooling/ai/mcp-servers"
     },
     {
         "link": "/docs/tooling/mcp/cursor",

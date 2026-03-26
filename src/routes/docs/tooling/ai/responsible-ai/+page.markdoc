@@ -46,4 +46,4 @@ When using AI development tools like [Cursor, VS Code, or Claude Code](/docs/too
 
 - **Review generated code** before committing. AI-generated code may contain security vulnerabilities, incorrect API usage, or outdated patterns.
 - **Keep API keys out of prompts** when chatting with AI assistants. Avoid pasting secrets, credentials, or sensitive configuration into AI chat interfaces.
-- **Use official documentation** as the source of truth. Point your AI tools to Appwrite's [markdown documentation](/docs/tooling/ai/docs-as-markdown) for accurate and up-to-date context.
+- **Use official documentation** as the source of truth. Point your AI tools to Appwrite's [Markdown documentation](/docs/tooling/ai/docs-as-markdown) for accurate and up-to-date context.

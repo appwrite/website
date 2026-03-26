@@ -15,6 +15,10 @@ Get started quickly with these pre-built prompts for common Appwrite integration
 {% /cards_item %}
 {% /cards %}
 
+{% arrow_link href="/docs/tooling/ai/quickstart-prompts" %}
+Browse all quick start prompts
+{% /arrow_link %}
+
 {% /section %}
 
 {% section #step-2 step=2 title="Add MCP servers" %}
