@@ -2,7 +2,7 @@
 layout: post
 title: "How Appwrite Realtime works (and when to use it)"
 description: Learn how Appwrite Realtime uses WebSockets to push live updates to clients, what channels are available, and when polling is a better fit.
-date: 2026-03-26
+date: 2026-03-23
 cover: /images/blog/appwrite-realtime/cover.png
 timeToRead: 4
 author: aditya-oberai

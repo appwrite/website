@@ -2,7 +2,7 @@
 layout: post
 title: "How Appwrite handles OAuth: Google, GitHub, and beyond"
 description: Learn how the createOAuth2Token flow works in Appwrite, how to configure providers, retrieve user profile data, and handle access token refresh for 30+ providers.
-date: 2026-03-26
+date: 2026-03-25
 cover: /images/blog/appwrite-oauth/cover.png
 timeToRead: 5
 author: aditya-oberai

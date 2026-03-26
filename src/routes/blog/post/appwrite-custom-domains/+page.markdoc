@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite custom domains: setting up and managing endpoints"
 description: Learn why custom domains matter for Appwrite security, how to configure a CNAME record, verify your domain, and update your SDK endpoint for same-domain cookies.
-date: 2026-03-26
+date: 2026-03-27
 cover: /images/blog/appwrite-custom-domains/cover.png
 timeToRead: 4
 author: aditya-oberai

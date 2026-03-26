@@ -2,7 +2,7 @@
 layout: post
 title: "How Appwrite's Magic Link auth improves user experience"
 description: Learn how Appwrite's Magic Link authentication works, how to implement the two-step flow, and when to use it over passwords or email OTP for better UX.
-date: 2026-03-26
+date: 2026-03-27
 cover: /images/blog/appwrite-magic-link/cover.png
 timeToRead: 4
 author: aditya-oberai

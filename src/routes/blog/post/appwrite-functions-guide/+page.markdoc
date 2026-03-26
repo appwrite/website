@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite Functions: everything you need to know"
 description: A complete guide to Appwrite Functions covering triggers, execution modes, deployment options, permissions, and practical use cases for server-side logic.
-date: 2026-03-26
+date: 2026-03-24
 cover: /images/blog/appwrite-functions-guide/cover.png
 timeToRead: 5
 author: aditya-oberai

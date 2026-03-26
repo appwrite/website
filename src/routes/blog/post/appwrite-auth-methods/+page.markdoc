@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite Auth explained: every auth method, compared"
 description: A complete comparison of every Appwrite auth method, from email/password to OAuth2, magic URLs, OTP, and MFA, with guidance on when to use each.
-date: 2026-03-26
+date: 2026-03-23
 cover: /images/blog/appwrite-auth-methods/cover.png
 timeToRead: 5
 author: aditya-oberai

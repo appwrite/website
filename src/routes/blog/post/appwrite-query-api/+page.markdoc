@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite's Query API: filtering, sorting, and pagination"
 description: Learn how to use Appwrite's Query API to filter, sort, and paginate database results efficiently, including offset and cursor pagination.
-date: 2026-03-26
+date: 2026-03-25
 cover: /images/blog/appwrite-query-api/cover.png
 timeToRead: 5
 author: aditya-oberai

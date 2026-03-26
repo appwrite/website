@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite Teams and Roles: managing multi-tenant access"
 description: Learn how Appwrite Teams work, how to create and manage teams with roles, and how to use team-based permissions for multi-tenant SaaS apps.
-date: 2026-03-26
+date: 2026-03-24
 cover: /images/blog/appwrite-teams-roles/cover.png
 timeToRead: 5
 author: aditya-oberai

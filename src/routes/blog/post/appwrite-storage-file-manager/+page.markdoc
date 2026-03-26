@@ -2,7 +2,7 @@
 layout: post
 title: How to build a file manager with Appwrite Storage
 description: Learn how to create buckets, upload and download files, set permissions, and build a complete file manager UI using Appwrite Storage.
-date: 2026-03-26
+date: 2026-03-24
 cover: /images/blog/appwrite-storage-file-manager/cover.png
 timeToRead: 5
 author: aditya-oberai
