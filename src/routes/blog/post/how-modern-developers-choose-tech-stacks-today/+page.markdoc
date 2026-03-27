@@ -96,7 +96,7 @@ Modern stack decisions now frequently include:
 - **Explicit evaluation of data portability** — can you get your data out?
 - **Skepticism of proprietary lock-in features** that are convenient now but costly later
 
-Appwrite being open source isn't just a philosophical stance. It's a practical guarantee: your backend isn't held hostage. The code is on GitHub, you can run it anywhere, and you're never one pricing email away from a migration crisis. That same principle extends to [Appwrite Sites](https://appwrite.io/docs/products/sites) — your frontend deployments live within the same open, portable ecosystem as the rest of your stack.
+Appwrite being open source isn't just a philosophical stance. It's a practical guarantee: your backend isn't held hostage. The code is on GitHub, you can run it anywhere, and you're never one pricing email away from a migration crisis. That same principle extends to [Appwrite Sites](/docs/products/sites); your frontend deployments live within the same open, portable ecosystem as the rest of your stack.
 
 # Cost doesn't just mean price
 
