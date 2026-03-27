@@ -2,7 +2,7 @@
 layout: post
 title: How modern developers choose tech stacks today
 description: Learn how modern developers choose tech stacks based on speed, developer experience, flexibility, and lock-in risk to find a backend that scales.
-date: 2026-03-25
+date: 2026-03-27
 cover: /images/blog/how-modern-developers-choose-tech-stacks-today/cover.png
 timeToRead: 5
 author: aishwari
@@ -38,7 +38,7 @@ The most consistent signal across modern developer surveys and community convers
 
 Developers are increasingly choosing tools that compress the distance between idea and shipped feature. That means fewer layers to set up, less boilerplate to write, and backends that don't demand two weeks of configuration before you can store a user.
 
-This is a big part of why Backend as a Service (BaaS) platforms have moved from a "shortcut for small projects" to a legitimate choice for production applications. When Appwrite gives you auth, databases, storage, functions, and messaging in one platform, with SDKs that work consistently across web, mobile, and server, the math changes. You spend your time building product, not plumbing.
+This is a big part of why Backend as a Service (BaaS) platforms have moved from a "shortcut for small projects" to a legitimate choice for production applications. When Appwrite gives you auth, databases, storage, functions, messaging, and [Sites](https://appwrite.io/docs/products/sites) in one platform, with SDKs that work consistently across web, mobile, and server, the math changes. You spend your time building product, not plumbing.
 
 # Developer experience is a first-class requirement
 
@@ -71,17 +71,18 @@ This is why open-source infrastructure has become so attractive. With Appwrite, 
 
 # The backend decision carries the most long-term weight
 
-Frontend choices are reversible. You can migrate a React app to another framework with significant but bounded effort. You can swap UI libraries, design systems, even whole rendering strategies.
+Frontend choices are reversible. You can migrate a React app to another framework with significant but bounded effort. You can swap UI libraries, design systems, even whole rendering strategies. With [Appwrite Sites](https://appwrite.io/docs/products/sites), you can deploy your frontend directly alongside your backend services, keeping your entire stack under one roof and making those frontend changes even easier to ship.
 
-Backend choices are different. Your database schema, your auth model, your storage structure, these decisions travel with you. They shape your product, your team, and your infrastructure costs for years.
+Backend choices are different. Your database schema, your auth model, your storage structure — these decisions travel with you. They shape your product, your team, and your infrastructure costs for years.
 
 This is why the modern developer instinct to "figure out the backend later" is so risky. It's not later problems you're creating, it's foundation problems.
 
 Getting the backend right means:
 
-- Choosing a **database** that handles your access patterns well and can evolve with your schema, Appwrite Databases support flexible querying, indexing, and document-level permissions out of the box
-- Choosing an **auth system** that handles your growth, [Appwrite Auth](https://appwrite.io/docs/products/auth) supports OAuth, magic links, phone OTP, and more without bolting on a third-party service
-- Choosing a **functions layer** that handles async work cleanly, [Appwrite Functions](https://appwrite.io/docs/products/functions) support multiple runtimes and event-driven triggers so background work stays off your critical path
+- Choosing a **database** that handles your access patterns well and can evolve with your schema — Appwrite Databases support flexible querying, indexing, and document-level permissions out of the box
+- Choosing an **auth system** that handles your growth — [Appwrite Auth](https://appwrite.io/docs/products/auth) supports OAuth, magic links, phone OTP, and more without bolting on a third-party service
+- Choosing a **functions layer** that handles async work cleanly — [Appwrite Functions](https://appwrite.io/docs/products/functions) support multiple runtimes and event-driven triggers so background work stays off your critical path
+- Choosing a **hosting layer** that keeps your frontend close to your backend — [Appwrite Sites](https://appwrite.io/docs/products/sites) lets you deploy web apps with zero friction, no separate hosting provider needed
 
 # Avoiding lock-in is a real priority now
 
@@ -92,10 +93,10 @@ The SaaS consolidation wave has made developers more cautious. Services get acqu
 Modern stack decisions now frequently include:
 
 - **Preference for open-source tools** with self-hosting options
-- **Explicit evaluation of data portability,** can you get your data out?
+- **Explicit evaluation of data portability** — can you get your data out?
 - **Skepticism of proprietary lock-in features** that are convenient now but costly later
 
-Appwrite being open source isn't just a philosophical stance. It's a practical guarantee: your backend isn't held hostage. The code is on GitHub, you can run it anywhere, and you're never one pricing email away from a migration crisis.
+Appwrite being open source isn't just a philosophical stance. It's a practical guarantee: your backend isn't held hostage. The code is on GitHub, you can run it anywhere, and you're never one pricing email away from a migration crisis. That same principle extends to [Appwrite Sites](https://appwrite.io/docs/products/sites) — your frontend deployments live within the same open, portable ecosystem as the rest of your stack.
 
 # Cost doesn't just mean price
 
@@ -109,7 +110,7 @@ The questions worth asking:
 - What's the incident surface area?
 - Does it generate toil, or does it reduce it?
 
-Platforms like Appwrite are designed to reduce toil, so your team spends time on product differentiation, not infrastructure babysitting.
+Platforms like Appwrite are designed to reduce toil, so your team spends time on product differentiation, not infrastructure babysitting. That includes frontend hosting — instead of stitching together a separate CDN and deployment pipeline, [Appwrite Sites](https://appwrite.io/docs/products/sites) keeps it all in one place, cutting another source of operational overhead.
 
 # What the best stacks have in common
 
@@ -120,7 +121,7 @@ Across the spectrum of modern applications, from early-stage products to high-sc
 - **Backed by strong communities.** Support, plugins, integrations, and honest feedback.
 - **Built with the next year in mind, not just today.** Chosen with change as an assumption, not an exception.
 
-Appwrite's architecture reflects all of this, built as a suite of independent, modular services that work seamlessly together, with the freedom to deploy however your situation demands.
+Appwrite's architecture reflects all of this — built as a suite of independent, modular services that work seamlessly together, from auth and databases to functions and [Sites](https://appwrite.io/docs/products/sites), with the freedom to deploy however your situation demands.
 
 # The meta-lesson
 
@@ -136,11 +137,12 @@ Appwrite is worth a serious look, not because it's the only answer, but because 
 
 That's the standard Appwrite is built to meet.
 
-Auth, databases, storage, functions, messaging, one platform, one consistent API, every platform you ship on. Open source, self-hostable, and designed to stay out of your way so you can stay focused on your product.
+Auth, databases, storage, functions, messaging, sites — one platform, one consistent API, every platform you ship on. Open source, self-hostable, and designed to stay out of your way so you can stay focused on your product.
 
 Give it a try. The first project will tell you everything you need to know.
 
 # Resources
 
 - [Sign up with Appwrite Cloud](https://cloud.appwrite.io/register)
+- [Appwrite Sites](https://appwrite.io/docs/products/sites)
 - [Join the Discord community](https://appwrite.io/discord)
