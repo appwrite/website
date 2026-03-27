@@ -303,4 +303,6 @@ The code fetches all rows from the Appwrite table, then sends each row to the Op
 {% section #step-9 step=9 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in your browser.
 This should show the UI created earlier and to test it, write a search query and click the submit button. After a brief moment you should see the matched results.
+
+![Pinecone search demo](/images/docs/ai/vector-db/search-demo.png)
 {% /section %}
