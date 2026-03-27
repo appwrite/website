@@ -6,14 +6,6 @@ description: Discover Appwrite's AI tooling ecosystem. Build with AI-powered dev
 
 Appwrite provides a comprehensive set of tools and resources to help you build with AI. Whether you're using AI-powered development tools to accelerate your workflow, building AI-powered applications, or integrating AI capabilities into your backend, Appwrite has you covered.
 
-# Getting started {% #getting-started %}
-
-The fastest way to start building with Appwrite using AI is to connect your favorite AI-powered development tool with Appwrite's MCP servers. This gives AI assistants direct access to your Appwrite project and up-to-date documentation.
-
-{% arrow_link href="/docs/tooling/ai/ai-dev-tools" %}
-Set up AI dev tools with Appwrite
-{% /arrow_link %}
-
 # AI-powered development tools {% #ai-dev-tools %}
 
 AI-powered development tools can dramatically accelerate how you build applications with Appwrite. From intelligent code completion in your IDE to full application generation through vibe coding platforms, these tools help you write better code faster.
