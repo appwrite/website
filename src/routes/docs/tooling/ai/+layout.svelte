@@ -85,6 +85,10 @@
                     href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
                 },
                 {
+                    label: 'Zenflow',
+                    href: '/docs/tooling/ai/ai-dev-tools/zenflow'
+                },
+                {
                     label: 'Imagine',
                     href: '/docs/tooling/ai/ai-dev-tools/imagine'
                 },
@@ -97,8 +101,8 @@
                     href: '/docs/tooling/ai/ai-dev-tools/emergent'
                 },
                 {
-                    label: 'Zenflow',
-                    href: '/docs/tooling/ai/ai-dev-tools/zenflow'
+                    label: 'Bolt',
+                    href: '/docs/tooling/ai/ai-dev-tools/bolt'
                 }
             ]
         },
@@ -234,7 +238,7 @@
                     href: '/docs/tooling/ai/ai-in-functions'
                 },
                 {
-                    label: 'Vector DB and Embeddings',
+                    label: 'Vector DB and embeddings',
                     href: '/docs/tooling/ai/vector-db-and-embeddings'
                 },
                 {
