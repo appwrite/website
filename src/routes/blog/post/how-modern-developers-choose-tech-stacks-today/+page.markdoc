@@ -29,6 +29,7 @@ Developers today are evaluating stacks across a different set of axes:
 - **What happens when requirements change?**
 - **Will this hold up when traffic grows?**
 - **Am I going to own this stack, or is it going to own me?**
+- **Ease of AI integration.** Modern developers expect first-class support for building AI-powered features, whether that's connecting to LLM APIs, storing vector embeddings, or triggering AI workflows. Stacks that make this easy have a real edge.
 
 The shift is from *"what's proven"* to *"what gives me the most leverage."*
 
@@ -110,7 +111,7 @@ The questions worth asking:
 - What's the incident surface area?
 - Does it generate toil, or does it reduce it?
 
-Platforms like Appwrite are designed to reduce toil, so your team spends time on product differentiation, not infrastructure babysitting. That includes frontend hosting — instead of stitching together a separate CDN and deployment pipeline, [Appwrite Sites](https://appwrite.io/docs/products/sites) keeps it all in one place, cutting another source of operational overhead.
+Platforms like Appwrite are designed to reduce toil, so your team spends time on product differentiation, not infrastructure babysitting. That spans every product in the stack, Appwrite Auth removes identity overhead, Appwrite Databases handles your data layer, Appwrite Storage manages files, Appwrite Functions keeps async work off your critical path, Appwrite Messaging powers notifications, and Appwrite Sites eliminates the need for a separate hosting pipeline. Less stitching, less toil, across the board.
 
 # What the best stacks have in common
 
