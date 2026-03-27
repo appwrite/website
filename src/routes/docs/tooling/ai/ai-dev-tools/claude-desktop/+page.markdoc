@@ -23,6 +23,8 @@ Browse all quick start prompts
 
 {% section #step-2 step=2 title="Add MCP servers" %}
 
+Connect Appwrite MCP servers to Claude Desktop for deeper integration with the Appwrite API and documentation.
+
 Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
 {% tabs %}

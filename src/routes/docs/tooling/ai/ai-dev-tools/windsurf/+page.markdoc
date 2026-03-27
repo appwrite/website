@@ -23,6 +23,8 @@ Browse all quick start prompts
 
 {% section #add-mcp-servers step=2 title="Add MCP servers" %}
 
+Connect Appwrite MCP servers to Windsurf for deeper integration with the Appwrite API and documentation.
+
 Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
 {% tabs %}

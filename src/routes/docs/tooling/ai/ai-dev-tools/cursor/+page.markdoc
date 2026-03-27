@@ -23,7 +23,9 @@ Browse all quick start prompts
 
 {% section #step-2 step=2 title="Add MCP servers" %}
 
-Before using the MCP servers below, ensure you have the following **pre-requisites** installed on your system:
+Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation.
+
+Before you begin, ensure you have the following **pre-requisites** installed on your system:
 
 {% tabs %}
 {% tabsitem #api-server-prerequisites title="API server" %}

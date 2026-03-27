@@ -14,16 +14,15 @@ Appwrite services like Auth, Databases, Storage, and Hosting are natively integr
 
 - **Backend included**: Every app you build comes with Appwrite cloud services. Auth, databases, storage, and hosting are set up automatically based on your prompt.
 - **No configuration needed**: Unlike other AI dev tools that require MCP servers or manual SDK integration, Imagine has Appwrite built in from the start.
-- **Production-ready output**: Imagine generates functional, maintainable, and scalable code using Anthropic models, following industry standards and best practices.
+- **Production-ready output**: Imagine generates functional, maintainable, and scalable code following industry standards and best practices.
 - **Prompt to deployed app**: Go from an idea to a live, hosted application. Imagine handles code generation, build pipelines, and deployment.
-- **Iterative development**: Use the built-in chat to refine your application. Describe changes in natural language and Imagine updates the code, preview, and backend accordingly.
 - **Version control**: Every change Imagine makes creates a new version, so you can track the history of your project and see exactly what changed.
 
 # Included Appwrite services {% #included-services %}
 
 Imagine automatically provisions the following Appwrite services based on what your application needs:
 
-- **Auth**: User authentication with email/password, OAuth providers, and session management.
+- **Auth**: User authentication and session management.
 - **Databases**: Structured data storage with tables, rows, and queries.
 - **Storage**: File uploads, downloads, and image transformations.
 - **Hosting**: Deploy and host your application on Appwrite Sites with a live URL.
