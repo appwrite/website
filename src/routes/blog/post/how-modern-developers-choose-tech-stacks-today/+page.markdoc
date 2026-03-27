@@ -121,7 +121,7 @@ Across the spectrum of modern applications, from early-stage products to high-sc
 - **Backed by strong communities.** Support, plugins, integrations, and honest feedback.
 - **Built with the next year in mind, not just today.** Chosen with change as an assumption, not an exception.
 
-Appwrite's architecture reflects all of this — built as a suite of independent, modular services that work seamlessly together, from auth and databases to functions and [Sites](https://appwrite.io/docs/products/sites), with the freedom to deploy however your situation demands.
+Appwrite's architecture reflects all of this, built as a suite of independent, modular services that work seamlessly together, from auth and databases to functions and web hosting, with the freedom to deploy however your situation demands.
 
 # The meta-lesson
 
