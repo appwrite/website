@@ -2,7 +2,7 @@
 layout: post
 title: How open-source developers use Appwrite
 description: Discover how open-source developers around the world use Appwrite to build, ship, and scale their projects, without the backend headaches.
-date: 2026-03-25
+date: 2026-03-27
 cover: /images/blog/how-open-source-developers-use-appwrite/cover.png
 timeToRead: 5
 author: aishwari
@@ -86,3 +86,4 @@ Appwrite is open source. That means it belongs to the developers who use it as m
 - [Get started with Appwrite](https://cloud.appwrite.io/register)
 - [Star the repo on GitHub](https://github.com/appwrite/appwrite)
 - [Join the Discord community](https://appwrite.io/discord)
+- [Self-hosting docs](https://appwrite.io/docs/advanced/self-hosting)
