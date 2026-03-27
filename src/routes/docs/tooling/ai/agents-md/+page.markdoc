@@ -18,7 +18,7 @@ When an AI agent encounters an `AGENTS.md` file, it uses the instructions to tai
 
 # Generate AGENTS.md {% #generate %}
 
-Use the [AGENTS.md generator](https://rules.appwrite.io) to create a custom `AGENTS.md` file for your project.
+Use the [AGENTS.md generator](https://agents.appwrite.network) to create a custom `AGENTS.md` file for your project.
 
 ![AGENTS.md generator](/images/docs/ai/agents-md/generator-dark.png)
 
