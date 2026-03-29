@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type ServiceValue } from '$lib/utils/references';
+import { Platform, type ServiceValue, type Version } from '$lib/utils/references';
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -90,59 +90,62 @@ export const ModelType = {
 type ModelTypeType = keyof typeof ModelType;
 type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 
+type ExampleVersion = Exclude<Version, 'cloud'>;
+type ExampleLoaders = Record<string, () => Promise<unknown>>;
+
+const examplesByVersion: Record<ExampleVersion, ExampleLoaders> = {
+    '0.15.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/0.15.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.0.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.0.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.1.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.1.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.2.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.2.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.3.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.3.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.4.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.4.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.5.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.5.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.6.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.6.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.7.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.7.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.8.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.8.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    }),
+    '1.9.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.9.x/**/*.md', {
+        query: '?raw',
+        import: 'default'
+    })
+};
+
 function getExamples(version: string) {
-    switch (version) {
-        case '0.15.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/0.15.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.0.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.0.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.1.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.1.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.2.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.2.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.3.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.3.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.4.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.4.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.5.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.5.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.6.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.6.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.7.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.7.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
-        case '1.8.x':
-            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.8.x/**/*.md', {
-                query: '?raw',
-                import: 'default'
-            });
+    if (!(version in examplesByVersion)) {
+        return undefined;
     }
+
+    return examplesByVersion[version as ExampleVersion];
 }
 
 function stripMarkdownCodeFence(content: string): string {
@@ -399,12 +402,17 @@ const specs = import.meta.glob('/node_modules/@appwrite.io/specs/specs/*/open-ap
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
-    const isServer = platform.startsWith('server-');
-    const target = `/node_modules/@appwrite.io/specs/specs/${version}/open-api3-${version}-${
-        isServer ? 'server' : isClient ? 'client' : 'console'
-    }.json`;
+    const mode = platform.startsWith('server-') ? 'server' : isClient ? 'client' : 'console';
+    const filename = `open-api3-${version}-${mode}.json`;
 
-    return specs[target]() as unknown as OpenAPIV3.Document;
+    const loader = Object.entries(specs).find(([key]) => key.endsWith(`/${filename}`))?.[1];
+
+    if (!loader) {
+        throw error(404, `Missing OpenAPI spec loader for ${filename}`);
+    }
+
+    const loaded = (await loader()) as OpenAPIV3.Document | { default: OpenAPIV3.Document };
+    return ('default' in loaded ? loaded.default : loaded) as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
