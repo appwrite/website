@@ -134,7 +134,7 @@
             <div
                 class="bg-mint-500 absolute right-0 bottom-0 rounded-r-md rounded-bl-md px-2 py-0.5 font-medium text-black"
             >
-                <span>Ava</span>
+                <span>Sharon</span>
             </div>
         </div>
 
