@@ -134,7 +134,7 @@
             <div
                 class="bg-mint-500 absolute right-0 bottom-0 rounded-r-md rounded-bl-md px-2 py-0.5 font-medium text-black"
             >
-                <span>Sara</span>
+                <span>Ava</span>
             </div>
         </div>
 
@@ -168,7 +168,7 @@
             <div
                 class="absolute right-0 bottom-0 rounded-r-md rounded-bl-md bg-blue-500 px-2 py-0.5 font-medium text-white"
             >
-                <span>Aditya</span>
+                <span>Jayden</span>
             </div>
         </div>
 
@@ -204,7 +204,7 @@
             <div
                 class="bg-accent absolute right-0 bottom-0 rounded-r-md rounded-bl-md px-2 py-0.5 font-medium text-white"
             >
-                <span>Walter</span>
+                <span>Mason</span>
             </div>
         </div>
 

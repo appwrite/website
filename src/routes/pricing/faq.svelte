@@ -8,10 +8,6 @@
         question: string;
         answer: string;
     }[] = [
-        {
-            question: 'Can I self-host Appwrite for free?',
-            answer: 'Yes! Appwrite Self Hosted will always be Open Source and free for you to use, without any limits. You can find the latest version of Appwrite in our <a rel="noopener noreferrer" class="web-link underline" href="https://github.com/appwrite/appwrite">GitHub repository</a>, and you can follow <a class="web-link underline" href="/docs/advanced/self-hosting/">Self Hosting docs</a> to learn how to install Appwrite on your server.'
-        },
         // {
         //     question: 'Does Appwrite have a trial period?',
         //     answer: 'Yes, we offer a 14-day trial period for you to explore Appwrite Pro. After the 14-day trial, you can either continue using Pro plan or downgrade to a Free plan.'
