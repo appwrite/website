@@ -57,14 +57,15 @@
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Everything your app needs,<br/>one subscription
+                            Everything your app needs,<br />one subscription
                         </h1>
                         <p
                             class="text-description max-w-xl self-center text-center opacity-90"
                             style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
-                            Build, deploy, and observe your app from one platform, all under one subscription.
+                            Build, deploy, and observe your app from one platform, all under one
+                            subscription.
                         </p>
                     </div>
                 </section>
@@ -345,7 +346,9 @@
                                 >
                                     One platform. One subscription.
                                 </h3>
-                                <div class="stack-card__badge">1 vendor • 1 subscription • 1 bill</div>
+                                <div class="stack-card__badge">
+                                    1 vendor • 1 subscription • 1 bill
+                                </div>
                             </div>
                             <p class="text-main-body text-secondary/90 mt-4 max-w-3xl">
                                 Replace fragmented backend, hosting, storage, and delivery tooling
@@ -358,15 +361,21 @@
                                     <p class="stack-state-card__label">Before</p>
                                     <ul class="stack-state-card__list">
                                         <li>Multiple tools with overlapping responsibilities</li>
-                                        <li>Separate subscriptions, invoices, and renewal cycles</li>
-                                        <li>More integration, maintenance, and ownership overhead</li>
+                                        <li>
+                                            Separate subscriptions, invoices, and renewal cycles
+                                        </li>
+                                        <li>
+                                            More integration, maintenance, and ownership overhead
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="stack-state-card stack-state-card--after">
                                     <p class="stack-state-card__label">After</p>
                                     <ul class="stack-state-card__list">
                                         <li>One platform across the app lifecycle</li>
-                                        <li>One subscription with simpler billing and procurement</li>
+                                        <li>
+                                            One subscription with simpler billing and procurement
+                                        </li>
                                         <li>Fewer systems to integrate, secure, and maintain</li>
                                     </ul>
                                 </div>
@@ -385,7 +394,6 @@
                             </div>
                         </article>
                     </section>
-
                 </section>
             </div>
         </div>
@@ -455,8 +463,16 @@
         isolation: isolate;
         background-clip: padding-box;
         background:
-            radial-gradient(120% 80% at 100% 0%, rgba(253, 54, 110, 0.14) 0%, rgba(253, 54, 110, 0) 60%),
-            radial-gradient(140% 90% at 0% 100%, rgba(96, 165, 250, 0.08) 0%, rgba(96, 165, 250, 0) 60%),
+            radial-gradient(
+                120% 80% at 100% 0%,
+                rgba(253, 54, 110, 0.14) 0%,
+                rgba(253, 54, 110, 0) 60%
+            ),
+            radial-gradient(
+                140% 90% at 0% 100%,
+                rgba(96, 165, 250, 0.08) 0%,
+                rgba(96, 165, 250, 0) 60%
+            ),
             hsl(var(--web-color-card));
     }
 
