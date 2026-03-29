@@ -1,9 +1,13 @@
 import { dev } from '$app/environment';
-import { PUBLIC_GROWTH_ENDPOINT, PUBLIC_ARENA_ENDPOINT } from '$env/static/public';
+import * as publicEnv from '$env/static/public';
+
+const optionalPublicEnv = publicEnv as typeof publicEnv & {
+    PUBLIC_ARENA_ENDPOINT?: string;
+};
 
 export const VARS = {
-    GROWTH_ENDPOINT: PUBLIC_GROWTH_ENDPOINT ?? undefined,
-    ARENA_ENDPOINT: PUBLIC_ARENA_ENDPOINT ?? undefined
+    GROWTH_ENDPOINT: publicEnv.PUBLIC_GROWTH_ENDPOINT ?? undefined,
+    ARENA_ENDPOINT: optionalPublicEnv.PUBLIC_ARENA_ENDPOINT ?? undefined
 };
 
 export const ENV = {

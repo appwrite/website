@@ -142,6 +142,11 @@ function getExamples(version: string) {
                 query: '?raw',
                 import: 'default'
             });
+        case '1.9.x':
+            return import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.9.x/**/*.md', {
+                query: '?raw',
+                import: 'default'
+            });
     }
 }
 
@@ -399,12 +404,17 @@ const specs = import.meta.glob('/node_modules/@appwrite.io/specs/specs/*/open-ap
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
-    const isServer = platform.startsWith('server-');
-    const target = `/node_modules/@appwrite.io/specs/specs/${version}/open-api3-${version}-${
-        isServer ? 'server' : isClient ? 'client' : 'console'
-    }.json`;
+    const mode = platform.startsWith('server-') ? 'server' : isClient ? 'client' : 'console';
+    const filename = `open-api3-${version}-${mode}.json`;
 
-    return specs[target]() as unknown as OpenAPIV3.Document;
+    const loader = Object.entries(specs).find(([key]) => key.endsWith(`/${filename}`))?.[1];
+
+    if (!loader) {
+        throw new Error(`Missing OpenAPI spec loader for ${filename}`);
+    }
+
+    const loaded = (await loader()) as OpenAPIV3.Document | { default: OpenAPIV3.Document };
+    return ('default' in loaded ? loaded.default : loaded) as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {

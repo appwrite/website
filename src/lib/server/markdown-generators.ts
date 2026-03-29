@@ -6,6 +6,10 @@ import { generateServiceMarkdown } from './service-markdown';
  */
 type MarkdownGenerator = (match: RegExpMatchArray) => Promise<string | null>;
 
+function isRoutePlaceholder(segment: string): boolean {
+    return /^\[[^[\]]+\]$/.test(segment);
+}
+
 /**
  * Registry of route patterns to markdown generators
  */
@@ -18,6 +22,9 @@ const markdownGenerators = new Map<RegExp, MarkdownGenerator>();
  */
 markdownGenerators.set(/^\/docs\/references\/([^/]+)\/models\/([^/]+)$/, async (match) => {
     const [, versionParam, modelName] = match;
+    if (isRoutePlaceholder(versionParam) || isRoutePlaceholder(modelName)) {
+        return null;
+    }
     return generateModelMarkdown(versionParam, modelName);
 });
 
@@ -28,6 +35,13 @@ markdownGenerators.set(/^\/docs\/references\/([^/]+)\/models\/([^/]+)$/, async (
  */
 markdownGenerators.set(/^\/docs\/references\/([^/]+)\/([^/]+)\/([^/]+)$/, async (match) => {
     const [, versionParam, platform, serviceName] = match;
+    if (
+        isRoutePlaceholder(versionParam) ||
+        isRoutePlaceholder(platform) ||
+        isRoutePlaceholder(serviceName)
+    ) {
+        return null;
+    }
     return generateServiceMarkdown(versionParam, platform, serviceName);
 });
 
