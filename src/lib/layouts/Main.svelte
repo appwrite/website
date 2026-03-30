@@ -23,7 +23,6 @@
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
     import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
-    import TeaserBanner from '$routes/(marketing)/(components)/teaser/teaser-banner.svelte';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -118,8 +117,12 @@
             href: '/blog/category/customer-stories'
         },
         {
-            label: 'Enterprise',
-            href: '/contact-us/enterprise'
+            label: 'Blog',
+            href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog'
         }
     ];
 
@@ -166,19 +169,6 @@
 </script>
 
 <div class="relative contents h-full">
-    {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
-            <div class="is-special-padding mx-auto">
-                <TeaserBanner
-                    showLabel={true}
-                    leftText="Introducing"
-                    logoText="Imagine"
-                    rightText="AI Builder on Appwrite Cloud"
-                />
-            </div>
-        </div>
-    {/if}
-
     <section
         class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
