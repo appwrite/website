@@ -242,10 +242,6 @@
                     href: '/docs/tooling/ai/vector-db-and-embeddings'
                 },
                 {
-                    label: 'RAG',
-                    href: '/docs/tooling/ai/rag'
-                },
-                {
                     label: 'Persistent agents with Realtime',
                     href: '/docs/tooling/ai/persistent-agents-with-realtime'
                 }
