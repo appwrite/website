@@ -92,7 +92,7 @@ Appwrite Sites lets you deploy your frontend directly alongside your backend, so
 
 Instead of configuring a separate hosting provider, teams can deploy static sites or server-side rendered apps directly from the Appwrite console, making it easy to ship a live, shareable URL before the hackathon ends.
 
-## Realtime Capabilities
+## Realtime capabilities
 
 Realtime features such as live updates, collaborative editing, messaging, and notifications can significantly improve a hackathon demo.
 
