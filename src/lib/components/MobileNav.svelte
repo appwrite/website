@@ -25,7 +25,7 @@
     }}
 />
 
-<nav class="web-side-nav sticky block max-h-screen overflow-hidden lg:hidden" class:hidden={!open}>
+<nav class="web-side-nav sticky block max-h-screen overflow-hidden xl:hidden" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
             {#if offerButton}

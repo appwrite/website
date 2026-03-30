@@ -76,10 +76,7 @@ function formatProperty(
         if ('$ref' in property.items) {
             const refModel = (property.items.$ref as string).split('/').pop();
             if (refModel) {
-                const refSchema = getSchema(refModel, api);
-                relatedModels.push(
-                    `[${refSchema.description} model](/docs/references/${versionParam}/models/${refModel})`
-                );
+                relatedModels.push(formatRelatedModelLink(refModel, api, versionParam));
                 type = `array<${refModel}>`;
             }
         } else if ('anyOf' in property.items) {
@@ -90,8 +87,7 @@ function formatProperty(
                 relatedModels = refs
                     .map((item) => {
                         if (!item) return '';
-                        const refSchema = getSchema(item, api);
-                        return `[${refSchema.description} model](/docs/references/${versionParam}/models/${item})`;
+                        return formatRelatedModelLink(item, api, versionParam);
                     })
                     .filter(Boolean);
                 type = 'array';
@@ -105,10 +101,7 @@ function formatProperty(
         if ('$ref' in itemsObj) {
             const refModel = (itemsObj.$ref as string).split('/').pop();
             if (refModel) {
-                const refSchema = getSchema(refModel, api);
-                relatedModels.push(
-                    `[${refSchema.description} model](/docs/references/${versionParam}/models/${refModel})`
-                );
+                relatedModels.push(formatRelatedModelLink(refModel, api, versionParam));
                 type = refModel;
             }
         } else {
@@ -121,8 +114,7 @@ function formatProperty(
                     relatedModels = refs
                         .map((item: string | undefined) => {
                             if (!item) return '';
-                            const refSchema = getSchema(item, api);
-                            return `[${refSchema.description} model](/docs/references/${versionParam}/models/${item})`;
+                            return formatRelatedModelLink(item, api, versionParam);
                         })
                         .filter(Boolean);
                 }
@@ -137,4 +129,17 @@ function formatProperty(
     }
 
     return { type, description };
+}
+
+function formatRelatedModelLink(
+    modelId: string,
+    api: OpenAPIV3.Document,
+    versionParam: string
+): string {
+    const schema = api.components?.schemas?.[modelId] as AppwriteSchemaObject | undefined;
+    if (!schema?.description) {
+        return `\`${modelId}\``;
+    }
+
+    return `[${schema.description} model](/docs/references/${versionParam}/models/${modelId})`;
 }

@@ -527,6 +527,14 @@
             title: 'Network',
             rows: [
                 {
+                    title: 'Content delivery network',
+                    info: 'Available across all Appwrite services, with 200+ global PoP locations for low-latency delivery across Backend API, Serverless Functions, Storage files, and hosted websites.',
+                    free: 'Basic',
+                    pro: 'Advanced',
+                    scale: 'Advanced',
+                    enterprise: 'Advanced'
+                },
+                {
                     title: 'Edge compute',
                     free: true,
                     pro: true,
@@ -535,13 +543,6 @@
                 },
                 {
                     title: 'DDoS mitigation',
-                    free: true,
-                    pro: true,
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'Content delivery network',
                     free: true,
                     pro: true,
                     scale: true,
