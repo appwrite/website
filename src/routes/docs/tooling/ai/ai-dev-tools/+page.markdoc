@@ -72,7 +72,7 @@ AI-powered IDEs and code editors provide intelligent code completion, inline sug
 
 When an AI agent encounters an `AGENTS.md` file, it uses the instructions to tailor its responses to your specific project requirements. This includes details about your tech stack, file organization, naming conventions, and architectural patterns.
 
-Generate your own `AGENTS.md` file depending on the Appwrite services you use in your application using the [AGENTS.md generator](https://rules.appwrite.io).
+Generate your own `AGENTS.md` file depending on the Appwrite services you use in your application using the [AGENTS.md generator](https://agentsmd.appwrite.io).
 
 # Vibe coding {% #vibe-coding %}
 

@@ -36,8 +36,8 @@ Integrate AI models into Appwrite Functions using providers like OpenAI and Anth
 {% cards_item href="/docs/tooling/ai/vector-db-and-embeddings" title="Vector DB and embeddings" %}
 Store and query vector embeddings for semantic search and AI applications.
 {% /cards_item %}
-{% cards_item href="/docs/tooling/ai/rag" title="RAG" %}
-Implement Retrieval-Augmented Generation to build AI apps with your own data.
+{% cards_item href="/docs/tooling/ai/rag" title="Retrieval-augmented generation" %}
+Build RAG pipelines with LangChain and Pinecone to ground AI responses in your own data.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/ai/persistent-agents-with-realtime" title="Persistent agents" %}
 Build stateful AI agents using Appwrite Realtime for continuous conversations.
