@@ -170,7 +170,7 @@
 
 <div class="relative contents h-full">
     <section
-        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
+        class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -208,7 +208,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden xl:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"
