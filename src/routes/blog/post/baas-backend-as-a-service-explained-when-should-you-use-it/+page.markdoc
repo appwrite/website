@@ -54,6 +54,17 @@ This is why BaaS has become popular with:
 
 The BaaS market reflects this demand. It's projected to grow to $22 billion by 2032, driven by the continued push for faster development cycles and cloud-based scalability.
 
+# Common misconceptions about BaaS
+
+**"BaaS is only for prototypes."**
+Not anymore. Many production applications, including ones handling millions of users, run on BaaS platforms. Modern tools support scalable architectures, fine-grained permissions, and complex integrations.
+
+**"You lose control of your backend."**
+This was a fair criticism of early BaaS tools. Modern platforms provide serverless functions, custom logic, and extensive configuration options, and open-source platforms let you own the infrastructure entirely.
+
+**"BaaS means vendor lock-in."**
+It depends on the platform. Closed, proprietary BaaS solutions can create lock-in. But open-source BaaS platforms give teams the freedom to self-host, migrate, or extend the backend as needed.
+
 # When BaaS is the right choice
 
 ## 1. You're building an MVP or early-stage product
@@ -76,27 +87,22 @@ Mobile development and BaaS are a natural fit. Most mobile apps need a consisten
 
 When you're building backend infrastructure for multiple clients, repetition becomes expensive. BaaS provides a consistent, reusable foundation across projects, cutting setup time and simplifying long-term maintenance.
 
+## 5. You're scaling an enterprise product
+
+Enterprise teams face a different kind of pressure: compliance requirements, multi-region deployments, SSO integrations, audit logging, and the need to move quickly without accumulating technical debt. Modern BaaS platforms address this directly. Features like role-based access control, fine-grained permissions, self-hosted deployments, and support for custom authentication providers make BaaS a viable foundation for enterprise applications. 
+
+When built on an open-source platform, enterprises also avoid the vendor lock-in risk that comes with proprietary solutions.
+
 # When BaaS might not be the right fit
 
 BaaS is powerful, but it's not the right answer for every use case. Teams with the following requirements may need more control than a standard BaaS platform offers:
 
-- **Complex compliance requirements:** industries with strict data residency or regulatory constraints (healthcare, fintech) may need custom infrastructure
+- **Complex compliance requirements:** industries with strict data residency or regulatory constraints (healthcare, fintech) may need custom infrastructure, though self-hosted BaaS deployments can satisfy many of these requirements without building from scratch
 - **Specialized database performance:** high-scale systems with complex query optimization needs
 - **Deeply custom architectures:** applications with unique microservices patterns that don't map to BaaS conventions
 - **Extreme scale:** workloads that require fine-tuned infrastructure management at the infrastructure level
 
-That said, this line has shifted significantly. Modern BaaS platforms, particularly open-source ones, now support self-hosted deployments, giving teams full infrastructure control while still benefiting from pre-built backend features.
-
-# Common misconceptions about BaaS
-
-**"BaaS is only for prototypes."**
-Not anymore. Many production applications, including ones handling millions of users, run on BaaS platforms. Modern tools support scalable architectures, fine-grained permissions, and complex integrations.
-
-**"You lose control of your backend."**
-This was a fair criticism of early BaaS tools. Modern platforms provide serverless functions, custom logic, and extensive configuration options, and open-source platforms let you own the infrastructure entirely.
-
-**"BaaS means vendor lock-in."**
-It depends on the platform. Closed, proprietary BaaS solutions can create lock-in. But open-source BaaS platforms give teams the freedom to self-host, migrate, or extend the backend as needed.
+That said, this line has shifted significantly. Modern BaaS platforms, particularly open-source ones, now support self-hosted deployments, giving teams full infrastructure control while still benefiting from pre-built backend features. For most teams, the question isn't whether BaaS can handle their scale, it's whether the trade-offs make sense for their specific workload.
 
 # How Appwrite fits into this
 
