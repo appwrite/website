@@ -460,7 +460,7 @@ tablesDB.upsert_row(
   table_id = '<TABLE_ID>',
   row_id = '<ROW_ID>',
   data = { 'name': 'Walter' },
-  transaction_id = tx['$id']
+  transaction_id = tx.id
 )
 
 # Decrement inside a transaction
@@ -470,7 +470,7 @@ tablesDB.decrement_row_column(
   row_id = '<ROW_ID>',
   column = 'credits',
   value = 1,
-  transaction_id = tx['$id']
+  transaction_id = tx.id
 )
 ```
 ```server-php
@@ -668,7 +668,7 @@ await tablesDB.createOperations({
 ```
 ```server-python
 tablesDB.create_operations(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   operations = [
     {
       'action': 'create',
@@ -1072,13 +1072,13 @@ await tablesDB.updateTransaction({
 ```server-python
 # Commit
 tablesDB.update_transaction(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   commit = True
 )
 
 # Roll back
 tablesDB.update_transaction(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   rollback = True
 )
 ```

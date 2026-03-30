@@ -64,6 +64,7 @@ const bucket = await storage.createBucket({
     maximumFileSize: 10000000, // 10MB
     allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp']
 });
+```
 
 # Uploading a file from the browser
 
