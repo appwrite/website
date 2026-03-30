@@ -4,7 +4,7 @@ title: "Appwrite Cloud: Realtime usage limits and billing enforcement"
 date: 2026-03-23
 ---
 
-Starting **April 15, 2026**, we will begin actively enforcing Realtime usage limits and billing on Appwrite Cloud.
+Starting **April 30, 2026**, we will begin actively enforcing Realtime usage limits and billing on Appwrite Cloud.
 
 Since launching Appwrite Cloud in beta, we have not actively enforced Cloud limits for Realtime. We are now transitioning to full enforcement so that usage is measured and billed according to your plan. This change ensures fair usage across the platform and allows us to continue investing in Realtime and the rest of the Cloud offering.
 
