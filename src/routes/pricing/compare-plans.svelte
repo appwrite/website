@@ -549,13 +549,6 @@
                     enterprise: true
                 },
                 {
-                    title: 'Content delivery network',
-                    free: true,
-                    pro: true,
-                    scale: true,
-                    enterprise: true
-                },
-                {
                     title: 'Content compression',
                     info: 'Support for brotli, zstd, and gzip for text compression and webp for image compression',
                     free: true,
