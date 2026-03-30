@@ -14,8 +14,8 @@
     };
 
     const {
-        title = 'All-in-one infra for solo devs & SMBs',
-        subtitle = 'Appwrite is an open-source, developer infrastructure platform with Auth, Database, Storage, Functions, Realtime, SMS, Email, Push, and Hosting.'
+        title = 'Build like a team of hundreds',
+        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.'
     }: Props = $props();
 </script>
 
@@ -61,5 +61,23 @@
             </div>
         </div>
         <Dashboard />
+        <!--
+        Console image variation (disabled for now)
+        <div
+            class={cn(
+                'bg-smooth -mb-108 w-[1185px] max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 lg:ml-12',
+                'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%'
+            )}
+        >
+            <div class="bg-greyscale-900 aspect-[3022/1894] overflow-hidden rounded-t-xl">
+                <img
+                    src="/images/heroes/console.png"
+                    alt="Appwrite Console refetch dashboard screenshot"
+                    class="h-full w-full object-cover object-top"
+                    loading="eager"
+                />
+            </div>
+        </div>
+        -->
     </div>
 </div>

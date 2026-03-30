@@ -3,6 +3,7 @@ import type { Language } from './code';
 import { browser } from '$app/environment';
 
 const allVersions = [
+    '1.9.x',
     '1.8.x',
     '1.7.x',
     '1.6.x',
