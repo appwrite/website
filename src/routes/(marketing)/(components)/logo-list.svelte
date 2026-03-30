@@ -92,7 +92,7 @@
         >
             {title}
         </h2>
-        <div class="relative grid grid-cols-3 gap-6 py-10 md:grid-cols-6 md:gap-8">
+        <div class="relative grid grid-cols-3 gap-6 py-10 md:grid-cols-4 md:gap-8 lg:grid-cols-6">
             {#each logos as { src, alt, width, height } (src)}
                 <div class="flex items-center justify-center">
                     <img
