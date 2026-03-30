@@ -5,14 +5,18 @@
     import { Button, Icon } from '$lib/components/ui';
     import { Tooltip } from '$lib/components';
     import { createDropdownMenu, melt } from '@melt-ui/svelte';
-    import { onMount } from 'svelte';
+    import { getContext, onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import AiPromptIcon from '$lib/components/ui/aiPromptIcon.svelte';
     import { browser } from '$app/environment';
 
-    // Only support co-located prompt.md
-    const routeExists = hasRoutePrompt();
-    const prompt = routeExists ? (getRoutePrompt() ?? '') : '';
+    // Check co-located prompt.md first, then fall back to prompt frontmatter path
+    const promptFrontmatter = getContext<string | undefined>('prompt_path');
+    const routeExists =
+        hasRoutePrompt() || (promptFrontmatter ? hasRoutePrompt(promptFrontmatter) : false);
+    const prompt = routeExists
+        ? (getRoutePrompt() ?? (promptFrontmatter ? getRoutePrompt(promptFrontmatter) : null) ?? '')
+        : '';
     const exists = routeExists;
     const { copied, copy } = createCopy(prompt);
 

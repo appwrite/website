@@ -1,0 +1,49 @@
+---
+layout: article
+title: Imagine
+description: Build full-stack applications with Appwrite services built in using Imagine, Appwrite's AI development platform.
+---
+
+[Imagine](https://imagine.dev) is Appwrite's AI development platform that lets you build real, full-stack applications from a natural language prompt. Unlike other AI coding tools that generate prototypes or frontend-only code, Imagine produces production-ready applications with backend services included.
+
+Appwrite services like Auth, Databases, Storage, and Hosting are natively integrated into Imagine. There is no MCP server to configure and no SDK setup required. When you describe your application, Imagine automatically provisions the backend infrastructure your app needs.
+
+![Imagine Studio](/images/docs/ai/imagine/studio-dark.png)
+
+# Benefits {% #benefits %}
+
+- **Backend included**: Every app you build comes with Appwrite cloud services. Auth, databases, storage, and hosting are set up automatically based on your prompt.
+- **No configuration needed**: Unlike other AI dev tools that require MCP servers or manual SDK integration, Imagine has Appwrite built in from the start.
+- **Production-ready output**: Imagine generates functional, maintainable, and scalable code following industry standards and best practices.
+- **Prompt to deployed app**: Go from an idea to a live, hosted application. Imagine handles code generation, build pipelines, and deployment.
+- **Version control**: Every change Imagine makes creates a new version, so you can track the history of your project and see exactly what changed.
+
+# Included Appwrite services {% #included-services %}
+
+Imagine automatically provisions the following Appwrite services based on what your application needs:
+
+- **Auth**: User authentication and session management.
+- **Databases**: Structured data storage with tables, rows, and queries.
+- **Storage**: File uploads, downloads, and image transformations.
+- **Hosting**: Deploy and host your application on Appwrite Sites with a live URL.
+- **Realtime**: Live updates and subscriptions for collaborative and dynamic experiences.
+
+# How it works {% #how-it-works %}
+
+Imagine uses an AI agent architecture designed to replicate how product and engineering teams work. When you submit a prompt, the coding agent analyzes your requirements, generates the application code, provisions the necessary Appwrite services, and deploys the result.
+
+{% section #step-1 step=1 title="Describe your application" %}
+Open [Imagine Studio](https://studio.imagine.dev) and describe what you want to build in the prompt box. You can be as specific or general as you like. Imagine also provides starter suggestions like "Linear clone", "Notion clone", or "Portfolio website" to get you started.
+{% /section %}
+
+{% section #step-2 step=2 title="Imagine builds your app" %}
+The coding agent generates your application, including frontend code and any Appwrite backend services your app needs. You can watch the agent work in real time through the chat panel.
+{% /section %}
+
+{% section #step-3 step=3 title="Preview and iterate" %}
+Once the build is complete, preview your application directly in the studio. Use the chat to request changes, add features, or fix issues. Each iteration creates a new version you can reference later.
+{% /section %}
+
+{% section #step-4 step=4 title="Release your app" %}
+When you are happy with your application, click **Release** to deploy it. Imagine handles hosting through Appwrite Sites, giving your app a live URL.
+{% /section %}
