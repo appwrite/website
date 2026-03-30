@@ -23,7 +23,7 @@ Email and password is the baseline for most apps. Appwrite stores passwords hash
 
 **Trade-offs:** You take on responsibility for the password reset flow, email verification, and account recovery. Users also have to remember yet another password, which drives adoption of weak credentials. Pairing email/password with MFA significantly mitigates this.
 
-**Security note:** Appwrite handles the Argon2 hashing, but you still need to enforce HTTPS, rate-limit login attempts, and prompt users to verify their email address after registration.
+**Security note:** Appwrite handles the Argon2 hashing and rate-limit login attempts, but you still need to enforce HTTPS and prompt users to verify their email address after registration.
 
 [Read the Email/password auth docs](/docs/products/auth/email-password).
 
