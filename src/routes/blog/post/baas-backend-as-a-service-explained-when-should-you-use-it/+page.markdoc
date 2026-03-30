@@ -116,6 +116,7 @@ With Appwrite, you get a complete backend foundation:
 - Serverless functions in any language
 - Real-time APIs
 - Role-based access control across every resource
+- Hosting for web applications and sites
 
 What makes Appwrite different from closed BaaS solutions is deployment flexibility. You can use Appwrite Cloud for a fully managed setup, self-host for full infrastructure control, or integrate Appwrite alongside your existing stack.
 
