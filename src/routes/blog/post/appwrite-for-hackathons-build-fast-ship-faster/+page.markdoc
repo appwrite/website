@@ -36,7 +36,7 @@ During a hackathon, that time is better spent developing features that showcase 
 
 Backend platforms like Appwrite reduce this overhead by providing these capabilities as **ready-to-use tools and services.**
 
-# What Appwrite Provides Out of the Box
+# What Appwrite provides out of the box
 
 Appwrite provides a complete backend toolkit that allows hackathon teams to focus on building their product rather than infrastructure. The suite of Appwrite services covers everything needed for modern web and mobile development.
 
@@ -74,17 +74,23 @@ Appwrite provides scalable databases with built-in APIs and permissions. Develop
 
 Instead of managing database servers and writing API layers manually, developers can create collections, store application data, and define access rules directly through the Appwrite dashboard or APIs.
 
-## File Storage
+## File storage
 
 Many hackathon projects involve file uploads such as images, documents, or media, and need to handle these files efficiently.
 
 Appwrite includes a scalable storage service that allows files to be uploaded, stored securely, and accessed through APIs without requiring additional infrastructure. Appwrite allows users to securely store files with advanced compression and encryption. It also supports image transformations as part of its file storage capabilities. Teams can easily share files stored in Appwrite with their users or collaborators.
 
-## Serverless Functions
+## Serverless functions
 
 Applications often require backend logic, and with Appwrite Functions, you can develop and run backend code without managing servers.
 
 Appwrite allows you to deploy and scale serverless functions in 30+ secure, isolated runtimes in 13 languages. Developers can connect to the Appwrite server to manage and deploy their functions. Teams can leverage serverless functions to implement complex workflows and integrations. This makes it easy to implement workflows, background jobs, or third-party integrations.
+
+## Web hosting
+
+Appwrite Sites lets you deploy your frontend directly alongside your backend, so your entire app lives in one place.
+
+Instead of configuring a separate hosting provider, teams can deploy static sites or server-side rendered apps directly from the Appwrite console, making it easy to ship a live, shareable URL before the hackathon ends.
 
 ## Realtime Capabilities
 
@@ -92,7 +98,7 @@ Realtime features such as live updates, collaborative editing, messaging, and no
 
 Appwrite provides realtime APIs that allow applications to respond instantly to database changes and system events. Appwrite supports multiple APIs, such as REST, WebSocket, and GraphQL, to interact with realtime resources. Applications can communicate updates instantly to users using Appwrite's realtime APIs. Teams can interact with Appwrite's realtime APIs to build collaborative and interactive features.
 
-# Getting Started with Appwrite
+# Getting started with Appwrite
 
 Appwrite is built to help developers get their projects off the ground fast, whether you're building for a hackathon, a university project, or launching a new app for the world. Getting started with the platform is simple and designed to minimize setup time so you can focus on building.
 
@@ -104,7 +110,7 @@ Appwrite's comprehensive documentation and tutorials make it easy for developers
 
 With Appwrite, you can go from idea to working prototype in minutes. Just sign up, set up your project in the console, and start building, no complex configuration or backend expertise required.
 
-# Why Hackathon Teams Choose Appwrite
+# Why hackathon teams choose Appwrite
 
 Hackathons reward speed and execution.
 
@@ -115,6 +121,7 @@ Appwrite helps teams achieve this by:
 - Reducing backend setup time
 - Providing ready-to-use APIs and SDKs
 - Enabling rapid prototyping
+- Hosting your frontend and backend in one place
 - Allowing projects to scale beyond the hackathon
 
 Because Appwrite is **open source**, teams can also self-host it or deploy it on their own infrastructure if the project continues after the event, using public repositories and resources.
@@ -125,19 +132,17 @@ The Appwrite community is active and participates in various activities, includi
 
 You can join the Appwrite community through public platforms like Discord and blogs to connect, share, and collaborate.
 
-Appwrite encourages community contributions through pull requests, which must be approved by a core developer to ensure code quality and project integrity.
-
-To help new contributors, Appwrite provides a comprehensive contribution guide that explains how to get started and contribute effectively.
+Because Appwrite is open source, hackathon teams get full access to the source code, no paywalled features, and the freedom to self-host if the project continues after the event.
 
 This makes it easier to transition a hackathon prototype into a production-ready application.
 
-# A Typical Hackathon Workflow with Appwrite
+# A typical hackathon workflow with Appwrite
 
 A common workflow for teams using Appwrite during hackathons involves the following list of steps:
 
 1. Create an Appwrite project
 2. Add authentication for user accounts
-3. Create database collections for application data
+3. Create database tables for application data
 4. Connect the frontend using Appwrite SDKs
 5. Add storage or serverless functions if required
 
