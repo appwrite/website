@@ -36,6 +36,9 @@ AI-powered IDEs and code editors provide intelligent code completion, inline sug
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/claude.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/zenflow" title="Zenflow" image="/images/docs/mcp/logos/zenflow.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_light %}
 
@@ -63,6 +66,9 @@ AI-powered IDEs and code editors provide intelligent code completion, inline sug
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/dark/claude.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/zenflow" title="Zenflow" image="/images/docs/mcp/logos/dark/zenflow.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_dark %}
 
@@ -72,21 +78,44 @@ AI-powered IDEs and code editors provide intelligent code completion, inline sug
 
 When an AI agent encounters an `AGENTS.md` file, it uses the instructions to tailor its responses to your specific project requirements. This includes details about your tech stack, file organization, naming conventions, and architectural patterns.
 
-Generate your own `AGENTS.md` file depending on the Appwrite services you use in your application using the [AGENTS.md generator](https://agentsmd.appwrite.network/).
+Generate your own `AGENTS.md` file depending on the Appwrite services you use in your application using the [AGENTS.md generator](https://agentsmd.appwrite.io).
 
 # Vibe coding {% #vibe-coding %}
 
 Vibe coding platforms let you build applications through natural language conversations. Instead of writing code manually, you describe what you want to build and the AI generates the application for you. These platforms can scaffold entire projects, create UI components, and integrate with backend services like Appwrite.
 
+{% only_light %}
 {% cards %}
 
-{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" %}
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" image="/images/docs/mcp/logos/imagine.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/ai/ai-dev-tools/lovable" title="Lovable" %}
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/lovable" title="Lovable" image="/images/docs/mcp/logos/lovable.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/ai/ai-dev-tools/emergent" title="Emergent" %}
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/emergent" title="Emergent" image="/images/docs/mcp/logos/emergent.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/bolt" title="Bolt" image="/images/docs/mcp/logos/bolt.svg" %}
 {% /cards_item %}
 
 {% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" image="/images/docs/mcp/logos/dark/imagine.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/lovable" title="Lovable" image="/images/docs/mcp/logos/dark/lovable.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/emergent" title="Emergent" image="/images/docs/mcp/logos/dark/emergent.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/bolt" title="Bolt" image="/images/docs/mcp/logos/dark/bolt.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_dark %}
