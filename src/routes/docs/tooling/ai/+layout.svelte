@@ -210,6 +210,10 @@
                 {
                     label: 'Kotlin',
                     href: '/docs/tooling/ai/quickstart-prompts/kotlin'
+                },
+                {
+                    label: 'Rust',
+                    href: '/docs/tooling/ai/quickstart-prompts/rust'
                 }
             ]
         },
