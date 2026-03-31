@@ -105,10 +105,7 @@
                     <div class="flex items-center gap-2.5">
                         <span class="text-description text-secondary font-medium">{name}</span>
                         {#if label}
-                            <span
-                                class="bg-accent-200 text-caption rounded-lg px-1.5 py-0.5 font-medium text-white"
-                                >{label}</span
-                            >
+                            <div class="web-inline-tag is-pink text-caption font-medium">{label}</div>
                         {/if}
                     </div>
                     <div class="flex flex-1 flex-col">
