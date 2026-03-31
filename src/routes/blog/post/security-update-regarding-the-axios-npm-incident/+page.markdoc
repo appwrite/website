@@ -16,16 +16,16 @@ After reviewing Appwrite's production repositories, SDKs, and tooling chain, we 
 
 Our JavaScript and TypeScript SDKs use native platform capabilities such as `fetch` rather than Axios, and our review did not identify exposure in the parts of our stack that ship to customers. Based on our internal assessment, no emergency customer action is required specifically for Appwrite services or Appwrite SDK usage.
 
-That said, incidents like this are a strong reminder of the risks involved in modern software supply chains. Even when a project is not directly affected, transitive dependencies and package resolution behavior can create avoidable exposure if dependency versions are left too open.
+With that said, incidents like this are a strong reminder of the risks involved in modern software supply chains. Even when a project is not directly affected, transitive dependencies and package resolution behavior can create avoidable exposure if dependency versions are left too open.
 
 # What we recommend
 
 We recommend that customers review their own JavaScript and TypeScript projects and make sure dependencies are pinned appropriately, especially in production environments. Version pinning and committed lockfiles reduce the chance of unintentionally pulling newly published malicious or compromised packages through semver-compatible ranges.
 
-As part of our response, we also introduced additional safeguards across our TypeScript-based SDK workflow:
+As part of our response, we have also introduced additional safeguards across our TypeScript-based SDK workflow:
 
-- We added stronger lockfile handling to improve dependency reproducibility.
-- We updated our SDK generation and release process to make dependency changes more visible during review.
+- We have added stronger lockfile handling to improve dependency reproducibility.
+- We have updated our SDK generation and release process to make dependency changes more visible during review.
 - We are enforcing stricter install behavior in CI so dependency trees stay aligned with reviewed lockfiles instead of resolving new versions automatically.
 
 These changes are not a response to a direct compromise in Appwrite, but an extra layer of protection to further harden our release process against future ecosystem incidents.
