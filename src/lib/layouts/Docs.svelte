@@ -41,7 +41,7 @@
 <script lang="ts">
     import { Search, IsLoggedIn } from '$lib/components';
     import { isMac } from '$lib/utils/platform';
-    import { getContext, setContext } from 'svelte';
+    import { getContext, onMount, setContext } from 'svelte';
     import { SOCIAL_STATS } from '$lib/constants';
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
@@ -55,6 +55,7 @@
     }
 
     let { variant = 'default', isReferences = false, children }: Props = $props();
+    let brandTheme: 'pink' | 'green' = 'green';
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'web-grid-side-nav max-w-[90rem] mx-auto',
@@ -63,6 +64,14 @@
     };
 
     let variantClass = $derived(variantClasses[variant]);
+    let darkLogoSrc = $derived(
+        brandTheme === 'green' ? '/images/logos/appwrite-green.svg' : '/images/logos/appwrite.svg'
+    );
+    let lightLogoSrc = $derived(
+        brandTheme === 'green'
+            ? '/images/logos/appwrite-light-green.svg'
+            : '/images/logos/appwrite-light.svg'
+    );
 
     $effect(() => {
         $layoutState.currentVariant = variant;
@@ -75,6 +84,12 @@
             showSidenav: false
         }));
         document.body.style.overflow = '';
+    });
+
+    onMount(() => {
+        if (document.body.classList.contains('brand-pink')) {
+            brandTheme = 'pink';
+        }
     });
 
     const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;
@@ -100,14 +115,14 @@
             <a href="/" aria-label="homepage">
                 <img
                     class="web-logo web-u-only-dark"
-                    src="/images/logos/appwrite.svg"
+                    src={darkLogoSrc}
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
                     class="web-logo web-u-only-light"
-                    src="/images/logos/appwrite-light.svg"
+                    src={lightLogoSrc}
                     alt="appwrite"
                     height="24"
                     width="130"
@@ -140,14 +155,14 @@
                 <a href="/" aria-label="homepage">
                     <img
                         class="web-logo web-u-only-dark"
-                        src="/images/logos/appwrite.svg"
+                        src={darkLogoSrc}
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
                         class="web-logo web-u-only-light"
-                        src="/images/logos/appwrite-light.svg"
+                        src={lightLogoSrc}
                         alt="appwrite"
                         height="24"
                         width="130"

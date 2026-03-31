@@ -87,7 +87,7 @@
         </div>
 
         <section class="web-hero is-align-start e-hero-docs relative">
-            <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
+            <HeroBanner title="MCP Server" href="/docs/tooling/mcp" icon="sparkle" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Docs<span class="web-u-color-text-accent">_ </span>
             </h1>

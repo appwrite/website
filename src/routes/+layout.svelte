@@ -266,4 +266,8 @@
     ) {
         filter: var(--web-color-image-background-filter);
     }
+
+    :global(body.brand-green .blog-content-images img:not(.no-brand-filter)) {
+        filter: var(--web-color-image-background-filter);
+    }
 </style>
