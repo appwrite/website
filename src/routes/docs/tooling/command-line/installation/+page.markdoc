@@ -147,7 +147,7 @@ This will create your `appwrite.config.json` file, where you will configure your
 }
 ```
 
-The CLI will also auto-detect your project configuration and automatically install relevant [Appwrite agent skills](/docs/tooling/agent-skills).
+The CLI will also auto-detect your project configuration and automatically install relevant [Appwrite agent skills](/docs/tooling/ai/skills).
 
 You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
 
