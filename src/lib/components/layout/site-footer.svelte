@@ -4,7 +4,7 @@
     import { slide } from 'svelte/transition';
 
     export let noBorder = false;
-    let logoSrc = '/images/logos/appwrite-green.svg';
+    let logoSrc = '/images/logos/appwrite.svg';
 
     const {
         elements: { content, heading, item, root, trigger },
@@ -94,10 +94,21 @@
             ]
         };
 
+    const syncBrandLogo = () => {
+        logoSrc = document.body.classList.contains('brand-pink')
+            ? '/images/logos/appwrite.svg'
+            : '/images/logos/appwrite-green.svg';
+    };
+
     onMount(() => {
-        if (document.body.classList.contains('brand-pink')) {
-            logoSrc = '/images/logos/appwrite.svg';
-        }
+        syncBrandLogo();
+
+        const brandObserver = new MutationObserver(syncBrandLogo);
+        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        return () => {
+            brandObserver.disconnect();
+        };
     });
 </script>
 

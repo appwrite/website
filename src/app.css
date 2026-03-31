@@ -451,10 +451,10 @@
     /* pink polyfills */
     --transition: 0.2s;
 
-    /* color hues (green by default) */
-    --color-pink-hue: 151;
-    --color-secondary-hue: 165;
-    --brand-accent-rgb: 17 197 115;
+    /* color hues (pink by default) */
+    --color-pink-hue: 343;
+    --color-secondary-hue: 351;
+    --brand-accent-rgb: 253 54 110;
     --color-red-hue: 3;
     --color-orange-hue: 18;
     --color-mint-hue: 177;

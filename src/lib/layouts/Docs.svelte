@@ -55,7 +55,7 @@
     }
 
     let { variant = 'default', isReferences = false, children }: Props = $props();
-    let brandTheme: 'pink' | 'green' = 'green';
+    let brandTheme = $state<'pink' | 'green'>('pink');
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'web-grid-side-nav max-w-[90rem] mx-auto',
@@ -86,10 +86,19 @@
         document.body.style.overflow = '';
     });
 
+    const syncBrandTheme = () => {
+        brandTheme = document.body.classList.contains('brand-pink') ? 'pink' : 'green';
+    };
+
     onMount(() => {
-        if (document.body.classList.contains('brand-pink')) {
-            brandTheme = 'pink';
-        }
+        syncBrandTheme();
+
+        const brandObserver = new MutationObserver(syncBrandTheme);
+        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        return () => {
+            brandObserver.disconnect();
+        };
     });
 
     const key = page.route.id?.includes('tutorials') ? TUT_CTX_KEY : CTX_KEY;

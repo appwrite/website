@@ -50,8 +50,13 @@
     }
 
     function getPreferredBrandTheme(): BrandTheme {
+        const envTheme = env.PUBLIC_BRAND_THEME?.toLowerCase();
+        if (isBrandTheme(envTheme)) {
+            return envTheme;
+        }
+
         if (!browser) {
-            return 'green';
+            return 'pink';
         }
 
         const storedTheme = localStorage.getItem('brand-theme');
@@ -59,8 +64,7 @@
             return storedTheme;
         }
 
-        const envTheme = env.PUBLIC_BRAND_THEME?.toLowerCase();
-        return isBrandTheme(envTheme) ? envTheme : 'green';
+        return 'pink';
     }
 </script>
 
@@ -95,6 +99,11 @@
 
         document.body.classList.remove('brand-pink', 'brand-green');
         document.body.classList.add(`brand-${theme}`);
+
+        const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
+        if (favicon) {
+            favicon.href = theme === 'green' ? '/images/logos/logo-green.svg' : '/images/logos/logo.svg';
+        }
     }
 
     const thresholds = [0.25, 0.5, 0.75];

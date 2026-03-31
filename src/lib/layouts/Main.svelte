@@ -27,7 +27,7 @@
     export let omitMainId = false;
     export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
-    let brandTheme: 'pink' | 'green' = 'green';
+    let brandTheme: 'pink' | 'green' = 'pink';
 
     $: darkLogoSrc =
         brandTheme === 'green' ? '/images/logos/appwrite-green.svg' : '/images/logos/appwrite.svg';
@@ -99,16 +99,26 @@
         return 'dark';
     }
 
+    function syncBrandTheme() {
+        brandTheme = document.body.classList.contains('brand-pink') ? 'pink' : 'green';
+    }
+
     onMount(() => {
         setTimeout(() => {
             $initialized = true;
         }, 1000);
 
-        if (document.body.classList.contains('brand-pink')) {
-            brandTheme = 'pink';
-        }
+        syncBrandTheme();
 
-        return setupThemeObserver();
+        const brandObserver = new MutationObserver(syncBrandTheme);
+        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        const disposeThemeObserver = setupThemeObserver();
+
+        return () => {
+            brandObserver.disconnect();
+            disposeThemeObserver();
+        };
     });
 
     $: navLinks = [

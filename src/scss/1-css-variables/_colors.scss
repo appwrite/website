@@ -35,8 +35,8 @@
     --web-color-border: var(--web-color-subtle);
   }
   
-  /* brand accent (green by default) */
-  --web-color-pink-hue: 151;
+  /* brand accent (pink by default) */
+  --web-color-pink-hue: 343;
   --web-color-pink-200: var(--web-color-pink-hue) 98% 84%;
   --web-color-pink-500: var(--web-color-pink-hue) 98% 60%; /* #FD366E */
   --web-color-pink-600: var(--web-color-pink-hue) 65% 48%;
@@ -79,12 +79,12 @@
   --web-color-blue-700: calc(var(--web-color-blue-hue) - 1) 42%  42%;
 
   /* secondary */
-  --web-color-secondary-hue: 165;
+  --web-color-secondary-hue: 351;
   --web-color-secondary-100: var(--web-color-secondary-hue) 99% 66%; /* #FE536D */
 
   /* brand helpers for glow, gradients and image tinting */
-  --web-color-brand-rgb: 17 197 115;
-  --web-color-brand-soft-rgb: 56 214 140;
+  --web-color-brand-rgb: 253 54 110;
+  --web-color-brand-soft-rgb: 255 64 120;
   --web-color-image-accent-filter: none;
   --web-color-image-background-filter: none;
   --web-color-button-primary: var(--web-color-pink-500);
