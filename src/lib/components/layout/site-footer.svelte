@@ -1,8 +1,10 @@
 <script lang="ts">
     import { createAccordion, melt } from '@melt-ui/svelte';
+    import { onMount } from 'svelte';
     import { slide } from 'svelte/transition';
 
     export let noBorder = false;
+    let logoSrc = '/images/logos/appwrite-green.svg';
 
     const {
         elements: { content, heading, item, root, trigger },
@@ -91,6 +93,12 @@
                 { label: 'Assets', href: '/assets' }
             ]
         };
+
+    onMount(() => {
+        if (document.body.classList.contains('brand-pink')) {
+            logoSrc = '/images/logos/appwrite.svg';
+        }
+    });
 </script>
 
 <nav
@@ -101,7 +109,7 @@
     <div class="web-footer-nav container">
         <img
             class="web-logo"
-            src="/images/logos/appwrite.svg"
+            src={logoSrc}
             alt="appwrite"
             height="24"
             width="130"

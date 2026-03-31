@@ -1,8 +1,10 @@
 <script lang="ts" module>
     import { type Reo, loadReoScript } from '$lib/reodotdev';
+    import { env } from '$env/dynamic/public';
     import { derived as storeDerived, writable } from 'svelte/store';
 
     export type Theme = 'dark' | 'light' | 'system';
+    export type BrandTheme = 'pink' | 'green';
     export const currentTheme = (() => {
         const store = writable<Theme>(getPreferredTheme());
 
@@ -42,6 +44,24 @@
 
         return theme;
     }
+
+    function isBrandTheme(theme: unknown): theme is BrandTheme {
+        return ['pink', 'green'].includes(theme as BrandTheme);
+    }
+
+    function getPreferredBrandTheme(): BrandTheme {
+        if (!browser) {
+            return 'green';
+        }
+
+        const storedTheme = localStorage.getItem('brand-theme');
+        if (isBrandTheme(storedTheme)) {
+            return storedTheme;
+        }
+
+        const envTheme = env.PUBLIC_BRAND_THEME?.toLowerCase();
+        return isBrandTheme(envTheme) ? envTheme : 'green';
+    }
 </script>
 
 <script lang="ts">
@@ -70,6 +90,13 @@
         document.body.classList.add(className);
     }
 
+    function applyBrandTheme(theme: BrandTheme) {
+        if (!browser) return;
+
+        document.body.classList.remove('brand-pink', 'brand-green');
+        document.body.classList.add(`brand-${theme}`);
+    }
+
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
 
@@ -80,6 +107,7 @@
         const initialTheme = page.route.id?.startsWith('/docs') ? getPreferredTheme() : 'dark';
 
         applyTheme(initialTheme);
+        applyBrandTheme(getPreferredBrandTheme());
 
         saveReferrerAndUtmSource(page.url);
     });
@@ -182,5 +210,60 @@
 <style lang="scss">
     :global(html) {
         color-scheme: dark;
+    }
+
+    /* Recolor docs + pricing visual assets in green theme without replacing files */
+    :global(
+        body.brand-green
+            .docs-brandable
+            img[src*='/images/icons/']:not([src*='/images/icons/frameworks/'])
+    ),
+    :global(
+        body.brand-green
+            .pricing-brandable
+            img[src*='/images/icons/']:not([src*='/images/logos/'])
+    ),
+    :global(
+        body.brand-green
+            .docs-brandable
+            img[src*='/images/docs/']:not([src*='/images/docs/frameworks/'])
+    ),
+    :global(
+        body.brand-green
+            .pricing-brandable
+            img[src*='/images/docs/']:not([src*='/images/logos/'])
+    ),
+    :global(
+        body.brand-green
+            .docs-brandable
+            img[src*='/images/products/']:not([src*='/images/products/frameworks/'])
+    ),
+    :global(
+        body.brand-green
+            .pricing-brandable
+            img[src*='/images/products/']:not([src*='/images/logos/'])
+    ) {
+        filter: var(--web-color-image-accent-filter);
+    }
+
+    :global(body.brand-green .docs-brandable img[src*='/images/background']),
+    :global(
+        body.brand-green
+            .pricing-brandable
+            img[src*='/images/background']:not([src*='/images/logos/'])
+    ),
+    :global(body.brand-green .docs-brandable img[src*='/images/docs/tutorials/']),
+    :global(body.brand-green .docs-brandable img[src*='/images/docs/quick-starts/']),
+    :global(body.brand-green .docs-brandable [style*='background-image']),
+    :global(body.brand-green .pricing-brandable [style*='background-image']) {
+        filter: var(--web-color-image-background-filter);
+    }
+
+    :global(
+        body.brand-green
+            .pricing-brandable
+            img:not(.no-brand-filter):not([src*='/images/logos/']):not([src*='/images/avatars/'])
+    ) {
+        filter: var(--web-color-image-background-filter);
     }
 </style>

@@ -451,9 +451,10 @@
     /* pink polyfills */
     --transition: 0.2s;
 
-    /* color hues */
-    --color-pink-hue: 343;
-    --color-secondary-hue: 351;
+    /* color hues (green by default) */
+    --color-pink-hue: 151;
+    --color-secondary-hue: 165;
+    --brand-accent-rgb: 17 197 115;
     --color-red-hue: 3;
     --color-orange-hue: 18;
     --color-mint-hue: 177;
@@ -476,6 +477,38 @@
     --color-tertiary: var(--color-greyscale-600);
     --color-offset: hsl(0 0% 0% / 0.08);
     --color-subtle: var(--color-greyscale-850);
+}
+
+body.brand-green {
+    --color-pink-hue: 151;
+    --color-secondary-hue: 165;
+    --color-pink-500: hsl(151 72% 38%);
+    --color-pink-600: hsl(151 66% 32%);
+    --color-accent: var(--color-pink-500);
+    --color-accent-darker: var(--color-pink-600);
+    --brand-accent-rgb: 15 166 95;
+}
+
+body.brand-green .light {
+    --color-pink-hue: 151;
+    --color-secondary-hue: 165;
+    --color-pink-500: hsl(151 72% 38%);
+    --color-pink-600: hsl(151 66% 32%);
+    --color-accent: var(--color-pink-500);
+    --color-accent-darker: var(--color-pink-600);
+    --brand-accent-rgb: 15 166 95;
+}
+
+body.brand-pink {
+    --color-pink-hue: 343;
+    --color-secondary-hue: 351;
+    --brand-accent-rgb: 253 54 110;
+}
+
+body.brand-pink .light {
+    --color-pink-hue: 343;
+    --color-secondary-hue: 351;
+    --brand-accent-rgb: 253 54 110;
 }
 
 .dark {

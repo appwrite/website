@@ -34,19 +34,20 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div
-    class="web-location-for-mobile absolute overflow-hidden"
-    style:pointer-events="none"
-    style:inline-size="100%"
->
-    <enhanced:img
-        src={BG}
-        alt=""
-        style="margin-inline:auto; display:block; width: 1369px; height: auto;"
-    />
-</div>
+<div class="pricing-brandable">
+    <div
+        class="web-location-for-mobile absolute overflow-hidden"
+        style:pointer-events="none"
+        style:inline-size="100%"
+    >
+        <enhanced:img
+            src={BG}
+            alt=""
+            style="margin-inline:auto; display:block; width: 1369px; height: auto;"
+        />
+    </div>
 
-<Main>
+    <Main>
     <div class="web-big-padding-section mt-2">
         <div class="dark pt-8">
             <div class="web-big-padding-section-level-2">
@@ -54,14 +55,14 @@
                     <div class="web-hero">
                         <h1
                             class="text-title font-aeonik-pro web-u-max-width-900 web-u-opacity-90 web-u-mobile-align-text-center self-center"
-                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                            style="background: linear-gradient(90deg, hsl(var(--web-color-pink-500) / 0.78) 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
                             Everything your app needs,<br />one subscription
                         </h1>
                         <p
                             class="text-description max-w-xl self-center text-center opacity-90"
-                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                            style="background: linear-gradient(90deg, hsl(var(--web-color-pink-500) / 0.78) 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
                         >
                             Build, deploy, and observe your app from one platform, all under one
@@ -142,7 +143,7 @@
                                 >
                                     <article
                                         class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
-                                        style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
+                                        style="background: linear-gradient(180deg, hsl(var(--web-color-pink-500) / 0.12) 38.59%, hsl(var(--web-color-pink-500) / 0) 99.04%);"
                                     >
                                         <header class="web-pricing-cards-header">
                                             <header class="flex gap-3">
@@ -422,7 +423,8 @@
             </div>
         </div>
     </div>
-</Main>
+    </Main>
+</div>
 
 <style lang="scss">
     @use '$scss/abstract/mixins/border-gradient' as gradients;
@@ -465,8 +467,8 @@
         background:
             radial-gradient(
                 120% 80% at 100% 0%,
-                rgba(253, 54, 110, 0.14) 0%,
-                rgba(253, 54, 110, 0) 60%
+                hsl(var(--web-color-pink-500) / 0.14) 0%,
+                hsl(var(--web-color-pink-500) / 0) 60%
             ),
             radial-gradient(
                 140% 90% at 0% 100%,
@@ -518,8 +520,12 @@
     }
 
     .stack-state-card--after {
-        border-color: rgba(253, 54, 110, 0.35);
-        background: linear-gradient(180deg, rgba(253, 54, 110, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+        border-color: hsl(var(--web-color-pink-500) / 0.35);
+        background: linear-gradient(
+            180deg,
+            hsl(var(--web-color-pink-500) / 0.1) 0%,
+            rgba(0, 0, 0, 0.2) 100%
+        );
     }
 
     .stack-state-card__label {
@@ -560,7 +566,7 @@
     }
 
     .stack-state-card--after .stack-state-card__list li::before {
-        background: rgba(253, 54, 110, 0.8);
+        background: hsl(var(--web-color-pink-500) / 0.8);
     }
 
     .stack-card__helper {

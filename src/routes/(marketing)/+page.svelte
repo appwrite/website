@@ -21,42 +21,54 @@
 />
 
 <Main>
-    <Hero
-        title="Build like a team of hundreds"
-        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
-    />
-    <Platforms headline="Designed for the tools you work with" />
-    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
-    <Bento />
-    <Pullquote
-        name="Phil McCluskey"
-        title="App Manager, Majik Kids"
-        avatar="/images/testimonials/phil.jpg"
-    >
-        <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
-        that you need with Appwrite.</Pullquote
-    >
-    <Ai />
-    <CaseStudies />
-    <Features theme="light" />
-    <div class="light bg-[#EDEDF0]">
-        <Map theme="light" />
-        <Scale
-            testimonial={{
-                name: 'Ryan O’Connor',
-                title: 'Founder',
-                company: 'K-Collect',
-                image: '/images/testimonials/ryan-oconner-testimonial.png'
-            }}
+    <div class="homepage-brandable">
+        <Hero
+            title="Build like a team of hundreds"
+            subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
+        />
+        <Platforms headline="Designed for the tools you work with" />
+        <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
+        <Bento />
+        <Pullquote
+            name="Phil McCluskey"
+            title="App Manager, Majik Kids"
+            avatar="/images/testimonials/phil.jpg"
         >
-            The switch to using Appwrite brought
-            <span class="text-primary">infinite value that I'm still discovering today.</span>
-        </Scale>
+            <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
+            that you need with Appwrite.</Pullquote
+        >
+        <Ai />
+        <CaseStudies />
+        <Features theme="light" />
+        <div class="light bg-[#EDEDF0]">
+            <Map theme="light" />
+            <Scale
+                testimonial={{
+                    name: 'Ryan O’Connor',
+                    title: 'Founder',
+                    company: 'K-Collect',
+                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                }}
+            >
+                The switch to using Appwrite brought
+                <span class="text-primary">infinite value that I'm still discovering today.</span>
+            </Scale>
+        </div>
+        <Pricing />
     </div>
-    <Pricing />
 </Main>
 
 <div class="container">
     <FooterNav />
     <MainFooter />
 </div>
+
+<style>
+    :global(body.brand-green .homepage-brandable img[src*='/images/icons/']) {
+        filter: var(--web-color-image-accent-filter);
+    }
+
+    :global(body.brand-green .homepage-brandable img[src*='/images/backgrounds/']) {
+        filter: var(--web-color-image-background-filter);
+    }
+</style>

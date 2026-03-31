@@ -27,6 +27,14 @@
     export let omitMainId = false;
     export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
+    let brandTheme: 'pink' | 'green' = 'green';
+
+    $: darkLogoSrc =
+        brandTheme === 'green' ? '/images/logos/appwrite-green.svg' : '/images/logos/appwrite.svg';
+    $: lightLogoSrc =
+        brandTheme === 'green'
+            ? '/images/logos/appwrite-light-green.svg'
+            : '/images/logos/appwrite-light.svg';
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -95,6 +103,11 @@
         setTimeout(() => {
             $initialized = true;
         }, 1000);
+
+        if (document.body.classList.contains('brand-pink')) {
+            brandTheme = 'pink';
+        }
+
         return setupThemeObserver();
     });
 
@@ -177,14 +190,14 @@
             <a href="/">
                 <img
                     class="web-logo web-u-only-dark"
-                    src="/images/logos/appwrite.svg"
+                    src={darkLogoSrc}
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
                     class="web-logo web-u-only-light"
-                    src="/images/logos/appwrite-light.svg"
+                    src={lightLogoSrc}
                     alt="appwrite"
                     height="24"
                     width="130"
@@ -218,14 +231,14 @@
                 <a href="/">
                     <img
                         class="web-logo web-u-only-dark"
-                        src="/images/logos/appwrite.svg"
+                        src={darkLogoSrc}
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
                         class="web-logo web-u-only-light"
-                        src="/images/logos/appwrite-light.svg"
+                        src={lightLogoSrc}
                         alt="appwrite"
                         height="24"
                         width="130"

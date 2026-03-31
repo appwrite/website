@@ -21,9 +21,25 @@
             Pick one of our many cloud regions or edges to meet your project's needs and reduce
             latency.
         </p>
-        <Button variant="secondary" href="/the-appwrite-network"
+        <Button variant="secondary" href="/the-appwrite-network" class="network-map-cta"
             >More about the Appwrite Network</Button
         >
     </div>
     <TheAppwriteNetwork {theme} />
 </div>
+
+<style lang="scss">
+    :global(.network-map-cta.web-button.is-secondary) {
+        background: hsl(var(--web-color-button-primary) / 0.16);
+        color: hsl(var(--web-color-button-primary));
+        border: 1px solid hsl(var(--web-color-button-primary) / 0.42);
+    }
+
+    :global(.network-map-cta.web-button.is-secondary:hover) {
+        background: hsl(var(--web-color-button-primary) / 0.22);
+    }
+
+    :global(.network-map-cta.web-button.is-secondary:focus-visible) {
+        box-shadow: 0 0 0 4px hsl(var(--web-color-button-primary) / 0.24);
+    }
+</style>
