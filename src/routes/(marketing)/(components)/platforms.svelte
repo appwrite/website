@@ -25,6 +25,8 @@
     import ReactNative from '../(assets)/icons/react-native.svg';
     import TanStack from '../(assets)/icons/tanstack.svg';
     import TanStackLight from '../(assets)/icons/light/tanstack.svg';
+    import Rust from '../(assets)/icons/rust.svg';
+    import RustLight from '../(assets)/icons/light/rust.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
@@ -115,6 +117,13 @@
             href: '/docs/quick-starts/dart',
             primary: '#01579B',
             secondary: '#29B6F6'
+        },
+        {
+            name: 'Rust',
+            dark: Rust,
+            light: RustLight,
+            href: '/docs/quick-starts/rust',
+            primary: '#CE422B'
         }
     ];
 

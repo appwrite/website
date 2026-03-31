@@ -61,6 +61,7 @@ export const Platform = {
     ServerGo: 'server-go',
     ServerSwift: 'server-swift',
     ServerKotlin: 'server-kotlin',
+    ServerRust: 'server-rust',
     ServerJava: 'server-java',
     ServerGraphql: 'server-graphql',
     ServerRest: 'server-rest'
@@ -100,6 +101,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerRust]: 'Rust',
     [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
@@ -138,6 +140,7 @@ export const platformMap: Record<Language | string, string> = {
     svelte: 'Svelte',
     groovy: 'Groovy',
     go: 'Go',
+    rust: 'Rust',
     dockerfile: 'Dockerfile',
     docker: 'Dockerfile',
     ini: 'INI',

@@ -111,7 +111,13 @@ Server libraries for integrating with Appwrite to build server side integrations
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
 * Kotlin SDK `14.1.0`
 * [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin)
-* 
+*
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/rust.svg" alt="Rust logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/rust.svg" alt="Rust logo" size="m" /%}{% /only_light %}
+* Rust SDK `0.2.0`
+* [appwrite/sdk-for-rust](https://github.com/appwrite/sdk-for-rust)
+*
 {% /table %}
 
 If you would like to help us extend our platforms and SDKs stack, you are more than welcome to contact us or contribute to the [Appwrite SDK Generator](https://github.com/appwrite/sdk-generator) project GitHub repository and read our contribution guide.
@@ -278,6 +284,15 @@ ID.unique()
 // Generate a custom ID
 ID.custom("my-custom-id")
 ```
+```rust
+use appwrite::id::ID;
+
+// Generate a unique ID
+ID::unique()
+
+// Generate a custom ID
+ID::custom("my-custom-id")
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -396,6 +411,12 @@ You can discover the available enums in each SDK at the source.
 {% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
 * Kotlin SDK `14.1.0`
 * [appwrite/sdk-for-kotlin](https://github.com/appwrite/sdk-for-kotlin/tree/dev/src/main/kotlin/io/appwrite/enums)
+*
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/rust.svg" alt="Rust logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/rust.svg" alt="Rust logo" size="m" /%}{% /only_light %}
+* Rust SDK `0.2.0`
+* [appwrite/sdk-for-rust](https://github.com/appwrite/sdk-for-rust/tree/dev/src/enums)
 *
 {% /table %}
 {% /tabsitem %}
