@@ -6,11 +6,7 @@
     import ProductHuntBadge from '../../(assets)/images/producthunt-badge.svelte';
 </script>
 
-<div
-    class={cn(
-        'sites-hero-gradient relative flex flex-col items-center'
-    )}
->
+<div class={cn('sites-hero-gradient relative flex flex-col items-center')}>
     <div
         class="container mx-auto grid w-full grid-cols-1 place-items-center gap-x-16 gap-y-8 py-12 max-lg:px-5! lg:grid-cols-12 lg:py-20"
     >
@@ -42,7 +38,11 @@
                 </a>
             </div>
         </div>
-        <img src={Illustration} alt="Illustration" class="no-brand-filter col-span-full lg:col-span-7" />
+        <img
+            src={Illustration}
+            alt="Illustration"
+            class="no-brand-filter col-span-full lg:col-span-7"
+        />
         <a
             href="https://www.producthunt.com/posts/appwrite-sites"
             target="_blank"
@@ -77,6 +77,10 @@
     .sites-hero-gradient::after {
         right: 0;
         margin-block: auto 0;
-        background: radial-gradient(circle at 120% 125%, hsl(248 99% 70% / 0.2) 0px, transparent 40%);
+        background: radial-gradient(
+            circle at 120% 125%,
+            hsl(248 99% 70% / 0.2) 0px,
+            transparent 40%
+        );
     }
 </style>
