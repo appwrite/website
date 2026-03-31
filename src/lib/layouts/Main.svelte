@@ -178,6 +178,7 @@
     $: ($isHeaderHidden, updateSideNav());
 
     $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
+    $: isProductsPage = page.route.id?.startsWith('/products') ?? false;
 
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
@@ -281,6 +282,7 @@
 
     <main
         class="relative space-y-6"
+        class:products-brandable={isProductsPage}
         class:invisible={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >

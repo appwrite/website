@@ -103,3 +103,17 @@
     --p-side-nav-item-bg-color-hover: var(--web-color-white) / 0.08;
   }
 }
+
+body.brand-green {
+  .#{$p}-side-nav {
+    --p-side-nav-item-text-color-selected: var(--web-color-pink-500);
+    --p-side-nav-item-icon-color-selected: linear-gradient(
+      hsl(var(--web-color-pink-500)),
+      hsl(var(--web-color-pink-600))
+    );
+  }
+
+  .#{$p}-side-nav-button.is-selected {
+    background-color: hsl(var(--web-color-pink-500) / 0.12);
+  }
+}

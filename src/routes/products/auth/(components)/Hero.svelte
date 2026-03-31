@@ -6,7 +6,7 @@
 </script>
 
 <div
-    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom px-5 pt-20 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="product-auth-hero-bg border-smooth box-content flex items-center border-b px-5 pt-20 pb-20 md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-4">
@@ -43,14 +43,47 @@
             </div>
         </div>
         <img
-            class="hidden md:block"
+            class="no-brand-filter hidden md:block"
             src={Phone}
             alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's messaging."
         />
         <img
-            class="block md:hidden"
+            class="no-brand-filter block md:hidden"
             src={PhoneMobile}
             alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's messaging."
         />
     </div>
 </div>
+
+<style>
+    .product-auth-hero-bg {
+        position: relative;
+    }
+
+    .product-auth-hero-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/images/bgs/mobile-auth-hero.png');
+        background-size: cover;
+        background-position: bottom;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @media (min-width: 48rem) {
+        .product-auth-hero-bg::before {
+            background-image: url('/images/bgs/auth-hero.png');
+            background-position: center;
+        }
+    }
+
+    :global(body.brand-green .product-auth-hero-bg::before) {
+        filter: var(--web-color-image-background-filter);
+    }
+
+    .product-auth-hero-bg > * {
+        position: relative;
+        z-index: 1;
+    }
+</style>
