@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Security update regarding the Axios npm incident"
+description: Appwrite's production repositories, SDKs, and tooling chain were not impacted by the compromised Axios npm releases.
+date: 2026-03-31
+cover: /images/blog/security-update-regarding-the-axios-npm-incident/cover.png
+timeToRead: 3
+author: aditya-oberai
+category: security
+featured: false
+---
+
+We want to share a brief update regarding the recent Axios supply chain incident on npm, where malicious package versions were reportedly published after a maintainer account was compromised.
+
+After reviewing Appwrite's production repositories, SDKs, and tooling chain, we can confirm that Appwrite's SDKs and tooling were not impacted by the compromised Axios releases.
+
+Our JavaScript and TypeScript SDKs use native platform capabilities such as `fetch` rather than Axios, and our review did not identify exposure in the parts of our stack that ship to customers. Based on our internal assessment, no emergency customer action is required specifically for Appwrite services or Appwrite SDK usage.
+
+That said, incidents like this are a strong reminder of the risks involved in modern software supply chains. Even when a project is not directly affected, transitive dependencies and package resolution behavior can create avoidable exposure if dependency versions are left too open.
+
+# What we recommend
+
+We recommend that customers review their own JavaScript and TypeScript projects and make sure dependencies are pinned appropriately, especially in production environments. Version pinning and committed lockfiles reduce the chance of unintentionally pulling newly published malicious or compromised packages through semver-compatible ranges.
+
+As part of our response, we also introduced additional safeguards across our TypeScript-based SDK workflow:
+
+- We added stronger lockfile handling to improve dependency reproducibility.
+- We updated our SDK generation and release process to make dependency changes more visible during review.
+- We are enforcing stricter install behavior in CI so dependency trees stay aligned with reviewed lockfiles instead of resolving new versions automatically.
+
+These changes are not a response to a direct compromise in Appwrite, but an extra layer of protection to further harden our release process against future ecosystem incidents.
+
+# Our assessment
+
+Appwrite's SDKs and tooling chain were not impacted by the compromised Axios packages. We have still taken additional preventive steps to strengthen our dependency management and release pipeline, and we encourage all customers to do the same in their own projects.
+
+We will continue monitoring the ecosystem and tightening safeguards where it makes sense.
