@@ -1,0 +1,128 @@
+---
+layout: article
+title: Kubernetes deployment
+description: Deploy Appwrite on Kubernetes using the HelmForge community Helm chart.
+---
+
+Deploy Appwrite on Kubernetes using a community-maintained [Helm chart](https://artifacthub.io/packages/helm/helmforge/appwrite). This chart uses the official `appwrite/appwrite` container image — no custom or repackaged containers.
+
+{% info title="Community resource" %}
+This Helm chart is maintained by [HelmForge](https://helmforge.dev), not by the Appwrite team. For issues related to the chart, open an issue on the [chart repository](https://github.com/helmforgedev/charts).
+{% /info %}
+
+# Prerequisites {% #prerequisites %}
+
+Before starting, ensure you have:
+
+- A running Kubernetes cluster (v1.26+)
+- [Helm](https://helm.sh/docs/intro/install/) v3 installed
+- `kubectl` configured to access your cluster
+
+# Installation {% #installation %}
+
+{% section #add-repo step=1 title="Add the Helm repository" %}
+
+```bash
+helm repo add helmforge https://repo.helmforge.dev
+helm repo update
+```
+
+Alternatively, install directly from the OCI registry:
+
+```bash
+helm install appwrite oci://ghcr.io/helmforgedev/helm/appwrite
+```
+
+{% /section %}
+
+{% section #install-chart step=2 title="Install Appwrite" %}
+
+```bash
+helm install appwrite helmforge/appwrite
+```
+
+This installs Appwrite with bundled MariaDB and Redis subcharts. All core services are deployed as separate pods, including the API, Console, Realtime, background workers, and schedulers.
+
+{% /section %}
+
+{% section #verify step=3 title="Verify the deployment" %}
+
+Check that all pods are running:
+
+```bash
+kubectl get pods -l app.kubernetes.io/instance=appwrite
+```
+
+Once all pods show `Running` status, access the Appwrite Console through the configured ingress or by port-forwarding:
+
+```bash
+kubectl port-forward svc/appwrite 3000:80
+```
+
+Navigate to `http://localhost:3000` to complete the initial setup wizard.
+
+{% /section %}
+
+# Configuration {% #configuration %}
+
+Create a `values.yaml` file to customize the deployment:
+
+```yaml
+domain: appwrite.example.com
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+
+smtp:
+  host: smtp.example.com
+  port: 587
+  username: user@example.com
+  password: your-password
+```
+
+Install with your custom values:
+
+```bash
+helm install appwrite helmforge/appwrite -f values.yaml
+```
+
+# Architecture {% #architecture %}
+
+The chart deploys Appwrite as multiple Kubernetes resources:
+
+- **API, Console, Realtime** — separate Deployments with path-based ingress routing
+- **12 background workers** and **3 schedulers** — configurable resource limits
+- **MariaDB and Redis** — bundled as subcharts, or connect to external instances
+- **Persistent volumes** — for uploads, cache, certificates, functions, builds, and sites
+
+# External databases {% #external-databases %}
+
+To use external MariaDB and Redis instances instead of the bundled subcharts:
+
+```yaml
+mariadb:
+  enabled: false
+
+redis:
+  enabled: false
+
+externalMariadb:
+  host: your-mariadb-host
+  port: 3306
+  database: appwrite
+  username: appwrite
+  password: your-password
+
+externalRedis:
+  host: your-redis-host
+  port: 6379
+```
+
+# Next steps {% #next-steps %}
+
+After successful deployment:
+
+- [Configure services](/docs/advanced/self-hosting/configuration) - Set up email, storage, and other services
+- [Production optimization](/docs/advanced/self-hosting/production) - Prepare for production workloads
+- [Chart documentation](https://helmforge.dev/docs/charts/appwrite) - Full values reference and architecture details
