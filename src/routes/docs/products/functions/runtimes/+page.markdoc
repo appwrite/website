@@ -80,6 +80,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `dart-3.3`
 `dart-3.5`
 `dart-3.10`
+`dart-3.11`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="php" size="l" /%}
@@ -136,6 +137,7 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 * {% icon icon="flutter" size="l" /%}
 * [Flutter](https://hub.docker.com/r/openruntimes/flutter/tags)
 * `flutter-3.38`
+`flutter-3.41`
 * x86 / arm64
 ---
 * {% icon icon="cpp" size="l" /%}
@@ -199,11 +201,13 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `dart-3.1`
 `dart-3.5`
 `dart-3.10`
+`dart-3.11`
 * x86 / arm64 / armv7 / armv8
 ---
 * {% icon icon="flutter" size="l" /%}
 * [Flutter](https://hub.docker.com/r/openruntimes/flutter/tags)
 * `flutter-3.38`
+`flutter-3.41`
 * x86 / arm64
 ---
 * {% icon icon="php" size="l" /%}
