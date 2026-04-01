@@ -27,18 +27,20 @@ helm repo add helmforge https://repo.helmforge.dev
 helm repo update
 ```
 
-Alternatively, install directly from the OCI registry:
-
-```bash
-helm install appwrite oci://ghcr.io/helmforgedev/helm/appwrite
-```
-
 {% /section %}
 
 {% section #install-chart step=2 title="Install Appwrite" %}
 
+Using the Helm repository:
+
 ```bash
 helm install appwrite helmforge/appwrite
+```
+
+Or directly from the OCI registry (skips step 1):
+
+```bash
+helm install appwrite oci://ghcr.io/helmforgedev/helm/appwrite
 ```
 
 This installs Appwrite with bundled MariaDB and Redis subcharts. All core services are deployed as separate pods, including the API, Console, Realtime, background workers, and schedulers.
@@ -56,7 +58,7 @@ kubectl get pods -l app.kubernetes.io/instance=appwrite
 Once all pods show `Running` status, access the Appwrite Console through the configured ingress or by port-forwarding:
 
 ```bash
-kubectl port-forward svc/appwrite 3000:80
+kubectl port-forward svc/appwrite-appwrite-console 3000:80
 ```
 
 Navigate to `http://localhost:3000` to complete the initial setup wizard.
@@ -73,12 +75,6 @@ domain: appwrite.example.com
 ingress:
   enabled: true
   ingressClassName: nginx
-
-smtp:
-  host: smtp.example.com
-  port: 587
-  username: user@example.com
-  password: your-password
 ```
 
 Install with your custom values:
@@ -86,6 +82,10 @@ Install with your custom values:
 ```bash
 helm install appwrite helmforge/appwrite -f values.yaml
 ```
+
+{% info title="Secrets management" %}
+Avoid storing sensitive values like SMTP passwords directly in `values.yaml`. Instead, use `helm install --set` sourced from your CI/CD secret store, or use a Kubernetes secrets management tool.
+{% /info %}
 
 # Architecture {% #architecture %}
 
