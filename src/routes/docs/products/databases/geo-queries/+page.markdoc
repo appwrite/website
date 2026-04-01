@@ -33,10 +33,6 @@ Appwrite provides first-class geo types that can be stored as table columns:
 - **Line**: Represents a series of connected geographic coordinates forming a path or route
 - **Polygon**: Represents a closed area defined by a series of coordinates forming a boundary and optional hole punches within that boundary. Polygons must be **closed** (first and last points are the same), and holes must lie completely inside the boundary, with no overlaps.
 
-{% info title="Self-hosted installations" %}
-Spatial columns are supported only by MariaDB. If your self-hosted Appwrite instance uses MongoDB, spatial columns are not available.
-{% /info %}
-
 # Spatial index {% #spatial-index %}
 
 For optimal performance, create spatial indexes on columns you'll query. Spatial indexes use optimized data structures designed for geographic operations. Spatial indexes are **strongly recommended** if you plan to query your spatial data in any way.
@@ -52,3 +48,7 @@ Appwrite supports these geo query operations:
 - **Boundary queries**: Determine if points fall within defined areas
 
 For complete documentation and examples of all geo query operations, see [Queries](/docs/products/databases/queries#geo-queries).
+
+{% info title="Self-hosted installations" %}
+If you're self-hosting Appwrite, you will have to choose **MariaDB** as your preferred database to use geo-queries. Self-hosted Appwrite instances using **MongoDB** do not currently support spatial columns or indexes.
+{% /info %}
