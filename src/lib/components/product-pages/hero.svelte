@@ -37,7 +37,7 @@
 </script>
 
 <div
-    class="product-page-hero-bg border-smooth box-content flex items-center border-b px-5 py-12 md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="border-smooth box-content flex items-center border-b bg-[url(/images/bgs/mobile-hero.png)] bg-cover bg-bottom px-5 py-12 md:bg-[url(/images/bgs/hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="mx-auto grid max-w-[75rem] items-center gap-16 md:grid-cols-2">
         <div class="space-y-8">
@@ -76,47 +76,9 @@
                 {/if}
             </div>
         </div>
-        <img
-            class={cn('no-brand-filter', { 'hidden md:block': mobileImage })}
-            src={image.url}
-            alt={image.alt ?? ''}
-        />
+        <img class={cn({ 'hidden md:block': mobileImage })} src={image.url} alt={image.alt ?? ''} />
         {#if mobileImage}
-            <img
-                class="no-brand-filter block md:hidden"
-                src={mobileImage.url}
-                alt={mobileImage.alt ?? ''}
-            />
+            <img class="block md:hidden" src={mobileImage.url} alt={mobileImage.alt ?? ''} />
         {/if}
     </div>
 </div>
-
-<style>
-    .product-page-hero-bg {
-        position: relative;
-        isolation: isolate;
-    }
-
-    .product-page-hero-bg::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        pointer-events: none;
-        background-image: url('/images/bgs/mobile-hero.png');
-        background-size: cover;
-        background-position: bottom;
-        background-repeat: no-repeat;
-    }
-
-    @media (min-width: 48rem) {
-        .product-page-hero-bg::before {
-            background-image: url('/images/bgs/hero.png');
-            background-position: center;
-        }
-    }
-
-    :global(body.brand-green .product-page-hero-bg::before) {
-        filter: var(--web-color-image-background-filter);
-    }
-</style>

@@ -53,13 +53,7 @@
                             'relative flex flex-col items-center justify-center px-11 text-center md:-mr-8 md:max-w-[290px] md:px-0 md:pr-8'
                         )}
                     >
-                        <img
-                            src={icon}
-                            width="40"
-                            height="40"
-                            alt=""
-                            class="open-source-alternative-icon"
-                        />
+                        <img src={icon} width="40" height="40" alt="" />
                         <h3 class="text-sub-body text-primary mt-4 mb-1 font-medium">
                             {title}
                         </h3>
@@ -70,9 +64,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    :global(body.brand-green .open-source-alternative-icon) {
-        filter: var(--web-color-image-accent-filter);
-    }
-</style>

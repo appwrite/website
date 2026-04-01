@@ -27,14 +27,6 @@
     export let omitMainId = false;
     export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
-    let brandTheme: 'pink' | 'green' = 'green';
-
-    $: darkLogoSrc =
-        brandTheme === 'green' ? '/images/logos/appwrite-green.svg' : '/images/logos/appwrite.svg';
-    $: lightLogoSrc =
-        brandTheme === 'green'
-            ? '/images/logos/appwrite-light-green.svg'
-            : '/images/logos/appwrite-light.svg';
 
     function setupThemeObserver() {
         const handleVisibility = () => {
@@ -99,26 +91,11 @@
         return 'dark';
     }
 
-    function syncBrandTheme() {
-        brandTheme = document.body.classList.contains('brand-pink') ? 'pink' : 'green';
-    }
-
     onMount(() => {
         setTimeout(() => {
             $initialized = true;
         }, 1000);
-
-        syncBrandTheme();
-
-        const brandObserver = new MutationObserver(syncBrandTheme);
-        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-        const disposeThemeObserver = setupThemeObserver();
-
-        return () => {
-            brandObserver.disconnect();
-            disposeThemeObserver();
-        };
+        return setupThemeObserver();
     });
 
     $: navLinks = [
@@ -178,7 +155,6 @@
     $: ($isHeaderHidden, updateSideNav());
 
     $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
-    $: isProductsPage = page.route.id?.startsWith('/products') ?? false;
 
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
@@ -201,14 +177,14 @@
             <a href="/">
                 <img
                     class="web-logo web-u-only-dark"
-                    src={darkLogoSrc}
+                    src="/images/logos/appwrite.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
                 />
                 <img
                     class="web-logo web-u-only-light"
-                    src={lightLogoSrc}
+                    src="/images/logos/appwrite-light.svg"
                     alt="appwrite"
                     height="24"
                     width="130"
@@ -242,14 +218,14 @@
                 <a href="/">
                     <img
                         class="web-logo web-u-only-dark"
-                        src={darkLogoSrc}
+                        src="/images/logos/appwrite.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
                     />
                     <img
                         class="web-logo web-u-only-light"
-                        src={lightLogoSrc}
+                        src="/images/logos/appwrite-light.svg"
                         alt="appwrite"
                         height="24"
                         width="130"
@@ -282,7 +258,6 @@
 
     <main
         class="relative space-y-6"
-        class:products-brandable={isProductsPage}
         class:invisible={$isMobileNavOpen}
         id={omitMainId ? undefined : 'main'}
     >

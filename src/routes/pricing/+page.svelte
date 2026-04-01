@@ -34,52 +34,181 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="pricing-brandable">
-    <div
-        class="web-location-for-mobile absolute overflow-hidden"
-        style:pointer-events="none"
-        style:inline-size="100%"
-    >
-        <enhanced:img
-            src={BG}
-            alt=""
-            style="margin-inline:auto; display:block; width: 1369px; height: auto;"
-        />
-    </div>
+<div
+    class="web-location-for-mobile absolute overflow-hidden"
+    style:pointer-events="none"
+    style:inline-size="100%"
+>
+    <enhanced:img
+        src={BG}
+        alt=""
+        style="margin-inline:auto; display:block; width: 1369px; height: auto;"
+    />
+</div>
 
-    <Main>
-        <div class="web-big-padding-section mt-2">
-            <div class="dark pt-8">
-                <div class="web-big-padding-section-level-2">
-                    <section class="container">
-                        <div class="web-hero">
-                            <h1
-                                class="text-title font-aeonik-pro web-u-max-width-900 web-u-opacity-90 web-u-mobile-align-text-center self-center"
-                                style="background: linear-gradient(90deg, hsl(var(--web-color-pink-500) / 0.78) 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+<Main>
+    <div class="web-big-padding-section mt-2">
+        <div class="dark pt-8">
+            <div class="web-big-padding-section-level-2">
+                <section class="container">
+                    <div class="web-hero">
+                        <h1
+                            class="text-title font-aeonik-pro web-u-max-width-900 web-u-opacity-90 web-u-mobile-align-text-center self-center"
+                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
                                 -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
-                            >
-                                Everything your app needs,<br />one subscription
-                            </h1>
-                            <p
-                                class="text-description max-w-xl self-center text-center opacity-90"
-                                style="background: linear-gradient(90deg, hsl(var(--web-color-pink-500) / 0.78) 0%, #E4E1E5 61.98%, #E4E4E7 100%);
-                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
-                            >
-                                Build, deploy, and observe your app from one platform, all under one
-                                subscription.
-                            </p>
-                        </div>
-                    </section>
-                </div>
-                <div class="web-big-padding-section-level-2">
-                    <section class="container">
-                        <div
-                            class="web-pricing-cards"
-                            style:--columns-template={SHOW_SCALE_PLAN
-                                ? 'repeat(4, 1fr)'
-                                : 'repeat(3, 1fr)'}
                         >
-                            <ul class="web-pricing-cards-list">
+                            Everything your app needs,<br />one subscription
+                        </h1>
+                        <p
+                            class="text-description max-w-xl self-center text-center opacity-90"
+                            style="background: linear-gradient(90deg, #F47298 0%, #E4E1E5 61.98%, #E4E4E7 100%);
+                                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-block-end:2px;"
+                        >
+                            Build, deploy, and observe your app from one platform, all under one
+                            subscription.
+                        </p>
+                    </div>
+                </section>
+            </div>
+            <div class="web-big-padding-section-level-2">
+                <section class="container">
+                    <div
+                        class="web-pricing-cards"
+                        style:--columns-template={SHOW_SCALE_PLAN
+                            ? 'repeat(4, 1fr)'
+                            : 'repeat(3, 1fr)'}
+                    >
+                        <ul class="web-pricing-cards-list">
+                            <li>
+                                <article
+                                    class="web-card is-transparent has-border-gradient h-full"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2
+                                                id="starter"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
+                                                Free
+                                            </h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-12 -mb-6"
+                                            >
+                                                $0
+                                            </div>
+                                            <div class="mt-1">&nbsp;</div>
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
+                                                A great fit for passion projects and small
+                                                applications.
+                                            </p>
+                                            <Button
+                                                variant="secondary"
+                                                class="is-full-width mt-8"
+                                                href={getAppwriteDashboardUrl('/register')}
+                                                event="pricing-cards-free-click"
+                                            >
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
+                                            </Button>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>5GB bandwidth</span></li>
+                                                <li><span>2GB storage</span></li>
+                                                <li><span>750K executions</span></li>
+                                                <li><span>75K monthly active users</span></li>
+                                                <li><span>Community support</span></li>
+                                                <li>
+                                                    <span
+                                                        >1 Database, 1 Bucket, 2 Functions per
+                                                        project</span
+                                                    >
+                                                </li>
+                                            </ul>
+                                            <p class="text-caption text-secondary mt-4">
+                                                Free projects are paused after 1 week of inactivity.
+                                                Limit of 2 projects.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                                <div
+                                    class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
+                                    style:--m-border-radius="1.25rem"
+                                >
+                                    <article
+                                        class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
+                                        style="background: linear-gradient(180deg, rgba(253, 54, 110, 0.12) 38.59%, rgba(253, 54, 110, 0) 99.04%);"
+                                    >
+                                        <header class="web-pricing-cards-header">
+                                            <header class="flex gap-3">
+                                                <h2
+                                                    id="pro"
+                                                    class="text-label text-primary font-aeonik-pro"
+                                                >
+                                                    Pro
+                                                </h2>
+                                                <div class="web-inline-tag is-pink">
+                                                    Most popular
+                                                </div>
+                                            </header>
+                                            <div class="mt-4 flex flex-col gap-2">
+                                                <span class="-mb-4">From</span>
+                                                <div class="flex items-end gap-2">
+                                                    <div
+                                                        class="text-title font-aeonik-pro text-primary mt-3"
+                                                    >
+                                                        $25
+                                                    </div>
+                                                    <div class="mt-1">/month</div>
+                                                </div>
+                                            </div>
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
+                                                For production applications that need powerful
+                                                functionality and resources to scale.
+                                            </p>
+                                            <Button
+                                                href={getAppwriteDashboardUrl(
+                                                    '/console?type=create&plan=tier-1'
+                                                )}
+                                                class="is-full-width mt-11"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                event="pricing-cards-pro-click"
+                                            >
+                                                <span class="text-sub-body font-medium"
+                                                    >Start building</span
+                                                >
+                                            </Button>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <p>Dedicated resources per project:</p>
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>2TB bandwidth</span></li>
+                                                <li><span>150GB storage</span></li>
+                                                <li><span>3.5M executions</span></li>
+                                                <li><span>200K monthly active users</span></li>
+                                                <li><span>Organization roles</span></li>
+                                                <li><span>Email support</span></li>
+                                                <li>
+                                                    <span>Daily backups stored for 7 days</span>
+                                                </li>
+                                                <li><span>Add-ons</span></li>
+                                                <li>
+                                                    <span
+                                                        >Unlimited Databases, Buckets, and Functions</span
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </div>
+                            </li>
+                            {#if SHOW_SCALE_PLAN}
                                 <li>
                                     <article
                                         class="web-card is-transparent has-border-gradient h-full"
@@ -88,98 +217,37 @@
                                         <div class="web-pricing-cards-item">
                                             <header class="web-pricing-cards-header">
                                                 <h2
-                                                    id="starter"
+                                                    id="scale"
                                                     class="text-label text-primary font-aeonik-pro"
                                                 >
-                                                    Free
+                                                    Scale
                                                 </h2>
-                                                <div
-                                                    class="text-title font-aeonik-pro text-primary mt-12 -mb-6"
-                                                >
-                                                    $0
-                                                </div>
-                                                <div class="mt-1">&nbsp;</div>
-                                                <p class="text-main-body mt-4 h-[5rem] font-medium">
-                                                    A great fit for passion projects and small
-                                                    applications.
-                                                </p>
-                                                <Button
-                                                    variant="secondary"
-                                                    class="is-full-width mt-8"
-                                                    href={getAppwriteDashboardUrl('/register')}
-                                                    event="pricing-cards-free-click"
-                                                >
-                                                    <span class="text-sub-body font-medium"
-                                                        >Start building</span
-                                                    >
-                                                </Button>
-                                            </header>
-                                            <div class="web-pricing-cards-content">
-                                                <ul class="web-checked-list-circle">
-                                                    <li><span>5GB bandwidth</span></li>
-                                                    <li><span>2GB storage</span></li>
-                                                    <li><span>750K executions</span></li>
-                                                    <li><span>75K monthly active users</span></li>
-                                                    <li><span>Community support</span></li>
-                                                    <li>
-                                                        <span
-                                                            >1 Database, 1 Bucket, 2 Functions per
-                                                            project</span
-                                                        >
-                                                    </li>
-                                                </ul>
-                                                <p class="text-caption text-secondary mt-4">
-                                                    Free projects are paused after 1 week of
-                                                    inactivity. Limit of 2 projects.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li>
-                                    <div
-                                        class="web-card is-transparent has-border-gradient is-transparent-pink -m-1 h-full p-1! backdrop-blur-none!"
-                                        style:--m-border-radius="1.25rem"
-                                    >
-                                        <article
-                                            class="web-card is-transparent is-transparent-pink has-border-gradient h-full"
-                                            style="background: linear-gradient(180deg, hsl(var(--web-color-pink-500) / 0.12) 38.59%, hsl(var(--web-color-pink-500) / 0) 99.04%);"
-                                        >
-                                            <header class="web-pricing-cards-header">
-                                                <header class="flex gap-3">
-                                                    <h2
-                                                        id="pro"
-                                                        class="text-label text-primary font-aeonik-pro"
-                                                    >
-                                                        Pro
-                                                    </h2>
-                                                    <div class="web-inline-tag is-pink">
-                                                        Most popular
-                                                    </div>
-                                                </header>
+
                                                 <div class="mt-4 flex flex-col gap-2">
                                                     <span class="-mb-4">From</span>
                                                     <div class="flex items-end gap-2">
                                                         <div
                                                             class="text-title font-aeonik-pro text-primary mt-3"
                                                         >
-                                                            $25
+                                                            $599
                                                         </div>
                                                         <div class="mt-1">/month</div>
                                                     </div>
                                                 </div>
+
                                                 <p class="text-main-body mt-4 h-[5rem] font-medium">
-                                                    For production applications that need powerful
-                                                    functionality and resources to scale.
+                                                    For teams that handle more complex and large
+                                                    projects and need more control and support.
                                                 </p>
                                                 <Button
+                                                    variant="secondary"
                                                     href={getAppwriteDashboardUrl(
-                                                        '/console?type=create&plan=tier-1'
+                                                        '/console?type=create&plan=tier-2'
                                                     )}
-                                                    class="is-full-width mt-11"
+                                                    event="pricing-cards-scale-click"
+                                                    class="is-full-width mt-10"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    event="pricing-cards-pro-click"
                                                 >
                                                     <span class="text-sub-body font-medium"
                                                         >Start building</span
@@ -187,155 +255,15 @@
                                                 </Button>
                                             </header>
                                             <div class="web-pricing-cards-content">
-                                                <p>Dedicated resources per project:</p>
+                                                <p>Everything in Pro, plus:</p>
                                                 <ul class="web-checked-list-circle">
-                                                    <li><span>2TB bandwidth</span></li>
-                                                    <li><span>150GB storage</span></li>
-                                                    <li><span>3.5M executions</span></li>
-                                                    <li><span>200K monthly active users</span></li>
-                                                    <li><span>Organization roles</span></li>
-                                                    <li><span>Email support</span></li>
-                                                    <li>
-                                                        <span>Daily backups stored for 7 days</span>
-                                                    </li>
-                                                    <li><span>Add-ons</span></li>
-                                                    <li>
-                                                        <span
-                                                            >Unlimited Databases, Buckets, and
-                                                            Functions</span
-                                                        >
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </li>
-                                {#if SHOW_SCALE_PLAN}
-                                    <li>
-                                        <article
-                                            class="web-card is-transparent has-border-gradient h-full"
-                                            style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
-                                        >
-                                            <div class="web-pricing-cards-item">
-                                                <header class="web-pricing-cards-header">
-                                                    <h2
-                                                        id="scale"
-                                                        class="text-label text-primary font-aeonik-pro"
-                                                    >
-                                                        Scale
-                                                    </h2>
-
-                                                    <div class="mt-4 flex flex-col gap-2">
-                                                        <span class="-mb-4">From</span>
-                                                        <div class="flex items-end gap-2">
-                                                            <div
-                                                                class="text-title font-aeonik-pro text-primary mt-3"
-                                                            >
-                                                                $599
-                                                            </div>
-                                                            <div class="mt-1">/month</div>
-                                                        </div>
-                                                    </div>
-
-                                                    <p
-                                                        class="text-main-body mt-4 h-[5rem] font-medium"
-                                                    >
-                                                        For teams that handle more complex and large
-                                                        projects and need more control and support.
-                                                    </p>
-                                                    <Button
-                                                        variant="secondary"
-                                                        href={getAppwriteDashboardUrl(
-                                                            '/console?type=create&plan=tier-2'
-                                                        )}
-                                                        event="pricing-cards-scale-click"
-                                                        class="is-full-width mt-10"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <span class="text-sub-body font-medium"
-                                                            >Start building</span
-                                                        >
-                                                    </Button>
-                                                </header>
-                                                <div class="web-pricing-cards-content">
-                                                    <p>Everything in Pro, plus:</p>
-                                                    <ul class="web-checked-list-circle">
-                                                        <li><span>Unlimited seats</span></li>
-                                                        <li><span>SOC-2</span></li>
-                                                        <li><span>BAA</span></li>
-                                                        <li><span>Network logs</span></li>
-                                                        <li><span>28-day log retention</span></li>
-                                                        <li>
-                                                            <span>Custom organization roles</span>
-                                                        </li>
-                                                        <li><span>SSO</span></li>
-                                                        <li><span>Activity logs</span></li>
-                                                        <li><span>Custom backup policies</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </li>
-                                {/if}
-                                <li>
-                                    <article
-                                        class="web-card is-transparent has-border-gradient u-height-100-percent"
-                                        style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
-                                    >
-                                        <div class="web-pricing-cards-item">
-                                            <header class="web-pricing-cards-header">
-                                                <h2
-                                                    id="enterprise"
-                                                    class="text-label text-primary font-aeonik-pro"
-                                                >
-                                                    Enterprise
-                                                </h2>
-                                                <div
-                                                    class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
-                                                >
-                                                    Custom
-                                                </div>
-                                                <div class="mt-1">&nbsp;</div>
-                                                <p class="text-main-body mt-4 h-[5rem] font-medium">
-                                                    For enterprises that need more power, premium
-                                                    support, and advanced security features.
-                                                </p>
-                                                <Button
-                                                    variant="secondary"
-                                                    href="/contact-us/enterprise"
-                                                    class="is-full-width mt-10"
-                                                    rel="noopener noreferrer"
-                                                    event="pricing-cards-enterprise-click"
-                                                >
-                                                    <!-- <span class="web-sub-body-500">Start trial</span> -->
-                                                    <span class="web-sub-body-500">Contact us</span>
-                                                </Button>
-                                            </header>
-                                            <div class="web-pricing-cards-content">
-                                                <p>
-                                                    Everything in {SHOW_SCALE_PLAN
-                                                        ? 'Scale'
-                                                        : 'Pro'}, plus:
-                                                </p>
-                                                <ul class="web-checked-list-circle">
-                                                    <li><span>Uptime SLAs</span></li>
-                                                    <li><span>Designated Success Manager</span></li>
-                                                    <li><span>Up to 24/7 support</span></li>
-                                                    <li>
-                                                        <span>Option for private Slack channel</span
-                                                        >
-                                                    </li>
-                                                    <li><span>Volume discounts</span></li>
-                                                    <li><span>Log drains</span></li>
-                                                    <li><span>90-day log retention</span></li>
-                                                    <li><span>Advanced observability</span></li>
-                                                    <li><span>Bring your own Cloud</span></li>
-                                                    <li>
-                                                        <span>SOC-2, HIPAA, and BAA</span>
-                                                    </li>
+                                                    <li><span>Unlimited seats</span></li>
+                                                    <li><span>SOC-2</span></li>
+                                                    <li><span>BAA</span></li>
+                                                    <li><span>Network logs</span></li>
+                                                    <li><span>28-day log retention</span></li>
                                                     <li><span>Custom organization roles</span></li>
-                                                    <li><span>Single Sign-On (SSO)</span></li>
+                                                    <li><span>SSO</span></li>
                                                     <li><span>Activity logs</span></li>
                                                     <li><span>Custom backup policies</span></li>
                                                 </ul>
@@ -343,102 +271,158 @@
                                         </div>
                                     </article>
                                 </li>
-                            </ul>
-                        </div>
+                            {/if}
+                            <li>
+                                <article
+                                    class="web-card is-transparent has-border-gradient u-height-100-percent"
+                                    style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 63.19%, rgba(255, 255, 255, 0.00) 100%);"
+                                >
+                                    <div class="web-pricing-cards-item">
+                                        <header class="web-pricing-cards-header">
+                                            <h2
+                                                id="enterprise"
+                                                class="text-label text-primary font-aeonik-pro"
+                                            >
+                                                Enterprise
+                                            </h2>
+                                            <div
+                                                class="text-title font-aeonik-pro text-primary mt-10 -mb-6"
+                                            >
+                                                Custom
+                                            </div>
+                                            <div class="mt-1">&nbsp;</div>
+                                            <p class="text-main-body mt-4 h-[5rem] font-medium">
+                                                For enterprises that need more power, premium
+                                                support, and advanced security features.
+                                            </p>
+                                            <Button
+                                                variant="secondary"
+                                                href="/contact-us/enterprise"
+                                                class="is-full-width mt-10"
+                                                rel="noopener noreferrer"
+                                                event="pricing-cards-enterprise-click"
+                                            >
+                                                <!-- <span class="web-sub-body-500">Start trial</span> -->
+                                                <span class="web-sub-body-500">Contact us</span>
+                                            </Button>
+                                        </header>
+                                        <div class="web-pricing-cards-content">
+                                            <p>
+                                                Everything in {SHOW_SCALE_PLAN ? 'Scale' : 'Pro'},
+                                                plus:
+                                            </p>
+                                            <ul class="web-checked-list-circle">
+                                                <li><span>Uptime SLAs</span></li>
+                                                <li><span>Designated Success Manager</span></li>
+                                                <li><span>Up to 24/7 support</span></li>
+                                                <li>
+                                                    <span>Option for private Slack channel</span>
+                                                </li>
+                                                <li><span>Volume discounts</span></li>
+                                                <li><span>Log drains</span></li>
+                                                <li><span>90-day log retention</span></li>
+                                                <li><span>Advanced observability</span></li>
+                                                <li><span>Bring your own Cloud</span></li>
+                                                <li>
+                                                    <span>SOC-2, HIPAA, and BAA</span>
+                                                </li>
+                                                <li><span>Custom organization roles</span></li>
+                                                <li><span>Single Sign-On (SSO)</span></li>
+                                                <li><span>Activity logs</span></li>
+                                                <li><span>Custom backup policies</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <section class="mt-20">
-                            <article class="cta-card stack-card p-6 md:p-8">
-                                <div class="stack-card__header">
-                                    <h3
-                                        class="text-display text-primary font-aeonik-pro stack-card__title"
-                                    >
-                                        One platform. One subscription.
-                                    </h3>
-                                    <div class="stack-card__badge">
-                                        1 vendor • 1 subscription • 1 bill
-                                    </div>
+                    <section class="mt-20">
+                        <article class="cta-card stack-card p-6 md:p-8">
+                            <div class="stack-card__header">
+                                <h3
+                                    class="text-display text-primary font-aeonik-pro stack-card__title"
+                                >
+                                    One platform. One subscription.
+                                </h3>
+                                <div class="stack-card__badge">
+                                    1 vendor • 1 subscription • 1 bill
                                 </div>
-                                <p class="text-main-body text-secondary/90 mt-4 max-w-3xl">
-                                    Replace fragmented backend, hosting, storage, and delivery
-                                    tooling with a single platform built for the full application
-                                    lifecycle. Reduce integration surface area, simplify
-                                    procurement, and give your team one system to operate and scale.
-                                </p>
-                                <div class="stack-card__compare mt-6">
-                                    <div class="stack-state-card">
-                                        <p class="stack-state-card__label">Before</p>
-                                        <ul class="stack-state-card__list">
-                                            <li>
-                                                Multiple tools with overlapping responsibilities
-                                            </li>
-                                            <li>
-                                                Separate subscriptions, invoices, and renewal cycles
-                                            </li>
-                                            <li>
-                                                More integration, maintenance, and ownership
-                                                overhead
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="stack-state-card stack-state-card--after">
-                                        <p class="stack-state-card__label">After</p>
-                                        <ul class="stack-state-card__list">
-                                            <li>One platform across the app lifecycle</li>
-                                            <li>
-                                                One subscription with simpler billing and
-                                                procurement
-                                            </li>
-                                            <li>
-                                                Fewer systems to integrate, secure, and maintain
-                                            </li>
-                                        </ul>
-                                    </div>
+                            </div>
+                            <p class="text-main-body text-secondary/90 mt-4 max-w-3xl">
+                                Replace fragmented backend, hosting, storage, and delivery tooling
+                                with a single platform built for the full application lifecycle.
+                                Reduce integration surface area, simplify procurement, and give your
+                                team one system to operate and scale.
+                            </p>
+                            <div class="stack-card__compare mt-6">
+                                <div class="stack-state-card">
+                                    <p class="stack-state-card__label">Before</p>
+                                    <ul class="stack-state-card__list">
+                                        <li>Multiple tools with overlapping responsibilities</li>
+                                        <li>
+                                            Separate subscriptions, invoices, and renewal cycles
+                                        </li>
+                                        <li>
+                                            More integration, maintenance, and ownership overhead
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="mt-6 flex flex-wrap items-center gap-4">
-                                    <Button
-                                        href="#compare-plans"
-                                        variant="secondary"
-                                        event="pricing-cards-stack_consolidation-see_included-click"
-                                    >
-                                        See what's included
-                                    </Button>
-                                    <span class="stack-card__helper text-caption text-secondary">
-                                        Compare plan limits, included capabilities, and scaling
-                                        options.
-                                    </span>
+                                <div class="stack-state-card stack-state-card--after">
+                                    <p class="stack-state-card__label">After</p>
+                                    <ul class="stack-state-card__list">
+                                        <li>One platform across the app lifecycle</li>
+                                        <li>
+                                            One subscription with simpler billing and procurement
+                                        </li>
+                                        <li>Fewer systems to integrate, secure, and maintain</li>
+                                    </ul>
                                 </div>
-                            </article>
-                        </section>
+                            </div>
+                            <div class="mt-6 flex flex-wrap items-center gap-4">
+                                <Button
+                                    href="#compare-plans"
+                                    variant="secondary"
+                                    event="pricing-cards-stack_consolidation-see_included-click"
+                                >
+                                    See what's included
+                                </Button>
+                                <span class="stack-card__helper text-caption text-secondary">
+                                    Compare plan limits, included capabilities, and scaling options.
+                                </span>
+                            </div>
+                        </article>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <div id="compare-plans">
+            <ComparePlans />
+        </div>
+
+        <div class="dark relative overflow-hidden pt-10">
+            <div class="web-big-padding-section-level-2 relative">
+                <div class="relative container" style:z-index="10">
+                    <section class="web-grid-4-6">
+                        <header>
+                            <div class="text-display font-aeonik-pro text-primary">FAQ</div>
+                        </header>
+                        <Faq />
                     </section>
                 </div>
             </div>
-
-            <div id="compare-plans">
-                <ComparePlans />
-            </div>
-
-            <div class="dark relative overflow-hidden pt-10">
-                <div class="web-big-padding-section-level-2 relative">
-                    <div class="relative container" style:z-index="10">
-                        <section class="web-grid-4-6">
-                            <header>
-                                <div class="text-display font-aeonik-pro text-primary">FAQ</div>
-                            </header>
-                            <Faq />
-                        </section>
-                    </div>
-                </div>
-                <div class="web-big-padding-section-level-2 relative !mb-0">
-                    <div class="container">
-                        <PreFooter />
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
+            <div class="web-big-padding-section-level-2 relative !mb-0">
+                <div class="container">
+                    <PreFooter />
+                    <FooterNav />
+                    <MainFooter />
                 </div>
             </div>
         </div>
-    </Main>
-</div>
+    </div>
+</Main>
 
 <style lang="scss">
     @use '$scss/abstract/mixins/border-gradient' as gradients;
@@ -481,8 +465,8 @@
         background:
             radial-gradient(
                 120% 80% at 100% 0%,
-                hsl(var(--web-color-pink-500) / 0.14) 0%,
-                hsl(var(--web-color-pink-500) / 0) 60%
+                rgba(253, 54, 110, 0.14) 0%,
+                rgba(253, 54, 110, 0) 60%
             ),
             radial-gradient(
                 140% 90% at 0% 100%,
@@ -534,12 +518,8 @@
     }
 
     .stack-state-card--after {
-        border-color: hsl(var(--web-color-pink-500) / 0.35);
-        background: linear-gradient(
-            180deg,
-            hsl(var(--web-color-pink-500) / 0.1) 0%,
-            rgba(0, 0, 0, 0.2) 100%
-        );
+        border-color: rgba(253, 54, 110, 0.35);
+        background: linear-gradient(180deg, rgba(253, 54, 110, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
     }
 
     .stack-state-card__label {
@@ -580,7 +560,7 @@
     }
 
     .stack-state-card--after .stack-state-card__list li::before {
-        background: hsl(var(--web-color-pink-500) / 0.8);
+        background: rgba(253, 54, 110, 0.8);
     }
 
     .stack-card__helper {

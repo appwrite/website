@@ -7,7 +7,13 @@
     import ProductHuntBadge from '../(assets)/images/producthunt-badge.svelte';
 </script>
 
-<div class={cn('sites-hero-gradient relative flex flex-col items-center')}>
+<div
+    class={cn(
+        'relative flex flex-col items-center',
+        'before:absolute before:inset-0 before:top-0 before:left-0 before:-z-10 before:block before:h-full before:bg-[radial-gradient(circle_at_-15%_-10%,_hsla(343,_98%,_60%,_0.2)_0px,_transparent_40%)]',
+        'after:absolute after:inset-0 after:top-0 after:right-0 after:-z-10 after:mt-auto after:mb-0 after:block after:h-full after:bg-[radial-gradient(circle_at_120%_125%,_hsla(248,_99%,_70%,_0.2)_0px,_transparent_40%)]'
+    )}
+>
     <div
         class="container mx-auto grid w-full grid-cols-1 place-items-center gap-x-16 gap-y-8 py-12 max-lg:px-5! lg:grid-cols-12 lg:py-20"
     >
@@ -39,11 +45,7 @@
                 </a>
             </div>
         </div>
-        <img
-            src={Illustration}
-            alt="Illustration"
-            class="no-brand-filter col-span-full lg:col-span-7"
-        />
+        <img src={Illustration} alt="Illustration" class="col-span-full lg:col-span-7" />
         <a
             href="https://www.producthunt.com/posts/appwrite-sites"
             target="_blank"
@@ -54,34 +56,3 @@
     </div>
     <Platforms class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />
 </div>
-
-<style>
-    .sites-hero-gradient::before,
-    .sites-hero-gradient::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: -10;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    .sites-hero-gradient::before {
-        left: 0;
-        background: radial-gradient(
-            circle at -15% -10%,
-            rgb(var(--brand-accent-rgb) / 0.2) 0px,
-            transparent 40%
-        );
-    }
-
-    .sites-hero-gradient::after {
-        right: 0;
-        margin-block: auto 0;
-        background: radial-gradient(
-            circle at 120% 125%,
-            hsl(248 99% 70% / 0.2) 0px,
-            transparent 40%
-        );
-    }
-</style>

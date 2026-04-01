@@ -12,8 +12,10 @@
 </script>
 
 <span
-    class={cn('-mb-1 block bg-clip-text pb-1 text-transparent', className)}
-    style="background-image: linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 62%, transparent) 0%, #fff 50%);"
+    class={cn(
+        '-mb-1 block bg-linear-145 from-[#f8a1ba] to-white to-50% bg-clip-text pb-1 text-transparent',
+        className
+    )}
     {...rest}
 >
     {@render children()}
