@@ -42,8 +42,7 @@ docker run -it --rm \
 ```
 {% /tabsitem %}
 
-{% tabsitem #windows title="Windows" %}
-## CMD
+{% tabsitem #cmd title="Windows (CMD)" %}
 ```cmd
 docker run -it --rm ^
     --publish 20080:20080 ^
@@ -52,8 +51,9 @@ docker run -it --rm ^
     --entrypoint="install" ^
     appwrite/appwrite:1.9.0
 ```
+{% /tabsitem %}
 
-## PowerShell
+{% tabsitem #powershell title="Windows (PowerShell)" %}
 ```powershell
 docker run -it --rm `
     --publish 20080:20080 `
