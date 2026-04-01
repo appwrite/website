@@ -80,7 +80,7 @@ ingress:
 Install with your custom values:
 
 ```bash
-helm install appwrite helmforge/appwrite -f values.yaml
+helm upgrade --install appwrite helmforge/appwrite -f values.yaml
 ```
 
 {% info title="Secrets management" %}
@@ -123,6 +123,6 @@ externalRedis:
 
 After successful deployment:
 
-- [Configure services](/docs/advanced/self-hosting/configuration) - Set up email, storage, and other services
+- [Configure services](/docs/advanced/self-hosting/configuration/environment-variables) - Set up environment variables and services
 - [Production optimization](/docs/advanced/self-hosting/production) - Prepare for production workloads
 - [Chart documentation](https://helmforge.dev/docs/charts/appwrite) - Full values reference and architecture details
