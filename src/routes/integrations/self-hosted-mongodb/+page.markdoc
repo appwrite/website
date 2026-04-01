@@ -2,7 +2,7 @@
 layout: integration
 title: Self-host Appwrite with MongoDB
 description: Use MongoDB as the underlying database for your self-hosted Appwrite instance.
-date: 2026-03-24
+date: 2026-04-01
 featured: true
 isPartner: true
 isNew: true
