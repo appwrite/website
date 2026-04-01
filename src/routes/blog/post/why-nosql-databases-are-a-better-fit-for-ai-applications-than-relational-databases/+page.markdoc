@@ -52,9 +52,9 @@ The case for using **NoSQL databases for AI** comes down to three things: flexib
 
 Among document databases, **MongoDB** stands out as one of the most widely adopted for AI workloads. Its flexible document model makes it easy to store and query diverse data types, from raw text and metadata to nested model outputs, without upfront schema commitments. MongoDB's aggregation pipeline, Atlas Search, and native support for JSON make it a natural fit for teams building on top of LLMs or managing large volumes of AI-generated content.
 
-MongoDB also supports **Atlas Vector Search**, which brings vector similarity search directly into the same database where your application data already lives. This is particularly valuable for RAG-based applications: rather than maintaining a separate vector database alongside your document store, you can store embeddings and query them in one place, reducing infrastructure complexity.
+For teams using MongoDB Atlas (MongoDB's managed cloud offering), Atlas Vector Search brings vector similarity search directly into the same database where your application data already lives, valuable for RAG-based applications where you want to avoid maintaining a separate vector store. For self-hosted MongoDB deployments, a dedicated vector database such as Qdrant or Weaviate is the recommended path for embedding search.
 
-For teams building on Appwrite, native MongoDB support is on the way, bringing these capabilities directly into Appwrite's backend platform so you can use MongoDB's document model and vector features alongside Appwrite's built-in auth, storage, and real-time updates.
+For teams building on Appwrite, native MongoDB support is now available in the open-source, self-hosted version, bringing these capabilities directly into Appwrite's backend platform so you can use MongoDB's document model alongside Appwrite's built-in auth, storage, and real-time updates.
 
 # NoSQL vs SQL: Knowing when to use each
 
