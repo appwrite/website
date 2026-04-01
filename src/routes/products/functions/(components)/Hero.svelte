@@ -3,7 +3,7 @@
 </script>
 
 <div
-    class="box-content flex items-center bg-[url(/images/bgs/mobile-auth-hero.png)] bg-cover bg-bottom px-5 pt-20 pb-20 md:bg-[url(/images/bgs/auth-hero.png)] md:bg-center md:pt-32 md:pb-40 lg:px-8 xl:px-16"
+    class="product-functions-hero-bg box-content flex items-center px-5 pt-20 pb-20 md:pt-32 md:pb-40 lg:px-8 xl:px-16"
 >
     <div class="grid items-center gap-16 md:grid-cols-2">
         <div class="space-y-6">
@@ -29,8 +29,42 @@
             </div>
         </div>
         <img
+            class="no-brand-filter"
             src={Phone}
             alt="Phone screen alongside of a users table and a code snippet that controls Appwrite's functions."
         />
     </div>
 </div>
+
+<style>
+    .product-functions-hero-bg {
+        position: relative;
+    }
+
+    .product-functions-hero-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/images/bgs/mobile-auth-hero.png');
+        background-size: cover;
+        background-position: bottom;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @media (min-width: 48rem) {
+        .product-functions-hero-bg::before {
+            background-image: url('/images/bgs/auth-hero.png');
+            background-position: center;
+        }
+    }
+
+    :global(body.brand-green .product-functions-hero-bg::before) {
+        filter: var(--web-color-image-background-filter);
+    }
+
+    .product-functions-hero-bg > * {
+        position: relative;
+        z-index: 1;
+    }
+</style>

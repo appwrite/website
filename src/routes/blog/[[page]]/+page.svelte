@@ -204,7 +204,7 @@
                             gradientTransform="translate(-2.5 629.739) rotate(90) scale(289.261 362.5)"
                         >
                             <stop offset="0.281696" stop-color="#FE9567" />
-                            <stop offset="0.59375" stop-color="#FD366E" />
+                            <stop offset="0.59375" stop-color="hsl(var(--web-color-pink-500))" />
                         </radialGradient>
                     </defs>
                 </svg>

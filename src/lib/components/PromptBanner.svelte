@@ -83,7 +83,7 @@
     <div class="ai-banner">
         <div class="ai-banner_content">
             <div class="ai-banner_title">
-                <AiPromptIcon class="text-primary" aria-hidden="true" />
+                <AiPromptIcon class="ai-banner-prompt-icon text-primary" aria-hidden="true" />
                 <span class="text-primary text-sub-body"
                     >Use this pre-built prompt to get started faster</span
                 >
@@ -312,5 +312,9 @@
     .ai-banner :global(.web-button.no-right-radius) {
         padding-right: 10px;
         gap: 4px;
+    }
+
+    :global(body.brand-green .ai-banner .ai-banner-prompt-icon) {
+        filter: var(--web-color-image-accent-filter);
     }
 </style>
