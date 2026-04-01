@@ -9,7 +9,6 @@ author:
   - eldad-fux
   - ariel-weinberger
 category: announcement
-featured: true
 ---
 
 When we started Appwrite, our mission was clear: reduce the operational and infrastructural burden of building software so developers could focus on what actually matters - product, logic, and user experience. We set out to remove unnecessary complexity, give teams real control over their backend, and make production-grade infrastructure accessible without forcing developers to fight it. That principle has guided every major decision we have made.
