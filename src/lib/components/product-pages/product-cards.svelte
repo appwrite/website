@@ -65,7 +65,13 @@
                         class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                     >
                         <div class="flex items-center gap-2">
-                            <img src={product.icon} alt="auth" width="32" height="32" />
+                            <img
+                                src={product.icon}
+                                alt="auth"
+                                width="32"
+                                height="32"
+                                class="products-explore-card-icon"
+                            />
                             <h4 class="text-main-body text-primary">{product.title}</h4>
                             <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
                         </div>
@@ -78,3 +84,9 @@
         </div>
     </div>
 </section>
+
+<style>
+    :global(body.brand-green .products-brandable .products-explore-card-icon) {
+        filter: var(--web-color-image-accent-filter) !important;
+    }
+</style>

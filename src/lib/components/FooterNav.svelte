@@ -1,9 +1,11 @@
 <script lang="ts">
     import { slide } from 'svelte/transition';
+    import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { createAccordion, melt } from '@melt-ui/svelte';
 
     export let noBorder = false;
+    let logoSrc = '/images/logos/appwrite.svg';
 
     const {
         elements: { content, heading, item, root, trigger },
@@ -107,6 +109,23 @@
                 { label: 'Security', href: '/docs/advanced/security' }
             ]
         };
+
+    const syncBrandLogo = () => {
+        logoSrc = document.body.classList.contains('brand-pink')
+            ? '/images/logos/appwrite.svg'
+            : '/images/logos/appwrite-green.svg';
+    };
+
+    onMount(() => {
+        syncBrandLogo();
+
+        const brandObserver = new MutationObserver(syncBrandLogo);
+        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        return () => {
+            brandObserver.disconnect();
+        };
+    });
 </script>
 
 <nav
@@ -114,7 +133,7 @@
     class="web-footer-nav relative mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
-    <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
+    <img class="web-logo" src={logoSrc} alt="appwrite" height="24" width="130" />
     <ul class="web-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
             <li class="web-footer-nav-main-item web-is-not-mobile">

@@ -1,8 +1,10 @@
 <script lang="ts">
     import { createAccordion, melt } from '@melt-ui/svelte';
+    import { onMount } from 'svelte';
     import { slide } from 'svelte/transition';
 
     export let noBorder = false;
+    let logoSrc = '/images/logos/appwrite.svg';
 
     const {
         elements: { content, heading, item, root, trigger },
@@ -91,6 +93,23 @@
                 { label: 'Assets', href: '/assets' }
             ]
         };
+
+    const syncBrandLogo = () => {
+        logoSrc = document.body.classList.contains('brand-pink')
+            ? '/images/logos/appwrite.svg'
+            : '/images/logos/appwrite-green.svg';
+    };
+
+    onMount(() => {
+        syncBrandLogo();
+
+        const brandObserver = new MutationObserver(syncBrandLogo);
+        brandObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+        return () => {
+            brandObserver.disconnect();
+        };
+    });
 </script>
 
 <nav
@@ -99,13 +118,7 @@
     class:web-u-sep-block-start={!noBorder}
 >
     <div class="web-footer-nav container">
-        <img
-            class="web-logo"
-            src="/images/logos/appwrite.svg"
-            alt="appwrite"
-            height="24"
-            width="130"
-        />
+        <img class="web-logo" src={logoSrc} alt="appwrite" height="24" width="130" />
         <ul class="web-footer-nav-main-list" use:melt={$root}>
             {#each Object.entries(links) as [title, items], i (i)}
                 <li class="web-footer-nav-main-item web-is-not-mobile">
