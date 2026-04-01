@@ -35,8 +35,9 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
             <HeroBanner
-                title="Introducing Appwrite Arena"
-                href="/blog/post/announcing-appwrite-arena"
+                title="Appwrite partners with the world's best database company"
+                href="/blog/post/appwrite-mongodb-partnership-self-hosted"
+                icon="mongo"
             />
 
             <GradientText class="animate-fade-in">
