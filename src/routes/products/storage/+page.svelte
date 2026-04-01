@@ -160,7 +160,9 @@
                 </div>
             </div>
         </div>
-        <div class="storage-purple-bg web-big-padding-section-level-1 web-white-section light pb-20">
+        <div
+            class="storage-purple-bg web-big-padding-section-level-1 web-white-section light pb-20"
+        >
             <div class="!my-0 py-24 md:py-20">
                 <div class="container">
                     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">

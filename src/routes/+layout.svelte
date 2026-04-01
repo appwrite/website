@@ -56,7 +56,7 @@
         }
 
         if (!browser) {
-            return 'pink';
+            return 'green';
         }
 
         const storedTheme = localStorage.getItem('brand-theme');
@@ -64,7 +64,7 @@
             return storedTheme;
         }
 
-        return 'pink';
+        return 'green';
     }
 </script>
 
@@ -102,7 +102,8 @@
 
         const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
         if (favicon) {
-            favicon.href = theme === 'green' ? '/images/logos/logo-green.svg' : '/images/logos/logo.svg';
+            favicon.href =
+                theme === 'green' ? '/images/logos/logo-green.svg' : '/images/logos/logo.svg';
         }
     }
 
@@ -230,9 +231,11 @@
     :global(
         body.brand-green
             .pricing-brandable
-            img[src*='/images/icons/']:not([src*='/images/logos/']):not([src*='/images/platforms/']):not(
-                [src*='/images/frameworks/']
-            ):not([src*='/images/companies/']):not([src*='/images/company/'])
+            img[src*='/images/icons/']:not([src*='/images/logos/']):not(
+                [src*='/images/platforms/']
+            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
+                [src*='/images/company/']
+            )
     ),
     :global(
         body.brand-green
@@ -242,9 +245,11 @@
     :global(
         body.brand-green
             .pricing-brandable
-            img[src*='/images/docs/']:not([src*='/images/logos/']):not([src*='/images/platforms/']):not(
-                [src*='/images/frameworks/']
-            ):not([src*='/images/companies/']):not([src*='/images/company/'])
+            img[src*='/images/docs/']:not([src*='/images/logos/']):not(
+                [src*='/images/platforms/']
+            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
+                [src*='/images/company/']
+            )
     ),
     :global(
         body.brand-green
@@ -261,7 +266,8 @@
             )
     ),
     :global(
-        body.brand-green img[src*='/images/icons/illustrated/']:not(.no-brand-filter):not(
+        body.brand-green
+            img[src*='/images/icons/illustrated/']:not(.no-brand-filter):not(
                 [src*='/images/logos/']
             ):not([src*='/images/platforms/']):not([src*='/images/frameworks/']):not(
                 [src*='/images/companies/']
@@ -270,16 +276,20 @@
     :global(
         body.brand-green
             .products-brandable
-            img[src*='/images/icons/']:not([src*='/images/logos/']):not([src*='/images/platforms/']):not(
-                [src*='/images/frameworks/']
-            ):not([src*='/images/companies/']):not([src*='/images/company/'])
+            img[src*='/images/icons/']:not([src*='/images/logos/']):not(
+                [src*='/images/platforms/']
+            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
+                [src*='/images/company/']
+            )
     ),
     :global(
         body.brand-green
             .products-brandable
-            img[src*='/images/docs/']:not([src*='/images/logos/']):not([src*='/images/platforms/']):not(
-                [src*='/images/frameworks/']
-            ):not([src*='/images/companies/']):not([src*='/images/company/'])
+            img[src*='/images/docs/']:not([src*='/images/logos/']):not(
+                [src*='/images/platforms/']
+            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
+                [src*='/images/company/']
+            )
     ),
     :global(
         body.brand-green
@@ -324,20 +334,20 @@
     :global(
         body.brand-green
             .pricing-brandable
-            img:not(.no-brand-filter):not([src*='/images/logos/']):not([src*='/images/avatars/']):not(
-                [src*='/images/platforms/']
-            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
-                [src*='/images/company/']
-            )
+            img:not(.no-brand-filter):not([src*='/images/logos/']):not(
+                [src*='/images/avatars/']
+            ):not([src*='/images/platforms/']):not([src*='/images/frameworks/']):not(
+                [src*='/images/companies/']
+            ):not([src*='/images/company/'])
     ),
     :global(
         body.brand-green
             .products-brandable
-            img:not(.no-brand-filter):not([src*='/images/logos/']):not([src*='/images/avatars/']):not(
-                [src*='/images/platforms/']
-            ):not([src*='/images/frameworks/']):not([src*='/images/companies/']):not(
-                [src*='/images/company/']
-            )
+            img:not(.no-brand-filter):not([src*='/images/logos/']):not(
+                [src*='/images/avatars/']
+            ):not([src*='/images/platforms/']):not([src*='/images/frameworks/']):not(
+                [src*='/images/companies/']
+            ):not([src*='/images/company/'])
     ) {
         filter: var(--web-color-image-background-filter);
     }
@@ -345,9 +355,9 @@
     :global(
         body.brand-green
             .blog-content-images
-            img:not(.no-brand-filter):not([src*='/images/platforms/']):not([src*='/images/frameworks/']):not(
-                [src*='/images/companies/']
-            ):not([src*='/images/company/'])
+            img:not(.no-brand-filter):not([src*='/images/platforms/']):not(
+                [src*='/images/frameworks/']
+            ):not([src*='/images/companies/']):not([src*='/images/company/'])
     ) {
         filter: var(--web-color-image-background-filter);
     }

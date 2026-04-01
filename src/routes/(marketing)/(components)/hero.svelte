@@ -35,7 +35,7 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
             <HeroBanner
-                title="Appwrite partners with the world's best database company"
+                title="Introducing Appwrite Arena"
                 href="/blog/post/announcing-appwrite-arena"
             />
 

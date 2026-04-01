@@ -55,7 +55,7 @@
     }
 
     let { variant = 'default', isReferences = false, children }: Props = $props();
-    let brandTheme = $state<'pink' | 'green'>('pink');
+    let brandTheme = $state<'pink' | 'green'>('green');
 
     const variantClasses: Record<DocsLayoutVariant, string> = {
         default: 'web-grid-side-nav max-w-[90rem] mx-auto',

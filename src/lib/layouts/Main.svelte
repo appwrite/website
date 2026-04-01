@@ -27,7 +27,7 @@
     export let omitMainId = false;
     export let hideNavigation = false;
     let theme: 'light' | 'dark' | null = 'dark';
-    let brandTheme: 'pink' | 'green' = 'pink';
+    let brandTheme: 'pink' | 'green' = 'green';
 
     $: darkLogoSrc =
         brandTheme === 'green' ? '/images/logos/appwrite-green.svg' : '/images/logos/appwrite.svg';

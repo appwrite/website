@@ -118,13 +118,7 @@
     class:web-u-sep-block-start={!noBorder}
 >
     <div class="web-footer-nav container">
-        <img
-            class="web-logo"
-            src={logoSrc}
-            alt="appwrite"
-            height="24"
-            width="130"
-        />
+        <img class="web-logo" src={logoSrc} alt="appwrite" height="24" width="130" />
         <ul class="web-footer-nav-main-list" use:melt={$root}>
             {#each Object.entries(links) as [title, items], i (i)}
                 <li class="web-footer-nav-main-item web-is-not-mobile">
