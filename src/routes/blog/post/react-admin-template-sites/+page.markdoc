@@ -4,7 +4,7 @@ title: Build and deploy a CRM dashboard with React Admin on Appwrite Sites
 description: Learn how to deploy the CRM dashboard template powered by React Admin on Appwrite Sites, configure it with your Appwrite project, and customize it to your needs.
 date: 2026-04-03
 cover: /images/blog/react-admin-template-sites/cover.png
-timeToRead: 8
+timeToRead: 5
 author: aditya-oberai
 category: tutorial
 featured: false
