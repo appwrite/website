@@ -188,7 +188,7 @@
             >
             <Button
                 variant="secondary"
-                href={VARS.ARENA_ENDPOINT}
+                href='https://arena.appwrite.io'
                 target="_blank"
                 rel="noopener noreferrer"
                 class="is-full-width-mobile">View full benchmark</Button
