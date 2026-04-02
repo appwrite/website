@@ -39,7 +39,7 @@
             z-index: -1;
             background-image: radial-gradient(
                 ellipse at center,
-                hsl(var(--web-color-pink-500) / 0.09),
+                rgba(253, 54, 110, 0.09),
                 transparent 85%
             );
         }

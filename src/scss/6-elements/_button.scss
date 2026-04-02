@@ -4,7 +4,7 @@
   --m-border-radius: var(--border-radius-small, #{pxToRem(8)});
   --m-border-size: #{pxToRem(1)};
 
-  background: linear-gradient(135deg, hsl(var(--web-color-button-primary)) 0%, hsl(var(--web-color-button-primary)) 61%, hsl(var(--web-color-button-secondary)) 100%);
+  background: linear-gradient(135deg, hsl(var(--web-color-pink-500)) 0%, hsl(var(--web-color-pink-500)) 61%, hsl(var(--web-color-secondary-100)) 100%);
   background-origin: border-box;
   display:flex; inline-size:fit-content; justify-content:center; align-items:center; gap:pxToRem(8);
   padding-inline:pxToRem(14); padding-block:pxToRem(7); min-block-size:pxToRem(40);
@@ -17,17 +17,17 @@
   .#{$p}-inline-tag { margin-inline-end:pxToRem(-2); background:rgba(255, 255, 255, 0.24); }
 
   &:where(:hover):where(:not(#{$disabled})) {
-    box-shadow:0 0 pxToRem(32) 0 hsl(var(--web-color-button-primary) / 0.32);
+    box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.32);
   }
 
   &:where(:active):where(:not(#{$disabled})) {
-    box-shadow:0 0 pxToRem(32) 0 hsl(var(--web-color-button-primary) / 0.24);
+    box-shadow:0 0 pxToRem(32) 0 rgba(253, 54, 110, 0.24);
   }
 
   &:where(:focus-visible) {
-    box-shadow: 0 0 0 pxToRem(4) hsl(var(--web-color-button-primary) / 0.24);
+    box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.24);
     #{$theme-dark} {
-      box-shadow: 0 0 0 pxToRem(4) hsl(var(--web-color-button-primary) / 0.48);
+      box-shadow: 0 0 0 pxToRem(4) rgba(253, 54, 110, 0.48);
     }
   }
   &:where(#{$disabled}) { opacity:0.4; cursor:initial; }
@@ -40,26 +40,26 @@
     @include border-gradient;
 
     .#{$p}-inline-tag {
-      background:hsl(var(--web-color-secondary-100) / 0.10);
-      color:hsl(var(--web-color-button-primary));
+      background:rgba(255, 64, 120, 0.10);
+      color:hsl(var(--web-color-pink-500));
     }
 
 
     @mixin dark-mode {
-      background: hsl(var(--web-color-button-primary) / 0.04);
+      background: rgba(253, 54, 110, 0.04);
       color: hsl(var(--web-color-greyscale-100));
-      box-shadow: 0px -6px 10px 0px hsl(var(--web-color-button-primary) / 0.08) inset;
-      [class*="icon"] { color:hsl(var(--web-color-button-primary)); }
+      box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
+      [class*="icon"] { color:hsl(var(--web-color-pink-500)); }
       .#{$p}-inline-tag {
-        background:hsl(var(--web-color-secondary-100) / 0.24);
+        background:rgba(255, 64, 120, 0.24);
         color:hsl(var(--web-color-greyscale-50));
       }
 
 
         --m-border-gradient-before: linear-gradient(
           to bottom,
-          hsl(var(--web-color-button-primary) / 0.48) 0%,
-          hsl(var(--web-color-button-primary) / 0) 180%
+          rgba(253, 54, 110, 0.48) 0%,
+          rgba(253, 54, 110, 0) 180%
         );
 
 
@@ -72,11 +72,11 @@
 
 
       &:where(:hover):not(:disabled) {
-        background: hsl(var(--web-color-button-primary) / 0.10);
-        box-shadow: 0px -6px 10px 0px hsl(var(--web-color-button-primary) / 0.08) inset;
+        background: rgba(253, 54, 110, 0.10);
+        box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
         --m-border-gradient-before: linear-gradient(
-        180deg, hsl(var(--web-color-button-primary) / 0.64) 0%,
-        hsl(var(--web-color-button-primary) / 0.00) 163.1%
+        180deg, rgba(253, 54, 110, 0.64) 0%,
+        rgba(253, 54, 110, 0.00) 163.1%
         );
         --m-border-gradient-after: radial-gradient(
           42.86% 42.86% at 50.55% 0%,
@@ -87,33 +87,33 @@
       }
 
       &:where(:active):not(:disabled) {
-        background: hsl(var(--web-color-button-primary) / 0.16);
-        box-shadow: 0px -6px 10px 0px hsl(var(--web-color-button-primary) / 0.08) inset;
+        background: rgba(253, 54, 110, 0.16);
+        box-shadow: 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
         --m-border-gradient-before:
-        linear-gradient(180deg, hsl(var(--web-color-button-primary) / 0.64) 0%, hsl(var(--web-color-button-primary) / 0.00) 163.1%);
+        linear-gradient(180deg, rgba(253, 54, 110, 0.64) 0%, rgba(253, 54, 110, 0.00) 163.1%);
         --m-border-gradient-after:
         radial-gradient(42.86% 42.86% at 50.55% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.00) 100%);
       }
 
       &:where(:focus-visible):not(:disabled) {
-        background: hsl(var(--web-color-button-primary) / 0.04);
-        box-shadow: 0px 0px 0px 4px hsl(var(--web-color-button-primary) / 0.16), 0px -6px 10px 0px hsl(var(--web-color-button-primary) / 0.08) inset;
+        background: rgba(253, 54, 110, 0.04);
+        box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.16), 0px -6px 10px 0px rgba(253, 54, 110, 0.08) inset;
       }
     }
 
 
     @mixin light-mode {
-      background: hsl(var(--web-color-button-primary) / 0.08);
+      background: hsla(343, 98%, 60%, 0.08);
       box-shadow: none;
       color: hsl(var(--web-color-accent-click));
       .#{$p}-inline-tag {
-        background:hsl(var(--web-color-secondary-100) / 0.10);
-        color:hsl(var(--web-color-button-primary));
+        background:rgba(255, 64, 120, 0.10);
+        color:hsl(var(--web-color-pink-500));
       }
 
 
         --m-border-gradient-before:
-        linear-gradient(180deg, hsl(var(--web-color-button-primary) / 0.19) 0%, hsl(var(--web-color-button-primary) / 0.48) 100%);
+        linear-gradient(180deg, rgba(253, 54, 110, 0.19) 0%, rgba(253, 54, 110, 0.48) 100%);
 
 
 
@@ -122,15 +122,15 @@
 
 
       &:where(:hover):not(:disabled) {
-        background: hsl(var(--web-color-button-primary) / 0.10);
+        background: rgba(253, 54, 110, 0.10);
       }
 
       &:where(:active):not(:disabled) {
-        background: hsl(var(--web-color-button-primary) / 0.12);
+        background: rgba(253, 54, 110, 0.12);
       }
 
       &:where(:focus-visible):not(:disabled) {
-        box-shadow: 0px 0px 0px 4px hsl(var(--web-color-button-primary) / 0.24);
+        box-shadow: 0px 0px 0px 4px rgba(253, 54, 110, 0.24);
       }
     }
     @include light-mode;
@@ -279,7 +279,7 @@
         flex-shrink:0;
 
         #{$theme-light} & {
-          color:hsl(var(--web-color-button-primary));
+          color:hsl(var(--web-color-pink-500));
         }
 
         #{$theme-dark} & {

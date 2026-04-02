@@ -162,8 +162,4 @@
         max-block-size: unset;
         filter: blur(100px);
     }
-
-    :global(body.brand-green .web-pre-footer-bg) {
-        filter: blur(100px) var(--web-color-image-background-filter);
-    }
 </style>

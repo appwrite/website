@@ -65,9 +65,9 @@
         <div
             class={cn(
                 'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
+                'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
                 'bg-position-[0%_0%]'
             )}
-            style="background-image: radial-gradient(ellipse 390px 50px at 10% 30%, rgba(254, 149, 103, 0.2) 0%, rgba(254, 149, 103, 0) 70%), radial-gradient(ellipse 1100px 170px at 15% 40%, rgb(var(--brand-accent-rgb) / 0.08) 0%, rgb(var(--brand-accent-rgb) / 0) 70%), radial-gradient(ellipse 1200px 180px at 30% 30%, rgb(var(--brand-accent-rgb) / 0.08) 0%, rgb(var(--brand-accent-rgb) / 0) 70%);"
         ></div>
 
         <div
@@ -105,9 +105,10 @@
                     <div class="flex items-center gap-2.5">
                         <span class="text-description text-secondary font-medium">{name}</span>
                         {#if label}
-                            <div class="web-inline-tag is-pink text-caption font-medium">
-                                {label}
-                            </div>
+                            <span
+                                class="bg-accent-200 text-caption rounded-lg px-1.5 py-0.5 font-medium text-white"
+                                >{label}</span
+                            >
                         {/if}
                     </div>
                     <div class="flex flex-1 flex-col">

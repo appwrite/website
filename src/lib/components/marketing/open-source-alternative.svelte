@@ -95,11 +95,7 @@
                 <div
                     class="border-smooth py-10 text-center font-medium last-of-type:border-0 md:border-r md:px-10 md:py-0"
                 >
-                    <img
-                        src={item.icon}
-                        alt={item.title}
-                        class="open-source-alternative-icon mx-auto"
-                    />
+                    <img src={item.icon} alt={item.title} class="mx-auto" />
                     <h3 class="text-sub-body text-primary mt-4 font-medium">{item.title}</h3>
                     <p class="text-sub-body text-secondary mt-2 font-normal">{item.copy}</p>
                 </div>
@@ -107,9 +103,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    :global(body.brand-green .open-source-alternative-icon) {
-        filter: var(--web-color-image-accent-filter);
-    }
-</style>

@@ -42,7 +42,7 @@
         />
         %sveltekit.head%
     </head>
-    <body class="dark brand-green group/body antialiased" data-sveltekit-preload-data="hover">
+    <body class="dark group/body antialiased" data-sveltekit-preload-data="hover">
         <script>
             // Theme
             const isDocs = window.location.pathname.startsWith('/docs');
@@ -62,13 +62,6 @@
                         document.documentElement.style.setProperty('color-scheme', theme);
                     }
                 }
-            }
-
-            // Brand theme
-            var brandTheme = localStorage.getItem('brand-theme');
-            if (brandTheme === 'pink' || brandTheme === 'green') {
-                document.body.classList.remove('brand-pink', 'brand-green');
-                document.body.classList.add('brand-' + brandTheme);
             }
 
             // Progressive enhancement

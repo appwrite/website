@@ -62,7 +62,7 @@
             }}
         />
 
-        <div class="storage-mint-bg !mb-0 bg-right-top bg-no-repeat">
+        <div class="!mb-0 bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.png)]">
             <PreviewFiles />
             <div
                 class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1200px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
@@ -161,7 +161,7 @@
             </div>
         </div>
         <div
-            class="storage-purple-bg web-big-padding-section-level-1 web-white-section light pb-20"
+            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat pb-20"
         >
             <div class="!my-0 py-24 md:py-20">
                 <div class="container">
@@ -207,38 +207,5 @@
 <style lang="scss">
     .l-drop-shadow {
         filter: drop-shadow(0 16px 32px rgb(55 59 77 / 0.04));
-    }
-
-    .storage-mint-bg,
-    .storage-purple-bg {
-        position: relative;
-        isolation: isolate;
-    }
-
-    .storage-mint-bg::before,
-    .storage-purple-bg::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        pointer-events: none;
-        background-repeat: no-repeat;
-    }
-
-    @media (min-width: 48rem) {
-        .storage-mint-bg::before {
-            background-image: url('/images/bgs/mint-gradient.png');
-            background-position: right top;
-        }
-    }
-
-    .storage-purple-bg::before {
-        background-image: url('/images/bgs/purple-gradient.png');
-        background-position: left;
-    }
-
-    :global(body.brand-green .storage-mint-bg::before),
-    :global(body.brand-green .storage-purple-bg::before) {
-        filter: var(--web-color-image-background-filter);
     }
 </style>

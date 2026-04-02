@@ -74,11 +74,7 @@
         <div class="mx-auto grid place-items-center gap-8 md:grid-cols-3">
             {#each items as item}
                 <div class="max-w-[275px] text-center">
-                    <img
-                        src={item.icon}
-                        alt={item.title}
-                        class="open-source-alternative-icon mx-auto"
-                    />
+                    <img src={item.icon} alt={item.title} class="mx-auto" />
                     <h3 class="text-sub-body text-primary mt-4 font-medium">{item.title}</h3>
                     <p class="text-sub-body text-secondary mt-2 font-normal">{item.copy}</p>
                 </div>
@@ -86,9 +82,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    :global(body.brand-green .products-brandable .open-source-alternative-icon) {
-        filter: var(--web-color-image-accent-filter);
-    }
-</style>
