@@ -2,7 +2,7 @@
 layout: post
 title: Build and deploy a CRM dashboard with React Admin on Appwrite Sites
 description: Learn how to deploy the CRM dashboard template powered by React Admin on Appwrite Sites, configure it with your Appwrite project, and customize it to your needs.
-date: 2026-03-18
+date: 2026-04-03
 cover: /images/blog/react-admin-template-sites/cover.png
 timeToRead: 8
 author: aditya-oberai
@@ -40,17 +40,25 @@ The template uses Appwrite TablesDB as its data layer and comes with an automati
 
 To get started, head to [Appwrite Cloud](https://cloud.appwrite.io) and sign in (or [create an account](https://cloud.appwrite.io/console/register) if you haven't already). Create a project, then navigate to the **Sites** page from the left sidebar.
 
+![Create new site](/images/integrations/sites-react-admin/create-site.png)
+
 Click the **Create site** button and select the **Clone a template** option.
+
+![Create new site](/images/integrations/sites-react-admin/clone-template.png)
 
 ## Find the template
 
 On the template listing page, you can filter by **Use case** and select **Dashboard**, or simply search for **React Admin** in the search bar. Click on the **CRM dashboard with React Admin** template to proceed.
 
+![Search templates](/images/integrations/sites-react-admin/search-site.png)
+
 ## Configure site details
 
 You'll be prompted to enter a **Site name** and **Site ID**. The Site ID will be part of your deployment URL, so keep it lowercase with hyphens.
 
-Next, connect a GitHub repository. You can either create a new repository from the template or connect to an existing one.
+![Configure site details](/images/integrations/sites-react-admin/site-details.png)
+
+Next, connect a GitHub repository. You can either create a new repository from the template or connect to an existing one. If you would prefer not to connect a GitHub repository immediately, you can do so at a later point too.
 
 ## Set environment variables
 
@@ -82,6 +90,8 @@ Once everything is configured, update the domain name if you'd like, and click *
 You can watch the deployment logs in real time as the build progresses.
 
 After a successful deployment, you'll see the **Congratulations** page. Click **Visit site** to open your new CRM dashboard, or **Go to dashboard** to view site configuration details.
+
+![Deployment screen](/images/integrations/sites-react-admin/deployment-screen.png)
 
 You can also add a custom domain to your site. Head to your Site's **Settings** > **Domains** in the Appwrite Console and add your domain. Appwrite automatically provisions SSL certificates for secure HTTPS access.
 
