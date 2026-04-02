@@ -23,9 +23,9 @@
     <div
         class={cn(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
-            'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
             'bg-position-[0%_0%]'
         )}
+        style="background-image: radial-gradient(ellipse 390px 50px at 10% 30%, rgba(254, 149, 103, 0.2) 0%, rgba(254, 149, 103, 0) 70%), radial-gradient(ellipse 1100px 170px at 15% 40%, rgb(var(--brand-accent-rgb) / 0.08) 0%, rgb(var(--brand-accent-rgb) / 0) 70%), radial-gradient(ellipse 1200px 180px at 30% 30%, rgb(var(--brand-accent-rgb) / 0.08) 0%, rgb(var(--brand-accent-rgb) / 0) 70%);"
     ></div>
 
     <div
@@ -35,8 +35,9 @@
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
             <HeroBanner
-                title="Introducing Appwrite Arena"
-                href="/blog/post/announcing-appwrite-arena"
+                title="Appwrite partners with the world's best database company"
+                href="/blog/post/appwrite-mongodb-partnership-self-hosted"
+                icon="mongo"
             />
 
             <GradientText class="animate-fade-in">
@@ -60,7 +61,9 @@
                 <AppwriteIn100Seconds />
             </div>
         </div>
-        <Dashboard />
+        <div class="brand-dashboard">
+            <Dashboard />
+        </div>
         <!--
         Console image variation (disabled for now)
         <div
@@ -81,3 +84,9 @@
         -->
     </div>
 </div>
+
+<style>
+    :global(body.brand-green .brand-dashboard) {
+        filter: hue-rotate(155deg) saturate(1.06) brightness(0.98);
+    }
+</style>

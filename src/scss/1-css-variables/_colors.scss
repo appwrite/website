@@ -35,7 +35,7 @@
     --web-color-border: var(--web-color-subtle);
   }
   
-  /* pink */
+  /* brand accent (pink by default) */
   --web-color-pink-hue: 343;
   --web-color-pink-200: var(--web-color-pink-hue) 98% 84%;
   --web-color-pink-500: var(--web-color-pink-hue) 98% 60%; /* #FD366E */
@@ -82,6 +82,14 @@
   --web-color-secondary-hue: 351;
   --web-color-secondary-100: var(--web-color-secondary-hue) 99% 66%; /* #FE536D */
 
+  /* brand helpers for glow, gradients and image tinting */
+  --web-color-brand-rgb: 253 54 110;
+  --web-color-brand-soft-rgb: 255 64 120;
+  --web-color-image-accent-filter: none;
+  --web-color-image-background-filter: none;
+  --web-color-button-primary: var(--web-color-pink-500);
+  --web-color-button-secondary: var(--web-color-secondary-100);
+
   /* greyscale */
   --web-color-white:    0 0% 100%;
   --web-color-greyscale-25:   240 11% 98%;
@@ -103,6 +111,33 @@
   @include color-light; /* default */
   #{$theme-light} { @include color-light; }
   #{$theme-dark} { @include color-dark; }
+}
+
+body.brand-pink {
+  --web-color-pink-hue: 343;
+  --web-color-secondary-hue: 351;
+  --web-color-brand-rgb: 253 54 110;
+  --web-color-brand-soft-rgb: 255 64 120;
+  --web-color-image-accent-filter: none;
+  --web-color-image-background-filter: none;
+  --web-color-button-primary: var(--web-color-pink-500);
+  --web-color-button-secondary: var(--web-color-secondary-100);
+}
+
+body.brand-green {
+  --web-color-pink-hue: 151;
+  --web-color-secondary-hue: 165;
+  --web-color-pink-500: 151 72% 38%;
+  --web-color-pink-600: 151 66% 32%;
+  --web-color-accent: var(--web-color-pink-500);
+  --web-color-accent-darker: var(--web-color-pink-600);
+  --web-color-accent-click: var(--web-color-pink-500);
+  --web-color-brand-rgb: 15 166 95;
+  --web-color-brand-soft-rgb: 56 214 140;
+  --web-color-image-accent-filter: hue-rotate(155deg) saturate(1.08) brightness(0.98);
+  --web-color-image-background-filter: hue-rotate(155deg) saturate(1.04) brightness(0.96);
+  --web-color-button-primary: 151 74% 36%;
+  --web-color-button-secondary: 165 78% 42%;
 }
 
 .#{$p}-u-color-text-primary { color:hsl(var(--web-color-primary))!important; }

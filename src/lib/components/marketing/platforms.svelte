@@ -122,7 +122,7 @@
                                         <img
                                             src={platform.icon}
                                             alt={platform.name}
-                                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                            class="no-brand-filter h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
                                         />
 
                                         <div

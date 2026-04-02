@@ -136,10 +136,7 @@
                                     type="checkbox"
                                     aria-label={`role ${label} ${headings[i].toLowerCase()}`}
                                     checked={option}
-                                    class={cn(
-                                        'checkbox peer size-4 cursor-pointer appearance-none rounded-sm border-0 bg-white/12 backdrop-blur-lg transition-all duration-100 md:size-5 md:rounded',
-                                        'checked:bg-pink-500'
-                                    )}
+                                    class="checkbox peer size-4 cursor-pointer appearance-none rounded-sm border-0 bg-white/12 backdrop-blur-lg transition-all duration-100 md:size-5 md:rounded"
                                     on:change={() => {
                                         permissions.update((permissions) => {
                                             permissions[index].options[i] =
@@ -180,5 +177,9 @@
             hsl(0, 0%, 100%, 0.16),
             hsl(0, 0%, 100%, 0)
         );
+
+        &:checked {
+            background-color: hsl(var(--web-color-pink-500));
+        }
     }
 </style>

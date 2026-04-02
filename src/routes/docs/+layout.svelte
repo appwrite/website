@@ -12,4 +12,6 @@
     });
 </script>
 
-{@render children()}
+<div class="docs-brandable">
+    {@render children()}
+</div>
