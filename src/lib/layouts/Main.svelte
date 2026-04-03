@@ -21,8 +21,7 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
-    import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
+    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -169,6 +168,7 @@
 </script>
 
 <div class="relative contents h-full">
+    <MongoPartnershipBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
