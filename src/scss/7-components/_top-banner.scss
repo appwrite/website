@@ -13,7 +13,7 @@
 
   &--mongodb {
     /* MongoDB theme: bright leaf green bar, dark navy copy (matches brand samples) */
-    background: #00ed64;
+    background: #001e2b;
     padding-block: pxToRem(14);
     padding-inline: pxToRem(20);
 
@@ -22,7 +22,7 @@
       align-items: center;
       justify-content: center;
       gap: pxToRem(8);
-      color: #001e2b;
+      color: #00ed64;
 
       a {
         display: inline-flex;
