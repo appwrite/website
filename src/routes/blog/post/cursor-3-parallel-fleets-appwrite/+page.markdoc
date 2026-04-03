@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Parallel Fleets and Agent Skills: Why Cursor 3 is a Game-Changer for Appwrite Developers"
-description: Cursor 3 brings an agent-first IDE, cloud agents, skills and MCP, best-of-n judging, and an integrated browser - here is how it pairs with an Appwrite workflow.
+title: "Cursor 3: parallel agents, Cloud Agents, Skills, and MCP"
+description: An overview of Cursor 3 - agent-first layout, Cloud Agents, the Skills marketplace and MCP, best-of-n judging, and the integrated browser - with notes on using it alongside Appwrite.
 date: 2026-04-03
 cover: /images/blog/cursor-3-parallel-fleets-appwrite/cover.png
 timeToRead: 8
@@ -48,7 +48,7 @@ Cursor 3 includes a built-in browser and component tree. You can move elements, 
 
 To try the new experience, ensure you have updated to the latest version and use the following shortcuts:
 
-- **Open Agents Window:** `Cmd+Shift+P` - `Agents Window`
+- **Open Agents Window:** `Cmd+Shift+P` → `Agents Window`
 - **Switch to Plan Mode:** `/plan` (great for mapping out Appwrite Function logic)
 - **Invoke Appwrite Skill:** Use the slash command menu in chat.
 
