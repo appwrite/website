@@ -75,14 +75,14 @@ Create a table called **rides** (ID: `rides`) with the following columns:
 | --- | --- | --- |
 | `riderId` | varchar(255) | Yes |
 | `driverId` | varchar(255) | No |
-| `pickupLocation` | point | Yes |
-| `dropLocation` | point | Yes |
 | `pickupAddress` | varchar(512) | Yes |
 | `dropAddress` | varchar(512) | Yes |
-| `status` | enum [pending, accepted, riding, completed, cancelled] | Yes |
 | `otp` | varchar(6) | Yes |
+| `pickupLocation` | point | Yes |
+| `dropLocation` | point | Yes |
 | `driverLocation` | point | No |
 | `riderLocation` | point | No |
+| `status` | enum [pending, accepted, riding, completed, cancelled] | Yes |
 
 Add three indexes:
 - A **key** index on `status`, `riderId`, and `driverId` for filtering rides by state
