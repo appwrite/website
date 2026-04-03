@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Cursor 3: parallel agents, cloud agents, skills, and MCP"
-description: An overview of Cursor 3 - agent-first layout, cloud agents, the skills marketplace and MCP, best-of-n judging, and the integrated browser - with notes on using it alongside Appwrite.
+description: An overview of Cursor 3 - agent-first layout, cloud agents, the skills marketplace and MCP, and the integrated browser - with notes on using it alongside Appwrite.
 date: 2026-04-03
 cover: /images/blog/cursor-3-parallel-fleets-appwrite/cover.png
-timeToRead: 8
+timeToRead: 7
 author: eldad-fux
 category: integrations
 featured: false
@@ -34,13 +34,7 @@ Appwrite recently introduced **Appwrite Skills** - open-source Markdown files th
 - **Context precision:** Agents in Cursor 3 now discover and load these skills only when needed, reducing token waste and preventing the "hallucination" of old SDK methods.
 - **CLI integration:** You can manage these directly from the new Cursor CLI using `/mcp enable` or `/rules`.
 
-## 4. "Best-of-n" judging
-
-When you are dealing with something as critical as backend security or data modeling, you want the best possible implementation. Cursor 3 introduces `/best-of-n`. This command runs the same task across multiple models (for example, Claude 3.7, GPT-4.5, and Composer 2) in isolated Git worktrees. A "Parent Agent" then evaluates all results and recommends the best one based on your project's specific constraints.
-
-> **Pro tip:** Use this when implementing **Appwrite permissions**. Ask Cursor to `/best-of-n` the most secure way to implement Document Level Permissions for a multi-tenant app, and let the agents argue over the best architecture before you merge.
-
-## 5. The integrated browser & style editor
+## 4. The integrated browser & style editor
 
 Cursor 3 includes a built-in browser and component tree. You can move elements, update colors, and test layouts in real-time. The agent then instantly applies those CSS or React changes to your codebase. For those using **Appwrite Realtime**, this makes debugging live state changes incredibly visual. You can watch your UI update as the agent tweaks the subscription listeners in the background.
 
