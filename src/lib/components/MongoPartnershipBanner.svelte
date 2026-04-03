@@ -5,7 +5,7 @@
 <div class="web-top-banner web-top-banner--mongodb">
     <div class="web-top-banner-content">
         <a
-            href="/integrations/query-mongodb"
+            href="/blog/post/appwrite-mongodb-partnership-self-hosted"
             data-sveltekit-preload-data="hover"
             onclick={() => trackEvent('top-banner_mongodb-partnership-click')}
         >
