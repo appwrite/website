@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Parallel Fleets and Agent Skills: Why Cursor 3 is a Game-Changer for Appwrite Developers"
-description: Cursor 3 brings an agent-first IDE, cloud agents, skills and MCP, best-of-n judging, and an integrated browser—here is how it pairs with an Appwrite workflow.
+description: Cursor 3 brings an agent-first IDE, cloud agents, skills and MCP, best-of-n judging, and an integrated browser - here is how it pairs with an Appwrite workflow.
 date: 2026-04-03
 cover: /images/blog/cursor-3-parallel-fleets-appwrite/cover.png
 timeToRead: 8
@@ -10,7 +10,7 @@ category: integrations
 featured: false
 ---
 
-If you have been following the AI code editor space, you know that the "autocomplete" era is officially behind us. This week, the team at Cursor dropped **Cursor 3**, and it is not just a minor version bump—it is a complete reimagining of the IDE.
+If you have been following the AI code editor space, you know that the "autocomplete" era is officially behind us. This week, the team at Cursor dropped **Cursor 3**, and it is not just a minor version bump - it is a complete reimagining of the IDE.
 
 For Appwrite developers, who are already used to "building like a team of hundreds" by offloading backend complexity, Cursor 3 is the perfect companion. It moves the needle from "AI that helps you write code" to "AI that helps you manage a fleet of developers."
 
@@ -22,9 +22,9 @@ Here is everything you need to know about Cursor 3 and how it integrates with yo
 
 Cursor 3 has moved away from the classic VS Code layout. It is now a **unified workspace** designed around **Agents**.
 
-Instead of opening a single chat window, you now have an **Agents Window** (`Cmd+Shift+P` → `Agents Window`). This allows you to run multiple agents in parallel across different repositories.
+Instead of opening a single chat window, you now have an **Agents Window** (`Cmd+Shift+P` - `Agents Window`). This allows you to run multiple agents in parallel across different repositories.
 
-> **Appwrite Impact:** Imagine having one agent refactoring your Appwrite Functions in your `/backend` repo while another agent builds out the new Auth UI in your `/frontend` repo—simultaneously. You are not waiting for the AI to finish one task to start the next; you are orchestrating a team.
+> **Appwrite Impact:** Imagine having one agent refactoring your Appwrite Functions in your `/backend` repo while another agent builds out the new Auth UI in your `/frontend` repo - simultaneously. You are not waiting for the AI to finish one task to start the next; you are orchestrating a team.
 
 ---
 
@@ -41,7 +41,7 @@ One of the most significant additions is the ability to hand off tasks to **Clou
 
 ## 3. Native Appwrite Skills & MCP
 
-Appwrite recently introduced **Appwrite Skills**—open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs.
+Appwrite recently introduced **Appwrite Skills** - open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs.
 
 Cursor 3 introduces a **Marketplace** for these types of skills and **Model Context Protocol (MCP)** servers.
 
@@ -72,7 +72,7 @@ For those using **Appwrite Realtime**, this makes debugging live state changes i
 
 To try the new experience, ensure you have updated to the latest version and use the following shortcuts:
 
-- **Open Agents Window:** `Cmd+Shift+P` → `Agents Window`
+- **Open Agents Window:** `Cmd+Shift+P` - `Agents Window`
 - **Switch to Plan Mode:** `/plan` (great for mapping out Appwrite Function logic)
 - **Invoke Appwrite Skill:** Use the slash command menu in chat.
 
