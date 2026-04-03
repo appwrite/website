@@ -827,5 +827,9 @@
     {
         "link": "/docs/tooling/mcp/zenflow",
         "redirect": "/docs/tooling/ai/ai-dev-tools/zenflow"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools",
+        "redirect": "/docs/tooling/ai/"
     }
 ]

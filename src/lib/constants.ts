@@ -41,7 +41,7 @@ export const SOCIAL_STATS: SocialStats = {
     }
 };
 
-export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
+export const BANNER_KEY: Banners = 'mongodb-partnership-banner-01'; // Change key to force banner to show again
 
 export const BLOG_POSTS_PER_PAGE = 12;
 
@@ -50,8 +50,13 @@ export const BLOG_POSTS_PER_PAGE = 12;
  * discord-banner-01
  * init-banner-02
  * pricing-banner-01
+ * mongodb-partnership-banner-01
  */
-type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
+type Banners =
+    | 'discord-banner-01'
+    | 'init-banner-02'
+    | 'pricing-banner-01'
+    | 'mongodb-partnership-banner-01';
 
 export type Social = {
     icon: string;
