@@ -6,7 +6,7 @@
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import Dashboard from './dashboard.svelte';
-    // import HeroBanner from './hero-banner.svelte';
+    import HeroBanner from './hero-banner.svelte';
 
     type Props = {
         title?: string;
@@ -34,11 +34,11 @@
         <div
             class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
         >
-            <!-- <HeroBanner
+            <HeroBanner
                 title="Appwrite partners with the world's best database company"
                 href="/blog/post/appwrite-mongodb-partnership-self-hosted"
                 icon="mongo"
-            /> -->
+            />
 
             <GradientText class="animate-fade-in">
                 <h1 class="font-aeonik-pro text-headline text-pretty">
