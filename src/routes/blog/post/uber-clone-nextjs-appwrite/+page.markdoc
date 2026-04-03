@@ -2,7 +2,7 @@
 layout: post
 title: Build an Uber clone with geo queries and realtime
 description: Learn how to build a real-time ride-hailing app using Appwrite's geo queries and realtime features with Next.js and Leaflet maps.
-date: 2026-04-06
+date: 2026-04-03
 cover: /images/blog/uber-clone-nextjs-appwrite/cover.png
 timeToRead: 15
 author: atharva
@@ -131,9 +131,9 @@ export const DRIVER_LOCATIONS_TABLE_ID = 'driver-locations';
 export const RIDES_TABLE_ID = 'rides';
 ```
 
-## Appwrite client setup
+## Initialize the Appwrite SDK
 
-Create `src/lib/appwrite.ts` with the SDK client and service instances:
+Create `src/lib/appwrite.ts` to set up the client SDK with your project credentials:
 
 ```ts
 'use client';
@@ -231,7 +231,7 @@ export function toAppwrite(point: [number, number]): [number, number] {
 }
 ```
 
-This is a common gotcha when working with geo data. GeoJSON and most databases (including Appwrite) use longitude-first ordering, while Leaflet and most human-readable formats use latitude-first. Mixing them up will place your markers in the ocean.
+This is a common source of bugs when working with geo data. GeoJSON and most databases (including Appwrite) use longitude-first ordering, while Leaflet and most human-readable formats use latitude-first. Mixing them up will place your markers in the ocean.
 
 # Geo queries: finding nearby rides
 
@@ -271,7 +271,8 @@ export async function createRideAction(
   dropAddress: string
 ) {
   const tablesDB = getAdminClient();
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const crypto = require('crypto');
+  const otp = crypto.randomInt(100000, 1000000).toString();
 
   const row = await tablesDB.createRow({
     databaseId: DATABASE_ID,
@@ -290,16 +291,15 @@ export async function createRideAction(
       riderLocation: null,
     },
     permissions: [
-      Permission.read(Role.user(riderId)),
-      Permission.update(Role.user(riderId)),
       Permission.read(Role.users()),
+      Permission.update(Role.user(riderId)),
     ],
   });
   return JSON.parse(JSON.stringify(row));
 }
 ```
 
-The `permissions` array scopes access: all authenticated users can read the ride (so drivers find it via the geo query), but only the rider can update it. When a driver accepts, the server action updates the permissions to include them.
+The `permissions` array gives all authenticated users read access (so drivers can find pending rides via the geo query), but only the rider can update it. When a driver accepts, the server action updates the permissions to include them.
 
 The `pickupLocation` and `dropLocation` values are `[longitude, latitude]` arrays. Appwrite stores them as native point types, which the spatial index can operate on.
 
@@ -321,7 +321,7 @@ When a driver goes online, a server action stores (or updates) their location ev
 // src/app/actions/driver-locations.ts
 'use server';
 
-import { Client, TablesDB, Permission, Role } from 'node-appwrite';
+import { Client, TablesDB, Permission, Role, AppwriteException } from 'node-appwrite';
 
 export async function updateDriverLocationAction(
   driverId: string,
@@ -336,7 +336,11 @@ export async function updateDriverLocationAction(
       rowId: driverId,
       data: { driverId, location, available },
     });
-  } catch {
+  } catch (error) {
+    // Only create on 404 (row not found), re-throw other errors
+    if (!(error instanceof AppwriteException) || error.code !== 404) {
+      throw error;
+    }
     await tablesDB.createRow({
       databaseId: DATABASE_ID,
       tableId: DRIVER_LOCATIONS_TABLE_ID,
@@ -406,34 +410,55 @@ When a pending ride is within range, the driver sees the pickup and drop-off add
 
 ## Accepting a ride
 
-When a driver accepts a ride, a server action checks that the ride is still pending, updates the status, and narrows the permissions so only the rider and assigned driver can access it:
+When a driver accepts a ride, two drivers could try to accept the same ride at the same time. To prevent this, we wrap the update in an Appwrite [transaction](/docs/products/databases/transactions). If another driver modifies the row between staging and commit, the commit fails with a conflict error:
 
 ```ts
 export async function acceptRideAction(rideId: string, driverId: string) {
   const tablesDB = getAdminClient();
-  const current = await tablesDB.getRow({
-    databaseId: DATABASE_ID,
-    tableId: RIDES_TABLE_ID,
-    rowId: rideId,
-  });
 
-  if (current.status !== 'pending') {
+  // Use a transaction to prevent two drivers accepting the same ride
+  const tx = await tablesDB.createTransaction();
+
+  try {
+    // Stage the update within the transaction
+    await tablesDB.updateRow({
+      databaseId: DATABASE_ID,
+      tableId: RIDES_TABLE_ID,
+      rowId: rideId,
+      data: { driverId, status: 'accepted' },
+      permissions: [
+        Permission.read(Role.user(driverId)),
+        Permission.update(Role.user(driverId)),
+        Permission.read(Role.users()),
+        Permission.update(Role.users()),
+      ],
+      transactionId: tx.$id,
+    });
+
+    // Commit - fails with conflict if the row was modified by another driver
+    await tablesDB.updateTransaction({
+      transactionId: tx.$id,
+      commit: true,
+    });
+
+    const row = await tablesDB.getRow({
+      databaseId: DATABASE_ID,
+      tableId: RIDES_TABLE_ID,
+      rowId: rideId,
+    });
+    return JSON.parse(JSON.stringify(row));
+  } catch {
+    // Roll back on any failure (conflict or otherwise)
+    try {
+      await tablesDB.updateTransaction({
+        transactionId: tx.$id,
+        rollback: true,
+      });
+    } catch {
+      // Transaction may have already expired
+    }
     throw new Error('Ride is no longer available');
   }
-
-  const row = await tablesDB.updateRow({
-    databaseId: DATABASE_ID,
-    tableId: RIDES_TABLE_ID,
-    rowId: rideId,
-    data: { driverId, status: 'accepted' },
-    permissions: [
-      Permission.read(Role.user(current.riderId as string)),
-      Permission.update(Role.user(current.riderId as string)),
-      Permission.read(Role.user(driverId)),
-      Permission.update(Role.user(driverId)),
-    ],
-  });
-  return JSON.parse(JSON.stringify(row));
 }
 ```
 
@@ -581,7 +606,15 @@ When the driver is close enough to the drop-off, the "End Ride" button activates
 
 # Next steps
 
-- [Read the geo queries documentation](/docs/products/databases/queries#geo-queries)
-- [Read the realtime documentation](/docs/apis/realtime)
-- [Explore Appwrite Databases](/docs/products/databases)
-- [Explore Appwrite Authentication](/docs/products/auth)
+You now have a working ride-hailing app that uses geo queries to match riders and drivers and realtime to keep both sides in sync. These two features combine to solve a problem that traditionally requires specialized infrastructure, and Appwrite makes it possible with a few queries and a subscription call.
+
+The full source code is available on GitHub at [appwrite-community/uber-clone](https://github.com/appwrite-community/uber-clone). Clone it, swap in your project credentials, and start building on top of it.
+
+To go deeper into the features used in this tutorial:
+
+- [Geo queries](/docs/products/databases/geo-queries)
+- [Realtime](/docs/apis/realtime)
+- [Transactions](/docs/products/databases/transactions)
+- [Databases](/docs/products/databases)
+- [Authentication](/docs/products/auth)
+- [Join the Appwrite Discord](https://appwrite.io/discord)
