@@ -188,7 +188,7 @@
             >
             <Button
                 variant="secondary"
-                href='https://arena.appwrite.io'
+                href="https://arena.appwrite.io"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="is-full-width-mobile">View full benchmark</Button
