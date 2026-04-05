@@ -31,9 +31,9 @@ One of the most significant additions is the ability to hand off tasks to **Clou
 
 ## 3. Native Appwrite skills & MCP
 
-Appwrite recently introduced **Appwrite Skills** - open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Cursor 3 introduces a **Marketplace** for these types of skills and **Model Context Protocol (MCP)** servers.
+Appwrite recently introduced **Appwrite Skills** - open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Cursor 3 introduces a **Marketplace** for these types of skills and **Model Context Protocol (MCP)** servers. You can find the **Appwrite plugin** in the [Cursor Marketplace](https://cursor.com/marketplace/appwrite).
 
-![Cursor chat slash menu listing Appwrite skills, commands, and Ask, Debug, and Plan modes.](/images/blog/cursor-3-parallel-fleets-appwrite/cursor-slash-skills-modes.png)
+![Appwrite plugin in the Cursor Marketplace showing available MCPs, skills, and commands.](/images/blog/cursor-3-parallel-fleets-appwrite/cursor-slash-skills-modes.png)
 
 - **Context precision:** Agents in Cursor 3 now discover and load these skills only when needed, reducing token waste and preventing the "hallucination" of old SDK methods.
 - **CLI integration:** You can manage these directly from the new Cursor CLI using `/mcp enable` or `/rules`.
