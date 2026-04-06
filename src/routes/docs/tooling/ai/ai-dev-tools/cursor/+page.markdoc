@@ -171,7 +171,7 @@ Open Cursor Agent and test your MCP integrations. You can try out the following 
 - `Create a new user in my Appwrite project`
 - `List all databases in my project`
 - `Show me the tables in my database`
-- `Create a new document in my table`
+- `Create a new row in my table`
 - `Delete a specific user by ID`
 
 {% /tabsitem %}
