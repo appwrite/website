@@ -4,24 +4,7 @@ title: Cursor
 description: Learn how to use Cursor with Appwrite through the Appwrite plugin, quick start prompts, and MCP servers for AI-assisted development.
 ---
 
-{% section #quick-start-prompts step=1 title="Quick start prompts" %}
-
-Get started quickly with these pre-built prompts for common Appwrite integrations:
-
-{% cards %}
-{% cards_item href="/docs/tooling/ai/quickstart-prompts/nextjs" title="Next.js" icon="icon-nextjs" %}
-{% /cards_item %}
-{% cards_item href="/docs/tooling/ai/quickstart-prompts/tanstack-start" title="TanStack Start" icon="web-icon-tanstack" %}
-{% /cards_item %}
-{% /cards %}
-
-{% arrow_link href="/docs/tooling/ai/quickstart-prompts" %}
-Browse all quick start prompts
-{% /arrow_link %}
-
-{% /section %}
-
-{% section #install-plugin step=2 title="Install the Appwrite plugin" %}
+{% section #install-plugin step=1 title="Install the Appwrite plugin" %}
 
 The fastest way to get started with Appwrite in Cursor is to install the **Appwrite plugin** from the Cursor Marketplace. The plugin includes agent skills, MCP servers, and commands, giving Cursor's AI agents everything they need to work with your Appwrite projects.
 
@@ -42,9 +25,26 @@ If you'd rather configure MCP servers individually, skip to [Step 3](#step-3).
 
 {% /section %}
 
+{% section #quick-start-prompts step=2 title="Quick start prompts" %}
+
+Get started quickly with these pre-built prompts for common Appwrite integrations:
+
+{% cards %}
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/nextjs" title="Next.js" icon="icon-nextjs" %}
+{% /cards_item %}
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/tanstack-start" title="TanStack Start" icon="web-icon-tanstack" %}
+{% /cards_item %}
+{% /cards %}
+
+{% arrow_link href="/docs/tooling/ai/quickstart-prompts" %}
+Browse all quick start prompts
+{% /arrow_link %}
+
+{% /section %}
+
 {% section #step-3 step=3 title="Add MCP servers manually" %}
 
-If you installed the Appwrite plugin in [Step 2](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
+If you installed the Appwrite plugin in [Step 1](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
 
 Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation.
 
@@ -170,8 +170,8 @@ Open Cursor Agent and test your MCP integrations. You can try out the following 
 
 - `Create a new user in my Appwrite project`
 - `List all databases in my project`
-- `Show me the collections in my database`
-- `Create a new document in my collection`
+- `Show me the tables in my database`
+- `Create a new document in my table`
 - `Delete a specific user by ID`
 
 {% /tabsitem %}
