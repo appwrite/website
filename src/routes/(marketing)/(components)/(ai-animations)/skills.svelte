@@ -18,7 +18,7 @@
     const QUERY = "Store the user's profile avatar image";
 
     const skills = [
-        'createDocument',
+        'createRow',
         'uploadFile',
         'getUser',
         'listFiles',
