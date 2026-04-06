@@ -14,7 +14,7 @@
         },
         {
             question: 'What does the Education plan offer?',
-            answer: 'The Education plan allows members to create 10 projects with equal usage limits as the Appwrite Pro plan (minus email support) at no cost. We also have a special channel for Education program members in the Appwrite Discord server for support, which will feature exclusive events, hackathons, etc.'
+            answer: 'Students with access to the Education plan can create 10 projects with equal usage limits as the Appwrite Pro plan (minus email support) at no cost. We also have a special channel for Education program members in the Appwrite Discord server for support, which will feature exclusive events, hackathons, etc.'
         },
         {
             question: 'Who is eligible to apply?',
