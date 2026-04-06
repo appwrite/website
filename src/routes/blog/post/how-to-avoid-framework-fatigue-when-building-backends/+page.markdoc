@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'How to avoid "framework fatigue" when building backends'
+title: How to avoid "framework fatigue" when building backends
 description: Avoid framework fatigue when building backends. Learn how to choose stable tools, reduce stack complexity, and ship faster without constantly switching frameworks.
 date: 2026-04-09
 cover: /images/blog/how-to-avoid-framework-fatigue-when-building-backends/cover.png
