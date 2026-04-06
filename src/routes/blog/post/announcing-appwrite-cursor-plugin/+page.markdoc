@@ -10,15 +10,15 @@ category: announcement
 featured: false
 ---
 
-Earlier this year, we launched [Appwrite Skills](/docs/tooling/ai/skills), open source markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Skills solved a real problem: agents were generating Appwrite code that looked right but used wrong method signatures, outdated patterns, or missing parameters. With skills installed, agents generate correct, idiomatic Appwrite code without needing documentation pasted into every prompt.
+Earlier this year, we launched [Appwrite Skills](/docs/tooling/ai/skills), open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Skills solved a real problem: agents were generating Appwrite code that looked right but used the wrong method signatures, outdated patterns, or missing parameters. With skills installed, agents generate correct, idiomatic Appwrite code without needing documentation pasted into every prompt.
 
-Today, we are taking that a step further. We are launching the **Appwrite plugin for Cursor**.
+Today, we are taking a step further.
 
-The Appwrite plugin bundles everything your AI agents need to work with Appwrite into a single install. Instead of manually configuring MCP servers and installing skills separately, you just visit the [Cursor Marketplace](https://cursor.com/marketplace/appwrite), click a button, and your agents are ready to build.
+# Introducing the Appwrite plugin for Cursor
 
-# What is included
+The Appwrite plugin for Cursor bundles all the tools your AI agents need to work with Appwrite into a single installation. Instead of manually configuring MCP servers and installing skills separately, you visit the [Cursor Marketplace](https://cursor.com/marketplace/appwrite), click a button, and your agents are ready to build with Appwrite.
 
-The Appwrite plugin packages three types of resources into one install:
+The plugin packages three types of resources into one install:
 
 ## 10 agent skills
 
@@ -32,13 +32,13 @@ The plugin includes both the Appwrite API MCP server and the Appwrite Docs MCP s
 
 Built-in commands for deploying functions and sites using the Appwrite CLI, directly from the agent chat.
 
-# Why use the plugin
+# Why developers should use the plugin
 
-Before the plugin, setting up Appwrite in Cursor meant manually adding MCP server configurations, installing skills separately, and making sure everything was wired up correctly. It worked, but it was friction that slowed you down.
+Before the plugin, setting up Appwrite in Cursor required manually adding MCP server configurations, installing agent skills separately, and wiring everything together. While it worked, it added unnecessary friction to the initial setup experience.
 
-The plugin removes that friction entirely:
+The plugin removes this friction entirely:
 
-- **One-click install**: Visit the marketplace, sign in, and the plugin appears in your editor. No config files to edit.
+- **One-click install**: Visit the marketplace, sign in, and the plugin appears in your editor. No config files need to be edited.
 - **Everything in one place**: Skills, MCP servers, and commands are bundled together and stay in sync.
 - **Automatic skill discovery**: Cursor's agents load the right skill for your language and framework without you needing to specify anything.
 
@@ -48,10 +48,10 @@ Installing the plugin takes less than a minute:
 
 1. Visit the [Appwrite plugin](https://cursor.com/marketplace/appwrite) on the Cursor Marketplace.
 2. Sign in with your Cursor account.
-3. Click **Add to Cursor**.
+3. Click on **Add to Cursor**.
 4. The plugin will be added to your editor automatically.
 
-Once installed, open an agent chat and start building. Try a prompt like `Create a new Appwrite project with auth enabled and a users collection` and watch the agent use the right SDK patterns, API calls, and best practices without any extra setup.
+Once installed, open an agent chat and start building. Try a prompt like `Create a new Appwrite project with auth enabled and a users table` and watch the agent use the right SDK patterns, API calls, and best practices without any extra setup.
 
 # Resources
 

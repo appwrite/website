@@ -44,7 +44,7 @@ If you'd rather configure MCP servers individually, skip to [Step 3](#step-3).
 
 {% section #step-3 step=3 title="Add MCP servers manually" %}
 
-If you installed the Appwrite plugin in [Step 2](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4). Follow these steps if you prefer to configure MCP servers manually.
+If you installed the Appwrite plugin in [Step 2](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
 
 Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation.
 
