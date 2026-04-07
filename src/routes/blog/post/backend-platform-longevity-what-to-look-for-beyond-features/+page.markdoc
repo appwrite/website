@@ -68,7 +68,7 @@ This is the most important escape hatch for long-term platform decisions. If a v
 
 A platform that is open source in name but restricts self-hosting in its license, or requires proprietary plugins for essential features, does not provide this escape hatch. Verify the actual license terms, not just the marketing claim of being "open source."
 
-For teams building applications with data residency requirements or compliance obligations, self-hosting is often a hard requirement. See how this intersects with [vendor lock-in trade-offs when evaluating backend tools](/blog/post/evaluate-backend-tools-no-lock-in).
+For teams building applications with data residency requirements or compliance obligations, self-hosting is often a hard requirement.
 
 ## Data portability
 
