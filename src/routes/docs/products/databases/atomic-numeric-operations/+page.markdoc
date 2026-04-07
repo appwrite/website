@@ -145,7 +145,7 @@ result = tablesDB.increment_row_column(
 )
 ```
 ```rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 
 let client = Client::new()
@@ -299,7 +299,7 @@ result = tablesDB.decrement_row_column(
 )
 ```
 ```rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 
 let client = Client::new()

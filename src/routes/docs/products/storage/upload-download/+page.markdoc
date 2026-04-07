@@ -151,7 +151,7 @@ You can also upload files programmatically using our SDKs:
   ```
 
   ```server-rust
-  use appwrite::client::Client;
+  use appwrite::Client;
   use appwrite::services::storage::Storage;
   use appwrite::input_file::InputFile;
 

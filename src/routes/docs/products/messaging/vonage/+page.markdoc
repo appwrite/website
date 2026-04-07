@@ -324,7 +324,7 @@ let message = try await messaging.createSms(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]
@@ -616,7 +616,7 @@ let provider = try await messaging.updateVonageProvider(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]

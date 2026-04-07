@@ -273,7 +273,7 @@ let target = try await users.createTarget(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::users::Users;
 use appwrite::enums::messaging_provider_type::MessagingProviderType;
 
@@ -487,7 +487,7 @@ let topic = try await messaging.createTopic(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]
@@ -741,7 +741,7 @@ let message = try await messaging.createSms(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]
@@ -997,7 +997,7 @@ let message = try await messaging.createSms(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]

@@ -214,7 +214,7 @@ users.updateImpersonator(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::users::Users;
 
 #[tokio::main]

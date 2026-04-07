@@ -218,7 +218,7 @@ let response = try await tablesDB.create(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 
 #[tokio::main]

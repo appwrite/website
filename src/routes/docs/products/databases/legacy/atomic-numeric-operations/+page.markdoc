@@ -145,7 +145,7 @@ result = databases.increment_document_column(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 
 #[tokio::main]
@@ -305,7 +305,7 @@ result = databases.decrement_document_column(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 
 #[tokio::main]
@@ -486,7 +486,7 @@ result2 = databases.decrement_document_column(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 
 #[tokio::main]
@@ -665,7 +665,7 @@ update_result = databases.update_document(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 use serde_json::json;
 

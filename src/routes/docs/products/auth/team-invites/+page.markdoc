@@ -257,7 +257,7 @@ val response = teams.createMembership(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::teams::Teams;
 
 #[tokio::main]
@@ -528,7 +528,7 @@ teamsList.teams.forEach { team ->
 }
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::teams::Teams;
 
 #[tokio::main]

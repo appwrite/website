@@ -351,7 +351,7 @@ let provider = try await messaging.updateFCMProvider(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 use serde_json::json;
 

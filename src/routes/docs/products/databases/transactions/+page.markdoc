@@ -287,7 +287,7 @@ tablesDB.createTransaction(new CoroutineCallback<>((result, error) -> {
 }));
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 
 #[tokio::main]
@@ -613,7 +613,7 @@ try await tablesDB.incrementRowColumn(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use serde_json::json;
 
@@ -1010,7 +1010,7 @@ try await tablesDB.createOperations(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use serde_json::json;
 
@@ -1231,7 +1231,7 @@ await tablesDB.updateTransaction(
 );
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 
 #[tokio::main]

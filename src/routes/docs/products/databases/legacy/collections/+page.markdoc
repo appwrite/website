@@ -229,7 +229,7 @@ let collection = try await databases.createCollection(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 
 #[tokio::main]

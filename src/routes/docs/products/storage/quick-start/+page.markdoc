@@ -144,7 +144,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   ```
 
   ```server-rust
-  use appwrite::client::Client;
+  use appwrite::Client;
   use appwrite::services::storage::Storage;
   use appwrite::input_file::InputFile;
 

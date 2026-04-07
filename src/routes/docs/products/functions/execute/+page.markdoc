@@ -469,7 +469,7 @@ let execution = try await functions.createExecution(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::functions::Functions;
 use appwrite::enums::execution_method::ExecutionMethod;
 use serde_json::json;
@@ -1022,7 +1022,7 @@ let execution = try await functions.createExecution(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::functions::Functions;
 use appwrite::enums::execution_method::ExecutionMethod;
 use serde_json::json;

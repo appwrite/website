@@ -266,7 +266,7 @@ tokens.createFileToken(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tokens::Tokens;
 
 #[tokio::main]
@@ -570,7 +570,7 @@ tokens.list(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tokens::Tokens;
 
 #[tokio::main]
@@ -938,7 +938,7 @@ tokens.update(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tokens::Tokens;
 
 #[tokio::main]
@@ -1217,7 +1217,7 @@ tokens.delete(
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tokens::Tokens;
 
 #[tokio::main]

@@ -139,7 +139,7 @@ Client client = new Client()
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 
 let client = Client::new()
     .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")

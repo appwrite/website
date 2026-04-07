@@ -597,7 +597,7 @@ let message = try await messaging.createPush(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 use appwrite::enums::MessagePriority;
 use serde_json::json;
@@ -943,7 +943,7 @@ let message = try await messaging.createEmail(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]
@@ -1240,7 +1240,7 @@ let message = try await messaging.createSms(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]

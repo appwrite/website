@@ -969,7 +969,7 @@ tablesDB.deleteRow(
 
 ```server-rust
 // Delete row inside a transaction
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 
 let client = Client::new()

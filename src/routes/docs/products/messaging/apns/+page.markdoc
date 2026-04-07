@@ -358,7 +358,7 @@ let provider = try await messaging.updateApnsProvider(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]

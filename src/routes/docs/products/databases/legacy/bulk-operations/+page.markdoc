@@ -99,7 +99,7 @@ result = databases.create_documents(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 use appwrite::id::ID;
 use serde_json::json;
@@ -191,7 +191,7 @@ result = databases.update_documents(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 use appwrite::query::Query;
 use serde_json::json;
@@ -287,7 +287,7 @@ result = databases.upsert_documents(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 use appwrite::id::ID;
 use serde_json::json;
@@ -373,7 +373,7 @@ result = databases.delete_documents(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::databases::Databases;
 use appwrite::query::Query;
 

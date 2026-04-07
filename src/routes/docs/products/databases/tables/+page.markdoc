@@ -1326,7 +1326,7 @@ let table = try await tablesDB.createTable(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use serde_json::json;
 

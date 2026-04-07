@@ -268,7 +268,7 @@ let topic = try await messaging.createTopic(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]
@@ -530,7 +530,7 @@ let subscriber = try await messaging.createSubscriber(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 
 #[tokio::main]

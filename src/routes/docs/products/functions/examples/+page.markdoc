@@ -531,7 +531,7 @@ def main(context)
 end
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use serde_json::json;
 use std::env;
@@ -878,7 +878,7 @@ Future main(final context) async {
 ```
 
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use serde_json::json;
 use std::env;

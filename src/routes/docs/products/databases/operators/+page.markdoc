@@ -281,7 +281,7 @@ tablesDB.updateRow(
 );
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;
@@ -1408,7 +1408,7 @@ tablesDB.updateRow(
 );
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;
@@ -1695,7 +1695,7 @@ tablesDB.updateRow(
 );
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;
@@ -1982,7 +1982,7 @@ tablesDB.updateRow(
 );
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;
@@ -2399,7 +2399,7 @@ tablesDB.createTransaction(new CoroutineCallback<>((tx, txError) -> {
 }));
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;
@@ -2986,7 +2986,7 @@ tablesDB.createTransaction(new CoroutineCallback<>((tx, txError) -> {
 }));
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::operator;
 use serde_json::json;

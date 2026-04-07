@@ -239,7 +239,7 @@ let client = Client()
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 
 let client = Client::new()
     .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")  // Your API Endpoint
@@ -286,7 +286,7 @@ $adminClient = (new Client())
 
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 
 let admin_client = Client::new()
     .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
@@ -326,7 +326,7 @@ if ($session) {
 }
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 
 let session_client = Client::new()
     .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint

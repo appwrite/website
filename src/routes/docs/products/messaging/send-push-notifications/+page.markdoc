@@ -663,7 +663,7 @@ let message = try await messaging.createPush(
 )
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::messaging::Messaging;
 use serde_json::json;
 

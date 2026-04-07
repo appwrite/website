@@ -181,7 +181,7 @@ func main() {
 }
 ```
 ```server-rust
-use appwrite::client::Client;
+use appwrite::Client;
 use appwrite::services::tables_db::TablesDB;
 use appwrite::query::Query;
 use serde_json::Value;
