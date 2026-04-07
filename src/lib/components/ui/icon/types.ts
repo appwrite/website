@@ -12,6 +12,7 @@ export type IconType =
     | 'github'
     | 'ticket'
     | 'sparkle'
+    | 'mongo'
     | 'divider-vertical'
     | 'nuxt'
     | 'chevron-up'

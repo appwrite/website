@@ -1,10 +1,31 @@
 ---
 layout: article
 title: Cursor
-description: Learn how to use Cursor with Appwrite through quick start prompts and MCP servers for AI-assisted development.
+description: Learn how to use Cursor with Appwrite through the Appwrite plugin, quick start prompts, and MCP servers for AI-assisted development.
 ---
 
-{% section #quick-start-prompts step=1 title="Quick start prompts" %}
+{% section #install-plugin step=1 title="Install the Appwrite plugin" %}
+
+The fastest way to get started with Appwrite in Cursor is to install the **Appwrite plugin** from the Cursor Marketplace. The plugin includes agent skills, MCP servers, and commands, giving Cursor's AI agents everything they need to work with your Appwrite projects.
+
+To install the plugin:
+
+1. Visit the [Appwrite plugin](https://cursor.com/marketplace/appwrite) page on the Cursor Marketplace.
+2. Sign in with your Cursor account.
+3. Click **Add to Cursor**.
+4. The plugin will be added to your editor automatically.
+
+Once installed, the plugin gives your AI agents access to Appwrite skills for all major SDKs, MCP servers for the Appwrite API and documentation, and commands for deploying functions and sites.
+
+{% info title="Prefer manual setup?" %}
+
+If you'd rather configure MCP servers individually, skip to [Step 3](#step-3).
+
+{% /info %}
+
+{% /section %}
+
+{% section #quick-start-prompts step=2 title="Quick start prompts" %}
 
 Get started quickly with these pre-built prompts for common Appwrite integrations:
 
@@ -21,7 +42,9 @@ Browse all quick start prompts
 
 {% /section %}
 
-{% section #step-2 step=2 title="Add MCP servers" %}
+{% section #step-3 step=3 title="Add MCP servers manually" %}
+
+If you installed the Appwrite plugin in [Step 1](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
 
 Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation.
 
@@ -136,7 +159,7 @@ To enable additional API tools, learn more about [command-line arguments](/docs/
 
 {% /section %}
 
-{% section #step-3 step=3 title="Test the integration" %}
+{% section #step-4 step=4 title="Test the integration" %}
 
 Open Cursor Agent and test your MCP integrations. You can try out the following example prompts based on the MCP server you have configured:
 
@@ -147,8 +170,8 @@ Open Cursor Agent and test your MCP integrations. You can try out the following 
 
 - `Create a new user in my Appwrite project`
 - `List all databases in my project`
-- `Show me the collections in my database`
-- `Create a new document in my collection`
+- `Show me the tables in my database`
+- `Create a new row in my table`
 - `Delete a specific user by ID`
 
 {% /tabsitem %}
