@@ -109,8 +109,6 @@ Against the criteria above:
 - **Security posture**: Appwrite maintains a public [security policy](/docs/advanced/security) and patches vulnerabilities promptly. The open-source codebase means vulnerabilities can be found through community review, not only internal audits.
 - **Adoption**: Appwrite is used in production across a wide range of application types. The community is active across GitHub and [Discord](https://appwrite.io/discord), and the documentation covers production deployment, scaling, and migration scenarios.
 
-For teams who have already evaluated open-source BaaS platforms broadly, the [comparison of open-source BaaS alternatives](/blog/post/open-source-baas-alternatives) covers how Appwrite stacks up against Supabase, PocketBase, and others across feature coverage, licensing, and self-hosting complexity.
-
 # Evaluating Appwrite for your production stack
 
 Running through the evaluation framework above with Appwrite:
