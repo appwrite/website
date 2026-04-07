@@ -1,0 +1,104 @@
+---
+layout: post
+title: "Introducing the Appwrite Rust SDK"
+description: Appwrite now has an official Rust SDK, bringing type-safe, async-first Appwrite integration to the Rust ecosystem.
+date: 2026-04-08
+cover: /images/blog/announcing-appwrite-rust-sdk/cover.png
+timeToRead: 4
+author: atharva
+category: announcement
+featured: false
+---
+
+Appwrite now supports Rust as an official server SDK. The SDK provides async, type-safe access to all Appwrite server-side APIs and is available on [crates.io](https://crates.io/crates/appwrite).
+
+# Why Rust
+
+Rust is one of the fastest-growing languages in backend development. Memory safety without garbage collection, zero-cost abstractions, and built-in concurrency make it well-suited for backend services, CLI tools, and infrastructure. With the Rust SDK, developers no longer need to use raw HTTP calls to integrate Appwrite into Rust applications.
+
+The SDK follows the same conventions as existing Appwrite server SDKs for Node.js, Python, and Go, with an idiomatic Rust API surface.
+
+# What's included
+
+The SDK supports every Appwrite server-side service:
+
+| Service | What you can do |
+|---------|----------------|
+| **Databases** | Create databases, tables, columns, rows. Query with filters, sorting, and pagination. |
+| **Auth** | Manage users, sessions, teams, and OAuth providers. |
+| **Storage** | Create buckets, upload and download files, manage file tokens. |
+| **Functions** | Create and execute serverless functions. |
+| **Messaging** | Send emails, SMS, and push notifications through providers like Twilio, Sendgrid, and more. |
+
+The SDK also includes utility modules for building queries, generating IDs, constructing permissions, and working with operators for atomic database updates.
+
+# Getting started
+
+Add the SDK to your project:
+
+```sh
+cargo add appwrite
+cargo add tokio -F full
+cargo add serde_json
+```
+
+Initialize the client and make API calls:
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use appwrite::query::Query;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://fra.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    // Create a database and table
+    let db = tables_db.create(ID::unique(), "MyDB", None).await?;
+    let table = tables_db.create_table(
+        &db.id, ID::unique(), "Tasks",
+        None, None, None, None, None,
+    ).await?;
+
+    // Create a row
+    tables_db.create_row(
+        &db.id, &table.id, ID::unique(),
+        json!({"title": "Ship Rust SDK", "status": "done"}),
+        None, None,
+    ).await?;
+
+    // Query rows
+    let tasks = tables_db.list_rows(
+        &db.id, &table.id,
+        Some(vec![
+            Query::equal("status", "done").to_string(),
+            Query::order_desc("$createdAt").to_string(),
+        ]),
+        None, None, None,
+    ).await?;
+
+    println!("Found {} tasks", tasks.total);
+    Ok(())
+}
+```
+
+All service methods are async, return a typed `Result`, and use positional parameters with `Option` for optional fields. The SDK handles authentication headers, request serialization, and error parsing automatically.
+
+# Getting started with the docs
+
+Follow the [Rust quick start guide](/docs/quick-starts/rust) to get started. Rust examples are available across all server SDK documentation pages.
+
+# Resources
+
+- [Rust quick start](/docs/quick-starts/rust)
+- [SDK on crates.io](https://crates.io/crates/appwrite)
+- [GitHub repository](https://github.com/appwrite/sdk-for-rust)
+- [SDKs documentation](/docs/sdks)
+- [Discord](https://appwrite.io/discord)
