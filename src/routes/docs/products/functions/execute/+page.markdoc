@@ -468,6 +468,33 @@ let execution = try await functions.createExecution(
   headers: [:] // optional
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::functions::Functions;
+use appwrite::enums::execution_method::ExecutionMethod;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_project("<PROJECT_ID>");
+
+    let functions = Functions::new(&client);
+
+    let execution = functions.create_execution(
+        "<FUNCTION_ID>",                             // functionId
+        Some("<BODY>"),                              // body (optional)
+        Some(false),                                 // async (optional)
+        Some("<PATH>"),                              // path (optional)
+        Some(ExecutionMethod::GET),                  // method (optional)
+        Some(json!({})),                             // headers (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", execution);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -993,6 +1020,33 @@ let execution = try await functions.createExecution(
   headers: [:] // optional
   scheduledAt: "2020-10-15T06:38:00.000+00:00" // Schedule execution (optional)
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::functions::Functions;
+use appwrite::enums::execution_method::ExecutionMethod;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_project("<PROJECT_ID>");
+
+    let functions = Functions::new(&client);
+
+    let execution = functions.create_execution(
+        "<FUNCTION_ID>",                             // functionId
+        Some("<BODY>"),                              // body (optional)
+        Some(true),                                  // async - scheduled executions need to be async
+        Some("<PATH>"),                              // path (optional)
+        Some(ExecutionMethod::GET),                  // method (optional)
+        Some(json!({})),                             // headers (optional)
+        Some("2020-10-15T06:38:00.000+00:00"),       // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", execution);
+    Ok(())
+}
 ```
 {% /multicode %}
 

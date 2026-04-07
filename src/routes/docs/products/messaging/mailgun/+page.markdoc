@@ -647,11 +647,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let messaging = Messaging::new(&client);
 
-    let provider = messaging.update_sendgrid_provider(
+    let provider = messaging.update_mailgun_provider(
         "<PROVIDER_ID>",                             // providerId
         Some("<PROVIDER_NAME>"),                     // name (optional)
-        Some(true),                                  // enabled (optional)
         Some("<API_KEY>"),                           // apiKey (optional)
+        Some("<DOMAIN>"),                            // domain (optional)
+        Some(false),                                 // isEuRegion (optional)
+        Some(true),                                  // enabled (optional)
         Some("<SENDER_NAME>"),                       // fromName (optional)
         Some("<SENDER_EMAIL>"),                      // fromEmail (optional)
         Some("<REPLY_TO_NAME>"),                     // replyToName (optional)

@@ -1325,6 +1325,139 @@ let table = try await tablesDB.createTable(
     ]
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::tables_db::TablesDB;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>") // Your project ID
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+    let tables_db = TablesDB::new(&client);
+
+    let table = tables_db.create_table(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        "<NAME>",
+        None,       // permissions
+        None,       // row_security
+        None,       // enabled
+        Some(vec![
+            json!({
+                "key": "email",
+                "type": "email",
+                "required": true
+            }),
+            json!({
+                "key": "name",
+                "type": "varchar",
+                "size": 255,
+                "required": true
+            }),
+            json!({
+                "key": "bio",
+                "type": "text",
+                "required": false
+            }),
+            json!({
+                "key": "content",
+                "type": "mediumtext",
+                "required": false
+            }),
+            json!({
+                "key": "data",
+                "type": "longtext",
+                "required": false
+            }),
+            json!({
+                "key": "age",
+                "type": "integer",
+                "required": false
+            }),
+            json!({
+                "key": "score",
+                "type": "float",
+                "required": false
+            }),
+            json!({
+                "key": "is_active",
+                "type": "boolean",
+                "required": true
+            }),
+            json!({
+                "key": "created_at",
+                "type": "datetime",
+                "required": false
+            }),
+            json!({
+                "key": "status",
+                "type": "enum",
+                "elements": ["draft", "published", "archived"],
+                "required": true
+            }),
+            json!({
+                "key": "ip_address",
+                "type": "ip",
+                "required": false
+            }),
+            json!({
+                "key": "website",
+                "type": "url",
+                "required": false
+            }),
+            json!({
+                "key": "location",
+                "type": "point",
+                "required": false
+            }),
+            json!({
+                "key": "path",
+                "type": "line",
+                "required": false
+            }),
+            json!({
+                "key": "area",
+                "type": "polygon",
+                "required": false
+            }),
+            json!({
+                "key": "related_items",
+                "type": "relationship",
+                "relatedTableId": "<RELATED_TABLE_ID>",
+                "relationType": "manyToMany",
+                "twoWay": true,
+                "twoWayKey": "items",
+                "onDelete": "cascade",
+                "required": false
+            }),
+        ]),
+        Some(vec![
+            json!({
+                "key": "idx_email",
+                "type": "unique",
+                "attributes": ["email"]
+            }),
+            json!({
+                "key": "idx_name",
+                "type": "key",
+                "attributes": ["name"]
+            }),
+            json!({
+                "key": "idx_name_fulltext",
+                "type": "fulltext",
+                "attributes": ["name"]
+            }),
+        ]),
+    ).await?;
+
+    println!("{:?}", table);
+    Ok(())
+}
+```
 {% /multicode %}
 
 You can also configure **permissions** in the `createTable` method. Learn more about the `createTable` method in the [API references](/docs/references).

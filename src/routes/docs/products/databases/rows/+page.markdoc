@@ -966,6 +966,26 @@ tablesDB.deleteRow(
     })
 );
 ```
+
+```server-rust
+// Delete row inside a transaction
+use appwrite::client::Client;
+use appwrite::services::tables_db::TablesDB;
+
+let client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .set_project("<PROJECT_ID>")
+    .set_key("<API_KEY>");
+
+let tables_db = TablesDB::new(&client);
+
+tables_db.delete_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some("<TRANSACTION_ID>"),
+).await?;
+```
 {% /multicode %}
 
 # Next steps {% #next-steps %}

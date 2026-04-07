@@ -256,6 +256,34 @@ val response = teams.createMembership(
     name = "John Doe" // optional
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::teams::Teams;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let teams = Teams::new(&client);
+
+    // Create membership directly with userId
+    let membership = teams.create_membership(
+        "<TEAM_ID>",                                 // teamId
+        vec!["developer"],                           // roles
+        None,                                        // email (optional)
+        Some("<USER_ID>"),                           // userId (optional)
+        None,                                        // phone (optional)
+        None,                                        // url (optional)
+        Some("John Doe"),                            // name (optional)
+    ).await?;
+
+    println!("{:?}", membership);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Manage memberships
@@ -497,6 +525,46 @@ teamsList.teams.forEach { team ->
         println("Joined: ${it.joined}") # null if invited, timestamp if joined
         println("Roles: ${it.roles}")
     }
+}
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::teams::Teams;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let teams = Teams::new(&client);
+
+    // Get all teams
+    let teams_list = teams.list(
+        None,                                        // queries (optional)
+        None,                                        // search (optional)
+        None,                                        // total (optional)
+    ).await?;
+
+    // Iterate through teams to find memberships
+    for team in &teams_list.teams {
+        let response = teams.list_memberships(
+            &team.id,                                // teamId
+            None,                                    // queries (optional)
+            None,                                    // search (optional)
+            None,                                    // total (optional)
+        ).await?;
+
+        // Find membership for specific user
+        if let Some(membership) = response.memberships.iter().find(|m| m.user_id == "<USER_ID>") {
+            println!("Team: {}", team.name);
+            println!("Joined: {:?}", membership.joined); // None if invited, timestamp if joined
+            println!("Roles: {:?}", membership.roles);
+        }
+    }
+
+    Ok(())
 }
 ```
 {% /multicode %}

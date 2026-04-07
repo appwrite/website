@@ -172,6 +172,29 @@ var response = await users.UpdateLabels(
     labels: [ 'subscriber' ]
 );
 ```
+
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::users::Users;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>")                 // Your project ID
+        .set_key("98fd4...a2ad2");                    // Your secret API key
+
+    let users = Users::new(&client);
+
+    let response = users.update_labels(
+        "<USER_ID>",
+        vec!["subscriber"],
+    ).await?;
+
+    println!("{:?}", response);
+    Ok(())
+}
+```
 {% /multicode %}
 
 This would correspond with the permissions below.

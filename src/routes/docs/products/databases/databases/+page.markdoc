@@ -217,4 +217,28 @@ let response = try await tablesDB.create(
 )
 ```
 
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::databases::Databases;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>")                 // Your project ID
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+    let databases = Databases::new(&client);
+
+    let response = databases.create(
+        "<DATABASE_ID>",
+        "<NAME>",
+        None, // enabled (optional)
+    ).await?;
+
+    println!("{:?}", response);
+    Ok(())
+}
+```
+
 {% /multicode %}

@@ -321,6 +321,33 @@ let message = try await messaging.createSms(
   scheduledAt: ""                                // optional
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_sms(
+        "<MESSAGE_ID>",                              // messageId
+        "<CONTENT>",                                 // content
+        Some(vec![]),                                // topics (optional)
+        Some(vec![]),                                // users (optional)
+        Some(vec![]),                                // targets (optional)
+        Some(true),                                  // draft (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -585,6 +612,32 @@ let provider = try await messaging.updateTextmagicProvider(
   apiKey: "<API_KEY>",                           // optional
   from: "<FROM>"                                 // optional
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let provider = messaging.update_textmagic_provider(
+        "<PROVIDER_ID>",                             // providerId
+        Some("<NAME>"),                              // name (optional)
+        Some(false),                                 // enabled (optional)
+        Some("<USERNAME>"),                          // username (optional)
+        Some("<API_KEY>"),                           // apiKey (optional)
+        Some("<FROM>"),                              // from (optional)
+    ).await?;
+
+    println!("{:?}", provider);
+    Ok(())
+}
 ```
 {% /multicode %}
 {% /tabsitem %}
