@@ -596,6 +596,47 @@ let message = try await messaging.createPush(
   scheduledAt: ""                                // optional
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+use appwrite::enums::MessagePriority;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_push(
+        "<MESSAGE_ID>",                              // messageId
+        Some("<TITLE>"),                             // title (optional)
+        Some("<BODY>"),                              // body (optional)
+        Some(vec![]),                                // topics (optional)
+        Some(vec![]),                                // users (optional)
+        Some(vec![]),                                // targets (optional)
+        Some(json!({})),                             // data (optional)
+        Some("<ACTION>"),                            // action (optional)
+        None,                                        // image (optional)
+        Some("<ICON>"),                              // icon (optional)
+        Some("<SOUND>"),                             // sound (optional)
+        Some("<COLOR>"),                             // color (optional)
+        Some("<TAG>"),                               // tag (optional)
+        Some(1),                                     // badge (optional)
+        Some(true),                                  // draft (optional)
+        None,                                        // scheduledAt (optional)
+        Some(false),                                 // contentAvailable (optional)
+        Some(false),                                 // critical (optional)
+        Some(MessagePriority::Normal),               // priority (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 
 {% arrow_link href="/docs/products/messaging/send-push-notifications" %}
@@ -901,6 +942,38 @@ let message = try await messaging.createEmail(
   scheduledAt: ""                                // optional
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_email(
+        "<MESSAGE_ID>",                              // messageId
+        "<SUBJECT>",                                 // subject
+        "<CONTENT>",                                 // content
+        Some(vec![]),                                // topics (optional)
+        Some(vec![]),                                // users (optional)
+        Some(vec![]),                                // targets (optional)
+        Some(vec![]),                                // cc (optional)
+        Some(vec![]),                                // bcc (optional)
+        None,                                        // attachments (optional)
+        Some(true),                                  // draft (optional)
+        Some(false),                                 // html (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 
 {% arrow_link href="/docs/products/messaging/send-email-messages" %}
@@ -1165,6 +1238,33 @@ let message = try await messaging.createSms(
   draft: true,                                   // optional
   scheduledAt: ""                                // optional
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_sms(
+        "<MESSAGE_ID>",                              // messageId
+        "<CONTENT>",                                 // content
+        Some(vec![]),                                // topics (optional)
+        Some(vec![]),                                // users (optional)
+        Some(vec![]),                                // targets (optional)
+        Some(true),                                  // draft (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
 ```
 {% /multicode %}
 

@@ -238,6 +238,14 @@ let client = Client()
     .setProject("<PROJECT_ID>")                            // Your project ID
     .setJWT("<YOUR_API_KEY>")                                   // Your secret JSON Web Token
 ```
+```server-rust
+use appwrite::client::Client;
+
+let client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")  // Your API Endpoint
+    .set_project("<PROJECT_ID>")                            // Your project ID
+    .set_jwt("<YOUR_API_KEY>");                             // Your secret JSON Web Token
+```
 {% /multicode %}
 {% /tabsitem %}
 
@@ -277,6 +285,14 @@ $adminClient = (new Client())
 
 
 ```
+```server-rust
+use appwrite::client::Client;
+
+let admin_client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .set_project("<PROJECT_ID>")             // Your project ID
+    .set_key("<YOUR_API_KEY>");              // Your secret API key
+```
 {% /multicode %}
 
 It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
@@ -308,6 +324,17 @@ $session = $_COOKIE['session']; // Get the session cookie from the request
 if ($session) {
     $sessionClient->setSession($session);
 }
+```
+```server-rust
+use appwrite::client::Client;
+
+let session_client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .set_project("<PROJECT_ID>");            // Your project ID
+
+// Get the session cookie from the request
+let session = get_cookie("session"); // Your framework's cookie extraction
+session_client.set_session(&session);
 ```
 {% /multicode %}
 {% /tabsitem %}

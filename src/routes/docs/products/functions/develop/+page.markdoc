@@ -458,6 +458,42 @@ public class Handler {
     }
 }
 ```
+```rust
+use serde_json::json;
+use appwrite::Client;
+
+// This is your Appwrite function
+// It's executed each time we get a request
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    // Why not try the Appwrite SDK?
+    //
+    // Set project and set API key
+    // let client = Client::new()
+    //     .set_project(std::env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap())
+    //     .set_key(context.req.headers.get("x-appwrite-key").unwrap());
+
+    // You can log messages to the console
+    context.log("Hello, Logs!");
+
+    // If something goes wrong, log an error
+    context.error("Hello, Errors!");
+
+    // The `context.req` object contains the request data
+    if context.req.method == "GET" {
+        // Send a response with the res object helpers
+        // `context.res.text()` dispatches a string back to the client
+        return context.res.text("Hello, World!");
+    }
+
+    // `context.res.json()` is a handy helper for sending JSON
+    context.res.json(json!({
+        "motto": "Build like a team of hundreds_",
+        "learn": "https://appwrite.io/docs",
+        "connect": "https://appwrite.io/discord",
+        "getInspired": "https://builtwith.appwrite.io"
+    }))
+}
+```
 {% /multicode %}
 
 If you prefer to learn through more examples like this, explore the [examples page](/docs/products/functions/examples).
@@ -764,6 +800,25 @@ public class Main {
 
         return context.getRes().text("All the request parameters are logged to the Appwrite Console.");
     }
+}
+```
+```rust
+use serde_json;
+
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    context.log(&context.req.body_text);                                // Raw request body, contains request data
+    context.log(&serde_json::to_string(&context.req.body_json).unwrap()); // Object from parsed JSON request body, otherwise string
+    context.log(&serde_json::to_string(&context.req.headers).unwrap());   // String key-value pairs of all request headers, keys are lowercase
+    context.log(&context.req.scheme);                                   // Value of the x-forwarded-proto header, usually http or https
+    context.log(&context.req.method);                                   // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
+    context.log(&context.req.url);                                      // Full URL, for example: http://awesome.appwrite.io:8000/v1/hooks?limit=12&offset=50
+    context.log(&context.req.host);                                     // Hostname from the host header, such as awesome.appwrite.io
+    context.log(&context.req.port.to_string());                         // Port from the host header, for example 8000
+    context.log(&context.req.path);                                     // Path part of URL, for example /v1/hooks
+    context.log(&context.req.query_string);                             // Raw query params string. For example "limit=12&offset=50"
+    context.log(&serde_json::to_string(&context.req.query).unwrap());   // Parsed query params. For example, req.query["limit"]
+
+    context.res.text("All the request parameters are logged to the Appwrite Console.")
 }
 ```
 {% /multicode %}
@@ -1112,6 +1167,30 @@ namespace runtime {
   };
 }
 ```
+```rust
+use std::fs;
+use serde_json::json;
+
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    let response_type = context.req.query.get("type").map(|s| s.as_str());
+
+    match response_type {
+        Some("empty") => context.res.empty(),
+        Some("json") => context.res.json(json!({"type": "This is a JSON response"})),
+        Some("binary") => {
+            let bytes = fs::read("file.png").unwrap();
+            context.res.binary(bytes)
+        }
+        Some("redirect") => context.res.redirect("https://appwrite.io", 301),
+        Some("html") => {
+            let mut headers = std::collections::HashMap::new();
+            headers.insert("content-type".to_string(), "text/html".to_string());
+            context.res.text_with_status("<h1>This is an HTML response</h1>", 200, headers)
+        }
+        _ => context.res.text("This is a text response"),
+    }
+}
+```
 {% /multicode %}
 
 To get the different response types, set one of the following query parameters in the [generated domain](/docs/products/functions/domains) of your function.
@@ -1309,6 +1388,17 @@ namespace runtime {
   };
 }
 ```
+```rust
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    let message = "This is a log, use for logging information to console";
+    context.log(&format!("Message: {}", message));
+    context.log(&format!("This function was called with {} method", context.req.method));
+    let error_message = "This is an error, use for logging errors to console";
+    context.error(&format!("Error: {}", error_message));
+
+    context.res.text("Check the Appwrite Console to see logs and errors!")
+}
+```
 {% /multicode %}
 
 You can access these logs through the following steps.
@@ -1442,6 +1532,11 @@ namespace runtime {
             return context.res.text(std::getenv("MY_VAR"));
         }
     };
+}
+```
+```rust
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    context.res.text(&std::env::var("MY_VAR").unwrap_or_default())
 }
 ```
 {% /multicode %}
@@ -1904,6 +1999,36 @@ public class Main {
     }
 }
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+async fn main(context: RuntimeContext) -> RuntimeOutput {
+    // Set project and set API key
+    let client = Client::new()
+        .set_project(std::env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap())
+        .set_key(context.req.headers.get("x-appwrite-key").unwrap());
+
+    let tables_db = TablesDB::new(&client);
+
+    match tables_db.create_row(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        ID::unique(),
+        json!({}),
+        None,
+        None,
+    ).await {
+        Ok(_) => context.res.text("Row created"),
+        Err(e) => {
+            context.error(&format!("Failed to create row: {}", e));
+            context.res.text("Failed to create row")
+        }
+    }
+}
+```
 {% /multicode %}
 
 ## Using with JWT {% #using-jwt %}
@@ -2292,6 +2417,40 @@ public class Main {
     }
 }
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+async fn main(context: RuntimeContext) -> RuntimeOutput {
+    let client = Client::new()
+        .set_project(std::env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap());
+
+    if let Some(jwt) = context.req.headers.get("x-appwrite-user-jwt") {
+        client.set_jwt(jwt);
+    } else {
+        return context.res.text("Access denied: This function requires authentication. Please sign in to continue.");
+    }
+
+    let tables_db = TablesDB::new(&client);
+
+    match tables_db.create_row(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        ID::unique(),
+        json!({}),
+        None,
+        None,
+    ).await {
+        Ok(_) => context.res.text("Row created"),
+        Err(e) => {
+            context.error(&format!("Failed to create row: {}", e));
+            context.res.text("Failed to create row")
+        }
+    }
+}
+```
 {% /multicode %}
 
 # Code structure {% #code-structure %}
@@ -2536,6 +2695,23 @@ public class Main {
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         return context.res.text(Utils.add(1, 2));
     }
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #rust title="Rust" %}
+```rust
+// src/utils.rs
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+```rust
+// src/main.rs
+mod utils;
+
+fn main(context: RuntimeContext) -> RuntimeOutput {
+    context.res.text(&utils::add(1, 2).to_string())
 }
 ```
 {% /tabsitem %}

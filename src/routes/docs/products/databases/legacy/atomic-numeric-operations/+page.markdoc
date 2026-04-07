@@ -144,6 +144,33 @@ result = databases.increment_document_column(
     value = 1 # value
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::databases::Databases;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.increment_document_attribute(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        "likes",       // attribute
+        Some(1.0),     // value
+        None,          // max (optional)
+        None,          // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
 ```graphql
 mutation {
     databasesIncrementDocumentColumn(
@@ -276,6 +303,33 @@ result = databases.decrement_document_column(
     column = 'credits', # column
     value = 5 # value
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::databases::Databases;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.decrement_document_attribute(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        "credits",     // attribute
+        Some(5.0),     // value
+        None,          // min (optional)
+        None,          // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
 ```
 ```graphql
 mutation {
@@ -431,6 +485,46 @@ result2 = databases.decrement_document_column(
     min = 0 # min (optional)
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::databases::Databases;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    // Increment with maximum constraint
+    let result = databases.increment_document_attribute(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        "credits",      // attribute
+        Some(100.0),    // value
+        Some(1000.0),   // max (optional)
+        None,           // transaction_id (optional)
+    ).await?;
+
+    // Decrement with minimum constraint
+    let result2 = databases.decrement_document_attribute(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        "credits",     // attribute
+        Some(50.0),    // value
+        Some(0.0),     // min (optional)
+        None,          // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    println!("{:?}", result2);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Follow best practices {% #follow-best-practices %}
@@ -569,6 +663,49 @@ update_result = databases.update_document(
         'lastLikedAt': datetime.now().isoformat()
     }
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::databases::Databases;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    // First, increment the likes atomically
+    let like_result = databases.increment_document_attribute(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        "likes",       // attribute
+        Some(1.0),     // value
+        None,          // max (optional)
+        None,          // transaction_id (optional)
+    ).await?;
+
+    // Then, update other fields
+    let update_result = databases.update_document(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        Some(json!({
+            "lastLikedBy": user_id,
+            "lastLikedAt": chrono::Utc::now().to_rfc3339()
+        })),
+        None, // permissions (optional)
+        None, // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", like_result);
+    println!("{:?}", update_result);
+    Ok(())
+}
 ```
 {% /multicode %}
 

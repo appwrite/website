@@ -144,6 +144,27 @@ result = tablesDB.increment_row_column(
     value = 1 # value
 )
 ```
+```rust
+use appwrite::client::Client;
+use appwrite::services::tables_db::TablesDB;
+
+let client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .set_project("<PROJECT_ID>")
+    .set_key("<API_KEY>");
+
+let tables_db = TablesDB::new(&client);
+
+let result = tables_db.increment_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "likes",       // column
+    Some(1.0),     // value
+    None,          // max
+    None,          // transaction_id
+).await?;
+```
 ```graphql
 mutation {
     databasesIncrementRowColumn(
@@ -276,6 +297,27 @@ result = tablesDB.decrement_row_column(
     column = 'credits', # column
     value = 5 # value
 )
+```
+```rust
+use appwrite::client::Client;
+use appwrite::services::tables_db::TablesDB;
+
+let client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .set_project("<PROJECT_ID>")
+    .set_key("<API_KEY>");
+
+let tables_db = TablesDB::new(&client);
+
+let result = tables_db.decrement_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "credits",     // column
+    Some(5.0),     // value
+    None,          // min
+    None,          // transaction_id
+).await?;
 ```
 ```graphql
 mutation {
@@ -431,6 +473,29 @@ result2 = tablesDB.decrement_row_column(
     min = 0 # min (optional)
 )
 ```
+```rust
+// Increment with maximum constraint
+let result = tables_db.increment_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "credits",       // column
+    Some(100.0),     // value
+    Some(1000.0),    // max (optional)
+    None,            // transaction_id
+).await?;
+
+// Decrement with minimum constraint
+let result2 = tables_db.decrement_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "credits",       // column
+    Some(50.0),      // value
+    Some(0.0),       // min (optional)
+    None,            // transaction_id
+).await?;
+```
 {% /multicode %}
 
 # Follow best practices {% #follow-best-practices %}
@@ -570,6 +635,33 @@ update_result = tablesDB.update_row(
     }
 )
 ```
+```rust
+use serde_json::json;
+
+// First, increment the likes atomically
+let like_result = tables_db.increment_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "likes",       // column
+    Some(1.0),     // value
+    None,          // max
+    None,          // transaction_id
+).await?;
+
+// Then, update other fields
+let update_result = tables_db.update_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some(json!({
+        "lastLikedBy": user_id,
+        "lastLikedAt": chrono::Utc::now().to_rfc3339()
+    })),
+    None,          // permissions
+    None,          // transaction_id
+).await?;
+```
 {% /multicode %}
 
 # Use transactions {% #use-transactions %}
@@ -674,6 +766,17 @@ tablesDB.increment_row_column(
   value = 1,
   transaction_id = '<TRANSACTION_ID>'
 )
+```
+```rust
+tables_db.increment_row_column(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    "likes",
+    Some(1.0),
+    None,                          // max
+    Some("<TRANSACTION_ID>"),      // transaction_id
+).await?;
 ```
 ```server-php
 $tablesDB->incrementRowColumn(

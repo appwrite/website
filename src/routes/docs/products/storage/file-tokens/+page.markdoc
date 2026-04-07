@@ -265,6 +265,30 @@ tokens.createFileToken(
 );
 ```
 
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::tokens::Tokens;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>") // Your project ID
+        .set_key("<YOUR_API_KEY>"); // Your secret API key
+
+    let tokens = Tokens::new(&client);
+
+    let result = tokens.create_file_token(
+        "<BUCKET_ID>",
+        "<FILE_ID>",
+        Some(""), // expire (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+
 ```server-graphql
 mutation {
     tokensCreateFileToken(
@@ -545,6 +569,31 @@ tokens.list(
 );
 ```
 
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::tokens::Tokens;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>") // Your project ID
+        .set_key("<YOUR_API_KEY>"); // Your secret API key
+
+    let tokens = Tokens::new(&client);
+
+    let result = tokens.list(
+        "<BUCKET_ID>",
+        "<FILE_ID>",
+        None, // queries (optional)
+        None, // total (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+
 ```server-rest
 GET /v1/tokens/buckets/{bucketId}/files/{fileId} HTTP/1.1
 Host: cloud.appwrite.io
@@ -634,6 +683,12 @@ tokens.get(
         System.out.println(token);
     })
 );```
+
+```server-rust
+let token = tokens.get(
+    "<TOKEN_ID>",
+).await?;
+```
 
 ```server-rest
 GET /v1/tokens/{tokenId} HTTP/1.1
@@ -880,6 +935,29 @@ tokens.update(
         System.out.println(result);
     })
 );
+```
+
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::tokens::Tokens;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>") // Your project ID
+        .set_key("<YOUR_API_KEY>"); // Your secret API key
+
+    let tokens = Tokens::new(&client);
+
+    let result = tokens.update(
+        "<TOKEN_ID>",
+        Some(""), // expire (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
 ```
 
 ```server-graphql
@@ -1136,6 +1214,28 @@ tokens.delete(
         System.out.println(result);
     })
 );
+```
+
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::tokens::Tokens;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>") // Your project ID
+        .set_key("<YOUR_API_KEY>"); // Your secret API key
+
+    let tokens = Tokens::new(&client);
+
+    tokens.delete(
+        "<TOKEN_ID>",
+    ).await?;
+
+    println!("Token deleted successfully");
+    Ok(())
+}
 ```
 
 ```server-graphql

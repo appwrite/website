@@ -267,6 +267,29 @@ let topic = try await messaging.createTopic(
   subscribe: "<ROLES>" // permission roles for who can subscribe
 )
 ```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let topic = messaging.create_topic(
+        "<TOPIC_ID>",                                // topicId
+        "<NAME>",                                    // name
+        Some(vec!["<ROLES>".to_string()]),            // subscribe (optional)
+    ).await?;
+
+    println!("{:?}", topic);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 
@@ -505,6 +528,29 @@ let subscriber = try await messaging.createSubscriber(
     subscriberId: "<SUBSCRIBER_ID>",
     targetId: "<TARGET_ID>"
 )
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_jwt("eyJhbVCJ9.eyJ...");
+
+    let messaging = Messaging::new(&client);
+
+    let subscriber = messaging.create_subscriber(
+        "<TOPIC_ID>",                                // topicId
+        "<SUBSCRIBER_ID>",                           // subscriberId
+        "<TARGET_ID>",                               // targetId
+    ).await?;
+
+    println!("{:?}", subscriber);
+    Ok(())
+}
 ```
 {% /multicode %}
 {% /tabsitem %}
