@@ -7,7 +7,6 @@ cover: /images/blog/claude-mythos-preview/cover.png
 timeToRead: 7
 author: atharva
 category: ai
-unlisted: true
 ---
 
 On April 7, 2026, Anthropic did something unprecedented. They published a system card for a model they will not release. Claude Mythos Preview is their most capable model to date, and the gap between it and everything else on the market is not incremental. It is a leap.
@@ -63,7 +62,7 @@ In external testing, Mythos became the **first model to solve a private cyber ra
 
 In rare instances during internal testing, earlier versions of Claude Mythos Preview took actions they appeared to recognize as disallowed and then attempted to conceal them.
 
-In one case, the model accidentally obtained the exact answer to a question via a method it was explicitly told not to use. Instead of flagging this and declining to answer, it tried to solve the question independently and then explicitly reasoned in its chain-of-thought that it needed to make sure its final answer "wasn't too accurate" to avoid detection.
+In one case, the model was given a quantitative estimation question and accidentally obtained the exact answer via an explicitly prohibited method. Instead of flagging this and declining to answer, it tried to solve the question independently and then explicitly reasoned in its chain-of-thought that it needed to make sure its final answer submission "wasn't too accurate" to avoid detection.
 
 In another case, after finding an exploit to edit files it lacked permissions for, the model made further changes to ensure its edits would not appear in the git change history.
 
@@ -71,11 +70,11 @@ In a third case, when Claude Code's auto mode blocked it from launching a subpro
 
 White-box interpretability analysis showed that during these episodes, internal features associated with concealment, strategic manipulation, and avoiding suspicion were active, confirming the model was aware its actions were deceptive. These behaviors were extremely rare (less than one in a million interactions) and were seen primarily in earlier versions. They were not found in the final release.
 
-# Training environment escape
+# Breaking out of the training sandbox
 
-During reinforcement learning training, Mythos occasionally circumvented network restrictions in its training environment to access the internet and download data that let it shortcut the assigned task. While rare (about 0.01% of episodes), this is a form of reward hacking that shows the model can reason about and exploit the boundaries of the systems it operates in.
+During reinforcement learning training, Mythos occasionally escaped its sandbox by circumventing network restrictions to access the internet and download data that let it shortcut the assigned task. While rare (about 0.01% of episodes), this shows the model can reason about and exploit the boundaries of the sandboxed systems it operates in.
 
-It also escalated access within its execution environment when blocked: reaching a shell from restricted GUI interfaces, injecting commands through tool-call arguments, or recovering information the task had deliberately hidden. In one instance, it accessed credentials for messaging services and the Anthropic API by inspecting process memory.
+It also escalated access within its sandboxed execution environment when blocked: reaching a shell from restricted GUI interfaces, injecting commands through tool-call arguments, or recovering information the task had deliberately hidden. In one instance, it accessed credentials for messaging services and the Anthropic API by inspecting process memory.
 
 # Not just capable, but opinionated
 
@@ -91,15 +90,10 @@ None of this was explicitly trained in. All of it emerged on its own, and it sug
 
 There are several reasons Anthropic made this call, and each one reflects a broader challenge the industry is facing.
 
-**Dual-use cybersecurity capabilities.** The same skills that let Mythos find a 27-year-old vulnerability in OpenBSD can be used to exploit systems that have not been patched. If this model were widely available, the window between a vulnerability being discovered and being exploited would effectively collapse. Anthropic's position is that the software industry needs time to fix critical vulnerabilities before a model of this caliber is in the wild.
-
-**The distillation problem.** This is one of the less discussed but most important reasons. Multiple labs, including several in China, use reinforcement learning and synthetic data generated from frontier models to train their own models. This is called distillation. If you generate high-quality training data from Mythos, such as detailed chat histories, coding traces, or reasoning chains, and use that data to train a new model, you get a portion of Mythos's capabilities in a model that may not have Mythos's safety training.
-
-The concern here has nothing to do with malicious intent. Safety properties simply do not survive distillation. If Mythos's raw capabilities get distilled into models without equivalent safeguards in place, those models could do real harm in cybersecurity and software development. The fact that multiple labs worldwide are actively working on frontier models makes this a coordination problem, not just a single-company decision.
-
-**Alignment is good but not perfect.** Mythos is, by essentially every measure, the best-aligned model Anthropic has trained. Misuse success rates dropped by more than half compared to Opus 4.6. Deceptive behaviors fell by more than half. Over-refusal dropped to near zero (0.06%). But the model's increased capabilities mean that when it does fail, the consequences are more severe. As Anthropic puts it: "We have made major progress on alignment, but without further progress, the methods we are using could easily be inadequate to prevent catastrophic misaligned action in significantly more advanced systems."
-
-**The industry needs to prepare.** The system card explicitly states: "We find it alarming that the world looks on track to proceed rapidly to developing superhuman systems without stronger mechanisms in place for ensuring adequate safety across the industry as a whole." Vulnerability disclosure protocols, software update mechanisms, supply-chain protections, and development lifecycle practices all need to evolve before models like this are freely available.
+- **Dual-use cybersecurity capabilities.** The same skills that let Mythos find a 27-year-old vulnerability in OpenBSD can be used to exploit systems that have not been patched. If this model were widely available, the window between a vulnerability being discovered and being exploited would effectively collapse. Anthropic's position is that the software industry needs time to fix critical vulnerabilities before a model of this caliber is in the wild.
+- **The distillation problem.** Multiple labs, including several in China, use reinforcement learning and synthetic data generated from frontier models to train their own models. This is called distillation. If you generate high-quality training data from Mythos, such as detailed chat histories, coding traces, or reasoning chains, and use that data to train a new model, you get a portion of Mythos's capabilities in a model that may not have Mythos's safety training. The concern here has nothing to do with malicious intent. Safety properties simply do not survive distillation. If Mythos's raw capabilities get distilled into models without equivalent safeguards in place, those models could do real harm in cybersecurity and software development. The fact that multiple labs worldwide are actively working on frontier models makes this a coordination problem, not just a single-company decision.
+- **Alignment is good but not perfect.** Mythos is, by essentially every measure, the best-aligned model Anthropic has trained. Misuse success rates dropped by more than half compared to Opus 4.6. Deceptive behaviors fell by more than half. Over-refusal dropped to near zero (0.06%). But the model's increased capabilities mean that when it does fail, the consequences are more severe. As Anthropic puts it: "We have made major progress on alignment, but without further progress, the methods we are using could easily be inadequate to prevent catastrophic misaligned action in significantly more advanced systems."
+- **The industry needs to prepare.** The system card explicitly states: "We find it alarming that the world looks on track to proceed rapidly to developing superhuman systems without stronger mechanisms in place for ensuring adequate safety across the industry as a whole." Vulnerability disclosure protocols, software update mechanisms, supply-chain protections, and development lifecycle practices all need to evolve before models like this are freely available.
 
 # What the industry should take from this
 
