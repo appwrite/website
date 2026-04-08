@@ -48,14 +48,14 @@ Appwrite provides scalable databases with built-in APIs and permissions, ensurin
 
 Here is a list of the main features and services provided by Appwrite:
 
-- Authentication (multiple login methods)
-- Databases
-- File storage
-- Real-time APIs and events
-- Messaging
-- Serverless functions
-- Web hosting (Sites)
-- Open-source and self-hosting options
+- [Authentication](/docs/products/auth) (multiple login methods)
+- [Databases](/docs/products/databases)
+- [File storage](/docs/products/storage)
+- [Real-time APIs and events](/docs/apis/realtime)
+- [Messaging](/docs/products/messaging)
+- [Serverless functions](/docs/products/functions)
+- [Web hosting (Sites)](/docs/products/sites)
+- [Open-source and self-hosting options](/docs/advanced/self-hosting)
 - Developer tools and SDKs
 
 Developers can quickly integrate essential backend services, including authentication, databases, storage, and serverless functions, using the available SDK for their preferred platform.
@@ -104,11 +104,11 @@ Appwrite is built to help developers get their projects off the ground fast, whe
 
 To begin, you can choose between two flexible options: self-hosting Appwrite on your own infrastructure using Docker, or signing up for Appwrite Cloud for a fully managed experience. Both options give you access to the same powerful suite of backend services, including authentication, databases, storage, and serverless functions.
 
-Once you've installed Appwrite or created your cloud account, you'll use the Appwrite console—a user-friendly dashboard that lets you create and manage projects, configure authentication, set up databases, and connect your frontend using Appwrite's SDKs. The console is your central hub for building, scaling, and managing your app's backend with just a few clicks.
-
 Appwrite's comprehensive documentation and tutorials make it easy for developers of any experience level to get started. If you need help or want to learn from others, the Appwrite community is active and ready to support you with resources, code examples, and answers to your questions.
 
-With Appwrite, you can go from idea to working prototype in minutes. Just sign up, set up your project in the console, and start building, no complex configuration or backend expertise required.
+If you're building an AI-powered project, Appwrite also has [AI quickstarts and guides](/docs/products/ai) to help you integrate large language models and AI APIs alongside your backend with minimal setup.
+
+With Appwrite, you can go from idea to working prototype in minutes. Just sign up and start building, no complex configuration or backend expertise required.
 
 # Why hackathon teams choose Appwrite
 
