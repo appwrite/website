@@ -229,37 +229,6 @@ def main(context)
   return 'Invalid path'
 end
 ```
-```rust
-use serde::Deserialize;
-use std::collections::HashMap;
-
-#[derive(Deserialize)]
-struct ExchangeResponse {
-    rates: HashMap<String, f64>,
-}
-
-async fn main(context: impl AppwriteContext) -> impl IntoResponse {
-    if context.req().path() == "/eur" {
-        let amount_in_euros: f64 = context.req().query()["amount"].parse().unwrap();
-        let response: ExchangeResponse = reqwest::get(
-            "https://api.exchangerate.host/latest?base=EUR&symbols=USD"
-        ).await.unwrap().json().await.unwrap();
-        let amount_in_dollars = amount_in_euros * response.rates["USD"];
-        return context.res().text(&amount_in_dollars.to_string());
-    }
-
-    if context.req().path() == "/inr" {
-        let amount_in_rupees: f64 = context.req().query()["amount"].parse().unwrap();
-        let response: ExchangeResponse = reqwest::get(
-            "https://api.exchangerate.host/latest?base=INR&symbols=USD"
-        ).await.unwrap().json().await.unwrap();
-        let amount_in_dollars = amount_in_rupees * response.rates["USD"];
-        return context.res().text(&amount_in_dollars.to_string());
-    }
-
-    context.res().text("Invalid path")
-}
-```
 {% /multicode %}
 
 {% /section %}
@@ -529,69 +498,6 @@ def main(context)
       'vote': vote_row
     })
 end
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::tables_db::TablesDB;
-use serde_json::json;
-use std::env;
-
-async fn main(context: impl AppwriteContext) -> impl IntoResponse {
-    let vote_user_id = context.req().query()["userId"].to_string();
-    let vote_topic_id = context.req().query()["topicId"].to_string();
-    let vote_value = context.req().query()["vote"].to_string();
-
-    if vote_value != "yes" && vote_value != "no" {
-        return context.res().json(
-            json!({"ok": false, "message": "You must vote yes or no."}),
-            400,
-        );
-    }
-
-    // Set project and set API key
-    let client = Client::new()
-        .set_project(&env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap())
-        .set_key(context.req().headers()["x-appwrite-key"]);
-
-    let tables_db = TablesDB::new(&client);
-
-    let existing_votes = tables_db.list_rows(
-        "<DATABASE_ID>",
-        "<VOTES_TABLE_ID>",
-        Some(vec![
-            "equal(\"userId\", [\"".to_owned() + &vote_user_id + "\"])",
-            "equal(\"topicId\", [\"".to_owned() + &vote_topic_id + "\"])",
-        ]),
-        None,
-        None,
-        None,
-    ).await.unwrap();
-
-    if existing_votes.total > 0 {
-        return context.res().json(
-            json!({"ok": false, "message": "You have already voted on this topic."}),
-            400,
-        );
-    }
-
-    let vote_row = tables_db.create_row(
-        "<DATABASE_ID>",
-        "<VOTES_TABLE_ID>",
-        "unique()",
-        json!({
-            "userId": vote_user_id,
-            "topicId": vote_topic_id,
-            "vote": vote_value,
-        }),
-        None,
-        None,
-    ).await.unwrap();
-
-    context.res().json(
-        json!({"ok": true, "message": "Vote cast.", "vote": vote_row}),
-        200,
-    )
-}
 ```
 {% /multicode %}
 Use the function by navigating to the function URL in the browser.
@@ -874,67 +780,6 @@ Future main(final context) async {
     }
 
     return context.res.text('Not found', 404);
-}
-```
-
-```server-rust
-use appwrite::Client;
-use appwrite::services::tables_db::TablesDB;
-use serde_json::json;
-use std::env;
-
-const HTML: &str = r#"<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Contact Form</title>
-  </head>
-  <body>
-    <form action="/" method="POST">
-      <input type="text" id="name" name="name" placeholder="Name" required>
-      <input type="email" id="email" name="email" placeholder="Email" required>
-      <textarea id="content" name="content" placeholder="Message" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </body>
-</html>"#;
-
-async fn main(context: impl AppwriteContext) -> impl IntoResponse {
-    if context.req().method() == "GET" {
-        return context.res().text(HTML, 200, Some(vec![("content-type", "text/html")]));
-    }
-
-    if context.req().method() == "POST"
-        && context.req().headers()["content-type"] == "application/x-www-form-urlencoded"
-    {
-        let form_data: std::collections::HashMap<String, String> =
-            serde_urlencoded::from_str(context.req().body()).unwrap();
-
-        let message = json!({
-            "name": form_data["name"],
-            "email": form_data["email"],
-            "content": form_data["content"],
-        });
-
-        // Set project and set API key
-        let client = Client::new()
-            .set_project(&env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap())
-            .set_key(context.req().headers()["x-appwrite-key"]);
-
-        let tables_db = TablesDB::new(&client);
-        let _row = tables_db.create_row(
-            "<DATABASE_ID>",
-            "<MESSAGES_TABLE_ID>",
-            "unique()",
-            message,
-            None,
-            None,
-        ).await.unwrap();
-
-        return context.res().text("Message sent", 200, None);
-    }
-
-    context.res().text("Not found", 404, None)
 }
 ```
 

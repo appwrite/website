@@ -695,8 +695,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "<COLLECTION_ID>",
         "<DOCUMENT_ID>",
         Some(json!({
-            "lastLikedBy": user_id,
-            "lastLikedAt": chrono::Utc::now().to_rfc3339()
+            "lastLikedBy": "<USER_ID>",
+            "lastLikedAt": "<TIMESTAMP>"
         })),
         None, // permissions (optional)
         None, // transaction_id (optional)
