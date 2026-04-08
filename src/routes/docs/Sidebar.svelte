@@ -138,6 +138,12 @@
                     isParent: true
                 },
                 {
+                    label: 'Terraform provider',
+                    href: '/docs/tooling/terraform',
+                    icon: 'web-icon-terraform',
+                    isParent: true
+                },
+                {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
                     icon: 'web-icon-command'
@@ -146,12 +152,6 @@
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
-                },
-                {
-                    label: 'Terraform provider',
-                    href: '/docs/tooling/terraform',
-                    icon: 'web-icon-terraform',
-                    isParent: true
                 }
             ]
         },
