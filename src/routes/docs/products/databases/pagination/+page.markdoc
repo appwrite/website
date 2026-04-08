@@ -502,6 +502,35 @@ suspend fun main() {
     )
 }
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let page = tables_db.list_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(vec![
+            Query::limit(25).to_string(),
+        ]),
+        None,           // transaction_id
+        Some(false),    // total - Skip computing total count
+        None,           // ttl
+    ).await?;
+
+    println!("{:?}", page);
+    Ok(())
+}
+```
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.Query;

@@ -227,6 +227,37 @@ let bucket = try await storage.createBucket(
 )
 
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::storage::Storage;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>")                 // Your project ID
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+    let storage = Storage::new(&client);
+
+    let bucket = storage.create_bucket(
+        "<BUCKET_ID>",
+        "<NAME>",
+        None, // permissions (optional)
+        None, // file_security (optional)
+        None, // enabled (optional)
+        None, // maximum_file_size (optional)
+        None, // allowed_file_extensions (optional)
+        None, // compression (optional)
+        None, // encryption (optional)
+        None, // antivirus (optional)
+        None, // transformations (optional)
+    ).await?;
+
+    println!("{:?}", bucket);
+    Ok(())
+}
+```
 {% /multicode %}
 
 You can also configure permission, file size and extension restrictions, and more in the `createBucket` method, learn more about the `createBucket` in the [API references](/docs/references/cloud/server-nodejs/storage#createBucket).

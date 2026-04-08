@@ -6,6 +6,7 @@ export type IconType =
     | 'microsoft'
     | 'platform'
     | 'vue'
+    | 'rust'
     | 'chevron-down'
     | 'firebase'
     | 'github'
