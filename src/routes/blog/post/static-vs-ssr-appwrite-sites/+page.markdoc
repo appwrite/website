@@ -5,14 +5,14 @@ description: Static and server-side rendered sites work very differently under t
 date: 2026-04-08
 cover: /images/blog/static-vs-ssr-appwrite-sites/cover.png
 timeToRead: 8
-author: eldad-fux
+author: matej-baco
 category: product
 featured: false
 ---
 
 When you deploy a site to [Appwrite Sites](/products/sites), you have two fundamentally different options for how your content reaches visitors: static hosting or server-side rendering (SSR). Both are first-class options on Appwrite Sites, and both have a place in a modern developer's toolkit. But they work very differently under the hood, and choosing the wrong one for your use case has real consequences for performance, cost, and developer experience. Switching strategies later is possible, but it is rarely just a configuration change. Moving from static to SSR, or the other way around, typically requires rethinking routing, data fetching, caching behaviour, and environment variables in ways that are easy to miss and can introduce subtle bugs that are hard to catch before they reach production.
 
-This article explains how each model works, why static is usually the right default, and the specific scenarios where SSR earns its keep.
+This article explains how each model works, which one is the better default, and the specific scenarios where SSR earns its keep.
 
 # How static hosting actually works
 
