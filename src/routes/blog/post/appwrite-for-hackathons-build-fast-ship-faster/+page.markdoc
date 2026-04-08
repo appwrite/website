@@ -157,10 +157,10 @@ The best hackathon projects aren't the most complex ones, they're the ones that 
 # Resources
 
 - [Sign up with Appwrite Cloud](https://cloud.appwrite.io/register)
-- [Appwrite Authentication](https://appwrite.io/docs/products/auth)
-- [Appwrite Databases](https://appwrite.io/docs/products/databases)
-- [Appwrite Storage](https://appwrite.io/docs/products/storage)
-- [Appwrite Functions](https://appwrite.io/docs/products/functions)
-- [Appwrite Sites](https://appwrite.io/docs/products/sites)
-- [Self-hosting Appwrite](https://appwrite.io/docs/advanced/self-hosting)
+- [Appwrite Auth](/docs/products/auth)
+- [Appwrite Databases](/docs/products/databases)
+- [Appwrite Storage](/docs/products/storage)
+- [Appwrite Functions](/docs/products/functions)
+- [Appwrite Sites](/docs/products/sites)
+- [Self-hosting Appwrite](/docs/advanced/self-hosting)
 - [Join the Discord community](https://appwrite.io/discord)
