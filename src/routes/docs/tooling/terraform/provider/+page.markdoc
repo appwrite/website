@@ -22,9 +22,11 @@ terraform {
 
 # Appwrite Cloud {% #appwrite-cloud %}
 
+Replace `<REGION>` with your project’s region subdomain (see [Regions](/docs/products/network/regions)).
+
 ```hcl
 provider "appwrite" {
-  endpoint   = "https://cloud.appwrite.io/v1"
+  endpoint   = "https://<REGION>.cloud.appwrite.io/v1"
   project_id = "project-id"
   api_key    = "api-key"
 }
@@ -48,7 +50,7 @@ provider "appwrite" {
 You can supply credentials via environment variables instead of hard-coding them in `.tf` files (recommended for CI and local development):
 
 ```bash
-export APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
+export APPWRITE_ENDPOINT="https://<REGION>.cloud.appwrite.io/v1"
 export APPWRITE_PROJECT_ID="project-id"
 export APPWRITE_API_KEY="api-key"
 ```
