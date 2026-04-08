@@ -3,7 +3,7 @@ layout: integration
 title: OAuth with X
 description: Authenticate users with an existing X account
 date: 2026-04-09
-featured: false
+featured: true
 isPartner: true
 isNew: true
 cover: /images/integrations/oauth-x/cover.png
