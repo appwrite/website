@@ -40,13 +40,21 @@ The SDK also includes utility modules for building queries, generating IDs, cons
 
 # Getting started
 
-Add the SDK to your project:
+## Step 1: Set up Appwrite
+
+Set up an Appwrite project by [creating an Appwrite Cloud account](https://cloud.appwrite.io) or [self-hosting Appwrite](/docs/advanced/self-hosting).
+
+## Step 2: Install the Rust SDK
+
+Add the SDK and its dependencies to your project:
 
 ```sh
 cargo add appwrite
 cargo add tokio -F full
 cargo add serde_json
 ```
+
+## Step 3: Start building
 
 Initialize the client and make API calls:
 
@@ -97,9 +105,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 All service methods are async, return a typed `Result`, and use positional parameters with `Option` for optional fields. The SDK handles authentication headers, request serialization, and error parsing automatically.
 
-# Getting started with the docs
+## Step 4: Explore the documentation
 
-Follow the [Rust quick start guide](/docs/quick-starts/rust) to get started. Rust examples are available across all server SDK documentation pages.
+Follow the [Rust quick start guide](/docs/quick-starts/rust) for a step-by-step walkthrough. You can also use the [AI quickstart prompt](/docs/tooling/ai/quickstart-prompts/rust) with tools like Cursor, Claude Code, or Windsurf to set up a project with AI assistance. Rust examples are available across all server SDK documentation pages.
 
 # Resources
 
