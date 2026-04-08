@@ -1,0 +1,83 @@
+---
+layout: article
+title: Messaging
+description: Configure Appwrite Messaging providers and topics with Terraform for email, SMS, and push delivery.
+---
+
+[Messaging](/docs/products/messaging) integrates email, SMS, and push providers. The Terraform provider exposes **providers** (credentials and channel configuration) and **topics** (subscriber channels for your messages).
+
+See the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for every `type` and optional field; provider-specific arguments apply only to the matching provider (for example Twilio `account_sid`, SMTP `host` and `encryption`, FCM `service_account_json`).
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_messaging_provider` | Register an email, SMS, or push provider (Sendgrid, SMTP, Twilio, FCM, and others) |
+| `appwrite_messaging_topic` | Define a topic for targeting subscribers |
+
+The `type` argument on `appwrite_messaging_provider` must be one of the supported provider kinds (for example `sendgrid`, `mailgun`, `smtp`, `resend`, `twilio`, `vonage`, `msg91`, `telesign`, `textmagic`, `apns`, `fcm`).
+
+# Examples {% #examples %}
+
+## Providers {% #providers %}
+
+```hcl
+resource "appwrite_messaging_provider" "sendgrid" {
+  id         = "sendgrid"
+  name       = "sendgrid"
+  type       = "sendgrid"
+  api_key    = var.sendgrid_api_key
+  from_email = "noreply@example.com"
+  from_name  = "application"
+}
+
+resource "appwrite_messaging_provider" "smtp" {
+  id         = "smtp"
+  name       = "smtp"
+  type       = "smtp"
+  host       = "smtp.example.com"
+  port       = 587
+  username   = "user@example.com"
+  password   = var.smtp_password
+  encryption = "tls"
+  from_email = "noreply@example.com"
+}
+
+resource "appwrite_messaging_provider" "twilio" {
+  id          = "twilio"
+  name        = "twilio"
+  type        = "twilio"
+  account_sid = var.twilio_account_sid
+  auth_token  = var.twilio_auth_token
+  from        = "+1234567890"
+}
+
+resource "appwrite_messaging_provider" "fcm" {
+  id                   = "fcm"
+  name                 = "fcm"
+  type                 = "fcm"
+  service_account_json = file("firebase-service-account.json")
+}
+```
+
+## Topics {% #topics %}
+
+```hcl
+resource "appwrite_messaging_topic" "announcements" {
+  id   = "announcements"
+  name = "announcements"
+}
+
+resource "appwrite_messaging_topic" "alerts" {
+  id          = "alerts"
+  name        = "alerts"
+  subscribe   = ["users"]
+}
+```
+
+Topics support import by ID; see the upstream docs for details.
+
+# Related {% #related %}
+
+- [Messaging product docs](/docs/products/messaging)
+- [Provider configuration](/docs/tooling/terraform/provider)

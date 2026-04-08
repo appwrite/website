@@ -717,6 +717,10 @@
         "redirect": "/docs/tooling/command-line/tables"
     },
     {
+        "link": "/docs/tooling/terraform/databases",
+        "redirect": "/docs/tooling/terraform/resources/databases"
+    },
+    {
         "link": "/docs/tooling/mcp/mcp-for-docs",
         "redirect": "/docs/tooling/mcp/docs"
     },

@@ -64,9 +64,11 @@ When an environment variable is set, the matching provider argument does not nee
 
 # API keys {% #api-keys %}
 
-Use a key with the scopes required for the resources you manage (for example databases and tables). Follow the principle of least privilege and rotate keys stored outside Terraform.
+Use a key with the scopes required for the resources you manage (for example databases, storage, and messaging). Follow the principle of least privilege and rotate keys stored outside Terraform.
 
 # Related {% #related %}
 
-- [Database resources](/docs/tooling/terraform/databases) — define schemas with Terraform
+- [Databases](/docs/tooling/terraform/resources/databases) — Tables resources
+- [Storage](/docs/tooling/terraform/resources/storage) — buckets
+- [Messaging](/docs/tooling/terraform/resources/messaging) — providers and topics
 - [Self-hosting](/docs/advanced/self-hosting) — install and run the Appwrite server (not the same as configuring project resources with this provider)

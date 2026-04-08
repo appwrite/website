@@ -27,5 +27,5 @@ resource "appwrite_table" "example" {
 
 # Related {% #related %}
 
-- [Database resources](/docs/tooling/terraform/databases) — create and manage databases with Terraform
+- [Databases](/docs/tooling/terraform/resources/databases) — create and manage databases with Terraform
 - [Provider configuration](/docs/tooling/terraform/provider) — authentication and endpoints

@@ -14,22 +14,35 @@
                 {
                     label: 'Overview',
                     href: '/docs/tooling/terraform'
+                },
+                {
+                    label: 'Provider configuration',
+                    href: '/docs/tooling/terraform/provider'
                 }
             ]
         },
         {
-            label: 'Guides',
+            label: 'Resources',
             items: [
                 {
-                    label: 'Provider configuration',
-                    href: '/docs/tooling/terraform/provider'
+                    label: 'Databases',
+                    href: '/docs/tooling/terraform/resources/databases'
                 },
                 {
-                    label: 'Database resources',
-                    href: '/docs/tooling/terraform/databases'
+                    label: 'Storage',
+                    href: '/docs/tooling/terraform/resources/storage'
                 },
                 {
-                    label: 'Data sources',
+                    label: 'Messaging',
+                    href: '/docs/tooling/terraform/resources/messaging'
+                }
+            ]
+        },
+        {
+            label: 'Data sources',
+            items: [
+                {
+                    label: 'Database',
                     href: '/docs/tooling/terraform/data-sources'
                 }
             ]
