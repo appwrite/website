@@ -106,5 +106,5 @@ Appwrite does not remove the need to evaluate carefully. It is a specific choice
 - [Appwrite self-hosting documentation](/docs/advanced/self-hosting)
 - [Appwrite security overview](/docs/advanced/security)
 - [Appwrite Databases documentation](/docs/products/databases)
-- [Appwrite Authentication documentation](/docs/products/auth)
+- [Appwrite Auth documentation](/docs/products/auth)
 - [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
