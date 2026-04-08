@@ -9,7 +9,6 @@ author: aishwari
 category: product
 featured: false
 ---
-
 Most AI systems have a data problem that isn't about the model. It's about everything the model touches, the prompts going in, the outputs coming out, the embeddings powering retrieval, and the metadata tying it all together. None of this fits neatly into rows and columns. That's the core reason NoSQL for unstructured data is growingly becoming the standard in production AI systems.
 
 This post breaks down exactly how NoSQL handles the three data types AI applications depend on most: text, images, and embeddings, and why relational databases struggle with each of them.

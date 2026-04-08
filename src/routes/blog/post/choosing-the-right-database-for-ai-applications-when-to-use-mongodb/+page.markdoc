@@ -9,7 +9,6 @@ author: aishwari
 category: product
 featured: false
 ---
-
 Not every AI project needs the same database. And picking the wrong one doesn't announce itself immediately, it shows up gradually, in slower iteration cycles, mounting migration overhead, and engineering time spent on database maintenance instead of actual AI work.
 
 This is a practical guide to help you decide when to use [MongoDB](https://mongodb.com) for AI, when a relational database is the better call, and how to tell the difference before it becomes a problem.
