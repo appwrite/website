@@ -45,9 +45,9 @@ Check these signals:
 
 To evaluate this:
 
-- Look at the contributor graph on GitHub. Is there a clear primary author with one or two occasional contributors, or is the contribution spread across multiple people?
-- Check if there's a commercial entity backing the project. Projects backed by a company with revenue tied to their success are more likely to stay maintained than pure volunteer efforts. Companies have incentives to patch vulnerabilities, publish roadmaps, and invest in documentation.
-- Look for a governance model. Projects with explicit governance documents, foundations, or steering committees are structurally more resilient than those with informal ownership.
+- **Look at the contributor graph on GitHub.** Is there a clear primary author with one or two occasional contributors, or is the contribution spread across multiple people?
+- **Check if there's a commercial entity backing the project.** Projects backed by a company with revenue tied to their success are more likely to stay maintained than pure volunteer efforts. Companies have incentives to patch vulnerabilities, publish roadmaps, and invest in documentation.
+- **Look for a governance model.** Projects with explicit governance documents, foundations, or steering committees are structurally more resilient than those with informal ownership.
 
 A project maintained by a backed company is not inherently better engineered, but it is more predictable over a multi-year horizon.
 
@@ -62,7 +62,7 @@ Key license types to understand:
 - **Business Source License (BSL / BUSL)**: Source-available with a time delay. The code is not truly open source; commercial use is typically restricted for several years after each release. HashiCorp and Directus use this model.
 - **Custom source-available licenses**: Some projects use proprietary licenses that look open source but restrict commercial use, competitive products, or modification. Read the actual text.
 
-These are simplified summaries. Each license has nuances that may affect your specific use case, and you should read the actual license text or consult legal counsel before making decisions based on them.
+*Note: These are simplified summaries. Each license has nuances that may affect your specific use case, and you should read the actual license text or consult legal counsel before making decisions based on them.*
 
 If your product is distributed to customers or runs as a SaaS, understand the copyleft surface area of everything in your stack. An AGPL dependency in a cloud service can create unexpected obligations.
 
@@ -101,8 +101,6 @@ This is a ten-minute review that prevents months of remediation work.
 
 # How Appwrite scores against these criteria
 
-[Appwrite](https://github.com/appwrite/appwrite) is an open-source backend platform for web, mobile, and AI apps. It provides [authentication](/docs/products/auth), [databases](/docs/products/databases), [file storage](/docs/products/storage), [serverless functions](/docs/products/functions), real-time subscriptions, messaging, and [hosting for web applications](/docs/products/sites) in a single deployable unit.
-Against the criteria above:
 
 - **Maintenance cadence**: Appwrite releases frequently, with a public changelog and roadmap. The GitHub repository shows consistent commit activity across a distributed team.
 - **Bus factor**: Appwrite is backed by a commercial entity. The engineering team is not a single volunteer; it's a funded organization with incentives tied to the project's production reliability.
