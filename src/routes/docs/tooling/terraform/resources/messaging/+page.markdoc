@@ -80,4 +80,4 @@ Topics support import by ID; see the upstream docs for details.
 # Related {% #related %}
 
 - [Messaging product docs](/docs/products/messaging)
-- [Provider configuration](/docs/tooling/terraform/provider)
+- [Configuration](/docs/tooling/terraform/provider)

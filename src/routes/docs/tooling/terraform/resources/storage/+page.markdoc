@@ -47,4 +47,4 @@ Buckets support [Terraform import](https://developer.hashicorp.com/terraform/cli
 # Related {% #related %}
 
 - [Storage product docs](/docs/products/storage)
-- [Provider configuration](/docs/tooling/terraform/provider)
+- [Configuration](/docs/tooling/terraform/provider)

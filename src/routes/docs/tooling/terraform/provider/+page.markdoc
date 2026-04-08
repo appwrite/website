@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Provider configuration
+title: Configuration
 description: Configure the Appwrite Terraform provider for Cloud or Community Edition using endpoints, API keys, and optional environment variables.
 ---
 

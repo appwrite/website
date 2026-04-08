@@ -49,7 +49,7 @@ The provider works with **Appwrite Cloud** and **Community Edition** (self-hoste
 # Next steps {% #next-steps %}
 
 {% cards %}
-{% cards_item href="/docs/tooling/terraform/provider" title="Provider configuration" %}
+{% cards_item href="/docs/tooling/terraform/provider" title="Configuration" %}
 Install the provider, set endpoints, and use environment variables for credentials.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/terraform/resources/databases" title="Databases" %}

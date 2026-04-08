@@ -16,7 +16,7 @@
                     href: '/docs/tooling/terraform'
                 },
                 {
-                    label: 'Provider configuration',
+                    label: 'Configuration',
                     href: '/docs/tooling/terraform/provider'
                 }
             ]
