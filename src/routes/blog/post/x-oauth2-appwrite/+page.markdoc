@@ -24,8 +24,6 @@ For developers, social login with Appwrite means you don't have to implement or 
 
 X in particular is valuable for apps that are social or content-focused. If your users are already on X, letting them authenticate with it creates a natural connection between their X identity and your product. You can also use the access token Appwrite stores to call the X API on their behalf, enabling things like reading their profile, fetching their posts, or building X-connected features.
 
-Appwrite's X adapter also implements **OAuth 2.0 with PKCE** (Proof Key for Code Exchange), which is required by X's API v2 and protects against authorization code interception attacks. This is handled automatically with no extra configuration needed on your end.
-
 # How OAuth2 works in Appwrite
 
 When a user signs in with X, Appwrite manages the entire OAuth2 flow on your behalf:
