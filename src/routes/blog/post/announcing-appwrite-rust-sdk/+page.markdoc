@@ -24,11 +24,17 @@ The SDK supports every Appwrite server-side service:
 
 | Service | What you can do |
 |---------|----------------|
-| **Databases** | Create databases, tables, columns, rows. Query with filters, sorting, and pagination. |
-| **Auth** | Manage users, sessions, teams, and OAuth providers. |
-| **Storage** | Create buckets, upload and download files, manage file tokens. |
+| **TablesDB** | Create databases, tables, columns, rows. Query with filters, sorting, and pagination. |
+| **Account** | Manage sessions, OAuth, MFA, and user preferences. |
+| **Users** | Manage users, targets, and labels. |
+| **Teams** | Manage teams, memberships, and invites. |
+| **Storage** | Create buckets, upload and download files. |
+| **Tokens** | Create and manage file tokens for secure file access. |
 | **Functions** | Create and execute serverless functions. |
 | **Messaging** | Send emails, SMS, and push notifications through providers like Twilio, Sendgrid, and more. |
+| **Sites** | Create, deploy, and manage web applications. |
+| **Locale** | Get user locale, list languages, currencies, countries, and continent information. |
+| **Avatars** | Generate user initials, QR codes, country flags, browser icons, favicons, and webpage screenshots. |
 
 The SDK also includes utility modules for building queries, generating IDs, constructing permissions, and working with operators for atomic database updates.
 
