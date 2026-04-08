@@ -379,22 +379,29 @@ def get_user():
 
 ```
 ```rust
+use appwrite::Client;
+use appwrite::services::account::Account;
+
 // Initialize the session client here
 
-async fn get_user(session_cookie: Option<&str>) -> Result<(), Box<dyn std::error::Error>> {
-    // First, read the session cookie from the request
-    let session = session_cookie.ok_or("Unauthorized")?;
+// First, read the session cookie from the request
+// This depends on your HTTP framework (e.g. actix-web, axum, rocket)
+let session = req.cookie("a_session_<PROJECT_ID>");
 
-    // Pass the session cookie to the Appwrite client
-    session_client.set_session(session);
-
-    // Now, you can make authenticated requests to the Appwrite API
-    let account = Account::new(&session_client);
-    let user = account.get().await?;
-
-    println!("{:?}", user);
-    Ok(())
+// If the session cookie is not present, return an error
+if session.is_none() {
+    // return 401 Unauthorized
 }
+
+// Pass the session cookie to the Appwrite client
+let session_client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .set_project("<PROJECT_ID>");
+session_client.set_session(session.unwrap());
+
+// Now, you can make authenticated requests to the Appwrite API
+let account = Account::new(&session_client);
+let user = account.get().await?;
 ```
 {% /multicode %}
 
@@ -515,6 +522,8 @@ $client->setForwardedUserAgent($_SERVER['HTTP_USER_AGENT']);
 client.set_forwarded_user_agent(request.headers.get('user-agent'))
 ```
 ```rust
+// This depends on your HTTP framework (e.g. actix-web, axum, rocket)
+let user_agent = req.header("user-agent");
 client.add_header("x-forwarded-user-agent", user_agent);
 ```
 {% /multicode %}
