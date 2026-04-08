@@ -1,0 +1,100 @@
+---
+layout: post
+title: "Static sites vs. SSR on Appwrite Sites: how to choose"
+description: Static and server-side rendered sites work very differently under the hood. Understanding how each one is served will help you pick the right approach for your next project.
+date: 2026-04-08
+cover: /images/blog/static-vs-ssr-appwrite-sites/cover.png
+timeToRead: 8
+author: eldad-fux
+category: product
+featured: false
+---
+
+When you deploy a site to [Appwrite Sites](/products/sites), you have two fundamentally different options for how your content reaches visitors: static hosting or server-side rendering (SSR). Both are first-class options on Appwrite Sites, and both have a place in a modern developer's toolkit. But they work very differently under the hood, and choosing the wrong one for your use case has real consequences for performance, cost, and developer experience.
+
+This article explains how each model works, why static is usually the right default, and the specific scenarios where SSR earns its keep.
+
+# How static hosting actually works
+
+When you deploy a static site, you are uploading a collection of files: HTML, CSS, JavaScript, images, fonts. Those files have no dependencies on a running process. They are inert. They do not change between one visitor and the next.
+
+Appwrite Sites distributes those files across a global [CDN](/docs/products/network/cdn). When a visitor requests your site, the nearest edge node checks whether it has the files cached. If it does, it serves them directly. If it does not, it fetches from origin, caches the result, and serves from that point forward. There is no application server involved. No process to start. No code to execute.
+
+When you deploy a new version, the CDN cache is purged. The new files replace the old ones at every edge node, and the next request at each location fetches and caches the updated content. The whole system is file storage communicating almost directly with the visitor, with the CDN acting as a transparent layer of acceleration.
+
+This is why static hosting is fast by default. There is no server to be slow. There is no cold start. No queue of requests waiting to be processed. The limiting factor is network speed, not compute.
+
+It is also why static hosting is so inexpensive. CDN bandwidth is cheap. File storage is cheap. There is no server to provision, no container to keep warm, no compute to bill by the millisecond. Most static hosting services, including Appwrite Sites, include generous free tiers precisely because the marginal cost of serving another static request is close to zero.
+
+**When should you default to static?** Almost always, when the content does not need to be personalized per request and does not change faster than you can deploy. Landing pages, documentation, marketing sites, portfolios, product pages with infrequent updates: all of these are natural fits for static hosting.
+
+# How SSR works, and why it costs more
+
+Server-side rendering is a fundamentally different model. Instead of serving pre-built files, every request to an SSR site triggers the execution of JavaScript code on a server. That code fetches data, renders HTML, and returns a fully-formed page to the browser.
+
+To make this work, every SSR site on Appwrite Sites runs in its own isolated container. Each deployment gets its own container. When a request arrives, the container either picks it up directly if it is already warm, or starts up fresh if it has been idle. Once traffic subsides, the container is shut down to avoid running compute unnecessarily.
+
+This isolation is not just a cost-management mechanism. It is also a security property. Containers are separated from each other by default, so a bug in one site cannot leak data into another. Each deployment runs in a clean, reproducible environment.
+
+But isolation and on-demand startup come with trade-offs. Containers that have been idle have to start before they can serve a request. Compute costs money in a way that CDN bandwidth does not. And the infrastructure required to manage containers, route requests to the right one, handle scale-out under load, and shut down idle instances is significantly more complex than a CDN in front of a file bucket.
+
+This means SSR costs more to run, and it should. The question is whether it costs more than the problem it solves is worth.
+
+# SSR is absolutely worth it, in the right situations
+
+SSR is not a fallback for developers who did not want to learn static site generation. It solves real problems that static hosting either cannot solve at all, or can only partially solve at a cost developers often underestimate.
+
+## Dynamic paths need real SEO
+
+Consider a community platform, a marketplace, or a blog with thousands of contributors. Every post, every user profile, every product listing has its own URL. Search engines need to crawl those URLs and find fully-rendered HTML with the correct title, description, and open graph tags.
+
+With static hosting, you can achieve this through static site generation (SSG): run a build process that fetches all the data and pre-renders every page as an HTML file. This works, but the build has to finish before any page is available. For a site with tens of thousands of pages and a build time of 10 to 15 minutes, a new piece of content does not appear in search results until the next deploy completes and the CDN cache is purged. For high-velocity platforms, this delay is not acceptable.
+
+SSR handles this by rendering each page at request time. A new post goes live the moment it is published. The search crawler requests the URL, gets back fully-rendered HTML, and indexes it immediately. No build required. No cache purge delay.
+
+This also applies to on-demand cache invalidation. With static hosting, the CDN cache is cleared as part of the deployment process, which takes time. With SSR, you can invalidate specific cache entries precisely when the underlying data changes, without triggering a full redeploy. This matters for any content that needs to be updated quickly and individually.
+
+## Some applications are not really frontends
+
+There is a pattern common in larger projects: the frontend is a separate repository, deployed separately from a collection of backend services. Over time, this separation creates its own category of problems.
+
+API versioning becomes a coordination problem. If the frontend expects a new field in an API response, the backend has to deploy first. If the backend removes a field, the frontend might break. Managing this safely requires backward compatibility contracts, version headers, skew protection, and careful CI/CD coordination across multiple repositories. For small teams, this overhead accumulates faster than expected.
+
+When you use SSR, the backend API endpoints live in the same codebase as the frontend. A Next.js app with API routes, a SvelteKit app with server actions, a Nuxt app with server middleware: in all of these cases, the logic that fetches and transforms data is deployed together with the logic that renders it. There is no versioning problem because there is no interface boundary. The code that calls the function is the same code that defines it.
+
+This also means the deployment pipeline is simpler. One repository, one build, one deploy. The frontend and its backend go live at the same time, without any orchestration between separate services.
+
+[Appwrite Functions](/docs/products/functions) remain the right answer for workloads that need to run independently of the request cycle: scheduled jobs, event-driven processing, webhooks. But for API endpoints that exist purely to serve the frontend, SSR colocation is often the cleaner architecture.
+
+{% call_to_action title="Deploy your next project on Appwrite Sites" description="Static or SSR, Appwrite Sites handles both with built-in CDN, DDoS protection, preview deployments, and deep integration with the rest of the Appwrite platform." point1="Free static hosting with global CDN" point2="SSR containers with automatic scale-to-zero" point3="Preview deployments for every branch" point4="Integrated auth, database, and storage" cta="Get started for free" url="https://cloud.appwrite.io/" /%}
+
+# A quick decision guide
+
+| If your project needs... | Recommended approach |
+| --- | --- |
+| Maximum performance and lowest cost | Static |
+| Content that changes rarely | Static |
+| Pre-built documentation or marketing pages | Static |
+| User-generated content at scale with SEO requirements | SSR |
+| Personalized pages rendered per-request | SSR |
+| On-demand cache invalidation for individual pages | SSR |
+| Backend API logic colocated with frontend | SSR |
+| Protection from frontend/backend version skew | SSR |
+
+# Which one should you start with?
+
+Static is the right default. It is simpler to reason about, faster by nature, and cheaper to run. If your project fits the static model, use it and do not look for reasons to add complexity.
+
+But SSR is not a compromise or a crutch. For projects where SEO depends on dynamic content, where content updates cannot wait for a redeploy, or where frontend and backend need to be deployed as a unit, SSR solves real problems that static hosting does not.
+
+Appwrite Sites supports both, with the same deployment workflow, the same preview deployments, the same CDN and DDoS protection, and the same integration with [Appwrite Auth](/docs/products/auth), [Appwrite Databases](/docs/products/databases), and [Appwrite Storage](/docs/products/storage). You can start static and add SSR to specific routes as your needs evolve, or go SSR from the start if you know you will need it.
+
+The goal is to ship the right thing, not the more impressive thing. Pick the model that matches your actual requirements.
+
+# More resources
+
+- [Appwrite Sites docs](/docs/products/sites)
+- [CSR vs SSG vs SSR: what they are and how to choose](/blog/post/csr-ssg-ssr)
+- [How to host SSR web apps on Appwrite Sites](/blog/post/host-ssr-web-apps-sites)
+- [What is a CDN?](/blog/post/what-is-cdn)
+- [Deploy a Next.js app to Appwrite Sites](/blog/post/deploy-nextjs-app-to-appwrite-sites)
