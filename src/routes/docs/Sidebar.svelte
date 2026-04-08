@@ -148,7 +148,7 @@
                     icon: 'icon-text'
                 },
                 {
-                    label: 'Terraform',
+                    label: 'Terraform provider',
                     href: '/docs/tooling/terraform',
                     icon: 'web-icon-system',
                     isParent: true

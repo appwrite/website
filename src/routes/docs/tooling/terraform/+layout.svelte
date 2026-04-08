@@ -4,7 +4,7 @@
 
     const parent: NavParent = {
         href: '/docs',
-        label: 'Terraform'
+        label: 'Terraform provider'
     };
 
     const navigation: NavTree = [
