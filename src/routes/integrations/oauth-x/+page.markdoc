@@ -33,9 +33,7 @@ To implement the X OAuth adapter in Appwrite Auth, there are several steps you m
 
 ## Step 1: Create an X Developer app
 
-First, head to the [X Developer Portal](https://console.x.com/) and create a new project. Head to the **Apps**
-
-![X Developer Portal](/images/integrations/oauth-x/new-app.png)
+First, head to the [X Developer Portal](https://console.x.com/) and create a new project. In the **Apps** section, create a new app inside the project (or use an existing one). Give your app a name that reflects what you're building.
 
 In your app's settings, scroll down to **User authentication settings** and click **Set up**. Configure the following:
 
@@ -55,7 +53,7 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Add the **Client ID** and **Client Secret** you saved from your X app and copy the URI to replace the temporary URL in the **Callback URI / Redirect URL** field in your X app's user authentication settings.
 
-## Step 3: Test the provider.
+## Step 3: Test the provider
 
 Follow the [OAuth 2 login](/docs/products/auth/oauth2#init) flow to test your provider.
 
