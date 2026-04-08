@@ -332,9 +332,10 @@ let session_client = Client::new()
     .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .set_project("<PROJECT_ID>");            // Your project ID
 
-// Get the session cookie from the request
-let session = get_cookie("session"); // Your framework's cookie extraction
-session_client.set_session(&session);
+// Retrieve the session cookie from your HTTP framework's request object
+// e.g. req.cookie("a_session_<PROJECT_ID>") in actix-web or axum
+let session = "a_session_...";
+session_client.set_session(session);
 ```
 {% /multicode %}
 {% /tabsitem %}
