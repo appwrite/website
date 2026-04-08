@@ -3,8 +3,8 @@ layout: integration
 title: Auth Kit for FlutterFlow
 description: Integrate Appwrite Auth into your FlutterFlow apps without writing complex code
 date: 2024-03-01
-featured: true
-isPartner: false
+featured: false
+isPartner: true
 isNew: true
 cover: /images/integrations/flutterflow-auth-kit/cover.png
 category: auth
