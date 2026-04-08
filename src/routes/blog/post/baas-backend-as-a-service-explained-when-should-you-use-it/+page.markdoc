@@ -12,7 +12,7 @@ featured: false
 
 Modern app development moves fast, and nothing slows a team down more than rebuilding the same backend infrastructure over and over again.
 
-Authentication systems. Databases. File storage. Real-time APIs. Permissions. These aren't differentiators. They're table stakes. Yet teams spend weeks, sometimes months, getting them right before writing a single line of product code.
+Authentication systems. Databases. File storage. Real-time APIs. Permissions. These aren't differentiators. They're the foundational requirements every app needs just to function. Yet teams spend weeks, sometimes months, getting them right before writing a single line of product code.
 
 Backend as a service (BaaS) was built to solve exactly that problem. But it's not the right fit for every project. This guide breaks down what BaaS actually is, where it makes the most sense, and where it doesn't, so you can make the right call for your stack.
 
@@ -36,11 +36,15 @@ The idea is simple: offload the infrastructure so your team can focus on buildin
 
 # Why developers choose BaaS
 
-The biggest reason developers reach for BaaS is **speed**.
+The biggest reason developers reach for BaaS is **speed**, but the cost argument is just as compelling.
 
-Consider authentication alone. A production-ready auth system requires user registration, secure password hashing, session handling, OAuth integrations, email verification flows, and password reset logic. That's weeks of work, and it's the same work every team builds, over and over again.
+Consider what building a backend from scratch actually requires. You need to hire backend engineers, provision and configure servers, purchase and manage database infrastructure, and then keep all of it running, patched, and scaled as your product grows. For a startup or small team, that's a significant upfront investment before you've validated a single feature.
 
-BaaS makes all of that available on day one.
+Then there's the ongoing cost. Infrastructure maintenance, security updates, monitoring, and on-call burden don't go away once the system is built. They compound over time, consuming engineering hours that could go toward product development.
+
+Consider authentication alone as an example. A production-ready auth system requires user registration, secure password hashing, session handling, OAuth integrations, email verification flows, and password reset logic. That's weeks of engineering work, and it's the same work every team rebuilds from scratch.
+
+BaaS makes all of that available on day one, at a fraction of the cost of building and staffing it yourself.
 
 For mobile and web development in particular, this is a significant advantage. Mobile apps typically need authentication, real-time sync, push notifications, and file storage, all common BaaS features that would otherwise require building and maintaining a custom backend.
 
@@ -100,7 +104,7 @@ BaaS is powerful, but it's not the right answer for every use case. Teams with t
 - **Complex compliance requirements:** industries with strict data residency or regulatory constraints (healthcare, fintech) may need custom infrastructure, though self-hosted BaaS deployments can satisfy many of these requirements without building from scratch
 - **Specialized database performance:** high-scale systems with complex query optimization needs
 - **Deeply custom architectures:** applications with unique microservices patterns that don't map to BaaS conventions
-- **Extreme scale:** workloads that require fine-tuned infrastructure management at the infrastructure level
+- **Extreme scale:** workloads that require custom infrastructure tuning, such as specialized caching strategies, network topology control, or hardware-level optimizations
 
 That said, this line has shifted significantly. Modern BaaS platforms, particularly open-source ones, now support self-hosted deployments, giving teams full infrastructure control while still benefiting from pre-built backend features. For most teams, the question isn't whether BaaS can handle their scale, it's whether the trade-offs make sense for their specific workload.
 
@@ -113,8 +117,8 @@ With Appwrite, you get a complete backend foundation:
 - Authentication with support for 30+ login methods
 - Databases with real-time subscriptions and fine-grained permissions
 - Cloud storage with file transformation support
-- Serverless functions in any language
-- Real-time APIs
+- Serverless functions across 13+ languages and 30+ runtimes
+- A real-time API covering events across all services
 - Role-based access control across every resource
 - Hosting for web applications and sites
 
