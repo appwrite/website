@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Backend platform longevity: What to look for beyond features"
+title: Backend platform longevity: What to look for beyond features
 description: Learn what to look for beyond features when choosing a backend platform—maintenance cadence, governance, security posture, data portability, and long-term stability.
 date: 2026-04-07
 cover: /images/blog/backend-platform-longevity-what-to-look-for-beyond-features/cover.png
@@ -13,11 +13,11 @@ unlisted: true
 
 Most backend platform comparisons focus on features: which authentication methods are supported, how the database query API works, whether there's a serverless functions layer. These are the wrong questions to lead with.
 
-Features are table stakes. What actually determines whether a backend dependency was a good decision three years from now is whether the platform is still maintained, still trustworthy, and still something you can get off if you need to. Evaluating for longevity requires a different set of questions.
+Getting features right is just the starting point. What actually determines whether a backend dependency was a good decision three years from now is whether the platform is still maintained, still trustworthy, and still something you can get off if you need to. Evaluating for longevity requires a different set of questions.
 
 # The real cost of a platform that doesn't last
 
-When a backend platform is deprecated, acquired and sunset, or abandoned by its maintainers, the teams built on it absorb the full migration cost. That cost is rarely just "update your imports." It means migrating data out of proprietary formats, rewriting authentication flows, rebuilding API integrations, and doing all of it while your production application continues to serve users.
+Platforms get shut down, acquired, or quietly abandoned. When that happens, every team that built on them has to pay the full cost of migrating away. That cost is rarely just "update your imports." It means migrating data out of proprietary formats, rewriting authentication flows, rebuilding API integrations, and doing all of it while your production application continues to serve users.
 
 The problem is that these risks are invisible at evaluation time. A platform with excellent documentation, a polished dashboard, and a generous free tier can show every sign of health and still be one funding round away from a shutdown notice. Evaluating platforms purely on current features is evaluating a snapshot. What you actually need to assess is trajectory.
 
