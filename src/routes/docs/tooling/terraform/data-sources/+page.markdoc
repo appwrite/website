@@ -1,0 +1,31 @@
+---
+layout: article
+title: Data sources
+description: Use Terraform data sources to read existing Appwrite databases by ID for use in other resources.
+---
+
+**Data sources** let Terraform read resources that already exist instead of creating them. The Appwrite provider currently exposes a data source for **databases** so you can reference an existing database by ID in your configuration.
+
+See the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for the latest list of data sources and arguments.
+
+# `appwrite_database` (data source) {% #appwrite-database-data-source %}
+
+Use this when a database was created outside Terraform (or in another state) and you need its identity in your module.
+
+```hcl
+data "appwrite_database" "existing" {
+  id = "main"
+}
+
+# Example: reference in another resource
+resource "appwrite_table" "example" {
+  database_id = data.appwrite_database.existing.id
+  id          = "example"
+  name        = "Example"
+}
+```
+
+# Related {% #related %}
+
+- [Database resources](/docs/tooling/terraform/databases) — create and manage databases with Terraform
+- [Provider configuration](/docs/tooling/terraform/provider) — authentication and endpoints

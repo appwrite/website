@@ -1,0 +1,103 @@
+---
+layout: article
+title: Database resources
+description: Use Terraform to manage Appwrite databases, tables, columns, and indexes with the official Appwrite provider.
+---
+
+The provider exposes Appwrite **Tables**-style data modeling as Terraform resources. Typical order: create a **database**, then **tables**, then **columns** and **indexes** that belong to those tables.
+
+Refer to the [repository README](https://github.com/appwrite/terraform-provider-appwrite) for the authoritative schema and argument lists as the provider evolves.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_database` | Create a database in your project |
+| `appwrite_table` | Create a table within a database |
+| `appwrite_column` | Define columns (types, constraints, defaults) |
+| `appwrite_index` | Add indexes on one or more columns |
+
+Relationships use `database_id` and `table_id` references, often wired through Terraform resource attributes (for example `appwrite_database.main.id`).
+
+# Example {% #example %}
+
+This pattern matches the upstream documentation: a database, a `users` table, several columns, and a unique index on email.
+
+```hcl
+resource "appwrite_database" "main" {
+  id   = "main"
+  name = "Main"
+}
+
+resource "appwrite_table" "users" {
+  database_id = appwrite_database.main.id
+  id          = "users"
+  name        = "Users"
+}
+
+resource "appwrite_column" "name" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "name"
+  type        = "varchar"
+  size        = 255
+  required    = true
+}
+
+resource "appwrite_column" "email" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "email"
+  type        = "email"
+  required    = true
+}
+
+resource "appwrite_column" "age" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "age"
+  type        = "integer"
+  min         = 0
+  max         = 150
+}
+
+resource "appwrite_column" "role" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "role"
+  type        = "enum"
+  elements    = ["admin", "editor", "viewer"]
+  default     = "viewer"
+}
+
+resource "appwrite_column" "tags" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "tags"
+  type        = "varchar"
+  size        = 64
+  array       = true
+}
+
+resource "appwrite_column" "location" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "location"
+  type        = "point"
+}
+
+resource "appwrite_index" "email_unique" {
+  database_id = appwrite_database.main.id
+  table_id    = appwrite_table.users.id
+  key         = "email_unique"
+  type        = "unique"
+  columns     = [appwrite_column.email.key]
+}
+```
+
+Column `type` supports the types your Appwrite version exposes (for example `varchar`, `email`, `integer`, `enum`, `point`, and more); check the provider docs for the full set.
+
+# Related {% #related %}
+
+- [Data sources](/docs/tooling/terraform/data-sources) — reference existing databases by ID
+- [Databases product docs](/docs/products/databases) — concepts and Console workflows

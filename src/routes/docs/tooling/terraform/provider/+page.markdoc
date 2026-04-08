@@ -1,0 +1,72 @@
+---
+layout: article
+title: Provider configuration
+description: Configure the Appwrite Terraform provider for Cloud or Community Edition using endpoints, API keys, and optional environment variables.
+---
+
+The Appwrite provider is published as `appwrite/appwrite`. You declare it in a `terraform` block and configure the `provider "appwrite"` block with your endpoint, project ID, and API key.
+
+Full examples and attribute tables are maintained in the [provider repository](https://github.com/appwrite/terraform-provider-appwrite).
+
+# Terraform block {% #terraform-block %}
+
+```hcl
+terraform {
+  required_providers {
+    appwrite = {
+      source = "appwrite/appwrite"
+    }
+  }
+}
+```
+
+# Appwrite Cloud {% #appwrite-cloud %}
+
+```hcl
+provider "appwrite" {
+  endpoint   = "https://cloud.appwrite.io/v1"
+  project_id = "project-id"
+  api_key    = "api-key"
+}
+```
+
+# Community Edition {% #community-edition %}
+
+For self-hosted Appwrite, set your instance URL and enable `self_signed` when you use a certificate that is not trusted by default (common in local or internal deployments):
+
+```hcl
+provider "appwrite" {
+  endpoint    = "https://appwrite-instance.com/v1"
+  project_id  = "project-id"
+  api_key     = "api-key"
+  self_signed = true
+}
+```
+
+# Environment variables {% #environment-variables %}
+
+You can supply credentials via environment variables instead of hard-coding them in `.tf` files (recommended for CI and local development):
+
+```bash
+export APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
+export APPWRITE_PROJECT_ID="project-id"
+export APPWRITE_API_KEY="api-key"
+```
+
+When an environment variable is set, the matching provider argument does not need to appear in the configuration.
+
+| Provider argument | Environment variable | Required | Description |
+|-------------|------------------------|----------|-------------|
+| `endpoint` | `APPWRITE_ENDPOINT` | yes | Appwrite API endpoint |
+| `project_id` | `APPWRITE_PROJECT_ID` | yes | Project ID |
+| `api_key` | `APPWRITE_API_KEY` | yes | API key with permissions for the resources you manage |
+| `self_signed` | — | no | Accept self-signed TLS certificates (Community Edition) |
+
+# API keys {% #api-keys %}
+
+Use a key with the scopes required for the resources you manage (for example databases and tables). Follow the principle of least privilege and rotate keys stored outside Terraform.
+
+# Related {% #related %}
+
+- [Database resources](/docs/tooling/terraform/databases) — define schemas with Terraform
+- [Self-hosting](/docs/advanced/self-hosting) — install and run the Appwrite server (not the same as configuring project resources with this provider)

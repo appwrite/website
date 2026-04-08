@@ -146,6 +146,12 @@
                     label: 'The Appwriter',
                     href: '/docs/tooling/appwriter',
                     icon: 'icon-text'
+                },
+                {
+                    label: 'Terraform',
+                    href: '/docs/tooling/terraform',
+                    icon: 'web-icon-system',
+                    isParent: true
                 }
             ]
         },
