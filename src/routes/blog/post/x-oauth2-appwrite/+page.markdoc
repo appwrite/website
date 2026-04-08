@@ -39,11 +39,11 @@ Appwrite's X adapter uses **OAuth 2.0 with PKCE** (Proof Key for Code Exchange),
 
 # Creating an X Developer app
 
-To connect Appwrite to X, you first need to register an app on the [X Developer Portal](https://console.x.com).
+To connect Appwrite to X, you first need to register an app on the [X Developer Console](https://console.x.com).
 
 Log in and create a new project, then create a new app inside that project (or use an existing one). Give your app a name that reflects what you're building.
 
-![X Developer Portal - New App](/images/integrations/oauth-x/new-app.png)
+![X Developer Console - New App](/images/integrations/oauth-x/new-app.png)
 
 Once the app is created, open the app's **Settings** and scroll down to **User authentication settings**. Click **Set up** and configure the following:
 
@@ -63,7 +63,7 @@ Head to your [Appwrite Console](https://cloud.appwrite.io/) and open your projec
 
 Enable the provider and paste in your **Client ID** and **Client Secret**. Appwrite will display a **Redirect URI**. Copy it and go back to your X app's **User authentication settings** to replace the temporary callback URL with this value.
 
-Save the changes in both the X Developer Portal and Appwrite.
+Save the changes in both the X Developer Console and Appwrite.
 
 # Logging in from your frontend
 
@@ -139,7 +139,7 @@ This renews the X access token without interrupting the user's Appwrite session.
 
 # Final thoughts
 
-Adding X login to your app with Appwrite comes down to three things: registering an app on the X Developer Portal, configuring the provider in the Appwrite Console, and calling one SDK method. Appwrite handles the PKCE flow, token exchange, and session management for you.
+Adding X login to your app with Appwrite comes down to three things: registering an app on the X Developer Console, configuring the provider in the Appwrite Console, and calling one SDK method. Appwrite handles the PKCE flow, token exchange, and session management for you.
 
 If you have questions or run into issues, the [Appwrite Discord server](https://appwrite.io/discord) is the best place to get help.
 
@@ -147,7 +147,7 @@ If you have questions or run into issues, the [Appwrite Discord server](https://
 
 - [X OAuth integration guide](/integrations/oauth-x)
 - [Appwrite Auth OAuth2 docs](/docs/products/auth/oauth2)
-- [X Developer Portal](https://console.x.com)
+- [X Developer Console](https://console.x.com)
 - [X API OAuth2 documentation](https://docs.x.com/fundamentals/authentication/oauth-2-0/overview)
 - [Understanding OAuth and OpenID Connect](/blog/post/oauth-openid)
 - [Appwrite Auth API reference](/docs/references/cloud/client-web/account)
