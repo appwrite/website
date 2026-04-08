@@ -30,7 +30,7 @@ The SDK supports every Appwrite server-side service:
 | **Teams** | Manage teams, memberships, and invites. |
 | **Storage** | Create buckets, upload and download files. |
 | **Tokens** | Create and manage file tokens for secure file access. |
-| **Functions** | Create and execute serverless functions. |
+| **Functions** | Create, deploy, and manage serverless functions. |
 | **Messaging** | Send emails, SMS, and push notifications through providers like Twilio, Sendgrid, and more. |
 | **Sites** | Create, deploy, and manage web applications. |
 | **Locale** | Get user locale, list languages, currencies, countries, and continent information. |
