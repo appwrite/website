@@ -52,8 +52,6 @@ With static hosting, you can achieve this through static site generation (SSG): 
 
 SSR handles this by rendering each page at request time. A new post goes live the moment it is published. The search crawler requests the URL, gets back fully-rendered HTML, and indexes it immediately. No build required. No cache purge delay.
 
-This also applies to on-demand cache invalidation. With static hosting, the CDN cache is cleared as part of the deployment process, which takes time. With SSR, you can invalidate specific cache entries precisely when the underlying data changes, without triggering a full redeploy. This matters for any content that needs to be updated quickly and individually.
-
 ## Some applications are not really frontends
 
 There is a pattern common in larger projects: the frontend is a separate repository, deployed separately from a collection of backend services. Over time, this separation creates its own category of problems.
