@@ -51,7 +51,7 @@
                             {:else}
                                 <a
                                     class="web-side-nav-button"
-                                    href={href}
+                                    {href}
                                     data-badge={showBadge ? '' : undefined}
                                     onclick={() =>
                                         trackEvent(
