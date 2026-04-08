@@ -103,6 +103,12 @@ It's recommended you use one of the [starter function templates](/docs/products/
 Under **Build settings**, you can update your build commands. 
 These are terminal commands that will be executed in the runtime containers in the build step of the deployment process.
 
+## Resource limits {% #resource-limits %}
+
+Under **Settings** - **Resource limits**, you can set **build** and **runtime** specifications independently. The build spec applies while your deployment is being built and packaged; the runtime spec applies to each function execution. Both use the same CPU and memory tiers on Cloud. This lets you align compute with heavy dependency installs or compilation without over-provisioning every invocation.
+
+On Appwrite Cloud, customizing specifications requires the **Pro** plan. See [Compute](/docs/advanced/platform/compute) for tiers, GB-hours, and pricing.
+
 ## Git integration {% #git-integration %}
 You can update the entrypoint file and build settings of your function by navigating to your function > **Settings** > **Configuration**.
 

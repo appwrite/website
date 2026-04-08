@@ -22,6 +22,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
+    import { changelogNavBadgeVisible } from '$routes/changelog/utils';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -121,7 +122,8 @@
         },
         {
             label: 'Changelog',
-            href: '/changelog'
+            href: '/changelog',
+            showBadge: changelogNavBadgeVisible(page)
         }
     ];
 
