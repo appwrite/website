@@ -11,7 +11,7 @@ category: auth
 product:
     avatar: '/images/integrations/avatars/x.png'
     vendor: X
-    description: 'X (formerly Twitter) is a social media platform where users can post short messages, follow others, and engage in real-time conversations on topics ranging from news and politics to entertainment and technology.'
+    description: 'X is a social media platform where users can post short messages, follow others, and engage in real-time conversations on topics ranging from news and politics to entertainment and technology.'
 platform:
     - 'Cloud'
 images:
@@ -63,7 +63,7 @@ Follow the [OAuth 2 login](/docs/products/auth/oauth2#init) flow to test your pr
 
 If you would like to learn more about X and Appwrite Auth, we have some resources that you should visit:
 
-- [X Developer Portal](https://developer.twitter.com/en/portal/dashboard)
+- [X Developer Portal](https://console.x.com)
 - [Implement OAuth login in your apps using Appwrite Auth](/docs/products/auth/oauth2)
 - [Understanding OAuth and OpenID Connect](/blog/post/oauth-openid)
 - [Appwrite Auth API reference](/docs/references/cloud/client-web/account)
