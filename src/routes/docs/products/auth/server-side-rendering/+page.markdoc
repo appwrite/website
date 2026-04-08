@@ -270,8 +270,8 @@ use appwrite::services::account::Account;
 // Initialize admin client here
 // ...
 
-async fn login(email: &str, password: &str) -> Result<(), Box<dyn std::error::Error>> {
-    let account = Account::new(&admin_client);
+async fn login(admin_client: &Client, email: &str, password: &str) -> Result<(), Box<dyn std::error::Error>> {
+    let account = Account::new(admin_client);
 
     // Create the session using the Appwrite client
     let session = account.create_email_password_session(
