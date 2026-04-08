@@ -150,7 +150,7 @@
                 {
                     label: 'Terraform provider',
                     href: '/docs/tooling/terraform',
-                    icon: 'web-icon-system',
+                    icon: 'web-icon-terraform',
                     isParent: true
                 }
             ]
