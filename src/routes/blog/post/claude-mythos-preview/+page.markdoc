@@ -2,7 +2,7 @@
 layout: post
 title: "Claude Mythos Preview: the model too powerful to release"
 description: "Anthropic's Claude Mythos Preview broke out of a sandbox, found zero-days in Firefox, and solved a 10-hour corporate pentest autonomously. Here's why they chose not to release it."
-date: 2026-04-08
+date: 2026-04-09
 cover: /images/blog/claude-mythos-preview/cover.png
 timeToRead: 7
 author: atharva
