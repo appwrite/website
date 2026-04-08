@@ -7,7 +7,6 @@
     import { Button } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
     import { trackEvent } from '$lib/actions/analytics';
-    import { browser } from '$app/environment';
 
     export let open = false;
     export let links: NavLink[];
@@ -45,14 +44,15 @@
         <div class="web-side-nav-scroll max-w-screen! pr-0!">
             <section>
                 <ul>
-                    {#each links as { href, label, mobileSubmenu }}
+                    {#each links as { href, label, mobileSubmenu, showBadge }}
                         <li>
                             {#if mobileSubmenu}
                                 <svelte:component this={mobileSubmenu} {label} />
                             {:else}
                                 <a
                                     class="web-side-nav-button"
-                                    {href}
+                                    href={href}
+                                    data-badge={showBadge ? '' : undefined}
                                     onclick={() =>
                                         trackEvent(
                                             `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
@@ -71,3 +71,21 @@
         </div>
     </div>
 </nav>
+
+<style>
+    [data-badge] {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(var(--color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+            translate: 100%;
+        }
+    }
+</style>
