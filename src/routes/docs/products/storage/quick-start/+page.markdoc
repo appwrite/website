@@ -147,6 +147,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   use appwrite::Client;
   use appwrite::services::storage::Storage;
   use appwrite::input_file::InputFile;
+  use appwrite::id::ID;
 
   #[tokio::main]
   async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -160,7 +161,7 @@ To upload a file, add this to your app. For web apps, you can use the File objec
       let file = InputFile::from_path("/path/to/file.jpg", None).await?;
       let result = storage.create_file(
           "<BUCKET_ID>",
-          "unique()",
+          ID::unique(),
           file,
           None, // permissions (optional)
       ).await?;

@@ -154,6 +154,7 @@ You can also upload files programmatically using our SDKs:
   use appwrite::Client;
   use appwrite::services::storage::Storage;
   use appwrite::input_file::InputFile;
+  use appwrite::id::ID;
 
   #[tokio::main]
   async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -167,7 +168,7 @@ You can also upload files programmatically using our SDKs:
       let file = InputFile::from_path("/path/to/file.jpg", None).await?;
       let result = storage.create_file(
           "<BUCKET_ID>",
-          "unique()",
+          ID::unique(),
           file,
           None, // permissions (optional)
       ).await?;
