@@ -1,5 +1,7 @@
 assets/**/*.optimized
 .DS_Store
+# macOS Finder duplicate copies (e.g. "web-icon 2.css") in generated icon output
+src/icons/output/*\ 2.*
 node_modules
 /build
 /.svelte-kit
