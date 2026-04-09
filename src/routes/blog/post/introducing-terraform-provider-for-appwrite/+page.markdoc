@@ -1,0 +1,59 @@
+---
+layout: post
+title: "Introducing Terraform support for Appwrite projects"
+description: Manage databases, storage buckets, messaging providers, and more with the official appwrite/appwrite provider. New documentation, registry links, and an integrations catalog entry help you adopt infrastructure as code on Appwrite Cloud and Community Edition.
+date: 2026-04-08
+cover: /images/blog/terraform-provider-appwrite/cover.svg
+timeToRead: 6
+author: eldad-fux
+category: product, announcement
+featured: false
+---
+
+When you run more than one environment, or you want your team to review changes before they land in production, clicking through the Console for every database, bucket, or messaging provider does not scale. You need the same thing you already use for the rest of your stack: **configuration as code**, in version control, with a clear plan of what will change.
+
+Today we are rounding out that story for Appwrite with the **official Terraform provider**, published as [`appwrite/appwrite`](https://registry.terraform.io/providers/appwrite/appwrite/latest) on the HashiCorp Terraform Registry, plus **first-party documentation** so you can adopt it without hunting across READMEs.
+
+# What you can manage
+
+The provider maps Appwrite project resources to Terraform resources. In practice you can declare and manage:
+
+- **Tables** workloads: databases, tables, columns, and indexes
+- **Storage**: buckets and their settings
+- **Messaging**: providers (email, SMS, push) and topics
+
+You authenticate with your Appwrite API endpoint and a project API key, the same way you would for automation or CI. That works for **Appwrite Cloud** and for **Community Edition** when you point Terraform at your self-hosted instance.
+
+# Why it matters
+
+- **Repeatable environments:** Check in `.tf` files and align staging and production from the same definitions.
+- **Reviewable changes:** Run `terraform plan` before `apply` so everyone sees what will change.
+- **Less manual drift:** Fewer one-off tweaks in the Console that never make it back to your runbooks.
+
+Terraform does not replace the Console or the SDKs for day-to-day app development. It is the layer for **how the project itself is configured**, when you want that configuration treated like code.
+
+# Where to start
+
+We published a dedicated [**Terraform provider**](/docs/tooling/terraform) section in our docs. It includes:
+
+- [**Configuration**](/docs/tooling/terraform/provider) for `required_providers`, endpoints, and environment variables
+- Guides for [**Databases**](/docs/tooling/terraform/resources/databases), [**Storage**](/docs/tooling/terraform/resources/storage), and [**Messaging**](/docs/tooling/terraform/resources/messaging)
+- [**Data sources**](/docs/tooling/terraform/data-sources) when you need to reference an existing database by ID
+
+Each guide links to the [**Terraform Registry**](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) for generated schemas, arguments, and import syntax, so you always have a single place for the full reference.
+
+We also added a [**Terraform provider for Appwrite**](/integrations/terraform-provider) entry in the [**Integrations catalog**](/integrations) so you can discover it next to the rest of the ecosystem.
+
+# Get started
+
+1. Install [Terraform](https://developer.hashicorp.com/terraform/install) on your machine.
+2. Add `appwrite/appwrite` to your `terraform` block and configure the [`provider "appwrite"`](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) with your endpoint and credentials.
+3. Follow the [docs](/docs/tooling/terraform) to model the resources you need.
+
+If you prefer to read the source or open an issue, the provider lives on GitHub at [`appwrite/terraform-provider-appwrite`](https://github.com/appwrite/terraform-provider-appwrite).
+
+# More resources
+
+- [Terraform provider documentation](/docs/tooling/terraform)
+- [Provider on the Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest)
+- [Changelog entry](/changelog/entry/2026-04-08) for this release
