@@ -1,59 +1,83 @@
 ---
 layout: post
 title: "Introducing Terraform support for Appwrite projects"
-description: Manage databases, storage buckets, messaging providers, and more with the official appwrite/appwrite provider. New documentation, registry links, and an integrations catalog entry help you adopt infrastructure as code on Appwrite Cloud and Community Edition.
+description: "The official appwrite/appwrite Terraform provider brings Appwrite project resources into HashiCorp Configuration Language (HCL): databases through messaging, with Registry docs, imports, and first-party guides for Cloud and self-hosted Community Edition."
 date: 2026-04-08
 cover: /images/blog/terraform-provider-appwrite/cover.svg
-timeToRead: 6
-author: eldad-fux
+timeToRead: 10
+author: levi-van-noort
 category: product, announcement
 featured: false
 ---
 
-When you run more than one environment, or you want your team to review changes before they land in production, clicking through the Console for every database, bucket, or messaging provider does not scale. You need the same thing you already use for the rest of your stack: **configuration as code**, in version control, with a clear plan of what will change.
+If you already treat infrastructure as code elsewhere, Appwrite **project configuration** was the odd layer out: databases, tables, storage buckets, and messaging providers were easy to tweak in the Console, with the CLI, or in `appwrite.json`, and hard to keep identical across staging, production, and extra regions. That is operational drift with a familiar fix - declare the same resources in HashiCorp Configuration Language (HCL), store the Terraform **state** next to your other tooling, and let `plan` / `apply` (or your CI wrapper) do the talking.
 
-Today we are rounding out that story for Appwrite with the **official Terraform provider**, published as [`appwrite/appwrite`](https://registry.terraform.io/providers/appwrite/appwrite/latest) on the HashiCorp Terraform Registry, plus **first-party documentation** so you can adopt it without hunting across READMEs.
+The **official Terraform provider** is now published as [`appwrite/appwrite`](https://registry.terraform.io/providers/appwrite/appwrite/latest) on the HashiCorp Terraform Registry. It manages **project** resources over the Appwrite API (databases, tables, buckets, messaging, and related objects). It does **not** install or operate the Appwrite **instance** itself - for that, stay with [self-hosting](/docs/advanced/self-hosting) and your existing deployment story.
 
-# What you can manage
+# Why we built it this way
 
-The provider maps Appwrite project resources to Terraform resources. In practice you can declare and manage:
+We set out to make Terraform **cross-cutting** across Appwrite **project** configuration - not a databases-only path you abandon when you work on Storage, Messaging, or the next surface area. The provider targets **most** of what you manage at the project layer through the API (Tables, Storage, and Messaging today, with more to follow), so one IaC story covers those capabilities instead of a tool that stops at schemas.
 
-- **Tables** workloads: databases, tables, columns, and indexes
-- **Storage**: buckets and their settings
-- **Messaging**: providers (email, SMS, push) and topics
+**Cross-project** mattered too: the same workflow is meant to work **across** Appwrite projects and environments when you need aligned baselines, not only inside a single stack or a single product silo.
 
-You authenticate with your Appwrite API endpoint and a project API key, the same way you would for automation or CI. That works for **Appwrite Cloud** and for **Community Edition** when you point Terraform at your self-hosted instance.
+We also wanted it **open by design**. Use it for familiar patterns - parity between environments, `plan` / `apply` in CI, imports from existing projects - or compose resources in ways that fit **your** architecture when you need something less conventional. The point is full freedom to stay traditional or get creative; Terraform is the shared layer, not a rigid template you have to follow.
 
-# Why it matters
+# What is in scope
 
-- **Repeatable environments:** Check in `.tf` files and align staging and production from the same definitions.
-- **Reviewable changes:** Run `terraform plan` before `apply` so everyone sees what will change.
-- **Less manual drift:** Fewer one-off tweaks in the Console that never make it back to your runbooks.
+The provider maps Appwrite project resources to Terraform resources you would expect if you have already read the Tables, Storage, and Messaging docs: for example `appwrite_database`, `appwrite_table`, `appwrite_column`, and `appwrite_index` for **Tables** workloads; `appwrite_bucket` for **Storage**; `appwrite_messaging_provider` and `appwrite_messaging_topic` for **Messaging**. An **`appwrite_database` data source** lets you look up an existing database by ID when another resource needs a stable reference.
 
-Terraform does not replace the Console or the SDKs for day-to-day app development. It is the layer for **how the project itself is configured**, when you want that configuration treated like code.
+Authentication is the same model as any other automation: your Appwrite **API endpoint**, a **project API key** with the right scopes, and (on Community Edition or dev clusters) whatever TLS settings you already use - the [configuration guide](/docs/tooling/terraform/provider) documents `endpoint`, `project_id`, `api_key`, and `self_signed` so you can mirror how CI talks to Appwrite today.
 
-# Where to start
+# What a basic flow looks like
 
-We published a dedicated [**Terraform provider**](/docs/tooling/terraform) section in our docs. It includes:
+End to end, Terraform does what you expect: pin the provider, pass credentials, declare resources, then run `terraform init`, `terraform plan`, and `terraform apply` when you like the diff. The snippets below are intentionally small so you can see the shape before you open the full guides.
 
-- [**Configuration**](/docs/tooling/terraform/provider) for `required_providers`, endpoints, and environment variables
-- Guides for [**Databases**](/docs/tooling/terraform/resources/databases), [**Storage**](/docs/tooling/terraform/resources/storage), and [**Messaging**](/docs/tooling/terraform/resources/messaging)
-- [**Data sources**](/docs/tooling/terraform/data-sources) when you need to reference an existing database by ID
+**Provider and Cloud endpoint.** Declare `appwrite/appwrite`, then point the provider at Appwrite Cloud (swap `<REGION>` for your [region](/docs/products/network/regions) subdomain). On Community Edition, set `endpoint` to your instance URL and use `self_signed` when you need it - the [Configuration](/docs/tooling/terraform/provider) page has the exact pattern.
 
-Each guide links to the [**Terraform Registry**](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) for generated schemas, arguments, and import syntax, so you always have a single place for the full reference.
+```hcl
+terraform {
+  required_providers {
+    appwrite = {
+      source = "appwrite/appwrite"
+    }
+  }
+}
 
-We also added a [**Terraform provider for Appwrite**](/integrations/terraform-provider) entry in the [**Integrations catalog**](/integrations) so you can discover it next to the rest of the ecosystem.
+provider "appwrite" {
+  endpoint   = "https://<REGION>.cloud.appwrite.io/v1"
+  project_id = "your-project-id"
+  api_key    = "your-api-key"
+}
+```
 
-# Get started
+**One database.** A single `appwrite_database` resource is enough to prove the loop: Terraform creates the database in your project on apply.
 
-1. Install [Terraform](https://developer.hashicorp.com/terraform/install) on your machine.
-2. Add `appwrite/appwrite` to your `terraform` block and configure the [`provider "appwrite"`](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) with your endpoint and credentials.
-3. Follow the [docs](/docs/tooling/terraform) to model the resources you need.
+```hcl
+resource "appwrite_database" "main" {
+  id   = "main"
+  name = "Main"
+}
+```
 
-If you prefer to read the source or open an issue, the provider lives on GitHub at [`appwrite/terraform-provider-appwrite`](https://github.com/appwrite/terraform-provider-appwrite).
+**One storage bucket.** Buckets follow the same idea - another resource type, same provider block, no extra ceremony.
 
-# More resources
+```hcl
+resource "appwrite_bucket" "uploads" {
+  id   = "uploads"
+  name = "uploads"
+}
+```
 
-- [Terraform provider documentation](/docs/tooling/terraform)
-- [Provider on the Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest)
-- [Changelog entry](/changelog/entry/2026-04-08) for this release
+From there you layer tables, columns, indexes, messaging resources, and data sources as needed - the [Databases](/docs/tooling/terraform/resources/databases), [Storage](/docs/tooling/terraform/resources/storage), and [Messaging](/docs/tooling/terraform/resources/messaging) guides walk through IDs and dependencies.
+
+# How Terraform fits
+
+You are not replacing the Console for debugging or the SDKs for application logic. You are giving **project-level config** a path through code review, pinned **`required_providers`** versions, and repeatable applies - the same contract you use when someone opens a PR against VPC rules or a managed database.
+
+In practice that usually means: preview changes with `terraform plan` before they hit a shared environment; attach plans to tickets or merge requests; and **import** resources that predate the Terraform rollout instead of recreating them by hand. The generated documentation on the [**Terraform Registry**](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) is the source of truth for arguments, attributes, and **import** syntax per resource.
+
+# Where to go next
+
+Our [**Terraform provider**](/docs/tooling/terraform) docs follow a sensible adoption path: [**Configuration**](/docs/tooling/terraform/provider) (`required_providers`, environment variables, credentials), then resource guides for [**Databases**](/docs/tooling/terraform/resources/databases), [**Storage**](/docs/tooling/terraform/resources/storage), and [**Messaging**](/docs/tooling/terraform/resources/messaging), plus [**Data sources**](/docs/tooling/terraform/data-sources) for ID lookups.
+
+The implementation is open source at [`appwrite/terraform-provider-appwrite`](https://github.com/appwrite/terraform-provider-appwrite) for issues, feature discussion, and contributions. The [**Integrations**](/integrations) catalog also lists [**Terraform provider for Appwrite**](/integrations/terraform-provider) next to the rest of the ecosystem. This release is summarized in the [changelog](/changelog/entry/2026-04-08). The [Registry listing](https://registry.terraform.io/providers/appwrite/appwrite/latest) tracks the latest published **provider version** and generated schema.

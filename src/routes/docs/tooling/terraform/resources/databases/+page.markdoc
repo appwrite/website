@@ -99,5 +99,5 @@ Column `type` supports the types your Appwrite version exposes (for example `var
 
 # Related {% #related %}
 
-- [Data sources](/docs/tooling/terraform/data-sources) — reference existing databases by ID
-- [Databases product docs](/docs/products/databases) — concepts and Console workflows
+- [Data sources](/docs/tooling/terraform/data-sources) - reference existing databases by ID
+- [Databases product docs](/docs/products/databases) - concepts and Console workflows

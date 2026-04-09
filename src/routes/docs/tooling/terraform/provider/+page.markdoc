@@ -62,7 +62,7 @@ When an environment variable is set, the matching provider argument does not nee
 | `endpoint` | `APPWRITE_ENDPOINT` | yes | Appwrite API endpoint |
 | `project_id` | `APPWRITE_PROJECT_ID` | yes | Project ID |
 | `api_key` | `APPWRITE_API_KEY` | yes | API key with permissions for the resources you manage |
-| `self_signed` | — | no | Accept self-signed TLS certificates (Community Edition) |
+| `self_signed` | - | no | Accept self-signed TLS certificates (Community Edition) |
 
 # API keys {% #api-keys %}
 
@@ -70,7 +70,7 @@ Use a key with the scopes required for the resources you manage (for example dat
 
 # Related {% #related %}
 
-- [Databases](/docs/tooling/terraform/resources/databases) — Tables resources
-- [Storage](/docs/tooling/terraform/resources/storage) — buckets
-- [Messaging](/docs/tooling/terraform/resources/messaging) — providers and topics
-- [Self-hosting](/docs/advanced/self-hosting) — install and run the Appwrite server (not the same as configuring project resources with this provider)
+- [Databases](/docs/tooling/terraform/resources/databases) - Tables resources
+- [Storage](/docs/tooling/terraform/resources/storage) - buckets
+- [Messaging](/docs/tooling/terraform/resources/messaging) - providers and topics
+- [Self-hosting](/docs/advanced/self-hosting) - install and run the Appwrite server (not the same as configuring project resources with this provider)
