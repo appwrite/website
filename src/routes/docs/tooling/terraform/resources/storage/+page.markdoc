@@ -6,7 +6,7 @@ description: Manage Appwrite Storage buckets with the Terraform provider, includ
 
 The `appwrite_bucket` resource manages [Storage](/docs/products/storage) buckets in your Appwrite project: file size limits, allowed extensions, compression, image transformations, encryption, and optional antivirus.
 
-See the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for the full attribute list and import syntax.
+See the [bucket resource](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/bucket) on the Terraform Registry for the full attribute list and import syntax, and the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for source and examples.
 
 # Resource {% #resource %}
 

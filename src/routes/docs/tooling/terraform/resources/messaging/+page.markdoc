@@ -6,7 +6,7 @@ description: Configure Appwrite Messaging providers and topics with Terraform fo
 
 [Messaging](/docs/products/messaging) integrates email, SMS, and push providers. The Terraform provider exposes **providers** (credentials and channel configuration) and **topics** (subscriber channels for your messages).
 
-See the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for every `type` and optional field; provider-specific arguments apply only to the matching provider (for example Twilio `account_sid`, SMTP `host` and `encryption`, FCM `service_account_json`).
+See the Terraform Registry for generated schemas: [messaging_provider](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/messaging_provider) and [messaging_topic](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/messaging_topic). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) lists every `type` and optional field in source; provider-specific arguments apply only to the matching provider (for example Twilio `account_sid`, SMTP `host` and `encryption`, FCM `service_account_json`).
 
 # Resources {% #resources %}
 

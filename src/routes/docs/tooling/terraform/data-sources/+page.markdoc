@@ -6,7 +6,7 @@ description: Use Terraform data sources to read existing Appwrite databases by I
 
 **Data sources** let Terraform read resources that already exist instead of creating them. The Appwrite provider currently exposes a data source for **databases** so you can reference an existing database by ID in your configuration.
 
-See the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for the latest list of data sources and arguments.
+See the [database data source](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/data-sources/database) on the Terraform Registry for the full argument list, and the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for source and changes.
 
 # `appwrite_database` (data source) {% #appwrite-database-data-source %}
 

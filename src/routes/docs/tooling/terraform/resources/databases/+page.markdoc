@@ -6,7 +6,7 @@ description: Use Terraform to manage Appwrite databases, tables, columns, and in
 
 The provider exposes Appwrite **Tables**-style data modeling as Terraform resources. Typical order: create a **database**, then **tables**, then **columns** and **indexes** that belong to those tables.
 
-Refer to the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for the authoritative schema and argument lists as the provider evolves.
+For full generated schemas, see the Terraform Registry: [database](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/database), [table](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/table), [column](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/column), and [index](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/index). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) contains the source and examples.
 
 # Resources {% #resources %}
 
