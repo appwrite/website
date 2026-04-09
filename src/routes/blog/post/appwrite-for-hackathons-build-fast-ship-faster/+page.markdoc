@@ -96,7 +96,7 @@ Instead of configuring a separate hosting provider, teams can deploy static site
 
 Realtime features such as live updates, collaborative editing, messaging, and notifications can significantly improve a hackathon demo.
 
-Appwrite provides realtime APIs that allow applications to respond instantly to database changes and system events. Appwrite supports multiple APIs, such as REST, WebSocket, and GraphQL, to interact with realtime resources. Applications can communicate updates instantly to users using Appwrite's realtime APIs. Teams can interact with Appwrite's realtime APIs to build collaborative and interactive features.
+Appwrite provides a realtime API built on WebSockets that allows applications to  respond instantly to database changes and system events. Applications can communicate  updates instantly to users, making it straightforward to build collaborative and interactive features.
 
 # Getting started with Appwrite
 
