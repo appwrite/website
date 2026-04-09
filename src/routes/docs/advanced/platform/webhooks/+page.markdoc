@@ -817,7 +817,10 @@ function verifyWebhook(req, signatureKey) {
         .update(url + payload)
         .digest('base64');
 
-    return generated === signature;
+    return crypto.timingSafeEqual(
+        Buffer.from(generated),
+        Buffer.from(signature)
+    );
 }
 ```
 ```server-python
@@ -834,7 +837,7 @@ def verify_webhook(url, payload, signature_key, signature):
         ).digest()
     ).decode()
 
-    return generated == signature
+    return hmac.compare_digest(generated, signature)
 ```
 ```server-php
 <?php
@@ -849,18 +852,19 @@ function verifyWebhook(
         hash_hmac('sha1', $url . $payload, $signatureKey, true)
     );
 
-    return $generated === $signature;
+    return hash_equals($generated, $signature);
 }
 ```
 ```server-ruby
 require 'openssl'
 require 'base64'
+
 def verify_webhook(url, payload, signature_key, signature)
   generated = Base64.strict_encode64(
     OpenSSL::HMAC.digest('sha1', signature_key, url + payload)
   )
 
-  generated == signature
+  OpenSSL.secure_compare(generated, signature)
 end
 ```
 ```server-dart
@@ -873,7 +877,12 @@ bool verifyWebhook(
   final digest = hmac.convert(utf8.encode(url + payload));
   final generated = base64.encode(digest.bytes);
 
-  return generated == signature;
+  if (generated.length != signature.length) return false;
+  var result = 0;
+  for (var i = 0; i < generated.length; i++) {
+    result |= generated.codeUnitAt(i) ^ signature.codeUnitAt(i);
+  }
+  return result == 0;
 }
 ```
 ```server-go
@@ -882,6 +891,7 @@ package main
 import (
     "crypto/hmac"
     "crypto/sha1"
+    "crypto/subtle"
     "encoding/base64"
 )
 
@@ -890,12 +900,13 @@ func verifyWebhook(url, payload, signatureKey, signature string) bool {
     mac.Write([]byte(url + payload))
     generated := base64.StdEncoding.EncodeToString(mac.Sum(nil))
 
-    return generated == signature
+    return subtle.ConstantTimeCompare([]byte(generated), []byte(signature)) == 1
 }
 ```
 ```server-kotlin
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
+import java.security.MessageDigest
 import java.util.Base64
 
 fun verifyWebhook(
@@ -909,7 +920,7 @@ fun verifyWebhook(
     val generated = Base64.getEncoder()
         .encodeToString(mac.doFinal((url + payload).toByteArray()))
 
-    return generated == signature
+    return MessageDigest.isEqual(generated.toByteArray(), signature.toByteArray())
 }
 ```
 ```server-swift
@@ -924,7 +935,9 @@ func verifyWebhook(
     let mac = HMAC<Insecure.SHA1>.authenticationCode(for: data, using: key)
     let generated = Data(mac).base64EncodedString()
 
-    return generated == signature
+    guard generated.count == signature.count else { return false }
+    return generated.utf8.elementsEqual(signature.utf8, by: { $0 &^ $1 == 0 })
+        && generated.count == signature.count
 }
 ```
 ```server-dotnet
@@ -938,7 +951,10 @@ bool VerifyWebhook(
     var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(url + payload));
     var generated = Convert.ToBase64String(hash);
 
-    return generated == signature;
+    return CryptographicOperations.FixedTimeEquals(
+        Encoding.UTF8.GetBytes(generated),
+        Encoding.UTF8.GetBytes(signature)
+    );
 }
 ```
 ```server-rust
@@ -946,6 +962,7 @@ use hmac::{Hmac, Mac};
 use sha1::Sha1;
 use base64::Engine;
 use base64::engine::general_purpose::STANDARD;
+use subtle::ConstantTimeEq;
 
 fn verify_webhook(
     url: &str, payload: &str, signature_key: &str, signature: &str
@@ -956,7 +973,7 @@ fn verify_webhook(
     mac.update(format!("{}{}", url, payload).as_bytes());
     let generated = STANDARD.encode(mac.finalize().into_bytes());
 
-    generated == signature
+    generated.as_bytes().ct_eq(signature.as_bytes()).into()
 }
 ```
 {% /multicode %}
