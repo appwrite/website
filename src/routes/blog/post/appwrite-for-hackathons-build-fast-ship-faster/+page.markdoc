@@ -70,7 +70,7 @@ This allows developers to add and manage users and secure access to applications
 
 Appwrite provides structured databases with built-in APIs and permissions, allowing you to manage database objects efficiently.
 
-Appwrite provides scalable databases with built-in APIs and permissions. Developers benefit from type safety when working with database documents through generic methods, and can specify custom model types for full type safety when interacting with databases. The Appwrite API layer is designed to be extremely fast by leveraging in-memory caching.
+Appwrite provides scalable databases with built-in APIs and permissions. Developers benefit from type safety when working with database tables and rows through generic methods, and can specify custom model types for full type safety when interacting with databases. The Appwrite API layer is designed to be extremely fast by leveraging in-memory caching.
 
 Instead of managing database servers and writing API layers manually, developers can create collections, store application data, and define access rules directly through the Appwrite dashboard or APIs.
 
