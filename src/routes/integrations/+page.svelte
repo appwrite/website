@@ -389,13 +389,6 @@
                                                         {/if}
                                                     {/each}
                                                 </ul>
-                                                <Button
-                                                    variant="text"
-                                                    href={`#${category.toLowerCase()}`}
-                                                    class="l-float-button"
-                                                >
-                                                    <span>Show more</span>
-                                                </Button>
                                             </div>
                                         </section>
                                     {/if}
