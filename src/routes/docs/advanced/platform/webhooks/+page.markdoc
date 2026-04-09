@@ -46,7 +46,7 @@ const result = await webhooks.create({
     webhookId: sdk.ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
-    events: ['tablesdb.*.tables.*.rows.*.create'],
+    events: ['users.*.create'],
     security: true
 });
 ```
@@ -64,7 +64,7 @@ const result = await webhooks.create({
     webhookId: ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
-    events: ['tablesdb.*.tables.*.rows.*.create'],
+    events: ['users.*.create'],
     security: true
 });
 ```
@@ -88,7 +88,7 @@ $result = $webhooks->create(
     webhookId: ID::unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
-    events: ['tablesdb.*.tables.*.rows.*.create'],
+    events: ['users.*.create'],
     security: true
 );
 ```
@@ -108,7 +108,7 @@ result = webhooks.create(
     webhook_id=ID.unique(),
     url='https://example.com/webhook',
     name='My Webhook',
-    events=['tablesdb.*.tables.*.rows.*.create'],
+    events=['users.*.create'],
     security=True
 )
 ```
@@ -128,7 +128,7 @@ response = webhooks.create(
     webhook_id: ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
-    events: ['tablesdb.*.tables.*.rows.*.create'],
+    events: ['users.*.create'],
     security: true
 )
 ```
@@ -148,7 +148,7 @@ var result = await webhooks.Create(
     webhookId: ID.Unique(),
     url: "https://example.com/webhook",
     name: "My Webhook",
-    events: new List<string> {"tablesdb.*.tables.*.rows.*.create"},
+    events: new List<string> {"users.*.create"},
     security: true
 );
 ```
@@ -166,7 +166,7 @@ final result = await webhooks.create(
     webhookId: ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
-    events: ['tablesdb.*.tables.*.rows.*.create'],
+    events: ['users.*.create'],
     security: true,
 );
 ```
@@ -186,7 +186,7 @@ val result = webhooks.create(
     webhookId = ID.unique(),
     url = "https://example.com/webhook",
     name = "My Webhook",
-    events = listOf("tablesdb.*.tables.*.rows.*.create"),
+    events = listOf("users.*.create"),
     security = true
 )
 ```
@@ -207,7 +207,7 @@ webhooks.create(
     ID.unique(),                                     // webhookId
     "https://example.com/webhook",                   // url
     "My Webhook",                                    // name
-    List.of("tablesdb.*.tables.*.rows.*.create"), // events
+    List.of("users.*.create"), // events
     true,                                            // enabled
     true,                                            // security
     new CoroutineCallback<>((result, error) -> {
@@ -233,7 +233,7 @@ let result = try await webhooks.create(
     webhookId: ID.unique(),
     url: "https://example.com/webhook",
     name: "My Webhook",
-    events: ["tablesdb.*.tables.*.rows.*.create"],
+    events: ["users.*.create"],
     security: true
 )
 ```
@@ -258,7 +258,7 @@ func main() {
         id.Unique(),
         "https://example.com/webhook",
         "My Webhook",
-        []string{"tablesdb.*.tables.*.rows.*.create"},
+        []string{"users.*.create"},
     )
 
     if err != nil {
@@ -286,7 +286,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         ID::unique(),                                  // webhook_id
         "https://example.com/webhook",                 // url
         "My Webhook",                                  // name
-        &["tablesdb.*.tables.*.rows.*.create"], // events
+        &["users.*.create"], // events
         Some(true),                                    // enabled
         Some(true),                                    // security
         None,                                          // http_user
@@ -316,7 +316,7 @@ const result = await webhooks.update({
     webhookId: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-updated',
-    events: ['tablesdb.*.tables.*.rows.*.update'],
+    events: ['users.*.update'],
     security: true
 });
 ```
@@ -334,7 +334,7 @@ const result = await webhooks.update({
     webhookId: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-updated',
-    events: ['tablesdb.*.tables.*.rows.*.update'],
+    events: ['users.*.update'],
     security: true
 });
 ```
@@ -357,7 +357,7 @@ $result = $webhooks->update(
     webhookId: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-updated',
-    events: ['tablesdb.*.tables.*.rows.*.update'],
+    events: ['users.*.update'],
     security: true
 );
 ```
@@ -376,7 +376,7 @@ result = webhooks.update(
     webhook_id='<WEBHOOK_ID>',
     name='Updated Webhook',
     url='https://example.com/webhook-updated',
-    events=['tablesdb.*.tables.*.rows.*.update'],
+    events=['users.*.update'],
     security=True
 )
 ```
@@ -396,7 +396,7 @@ response = webhooks.update(
     webhook_id: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-updated',
-    events: ['tablesdb.*.tables.*.rows.*.update'],
+    events: ['users.*.update'],
     security: true
 )
 ```
@@ -416,7 +416,7 @@ var result = await webhooks.Update(
     webhookId: "<WEBHOOK_ID>",
     name: "Updated Webhook",
     url: "https://example.com/webhook-updated",
-    events: new List<string> {"tablesdb.*.tables.*.rows.*.update"},
+    events: new List<string> {"users.*.update"},
     security: true
 );
 ```
@@ -434,7 +434,7 @@ final result = await webhooks.update(
     webhookId: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-updated',
-    events: ['tablesdb.*.tables.*.rows.*.update'],
+    events: ['users.*.update'],
     security: true,
 );
 ```
@@ -453,7 +453,7 @@ val result = webhooks.update(
     webhookId = "<WEBHOOK_ID>",
     name = "Updated Webhook",
     url = "https://example.com/webhook-updated",
-    events = listOf("tablesdb.*.tables.*.rows.*.update"),
+    events = listOf("users.*.update"),
     security = true
 )
 ```
@@ -473,7 +473,7 @@ webhooks.update(
     "<WEBHOOK_ID>",                                  // webhookId
     "Updated Webhook",                               // name
     "https://example.com/webhook-updated",           // url
-    List.of("tablesdb.*.tables.*.rows.*.update"), // events
+    List.of("users.*.update"), // events
     true,                                            // enabled
     true,                                            // security
     new CoroutineCallback<>((result, error) -> {
@@ -499,7 +499,7 @@ let result = try await webhooks.update(
     webhookId: "<WEBHOOK_ID>",
     name: "Updated Webhook",
     url: "https://example.com/webhook-updated",
-    events: ["tablesdb.*.tables.*.rows.*.update"],
+    events: ["users.*.update"],
     security: true
 )
 ```
@@ -523,7 +523,7 @@ func main() {
         "<WEBHOOK_ID>",
         "Updated Webhook",
         "https://example.com/webhook-updated",
-        []string{"tablesdb.*.tables.*.rows.*.update"},
+        []string{"users.*.update"},
     )
 
     if err != nil {
@@ -550,7 +550,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "<WEBHOOK_ID>",                                // webhook_id
         "Updated Webhook",                             // name
         "https://example.com/webhook-updated",         // url
-        &["tablesdb.*.tables.*.rows.*.update"], // events
+        &["users.*.update"], // events
         Some(true),                                    // enabled
         Some(true),                                    // security
         None,                                          // http_user
