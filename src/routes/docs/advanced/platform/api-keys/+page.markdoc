@@ -195,6 +195,8 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `subscribers.write`   | Access to create, update, and delete your project's subscribers                 |
 | `targets.read`        | Access to read your project's targets                                           |
 | `targets.write`       | Access to create, update, and delete your project's targets                     |
+| `webhooks.read`       | Access to read your project's webhooks                                          |
+| `webhooks.write`      | Access to create, update, and delete your project's webhooks                    |
 | `rules.read`          | Access to read your project's proxy rules                                       |
 | `rules.write`         | Access to create, update, and delete your project's proxy rules                 |
 | `migrations.read`     | Access to read your project's migrations                                        |

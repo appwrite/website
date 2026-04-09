@@ -8,7 +8,771 @@ Webhooks allow you to build or set up integrations which subscribe to certain ev
 
 # Getting started {% #getting-started %}
 
-You can set your webhook by adding it from your Appwrite project dashboard. You can access your webhooks settings from your project dashboard or on the left navigation panel. Click the 'Add Webhook' button and choose your webhook name and the events that should trigger it. You can also set an optional basic HTTP authentication username and password to protect your endpoint from unauthorized access.
+To add a webhook from the Appwrite Console:
+
+1. Navigate to your project's **Settings** page.
+2. Select the **Webhooks** tab.
+3. Click **Create webhook**.
+4. Enter a **Name** and the **POST URL** for your webhook endpoint.
+5. Click **Add an event** to choose the [events](#events) that should trigger the webhook.
+6. Optionally, enable **Certificate verification (SSL/TLS)** and set **HTTP authentication** credentials to secure your endpoint.
+7. Click **Create webhook**.
+
+{% only_dark %}
+![Create webhook screen](/images/docs/platform/dark/create-webhook.png)
+{% /only_dark %}
+{% only_light %}
+![Create webhook screen](/images/docs/platform/create-webhook.png)
+{% /only_light %}
+
+# Manage webhooks with a Server SDK {% #manage-webhooks-with-a-server-sdk %}
+
+You can also manage webhooks programmatically using a Server SDK. This requires an API key with the `webhooks.read` and `webhooks.write` [scopes](/docs/advanced/platform/api-keys#scopes).
+
+## Create a webhook {% #create-a-webhook %}
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new sdk.Webhooks(client);
+
+const result = await webhooks.create({
+    webhookId: sdk.ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['tablesdb.*.tables.*.rows.*.create'],
+    security: true
+});
+```
+```server-deno
+import { Client, Webhooks, ID } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new Webhooks(client);
+
+const result = await webhooks.create({
+    webhookId: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['tablesdb.*.tables.*.rows.*.create'],
+    security: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\Services\Webhooks;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$webhooks = new Webhooks($client);
+
+$result = $webhooks->create(
+    webhookId: ID::unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['tablesdb.*.tables.*.rows.*.create'],
+    security: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.id import ID
+from appwrite.services.webhooks import Webhooks
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks(client)
+
+result = webhooks.create(
+    webhook_id=ID.unique(),
+    url='https://example.com/webhook',
+    name='My Webhook',
+    events=['tablesdb.*.tables.*.rows.*.create'],
+    security=True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks.new(client)
+
+response = webhooks.create(
+    webhook_id: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['tablesdb.*.tables.*.rows.*.create'],
+    security: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+var result = await webhooks.Create(
+    webhookId: ID.Unique(),
+    url: "https://example.com/webhook",
+    name: "My Webhook",
+    events: new List<string> {"tablesdb.*.tables.*.rows.*.create"},
+    security: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Webhooks webhooks = Webhooks(client);
+
+final result = await webhooks.create(
+    webhookId: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['tablesdb.*.tables.*.rows.*.create'],
+    security: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Webhooks
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val webhooks = Webhooks(client)
+
+val result = webhooks.create(
+    webhookId = ID.unique(),
+    url = "https://example.com/webhook",
+    name = "My Webhook",
+    events = listOf("tablesdb.*.tables.*.rows.*.create"),
+    security = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Webhooks;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+webhooks.create(
+    ID.unique(),                                     // webhookId
+    "https://example.com/webhook",                   // url
+    "My Webhook",                                    // name
+    List.of("tablesdb.*.tables.*.rows.*.create"), // events
+    true,                                            // enabled
+    true,                                            // security
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let webhooks = Webhooks(client)
+
+let result = try await webhooks.create(
+    webhookId: ID.unique(),
+    url: "https://example.com/webhook",
+    name: "My Webhook",
+    events: ["tablesdb.*.tables.*.rows.*.create"],
+    security: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    webhooks := appwrite.NewWebhooks(client)
+    result, err := webhooks.Create(
+        id.Unique(),
+        "https://example.com/webhook",
+        "My Webhook",
+        []string{"tablesdb.*.tables.*.rows.*.create"},
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::services::webhooks::Webhooks;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let webhooks = Webhooks::new(&client);
+
+    let result = webhooks.create(
+        ID::unique(),                                  // webhook_id
+        "https://example.com/webhook",                 // url
+        "My Webhook",                                  // name
+        &["tablesdb.*.tables.*.rows.*.create"], // events
+        Some(true),                                    // enabled
+        Some(true),                                    // security
+        None,                                          // http_user
+        None,                                          // http_pass
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+## Update a webhook {% #update-a-webhook %}
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new sdk.Webhooks(client);
+
+const result = await webhooks.update({
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-updated',
+    events: ['tablesdb.*.tables.*.rows.*.update'],
+    security: true
+});
+```
+```server-deno
+import { Client, Webhooks } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new Webhooks(client);
+
+const result = await webhooks.update({
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-updated',
+    events: ['tablesdb.*.tables.*.rows.*.update'],
+    security: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Webhooks;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$webhooks = new Webhooks($client);
+
+$result = $webhooks->update(
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-updated',
+    events: ['tablesdb.*.tables.*.rows.*.update'],
+    security: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.webhooks import Webhooks
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks(client)
+
+result = webhooks.update(
+    webhook_id='<WEBHOOK_ID>',
+    name='Updated Webhook',
+    url='https://example.com/webhook-updated',
+    events=['tablesdb.*.tables.*.rows.*.update'],
+    security=True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks.new(client)
+
+response = webhooks.update(
+    webhook_id: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-updated',
+    events: ['tablesdb.*.tables.*.rows.*.update'],
+    security: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+var result = await webhooks.Update(
+    webhookId: "<WEBHOOK_ID>",
+    name: "Updated Webhook",
+    url: "https://example.com/webhook-updated",
+    events: new List<string> {"tablesdb.*.tables.*.rows.*.update"},
+    security: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Webhooks webhooks = Webhooks(client);
+
+final result = await webhooks.update(
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-updated',
+    events: ['tablesdb.*.tables.*.rows.*.update'],
+    security: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Webhooks
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val webhooks = Webhooks(client)
+
+val result = webhooks.update(
+    webhookId = "<WEBHOOK_ID>",
+    name = "Updated Webhook",
+    url = "https://example.com/webhook-updated",
+    events = listOf("tablesdb.*.tables.*.rows.*.update"),
+    security = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Webhooks;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+webhooks.update(
+    "<WEBHOOK_ID>",                                  // webhookId
+    "Updated Webhook",                               // name
+    "https://example.com/webhook-updated",           // url
+    List.of("tablesdb.*.tables.*.rows.*.update"), // events
+    true,                                            // enabled
+    true,                                            // security
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let webhooks = Webhooks(client)
+
+let result = try await webhooks.update(
+    webhookId: "<WEBHOOK_ID>",
+    name: "Updated Webhook",
+    url: "https://example.com/webhook-updated",
+    events: ["tablesdb.*.tables.*.rows.*.update"],
+    security: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    webhooks := appwrite.NewWebhooks(client)
+    result, err := webhooks.Update(
+        "<WEBHOOK_ID>",
+        "Updated Webhook",
+        "https://example.com/webhook-updated",
+        []string{"tablesdb.*.tables.*.rows.*.update"},
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::webhooks::Webhooks;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let webhooks = Webhooks::new(&client);
+
+    let result = webhooks.update(
+        "<WEBHOOK_ID>",                                // webhook_id
+        "Updated Webhook",                             // name
+        "https://example.com/webhook-updated",         // url
+        &["tablesdb.*.tables.*.rows.*.update"], // events
+        Some(true),                                    // enabled
+        Some(true),                                    // security
+        None,                                          // http_user
+        None,                                          // http_pass
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+## Delete a webhook {% #delete-a-webhook %}
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new sdk.Webhooks(client);
+
+await webhooks.delete({
+    webhookId: '<WEBHOOK_ID>'
+});
+```
+```server-deno
+import { Client, Webhooks } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new Webhooks(client);
+
+await webhooks.delete({
+    webhookId: '<WEBHOOK_ID>'
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Webhooks;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$webhooks = new Webhooks($client);
+
+$webhooks->delete(
+    webhookId: '<WEBHOOK_ID>'
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.webhooks import Webhooks
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks(client)
+
+webhooks.delete(
+    webhook_id='<WEBHOOK_ID>'
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks.new(client)
+
+webhooks.delete(
+    webhook_id: '<WEBHOOK_ID>'
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+await webhooks.Delete(
+    webhookId: "<WEBHOOK_ID>"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Webhooks webhooks = Webhooks(client);
+
+await webhooks.delete(
+    webhookId: '<WEBHOOK_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Webhooks
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val webhooks = Webhooks(client)
+
+webhooks.delete(
+    webhookId = "<WEBHOOK_ID>"
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Webhooks;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+webhooks.delete(
+    "<WEBHOOK_ID>",                                  // webhookId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let webhooks = Webhooks(client)
+
+try await webhooks.delete(
+    webhookId: "<WEBHOOK_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    webhooks := appwrite.NewWebhooks(client)
+    _, err := webhooks.Delete(
+        "<WEBHOOK_ID>",
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Webhook deleted")
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::webhooks::Webhooks;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let webhooks = Webhooks::new(&client);
+
+    webhooks.delete(
+        "<WEBHOOK_ID>",
+    ).await?;
+
+    Ok(())
+}
+```
+{% /multicode %}
 
 # Payload {% #payload %}
 
@@ -30,11 +794,172 @@ HTTP requests made to your webhook's configured URL endpoint will contain severa
 
 # Verification {% #verification %}
 
-Webhooks can be verified by using the [X-Appwrite-Webhook-Signature](/docs/advanced/platform/webhooks#headers) header.
-This is the HMAC-SHA1 signature of the payload. You can find the signature key in your webhooks properties in the dashboard.
-To generate this hash you append the payload to the end of webhook URL (make sure there are no spaces in between) and then use the HMAC-SHA1 algorithm to generate the signature.
-After you've generated the signature, compare it to the `X-Appwrite-Webhook-Signature` header value.
-If they match, the payload is valid and you can trust it came from your Appwrite instance.
+You can verify that a webhook request genuinely came from your Appwrite instance using the `X-Appwrite-Webhook-Signature` header. The signature key can be found in your webhook's properties in the Appwrite Console.
+
+To verify the signature:
+
+1. Concatenate the **webhook URL** and the **request body** (no spaces in between).
+2. Generate an HMAC-SHA1 hash of the concatenated string using your webhook's **signature key**.
+3. Base64 encode the resulting hash.
+4. Compare the result to the `X-Appwrite-Webhook-Signature` header value. If they match, the payload is authentic.
+
+{% multicode %}
+```server-nodejs
+const crypto = require('crypto');
+
+function verifyWebhook(req, signatureKey) {
+    const url = 'https://example.com/webhook'; // Your webhook URL
+    const payload = req.body; // Raw request body as string
+    const signature = req.headers['x-appwrite-webhook-signature'];
+
+    const generated = crypto
+        .createHmac('sha1', signatureKey)
+        .update(url + payload)
+        .digest('base64');
+
+    return generated === signature;
+}
+```
+```server-python
+import hmac
+import hashlib
+import base64
+
+def verify_webhook(url, payload, signature_key, signature):
+    generated = base64.b64encode(
+        hmac.new(
+            signature_key.encode(),
+            (url + payload).encode(),
+            hashlib.sha1
+        ).digest()
+    ).decode()
+
+    return generated == signature
+```
+```server-php
+<?php
+
+function verifyWebhook(
+    string $url,
+    string $payload,
+    string $signatureKey,
+    string $signature
+): bool {
+    $generated = base64_encode(
+        hash_hmac('sha1', $url . $payload, $signatureKey, true)
+    );
+
+    return $generated === $signature;
+}
+```
+```server-ruby
+require 'openssl'
+require 'base64'
+def verify_webhook(url, payload, signature_key, signature)
+  generated = Base64.strict_encode64(
+    OpenSSL::HMAC.digest('sha1', signature_key, url + payload)
+  )
+
+  generated == signature
+end
+```
+```server-dart
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
+
+bool verifyWebhook(
+    String url, String payload, String signatureKey, String signature) {
+  final hmac = Hmac(sha1, utf8.encode(signatureKey));
+  final digest = hmac.convert(utf8.encode(url + payload));
+  final generated = base64.encode(digest.bytes);
+
+  return generated == signature;
+}
+```
+```server-go
+package main
+
+import (
+    "crypto/hmac"
+    "crypto/sha1"
+    "encoding/base64"
+)
+
+func verifyWebhook(url, payload, signatureKey, signature string) bool {
+    mac := hmac.New(sha1.New, []byte(signatureKey))
+    mac.Write([]byte(url + payload))
+    generated := base64.StdEncoding.EncodeToString(mac.Sum(nil))
+
+    return generated == signature
+}
+```
+```server-kotlin
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
+
+fun verifyWebhook(
+    url: String,
+    payload: String,
+    signatureKey: String,
+    signature: String
+): Boolean {
+    val mac = Mac.getInstance("HmacSHA1")
+    mac.init(SecretKeySpec(signatureKey.toByteArray(), "HmacSHA1"))
+    val generated = Base64.getEncoder()
+        .encodeToString(mac.doFinal((url + payload).toByteArray()))
+
+    return generated == signature
+}
+```
+```server-swift
+import Foundation
+import Crypto
+
+func verifyWebhook(
+    url: String, payload: String, signatureKey: String, signature: String
+) -> Bool {
+    let key = SymmetricKey(data: Data(signatureKey.utf8))
+    let data = Data((url + payload).utf8)
+    let mac = HMAC<Insecure.SHA1>.authenticationCode(for: data, using: key)
+    let generated = Data(mac).base64EncodedString()
+
+    return generated == signature
+}
+```
+```server-dotnet
+using System.Security.Cryptography;
+using System.Text;
+
+bool VerifyWebhook(
+    string url, string payload, string signatureKey, string signature)
+{
+    using var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(signatureKey));
+    var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(url + payload));
+    var generated = Convert.ToBase64String(hash);
+
+    return generated == signature;
+}
+```
+```server-rust
+use hmac::{Hmac, Mac};
+use sha1::Sha1;
+use base64::Engine;
+use base64::engine::general_purpose::STANDARD;
+
+fn verify_webhook(
+    url: &str, payload: &str, signature_key: &str, signature: &str
+) -> bool {
+    let mut mac = Hmac::<Sha1>::new_from_slice(
+        signature_key.as_bytes()
+    ).expect("HMAC key error");
+    mac.update(format!("{}{}", url, payload).as_bytes());
+    let generated = STANDARD.encode(mac.finalize().into_bytes());
+
+    generated == signature
+}
+```
+{% /multicode %}
 
 
 # Events {% #events %}
