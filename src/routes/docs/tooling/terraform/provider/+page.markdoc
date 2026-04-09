@@ -4,18 +4,17 @@ title: Configuration
 description: Configure the Appwrite Terraform provider for Cloud or Community Edition using endpoints, API keys, and optional environment variables.
 ---
 
-The Appwrite provider is published as `appwrite/appwrite` on the [Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest). The registry hosts **generated reference docs** for the provider and every resource and data source: [latest docs](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs), or [0.0.4](https://registry.terraform.io/providers/appwrite/appwrite/0.0.4/docs) for that version. Full examples and attribute tables also live in the [provider repository](https://github.com/appwrite/terraform-provider-appwrite).
+The Appwrite provider is published as `appwrite/appwrite` on the [Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest). The registry hosts **generated reference docs** for the provider and every resource and data source: [latest docs](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs). Full examples and attribute tables also live in the [provider repository](https://github.com/appwrite/terraform-provider-appwrite).
 
 # Terraform block {% #terraform-block %}
 
-Pin a version in `required_providers` so installs stay predictable (see available versions on the [registry provider page](https://registry.terraform.io/providers/appwrite/appwrite/latest)):
+Declare the provider source in a `terraform` block. You can add a `version` constraint when you want to pin a release; see published versions on the [registry provider page](https://registry.terraform.io/providers/appwrite/appwrite/latest).
 
 ```hcl
 terraform {
   required_providers {
     appwrite = {
-      source  = "appwrite/appwrite"
-      version = "~> 0.0.4"
+      source = "appwrite/appwrite"
     }
   }
 }
