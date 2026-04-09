@@ -179,7 +179,7 @@ How a platform behaves during development, before any cloud resources are involv
 
 ## Permissions & Security
 
-Permissions determine who can access what across your database, storage, and functions. A poorly designed permissions model becomes one of the hardest things to refactor as an application grows getting it right early matters.
+Permissions determine who can access what across your database, storage, and functions. A poorly designed permissions model becomes one of the hardest things to refactor as an application grows — getting it right early matters.
 
 All three platforms provide access control out of the box, but the approach each takes differs significantly in flexibility, consistency, and where the logic lives:
 
