@@ -54,8 +54,8 @@ provider "appwrite" {
 
 ```hcl
 resource "appwrite_database" "main" {
-  id   = "main"
-  name = "Main"
+  id   = "main_db"
+  name = "Main database"
 }
 ```
 
@@ -63,8 +63,8 @@ resource "appwrite_database" "main" {
 
 ```hcl
 resource "appwrite_bucket" "uploads" {
-  id   = "uploads"
-  name = "uploads"
+  id   = "user_uploads"
+  name = "User uploads"
 }
 ```
 
