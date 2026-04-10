@@ -13,7 +13,7 @@
     } from '$lib/utils/metadata';
 
     const title = 'The Appwrite Network';
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Discover The Appwrite Network. Explore our global PoP locations, edges, regions, and more to ensure <50ms ping and low latency for your apps worldwide.';
     const ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`;
 
     const heading = 'The Appwrite Network';
