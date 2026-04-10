@@ -153,6 +153,11 @@ If you need to replace your API Key, create a new key, update your app credentia
 
 # Scopes {% #scopes %}
 
+When adding a new API key, you choose which scopes to grant. Scopes are grouped by service, matching the categories shown in the Appwrite Console.
+
+{% accordion %}
+{% accordion_item title="Auth" %}
+
 | Name                  | Description                                                                     |
 |-----------------------|---------------------------------------------------------------------------------|
 | `sessions.write`      | Access to create, update, and delete user sessions                              |
@@ -160,31 +165,48 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `users.write`         | Access to create, update, and delete your project's users                       |
 | `teams.read`          | Access to read your project's teams                                             |
 | `teams.write`         | Access to create, update, and delete your project's teams                       |
+
+{% /accordion_item %}
+{% accordion_item title="Database" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
 | `databases.read`      | Access to read your project's databases                                         |
 | `databases.write`     | Access to create, update, and delete your project's databases                   |
 | `tables.read`         | Access to read your project's database tables                                   |
 | `tables.write`        | Access to create, update, and delete your project's database tables             |
-| `columns.read`        | Access to read your project's database table's columns                          |
-| `columns.write`       | Access to create, update, and delete your project's database table's columns    |
-| `indexes.read`        | Access to read your project's database table's indexes                          |
-| `indexes.write`       | Access to create, update, and delete your project's database table's indexes    |
+| `columns.read`        | Access to read your project's database table columns                            |
+| `columns.write`       | Access to create, update, and delete your project's database table columns      |
+| `indexes.read`        | Access to read your project's database table indexes                            |
+| `indexes.write`       | Access to create, update, and delete your project's database table indexes      |
 | `rows.read`           | Access to read your project's database rows                                     |
 | `rows.write`          | Access to create, update, and delete your project's database rows               |
+
+{% /accordion_item %}
+{% accordion_item title="Functions" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
+| `functions.read`      | Access to read your project's functions and code deployments                    |
+| `functions.write`     | Access to create, update, and delete your project's functions and code deployments|
+| `execution.read`      | Access to read your project's execution logs                                    |
+| `execution.write`     | Access to execute your project's functions                                      |
+
+{% /accordion_item %}
+{% accordion_item title="Storage" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
 | `files.read`          | Access to read your project's storage files and preview images                  |
 | `files.write`         | Access to create, update, and delete your project's storage files               |
 | `buckets.read`        | Access to read your project's storage buckets                                   |
 | `buckets.write`       | Access to create, update, and delete your project's storage buckets             |
-| `functions.read`      | Access to read your project's functions and code deployments                    |
-| `functions.write`     | Access to create, update, and delete your project's functions and code deployments|
-| `sites.read`          | Access to read your project's sites and deployments                             |
-| `sites.write`         | Access to create, update, and delete your project's sites and deployments       |
-| `log.read`            | Access to read your site's logs                                                 |
-| `log.write`           | Access to update, and delete your site's logs                                   |
-| `execution.read`      | Access to read your project's execution logs                                    |
-| `execution.write`     | Access to execute your project's functions                                      |
-| `locale.read`         | Access to access your project's Locale service                                  |
-| `avatars.read`        | Access to access your project's Avatars service                                 |
-| `health.read`         | Access to read your project's health status                                     |
+
+{% /accordion_item %}
+{% accordion_item title="Messaging" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
 | `providers.read`      | Access to read your project's providers                                         |
 | `providers.write`     | Access to create, update, and delete your project's providers                   |
 | `messages.read`       | Access to read your project's messages                                          |
@@ -195,12 +217,38 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `subscribers.write`   | Access to create, update, and delete your project's subscribers                 |
 | `targets.read`        | Access to read your project's targets                                           |
 | `targets.write`       | Access to create, update, and delete your project's targets                     |
+
+{% /accordion_item %}
+{% accordion_item title="Sites" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
+| `sites.read`          | Access to read your project's sites and deployments                             |
+| `sites.write`         | Access to create, update, and delete your project's sites and deployments       |
+| `log.read`            | Access to read your site's logs                                                 |
+| `log.write`           | Access to update and delete your site's logs                                    |
+
+{% /accordion_item %}
+{% accordion_item title="Other" %}
+
+| Name                  | Description                                                                     |
+|-----------------------|---------------------------------------------------------------------------------|
+| `locale.read`         | Access to access your project's Locale service                                  |
+| `avatars.read`        | Access to access your project's Avatars service                                 |
+| `health.read`         | Access to read your project's health status                                     |
+| `migrations.read`     | Access to read your project's migrations                                        |
+| `migrations.write`    | Access to create, update, and delete your project's migrations                  |
+| `tokens.read`         | Access to read your project's tokens                                            |
+| `tokens.write`        | Access to create, update, and delete your project's tokens                      |
+| `webhooks.read`       | Access to read your project's webhooks                                          |
+| `webhooks.write`      | Access to create, update, and delete your project's webhooks                    |
+| `keys.read`           | Access to read your project's API keys                                          |
+| `keys.write`          | Access to create, update, and delete your project's API keys                    |
 | `rules.read`          | Access to read your project's proxy rules                                       |
 | `rules.write`         | Access to create, update, and delete your project's proxy rules                 |
-| `migrations.read`     | Access to read your project's migrations                                        |
-| `migrations.write`    | Access to create, update, and delete your project's migrations.                 |
 | `vcs.read`            | Access to read your project's VCS repositories                                  |
 | `vcs.write`           | Access to create, update, and delete your project's VCS repositories            |
 | `assistant.read`      | Access to read the Assistant service                                            |
-| `tokens.read`         | Access to read your project's tokens                                            |
-| `tokens.write`        | Access to create, update, and delete your project's tokens                      |
+
+{% /accordion_item %}
+{% /accordion %}
