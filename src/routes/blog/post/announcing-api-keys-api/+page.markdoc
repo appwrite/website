@@ -1,0 +1,103 @@
+---
+layout: post
+title: "Announcing the Keys API: Create and manage API keys with Server SDKs"
+description: API keys can now be created, updated, and deleted programmatically using Appwrite Server SDKs. Automate key provisioning for CI/CD, multi-tenant setups, and team onboarding workflows.
+date: 2026-04-14
+cover: /images/blog/improve-devex-dev-keys/cover.png
+timeToRead: 4
+author: matej-baco
+category: announcement
+featured: false
+callToAction: true
+---
+
+Managing API keys has always required navigating to the Appwrite Console, selecting scopes, and manually creating each key. For a single project, that works. For teams managing multiple environments, onboarding new services, or provisioning keys as part of automated pipelines, it becomes a bottleneck.
+
+Today, we are announcing the **Keys API**, allowing you to create, update, and delete API keys programmatically through the Appwrite Server SDKs.
+
+# Why this matters
+
+API keys are the foundation of server-side authentication in Appwrite. Every Server SDK call, every CLI operation, and every backend integration depends on them. Being able to manage keys from code opens up workflows that were previously manual:
+
+- **CI/CD pipelines** that provision scoped keys for each deployment environment
+- **Multi-tenant platforms** that create isolated keys per customer with only the scopes they need
+- **Team onboarding** where new services get their own keys automatically
+- **Key rotation workflows** that create a new key, update credentials, and retire the old one without downtime
+
+# How it works
+
+The Keys API introduces two new [API key scopes](/docs/advanced/platform/api-keys#scopes):
+
+- **`keys.read`** for listing and retrieving API keys
+- **`keys.write`** for creating, updating, and deleting API keys
+
+The methods live on the `Project` service, alongside existing project-level operations like environment variables.
+
+## Create an API key
+
+```server-nodejs
+import { Client, Project, ID } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const key = await project.createKey({
+    keyId: ID.unique(),
+    name: 'Deployment Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+});
+```
+
+Each key is created with a specific set of scopes and an optional expiration date. When no expiration is set, the key remains valid indefinitely.
+
+## Update an API key
+
+```server-nodejs
+const updated = await project.updateKey({
+    keyId: '<KEY_ID>',
+    name: 'Deployment Key (updated)',
+    scopes: ['databases.read', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+});
+```
+
+Use this to adjust scopes as requirements change, or to extend or shorten a key's expiration window.
+
+## Delete an API key
+
+```server-nodejs
+await project.deleteKey({
+    keyId: '<KEY_ID>'
+});
+```
+
+Once deleted, the key immediately stops authenticating API calls.
+
+# Bootstrap requirement
+
+To use the Keys API, you need an existing API key with the `keys.read` and `keys.write` scopes. This initial key must be created through the Appwrite Console. Once you have it, all subsequent key management can be done programmatically.
+
+# Full SDK support
+
+The Keys API is available across all Appwrite Server SDKs. Complete code examples for every supported language are available in the [API keys documentation](/docs/advanced/platform/api-keys#manage-api-keys-with-a-server-sdk).
+
+# Get started
+
+The Keys API is available on **Appwrite Cloud** today.
+
+1. Navigate to **Overview** > **Integration** > **API keys** and create an API key with the `keys.read` and `keys.write` scopes.
+2. Initialize a Server SDK with your API key.
+3. Use the `Project` service to manage keys from code.
+
+Full documentation is available on the [API keys documentation page](/docs/advanced/platform/api-keys).
+
+# Resources
+
+- [API keys documentation](/docs/advanced/platform/api-keys)
+- [API key scopes reference](/docs/advanced/platform/api-keys#scopes)
+- [How to leverage dynamic API keys for better security](/blog/post/how-to-leverage-dynamic-api-keys-for-better-security)

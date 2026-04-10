@@ -85,7 +85,7 @@ client.set_key('<YOUR_API_KEY>') # Your API key
 ```
 
 ```server-deno
-import { Client } from 'npm:appwrite';
+import { Client } from 'npm:node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -148,8 +148,727 @@ let client = Client::new()
 ```
 {% /multicode %}
 
-When adding a new API Key, you can choose which [scopes](#scopes) to grant your application. 
+When adding a new API Key, you can choose which [scopes](#scopes) to grant your application.
 If you need to replace your API Key, create a new key, update your app credentials and, once ready, delete your old key.
+
+# Manage API keys with a Server SDK {% #manage-api-keys-with-a-server-sdk %}
+
+You can also manage API keys programmatically using a Server SDK. This requires an API key with the `keys.read` and `keys.write` [scopes](#scopes).
+
+## Create an API key {% #create-an-api-key %}
+
+{% multicode %}
+```server-nodejs
+import { Client, Project, ID } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.createKey({
+    keyId: ID.unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+});
+```
+```server-deno
+import { Client, Project, ID } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.createKey({
+    keyId: ID.unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->createKey(
+    keyId: ID::unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.id import ID
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.create_key(
+    key_id=ID.unique(),
+    name='My API Key',
+    scopes=['databases.read', 'databases.write'],
+    expire='2026-12-31T23:59:59.000+00:00'
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.create_key(
+    key_id: ID.unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.CreateKey(
+    keyId: ID.Unique(),
+    name: "My API Key",
+    scopes: new List<string> {"databases.read", "databases.write"},
+    expire: "2026-12-31T23:59:59.000+00:00"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.createKey(
+    keyId: ID.unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val result = project.createKey(
+    keyId = ID.unique(),
+    name = "My API Key",
+    scopes = listOf("databases.read", "databases.write"),
+    expire = "2026-12-31T23:59:59.000+00:00"
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.createKey(
+    ID.unique(),                                     // keyId
+    "My API Key",                                    // name
+    List.of("databases.read", "databases.write"),    // scopes
+    "2026-12-31T23:59:59.000+00:00",                // expire
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.createKey(
+    keyId: ID.unique(),
+    name: "My API Key",
+    scopes: ["databases.read", "databases.write"],
+    expire: "2026-12-31T23:59:59.000+00:00"
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.CreateKey(
+        id.Unique(),
+        "My API Key",
+        []string{"databases.read", "databases.write"},
+        project.WithCreateKeyExpire("2026-12-31T23:59:59.000+00:00"),
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.create_key(
+        ID::unique(),                                  // key_id
+        "My API Key",                                  // name
+        Some(vec!["databases.read".to_string(), "databases.write".to_string()]), // scopes
+        Some("2026-12-31T23:59:59.000+00:00"),         // expire
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+## Update an API key {% #update-an-api-key %}
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateKey({
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateKey({
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateKey(
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_key(
+    key_id='<KEY_ID>',
+    name='Updated Key',
+    scopes=['databases.read', 'databases.write', 'users.read'],
+    expire='2027-06-30T23:59:59.000+00:00'
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_key(
+    key_id: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateKey(
+    keyId: "<KEY_ID>",
+    name: "Updated Key",
+    scopes: new List<string> {"databases.read", "databases.write", "users.read"},
+    expire: "2027-06-30T23:59:59.000+00:00"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateKey(
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val result = project.updateKey(
+    keyId = "<KEY_ID>",
+    name = "Updated Key",
+    scopes = listOf("databases.read", "databases.write", "users.read"),
+    expire = "2027-06-30T23:59:59.000+00:00"
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateKey(
+    "<KEY_ID>",                                      // keyId
+    "Updated Key",                                   // name
+    List.of("databases.read", "databases.write", "users.read"), // scopes
+    "2027-06-30T23:59:59.000+00:00",                // expire
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateKey(
+    keyId: "<KEY_ID>",
+    name: "Updated Key",
+    scopes: ["databases.read", "databases.write", "users.read"],
+    expire: "2027-06-30T23:59:59.000+00:00"
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.UpdateKey(
+        "<KEY_ID>",
+        "Updated Key",
+        []string{"databases.read", "databases.write", "users.read"},
+        project.WithUpdateKeyExpire("2027-06-30T23:59:59.000+00:00"),
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_key(
+        "<KEY_ID>",                                    // key_id
+        "Updated Key",                                 // name
+        Some(vec!["databases.read".to_string(), "databases.write".to_string(), "users.read".to_string()]), // scopes
+        Some("2027-06-30T23:59:59.000+00:00"),         // expire
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+## Delete an API key {% #delete-an-api-key %}
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+await project.deleteKey({
+    keyId: '<KEY_ID>'
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+await project.deleteKey({
+    keyId: '<KEY_ID>'
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$project->deleteKey(
+    keyId: '<KEY_ID>'
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+project.delete_key(
+    key_id='<KEY_ID>'
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+project.delete_key(
+    key_id: '<KEY_ID>'
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+await project.DeleteKey(
+    keyId: "<KEY_ID>"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+await project.deleteKey(
+    keyId: '<KEY_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+project.deleteKey(
+    keyId = "<KEY_ID>"
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.deleteKey(
+    "<KEY_ID>",                                      // keyId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+try await project.deleteKey(
+    keyId: "<KEY_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    _, err := project.DeleteKey(
+        "<KEY_ID>",
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("API key deleted")
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    project.delete_key(
+        "<KEY_ID>",
+    ).await?;
+
+    Ok(())
+}
+```
+{% /multicode %}
 
 # Scopes {% #scopes %}
 
