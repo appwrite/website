@@ -15,6 +15,8 @@
     import DayDetails from './(components)/day-details.svelte';
     import InitStickyNav from './(components)/init-sticky-nav.svelte';
     import IllustrationConsole from './(assets)/card-illustration-console.svg';
+    import IllustrationConsoleSvg from './(assets)/illustration-console.svg';
+    import IllustrationHyperloop from './(assets)/illustration-hyperloop.svg';
     import { FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Init - Appwrite';
@@ -34,7 +36,7 @@
             title: 'Appwrite Console 2.0',
             description:
                 'A completely redesigned console experience with improved navigation, faster workflows, and a modern interface.',
-            illustration: IllustrationConsole,
+            illustration: IllustrationConsoleSvg,
             productLabel: 'CONSOLE 2.0',
             videoHref: '#',
             links: [
@@ -126,20 +128,26 @@
             date: 'march - 26 - 2026',
             title: 'Hyperloop B',
             description:
-                'Next-generation real-time data synchronization with ultra-low latency across all connected clients.',
-            illustration: IllustrationConsole,
-            productLabel: 'REALTIME',
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            illustration: IllustrationHyperloop,
+            productLabel: 'CONSOLE 2.0',
             videoHref: '#',
             links: [
                 {
                     type: '// blog post',
-                    title: 'Introducing Hyperloop B',
+                    title: 'Announcing Appwrite Console 2.0',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// blog post',
+                    title: 'How to host SSR web apps on Appwrite Sites',
                     action: 'Read article',
                     href: '#'
                 },
                 {
                     type: '// DOCS',
-                    title: 'Getting started with Hyperloop B',
+                    title: 'Setting up your page with Sites',
                     action: 'go to docs',
                     href: '#'
                 }
@@ -221,7 +229,7 @@
 <DayDetails days={detailDays} />
 
 <div class="bg-[#19191C]">
-    <div class="mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)]">
+    <div class="mx-auto w-full max-w-[1280px] px-5 md:px-8 lg:px-[clamp(1.25rem,4vw,120rem)]">
         <FooterNav />
         <MainFooter />
     </div>

@@ -11,13 +11,16 @@
     let claiming: boolean = $state(false);
 </script>
 
-<section class="relative h-[788px] w-full overflow-hidden bg-[#19191C]">
+<section class="relative h-[597px] w-full overflow-hidden bg-[#19191C] md:h-[680px] lg:h-[788px]">
     <!-- Main hero content area -->
-    <div class="absolute inset-x-0 top-[418px] mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)]">
-        <div class="flex flex-col gap-16">
+    <div class="absolute inset-x-0 top-[248px] mx-auto w-full max-w-[1280px] px-5 md:top-[320px] md:px-8 lg:top-[418px] lg:px-[clamp(1.25rem,4vw,120rem)]">
+        <div class="flex flex-col gap-8 lg:gap-16">
             <!-- Large INIT wordmark row: 5 outlined left, 1 filled, 5 outlined right -->
-            <!-- Offset left by 5 * (469 + 32) = 2505px so the filled logo aligns to left edge -->
-            <div class="ml-[-2505px] flex items-center gap-8">
+            <!-- Offset = 5 * (logo width + gap) so filled logo always sits at left edge -->
+            <div
+                class="init-wordmark-row flex items-center"
+                style="gap: var(--logo-gap); margin-left: calc(-5 * (var(--logo-w) + var(--logo-gap)));"
+            >
                 {#each { length: 11 } as _, i}
                     {@const isFilled = i === 5}
                     <svg
@@ -26,7 +29,8 @@
                         viewBox="0 0 469 167"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-[165px] w-[469px] shrink-0"
+                        class="shrink-0"
+                        style="width: var(--logo-w); height: var(--logo-h);"
                         aria-hidden={!isFilled}
                         role={isFilled ? 'img' : 'presentation'}
                     >
@@ -59,10 +63,10 @@
                 />
 
                 <!-- Content row -->
-                <div class="flex items-start justify-between gap-8">
+                <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
                     <!-- Left: date text -->
                     <div class="max-w-[379px]">
-                        <p class="font-aeonik-fono text-[18px] uppercase leading-[1.25] tracking-tight text-white">
+                        <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-white md:text-base lg:text-[18px] lg:leading-[1.25]">
                             APPWRITE LAUNCH WEEK 4.0<br />
                             MARCH 23 - 27<br />
                             2026
@@ -70,7 +74,7 @@
                     </div>
 
                     <!-- Right: CTA links -->
-                    <div class="flex w-[276px] flex-col gap-2">
+                    <div class="flex w-full flex-col gap-2 md:w-[276px]">
                         {#if claimed}
                             <a
                                 href={`/init/tickets/${ticketId}`}
@@ -123,3 +127,27 @@
         </div>
     </div>
 </section>
+
+<style>
+    .init-wordmark-row {
+        --logo-w: 244px;
+        --logo-h: 86px;
+        --logo-gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+        .init-wordmark-row {
+            --logo-w: 340px;
+            --logo-h: 120px;
+            --logo-gap: 24px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .init-wordmark-row {
+            --logo-w: 469px;
+            --logo-h: 165px;
+            --logo-gap: 32px;
+        }
+    }
+</style>

@@ -16,6 +16,7 @@
         dayNumber: number;
         date: string;
         title?: string;
+        showIllustrationPattern?: boolean;
         description?: string;
         illustration?: string;
         productLabel?: string;
@@ -36,7 +37,8 @@
         videoHref = '',
         links = [],
         release,
-        revealed = false
+        revealed = false,
+        showIllustrationPattern = false
     }: Props = $props();
 
     const { hours, minutes, seconds } = createCountdown(release);
@@ -64,59 +66,10 @@
             class="dashed-border relative overflow-hidden"
             style="background-color: #19191C;"
         >
-            <!-- Top section: content left + illustration right -->
-            <div class="relative mb-8" style="min-height: 510px;">
-                <!-- Illustration area (right side) -->
-                <div
-                    class="absolute overflow-hidden"
-                    style="
-                        right: 8px;
-                        top: 9.5px;
-                        width: 679px;
-                        height: 500px;
-                        background: #19191C;
-                        border: 1px solid rgba(253, 54, 110, 0.16);
-                    "
-                >
-                    <!-- Top bar -->
-                    <div
-                        class="flex items-center justify-between"
-                        style="
-                            height: 32px;
-                            background: rgba(253, 54, 110, 0.06);
-                            border-bottom: 1px solid rgba(253, 54, 110, 0.16);
-                        "
-                    >
-                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
-                            INIT
-                        </span>
-                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
-                            {productLabel}
-                        </span>
-                    </div>
-
-                    <!-- Crosshair BG pattern (tiled) -->
-                    <div
-                        class="pointer-events-none absolute inset-0 select-none"
-                        style:background-image="url('{CardBgPattern}')"
-                        style:background-repeat="repeat"
-                        aria-hidden="true"
-                    ></div>
-
-                    <!-- Product illustration -->
-                    {#if illustration}
-                        <div class="absolute" style="top: 33.5px; left: 0; width: 679px; height: 467px;">
-                            <img
-                                src={illustration}
-                                alt={title}
-                                class="h-full w-full object-contain"
-                            />
-                        </div>
-                    {/if}
-                </div>
-
-                <!-- Main content (left side) -->
-                <div class="flex flex-col gap-8" style="padding: 40px; width: 411px;">
+            <!-- Top section: stacked on mobile, side-by-side on desktop -->
+            <div class="relative mb-8 flex flex-col lg:flex-row lg:items-stretch">
+                <!-- Main content (left side on desktop) -->
+                <div class="order-2 flex shrink-0 flex-col gap-8 p-6 md:p-8 lg:order-1 lg:w-[411px] lg:p-10">
                     <div class="flex flex-col gap-4">
                         <h3 class="font-aeonik-pro text-subtitle text-[#E4E4E7]">
                             {title}
@@ -139,26 +92,74 @@
                         </a>
                     {/if}
                 </div>
+
+                <!-- Illustration area (right side on desktop, top on mobile) -->
+                <div
+                    class="relative order-1 mx-6 mt-6 min-w-0 overflow-hidden lg:order-2 lg:m-2 lg:flex-1"
+                    style="
+                        background: #19191C;
+                        border: 1px solid rgba(253, 54, 110, 0.16);
+                    "
+                >
+                    <!-- Top bar -->
+                    <div
+                        class="flex items-center justify-between"
+                        style="
+                            height: 32px;
+                            background: rgba(253, 54, 110, 0.06);
+                            border-bottom: 1px solid rgba(253, 54, 110, 0.16);
+                        "
+                    >
+                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
+                            INIT
+                        </span>
+                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
+                            {productLabel}
+                        </span>
+                    </div>
+
+                    <!-- Crosshair BG pattern (tiled) -->
+                    {#if showIllustrationPattern}
+                        <div
+                            class="pointer-events-none absolute inset-0 select-none"
+                            style:background-image="url('{CardBgPattern}')"
+                            style:background-repeat="repeat"
+                            aria-hidden="true"
+                        ></div>
+                    {/if}
+
+                    <!-- Product illustration -->
+                    {#if illustration}
+                        <div class="relative h-[180px] w-full md:h-[300px] lg:h-full">
+                            <img
+                                src={illustration}
+                                alt={title}
+                                class="h-full w-full object-contain"
+                            />
+                        </div>
+                    {/if}
+                </div>
             </div>
 
             <!-- Links section (bottom) -->
             {#if links.length > 0}
-                <div class="flex flex-col pb-3">
+                <div class="flex flex-col">
                     {#each links as link, i}
                         <a
                             href={link.href}
                             class="group flex flex-col gap-5 transition-colors hover:bg-[rgba(253,54,110,0.06)]"
+                            class:pb-3={i === links.length - 1}
                         >
                             <hr class="border-t border-[#E4E4E7] opacity-10" />
-                            <div class="flex items-center px-10 pb-5">
+                            <div class="flex flex-col gap-3 px-6 pb-5 md:px-8 lg:flex-row lg:items-center lg:px-10">
                                 <span class="font-aeonik-fono shrink-0 text-sm uppercase leading-[1.2] tracking-tight text-[#ADADB0] group-hover:text-[#E4E4E7]">
                                     <span class="text-[#FD366E]">//</span> {link.type.replace('//', '').trim()}
                                 </span>
-                                <div class="ml-auto flex items-center justify-between" style="width: 647px;">
-                                    <span class="font-aeonik-pro text-label w-[414px] shrink-0 px-2 text-[#E4E4E7]">
+                                <div class="flex flex-col gap-2 lg:ml-auto lg:w-[647px] lg:flex-row lg:items-center lg:justify-between">
+                                    <span class="font-aeonik-pro text-label text-[#E4E4E7] lg:w-[414px] lg:shrink-0 lg:px-2">
                                         {link.title}
                                     </span>
-                                    <span class="font-aeonik-fono flex items-center gap-1 px-2 text-sm uppercase leading-[1.2] tracking-tight text-[#ADADB0] group-hover:text-[#E4E4E7]">
+                                    <span class="font-aeonik-fono flex items-center gap-1 text-sm uppercase leading-[1.2] tracking-tight text-[#ADADB0] group-hover:text-[#E4E4E7] lg:px-2">
                                         {link.action}
                                         <Icon name="arrow-right" class="size-5" />
                                     </span>

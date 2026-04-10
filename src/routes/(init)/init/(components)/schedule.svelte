@@ -18,7 +18,7 @@
 </script>
 
 <section class="relative w-full bg-[#19191C]">
-    <div class="mx-auto w-full max-w-[1280px] px-[clamp(1.25rem,4vw,120rem)] py-20">
+    <div class="mx-auto w-full max-w-[1280px] px-5 py-12 md:px-8 md:py-16 lg:px-[clamp(1.25rem,4vw,120rem)] lg:py-20">
         <div class="flex flex-col gap-6">
             <!-- Header -->
             <div class="flex flex-col gap-3">
@@ -33,16 +33,18 @@
                 </div>
             </div>
 
-            <!-- Card grid -->
-            <div class="grid h-[272px] grid-cols-5 gap-8">
+            <!-- Card grid: horizontal scroll on mobile/tablet, grid on desktop -->
+            <div class="-mx-5 flex h-[272px] gap-4 overflow-x-auto px-5 md:-mx-8 md:gap-6 md:px-8 lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-8 lg:overflow-visible lg:px-0">
                 {#each days as day, i}
-                    <ScheduleCard
-                        title={day.title}
-                        illustration={day.illustration}
-                        release={day.release}
-                        revealed={day.revealed ?? false}
-                        dayNumber={day.dayNumber}
-                    />
+                    <div class="w-[220px] shrink-0 md:w-[240px] lg:w-auto">
+                        <ScheduleCard
+                            title={day.title}
+                            illustration={day.illustration}
+                            release={day.release}
+                            revealed={day.revealed ?? false}
+                            dayNumber={day.dayNumber}
+                        />
+                    </div>
                 {/each}
             </div>
         </div>

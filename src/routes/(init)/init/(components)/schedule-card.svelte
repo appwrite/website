@@ -74,7 +74,7 @@
 </script>
 
 <div
-    class="group relative h-[272px] [perspective:600px]"
+    class="group relative h-full min-h-[272px] [perspective:600px]"
     class:custom-cursor={true}
     bind:this={cardEl}
     onmousemove={handleMouseMove}
