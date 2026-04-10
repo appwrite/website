@@ -43,7 +43,7 @@
 
     const { hours, minutes, seconds } = createCountdown(release);
     const timerDone = $derived($hours <= 0 && $minutes <= 0 && $seconds <= 0);
-    const isRevealed = $derived(revealed || timerDone);
+    const isRevealed = $derived(revealed);
 </script>
 
 <div id="day-{dayNumber}" class="scroll-mt-[180px] flex flex-col gap-6">
@@ -93,52 +93,16 @@
                     {/if}
                 </div>
 
-                <!-- Illustration area (right side on desktop, top on mobile) -->
-                <div
-                    class="relative order-1 mx-6 mt-6 min-w-0 overflow-hidden lg:order-2 lg:m-2 lg:flex-1"
-                    style="
-                        background: #19191C;
-                        border: 1px solid rgba(253, 54, 110, 0.16);
-                    "
-                >
-                    <!-- Top bar -->
-                    <div
-                        class="flex items-center justify-between"
-                        style="
-                            height: 32px;
-                            background: rgba(253, 54, 110, 0.06);
-                            border-bottom: 1px solid rgba(253, 54, 110, 0.16);
-                        "
-                    >
-                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
-                            INIT
-                        </span>
-                        <span class="font-aeonik-fono px-2 py-1.5 text-sm uppercase text-[#FD366E]">
-                            {productLabel}
-                        </span>
+                <!-- Illustration (right side on desktop, top on mobile) -->
+                {#if illustration}
+                    <div class="order-1 mx-6 mt-6 min-w-0 lg:order-2 lg:m-2 lg:flex-1">
+                        <img
+                            src={illustration}
+                            alt={title}
+                            class="h-auto w-full"
+                        />
                     </div>
-
-                    <!-- Crosshair BG pattern (tiled) -->
-                    {#if showIllustrationPattern}
-                        <div
-                            class="pointer-events-none absolute inset-0 select-none"
-                            style:background-image="url('{CardBgPattern}')"
-                            style:background-repeat="repeat"
-                            aria-hidden="true"
-                        ></div>
-                    {/if}
-
-                    <!-- Product illustration -->
-                    {#if illustration}
-                        <div class="relative h-[180px] w-full md:h-[300px] lg:h-full">
-                            <img
-                                src={illustration}
-                                alt={title}
-                                class="h-full w-full object-contain"
-                            />
-                        </div>
-                    {/if}
-                </div>
+                {/if}
             </div>
 
             <!-- Links section (bottom) -->

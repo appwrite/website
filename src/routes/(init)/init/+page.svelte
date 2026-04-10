@@ -15,8 +15,11 @@
     import DayDetails from './(components)/day-details.svelte';
     import InitStickyNav from './(components)/init-sticky-nav.svelte';
     import IllustrationConsole from './(assets)/card-illustration-console.svg';
-    import IllustrationConsoleSvg from './(assets)/illustration-console.svg';
-    import IllustrationHyperloop from './(assets)/illustration-hyperloop.svg';
+    import IllustrationConsoleDay from './(assets)/illustration-console-day.svg';
+    import IllustrationPostgres from './(assets)/illustration-postgres.svg';
+    import IllustrationHyperloopDay from './(assets)/illustration-hyperloop-day.svg';
+    import IllustrationS3Proxy from './(assets)/illustration-s3proxy.svg';
+    import IllustrationNewApis from './(assets)/illustration-newapis.svg';
     import { FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Init - Appwrite';
@@ -36,7 +39,7 @@
             title: 'Appwrite Console 2.0',
             description:
                 'A completely redesigned console experience with improved navigation, faster workflows, and a modern interface.',
-            illustration: IllustrationConsoleSvg,
+            illustration: IllustrationConsoleDay,
             productLabel: 'CONSOLE 2.0',
             videoHref: '#',
             links: [
@@ -69,7 +72,7 @@
             title: 'PostGres + Vector DB',
             description:
                 'Full PostgreSQL support with built-in vector database capabilities for AI-powered search and embeddings.',
-            illustration: IllustrationConsole,
+            illustration: IllustrationPostgres,
             productLabel: 'DATABASES',
             videoHref: '#',
             links: [
@@ -96,7 +99,7 @@
             title: 'S3 Proxy Servers',
             description:
                 'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
-            illustration: IllustrationConsole,
+            illustration: IllustrationS3Proxy,
             productLabel: 'STORAGE',
             videoHref: '#',
             links: [
@@ -129,7 +132,7 @@
             title: 'Hyperloop B',
             description:
                 'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
-            illustration: IllustrationHyperloop,
+            illustration: IllustrationHyperloopDay,
             productLabel: 'CONSOLE 2.0',
             videoHref: '#',
             links: [
@@ -194,7 +197,7 @@
         },
         {
             title: 'NEW APIS',
-            illustration: '',
+            illustration: IllustrationNewApis,
             release: new Date('2026-03-27T07:00:00.000Z'),
             dayNumber: 4
         }
