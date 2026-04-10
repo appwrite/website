@@ -33,17 +33,17 @@ You can also manage webhooks programmatically using a Server SDK. This requires 
 
 {% multicode %}
 ```server-nodejs
-const sdk = require('node-appwrite');
+import { Client, Webhooks, ID } from 'node-appwrite';
 
-const client = new sdk.Client()
+const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>');
 
-const webhooks = new sdk.Webhooks(client);
+const webhooks = new Webhooks(client);
 
 const result = await webhooks.create({
-    webhookId: sdk.ID.unique(),
+    webhookId: ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create'],
@@ -303,14 +303,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 {% multicode %}
 ```server-nodejs
-const sdk = require('node-appwrite');
+import { Client, Webhooks } from 'node-appwrite';
 
-const client = new sdk.Client()
+const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>');
 
-const webhooks = new sdk.Webhooks(client);
+const webhooks = new Webhooks(client);
 
 const result = await webhooks.update({
     webhookId: '<WEBHOOK_ID>',
@@ -567,14 +567,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 {% multicode %}
 ```server-nodejs
-const sdk = require('node-appwrite');
+import { Client, Webhooks } from 'node-appwrite';
 
-const client = new sdk.Client()
+const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>');
 
-const webhooks = new sdk.Webhooks(client);
+const webhooks = new Webhooks(client);
 
 await webhooks.delete({
     webhookId: '<WEBHOOK_ID>'
@@ -805,7 +805,7 @@ To verify the signature:
 
 {% multicode %}
 ```server-nodejs
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 function verifyWebhook(req, signatureKey) {
     const url = 'https://example.com/webhook'; // Your webhook URL

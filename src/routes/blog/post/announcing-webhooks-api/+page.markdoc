@@ -40,17 +40,17 @@ Once your API key has the appropriate scopes, you can manage webhooks through an
 ## Create a webhook
 
 ```server-nodejs
-const sdk = require('node-appwrite');
+import { Client, Webhooks, ID } from 'node-appwrite';
 
-const client = new sdk.Client()
+const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     .setKey('<YOUR_API_KEY>');
 
-const webhooks = new sdk.Webhooks(client);
+const webhooks = new Webhooks(client);
 
 const result = await webhooks.create({
-    webhookId: sdk.ID.unique(),
+    webhookId: ID.unique(),
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
