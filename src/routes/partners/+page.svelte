@@ -11,7 +11,7 @@
     import Why from './(components)/why.svelte';
 
     const title = 'Partners' + TITLE_SUFFIX;
-    const description = DEFAULT_DESCRIPTION;
+    const description = 'Grow your agency with the Appwrite Partners Program. Get flexible tiers, expert training, volume discounts, early access to new features, and more.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
 </script>
 
