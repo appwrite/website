@@ -650,11 +650,11 @@ X-Appwrite-Project: <PROJECT_ID>
 ```
 {% /multicode %}
 
-# Cache list responses (Beta) {% #cache-list-responses %}
+# Cache list responses {% #cache-list-responses %}
 
 You can cache list responses by passing a `ttl` (time-to-live) value in seconds. Subsequent identical requests return the cached result until the TTL expires. The cache is permission-aware, so users with different roles never see each other's cached data.
 
-Set `ttl` between `1` and `86400` (24 hours). The default is `0` (caching disabled). Combine with `total=false` for the best performance on paginated queries over large tables.
+Set `ttl` between `1` and `86400` (24 hours). The default is `0` (caching disabled). The response includes an `X-Appwrite-Cache` header with value `hit` or `miss`. Combine with `total=false` for the best performance on paginated queries over large tables.
 
 {% multicode %}
 ```client-web

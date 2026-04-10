@@ -261,7 +261,7 @@ query {
 ```
 {% /multicode %}
 
-# Cache list responses (Beta) {% #cache-list-responses %}
+# Cache list responses {% #cache-list-responses %}
 
 You can cache list responses by passing a `ttl` (time-to-live) value in seconds to `listRows`. Subsequent identical requests return the cached result until the TTL expires. The cache is permission-aware, so users with different roles never see each other's cached data.
 

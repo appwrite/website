@@ -65,7 +65,7 @@ await tablesDB.updateTable({
 
 This clears all cached list responses for that table in a single operation.
 
-# Available now (Beta)
+# Available now
 
 List response caching is available today in **Beta** on Appwrite Cloud.
 
