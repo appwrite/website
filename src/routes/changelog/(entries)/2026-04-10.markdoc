@@ -1,0 +1,34 @@
+---
+layout: changelog
+title: "Public project APIs for platforms and API keys"
+date: 2026-04-10
+---
+
+Appwrite now exposes **public project APIs** for managing platforms and API keys programmatically. Previously these resources could only be configured through the Console; now you can automate project setup entirely through the API or Server SDKs.
+
+# Platforms API
+
+Create, list, update, and delete platforms through dedicated endpoints per platform type: **web**, **apple**, **android**, **windows**, and **linux**. Each type uses its own identifier (hostname, bundle identifier, application ID, package identifier name, or package name).
+
+The previous ~15 framework-specific platform types (`flutter-ios`, `flutter-android`, `apple-macos`, `react-native-ios`, etc.) have been consolidated into these 5 types. Existing platforms with deprecated types are mapped automatically when read.
+
+# API keys API
+
+Create, list, get, update, and delete API keys through the API. You can assign scopes and set expiration dates programmatically, enabling automated key rotation and infrastructure-as-code workflows.
+
+# New scopes
+
+Six new scope pairs are now available for API keys:
+
+- `platforms.read` / `platforms.write` -- manage project platforms
+- `keys.read` / `keys.write` -- manage project API keys
+- `webhooks.read` / `webhooks.write` -- manage project webhooks
+- `project.read` / `project.write` -- read and update project information
+
+{% arrow_link href="/docs/advanced/platform/platforms" %}
+Read the platforms docs
+{% /arrow_link %}
+
+{% arrow_link href="/docs/advanced/platform/api-keys" %}
+Read the API keys docs
+{% /arrow_link %}

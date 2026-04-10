@@ -1,0 +1,165 @@
+---
+layout: article
+title: Platforms
+description: Manage your project's client platforms programmatically using the Appwrite Platforms API. Register web, Apple, Android, Windows, and Linux platforms to control which client applications can access your project.
+---
+
+Platforms define which client applications are allowed to access your Appwrite project. Each platform registers an identifier (such as a hostname or bundle ID) that Appwrite uses to validate requests from client SDKs. You can manage platforms through the Console or programmatically through the API.
+
+# Platform types {% #platform-types %}
+
+Appwrite supports five platform types. Each type uses a different identifier to validate client requests.
+
+| Type        | Identifier               | Example                      |
+|-------------|--------------------------|------------------------------|
+| `web`       | Hostname                 | `example.com`                |
+| `apple`     | Bundle identifier        | `com.example.myapp`          |
+| `android`   | Application ID           | `com.example.myapp`          |
+| `windows`   | Package identifier name  | `com.example.myapp`          |
+| `linux`     | Package name             | `com.example.myapp`          |
+
+{% info title="Consolidated types" %}
+Earlier versions of Appwrite used framework-specific platform types such as `flutter-ios`, `flutter-android`, `apple-macos`, and `react-native-ios`. These have been consolidated into the five types above. Existing platforms with deprecated types are mapped automatically. See [migration notes](#migration-notes) for details.
+{% /info %}
+
+# Endpoints {% #endpoints %}
+
+The platforms API is available under `/v1/project/platforms`. All endpoints require an API key with the appropriate scope.
+
+## Create a platform {% #create-platform %}
+
+Create a platform by calling the endpoint for its type. Each type requires a unique identifier.
+
+| Method | Endpoint                               | Scope              |
+|--------|----------------------------------------|---------------------|
+| POST   | `/v1/project/platforms/web`            | `platforms.write`   |
+| POST   | `/v1/project/platforms/apple`          | `platforms.write`   |
+| POST   | `/v1/project/platforms/android`        | `platforms.write`   |
+| POST   | `/v1/project/platforms/windows`        | `platforms.write`   |
+| POST   | `/v1/project/platforms/linux`          | `platforms.write`   |
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new sdk.Project(client);
+
+// Create a web platform
+const platform = await project.createWebPlatform(
+    sdk.ID.unique(),    // platformId
+    'My Website',       // name
+    'example.com'       // hostname
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+from appwrite.id import ID
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+# Create a web platform
+platform = project.create_web_platform(
+    platform_id=ID.unique(),
+    name='My Website',
+    hostname='example.com'
+)
+```
+{% /multicode %}
+
+## List platforms {% #list-platforms %}
+
+Retrieve all platforms registered in your project.
+
+| Method | Endpoint                    | Scope             |
+|--------|-----------------------------|--------------------|
+| GET    | `/v1/project/platforms`     | `platforms.read`   |
+
+{% multicode %}
+```server-nodejs
+const platforms = await project.listPlatforms();
+```
+
+```server-python
+platforms = project.list_platforms()
+```
+{% /multicode %}
+
+## Get a platform {% #get-platform %}
+
+Retrieve a single platform by its ID.
+
+| Method | Endpoint                                | Scope             |
+|--------|-----------------------------------------|--------------------|
+| GET    | `/v1/project/platforms/:platformId`     | `platforms.read`   |
+
+## Update a platform {% #update-platform %}
+
+Update a platform by calling the endpoint for its type.
+
+| Method | Endpoint                                        | Scope              |
+|--------|-------------------------------------------------|---------------------|
+| PUT    | `/v1/project/platforms/web/:platformId`         | `platforms.write`   |
+| PUT    | `/v1/project/platforms/apple/:platformId`       | `platforms.write`   |
+| PUT    | `/v1/project/platforms/android/:platformId`     | `platforms.write`   |
+| PUT    | `/v1/project/platforms/windows/:platformId`     | `platforms.write`   |
+| PUT    | `/v1/project/platforms/linux/:platformId`       | `platforms.write`   |
+
+## Delete a platform {% #delete-platform %}
+
+Delete a platform by its ID.
+
+| Method | Endpoint                                | Scope              |
+|--------|-----------------------------------------|---------------------|
+| DELETE | `/v1/project/platforms/:platformId`     | `platforms.write`   |
+
+# Scopes {% #scopes %}
+
+Two scopes control access to the platforms API.
+
+| Scope              | Description                                                        |
+|--------------------|--------------------------------------------------------------------|
+| `platforms.read`   | Access to read your project's platforms                             |
+| `platforms.write`  | Access to create, update, and delete your project's platforms       |
+
+Assign these scopes when [creating an API key](/docs/advanced/platform/api-keys).
+
+# Migration notes {% #migration-notes %}
+
+In Appwrite 1.9.x, platform types were consolidated from ~15 framework-specific types into 5 general types. If your project has platforms created with older types, be aware of the following.
+
+## Deprecated type mapping {% #deprecated-type-mapping %}
+
+| Deprecated type         | Maps to     |
+|-------------------------|-------------|
+| `flutter-web`           | `web`       |
+| `unity`                 | `web`       |
+| `flutter-ios`           | `apple`     |
+| `flutter-macos`         | `apple`     |
+| `apple-ios`             | `apple`     |
+| `apple-macos`           | `apple`     |
+| `apple-watchos`         | `apple`     |
+| `apple-tvos`            | `apple`     |
+| `react-native-ios`      | `apple`     |
+| `flutter-android`       | `android`   |
+| `react-native-android`  | `android`   |
+| `flutter-windows`       | `windows`   |
+| `flutter-linux`         | `linux`     |
+
+## What you need to know {% #what-you-need-to-know %}
+
+- **Reading**: When you list or get platforms, deprecated types are automatically returned as their new consolidated type. No action is needed on your part.
+- **Creating**: New platforms must use one of the five current types (`web`, `apple`, `android`, `windows`, `linux`). The deprecated type names are not accepted for new platforms.
+- **Existing platforms**: Platforms already registered with deprecated types continue to work. The mapping is applied transparently on read.
+- **Client SDK validation**: Origin validation for client requests works the same regardless of whether the platform was created with a deprecated or current type.

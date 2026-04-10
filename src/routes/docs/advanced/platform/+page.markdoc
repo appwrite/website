@@ -53,6 +53,10 @@ Create and manage API keys used by Server SDKs.
 {% cards_item href="/docs/advanced/platform/dev-keys" title="Dev keys" %}
 Create and manage dev keys used by Client SDKs in dev environments.
 {% /cards_item %}
+
+{% cards_item href="/docs/advanced/platform/platforms" title="Platforms" %}
+Register and manage client platforms that can access your project.
+{% /cards_item %}
 {% /cards %}
 
 # Plans {% #plans %}

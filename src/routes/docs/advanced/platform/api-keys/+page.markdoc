@@ -148,8 +148,62 @@ let client = Client::new()
 ```
 {% /multicode %}
 
-When adding a new API Key, you can choose which [scopes](#scopes) to grant your application. 
+When adding a new API Key, you can choose which [scopes](#scopes) to grant your application.
 If you need to replace your API Key, create a new key, update your app credentials and, once ready, delete your old key.
+
+# Manage keys with the API {% #manage-keys-api %}
+
+You can also create, list, update, and delete API keys programmatically using the project API. This is useful for automated key rotation, infrastructure-as-code workflows, or building custom admin tooling.
+
+All key management endpoints require an API key with the `keys.read` or `keys.write` scope.
+
+| Method | Endpoint                        | Scope          |
+|--------|---------------------------------|----------------|
+| GET    | `/v1/project/keys`              | `keys.read`    |
+| POST   | `/v1/project/keys`              | `keys.write`   |
+| GET    | `/v1/project/keys/:keyId`       | `keys.read`    |
+| PUT    | `/v1/project/keys/:keyId`       | `keys.write`   |
+| DELETE | `/v1/project/keys/:keyId`       | `keys.write`   |
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>'); // Must have keys.write scope
+
+const project = new sdk.Project(client);
+
+const key = await project.createKey(
+    sdk.ID.unique(),                    // keyId
+    'My Server Key',                    // name
+    ['databases.read', 'databases.write'], // scopes
+    '2026-12-31T23:59:59.000+00:00'    // expire (optional)
+);
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+from appwrite.id import ID
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')  # Must have keys.write scope
+
+project = Project(client)
+
+key = project.create_key(
+    key_id=ID.unique(),
+    name='My Server Key',
+    scopes=['databases.read', 'databases.write'],
+    expire='2026-12-31T23:59:59.000+00:00'  # optional
+)
+```
+{% /multicode %}
 
 # Scopes {% #scopes %}
 
@@ -204,3 +258,11 @@ If you need to replace your API Key, create a new key, update your app credentia
 | `assistant.read`      | Access to read the Assistant service                                            |
 | `tokens.read`         | Access to read your project's tokens                                            |
 | `tokens.write`        | Access to create, update, and delete your project's tokens                      |
+| `webhooks.read`       | Access to read your project's webhooks                                          |
+| `webhooks.write`      | Access to create, update, and delete your project's webhooks                    |
+| `project.read`        | Access to read your project's information                                       |
+| `project.write`       | Access to update your project's information                                     |
+| `keys.read`           | Access to read your project's API keys                                          |
+| `keys.write`          | Access to create, update, and delete your project's API keys                    |
+| `platforms.read`      | Access to read your project's platforms                                         |
+| `platforms.write`     | Access to create, update, and delete your project's platforms                   |

@@ -66,6 +66,11 @@
                 {
                     label: 'Dev keys',
                     href: '/docs/advanced/platform/dev-keys'
+                },
+                {
+                    label: 'Platforms',
+                    new: isNewUntil('10 Jul 2026'),
+                    href: '/docs/advanced/platform/platforms'
                 }
             ]
         },
