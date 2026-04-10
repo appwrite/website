@@ -1,0 +1,76 @@
+---
+layout: post
+title: "Announcing list response caching: Instant reads with TTL-based caching"
+description: Cache list query responses in memory with a single parameter. Set a TTL, skip the database round-trip on repeated reads, and purge on demand when freshness matters.
+date: 2026-04-13
+cover: /images/blog/announcing-list-cache-ttl/cover.png
+timeToRead: 4
+author: jake-barnby
+category: announcement
+featured: false
+callToAction: true
+---
+
+Read-heavy workloads hit the same queries over and over. Leaderboards, product listings, dashboard feeds, and reference tables all follow the same pattern: the data changes infrequently, but the reads never stop. Every request still runs a full database query, even when the result hasn't changed since the last call.
+
+Until now, the only option was to build your own caching layer on top of Appwrite. That meant extra infrastructure, invalidation logic, and another moving part to maintain.
+
+Today, we are introducing **TTL-based list response caching** for Appwrite Databases. Pass a `ttl` parameter to any list endpoint, and Appwrite caches the response in memory. Repeated identical requests return the cached result instantly, without touching the database, until the TTL expires.
+
+# How it works
+
+Add the `ttl` parameter (in seconds) to any `listRows` call. The first request executes normally and stores the result in an in-memory cache. Every subsequent identical request returns the cached response until the TTL expires.
+
+```js
+const rows = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.equal('status', 'active'),
+        Query.limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+});
+```
+
+Set `ttl` between `1` and `86400` (24 hours). The default is `0`, which means caching is disabled. The response includes an `X-Appwrite-Cache` header with value `hit` or `miss`, so you always know whether a response was served from cache.
+
+# Permission-aware by design
+
+Caching does not compromise security. Each cached entry is scoped to the caller's authorization roles, so users with different permissions always receive their own results. There is no risk of one user seeing another user's data through the cache.
+
+# Built for stale-tolerant reads
+
+This feature is designed for workloads where slightly stale data is acceptable. Row writes do **not** automatically invalidate the cache. If you update a row, cached responses will continue to serve the previous result until the TTL expires.
+
+This is a deliberate trade-off. Automatic invalidation on every write would eliminate most of the performance benefit. Instead, you choose the TTL that fits your use case:
+
+- **Short TTLs (5 to 30 seconds)** for feeds and dashboards where near-real-time matters
+- **Medium TTLs (60 to 300 seconds)** for product listings, search results, and leaderboards
+- **Long TTLs (3600+ seconds)** for reference data, configuration tables, and rarely changing content
+
+Schema changes (adding or removing columns and indexes) invalidate cached entries automatically, so structural updates always take effect immediately.
+
+# Purge on demand
+
+When you need fresh data immediately, you can purge the cache manually by calling `updateTable` with `purge` set to `true`.
+
+```js
+await tablesDB.updateTable({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    purge: true
+});
+```
+
+This clears all cached list responses for that table in a single operation.
+
+# Available now (Beta)
+
+List response caching is available today in **Beta** on Appwrite Cloud.
+
+# More resources
+
+- [Rows: Cache list responses](/docs/products/databases/rows#cache-list-responses)
+- [Pagination: Cache list responses](/docs/products/databases/pagination#cache-list-responses)
+- [Announcing Full Schema Creation: Provision complete tables in one atomic call](/blog/post/announcing-full-schema-creation)
