@@ -1,0 +1,236 @@
+---
+layout: tutorial
+title: Add authentication
+description: Add authentication to your Flutter application.
+step: 4
+---
+
+## User context {% #user-context %}
+
+In Flutter, you can use [provider](https://pub.dev/packages/provider) for state management.
+
+Create a new file `lib/providers/user_provider.dart` and add the following code to it.
+
+```dart
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart' as models;
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/appwrite.dart';
+
+class UserProvider extends ChangeNotifier {
+  models.User? _current;
+
+  models.User? get current => _current;
+
+  UserProvider() {
+    init();
+  }
+
+  Future<void> login(String email, String password) async {
+    try {
+      await account.createEmailPasswordSession(
+        email: email,
+        password: password,
+      );
+      _current = await account.get();
+      notifyListeners();
+      print('Welcome back. You are logged in');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await account.deleteSession(sessionId: 'current');
+      _current = null;
+      notifyListeners();
+      print("Logged out");
+    } catch(e) {
+      rethrow;
+    }
+  }
+
+  Future<void> register(String email, String password) async {
+    try {
+      await account.create(userId: ID.unique(), email: email, password: password);
+      await login(email, password);
+      notifyListeners();
+      print("Account created");
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> init() async {
+    try {
+      _current = await account.get();
+      notifyListeners();
+    } catch (e) {
+      _current = null;
+      notifyListeners();
+    }
+  }
+}
+```
+
+Add the `UserProvider` to `main.dart` to make it accessible throughout the App.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:ideas_tracker/screens/login.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: const MyApp(),
+    )
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Ideas Tracker",
+      debugShowCheckedModeBanner: false,
+      home: Login()
+    );
+  }
+}
+```
+
+Now, you can use `UserProvider` to access the user's data inside any Widget.
+
+## Styling {% #styling %}
+
+To maintain DRY principles, we will move all styling constants to `lib/styles.dart`. Defining these as static class members allows for consistent, reusable widget styling across the entire app.
+
+```dart
+import 'package:flutter/material.dart';
+
+class Styles {
+  static TextStyle heading = TextStyle(fontSize: 24, fontWeight: FontWeight.w600);
+
+  static InputDecoration input = InputDecoration(
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.circular(22),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.pink, width: 2),
+      borderRadius: BorderRadius.circular(22),
+    ),
+  );
+
+  static ButtonStyle button = ElevatedButton.styleFrom(
+    backgroundColor: Colors.pinkAccent,
+    foregroundColor: Colors.white,
+    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+  );
+
+  static ButtonStyle disabledButton = ElevatedButton.styleFrom(
+    backgroundColor: Colors.grey,
+    foregroundColor: Colors.white,
+    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+  );
+}
+```
+
+## Login page {% #login-page %}
+
+Create a new file `lib/screens/login.dart` and add the following code to it.
+this page contains a basic form to allow the user to login or register.
+Notice how this page utilizes the `UserProvider` to perform login and register actions.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:ideas_tracker/styles.dart';
+import 'package:provider/provider.dart';
+
+class Login extends StatefulWidget {
+
+  const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Text("Login or Register", style: Styles.heading),
+            SizedBox(height: 40,),
+            TextField(
+                controller: _emailController,
+                decoration: Styles.input.copyWith(
+                  hintText: "Email"
+                ),
+              ),
+            SizedBox(height: 25),
+            TextField (
+              controller: _passwordController,
+              decoration: Styles.input.copyWith(
+                hintText: "Password"
+              ),
+            ),
+            SizedBox(height: 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<UserProvider>().login(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  }, 
+                  style: Styles.button,
+                  child: Text("Login")
+                ),
+                SizedBox(width: 24),
+                ElevatedButton(
+                    onPressed: () {
+                      context.read<UserProvider>().register(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
+                    },
+                    style: Styles.button,
+                    child: Text("Register"),
+                  ),
+              ],
+            )
+          ]),
+        ),
+      )
+    );
+  }
+}
+```
