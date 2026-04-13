@@ -55,7 +55,7 @@ The full catalog of Appwrite operations stays internal to the server. When the m
 
 # How to upgrade
 
-If you are already using the Appwrite MCP server, remove all service flags from the list of arguments from your existing configuration. If you are using `uvx`, the latest version will be fetched automatically.
+If you are already using the Appwrite MCP server, remove all service flags from the list of arguments from your existing configuration. Using `uvx` automatically fetches the latest version.
 
 # Resources
 
