@@ -13,11 +13,11 @@ callToAction: true
 
 Managing API keys has always required navigating to the Appwrite Console, selecting scopes, and manually creating each key. For a single project, that works. For teams managing multiple environments, onboarding new services, or provisioning keys as part of automated pipelines, it becomes a bottleneck.
 
-Today, we are announcing the **Keys API**, allowing you to create, update, and delete API keys programmatically through the Appwrite Server SDKs.
+Today, we are announcing the **Keys API**, allowing you to create, update, and delete API keys programmatically through the Appwrite server SDKs.
 
 # Why this matters
 
-API keys are the foundation of server-side authentication in Appwrite. Every Server SDK call, every CLI operation, and every backend integration depends on them. Being able to manage keys from code opens up workflows that were previously manual:
+API keys are the foundation of server-side authentication in Appwrite. Every server SDK call, every CLI operation, and every backend integration depends on them. Being able to manage keys from code opens up workflows that were previously manual:
 
 - **CI/CD pipelines** that provision scoped keys for each deployment environment
 - **Multi-tenant platforms** that create isolated keys per customer with only the scopes they need
