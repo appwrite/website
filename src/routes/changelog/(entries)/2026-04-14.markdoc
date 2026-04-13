@@ -1,0 +1,12 @@
+---
+layout: changelog
+title: "Build timeout for Sites and Functions increased to 45 minutes"
+date: 2026-04-14
+---
+The maximum build timeout for Appwrite Sites and Functions has been increased from 15 minutes to 45 minutes.
+
+This gives projects with heavier dependencies, slower runtimes (such as Swift or Dart), or complex build steps more room to complete without hitting the build limit.
+
+{% arrow_link href="/docs/products/functions/functions#timeout" %}
+Learn more about Function settings
+{% /arrow_link %}
