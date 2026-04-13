@@ -14,11 +14,9 @@ When we launched the Appwrite MCP server, connecting your Appwrite project to AI
 
 Today, we are releasing Appwrite MCP Server 2.0, a ground-up rethink of how the server exposes Appwrite's capabilities to AI models.
 
-# What changed
+# No more service flags
 
-## No more service flags
-
-The previous version required you to pass flags like `--users`, `--databases`, or `--storage` to enable specific Appwrite services. If you wanted everything, you passed `--all` and hoped the model could handle the tool count.
+The previous version required you to pass flags like `--users`, `--tablesdb`, or `--storage` to enable specific Appwrite services. If you wanted everything, you passed `--all` and hoped the model could handle the tool count.
 
 That is gone. The server now automatically supports all Appwrite services out of the box. Your MCP configuration goes from this:
 
@@ -27,7 +25,7 @@ That is gone. The server now automatically supports all Appwrite services out of
   "args": [
     "mcp-server-appwrite",
     "--users",
-    "--databases",
+    "--tablesdb",
     "--storage",
     "--functions"
   ]
@@ -46,7 +44,7 @@ To this:
 
 All Appwrite services are available by default.
 
-## Two-tool architecture
+# Two-tool architecture
 
 Instead of registering dozens of tools directly with the model, the server now exposes exactly two MCP tools:
 
@@ -57,9 +55,7 @@ The full catalog of Appwrite operations stays internal to the server. When the m
 
 # How to upgrade
 
-If you are already using the Appwrite MCP server, update your configuration by removing all service flags from the `args` array. The only argument needed is `mcp-server-appwrite`.
-
-If you are using `uvx`, the latest version will be fetched automatically.
+If you are already using the Appwrite MCP server, remove all service flags from the list of arguments from your existing configuration. If you are using `uvx`, the latest version will be fetched automatically.
 
 # Resources
 
