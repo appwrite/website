@@ -59,9 +59,7 @@ To configure the MCP server on Windsurf Editor, head to the **Windsurf Editor Se
         "appwrite": {
             "command": "uvx",
             "args": [
-                "mcp-server-appwrite",
-                "--databases",
-                "--users"
+                "mcp-server-appwrite"
             ],
             "env": {
                 "APPWRITE_API_KEY": "<your-api-key>",
@@ -75,7 +73,7 @@ To configure the MCP server on Windsurf Editor, head to the **Windsurf Editor Se
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
 
-You may have noticed the `--databases` and `--users` arguments, which enables Windsurf Editor to interact with the Appwrite Users and Databases APIs. To enable other Appwrite services, you can add their respective [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+The server automatically registers all supported Appwrite services, so no additional arguments are needed.
 
 Once you have updated and saved the `mcp_config.json` file, return to the MCP Servers section in the Windsurf Settings and click on **Refresh**.
 

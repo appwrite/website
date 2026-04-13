@@ -51,8 +51,7 @@ To add the Appwrite MCP server, open Zenflow and go to the **Settings** > **MCP 
     "appwrite-api": {
       "command": "uvx",
       "args": [
-        "mcp-server-appwrite",
-        "--sites"
+        "mcp-server-appwrite"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",

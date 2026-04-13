@@ -11,7 +11,7 @@ Here are some of the key benefits of using the MCP server:
 - **Direct API interaction**: Enables LLMs to perform actions directly on your Appwrite project
 - **Real-time data access**: Allows LLMs to fetch and manipulate live data from your Appwrite instance
 - **Simplified workflows**: Facilitates complex operations through simple natural language prompts
-- **Customizable tools**: Offers a range of tools for different Appwrite services, which can be enabled as needed
+- **Automatic service discovery**: All supported Appwrite services are automatically registered, no configuration needed
 
 # Pre-requisites {% #pre-requisites %}
 
@@ -60,27 +60,17 @@ uv
 
 {% partial file="mcp-add-ides-tools.md" /%}
 
-## Command-line arguments
+## How it works
 
-Database tools are enabled by default. In addition you can pass arguments to `uvx mcp-server-appwrite [args]` to enable other MCP tools for various Appwrite APIs.
+The MCP server no longer requires service-selection flags. It starts in a compact workflow where only two MCP tools are exposed to the model:
 
-| Argument | Description |
-| --- | --- |
-| `--tablesdb` | Enables the TablesDB API |
-| `--users` | Enables the Users API |
-| `--teams` | Enables the Teams API |
-| `--storage` | Enables the Storage API |
-| `--functions` | Enables the Functions API |
-| `--messaging` | Enables the Messaging API |
-| `--locale` | Enables the Locale API |
-| `--avatars` | Enables the Avatars API |
-| `--databases` | Enables the legacy Databases API |
-| `--all` | Enables all Appwrite APIs |
+- `appwrite_search_tools` - Searches the full Appwrite tool catalog at runtime
+- `appwrite_call_tool` - Calls a specific Appwrite tool by name
 
-{% info title="Enable only necessary MCP tools" %}
-When an MCP tool is enabled, the tool's definition is passed to the LLM, using up tokens from the model's available context window. As a result, the effective context window is reduced. Some IDEs may return errors if too many tools are enabled for the same reason.
+The full Appwrite tool catalog stays internal and is searched at runtime, keeping the model's context window small. The server automatically registers all supported Appwrite services except the legacy Databases API.
 
-The default Appwrite MCP server ships with only the Databases tools (our most commonly used API) enabled to stay within these limits. Additional tools can be enabled using the flags above.
+{% info title="Migrating from older versions" %}
+If you have older MCP configs that pass flags such as `--mode`, `--users`, `--databases`, or other service flags, remove them. The only argument needed is `mcp-server-appwrite`.
 {% /info %}
 
 # Usage {% #usage %}

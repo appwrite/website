@@ -60,8 +60,7 @@ To configure the MCP server on Claude Desktop, head to the app's **Settings** pa
         "appwrite": {
             "command": "uvx",
             "args": [
-                "mcp-server-appwrite",
-                "--users"
+                "mcp-server-appwrite"
             ],
             "env": {
                 "APPWRITE_API_KEY": "<your-api-key>",
@@ -75,7 +74,7 @@ To configure the MCP server on Claude Desktop, head to the app's **Settings** pa
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
 
-You may have noticed the `--users` argument, which enables Claude Desktop to interact with the Appwrite Users API. To enable other Appwrite services, you can add their respective [command-line arguments](/docs/tooling/mcp#command-line-arguments).
+The server automatically registers all supported Appwrite services, so no additional arguments are needed.
 
 Once you have updated and saved the `claude_desktop_config.json` file, restart Claude Desktop and click on the MCP tools button (at the bottom right section of the prompt input) to view the available MCP tools.
 
@@ -85,7 +84,7 @@ Once you have updated and saved the `claude_desktop_config.json` file, restart C
 If you are using the Claude Code CLI, you can use the following command in your terminal to configure the MCP server in the exact same manner:
 
 ```bash
-claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
 ```
 {% /info %}
 
