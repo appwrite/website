@@ -3,7 +3,7 @@ layout: integration
 title: SMS with Twilio
 description: Send customized SMS messages to your users
 date: 2024-07-30
-featured: true
+featured: false
 isPartner: true
 isNew: false
 cover: /images/integrations/sms-twilio/cover.png

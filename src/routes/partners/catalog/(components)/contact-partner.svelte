@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
 
-    export const subscribeToNewsletter = async (email: string) => {
+    export const submitPartnerContact = async (email: string) => {
         const response = await fetch(`${PUBLIC_GROWTH_ENDPOINT}/partners/contact`, {
             method: 'POST',
             headers: {
@@ -29,7 +29,7 @@
     const handleSubmit = async () => {
         submitting = true;
         error = undefined;
-        const response = await subscribeToNewsletter(email);
+        const response = await submitPartnerContact(email);
         submitting = false;
         if (response.status >= 400) {
             error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';

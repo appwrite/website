@@ -21,9 +21,8 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
-    import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
-    import TeaserBanner from '$routes/(marketing)/(components)/teaser/teaser-banner.svelte';
+    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
+    import { changelogNavBadgeVisible } from '$routes/changelog/utils';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -118,8 +117,13 @@
             href: '/blog/category/customer-stories'
         },
         {
-            label: 'Enterprise',
-            href: '/contact-us/enterprise'
+            label: 'Blog',
+            href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            showBadge: changelogNavBadgeVisible(page)
         }
     ];
 
@@ -166,21 +170,9 @@
 </script>
 
 <div class="relative contents h-full">
-    {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-black" id="top-banner">
-            <div class="is-special-padding mx-auto">
-                <TeaserBanner
-                    showLabel={true}
-                    leftText="Introducing"
-                    logoText="Imagine"
-                    rightText="AI Builder on Appwrite Cloud"
-                />
-            </div>
-        </div>
-    {/if}
-
+    <MongoPartnershipBanner />
     <section
-        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
+        class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -218,7 +210,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden xl:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"

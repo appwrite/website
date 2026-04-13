@@ -26,6 +26,7 @@ import graphql from 'highlight.js/lib/languages/graphql';
 import http from 'highlight.js/lib/languages/http';
 import css from 'highlight.js/lib/languages/css';
 import groovy from 'highlight.js/lib/languages/groovy';
+import rust from 'highlight.js/lib/languages/rust';
 import ini from 'highlight.js/lib/languages/ini';
 import dockerfile from 'highlight.js/lib/languages/dockerfile';
 import { Platform } from './references';
@@ -65,6 +66,7 @@ const languages = {
     cs: csharp,
     css: css,
     groovy: groovy,
+    rust: rust,
     ini: ini,
     env: ini,
     dotenv: ini,
@@ -94,6 +96,7 @@ const platformAliases: Record<string, keyof typeof languages> = {
     [Platform.ServerGraphql]: 'graphql',
     [Platform.ServerRest]: 'http',
     [Platform.ServerGo]: 'go',
+    [Platform.ServerRust]: 'rust',
     vue: 'html',
     svelte: 'html'
 };

@@ -143,6 +143,34 @@ To upload a file, add this to your app. For web apps, you can use the File objec
   });
   ```
 
+  ```server-rust
+  use appwrite::Client;
+  use appwrite::services::storage::Storage;
+  use appwrite::input_file::InputFile;
+  use appwrite::id::ID;
+
+  #[tokio::main]
+  async fn main() -> Result<(), Box<dyn std::error::Error>> {
+      let client = Client::new()
+          .set_endpoint("https://cloud.appwrite.io/v1")
+          .set_project("<PROJECT_ID>")
+          .set_key("<API_KEY>");
+
+      let storage = Storage::new(&client);
+
+      let file = InputFile::from_path("/path/to/file.jpg", None).await?;
+      let result = storage.create_file(
+          "<BUCKET_ID>",
+          ID::unique(),
+          file,
+          None, // permissions (optional)
+      ).await?;
+
+      println!("{:?}", result);
+      Ok(())
+  }
+  ```
+
   ```http
   POST /v1/storage/buckets/{bucketId}/files HTTP/1.1
   Content-Type: multipart/form-data; boundary="cec8e8123c05ba25"

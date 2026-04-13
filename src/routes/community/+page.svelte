@@ -46,7 +46,6 @@
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import MetricCard from '$lib/components/MetricCard.svelte';
-    import { newsletter } from '$lib/components/Newsletter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
@@ -57,7 +56,6 @@
 
     import { SOCIAL_STATS } from '$lib/constants';
     import { Button, Icon } from '$lib/components/ui';
-    import { trackEvent } from '$lib/actions/analytics';
     import InlineTag from '$lib/components/ui/inline-tag.svelte';
 
     let { data } = $props();
@@ -103,27 +101,6 @@
         { metric: SOCIAL_STATS.GITHUB.EXTRA!.FORKS, description: 'Forks' },
         { metric: SOCIAL_STATS.GITHUB.EXTRA!.CONTRIBUTORS, description: 'Contributors' }
     ];
-
-    let name = $state('');
-    let email = $state('');
-    let submitted = $state(false);
-    let error: string | undefined = $state();
-    let submitting = $state(false);
-
-    async function submit() {
-        submitting = true;
-        error = undefined;
-        const response = await newsletter(name, email);
-
-        trackEvent('community-insights_subscribe-submit');
-
-        submitting = false;
-        if (response.status >= 400) {
-            error = response.status >= 500 ? 'Server Error.' : 'Error submitting form.';
-            return;
-        }
-        submitted = true;
-    }
 
     const title = 'Community' + TITLE_SUFFIX;
     const description =
@@ -583,105 +560,6 @@
             </div>
         </div>
         <div class="pt-10">
-            <div class="web-big-padding-section-level-2">
-                <div class="container">
-                    <div class="web-grid-1-1-opt-2 gap-8">
-                        <div class="">
-                            <div
-                                class="web-u-max-inline-size-none-mobile"
-                                class:web-u-max-width-380={!submitted}
-                            >
-                                <section class="flex flex-col gap-5">
-                                    <h2 class="text-title font-aeonik-pro text-primary">
-                                        Appwrite insights
-                                    </h2>
-                                    <p class="text-description web-u-padding-block-end-40">
-                                        Sign up to our company blog and get the latest insights from
-                                        Appwrite. Learn more about engineering, product design,
-                                        building community, and tips & tricks for using Appwrite.
-                                    </p>
-                                </section>
-                            </div>
-                        </div>
-                        {#if submitted}
-                            <div class="flex items-center gap-2">
-                                <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <circle
-                                        cx="9"
-                                        cy="9"
-                                        r="8"
-                                        fill="#FD366E"
-                                        fill-opacity="0.08"
-                                        stroke="#FD366E"
-                                        stroke-opacity="0.32"
-                                        stroke-width="1.2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M5.25 10.5L7.75 12.5L12.75 6"
-                                        stroke="#E4E4E7"
-                                        stroke-width="1.2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-
-                                <span class="text">
-                                    Thank you for subscribing! An email has been sent to your inbox.
-                                </span>
-                            </div>
-                        {:else}
-                            <form
-                                method="post"
-                                onsubmit={(e) => {
-                                    e.preventDefault();
-                                    submit();
-                                }}
-                                class="flex flex-col gap-4"
-                            >
-                                <div class="flex flex-col gap-1">
-                                    <label for="name">Your name</label>
-                                    <input
-                                        class="web-input-text"
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        id="name"
-                                        name="name"
-                                        required
-                                        bind:value={name}
-                                    />
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <label for="email">Your email</label>
-                                    <input
-                                        class="web-input-text"
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        required
-                                        id="email"
-                                        name="email"
-                                        bind:value={email}
-                                    />
-                                </div>
-                                <Button type="submit" disabled={submitting}>Sign up</Button>
-                                {#if error}
-                                    <span class="text">
-                                        Something went wrong. Please try again later.
-                                    </span>
-                                {/if}
-                            </form>
-                        {/if}
-                    </div>
-                </div>
-            </div>
-
             <div class="relative pt-[7.5rem]">
                 <div class="container">
                     <PreFooter />

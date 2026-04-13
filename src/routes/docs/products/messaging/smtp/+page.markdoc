@@ -285,6 +285,38 @@ let message = try await messaging.createEmail(
     content: "<CONTENT>"
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_email(
+        "<MESSAGE_ID>",                              // messageId
+        "<SUBJECT>",                                 // subject
+        "<CONTENT>",                                 // content
+        None,                                        // topics (optional)
+        None,                                        // users (optional)
+        None,                                        // targets (optional)
+        None,                                        // cc (optional)
+        None,                                        // bcc (optional)
+        None,                                        // attachments (optional)
+        None,                                        // draft (optional)
+        None,                                        // html (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -603,6 +635,44 @@ let provider = try await messaging.updateSendgridProvider(
     replyToEmail: "<REPLY_TO_EMAIL>",
     enabled: "<ENABLED?>",
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let messaging = Messaging::new(&client);
+
+    // update provider
+    let provider = messaging.update_smtp_provider(
+        "<PROVIDER_ID>",                             // providerId
+        Some("<PROVIDER_NAME>"),                     // name (optional)
+        Some("<HOST>"),                              // host (optional)
+        Some(587),                                   // port (optional)
+        Some("<USERNAME>"),                          // username (optional)
+        Some("<PASSWORD>"),                          // password (optional)
+        None,                                        // encryption (optional)
+        Some(true),                                  // autoTLS (optional)
+        Some("<MAILER>"),                            // mailer (optional)
+        Some("<SENDER_NAME>"),                       // fromName (optional)
+        Some("<SENDER_EMAIL>"),                      // fromEmail (optional)
+        Some("<REPLY_TO_NAME>"),                     // replyToName (optional)
+        Some("<REPLY_TO_EMAIL>"),                    // replyToEmail (optional)
+        Some(true),                                  // enabled (optional)
+    ).await?;
+
+    // delete provider
+    messaging.delete_provider("<PROVIDER_ID>").await?;
+
+    println!("{:?}", provider);
+    Ok(())
+}
 ```
 {% /multicode %}
 {% /tabsitem %}

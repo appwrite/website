@@ -86,3 +86,11 @@
         {@render tooltip()}
     </div>
 {/if}
+
+<style>
+    :global(.web-tooltip) {
+        max-inline-size: min(36ch, calc(100vw - 2rem));
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+</style>
