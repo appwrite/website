@@ -73,8 +73,6 @@ To configure the MCP server on Windsurf Editor, head to the **Windsurf Editor Se
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
 
-The server automatically registers all supported Appwrite services, so no additional arguments are needed.
-
 Once you have updated and saved the `mcp_config.json` file, return to the MCP Servers section in the Windsurf Settings and click on **Refresh**.
 
 ## Step 3: Test the integration

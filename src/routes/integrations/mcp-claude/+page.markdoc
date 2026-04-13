@@ -74,8 +74,6 @@ To configure the MCP server on Claude Desktop, head to the app's **Settings** pa
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
 
-The server automatically registers all supported Appwrite services, so no additional arguments are needed.
-
 Once you have updated and saved the `claude_desktop_config.json` file, restart Claude Desktop and click on the MCP tools button (at the bottom right section of the prompt input) to view the available MCP tools.
 
 ![Claude MCP Tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.png)

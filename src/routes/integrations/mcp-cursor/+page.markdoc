@@ -73,8 +73,6 @@ To configure the MCP server on Cursor, head to the **Cursor Settings** page, nav
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
 
-The server automatically registers all supported Appwrite services, so no additional arguments are needed.
-
 Once you have updated and saved the `mcp.json` file, Cursor will connect with the Appwrite MCP server and load all available tools. You may need to restart Cursor if it is unable to start the MCP server.
 
 ### Skip this step, directly add the server to Cursor
