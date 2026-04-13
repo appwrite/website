@@ -60,6 +60,15 @@ uv
 
 {% partial file="mcp-add-ides-tools.md" /%}
 
+## How it works
+
+The MCP server starts in a compact workflow where only two MCP tools are exposed to the model:
+
+- `appwrite_search_tools` - Searches the full Appwrite tool catalog at runtime
+- `appwrite_call_tool` - Calls a specific Appwrite tool by name
+
+The full Appwrite tool catalog stays internal and is searched at runtime, using less of the model's context.
+
 # Usage {% #usage %}
 
 Once configured, your AI assistant will have access to your Appwrite project. You can ask questions like:
