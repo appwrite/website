@@ -58,9 +58,7 @@ Update the `mcp_config.json` file to include the API server:
     "appwrite-api": {
       "command": "uvx",
       "args": [
-        "mcp-server-appwrite",
-        "--databases",
-        "--users"
+        "mcp-server-appwrite"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
@@ -100,12 +98,6 @@ Update the `mcp_config.json` file to include the docs server:
 {% /tabs %}
 
 Once you save the details, head back to the MCP Servers section in the Windsurf Settings and click on the **Refresh** button.
-
-{% info title="Enable other API MCP tools" %}
-
-To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
-
-{% /info %}
 
 {% /section %}
 

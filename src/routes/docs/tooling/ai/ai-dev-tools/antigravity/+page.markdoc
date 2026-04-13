@@ -54,8 +54,7 @@ Update the `mcp_config.json` file to include the API server:
     "appwrite-api": {
       "command": "uvx",
       "args": [
-        "mcp-server-appwrite",
-        "--users"
+        "mcp-server-appwrite"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
