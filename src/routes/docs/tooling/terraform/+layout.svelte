@@ -33,8 +33,28 @@
                     href: '/docs/tooling/terraform/resources/storage'
                 },
                 {
+                    label: 'Functions',
+                    href: '/docs/tooling/terraform/resources/functions'
+                },
+                {
+                    label: 'Sites',
+                    href: '/docs/tooling/terraform/resources/sites'
+                },
+                {
+                    label: 'Auth',
+                    href: '/docs/tooling/terraform/resources/auth'
+                },
+                {
                     label: 'Messaging',
                     href: '/docs/tooling/terraform/resources/messaging'
+                },
+                {
+                    label: 'Webhooks',
+                    href: '/docs/tooling/terraform/resources/webhooks'
+                },
+                {
+                    label: 'Backup policies',
+                    href: '/docs/tooling/terraform/resources/backup-policies'
                 }
             ]
         },

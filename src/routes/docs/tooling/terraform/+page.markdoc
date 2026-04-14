@@ -4,20 +4,31 @@ title: Terraform provider
 description: Manage Appwrite infrastructure as code with the official Terraform provider. Works with Appwrite Cloud and Community Edition.
 ---
 
-The [Terraform provider for Appwrite](https://github.com/appwrite/terraform-provider-appwrite) lets you declare **Tables** resources (databases, tables, columns, indexes), **Storage** buckets, **Messaging** providers and topics, and more in `.tf` files, and apply those changes through [HashiCorp Terraform](https://www.terraform.io/). It is the official way to automate Appwrite project configuration alongside the rest of your stack.
+The [Terraform provider for Appwrite](https://github.com/appwrite/terraform-provider-appwrite) lets you declare project resources - databases, tables, storage buckets, functions, sites, auth, messaging, webhooks, and backup policies - in `.tf` files and apply those changes through [HashiCorp Terraform](https://www.terraform.io/). It is the official way to automate Appwrite project configuration alongside the rest of your stack.
 
 # Resources and data sources {% #resources-and-data-sources %}
 
 | Kind | Name | Description |
 |------|------|-------------|
-| Resource | `appwrite_database` | Database |
-| Resource | `appwrite_table` | Table within a database |
-| Resource | `appwrite_column` | Column on a table |
-| Resource | `appwrite_index` | Index on a table |
-| Resource | `appwrite_bucket` | Storage bucket |
-| Resource | `appwrite_messaging_provider` | Messaging provider (email, SMS, push, etc.) |
+| Resource | `appwrite_tablesdb` | Database |
+| Resource | `appwrite_tablesdb_table` | Table within a database |
+| Resource | `appwrite_tablesdb_column` | Column on a table |
+| Resource | `appwrite_tablesdb_index` | Index on a table |
+| Resource | `appwrite_tablesdb_row` | Row in a table |
+| Resource | `appwrite_storage_bucket` | Storage bucket |
+| Resource | `appwrite_storage_file` | File in a bucket |
+| Resource | `appwrite_function` | Serverless function |
+| Resource | `appwrite_function_variable` | Function environment variable |
+| Resource | `appwrite_site` | Hosted site |
+| Resource | `appwrite_site_variable` | Site environment variable |
+| Resource | `appwrite_auth_user` | User |
+| Resource | `appwrite_auth_team` | Team |
+| Resource | `appwrite_messaging_provider` | Messaging provider (email, SMS, push) |
 | Resource | `appwrite_messaging_topic` | Messaging topic |
-| Data source | `appwrite_database` | Look up a database by ID |
+| Resource | `appwrite_messaging_subscriber` | Messaging subscriber |
+| Resource | `appwrite_webhook` | Webhook |
+| Resource | `appwrite_backup_policy` | Backup policy |
+| Data source | `appwrite_tablesdb` | Look up a database by ID |
 
 {% info title="Looking for self-hosting?" %}
 This section is about **Appwrite resources inside a project** (for example databases and tables) using Terraform. If you want to install or operate the Appwrite server itself (Docker, configuration, TLS, scaling), go to the [self-hosting documentation](/docs/advanced/self-hosting) instead.
@@ -58,13 +69,28 @@ The provider works with **Appwrite Cloud** and **Community Edition** (self-hoste
 Install the provider, set endpoints, and use environment variables for credentials.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/terraform/resources/databases" title="Databases" %}
-Manage databases, tables, columns, and indexes.
+Manage databases, tables, columns, indexes, and rows.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/terraform/resources/storage" title="Storage" %}
-Configure storage buckets and file policies.
+Configure storage buckets and managed file uploads.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/terraform/resources/functions" title="Functions" %}
+Deploy serverless functions with runtimes, schedules, and event triggers.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/terraform/resources/sites" title="Sites" %}
+Host frontends with framework presets and build configuration.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/terraform/resources/auth" title="Auth" %}
+Manage users and teams.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/terraform/resources/messaging" title="Messaging" %}
-Define messaging providers and topics.
+Define messaging providers, topics, and subscribers.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/terraform/resources/webhooks" title="Webhooks" %}
+Configure event-driven HTTP callbacks.
+{% /cards_item %}
+{% cards_item href="/docs/tooling/terraform/resources/backup-policies" title="Backup policies" %}
+Schedule backups with retention policies.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/terraform/data-sources" title="Data sources" %}
 Look up existing databases by ID for use in other resources.

@@ -70,7 +70,12 @@ Use a key with the scopes required for the resources you manage (for example dat
 
 # Related {% #related %}
 
-- [Databases](/docs/tooling/terraform/resources/databases) - Tables resources
-- [Storage](/docs/tooling/terraform/resources/storage) - buckets
-- [Messaging](/docs/tooling/terraform/resources/messaging) - providers and topics
+- [Databases](/docs/tooling/terraform/resources/databases) - databases, tables, columns, indexes, and rows
+- [Storage](/docs/tooling/terraform/resources/storage) - buckets and file uploads
+- [Functions](/docs/tooling/terraform/resources/functions) - serverless functions and environment variables
+- [Sites](/docs/tooling/terraform/resources/sites) - hosted frontends and environment variables
+- [Auth](/docs/tooling/terraform/resources/auth) - users and teams
+- [Messaging](/docs/tooling/terraform/resources/messaging) - providers, topics, and subscribers
+- [Webhooks](/docs/tooling/terraform/resources/webhooks) - event-driven HTTP callbacks
+- [Backup policies](/docs/tooling/terraform/resources/backup-policies) - scheduled backups
 - [Self-hosting](/docs/advanced/self-hosting) - install and run the Appwrite server (not the same as configuring project resources with this provider)

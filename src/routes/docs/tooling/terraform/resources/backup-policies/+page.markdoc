@@ -1,0 +1,49 @@
+---
+layout: article
+title: Backup policies
+description: Schedule Appwrite backups with retention policies using the Terraform provider.
+---
+
+The `appwrite_backup_policy` resource manages backup policies in your Appwrite project: target services, cron schedules, retention periods, and optional scoping to a specific resource.
+
+See the [backup_policy resource](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/backup_policy) on the Terraform Registry for the full attribute list and import syntax. The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) has source and examples.
+
+# Resource {% #resource %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_backup_policy` | Schedule backups with a retention window |
+
+# Examples {% #examples %}
+
+## Daily backup {% #daily-backup %}
+
+```hcl
+resource "appwrite_backup_policy" "daily" {
+  name      = "daily database backup"
+  services  = ["databases"]
+  retention = 7
+  schedule  = "0 2 * * *"
+}
+```
+
+## Scoped to a specific database {% #scoped-backup %}
+
+```hcl
+resource "appwrite_tablesdb" "main" {
+  name = "main"
+}
+
+resource "appwrite_backup_policy" "production" {
+  name        = "production database backup"
+  services    = ["databases"]
+  resource_id = appwrite_tablesdb.main.id
+  retention   = 14
+  schedule    = "0 */6 * * *"
+}
+```
+
+# Related {% #related %}
+
+- [Databases](/docs/tooling/terraform/resources/databases) - manage databases with Terraform
+- [Configuration](/docs/tooling/terraform/provider)

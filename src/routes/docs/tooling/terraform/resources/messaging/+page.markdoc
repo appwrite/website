@@ -14,6 +14,7 @@ See the Terraform Registry for generated schemas: [messaging_provider](https://r
 |----------|---------|
 | `appwrite_messaging_provider` | Register an email, SMS, or push provider (Sendgrid, SMTP, Twilio, FCM, and others) |
 | `appwrite_messaging_topic` | Define a topic for targeting subscribers |
+| `appwrite_messaging_subscriber` | Subscribe a target to a topic |
 
 The `type` argument on `appwrite_messaging_provider` must be one of the supported provider kinds (for example `sendgrid`, `mailgun`, `smtp`, `resend`, `twilio`, `vonage`, `msg91`, `telesign`, `textmagic`, `apns`, `fcm`).
 
@@ -75,7 +76,16 @@ resource "appwrite_messaging_topic" "alerts" {
 }
 ```
 
-Topics support import by ID; see the upstream docs for details.
+## Subscribers {% #subscribers %}
+
+```hcl
+resource "appwrite_messaging_subscriber" "user_email" {
+  topic_id  = appwrite_messaging_topic.announcements.id
+  target_id = "user-email-target-id"
+}
+```
+
+Topics and subscribers support import by ID; see the upstream docs for details.
 
 # Related {% #related %}
 

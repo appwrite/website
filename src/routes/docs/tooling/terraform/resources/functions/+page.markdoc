@@ -1,0 +1,93 @@
+---
+layout: article
+title: Functions
+description: Deploy and configure Appwrite serverless functions with Terraform, including runtimes, schedules, event triggers, and environment variables.
+---
+
+The `appwrite_function` resource manages [Functions](/docs/products/functions) in your Appwrite project: runtimes, entrypoints, build commands, cron schedules, event triggers, execution permissions, and optional VCS integration for automatic deployments. The `appwrite_function_variable` resource sets environment variables on a function.
+
+See the Terraform Registry for the full attribute list and import syntax: [function](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/function) and [function_variable](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/function_variable). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) has source and examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_function` | Create a serverless function |
+| `appwrite_function_variable` | Set an environment variable on a function |
+
+The `runtime` argument accepts values like `node-22`, `python-3.11`, `dart-3.5`, and others supported by your Appwrite version.
+
+# Examples {% #examples %}
+
+## Basic function {% #basic-function %}
+
+```hcl
+resource "appwrite_function" "hello_world" {
+  name       = "hello-world"
+  runtime    = "node-22"
+  entrypoint = "index.js"
+  commands   = "npm install"
+}
+```
+
+## Scheduled function {% #scheduled-function %}
+
+```hcl
+resource "appwrite_function" "daily_cleanup" {
+  name     = "daily-cleanup"
+  runtime  = "node-22"
+  schedule = "0 0 * * *"
+  timeout  = 60
+}
+```
+
+## Event-driven function {% #event-driven-function %}
+
+```hcl
+resource "appwrite_function" "on_user_create" {
+  name       = "on-user-create"
+  runtime    = "node-22"
+  events     = ["users.*.create"]
+  entrypoint = "index.js"
+  execute    = ["any"]
+}
+```
+
+## Environment variables {% #environment-variables %}
+
+```hcl
+resource "appwrite_function_variable" "api_url" {
+  function_id = appwrite_function.hello_world.id
+  key         = "API_URL"
+  value       = "https://api.example.com"
+}
+
+resource "appwrite_function_variable" "secret_key" {
+  function_id = appwrite_function.hello_world.id
+  key         = "SECRET_KEY"
+  value       = var.secret_key
+  secret      = true
+}
+```
+
+## VCS integration {% #vcs-integration %}
+
+Connect a function to a Git repository for automatic deployments on push:
+
+```hcl
+resource "appwrite_function" "api" {
+  name    = "api"
+  runtime = "node-22"
+
+  installation_id         = "your-github-installation-id"
+  provider_repository_id  = "your-repository-id"
+  provider_branch         = "main"
+  provider_root_directory = "functions/api"
+}
+```
+
+# Related {% #related %}
+
+- [Functions product docs](/docs/products/functions)
+- [Webhooks](/docs/tooling/terraform/resources/webhooks) - trigger external endpoints from events
+- [Configuration](/docs/tooling/terraform/provider)

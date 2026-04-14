@@ -1,97 +1,110 @@
 ---
 layout: article
 title: Databases
-description: Use Terraform to manage Appwrite databases, tables, columns, and indexes with the official Appwrite provider.
+description: Use Terraform to manage Appwrite databases, tables, columns, indexes, and rows with the official Appwrite provider.
 ---
 
-The provider exposes Appwrite **Tables**-style data modeling as Terraform resources. Typical order: create a **database**, then **tables**, then **columns** and **indexes** that belong to those tables.
+The provider exposes Appwrite **Tables**-style data modeling as Terraform resources. Typical order: create a **database**, then **tables**, then **columns** and **indexes** that belong to those tables. You can also seed **rows** once the schema is in place.
 
-For full generated schemas, see the Terraform Registry: [database](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/database), [table](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/table), [column](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/column), and [index](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/index). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) contains the source and examples.
+For full generated schemas, see the Terraform Registry: [tablesdb](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/tablesdb), [tablesdb_table](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/tablesdb_table), [tablesdb_column](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/tablesdb_column), [tablesdb_index](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/tablesdb_index), and [tablesdb_row](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/tablesdb_row). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) contains the source and examples.
 
 # Resources {% #resources %}
 
 | Resource | Purpose |
 |----------|---------|
-| `appwrite_database` | Create a database in your project |
-| `appwrite_table` | Create a table within a database |
-| `appwrite_column` | Define columns (types, constraints, defaults) |
-| `appwrite_index` | Add indexes on one or more columns |
+| `appwrite_tablesdb` | Create a database in your project |
+| `appwrite_tablesdb_table` | Create a table within a database |
+| `appwrite_tablesdb_column` | Define columns (types, constraints, defaults) |
+| `appwrite_tablesdb_index` | Add indexes on one or more columns |
+| `appwrite_tablesdb_row` | Insert a row into a table |
 
-Relationships use `database_id` and `table_id` references, often wired through Terraform resource attributes (for example `appwrite_database.main.id`).
+Relationships use `database_id` and `table_id` references, often wired through Terraform resource attributes (for example `appwrite_tablesdb.main.id`).
 
 # Example {% #example %}
 
-This pattern matches the upstream documentation: a database, a `users` table, several columns, and a unique index on email.
+This pattern matches the upstream documentation: a database, a `users` table, several columns, a unique index on email, and a seed row.
 
 ```hcl
-resource "appwrite_database" "main" {
-  id   = "main"
-  name = "Main"
+resource "appwrite_tablesdb" "main" {
+  name = "main"
 }
 
-resource "appwrite_table" "users" {
-  database_id = appwrite_database.main.id
-  id          = "users"
-  name        = "Users"
+resource "appwrite_tablesdb_table" "users" {
+  database_id = appwrite_tablesdb.main.id
+  name        = "users"
 }
 
-resource "appwrite_column" "name" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "name" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "name"
   type        = "varchar"
   size        = 255
   required    = true
 }
 
-resource "appwrite_column" "email" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "email" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "email"
   type        = "email"
   required    = true
 }
 
-resource "appwrite_column" "age" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "age" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "age"
   type        = "integer"
   min         = 0
   max         = 150
 }
 
-resource "appwrite_column" "role" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "role" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "role"
   type        = "enum"
   elements    = ["admin", "editor", "viewer"]
   default     = "viewer"
 }
 
-resource "appwrite_column" "tags" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "tags" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "tags"
   type        = "varchar"
   size        = 64
   array       = true
 }
 
-resource "appwrite_column" "location" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_column" "location" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "location"
   type        = "point"
 }
 
-resource "appwrite_index" "email_unique" {
-  database_id = appwrite_database.main.id
-  table_id    = appwrite_table.users.id
+resource "appwrite_tablesdb_index" "email_unique" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
   key         = "email_unique"
   type        = "unique"
-  columns     = [appwrite_column.email.key]
+  columns     = [appwrite_tablesdb_column.email.key]
+}
+
+resource "appwrite_tablesdb_row" "alice" {
+  database_id = appwrite_tablesdb.main.id
+  table_id    = appwrite_tablesdb_table.users.id
+  data = jsonencode({
+    name  = "alice"
+    email = "alice@example.com"
+  })
+
+  depends_on = [
+    appwrite_tablesdb_column.name,
+    appwrite_tablesdb_column.email,
+  ]
 }
 ```
 

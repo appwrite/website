@@ -1,0 +1,95 @@
+---
+layout: article
+title: Sites
+description: Host frontends on Appwrite with Terraform, including framework presets, build configuration, and environment variables.
+---
+
+The `appwrite_site` resource manages [Sites](/docs/products/sites) in your Appwrite project: framework selection, build runtimes, install and build commands, output directories, and optional VCS integration. The `appwrite_site_variable` resource sets environment variables on a site.
+
+See the Terraform Registry for the full attribute list and import syntax: [site](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/site) and [site_variable](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/site_variable). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) has source and examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_site` | Create a hosted site |
+| `appwrite_site_variable` | Set an environment variable on a site |
+
+The `framework` argument accepts `nextjs`, `nuxt`, `sveltekit`, `astro`, `remix`, `analog`, `react`, `vue`, `vite`, `flutter`, and `other`. Use `other` for static sites or unsupported frameworks.
+
+# Examples {% #examples %}
+
+## Static site {% #static-site %}
+
+```hcl
+resource "appwrite_site" "landing_page" {
+  name          = "landing-page"
+  framework     = "other"
+  build_runtime = "node-22"
+}
+```
+
+## Next.js site {% #nextjs-site %}
+
+```hcl
+resource "appwrite_site" "dashboard" {
+  name            = "dashboard"
+  framework       = "nextjs"
+  build_runtime   = "node-22"
+  install_command = "npm install"
+  build_command   = "npm run build"
+}
+```
+
+## Astro site {% #astro-site %}
+
+```hcl
+resource "appwrite_site" "docs" {
+  name             = "docs"
+  framework        = "astro"
+  build_runtime    = "node-22"
+  install_command  = "npm install"
+  build_command    = "npm run build"
+  output_directory = "dist"
+}
+```
+
+## Environment variables {% #environment-variables %}
+
+```hcl
+resource "appwrite_site_variable" "api_url" {
+  site_id = appwrite_site.dashboard.id
+  key     = "NEXT_PUBLIC_API_URL"
+  value   = "https://api.example.com"
+}
+
+resource "appwrite_site_variable" "secret_key" {
+  site_id = appwrite_site.dashboard.id
+  key     = "SECRET_KEY"
+  value   = var.secret_key
+  secret  = true
+}
+```
+
+## VCS integration {% #vcs-integration %}
+
+Connect a site to a Git repository for automatic deployments on push:
+
+```hcl
+resource "appwrite_site" "app" {
+  name          = "app"
+  framework     = "nextjs"
+  build_runtime = "node-22"
+
+  installation_id         = "your-github-installation-id"
+  provider_repository_id  = "your-repository-id"
+  provider_branch         = "main"
+  provider_root_directory = "apps/web"
+}
+```
+
+# Related {% #related %}
+
+- [Sites product docs](/docs/products/sites)
+- [Functions](/docs/tooling/terraform/resources/functions) - serverless backend functions
+- [Configuration](/docs/tooling/terraform/provider)

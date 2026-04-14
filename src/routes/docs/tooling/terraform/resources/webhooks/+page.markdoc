@@ -1,0 +1,56 @@
+---
+layout: article
+title: Webhooks
+description: Configure Appwrite webhooks with Terraform for event-driven HTTP callbacks with optional authentication.
+---
+
+The `appwrite_webhook` resource manages webhooks in your Appwrite project: event filters, target URLs, SSL verification, and optional HTTP authentication.
+
+See the [webhook resource](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/webhook) on the Terraform Registry for the full attribute list and import syntax. The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) has source and examples.
+
+# Resource {% #resource %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_webhook` | Register an event-driven HTTP callback |
+
+# Examples {% #examples %}
+
+## Basic webhook {% #basic-webhook %}
+
+```hcl
+resource "appwrite_webhook" "order_created" {
+  name   = "order created"
+  url    = "https://api.example.com/webhooks/orders"
+  events = ["databases.*.collections.*.documents.*.create"]
+}
+```
+
+## Multiple events {% #multiple-events %}
+
+```hcl
+resource "appwrite_webhook" "user_events" {
+  name     = "user events"
+  url      = "https://api.example.com/webhooks/users"
+  events   = ["users.*.create", "users.*.update", "users.*.delete"]
+  security = true
+}
+```
+
+## Authenticated webhook {% #authenticated-webhook %}
+
+```hcl
+resource "appwrite_webhook" "authenticated" {
+  name      = "authenticated webhook"
+  url       = "https://api.example.com/webhooks/secure"
+  events    = ["databases.*.collections.*.documents.*.create"]
+  http_user = "webhook"
+  http_pass = var.webhook_password
+  security  = true
+}
+```
+
+# Related {% #related %}
+
+- [Functions](/docs/tooling/terraform/resources/functions) - serverless functions triggered by events
+- [Configuration](/docs/tooling/terraform/provider)

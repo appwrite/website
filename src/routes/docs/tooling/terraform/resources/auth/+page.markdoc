@@ -1,0 +1,53 @@
+---
+layout: article
+title: Auth
+description: Manage Appwrite users and teams with the Terraform provider for repeatable auth setup across environments.
+---
+
+The `appwrite_auth_user` and `appwrite_auth_team` resources manage [Auth](/docs/products/auth) objects in your Appwrite project: seed users for development or testing, and teams with custom roles.
+
+See the Terraform Registry for the full attribute list and import syntax: [auth_user](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/auth_user) and [auth_team](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/auth_team). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) has source and examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_auth_user` | Create a user |
+| `appwrite_auth_team` | Create a team with optional roles |
+
+# Examples {% #examples %}
+
+## Users {% #users %}
+
+```hcl
+resource "appwrite_auth_user" "john" {
+  name     = "john doe"
+  email    = "john@example.com"
+  password = var.user_password
+}
+
+resource "appwrite_auth_user" "admin" {
+  name     = "admin"
+  email    = "admin@example.com"
+  password = var.admin_password
+  labels   = ["admin", "staff"]
+}
+```
+
+## Teams {% #teams %}
+
+```hcl
+resource "appwrite_auth_team" "engineering" {
+  name = "engineering"
+}
+
+resource "appwrite_auth_team" "marketing" {
+  name  = "marketing"
+  roles = ["owner", "editor"]
+}
+```
+
+# Related {% #related %}
+
+- [Auth product docs](/docs/products/auth)
+- [Configuration](/docs/tooling/terraform/provider)
