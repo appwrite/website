@@ -129,25 +129,15 @@ Review all your configuration settings. If anything looks wrong, use the **Back*
 
 For advanced users who prefer manual setup, you can install Appwrite using Docker Compose directly.
 
-## Download configuration files {% #download-configuration %}
+## Generate configuration files {% #generate-configuration %}
 
-Download the required configuration files:
+{% compose_generator %}{% /compose_generator %}
 
-1. Download [`docker-compose.yml`](/install/compose)
-2. Download [`.env`](/install/env)
-3. Create a directory named `appwrite` and move both files inside
+## Install Appwrite {% #install-appwrite %}
 
-## Configure environment {% #configure-environment %}
-
-Edit the `.env` file to customize your installation:
-
-- Update environment variables as needed
-- Set your desired configuration options
-- Ensure all required values are properly set
-
-## Start Appwrite {% #start-appwrite %}
-
-Once configured, start your Appwrite stack:
+1. Create a directory named `appwrite` and place both `docker-compose.yml` and `.env` inside
+2. Edit the `.env` file to customize your installation. At minimum, update `_APP_OPENSSL_KEY_V1` with a unique secret key
+3. Start the Appwrite stack:
 
 ```bash
 docker compose up -d --remove-orphans
