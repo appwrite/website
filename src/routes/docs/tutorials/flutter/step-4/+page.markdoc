@@ -34,7 +34,7 @@ class UserProvider extends ChangeNotifier {
       );
       _current = await account.get();
       notifyListeners();
-      print('Welcome back. You are logged in');
+      debugPrint('Welcome back. You are logged in');
     } catch (e) {
       rethrow;
     }
@@ -45,7 +45,7 @@ class UserProvider extends ChangeNotifier {
       await account.deleteSession(sessionId: 'current');
       _current = null;
       notifyListeners();
-      print("Logged out");
+      debugPrint("Logged out");
     } catch(e) {
       rethrow;
     }
@@ -56,7 +56,7 @@ class UserProvider extends ChangeNotifier {
       await account.create(userId: ID.unique(), email: email, password: password);
       await login(email, password);
       notifyListeners();
-      print("Account created");
+      debugPrint("Account created");
     } catch (e) {
       rethrow;
     }

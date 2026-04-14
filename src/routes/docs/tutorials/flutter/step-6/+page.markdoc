@@ -91,7 +91,7 @@ class IdeasProvider extends ChangeNotifier {
       if (_ideas.length > 10) _ideas = _ideas.sublist(0, 10);
 
       notifyListeners();
-      print('Idea added');
+      debugPrint('Idea added');
     } catch (e) {
       rethrow;
     }
@@ -108,7 +108,7 @@ class IdeasProvider extends ChangeNotifier {
       _ideas.removeWhere((item) => item.$id == id);
       notifyListeners();
       await init();
-      print('Idea removed');
+      debugPrint('Idea removed');
     } catch (e) {
       rethrow;
     }
