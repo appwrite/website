@@ -231,6 +231,7 @@ class _LoginState extends State<Login> {
                           _passwordController.text,
                         );
                       } catch (e) {
+                        if (!mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(e.toString())),
                         );

@@ -132,7 +132,18 @@ class _HomeState extends State<Home> {
                         
                           const SizedBox(height: 8),
                           ElevatedButton(
-                            onPressed: () => isOwner? ideasProvider.remove(idea.$id) : null,
+                            onPressed: () async {
+                              if (isOwner) {
+                                try {
+                                  await ideasProvider.remove(idea.$id);
+                                } catch (e) {
+                                  if (!mounted) return;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(e.toString())),
+                                  );
+                                }
+                              }
+                            },
                             style: isOwner ? Styles.button : Styles.disabledButton,
                             child: const Text(
                               "Remove",

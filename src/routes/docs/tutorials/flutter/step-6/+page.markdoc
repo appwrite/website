@@ -15,7 +15,7 @@ To store your ideas, you need to create a database first.
 3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `default` as the ID.
 4. You'll need to remember the database ID as you'll need it later.
 
-# Create table {% #create-table %}
+## Create table {% #create-table %}
 In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 Make sure to the remember the table ID, for this tutorial, we'll use `ideas_tracker` as the table ID.
 
@@ -116,7 +116,6 @@ class IdeasProvider extends ChangeNotifier {
 
       _ideas.removeWhere((item) => item.$id == id);
       notifyListeners();
-      await init();
       debugPrint('Idea removed');
     } catch (e) {
       rethrow;
