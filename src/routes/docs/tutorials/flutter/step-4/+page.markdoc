@@ -134,12 +134,8 @@ class Styles {
   static ButtonStyle button = ElevatedButton.styleFrom(
     backgroundColor: Colors.pinkAccent,
     foregroundColor: Colors.white,
-    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-  );
-
-  static ButtonStyle disabledButton = ElevatedButton.styleFrom(
-    backgroundColor: Colors.grey,
-    foregroundColor: Colors.white,
+    disabledBackgroundColor: Colors.grey,
+    disabledForegroundColor: Colors.white,
     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
   );
 }

@@ -19,7 +19,7 @@ cd ideas_tracker
 Install the Flutter Appwrite SDK and provider.
 
 ```sh
-flutter pub add appwrite:17.0.0
+flutter pub add appwrite
 flutter pub add provider
 ```
 

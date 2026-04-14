@@ -142,7 +142,7 @@ class _HomeState extends State<Home> {
                                 );
                               }
                             } : null,
-                            style: isOwner ? Styles.button : Styles.disabledButton,
+                            style: Styles.button,
                             child: const Text(
                               "Remove",
                             ),
