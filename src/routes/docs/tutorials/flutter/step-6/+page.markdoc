@@ -12,11 +12,12 @@ To store your ideas, you need to create a database first.
 
 1. Go to the Databases section in your Appwrite Console
 2. Click *Create Database*
-3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `ideas_tracker` as the ID.
+3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `default` as the ID.
 4. You'll need to remember the database ID as you'll need it later.
 
 # Create table {% #create-table %}
 In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+Make sure to the remember the table ID, for this tutorial, we'll use `ideas_tracker` as the table ID.
 
 {% only_dark %}
 ![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
