@@ -196,6 +196,7 @@ class _LoginState extends State<Login> {
             SizedBox(height: 25),
             TextField (
               controller: _passwordController,
+              obscureText: true,
               decoration: Styles.input.copyWith(
                 hintText: "Password"
               ),
