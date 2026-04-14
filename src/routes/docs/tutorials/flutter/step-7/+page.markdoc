@@ -84,7 +84,6 @@ class _HomeState extends State<Home> {
                         _titleController.clear();
                         _descriptionController.clear();
                       } catch (e) {
-                      } catch (e) {
                         if (!mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(e.toString())),
