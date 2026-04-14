@@ -7,8 +7,8 @@ step: 7
 
 Using `IdeasProvider` you can now display the ideas on the page and create a form to submit new ideas.
 
-If an idea is submitted by the logged-in user, a remove button will be displayed to remove the idea.
-While this check uses the user ID to determine the render logic, permissions set in step 6 will be used to enforce
+If an idea is submitted by the logged-in user, remove button will be enabled to remove the idea.
+While this check uses the user ID to determine the disable/enable logic, permissions set in step 6 will be used to enforce
 that only the owner of the idea can remove it.
 
 Overwrite the contents of `lib/screens/home.dart` with the following:
