@@ -124,7 +124,7 @@ class IdeasProvider extends ChangeNotifier {
 }
 ```
 
-Notice that new ideas have the added permission `Permission.write(Role.user(idea.userId))`.
+Notice that new ideas have the added permission `Permission.write(Role.user(userId))`.
 This permission ensures that only the user who created the idea can modify it.
 
 Remember to add the `IdeasProvider` to your `main.dart` file.
