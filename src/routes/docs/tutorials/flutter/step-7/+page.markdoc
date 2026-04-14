@@ -74,14 +74,20 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      ideasProvider.add({
-                        'userId': user.$id,
-                        'title': _titleController.text,
-                        'description': _descriptionController.text,
-                      }, user.$id);
-                      _titleController.clear();
-                      _descriptionController.clear();
+                    onPressed: () async {
+                      try {
+                        await ideasProvider.add({
+                          'userId': user.$id,
+                          'title': _titleController.text,
+                          'description': _descriptionController.text,
+                        }, user.$id);
+                        _titleController.clear();
+                        _descriptionController.clear();
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(e.toString())),
+                        );
+                      }
                     },
                     style: Styles.button,
                     child: Text("Submit"),
