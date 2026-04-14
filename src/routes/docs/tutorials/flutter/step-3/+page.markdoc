@@ -43,7 +43,7 @@ Find your project's ID in the **Settings** page.
 
 Create a new file `lib/appwrite.dart` to hold our Appwrite related code.
 Only one instance of the `Client()` should be created per app.
-Add the following code to it, replacing `<PROJECT_ID>` with your project ID.
+Add the following code to it, replacing `<PROJECT_ID>` with your project ID and `<REGION>` with your project region.
 
 ```dart
 import 'package:appwrite/appwrite.dart';
