@@ -206,22 +206,34 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    context.read<UserProvider>().login(
-                      _emailController.text,
-                      _passwordController.text,
-                    );
+                  onPressed: () async {
+                    try {
+                      await context.read<UserProvider>().login(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(e.toString())),
+                      );
+                    }
                   }, 
                   style: Styles.button,
                   child: Text("Login")
                 ),
                 SizedBox(width: 24),
                 ElevatedButton(
-                    onPressed: () {
-                      context.read<UserProvider>().register(
-                        _emailController.text,
-                        _passwordController.text,
-                      );
+                    onPressed: () async {
+                      try {
+                        await context.read<UserProvider>().register(
+                          _emailController.text,
+                          _passwordController.text,
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(e.toString())),
+                        );
+                      }
                     },
                     style: Styles.button,
                     child: Text("Register"),
