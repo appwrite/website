@@ -21,10 +21,10 @@
 </script>
 
 <div class="group flex w-full flex-col gap-8 pb-3 transition">
-    <a class="block overflow-hidden rounded-lg bg-transparent" {href}>
+    <a class="block w-full overflow-hidden rounded-lg bg-transparent" {href}>
         <Media
             src={cover}
-            class="aspect-video transition duration-250 ease-in-out group-hover:scale-105"
+            class="web-u-media-ratio-16-9 w-full transition duration-250 ease-in-out group-hover:scale-105"
             alt={title}
         />
     </a>
