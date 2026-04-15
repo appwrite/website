@@ -890,7 +890,7 @@ When adding a new API key, you choose which scopes to grant. Scopes are grouped 
 | `teams.write`         | Access to create, update, and delete your project's teams                       |
 
 {% /accordion_item %}
-{% accordion_item title="Database" %}
+{% accordion_item title="Databases" %}
 
 | Name                  | Description                                                                     |
 |-----------------------|---------------------------------------------------------------------------------|
