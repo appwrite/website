@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Webhooks API: Manage webhooks programmatically with Server SDKs"
 description: Webhooks are no longer console-only. Create, update, and delete webhooks using the Appwrite Server SDKs and API keys with the new webhooks.read and webhooks.write scopes.
-date: 2026-04-10
+date: 2026-04-16
 cover: /images/blog/announcing-webhooks-api/cover.png
 timeToRead: 4
 author: matej-baco
@@ -39,6 +39,7 @@ Once your API key has the appropriate scopes, you can manage webhooks through an
 
 ## Create a webhook
 
+{% multicode %}
 ```server-nodejs
 import { Client, Webhooks, ID } from 'node-appwrite';
 
@@ -54,31 +55,534 @@ const result = await webhooks.create({
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
-    security: true
+    tls: true
 });
 ```
+```server-deno
+import { Client, Webhooks, ID } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const webhooks = new Webhooks(client);
+
+const result = await webhooks.create({
+    webhookId: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['users.*.create', 'users.*.update'],
+    tls: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\Services\Webhooks;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$webhooks = new Webhooks($client);
+
+$result = $webhooks->create(
+    webhookId: ID::unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['users.*.create', 'users.*.update'],
+    tls: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.id import ID
+from appwrite.services.webhooks import Webhooks
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks(client)
+
+result = webhooks.create(
+    webhook_id=ID.unique(),
+    url='https://example.com/webhook',
+    name='My Webhook',
+    events=['users.*.create', 'users.*.update'],
+    tls=True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+webhooks = Webhooks.new(client)
+
+response = webhooks.create(
+    webhook_id: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['users.*.create', 'users.*.update'],
+    tls: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+var result = await webhooks.Create(
+    webhookId: ID.Unique(),
+    url: "https://example.com/webhook",
+    name: "My Webhook",
+    events: new List<string> {"users.*.create", "users.*.update"},
+    tls: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Webhooks webhooks = Webhooks(client);
+
+final result = await webhooks.create(
+    webhookId: ID.unique(),
+    url: 'https://example.com/webhook',
+    name: 'My Webhook',
+    events: ['users.*.create', 'users.*.update'],
+    tls: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Webhooks
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val webhooks = Webhooks(client)
+
+val result = webhooks.create(
+    webhookId = ID.unique(),
+    url = "https://example.com/webhook",
+    name = "My Webhook",
+    events = listOf("users.*.create", "users.*.update"),
+    tls = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Webhooks;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Webhooks webhooks = new Webhooks(client);
+
+webhooks.create(
+    ID.unique(),                                     // webhookId
+    "https://example.com/webhook",                   // url
+    "My Webhook",                                    // name
+    List.of("users.*.create", "users.*.update"),     // events
+    true,                                            // enabled
+    true,                                            // tls
+    null,                                            // authUsername
+    null,                                            // authPassword
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let webhooks = Webhooks(client)
+
+let result = try await webhooks.create(
+    webhookId: ID.unique(),
+    url: "https://example.com/webhook",
+    name: "My Webhook",
+    events: ["users.*.create", "users.*.update"],
+    tls: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    webhooks := appwrite.NewWebhooks(client)
+    result, err := webhooks.Create(
+        id.Unique(),
+        "https://example.com/webhook",
+        "My Webhook",
+        []string{"users.*.create", "users.*.update"},
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::services::Webhooks;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let webhooks = Webhooks::new(&client);
+
+    let result = webhooks.create(
+        ID::unique(),                                  // webhook_id
+        "https://example.com/webhook",                 // url
+        "My Webhook",                                  // name
+        &["users.*.create", "users.*.update"],         // events
+        None,                                          // enabled
+        Some(true),                                    // tls
+        None,                                          // auth_username
+        None,                                          // auth_password
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
 
 ## Update a webhook
 
+{% multicode %}
 ```server-nodejs
 const result = await webhooks.update({
     webhookId: '<WEBHOOK_ID>',
     name: 'Updated Webhook',
     url: 'https://example.com/webhook-v2',
     events: ['users.*.create', 'users.*.update', 'users.*.delete'],
-    security: true
+    tls: true
 });
 ```
+```server-deno
+const result = await webhooks.update({
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-v2',
+    events: ['users.*.create', 'users.*.update', 'users.*.delete'],
+    tls: true
+});
+```
+```server-php
+$result = $webhooks->update(
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-v2',
+    events: ['users.*.create', 'users.*.update', 'users.*.delete'],
+    tls: true
+);
+```
+```server-python
+result = webhooks.update(
+    webhook_id='<WEBHOOK_ID>',
+    name='Updated Webhook',
+    url='https://example.com/webhook-v2',
+    events=['users.*.create', 'users.*.update', 'users.*.delete'],
+    tls=True
+)
+```
+```server-ruby
+response = webhooks.update(
+    webhook_id: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-v2',
+    events: ['users.*.create', 'users.*.update', 'users.*.delete'],
+    tls: true
+)
+```
+```server-dotnet
+var result = await webhooks.Update(
+    webhookId: "<WEBHOOK_ID>",
+    name: "Updated Webhook",
+    url: "https://example.com/webhook-v2",
+    events: new List<string> {"users.*.create", "users.*.update", "users.*.delete"},
+    tls: true
+);
+```
+```server-dart
+final result = await webhooks.update(
+    webhookId: '<WEBHOOK_ID>',
+    name: 'Updated Webhook',
+    url: 'https://example.com/webhook-v2',
+    events: ['users.*.create', 'users.*.update', 'users.*.delete'],
+    tls: true,
+);
+```
+```server-kotlin
+val result = webhooks.update(
+    webhookId = "<WEBHOOK_ID>",
+    name = "Updated Webhook",
+    url = "https://example.com/webhook-v2",
+    events = listOf("users.*.create", "users.*.update", "users.*.delete"),
+    tls = true
+)
+```
+```server-java
+webhooks.update(
+    "<WEBHOOK_ID>",                                  // webhookId
+    "Updated Webhook",                               // name
+    "https://example.com/webhook-v2",                // url
+    List.of("users.*.create", "users.*.update", "users.*.delete"), // events
+    true,                                            // enabled
+    true,                                            // tls
+    null,                                            // authUsername
+    null,                                            // authPassword
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await webhooks.update(
+    webhookId: "<WEBHOOK_ID>",
+    name: "Updated Webhook",
+    url: "https://example.com/webhook-v2",
+    events: ["users.*.create", "users.*.update", "users.*.delete"],
+    tls: true
+)
+```
+```server-go
+result, err := webhooks.Update(
+    "<WEBHOOK_ID>",
+    "Updated Webhook",
+    "https://example.com/webhook-v2",
+    []string{"users.*.create", "users.*.update", "users.*.delete"},
+)
+```
+```server-rust
+let result = webhooks.update(
+    "<WEBHOOK_ID>",                                // webhook_id
+    "Updated Webhook",                             // name
+    "https://example.com/webhook-v2",              // url
+    &["users.*.create", "users.*.update", "users.*.delete"], // events
+    None,                                          // enabled
+    Some(true),                                    // tls
+    None,                                          // auth_username
+    None,                                          // auth_password
+).await?;
+```
+{% /multicode %}
 
 ## Delete a webhook
 
+{% multicode %}
 ```server-nodejs
 await webhooks.delete({
     webhookId: '<WEBHOOK_ID>'
 });
 ```
+```server-deno
+await webhooks.delete({
+    webhookId: '<WEBHOOK_ID>'
+});
+```
+```server-php
+$webhooks->delete(
+    webhookId: '<WEBHOOK_ID>'
+);
+```
+```server-python
+webhooks.delete(
+    webhook_id='<WEBHOOK_ID>'
+)
+```
+```server-ruby
+webhooks.delete(
+    webhook_id: '<WEBHOOK_ID>'
+)
+```
+```server-dotnet
+await webhooks.Delete(
+    webhookId: "<WEBHOOK_ID>"
+);
+```
+```server-dart
+await webhooks.delete(
+    webhookId: '<WEBHOOK_ID>',
+);
+```
+```server-kotlin
+webhooks.delete(
+    webhookId = "<WEBHOOK_ID>"
+)
+```
+```server-java
+webhooks.delete(
+    "<WEBHOOK_ID>", // webhookId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+try await webhooks.delete(
+    webhookId: "<WEBHOOK_ID>"
+)
+```
+```server-go
+_, err := webhooks.Delete(
+    "<WEBHOOK_ID>",
+)
+```
+```server-rust
+webhooks.delete(
+    "<WEBHOOK_ID>",
+).await?;
+```
+{% /multicode %}
+
+## Rotate signing key
+
+{% multicode %}
+```server-nodejs
+const result = await webhooks.updateSecret({
+    webhookId: '<WEBHOOK_ID>'
+});
+```
+```server-deno
+const result = await webhooks.updateSecret({
+    webhookId: '<WEBHOOK_ID>'
+});
+```
+```server-php
+$result = $webhooks->updateSecret(
+    webhookId: '<WEBHOOK_ID>'
+);
+```
+```server-python
+result = webhooks.update_secret(
+    webhook_id='<WEBHOOK_ID>'
+)
+```
+```server-ruby
+response = webhooks.update_secret(
+    webhook_id: '<WEBHOOK_ID>'
+)
+```
+```server-dotnet
+var result = await webhooks.UpdateSecret(
+    webhookId: "<WEBHOOK_ID>"
+);
+```
+```server-dart
+final result = await webhooks.updateSecret(
+    webhookId: '<WEBHOOK_ID>',
+);
+```
+```server-kotlin
+val result = webhooks.updateSecret(
+    webhookId = "<WEBHOOK_ID>"
+)
+```
+```server-java
+webhooks.updateSecret(
+    "<WEBHOOK_ID>", // webhookId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await webhooks.updateSecret(
+    webhookId: "<WEBHOOK_ID>"
+)
+```
+```server-go
+result, err := webhooks.UpdateSecret(
+    "<WEBHOOK_ID>",
+)
+```
+```server-rust
+let result = webhooks.update_secret(
+    "<WEBHOOK_ID>", // webhook_id
+).await?;
+```
+{% /multicode %}
 
 The API supports all the same configuration options available in the Console, including event selection, SSL/TLS certificate verification, and HTTP basic authentication.
+
+{% info title="Update your SDK" %}
+The Webhooks API requires the latest version of your Appwrite Server SDK. Make sure to update before using the new `Webhooks` service.
+{% /info %}
 
 # Get started
 
