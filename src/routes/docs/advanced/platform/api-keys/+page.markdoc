@@ -155,6 +155,10 @@ If you need to replace your API Key, create a new key, update your app credentia
 
 You can also manage API keys programmatically using a Server SDK. This requires an API key with the `keys.read` and `keys.write` [scopes](#scopes).
 
+{% info title="Sensitive scopes" %}
+The `keys.read` and `keys.write` scopes are very sensitive. An API key with `keys.write` can create new keys with any scope, effectively granting full access to your project. Only assign these scopes to keys used in trusted, secure environments, and never expose them in client-side applications.
+{% /info %}
+
 ## Create an API key {% #create-an-api-key %}
 
 {% multicode %}

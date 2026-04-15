@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Keys API: Create and manage API keys with Server SDKs"
 description: API keys can now be created, updated, and deleted programmatically using Appwrite Server SDKs. Automate key provisioning for CI/CD, multi-tenant setups, and team onboarding workflows.
-date: 2026-04-14
+date: 2026-04-15
 cover: /images/blog/improve-devex-dev-keys/cover.png
 timeToRead: 4
 author: matej-baco
@@ -14,6 +14,8 @@ callToAction: true
 Managing API keys has always required navigating to the Appwrite Console, selecting scopes, and manually creating each key. For a single project, that works. For teams managing multiple environments, onboarding new services, or provisioning keys as part of automated pipelines, it becomes a bottleneck.
 
 Today, we are announcing the **Keys API**, allowing you to create, update, and delete API keys programmatically through the Appwrite Server SDKs.
+
+This is part of a wider effort to make everything in Appwrite accessible through the API. Our goal is to ensure that any action you can perform in the Appwrite Console can also be done programmatically, giving you full control over your projects through code.
 
 # Why this matters
 
@@ -30,6 +32,10 @@ The Keys API introduces two new [API key scopes](/docs/advanced/platform/api-key
 
 - **`keys.read`** for listing and retrieving API keys
 - **`keys.write`** for creating, updating, and deleting API keys
+
+{% info title="Sensitive scopes" %}
+The `keys.read` and `keys.write` scopes are very sensitive. An API key with `keys.write` can create new keys with any scope, effectively granting full access to your project. Only assign these scopes to keys used in trusted, secure environments, and never expose them in client-side applications.
+{% /info %}
 
 The methods live on the `Project` service, alongside existing project-level operations like environment variables.
 
