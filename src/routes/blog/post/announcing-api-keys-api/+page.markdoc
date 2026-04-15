@@ -41,8 +41,9 @@ The methods live on the `Project` service, alongside existing project-level oper
 
 ## Create an API key
 
+{% multicode %}
 ```server-nodejs
-import { Client, Project, ID } from 'node-appwrite';
+import { Client, Project, ID, Scopes } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -51,36 +52,438 @@ const client = new Client()
 
 const project = new Project(client);
 
-const key = await project.createKey({
+const result = await project.createKey({
     keyId: ID.unique(),
-    name: 'Deployment Key',
-    scopes: ['databases.read', 'databases.write', 'users.read'],
+    name: 'My API Key',
+    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite],
     expire: '2026-12-31T23:59:59.000+00:00'
 });
 ```
+```server-deno
+import { Client, Project, ID, Scopes } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.createKey({
+    keyId: ID.unique(),
+    name: 'My API Key',
+    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite],
+    expire: '2026-12-31T23:59:59.000+00:00'
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->createKey(
+    keyId: ID::unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.id import ID
+from appwrite.services.project import Project
+from appwrite.enums.scopes import Scopes
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.create_key(
+    key_id=ID.unique(),
+    name='My API Key',
+    scopes=[Scopes.DATABASES_READ, Scopes.DATABASES_WRITE],
+    expire='2026-12-31T23:59:59.000+00:00'
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.create_key(
+    key_id: ID.unique(),
+    name: 'My API Key',
+    scopes: ['databases.read', 'databases.write'],
+    expire: '2026-12-31T23:59:59.000+00:00'
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Services;
+using Appwrite.Models;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.CreateKey(
+    keyId: ID.Unique(),
+    name: "My API Key",
+    scopes: new List<Scopes> {Scopes.DatabasesRead, Scopes.DatabasesWrite},
+    expire: "2026-12-31T23:59:59.000+00:00"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart' as enums;
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.createKey(
+    keyId: ID.unique(),
+    name: 'My API Key',
+    scopes: [enums.Scopes.databasesRead, enums.Scopes.databasesWrite],
+    expire: '2026-12-31T23:59:59.000+00:00',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.enums.Scopes
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val result = project.createKey(
+    keyId = ID.unique(),
+    name = "My API Key",
+    scopes = listOf(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE),
+    expire = "2026-12-31T23:59:59.000+00:00"
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.enums.Scopes;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.createKey(
+    ID.unique(),                                     // keyId
+    "My API Key",                                    // name
+    List.of(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE), // scopes
+    "2026-12-31T23:59:59.000+00:00",                // expire
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.createKey(
+    keyId: ID.unique(),
+    name: "My API Key",
+    scopes: [Scopes.databasesRead, Scopes.databasesWrite],
+    expire: "2026-12-31T23:59:59.000+00:00"
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.CreateKey(
+        id.Unique(),
+        "My API Key",
+        []string{"databases.read", "databases.write"},
+        project.WithCreateKeyExpire("2026-12-31T23:59:59.000+00:00"),
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::enums::Scopes;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.create_key(
+        ID::unique(),                                  // key_id
+        "My API Key",                                  // name
+        vec![Scopes::DatabasesRead, Scopes::DatabasesWrite], // scopes
+        Some("2026-12-31T23:59:59.000+00:00"),         // expire
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
 
 Each key is created with a specific set of scopes and an optional expiration date. When no expiration is set, the key remains valid indefinitely.
 
 ## Update an API key
 
+{% multicode %}
 ```server-nodejs
-const updated = await project.updateKey({
+const result = await project.updateKey({
     keyId: '<KEY_ID>',
-    name: 'Deployment Key (updated)',
-    scopes: ['databases.read', 'users.read'],
+    name: 'Updated Key',
+    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead],
     expire: '2027-06-30T23:59:59.000+00:00'
 });
 ```
+```server-deno
+const result = await project.updateKey({
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead],
+    expire: '2027-06-30T23:59:59.000+00:00'
+});
+```
+```server-php
+$result = $project->updateKey(
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+);
+```
+```server-python
+result = project.update_key(
+    key_id='<KEY_ID>',
+    name='Updated Key',
+    scopes=[Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ],
+    expire='2027-06-30T23:59:59.000+00:00'
+)
+```
+```server-ruby
+response = project.update_key(
+    key_id: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: ['databases.read', 'databases.write', 'users.read'],
+    expire: '2027-06-30T23:59:59.000+00:00'
+)
+```
+```server-dotnet
+var result = await project.UpdateKey(
+    keyId: "<KEY_ID>",
+    name: "Updated Key",
+    scopes: new List<Scopes> {Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead},
+    expire: "2027-06-30T23:59:59.000+00:00"
+);
+```
+```server-dart
+final result = await project.updateKey(
+    keyId: '<KEY_ID>',
+    name: 'Updated Key',
+    scopes: [enums.Scopes.databasesRead, enums.Scopes.databasesWrite, enums.Scopes.usersRead],
+    expire: '2027-06-30T23:59:59.000+00:00',
+);
+```
+```server-kotlin
+val result = project.updateKey(
+    keyId = "<KEY_ID>",
+    name = "Updated Key",
+    scopes = listOf(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ),
+    expire = "2027-06-30T23:59:59.000+00:00"
+)
+```
+```server-java
+project.updateKey(
+    "<KEY_ID>",                                      // keyId
+    "Updated Key",                                   // name
+    List.of(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ), // scopes
+    "2027-06-30T23:59:59.000+00:00",                // expire
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await project.updateKey(
+    keyId: "<KEY_ID>",
+    name: "Updated Key",
+    scopes: [Scopes.databasesRead, Scopes.databasesWrite, Scopes.usersRead],
+    expire: "2027-06-30T23:59:59.000+00:00"
+)
+```
+```server-go
+result, err := project.UpdateKey(
+    "<KEY_ID>",
+    "Updated Key",
+    []string{"databases.read", "databases.write", "users.read"},
+    project.WithUpdateKeyExpire("2027-06-30T23:59:59.000+00:00"),
+)
+```
+```server-rust
+let result = project.update_key(
+    "<KEY_ID>",                                    // key_id
+    "Updated Key",                                 // name
+    vec![Scopes::DatabasesRead, Scopes::DatabasesWrite, Scopes::UsersRead], // scopes
+    Some("2027-06-30T23:59:59.000+00:00"),         // expire
+).await?;
+```
+{% /multicode %}
 
 Use this to adjust scopes as requirements change, or to extend or shorten a key's expiration window.
 
 ## Delete an API key
 
+{% multicode %}
 ```server-nodejs
 await project.deleteKey({
     keyId: '<KEY_ID>'
 });
 ```
+```server-deno
+await project.deleteKey({
+    keyId: '<KEY_ID>'
+});
+```
+```server-php
+$project->deleteKey(
+    keyId: '<KEY_ID>'
+);
+```
+```server-python
+project.delete_key(
+    key_id='<KEY_ID>'
+)
+```
+```server-ruby
+project.delete_key(
+    key_id: '<KEY_ID>'
+)
+```
+```server-dotnet
+await project.DeleteKey(
+    keyId: "<KEY_ID>"
+);
+```
+```server-dart
+await project.deleteKey(
+    keyId: '<KEY_ID>',
+);
+```
+```server-kotlin
+project.deleteKey(
+    keyId = "<KEY_ID>"
+)
+```
+```server-java
+project.deleteKey(
+    "<KEY_ID>",                                      // keyId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+try await project.deleteKey(
+    keyId: "<KEY_ID>"
+)
+```
+```server-go
+_, err := project.DeleteKey(
+    "<KEY_ID>",
+)
+```
+```server-rust
+project.delete_key(
+    "<KEY_ID>",
+).await?;
+```
+{% /multicode %}
 
 Once deleted, the key immediately stops authenticating API calls.
 
