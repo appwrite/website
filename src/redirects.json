@@ -831,5 +831,13 @@
     {
         "link": "/docs/tooling/ai/ai-dev-tools",
         "redirect": "/docs/tooling/ai/"
+    },
+    {
+        "link": "/install/compose",
+        "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
+    },
+    {
+        "link": "/install/env",
+        "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
     }
 ]
