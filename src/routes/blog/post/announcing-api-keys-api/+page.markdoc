@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Keys API: Create and manage API keys with Server SDKs"
 description: API keys can now be created, updated, and deleted programmatically using Appwrite Server SDKs. Automate key provisioning for CI/CD, multi-tenant setups, and team onboarding workflows.
-date: 2026-04-15
+date: 2026-04-16
 cover: /images/blog/improve-devex-dev-keys/cover.png
 timeToRead: 4
 author: matej-baco
