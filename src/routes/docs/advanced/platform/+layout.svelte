@@ -127,6 +127,10 @@
                     href: '/docs/advanced/platform/custom-domains'
                 },
                 {
+                    label: 'Protocols',
+                    href: '/docs/advanced/platform/protocols'
+                },
+                {
                     label: 'Message templates',
                     href: '/docs/advanced/platform/message-templates'
                 }

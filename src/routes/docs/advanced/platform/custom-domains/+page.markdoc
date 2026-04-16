@@ -37,6 +37,42 @@ This will allow browsers to respect the Appwrite sessions cookies as they are se
 
 With these steps, your Appwrite project will accept API requests from your custom domain.
 
+# Domain status {% #domain-status %}
+
+After adding a custom domain, the Console tracks the domain through its verification and certificate lifecycle. The following statuses may appear in the **Custom domains** section of your project settings:
+
+{% table %}
+
+- Status
+- Description
+- Action
+
+---
+
+- Verification failed
+- DNS records have not been verified. The CNAME record is missing or points to the wrong target.
+- Verify that the CNAME record has been added correctly at your domain registrar and retry. DNS propagation can take up to 48 hours.
+
+---
+
+- Generating certificate
+- DNS verification succeeded and a TLS certificate is being issued.
+- No action needed. Certificate generation typically completes within a few minutes.
+
+---
+
+- Certificate generation failed
+- The TLS certificate could not be issued. This can happen if a CAA record restricts which certificate authorities can issue for your domain.
+- Ensure that your DNS provider allows `certainly.com` as an authorized certificate authority in your CAA records. Retry verification from the Console.
+
+---
+
+- Verified
+- The domain is fully active with a valid TLS certificate.
+- No action needed. Your Appwrite API endpoint is ready on this domain.
+
+{% /table %}
+
 If you encounter any issues during the setup process or have questions, don't hesitate to [contact us](/contact-us), and we'll be happy to assist you.
 
 # Add a CNAME record {% #cname-record %}

@@ -126,7 +126,45 @@ To add a subdomain:
 
 DNS records can take up to 48 hours to propagate. Once verified, the domain is ready to use.
 
-## Domain rule types
+## Domain status {% #domain-status %}
+
+After adding a custom domain, the Appwrite Console displays a status indicator that tracks the domain through its verification and certificate lifecycle. Understanding these statuses helps you troubleshoot domain setup issues.
+
+{% table %}
+
+- Status
+- Description
+- Action
+
+---
+
+- Verification failed
+- DNS records have not been verified. The CNAME, NS, or ALIAS record is missing or misconfigured.
+- Check that the correct DNS record has been added at your domain registrar and retry verification. DNS changes can take up to 48 hours to propagate.
+
+---
+
+- Generating certificate
+- DNS verification succeeded and a TLS certificate is being issued for your domain.
+- No action needed. Certificate generation typically completes within a few minutes.
+
+---
+
+- Certificate generation failed
+- The TLS certificate could not be issued. This can happen if a CAA record restricts which certificate authorities can issue certificates for your domain.
+- Ensure that your DNS provider allows `certainly.com` as an authorized certificate authority in your CAA records. Retry verification from the Console.
+
+---
+
+- Verified
+- The domain is fully active with a valid TLS certificate. No status badge is shown.
+- No action needed. The domain is ready to serve traffic.
+
+{% /table %}
+
+The Console also displays a timestamp showing when the status was last checked or updated. If verification or certificate generation fails, you can retry from the domain's row in the **Domains** tab.
+
+## Domain rule types {% #domain-rule-types %}
 
 When adding a custom domain to your Appwrite site, you'll need to select one of the following rule types that determine how your domain will behave:
 

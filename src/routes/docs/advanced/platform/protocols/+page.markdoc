@@ -1,0 +1,101 @@
+---
+layout: article
+title: Protocols
+description: Learn how to enable or disable API protocols like REST, GraphQL, and WebSocket for your Appwrite project.
+---
+
+Appwrite exposes three protocols for interacting with your project: REST, GraphQL, and WebSocket (Realtime). Each protocol can be independently enabled or disabled per project, giving you control over which access methods are available to your application.
+
+By default, all three protocols are enabled when you create a new project.
+
+# Available protocols {% #available-protocols %}
+
+{% table %}
+
+- Protocol
+- Description
+- Default
+
+---
+
+- REST
+- HTTP-based API for standard request-response interactions. Used by all Appwrite SDKs and the Console.
+- Enabled
+
+---
+
+- GraphQL
+- Query language API available at `/v1/graphql`. Supports queries and mutations for all Appwrite resources except OAuth.
+- Enabled
+
+---
+
+- WebSocket
+- Persistent connection protocol powering the [Realtime](/docs/apis/realtime) service. Enables live subscriptions to Appwrite events.
+- Enabled
+
+{% /table %}
+
+# Enable or disable a protocol {% #enable-or-disable %}
+
+You can toggle individual protocols from the Appwrite Console or using a Server SDK.
+
+## Console
+
+1. Navigate to your project in the [Appwrite Console](https://cloud.appwrite.io).
+2. Click **Settings** in the left sidebar.
+3. Under the **Protocols** section, toggle each protocol on or off.
+4. Changes take effect immediately.
+
+## Server SDK
+
+You can also update protocol status programmatically using the `updateProtocolStatus` method on the Project service.
+
+{% multicode %}
+```server-nodejs
+const { Client, Project, ProtocolId } = require('node-appwrite');
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
+
+const project = new Project(client);
+
+// Disable GraphQL for this project
+await project.updateProtocolStatus(
+    ProtocolId.Graphql, // protocolId
+    false               // enabled
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+from appwrite.enums import ProtocolId
+
+client = (Client()
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<API_KEY>'))
+
+project = Project(client)
+
+# Disable GraphQL for this project
+project.update_protocol_status(
+    protocol_id=ProtocolId.GRAPHQL,
+    enabled=False
+)
+```
+{% /multicode %}
+
+The `protocolId` parameter accepts one of: `rest`, `graphql`, or `websocket`.
+
+{% info title="Disabling REST" %}
+The Appwrite Console and all Appwrite SDKs rely on the REST protocol. Disabling REST will prevent Console access and SDK operations for the project. Only disable REST if your project is accessed exclusively through GraphQL or Realtime.
+{% /info %}
+
+# Use cases {% #use-cases %}
+
+- **Security hardening** — Disable protocols your application does not use to reduce the project's attack surface. For example, if your app only uses REST, disable GraphQL and WebSocket.
+- **Compliance** — Some environments require restricting available network protocols. Protocol management lets you enforce these requirements at the project level.
+- **Development workflow** — Enable all protocols during development for flexibility, then disable unused protocols before moving to production.

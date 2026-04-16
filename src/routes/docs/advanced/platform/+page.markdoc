@@ -87,13 +87,19 @@ Appwrite provides special plans for open source projects.
 
 # Configuration {% #configuration %}
 
-Configure custom domains and customize communication templates.
+Configure custom domains, API protocols, and customize communication templates.
 
 {% cards %}
 {% cards_item
    href="/docs/advanced/platform/custom-domains"
    title="Custom domains" %}
 Add a custom domain for your Appwrite APIs.
+{% /cards_item %}
+
+{% cards_item
+   href="/docs/advanced/platform/protocols"
+   title="Protocols" %}
+Enable or disable REST, GraphQL, and WebSocket protocols for your project.
 {% /cards_item %}
 
 {% cards_item

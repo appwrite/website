@@ -1,0 +1,20 @@
+---
+layout: changelog
+title: "Domain status workflows and protocol management in project settings"
+date: 2026-04-16
+---
+
+Appwrite now provides clearer visibility into **domain verification and certificate status** across Sites, Functions, and project custom domains. The Console displays real-time status indicators so you can track each domain through its lifecycle:
+
+- **Verification failed** — DNS records have not been verified yet. Check your CNAME or NS record configuration and retry.
+- **Generating certificate** — DNS verified successfully; a TLS certificate is being issued.
+- **Certificate generation failed** — Certificate issuance did not complete. Retry verification or check your CAA records.
+- **Verified** — Domain is fully active with a valid TLS certificate.
+
+These statuses appear in the **Domains** tab for Sites, Functions, and project settings, along with timestamps showing when the status was last checked or updated.
+
+Additionally, you can now **enable or disable individual protocols** (REST, GraphQL, and WebSocket) per project from the project settings. This gives you fine-grained control over which API protocols are accessible for your project.
+
+{% arrow_link href="/docs/products/sites/domains" %}
+Learn more about domain status workflows
+{% /arrow_link %}
