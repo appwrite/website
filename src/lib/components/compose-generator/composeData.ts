@@ -26,13 +26,12 @@ const MONGODB_SERVICE = `  mongodb:
     image: mongo:8.2.5
     container_name: appwrite-mongodb
     <<: *x-logging
+    restart: unless-stopped
     networks:
       - appwrite
     volumes:
       - appwrite-mongodb:/data/db
       - appwrite-mongodb-keyfile:/data/keyfile
-    ports:
-      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=\${_APP_DB_ROOT_PASS}
@@ -107,8 +106,7 @@ const ASSISTANT_SERVICE = `
 const MARIADB_VOLUMES = `  appwrite-mariadb:`;
 
 const MONGODB_VOLUMES = `  appwrite-mongodb:
-  appwrite-mongodb-keyfile:
-  appwrite-mongodb-config:`;
+  appwrite-mongodb-keyfile:`;
 
 // The compose template uses __DB_SERVICE__ as the depends_on service name,
 // __DB_BLOCK__ for the database service definition,
@@ -219,7 +217,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_SMTP_HOST
       - _APP_SMTP_PORT
       - _APP_SMTP_SECURE
@@ -355,7 +352,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_USAGE_STATS
       - _APP_LOGGING_CONFIG
 
@@ -386,7 +382,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-webhooks:
@@ -414,7 +409,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -455,7 +449,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_STORAGE_DEVICE
       - _APP_STORAGE_S3_ACCESS_KEY
       - _APP_STORAGE_S3_SECRET
@@ -515,7 +508,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-builds:
@@ -552,7 +544,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
       - _APP_VCS_GITHUB_APP_NAME
       - _APP_VCS_GITHUB_PRIVATE_KEY
@@ -628,7 +619,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-functions:
@@ -662,7 +652,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_FUNCTIONS_TIMEOUT
       - _APP_SITES_TIMEOUT
       - _APP_COMPUTE_BUILD_TIMEOUT
@@ -700,7 +689,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -743,7 +731,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
       - _APP_SMS_FROM
       - _APP_SMS_PROVIDER
@@ -804,7 +791,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_LOGGING_CONFIG
       - _APP_MIGRATIONS_FIREBASE_CLIENT_ID
       - _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET
@@ -843,7 +829,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_MAINTENANCE_INTERVAL
       - _APP_MAINTENANCE_RETENTION_EXECUTION
       - _APP_MAINTENANCE_RETENTION_CACHE
@@ -876,7 +861,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -909,7 +893,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -941,7 +924,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -977,7 +959,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
 
   appwrite-task-scheduler-executions:
     image: appwrite/appwrite:1.9.0
@@ -1006,7 +987,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
 
   appwrite-task-scheduler-messages:
     image: appwrite/appwrite:1.9.0
@@ -1035,7 +1015,6 @@ services:
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-      - _APP_DB_ADAPTER
 __ASSISTANT_BLOCK__
 
   appwrite-browser:
