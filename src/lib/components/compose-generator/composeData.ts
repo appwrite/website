@@ -1,4 +1,118 @@
-x-logging: &x-logging
+export type Database = 'mariadb' | 'mongodb';
+
+const MARIADB_SERVICE = `  mariadb:
+    image: mariadb:10.11
+    container_name: appwrite-mariadb
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-mariadb:/var/lib/mysql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=\${_APP_DB_ROOT_PASS}
+      - MYSQL_DATABASE=\${_APP_DB_SCHEMA}
+      - MYSQL_USER=\${_APP_DB_USER}
+      - MYSQL_PASSWORD=\${_APP_DB_PASS}
+      - MARIADB_AUTO_UPGRADE=1
+    command: 'mysqld --innodb-flush-method=fsync'
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s`;
+
+const MONGODB_SERVICE = `  mongodb:
+    image: mongo:8.2.5
+    container_name: appwrite-mongodb
+    <<: *x-logging
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-mongodb:/data/db
+      - appwrite-mongodb-keyfile:/data/keyfile
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=\${_APP_DB_ROOT_PASS}
+      - MONGO_INITDB_DATABASE=\${_APP_DB_SCHEMA}
+      - MONGO_INITDB_USERNAME=\${_APP_DB_USER}
+      - MONGO_INITDB_PASSWORD=\${_APP_DB_PASS}
+    entrypoint:
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        KEYFILE_PATH="/data/keyfile/mongo-keyfile"
+        INIT_FLAG="/data/db/.mongodb_initialized"
+
+        # Generate keyfile if it doesn't exist
+        if [ ! -f "$$KEYFILE_PATH" ]; then
+          echo "Generating random MongoDB keyfile..."
+          mkdir -p /data/keyfile
+          openssl rand -base64 756 > "$$KEYFILE_PATH"
+        fi
+        chmod 400 "$$KEYFILE_PATH"
+        chown mongodb:mongodb "$$KEYFILE_PATH" 2>/dev/null || chown 999:999 "$$KEYFILE_PATH"
+
+        # If not initialized, start without auth first to set up replica set and users
+        if [ ! -f "$$INIT_FLAG" ]; then
+          echo "First-time initialization: starting MongoDB without auth..."
+          mongod --replSet rs0 --bind_ip_all --fork --logpath /var/log/mongodb/mongod.log --dbpath /data/db
+
+          echo "Waiting for MongoDB to start..."
+          sleep 5
+
+          echo "Initializing replica set..."
+          mongosh --eval "rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'mongodb:27017'}]})"
+
+          echo "Waiting for replica set to initialize..."
+          sleep 5
+
+          echo "Creating root user..."
+          mongosh admin --eval "db.createUser({user: '$$MONGO_INITDB_ROOT_USERNAME', pwd: '$$MONGO_INITDB_ROOT_PASSWORD', roles: ['root']})"
+
+          echo "Creating application user..."
+          mongosh admin --eval "db.createUser({user: '$$MONGO_INITDB_USERNAME', pwd: '$$MONGO_INITDB_PASSWORD', roles: [{role: 'readWrite', db: '$$MONGO_INITDB_DATABASE'}]})"
+
+          echo "Shutting down MongoDB..."
+          mongod --dbpath /data/db --shutdown
+
+          touch "$$INIT_FLAG"
+          echo "Initialization complete."
+        fi
+
+        echo "Starting MongoDB with authentication..."
+        exec mongod --replSet rs0 --bind_ip_all --auth --keyFile "$$KEYFILE_PATH"
+    healthcheck:
+      test: |
+        mongosh -u root -p "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --quiet --eval "rs.status().ok" | grep -q 1
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 60s`;
+
+const ASSISTANT_SERVICE = `
+  appwrite-assistant:
+    image: appwrite/assistant:0.8.4
+    container_name: appwrite-assistant
+    <<: *x-logging
+    restart: unless-stopped
+    networks:
+      - appwrite
+    environment:
+      - _APP_ASSISTANT_OPENAI_API_KEY`;
+
+const MARIADB_VOLUMES = `  appwrite-mariadb:`;
+
+const MONGODB_VOLUMES = `  appwrite-mongodb:
+  appwrite-mongodb-keyfile:`;
+
+// The compose template uses __DB_SERVICE__ as the depends_on service name,
+// __DB_BLOCK__ for the database service definition,
+// __ASSISTANT_BLOCK__ for the optional assistant service,
+// __DB_VOLUMES__ for database-specific volumes.
+const COMPOSE_TEMPLATE = `x-logging: &x-logging
   logging:
     driver: 'json-file'
     options:
@@ -6,7 +120,7 @@ x-logging: &x-logging
       max-size: '10m'
 services:
   traefik:
-    image: traefik:2.11
+    image: traefik:3.6
     container_name: appwrite-traefik
     <<: *x-logging
     command:
@@ -14,7 +128,7 @@ services:
       - --providers.file.watch=true
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
-      - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`appwrite`)
+      - --providers.docker.constraints=Label(\`traefik.constraint-label-stack\`,\`appwrite\`)
       - --entrypoints.appwrite_web.address=:80
       - --entrypoints.appwrite_websecure.address=:443
     restart: unless-stopped
@@ -32,7 +146,7 @@ services:
       - appwrite
 
   appwrite:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     container_name: appwrite
     <<: *x-logging
     restart: unless-stopped
@@ -45,11 +159,11 @@ services:
       - traefik.http.services.appwrite_api.loadbalancer.server.port=80
       #http
       - traefik.http.routers.appwrite_api_http.entrypoints=appwrite_web
-      - traefik.http.routers.appwrite_api_http.rule=PathPrefix(`/`)
+      - traefik.http.routers.appwrite_api_http.rule=PathPrefix(\`/\`)
       - traefik.http.routers.appwrite_api_http.service=appwrite_api
       # https
       - traefik.http.routers.appwrite_api_https.entrypoints=appwrite_websecure
-      - traefik.http.routers.appwrite_api_https.rule=PathPrefix(`/`)
+      - traefik.http.routers.appwrite_api_https.rule=PathPrefix(\`/\`)
       - traefik.http.routers.appwrite_api_https.service=appwrite_api
       - traefik.http.routers.appwrite_api_https.tls=true
     volumes:
@@ -62,8 +176,10 @@ services:
       - appwrite-sites:/storage/sites:rw
       - appwrite-builds:/storage/builds:rw
     depends_on:
-      - mariadb
-      - redis
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
 #      - clamav
     environment:
       - _APP_ENV
@@ -95,6 +211,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -157,6 +274,7 @@ services:
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
       - _APP_SMS_PROVIDER
       - _APP_SMS_FROM
+      - _APP_GRAPHQL_INTROSPECTION
       - _APP_GRAPHQL_MAX_BATCH_SIZE
       - _APP_GRAPHQL_MAX_COMPLEXITY
       - _APP_GRAPHQL_MAX_DEPTH
@@ -172,7 +290,7 @@ services:
   appwrite-console:
     <<: *x-logging
     container_name: appwrite-console
-    image: appwrite/console:7.5.7
+    image: appwrite/console:7.8.26
     restart: unless-stopped
     networks:
       - appwrite
@@ -183,16 +301,16 @@ services:
       - "traefik.http.services.appwrite_console.loadbalancer.server.port=80"
       #ws
       - traefik.http.routers.appwrite_console_http.entrypoints=appwrite_web
-      - traefik.http.routers.appwrite_console_http.rule=PathPrefix(`/console`)
+      - traefik.http.routers.appwrite_console_http.rule=PathPrefix(\`/console\`)
       - traefik.http.routers.appwrite_console_http.service=appwrite_console
       # wss
       - traefik.http.routers.appwrite_console_https.entrypoints=appwrite_websecure
-      - traefik.http.routers.appwrite_console_https.rule=PathPrefix(`/console`)
+      - traefik.http.routers.appwrite_console_https.rule=PathPrefix(\`/console\`)
       - traefik.http.routers.appwrite_console_https.service=appwrite_console
       - traefik.http.routers.appwrite_console_https.tls=true
 
   appwrite-realtime:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: realtime
     container_name: appwrite-realtime
     <<: *x-logging
@@ -204,18 +322,20 @@ services:
       - "traefik.http.services.appwrite_realtime.loadbalancer.server.port=80"
       #ws
       - traefik.http.routers.appwrite_realtime_ws.entrypoints=appwrite_web
-      - traefik.http.routers.appwrite_realtime_ws.rule=PathPrefix(`/v1/realtime`)
+      - traefik.http.routers.appwrite_realtime_ws.rule=PathPrefix(\`/v1/realtime\`)
       - traefik.http.routers.appwrite_realtime_ws.service=appwrite_realtime
       # wss
       - traefik.http.routers.appwrite_realtime_wss.entrypoints=appwrite_websecure
-      - traefik.http.routers.appwrite_realtime_wss.rule=PathPrefix(`/v1/realtime`)
+      - traefik.http.routers.appwrite_realtime_wss.rule=PathPrefix(\`/v1/realtime\`)
       - traefik.http.routers.appwrite_realtime_wss.service=appwrite_realtime
       - traefik.http.routers.appwrite_realtime_wss.tls=true
     networks:
       - appwrite
     depends_on:
-      - mariadb
-      - redis
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -226,6 +346,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -235,7 +356,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-audits:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-audits
     <<: *x-logging
     container_name: appwrite-worker-audits
@@ -243,8 +364,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -253,6 +376,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -261,7 +385,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-webhooks:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-webhooks
     <<: *x-logging
     container_name: appwrite-worker-webhooks
@@ -269,14 +393,17 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
       - _APP_EMAIL_SECURITY
       - _APP_SYSTEM_SECURITY_EMAIL_ADDRESS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -289,7 +416,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-deletes:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-deletes
     <<: *x-logging
     container_name: appwrite-worker-deletes
@@ -297,8 +424,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     volumes:
       - appwrite-uploads:/storage/uploads:rw
       - appwrite-cache:/storage/cache:rw
@@ -314,6 +443,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -352,7 +482,7 @@ services:
       - _APP_EMAIL_CERTIFICATES
 
   appwrite-worker-databases:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-databases
     <<: *x-logging
     container_name: appwrite-worker-databases
@@ -360,8 +490,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -370,6 +502,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -378,7 +511,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-builds:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-builds
     <<: *x-logging
     container_name: appwrite-worker-builds
@@ -386,8 +519,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     volumes:
       - appwrite-functions:/storage/functions:rw
       - appwrite-sites:/storage/sites:rw
@@ -403,6 +538,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -446,7 +582,7 @@ services:
       - _APP_DOMAIN_SITES
 
   appwrite-worker-certificates:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-certificates
     <<: *x-logging
     container_name: appwrite-worker-certificates
@@ -454,8 +590,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     volumes:
       - appwrite-config:/storage/config:rw
       - appwrite-certificates:/storage/certificates:rw
@@ -475,6 +613,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -483,7 +622,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-functions:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-functions
     <<: *x-logging
     container_name: appwrite-worker-functions
@@ -491,9 +630,12 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
-      - openruntimes-executor
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
+      openruntimes-executor:
+        condition: service_started
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -504,6 +646,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -522,7 +665,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-mails:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-mails
     <<: *x-logging
     container_name: appwrite-worker-mails
@@ -530,13 +673,17 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
       - _APP_SYSTEM_EMAIL_NAME
       - _APP_SYSTEM_EMAIL_ADDRESS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -556,7 +703,7 @@ services:
       - _APP_OPTIONS_FORCE_HTTPS
 
   appwrite-worker-messaging:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-messaging
     <<: *x-logging
     container_name: appwrite-worker-messaging
@@ -566,7 +713,10 @@ services:
     volumes:
       - appwrite-uploads:/storage/uploads:rw
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -575,6 +725,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -607,7 +758,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-migrations:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-migrations
     <<: *x-logging
     container_name: appwrite-worker-migrations
@@ -617,7 +768,8 @@ services:
     volumes:
       - appwrite-imports:/storage/imports:rw
     depends_on:
-      - mariadb
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -633,6 +785,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -643,7 +796,7 @@ services:
       - _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET
 
   appwrite-task-maintenance:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: maintenance
     <<: *x-logging
     container_name: appwrite-task-maintenance
@@ -651,7 +804,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -667,6 +823,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -682,7 +839,7 @@ services:
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
 
   appwrite-task-stats-resources:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     container_name: appwrite-task-stats-resources
     entrypoint: stats-resources
     <<: *x-logging
@@ -690,12 +847,15 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -711,7 +871,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-resources:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-stats-resources
     container_name: appwrite-worker-stats-resources
     <<: *x-logging
@@ -719,12 +879,15 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -739,7 +902,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-usage:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: worker-stats-usage
     container_name: appwrite-worker-stats-usage
     <<: *x-logging
@@ -747,12 +910,15 @@ services:
     networks:
       - appwrite
     depends_on:
-      - redis
-      - mariadb
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -767,7 +933,7 @@ services:
       - _APP_USAGE_AGGREGATION_INTERVAL
 
   appwrite-task-scheduler-functions:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: schedule-functions
     container_name: appwrite-task-scheduler-functions
     <<: *x-logging
@@ -775,8 +941,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - mariadb
-      - redis
+      __DB_SERVICE__:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -785,6 +953,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -792,7 +961,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-executions:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: schedule-executions
     container_name: appwrite-task-scheduler-executions
     <<: *x-logging
@@ -800,8 +969,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - mariadb
-      - redis
+      __DB_SERVICE__:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -810,6 +981,7 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
@@ -817,7 +989,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-messages:
-    image: appwrite/appwrite:1.8.1
+    image: appwrite/appwrite:1.9.0
     entrypoint: schedule-messages
     container_name: appwrite-task-scheduler-messages
     <<: *x-logging
@@ -825,8 +997,10 @@ services:
     networks:
       - appwrite
     depends_on:
-      - mariadb
-      - redis
+      __DB_SERVICE__:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
@@ -835,21 +1009,13 @@ services:
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
       - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
       - _APP_DB_HOST
       - _APP_DB_PORT
       - _APP_DB_SCHEMA
       - _APP_DB_USER
       - _APP_DB_PASS
-
-  appwrite-assistant:
-    image: appwrite/assistant:0.8.4
-    container_name: appwrite-assistant
-    <<: *x-logging
-    restart: unless-stopped
-    networks:
-      - appwrite
-    environment:
-      - _APP_ASSISTANT_OPENAI_API_KEY
+__ASSISTANT_BLOCK__
 
   appwrite-browser:
     image: appwrite/browser:0.3.2
@@ -911,25 +1077,11 @@ services:
       - OPR_EXECUTOR_STORAGE_WASABI_REGION=$_APP_STORAGE_WASABI_REGION
       - OPR_EXECUTOR_STORAGE_WASABI_BUCKET=$_APP_STORAGE_WASABI_BUCKET
 
-  mariadb:
-    image: mariadb:10.11 # fix issues when upgrading using: mysql_upgrade -u root -p
-    container_name: appwrite-mariadb
-    <<: *x-logging
-    restart: unless-stopped
-    networks:
-      - appwrite
-    volumes:
-      - appwrite-mariadb:/var/lib/mysql:rw
-    environment:
-      - MYSQL_ROOT_PASSWORD=${_APP_DB_ROOT_PASS}
-      - MYSQL_DATABASE=${_APP_DB_SCHEMA}
-      - MYSQL_USER=${_APP_DB_USER}
-      - MYSQL_PASSWORD=${_APP_DB_PASS}
-      - MARIADB_AUTO_UPGRADE=1
-    command: 'mysqld --innodb-flush-method=fsync'
+
+__DB_BLOCK__
 
   redis:
-    image: redis:7.2.4-alpine
+    image: redis:7.4.7-alpine
     container_name: appwrite-redis
     <<: *x-logging
     restart: unless-stopped
@@ -942,6 +1094,12 @@ services:
       - appwrite
     volumes:
       - appwrite-redis:/data:rw
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   # clamav:
   #   image: appwrite/clamav:1.2.0
@@ -961,7 +1119,7 @@ networks:
     name: runtimes
 
 volumes:
-  appwrite-mariadb:
+__DB_VOLUMES__
   appwrite-redis:
   appwrite-cache:
   appwrite-uploads:
@@ -971,3 +1129,183 @@ volumes:
   appwrite-sites:
   appwrite-builds:
   appwrite-config:
+`;
+
+const ENV_TEMPLATE = `_APP_ENV=production
+_APP_LOCALE=en
+_APP_OPTIONS_ABUSE=enabled
+_APP_OPTIONS_FORCE_HTTPS=disabled
+_APP_OPTIONS_FUNCTIONS_FORCE_HTTPS=disabled
+_APP_OPTIONS_ROUTER_FORCE_HTTPS=disabled
+_APP_OPTIONS_ROUTER_PROTECTION=disabled
+_APP_OPENSSL_KEY_V1=your-secret-key
+_APP_DOMAIN=localhost
+_APP_CUSTOM_DOMAIN_DENY_LIST=example.com,test.com,app.example.com
+_APP_DOMAIN_FUNCTIONS=functions.localhost
+_APP_DOMAIN_SITES=sites.localhost
+_APP_DOMAIN_TARGET=localhost
+_APP_DOMAIN_TARGET_CNAME=localhost
+_APP_DOMAIN_TARGET_AAAA=::1
+_APP_DOMAIN_TARGET_A=127.0.0.1
+_APP_DOMAIN_TARGET_CAA=
+_APP_DNS=8.8.8.8
+_APP_CONSOLE_WHITELIST_ROOT=enabled
+_APP_CONSOLE_WHITELIST_EMAILS=
+_APP_CONSOLE_WHITELIST_IPS=
+_APP_CONSOLE_HOSTNAMES=
+_APP_SYSTEM_EMAIL_NAME=Appwrite
+_APP_SYSTEM_EMAIL_ADDRESS=noreply@appwrite.io
+_APP_SYSTEM_TEAM_EMAIL=team@appwrite.io
+_APP_SYSTEM_RESPONSE_FORMAT=
+_APP_SYSTEM_SECURITY_EMAIL_ADDRESS=certs@appwrite.io
+_APP_EMAIL_SECURITY=
+_APP_EMAIL_CERTIFICATES=
+_APP_USAGE_STATS=enabled
+_APP_LOGGING_PROVIDER=
+_APP_LOGGING_CONFIG=
+_APP_USAGE_AGGREGATION_INTERVAL=30
+_APP_USAGE_TIMESERIES_INTERVAL=30
+_APP_USAGE_DATABASE_INTERVAL=900
+_APP_WORKER_PER_CORE=6
+_APP_CONSOLE_SESSION_ALERTS=disabled
+_APP_COMPRESSION_ENABLED=enabled
+_APP_COMPRESSION_MIN_SIZE_BYTES=1024
+_APP_TRUSTED_HEADERS=x-forwarded-for
+_APP_DB_ADAPTER=__DB_ADAPTER__
+_APP_DB_HOST=__DB_HOST__
+_APP_DB_PORT=__DB_PORT__
+_APP_DB_SCHEMA=appwrite
+_APP_DB_USER=user
+_APP_DB_PASS=password
+_APP_DB_ROOT_PASS=rootsecretpassword
+_APP_REDIS_HOST=redis
+_APP_REDIS_PORT=6379
+_APP_REDIS_USER=
+_APP_REDIS_PASS=
+_APP_INFLUXDB_HOST=influxdb
+_APP_INFLUXDB_PORT=8086
+_APP_STATSD_HOST=telegraf
+_APP_STATSD_PORT=8125
+_APP_SMTP_HOST=
+_APP_SMTP_PORT=
+_APP_SMTP_SECURE=
+_APP_SMTP_USERNAME=
+_APP_SMTP_PASSWORD=
+_APP_SMS_PROVIDER=
+_APP_SMS_FROM=
+_APP_STORAGE_LIMIT=30000000
+_APP_STORAGE_PREVIEW_LIMIT=20000000
+_APP_STORAGE_ANTIVIRUS=disabled
+_APP_STORAGE_ANTIVIRUS_HOST=clamav
+_APP_STORAGE_ANTIVIRUS_PORT=3310
+_APP_STORAGE_DEVICE=local
+_APP_STORAGE_S3_ACCESS_KEY=
+_APP_STORAGE_S3_SECRET=
+_APP_STORAGE_S3_REGION=us-east-1
+_APP_STORAGE_S3_BUCKET=
+_APP_STORAGE_S3_ENDPOINT=
+_APP_STORAGE_DO_SPACES_ACCESS_KEY=
+_APP_STORAGE_DO_SPACES_SECRET=
+_APP_STORAGE_DO_SPACES_REGION=us-east-1
+_APP_STORAGE_DO_SPACES_BUCKET=
+_APP_STORAGE_BACKBLAZE_ACCESS_KEY=
+_APP_STORAGE_BACKBLAZE_SECRET=
+_APP_STORAGE_BACKBLAZE_REGION=us-west-004
+_APP_STORAGE_BACKBLAZE_BUCKET=
+_APP_STORAGE_LINODE_ACCESS_KEY=
+_APP_STORAGE_LINODE_SECRET=
+_APP_STORAGE_LINODE_REGION=eu-central-1
+_APP_STORAGE_LINODE_BUCKET=
+_APP_STORAGE_WASABI_ACCESS_KEY=
+_APP_STORAGE_WASABI_SECRET=
+_APP_STORAGE_WASABI_REGION=eu-central-1
+_APP_STORAGE_WASABI_BUCKET=
+_APP_FUNCTIONS_SIZE_LIMIT=30000000
+_APP_COMPUTE_SIZE_LIMIT=30000000
+_APP_FUNCTIONS_BUILD_SIZE_LIMIT=2000000000
+_APP_FUNCTIONS_TIMEOUT=900
+_APP_FUNCTIONS_BUILD_TIMEOUT=900
+_APP_COMPUTE_BUILD_TIMEOUT=900
+_APP_FUNCTIONS_CONTAINERS=10
+_APP_FUNCTIONS_CPUS=0
+_APP_COMPUTE_CPUS=0
+_APP_FUNCTIONS_MEMORY=0
+_APP_COMPUTE_MEMORY=0
+_APP_FUNCTIONS_MEMORY_SWAP=0
+_APP_FUNCTIONS_RUNTIMES=node-16.0,php-8.0,python-3.9,ruby-3.0
+_APP_EXECUTOR_SECRET=your-secret-key
+_APP_EXECUTOR_HOST=http://exc1/v1
+_APP_BROWSER_HOST=http://appwrite-browser:3000/v1
+_APP_EXECUTOR_RUNTIME_NETWORK=appwrite_runtimes
+_APP_FUNCTIONS_ENVS=node-16.0,php-7.4,python-3.9,ruby-3.0
+_APP_FUNCTIONS_INACTIVE_THRESHOLD=60
+_APP_COMPUTE_INACTIVE_THRESHOLD=60
+DOCKERHUB_PULL_USERNAME=
+DOCKERHUB_PULL_PASSWORD=
+DOCKERHUB_PULL_EMAIL=
+OPEN_RUNTIMES_NETWORK=appwrite_runtimes
+_APP_FUNCTIONS_RUNTIMES_NETWORK=runtimes
+_APP_COMPUTE_RUNTIMES_NETWORK=runtimes
+_APP_DOCKER_HUB_USERNAME=
+_APP_DOCKER_HUB_PASSWORD=
+_APP_FUNCTIONS_MAINTENANCE_INTERVAL=3600
+_APP_COMPUTE_MAINTENANCE_INTERVAL=3600
+_APP_SITES_TIMEOUT=900
+_APP_SITES_RUNTIMES=static-1,node-22,flutter-3.29
+_APP_VCS_GITHUB_APP_NAME=
+_APP_VCS_GITHUB_PRIVATE_KEY=
+_APP_VCS_GITHUB_APP_ID=
+_APP_VCS_GITHUB_CLIENT_ID=
+_APP_VCS_GITHUB_CLIENT_SECRET=
+_APP_VCS_GITHUB_WEBHOOK_SECRET=
+_APP_MAINTENANCE_INTERVAL=86400
+_APP_MAINTENANCE_DELAY=0
+_APP_MAINTENANCE_START_TIME=00:00
+_APP_MAINTENANCE_RETENTION_CACHE=2592000
+_APP_MAINTENANCE_RETENTION_EXECUTION=1209600
+_APP_MAINTENANCE_RETENTION_AUDIT=1209600
+_APP_MAINTENANCE_RETENTION_AUDIT_CONSOLE=15778800
+_APP_MAINTENANCE_RETENTION_ABUSE=86400
+_APP_MAINTENANCE_RETENTION_USAGE_HOURLY=8640000
+_APP_MAINTENANCE_RETENTION_SCHEDULES=86400
+_APP_GRAPHQL_INTROSPECTION=enabled
+_APP_GRAPHQL_MAX_BATCH_SIZE=10
+_APP_GRAPHQL_MAX_COMPLEXITY=250
+_APP_GRAPHQL_MAX_DEPTH=3
+_APP_MIGRATIONS_FIREBASE_CLIENT_ID=
+_APP_MIGRATIONS_FIREBASE_CLIENT_SECRET=
+_APP_ASSISTANT_OPENAI_API_KEY=__ASSISTANT_KEY__
+`;
+
+const DB_CONFIG = {
+    mariadb: {
+        adapter: 'mariadb',
+        host: 'mariadb',
+        port: '3306',
+        service: MARIADB_SERVICE,
+        volumes: MARIADB_VOLUMES
+    },
+    mongodb: {
+        adapter: 'mongodb',
+        host: 'mongodb',
+        port: '27017',
+        service: MONGODB_SERVICE,
+        volumes: MONGODB_VOLUMES
+    }
+} as const;
+
+export function generateCompose(db: Database, assistant: boolean): string {
+    const config = DB_CONFIG[db];
+    return COMPOSE_TEMPLATE.replaceAll('__DB_SERVICE__', config.adapter)
+        .replace('__DB_BLOCK__', config.service)
+        .replace('__ASSISTANT_BLOCK__', assistant ? ASSISTANT_SERVICE : '')
+        .replace('__DB_VOLUMES__', config.volumes);
+}
+
+export function generateEnv(db: Database, assistant: boolean): string {
+    const config = DB_CONFIG[db];
+    return ENV_TEMPLATE.replace('__DB_ADAPTER__', config.adapter)
+        .replace('__DB_HOST__', config.host)
+        .replace('__DB_PORT__', config.port)
+        .replace('__ASSISTANT_KEY__', assistant ? 'your-openai-api-key' : '');
+}

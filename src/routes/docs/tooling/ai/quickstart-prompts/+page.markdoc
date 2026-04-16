@@ -119,4 +119,7 @@ Use the following quick start prompts with your preferred AI assistant to integr
 {% cards_item href="/docs/tooling/ai/quickstart-prompts/kotlin" title="Kotlin" icon="icon-kotlin" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/quickstart-prompts/rust" title="Rust" icon="web-icon-rust" %}
+{% /cards_item %}
+
 {% /cards %}

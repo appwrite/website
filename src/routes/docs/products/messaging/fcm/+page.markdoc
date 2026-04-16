@@ -350,6 +350,31 @@ let provider = try await messaging.updateFCMProvider(
   serviceAccountJSON: [:]                        // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let provider = messaging.update_fcm_provider(
+        "<PROVIDER_ID>",                             // providerId
+        Some("<NAME>"),                              // name (optional)
+        Some(false),                                 // enabled (optional)
+        Some(json!({})),                             // serviceAccountJSON (optional)
+    ).await?;
+
+    println!("{:?}", provider);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

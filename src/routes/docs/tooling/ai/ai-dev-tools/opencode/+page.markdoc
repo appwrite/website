@@ -54,8 +54,7 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
       "type": "local",
       "command": [
         "uvx",
-        "mcp-server-appwrite",
-        "--sites"
+        "mcp-server-appwrite"
       ],
       "enabled": true,
       "environment": {
@@ -95,12 +94,6 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
 
 {% /tabsitem %}
 {% /tabs %}
-
-{% info title="Enable other API MCP tools" %}
-
-To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
-
-{% /info %}
 
 {% /section %}
 

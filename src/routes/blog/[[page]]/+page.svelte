@@ -222,11 +222,11 @@
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
-                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                                class="web-feature-article-image block w-full overflow-hidden rounded-lg"
                             >
                                 <img
                                     src={featured.cover}
-                                    class="aspect-video transition-transform duration-250 hover:scale-102"
+                                    class="web-u-media-ratio-16-9 w-full transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
