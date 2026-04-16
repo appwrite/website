@@ -55,6 +55,10 @@
                 {
                     label: 'Buckets',
                     href: '/docs/tooling/command-line/buckets'
+                },
+                {
+                    label: 'Webhooks',
+                    href: '/docs/tooling/command-line/webhooks'
                 }
             ]
         }

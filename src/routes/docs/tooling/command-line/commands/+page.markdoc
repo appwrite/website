@@ -71,16 +71,16 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Description
 ---
 * `init [options]`
-* The init command provides a convenient wrapper for creating and initializing projects, functions, tables, buckets, teams, and messaging-topics in Appwrite.
+* The init command provides a convenient wrapper for creating and initializing projects, functions, tables, buckets, teams, and messaging-topics in Appwrite. After initialization, the CLI provides personalized next steps based on your project state.
 ---
 * `pull`
-* The pull command helps you pull your Appwrite project, functions, tables, buckets, teams, and messaging-topics.
+* The pull command helps you pull your Appwrite project, functions, tables, buckets, teams, messaging-topics, and [webhooks](/docs/tooling/command-line/webhooks).
 ---
 * `push`
-* The push command provides a convenient wrapper for pushing your functions, tables, buckets, teams, and topics.
+* The push command provides a convenient wrapper for pushing your functions, tables, buckets, teams, topics, and [webhooks](/docs/tooling/command-line/webhooks). When pushing functions or sites, the CLI streams realtime deployment logs so you can monitor your build progress.
 ---
 * `run`
-* The run command allows you to run projects locally to allow easy development and quick debugging.
+* The run command allows you to run projects locally to allow easy development and quick debugging. Uses Docker-based emulation with source code validation and improved startup detection.
 ---
 {% /table %}
 
@@ -149,6 +149,22 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Display help for command
 ---
 {% /table %}
+
+# Deployment logs {% #deployment-logs %}
+
+When pushing functions or sites, the CLI streams realtime build logs directly to your terminal using a WebSocket connection. This lets you monitor the build and deployment process as it happens without needing to check the Appwrite Console.
+
+```sh
+appwrite push functions
+```
+
+If you prefer not to see the logs, use the `--no-logs` flag to disable streaming and run the deployment asynchronously.
+
+```sh
+appwrite push functions --no-logs
+```
+
+If the realtime connection drops during a deployment, the CLI automatically falls back to polling for updates until the deployment completes.
 
 # Verbose {% #verbose %}
 In case of errors with any command, you can get more information about what went wrong using the `--verbose` flag
