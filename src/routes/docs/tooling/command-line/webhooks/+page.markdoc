@@ -1,0 +1,131 @@
+---
+layout: article
+title: Webhooks
+description: Manage your Appwrite webhooks using the Command-Line Tool (CLI) with push and pull commands.
+---
+
+{% partial file="cli-disclaimer.md" /%}
+
+The Appwrite CLI can manage webhooks for your project. Webhooks allow you to receive HTTP callbacks when events occur in your Appwrite project, such as when a user is created or a document is updated.
+
+# Pull webhooks {% #pull-webhooks %}
+
+Pull your existing Appwrite webhooks from the Appwrite Console using the `pull` command in the folder containing your `appwrite.config.json` file.
+
+```sh
+appwrite pull webhooks
+```
+
+When pulling, if a webhook exists locally but has been deleted remotely, the CLI will warn you and ask for confirmation before removing it from your local configuration.
+
+# appwrite.config.json {% #appwritejson %}
+
+After [initializing](/docs/tooling/command-line/installation#initialization) your Appwrite project and pulling your existing webhooks, your `appwrite.config.json` file should look similar to the following:
+
+```json
+{
+    "projectId": "<PROJECT_ID>",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
+    "webhooks": [
+        {
+            "$id": "abc123",
+            "name": "Order notifications",
+            "url": "https://example.com/webhooks/orders",
+            "events": [
+                "databases.*.collections.*.documents.*.create",
+                "databases.*.collections.*.documents.*.update"
+            ],
+            "enabled": true,
+            "tls": true
+        },
+        {
+            "$id": "def456",
+            "name": "User signup alerts",
+            "url": "https://example.com/webhooks/users",
+            "events": [
+                "users.*.create"
+            ],
+            "enabled": true,
+            "tls": true
+        }
+    ]
+}
+```
+
+Each webhook supports the following fields:
+
+{% table %}
+* Field
+* Description
+---
+* `$id`
+* Unique identifier for the webhook.
+---
+* `name`
+* Human-readable name for the webhook.
+---
+* `url`
+* The URL endpoint that receives the webhook HTTP callbacks.
+---
+* `events`
+* Array of [Appwrite events](/docs/advanced/platform/events) that trigger the webhook.
+---
+* `enabled`
+* Whether the webhook is active. Set to `false` to temporarily disable it.
+---
+* `tls`
+* Whether TLS certificate verification is enabled for the webhook endpoint.
+---
+{% /table %}
+
+# Push webhooks {% #push-webhooks %}
+
+{% partial file="cli-push-command.md" /%}
+
+```sh
+appwrite push webhooks
+```
+
+When pushing, the CLI will create new webhooks or update existing ones based on the `$id` field. You will be prompted to select which webhooks to push unless you use the `--all` flag.
+
+```sh
+appwrite push webhooks --all
+```
+
+# Push and pull all {% #push-pull-all %}
+
+Webhooks are included in the `push all` and `pull all` flows alongside functions, tables, teams, buckets, and topics.
+
+```sh
+appwrite push all
+appwrite pull all
+```
+
+# Commands {% #commands %}
+
+The webhooks commands allow you to manage your project webhooks. Appwrite webhook CLI commands generally follow the following syntax:
+
+```sh
+appwrite projects [COMMAND] [OPTIONS]
+```
+
+{% table %}
+* Command
+* Description
+---
+* `list-webhooks [options]`
+* Get a list of all the webhooks for your project. Use query parameters to filter results.
+---
+* `create-webhook [options]`
+* Create a new webhook for your project. Provide a name, URL, and list of events.
+---
+* `get-webhook [options]`
+* Get a webhook by its unique ID.
+---
+* `update-webhook [options]`
+* Update a webhook by its unique ID. You can modify the name, URL, events, enabled status, and TLS settings.
+---
+* `delete-webhook [options]`
+* Delete a webhook by its unique ID.
+---
+{% /table %}

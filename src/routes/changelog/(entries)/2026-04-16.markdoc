@@ -1,0 +1,17 @@
+---
+layout: changelog
+title: "CLI workflow updates: webhook management, deployment logs, and run improvements"
+date: 2026-04-16
+---
+
+The Appwrite CLI has received several workflow improvements for push, pull, run, and deployment commands.
+
+**Webhook management** is now available through the CLI. Use `appwrite pull webhooks` and `appwrite push webhooks` to sync webhook configurations between your local project and the Appwrite Console. Webhooks are also included in `push all` and `pull all` flows, so your entire project configuration stays in sync.
+
+**Realtime deployment log streaming** now displays build logs directly in your terminal when pushing functions or sites. The CLI connects via WebSocket for live output and automatically falls back to polling if the connection drops. Use `--no-logs` to disable streaming for async deployments.
+
+**Local function emulation** with `appwrite run functions` now validates source code before starting and uses improved startup detection to ensure the runtime is ready before reporting success.
+
+{% arrow_link href="/docs/tooling/command-line/webhooks" %}
+Learn about CLI webhook management
+{% /arrow_link %}

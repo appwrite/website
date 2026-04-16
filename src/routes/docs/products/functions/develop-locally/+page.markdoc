@@ -64,7 +64,7 @@ Build finished.
 ✓ Success: Visit http://localhost:3000/ to execute your function.
 ```
 
-This command helps you efficiently develop your Appwrite functions on your local machine. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like a function deployed to Appwrite.
+This command helps you efficiently develop your Appwrite functions on your local machine. The CLI validates that your function source code exists before starting the emulation and waits for the runtime to report a successful startup before showing the success message. When developing your Appwrite function locally, it will receive [headers](/docs/products/functions/develop#headers) like a function deployed to Appwrite.
 
 {% arrow_link href="/docs/products/functions/develop" %}
 Learn more about developing a function
