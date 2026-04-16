@@ -61,4 +61,40 @@ Learn more about edge network
 
 DNS records can take up to 48 hours to propagate.
 
-When both **VERIFICATION STATUS** and **CERTIFICATE STATUS** are green, the new domain is ready to use.
+# Domain status {% #domain-status %}
+
+After adding a custom domain, the Console displays a status indicator tracking the domain through verification and certificate issuance. These statuses help you understand where a domain is in the setup process and troubleshoot issues.
+
+{% table %}
+
+- Status
+- Description
+- Action
+
+---
+
+- Verification failed
+- DNS records have not been verified. The CNAME record is missing or misconfigured.
+- Check that the CNAME record has been added at your domain registrar and retry verification. DNS changes can take up to 48 hours to propagate.
+
+---
+
+- Generating certificate
+- DNS verification succeeded and a TLS certificate is being issued for your domain.
+- No action needed. Certificate generation typically completes within a few minutes.
+
+---
+
+- Certificate generation failed
+- The TLS certificate could not be issued. This can happen if a CAA record restricts which certificate authorities can issue certificates for your domain.
+- Ensure that your DNS provider allows `certainly.com` as an authorized certificate authority in your CAA records. Retry verification from the Console.
+
+---
+
+- Verified
+- The domain is fully active with a valid TLS certificate. No status badge is shown.
+- No action needed. The domain is ready to serve traffic.
+
+{% /table %}
+
+If verification or certificate generation fails, you can retry from the domain's row in the **Domains** tab. The Console also displays a timestamp showing when the status was last checked or updated.
