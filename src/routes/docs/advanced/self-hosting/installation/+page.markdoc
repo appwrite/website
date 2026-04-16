@@ -136,7 +136,7 @@ For advanced users who prefer manual setup, you can install Appwrite using Docke
 ## Install Appwrite {% #install-appwrite %}
 
 1. Create a directory named `appwrite` and place both `docker-compose.yml` and `.env` inside
-2. Edit the `.env` file to customize your installation. At minimum, update `_APP_OPENSSL_KEY_V1` with a unique secret key
+2. Edit the `.env` file to customize your installation. At minimum, update `_APP_OPENSSL_KEY_V1` and `_APP_EXECUTOR_SECRET` with unique secret values
 3. Start the Appwrite stack:
 
 ```bash
