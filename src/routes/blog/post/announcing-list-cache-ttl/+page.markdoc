@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing list response caching: Instant reads with TTL-based caching"
 description: Cache list query responses in memory with a single parameter. Set a TTL, skip the database round-trip on repeated reads, and purge on demand when freshness matters.
-date: 2026-04-13
+date: 2026-04-17
 cover: /images/blog/announcing-list-cache-ttl/cover.png
 timeToRead: 4
 author: jake-barnby
@@ -67,7 +67,7 @@ This clears all cached list responses for that table in a single operation.
 
 # Available now
 
-List response caching is available today in **Beta** on Appwrite Cloud.
+List response caching is available today on Appwrite Cloud.
 
 # More resources
 

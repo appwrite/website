@@ -1,7 +1,7 @@
 ---
 layout: changelog
 title: "TTL-based list response caching"
-date: 2026-04-13
+date: 2026-04-17
 cover: /images/blog/announcing-list-cache-ttl/cover.png
 ---
 
