@@ -57,9 +57,15 @@ Disallowing personal data can be enabled in the Auth service's **Security** tab 
 
 # Session alerts {% #session-alerts %}
 
-Enable email alerts for your users so that whenever another session is created for their account, they will be alerted to the new session.
+Enable email alerts for your users so that whenever a new session is created for their account, they will be alerted with details about the sign-in. This helps users quickly spot unauthorized access and take action to secure their account.
 
-You won't receive notifications when logging in using [Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), or [OAuth2](/docs/products/auth/oauth2) since these authentication methods already verify user access to their systems, establishing the authentication's legitimacy.
+**When alerts are not sent**
+
+Session alerts are intentionally skipped in a few situations to avoid redundant or confusing emails:
+
+- **First session after sign-up** — the very first sign-in a user makes after creating their account does not trigger an alert. At this point the user has just proven they own their email address, so a second email about the same event adds no security value. It also prevents a double-email situation in flows where your project may already be sending a welcome or verification email.
+- **[Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), and [OAuth2](/docs/products/auth/oauth2) sign-ins** — these authentication methods already verify the user's access to the sign-in channel (their inbox or identity provider), so no additional alert is needed.
+- **No email address on file** — users who have not set an email address on their account will not receive alerts.
 
 To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
 
