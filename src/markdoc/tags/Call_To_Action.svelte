@@ -27,7 +27,7 @@
         event = undefined
     }: Props = $props();
 
-    let benefits: Array<string> = [point1, point2, point3, point4];
+    const benefits: Array<string> = $derived([point1, point2, point3, point4]);
 </script>
 
 <div

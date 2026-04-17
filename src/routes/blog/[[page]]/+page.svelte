@@ -13,8 +13,10 @@
 
     let { data } = $props();
 
-    const featured = data.featured;
-    const categories = data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name));
+    const featured = $derived(data.featured);
+    const categories = $derived(
+        data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name))
+    );
 
     let isFirstPage = $derived(data.currentPage === 1);
 
