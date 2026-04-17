@@ -781,30 +781,33 @@ package main
 
 import (
     "fmt"
-    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/tablesdb"
     "github.com/appwrite/sdk-for-go/query"
 )
 
 func main() {
-    client := appwrite.NewClient()
-    client.SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.SetProject("<PROJECT_ID>")
-    client.SetKey("<YOUR_API_KEY>")
+    clt := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
 
-    tablesDB := appwrite.NewTablesDB(client)
+    tablesDB := tablesdb.New(clt)
 
     page, err := tablesDB.ListRows(
         "<DATABASE_ID>",
         "<TABLE_ID>",
-        appwrite.WithListRowsQueries([]string{
+        tablesDB.WithListRowsQueries([]string{
             query.Limit(25),
         }),
-        appwrite.WithListRowsTtl(60), // Cache for 60 seconds
+        tablesDB.WithListRowsTtl(60), // Cache for 60 seconds
     )
 
     if err != nil {
         fmt.Println(err)
     }
+    _ = page
 }
 ```
 ```server-swift
@@ -884,29 +887,31 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.Query;
+import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.TablesDB;
 
-public class Main {
-    public static void main(String[] args) throws Exception {
-        Client client = new Client()
-            .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-            .setProject("<PROJECT_ID>")
-            .setKey("<YOUR_API_KEY>");
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
 
-        TablesDB tablesDB = new TablesDB(client);
+TablesDB tablesDB = new TablesDB(client);
 
-        tablesDB.listRows(
-            "<DATABASE_ID>",
-            "<TABLE_ID>",
-            Arrays.asList(
-                Query.limit(25)
-            ),
-            null,  // transactionId
-            null,  // total
-            60     // ttl - Cache for 60 seconds
-        );
-    }
-}
+tablesDB.listRows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    List.of(Query.limit(25)),
+    null, // transactionId
+    null, // total
+    60, // ttl - Cache for 60 seconds
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';

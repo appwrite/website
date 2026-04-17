@@ -21,7 +21,8 @@ Today, we are introducing **TTL-based list response caching** for Appwrite Datab
 
 Add the `ttl` parameter (in seconds) to any `listRows` call. The first request executes normally and stores the result in an in-memory cache. Every subsequent identical request returns the cached response until the TTL expires.
 
-```js
+{% multicode %}
+```client-web
 const rows = await tablesDB.listRows({
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
@@ -32,6 +33,183 @@ const rows = await tablesDB.listRows({
     ttl: 60 // Cache for 60 seconds
 });
 ```
+```server-nodejs
+const rows = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        sdk.Query.equal('status', 'active'),
+        sdk.Query.limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+});
+```
+```server-python
+rows = tables_db.list_rows(
+    database_id='<DATABASE_ID>',
+    table_id='<TABLE_ID>',
+    queries=[
+        Query.equal('status', 'active'),
+        Query.limit(25)
+    ],
+    ttl=60  # Cache for 60 seconds
+)
+```
+```server-ruby
+rows = tables_db.list_rows(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    queries: [
+        Appwrite::Query.equal('status', 'active'),
+        Appwrite::Query.limit(25)
+    ],
+    ttl: 60  # Cache for 60 seconds
+)
+```
+```server-deno
+const rows = await tablesDB.listRows({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.equal('status', 'active'),
+        Query.limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+});
+```
+```server-php
+$rows = $tablesDB->listRows(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query::equal('status', ['active']),
+        Query::limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+);
+```
+```server-go
+rows, err := tablesDB.ListRows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    tablesDB.WithListRowsQueries([]string{
+        query.Equal("status", []interface{}{"active"}),
+        query.Limit(25),
+    }),
+    tablesDB.WithListRowsTtl(60), // Cache for 60 seconds
+)
+```
+```server-swift
+let rows = try await tablesDB.listRows(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    queries: [
+        Query.equal("status", value: "active"),
+        Query.limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+)
+```
+```server-kotlin
+val rows = tablesDB.listRows(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    queries = listOf(
+        Query.equal("status", "active"),
+        Query.limit(25)
+    ),
+    ttl = 60 // Cache for 60 seconds
+)
+```
+```server-rust
+let rows = tables_db.list_rows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    Some(vec![
+        "equal(\"status\", [\"active\"])".to_string(),
+        "limit(25)".to_string(),
+    ]),
+    None,     // transaction_id
+    None,     // total
+    Some(60), // ttl - Cache for 60 seconds
+).await?;
+```
+```server-dotnet
+RowList rows = await tablesDB.ListRows(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    queries: new List<string> {
+        Query.Equal("status", new List<object> { "active" }),
+        Query.Limit(25)
+    },
+    ttl: 60 // Cache for 60 seconds
+);
+```
+```server-dart
+RowList rows = await tablesDB.listRows(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.equal('status', 'active'),
+        Query.limit(25)
+    ],
+    ttl: 60, // Cache for 60 seconds
+);
+```
+```server-java
+tablesDB.listRows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    List.of(
+        Query.equal("status", List.of("active")),
+        Query.limit(25)
+    ),
+    null, // transactionId
+    null, // total
+    60, // ttl - Cache for 60 seconds
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```client-flutter
+final rows = await tablesDB.listRows(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    queries: [
+        Query.equal('status', 'active'),
+        Query.limit(25)
+    ],
+    ttl: 60, // Cache for 60 seconds
+);
+```
+```client-apple
+let rows = try await tablesDB.listRows(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    queries: [
+        Query.equal("status", value: "active"),
+        Query.limit(25)
+    ],
+    ttl: 60 // Cache for 60 seconds
+)
+```
+```client-android-kotlin
+val rows = tablesDB.listRows(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    queries = listOf(
+        Query.equal("status", "active"),
+        Query.limit(25)
+    ),
+    ttl = 60 // Cache for 60 seconds
+)
+```
+{% /multicode %}
 
 Set `ttl` between `1` and `86400` (24 hours). The default is `0`, which means caching is disabled. The response includes an `X-Appwrite-Cache` header with value `hit` or `miss`, so you always know whether a response was served from cache.
 
@@ -55,13 +233,107 @@ Schema changes (adding or removing columns and indexes) invalidate cached entrie
 
 When you need fresh data immediately, you can purge the cache manually by calling `updateTable` with `purge` set to `true`.
 
-```js
+{% multicode %}
+```server-nodejs
 await tablesDB.updateTable({
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
     purge: true
 });
 ```
+```server-python
+tables_db.update_table(
+    database_id='<DATABASE_ID>',
+    table_id='<TABLE_ID>',
+    purge=True
+)
+```
+```server-ruby
+tables_db.update_table(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    purge: true
+)
+```
+```server-deno
+await tablesDB.updateTable({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    purge: true
+});
+```
+```server-php
+$tablesDB->updateTable(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    purge: true
+);
+```
+```server-go
+tablesDB.UpdateTable(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    tablesDB.WithUpdateTablePurge(true),
+)
+```
+```server-swift
+let _ = try await tablesDB.updateTable(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    purge: true
+)
+```
+```server-kotlin
+tablesDB.updateTable(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    purge = true
+)
+```
+```server-rust
+tables_db.update_table(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    None,       // name
+    None,       // permissions
+    None,       // row_security
+    None,       // enabled
+    Some(true), // purge
+).await?;
+```
+```server-dotnet
+await tablesDB.UpdateTable(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    purge: true
+);
+```
+```server-dart
+await tablesDB.updateTable(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    purge: true,
+);
+```
+```server-java
+tablesDB.updateTable(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    null, // name
+    null, // permissions
+    null, // rowSecurity
+    null, // enabled
+    true, // purge
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+{% /multicode %}
 
 This clears all cached list responses for that table in a single operation.
 
