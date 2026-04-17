@@ -67,7 +67,7 @@ Developers who hit a clear error fix it and move on. Developers who hit a crypti
 
 Nothing slows a developer down faster than having to re-learn conventions every time they cross service boundaries within the same SDK.
 
-If calling `account.get()` fetches the current user, then fetching a database document shouldn't use a different parameter order or a different naming convention for a conceptually similar operation. If pagination works one way for files, it should work the same way for database queries.
+If calling `account.get()` fetches the current user, then fetching a database row shouldn't use a different parameter order or a different naming convention for a conceptually similar operation. If pagination works one way for files, it should work the same way for database queries.
 
 Consistency lowers the cognitive load of learning a new platform. Once developers understand the pattern, they can predict the API for features they haven't used yet. That confidence builds trust, and trust keeps teams on a platform long after the initial integration.
 
