@@ -15,7 +15,7 @@
 
     const featured = $derived(data.featured);
     const categories = $derived(
-        data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name))
+        data.filteredCategories.toSorted((a, b) => a.name.localeCompare(b.name))
     );
 
     let isFirstPage = $derived(data.currentPage === 1);
