@@ -35,15 +35,26 @@
                 {
                     label: 'Messaging',
                     href: '/docs/tooling/terraform/resources/messaging'
-                }
-            ]
-        },
-        {
-            label: 'Data sources',
-            items: [
+                },
                 {
-                    label: 'Database',
-                    href: '/docs/tooling/terraform/data-sources'
+                    label: 'Auth',
+                    href: '/docs/tooling/terraform/resources/auth'
+                },
+                {
+                    label: 'Functions',
+                    href: '/docs/tooling/terraform/resources/functions'
+                },
+                {
+                    label: 'Sites',
+                    href: '/docs/tooling/terraform/resources/sites'
+                },
+                {
+                    label: 'Webhooks',
+                    href: '/docs/tooling/terraform/resources/webhooks'
+                },
+                {
+                    label: 'Backups',
+                    href: '/docs/tooling/terraform/resources/backups'
                 }
             ]
         }

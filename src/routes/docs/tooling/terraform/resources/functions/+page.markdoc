@@ -1,0 +1,40 @@
+---
+layout: article
+title: Functions
+description: Manage Appwrite Functions and function environment variables with Terraform.
+---
+
+[Functions](/docs/products/functions) can be declared as Terraform resources, including **runtime**, **entrypoint**, **build commands**, **events**, and **per-function environment variables**.
+
+See the Terraform Registry: [function](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/function) and [function_variable](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/function_variable). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) includes examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_function` | Create and update a function (runtime, entrypoint, commands, events, timeout, and related settings) |
+| `appwrite_function_variable` | Set environment variables scoped to a function |
+
+# Example {% #example %}
+
+```hcl
+resource "appwrite_function" "on_signup" {
+  name       = "on-signup"
+  runtime    = "node-22"
+  entrypoint = "index.js"
+  commands   = "npm install"
+  events     = ["users.*.create"]
+  timeout    = 30
+}
+
+resource "appwrite_function_variable" "api_url" {
+  function_id = appwrite_function.on_signup.id
+  key         = "API_URL"
+  value       = "https://api.example.com"
+}
+```
+
+# Related {% #related %}
+
+- [Functions product docs](/docs/products/functions)
+- [Configuration](/docs/tooling/terraform/provider)

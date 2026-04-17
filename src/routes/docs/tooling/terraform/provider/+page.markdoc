@@ -60,17 +60,22 @@ When an environment variable is set, the matching provider argument does not nee
 | Provider argument | Environment variable | Required | Description |
 |-------------|------------------------|----------|-------------|
 | `endpoint` | `APPWRITE_ENDPOINT` | yes | Appwrite API endpoint |
-| `project_id` | `APPWRITE_PROJECT_ID` | yes | Project ID |
+| `project_id` | `APPWRITE_PROJECT_ID` | no | Default project ID for resources (omit if you set `project_id` on each resource) |
 | `api_key` | `APPWRITE_API_KEY` | yes | API key with permissions for the resources you manage |
 | `self_signed` | - | no | Accept self-signed TLS certificates (Community Edition) |
 
+# Project scoping {% #project-scoping %}
+
+You can set `project_id` on the **provider** as the default for all resources, or set `project_id` on **individual resources** when one Terraform configuration manages multiple Appwrite projects.
+
 # API keys {% #api-keys %}
 
-Use a key with the scopes required for the resources you manage (for example databases, storage, and messaging). Follow the principle of least privilege and rotate keys stored outside Terraform.
+Use a key with the scopes required for the resources you manage (for example TablesDB, Storage, Messaging, Functions, Sites, Auth, webhooks, and backups). Follow the principle of least privilege and rotate keys stored outside Terraform.
 
 # Related {% #related %}
 
-- [Databases](/docs/tooling/terraform/resources/databases) - Tables resources
-- [Storage](/docs/tooling/terraform/resources/storage) - buckets
-- [Messaging](/docs/tooling/terraform/resources/messaging) - providers and topics
+- [Overview](/docs/tooling/terraform) - full resource list
+- [Databases](/docs/tooling/terraform/resources/databases) - TablesDB resources
+- [Storage](/docs/tooling/terraform/resources/storage) - buckets and files
+- [Messaging](/docs/tooling/terraform/resources/messaging) - providers, topics, and subscribers
 - [Self-hosting](/docs/advanced/self-hosting) - install and run the Appwrite server (not the same as configuring project resources with this provider)

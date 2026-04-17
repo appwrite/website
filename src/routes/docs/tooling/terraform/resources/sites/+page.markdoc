@@ -1,0 +1,39 @@
+---
+layout: article
+title: Sites
+description: Manage Appwrite Sites and site environment variables with Terraform.
+---
+
+[Sites](/docs/products/sites) supports Terraform resources for the **site** definition and **build-time environment variables** used during deployment.
+
+See the Terraform Registry: [site](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/site) and [site_variable](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/site_variable). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) includes examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_site` | Create and update a site (framework, build and install commands, runtimes, and related settings) |
+| `appwrite_site_variable` | Set environment variables for a site (for example `NEXT_PUBLIC_*` keys) |
+
+# Example {% #example %}
+
+```hcl
+resource "appwrite_site" "dashboard" {
+  name            = "dashboard"
+  framework       = "nextjs"
+  build_runtime   = "node-22"
+  install_command = "npm install"
+  build_command   = "npm run build"
+}
+
+resource "appwrite_site_variable" "api_url" {
+  site_id = appwrite_site.dashboard.id
+  key     = "NEXT_PUBLIC_API_URL"
+  value   = "https://api.example.com"
+}
+```
+
+# Related {% #related %}
+
+- [Sites product docs](/docs/products/sites)
+- [Configuration](/docs/tooling/terraform/provider)

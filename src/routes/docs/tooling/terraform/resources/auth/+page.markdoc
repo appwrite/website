@@ -1,0 +1,23 @@
+---
+layout: article
+title: Auth
+description: Manage Appwrite users and teams with the Terraform provider.
+---
+
+The provider exposes **Auth** resources so you can align users and teams with the rest of your infrastructure-as-code workflow.
+
+For generated schemas and import syntax, see the Terraform Registry: [auth_user](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/auth_user) and [auth_team](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/auth_team). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) contains source and examples.
+
+# Resources {% #resources %}
+
+| Resource | Purpose |
+|----------|---------|
+| `appwrite_auth_user` | Create and manage users |
+| `appwrite_auth_team` | Create and manage teams |
+
+Use these together with your normal [Auth](/docs/products/auth) and permission models; scope API keys appropriately when Terraform manages identity resources.
+
+# Related {% #related %}
+
+- [Configuration](/docs/tooling/terraform/provider) - authentication and endpoints
+- [Auth product docs](/docs/products/auth)

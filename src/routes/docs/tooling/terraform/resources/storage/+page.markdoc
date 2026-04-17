@@ -1,29 +1,28 @@
 ---
 layout: article
 title: Storage
-description: Manage Appwrite Storage buckets with the Terraform provider, including file limits, extensions, compression, and security options.
+description: Manage Appwrite Storage buckets and files with the Terraform provider, including file limits, extensions, compression, and security options.
 ---
 
-The `appwrite_bucket` resource manages [Storage](/docs/products/storage) buckets in your Appwrite project: file size limits, allowed extensions, compression, image transformations, encryption, and optional antivirus.
+The `appwrite_storage_bucket` resource manages [Storage](/docs/products/storage) buckets in your Appwrite project: file size limits, allowed extensions, compression, image transformations, encryption, and optional antivirus. The `appwrite_storage_file` resource uploads and manages **files** inside a bucket from a local path on the machine running Terraform.
 
-See the [bucket resource](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/bucket) on the Terraform Registry for the full attribute list and import syntax, and the [provider repository](https://github.com/appwrite/terraform-provider-appwrite) for source and examples.
+See the Terraform Registry for generated schemas: [storage_bucket](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/storage_bucket) and [storage_file](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/storage_file). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) contains source and examples.
 
-# Resource {% #resource %}
+# Resources {% #resources %}
 
 | Resource | Purpose |
 |----------|---------|
-| `appwrite_bucket` | Create and update a storage bucket |
+| `appwrite_storage_bucket` | Create and update a storage bucket |
+| `appwrite_storage_file` | Upload and manage a file in a bucket (local `file_path`) |
 
 # Example {% #example %}
 
 ```hcl
-resource "appwrite_bucket" "uploads" {
-  id   = "uploads"
+resource "appwrite_storage_bucket" "uploads" {
   name = "uploads"
 }
 
-resource "appwrite_bucket" "images" {
-  id                      = "images"
+resource "appwrite_storage_bucket" "images" {
   name                    = "images"
   maximum_file_size       = 10485760
   allowed_file_extensions = ["jpg", "png", "webp", "gif"]
@@ -31,18 +30,23 @@ resource "appwrite_bucket" "images" {
   transformations         = true
 }
 
-resource "appwrite_bucket" "documents" {
-  id            = "documents"
+resource "appwrite_storage_bucket" "documents" {
   name          = "documents"
   file_security = true
   encryption    = true
   antivirus     = true
 }
+
+resource "appwrite_storage_file" "logo" {
+  bucket_id = appwrite_storage_bucket.images.id
+  name      = "logo.png"
+  file_path = "assets/logo.png"
+}
 ```
 
-Common optional arguments include `maximum_file_size`, `allowed_file_extensions`, `compression` (`none`, `gzip`, `zstd`), `transformations`, `file_security`, `encryption`, `antivirus`, `enabled`, and `permissions`. Read-only attributes expose `created_at` and `updated_at`.
+Common optional arguments on buckets include `maximum_file_size`, `allowed_file_extensions`, `compression` (`none`, `gzip`, `zstd`), `transformations`, `file_security`, `encryption`, `antivirus`, `enabled`, and `permissions`. Read-only attributes expose `created_at` and `updated_at`.
 
-Buckets support [Terraform import](https://developer.hashicorp.com/terraform/cli/commands/import) using the bucket ID (see upstream examples).
+Buckets and files support [Terraform import](https://developer.hashicorp.com/terraform/cli/commands/import) where the upstream resource documents an ID format (see the Registry for each resource).
 
 # Related {% #related %}
 
