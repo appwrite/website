@@ -1,0 +1,128 @@
+---
+layout: post
+title: "Appwrite vs Pocketbase: Which open-source backend fits your project"
+description: Choosing between Appwrite and PocketBase? Here's a clear comparison of features, performance, and developer experience.
+date: 2026-04-20
+cover: /images/blog/appwrite-vs-pocketbase-which-open-source-backend-fits-your-project/cover.png
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+---
+
+Picking a backend is not a one-size-fits-all decision. Both Appwrite and PocketBase are open-source, developer-friendly, and capable of handling auth, databases, storage, and realtime. But they are built on fundamentally different philosophies, and choosing the wrong one creates friction at exactly the moment your project starts growing.
+
+This post breaks down the key differences so you can make the right call for your specific context.
+
+# What is PocketBase?
+
+PocketBase is a single Go binary that packages an entire backend into one executable: SQLite database, auth, file storage, realtime, an admin UI, and a JavaScript extension layer, all in roughly 30MB. There is no Docker, no managed cloud, no company selling you a subscription. You download it, run it, and you have a working backend.
+
+That simplicity is the point. For solo developers or small teams who want to move fast with minimal infrastructure overhead, PocketBase is hard to beat.
+
+# What is Appwrite?
+
+Appwrite is an open-source backend platform that runs as a set of Docker containers. It covers [authentication](/docs/products/auth), [databases](/docs/products/databases), [storage](/docs/products/storage), [serverless functions](/docs/products/functions), realtime, [messaging](/docs/products/messaging), and web hosting through a unified API and dashboard. It is backed by a company, has a managed cloud offering, and provides official SDKs for 10+ platforms.
+
+Where PocketBase optimizes for simplicity, Appwrite optimizes for breadth and team scalability.
+
+# Appwrite vs PocketBase: comparing key features
+
+## Deployment and infrastructure
+
+PocketBase runs as a **single binary** with zero dependencies. No Docker, no MariaDB, no Redis. You can run it on a $4 VPS or even a free Oracle Cloud instance. Your entire app state lives in one SQLite file, which makes backups and migrations trivial.
+
+Appwrite requires **Docker Compose** and runs several containers including an API server, background workers, MariaDB, and Redis. The resource floor is higher, typically 2GB RAM minimum, but horizontal scaling becomes an option as traffic grows. [Appwrite Cloud](https://cloud.appwrite.io) handles all of this for you if you prefer not to manage infrastructure.
+
+If you are prototyping something quickly with no Docker experience, PocketBase wins on setup time. If your team is comfortable with Docker and wants cloud deployment with SLAs, Appwrite is the better fit.
+
+## Database
+
+PocketBase uses **SQLite** with a structured collection system. It supports relation fields, JSON fields, and geo-distance queries. Access control is handled through filter-based API rules that express row-level permissions using request context, nested relation traversal, and field values simultaneously. This is unusually expressive for a system this simple.
+
+Appwrite uses **MariaDB** under the hood, organized into collections and documents. It supports typed attributes, indexes, rich query operators, and [relationships](/docs/products/databases/relationships) with configurable on-delete behaviors. Appwrite also includes atomic numeric operations, CSV imports and exports, bulk operations, and database backups on paid plans.
+
+SQLite is excellent for single-node deployments but has limits under high write concurrency. MariaDB handles concurrent writes more conventionally and scales horizontally. For high-throughput workloads, that difference matters.
+
+## Authentication
+
+Both platforms cover the core authentication flows. PocketBase supports email and password, OAuth2, email OTP, and MFA. Appwrite supports all of those plus **phone and SMS login**, **anonymous sessions**, **magic URL login**, **JWT delegation**, and **custom tokens** that enable passkey and biometric auth flows.
+
+Appwrite also provides [Teams with role-based membership](/docs/products/auth/teams) and user Labels for segmentation, which map well to multi-tenant applications. PocketBase handles multi-tenancy through its rule system, which requires more manual data modeling.
+
+For most projects, both platforms have enough auth coverage. The gap shows up when you need SMS OTP, anonymous-to-authenticated session upgrades, or compliance features like HIPAA or SOC-2.
+
+## Functions and extensibility
+
+This is where the two platforms diverge most clearly.
+
+PocketBase extends through **JavaScript hooks** running in an embedded ES5 JSVM or by using PocketBase as a Go package and compiling your own binary. JavaScript hooks handle scheduled jobs, custom routes, and record lifecycle events. They are limited to CommonJS modules with no npm packages and no arbitrary runtimes.
+
+Appwrite offers proper **serverless functions** with 15 supported runtimes including Node.js, Python, Go, Dart, PHP, Ruby, .NET, Java, Swift, Kotlin, Bun, and Deno. Functions [deploy from Git](/docs/products/functions/deploy-from-git), run in isolated containers with full dependency management, and can be triggered by HTTP requests, events, schedules, or SDK calls. If you are building anything beyond simple data transformations, the difference in capability is significant.
+
+{% call_to_action title="Build with a complete backend platform" description="Appwrite gives you auth, databases, functions, storage, and messaging under one roof." point1="15 function runtimes" point2="30+ OAuth providers" point3="Official SDKs for 10+ platforms" point4="Self-hosted or cloud" cta="Start building" url="/docs/quick-starts" /%}
+
+## Realtime
+
+PocketBase uses **Server-Sent Events (SSE)** for realtime subscriptions. You can subscribe to individual records, entire collections, or all events. SSE is unidirectional, server to client, which is sufficient for most data sync use cases.
+
+Appwrite uses **WebSockets**. Subscriptions span all Appwrite resources, not just databases. You can listen to file uploads, auth events, and function completions in addition to database changes. WebSockets are bidirectional and generally better suited for collaborative or high-frequency communication patterns.
+
+## Messaging
+
+PocketBase has no built-in messaging system. You can send email via SMTP through hooks, but SMS and push notifications require custom integrations.
+
+Appwrite includes a dedicated [Messaging product](/docs/products/messaging) covering email (Mailgun, SendGrid, SMTP), SMS (Twilio, Vonage, MSG91), and push notifications (APNs, FCM). If your app needs transactional emails, OTP via SMS, or push alerts out of the box, Appwrite handles all three without additional services.
+
+## SDK support
+
+PocketBase ships with official SDKs for JavaScript and Dart only. Everything else is community-maintained.
+
+Appwrite provides official SDKs for JavaScript, Flutter, Swift, Kotlin, React Native, Python, PHP, Ruby, Go, .NET, Rust, and more. For mobile-first teams building across platforms, the broader SDK surface reduces integration time.
+
+# Feature comparison table
+
+| **Feature** | **Appwrite** | **PocketBase** |
+| --- | --- | --- |
+| Deployment | Docker Compose or Appwrite Cloud | Single binary, self-hosted only |
+| Database engine | MariaDB | SQLite |
+| Auth methods | Email, OAuth2, phone, magic URL, OTP, anonymous, custom tokens | Email, OAuth2, OTP, MFA |
+| Realtime protocol | WebSockets | Server-Sent Events |
+| Serverless functions | Yes, 15 runtimes | JavaScript hooks (ES5 JSVM) or Go framework |
+| Messaging | Email, SMS, push | Email via SMTP only |
+| Web hosting | Appwrite Sites | Static files via pb_public only |
+| Official SDKs | 10+ (web, mobile, server) | JavaScript, Dart |
+| Managed cloud | Yes | No |
+| Open source | Yes | Yes |
+| Free self-hosted | Yes | Yes |
+| Company and paid support | Yes | No (solo project) |
+
+# When to choose PocketBase
+
+PocketBase suits you when you want the fastest path from idea to working backend with the least infrastructure overhead:
+
+- Solo developers and small teams building MVPs, internal tools, or prototypes
+- Projects where single-node SQLite performance is sufficient
+- Go developers who want to embed a backend into a custom binary
+- Cases where zero vendor dependency and minimal hosting cost are the priority
+
+# When to choose Appwrite
+
+Appwrite fits better when your project has more surface area, your team is larger, or you need features PocketBase does not offer:
+
+- Teams building production apps that need proper serverless functions with isolated runtimes
+- Applications requiring SMS auth, push notifications, or email messaging out of the box
+- Mobile-first development with official Swift, Kotlin, and Flutter SDKs
+- Projects that may need compliance features like SOC-2 or HIPAA as they scale
+- Teams who want managed cloud hosting while retaining the option to self-host later
+
+# Getting started with Appwrite
+
+If Appwrite fits your use case, you can start with the [quick-start guides](/docs/quick-starts) for your preferred framework. Self-hosting takes around ten minutes with Docker Compose. [Appwrite Cloud](https://cloud.appwrite.io) has a free tier covering up to 75,000 monthly active users with no credit card required.
+
+For more context on how Appwrite compares with other backend platforms:
+
+- [Comparing serverless functions: Appwrite vs Supabase vs Firebase](/blog/post/appwrite-vs-firebase-vs-supabase-functions-comparison)
+- [Appwrite Auth vs Auth0: a comparison of authentication services](/blog/post/appwrite-vs-auth0)
+- [Appwrite Functions documentation](/docs/products/functions)
+- [Appwrite Authentication documentation](/docs/products/auth)
