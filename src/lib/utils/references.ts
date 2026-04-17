@@ -36,7 +36,8 @@ export const Service = {
     Teams: 'teams',
     Users: 'users',
     Sites: 'sites',
-    Tokens: 'tokens'
+    Tokens: 'tokens',
+    Project: 'project'
 } as const;
 
 export type ServiceType = typeof Service;
@@ -161,7 +162,8 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',
     [Service.Sites]: 'Sites',
-    [Service.Tokens]: 'Tokens'
+    [Service.Tokens]: 'Tokens',
+    [Service.Project]: 'Project'
 };
 
 export const preferredVersion = writable<Version | null>(
