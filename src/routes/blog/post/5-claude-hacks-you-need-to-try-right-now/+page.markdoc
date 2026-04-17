@@ -64,7 +64,7 @@ When you're stuck on something fuzzy (a spec, a strategic call, an architectural
 
 What comes back is sharper than anything you would have written on your own. Claude surfaces constraints you hadn't named and assumptions you were making unconsciously. Answer the questions, then ask Claude to synthesize it all into the doc you actually needed. Your thinking. Claude's structure.
 
-# 4. Build custom tools with Artifacts in 30 seconds
+# 4. Build custom tools with artifacts in 30 seconds
 
 Artifacts quietly replaces entire categories of software you used to search for. A JSON diff viewer, a regex tester, a timezone converter, a CSV to Markdown tool? Ask Claude to build it. You'll have it working in seconds, without wading through ad-filled search results or hitting signup walls.
 
