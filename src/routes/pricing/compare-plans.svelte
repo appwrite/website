@@ -371,7 +371,7 @@
                     free: '15 minutes',
                     pro: '45 minutes',
                     scale: '45 minutes',
-                    enterprise: '45 minutes'
+                    enterprise: 'Custom'
                 },
                 {
                     title: 'Express builds',
