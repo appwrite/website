@@ -65,9 +65,6 @@ Vibe coding platforms let you build applications through natural language. Descr
 {% only_light %}
 {% cards %}
 
-{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" image="/images/docs/mcp/logos/imagine.svg" %}
-{% /cards_item %}
-
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/claude.svg" %}
 {% /cards_item %}
 
@@ -88,9 +85,6 @@ Vibe coding platforms let you build applications through natural language. Descr
 
 {% only_dark %}
 {% cards %}
-
-{% cards_item href="/docs/tooling/ai/ai-dev-tools/imagine" title="Imagine" image="/images/docs/mcp/logos/dark/imagine.svg" %}
-{% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/dark/claude.svg" %}
 {% /cards_item %}

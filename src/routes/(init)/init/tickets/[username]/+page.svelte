@@ -11,19 +11,20 @@
     import InitGiveaway from '$routes/(init)/init/(assets)/init-giveaway.png';
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
+    import { untrack } from 'svelte';
 
     const { data } = $props();
 
-    let firstName = data.ticket?.name?.split(/\s/)[0] ?? '';
-    let id = data.ticket?.id.toString().padStart(6, '0');
-    const ticketUrl = `${page.url.origin}/init/tickets/${data.ticket.gh_user}`;
-    const ogImage = `${ticketUrl}/og`;
+    const firstName = $derived(data.ticket?.name?.split(/\s/)[0] ?? '');
+    const id = $derived(data.ticket?.id.toString().padStart(6, '0'));
+    const ticketUrl = $derived(`${page.url.origin}/init/tickets/${data.ticket.gh_user}`);
+    const ogImage = $derived(`${ticketUrl}/og`);
 
     const { copied, copy } = createCopy(page.url.href);
 
     let claiming = $state<boolean>(false);
 
-    const shareTextOptions = [
+    const shareTextOptions = untrack(() => [
         `Join us during the week of ${initDates} to celebrate everything new with @appwrite. Claim your ticket here 👇 ${ticketUrl}`,
         `Come celebrate everything new with @appwrite from ${initDates}! Don't miss out on the latest features and updates. Get your ticket ASAP! 📅 ${ticketUrl}`,
         `Don't miss out on init @appwrite from ${initDates}. Get your ticket now and join us for a week of innovation. 🚀 ${ticketUrl}`,
@@ -44,7 +45,7 @@
         `Join us for a week of everything new with @appwrite, ${initDates}. Get your ticket here: ${ticketUrl}`,
         `Don't miss out on everything new with @appwrite from ${initDates}. Get your ticket here: 💡 ${ticketUrl}`,
         `Let's check out everything new with @appwrite from ${initDates}. Secure your ticket and join us for a week full of awesomeness! 🎉 ${ticketUrl}`
-    ];
+    ]);
 
     let twitterText = $state(
         encodeURIComponent(shareTextOptions[Math.floor(Math.random() * shareTextOptions.length)])

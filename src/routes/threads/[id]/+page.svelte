@@ -12,9 +12,11 @@
 
     let { data } = $props();
 
-    const title = data.title + ' - Threads' + TITLE_SUFFIX;
+    const title = $derived(data.title + ' - Threads' + TITLE_SUFFIX);
     const description = DEFAULT_DESCRIPTION;
-    const discordLink = `https://discord.com/channels/564160730845151244/${data.discord_id}`;
+    const discordLink = $derived(
+        `https://discord.com/channels/564160730845151244/${data.discord_id}`
+    );
 
     function shorten(str: string, len: number) {
         return str.length > len ? str.slice(0, len) + '...' : str;

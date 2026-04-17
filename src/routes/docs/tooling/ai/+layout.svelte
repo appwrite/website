@@ -79,10 +79,6 @@
             label: 'Vibe coding',
             items: [
                 {
-                    label: 'Imagine',
-                    href: '/docs/tooling/ai/ai-dev-tools/imagine'
-                },
-                {
                     label: 'Claude Desktop',
                     href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
                 },

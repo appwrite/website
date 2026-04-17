@@ -13,8 +13,10 @@
 
     let { data } = $props();
 
-    const featured = data.featured;
-    const categories = data.filteredCategories.sort((a, b) => a.name.localeCompare(b.name));
+    const featured = $derived(data.featured);
+    const categories = $derived(
+        data.filteredCategories.toSorted((a, b) => a.name.localeCompare(b.name))
+    );
 
     let isFirstPage = $derived(data.currentPage === 1);
 
@@ -222,11 +224,11 @@
                         <article class="web-feature-article mt-12">
                             <a
                                 href={featured.href}
-                                class="web-feature-article-image h-fit overflow-hidden rounded-lg"
+                                class="web-feature-article-image block w-full overflow-hidden rounded-lg"
                             >
                                 <img
                                     src={featured.cover}
-                                    class="aspect-video transition-transform duration-250 hover:scale-102"
+                                    class="web-u-media-ratio-16-9 w-full transition-transform duration-250 hover:scale-102"
                                     loading="lazy"
                                     alt="cover"
                                 />
