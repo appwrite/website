@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Claude Design: Anthropic's new canvas for designers, PMs, and builders"
+title: "Claude Design: Anthropic's new canvas for designers, PMs, and developers"
 description: "Anthropic just launched Claude Design, a new Labs product for creating polished designs, prototypes, and decks by talking to Claude. Here's what it does and why it matters for developers."
-date: 2026-04-17
-cover: /images/blog/claude-mythos-preview/cover.png
+date: 2026-04-18
+cover: /images/blog/claude-design/cover.png
 timeToRead: 6
 author: aditya-oberai
 category: ai
@@ -87,7 +87,7 @@ Claude Design handoffs land in Claude Code, and Claude Code works beautifully wi
 You can set up the Appwrite MCP server in Claude Code with a couple of commands:
 
 ```bash
-claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite","--users"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
 ```
 
 ```bash
