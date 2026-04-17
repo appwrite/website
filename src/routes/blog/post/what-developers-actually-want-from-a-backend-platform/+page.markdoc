@@ -54,7 +54,6 @@ A backend platform's SDK is the interface your team will interact with hundreds 
 The markers of good developer experience:
 
 - **Type-safe SDKs** with proper type inference so errors surface at compile time, not in production
-- **Local development tooling** so you're not testing against a shared cloud environment
 - **Consistent error messages** that tell you what went wrong, not just that something did
 
 Appwrite provides SDKs for Web, Flutter, Android, iOS, and most server-side languages. The [CLI](/docs/tooling/command-line/installation) supports local development for both functions and the full backend stack, so your development loop stays fast without touching production.
