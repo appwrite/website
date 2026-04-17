@@ -45,7 +45,7 @@ Same ask. One gives you filler, the other gives you something you can actually s
 
 If you keep pasting the same context into every new chat (your codebase, your writing style, your brand voice, your product docs), you're doing it wrong. Claude Projects holds persistent context that every chat inside it inherits automatically. Set it once, benefit forever.
 
-A few Projects worth building today:
+A few projects worth building today:
 
 - **Code review** loaded with your team's style guide and past PR feedback
 - **Writing** with brand voice, good examples, and the phrases you keep having to remove
