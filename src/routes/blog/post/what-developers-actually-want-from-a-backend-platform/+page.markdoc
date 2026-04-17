@@ -66,7 +66,7 @@ Every external service your backend relies on is another integration to maintain
 Backend platforms that cover the full surface area reduce this overhead significantly:
 
 - **[Authentication](/docs/products/auth)** - email, phone, magic links, 30+ OAuth2 providers, MFA, and session management
-- **[Databases](/docs/products/databases)** - structured queries, relationships, real-time subscriptions, and document-level permissions
+- **[Databases](/docs/products/databases)** - structured queries, relationships, real-time subscriptions, and row-level permissions
 - **[Storage](/docs/products/storage)** - file uploads with access control, image transformations, and resumable uploads
 - **[Functions](/docs/products/functions)** - serverless, supporting multiple runtimes, triggered by HTTP, events, or schedules
 - **[Messaging](/docs/products/messaging)** - push notifications, email, and SMS under a single API
