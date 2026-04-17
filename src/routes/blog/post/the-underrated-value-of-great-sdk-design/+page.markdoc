@@ -77,7 +77,7 @@ Inconsistency is cumulative. One off-pattern method is a minor annoyance. Five o
 
 A common trap in SDK design is exposing every API option as a required parameter. It gives developers maximum control, but it also forces them to understand the full system before they can do anything simple.
 
-The better approach is sensible defaults with opt-in complexity. Create a document without specifying permissions and it uses safe defaults. Fetch a list without specifying pagination and it returns a reasonable page size. The happy path should be obvious and short.
+The better approach is sensible defaults with opt-in complexity. Create a row without specifying permissions and it uses safe defaults. Fetch a list without specifying pagination and it returns a reasonable page size. The happy path should be obvious and short.
 
 This is the difference between an SDK that onboards developers in minutes and one that requires reading three pages of documentation before the first successful call. New developers should not need to understand your entire platform architecture to get a value out of the database.
 
