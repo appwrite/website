@@ -102,4 +102,5 @@ If you're evaluating Appwrite or already building with it, these resources are t
 - [Browse Appwrite's SDKs and supported platforms](/docs/sdks)
 - [Quick start guides by framework](/docs/quick-starts)
 - [Type generation for typed database models](/docs/products/databases/type-generation)
+- [Generating a type-safe SDK for your Appwrite project](/docs/tooling/command-line/generate)
 - [Utility classes for queries, permissions, and IDs](/docs/sdks#utility-classes)
