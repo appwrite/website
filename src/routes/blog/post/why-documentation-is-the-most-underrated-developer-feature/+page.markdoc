@@ -47,7 +47,7 @@ These guides matter because developers do not use tools in isolation. They integ
 
 ## Search that actually works
 
-Poor documentation search is a silent killer. If a developer cannot find the right page in two or three queries, they will reach for Google instead, and Google may send them to outdated StackOverflow threads rather than your canonical docs.
+Poor documentation search is a silent killer. If a developer cannot find the right page in two or three queries, they will reach for Google instead, and Google may send them to outdated Stack Overflow threads rather than your canonical docs.
 
 Good documentation search handles synonyms, partial matches, and typos. It prioritizes results by relevance to the developer's likely intent, not just keyword frequency.
 
@@ -82,7 +82,7 @@ Appwrite's [documentation](/docs) covers all major product areas with quick star
 
 Documentation is a proxy for product quality. A platform that invests in helping developers understand and use it well is a platform worth trusting in production.
 
-If you are evaluating backend platforms and documentation quality matters to you, the following links are a good starting point.
+If you are evaluating backend platforms, and documentation quality matters to you, the following links are a good starting point.
 
 - [Appwrite quick starts](/docs/quick-starts)
 - [Appwrite Authentication docs](/docs/products/auth)
