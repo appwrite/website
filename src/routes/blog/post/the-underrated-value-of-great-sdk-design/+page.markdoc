@@ -49,6 +49,8 @@ Appwrite SDKs ship with [enumeration classes](/docs/sdks#enums) for predefined v
 
 The [type generation feature](/docs/products/databases/type-generation) takes this further. Run `appwrite types` and the CLI generates typed model classes directly from your database collections, in your project's language. Schema changes propagate to your types automatically, without any manual mapping.
 
+Developers who want to go even further can use the [`generate` command](/docs/tooling/command-line/generate) to generate a fully typed SDK for their project. Unlike the generic SDKs, a generated SDK reflects your project's specific configuration, giving you end-to-end type safety from your database schema all the way to your client code.
+
 # Error messages that tell you what actually went wrong
 
 This is where many SDKs fall apart. An HTTP 400 error that surfaces as `Bad request` is useless. An error that says `Attribute 'email' is required and cannot be null` is actionable.
