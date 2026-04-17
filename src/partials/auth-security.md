@@ -59,7 +59,7 @@ Disallowing personal data can be enabled in the Auth service's **Security** tab 
 
 Enable email alerts for your users so that whenever a new session is created for their account, they will be alerted with details about the sign-in. This helps users quickly spot unauthorized access and take action to secure their account.
 
-**When alerts are not sent**
+## When alerts are not sent
 
 Session alerts are intentionally skipped in a few situations to avoid redundant or confusing emails:
 
