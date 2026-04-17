@@ -843,21 +843,5 @@
     {
         "link": "/install/env",
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
-    },
-    {
-        "link": "/changelog/entry/2026-04-08-2",
-        "redirect": "/changelog/entry/2026-04-17"
-    },
-    {
-        "link": "/changelog/entry/2026-04-15",
-        "redirect": "/changelog/entry/2026-04-17"
-    },
-    {
-        "link": "/docs/tooling/terraform/data-sources",
-        "redirect": "/docs/tooling/terraform/resources/databases#lookup-existing-databases"
-    },
-    {
-        "link": "/docs/tooling/terraform/resources/other",
-        "redirect": "/docs/tooling/terraform/resources/webhooks"
     }
 ]
