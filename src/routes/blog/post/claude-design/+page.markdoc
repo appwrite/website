@@ -25,7 +25,7 @@ It is aimed at a very wide audience, and the system card-style framing from Anth
 - **Product managers** can sketch feature flows and hand them off to engineering, or to designers for polish.
 - **Founders and account executives** can go from a rough outline to an on-brand pitch deck in minutes.
 - **Marketers** can spin up landing pages, social assets, and campaign visuals and loop in designers later.
-- **Anyone** can build code-powered prototypes that include voice, video, shaders, 3D, and built-in AI.
+- **Anyone** can build code-powered prototypes that include voice, video, shaders, 3D, etc.
 
 The last bullet is the one worth pausing on. Claude Design outputs are not static mockups. They are live, interactive, code-powered artifacts. The line between "design" and "working software" just got a lot thinner.
 
