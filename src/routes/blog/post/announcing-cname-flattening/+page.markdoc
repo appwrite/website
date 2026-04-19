@@ -18,7 +18,7 @@ Appwrite Sites now supports **CNAME flattening**, so you can connect your domain
 
 With CNAME flattening support, connecting a custom domain is just a DNS record away. Keep your existing provider, add a CNAME or ALIAS/ANAME record pointing to Appwrite, and verify the domain in the Console. Once DNS propagates, your site is live with SSL automatically configured. DNS propagation can take anywhere from a few minutes to a few hours depending on your provider and TTL settings.
 
-This is especially useful for teams that rely on their DNS provider for more than just domain resolution. If Cloudflare handles your caching, security headers, or MX records, you no longer have to choose between that setup and Appwrite Sites.
+This is especially useful for teams that rely on their DNS provider for more than just domain resolution. You keep DNS-level configuration like MX records and DNS-layer protections with your existing provider, while Appwrite serves your site through its own CDN with SSL, caching, and edge security built in. If you use Cloudflare, set the record to **DNS only** (grey cloud, not the orange proxy) so traffic reaches Appwrite's CDN directly.
 
 # How CNAME flattening works
 
@@ -31,7 +31,7 @@ Depending on your provider, this goes by different names. Cloudflare calls it **
 1. Open your site's domains tab in the Appwrite Console.
 2. Add your custom domain.
 3. Appwrite provides a CNAME record details.
-4. Go to your DNS provider and create a DNS record as described by Appwrite. Providers like Cloudflare will handle CNAME flattening at the root automatically. On other providers, you may need to use an ALIAS or ANAME record for the root domain.
+4. Go to your DNS provider and create a DNS record as described by Appwrite. Providers like Cloudflare will handle CNAME flattening at the root automatically — just make sure the record is set to **DNS only** (grey cloud), not proxied. On other providers, you may need to use an ALIAS or ANAME record for the root domain.
 5. Return to Appwrite and verify the domain.
 
 # Available now
