@@ -31,7 +31,7 @@ Depending on your provider, this goes by different names. Cloudflare calls it **
 1. Open your site's domains tab in the Appwrite Console.
 2. Add your custom domain.
 3. Appwrite provides a CNAME record details.
-4. Go to your DNS provider and create a DNS record as described by Appwrite. Providers like Cloudflare will handle CNAME flattening at the root automatically — just make sure the record is set to **DNS only** (grey cloud), not proxied. On other providers, you may need to use an ALIAS or ANAME record for the root domain.
+4. Go to your DNS provider and create a DNS record as described by Appwrite. Providers like Cloudflare will handle CNAME flattening at the root automatically. Just make sure the record is set to **DNS only** (grey cloud), not proxied. On other providers, you may need to use an ALIAS or ANAME record for the root domain.
 5. Return to Appwrite and verify the domain.
 
 # Available now
