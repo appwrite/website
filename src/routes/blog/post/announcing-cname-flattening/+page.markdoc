@@ -10,7 +10,7 @@ category: announcement
 featured: false
 ---
 
-If you've connected a custom domain to Appwrite Sites, you know the process required changing your nameservers to Appwrite. For developers already managing DNS through Cloudflare or similar providers, that meant giving up control over caching, security, email routing, and other configurations just to connect a single site.
+If you've connected a custom domain to Appwrite Sites, you know the process required changing your nameservers to Appwrite. For developers already managing DNS through Cloudflare or similar providers, that meant moving email routing, DNS-layer protections, and every other record off their existing provider just to connect a single site.
 
 Appwrite Sites now supports **CNAME flattening**, so you can connect your domain by adding a DNS record with your existing provider instead of migrating nameservers.
 
