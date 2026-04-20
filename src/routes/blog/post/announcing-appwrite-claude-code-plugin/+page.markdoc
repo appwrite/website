@@ -44,5 +44,6 @@ The agent uses the API MCP server to create the user in your project directly, w
 # Resources
 
 - [Claude Code plugin docs](/docs/tooling/ai/ai-dev-tools/claude-code)
+- [Plugin source code on GitHub](https://github.com/appwrite/claude-plugin)
 - [Appwrite Skills](/docs/tooling/ai/skills)
 - [Discord community](https://appwrite.io/discord)
