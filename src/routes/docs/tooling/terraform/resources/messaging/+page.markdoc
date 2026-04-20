@@ -78,6 +78,22 @@ resource "appwrite_messaging_topic" "alerts" {
 
 Topics and subscribers support import by ID where documented; see the Registry for each resource.
 
+# Lookup an existing topic (data source) {% #lookup-existing-topic %}
+
+The **`appwrite_messaging_topic`** data source reads a topic that already exists by ID. Use it to attach subscribers without taking ownership of the topic itself in Terraform.
+
+```hcl
+data "appwrite_messaging_topic" "announcements" {
+  id = "announcements"
+}
+
+output "topic_name" {
+  value = data.appwrite_messaging_topic.announcements.name
+}
+```
+
+See the [Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/data-sources/messaging_topic) for the full attribute list.
+
 # Related {% #related %}
 
 - [Messaging product docs](/docs/products/messaging)

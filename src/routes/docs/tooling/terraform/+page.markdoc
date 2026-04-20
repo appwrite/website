@@ -15,8 +15,8 @@ Resource types use the `appwrite_` prefix and match the [Terraform Registry](htt
 | TablesDB | `appwrite_tablesdb`, `appwrite_tablesdb_table`, `appwrite_tablesdb_column`, `appwrite_tablesdb_index`, `appwrite_tablesdb_row` |
 | Storage | `appwrite_storage_bucket`, `appwrite_storage_file` |
 | Auth | `appwrite_auth_user`, `appwrite_auth_team` |
-| Functions | `appwrite_function`, `appwrite_function_variable` |
-| Sites | `appwrite_site`, `appwrite_site_variable` |
+| Functions | `appwrite_function`, `appwrite_function_variable`, `appwrite_function_deployment` |
+| Sites | `appwrite_site`, `appwrite_site_variable`, `appwrite_site_deployment` |
 | Messaging | `appwrite_messaging_provider`, `appwrite_messaging_topic`, `appwrite_messaging_subscriber` |
 | Webhooks | `appwrite_webhook` |
 | Backups | `appwrite_backup_policy` |
@@ -24,6 +24,13 @@ Resource types use the `appwrite_` prefix and match the [Terraform Registry](htt
 | Kind | Name | Description |
 |------|------|-------------|
 | Data source | `appwrite_tablesdb` | Look up a database by ID |
+| Data source | `appwrite_storage_bucket` | Look up a storage bucket by ID |
+| Data source | `appwrite_auth_user` | Look up a user by ID |
+| Data source | `appwrite_auth_team` | Look up a team by ID |
+| Data source | `appwrite_function` | Look up a function by ID |
+| Data source | `appwrite_site` | Look up a site by ID |
+| Data source | `appwrite_messaging_topic` | Look up a messaging topic by ID |
+| Data source | `appwrite_webhook` | Look up a webhook by ID |
 
 {% info title="Looking for self-hosting?" %}
 This section is about **Appwrite resources inside a project** (for example databases and tables) using Terraform. If you want to install or operate the Appwrite server itself (Docker, configuration, TLS, scaling), go to the [self-hosting documentation](/docs/advanced/self-hosting) instead.

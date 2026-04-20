@@ -17,6 +17,26 @@ For generated schemas and import syntax, see the Terraform Registry: [auth_user]
 
 Use these together with your normal [Auth](/docs/products/auth) and permission models; scope API keys appropriately when Terraform manages identity resources.
 
+# Data sources {% #data-sources %}
+
+The **`appwrite_auth_user`** and **`appwrite_auth_team`** data sources read users and teams that already exist (for example created through the Console or via your application) by ID. Use them to wire identities into other resources without managing them with Terraform.
+
+```hcl
+data "appwrite_auth_user" "admin" {
+  id = "64f2cd7e27bda9f23ab6"
+}
+
+data "appwrite_auth_team" "engineers" {
+  id = "engineers"
+}
+
+output "admin_email" {
+  value = data.appwrite_auth_user.admin.email
+}
+```
+
+See the Terraform Registry for the full attribute lists: [auth_user data source](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/data-sources/auth_user) and [auth_team data source](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/data-sources/auth_team).
+
 # Related {% #related %}
 
 - [Configuration](/docs/tooling/terraform/provider) - authentication and endpoints

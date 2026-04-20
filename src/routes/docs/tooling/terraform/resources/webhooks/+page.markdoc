@@ -42,6 +42,22 @@ resource "appwrite_webhook" "authenticated" {
 
 Use the read-only **`secret`** attribute when configuring **signature verification** for payloads Appwrite sends to your URL (see [Webhooks](/docs/advanced/platform/webhooks) in the platform docs).
 
+# Lookup an existing webhook (data source) {% #lookup-existing-webhook %}
+
+The **`appwrite_webhook`** data source reads a webhook that already exists by ID. Use it to reference an existing webhook from other resources or outputs without recreating it in Terraform.
+
+```hcl
+data "appwrite_webhook" "slack" {
+  id = "64f2cd7e27bda9f23ab6"
+}
+
+output "webhook_url" {
+  value = data.appwrite_webhook.slack.url
+}
+```
+
+See the [Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/data-sources/webhook) for the full attribute list.
+
 # Related {% #related %}
 
 - [Configuration](/docs/tooling/terraform/provider) - authentication and endpoints
