@@ -29,7 +29,7 @@ When using the Web SDK, you’ll need to set a hostname. This just tells Appwrit
 
 # 3 - Permissions
 
-Before you can read and write data from an Appwrite database collection or storage bucket, you’ll need to ensure you have the proper permissions set. This can be set from the “Settings” tab under the “Permissions” section inside a collection or storage bucket.
+Before you can read and write data from an Appwrite database table or storage bucket, you’ll need to ensure you have the proper permissions set. This can be set from the “Settings” tab under the “Permissions” section inside a table or storage bucket.
 
 ![Permissions overview](/images/blog/three-important-steps-you-need-to-complete-with-appwrite/permissions.png)
 

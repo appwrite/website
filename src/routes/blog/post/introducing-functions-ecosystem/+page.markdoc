@@ -32,7 +32,7 @@ To combat this, we've introduced automatically generated, short-lived API keys f
 Here's how you can use them:
 
 ```jsx
-import { Client, Databases } from 'node-appwrite';
+import { Client, TablesDB } from 'node-appwrite';
 
 export default async ({ req, res }) => {
     const client = new Client()
@@ -40,7 +40,7 @@ export default async ({ req, res }) => {
         .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
         .setKey(req.headers['x-appwrite-key']);
 
-    const databases = new Databases(client);
+    const tablesDB = new TablesDB(client);
 
     // Your function logic here
 
@@ -64,15 +64,15 @@ const functions = new Functions(client);
 const invoiceDate = new Date();
 invoiceDate.setDate(invoiceDate.getDate() + 30);
 
-await functions.createExecution({
-    functionId: 'invoicesApi', // Function ID
-    body: '{"userId":"ngu9ife0efwed"}', // Body
-    async: true, // Async execution
-    xpath: '/v1/invoices/exports', // Path
-    method: ExecutionMethod.POST, // Method
-    headers: {}, // Headers
-    scheduledAt: invoiceDate.toISOString() // New scheduledAt attribute
-});
+await functions.createExecution(
+    'invoicesApi', // Function ID
+    '{"userId":"ngu9ife0efwed"}', // Body
+    true, // Async execution
+    '/v1/invoices/exports', // Path
+    'POST', // Method
+    {}, // Headers
+    invoiceDate.toISOString() // New scheduledAt column
+);
 ```
 
 This feature is perfect for scheduling marketing emails, cleanup tasks, or precisely timed events.
@@ -116,7 +116,7 @@ This allows for new use cases like sending files to AI services or generating fi
 
 # Execution and deployment filtering
 
-You can now filter Function executions and deployments based on various attributes, making it easier to monitor and debug your Functions:
+You can now filter Function executions and deployments based on various columns, making it easier to monitor and debug your Functions:
 
 ```jsx
 // Example of filtering executions (specific implementation may vary)
