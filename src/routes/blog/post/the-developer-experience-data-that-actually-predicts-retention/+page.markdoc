@@ -1,0 +1,140 @@
+---
+layout: post
+title: "The developer experience data that actually predicts retention"
+description: Developer experience is measurable, and recent research connects DX to retention, productivity, and business outcomes. This post combines key findings with a simple metric model and shows how developer relations programs can move those numbers.
+date: 2025-11-08
+cover: /images/blog/the-developer-experience-data-that-actually-predicts-retention/cover.png
+timeToRead: 8
+author: tessa
+category: product
+featured: false
+---
+
+Developer experience (DX) is not a vibe or a tagline; it is a measurable set of moments that decide whether a developer reaches real value or quietly churns. In the last two years, researchers and practitioner leaders have converged on the same themes: shorten feedback loops, lower cognitive load, and protect time for focused work. For DevRel teams, that means teaching rather than pitching and designing programs that move a few leading indicators tied to retention. The rest of this post pulls together what the data and trusted voices say, then maps those ideas to a simple DX model you can run every week.
+
+# Why DX matters now
+
+> Our framework distills developer experience to its three core dimensions: feedback loops, cognitive load, and flow state.  
+Source: ACM Queue — [DevEx: What Actually Drives Productivity](https://queue.acm.org/detail.cfm?id=3595878).
+
+> There’s strong support for the positive impact of flow state and low cognitive load on individual, team, and organization outcomes.  
+Source: Microsoft DevEx Lab — [Quantifying the impact of developer experience](https://azure.microsoft.com/en-us/blog/quantifying-the-impact-of-developer-experience/).
+
+> A new developer joins GitHub every second.
+Source: [GitHub Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/).
+
+The implication is simple. If you shorten feedback loops, lower cognitive load, and protect flow time, you improve activation and retention. The audience is also exploding, which means small frictions scale into real churn.
+
+# What respected DevRel voices say about trust and value
+
+> Share practical demos with real-world applicability; go beyond Hello World to provide value by showing developers how to build things that are practical and useful.
+Source: Kim Maida — [What Comes After Hello World?](https://maida.kim/how-to-drive-developer-growth-and-engagement/). 
+
+> I propose this metric: DevRel Qualified Leads, as one accepted metric by which to prove the value of our Developer Relations and Community teams. 
+Source: Mary Thengvall — [“DevRel Qualified Leads”](https://www.marythengvall.com/blog/2019/12/14/devrel-qualified-leads-repurposing-a-common-business-metrics-to-prove-value). See also OpenView’s summary (https://openviewpartners.com/blog/the-truth-about-devrel-how-to-make-it-work/).
+
+These ideas reinforce the same core principle. Teach, do not pitch. Optimize the path after hello world. And measure DevRel on enablement moments that move developers toward meaningful value, not on closed deals.
+
+# A simple DX metric model that supports DevRel
+
+Use one **north star** that represents recurring value, then track four **leading indicators** that predict retention. Each indicator has clear DevRel touchpoints and can be implemented in a sprint.
+
+**North star examples:** weekly active projects, production API calls per account, active apps deployed.
+
+## Time to first data (TTFD)
+
+**Definition:** minutes from project create to the first successful read or write.  
+**Why it matters:** this is “time to meaningful value,” not just time to hello world. Lowering TTFD reduces abandonment and builds momentum.  
+**Evidence:** faster feedback and lower cognitive load are strongly associated with better outcomes. Source: ACM and Microsoft DevEx Lab (links above).
+
+**DevRel touchpoints:** task-based quickstarts that read and write real data, live office hours that unblock first-run, and community snippets for common pitfalls. At Appwrite, we host weekly office hours to help unblock developers, and the community appreciates it.
+
+## First auth success rate (FASR)
+
+**Definition:** percent of new projects that complete a working authentication flow within 24 hours.  
+**Why it matters:** auth failures silently block onboarding and never show up as feature complaints.  
+**Evidence:** cognitive load in fundamental flows correlates with perceived productivity and team outcomes.
+
+**DevRel touchpoints:** copy-paste callback routes per framework, short videos for OAuth and email plus password, a living FAQ sourced from community questions.
+
+## Time to first deploy (TTFDp)
+
+**Definition:** minutes to a working deployment that serves a route or endpoint.  
+**Why it matters:** a shareable URL unlocks team invites, demos, and trials.  
+**Evidence:** shorter feedback loops at team level correlate with better delivery signals. Source: Microsoft DevEx Lab (link above).
+
+**DevRel touchpoints:** “golden path” deploy guides, checklists and environment variable validators, short live streams from zero to URL.
+
+## Week-4 power action rate (W4PAR)
+
+**Definition:** percent of accounts that complete at least one “power action” in days 22–28, for example adding a custom domain, inviting a teammate, scheduling a backup, or enabling role-based permissions.  
+**Why it matters:** power actions correlate with real usage and retention.  
+**Evidence:** the DX dimensions help identify which “next steps” reduce mental overhead and signal value. "The key to measuring DevEx is to focus on developers and their lived experiences in delivering software". Source: [ACM](https://queue.acm.org/detail.cfm?id=3595878).
+
+**DevRel touchpoints:** one clear next-step nudge, templates for production setups, case studies that teach the step itself rather than only outcomes. Case studies, or better yet, "Customer Stories", have been a huge benefit for sharing real-world stories on how developers are using our product in production.
+
+# Benchmarks you can start with
+
+Treat these as initial targets and tune to your product and audience.
+
+- **TTFD:** under 15 minutes for 50 percent of new projects, under 60 minutes for 90 percent  
+- **FASR:** above 70 percent in week one of any new SDK release  
+- **TTFDp:** under 30 minutes for 50 percent, under 90 minutes for 90 percent  
+- **W4PAR:** above 25 percent for production-oriented products
+
+These indicators map neatly to the three DX dimensions: faster feedback, lower cognitive load, and more protected flow.
+
+# Instrumentation you can ship in one sprint
+
+Track six events and nothing more to begin:
+
+- `project_created`  
+- `db_write_success` or `api_call_success`  
+- `auth_flow_success`  
+- `deploy_success`  
+- `power_action` with an `action` field  
+- `project_deleted` with optional `reason`
+
+With timestamps alone, you can compute the four indicators without a data team.
+
+# A weekly DevRel plus DX review ritual
+
+> Feedback loops… focused on the speed of answering questions and completing code reviews… have positive impacts at the team level.  
+Source: Microsoft DevEx Lab (https://azure.microsoft.com/en-us/blog/quantifying-the-impact-of-developer-experience/).
+
+1. Pull the last four weekly cohorts. For each cohort report: TTFD median and p90, FASR, TTFDp median and p90, W4PAR.  
+2. Read three friction logs from accounts with slow TTFD or failed auth.  
+3. File exactly three improvements and ship at least one before the next review.  
+4. Share a short community update that explains the shipped wins and links to the docs or sample that changed.
+
+This cadence makes DX visible and creates a habit loop that compounds.
+
+# What programs actually reduce cognitive load
+
+**Docs and examples**  
+Start with a runnable demo in the quickstart so developers see success fast. Follow with a production-shaped example that adds environment variables, secrets management, and copy-paste commands. Include one architecture diagram per starter to teach the mental model and how the pieces fit.
+
+**Community support**  
+You can set a response-time goal for your support channels, or wherever your community lives, then route repeated questions into docs within the week. Updating and adding new docs based on developer feedback helps improve the onboarding experience as well. If one person is stuck, the chances are, others are too. Faster response time can lead to happier developers.
+
+**Content and education**  
+Create different types of guides. Developers all learn differently. Having written content, short content, long-form content, and video content helps reduce the friction with different learning styles. Having basic guides and more advanced guides for different levels of developers is necessary.
+
+**DevRel qualified leads**  
+Adopt DRQL so DevRel is evaluated on enablement and introductions rather than quota. This keeps trust with developers and still ties to revenue via the DX indicators. "These DevRel Qualified Leads are incredibly important to keep track of for a number of reasons, the most obvious reason being, of course, that it’s a definitive way to attribute value to the activities that the DevRel team is involved in. Additionally, in aggregate, it’s a valuable way to see which activities overall are more effective than others in the long run as well as track themes throughout the industry." Source: [Mary Thengvall](https://www.marythengvall.com/blog/2019/12/14/devrel-qualified-leads-repurposing-a-common-business-metrics-to-prove-value).
+
+# How to get organizational buy-in
+
+- **Start with a baseline.** One month of cohorts is enough to see directional movement.  
+- **Pick one indicator to improve per sprint.** Do not boil the ocean.  
+- **Show the business link.** In your monthly review, correlate TTFD under 15 minutes with week-8 values of your north star.  
+- **Celebrate “seconds saved.”** Small reductions in time to value compound across large user bases.  
+
+# Real-world context: the market is getting bigger and faster
+
+GitHub’s 2025 Octoverse highlights that more than 180 million developers build on the platform and that, on average, one developer joined GitHub every second last year. Your first-run experience is not a local issue, it is a market-level acquisition and retention factor. Sources: [Octoverse 2025 overview and news post](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/).
+
+
+# Closing thought
+
+Shorten the path to value, speed up feedback loops, and lower mental overhead. Measure these with a weekly DX scorecard. When those numbers move, retention and revenue follow.
