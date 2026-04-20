@@ -18,11 +18,11 @@ Today, we are announcing the **Appwrite plugin for Claude Code**. Two commands a
 
 The plugin ships three things in a single install:
 
-- **The Appwrite API MCP server.** Pre-registered with Claude Code. You configure your endpoint, project ID, and API key through the plugins menu instead of a JSON payload.
-- **The Appwrite Docs MCP server.** No credentials required. Your agent can look up Appwrite's current documentation as it works, rather than relying on what the model was trained on.
-- **Eleven agent skills.** Written as Markdown files for the Appwrite CLI and every major Appwrite SDK: TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift. Claude Code loads the relevant skill on its own when a task calls for it.
+- **The Appwrite API MCP server:** Pre-registered with Claude Code. You configure your endpoint, project ID, and API key through the plugins menu instead of a JSON payload.
+- **The Appwrite Docs MCP server:** No credentials required. Your agent can look up Appwrite's current documentation as it works, rather than relying on what the model was trained on.
+- **Eleven agent skills:** Written as Markdown files for the Appwrite CLI and every major Appwrite SDK: TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift. Claude Code loads the relevant skill on its own when a task calls for it.
 
-# Getting set up
+# Setup the plugin
 
 In your terminal, run:
 
