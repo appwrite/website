@@ -61,4 +61,4 @@ You can specify one or many events to subscribe to with webhooks.
 {% /accordion_item %}
 {% /accordion %}
 
-[Learn more about events](/docs/advanced/platform/api-keys)
+[Learn more about events](/docs/advanced/platform/events)

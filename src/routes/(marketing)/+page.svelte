@@ -15,12 +15,15 @@
     import Ai from './(components)/ai.svelte';
 </script>
 
-<Head title="Appwrite - Built for the first solocorn" />
+<Head
+    title="Appwrite - Build like a team of hundreds"
+    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Hosting."
+/>
 
 <Main>
     <Hero
-        title="Built for the first solocorn"
-        subtitle="All-in-one, open-source infrastructure. Build in minutes, bring any framework, and scale affordably. Auth, Database, Storage, Functions, Realtime, Messaging & Hosting included."
+        title="Build like a team of hundreds"
+        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
     />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />

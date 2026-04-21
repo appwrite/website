@@ -126,6 +126,12 @@
             label: 'Tooling',
             items: [
                 {
+                    label: 'AI',
+                    href: '/docs/tooling/ai',
+                    icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
@@ -135,26 +141,6 @@
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
                     icon: 'web-icon-command'
-                },
-                {
-                    label: 'Assistant',
-                    href: '/docs/tooling/assistant',
-                    icon: 'icon-sparkles'
-                },
-                {
-                    label: 'MCP Server',
-                    href: '/docs/tooling/mcp',
-                    icon: 'web-icon-mcp'
-                },
-                {
-                    label: 'Skills',
-                    href: '/docs/tooling/skills',
-                    icon: 'web-icon-skills'
-                },
-                {
-                    label: 'Arena',
-                    href: '/docs/tooling/arena',
-                    icon: 'web-icon-arena'
                 },
                 {
                     label: 'The Appwriter',

@@ -286,6 +286,25 @@ tablesDB.createTransaction(new CoroutineCallback<>((result, error) -> {
   System.out.println(result);
 }));
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let tx = tables_db.create_transaction(None).await?;
+    // tx.id is your transaction_id
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Stage operations {% #stage-operations %}
@@ -460,7 +479,7 @@ tablesDB.upsert_row(
   table_id = '<TABLE_ID>',
   row_id = '<ROW_ID>',
   data = { 'name': 'Walter' },
-  transaction_id = tx['$id']
+  transaction_id = tx.id
 )
 
 # Decrement inside a transaction
@@ -470,7 +489,7 @@ tablesDB.decrement_row_column(
   row_id = '<ROW_ID>',
   column = 'credits',
   value = 1,
-  transaction_id = tx['$id']
+  transaction_id = tx.id
 )
 ```
 ```server-php
@@ -593,6 +612,43 @@ try await tablesDB.incrementRowColumn(
   transactionId: tx.$id
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let tx = tables_db.create_transaction(None).await?;
+
+    // Update inside a transaction
+    tables_db.update_row(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        "<ROW_ID>",
+        Some(json!({ "plan": "pro" })),
+        None,
+        Some(&tx.id),
+    ).await?;
+
+    // Delete inside a transaction
+    tables_db.delete_row(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        "<ROW_ID>",
+        Some(&tx.id),
+    ).await?;
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 ## Stage many with createOperations {% #create-operations %}
@@ -668,7 +724,7 @@ await tablesDB.createOperations({
 ```
 ```server-python
 tablesDB.create_operations(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   operations = [
     {
       'action': 'create',
@@ -953,6 +1009,46 @@ try await tablesDB.createOperations(
   ]
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let tx = tables_db.create_transaction(None).await?;
+
+    // Stage multiple operations at once
+    tables_db.create_operations(
+        &tx.id,
+        Some(vec![
+            json!({
+                "action": "create",
+                "databaseId": "<DB_A>",
+                "tableId": "<TABLE_1>",
+                "rowId": "u1",
+                "data": { "name": "Walter" }
+            }),
+            json!({
+                "action": "increment",
+                "databaseId": "<DB_B>",
+                "tableId": "<TABLE_2>",
+                "rowId": "u2",
+                "data": { "value": 1, "min": 0, "column": "credits" }
+            }),
+        ]),
+    ).await?;
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Commit or roll back {% #commit-or-rollback %}
@@ -1072,13 +1168,13 @@ await tablesDB.updateTransaction({
 ```server-python
 # Commit
 tablesDB.update_transaction(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   commit = True
 )
 
 # Roll back
 tablesDB.update_transaction(
-  transaction_id = tx['$id'],
+  transaction_id = tx.id,
   rollback = True
 )
 ```
@@ -1133,6 +1229,36 @@ await tablesDB.updateTransaction(
   transactionId: tx.Id,
   rollback: true
 );
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    // Commit
+    tables_db.update_transaction(
+        "<TRANSACTION_ID>",
+        Some(true),
+        None,
+    ).await?;
+
+    // Roll back
+    tables_db.update_transaction(
+        "<TRANSACTION_ID>",
+        None,
+        Some(true),
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 

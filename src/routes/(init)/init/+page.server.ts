@@ -2,6 +2,8 @@ import { redirect, type Actions } from '@sveltejs/kit';
 import { getTicketByUser } from './(utils)/tickets';
 import { loginGithub } from './(utils)/auth';
 
+export const prerender = false;
+
 export const load = async ({ locals }) => {
     const ticket = await getTicketByUser(locals.initUser);
 

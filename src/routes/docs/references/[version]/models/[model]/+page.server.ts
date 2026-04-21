@@ -49,9 +49,7 @@ export const load: PageServerLoad = async ({ params }) => {
                         relatedModels:
                             arrayTypes
                                 ?.map((item) => {
-                                    const schema = getSchema(item as string, api);
-                                    const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
-                                    return modelLink;
+                                    return formatRelatedModelLink(item as string, api, version);
                                 })
                                 .join(', ') ?? ''
                     };
@@ -74,9 +72,7 @@ export const load: PageServerLoad = async ({ params }) => {
                         relatedModels:
                             arrayTypes
                                 ?.map((item) => {
-                                    const schema = getSchema(item as string, api);
-                                    const modelLink = `[${schema.description} model](/docs/references/${version}/models/${item})`;
-                                    return modelLink;
+                                    return formatRelatedModelLink(item as string, api, version);
                                 })
                                 .join(', ') ?? ''
                     };
@@ -104,3 +100,12 @@ export const load: PageServerLoad = async ({ params }) => {
         examples
     };
 };
+
+function formatRelatedModelLink(modelId: string, api: OpenAPIV3.Document, version: string): string {
+    const schema = api.components?.schemas?.[modelId] as AppwriteSchemaObject | undefined;
+    if (!schema?.description) {
+        return `\`${modelId}\``;
+    }
+
+    return `[${schema.description} model](/docs/references/${version}/models/${modelId})`;
+}

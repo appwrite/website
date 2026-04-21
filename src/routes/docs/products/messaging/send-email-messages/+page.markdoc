@@ -263,6 +263,33 @@ let target = try await users.createTarget(
     name: "<NAME>"               // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::users::Users;
+use appwrite::enums::messaging_provider_type::MessagingProviderType;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let users = Users::new(&client);
+
+    let target = users.create_target(
+        "<USER_ID>",
+        "<TARGET_ID>",
+        MessagingProviderType::Email,
+        "<IDENTIFIER>",
+        Some("<PROVIDER_ID>"),  // optional
+        Some("<NAME>"),         // optional
+    ).await?;
+
+    println!("{:?}", target);
+    Ok(())
+}
+```
 {% /multicode %}
 # Create topics (optional) {% #create-topics %}
 You can use topics to organize targets that should receive the same messages, so you can send emails to groups of targets instead of one at time.
@@ -483,6 +510,29 @@ let topic = try await messaging.createTopic(
   topicId: "<TOPIC_ID>",
   name: "<NAME>"
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let topic = messaging.create_topic(
+        "<TOPIC_ID>",
+        "<NAME>",
+        None, // subscribe (optional)
+    ).await?;
+
+    println!("{:?}", topic);
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -788,6 +838,38 @@ let message = try await messaging.createEmail(
   scheduledAt: ""                                // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_email(
+        "<MESSAGE_ID>",
+        "<SUBJECT>",
+        "<CONTENT>",
+        Some(vec![]),       // topics (optional)
+        Some(vec![]),       // users (optional)
+        Some(vec![]),       // targets (optional)
+        Some(vec![]),       // cc (optional)
+        Some(vec![]),       // bcc (optional)
+        None,               // attachments (optional)
+        Some(false),        // draft (optional)
+        Some(false),        // html (optional)
+        None,               // scheduled_at (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 
 
@@ -1087,7 +1169,39 @@ let message = try await messaging.createEmail(
   bcc: [],              // optional
   draft: false,         // optional
   html: xfalse,         // optional
-  scheduledAt: "2025-02-13T22:01:00+0000"   
+  scheduledAt: "2025-02-13T22:01:00+0000"
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_email(
+        "<MESSAGE_ID>",
+        "<SUBJECT>",
+        "<CONTENT>",
+        Some(vec![]),                          // topics (optional)
+        Some(vec![]),                          // users (optional)
+        Some(vec![]),                          // targets (optional)
+        Some(vec![]),                          // cc (optional)
+        Some(vec![]),                          // bcc (optional)
+        None,                                  // attachments (optional)
+        Some(false),                           // draft (optional)
+        Some(false),                           // html (optional)
+        Some("2025-02-13T22:01:00+0000"),      // scheduled_at (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
 ```
 {% /multicode %}

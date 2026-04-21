@@ -50,6 +50,10 @@
             label: 'Configuration',
             items: [
                 {
+                    label: 'Databases',
+                    href: '/docs/advanced/self-hosting/configuration/databases'
+                },
+                {
                     label: 'Environment variables',
                     href: '/docs/advanced/self-hosting/configuration/environment-variables'
                 },

@@ -87,3 +87,5 @@ export const load = () => {
         featured: featuredIntegrationsWithCategoryHeadings
     };
 };
+
+export const prerender = false;

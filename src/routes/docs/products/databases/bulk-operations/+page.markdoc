@@ -98,6 +98,41 @@ result = tablesDB.create_rows(
     ]
 )
 ```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.create_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "Row 1"
+            }),
+            json!({
+                "$id": ID::unique(),
+                "name": "Row 2"
+            }),
+        ],
+        None,
+    ).await?;
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Update rows {% #update-rows %}
@@ -153,6 +188,37 @@ result = tablesDB.update_rows(
         Query.equal('status', 'draft')
     ]
 )
+```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.update_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(json!({
+            "status": "published"
+        })),
+        Some(vec![
+            Query::equal("status", "draft").to_string(),
+        ]),
+        None,
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -219,6 +285,41 @@ result = tablesDB.upsert_rows(
     ]
 )
 ```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.upsert_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "New Row 1"
+            }),
+            json!({
+                "$id": "row-id-2", // Existing row ID
+                "name": "New Row 2"
+            }),
+        ],
+        None,
+    ).await?;
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Delete rows {% #delete-rows %}
@@ -269,6 +370,33 @@ result = tablesDB.delete_rows(
         Query.equal('status', 'archived')
     ]
 )
+```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.delete_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(vec![
+            Query::equal("status", "archived").to_string(),
+        ]),
+        None,
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -417,5 +545,22 @@ tablesDB.createRows(
     return null;
   })
 );
+```
+```rust
+let result = tables_db.create_rows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    vec![
+        json!({
+            "$id": ID::unique(),
+            "name": "One"
+        }),
+        json!({
+            "$id": ID::unique(),
+            "name": "Two"
+        }),
+    ],
+    Some("<TRANSACTION_ID>"),
+).await?;
 ```
 {% /multicode %}

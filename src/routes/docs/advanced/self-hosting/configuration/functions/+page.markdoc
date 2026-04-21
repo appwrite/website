@@ -11,10 +11,10 @@ This guide covers how to configure functions in your self-hosted Appwrite instan
 Not all function runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
 To enable a runtime, add it to the `_APP_FUNCTIONS_RUNTIMES` environment variable as a comma-separated list.
 
-The example below would enable Dart 2.15, .NET 6.0, and Java 18 runtimes.
+The example below would enable Dart 3.11, .NET 6.0, and Java 18 runtimes.
 
 ```bash
-_APP_FUNCTIONS_RUNTIMES=dart-2.15,dotnet-6.0,java-18.0
+_APP_FUNCTIONS_RUNTIMES=dart-3.11,dotnet-6.0,java-18.0
 ```
 
 You can find a full list of supported runtimes [here](/docs/products/functions/runtimes#available-runtimes).
