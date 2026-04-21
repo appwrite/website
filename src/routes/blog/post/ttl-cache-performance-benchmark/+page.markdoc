@@ -14,6 +14,10 @@ Last week we [introduced TTL-based list caching](/blog/post/announcing-list-cach
 
 Instead of a synthetic micro-benchmark, we ran a realistic workload: a **10,000 row** product catalog, a filtered listing query with sort and pagination, and **100,000 sequential requests per phase**. The full benchmark is open source and lives at [appwrite-community/ttl-benchmark](https://github.com/appwrite-community/ttl-benchmark), so you can reproduce the numbers on your own instance. Every measurement below comes from that run.
 
+{% info title="Explore the results interactively" %}
+We also built an interactive visualisation of this run at [ttl-benchmark.appwrite.network](https://ttl-benchmark.appwrite.network). Pin percentiles, watch the live race simulator, and play with the scale slider while you read.
+{% /info %}
+
 # The workload
 
 The benchmark lives in a standalone script that we wrote alongside this post. It has two phases and does nothing fancy between them:
@@ -183,9 +187,9 @@ The fastest cached response came in at **4.146 ms**. That is the practical lower
 
 ## Wall clock is the number your users feel
 
-The no-cache phase took **22 minutes 43 seconds** to complete 100,000 requests. The cached phase took **10 minutes 44 seconds**. The difference, **11 minutes 58 seconds**, is time your infrastructure did not spend executing the same query a hundred thousand times.
+The no-cache phase took **22 minutes 43 seconds** to complete 100,000 requests. The cached phase took **10 minutes 44 seconds**. The difference, **11 minutes 58 seconds**, is time Appwrite did not spend executing the same query a hundred thousand times.
 
-For a dashboard that polls a leaderboard every few seconds across a few thousand concurrent users, that difference translates directly into CPU time freed on your database, headroom on your Appwrite workers, and a better experience for the user who is waiting on the response.
+For a dashboard that polls a leaderboard every few seconds across a few thousand concurrent users, that difference translates directly into lower latency for every reader and a noticeably snappier feel on the client side.
 
 # Caveats worth stating
 
@@ -246,6 +250,7 @@ node bench.js   # runs both phases and writes results/<timestamp>.md
 
 If you want to explore further:
 
+- [Interactive benchmark dashboard](https://ttl-benchmark.appwrite.network)
 - [appwrite-community/ttl-benchmark on GitHub](https://github.com/appwrite-community/ttl-benchmark)
 - [Announcing list response caching: Instant reads with TTL-based caching](/blog/post/announcing-list-cache-ttl)
 - [Rows: Cache list responses](/docs/products/databases/rows#cache-list-responses)
