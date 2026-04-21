@@ -47,8 +47,6 @@ Some examples of reductions in size for the templates offered:
 
 ![build-output-sizes](/images/blog/reducing-cold-starts-appwrite-sites/build-output-sizes-nft.png "contain")
 
-![build-output-sizes](/images/blog/reducing-cold-starts-appwrite-sites/build-output-sizes.png "contain")
-
 # Cold starts
 
 Those smaller artifacts translated directly into faster cold starts. With build outputs reduced by up to 98.8%, the download phase - previously one of the more costly steps - dropped from multiple seconds to just 100–200 milliseconds. Extraction saw a similar improvement, going from regular 4–7 second spikes down to around 200–400 milliseconds. Together, these two phases went from dominating the cold-start timeline to being barely noticeable.
