@@ -43,6 +43,8 @@ Some examples of reductions in size for the templates offered:
 | Svelte Starter | 103 MB | 13 MB | 87.4% |
 | Store Template | 185 MB | 3.5 MB | 98.1% |
 
+The reduction in build output size can also be seen in our observability setup:
+
 ![build-output-sizes](/images/blog/reducing-cold-starts-appwrite-sites/build-output-sizes-non-nft.png "contain")
 
 ![build-output-sizes](/images/blog/reducing-cold-starts-appwrite-sites/build-output-sizes-nft.png "contain")
