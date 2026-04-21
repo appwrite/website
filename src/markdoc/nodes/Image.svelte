@@ -45,7 +45,13 @@
     {/if}
 {:else}
     <span class="web-media relative my-8! block">
-        <img {src} {alt} title={resolvedTitle} loading="lazy" class="w-full {contain ? '' : 'aspect-video object-cover'}" />
+        <img
+            {src}
+            {alt}
+            title={resolvedTitle}
+            loading="lazy"
+            class="w-full {contain ? '' : 'aspect-video object-cover'}"
+        />
         <span class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
