@@ -61,4 +61,4 @@ If you're running an SSR-based site on Appwrite Sites, all you need to do is red
 
 # What's next
 
-These improvements are just the beginning. We're actively working on the next round of optimizations. Performance is not a one-time fix - it's an ongoing effort, and we're committed to making every deploy on Appwrite Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
+These improvements are just the beginning. We're actively working on the next round of optimizations. Performance is not a one-time fix; it's an ongoing effort, and we're committed to making every deploy on Appwrite Sites feel instant. Stay tuned for more updates as we continue to push cold start times even lower.
