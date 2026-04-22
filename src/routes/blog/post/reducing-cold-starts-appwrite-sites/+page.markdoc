@@ -23,7 +23,7 @@ Before implementing any fixes, we needed to understand what was actually happeni
 
 With that visibility in place, one pattern stood out immediately: compression and decompression of build output was taking up a significant share of the cold-start time. Build artifacts were being compressed with tar and extracted using gzip, which worked fine functionally, but the extraction step was eating up a noticeable chunk of every first request.
 
-We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/isa-l), an optimized implementation from Intel's Intelligent Storage Acceleration Library. The results were immediate: extraction times improved by 50–100%, making it one of the highest-impact changes we made. We also evaluated [zstd](https://github.com/facebook/zstd) as an alternative, but its performance was more variable and only showed improvements for certain build output sizes, so we stuck with igzip for its universally consistent gains. For really small build outputs we opted to tar directly so on downloading no timely extraction needs to happen.
+We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/isa-l), an optimized implementation from Intel's Intelligent Storage Acceleration Library. The results were immediate: extraction times improved by 50 to 100%, making it one of the highest-impact changes we shipped. We also evaluated [zstd](https://github.com/facebook/zstd) as an alternative, but its performance was more variable and only showed gains at certain build output sizes, so we stuck with igzip for its consistent wins across the board. For very small build outputs, we skipped compression entirely and used plain tar, avoiding any decompression cost on the download path.
 
 # Node file tracing
 
