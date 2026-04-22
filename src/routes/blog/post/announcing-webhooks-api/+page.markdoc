@@ -332,7 +332,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         ID::unique(),                                  // webhook_id
         "https://example.com/webhook",                 // url
         "My Webhook",                                  // name
-        &["users.*.create", "users.*.update"],         // events
+        vec!["users.*.create", "users.*.update"],      // events
         None,                                          // enabled
         Some(true),                                    // tls
         None,                                          // auth_username
@@ -462,7 +462,7 @@ let result = webhooks.update(
     "<WEBHOOK_ID>",                                // webhook_id
     "Updated Webhook",                             // name
     "https://example.com/webhook-v2",              // url
-    &["users.*.create", "users.*.update", "users.*.delete"], // events
+    vec!["users.*.create", "users.*.update", "users.*.delete"], // events
     None,                                          // enabled
     Some(true),                                    // tls
     None,                                          // auth_username

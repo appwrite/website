@@ -320,7 +320,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         ID::unique(),                                  // webhook_id
         "https://example.com/webhook",                 // url
         "My Webhook",                                  // name
-        &["users.*.create"], // events
+        vec!["users.*.create"], // events
         Some(true),                                    // enabled
         Some(true),                                    // tls
         None,                                          // auth_username
@@ -1022,7 +1022,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "<WEBHOOK_ID>",                                // webhook_id
         "Updated Webhook",                             // name
         "https://example.com/webhook-updated",         // url
-        &["users.*.update"], // events
+        vec!["users.*.update"], // events
         Some(true),                                    // enabled
         Some(true),                                    // tls
         None,                                          // auth_username
@@ -1634,8 +1634,11 @@ func verifyWebhook(
     let generated = Data(mac).base64EncodedString()
 
     guard generated.count == signature.count else { return false }
-    return generated.utf8.elementsEqual(signature.utf8, by: { $0 &^ $1 == 0 })
-        && generated.count == signature.count
+    var diff: UInt8 = 0
+    for (a, b) in zip(generated.utf8, signature.utf8) {
+        diff |= a ^ b
+    }
+    return diff == 0
 }
 ```
 ```server-dotnet
