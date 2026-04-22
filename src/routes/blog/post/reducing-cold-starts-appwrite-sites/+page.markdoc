@@ -13,7 +13,7 @@ If you've ever deployed a site and noticed that first request taking just a bit 
 
 At Appwrite, improving the performance of [Sites](/products/sites) (and every other product) has always been a high priority. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold-start times.
 
-In this post, we'll walk you through what was causing the slowdown, the approach we took to fix it, and the results we're seeing now.
+In this blog, we will walk you through the cause of the slowdown, the approach we took to fix it, and the results we have seen since.
 
 # Adding observability
 
