@@ -35,7 +35,11 @@ The Webhooks API introduces two new [API key scopes](/docs/advanced/platform/api
 - **`webhooks.read`** for listing and retrieving webhooks
 - **`webhooks.write`** for creating, updating, and deleting webhooks
 
-Once your API key has the appropriate scopes, you can manage webhooks through any Appwrite Server SDK.
+Once your API key has the appropriate scopes, you can manage webhooks through any Appwrite Server SDK. To get started:
+
+1. Navigate to **Overview** > **Integration** > **API keys** and create or update an API key with the `webhooks.read` and `webhooks.write` scopes.
+2. Initialize a Server SDK with your API key.
+3. Use the `Webhooks` service to manage your webhooks from code.
 
 ## Create a webhook
 
