@@ -7,7 +7,7 @@
     import Checkmark from '$lib/components/fancy/checkmark.svelte';
 
     let container: HTMLElement;
-    let activePill: HTMLElement;
+    let activePill: HTMLElement = $state()!;
     let active = $state(false);
     let complete = $state(false);
     let typedText = $state('');

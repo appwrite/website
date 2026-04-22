@@ -4,6 +4,7 @@
     import { themeStore, setTheme, setResolvedTheme, setSystemTheme, setThemes } from './index';
     import ThemeScript from './theme-script.svelte';
     import { browser } from '$app/environment';
+    import { untrack } from 'svelte';
 
     interface Props {
         forcedTheme?: string;
@@ -25,27 +26,34 @@
         enableSystem = true,
         enableColorScheme = true,
         storageKey = 'theme',
-        themes = enableSystem ? ['light', 'dark', 'system'] : ['light', 'dark'],
-        defaultTheme = enableSystem ? 'system' : 'light',
+        themes: themesProp,
+        defaultTheme: defaultThemeProp,
         attribute = 'data-theme',
         value = undefined
     }: Props = $props();
 
-    // Initialize theme state
-    const initialTheme = getTheme(storageKey, defaultTheme);
-    const systemTheme = enableSystem ? getSystemTheme() : undefined;
+    const themes = untrack(
+        () => themesProp ?? (enableSystem ? ['light', 'dark', 'system'] : ['light', 'dark'])
+    );
+    const defaultTheme = untrack(() => defaultThemeProp ?? (enableSystem ? 'system' : 'light'));
 
-    themeStore.set({
-        theme: initialTheme,
-        forcedTheme,
-        resolvedTheme: initialTheme === 'system' ? systemTheme : initialTheme,
-        themes: enableSystem ? [...themes, 'system'] : themes,
-        systemTheme
+    // Initialize theme state
+    const initialTheme = untrack(() => getTheme(storageKey, defaultTheme));
+    const systemTheme = untrack(() => (enableSystem ? getSystemTheme() : undefined));
+
+    untrack(() => {
+        themeStore.set({
+            theme: initialTheme,
+            forcedTheme,
+            resolvedTheme: initialTheme === 'system' ? systemTheme : initialTheme,
+            themes: enableSystem ? [...themes, 'system'] : themes,
+            systemTheme
+        });
     });
 
     let theme = $derived($themeStore.theme);
     let resolvedTheme = $derived($themeStore.resolvedTheme);
-    const attrs = !value ? themes : Object.values(value);
+    const attrs = $derived(!value ? themes : Object.values(value));
 
     // Handle system theme changes
     const handleMediaQuery = (e?: MediaQueryList) => {
