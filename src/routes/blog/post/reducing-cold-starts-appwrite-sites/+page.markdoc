@@ -27,7 +27,7 @@ We tested a drop-in replacement of gzip with [igzip](https://github.com/intel/is
 
 # Node file tracing
 
-Faster decompression was a big win, but it also raised an obvious next question: why were we extracting so much in the first place? Many build outputs included dependencies and files that were never actually used at runtime. To tackle this, we implemented [Node file tracing](https://github.com/vercel/nft), which statically analyzes a Node.js application to determine exactly which files are required to run it.
+Faster decompression was a big win, but it raised an obvious next question: why were we extracting so much in the first place? Many build outputs included dependencies and files that were never touched at runtime. To address this, we implemented [Node file tracing](https://github.com/vercel/nft), which statically analyzes a Node.js application to determine exactly which files are required to run it.
 
 The impact was dramatic. Smaller artifacts mean less to compress, less to transfer, and less to extract, compounding the gains we had already made on the decompression side.
 
