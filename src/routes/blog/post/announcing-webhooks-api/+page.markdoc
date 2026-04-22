@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Webhooks API: Manage webhooks programmatically with Server SDKs"
 description: Webhooks are no longer console-only. Create, update, and delete webhooks using the Appwrite Server SDKs and API keys with the new webhooks.read and webhooks.write scopes.
-date: 2026-04-16
+date: 2026-04-22
 cover: /images/blog/announcing-webhooks-api/cover.png
 timeToRead: 4
 author: matej-baco
