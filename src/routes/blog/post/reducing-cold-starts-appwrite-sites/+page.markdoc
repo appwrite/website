@@ -57,7 +57,7 @@ The overall effect was a roughly 30 to 50% reduction in cold-start duration acro
 
 # Benefit from this change
 
-If you're running an SSR-based site on Appwrite Sites, all you need to do is redeploy your latest active deployment. The updated build process will automatically apply the optimizations described above, reducing your build output size and improving cold-start times - no code changes required.
+If you're running an SSR-based site on Appwrite Sites, all you need to do is redeploy your latest active deployment. The updated build process will automatically apply the optimizations described above, reducing your build output size and improving cold-start times, with no code changes required.
 
 # What's next
 
