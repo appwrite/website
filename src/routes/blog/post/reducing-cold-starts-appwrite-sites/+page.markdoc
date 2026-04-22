@@ -17,7 +17,7 @@ In this blog, we will walk you through the cause of the slowdown, the approach w
 
 # Adding observability
 
-Before we could fix anything, we needed to understand what was actually happening. We started by adding observability across the full request lifecycle, instrumenting each step from the moment a request hits our edge to when the response is sent back. This gave us a clear breakdown of where time was being spent and where it was being wasted. Without that visibility, we would have been guessing, and in performance work, guessing is how you end up optimizing the wrong thing.
+Before implementing any fixes, we needed to understand what was actually happening. We started by adding observability across the full request lifecycle, instrumenting every step from the moment a request hits our edge to when the response is sent back. This gave us a clear breakdown of where time was being spent (and where it was being wasted). Without that visibility, we would have been guessing, and in performance work, guessing is how you end up optimizing the wrong thing.
 
 # Compression and decompression
 
