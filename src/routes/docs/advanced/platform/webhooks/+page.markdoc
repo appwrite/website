@@ -31,6 +31,8 @@ You can also manage webhooks programmatically using a Server SDK. This requires 
 
 ## Create a webhook {% #create-a-webhook %}
 
+The response includes a `secret` field containing the webhook's signing key. This is the only time the `secret` is returned, so store it securely right away.
+
 {% multicode %}
 ```server-nodejs
 import { Client, Webhooks, ID } from 'node-appwrite';
@@ -47,8 +49,11 @@ const result = await webhooks.create({
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 });
+
+console.log(result.secret); // store it now, not returned again
 ```
 ```server-deno
 import { Client, Webhooks, ID } from "npm:node-appwrite";
@@ -65,8 +70,11 @@ const result = await webhooks.create({
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 });
+
+console.log(result.secret); // store it now, not returned again
 ```
 ```server-php
 <?php
@@ -89,8 +97,11 @@ $result = $webhooks->create(
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 );
+
+echo $result->secret; // store it now, not returned again
 ```
 ```server-python
 from appwrite.client import Client
@@ -109,8 +120,11 @@ result = webhooks.create(
     url='https://example.com/webhook',
     name='My Webhook',
     events=['users.*.create'],
-    tls=True
+    tls=True,
+    secret='<SECRET>' # optional
 )
+
+print(result.secret) # store it now, not returned again
 ```
 ```server-ruby
 require 'appwrite'
@@ -129,8 +143,11 @@ response = webhooks.create(
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' # optional
 )
+
+puts response.secret # store it now, not returned again
 ```
 ```server-dotnet
 using Appwrite;
@@ -149,8 +166,11 @@ var result = await webhooks.Create(
     url: "https://example.com/webhook",
     name: "My Webhook",
     events: new List<string> {"users.*.create"},
-    tls: true
+    tls: true,
+    secret: "<SECRET>" // optional
 );
+
+Console.WriteLine(result.Secret); // store it now, not returned again
 ```
 ```server-dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -168,7 +188,10 @@ final result = await webhooks.create(
     name: 'My Webhook',
     events: ['users.*.create'],
     tls: true,
+    secret: '<SECRET>', // optional
 );
+
+print(result.secret); // store it now, not returned again
 ```
 ```server-kotlin
 import io.appwrite.Client
@@ -187,8 +210,11 @@ val result = webhooks.create(
     url = "https://example.com/webhook",
     name = "My Webhook",
     events = listOf("users.*.create"),
-    tls = true
+    tls = true,
+    secret = "<SECRET>" // optional
 )
+
+println(result.secret) // store it now, not returned again
 ```
 ```server-java
 import io.appwrite.Client;
@@ -212,12 +238,14 @@ webhooks.create(
     true,                                            // tls
     null,                                            // authUsername
     null,                                            // authPassword
+    "<SECRET>",                                      // secret (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
-        System.out.println(result);
+
+        System.out.println(result.getSecret()); // store it now, not returned again
     })
 );
 ```
@@ -236,8 +264,11 @@ let result = try await webhooks.create(
     url: "https://example.com/webhook",
     name: "My Webhook",
     events: ["users.*.create"],
-    tls: true
+    tls: true,
+    secret: "<SECRET>" // optional
 )
+
+print(result.secret) // store it now, not returned again
 ```
 ```server-go
 package main
@@ -261,13 +292,14 @@ func main() {
         "https://example.com/webhook",
         "My Webhook",
         []string{"users.*.create"},
+        appwrite.WithCreateSecret("<SECRET>"), // optional
     )
 
     if err != nil {
         panic(err)
     }
 
-    fmt.Println(result)
+    fmt.Println(result.Secret) // store it now, not returned again
 }
 ```
 ```server-rust
@@ -293,9 +325,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(true),                                    // tls
         None,                                          // auth_username
         None,                                          // auth_password
+        Some("<SECRET>"),                              // secret (optional)
     ).await?;
 
-    println!("{:?}", result);
+    println!("{}", result.secret); // store it now, not returned again
     Ok(())
 }
 ```
@@ -1215,6 +1248,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Rotate signing key {% #rotate-signing-key %}
 
+Calling `updateSecret` without a value generates a new random signing key. You can optionally provide your own `secret` (8-256 characters) to set a specific key, which is useful for zero-downtime key rotation.
+
 {% multicode %}
 ```server-nodejs
 import { Client, Webhooks } from 'node-appwrite';
@@ -1227,7 +1262,8 @@ const client = new Client()
 const webhooks = new Webhooks(client);
 
 const result = await webhooks.updateSecret({
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 });
 ```
 ```server-deno
@@ -1241,7 +1277,8 @@ const client = new Client()
 const webhooks = new Webhooks(client);
 
 const result = await webhooks.updateSecret({
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 });
 ```
 ```server-php
@@ -1260,7 +1297,8 @@ $client
 $webhooks = new Webhooks($client);
 
 $result = $webhooks->updateSecret(
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 );
 ```
 ```server-python
@@ -1275,7 +1313,8 @@ client.set_key('<YOUR_API_KEY>')
 webhooks = Webhooks(client)
 
 result = webhooks.update_secret(
-    webhook_id='<WEBHOOK_ID>'
+    webhook_id='<WEBHOOK_ID>',
+    secret='<SECRET>' # optional
 )
 ```
 ```server-ruby
@@ -1291,7 +1330,8 @@ client = Client.new
 webhooks = Webhooks.new(client)
 
 response = webhooks.update_secret(
-    webhook_id: '<WEBHOOK_ID>'
+    webhook_id: '<WEBHOOK_ID>',
+    secret: '<SECRET>' # optional
 )
 ```
 ```server-dotnet
@@ -1306,7 +1346,8 @@ Client client = new Client()
 Webhooks webhooks = new Webhooks(client);
 
 var result = await webhooks.UpdateSecret(
-    webhookId: "<WEBHOOK_ID>"
+    webhookId: "<WEBHOOK_ID>",
+    secret: "<SECRET>" // optional
 );
 ```
 ```server-dart
@@ -1321,6 +1362,7 @@ Webhooks webhooks = Webhooks(client);
 
 final result = await webhooks.updateSecret(
     webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>', // optional
 );
 ```
 ```server-kotlin
@@ -1335,7 +1377,8 @@ val client = Client()
 val webhooks = Webhooks(client)
 
 val result = webhooks.updateSecret(
-    webhookId = "<WEBHOOK_ID>"
+    webhookId = "<WEBHOOK_ID>",
+    secret = "<SECRET>" // optional
 )
 ```
 ```server-java
@@ -1352,6 +1395,7 @@ Webhooks webhooks = new Webhooks(client);
 
 webhooks.updateSecret(
     "<WEBHOOK_ID>", // webhookId
+    "<SECRET>", // secret (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -1372,7 +1416,8 @@ let client = Client()
 let webhooks = Webhooks(client)
 
 let result = try await webhooks.updateSecret(
-    webhookId: "<WEBHOOK_ID>"
+    webhookId: "<WEBHOOK_ID>",
+    secret: "<SECRET>" // optional
 )
 ```
 ```server-go
@@ -1393,6 +1438,7 @@ func main() {
     webhooks := appwrite.NewWebhooks(client)
     result, err := webhooks.UpdateSecret(
         "<WEBHOOK_ID>",
+        appwrite.WithUpdateSecretSecret("<SECRET>"), // optional
     )
 
     if err != nil {
@@ -1417,6 +1463,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let result = webhooks.update_secret(
         "<WEBHOOK_ID>", // webhook_id
+        Some("<SECRET>") // optional
     ).await?;
 
     println!("{:?}", result);

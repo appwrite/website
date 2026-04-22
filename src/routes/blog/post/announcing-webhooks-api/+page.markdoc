@@ -39,6 +39,8 @@ Once your API key has the appropriate scopes, you can manage webhooks through an
 
 ## Create a webhook
 
+The response includes a `secret` field containing the webhook's signing key. This is the only time the `secret` is returned, so store it securely right away.
+
 {% multicode %}
 ```server-nodejs
 import { Client, Webhooks, ID } from 'node-appwrite';
@@ -55,8 +57,11 @@ const result = await webhooks.create({
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 });
+
+console.log(result.secret); // store it now, not returned again
 ```
 ```server-deno
 import { Client, Webhooks, ID } from "npm:node-appwrite";
@@ -73,8 +78,11 @@ const result = await webhooks.create({
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 });
+
+console.log(result.secret); // store it now, not returned again
 ```
 ```server-php
 <?php
@@ -97,8 +105,11 @@ $result = $webhooks->create(
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' // optional
 );
+
+echo $result->secret; // store it now, not returned again
 ```
 ```server-python
 from appwrite.client import Client
@@ -117,8 +128,11 @@ result = webhooks.create(
     url='https://example.com/webhook',
     name='My Webhook',
     events=['users.*.create', 'users.*.update'],
-    tls=True
+    tls=True,
+    secret='<SECRET>' # optional
 )
+
+print(result.secret) # store it now, not returned again
 ```
 ```server-ruby
 require 'appwrite'
@@ -137,8 +151,11 @@ response = webhooks.create(
     url: 'https://example.com/webhook',
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
-    tls: true
+    tls: true,
+    secret: '<SECRET>' # optional
 )
+
+puts response.secret # store it now, not returned again
 ```
 ```server-dotnet
 using Appwrite;
@@ -157,8 +174,11 @@ var result = await webhooks.Create(
     url: "https://example.com/webhook",
     name: "My Webhook",
     events: new List<string> {"users.*.create", "users.*.update"},
-    tls: true
+    tls: true,
+    secret: "<SECRET>" // optional
 );
+
+Console.WriteLine(result.Secret); // store it now, not returned again
 ```
 ```server-dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -176,7 +196,10 @@ final result = await webhooks.create(
     name: 'My Webhook',
     events: ['users.*.create', 'users.*.update'],
     tls: true,
+    secret: '<SECRET>', // optional
 );
+
+print(result.secret); // store it now, not returned again
 ```
 ```server-kotlin
 import io.appwrite.Client
@@ -195,8 +218,11 @@ val result = webhooks.create(
     url = "https://example.com/webhook",
     name = "My Webhook",
     events = listOf("users.*.create", "users.*.update"),
-    tls = true
+    tls = true,
+    secret = "<SECRET>" // optional
 )
+
+println(result.secret) // store it now, not returned again
 ```
 ```server-java
 import io.appwrite.Client;
@@ -220,12 +246,14 @@ webhooks.create(
     true,                                            // tls
     null,                                            // authUsername
     null,                                            // authPassword
+    "<SECRET>",                                      // secret (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
-        System.out.println(result);
+
+        System.out.println(result.getSecret()); // store it now, not returned again
     })
 );
 ```
@@ -244,8 +272,11 @@ let result = try await webhooks.create(
     url: "https://example.com/webhook",
     name: "My Webhook",
     events: ["users.*.create", "users.*.update"],
-    tls: true
+    tls: true,
+    secret: "<SECRET>" // optional
 )
+
+print(result.secret) // store it now, not returned again
 ```
 ```server-go
 package main
@@ -269,13 +300,14 @@ func main() {
         "https://example.com/webhook",
         "My Webhook",
         []string{"users.*.create", "users.*.update"},
+        appwrite.WithCreateSecret("<SECRET>"), // optional
     )
 
     if err != nil {
         panic(err)
     }
 
-    fmt.Println(result)
+    fmt.Println(result.Secret) // store it now, not returned again
 }
 ```
 ```server-rust
@@ -301,9 +333,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(true),                                    // tls
         None,                                          // auth_username
         None,                                          // auth_password
+        Some("<SECRET>"),                              // secret (optional)
     ).await?;
 
-    println!("{:?}", result);
+    println!("{}", result.secret); // store it now, not returned again
     Ok(())
 }
 ```
@@ -508,50 +541,61 @@ webhooks.delete(
 
 ## Rotate signing key
 
+By default, calling `updateSecret` generates a fresh random signing key. You can also pass your own `secret` (8-256 characters), which is useful for zero-downtime key rotation.
+
 {% multicode %}
 ```server-nodejs
 const result = await webhooks.updateSecret({
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 });
 ```
 ```server-deno
 const result = await webhooks.updateSecret({
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 });
 ```
 ```server-php
 $result = $webhooks->updateSecret(
-    webhookId: '<WEBHOOK_ID>'
+    webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>' // optional
 );
 ```
 ```server-python
 result = webhooks.update_secret(
-    webhook_id='<WEBHOOK_ID>'
+    webhook_id='<WEBHOOK_ID>',
+    secret='<SECRET>' # optional
 )
 ```
 ```server-ruby
 response = webhooks.update_secret(
-    webhook_id: '<WEBHOOK_ID>'
+    webhook_id: '<WEBHOOK_ID>',
+    secret: '<SECRET>' # optional
 )
 ```
 ```server-dotnet
 var result = await webhooks.UpdateSecret(
-    webhookId: "<WEBHOOK_ID>"
+    webhookId: "<WEBHOOK_ID>",
+    secret: "<SECRET>" // optional
 );
 ```
 ```server-dart
 final result = await webhooks.updateSecret(
     webhookId: '<WEBHOOK_ID>',
+    secret: '<SECRET>', // optional
 );
 ```
 ```server-kotlin
 val result = webhooks.updateSecret(
-    webhookId = "<WEBHOOK_ID>"
+    webhookId = "<WEBHOOK_ID>",
+    secret = "<SECRET>" // optional
 )
 ```
 ```server-java
 webhooks.updateSecret(
     "<WEBHOOK_ID>", // webhookId
+    "<SECRET>", // secret (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -563,17 +607,20 @@ webhooks.updateSecret(
 ```
 ```server-swift
 let result = try await webhooks.updateSecret(
-    webhookId: "<WEBHOOK_ID>"
+    webhookId: "<WEBHOOK_ID>",
+    secret: "<SECRET>" // optional
 )
 ```
 ```server-go
 result, err := webhooks.UpdateSecret(
     "<WEBHOOK_ID>",
+    appwrite.WithUpdateSecretSecret("<SECRET>"), // optional
 )
 ```
 ```server-rust
 let result = webhooks.update_secret(
     "<WEBHOOK_ID>", // webhook_id
+    Some("<SECRET>") // optional
 ).await?;
 ```
 {% /multicode %}
@@ -586,13 +633,7 @@ The Webhooks API requires the latest version of your Appwrite Server SDK. Make s
 
 # Get started
 
-The Webhooks API is available on **Appwrite Cloud** today.
-
-1. Navigate to **Overview** > **Integration** > **API keys** and create or update an API key with the `webhooks.read` and `webhooks.write` scopes.
-2. Initialize a Server SDK with your API key.
-3. Use the `Webhooks` service to manage your webhooks from code.
-
-Full documentation, including examples for all supported SDKs, is available on the [webhooks documentation page](/docs/advanced/platform/webhooks).
+The Webhooks API is available on **Appwrite Cloud** today. Full documentation, including examples for all supported SDKs, is available on the [webhooks documentation page](/docs/advanced/platform/webhooks).
 
 # Resources
 
