@@ -11,7 +11,7 @@ category: product
 
 If you've ever deployed a site and noticed that first request taking just a bit too long, you've experienced a cold start. It's one of those things that's easy to overlook during development but quickly becomes noticeable in production, especially when your users are the ones waiting.
 
-At Appwrite, we've been paying close attention to the performance of [Sites](https://appwrite.io/products/sites), and cold starts were high on our list of things to improve. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold-start times.
+At Appwrite, improving the performance of [Sites](/products/sites) (and every other product) has always been a high priority. We wanted that first request to feel just as fast as every request after it. So we dug into the problem, ran some experiments, and made a series of changes that significantly brought down cold-start times.
 
 In this post, we'll walk you through what was causing the slowdown, the approach we took to fix it, and the results we're seeing now.
 
