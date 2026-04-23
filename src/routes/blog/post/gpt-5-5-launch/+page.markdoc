@@ -141,6 +141,36 @@ Together, those describe a model you can leave alone on a multi-step task and ex
 
 If you are running GPT-5.5 in Codex or ChatGPT and want it to act on your backend rather than just describe changes, the [**Appwrite API MCP server**](/docs/tooling/mcp/api) exposes your project (databases, auth, storage, functions, messaging) as tools the model can call directly. The model reads the live tool schema, calls the API, and your project updates in real time.
 
-- [Set up the Appwrite MCP server for API](/docs/tooling/mcp/api)
+The full setup walkthrough lives in the [**Appwrite Codex guide**](/docs/tooling/ai/ai-dev-tools/codex). A short version is below.
+
+Appwrite ships two MCP servers that both work with Codex:
+
+- **Appwrite API MCP**: lets the model act on your Appwrite project (create users, list databases, upload files, run functions, etc.).
+- **Appwrite Docs MCP**: lets the model look up current Appwrite documentation instead of relying on what it was trained on.
+
+## Add the Docs MCP server
+
+No credentials required:
+
+```bash
+codex mcp add appwrite-docs --url https://mcp-for-docs.appwrite.io
+```
+
+## Add the API MCP server
+
+```bash
+codex mcp add appwrite-api \
+  --env APPWRITE_PROJECT_ID=your-project-id \
+  --env APPWRITE_API_KEY=your-api-key \
+  --env APPWRITE_ENDPOINT=https://<REGION>.cloud.appwrite.io/v1 \
+  -- uvx mcp-server-appwrite
+```
+
+Replace `your-project-id`, `your-api-key`, and `<REGION>` (e.g. `fra`, `nyc`, `syd`) with your own values.
+
+Once connected, a prompt like *"create a new user in my Appwrite project with the email demo@example.com"* will route through the API MCP and run against your project directly, no code generation in between.
+
+- [Full Codex guide in Appwrite docs](/docs/tooling/ai/ai-dev-tools/codex)
+- [MCP server for Appwrite API](/docs/tooling/mcp/api)
 - [Announcing Appwrite MCP Server 2.0](/blog/post/announcing-appwrite-mcp-server-2)
 - [Discord community](https://appwrite.io/discord)
