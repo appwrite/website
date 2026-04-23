@@ -272,7 +272,7 @@ Submit the same email again and the helper catches the 409 from the unique index
 
 You now have a functioning waitlist with proper deduplication, scoped permissions, and a clean separation between your UI and your backend. There are a few natural next steps depending on where you want to take it.
 
-- **Send a welcome email.** Create an [Appwrite Function](/docs/products/functions) that listens for the `databases.*.rows.*.create` event on your `entries` table and sends a transactional email through your provider of choice. The user never has to wait for it on the form.
+- **Send a welcome email.** Create an [Appwrite Function](/docs/products/functions) that listens for the `tablesdb.*.tables.*.rows.*.create` event on your `entries` table and sends a transactional email through your provider of choice. The user never has to wait for it on the form.
 - **Export the list.** Use the [CSV export](/docs/products/databases/csv-exports) feature from the Console when you are ready to invite people, or hit the REST API with a server-side API key for scheduled jobs.
 - **Add referral tracking.** Add a `source` enum column on the table and capture `utm_source` from the URL before calling the helper. The helper signature only needs one more field.
 - **Show a live counter.** With row security off and a read permission for `Any`, you can expose a count of entries on the page. If you want exact privacy, keep reads server-only and surface a daily-updated number from a Function instead.
