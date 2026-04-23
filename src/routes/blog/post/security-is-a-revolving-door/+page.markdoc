@@ -67,6 +67,8 @@ These policies run server-side, so they can't be bypassed through the client.
 
 # Encryption
 
+Data protection means making sure that even if an attacker gains access to a system, the data they find is unreadable. Appwrite applies encryption at multiple levels, covering data in transit, data at rest, and sensitive configuration values like environment variables and secrets.
+
 ## Encryption in transit
 
 All Appwrite Cloud traffic is served over [HTTPS](/docs/advanced/security/https). HTTP requests are automatically redirected to HTTPS (301). Strict-Transport-Security headers are set to prevent protocol downgrade attacks, and [TLS certificates](/docs/advanced/security/tls) are automatically provisioned for all endpoints, custom domains, Functions, and Sites.
