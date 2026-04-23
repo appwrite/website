@@ -9,11 +9,11 @@ author: aditya-oberai
 category: security
 ---
 
-Earlier this month, Vercel [disclosed a security incident](https://vercel.com/kb/bulletin/vercel-april-2026-security-incident) that affected a subset of its customers. An attacker compromised a third-party AI tool used internally at Vercel, which was then used to take over an employee's account and pivot through internal systems. The result: non-sensitive environment variables for a number of customers were exposed in plaintext, potentially including API keys, database credentials, and signing keys.
+Earlier this month, Vercel [disclosed a security incident](https://vercel.com/kb/bulletin/vercel-april-2026-security-incident) that affected a subset of its customers. An attacker compromised a third-party AI tool used internally at Vercel, which was then used to take over an employee's account and pivot through internal systems. The result: environment variables marked as non-sensitive (ones that decrypt to plaintext) for a number of customers were exposed, potentially including API keys, database credentials, and signing keys.
 
 Vercel responded quickly: engaging incident response experts, notifying affected customers, coordinating with upstream partners, and shipping platform improvements. By all accounts, they handled a difficult situation with transparency and speed.
 
-But the incident is worth reflecting on regardless of who it happened to, because it illustrates something that every developer building on the modern internet needs to internalize: **security is a revolving door**. No company, platform, or team is exempt from incidents. The question is never whether threats exist. It's whether you've taken deliberate, layered steps to limit their impact when they do.
+But the incident is worth reflecting on regardless of who it happened to, because it illustrates something that every developer building on the modern internet needs to internalize: **security is a revolving door**. This kind of incident can happen to any team, at any company, at any scale. No platform, no infrastructure, no security program is bulletproof. Security is not a problem you solve once. It's an ongoing effort that requires constant attention, continuous improvement, and layered defenses so that when something does go wrong, the impact is contained.
 
 # Security is an ongoing practice, not a one-time decision
 
@@ -75,9 +75,15 @@ For self-hosted deployments, Appwrite supports Let's Encrypt certificate generat
 
 ## Encryption at rest
 
-Appwrite supports [field-level encryption](/docs/advanced/security/encryption) for database attributes and stored files, using AES-128 in Galois/Counter Mode (GCM). This means you can designate specific database columns or storage buckets for encryption, and their contents are encrypted at the storage layer, not just the transmission layer.
+Appwrite supports [field-level encryption](/docs/advanced/security/encryption) for database columns and stored files, using AES-128 in Galois/Counter Mode (GCM). This means you can designate specific database columns or storage buckets for encryption, and their contents are encrypted at the storage layer, not just the transmission layer.
 
 For applications where data sensitivity varies across fields, this gives you granular control over which data is encrypted at rest without encrypting everything indiscriminately.
+
+## Environment variables and secrets
+
+Appwrite encrypts sensitive platform data server-side, including webhook passwords, API keys, and user sessions. For [Functions](/docs/products/functions/develop) and [Sites](/docs/products/sites/develop), environment variables let you pass constants and secrets (like third-party API keys or connection strings) to your deployments without hardcoding them.
+
+Environment variables for both Functions and Sites can also be marked as **secret**, which hides them from both the Appwrite Console and the API. Once a variable is marked as secret, this action cannot be reversed, ensuring that sensitive values like signing keys or database credentials are never exposed through the dashboard or programmatic access.
 
 # Access control
 
@@ -85,7 +91,7 @@ The authorization layer (deciding which users can access which data) is one of t
 
 ## Permissions system
 
-Appwrite's [permissions system](/docs/advanced/platform/permissions) lets you define access at the collection, document, storage bucket, and individual file level. Permission types cover read, create, update, delete, and write. Roles can be defined for:
+Appwrite's [permissions system](/docs/advanced/platform/permissions) lets you define access at the table, row, storage bucket, and individual file level. Permission types cover read, create, update, delete, and write. Roles can be defined for:
 
 - Any visitor (authenticated or not)
 - Guests (unauthenticated users)
@@ -120,7 +126,7 @@ This protection is infrastructure-level and requires no configuration on your pa
 
 Appwrite's [audit logs](/docs/advanced/security/audit-logs) record events across all products (authentication, databases, storage, functions, and messaging) including the user, event type, IP address, location, and timestamp for each action.
 
-Audit logs are available at the project level, collection or bucket level, and per-user level. For Pro plans, logs are retained for 7 days. For applications where compliance or incident response requires event tracing, audit logs provide the trail needed to understand what happened and when.
+Audit logs are available at the project level, table or bucket level, and per-user level. For Pro plans, logs are retained for 7 days. For applications where compliance or incident response requires event tracing, audit logs provide the trail needed to understand what happened and when.
 
 # Compliance certifications
 
@@ -159,7 +165,7 @@ Appwrite conducts [regular third-party penetration tests](/docs/advanced/securit
 Appwrite handles the platform security layer. But the shared responsibility model applies: some things remain your responsibility no matter which backend you build on.
 
 - **Your application logic**: SQL injection, XSS, insecure deserialization, and other application-layer vulnerabilities live in your code, not the platform's.
-- **How you configure permissions**: Appwrite gives you a precise permissions system. Using it correctly (following least-privilege principles, avoiding broad `any` roles on sensitive collections) is your job.
+- **How you configure permissions**: Appwrite gives you a precise permissions system. Using it correctly (following least-privilege principles, avoiding broad `any` roles on sensitive tables) is your job.
 - **Your API key hygiene**: Keep server API keys out of client-side code, out of version control, and scoped to the minimum required permissions.
 - **Third-party integrations**: When your application connects to external services, the security of those connections and data flows is your responsibility.
 - **Dependency maintenance**: Keep your dependencies up to date and scan for known vulnerabilities.
@@ -174,7 +180,7 @@ What it underscores is the value of defense in depth: multiple independent layer
 
 Each of these is a layer. Together, they're a posture.
 
-Appwrite is designed to give developers that posture by default, without requiring deep security expertise to configure correctly.
+Building "secure by default" into Appwrite has been a priority since day one, and it's one we will continue to keep. Security is never done, but Appwrite is designed to give developers a strong posture from the start, without requiring deep security expertise to configure correctly.
 
 - [Appwrite Security overview](/docs/advanced/security)
 - [Appwrite Authentication security](/docs/products/auth/security)
