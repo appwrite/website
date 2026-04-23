@@ -117,11 +117,11 @@ This matters for anyone using Codex or ChatGPT to ship a UI from scratch. A mode
 
 # Safety and the system card
 
-The [GPT-5.5 system card](https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf) covers the full preparedness, safety, and alignment evaluation. A few points worth pulling out:
+The [GPT-5.5 system card](https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf) covers the full preparedness, safety, and alignment evaluation. OpenAI's Preparedness Framework rates models in three high-risk domains (Bio/Chem, Cybersecurity, AI Self-Improvement) against two thresholds: **High** (capable enough that additional safeguards are required) and **Critical** (capable enough to cause severe harm without mitigation). GPT-5.5's ratings:
 
-- **Biological and Chemical: High capability.** Same designation as GPT-5.4. Preparedness safeguards remain active.
-- **Cybersecurity: High capability, below Critical.** Safeguards have been increased for this launch. The system card states explicitly that GPT-5.5 does not have the capability to develop "functional zero-day exploits of all severity levels in many hardened real world critical systems without human intervention", the threshold for Critical.
-- **AI self-improvement: below High.** Final-checkpoint evaluations found no plausible chance of reaching the High threshold.
+- **Biological and Chemical: High.** Same as GPT-5.4. The model is capable enough in this domain that OpenAI keeps its bio/chem-specific safeguards active (monitoring, access controls, and refusals on sensitive uplift requests). Not at the Critical threshold.
+- **Cybersecurity: High, below Critical.** An increase over GPT-5.4. OpenAI has tightened cyber safeguards for this launch. The system card states GPT-5.5 does not have the capability to develop "functional zero-day exploits of all severity levels in many hardened real world critical systems without human intervention", which is the Critical threshold.
+- **AI Self-Improvement: below High.** Final-checkpoint evaluations found no plausible chance of reaching the High threshold.
 - OpenAI collected feedback from nearly **200 trusted early-access partners** before release.
 - This is described as OpenAI's "strongest set of safeguards to date".
 
