@@ -1860,7 +1860,7 @@ Query::cursor_before("62a7...a600").to_string()
 Built-in helpers for filtering by creation and update timestamps using
 ISO 8601 date-time strings (for example, "2025-01-01T00:00:00Z").
 
-### Created before {% #created-before %}
+### Created before {% #created-before-time-helpers %}
 
 Returns rows created before the given date.
 
@@ -1906,7 +1906,7 @@ Query::created_before("2025-01-01T00:00:00Z").to_string()
 ```
 {% /multicode %}
 
-### Created after {% #created-after %}
+### Created after {% #created-after-time-helpers %}
 
 Returns rows created after the given date.
 
@@ -1952,7 +1952,7 @@ Query::created_after("2025-01-01T00:00:00Z").to_string()
 ```
 {% /multicode %}
 
-### Updated before {% #updated-before %}
+### Updated before {% #updated-before-time-helpers %}
 
 Returns rows updated before the given date.
 
@@ -1998,7 +1998,7 @@ Query::updated_before("2025-01-01T00:00:00Z").to_string()
 ```
 {% /multicode %}
 
-### Updated after {% #updated-after %}
+### Updated after {% #updated-after-time-helpers %}
 
 Returns rows updated after the given date.
 
