@@ -2,7 +2,7 @@
 layout: post
 title: "How we reduced cold start times on Appwrite Sites"
 description: Learn how we improved cold-start performance for Appwrite Sites, delivering faster load times for your web applications.
-date: 2026-03-12
+date: 2026-04-24
 cover: /images/blog/reducing-cold-starts-appwrite-sites/cover.png
 timeToRead: 5
 author: levi-van-noort
