@@ -31,7 +31,7 @@ Faster decompression was a big win, but it raised an obvious next question: why 
 
 The impact was dramatic. Smaller artifacts meant less to compress, less to transfer, and less to extract, compounding the gains we had already made on the decompression side.
 
-Some examples of reductions in size for the templates offered:
+Here are some examples of size reductions across our templates:
 
 | Templates | Before | After | Reduction |
 | --------- | ------ | ----- | --------- |
