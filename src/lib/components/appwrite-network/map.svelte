@@ -10,6 +10,7 @@
     } from './map-tooltip.svelte';
     import { createMap } from 'svg-dotted-map';
     import { browser } from '$app/environment';
+    import { untrack } from 'svelte';
 
     type Props = {
         theme: 'light' | 'dark';
@@ -19,7 +20,7 @@
 
     const { theme = 'dark', navigable = true, defaultSet = 'pop-locations' }: Props = $props();
 
-    let activeSegment = $state<string>(defaultSet);
+    let activeSegment = $state<string>(untrack(() => defaultSet));
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
 
     const { action: mousePosition, position } = useMousePosition();

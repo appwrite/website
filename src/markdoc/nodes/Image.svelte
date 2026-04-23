@@ -15,7 +15,7 @@
     let { src, alt, title }: ImageProps = $props();
 
     const inTable = isInTable();
-    const isAudio = /\.(wav|mp3|m4a|ogg)$/i.test(src);
+    const isAudio = $derived(/\.(wav|mp3|m4a|ogg)$/i.test(src));
 
     const {
         elements: { portalled, trigger, content, overlay },

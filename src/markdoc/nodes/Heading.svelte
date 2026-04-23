@@ -1,6 +1,6 @@
 <script lang="ts">
     import { slugify } from '$lib/utils/slugify';
-    import { getContext, hasContext, onMount, type Snippet } from 'svelte';
+    import { getContext, hasContext, onMount, untrack, type Snippet } from 'svelte';
     import type { InlineCtaProps } from '$lib/utils/blog-mid-cta';
     import type { LayoutContext } from '../layouts/Article.svelte';
     import type CallToAction from '../tags/Call_To_Action.svelte';
@@ -15,7 +15,7 @@
 
     const { level, id: elementId = undefined, step = undefined, children }: HeadingProps = $props();
 
-    const tag = `h${level + 1}`;
+    const tag = $derived(`h${level + 1}`);
     const ctx = hasContext('headings') ? getContext<LayoutContext>('headings') : undefined;
 
     interface BlogMidCtaContext {
@@ -33,16 +33,18 @@
     const MidCtaComponent = midCta?.component;
     let renderMidCta = $state(false);
 
-    if (midCta && MidCtaComponent && level === midCta.level) {
-        const alreadyInserted = get(midCta.inserted);
-        if (!alreadyInserted) {
-            midCta.count += 1;
-            if (midCta.count === midCta.targetIndex) {
-                renderMidCta = true;
-                midCta.inserted.set(true);
+    untrack(() => {
+        if (midCta && MidCtaComponent && level === midCta.level) {
+            const alreadyInserted = get(midCta.inserted);
+            if (!alreadyInserted) {
+                midCta.count += 1;
+                if (midCta.count === midCta.targetIndex) {
+                    renderMidCta = true;
+                    midCta.inserted.set(true);
+                }
             }
         }
-    }
+    });
 
     let element: HTMLElement | undefined = $state();
 

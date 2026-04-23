@@ -40,23 +40,25 @@
         just_img = false
     }: Props = $props();
 
-    const src = storage
-        .getFilePreview(
-            bucket_id,
-            file_id,
-            width,
-            height,
-            gravity as any,
-            quality,
-            border_width,
-            border_color,
-            border_radius,
-            opacity,
-            rotation,
-            background_color,
-            output as any
-        )
-        .toString();
+    const src = $derived(
+        storage
+            .getFilePreview(
+                bucket_id,
+                file_id,
+                width,
+                height,
+                gravity as any,
+                quality,
+                border_width,
+                border_color,
+                border_radius,
+                opacity,
+                rotation,
+                background_color,
+                output as any
+            )
+            .toString()
+    );
 </script>
 
 {#if just_img}

@@ -36,7 +36,7 @@
     let hasQuery = $derived(query.length > 0);
 
     // platform filters
-    const platforms = ['All', ...data.platforms];
+    const platforms = $derived(['All', ...data.platforms]);
 
     let activePlatform = $state('All');
 
