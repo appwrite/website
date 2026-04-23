@@ -1,0 +1,106 @@
+---
+layout: post
+title: "Appwrite vs Vercel for full-stack AI apps"
+description: "Appwrite vs Vercel AI for full-stack apps: compare backend primitives, hosting, AI SDK, Gateway, and self-hosting for AI app builders."
+date: 2026-04-23
+cover: /images/blog/appwrite-vs-vercel-ai-apps/cover.png
+timeToRead: 8
+author: atharva
+unlisted: true
+category: comparisons
+---
+
+Developers shipping AI apps in 2026 keep landing on the same decision: Appwrite vs Vercel AI. Both platforms are trying to make AI apps faster to ship, but they are solving different parts of the problem. Vercel focuses on deploying frontends, wiring model calls through the AI SDK, and routing them through the AI Gateway. Appwrite focuses on the persistent backend every AI app eventually needs: Auth, Databases with tables, Storage, Functions, Sites hosting, Messaging, and self-hosting.
+
+This comparison is written for teams picking a backend for AI-native products and trying to understand whether Vercel is a Vercel AI backend or a deployment surface with a model-calling SDK on top.
+
+## What Appwrite and Vercel are actually optimized for
+
+Vercel is a deployment and AI-inference platform. Its AI story is organized around two products: the AI SDK, a TypeScript toolkit with a unified API to call LLMs across providers, and the AI Gateway, a unified endpoint that gives you one key for hundreds of models along with observability, budgets, fallbacks, and BYOK. Vercel also ships Storage products such as Postgres, Blob, and Edge Config that plug into its compute.
+
+Appwrite is an open-source development platform for web, mobile, and AI applications. It brings backend infrastructure and web hosting together, available on Appwrite Cloud or self-hosted. The surface covers Auth, Databases (with tables, rows, columns, relationships, queries, and transactions), Storage, Functions, Sites, Realtime, Messaging, and an MCP server so coding agents can call Appwrite through natural language.
+
+Put simply: Vercel makes it easy to call models and ship a web frontend. Appwrite makes it easy to own the durable state, identity, files, and server logic underneath any AI app, and then host it.
+
+## Appwrite vs Vercel AI: comparison table
+
+| Capability | Vercel | Appwrite |
+| --- | --- | --- |
+| Primary role | Deployment platform with AI SDK and AI Gateway | Full backend platform with hosting via Sites |
+| Model calls | AI SDK with unified API across providers, AI Gateway for one key across many models | Any provider via HTTP in a Function; works with AI SDK, provider SDKs, or raw fetch |
+| Model routing, fallbacks, BYOK | AI Gateway handles routing, fallbacks, budgets, observability, BYOK | Build your own routing inside a Function or call AI Gateway from a Function |
+| Authentication | Not a user-auth product; bring Auth.js, Clerk, or a third-party | Built-in Auth with email, OAuth, phone, anonymous, JWT, teams, permissions |
+| Database | Postgres (Neon integration), key-value, Edge Config via Storage products | Appwrite Databases with tables, rows, columns, relationships, queries, transactions, type generation, AI suggestions |
+| File storage | Blob storage for files | Storage buckets with permissions, transforms, antivirus, signed URLs |
+| Server-side logic | Functions run on Vercel compute, optimized for request/response and edge | Appwrite Functions in multiple runtimes with env vars, scheduling, logs, triggers |
+| Realtime | Not a first-party realtime product | Realtime channels for rows, files, accounts, and Functions |
+| Hosting | Core strength: previews, domains, edge network | Sites with source control deploys, isolated containers, custom domains, env vars, rollbacks, logs, Appwrite Network |
+| Agent access | Vercel MCP server (beta) for Vercel resources | Appwrite API MCP server for Appwrite resources; docs MCP for code generation |
+| Self-hosting | No first-party self-host path | Full self-hosting via Docker, same image as Cloud |
+| Open source | Platform is proprietary; AI SDK is open source | Platform is open source |
+| Free tier | Hobby plan with included usage for functions, builds, analytics | Free project tier on Cloud, plus unlimited self-hosted |
+
+## Where Vercel wins for AI apps
+
+Vercel has the cleanest deployment story for a Next.js, SvelteKit, Nuxt, or Remix frontend, and the AI SDK is well designed for model calls. The AI Gateway is a strong differentiator: one key, hundreds of models, retries across providers, embeddings, and zero markup on tokens including BYOK. If your app is mostly a chat UI talking to an LLM, with state living client-side or in an external database, Vercel lets you ship that end to end without thinking about infrastructure.
+
+Vercel is also the right answer when your team is standardized on the AI SDK and you want agent loops, tool calls, and structured output generation to feel native inside a Next.js codebase.
+
+## Where Appwrite wins for AI apps
+
+The moment an AI app needs more than a model call, the backend surface starts to matter. That is where Appwrite compares differently to Vercel.
+
+**Durable data with the right primitives.** Appwrite Databases use tables, rows, columns, relationships, queries, transactions, and type generation, which maps cleanly onto AI app patterns like sessions, messages, tool calls, embeddings references, and user-generated artifacts. AI suggestions help scaffold schemas directly.
+
+**Identity and permissions.** Appwrite ships Auth with email, OAuth, phone, JWT, teams, and row-level permissions. On Vercel you assemble this from third-party services.
+
+**Files as a first-class citizen.** Storage buckets with permissions, transforms, antivirus scanning, and signed URLs remove a pile of plumbing that AI apps routinely need for uploads, RAG sources, generated images, and exports.
+
+**Server-side logic in any runtime.** Appwrite Functions give you a place to run provider calls, prompt orchestration, webhook processing, and scheduled jobs. Functions return standard HTTP responses, so for token-by-token chat UIs you typically call the model from the client against a provider or AI Gateway, and use Functions for the orchestration, persistence, and privileged work around it.
+
+**Realtime out of the box.** Updates to rows, files, and accounts flow through Realtime channels. That matters for multi-user AI apps, live agent status, and collaborative canvases.
+
+**Hosting with Sites.** Appwrite Sites covers source control deploys, isolated containers, custom domains, env vars, rollbacks, logs, and the Appwrite Network. You can host a frontend and have the same platform own the backend, instead of splitting between a deployment vendor and a backend vendor.
+
+**Self-hosting.** Appwrite is available as managed Cloud and can be self-hosted on infrastructure you control. Vercel does not offer a first-party self-host path. For regulated industries, data residency, or cost control at scale, self-hosting is often the deciding factor.
+
+**MCP for coding agents.** The Appwrite API MCP server lets Claude Code, Cursor, Windsurf, Lovable, and similar tools act on Appwrite resources through natural language with a compact two-tool workflow. Combined with an open-source platform, it fits AI-assisted development better than a closed deployment vendor.
+
+## The Vercel AI backend gap
+
+Calling Vercel a "Vercel AI backend" is a stretch in the traditional sense. Vercel does not sell itself as an auth provider, a full database platform, a permissions engine, or a realtime stack. It sells deployment, the AI SDK, the AI Gateway, and a few Storage products. Teams who pick Vercel for AI apps typically end up with:
+
+- Vercel for hosting and model calls.
+- A third-party auth provider.
+- A Postgres provider such as Neon.
+- Object storage from a cloud provider or Blob.
+- A separate realtime service if the product needs it.
+
+That stack ships, but it is several vendors with separate billing, dashboards, and support surfaces. Appwrite compresses that into one platform and one API surface.
+
+## Using Appwrite and Vercel together
+
+This is not an either-or choice for every team. A common pairing is Vercel for the Next.js frontend plus the AI SDK for model calls, and Appwrite for Auth, Databases, Storage, Functions, and Realtime. The frontend on Vercel authenticates users against Appwrite, persists sessions and messages in Appwrite Databases, uploads files to Appwrite Storage, and runs privileged work in Appwrite Functions. Model inference continues to flow through the AI SDK or AI Gateway.
+
+If you want a single vendor, Appwrite Sites can host the frontend too and collapse the stack further.
+
+## How to decide
+
+Pick Vercel when:
+
+- You want the tightest integration with the AI SDK and AI Gateway.
+- Your app is mostly a frontend plus model calls.
+- You do not need self-hosting or deep backend primitives.
+
+Pick Appwrite when:
+
+- You need Auth, Databases, Storage, Functions, Realtime, and hosting from one platform.
+- You want to self-host or want an open-source backend.
+- Your AI app has durable state, multi-user flows, files, and server-side orchestration.
+- You want MCP-native access so coding agents can work on the backend directly.
+
+Pick both when you already have a Vercel frontend and want a serious backend underneath it.
+
+## Try it
+
+If you are on the Appwrite side of this decision, the fastest path is to spin up a project on [Appwrite Cloud](https://cloud.appwrite.io), add Auth, create a table for your AI app's sessions and messages, and wire a Function for any privileged model call or orchestration step. You can keep using the AI SDK on your frontend and let Appwrite own the durable parts of the stack.
