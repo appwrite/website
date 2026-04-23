@@ -55,7 +55,7 @@ OpenAI published a large benchmark sweep against **GPT-5.4**, **GPT-5.4 Pro**, *
 | --- | --- | --- | --- | --- |
 | Terminal-Bench 2.0 | **82.7%** | 75.1% | 69.4% | 68.5% |
 | Expert-SWE (internal) | **73.1%** | 68.5% | — | — |
-| SWE-Bench Pro (public) | 58.6% | 57.7% | **64.3%*** | 54.2% |
+| SWE-Bench Pro (public) | 58.6% | 57.7% | **64.3%** | 54.2% |
 | OSWorld-Verified | **78.7%** | 75.0% | 78.0% | — |
 | Toolathlon | **55.6%** | 54.6% | — | 48.8% |
 | GDPval (wins or ties) | **84.9%** | 83.0% | 80.3% | 67.3% |
