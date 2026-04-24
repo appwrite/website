@@ -53,7 +53,7 @@ Appwrite provides four different relationship types to enforce different associa
 | One-to-one  | A row can only be related to one and only one row.           |
 | One-to-many | A row can be related to many other rows.                      |
 | Many-to-one | Many rows can be related to a single row.                     |
-| Many-to-many| A row can be related to many other rows.                      |
+| Many-to-many| Many rows can be related to many other rows.                      |
 
 
 # On-delete {% #on-delete %}
