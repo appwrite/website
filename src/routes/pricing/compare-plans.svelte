@@ -366,6 +366,14 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Build timeout',
+                    info: 'Maximum duration for Sites and Functions build jobs',
+                    free: '15 minutes',
+                    pro: '45 minutes',
+                    scale: '45 minutes',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Express builds',
                     info: 'Dedicated priority queues for build jobs',
                     free: '-',
