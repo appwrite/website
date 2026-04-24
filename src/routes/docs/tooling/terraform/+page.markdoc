@@ -42,10 +42,10 @@ This section is about **Appwrite resources inside a project** (for example datab
 
 If you are new to the idea:
 
-- **Provider** - A plugin that teaches Terraform how to talk to a specific API (here, Appwrite).
-- **Resource** - Something Terraform should create and manage (for example an Appwrite database or table).
-- **State** - Terraform remembers what it already created so the next run can update or destroy only what changed.
-- **Plan / apply** - You run `terraform plan` to preview changes, then `terraform apply` to execute them.
+- **Provider**: A plugin that teaches Terraform how to talk to a specific API (here, Appwrite).
+- **Resource**: Something Terraform should create and manage (for example an Appwrite database or table).
+- **State**: Terraform remembers what it already created so the next run can update or destroy only what changed.
+- **Plan / apply**: You run `terraform plan` to preview changes, then `terraform apply` to execute them.
 
 You still use the [Appwrite Console](https://cloud.appwrite.io) and SDKs for day-to-day app development; the provider is for **repeatable, version-controlled** setup of project resources across environments.
 
