@@ -26,7 +26,10 @@
         subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
     />
     <Platforms headline="Designed for the tools you work with" />
-    <LogoList class="border-smooth border-b" title="Loved by hackers, startups and enterprises alike" />
+    <LogoList
+        class="border-smooth border-b"
+        title="Loved by hackers, startups and enterprises alike"
+    />
     <Bento />
     <Pullquote
         name="Phil McCluskey"

@@ -7,7 +7,8 @@
         class?: string;
     };
 
-    const { title = 'Loved by hackers, startups and enterprises alike', class: className }: Props = $props();
+    const { title = 'Loved by hackers, startups and enterprises alike', class: className }: Props =
+        $props();
 
     const logos = [
         {
@@ -87,12 +88,14 @@
 
 <div class={cn('py-12', className)}>
     <div class="mx-auto max-w-6xl px-4 md:px-8">
-        <div class="flex justify-center overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <h2 class="font-aeonik-pro text-greyscale-100 text-description text-center whitespace-nowrap">
-                {title}
-            </h2>
-        </div>
-        <div class="relative grid grid-cols-3 gap-8 py-10 md:grid-cols-4 md:gap-10 lg:grid-cols-6 lg:gap-12">
+        <h2
+            class="font-aeonik-pro text-greyscale-100 text-description text-center text-pretty md:whitespace-nowrap"
+        >
+            {title}
+        </h2>
+        <div
+            class="relative grid grid-cols-3 gap-8 py-10 md:grid-cols-4 md:gap-10 lg:grid-cols-6 lg:gap-12"
+        >
             {#each logos as { src, alt, width, height } (src)}
                 <div class="flex items-center justify-center">
                     <img
