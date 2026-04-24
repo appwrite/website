@@ -36,7 +36,7 @@ The Claude Code plugin bundles all of the above into a single install. The detai
 # Prerequisites
 
 - An [Appwrite Cloud](https://cloud.appwrite.io) account or a self-hosted Appwrite instance.
-- [Claude Code](https://docs.claude.com/en/docs/claude-code) installed and working in your terminal.
+- [Claude Code](https://code.claude.com/docs/en/overview) installed and working in your terminal.
 - A project you want to give a backend to. It does not need to be an Appwrite project yet.
 
 # Step 1: Create an Appwrite project
