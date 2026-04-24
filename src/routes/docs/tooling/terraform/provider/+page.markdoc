@@ -34,7 +34,7 @@ provider "appwrite" {
 
 # Community Edition {% #community-edition %}
 
-For self-hosted Appwrite, set your instance URL and enable `self_signed` when you use a certificate that is not trusted by default (common in local or internal deployments):
+For self-hosted Appwrite instances, set your instance URL and enable `self_signed` when you use a certificate that is not trusted by default (common in local or internal deployments):
 
 ```hcl
 provider "appwrite" {
@@ -74,8 +74,8 @@ Use a key with the scopes required for the resources you manage (for example Tab
 
 # Related {% #related %}
 
-- [Overview](/docs/tooling/terraform) - full resource list
-- [Databases](/docs/tooling/terraform/resources/databases) - TablesDB resources
-- [Storage](/docs/tooling/terraform/resources/storage) - buckets and files
-- [Messaging](/docs/tooling/terraform/resources/messaging) - providers, topics, and subscribers
-- [Self-hosting](/docs/advanced/self-hosting) - install and run the Appwrite server (not the same as configuring project resources with this provider)
+- [Overview](/docs/tooling/terraform): full resource list
+- [Databases](/docs/tooling/terraform/resources/databases): TablesDB resources
+- [Storage](/docs/tooling/terraform/resources/storage): buckets and files
+- [Messaging](/docs/tooling/terraform/resources/messaging): providers, topics, and subscribers
+- [Self-hosting](/docs/advanced/self-hosting): install and run the Appwrite server (not the same as configuring project resources with this provider)

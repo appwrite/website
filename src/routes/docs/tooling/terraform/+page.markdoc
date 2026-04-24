@@ -6,7 +6,7 @@ description: Manage Appwrite infrastructure as code with the official Terraform 
 
 The [Terraform provider for Appwrite](https://github.com/appwrite/terraform-provider-appwrite) lets you declare **TablesDB** (databases, tables, columns, indexes, rows), **Storage** (buckets and files), **Auth** (users and teams), **Functions** (functions and variables), **Sites** (sites and variables), **Messaging** (providers, topics, subscribers), **webhooks**, **backup policies**, and more in `.tf` files, and apply those changes through [HashiCorp Terraform](https://www.terraform.io/). It is the official way to automate Appwrite project configuration alongside the rest of your stack.
 
-# Resources and data sources {% #resources-and-data-sources %}
+# Resources {% #resources %}
 
 Resource types use the `appwrite_` prefix and match the [Terraform Registry](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs) documentation.
 
@@ -21,16 +21,20 @@ Resource types use the `appwrite_` prefix and match the [Terraform Registry](htt
 | Webhooks | `appwrite_webhook` |
 | Backups | `appwrite_backup_policy` |
 
-| Kind | Name | Description |
-|------|------|-------------|
-| Data source | `appwrite_tablesdb` | Look up a database by ID |
-| Data source | `appwrite_storage_bucket` | Look up a storage bucket by ID |
-| Data source | `appwrite_auth_user` | Look up a user by ID |
-| Data source | `appwrite_auth_team` | Look up a team by ID |
-| Data source | `appwrite_function` | Look up a function by ID |
-| Data source | `appwrite_site` | Look up a site by ID |
-| Data source | `appwrite_messaging_topic` | Look up a messaging topic by ID |
-| Data source | `appwrite_webhook` | Look up a webhook by ID |
+# Data sources {% #data-sources %}
+
+Data sources read resources that already exist instead of creating them. Use them to reference identifiers or attributes from resources created outside Terraform or in another state.
+
+| Name | Description |
+|------|-------------|
+| `appwrite_tablesdb` | Look up a database by ID |
+| `appwrite_storage_bucket` | Look up a storage bucket by ID |
+| `appwrite_auth_user` | Look up a user by ID |
+| `appwrite_auth_team` | Look up a team by ID |
+| `appwrite_function` | Look up a function by ID |
+| `appwrite_site` | Look up a site by ID |
+| `appwrite_messaging_topic` | Look up a messaging topic by ID |
+| `appwrite_webhook` | Look up a webhook by ID |
 
 {% info title="Looking for self-hosting?" %}
 This section is about **Appwrite resources inside a project** (for example databases and tables) using Terraform. If you want to install or operate the Appwrite server itself (Docker, configuration, TLS, scaling), go to the [self-hosting documentation](/docs/advanced/self-hosting) instead.
@@ -55,10 +59,10 @@ Source code, issues, and contribution guidelines:
 
 {% cards %}
 {% cards_item href="https://github.com/appwrite/terraform-provider-appwrite" title="GitHub" icon="web-icon-github" %}
-`appwrite/terraform-provider-appwrite` - source and issues.
+`appwrite/terraform-provider-appwrite`: source and issues.
 {% /cards_item %}
 {% cards_item href="https://registry.terraform.io/providers/appwrite/appwrite/latest/docs" title="Terraform Registry" icon="web-icon-terraform" %}
-`appwrite/appwrite` - install, versions, generated schemas.
+`appwrite/appwrite`: install, versions, generated schemas.
 {% /cards_item %}
 {% /cards %}
 

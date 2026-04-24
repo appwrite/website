@@ -2,7 +2,7 @@
 layout: integration
 title: Terraform provider for Appwrite
 description: Manage Appwrite TablesDB, Storage, Auth, Functions, Sites, Messaging, webhooks, backups, and more with HashiCorp Terraform and the official appwrite/appwrite provider.
-date: 2026-04-19
+date: 2026-04-24
 featured: false
 isPartner: false
 isNew: true

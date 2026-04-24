@@ -72,7 +72,7 @@ resource "appwrite_site_deployment" "from_template" {
 
 By default the resource waits for the build to finish before it returns; set `wait_for_ready = false` if you want `terraform apply` to return as soon as the deployment is queued.
 
-# Data source {% #data-source %}
+# Data sources {% #data-sources %}
 
 The **`appwrite_site`** data source reads an existing site by ID. Use it when the site was created outside Terraform or in another state, and you need to reference attributes such as `framework` or the active `deployment_id`.
 

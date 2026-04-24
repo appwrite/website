@@ -48,7 +48,7 @@ Common optional arguments on buckets include `maximum_file_size`, `allowed_file_
 
 Buckets and files support [Terraform import](https://developer.hashicorp.com/terraform/cli/commands/import) where the upstream resource documents an ID format (see the Registry for each resource).
 
-# Lookup an existing bucket (data source) {% #lookup-existing-bucket %}
+# Data sources {% #data-sources %}
 
 The **`appwrite_storage_bucket`** data source reads a bucket by ID instead of creating one. Use it when the bucket was created outside Terraform or lives in another state, and you need to reference attributes like `name`, `compression`, or `maximum_file_size`.
 

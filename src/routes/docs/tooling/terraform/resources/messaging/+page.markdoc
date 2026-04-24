@@ -4,7 +4,7 @@ title: Messaging
 description: Configure Appwrite Messaging providers, topics, and subscribers with Terraform for email, SMS, and push delivery.
 ---
 
-[Messaging](/docs/products/messaging) integrates email, SMS, and push providers. The Terraform provider exposes **providers** (credentials and channel configuration), **topics** (channels for your messages), and **subscribers** (who receives messages on a topic).
+[Messaging](/docs/products/messaging) integrates email, SMS, and push providers. The Terraform provider exposes **providers** (credentials and channel configuration), **topics** (groupings of subscribers for broadcasts), and **subscribers** (who receives messages on a topic).
 
 See the Terraform Registry for generated schemas: [messaging_provider](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/messaging_provider), [messaging_topic](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/messaging_topic), and [messaging_subscriber](https://registry.terraform.io/providers/appwrite/appwrite/latest/docs/resources/messaging_subscriber). The [provider repository](https://github.com/appwrite/terraform-provider-appwrite) lists every `type` and optional field in source; provider-specific arguments apply only to the matching provider (for example Twilio `account_sid`, SMTP `host` and `encryption`, FCM `service_account_json`).
 
@@ -69,16 +69,21 @@ resource "appwrite_messaging_topic" "announcements" {
   name = "announcements"
 }
 
-resource "appwrite_messaging_topic" "alerts" {
-  id        = "alerts"
-  name      = "alerts"
-  subscribe = ["users"]
+resource "appwrite_auth_team" "engineering" {
+  id   = "engineering"
+  name = "engineering"
+}
+
+resource "appwrite_messaging_topic" "engineering_alerts" {
+  id        = "engineering-alerts"
+  name      = "engineering-alerts"
+  subscribe = ["team:${appwrite_auth_team.engineering.id}"]
 }
 ```
 
 Topics and subscribers support import by ID where documented; see the Registry for each resource.
 
-# Lookup an existing topic (data source) {% #lookup-existing-topic %}
+# Data sources {% #data-sources %}
 
 The **`appwrite_messaging_topic`** data source reads a topic that already exists by ID. Use it to attach subscribers without taking ownership of the topic itself in Terraform.
 

@@ -39,5 +39,5 @@ See the Terraform Registry for the full attribute lists: [auth_user data source]
 
 # Related {% #related %}
 
-- [Configuration](/docs/tooling/terraform/provider) - authentication and endpoints
+- [Configuration](/docs/tooling/terraform/provider): authentication and endpoints
 - [Auth product docs](/docs/products/auth)
