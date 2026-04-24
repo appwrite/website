@@ -8,7 +8,6 @@ timeToRead: 10
 author: atharva
 category: tutorial
 featured: false
-unlisted: true
 callToAction: true
 ---
 
@@ -113,7 +112,7 @@ For admin-side operations (listing users, creating users from a seed script, dis
 
 ## Create and query databases
 
-The Databases service is where the rest of the app's state lives. You describe the shape of the data you want, and Claude Code can use the API MCP server to create the database, tables, and columns in your project without you touching the Console.
+The TablesDB service is where the rest of the app's state lives. You describe the shape of the data you want, and Claude Code can use the API MCP server to create the database, tables, and columns in your project without you touching the Console.
 
 A prompt like:
 
