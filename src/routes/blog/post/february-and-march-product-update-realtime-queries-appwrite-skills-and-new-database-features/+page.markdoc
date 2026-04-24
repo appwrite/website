@@ -45,7 +45,7 @@ Appwrite Databases now supports four explicit string column types: `varchar`, 
 
 Appwrite Realtime now includes channel helpers, a fluent type-safe API for building channel subscriptions. Instead of writing channel strings by hand, use a chainable API with IDE autocomplete and compile-time validation. Existing string-based subscriptions continue to work. Available across Web, Flutter, React Native, Apple, and Android SDKs.
 
-[Read the full announcement](https://appwrite.io/blog/post/announcing-realtime-queries)
+[Read the full announcement](https://appwrite.io/blog/post/announcing-realtime-channel-helpers)
 
 ![Introducing Realtime queries.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_Realtime_queries.png)
 
