@@ -32,6 +32,7 @@ export type IconType =
     | 'check'
     | 'close'
     | 'copy'
+    | 'terraform'
     | 'message'
     | 'play'
     | 'remix'

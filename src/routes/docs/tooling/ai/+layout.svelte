@@ -72,6 +72,10 @@
                 {
                     label: 'Claude Code',
                     href: '/docs/tooling/ai/ai-dev-tools/claude-code'
+                },
+                {
+                    label: 'Codex',
+                    href: '/docs/tooling/ai/ai-dev-tools/codex'
                 }
             ]
         },
