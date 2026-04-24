@@ -116,111 +116,114 @@
 .web-icon-copy:before {
     content: '\ea20';
 }
-.web-icon-message:before {
+.web-icon-terraform:before {
     content: '\ea21';
 }
-.web-icon-play:before {
+.web-icon-message:before {
     content: '\ea22';
 }
-.web-icon-remix:before {
+.web-icon-play:before {
     content: '\ea23';
 }
-.web-icon-skills:before {
+.web-icon-remix:before {
     content: '\ea24';
 }
-.web-icon-hamburger-menu:before {
+.web-icon-skills:before {
     content: '\ea25';
 }
-.web-icon-google:before {
+.web-icon-hamburger-menu:before {
     content: '\ea26';
 }
-.web-icon-rest:before {
+.web-icon-google:before {
     content: '\ea27';
 }
-.web-icon-star:before {
+.web-icon-rest:before {
     content: '\ea28';
 }
-.web-icon-mailgun:before {
+.web-icon-star:before {
     content: '\ea29';
 }
-.web-icon-regions:before {
+.web-icon-mailgun:before {
     content: '\ea2a';
 }
-.web-icon-youtube:before {
+.web-icon-regions:before {
     content: '\ea2b';
 }
-.web-icon-command:before {
+.web-icon-youtube:before {
     content: '\ea2c';
 }
-.web-icon-logout-right:before {
+.web-icon-command:before {
     content: '\ea2d';
 }
-.web-icon-tanstack:before {
+.web-icon-logout-right:before {
     content: '\ea2e';
 }
-.web-icon-location:before {
+.web-icon-tanstack:before {
     content: '\ea2f';
 }
-.web-icon-arrow-up:before {
+.web-icon-location:before {
     content: '\ea30';
 }
-.web-icon-linkedin:before {
+.web-icon-arrow-up:before {
     content: '\ea31';
 }
-.web-icon-arena:before {
+.web-icon-linkedin:before {
     content: '\ea32';
 }
-.web-icon-twitter:before {
+.web-icon-arena:before {
     content: '\ea33';
 }
-.web-icon-customize:before {
+.web-icon-twitter:before {
     content: '\ea34';
 }
-.web-icon-discord:before {
+.web-icon-customize:before {
     content: '\ea35';
 }
-.web-icon-calendar:before {
+.web-icon-discord:before {
     content: '\ea36';
 }
-.web-icon-arrow-left:before {
+.web-icon-calendar:before {
     content: '\ea37';
 }
-.web-icon-sendgrid:before {
+.web-icon-arrow-left:before {
     content: '\ea38';
 }
-.web-icon-pop-locations:before {
+.web-icon-sendgrid:before {
     content: '\ea39';
 }
-.web-icon-product-hunt:before {
+.web-icon-pop-locations:before {
     content: '\ea3a';
 }
-.web-icon-appwrite:before {
+.web-icon-product-hunt:before {
     content: '\ea3b';
 }
-.web-icon-arrow-ext-link:before {
+.web-icon-appwrite:before {
     content: '\ea3c';
 }
-.web-icon-logout-left:before {
+.web-icon-arrow-ext-link:before {
     content: '\ea3d';
 }
-.web-icon-external-icon:before {
+.web-icon-logout-left:before {
     content: '\ea3e';
 }
-.web-icon-apple:before {
+.web-icon-external-icon:before {
     content: '\ea3f';
 }
-.web-icon-tiktok:before {
+.web-icon-apple:before {
     content: '\ea40';
 }
-.web-icon-minus:before {
+.web-icon-tiktok:before {
     content: '\ea41';
 }
-.web-icon-chevron-left:before {
+.web-icon-minus:before {
     content: '\ea42';
 }
-.web-icon-light:before {
+.web-icon-chevron-left:before {
     content: '\ea43';
 }
-.web-icon-mcp:before {
+.web-icon-light:before {
     content: '\ea44';
+}
+.web-icon-mcp:before {
+    content: '\ea45';
 }

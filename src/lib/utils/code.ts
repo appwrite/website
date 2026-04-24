@@ -111,6 +111,9 @@ Object.entries(platformAliases).forEach(([key, value]) => {
     });
 });
 
+/** HashiCorp Configuration Language (Terraform); core highlight.js has no HCL grammar */
+hljs.registerAliases(['hcl', 'terraform', 'tf'], { languageName: 'ini' });
+
 export type Language = keyof typeof languages | Platform;
 
 type Args = {
