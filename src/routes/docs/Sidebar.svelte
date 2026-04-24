@@ -138,7 +138,7 @@
                     isParent: true
                 },
                 {
-                    label: 'Terraform provider',
+                    label: 'Terraform',
                     href: '/docs/tooling/terraform',
                     icon: 'web-icon-terraform',
                     isParent: true
