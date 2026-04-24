@@ -18,7 +18,19 @@ See the Terraform Registry: [site](https://registry.terraform.io/providers/appwr
 
 # Examples {% #examples %}
 
-## Site and variables {% #site-and-variables %}
+The `framework` argument accepts `nextjs`, `nuxt`, `sveltekit`, `astro`, `remix`, `analog`, `react`, `vue`, `vite`, `flutter`, and `other`. Use `other` for static sites or unsupported frameworks.
+
+## Static site {% #static-site %}
+
+```hcl
+resource "appwrite_site" "landing_page" {
+  name          = "landing-page"
+  framework     = "other"
+  build_runtime = "node-22"
+}
+```
+
+## Next.js site {% #nextjs-site %}
 
 ```hcl
 resource "appwrite_site" "dashboard" {
@@ -28,11 +40,56 @@ resource "appwrite_site" "dashboard" {
   install_command = "npm install"
   build_command   = "npm run build"
 }
+```
 
+## Astro site {% #astro-site %}
+
+Astro and other static-output frameworks need an explicit `output_directory` pointing at the build artifact.
+
+```hcl
+resource "appwrite_site" "docs" {
+  name             = "docs"
+  framework        = "astro"
+  build_runtime    = "node-22"
+  install_command  = "npm install"
+  build_command    = "npm run build"
+  output_directory = "dist"
+}
+```
+
+## Environment variables {% #environment-variables %}
+
+`appwrite_site_variable` attaches build-time environment variables (for example `NEXT_PUBLIC_*` keys). Mark sensitive values with `secret = true` so the value is not readable from the API after creation.
+
+```hcl
 resource "appwrite_site_variable" "api_url" {
   site_id = appwrite_site.dashboard.id
   key     = "NEXT_PUBLIC_API_URL"
   value   = "https://api.example.com"
+}
+
+resource "appwrite_site_variable" "secret_key" {
+  site_id = appwrite_site.dashboard.id
+  key     = "SECRET_KEY"
+  value   = var.secret_key
+  secret  = true
+}
+```
+
+## VCS integration {% #vcs-integration %}
+
+Connect a site to a Git repository so Appwrite deploys automatically on push. Obtain the `installation_id` and `provider_repository_id` from your Appwrite GitHub (or other VCS) integration.
+
+```hcl
+resource "appwrite_site" "app" {
+  name          = "app"
+  framework     = "nextjs"
+  build_runtime = "node-22"
+
+  installation_id         = "your-github-installation-id"
+  provider_repository_id  = "your-repository-id"
+  provider_branch         = "main"
+  provider_root_directory = "apps/web"
 }
 ```
 

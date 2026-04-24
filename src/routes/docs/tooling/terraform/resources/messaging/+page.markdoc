@@ -81,6 +81,17 @@ resource "appwrite_messaging_topic" "engineering_alerts" {
 }
 ```
 
+## Subscribers {% #subscribers %}
+
+Attach a target (a user's email, phone, or push target ID) to a topic so it receives messages broadcast to that topic.
+
+```hcl
+resource "appwrite_messaging_subscriber" "user_email" {
+  topic_id  = appwrite_messaging_topic.announcements.id
+  target_id = "user-email-target-id"
+}
+```
+
 Topics and subscribers support import by ID where documented; see the Registry for each resource.
 
 # Data sources {% #data-sources %}

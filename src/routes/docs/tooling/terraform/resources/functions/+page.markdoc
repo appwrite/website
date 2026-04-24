@@ -18,22 +18,76 @@ See the Terraform Registry: [function](https://registry.terraform.io/providers/a
 
 # Examples {% #examples %}
 
-## Function and variables {% #function-and-variables %}
+## Basic function {% #basic-function %}
 
 ```hcl
-resource "appwrite_function" "on_signup" {
-  name       = "on-signup"
+resource "appwrite_function" "hello_world" {
+  name       = "hello-world"
   runtime    = "node-22"
   entrypoint = "index.js"
   commands   = "npm install"
-  events     = ["users.*.create"]
-  timeout    = 30
 }
+```
 
+## Scheduled function {% #scheduled-function %}
+
+Run a function on a CRON schedule. Set `timeout` to cap the execution window.
+
+```hcl
+resource "appwrite_function" "daily_cleanup" {
+  name     = "daily-cleanup"
+  runtime  = "node-22"
+  schedule = "0 0 * * *"
+  timeout  = 60
+}
+```
+
+## Event-driven function {% #event-driven-function %}
+
+Trigger the function from Appwrite platform events. `execute` controls who (or what) is allowed to invoke the function outside of the event trigger.
+
+```hcl
+resource "appwrite_function" "on_user_create" {
+  name       = "on-user-create"
+  runtime    = "node-22"
+  events     = ["users.*.create"]
+  entrypoint = "index.js"
+  execute    = ["any"]
+}
+```
+
+## Environment variables {% #environment-variables %}
+
+`appwrite_function_variable` attaches environment variables to a function. Mark a variable with `secret = true` to prevent the value from being read back from the API after creation; update and delete continue to work.
+
+```hcl
 resource "appwrite_function_variable" "api_url" {
-  function_id = appwrite_function.on_signup.id
+  function_id = appwrite_function.hello_world.id
   key         = "API_URL"
   value       = "https://api.example.com"
+}
+
+resource "appwrite_function_variable" "secret_key" {
+  function_id = appwrite_function.hello_world.id
+  key         = "SECRET_KEY"
+  value       = var.secret_key
+  secret      = true
+}
+```
+
+## VCS integration {% #vcs-integration %}
+
+Connect a function to a Git repository so Appwrite deploys automatically on push. Obtain the `installation_id` and `provider_repository_id` from your Appwrite GitHub (or other VCS) integration.
+
+```hcl
+resource "appwrite_function" "api" {
+  name    = "api"
+  runtime = "node-22"
+
+  installation_id         = "your-github-installation-id"
+  provider_repository_id  = "your-repository-id"
+  provider_branch         = "main"
+  provider_root_directory = "functions/api"
 }
 ```
 
@@ -42,11 +96,11 @@ resource "appwrite_function_variable" "api_url" {
 Use **`source_type = "code"`** to upload a `tar.gz` artifact from disk. Use `filesha256()` on the same path so Terraform detects code changes and triggers a new deployment.
 
 ```hcl
-resource "appwrite_function_deployment" "on_signup" {
-  function_id = appwrite_function.on_signup.id
+resource "appwrite_function_deployment" "hello_world" {
+  function_id = appwrite_function.hello_world.id
   source_type = "code"
-  code_path   = "dist/on-signup.tar.gz"
-  code_hash   = filesha256("dist/on-signup.tar.gz")
+  code_path   = "dist/hello-world.tar.gz"
+  code_hash   = filesha256("dist/hello-world.tar.gz")
   entrypoint  = "index.js"
   commands    = "npm install"
   activate    = true
@@ -59,7 +113,7 @@ Use **`source_type = "template"`** to pull from a Git repository (for example on
 
 ```hcl
 resource "appwrite_function_deployment" "from_template" {
-  function_id    = appwrite_function.on_signup.id
+  function_id    = appwrite_function.hello_world.id
   source_type    = "template"
   repository     = "starter-template"
   owner          = "appwrite"

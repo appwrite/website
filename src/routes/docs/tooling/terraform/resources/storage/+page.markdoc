@@ -42,7 +42,16 @@ resource "appwrite_storage_file" "logo" {
   name      = "logo.png"
   file_path = "assets/logo.png"
 }
+
+resource "appwrite_storage_file" "public_config" {
+  bucket_id   = appwrite_storage_bucket.documents.id
+  name        = "config.json"
+  file_path   = "assets/config.json"
+  permissions = ["read(\"any\")"]
+}
 ```
+
+Set `permissions` on a file to grant explicit read/write access (for example `read("any")` for public downloads, or `read("user:USER_ID")` for a single user). File-level permissions are only enforced on buckets with `file_security = true`; without it, bucket-level `permissions` govern every file.
 
 Common optional arguments on buckets include `maximum_file_size`, `allowed_file_extensions`, `compression` (`none`, `gzip`, `zstd`), `transformations`, `file_security`, `encryption`, `antivirus`, `enabled`, and `permissions`. Read-only attributes expose `created_at` and `updated_at`.
 
