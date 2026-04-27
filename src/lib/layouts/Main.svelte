@@ -21,8 +21,8 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import AnnouncementBanner from '$routes/(init)/init/(components)/announcement-banner.svelte';
-    import HackathonBanner from '$routes/(marketing)/(components)/(hackathon)/hackathon-banner.svelte';
+    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
+    import { changelogNavBadgeVisible } from '$routes/changelog/utils';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -113,8 +113,17 @@
             href: '/pricing'
         },
         {
-            label: 'Enterprise',
-            href: '/contact-us/enterprise'
+            label: 'Customers',
+            href: '/blog/category/customer-stories'
+        },
+        {
+            label: 'Blog',
+            href: '/blog'
+        },
+        {
+            label: 'Changelog',
+            href: '/changelog',
+            showBadge: changelogNavBadgeVisible(page)
         }
     ];
 
@@ -161,18 +170,9 @@
 </script>
 
 <div class="relative contents h-full">
-    <!--
-    {#if !page.url.pathname.includes('/init')}
-        <div class="border-smooth relative z-10 border-b bg-[#19191C]" id="top-banner">
-            <div class="is-special-padding mx-auto">
-                <HackathonBanner />
-            </div>
-        </div>
-    {/if}
-    -->
-
+    <MongoPartnershipBanner />
     <section
-        class="web-mobile-header flex! lg:hidden! {resolvedTheme}"
+        class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
     >
         <div class="web-mobile-header-start">
@@ -210,7 +210,7 @@
     </section>
 
     <header
-        class="web-main-header is-special-padding hidden lg:block! {resolvedTheme} is-transparent"
+        class="web-main-header is-special-padding hidden xl:block! {resolvedTheme} is-transparent"
     >
         <div
             class="web-main-header-wrapper"

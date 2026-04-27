@@ -126,7 +126,6 @@ export const appwriteConfig = {
 
 export const client = new Client()
 	.setEndpoint(appwriteConfig.endpoint)
-	.setEndpointRealtime(appwriteConfig.endpoint)
 	.setProject(appwriteConfig.projectId);
 ```
 
@@ -230,6 +229,8 @@ export const getDB = async () => {
 To setup replication in the Appwrite database, add the following code to the `databases.js` file:
 
 ```js
+let replicationState = null;
+
 const setupReplication = async (db) => {
 	try {
 		// Start replication

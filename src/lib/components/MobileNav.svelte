@@ -4,53 +4,27 @@
     import { SOCIAL_STATS } from '$lib/constants';
     import type { NavLink } from './MainNav.svelte';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { Button, InlineTag, Icon } from '$lib/components/ui';
+    import { Button } from '$lib/components/ui';
     import { GithubStats } from '$lib/components/shared';
     import { trackEvent } from '$lib/actions/analytics';
-    import { browser } from '$app/environment';
-    import { onMount } from 'svelte';
 
     export let open = false;
     export let links: NavLink[];
     export let offerButton = false;
 
-    let bannerHeight = 0;
-    let banner: HTMLElement | null = null;
-
     afterNavigate(() => {
         open = false;
         document.body.style.overflow = '';
     });
-
-    function getBannerElement() {
-        if (banner !== null) return banner;
-
-        banner = document.getElementById('top-banner');
-        return banner;
-    }
-
-    function updateBannerHeight() {
-        if (browser) {
-            const bannerElement = getBannerElement();
-            bannerHeight = bannerElement ? bannerElement.getBoundingClientRect().height : 0;
-        }
-    }
-
-    onMount(updateBannerHeight);
 </script>
 
 <svelte:window
     on:resize={() => {
         open && (open = false);
-        updateBannerHeight();
     }}
 />
 
-<nav
-    class="web-side-nav sticky block max-h-screen overflow-hidden lg:hidden"
-    class:hidden={!open}
-    style:top="calc(73px + {bannerHeight}px)"
->
+<nav class="web-side-nav sticky block max-h-screen overflow-hidden xl:hidden" class:hidden={!open}>
     <div class="web-side-nav-wrapper ps-4 pe-4">
         <div class="flex items-center gap-2 px-4">
             {#if offerButton}
@@ -70,7 +44,7 @@
         <div class="web-side-nav-scroll max-w-screen! pr-0!">
             <section>
                 <ul>
-                    {#each links as { href, label, mobileSubmenu }}
+                    {#each links as { href, label, mobileSubmenu, showBadge }}
                         <li>
                             {#if mobileSubmenu}
                                 <svelte:component this={mobileSubmenu} {label} />
@@ -78,6 +52,7 @@
                                 <a
                                     class="web-side-nav-button"
                                     {href}
+                                    data-badge={showBadge ? '' : undefined}
                                     onclick={() =>
                                         trackEvent(
                                             `mobile-nav-${label.toLowerCase().replace(' ', '_')}-click`
@@ -96,3 +71,21 @@
         </div>
     </div>
 </nav>
+
+<style>
+    [data-badge] {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: hsl(var(--color-accent));
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+            inset-block-start: -2px;
+            inset-inline-end: -4px;
+            translate: 100%;
+        }
+    }
+</style>

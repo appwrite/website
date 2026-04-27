@@ -10,6 +10,11 @@ Bulk operations can only be performed via the server-side SDKs. The client-side 
 
 For client applications that need bulk-like functionality, consider using [Appwrite Functions](/docs/products/functions) with proper rate limiting and validation.
 
+{% info title="Important notes" %}
+- Bulk operations trigger Functions, Webhooks, or Realtime events for each row manipulated. Rather than a single event for the entire bulk operation, each row generates a separate event on the existing realtime channels for its operation type.
+- Tables that contain relationship columns are not supported via bulk operations. Use individual row operations for tables with relationships.
+{% /info %}
+
 # Atomic behavior {% #atomic-behavior %}
 
 Bulk operations in Appwrite are **atomic**, meaning they follow an all-or-nothing approach. Either all rows in your bulk request succeed, or all rows fail.
@@ -21,12 +26,23 @@ This atomicity ensures:
 
 For example, if you attempt to create 100 rows and one fails due to a validation error, none of the 100 rows will be created.
 
+# Plan limits {% #plan-limits %}
+
+Bulk operations have different limits based on your Appwrite plan:
+
+| Plan | Rows per request |
+|------|----------------------|
+| Free | 100 |
+| Pro  | 1,000 |
+
+These limits apply to all bulk operations including create, update, upsert, and delete operations. If you need higher limits than what the Pro plan offers, you can [inquire](/contact-us/enterprise) about a custom plan.
+
 # Create rows {% #create-rows %}
 
 You can create multiple rows in a single request using the `createRows` method.
 
 {% info title="Custom timestamps" %}
-When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each document in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
+When creating, updating or upserting in bulk, you can set `$createdAt` and `$updatedAt` for each row in the payload. Values must be ISO 8601 date-time strings. If omitted, Appwrite sets them automatically.
 {% /info %}
 
 {% multicode %}
@@ -81,6 +97,41 @@ result = tablesDB.create_rows(
         }
     ]
 )
+```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.create_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "Row 1"
+            }),
+            json!({
+                "$id": ID::unique(),
+                "name": "Row 2"
+            }),
+        ],
+        None,
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -137,6 +188,37 @@ result = tablesDB.update_rows(
         Query.equal('status', 'draft')
     ]
 )
+```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.update_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(json!({
+            "status": "published"
+        })),
+        Some(vec![
+            Query::equal("status", "draft").to_string(),
+        ]),
+        None,
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -203,6 +285,41 @@ result = tablesDB.upsert_rows(
     ]
 )
 ```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.upsert_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "New Row 1"
+            }),
+            json!({
+                "$id": "row-id-2", // Existing row ID
+                "name": "New Row 2"
+            }),
+        ],
+        None,
+    ).await?;
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Delete rows {% #delete-rows %}
@@ -253,6 +370,33 @@ result = tablesDB.delete_rows(
         Query.equal('status', 'archived')
     ]
 )
+```
+
+```rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let result = tables_db.delete_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(vec![
+            Query::equal("status", "archived").to_string(),
+        ]),
+        None,
+    ).await?;
+
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -401,5 +545,22 @@ tablesDB.createRows(
     return null;
   })
 );
+```
+```rust
+let result = tables_db.create_rows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    vec![
+        json!({
+            "$id": ID::unique(),
+            "name": "One"
+        }),
+        json!({
+            "$id": ID::unique(),
+            "name": "Two"
+        }),
+    ],
+    Some("<TRANSACTION_ID>"),
+).await?;
 ```
 {% /multicode %}

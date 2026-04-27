@@ -218,6 +218,38 @@ GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents?queries[]=
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::query::Query;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.list_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        Some(vec![
+            Query::equal("title", json!(["Avatar", "Lord of the Rings"])).to_string(),
+            Query::greater_than("year", 1999).to_string(),
+        ]),
+        None,
+        None,
+        None,
+    ).await?;
+
+    println!("{:?}", result);
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Query operators {% #query-operators %}
@@ -250,6 +282,9 @@ Query.select(["name", "title"])
 ```
 ```http
 {"method":"select","values":["name","title"]}
+```
+```rust
+Query::select(vec!["name", "title"])
 ```
 {% /multicode %}
 
@@ -312,6 +347,17 @@ GET /v1/databases/<DATABASE_ID>/collections/<COLLECTION_ID>/documents/<DOCUMENT_
 Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 ```
+```rust
+let doc = databases.get_document(
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
+    Some(vec![
+        Query::select(vec!["name", "age"]).to_string(),
+    ]),
+    None,
+).await?;
+```
 {% /multicode %}
 
 #### Load all relationship data
@@ -370,6 +416,17 @@ Content-Type: application/json
 X-Appwrite-Project: <PROJECT_ID>
 {"method":"select","values":["*","reviews.*"]}
 ```
+```rust
+let doc = databases.get_document(
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
+    Some(vec![
+        Query::select(vec!["*", "reviews.*"]).to_string(),
+    ]),
+    None,
+).await?;
+```
 {% /multicode %}
 
 #### Select specific relationship fields
@@ -427,6 +484,17 @@ let doc = try await databases.getDocument(
 # Load specific fields from main and related documents
 {"method":"select","values":["name","age","reviews.author","reviews.rating"]}
 ```
+```rust
+let doc = databases.get_document(
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
+    "<DOCUMENT_ID>",
+    Some(vec![
+        Query::select(vec!["name", "age", "reviews.author", "reviews.rating"]).to_string(),
+    ]),
+    None,
+).await?;
+```
 {% /multicode %}
 
 #### Load nested relationships
@@ -456,6 +524,9 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
 ```http
 {"method":"select","values":["*","reviews.*","reviews.author.*"]}
+```
+```rust
+Query::select(vec!["*", "reviews.*", "reviews.author.*"])
 ```
 {% /multicode %}
 
@@ -515,6 +586,9 @@ Query.equal("title", value: ["Iron Man"])
 ```http
 {"method":"equal","attribute":"title","values":["Iron Man"]}
 ```
+```rust
+Query::equal("title", json!(["Iron Man"]))
+```
 {% /multicode %}
 
 ### Not equal {% #not-equal %}
@@ -545,6 +619,9 @@ Query.notEqual("title", value: "Iron Man")
 ```
 ```http
 {"method":"notEqual","attribute":"title","values":"Iron Man"}
+```
+```rust
+Query::not_equal("title", "Iron Man")
 ```
 {% /multicode %}
 
@@ -577,6 +654,9 @@ Query.lessThan("score", value: 10)
 ```http
 {"method":"lessThan","attribute":"score","values":[10]}
 ```
+```rust
+Query::less_than("score", 10)
+```
 {% /multicode %}
 
 ### Less than or equal {% #less-than-equal %}
@@ -607,6 +687,9 @@ Query.lessThanEqual("score", value: 10)
 ```
 ```http
 {"method":"lessThanEqual","attribute":"score","values":[10]}
+```
+```rust
+Query::less_than_equal("score", 10)
 ```
 {% /multicode %}
 
@@ -639,6 +722,9 @@ Query.greaterThan("score", value: 10)
 ```http
 {"method":"greaterThan","attribute":"score","values":[10]}
 ```
+```rust
+Query::greater_than("score", 10)
+```
 {% /multicode %}
 
 ### Greater than or equal {% #greater-than-equal %}
@@ -670,6 +756,9 @@ Query.greaterThanEqual("score", value: 10)
 ```http
 {"method":"greaterThanEqual","attribute":"score","values":[10]}
 ```
+```rust
+Query::greater_than_equal("score", 10)
+```
 {% /multicode %}
 
 ### Between {% #between %}
@@ -700,6 +789,9 @@ Query.between("price", start: 5, end: 10)
 ```
 ```http
 {"method":"between","attribute":"price","values":[5,10]}
+```
+```rust
+Query::between("price", 5, 10)
 ```
 {% /multicode %}
 
@@ -734,6 +826,9 @@ Query.isNull("name")
 ```http
 {"method":"isNull","attribute":"name"}
 ```
+```rust
+Query::is_null("name")
+```
 {% /multicode %}
 
 ### Is not null {% #is-not-null %}
@@ -764,6 +859,9 @@ Query.isNotNull("name")
 ```
 ```http
 {"method":"isNotNull","attribute":"name"}
+```
+```rust
+Query::is_not_null("name")
 ```
 {% /multicode %}
 
@@ -798,6 +896,9 @@ Query.startsWith("name", value: "Once upon a time")
 ```http
 {"method":"startsWith","attribute":"name","values":["Once upon a time"]}
 ```
+```rust
+Query::starts_with("name", "Once upon a time")
+```
 {% /multicode %}
 
 ### Ends with {% #ends-with %}
@@ -828,6 +929,9 @@ Query.endsWith("name", value: "happily ever after.")
 ```
 ```http
 {"method":"endsWith","attribute":"name","values":["happily ever after."]}
+```
+```rust
+Query::ends_with("name", "happily ever after.")
 ```
 {% /multicode %}
 
@@ -892,11 +996,22 @@ Query.contains("name", value: "Tom")
 # For strings
 {"method":"contains","attribute":"name","values":["Tom"]}
 ```
+```rust
+// For arrays
+Query::contains("ingredients", json!(["apple", "banana"]))
+
+// For strings
+Query::contains("name", "Tom")
+```
 {% /multicode %}
 
 ### Search {% #search %}
 
-Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/legacy/collections#indexes) on queried attributes.
+Searches string attributes for provided keywords. Requires a [full-text index](/docs/products/databases/legacy/collections#indexes) on queried attributes. The search string must be at least **3 characters** to perform a search.
+
+{% info title="Searching values with hyphens" %}
+The hyphen (`-`) is treated as a stop character by the underlying search engine. To search for exact values that contain hyphens (for example, ticket or SKU codes like `SWT-2621-44`), wrap the value in quotes inside the search string: `Query.search(attribute, '"SWT-2621-44"')`.
+{% /info %}
 
 {% multicode %}
 ```client-web
@@ -922,6 +1037,9 @@ Query.search("text", value: "key words")
 ```
 ```http
 {"method":"search","attribute":"text","values":["key words"]}
+```
+```rust
+Query::search("text", "key words")
 ```
 {% /multicode %}
 
@@ -977,6 +1095,12 @@ Query.and([
 ```http
 {"method":"and","values":[{"method":"lessThan","attribute":"size","values":[10]},{"method":"greaterThan","attribute":"size","values":[5]}]}
 ```
+```rust
+Query::and(vec![
+    Query::less_than("size", 10).to_string(),
+    Query::greater_than("size", 5).to_string(),
+])
+```
 {% /multicode %}
 
 ### OR {% #or %}
@@ -1029,6 +1153,12 @@ Query.or([
 ```http
 {"method":"or","values":[{"method":"lessThan","attribute":"size","values":[5]},{"method":"greaterThan","attribute":"size","values":[10]}]}
 ```
+```rust
+Query::or(vec![
+    Query::less_than("size", 5).to_string(),
+    Query::greater_than("size", 10).to_string(),
+])
+```
 {% /multicode %}
 
 ## Ordering {% #ordering %}
@@ -1062,6 +1192,9 @@ Query.orderDesc("attribute")
 ```http
 {"method":"orderDesc","attribute":"attribute"}
 ```
+```rust
+Query::order_desc("attribute")
+```
 {% /multicode %}
 
 ### Order ascending {% #order-asc %}
@@ -1092,6 +1225,9 @@ Query.orderAsc("attribute")
 ```
 ```http
 {"method":"orderAsc","attribute":"attribute"}
+```
+```rust
+Query::order_asc("attribute")
 ```
 {% /multicode %}
 
@@ -1126,6 +1262,9 @@ Query.limit(25)
 ```http
 {"method":"limit","values":[25]}
 ```
+```rust
+Query::limit(25)
+```
 {% /multicode %}
 
 ### Offset {% #offset %}
@@ -1156,6 +1295,9 @@ Query.offset(0)
 ```
 ```http
 {"method":"offset","values":[0]}
+```
+```rust
+Query::offset(0)
 ```
 {% /multicode %}
 
@@ -1188,6 +1330,9 @@ Query.cursorAfter("62a7...f620")
 ```http
 {"method":"cursorAfter","values":["62a7...f620"]}
 ```
+```rust
+Query::cursor_after("62a7...f620")
+```
 {% /multicode %}
 
 ### Cursor before {% #cursor-before %}
@@ -1218,6 +1363,9 @@ Query.cursorBefore("62a7...a600")
 ```
 ```http
 {"method":"cursorBefore","values":["62a7...a600"]}
+```
+```rust
+Query::cursor_before("62a7...a600")
 ```
 {% /multicode %}
 
@@ -1282,6 +1430,39 @@ results = databases.list_documents(
 ```
 ```http
 {"method":"or","values":[{"method":"and","values":[{"method":"equal","attribute":"category","values":["books"]},{"method":"lessThan","attribute":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","attribute":"category","values":["magazines"]},{"method":"lessThan","attribute":"price","values":[10]}]}]}
+```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::query::Query;
+use serde_json::json;
+
+let client = Client::new()
+    .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .set_project("<PROJECT_ID>")
+    .set_key("<YOUR_API_KEY>");
+
+let databases = Databases::new(&client);
+
+let results = databases.list_documents(
+    "<DATABASE_ID>",
+    "<COLLECTION_ID>",
+    Some(vec![
+        Query::or(vec![
+            Query::and(vec![
+                Query::equal("category", json!(["books"])).to_string(),
+                Query::less_than("price", 20).to_string(),
+            ]).to_string(),
+            Query::and(vec![
+                Query::equal("category", json!(["magazines"])).to_string(),
+                Query::less_than("price", 10).to_string(),
+            ]).to_string(),
+        ]).to_string(),
+    ]),
+    None,
+    None,
+    None,
+).await?;
 ```
 {% /multicode %}
 

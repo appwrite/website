@@ -11,10 +11,10 @@ This guide covers how to configure sites in your self-hosted Appwrite instance. 
 Not all site runtimes are enabled by default. Enable the runtimes that you need and disable unused runtimes to save disk space on your server.
 To enable a runtime, add it to the `_APP_SITES_RUNTIMES` environment variable as a comma-separated list.
 
-The three runtimes currently available for Sites are the Static, Node.js 22, and Flutter 3.29 runtimes.
+The three runtimes currently available for Sites are the Static, Node.js 22, and Flutter 3.41 runtimes.
 
 ```bash
-_APP_SITES_RUNTIMES=static-1,node-22,flutter-3.29
+_APP_SITES_RUNTIMES=static-1,node-22,flutter-3.41
 ```
 
 You can also configure the maximum timeout that can be set on individual Appwrite Sites. The maximum configurable timeout can be increased by changing the `_APP_SITES_TIMEOUT` environment variable. This environment variable changes the configurable maximum but does not alter existing configurations of individual sites.

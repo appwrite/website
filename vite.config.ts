@@ -1,24 +1,24 @@
-import { sentrySvelteKit } from '@sentry/sveltekit';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import { defineConfig } from 'vitest/config';
+// import { sentrySvelteKit } from '@sentry/sveltekit';
 
 export default defineConfig({
     plugins: [
-        sentrySvelteKit({
-            sourceMapsUploadOptions: {
-                org: 'appwrite',
-                project: 'website'
-            }
-        }),
+        // sentrySvelteKit({
+        //     sourceMapsUploadOptions: {
+        //         org: 'appwrite',
+        //         project: 'website'
+        //     }
+        // }),
         enhancedImages(),
         sveltekit(),
         dynamicImport({
             filter(id) {
-                if (id.includes('/node_modules/@appwrite.io/repo/docs')) {
+                if (id.includes('/node_modules/@appwrite.io/specs/examples')) {
                     return true;
                 }
             }

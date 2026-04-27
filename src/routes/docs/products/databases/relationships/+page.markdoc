@@ -27,10 +27,6 @@ Relationships help reduce redundant information. For example, a user can create 
 
 Duplicated records waste storage, but more importantly, makes the database much harder to maintain. If the user changes their user name, you will have to update dozens or hundreds of records, a problem commonly known as an update anomaly in tablesDB. You can avoid duplicate information by storing users and posts in separate tables and relating a user and their posts through a relationship.
 
-# Tradeoffs {% #trade-offs %}
-
-Consider using relationships when the same information is found in multiple places to avoid duplicates. However, relationships come with the tradeoff of slowing down queries. For applications where the best read and write performance is important, it may be acceptable to tolerate duplicate data.
-
 # Opt-in loading {% #performance-loading %}
 
 By default, Appwrite returns only a row's own fields when you retrieve rows. Related rows are **not automatically loaded** unless you explicitly request them using query selection. This eliminates unintentional payload bloat and gives you precise control over performance.
@@ -514,7 +510,92 @@ tablesDB.createRow(
 {% /tabs %}
 
 # Queries {% #queries %}
-Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
+
+You can use filter queries directly against relationship columns using dot notation. This lets you filter rows based on the values of their related rows, such as filtering posts by an author's name or filtering orders by a product's category.
+
+Use the format `relationshipKey.field` to reference fields on related rows.
+
+{% multicode %}
+```js
+const { Client, TablesDB, Query } = require('node-appwrite');
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
+
+const tablesDB = new TablesDB(client);
+
+await tablesDB.listRows({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    queries: [
+        Query.equal('reviews.author', ['Bob'])
+    ],
+});
+```
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final tablesDB = TablesDB(client);
+
+await tablesDB.listRows(
+  databaseId: 'marvel',
+  tableId: 'movies',
+  queries: [
+    Query.equal('reviews.author', ['Bob']),
+  ],
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let tablesDB = TablesDB(client)
+
+tablesDB.listRows(
+    databaseId: "marvel",
+    tableId: "movies",
+    queries: [
+        Query.equal("reviews.author", value: ["Bob"])
+    ]
+)
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.TablesDB
+import io.appwrite.Query
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val tablesDB = TablesDB(client)
+
+tablesDB.listRows(
+    databaseId = "marvel",
+    tableId = "movies",
+    queries = listOf(
+        Query.equal("reviews.author", listOf("Bob"))
+    )
+)
+```
+{% /multicode %}
+
+All filter queries are supported on relationship fields, including `equal`, `notEqual`, `greaterThan`, `lessThan`, `between`, `contains`, and other [comparison operators](/docs/products/databases/queries#comparison).
+
+{% arrow_link href="/docs/products/databases/queries#relationship-select" %}
+Learn how to select and load relationship data
+{% /arrow_link %}
 
 # Update relationships {% #update %}
 Relationships can be updated by updating the relationship column.

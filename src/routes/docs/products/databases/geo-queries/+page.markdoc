@@ -48,3 +48,7 @@ Appwrite supports these geo query operations:
 - **Boundary queries**: Determine if points fall within defined areas
 
 For complete documentation and examples of all geo query operations, see [Queries](/docs/products/databases/queries#geo-queries).
+
+{% info title="Self-hosted installations" %}
+If you're self-hosting Appwrite, you will have to choose **MariaDB** as your preferred database to use geo-queries. Self-hosted Appwrite instances using **MongoDB** do not currently support spatial columns or indexes.
+{% /info %}

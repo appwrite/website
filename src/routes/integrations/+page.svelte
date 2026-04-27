@@ -36,7 +36,7 @@
     let hasQuery = $derived(query.length > 0);
 
     // platform filters
-    const platforms = ['All', ...data.platforms];
+    const platforms = $derived(['All', ...data.platforms]);
 
     let activePlatform = $state('All');
 
@@ -389,13 +389,6 @@
                                                         {/if}
                                                     {/each}
                                                 </ul>
-                                                <Button
-                                                    variant="text"
-                                                    href={`#${category.toLowerCase()}`}
-                                                    class="l-float-button"
-                                                >
-                                                    <span>Show more</span>
-                                                </Button>
                                             </div>
                                         </section>
                                     {/if}

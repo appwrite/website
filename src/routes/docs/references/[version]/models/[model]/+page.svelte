@@ -9,15 +9,6 @@
     let { data } = $props();
 </script>
 
-<svelte:head>
-    {#if page.params.version !== 'cloud'}
-        <link
-            rel="canonical"
-            href={`https://appwrite.io/docs/references/cloud/models/${page.params.model}`}
-        />
-    {/if}
-</svelte:head>
-
 <Article title={data.model.title} description="">
     <article>
         <Heading id="properties" level={2}>Properties</Heading>
@@ -25,13 +16,19 @@
             <Thead>
                 <Tr>
                     <Th>
-                        <span class="text-eyebrow uppercase">NAME</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >NAME</span
+                        >
                     </Th>
                     <Th>
-                        <span class="text-eyebrow uppercase">TYPE</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >TYPE</span
+                        >
                     </Th>
                     <Th>
-                        <span class="text-eyebrow uppercase">DESCRIPTION</span>
+                        <span class="text-eyebrow uppercase" data-ignore="true" data-noindex="true"
+                            >DESCRIPTION</span
+                        >
                     </Th>
                 </Tr>
             </Thead>

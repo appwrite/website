@@ -22,6 +22,10 @@
                 {
                     label: 'Non interactive',
                     href: '/docs/tooling/command-line/non-interactive'
+                },
+                {
+                    label: 'Generate SDK',
+                    href: '/docs/tooling/command-line/generate'
                 }
             ]
         },

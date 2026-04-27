@@ -34,12 +34,12 @@ What personal data we collect, why we collect it, and how it is used
 {% table %}
 ---
 * Specific personal data we collect
-* Address
-* Full name
-* Email address
-* IP address
-* Country
-* Payment details
+* - Address
+  - Full name
+  - Email address
+  - IP address
+  - Country
+  - Payment details
 ---
 * The purpose of data collection
 * For payment processing purposes
@@ -49,8 +49,8 @@ What personal data we collect, why we collect it, and how it is used
   - Legitimate interest
 ---
 * Third parties with whom we share your personal data
-* Stripe
-* DigitalOcean
+* - Stripe
+  - DigitalOcean
 {% /table %}
 
 
@@ -68,8 +68,10 @@ What personal data we collect, why we collect it, and how it is used
   - IP address
   - Country
   - User-agent (info about the browser)
-* - Phone number
-* - Usage details
+  - Phone number
+  - Usage details
+* - Full name
+  - Email address
 ---
 * The purpose of data collection
 * - To be able to create an account
@@ -77,23 +79,21 @@ What personal data we collect, why we collect it, and how it is used
   - To be able to enjoy features available to registered users
   - To collect Informative reason for the administrator
   - To identify reported problems during project development
-* - To be able to log in, using two factor authentication via text message
-* - To be able to monitor errors
+  - To be able to log in, using two factor authentication via text message
+  - To be able to monitor errors
 * - To send you marketing communications and product updates
 ---
 * Legal basis (GDPR only, if applicable)
 * - Processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract
   - Legitimate interest (e.g. to allow you to create an account and log-in)
-* Consent
-* Legitimate interest
-* Consent
+* - Consent
 ---
 * Third parties with whom we share your personal data
-  - Userlist
-* - MSG91 
+* - Userlist
+  - MSG91 
   - Activetrail (Israel only)
   - SMS.to
-* - Sentry.io
+  - Sentry.io
 * - Userlist
 ---
 * Consequences of not providing the Personal Data
@@ -101,9 +101,10 @@ What personal data we collect, why we collect it, and how it is used
   - Cannot log in 
   - Cannot enjoy features available to registered users
   - Cannot identify reported problem during your project development process 
-* - Cannot log in using two factor authentication based on phone number
-* - Cannot monitor and solve errors
-* - Cannot sign up using our website forms
+  - Cannot log in using two factor authentication based on phone number
+  - Cannot monitor and solve errors
+  - Cannot sign up using our website forms
+* 
 {% /table %}
 
 #### When you purchase products in our Swag Store
@@ -383,7 +384,7 @@ The following rights (which may be subject to certain exemptions or derogations)
 You can exercise your rights by contacting us at privacy@appwrite.io. You may use an authorized agent to submit a request on your behalf if you provide the authorized agent written permission signed by you. To protect your privacy, we may take steps to verify your identity before fulfilling your request. Subject to legal and other permissible considerations, we will make every reasonable effort to honor your request promptly in accordance with applicable law or inform you if we require further information in order to fulfill your request. When processing your request, we may ask you for additional information to confirm or verify your identity and for security purposes, before processing and/or honoring your request. We reserve the right to charge a fee where permitted by law, for instance, if your request is manifestly unfounded or excessive. In the event that your request would adversely affect the rights and freedoms of others (for example, would impact the duty of confidentiality we owe to others) or if we are legally entitled to deal with your request in a different way than initially requested, we will address your request to the maximum extent possible, all in accordance with applicable law. 
 
 {% count_title  / %}
-Deleting your account: Should you ever decide to delete your account, you may do so by emailing privacy@appwrite.io. If you terminate your account, any association between your account and Personal Data we store will no longer be accessible through your account. However, given the nature of sharing on certain services, any public activity on your account prior to deletion will remain stored on our servers and will remain accessible to the public. 
+Deleting your Cloud account: Should you ever decide to delete your Cloud account, you may do so in the Console on the [account settings page](https://cloud.appwrite.io/console/account). If you terminate your account, any association between your account and Personal Data we store will no longer be accessible through your account. However, given the nature of sharing on certain services, any public activity on your account prior to deletion will remain stored on our servers and will remain accessible to the public. 
 {% /count_section %}
 
 {% count_section %}

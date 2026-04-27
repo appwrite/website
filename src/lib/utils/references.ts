@@ -3,6 +3,7 @@ import type { Language } from './code';
 import { browser } from '$app/environment';
 
 const allVersions = [
+    '1.9.x',
     '1.8.x',
     '1.7.x',
     '1.6.x',
@@ -35,7 +36,8 @@ export const Service = {
     Teams: 'teams',
     Users: 'users',
     Sites: 'sites',
-    Tokens: 'tokens'
+    Tokens: 'tokens',
+    Project: 'project'
 } as const;
 
 export type ServiceType = typeof Service;
@@ -60,6 +62,7 @@ export const Platform = {
     ServerGo: 'server-go',
     ServerSwift: 'server-swift',
     ServerKotlin: 'server-kotlin',
+    ServerRust: 'server-rust',
     ServerJava: 'server-java',
     ServerGraphql: 'server-graphql',
     ServerRest: 'server-rest'
@@ -99,6 +102,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerRust]: 'Rust',
     [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
@@ -137,6 +141,7 @@ export const platformMap: Record<Language | string, string> = {
     svelte: 'Svelte',
     groovy: 'Groovy',
     go: 'Go',
+    rust: 'Rust',
     dockerfile: 'Dockerfile',
     docker: 'Dockerfile',
     ini: 'INI',
@@ -157,14 +162,17 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',
     [Service.Sites]: 'Sites',
-    [Service.Tokens]: 'Tokens'
+    [Service.Tokens]: 'Tokens',
+    [Service.Project]: 'Project'
 };
 
 export const preferredVersion = writable<Version | null>(
-    globalThis?.localStorage?.getItem('preferredVersion') as Version
+    browser ? (globalThis?.localStorage?.getItem('preferredVersion') as Version) : null
 );
 
 function getInitialPlatform(): Platform {
+    if (!browser) return Platform.ClientWeb;
+
     const stored = globalThis?.localStorage?.getItem('preferredPlatform') ?? Platform.ClientWeb;
     // return if this platform is valid
     if (VALID_PLATFORMS.has(stored as Platform)) {

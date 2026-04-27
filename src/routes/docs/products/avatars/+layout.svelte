@@ -1,6 +1,7 @@
 <script lang="ts">
     import Docs from '$lib/layouts/Docs.svelte';
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import { isNewUntil } from '$lib/utils/date';
 
     const parent: NavParent = {
         href: '/docs',
@@ -47,6 +48,11 @@
                 {
                     label: 'Favicons',
                     href: '/docs/products/avatars/favicons'
+                },
+                {
+                    label: 'Screenshots',
+                    new: isNewUntil('28 Feb 2026'),
+                    href: '/docs/products/avatars/screenshots'
                 },
                 {
                     label: 'Image proxy',

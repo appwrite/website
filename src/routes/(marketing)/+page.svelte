@@ -12,16 +12,23 @@
     import Pullquote from '$lib/components/marketing/pullquote.svelte';
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
+    import Ai from './(components)/ai.svelte';
 </script>
 
-<Head title="Appwrite - The developers' cloud" />
+<Head
+    title="Appwrite - Build like a team of hundreds"
+    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Hosting."
+/>
 
 <Main>
-    <Hero title="The developers' cloud" />
+    <Hero
+        title="Build like a team of hundreds"
+        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
+    />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList
         class="border-smooth border-b"
-        title="Loved by developers from the world's leading organizations"
+        title="Loved by hackers, startups and enterprises alike"
     />
     <Bento />
     <Pullquote
@@ -32,6 +39,7 @@
         <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
         that you need with Appwrite.</Pullquote
     >
+    <Ai />
     <CaseStudies />
     <Features theme="light" />
     <div class="light bg-[#EDEDF0]">

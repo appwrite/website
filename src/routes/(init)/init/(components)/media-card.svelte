@@ -9,7 +9,7 @@
 
     const { title, poster, type, url }: Props = $props();
 
-    const icon = type === 'discord' ? DiscordIcon : PlayIcon;
+    const icon = $derived(type === 'discord' ? DiscordIcon : PlayIcon);
 </script>
 
 <div class="group mt-2 w-fit min-w-[190px]">

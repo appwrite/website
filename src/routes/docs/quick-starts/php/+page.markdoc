@@ -106,20 +106,19 @@ function prepareDatabase($tablesDB) {
         name: 'Todos'
     );
 
-    $tablesDB->createStringColumn(
-        databaseId: $todoDatabase['$id'], 
-        tableId: $todoTable['$id'], 
-        key: 'title', 
-        size: 255, 
+    $tablesDB->createVarcharColumn(
+        databaseId: $todoDatabase['$id'],
+        tableId: $todoTable['$id'],
+        key: 'title',
+        size: 255,
         required: true
     );
 
-    $tablesDB->createStringColumn(
-        databaseId: $todoDatabase['$id'], 
-        tableId: $todoTable['$id'], 
-        key: 'description', 
-        size: 255, 
-        required: false, 
+    $tablesDB->createTextColumn(
+        databaseId: $todoDatabase['$id'],
+        tableId: $todoTable['$id'],
+        key: 'description',
+        required: false,
     );
 
     $tablesDB->createBooleanColumn(

@@ -2,11 +2,37 @@ import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
+import { getMarkdownContent, processMarkdownWithPartials } from '$lib/server/markdown';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
 import type { AppwriteUser } from '$lib/utils/console';
 
 const redirectMap = new Map(redirects.map(({ link, redirect }) => [link, redirect]));
+
+const markdownHandler: Handle = async ({ event, resolve }) => {
+    const pathname = event.url.pathname;
+    if (!pathname.endsWith('.md')) {
+        return resolve(event);
+    }
+
+    // strip trailing ".md" from the pathname to get the underlying route id
+    const withoutExt = pathname.replace(/\.md$/, '');
+    const routeId = withoutExt;
+
+    const content = await getMarkdownContent(routeId);
+    if (content == null) {
+        return new Response('Not found', { status: 404 });
+    }
+
+    const processedContent = await processMarkdownWithPartials(content);
+
+    return new Response(processedContent, {
+        status: 200,
+        headers: {
+            'Content-Type': 'text/markdown; charset=utf-8'
+        }
+    });
+};
 
 const redirecter: Handle = async ({ event, resolve }) => {
     const currentPath = event.url.pathname;
@@ -82,6 +108,7 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             "'self'",
             'https://*.appwrite.io',
             'https://*.appwrite.org',
+            'https://*.appwrite.network',
             'https://*.posthog.com',
             'https://*.sentry.io',
             'https://*.plausible.io',
@@ -198,11 +225,43 @@ const initSession: Handle = async ({ event, resolve }) => {
     return resolve(event);
 };
 
+/**
+ * SEO optimization: noindex internal/auth pages and staging subdomains
+ */
+const NOINDEX_PATHS = [
+    /^\/console\/login\/?$/,
+    /^\/console\/register\/?$/,
+    /^\/v1\/storage\//,
+    /^\/v1\//
+];
+
+// Block any staging/preview subdomains (e.g., *.cloud.appwrite.io, stage.*, etc.)
+const NOINDEX_HOSTS = [/\.cloud\.appwrite\.io$/i, /^stage\./i, /^fra\./i];
+
+const seoOptimization: Handle = async ({ event, resolve }) => {
+    const { url } = event;
+
+    // Check if this is a path or host that should not be indexed
+    const shouldNoindex =
+        NOINDEX_PATHS.some((re) => re.test(url.pathname)) ||
+        NOINDEX_HOSTS.some((re) => re.test(url.hostname));
+
+    const response = await resolve(event);
+
+    if (shouldNoindex) {
+        response.headers.set('x-robots-tag', 'noindex, nofollow');
+    }
+
+    return response;
+};
+
 export const handle = sequence(
     Sentry.sentryHandle(),
+    markdownHandler,
     redirecter,
     wwwRedirecter,
     securityheaders,
-    initSession
+    initSession,
+    seoOptimization
 );
 export const handleError = Sentry.handleErrorWithSentry();

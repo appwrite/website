@@ -20,9 +20,9 @@ In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite 
 Create a new table with the following columns:
 | Field       | Type   | Required |
 |-------------|--------|----------|
-| userId      | String | Yes      |
-| title       | String | Yes      |
-| description | String | No       |
+| userId      | Varchar | Yes      |
+| title       | Varchar | Yes      |
+| description | Text    | No       |
 
 ## Configure permissions {% #configure-permissions %}
 {% only_dark %}

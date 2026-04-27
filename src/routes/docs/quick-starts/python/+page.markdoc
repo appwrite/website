@@ -75,8 +75,15 @@ Finally, create a file `my_app.py`.
 Install the Python Appwrite SDK.
 
 ```sh
-pip install appwrite==13.6.1
+pip install appwrite
 ```
+
+Or with `uv`:
+
+```sh
+uv add appwrite
+```
+
 {% /section %}
 {% section #step-4 step=4 title="Import Appwrite" %}
 
@@ -105,9 +112,18 @@ client.set_key('<YOUR_API_KEY>')
 {% /section %}
 {% section #step-5 step=5 title="Initialize database" %}
 
-Once the Appwrite Client is initialized, create a function to configure a todo table.
+Once the Appwrite Client is initialized, define a Pydantic model for type-safe data access and create a function to configure a todo table.
 
 ```py
+from pydantic import BaseModel
+from typing import Optional
+
+# Define a Pydantic model matching the table schema
+class Todo(BaseModel):
+    title: str
+    description: Optional[str] = None
+    isComplete: bool
+
 tablesDB = TablesDB(client)
 
 todoDatabase = None
@@ -123,31 +139,30 @@ def prepare_database():
   )
 
   todoTable = tablesDB.create_table(
-    database_id=todoDatabase['$id'],
+    database_id=todoDatabase.id,
     table_id=ID.unique(),
     name='Todos'
   )
 
-  tablesDB.create_string_column(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+  tablesDB.create_varchar_column(
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
     key='title',
     size=255,
     required=True
   )
 
-  tablesDB.create_string_column(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+  tablesDB.create_text_column(
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
     key='description',
-    size=255,
     required=False,
     default='This is a test description.'
   )
 
   tablesDB.create_boolean_column(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
     key='isComplete',
     required=True
   )
@@ -159,42 +174,42 @@ Create a function to add some mock data into your new table.
 
 ```py
 def seed_database():
-  testTodo1 = {
-    'title': "Buy apples",
-    'description': "At least 2KGs",
-    'isComplete': True
-  }
+  testTodo1 = Todo(
+    title="Buy apples",
+    description="At least 2KGs",
+    isComplete=True
+  )
 
-  testTodo2 = {
-    'title': "Wash the apples",
-    'isComplete': True
-  }
+  testTodo2 = Todo(
+    title="Wash the apples",
+    isComplete=True
+  )
 
-  testTodo3 = {
-    'title': "Cut the apples",
-    'description': "Don\'t forget to pack them in a box",
-    'isComplete': False
-  }
-
-  tablesDB.create_row(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
-    row_id=ID.unique(),
-    data=testTodo1
+  testTodo3 = Todo(
+    title="Cut the apples",
+    description="Don\'t forget to pack them in a box",
+    isComplete=False
   )
 
   tablesDB.create_row(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
     row_id=ID.unique(),
-    data=testTodo2
+    data=testTodo1.model_dump()
   )
 
   tablesDB.create_row(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
     row_id=ID.unique(),
-    data=testTodo3
+    data=testTodo2.model_dump()
+  )
+
+  tablesDB.create_row(
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
+    row_id=ID.unique(),
+    data=testTodo3.model_dump()
   )
 ```
 
@@ -208,20 +223,22 @@ then execute the functions in `_main_`.
 from appwrite.query import Query
 
 def get_todos():
-  # Retrieve rows (default limit is 25)
+  # Retrieve rows with type-safe access (default limit is 25)
   todos = tablesDB.list_rows(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id']
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
+    model_type=Todo
   )
   print("Todos:")
-  for todo in todos['rows']:
-    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+  for todo in todos.rows:
+    print(f"Title: {todo.data.title}\nDescription: {todo.data.description}\nIs Todo Complete: {todo.data.isComplete}\n\n")
 
 def get_completed_todos():
   # Use queries to filter completed todos with pagination
   todos = tablesDB.list_rows(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
+    model_type=Todo,
     queries=[
       Query.equal("isComplete", True),
       Query.order_desc("$createdAt"),
@@ -229,22 +246,23 @@ def get_completed_todos():
     ]
   )
   print("Completed todos (limited to 5):")
-  for todo in todos['rows']:
-    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+  for todo in todos.rows:
+    print(f"Title: {todo.data.title}\nDescription: {todo.data.description}\nIs Todo Complete: {todo.data.isComplete}\n\n")
 
 def get_incomplete_todos():
   # Query for incomplete todos
   todos = tablesDB.list_rows(
-    database_id=todoDatabase['$id'],
-    table_id=todoTable['$id'],
+    database_id=todoDatabase.id,
+    table_id=todoTable.id,
+    model_type=Todo,
     queries=[
       Query.equal("isComplete", False),
       Query.order_asc("title")
     ]
   )
   print("Incomplete todos (ordered by title):")
-  for todo in todos['rows']:
-    print(f"Title: {todo['title']}\nDescription: {todo['description']}\nIs Todo Complete: {todo['isComplete']}\n\n")
+  for todo in todos.rows:
+    print(f"Title: {todo.data.title}\nDescription: {todo.data.description}\nIs Todo Complete: {todo.data.isComplete}\n\n")
 
 if __name__ == "__main__":
   prepare_database()

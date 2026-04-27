@@ -71,6 +71,14 @@
                     pro: '3.5M / month',
                     scale: '3.5M / month',
                     enterprise: 'Custom'
+                },
+                {
+                    title: 'Execution logs',
+                    free: '100',
+                    pro: '1000',
+                    scale: 'Unlimited',
+                    enterprise: 'Custom',
+                    info: 'Number of execution logs retained per function/site'
                 }
             ]
         },
@@ -90,13 +98,6 @@
                     pro: '$15',
                     scale: '$15',
                     enterprise: 'Custom'
-                },
-                {
-                    title: 'Projects pausing',
-                    free: 'Never',
-                    pro: 'Never',
-                    scale: 'Never',
-                    enterprise: 'Never'
                 },
                 {
                     title: 'Organization members',
@@ -317,7 +318,7 @@
             rows: [
                 {
                     title: 'Functions',
-                    free: '5 per project',
+                    free: '2 per project',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -365,6 +366,14 @@
                     enterprise: 'Custom'
                 },
                 {
+                    title: 'Build timeout',
+                    info: 'Maximum duration for Sites and Functions build jobs',
+                    free: '15 minutes',
+                    pro: '45 minutes',
+                    scale: '45 minutes',
+                    enterprise: 'Custom'
+                },
+                {
                     title: 'Express builds',
                     info: 'Dedicated priority queues for build jobs',
                     free: '-',
@@ -393,10 +402,24 @@
                 },
                 {
                     title: 'Messages',
-                    free: '3M',
-                    pro: 'Unlimited',
-                    scale: 'Unlimited',
-                    enterprise: 'Unlimited'
+                    free: '2M',
+                    pro: '6M',
+                    scale: '6M',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional messages',
+                    free: '-',
+                    pro: '$2.50 per 1m',
+                    scale: '$2.50 per 1m',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Max message size',
+                    free: '256 KB',
+                    pro: '3 MB',
+                    scale: '3 MB',
+                    enterprise: 'Custom'
                 }
             ]
         },
@@ -405,7 +428,7 @@
             rows: [
                 {
                     title: 'Messages',
-                    free: '1000 per month',
+                    free: '1000 / month',
                     pro: 'Unlimited',
                     scale: 'Unlimited',
                     enterprise: 'Unlimited'
@@ -490,8 +513,35 @@
             ]
         },
         {
+            title: 'Others',
+            rows: [
+                {
+                    title: 'Screenshots',
+                    free: '50 / month',
+                    pro: '5,000 / month',
+                    scale: '5,000 / month',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Additional screenshots',
+                    free: '-',
+                    pro: '$0.004 per screenshot',
+                    scale: '$0.004 per screenshot',
+                    enterprise: 'Custom'
+                }
+            ]
+        },
+        {
             title: 'Network',
             rows: [
+                {
+                    title: 'Content delivery network',
+                    info: 'Available across all Appwrite services, with 200+ global PoP locations for low-latency delivery across Backend API, Serverless Functions, Storage files, and hosted websites.',
+                    free: 'Basic',
+                    pro: 'Advanced',
+                    scale: 'Advanced',
+                    enterprise: 'Advanced'
+                },
                 {
                     title: 'Edge compute',
                     free: true,
@@ -501,13 +551,6 @@
                 },
                 {
                     title: 'DDoS mitigation',
-                    free: true,
-                    pro: true,
-                    scale: true,
-                    enterprise: true
-                },
-                {
-                    title: 'Content delivery network',
                     free: true,
                     pro: true,
                     scale: true,

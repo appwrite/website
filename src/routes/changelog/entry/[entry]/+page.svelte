@@ -11,13 +11,13 @@
 
     let { data } = $props();
 
-    const seo = {
+    const seo = $derived({
         title: data.title,
         description: data.description ?? DEFAULT_DESCRIPTION,
         ogImage: data.cover
             ? DEFAULT_HOST + data.cover
             : `${DEFAULT_HOST}/images/open-graph/website.png`
-    };
+    });
 
     const sharingOptions = socialSharingOptions.filter((option) => option.label !== 'YCombinator');
 

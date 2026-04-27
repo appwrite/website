@@ -107,19 +107,18 @@ def prepare_database(databases)
         name: 'Todos'
     )
 
-    tablesDB.create_string_column(
-        database_id: todo_database.id, 
-        table_id: todo_table.id, 
-        key: 'title', 
-        size: 255, 
+    tablesDB.create_varchar_column(
+        database_id: todo_database.id,
+        table_id: todo_table.id,
+        key: 'title',
+        size: 255,
         required: true
     )
 
-    tablesDB.create_string_column(
-        database_id: todo_database.id, 
-        table_id: todo_table.id, 
-        key: 'description', 
-        size: 255, 
+    tablesDB.create_text_column(
+        database_id: todo_database.id,
+        table_id: todo_table.id,
+        key: 'description',
         required: false
     )
 

@@ -29,12 +29,18 @@
         states: { open }
     } = createTooltip({
         positioning: {
-            placement
+            get placement() {
+                return placement;
+            }
         },
         openDelay: 0,
-        closeOnPointerDown,
+        get closeOnPointerDown() {
+            return closeOnPointerDown;
+        },
         forceVisible: true,
-        disableHoverableContent
+        get disableHoverableContent() {
+            return disableHoverableContent;
+        }
     });
 
     let flyParams = $derived(
@@ -86,3 +92,11 @@
         {@render tooltip()}
     </div>
 {/if}
+
+<style>
+    :global(.web-tooltip) {
+        max-inline-size: min(36ch, calc(100vw - 2rem));
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+</style>

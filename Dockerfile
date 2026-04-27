@@ -27,6 +27,9 @@ ENV PUBLIC_APPWRITE_PROJECT_INIT_ID ${PUBLIC_APPWRITE_PROJECT_INIT_ID}
 ARG PUBLIC_GROWTH_ENDPOINT
 ENV PUBLIC_GROWTH_ENDPOINT ${PUBLIC_GROWTH_ENDPOINT}
 
+ARG PUBLIC_ARENA_ENDPOINT
+ENV PUBLIC_ARENA_ENDPOINT ${PUBLIC_ARENA_ENDPOINT}
+
 ARG PUBLIC_POSTHOG_API_KEY
 ENV PUBLIC_POSTHOG_API_KEY ${PUBLIC_POSTHOG_API_KEY}
 
@@ -78,6 +81,7 @@ RUN fc-cache -f -v
 
 COPY --from=build /app/build/ build
 COPY --from=build /app/server/ server
+COPY --from=build /app/src/routes/ src/routes
 COPY --from=prod-deps /app/node_modules/ node_modules
 
 CMD ["node", "server/main.js"]

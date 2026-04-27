@@ -1,5 +1,6 @@
 <script lang="ts">
     import { animate, hover, inView } from 'motion';
+    import { fade } from 'svelte/transition';
 
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
@@ -18,16 +19,19 @@
     let container: HTMLElement;
     let activeCommand: HTMLElement;
     let complete = $state<boolean>(false);
+    let baseWidth: number;
+    let widthAnim: ReturnType<typeof animate> | null = null;
 
     $effect(() => {
+        baseWidth = activeCommand.offsetWidth;
+
         hover(container, () => {
             if (isMobile()) return;
 
-            animate(
+            widthAnim?.stop();
+            widthAnim = animate(
                 activeCommand,
-                {
-                    width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 24]
-                },
+                { width: baseWidth + 24 },
                 {
                     onComplete: () => {
                         complete = true;
@@ -36,17 +40,9 @@
             );
 
             return () => {
-                animate(
-                    activeCommand,
-                    {
-                        width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 24]
-                    },
-                    {
-                        onComplete: () => {
-                            complete = false;
-                        }
-                    }
-                );
+                widthAnim?.stop();
+                complete = false;
+                widthAnim = animate(activeCommand, { width: baseWidth });
             };
         });
 
@@ -55,11 +51,10 @@
             () => {
                 if (!isMobile()) return;
 
-                animate(
+                widthAnim?.stop();
+                widthAnim = animate(
                     activeCommand,
-                    {
-                        width: [activeCommand.offsetWidth, activeCommand.offsetWidth + 24]
-                    },
+                    { width: baseWidth + 24 },
                     {
                         onComplete: () => {
                             complete = true;
@@ -68,17 +63,9 @@
                 );
 
                 return () => {
-                    animate(
-                        activeCommand,
-                        {
-                            width: [activeCommand.offsetWidth, activeCommand.offsetWidth - 24]
-                        },
-                        {
-                            onComplete: () => {
-                                complete = false;
-                            }
-                        }
-                    );
+                    widthAnim?.stop();
+                    complete = false;
+                    widthAnim = animate(activeCommand, { width: baseWidth });
                 };
             },
             { amount: 'all' }
@@ -133,7 +120,9 @@
                         UpdateProfile
 
                         {#if complete}
-                            <Checkmark play class="animate-fade-in size-5 text-[#B4F8E2]" />
+                            <span in:fade={{ duration: 150 }} out:fade={{ duration: 100 }}>
+                                <Checkmark play class="size-5 text-[#B4F8E2]" />
+                            </span>
                         {/if}
                     </div>
                     <div

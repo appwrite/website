@@ -1,3 +1,10 @@
+import githubStarsData from '$lib/generated/github-stars.json';
+
+function formatStars(n: number): string {
+    if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
+    return String(n);
+}
+
 type SocialStats = {
     [K in 'GITHUB' | 'DISCORD' | 'TWITTER' | 'YOUTUBE']: {
         STAT: string;
@@ -8,7 +15,7 @@ type SocialStats = {
 
 export const SOCIAL_STATS: SocialStats = {
     GITHUB: {
-        STAT: '53K',
+        STAT: formatStars(githubStarsData.stars),
         LINK: 'https://github.com/appwrite/appwrite',
         EXTRA: {
             COMMITS: '27K+',
@@ -34,7 +41,7 @@ export const SOCIAL_STATS: SocialStats = {
     }
 };
 
-export const BANNER_KEY: Banners = 'discord-banner-01'; // Change key to force banner to show again
+export const BANNER_KEY: Banners = 'mongodb-partnership-banner-01'; // Change key to force banner to show again
 
 export const BLOG_POSTS_PER_PAGE = 12;
 
@@ -43,8 +50,13 @@ export const BLOG_POSTS_PER_PAGE = 12;
  * discord-banner-01
  * init-banner-02
  * pricing-banner-01
+ * mongodb-partnership-banner-01
  */
-type Banners = 'discord-banner-01' | 'init-banner-02' | 'pricing-banner-01';
+type Banners =
+    | 'discord-banner-01'
+    | 'init-banner-02'
+    | 'pricing-banner-01'
+    | 'mongodb-partnership-banner-01';
 
 export type Social = {
     icon: string;

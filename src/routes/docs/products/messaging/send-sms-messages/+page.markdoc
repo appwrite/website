@@ -272,6 +272,33 @@ let target = try await users.createTarget(
     name: "<NAME>"               // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::users::Users;
+use appwrite::enums::messaging_provider_type::MessagingProviderType;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let users = Users::new(&client);
+
+    let target = users.create_target(
+        "<USER_ID>",
+        "<TARGET_ID>",
+        MessagingProviderType::Sms,
+        "<IDENTIFIER>",
+        Some("<PROVIDER_ID>"),  // optional
+        Some("<NAME>"),         // optional
+    ).await?;
+
+    println!("{:?}", target);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Create topics (optional) {% #create-topics %}
@@ -458,6 +485,29 @@ let topic = try await messaging.createTopic(
     topicId: "<TOPIC_ID>",
     name: "<NAME>"
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let topic = messaging.create_topic(
+        "<TOPIC_ID>",
+        "<NAME>",
+        None, // subscribe (optional)
+    ).await?;
+
+    println!("{:?}", topic);
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -690,6 +740,33 @@ let message = try await messaging.createSms(
     scheduledAt: ""              // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_sms(
+        "<MESSAGE_ID>",
+        "<CONTENT>",
+        Some(vec![]),       // topics (optional)
+        Some(vec![]),       // users (optional)
+        Some(vec![]),       // targets (optional)
+        Some(false),        // draft (optional)
+        None,               // scheduled_at (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Schedule SMS message {% #schedule-sms %}
@@ -918,5 +995,32 @@ let message = try await messaging.createSms(
     draft: false,                            // optional
     scheduledAt: "2025-02-13T22:01:00+0000"  // optional
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_sms(
+        "<MESSAGE_ID>",
+        "<CONTENT>",
+        Some(vec![]),                          // topics (optional)
+        Some(vec![]),                          // users (optional)
+        Some(vec![]),                          // targets (optional)
+        Some(false),                           // draft (optional)
+        Some("2025-02-13T22:01:00+0000"),      // scheduled_at (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
 ```
 {% /multicode %}

@@ -12,7 +12,7 @@ You can subscribe to events for specific resources using their ID or subscribe t
 You can also filter for events of specific actions like create, update, upsert, or delete.
 
 
-You can find a list of events for Storage, Databases, Functions, and Authentication services below.
+You can find a list of events for Storage, Databases, Functions, Sites, and Authentication services below.
 
 {% accordion %}
 {% accordion_item title="Authentication" %}
@@ -20,12 +20,19 @@ You can find a list of events for Storage, Databases, Functions, and Authenticat
 {% /accordion_item %}
 {% accordion_item title="Databases" %}
 {% partial file="databases-events.md" /%}
+
+{% info title="Note" %}
+Collections, documents, and attributes have been deprecated in favour of tables, rows, and columns. The `databases.*` event prefix has been replaced by `tablesdb.*`.
+{% /info %}
 {% /accordion_item %}
 {% accordion_item title="Storage" %}
 {% partial file="storage-events.md" /%}
 {% /accordion_item %}
 {% accordion_item title="Functions" %}
 {% partial file="functions-events.md" /%}
+{% /accordion_item %}
+{% accordion_item title="Sites" %}
+{% partial file="sites-events.md" /%}
 {% /accordion_item %}
 {% accordion_item title="Messaging" %}
 {% partial file="messaging-events.md" /%}
@@ -43,28 +50,28 @@ A change to a resource can cause multiple events to fire. For example adding a n
 ```json
 {
   "events": [
-      "databases.default.tables.movies.rows.lion-king.create",
-      "databases.*.tables.*.rows.*.create",
-      "databases.default.tables.*.rows.lion-king.create",
-      "databases.*.tables.*.rows.lion-king.create",
-      "databases.*.tables.movies.rows.lion-king.create",
-      "databases.default.tables.movies.rows.*.create",
-      "databases.*.tables.movies.rows.*.create",
-      "databases.default.tables.*.rows.*.create",
-      "databases.default.tables.movies.rows.lion-king",
-      "databases.*.tables.*.rows.*",
-      "databases.default.tables.*.rows.lion-king",
-      "databases.*.tables.*.rows.lion-king",
-      "databases.*.tables.movies.rows.lion-king",
-      "databases.default.tables.movies.rows.*",
-      "databases.*.tables.movies.rows.*",
-      "databases.default.tables.*.rows.*",
-      "databases.default.tables.movies",
-      "databases.*.tables.*",
-      "databases.default.tables.*",
-      "databases.*.tables.movies",
-      "databases.default",
-      "databases.*"
+      "tablesdb.default.tables.movies.rows.lion-king.create",
+      "tablesdb.*.tables.*.rows.*.create",
+      "tablesdb.default.tables.*.rows.lion-king.create",
+      "tablesdb.*.tables.*.rows.lion-king.create",
+      "tablesdb.*.tables.movies.rows.lion-king.create",
+      "tablesdb.default.tables.movies.rows.*.create",
+      "tablesdb.*.tables.movies.rows.*.create",
+      "tablesdb.default.tables.*.rows.*.create",
+      "tablesdb.default.tables.movies.rows.lion-king",
+      "tablesdb.*.tables.*.rows.*",
+      "tablesdb.default.tables.*.rows.lion-king",
+      "tablesdb.*.tables.*.rows.lion-king",
+      "tablesdb.*.tables.movies.rows.lion-king",
+      "tablesdb.default.tables.movies.rows.*",
+      "tablesdb.*.tables.movies.rows.*",
+      "tablesdb.default.tables.*.rows.*",
+      "tablesdb.default.tables.movies",
+      "tablesdb.*.tables.*",
+      "tablesdb.default.tables.*",
+      "tablesdb.*.tables.movies",
+      "tablesdb.default",
+      "tablesdb.*"
   ]
 }
 ```

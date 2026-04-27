@@ -30,8 +30,10 @@
     export let difficulty: string | undefined = undefined;
     export let readtime: string | undefined = undefined;
     export let date: string | undefined = undefined;
+    export let prompt: string | undefined = undefined;
 
     setContext<LayoutContext>('headings', writable({}));
+    setContext('prompt_path', prompt);
 
     const headings = getContext<LayoutContext>('headings');
 

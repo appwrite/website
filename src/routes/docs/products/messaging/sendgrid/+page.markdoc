@@ -276,6 +276,38 @@ let message = try await messaging.createEmail(
     content: "<CONTENT>"
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_email(
+        "<MESSAGE_ID>",                              // messageId
+        "<SUBJECT>",                                 // subject
+        "<CONTENT>",                                 // content
+        None,                                        // topics (optional)
+        None,                                        // users (optional)
+        None,                                        // targets (optional)
+        None,                                        // cc (optional)
+        None,                                        // bcc (optional)
+        None,                                        // attachments (optional)
+        None,                                        // draft (optional)
+        None,                                        // html (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -560,6 +592,34 @@ let provider = try await messaging.updateSendgridProvider(
   replyToName: "<REPLY_TO_NAME>",    // optional
   replyToEmail: "<REPLY_TO_EMAIL>"   // optional
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let messaging = Messaging::new(&client);
+
+    let provider = messaging.update_sendgrid_provider(
+        "<PROVIDER_ID>",                             // providerId
+        Some("<NAME>"),                              // name (optional)
+        Some(false),                                 // enabled (optional)
+        Some("<API_KEY>"),                           // apiKey (optional)
+        Some("<FROM_NAME>"),                         // fromName (optional)
+        Some("email@example.com"),                   // fromEmail (optional)
+        Some("<REPLY_TO_NAME>"),                     // replyToName (optional)
+        Some("<REPLY_TO_EMAIL>"),                    // replyToEmail (optional)
+    ).await?;
+
+    println!("{:?}", provider);
+    Ok(())
+}
 ```
 {% /multicode %}
 {% /tabsitem %}

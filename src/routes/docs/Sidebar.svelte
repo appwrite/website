@@ -107,7 +107,8 @@
                 {
                     label: 'Realtime',
                     href: '/docs/apis/realtime',
-                    icon: 'icon-clock'
+                    icon: 'icon-clock',
+                    isParent: true
                 },
                 {
                     label: 'REST',
@@ -125,25 +126,27 @@
             label: 'Tooling',
             items: [
                 {
+                    label: 'AI',
+                    href: '/docs/tooling/ai',
+                    icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
                     isParent: true
                 },
                 {
+                    label: 'Terraform',
+                    href: '/docs/tooling/terraform',
+                    icon: 'web-icon-terraform',
+                    isParent: true
+                },
+                {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
                     icon: 'web-icon-command'
-                },
-                {
-                    label: 'Assistant',
-                    href: '/docs/tooling/assistant',
-                    icon: 'icon-sparkles'
-                },
-                {
-                    label: 'MCP Server',
-                    href: '/docs/tooling/mcp',
-                    icon: 'web-icon-mcp'
                 },
                 {
                     label: 'The Appwriter',

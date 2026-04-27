@@ -10,6 +10,40 @@
   [data-banner-hidden] & {
     display: none;
   }
+
+  &--mongodb {
+    /* MongoDB theme: bright leaf green bar, dark navy copy (matches brand samples) */
+    background: #00ed64;
+    padding-block: pxToRem(14);
+    padding-inline: pxToRem(20);
+
+    .#{$p}-top-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: pxToRem(8);
+      color: #001e2b;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: pxToRem(8);
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        .web-mongodb-banner-leaf {
+          block-size: pxToRem(22);
+          inline-size: auto;
+          flex-shrink: 0;
+          aspect-ratio: 120 / 257;
+        }
+      }
+    }
+  }
 }
 
 .#{$p}-top-banner-2 {

@@ -21,9 +21,9 @@ Create a new table with the following columns:
 
 | Column   | Type   | Required | Size     |
 |-------------|--------|----------|----------|
-| userId      | String | Yes      | 200      |
-| title       | String | Yes      | 200      |
-| description | String | No       | 500      |
+| userId      | Varchar | Yes      | 200      |
+| title       | Varchar | Yes      | 200      |
+| description | Text    | No       | -        |
 
 {% only_dark %}
 ![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
