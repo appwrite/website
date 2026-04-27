@@ -43,7 +43,7 @@ The relevant API key scopes are:
 
 - **`functions.read`** / **`functions.write`** for function variables
 - **`sites.read`** / **`sites.write`** for site variables
-- **`projects.read`** / **`projects.write`** for project variables
+- **`project.read`** / **`project.write`** for project variables
 
 ## Create a project variable
 

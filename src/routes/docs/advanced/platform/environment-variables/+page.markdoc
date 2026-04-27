@@ -35,26 +35,28 @@ Manage variables for a single site.
 
 # Manage in the Console {% #console %}
 
-You can create and manage project variables from the Appwrite Console:
+You can create and manage project variables from the Appwrite Console. The Console refers to them as **Global variables**:
 
 1. Navigate to your project.
-2. Open **Settings** > **Environment variables**.
-3. Click **Create variable** and enter a key and value.
+2. Open **Settings** and scroll to the **Global variables** section.
+3. Click **Create a global variable** and enter a key and value.
 4. Optionally select the **Secret** checkbox to prevent any team member from reading the value after creation.
 5. Click **Create**, then redeploy your functions and sites for the change to take effect.
 
 {% only_dark %}
-![Project environment variables](/images/docs/sites/dark/env-variables.png)
+![Project Global variables in the Appwrite Console](/images/docs/platform/dark/env-variables.png)
 {% /only_dark %}
 {% only_light %}
-![Project environment variables](/images/docs/sites/env-variables.png)
+![Project Global variables in the Appwrite Console](/images/docs/platform/env-variables.png)
 {% /only_light %}
 
 # Manage with a Server SDK {% #server-sdks %}
 
-You can also manage project variables programmatically using a [Server SDK](/docs/sdks#server). Each call requires an [API key](/docs/advanced/platform/api-keys) with the `projects.write` scope to create, update, or delete variables, or the `projects.read` scope to list and read them.
+You can also manage project variables programmatically using a [Server SDK](/docs/sdks#server). Each call requires an [API key](/docs/advanced/platform/api-keys) with the `project.write` scope to create, update, or delete variables, or the `project.read` scope to list and read them.
 
 ## Create a variable {% #create-variable %}
+
+Project variables require a caller-supplied `variableId`. Pass `ID.unique()` to let the SDK generate one, or provide a custom value (max 36 characters; allowed characters: `a-z A-Z 0-9 . - _`; cannot start with a special character). Function and site variables do not accept a `variableId` — Appwrite assigns one automatically.
 
 {% multicode %}
 ```server-nodejs
