@@ -1,4 +1,6 @@
 <script lang="ts" module>
+    import { addDays, format } from 'date-fns';
+
     const base = new Date('2025-05-19T07:00:00.000Z');
     const otherFeaturesBase = new Date('2025-05-19T13:00:00.000Z');
 
@@ -8,205 +10,196 @@
 
 <script lang="ts">
     import { buildOpenGraphImage } from '$lib/utils/metadata';
-
-    import CountdownGrid from './(components)/countdown-grid.svelte';
-    import Poster from './(assets)/poster.png';
-    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
-    import PosterDeploy from './(assets)/posterDeploy.png';
-    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
-    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
-    import PosterFileTokens from './(assets)/posterFileTokens.png';
-    import PosterClosingParty from './(assets)/eventClosingParty.png';
-    import Sites from './(assets)/illustrations/sites.svg';
-    import Flutter from './(assets)/illustrations/flutter.svg';
-    import Formats from './(assets)/illustrations/formats.svg';
-    import DevKeys from './(assets)/illustrations/devkeys.svg';
-    import Tokens from './(assets)/illustrations/tokens.svg';
-    import { addDays, format } from 'date-fns';
-    import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
-    import Giveaway from './(components)/giveaway.svelte';
-    import EventCarousel from './(components)/event-carousel.svelte';
+    import Schedule from './(components)/schedule.svelte';
+    import DayDetails from './(components)/day-details.svelte';
+    import InitStickyNav from './(components)/init-sticky-nav.svelte';
+    import IllustrationConsole from './(assets)/card-illustration-console.svg';
+    import IllustrationConsoleDay from './(assets)/illustration-console-day.svg';
+    import IllustrationPostgres from './(assets)/illustration-postgres.svg';
+    import IllustrationHyperloopDay from './(assets)/illustration-hyperloop-day.svg';
+    import IllustrationS3Proxy from './(assets)/illustration-s3proxy.svg';
+    import IllustrationNewApis from './(assets)/illustration-newapis.svg';
     import { FooterNav, MainFooter } from '$lib/components';
 
     const title = 'Init - Appwrite';
     const description = 'The start of something new.';
     const ogImage = buildOpenGraphImage('init', description);
 
-    const today = new Date();
-
     let { data } = $props();
 
-    let days: Array<Omit<DayProps, 'index'>> = [
+    let scrollY = $state(0);
+
+    const now = new Date();
+    const detailDays = [
         {
-            title: 'Sites',
-            release: base,
-            illustration: Sites,
+            dayName: 'MONday',
+            dayNumber: 0,
+            date: 'march - 23 - 2026',
+            title: 'Appwrite Console 2.0',
             description:
-                'Introducing the open-source Vercel alternative. A new Appwrite product that lets you deploy and host your websites and web apps right inside Appwrite.',
-            url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
-            content: [
-                {
-                    title: 'Announcing Appwrite Sites',
-                    url: '/blog/post/announcing-appwrite-sites',
-                    type: 'Blog'
-                },
-                {
-                    title: 'How to host SSR web apps with Appwrite Sites',
-                    url: '/blog/post/host-ssr-web-apps-sites',
-                    type: 'Blog'
-                },
-                {
-                    title: 'Get started with Appwrite Sites',
-                    url: '/docs/products/sites',
-                    type: 'Docs',
-                    label: 'Visit docs'
-                }
-            ],
-            announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
-                title: 'Announcement Video',
-                poster: Poster
-            },
+                'A completely redesigned console experience with improved navigation, faster workflows, and a modern interface.',
+            illustration: IllustrationConsoleDay,
+            productLabel: 'CONSOLE 2.0',
+            videoHref: '#',
             links: [
                 {
-                    title: 'Product demo',
-                    type: 'video',
-                    poster: PosterDeploy,
-                    url: 'https://youtu.be/VtDe6hDw91k'
+                    type: '// blog post',
+                    title: 'Announcing Appwrite Console 2.0',
+                    action: 'Read article',
+                    href: '#'
                 },
                 {
-                    title: 'YouTube Live',
-                    type: 'video',
-                    poster: PosterFutureAppwrite,
-                    url: 'https://www.youtube.com/watch?v=1g8tuogsp7A'
-                }
-            ]
-        },
-        {
-            title: 'Flutter Web',
-            release: addDays(otherFeaturesBase, 1),
-            illustration: Flutter,
-            description:
-                'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
-            url: '/blog/post/hosting-flutter-web',
-            content: [
-                {
-                    title: 'How to set up the Flutter starter template on Appwrite Sites',
-                    url: '/blog/post/flutter-starter-sites',
-                    type: 'Blog'
+                    type: '// blog post',
+                    title: 'How to host SSR web apps on Appwrite Sites',
+                    action: 'Read article',
+                    href: '#'
                 },
                 {
-                    title: 'Building with Appwrite Sites template',
-                    url: '/blog/post/building-with-sites-templates',
-                    type: 'Blog'
-                },
-                {
-                    title: 'Hosting for Flutter Web',
-                    url: '/docs/products/sites/quick-start/flutter',
-                    type: 'Docs',
-                    label: 'Visit docs'
-                }
-            ]
-        },
-        {
-            title: 'Dev Keys',
-            release: addDays(otherFeaturesBase, 2),
-            illustration: DevKeys,
-            description:
-                'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
-            url: '/blog/post/announcing-dev-keys',
-            content: [
-                {
-                    title: 'Improve your Appwrite developer experience with Dev Keys',
-                    url: '/blog/post/improve-devex-dev-keys',
-                    type: 'Blog'
-                },
-                {
-                    title: 'Dev Keys',
-                    url: '/docs/advanced/platform/dev-keys',
-                    type: 'Docs',
-                    label: 'Visit docs'
-                }
-            ]
-        },
-        {
-            title: 'Image formats',
-            release: addDays(otherFeaturesBase, 3),
-            illustration: Formats,
-            description:
-                'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
-            url: '/blog/post/new-image-formats-avif-heic',
-            content: [
-                {
-                    title: 'Announcing HEIC and AVIF support: modern image formats now in Appwrite',
-                    url: '/blog/post/new-image-formats-avif-heic',
-                    type: 'Blog'
-                },
-                {
-                    title: 'How to use AVIF in Storage',
-                    url: '/blog/post/avif-in-storage',
-                    type: 'Blog'
-                },
-                {
-                    title: 'New image formats',
-                    url: '/docs/products/storage/images',
-                    type: 'Docs',
-                    label: 'Visit docs'
+                    type: '// DOCS',
+                    title: 'Getting started with Console 2.0',
+                    action: 'go to docs',
+                    href: '#'
                 }
             ],
-            announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/2KAwVoJh8a8',
-                title: 'Announcement Video',
-                poster: PosterNewImageFormats
-            },
-            links: [
-                {
-                    title: 'YouTube Live',
-                    type: 'video',
-                    poster: PosterIndustryPanel,
-                    url: 'https://www.youtube.com/watch?v=PfnKyXo2k6o'
-                }
-            ]
+            release: new Date('2026-03-23T07:00:00.000Z'),
+            revealed: true
         },
         {
-            title: 'File Tokens',
-            release: addDays(otherFeaturesBase, 4),
-            illustration: Tokens,
+            dayName: 'TUESday',
+            dayNumber: 1,
+            date: 'march - 24 - 2026',
+            title: 'PostGres + Vector DB',
             description:
-                'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
-            url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
-            content: [
-                {
-                    title: 'Announcing File Tokens: secure file sharing without the hassle',
-                    url: '/blog/post/announcing-file-tokens',
-                    type: 'Blog'
-                },
-                {
-                    title: 'CSR vs SSG vs SSR: what they are and how to choose',
-                    url: '/blog/post/csr-ssg-ssr',
-                    type: 'Blog'
-                },
-                {
-                    title: 'File Tokens',
-                    url: '/docs/products/storage/file-tokens',
-                    type: 'Docs',
-                    label: 'Visit docs'
-                }
-            ],
-            announcementVideo: {
-                url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',
-                title: 'Announcement Video',
-                poster: PosterFileTokens
-            },
+                'Full PostgreSQL support with built-in vector database capabilities for AI-powered search and embeddings.',
+            illustration: IllustrationPostgres,
+            productLabel: 'DATABASES',
+            videoHref: '#',
             links: [
                 {
-                    title: 'YouTube Live',
-                    type: 'video',
-                    poster: PosterClosingParty,
-                    url: 'https://www.youtube.com/watch?v=1gvjqV1nq-c?'
+                    type: '// blog post',
+                    title: 'Introducing PostGres + Vector DB',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// DOCS',
+                    title: 'Setting up Vector DB',
+                    action: 'go to docs',
+                    href: '#'
                 }
-            ]
+            ],
+            release: new Date('2026-03-24T07:00:00.000Z'),
+            revealed: true
+        },
+        {
+            dayName: 'WEDNESday',
+            dayNumber: 2,
+            date: 'march - 25 - 2026',
+            title: 'S3 Proxy Servers',
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            illustration: IllustrationS3Proxy,
+            productLabel: 'STORAGE',
+            videoHref: '#',
+            links: [
+                {
+                    type: '// blog post',
+                    title: 'Announcing S3 Proxy Servers',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// blog post',
+                    title: 'How to use S3-compatible storage with Appwrite',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// DOCS',
+                    title: 'Configuring S3 Proxy Servers',
+                    action: 'go to docs',
+                    href: '#'
+                }
+            ],
+            release: new Date('2026-03-25T07:00:00.000Z'),
+            revealed: true
+        },
+        {
+            dayName: 'THURSday',
+            dayNumber: 3,
+            date: 'march - 26 - 2026',
+            title: 'Hyperloop B',
+            description:
+                'A streamlined solution for easily deploying static and server-rendered applications, designed to simplify your workflow.',
+            illustration: IllustrationHyperloopDay,
+            productLabel: 'CONSOLE 2.0',
+            videoHref: '#',
+            links: [
+                {
+                    type: '// blog post',
+                    title: 'Announcing Appwrite Console 2.0',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// blog post',
+                    title: 'How to host SSR web apps on Appwrite Sites',
+                    action: 'Read article',
+                    href: '#'
+                },
+                {
+                    type: '// DOCS',
+                    title: 'Setting up your page with Sites',
+                    action: 'go to docs',
+                    href: '#'
+                }
+            ],
+            release: new Date('2026-03-26T07:00:00.000Z'),
+            revealed: true
+        },
+        {
+            dayName: 'FRIday',
+            dayNumber: 4,
+            date: 'march - 27 - 2026',
+            release: new Date('2026-03-27T07:00:00.000Z'),
+            revealed: false
+        }
+    ];
+
+    const scheduleDays = [
+        {
+            title: 'APPWRITE CONSOLE 2.0',
+            illustration: IllustrationConsole,
+            release: new Date('2026-03-23T07:00:00.000Z'),
+            revealed: true,
+            dayNumber: 0
+        },
+        {
+            title: 'POSTGRES + VECTOR DB',
+            illustration: IllustrationConsole,
+            release: new Date('2026-03-24T07:00:00.000Z'),
+            revealed: true,
+            dayNumber: 1
+        },
+        {
+            title: 'S3 PROXY SERVERS',
+            illustration: IllustrationConsole,
+            release: new Date('2026-03-25T07:00:00.000Z'),
+            revealed: true,
+            dayNumber: 2
+        },
+        {
+            title: 'HYPERLOOP B',
+            illustration: IllustrationConsole,
+            release: new Date('2026-03-01T07:00:00.000Z'),
+            dayNumber: 3
+        },
+        {
+            title: 'NEW APIS',
+            illustration: IllustrationNewApis,
+            release: new Date('2026-03-27T07:00:00.000Z'),
+            dayNumber: 4
         }
     ];
 </script>
@@ -228,57 +221,19 @@
     <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
+<svelte:window bind:scrollY={scrollY} />
+
+<InitStickyNav {scrollY} claimed={data.claimed} ticketId={data.ticketId} />
+
 <Hero ticketId={data.ticketId} claimed={data.claimed} />
 
-{#if today >= base}
-    <CountdownGrid {days} />
+<Schedule days={scheduleDays} />
 
-    <div class="container w-full py-20">
-        {#each days as day, i}
-            {@const index = i + 1}
-            <Day {...day} {index} />
-        {/each}
+<DayDetails days={detailDays} />
+
+<div class="bg-[#19191C]">
+    <div class="mx-auto w-full max-w-[1280px] px-5 md:px-8 lg:px-[clamp(1.25rem,4vw,120rem)]">
+        <FooterNav />
+        <MainFooter />
     </div>
-
-    <!--    <EventCarousel />-->
-{/if}
-
-<Giveaway />
-
-<div class="footer-section extended-borders-footer container">
-    <FooterNav />
-
-    <MainFooter />
 </div>
-
-<style lang="scss">
-    .extended-borders-footer {
-        z-index: 0;
-        position: relative;
-        max-width: 100vw;
-        overflow: hidden;
-    }
-    .extended-borders-footer::before {
-        content: '';
-        position: absolute;
-        border-top: 2px dashed var(--color-offset);
-        pointer-events: none;
-        z-index: -1;
-        height: 0;
-
-        @media (min-width: 768px) {
-            inset: 0;
-        }
-    }
-
-    .footer-section {
-        & :global(.web-footer-nav) {
-            border-block-start: none;
-            margin-block-start: unset;
-
-            @media (max-width: 768px) {
-                border-block-start: solid 0.0625rem hsl(var(--web-color-smooth));
-            }
-        }
-    }
-</style>

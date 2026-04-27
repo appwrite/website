@@ -63,7 +63,7 @@
 </script>
 
 {#if hasReleased}
-    <div class="scroll-mt-10 space-y-4 pb-8" id="day-{index}">
+    <div class="scroll-mt-[180px] space-y-4 pb-8" id="day-{index}">
         <Window>
             {#snippet title()}
                 <div class="text-eyebrow flex items-center gap-1 text-white">

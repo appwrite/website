@@ -33,6 +33,9 @@ export default defineConfig({
             algorithms: ['sha384']
         })
     ],
+    server: {
+        allowedHosts: ['.trycloudflare.com']
+    },
     css: {
         devSourcemap: process.env.NODE_ENV !== 'production'
     },

@@ -1,13 +1,7 @@
 <script lang="ts">
     import Spinner from '$lib/components/shared/spinner.svelte';
-    import VideoDialog from '$lib/components/shared/dialog.svelte';
-    import { Button, Icon } from '$lib/components/ui';
-    import { cn } from '$lib/utils/cn';
-    import { initDates } from '../+page.svelte';
-    import LockupImage from '../(assets)/lockup.png';
-
-    import Badge from './badge.svelte';
-    import Lockup from './lockup.svelte';
+    import { Icon } from '$lib/components/ui';
+    import HeroDivider from '../(assets)/hero-divider.svg';
     import { type PageData } from '../$types';
     import { enhance } from '$app/forms';
 
@@ -17,55 +11,143 @@
     let claiming: boolean = $state(false);
 </script>
 
-<div
-    class={cn(
-        'relative container -mb-10 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 px-0 py-20 md:min-h-[80vh]',
-        'before:border-offset before:absolute before:inset-0 before:z-0 before:border-r-2 before:border-l-2 before:border-dashed',
-        'before:[mask-image:linear-gradient(to_top,transparent,black_150px,black_calc(100%_-_150px),black)]'
-    )}
->
-    <Badge>{initDates}</Badge>
-    <div class="relative z-10 mx-auto px-4 md:w-5/8">
-        <img src={LockupImage} alt="Init logo" class="block w-full md:hidden" />
-        <Lockup />
-    </div>
-    <div class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center gap-8">
-        <div class="text flex flex-col gap-4 [animation-delay:0.75s]">
-            <p class="text-description text-secondary block max-w-lg text-center">
-                Join us at Appwrite for another week of exciting new announcements and events.
-            </p>
-
-            <nav class="mt-4 flex w-full flex-col items-center justify-center gap-4 md:flex-row">
-                {#if claimed}
-                    <Button href={`/init/tickets/${ticketId}`}>
-                        <Icon name="ticket" />Your Init ticket
-                    </Button>
-                {:else}
-                    <form
-                        action="?/oauth"
-                        method="post"
-                        use:enhance={async () => {
-                            claiming = true;
-                        }}
+<section class="relative h-[597px] w-full overflow-hidden bg-[#19191C] md:h-[680px] lg:h-[788px]">
+    <!-- Main hero content area -->
+    <div class="absolute inset-x-0 top-[248px] mx-auto w-full max-w-[1280px] px-5 md:top-[320px] md:px-8 lg:top-[418px] lg:px-[clamp(1.25rem,4vw,120rem)]">
+        <div class="flex flex-col gap-8 lg:gap-16">
+            <!-- Large INIT wordmark row: 5 outlined left, 1 filled, 5 outlined right -->
+            <!-- Offset = 5 * (logo width + gap) so filled logo always sits at left edge -->
+            <div
+                class="init-wordmark-row flex items-center"
+                style="gap: var(--logo-gap); margin-left: calc(-5 * (var(--logo-w) + var(--logo-gap)));"
+            >
+                {#each { length: 11 } as _, i}
+                    {@const isFilled = i === 5}
+                    <svg
+                        width="469"
+                        height="165"
+                        viewBox="0 0 469 167"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0"
+                        style="width: var(--logo-w); height: var(--logo-h);"
+                        aria-hidden={!isFilled}
+                        role={isFilled ? 'img' : 'presentation'}
                     >
-                        <Button type="submit" disabled={claiming}>
-                            {#if claiming}
-                                <Spinner />
-                            {:else}
-                                <Icon name="github" />
-                            {/if}Claim your ticket</Button
+                        {#if isFilled}
+                            <title>Init</title>
+                            <path d="M93.0387 1V17.9714H56.9095V149.029H93.0387V166H0V149.029H36.3654V17.9714H0V1H93.0387Z" fill="white"/>
+                            <path d="M126.044 166H106.208V1H126.044L205.15 127.814V1H224.75V166H205.15L126.044 38.95V166Z" fill="white"/>
+                            <path d="M329.886 1V17.9714H293.757V149.029H329.886V166H236.848V149.029H273.213V17.9714H236.848V1H329.886Z" fill="white"/>
+                            <path d="M415.396 166H394.852V19.8572H341.249V1H469V19.8572H415.396V166Z" fill="white"/>
+                        {:else}
+                            <g opacity="0.1" style="mix-blend-mode:difference">
+                                <path d="M93.0387 1V17.9714H56.9095V149.029H93.0387V166H0V149.029H36.3654V17.9714H0V1H93.0387Z" stroke="white" stroke-width="2"/>
+                                <path d="M126.044 166H106.208V1H126.044L205.15 127.814V1H224.75V166H205.15L126.044 38.95V166Z" stroke="white" stroke-width="2"/>
+                                <path d="M329.886 1V17.9714H293.757V149.029H329.886V166H236.848V149.029H273.213V17.9714H236.848V1H329.886Z" stroke="white" stroke-width="2"/>
+                                <path d="M415.396 166H394.852V19.8572H341.249V1H469V19.8572H415.396V166Z" stroke="white" stroke-width="2"/>
+                            </g>
+                        {/if}
+                    </svg>
+                {/each}
+            </div>
+
+            <!-- Bottom row: text + CTAs -->
+            <div class="flex flex-col gap-5">
+                <!-- Divider line -->
+                <img
+                    src={HeroDivider}
+                    alt=""
+                    class="w-full opacity-16"
+                    aria-hidden="true"
+                />
+
+                <!-- Content row -->
+                <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+                    <!-- Left: date text -->
+                    <div class="max-w-[379px]">
+                        <p class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-white md:text-base lg:text-[18px] lg:leading-[1.25]">
+                            APPWRITE LAUNCH WEEK 4.0<br />
+                            MARCH 23 - 27<br />
+                            2026
+                        </p>
+                    </div>
+
+                    <!-- Right: CTA links -->
+                    <div class="flex w-full flex-col gap-2 md:w-[276px]">
+                        {#if claimed}
+                            <a
+                                href={`/init/tickets/${ticketId}`}
+                                class="group flex items-center justify-between gap-1.5 rounded-none border border-white/10 bg-white/12 px-3 py-2 pr-1.5 transition-colors hover:bg-white/16"
+                            >
+                                <span class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-[#E4E4E7]">
+                                    YOUR INIT TICKET
+                                </span>
+                                <Icon name="chevron-right" class="size-5 text-white" />
+                            </a>
+                        {:else}
+                            <form
+                                action="?/oauth"
+                                method="post"
+                                use:enhance={async () => {
+                                    claiming = true;
+                                }}
+                            >
+                                <button
+                                    type="submit"
+                                    disabled={claiming}
+                                    class="group flex w-full items-center justify-between gap-1.5 rounded-none border border-white/10 bg-white/12 px-3 py-2 pr-1.5 transition-colors hover:bg-white/16 disabled:opacity-50"
+                                >
+                                    <span class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-[#E4E4E7]">
+                                        {#if claiming}
+                                            <Spinner />
+                                        {:else}
+                                            CLAIM YOUR TICKET
+                                        {/if}
+                                    </span>
+                                    <Icon name="chevron-right" class="size-5 text-white" />
+                                </button>
+                            </form>
+                        {/if}
+
+                        <a
+                            href="https://www.youtube.com/watch?v=appwrite-init-4"
+                            target="_blank"
+                            rel="noopener"
+                            class="group flex items-center justify-between gap-1.5 rounded-none border border-white/10 bg-white/12 px-3 py-2 pr-1.5 transition-colors hover:bg-white/16"
                         >
-                    </form>
-                {/if}
-                <Button
-                    href="https://www.producthunt.com/products/appwrite"
-                    variant="secondary"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Support on Product Hunt
-                </Button>
-            </nav>
+                            <span class="font-aeonik-fono text-sm uppercase leading-[1.2] tracking-tight text-[#E4E4E7]">
+                                Announcement video
+                            </span>
+                            <Icon name="chevron-right" class="size-5 text-white" />
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<style>
+    .init-wordmark-row {
+        --logo-w: 244px;
+        --logo-h: 86px;
+        --logo-gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+        .init-wordmark-row {
+            --logo-w: 340px;
+            --logo-h: 120px;
+            --logo-gap: 24px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .init-wordmark-row {
+            --logo-w: 469px;
+            --logo-h: 165px;
+            --logo-gap: 32px;
+        }
+    }
+</style>

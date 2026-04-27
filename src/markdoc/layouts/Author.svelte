@@ -19,7 +19,7 @@
 
     const posts = getContext<PostsData[]>('posts');
     const authors = getContext<AuthorData[]>('authors');
-    const author = authors.find(
+    const author = authors?.find(
         (p) => page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1) === p.slug
     );
 
@@ -170,8 +170,8 @@
 
                 <div class="mt-12">
                     <ul class="web-grid-articles">
-                        {#each posts.filter( (p) => (Array.isArray(p.author) ? p.author.includes(author?.slug ?? '') : p.author === author?.slug) ) as post}
-                            {@const authorData = getPostAuthors(post.author, authors)}
+                        {#each (posts ?? []).filter( (p) => (Array.isArray(p.author) ? p.author.includes(author?.slug ?? '') : p.author === author?.slug) ) as post}
+                            {@const authorData = getPostAuthors(post.author, authors ?? [])}
                             {@const primaryAuthor = authorData.primaryAuthor ?? author}
                             <Article
                                 title={post.title}
