@@ -232,7 +232,7 @@ $APPWRITE_INSTALL_DIR = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Appwrite";
 or [Scoop](https://scoop.sh/)
 
 ```sh
-scoop uninstall appwrite
+scoop uninstall appwrite.config
 ```
 {% /tabsitem %}
 
