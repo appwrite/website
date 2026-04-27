@@ -1,0 +1,294 @@
+---
+layout: post
+title: "Announcing the Auth methods API: Toggle authentication methods programmatically"
+description: Authentication methods can now be enabled or disabled directly through Appwrite Server SDKs. Provision project auth configuration from code, automate environment setup, and centralize policy across your projects.
+date: 2026-04-29
+cover: /images/blog/announcing-auth-methods-api/cover.png
+timeToRead: 4
+author: matej-baco
+category: announcement
+featured: false
+callToAction: true
+---
+
+Configuring which authentication methods a project supports has always meant opening the Appwrite Console, navigating to the Auth settings, and flipping toggles by hand. For a single project, that is fine. For teams managing multiple environments, bootstrapping new projects through automation, or enforcing consistent auth policy across an organization, it becomes another manual step that does not belong in modern infrastructure workflows.
+
+Today, we are announcing the **Auth methods API**, allowing you to enable or disable individual authentication methods on your project programmatically through the Appwrite Server SDKs.
+
+This is part of a wider effort to make everything in Appwrite accessible through the API. Our goal is to ensure that any action you can perform in the Appwrite Console can also be done programmatically, giving you full control over your projects through code.
+
+# Why this matters
+
+Authentication methods are the front door to your application. Whether your users sign in with email and password, magic URLs, one-time codes, or anonymous sessions, every method needs to match your product's security posture and rollout plan. Being able to toggle methods from code opens up workflows that were previously manual:
+
+- **Infrastructure-as-code pipelines** that provision new projects with the exact set of auth methods they need
+- **Multi-environment setups** that keep dev, staging, and production aligned without drift
+- **Incident response** where a compromised method can be disabled instantly through automated runbooks
+- **Multi-tenant platforms** that adjust available auth methods per customer based on their plan or compliance needs
+
+# How it works
+
+The Auth methods API introduces a single endpoint on the `Project` service that updates the enabled state of any supported method. Team invites are included alongside the authentication methods because they share the same project-level enable/disable mechanism in Appwrite.
+
+The supported method IDs are:
+
+| Method ID | Description |
+| --- | --- |
+| `email-password` | Email and password sign-up and login |
+| `magic-url` | Passwordless login using a magic link sent to the user's email |
+| `email-otp` | Time-based one-time password sent to the user's email |
+| `phone` | SMS-based phone authentication |
+| `anonymous` | Guest sessions for unauthenticated visitors |
+| `invites` | Team invitations for collaborative access |
+| `jwt` | JWT-based authentication for delegated access |
+
+When a method is disabled, the matching account endpoints reject requests for that project until it is re-enabled.
+
+## Update an auth method
+
+{% multicode %}
+```server-nodejs
+import { Client, Project, AuthMethod } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateAuthMethod({
+    methodId: AuthMethod.EmailPassword,
+    enabled: false
+});
+```
+```server-deno
+import { Client, Project, AuthMethod } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateAuthMethod({
+    methodId: AuthMethod.EmailPassword,
+    enabled: false
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+use Appwrite\Enums\AuthMethod;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateAuthMethod(
+    methodId: AuthMethod::EMAILPASSWORD(),
+    enabled: false
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+from appwrite.enums import AuthMethod
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_auth_method(
+    method_id=AuthMethod.EMAIL_PASSWORD,
+    enabled=False
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+include Appwrite::Enums
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_auth_method(
+    method_id: AuthMethod::EMAIL_PASSWORD,
+    enabled: false
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateAuthMethod(
+    methodId: AuthMethod.EmailPassword,
+    enabled: false
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart' as enums;
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateAuthMethod(
+    methodId: enums.AuthMethod.emailPassword,
+    enabled: false,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+import io.appwrite.enums.AuthMethod
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val result = project.updateAuthMethod(
+    methodId = AuthMethod.EMAIL_PASSWORD,
+    enabled = false
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+import io.appwrite.enums.AuthMethod;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateAuthMethod(
+    AuthMethod.EMAIL_PASSWORD,
+    false,
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateAuthMethod(
+    methodId: .emailPassword,
+    enabled: false
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.UpdateAuthMethod(
+        "email-password",
+        false,
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+use appwrite::enums::AuthMethod;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_auth_method(
+        AuthMethod::EmailPassword,
+        false,
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+The endpoint returns the updated [Project](/docs/references/cloud/models/project) document, with the new method state applied immediately.
+
+# What is next
+
+OAuth providers are configured separately today, through provider-specific settings such as app ID, secret, and redirect URI. Programmatic control over OAuth providers, including enabling and disabling them through the same Server SDKs, is on the roadmap and coming soon.
+
+# Full SDK support
+
+The Auth methods API is available across all Appwrite Server SDKs. Complete code examples for every supported language are available in the [Auth methods documentation](/docs/advanced/platform/auth-methods).
+
+# Resources
+
+- [Auth methods documentation](/docs/advanced/platform/auth-methods)
+- [Authentication overview](/docs/products/auth)
+- [Announcing the Keys API: Create and manage API keys with Server SDKs](/blog/post/announcing-api-keys-api)

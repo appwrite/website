@@ -66,6 +66,11 @@
                 {
                     label: 'Dev keys',
                     href: '/docs/advanced/platform/dev-keys'
+                },
+                {
+                    label: 'Auth methods',
+                    href: '/docs/advanced/platform/auth-methods',
+                    new: isNewUntil('30 May 2026')
                 }
             ]
         },
