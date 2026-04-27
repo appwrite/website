@@ -117,9 +117,24 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://js.zi-scripts.com',
             'https://aorta.clickagy.com',
             'https://hemsync.clickagy.com',
-            'https://ws.zoominfo.com ',
+            'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            // Statsig JS client + session replay + web analytics
+            // https://docs.statsig.com/client/jsClientSDK#content-security-policy
+            'https://api.statsig.com',
+            'https://*.statsig.com',
+            'https://featuregates.org',
+            'https://statsigapi.net',
+            'https://*.statsigapi.net',
+            'https://events.statsigapi.net',
+            'https://api.statsigcdn.com',
+            'https://*.statsigcdn.com',
+            'https://featureassets.org',
+            'https://assetsconfigcdn.org',
+            'https://prodregistryv2.org',
+            'https://cloudflare-dns.com',
+            'https://beyondwickedmapping.org'
         ]),
         'frame-src': join([
             "'self'",

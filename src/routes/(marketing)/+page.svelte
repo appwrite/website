@@ -13,6 +13,8 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
     import Ai from './(components)/ai.svelte';
+
+    const { data } = $props();
 </script>
 
 <Head
@@ -21,15 +23,9 @@
 />
 
 <Main>
-    <Hero
-        title="Build like a team of hundreds"
-        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
-    />
+    <Hero title="Build like a team of hundreds" subtitle={data.heroSubtitle} />
     <Platforms headline="Designed for the tools you work with" />
-    <LogoList
-        class="border-smooth border-b"
-        title="Loved by hackers, startups and enterprises alike"
-    />
+    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
     <Bento />
     <Pullquote
         name="Phil McCluskey"

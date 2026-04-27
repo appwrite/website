@@ -1,6 +1,7 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
+    import { DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
@@ -10,13 +11,16 @@
 
     type Props = {
         title?: string;
+        /** Resolved on the server from Statsig (`+page.server.ts`) so SSR matches the experiment. */
         subtitle?: string;
     };
 
     const {
         title = 'Build like a team of hundreds',
-        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.'
+        subtitle: subtitleProp = DEFAULT_HERO_SUBTITLE
     }: Props = $props();
+
+    const subtitle = $derived(subtitleProp);
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
@@ -46,7 +50,10 @@
                 </h1>
             </GradientText>
 
-            <p class="text-description text-secondary font-medium">
+            <p
+                class="text-description text-secondary font-medium"
+                style:min-height="calc(4.25 * var(--text-description--line-height, 1.5rem))"
+            >
                 {subtitle}
             </p>
 

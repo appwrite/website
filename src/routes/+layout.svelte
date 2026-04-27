@@ -56,6 +56,7 @@
     import { loggedIn } from '$lib/utils/console';
     import { beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
+    import { initStatsig } from '$lib/statsig/client';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { displayHiringMessage } from '$lib/utils/console';
@@ -74,6 +75,7 @@
     const tracked = new Set();
 
     onMount(() => {
+        void initStatsig();
         displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
 
