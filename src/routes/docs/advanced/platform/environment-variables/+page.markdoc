@@ -56,11 +56,9 @@ You can also manage project variables programmatically using a [Server SDK](/doc
 
 ## Create a variable {% #create-variable %}
 
-Project variables require a caller-supplied `variableId`. Pass `ID.unique()` to let the SDK generate one, or provide a custom value (max 36 characters; allowed characters: `a-z A-Z 0-9 . - _`; cannot start with a special character). Function and site variables do not accept a `variableId` — Appwrite assigns one automatically.
-
 {% multicode %}
 ```server-nodejs
-import { Client, Project } from 'node-appwrite';
+import { Client, Project, ID } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -70,14 +68,14 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.createVariable({
-    variableId: '<VARIABLE_ID>',
+    variableId: ID.unique(),
     key: '<KEY>',
     value: '<VALUE>',
     secret: false // optional
 });
 ```
 ```server-deno
-import { Client, Project } from "npm:node-appwrite";
+import { Client, Project, ID } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
@@ -87,7 +85,7 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.createVariable({
-    variableId: '<VARIABLE_ID>',
+    variableId: ID.unique(),
     key: '<KEY>',
     value: '<VALUE>',
     secret: false // optional
@@ -97,6 +95,7 @@ const result = await project.createVariable({
 <?php
 
 use Appwrite\Client;
+use Appwrite\ID;
 use Appwrite\Services\Project;
 
 $client = (new Client())
@@ -107,7 +106,7 @@ $client = (new Client())
 $project = new Project($client);
 
 $result = $project->createVariable(
-    variableId: '<VARIABLE_ID>',
+    variableId: ID::unique(),
     key: '<KEY>',
     value: '<VALUE>',
     secret: false // optional
@@ -115,6 +114,7 @@ $result = $project->createVariable(
 ```
 ```server-python
 from appwrite.client import Client
+from appwrite.id import ID
 from appwrite.services.project import Project
 from appwrite.models import Variable
 
@@ -126,7 +126,7 @@ client.set_key('<YOUR_API_KEY>') # Your API key
 project = Project(client)
 
 result: Variable = project.create_variable(
-    variable_id = '<VARIABLE_ID>',
+    variable_id = ID.unique(),
     key = '<KEY>',
     value = '<VALUE>',
     secret = False # optional
@@ -147,7 +147,7 @@ client = Client.new
 project = Project.new(client)
 
 result = project.create_variable(
-    variable_id: '<VARIABLE_ID>',
+    variable_id: ID.unique(),
     key: '<KEY>',
     value: '<VALUE>',
     secret: false # optional
@@ -166,7 +166,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 Variable result = await project.CreateVariable(
-    variableId: "<VARIABLE_ID>",
+    variableId: ID.Unique(),
     key: "<KEY>",
     value: "<VALUE>",
     secret: false // optional
@@ -183,7 +183,7 @@ Client client = Client()
 Project project = Project(client);
 
 Variable result = await project.createVariable(
-    variableId: '<VARIABLE_ID>',
+    variableId: ID.unique(),
     key: '<KEY>',
     value: '<VALUE>',
     secret: false, // (optional)
@@ -191,6 +191,7 @@ Variable result = await project.createVariable(
 ```
 ```server-kotlin
 import io.appwrite.Client
+import io.appwrite.ID
 import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Project
 
@@ -202,7 +203,7 @@ val client = Client()
 val project = Project(client)
 
 val response = project.createVariable(
-    variableId = "<VARIABLE_ID>",
+    variableId = ID.unique(),
     key = "<KEY>",
     value = "<VALUE>",
     secret = false // optional
@@ -210,6 +211,7 @@ val response = project.createVariable(
 ```
 ```server-java
 import io.appwrite.Client;
+import io.appwrite.ID;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Project;
 
@@ -221,7 +223,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 project.createVariable(
-    "<VARIABLE_ID>", // variableId
+    ID.unique(), // variableId
     "<KEY>", // key
     "<VALUE>", // value
     false, // secret (optional)
@@ -246,7 +248,7 @@ let client = Client()
 let project = Project(client)
 
 let variable = try await project.createVariable(
-    variableId: "<VARIABLE_ID>",
+    variableId: ID.unique(),
     key: "<KEY>",
     value: "<VALUE>",
     secret: false // optional
@@ -258,6 +260,7 @@ package main
 import (
     "fmt"
     "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/id"
 )
 
 client := appwrite.NewClient(
@@ -269,7 +272,7 @@ client := appwrite.NewClient(
 project := appwrite.NewProject(client)
 
 response, error := project.CreateVariable(
-    "<VARIABLE_ID>",
+    id.Unique(),
     "<KEY>",
     "<VALUE>",
     appwrite.WithCreateVariableSecret(false),
@@ -277,6 +280,7 @@ response, error := project.CreateVariable(
 ```
 ```server-rust
 use appwrite::Client;
+use appwrite::id::ID;
 use appwrite::services::Project;
 
 #[tokio::main]
@@ -289,7 +293,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let project = Project::new(&client);
 
     let result = project.create_variable(
-        "<VARIABLE_ID>",
+        &ID::unique(),
         "<KEY>",
         "<VALUE>",
         Some(false) // optional
