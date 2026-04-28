@@ -1,17 +1,27 @@
 import { env } from '$env/dynamic/private';
-import Statsig from 'statsig-node';
-import type { StatsigUser } from 'statsig-node';
+import { Statsig, StatsigUser, type StatsigUserArgs } from '@statsig/statsig-node-core';
 import { STATSIG_CLIENT_SDK_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from './constants';
 
-let initPromise: ReturnType<typeof Statsig.initialize> | null = null;
+/** User fields used by marketing home load + Statsig bootstrap (server). */
+export type StatsigServerUserInput = { userID: string } & Partial<
+    Pick<StatsigUserArgs, 'customIDs' | 'userAgent' | 'ip' | 'email'>
+>;
 
-async function ensureStatsigServer(): Promise<boolean> {
-    const secret = env.STATSIG_SERVER_SECRET;
-    if (!secret?.trim()) return false;
+let statsigClient: Statsig | null = null;
+let initPromise: Promise<void> | null = null;
+
+async function getStatsigClient(): Promise<Statsig | null> {
+    const secret = env.STATSIG_SERVER_SECRET?.trim();
+    if (!secret) return null;
 
     if (!initPromise) {
-        initPromise = Statsig.initialize(secret.trim()).catch((err: unknown) => {
+        initPromise = (async () => {
+            const client = new Statsig(secret);
+            await client.initialize();
+            statsigClient = client;
+        })().catch((err: unknown) => {
             console.error('[Statsig server] initialize failed', err);
+            statsigClient = null;
             initPromise = null;
             throw err;
         });
@@ -19,27 +29,40 @@ async function ensureStatsigServer(): Promise<boolean> {
 
     try {
         await initPromise;
-        return true;
+        return statsigClient;
     } catch {
-        return false;
+        return null;
     }
+}
+
+function toStatsigUser(user: StatsigUser | StatsigServerUserInput): StatsigUser {
+    if (user instanceof StatsigUser) {
+        return user;
+    }
+    return new StatsigUser({
+        userID: user.userID,
+        ...(user.customIDs ? { customIDs: user.customIDs } : {}),
+        ...(user.userAgent ? { userAgent: user.userAgent } : {}),
+        ...(user.ip ? { ip: user.ip } : {}),
+        ...(user.email ? { email: user.email } : {})
+    });
 }
 
 /**
  * Evaluates `best_description` for SSR. Exposure is not logged here so the client can log the real view.
  */
 export async function evaluateHeroDescriptionExperiment(
-    user: StatsigUser,
+    user: StatsigUser | StatsigServerUserInput,
     fallback: string
 ): Promise<string> {
-    const ready = await ensureStatsigServer();
-    if (!ready) return fallback;
+    const client = await getStatsigClient();
+    if (!client) return fallback;
 
     try {
-        const experiment = Statsig.getExperimentWithExposureLoggingDisabledSync(
-            user,
-            STATSIG_EXPERIMENT_BEST_DESCRIPTION
-        );
+        const statsigUser = toStatsigUser(user);
+        const experiment = client.getExperiment(statsigUser, STATSIG_EXPERIMENT_BEST_DESCRIPTION, {
+            disableExposureLogging: true
+        });
         return experiment.get('description', fallback) as string;
     } catch {
         return fallback;
@@ -49,18 +72,25 @@ export async function evaluateHeroDescriptionExperiment(
 /**
  * JSON payload for `StatsigClient.dataAdapter.setData` + `initializeAsync`, so the JS SDK skips
  * cache-first experiment checks (Group Assignment Health). Requires `STATSIG_SERVER_SECRET`.
+ * Node Core returns this string directly (no extra `JSON.stringify`).
  * @see https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
  */
-export async function getStatsigClientBootstrapPayload(user: StatsigUser): Promise<string | null> {
-    const ready = await ensureStatsigServer();
-    if (!ready) return null;
+export async function getStatsigClientBootstrapPayload(
+    user: StatsigUser | StatsigServerUserInput
+): Promise<string | null> {
+    const client = await getStatsigClient();
+    if (!client) return null;
 
     try {
-        const response = Statsig.getClientInitializeResponse(user, STATSIG_CLIENT_SDK_KEY, {
-            hash: 'djb2'
+        const statsigUser = toStatsigUser(user);
+        const response = client.getClientInitializeResponse(statsigUser, {
+            hashAlgorithm: 'djb2',
+            clientSdkKey: STATSIG_CLIENT_SDK_KEY
         });
-        if (!response) return null;
-        return JSON.stringify(response);
+        if (response == null || response === '') {
+            return null;
+        }
+        return response;
     } catch {
         return null;
     }
