@@ -9,15 +9,14 @@ export { STATSIG_EXPERIMENT_BEST_DESCRIPTION };
 
 /** Narrow surface we use from `@statsig/js-client` (avoids static `import type` from that package, which can break Vite named re-exports). */
 export type StatsigBrowserClient = {
-    initializeSync(options?: object): unknown;
     initializeAsync(options?: object): Promise<unknown>;
     getExperiment(name: string): { get(key: string, defaultValue: string): string };
     logEvent(eventOrName: string, value?: string | number, metadata?: Record<string, string>): void;
 };
 
 let client: StatsigBrowserClient | null = null;
-let syncPromise: Promise<StatsigBrowserClient | null> | null = null;
-let networkPromise: Promise<void> | null = null;
+/** In-flight or last completed browser init (`initializeAsync`); cleared on failure so callers can retry. */
+let initPromise: Promise<StatsigBrowserClient | null> | null = null;
 
 function readStableIdFromCookie(): string | null {
     if (typeof document === 'undefined' || !document.cookie) return null;
@@ -67,9 +66,9 @@ function toStringMetadata(data: Record<string, unknown>): Record<string, string>
 
 function startStatsig(): void {
     if (!browser || ENV.TEST) return;
-    if (syncPromise) return;
+    if (initPromise) return;
 
-    syncPromise = (async (): Promise<StatsigBrowserClient | null> => {
+    initPromise = (async (): Promise<StatsigBrowserClient | null> => {
         try {
             const [
                 { StatsigClient },
@@ -89,51 +88,52 @@ function startStatsig(): void {
                 }
             );
 
-            instance.initializeSync();
+            // Await `initializeAsync` only (no `initializeSync`). Group Assignment Health warns when
+            // checks run from cache or while still loading; plugins should evaluate after this resolves.
+            try {
+                await instance.initializeAsync();
+            } catch (err: unknown) {
+                console.error('[Statsig] initializeAsync failed', err);
+                client = null;
+                initPromise = null;
+                return null;
+            }
+
             client = instance as StatsigBrowserClient;
-
-            networkPromise = instance
-                .initializeAsync()
-                .then(() => {})
-                .catch((err: unknown) => {
-                    console.error('[Statsig] initializeAsync failed', err);
-                });
-
             return client;
         } catch (err: unknown) {
             console.error('[Statsig] Failed to initialize', err);
             client = null;
-            syncPromise = null;
-            networkPromise = null;
+            initPromise = null;
             return null;
         }
     })();
 }
 
 /**
- * Resolves once Statsig has applied **cached** evaluations (`initializeSync`).
- * `getStatsigClient()` is usable immediately after — good for hero copy to avoid waiting on the network.
+ * Resolves once `initializeAsync()` has finished. Hero copy is SSR’d; this path is for any
+ * future client checks that should align with Statsig “await init before experiments” guidance.
  */
 export function whenStatsigSyncReady(): Promise<StatsigBrowserClient | null> {
     if (!browser || ENV.TEST) return Promise.resolve(null);
     if (client) return Promise.resolve(client);
     startStatsig();
-    return syncPromise ?? Promise.resolve(null);
+    return initPromise ?? Promise.resolve(null);
 }
 
 /** Resolves after `initializeAsync` finishes (or immediately if init failed / tests). */
 export function whenStatsigNetworkReady(): Promise<void> {
     if (!browser || ENV.TEST) return Promise.resolve();
     startStatsig();
-    return (syncPromise ?? Promise.resolve(null)).then(() => networkPromise ?? Promise.resolve());
+    return (initPromise ?? Promise.resolve(null)).then(() => {});
 }
 
-/** Loads Statsig: sync cache first, then network refresh (session replay, etc.). */
+/** Loads Statsig (session replay, auto-capture, event logging) after a full async init. */
 export function initStatsig(): Promise<void> {
     return whenStatsigNetworkReady();
 }
 
-/** Resolved Statsig client after the first successful `initializeSync`, or null if init failed. */
+/** Resolved Statsig client after successful `initializeAsync`, or null if init failed. */
 export function getStatsigClient(): StatsigBrowserClient | null {
     return client;
 }
