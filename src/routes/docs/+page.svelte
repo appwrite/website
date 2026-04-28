@@ -467,7 +467,9 @@
                 </ul>
             </div>
 
-            <div class="mt-10 flex max-w-[720px] flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+            <div
+                class="mt-10 flex max-w-[720px] flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
+            >
                 <Button variant="secondary" href="/docs/tooling/ai" event="docs-ai_hub-click"
                     >Explore the AI tooling documentation</Button
                 >
