@@ -86,9 +86,13 @@ function startStatsig(): void {
 
             // No plugins during init — Session Replay / Auto Capture can evaluate configs while the SDK
             // is still "Loading" and pollute Group Assignment Health. Bind them after values are ready.
-            const instance = new StatsigClient(STATSIG_CLIENT_SDK_KEY, { userID: getStableUserId() }, {
-                plugins: []
-            });
+            const instance = new StatsigClient(
+                STATSIG_CLIENT_SDK_KEY,
+                { userID: getStableUserId() },
+                {
+                    plugins: []
+                }
+            );
 
             const bootstrap = pendingBootstrapJson;
             pendingBootstrapJson = undefined;
