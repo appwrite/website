@@ -17,6 +17,8 @@ Most developers learn this the hard way. They pick a platform quickly, build som
 
 This post covers the criteria that actually matter when evaluating a backend platform, and why getting this decision right early saves significant pain later.
 
+For a compact **BaaS platform** comparison table across major vendors, see [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
+
 # The real cost of choosing the wrong backend platform
 
 A bad backend choice doesn't announce itself immediately. The first sign is usually a billing alert you weren't expecting. The second is a feature you need that the platform either doesn't support or only supports with a clunky workaround.

@@ -93,7 +93,11 @@
             </h1>
             <p class="text-description max-w-[600px]">
                 Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
-                powerful APIs to stop fighting technologies and start delivering value.
+                powerful APIs to stop fighting technologies and start delivering value. New to the
+                model? Read how <a class="web-link underline" href="/blog/post/backend-as-a-service"
+                    >backend as a service (BaaS)</a
+                >
+                compares to other platforms, then dive in here.
             </p>
 
             <Button variant="secondary" href="/docs/quick-starts" class="mt-8"

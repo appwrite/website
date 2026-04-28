@@ -17,6 +17,8 @@ If you are looking to build a mobile app, website, tool, or any other applicatio
 
 This article will give you a rundown of Appwrite and Supabase to understand the feature sets. Then, we’ll provide a quick Appwrite vs Supabase comparison so you can understand how each provider will fit your specific needs.
 
+For a wider **backend infrastructure** comparison that also includes Firebase and AWS Amplify, read [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
+
 # Appwrite
 
 In 2019, [Appwrite](/) started as an open-source project to make software development more accessible and enjoyable. It is a Backend as a Service platform with a vibrant developer community. You can self-host Appwrite on your server or utilize [Appwrite Cloud](https://cloud.appwrite.io/). Appwrite provides a wide range of features, including user authentication, databases, storage, real-time features, and functions. It is known for its flexibility, security, and extensibility, enabling you to implement custom backend logic and build applications tailored to your needs. You can view Appwrite’s source code on [GitHub](https://github.com/appwrite/appwrite).

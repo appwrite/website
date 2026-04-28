@@ -18,6 +18,8 @@ Many of the features we require in most apps are necessary but don't represent t
 
 We believe in most cases there is an easier way, which is where the idea of "Backend As A Service" can help.
 
+If you want a scannable comparison across major vendors before picking tools, read [backend as a service (BaaS)](/blog/post/backend-as-a-service).
+
 # What is a Backend as a Service (BaaS)
 
 A backend as a service is a third party service that lets you develop the backend part of your application without building things from scratch. It's about NOT reinventing the wheel for every app you launch.
