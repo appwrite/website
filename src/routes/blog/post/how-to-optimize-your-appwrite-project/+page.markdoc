@@ -245,7 +245,7 @@ Horizontal scaling ensures that the load is distributed evenly across multiple i
 
 Optimizing your Appwrite project ensures you not only provide a better experience to your users but also prevent unnecessary resource overuse. By applying the techniques discussed in this guide, you can keep your project running smoothly while staying within your plan limits.
 
-These optimizations aren't just about cost savings—they are about making your app more scalable, efficient, and reliable as it grows. Rather than waiting until you hit plan limits, taking a proactive approach builds trust and ensures your users always experience the best possible performance, even as your app scales.
+These optimizations aren't just about cost savings - they are about making your app more scalable, efficient, and reliable as it grows. Rather than waiting until you hit plan limits, taking a proactive approach builds trust and ensures your users always experience the best possible performance, even as your app scales.
 
 # Frequently asked questions (FAQs)
 

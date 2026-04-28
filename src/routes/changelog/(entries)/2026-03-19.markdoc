@@ -14,7 +14,7 @@ Since launching Appwrite Cloud in beta, we have not actively enforced Cloud limi
 - **Concurrent connections:** Free 250, Pro 500. Additional connections are $5 per 1,000.
 - **Max message size:** 256 KB on Free; 3 MB on Pro.
 
-Bandwidth consumed by the Realtime service also counts toward your plan’s **general bandwidth** allowance—the same pool used by your other Appwrite Cloud traffic (for example, API and Storage). See your plan’s bandwidth limits on the [pricing page](/pricing).
+Bandwidth consumed by the Realtime service also counts toward your plan’s **general bandwidth** allowance - the same pool used by your other Appwrite Cloud traffic (for example, API and Storage). See your plan’s bandwidth limits on the [pricing page](/pricing).
 
 You can view your current Realtime usage in the **billing usage breakdown** in the Appwrite Cloud console. Full details and plan comparison are on our [pricing page](/pricing).
 

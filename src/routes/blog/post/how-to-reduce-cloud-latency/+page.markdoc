@@ -10,7 +10,7 @@ category: Tutorial
 callToAction: true
 ---
 
-Whether users are streaming a video, loading a webpage, or interacting with an app, they expect things to work fast. One key factor that affects the speed of cloud services is *cloud latency —* the delay between a user's request and the cloud's response. But why does this matter, and how can reducing latency make your apps and services faster and more efficient?
+Whether users are streaming a video, loading a webpage, or interacting with an app, they expect things to work fast. One key factor that affects the speed of cloud services is *cloud latency  - * the delay between a user's request and the cloud's response. But why does this matter, and how can reducing latency make your apps and services faster and more efficient?
 
 In this blog, we'll break down the importance of reducing latency, explore practical ways to achieve it, and explain why faster web experiences are vital for both users and businesses.
 
@@ -20,7 +20,7 @@ Cloud latency refers to the delay or time it takes for data to travel between a 
 
 # Why you need to make your app faster
 
-Speed isn't just a nice-to-have feature — it's a necessity. If your app is slow, it's likely losing users, conversions, and productivity. Here's why making your app faster should be a top priority:
+Speed isn't just a nice-to-have feature - it's a necessity. If your app is slow, it's likely losing users, conversions, and productivity. Here's why making your app faster should be a top priority:
 
 1. **Users won't wait**: People expect instant responses from apps and websites. If your app is slow, users will quickly get frustrated and may leave for faster alternatives. Reducing latency ensures a smooth, satisfying experience that keeps users engaged.
 2. **Boost your revenue**: In e-commerce, speed directly affects sales. Faster apps mean higher conversion rates, allowing users to browse, make decisions, and complete transactions faster. Every second of delay could be costing you customers and revenue.

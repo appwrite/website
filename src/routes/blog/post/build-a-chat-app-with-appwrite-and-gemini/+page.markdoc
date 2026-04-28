@@ -13,7 +13,7 @@ lastUpdated: 2025-10-14
 
 If you're looking to build a chat app that doesn't just handle basic messages but actually understands and responds intelligently, you found the right tutorial! In this guide, we'll learn how to create a chat application using Appwrite's local function development and the Google Gemini API to generate AI responses.
 
-Appwrite takes care of the backend so you can focus on the functionality, while Google's Gemini provides the AI that will give your app the ability to respond to user messages in real-time. By the end, you'll have a working chat app that does more than just send and receive messages — but interacts with users in a way that feels almost human.
+Appwrite takes care of the backend so you can focus on the functionality, while Google's Gemini provides the AI that will give your app the ability to respond to user messages in real-time. By the end, you'll have a working chat app that does more than just send and receive messages - but interacts with users in a way that feels almost human.
 
 ![Gif of the chat app in action](/images/blog/build-a-chat-app-with-appwrite-and-gemini/chat-gemini-demo.gif)
 
@@ -232,7 +232,7 @@ Follow these steps to generate an API key:
 ![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.png)
 
 4. Choose your project (or create a new one), then click **"Create API Key"**.
-5. Copy the API key and save it securely—you'll need it in the next step.
+5. Copy the API key and save it securely - you'll need it in the next step.
 
 ![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.png)
 

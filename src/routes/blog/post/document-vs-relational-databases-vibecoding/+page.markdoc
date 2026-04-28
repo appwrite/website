@@ -23,9 +23,9 @@ However, neither approach is always superior. Each works best in specific scenar
 
 ## Why choose SQL?
 
-*   **Structure and consistency**: SQL enforces a predefined schema. You must define data types—integers, strings, dates—before storing records. This strictness ensures data integrity and predictability across your application.
+*   **Structure and consistency**: SQL enforces a predefined schema. You must define data types - integers, strings, dates - before storing records. This strictness ensures data integrity and predictability across your application.
 *   **Complex relationships**: As the name implies, relational databases excel at managing interconnected data. Using **JOIN** operations, you can efficiently query and aggregate data across multiple tables in a single command.
-*   **Transactional integrity**: SQL databases follow **ACID** properties (Atomicity, Consistency, Isolation, Durability). This ensures that transactions are processed reliably, ensuring data accuracy even during system failures—a critical requirement for financial and enterprise systems.
+*   **Transactional integrity**: SQL databases follow **ACID** properties (Atomicity, Consistency, Isolation, Durability). This ensures that transactions are processed reliably, ensuring data accuracy even during system failures - a critical requirement for financial and enterprise systems.
 
 ## Best use cases
 

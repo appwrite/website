@@ -35,7 +35,7 @@ With a BaaS platform, you can build an entire backend in minutes. For example, y
 
 What if you already have a library of technologies? A dedicated platform ensures they’re robust, up-to-date, and integrate well with your existing tools. This way, you can maintain the reliability and performance of your applications without the hassle of constant manual updates and compatibility checks.
 
-Let's take a look at some of the most common products that backend-as-a-service providers offer. We'll use [Appwrite](https://appwrite.io/) as an example, but many BaaS vendors offer similar technologies. What makes Appwrite convenient is that it combines everything into a single open-source platform, simplifying the development process. Our philosophy is to meet you — the developer — where you are, empowering you to use the tools and technologies you love.
+Let's take a look at some of the most common products that backend-as-a-service providers offer. We'll use [Appwrite](https://appwrite.io/) as an example, but many BaaS vendors offer similar technologies. What makes Appwrite convenient is that it combines everything into a single open-source platform, simplifying the development process. Our philosophy is to meet you - the developer - where you are, empowering you to use the tools and technologies you love.
 
 # BaaS for Authentication
 
@@ -49,7 +49,7 @@ You also get 30+ OAuth2 integrations. From Google and Github to Twitch and Yande
 
 [Take a look at how Dennis Ivy set up Google OAuth sign-in in less than 6 minutes using Appwrite.](https://youtu.be/tgO_ADSvY1I?feature=shared)
 
-Additionally, BaaS handles password recovery, multi-factor authentication and other security aspects, giving you peace of mind and allowing you to focus on building great apps instead of worrying about [authentication and security issues.](/blog/post/goodbye-plaintext-passwords) For example, with a custom backend, you'll probably need a custom database, custom authorization store, and validator — lots of work in a feature where even the smallest mistake is critical.
+Additionally, BaaS handles password recovery, multi-factor authentication and other security aspects, giving you peace of mind and allowing you to focus on building great apps instead of worrying about [authentication and security issues.](/blog/post/goodbye-plaintext-passwords) For example, with a custom backend, you'll probably need a custom database, custom authorization store, and validator - lots of work in a feature where even the smallest mistake is critical.
 
 With a BaaS like Appwrite, it's as simple as clicking a few checkboxes.
 
@@ -97,7 +97,7 @@ Additionally, you can schedule messages, set up real-time alerts and send automa
 
 # Making the right choice as a freelance developer
 
-For a freelance developer, time is quite literally money. If you want to maximize your time, you must find ways to work smart, not hard. Choosing a BaaS instead of building your own backend can save you tons of time and money, all while delivering a better product. With a BaaS like [Appwrite](https://appwrite.io/), you can quickly roll out effective solutions for multiple clients, ensuring your apps are robust and scalable. And if anything were ever to change, you can always migrate your project elsewhere — there’s no vendor lock-in.
+For a freelance developer, time is quite literally money. If you want to maximize your time, you must find ways to work smart, not hard. Choosing a BaaS instead of building your own backend can save you tons of time and money, all while delivering a better product. With a BaaS like [Appwrite](https://appwrite.io/), you can quickly roll out effective solutions for multiple clients, ensuring your apps are robust and scalable. And if anything were ever to change, you can always migrate your project elsewhere - there’s no vendor lock-in.
 
 Plus, Appwrite has an awesome community of developers who are ready to help. If you want to enhance your efficiency and project quality, explore Appwrite today.
 

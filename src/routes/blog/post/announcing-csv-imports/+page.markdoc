@@ -53,7 +53,7 @@ The Console provides a guided interface to help you select the CSV and link it t
 
 CSV imports are built to scale seamlessly with your data. Whether you're working with a small dataset or importing production-grade records, the system is designed to handle high volumes reliably and efficiently.
 
-The import system performs per-row validation and runs as a background task, allowing it to handle large files efficiently. This ensures reliable performance across a range of scenarios—from lightweight configuration data to large-scale production imports.
+The import system performs per-row validation and runs as a background task, allowing it to handle large files efficiently. This ensures reliable performance across a range of scenarios - from lightweight configuration data to large-scale production imports.
 
 ## Availability and resources
 

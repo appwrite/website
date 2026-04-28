@@ -41,7 +41,7 @@ Before you go ahead and start using this feature, here are a few important point
 - **Privileged-only:** This feature requires an API key or Console access via CSV Import. It isn’t available through client-side SDK calls for security reasons.
 - **Opt-in per document:** If you leave `$createdAt` or `$updatedAt` out of your payload, Appwrite will auto-stamp them as usual.
 - **Validation:** Both fields must be valid ISO-8601 strings (e.g., `2023-10-05T14:48:00Z`). Invalid values are rejected.
-- **Partial override:** You can set one field and let Appwrite handle the other — for example, preserve `$createdAt` but allow `$updatedAt` to update automatically.
+- **Partial override:** You can set one field and let Appwrite handle the other - for example, preserve `$createdAt` but allow `$updatedAt` to update automatically.
 - **SDK usage:** Include the fields inside the document data itself; no new API parameters or endpoints are required.
 
 # Built for enterprise‑grade data integrity

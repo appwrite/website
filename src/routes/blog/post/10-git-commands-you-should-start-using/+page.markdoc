@@ -13,7 +13,7 @@ callToAction: true
 
 If you've worked with Git long enough, you've probably hit some common frustrations like operations getting slower as repositories grow, accidentally overwriting changes when switching branches, or struggling with massive monorepos.
 
-Thankfully, just like every other tool, Git is constantly evolving and adding new features to make our lives easier. While some of these commands aren't particularly recent, they remain lesser-known gems that can significantly improve your workflow. If you're already familiar with some of the core tips and tricks—like those covered in [15 Git command line tips every developer should know](https://appwrite.io/blog/post/15-git-cli-tips?dofollow=true), this article will introduce you to ten additional commands that can take your Git skills to the next level.
+Thankfully, just like every other tool, Git is constantly evolving and adding new features to make our lives easier. While some of these commands aren't particularly recent, they remain lesser-known gems that can significantly improve your workflow. If you're already familiar with some of the core tips and tricks - like those covered in [15 Git command line tips every developer should know](https://appwrite.io/blog/post/15-git-cli-tips?dofollow=true), this article will introduce you to ten additional commands that can take your Git skills to the next level.
 
 # 1. git switch - A safer way to change branches
 

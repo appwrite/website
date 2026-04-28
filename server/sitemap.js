@@ -102,7 +102,7 @@ export async function sitemaps() {
             .join('\n')}
     </sitemapindex>`.trim();
 
-    console.info(`✅ Sitemap generation complete — ${totalCount} URLs in total.\n`);
+    console.info(`✅ Sitemap generation complete - ${totalCount} URLs in total.\n`);
 
     return defineEventHandler(async (event) => {
         const url = getRequestURL(event);

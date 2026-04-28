@@ -63,9 +63,9 @@ Enable email alerts for your users so that whenever a new session is created for
 
 Session alerts are intentionally skipped in a few situations to avoid redundant or confusing emails:
 
-- **First session after sign-up** — the very first sign-in a user makes after creating their account does not trigger an alert. A brand-new account doesn't yet hold anything worthy of protection, so alerting at this stage adds no real security value. It also prevents a double-email situation in flows where your project may already be sending a welcome or verification email.
-- **[Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), and [OAuth2](/docs/products/auth/oauth2) sign-ins** — these authentication methods already verify the user's access to the sign-in channel (their inbox or identity provider), so no additional alert is needed.
-- **No email address on file** — users who have not set an email address on their account will not receive alerts.
+- **First session after sign-up** - the very first sign-in a user makes after creating their account does not trigger an alert. A brand-new account doesn't yet hold anything worthy of protection, so alerting at this stage adds no real security value. It also prevents a double-email situation in flows where your project may already be sending a welcome or verification email.
+- **[Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), and [OAuth2](/docs/products/auth/oauth2) sign-ins** - these authentication methods already verify the user's access to the sign-in channel (their inbox or identity provider), so no additional alert is needed.
+- **No email address on file** - users who have not set an email address on their account will not receive alerts.
 
 To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
 

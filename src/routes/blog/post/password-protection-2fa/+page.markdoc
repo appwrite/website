@@ -94,7 +94,7 @@ With Appwrite, you can enable 2FA directly through Appwrite Authentication. It s
 
 **5. What should users do if they lose access to their 2FA method?**
 
-Always provide backup options—like recovery codes, secondary email, or phone verification. This ensures users can safely regain access without compromising security.
+Always provide backup options - like recovery codes, secondary email, or phone verification. This ensures users can safely regain access without compromising security.
 
 # Resources
 

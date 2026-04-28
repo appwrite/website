@@ -47,7 +47,7 @@ Still, CSR can be **problematic for SEO**. Search engines are better than they u
 
 # Static site generation (SSG)
 
-Static site generation allows you to generate your entire site ahead of time—before any user visits it.
+Static site generation allows you to generate your entire site ahead of time - before any user visits it.
 
 With SSG, your pages are built during the deployment process. For example, if you're building a blog, the HTML for each post is created when you run a build command. Then, when someone visits your site, the server (or CDN) just sends them a pre-built HTML file. It’s instant, SEO-friendly, and doesn’t require any computation at request time.
 

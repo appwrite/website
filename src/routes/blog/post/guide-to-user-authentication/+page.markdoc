@@ -12,7 +12,7 @@ lastUpdated: 2025-10-14
 
 User authentication is a fundamental process that ensures only authorized individuals can access specific systems, applications, or data. Every time you log in to your email, bank account, or social media, you're going through this process.
 
-As a developer, setting up user authentication properly is crucial to maintaining security and trust in your application. But authentication is more than just checking passwords — it’s about balancing security, usability, and scalability.
+As a developer, setting up user authentication properly is crucial to maintaining security and trust in your application. But authentication is more than just checking passwords - it’s about balancing security, usability, and scalability.
 
 So, what should you know when implementing user authentication? Let’s break it down.
 
@@ -119,7 +119,7 @@ User authentication is the first line of defense in safeguarding digital identit
 
 However, keeping up with evolving threats takes time, and building a secure authentication system from scratch might not be feasible, especially if you're also responsible for the rest of your backend.
 
-That’s why it's often better to trust established security experts rather than reinvent the wheel. Appwrite’s Auth service can help you set up multiple secure authentication methods — including OAuth, email/password, magic links, and OTP — in just a few lines of code. This way, you ensure that your users are protected by industry standards without having to maintain the entire system yourself. 
+That’s why it's often better to trust established security experts rather than reinvent the wheel. Appwrite’s Auth service can help you set up multiple secure authentication methods - including OAuth, email/password, magic links, and OTP - in just a few lines of code. This way, you ensure that your users are protected by industry standards without having to maintain the entire system yourself. 
 
 # Frequently asked questions (FAQs)
 
