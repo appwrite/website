@@ -19,5 +19,5 @@ Using `Role.any()` on read permissions will allow any client to receive updates.
 When working with Realtime subscriptions and authentication, keep the following in mind:
 
 1. **Create session first** - Always authenticate the user before creating subscriptions that require access to protected resources.
-2. **Re-subscribe on session change** - If a user logs out and a new user logs in, you must close existing subscriptions and create new ones for the new session.
+2. **Re-subscribe on session change** - If a user logs out and a new user logs in, you must remove existing subscriptions (for example `unsubscribe()` on each handle in the Web SDK, or `disconnect()` on `Realtime` when replacing the whole client) and create new ones for the new session.
 3. **Handle session expiry** - If a session expires, subscriptions tied to that session will stop receiving updates. Listen for session-related errors and re-authenticate when needed.
