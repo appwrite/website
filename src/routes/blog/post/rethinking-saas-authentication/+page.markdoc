@@ -31,7 +31,7 @@ Technologies like **Single Sign-On (SSO)** help bridge this gap—offering both 
 
 Take a look at our [developer’s guide to user authentication](/blog/post/guide-to-user-authentication) for more in-depth insights.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multi-factor authentication" point3="Custom roles and permissions" point4="Session control and management" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Built-in security and compliance" point2="Multi-factor authentication" point3="Custom roles and permissions" point4="Session control and management" cta="Get started" url="https://cloud.appwrite.io/" /%}
 
 ## Managing multi-tenant complexity
 

@@ -68,7 +68,7 @@ OAuth2 offers different "flows" to accommodate various scenarios. Here's a break
 
 - Web apps with secure backend servers.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Get started" url="https://cloud.appwrite.io/" /%}
 
 
 ## 2. Authorization code flow with PKCE (Proof Key for Code Exchange)
