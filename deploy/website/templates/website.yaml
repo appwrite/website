@@ -38,6 +38,11 @@ spec:
           env:
             - name: NODE_OPTIONS
               value: "--max-old-space-size=400"
+            - name: STATSIG_SERVER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: website-secrets
+                  key: STATSIG_SERVER_SECRET
           ports:
             - containerPort: 3000
           startupProbe:
