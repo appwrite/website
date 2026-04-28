@@ -86,6 +86,11 @@
                     label: 'Services',
                     href: '/docs/advanced/platform/services',
                     new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Policies',
+                    href: '/docs/advanced/platform/policies',
+                    new: isNewUntil('30 May 2026')
                 }
             ]
         },
