@@ -43,6 +43,7 @@ spec:
                 secretKeyRef:
                   name: website-secrets
                   key: STATSIG_SERVER_SECRET
+                  optional: true
           ports:
             - containerPort: 3000
           startupProbe:
