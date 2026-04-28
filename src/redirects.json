@@ -843,5 +843,9 @@
     {
         "link": "/install/env",
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
+    },
+    {
+        "link": "/the-appwrite-network",
+        "redirect": "/docs/products/network"
     }
 ]

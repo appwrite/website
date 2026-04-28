@@ -70,7 +70,9 @@
             latency.
         </p>
 
-        <a href="/" class="web-button is-secondary mt-2">More about the Appwrite Network</a>
+        <a href="/docs/products/network" class="web-button is-secondary mt-2"
+            >More about the Appwrite Network</a
+        >
     </div>
 
     <Map theme="light" />
