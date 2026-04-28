@@ -41,6 +41,10 @@
                     href: '/docs/products/functions/domains'
                 },
                 {
+                    label: 'Environment variables',
+                    href: '/docs/products/functions/environment-variables'
+                },
+                {
                     label: 'Runtimes',
                     href: '/docs/products/functions/runtimes'
                 }
