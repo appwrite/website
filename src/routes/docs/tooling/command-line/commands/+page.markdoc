@@ -198,7 +198,7 @@ appwrite databases get-row \
 
 # Filter, sort, and paginate {% #filter-sort-paginate %}
 
-List commands across services accept a set of dedicated flags for the most common filtering, sorting, and pagination needs, so you don't have to hand-write JSON [query](/docs/products/databases/queries) strings for everyday cases. These flags are supported on `list-*` commands such as `databases list-tables`, `databases list-rows`, `users list`, `functions list`, `messaging list-messages`, and similar list endpoints across services.
+List commands across services accept a set of dedicated flags for the most common filtering, sorting, and pagination needs, so you don't have to hand-write JSON [query](/docs/products/databases/queries) strings for everyday cases. These flags are supported on `list-*` commands such as `tables-db list-tables`, `tables-db list-rows`, `users list`, `functions list`, `messaging list-messages`, and similar list endpoints across services.
 
 {% table %}
 * Flag
@@ -226,14 +226,14 @@ List commands across services accept a set of dedicated flags for the most commo
 * Return results before this cursor ID. Use for backward cursor pagination.
 ---
 * `--select <attribute>`
-* Limit returned attributes on row and document list commands such as `databases list-rows`. Repeat the flag to include multiple attributes.
+* Limit returned attributes on row and document list commands such as `tables-db list-rows`. Repeat the flag to include multiple attributes.
 ---
 {% /table %}
 
 For example, to fetch the 10 most recently created rows where `year` is greater than 1999:
 
 ```sh
-appwrite databases list-rows \
+appwrite tables-db list-rows \
     --database-id "<DATABASE_ID>" \
     --table-id "<TABLE_ID>" \
     --where 'year>1999' \
@@ -244,7 +244,7 @@ appwrite databases list-rows \
 The `--queries` flag is still supported and remains the way to pass raw [Appwrite query](/docs/products/databases/queries) JSON strings for advanced cases, automation pipelines, or operators that the new flags don't cover. When you mix `--queries` with the new flags, the raw queries are sent first and the flag-generated queries are appended after.
 
 ```sh
-appwrite databases list-rows \
+appwrite tables-db list-rows \
     --database-id "<DATABASE_ID>" \
     --table-id "<TABLE_ID>" \
     --queries '[{"method":"search","attribute":"title","values":["Avatar"]}]' \
