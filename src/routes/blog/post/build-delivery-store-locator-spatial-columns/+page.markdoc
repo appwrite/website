@@ -46,7 +46,7 @@ In the application, we have a hamburger on the top right to manage stores we hav
 
 This modal will accept a store name, and you can select a location on the map where you want to set to have the store at. Once you click **Add store**, it gets added to the database, and the updated stores appear on the sidebar.
 
-However, there's something important to know here - it's the way we're storing the location information in the database. We're not just storing this information as a string, we're using the special **Point** column we made in Appwrite console earlier. When you click on **Add store**, we're making an API call, which then adds to database using the following call:
+However, there's something important to know here: it's the way we're storing the location information in the database. We're not just storing this information as a string, we're using the special **Point** column we made in Appwrite console earlier. When you click on **Add store**, we're making an API call, which then adds to database using the following call:
 
 ```js
 const store = await tablesdb.createRow({

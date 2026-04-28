@@ -118,7 +118,7 @@ If this sounds familiar, that’s because similar ideas exist elsewhere:
 - Prisma or Drizzle migrations
 - Hasura metadata applies
 
-What’s different is bringing this experience directly into a BaaS environment - where schema creation has historically been UI-driven or step-wise and async.
+What’s different is bringing this experience directly into a BaaS environment, where schema creation has historically been UI-driven or step-wise and async.
 
 # Get started
 

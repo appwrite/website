@@ -57,7 +57,7 @@ With Cursor, Appwrite, and MCP working together, the development process becomes
 * **MCP** acts as the translator, letting Cursor communicate with Appwrite's backend
 * **Appwrite** provides instant backend infrastructure without manual setup
 
-Here's how it works in practice: You describe your app idea to Cursor, which generates the frontend code. Meanwhile, through MCP, Cursor automatically creates the necessary Appwrite databases, sets up authentication, and configures storage - all through conversation. What used to take hours of configuration now happens in minutes.
+Here's how it works in practice: You describe your app idea to Cursor, which generates the frontend code. Meanwhile, through MCP, Cursor automatically creates the necessary Appwrite databases, sets up authentication, and configures storage, all through conversation. What used to take hours of configuration now happens in minutes.
 
 # Real-world impact
 
@@ -75,7 +75,7 @@ This combination delivers tangible benefits:
 
 We're witnessing a fundamental shift in how software gets built. Tools like Cursor make coding more accessible, while platforms like Appwrite eliminate infrastructure complexity. MCP connects these worlds, creating a development experience where ideas flow directly into working applications.
 
-This isn't just about faster development - it's about removing friction between thinking and building. Developers can experiment more freely, iterate faster, and focus on what matters: solving real problems for real users.
+This isn't just about faster development; it's about removing friction between thinking and building. Developers can experiment more freely, iterate faster, and focus on what matters: solving real problems for real users.
 
 Ready to experience this workflow yourself? [Set up the Appwrite MCP server in Cursor](https://appwrite.io/docs/tooling/mcp/cursor) and start building your next project with AI-powered backend automation.
 

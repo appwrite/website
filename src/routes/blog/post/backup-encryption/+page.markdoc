@@ -16,7 +16,7 @@ Backup encryption is the process of turning your data into an unreadable format 
 
 # Why encrypting your database backups is important
 
-Databases often contain sensitive information - like customer data, financial records, and other private details - making them valuable targets for cyberattacks. Here’s why encrypting your database backups is important:
+Databases often contain sensitive information, like customer data, financial records, and other private details, making them valuable targets for cyberattacks. Here’s why encrypting your database backups is important:
 
 1. **Protection from data breaches**: If someone gains access to your backup, encryption ensures they can’t read or misuse the data.
 2. **Compliance with regulations**: Many industries have laws and regulations that require encryption of sensitive data, including backups. Examples include the GDPR for data protection in Europe and HIPAA for health data in the U.S.
@@ -28,7 +28,7 @@ Databases often contain sensitive information - like customer data, financial re
 There are several methods to encrypt backups, each offering different levels of security:
 
 - **Symmetric encryption**: Uses the same key for both encryption and decryption. It’s fast but requires secure key management because if the key is lost or stolen, you could lose access to the data.
-- **Asymmetric encryption**: Uses two keys - one for encryption and another for decryption. It’s more secure but slower, especially with large amounts of data.
+- **Asymmetric encryption**: Uses two keys, one for encryption and another for decryption. It’s more secure but slower, especially with large amounts of data.
 - **Encryption at rest**: Protects data while it’s stored and not being actively used.
 - **Encryption in transit**: Ensures data is safe while it’s being moved from one location to another, like during backup or restoration.
 
@@ -37,7 +37,7 @@ There are several methods to encrypt backups, each offering different levels of 
 When it comes to securing your backups, encryption is a vital tool. Several encryption techniques are commonly used to protect data, each offering varying levels of security and performance. Here are some of the most popular backup encryption techniques:
 
 1. **AES (Advanced Encryption Standard)**: AES is one of the most widely used encryption standards today, especially AES-256, which provides a strong balance between security and performance. It uses a symmetric key algorithm, meaning the same key is used for both encryption and decryption. AES is commonly used in backup systems because it is both secure and efficient for large datasets, such as database backups.
-2. **RSA (Rivest-Shamir-Adleman)**: RSA is an asymmetric encryption technique that uses a pair of keys - a public key for encryption and a private key for decryption. RSA is known for its security strength but is slower than AES, making it less suitable for encrypting large backups. However, it is often used to secure the transmission of smaller, sensitive data like encryption keys.
+2. **RSA (Rivest-Shamir-Adleman)**: RSA is an asymmetric encryption technique that uses a pair of keys: a public key for encryption and a private key for decryption. RSA is known for its security strength but is slower than AES, making it less suitable for encrypting large backups. However, it is often used to secure the transmission of smaller, sensitive data like encryption keys.
 
 For large database backups, AES-256 is generally the best choice due to its robust security and efficiency, but the right encryption technique may vary depending on your specific needs.
 

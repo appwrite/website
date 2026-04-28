@@ -147,7 +147,7 @@ Both Appwrite and Firebase are powerful platforms that simplify backend developm
 
 Firebase offers a mature, battle-tested ecosystem that’s deeply integrated with Google Cloud. It’s a good choice for teams looking for a managed, ready-to-use solution that scales seamlessly with minimal setup.
 
-Appwrite, meanwhile, brings the benefits of open source to modern development. It provides a unified platform where you can manage authentication, databases, storage, messaging, and even hosting - all in one place. You can self-host Appwrite for full control or use Appwrite Cloud for a managed experience. This flexibility, combined with transparent pricing and a growing developer community, makes Appwrite a strong alternative for teams that want ownership and customization.
+Appwrite, meanwhile, brings the benefits of open source to modern development. It provides a unified platform where you can manage authentication, databases, storage, messaging, and even hosting, all in one place. You can self-host Appwrite for full control or use Appwrite Cloud for a managed experience. This flexibility, combined with transparent pricing and a growing developer community, makes Appwrite a strong alternative for teams that want ownership and customization.
 
 Ultimately, the right choice depends on your priorities. If you want a managed, plug-and-play ecosystem with deep Google Cloud integrations, Firebase fits the bill. If you value openness, flexibility, and an all-in-one development experience that you can run anywhere, Appwrite is built for you.
 

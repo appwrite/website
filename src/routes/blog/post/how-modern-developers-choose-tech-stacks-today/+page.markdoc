@@ -74,16 +74,16 @@ This is why open-source infrastructure has become so attractive. With Appwrite, 
 
 Frontend choices are reversible. You can migrate a React app to another framework with significant but bounded effort. You can swap UI libraries, design systems, even whole rendering strategies. With [Appwrite Sites](https://appwrite.io/docs/products/sites), you can deploy your frontend directly alongside your backend services, keeping your entire stack under one roof and making those frontend changes even easier to ship.
 
-Backend choices are different. Your database schema, your auth model, your storage structure - these decisions travel with you. They shape your product, your team, and your infrastructure costs for years.
+Backend choices are different. Your database schema, your auth model, your storage structure: these decisions travel with you. They shape your product, your team, and your infrastructure costs for years.
 
 This is why the modern developer instinct to "figure out the backend later" is so risky. It's not later problems you're creating, it's foundation problems.
 
 Getting the backend right means:
 
-- Choosing a **database** that handles your access patterns well and can evolve with your schema - Appwrite Databases support flexible querying, indexing, and document-level permissions out of the box
-- Choosing an **auth system** that handles your growth - [Appwrite Auth](https://appwrite.io/docs/products/auth) supports OAuth, magic links, phone OTP, and more without bolting on a third-party service
-- Choosing a **functions layer** that handles async work cleanly - [Appwrite Functions](https://appwrite.io/docs/products/functions) support multiple runtimes and event-driven triggers so background work stays off your critical path
-- Choosing a **hosting layer** that keeps your frontend close to your backend - [Appwrite Sites](https://appwrite.io/docs/products/sites) lets you deploy web apps with zero friction, no separate hosting provider needed
+- Choosing a **database** that handles your access patterns well and can evolve with your schema. Appwrite Databases support flexible querying, indexing, and document-level permissions out of the box.
+- Choosing an **auth system** that handles your growth. [Appwrite Auth](https://appwrite.io/docs/products/auth) supports OAuth, magic links, phone OTP, and more without bolting on a third-party service.
+- Choosing a **functions layer** that handles async work cleanly. [Appwrite Functions](https://appwrite.io/docs/products/functions) support multiple runtimes and event-driven triggers so background work stays off your critical path.
+- Choosing a **hosting layer** that keeps your frontend close to your backend. [Appwrite Sites](https://appwrite.io/docs/products/sites) lets you deploy web apps with zero friction, no separate hosting provider needed.
 
 # Avoiding lock-in is a real priority now
 
@@ -94,7 +94,7 @@ The SaaS consolidation wave has made developers more cautious. Services get acqu
 Modern stack decisions now frequently include:
 
 - **Preference for open-source tools** with self-hosting options
-- **Explicit evaluation of data portability** - can you get your data out?
+- **Explicit evaluation of data portability**: can you get your data out?
 - **Skepticism of proprietary lock-in features** that are convenient now but costly later
 
 Appwrite being open source isn't just a philosophical stance. It's a practical guarantee: your backend isn't held hostage. The code is on GitHub, you can run it anywhere, and you're never one pricing email away from a migration crisis. That same principle extends to [Appwrite Sites](/docs/products/sites); your frontend deployments live within the same open, portable ecosystem as the rest of your stack.
@@ -138,7 +138,7 @@ Appwrite is worth a serious look, not because it's the only answer, but because 
 
 That's the standard Appwrite is built to meet.
 
-Auth, databases, storage, functions, messaging, sites - one platform, one consistent API, every platform you ship on. Open source, self-hostable, and designed to stay out of your way so you can stay focused on your product.
+Auth, databases, storage, functions, messaging, sites: one platform, one consistent API, every platform you ship on. Open source, self-hostable, and designed to stay out of your way so you can stay focused on your product.
 
 Give it a try. The first project will tell you everything you need to know.
 

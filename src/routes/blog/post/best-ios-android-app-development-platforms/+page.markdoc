@@ -127,7 +127,7 @@ Ionic is an open-source mobile app development framework focused on building cro
 - **Fast development**: Familiar web technologies, combined with a single codebase, accelerate development across mobile and web platforms.
 - **Customizable UIs**: Ionic’s ready-made UI components are highly customizable, allowing developers to create polished apps with ease.
 - **Native functionality**: With Capacitor, Ionic apps can access native device features, making them indistinguishable from native apps in terms of functionality.
-- **Cross-platform efficiency**: Write once, deploy everywhere - achieving both mobile and web app goals with a single codebase.
+- **Cross-platform efficiency**: Write once, deploy everywhere, achieving both mobile and web app goals with a single codebase.
 
 ## Popular apps built with Ionic:
 

@@ -55,7 +55,7 @@ const tablesDB = new TablesDB(client);
 // Log in
 await account.createEmailPasswordSession("user@example.com", "password");
 
-// Read data - scoped to what this user can access
+// Read data, scoped to what this user can access
 const docs = await tablesDB.listRows({
   databaseId: "<DATABASE_ID>",
   tableId: "<TABLE_ID>",
@@ -84,7 +84,7 @@ const client = new Client()
 const tablesDB = new TablesDB(client);
 const users = new Users(client);
 
-// List all users - not possible from the Client SDK
+// List all users (not possible from the Client SDK)
 const allUsers = await users.list();
 
 // Write a row on behalf of the system
@@ -154,7 +154,7 @@ if (session) {
   sessionClient.setSession(session);
 }
 
-// Fetch data as the user - permissions are enforced
+// Fetch data as the user; permissions are enforced
 const account = new Account(sessionClient);
 const user = await account.get();
 ```

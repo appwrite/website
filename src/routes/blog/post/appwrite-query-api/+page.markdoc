@@ -21,16 +21,16 @@ The most common filters are equality checks. `Query.equal('status', ['active'])`
 
 Beyond equality, you have:
 
-- `Query.notEqual('status', ['banned'])` - excludes specific values
-- `Query.greaterThan('year', 1999)` - numeric or date comparisons
+- `Query.notEqual('status', ['banned'])`: excludes specific values
+- `Query.greaterThan('year', 1999)`: numeric or date comparisons
 - `Query.lessThan('price', 50)`
 - `Query.greaterThanEqual('score', 100)`
 - `Query.lessThanEqual('age', 65)`
-- `Query.contains('tags', ['javascript'])` - checks if an array column contains a value
-- `Query.search('body', 'open source')` - full-text search (requires a fulltext index on the column)
+- `Query.contains('tags', ['javascript'])`: checks if an array column contains a value
+- `Query.search('body', 'open source')`: full-text search (requires a fulltext index on the column)
 - `Query.isNull('deletedAt')` / `Query.isNotNull('deletedAt')`
 - `Query.startsWith('username', 'admin')` / `Query.endsWith('email', '.edu')`
-- `Query.between('price', 10, 50)` - inclusive range check
+- `Query.between('price', 10, 50)`: inclusive range check
 
 A practical example combining several filters:
 

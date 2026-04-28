@@ -142,7 +142,7 @@ Appwrite 1.8.0 also introduces **support for web extensions**, allowing them to 
 
 ## Improved email delivery
 
-Appwrite's SMTP system now uses **BCC-only emails**, improving privacy and deliverability - especially for large user bases or bulk notifications.
+Appwrite's SMTP system now uses **BCC-only emails**, improving privacy and deliverability, especially for large user bases or bulk notifications.
 
 ## Core optimizations
 

@@ -62,7 +62,7 @@ Appwrite Storage is a file management service that's part of the broader Appwrit
 | Pricing model | Credit-based (storage + bandwidth + transformations bundled) | Per storage volume and bandwidth |
 | Free tier | 25 credits/month (~25 GB storage, 25 GB bandwidth, 25K transformations) | 2 GB storage (Starter plan) |
 | Paid plans | From $89/month (Plus); costs scale with transformation volume | Pro from $25/month, includes 150 GB storage per project |
-| Cost predictability | Can be unpredictable - each transformation consumes credits | More predictable - pay for storage and transfer, not per transformation |
+| Cost predictability | Can be unpredictable; each transformation consumes credits | More predictable; pay for storage and transfer, not per transformation |
 | Part of a full backend platform | No | Yes |
 | Antivirus scanning | Yes (with Metascan) | Yes (with ClamAV) |
 

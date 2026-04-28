@@ -115,7 +115,7 @@ Using platforms like Appwrite, which offers compliant backend services with buil
 
 # Building with privacy in mind
 
-Both the **CCPA** and **GDPR** are designed to empower consumers and provide them with more control over their personal data, but they take different approaches to achieve this goal. For developers, the key takeaway is that compliance isn’t just about meeting legal requirements - it’s about fostering trust with users. By designing **privacy-conscious applications**, developers can ensure they meet both **CCPA** and **GDPR** standards, keeping their products legally compliant and user-focused.
+Both the **CCPA** and **GDPR** are designed to empower consumers and provide them with more control over their personal data, but they take different approaches to achieve this goal. For developers, the key takeaway is that compliance isn’t just about meeting legal requirements; it’s about fostering trust with users. By designing **privacy-conscious applications**, developers can ensure they meet both **CCPA** and **GDPR** standards, keeping their products legally compliant and user-focused.
 
 Understanding the differences between CCPA and GDPR helps developers build apps that protect privacy and are transparent. Using developer-friendly platforms like Appwrite, which offer privacy-focused tools and secure APIs, makes it much easier to create apps that comply with both CCPA and GDPR.
 

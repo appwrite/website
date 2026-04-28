@@ -116,7 +116,7 @@ Choose: Start (SSR), TypeScript
 npm i
 ```
 
-> 💡 Cursor may prompt: `npm install --save-dev tsx` - that's expected for SSR dev mode.
+> 💡 Cursor may prompt: `npm install --save-dev tsx`; that's expected for SSR dev mode.
 
 ---
 
@@ -324,7 +324,7 @@ npm run preview
 | Issue | Fix |
 |---|---|
 | `/` shows TanStack docs page | Delete demo/docs routes and create `/`, `/login`, `/signup`, `/notes` manually. |
-| `focus-visible-ring` or `ring-opacity-*` errors | Tailwind v4 removed those utilities - use color/alpha rings instead. |
+| `focus-visible-ring` or `ring-opacity-*` errors | Tailwind v4 removed those utilities; use color/alpha rings instead. |
 | Missing `.env` file | Create `.env.local` using values from Appwrite MCP. |
 | 401/403 errors | Verify API key scopes + table permissions. |
 | "Creation of a session is prohibited when a session is active." | Use session-safe login flow. Delete all sessions first, retry once if needed, and remove auto-login logic from `/login`. |

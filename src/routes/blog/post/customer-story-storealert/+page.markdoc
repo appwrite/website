@@ -40,7 +40,7 @@ Recognizing this gap, Devkind set out to develop a solution designed to give mer
 - **Comprehensive event tracking:** Logs and monitors every store activity, from product launches to blog updates, providing a complete event history for easy reference and tracking.
 - **Customizable notification flows:** Allows merchants to tailor notifications through multiple channels, including email, SMS, and push notifications, ensuring updates arrive in the most convenient way.
 - **Efficient inventory and catalog management:** Streamlines tracking for stores managing thousands of products, ensuring stock levels are up-to-date and reducing the risk of overselling or stockouts.
-- **Seamless Shopify integration:** Connects directly to Shopify, enabling real-time notifications with a quick and simple installation - no complicated setup required.
+- **Seamless Shopify integration:** Connects directly to Shopify, enabling real-time notifications with a quick and simple installation; no complicated setup required.
 
 {% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
 
@@ -77,7 +77,7 @@ As per the feedback from the Devkind, Appwrite helped
 - **Improve response time by 30%**, ensuring better performance and user experience
 - **10x easier data scaling**, preparing StoreAlert for future growth
 
-> "A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most - empowering merchants with real-time insights and control over their store operations."  
+> "A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most: empowering merchants with real-time insights and control over their store operations."  
 > ⠀  
 > Hassan Ahmed, Full Stack Developer at Devkind
  

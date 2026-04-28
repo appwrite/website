@@ -9,7 +9,7 @@ author: atharva
 category: tutorial
 ---
 
-You just built your Next.js app with all the killer features you wanted. Now you want to put it out for the world to see. But you’re confused - “how do I do that?”. If you’re that person, this article is for you.
+You just built your Next.js app with all the killer features you wanted. Now you want to put it out for the world to see. But you’re confused: “how do I do that?”. If you’re that person, this article is for you.
 
 In this article, you will learn how to deploy your Next.js app completely free of cost. We will use Appwrite Sites to achieve that.
 

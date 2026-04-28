@@ -206,7 +206,7 @@ When comparing free hosting platforms, look beyond just “is it free.” Critic
 ## For enterprises
 
 * Focus on compliance, SLAs, and reliability.
-* Likely to use AWS, GCP, or Azure - but Appwrite offers on-prem or cloud flexibility.
+* Likely to use AWS, GCP, or Azure, but Appwrite offers on-prem or cloud flexibility.
 
 
 # Conclusion & recommendations
@@ -219,7 +219,7 @@ In 2026, the **best free hosting platforms** combine performance, scalability, a
 * **Firebase**: Best for mobile-first teams in the Google ecosystem.
 * **Render/Railway**: Best for balanced frontend + backend deployment.
 
-If you’re building a SaaS MVP, managing multiple client projects, or running a growing startup, **Appwrite provides the best mix of free hosting + frontend deployment + backend APIs** - all without lock-in.
+If you’re building a SaaS MVP, managing multiple client projects, or running a growing startup, **Appwrite provides the best mix of free hosting + frontend deployment + backend APIs**, all without lock-in.
 
 
 # Frequently Asked Questions (FAQs)

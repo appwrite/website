@@ -10,9 +10,9 @@ Respect user's package manager at all times. Don't use NPM if the user uses some
 
 - First, check the contents of the current working directory.
 - If the directory contains files that appear unrelated to a development workspace (e.g., personal documents, downloads, photos, random files that don't belong in a code project), ask the user: "The current directory contains files that don't appear to be part of a development project. Would you like to: (1) proceed here anyway, or (2) create it in a subdirectory with a specific folder name?" and proceed based on their choice.
-- If the directory is empty OR contains an existing project (`package.json`, `src` folder, config files, etc.), proceed directly with integration - do NOT ask the user, just integrate into the existing project.
+- If the directory is empty OR contains an existing project (`package.json`, `src` folder, config files, etc.), proceed directly with integration; do NOT ask the user, just integrate into the existing project.
 - Run: `npx sv create .` (this creates the project in the current directory)
-- Do NOT use `cd` to switch directories - always work in the current directory (`.`).
+- Do NOT use `cd` to switch directories; always work in the current directory (`.`).
 - Follow the prompts to create your project.
 
 ## Step 2: Install Appwrite SDK

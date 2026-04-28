@@ -414,7 +414,7 @@
                 <a class="web-link underline" href="/docs/tooling/ai/quickstart-prompts"
                     >quickstart prompts</a
                 >
-                to scaffold features - whether you work in an IDE or a vibe coding platform.
+                to scaffold features, whether you work in an IDE or a vibe coding platform.
             </p>
 
             <h3
