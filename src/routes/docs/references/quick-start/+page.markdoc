@@ -5,6 +5,8 @@ description: Configure the Appwrite SDKs and take the necessary steps to start u
 ---
 Follow these steps before you begin using the Appwrite SDKs or accessing Appwrite through the REST and GraphQL API.
 
+If you are choosing Appwrite among [BaaS platforms](/blog/post/backend-as-a-service) or mapping [backend infrastructure](/blog/post/best-backend-as-a-service-platforms) options first, skim that guide, then return here to wire SDKs.
+
 {% section #select-the-right-API step=1 title="Select the right API" %}
 Appwrite has two types of APIs for different use cases, select one or both depending on your use case.
 
