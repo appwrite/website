@@ -71,6 +71,11 @@
                     label: 'Auth methods',
                     href: '/docs/advanced/platform/auth-methods',
                     new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Platforms',
+                    href: '/docs/advanced/platform/platforms',
+                    new: isNewUntil('30 May 2026')
                 }
             ]
         },
