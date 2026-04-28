@@ -19,7 +19,12 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
     }
 
     const userAgent = request.headers.get('user-agent') ?? undefined;
-    const user = { userID: stableId, userAgent };
+    // JS SDK generates its own stableID unless customIDs.stableID is set; bootstrap must use the same shape as the browser client.
+    const user = {
+        userID: stableId,
+        customIDs: { stableID: stableId },
+        ...(userAgent ? { userAgent } : {})
+    };
 
     const [heroSubtitle, statsigBootstrap] = await Promise.all([
         evaluateHeroDescriptionExperiment(user, DEFAULT_HERO_SUBTITLE),
