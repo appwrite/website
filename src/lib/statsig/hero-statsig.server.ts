@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/private';
 import Statsig from 'statsig-node';
 import type { StatsigUser } from 'statsig-node';
-import { STATSIG_EXPERIMENT_BEST_DESCRIPTION } from './constants';
+import { STATSIG_CLIENT_SDK_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from './constants';
 
 let initPromise: ReturnType<typeof Statsig.initialize> | null = null;
 
@@ -43,5 +43,25 @@ export async function evaluateHeroDescriptionExperiment(
         return experiment.get('description', fallback) as string;
     } catch {
         return fallback;
+    }
+}
+
+/**
+ * JSON payload for `StatsigClient.dataAdapter.setData` + `initializeAsync`, so the JS SDK skips
+ * cache-first experiment checks (Group Assignment Health). Requires `STATSIG_SERVER_SECRET`.
+ * @see https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
+ */
+export async function getStatsigClientBootstrapPayload(user: StatsigUser): Promise<string | null> {
+    const ready = await ensureStatsigServer();
+    if (!ready) return null;
+
+    try {
+        const response = Statsig.getClientInitializeResponse(user, STATSIG_CLIENT_SDK_KEY, {
+            hash: 'djb2'
+        });
+        if (!response) return null;
+        return JSON.stringify(response);
+    } catch {
+        return null;
     }
 }

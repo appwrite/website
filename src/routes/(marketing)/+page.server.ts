@@ -1,5 +1,8 @@
 import { STATSIG_STABLE_ID_KEY, DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
-import { evaluateHeroDescriptionExperiment } from '$lib/statsig/hero-statsig.server';
+import {
+    evaluateHeroDescriptionExperiment,
+    getStatsigClientBootstrapPayload
+} from '$lib/statsig/hero-statsig.server';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies, request, url }) => {
@@ -16,10 +19,12 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
     }
 
     const userAgent = request.headers.get('user-agent') ?? undefined;
-    const heroSubtitle = await evaluateHeroDescriptionExperiment(
-        { userID: stableId, userAgent },
-        DEFAULT_HERO_SUBTITLE
-    );
+    const user = { userID: stableId, userAgent };
 
-    return { heroSubtitle };
+    const [heroSubtitle, statsigBootstrap] = await Promise.all([
+        evaluateHeroDescriptionExperiment(user, DEFAULT_HERO_SUBTITLE),
+        getStatsigClientBootstrapPayload(user)
+    ]);
+
+    return { heroSubtitle, statsigBootstrap };
 };

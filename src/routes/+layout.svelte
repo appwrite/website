@@ -74,8 +74,11 @@
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
 
+    const { children } = $props();
+
     onMount(() => {
-        void initStatsig();
+        const bootstrap = (page.data as { statsigBootstrap?: string | null }).statsigBootstrap;
+        void initStatsig(bootstrap);
         displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
 
@@ -145,8 +148,6 @@
             reo.init({ clientID });
         });
     }
-
-    const { children } = $props();
 </script>
 
 <svelte:window on:scroll={handleScroll} />
