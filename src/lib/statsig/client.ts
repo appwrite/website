@@ -87,7 +87,7 @@ function startStatsig(): void {
             // `initializeAsync` waits for this so `customIDs.stableID` applies synchronously in
             // `_configureUser`. `initializeSync` does not — without it, StableID can lag userID and
             // evaluations/bootstrap can disagree (dashboard mismatch + bad reasons).
-            if (!Storage.isReady()) {
+            if (typeof Storage?.isReady === 'function' && !Storage.isReady()) {
                 const ready = Storage.isReadyResolver?.();
                 if (ready != null) {
                     await ready;
@@ -140,16 +140,23 @@ function startStatsig(): void {
                 return null;
             }
 
-            await new Promise<void>((resolve) => {
-                setTimeout(resolve, 0);
-            });
-
-            const sessionPlugin = new StatsigSessionReplayPlugin();
-            const autoPlugin = new StatsigAutoCapturePlugin();
-            sessionPlugin.bind(instance as never);
-            autoPlugin.bind(instance as never);
-
+            // Register the client for `logEvent` as soon as core init succeeded. Previously we set
+            // `client` only after Session Replay / Auto Capture `bind()`; if either threw (CSP,
+            // privacy extensions, rrweb errors), the whole init looked failed and **all** Statsig
+            // logging stopped.
             client = instance as StatsigBrowserClient;
+
+            try {
+                await new Promise<void>((resolve) => {
+                    setTimeout(resolve, 0);
+                });
+                const sessionPlugin = new StatsigSessionReplayPlugin();
+                const autoPlugin = new StatsigAutoCapturePlugin();
+                sessionPlugin.bind(instance as never);
+                autoPlugin.bind(instance as never);
+            } catch (pluginErr: unknown) {
+                console.error('[Statsig] Session Replay / Auto Capture bind failed', pluginErr);
+            }
 
             return client;
         } catch (err: unknown) {
