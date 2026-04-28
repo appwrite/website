@@ -134,10 +134,10 @@ function startStatsig(): void {
 }
 
 /**
- * Resolves once `initializeAsync()` has finished. Hero copy is SSR’d; this path is for any
- * future client checks that should align with Statsig “await init before experiments” guidance.
+ * Resolves once `initializeAsync()` has finished (full network round-trip, not cache-only).
+ * Use before any `getExperiment` / gate checks on the client. Hero copy is SSR’d from the server.
  */
-export function whenStatsigSyncReady(): Promise<StatsigBrowserClient | null> {
+export function whenStatsigReady(): Promise<StatsigBrowserClient | null> {
     if (!browser || ENV.TEST) return Promise.resolve(null);
     if (client) return Promise.resolve(client);
     startStatsig();
@@ -146,9 +146,7 @@ export function whenStatsigSyncReady(): Promise<StatsigBrowserClient | null> {
 
 /** Resolves after `initializeAsync` finishes (or immediately if init failed / tests). */
 export function whenStatsigNetworkReady(): Promise<void> {
-    if (!browser || ENV.TEST) return Promise.resolve();
-    startStatsig();
-    return (initPromise ?? Promise.resolve(null)).then(() => {});
+    return whenStatsigReady().then(() => {});
 }
 
 /**
