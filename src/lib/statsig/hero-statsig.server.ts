@@ -1,6 +1,23 @@
 import { env } from '$env/dynamic/private';
-import { Statsig, StatsigUser, type StatsigUserArgs } from '@statsig/statsig-node-core';
+import {
+    Statsig,
+    StatsigUser,
+    type StatsigOptions,
+    type StatsigUserArgs
+} from '@statsig/statsig-node-core';
 import { STATSIG_CLIENT_SDK_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from './constants';
+
+function buildStatsigServerOptions(): StatsigOptions {
+    const explicit = env.STATSIG_ENVIRONMENT?.trim();
+    return {
+        environment:
+            explicit && explicit.length > 0
+                ? explicit
+                : process.env.NODE_ENV === 'production'
+                  ? 'production'
+                  : 'development'
+    };
+}
 
 /** User fields used by marketing home load + Statsig bootstrap (server). */
 export type StatsigServerUserInput = { userID: string } & Partial<
@@ -16,7 +33,7 @@ async function getStatsigClient(): Promise<Statsig | null> {
 
     if (!initPromise) {
         initPromise = (async () => {
-            const client = new Statsig(secret);
+            const client = new Statsig(secret, buildStatsigServerOptions());
             await client.initialize();
             statsigClient = client;
         })().catch((err: unknown) => {
