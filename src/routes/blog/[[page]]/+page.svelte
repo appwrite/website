@@ -445,7 +445,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page (page)}
+                            {#each currentPageRange as page, index (`${page}-${index}`)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}
