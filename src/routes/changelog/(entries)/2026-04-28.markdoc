@@ -4,30 +4,9 @@ title: "New filter, sort, and pagination flags in the Appwrite CLI"
 date: 2026-04-28
 ---
 
-The Appwrite CLI **19.1.0** introduces dedicated flags for the most common filtering, sorting, and pagination needs on `list-*` commands across services. Until now, narrowing a list result from the CLI meant hand-writing an Appwrite query JSON string and passing it through `--queries`, which is awkward to escape inside a shell, hard to read in scripts, and easy to get wrong on a quick one-off. The new flags cover the everyday cases directly.
+The Appwrite CLI **19.1.0** adds dedicated flags for filtering, sorting, and pagination on `list-*` commands, so you no longer need to hand-write Appwrite query JSON for `--queries` on common one-offs.
 
-You can now use the following flags on list commands such as `tables-db list-rows`, `tables-db list-tables`, `users list`, `functions list`, and `messaging list-messages`:
-
-- **`--where <expression>`** – simple comparison filters using `field=value`, `field!=value`, `field>value`, `field>=value`, `field<value`, and `field<=value`. Repeat the flag for multiple filters.
-- **`--sort-asc <attribute>`** and **`--sort-desc <attribute>`** – order results by one or more attributes.
-- **`--limit <number>`** and **`--offset <number>`** – control how many results to return and where to start.
-- **`--cursor-after <id>`** and **`--cursor-before <id>`** – cursor-based pagination.
-- **`--select <attribute>`** – on row and document list commands, return only the attributes you ask for.
-
-For example, fetching the 10 most recently created rows where `year` is greater than 1999 is now a single readable invocation:
-
-```sh
-appwrite tables-db list-rows \
-    --database-id "<DATABASE_ID>" \
-    --table-id "<TABLE_ID>" \
-    --where 'year>1999' \
-    --sort-desc '$createdAt' \
-    --limit 10
-```
-
-The `--queries` flag is still fully supported and remains the right tool for advanced operators, search, complex `OR` logic, or generated automation pipelines. When you mix `--queries` with the new flags, raw queries are sent first and the flag-generated queries are appended after, so existing scripts keep working as they did before.
-
-Update to the latest CLI to pick up the new flags. Read more in the [CLI commands reference](/docs/tooling/command-line/commands#filter-sort-paginate) and the [19.1.0 release notes](https://github.com/appwrite/sdk-for-cli/releases/tag/19.1.0).
+The new flags include `--where`, `--sort-asc`, `--sort-desc`, `--limit`, `--offset`, `--cursor-after`, `--cursor-before`, and `--select`. The `--queries` flag is still supported and is combined with the new flags when both are used. See the [19.1.0 release notes](https://github.com/appwrite/sdk-for-cli/releases/tag/19.1.0) for more details.
 
 {% arrow_link href="/docs/tooling/command-line/commands#filter-sort-paginate" %}
 Read the CLI commands reference
