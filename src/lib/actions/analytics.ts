@@ -1,6 +1,8 @@
 import { page } from '$app/state';
 import { ENV } from '$lib/system';
 import { browser } from '$app/environment';
+import { shouldForwardAnalyticsToStatsig } from '$lib/statsig/cta-events';
+import { logStatsigCtaEvent } from '$lib/statsig/client';
 
 import posthogEvent from 'posthog-js';
 import Plausible from 'plausible-tracker';
@@ -67,6 +69,10 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     const name = typeof eventArgs === 'string' ? eventArgs : eventArgs.name;
     const data =
         typeof eventArgs === 'string' ? { path, route } : { ...eventArgs.data, path, route };
+
+    if (browser && shouldForwardAnalyticsToStatsig(name, path)) {
+        logStatsigCtaEvent(name, data as Record<string, unknown>);
+    }
 
     if (ENV.DEV || ENV.PREVIEW) {
         console.log(`[Analytics] Event:`, name, data);

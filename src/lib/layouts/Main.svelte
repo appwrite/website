@@ -245,6 +245,7 @@
                     rel={isOfferPage ? undefined : 'noopener noreferrer'}
                     class="web-u-inline-width-100-percent-mobile"
                     style={isOfferPage ? 'pointer-events: none;' : ''}
+                    event={isOfferPage ? undefined : 'main-github_star_nav-click'}
                 >
                     <Icon name="star" aria-hidden="true" />
                     <span class="text">Star on GitHub</span>

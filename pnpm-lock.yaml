@@ -10,12 +10,24 @@ importers:
             '@sentry/sveltekit':
                 specifier: ^10.28.0
                 version: 10.29.0(@sveltejs/kit@2.49.2(@opentelemetry/api@1.9.0)(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.8)(vite@7.2.7(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.95.0)(yaml@2.8.1)))(svelte@5.45.8)(vite@7.2.7(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.95.0)(yaml@2.8.1)))(encoding@0.1.13)(svelte@5.45.8)(vite@7.2.7(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.95.0)(yaml@2.8.1))
+            '@statsig/js-client':
+                specifier: ^3.33.0
+                version: 3.33.0
+            '@statsig/session-replay':
+                specifier: ^3.33.0
+                version: 3.33.0
+            '@statsig/web-analytics':
+                specifier: ^3.33.0
+                version: 3.33.0
             h3:
                 specifier: ^1.15.4
                 version: 1.15.4
             sharp:
                 specifier: ^0.34.5
                 version: 0.34.5
+            statsig-node:
+                specifier: ^6.5.1
+                version: 6.5.1(encoding@0.1.13)
         devDependencies:
             '@appwrite.io/console':
                 specifier: ^0.6.4
@@ -27,8 +39,8 @@ importers:
                 specifier: ~0.26.0
                 version: 0.26.0
             '@appwrite.io/specs':
-                specifier: github:appwrite/specs#bd8ee024995358cea176e4279b1cc362fc6e9c00
-                version: https://codeload.github.com/appwrite/specs/tar.gz/bd8ee024995358cea176e4279b1cc362fc6e9c00
+                specifier: github:appwrite/specs#095d750d7036626d949279ddb7cd9510b902a13f
+                version: https://codeload.github.com/appwrite/specs/tar.gz/095d750d7036626d949279ddb7cd9510b902a13f
             '@eslint/compat':
                 specifier: ^1.4.1
                 version: 1.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -38,6 +50,9 @@ importers:
             '@fingerprintjs/fingerprintjs':
                 specifier: ^4.6.2
                 version: 4.6.2
+            '@growthbook/growthbook':
+                specifier: ^1.6.5
+                version: 1.6.5
             '@internationalized/date':
                 specifier: 3.5.0
                 version: 3.5.0
@@ -356,10 +371,10 @@ packages:
                 integrity: sha512-iPeGE56pauzxuIXt15ZswjKCErwp3QdF3XOlJZfyYY7J2nirra85JNTL+3lWuFIf8yYWL7NbvCjhf8ig79TgwA==
             }
 
-    '@appwrite.io/specs@https://codeload.github.com/appwrite/specs/tar.gz/bd8ee024995358cea176e4279b1cc362fc6e9c00':
+    '@appwrite.io/specs@https://codeload.github.com/appwrite/specs/tar.gz/095d750d7036626d949279ddb7cd9510b902a13f':
         resolution:
             {
-                tarball: https://codeload.github.com/appwrite/specs/tar.gz/bd8ee024995358cea176e4279b1cc362fc6e9c00
+                tarball: https://codeload.github.com/appwrite/specs/tar.gz/095d750d7036626d949279ddb7cd9510b902a13f
             }
         version: 0.0.0
 
@@ -845,6 +860,13 @@ packages:
             {
                 integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
             }
+
+    '@growthbook/growthbook@1.6.5':
+        resolution:
+            {
+                integrity: sha512-mUaMsgeUTpRIUOTn33EUXHRK6j7pxBjwqH4WpQyq+pukjd1AIzWlEa6w7i6bInJUcweGgP2beXZmaP6b6UPn7A==
+            }
+        engines: { node: '>=10' }
 
     '@humanfs/core@0.19.1':
         resolution:
@@ -2451,6 +2473,24 @@ packages:
         cpu: [x64]
         os: [win32]
 
+    '@rrweb/record@2.0.0-alpha.17':
+        resolution:
+            {
+                integrity: sha512-Je+lzjeWMF8/I0IDoXFzkGPKT8j7AkaBup5YcwUHlkp18VhLVze416MvI6915teE27uUA2ScXMXzG0Yiu5VTIw==
+            }
+
+    '@rrweb/types@2.0.0-alpha.20':
+        resolution:
+            {
+                integrity: sha512-RbnDgKxA/odwB1R4gF7eUUj+rdSrq6ROQJsnMw7MIsGzlbSYvJeZN8YY4XqU0G6sKJvXI6bSzk7w/G94jNwzhw==
+            }
+
+    '@rrweb/utils@2.0.0-alpha.20':
+        resolution:
+            {
+                integrity: sha512-MTQOmhPRe39C0fYaCnnVYOufQsyGzwNXpUStKiyFSfGLUJrzuwhbRoUAKR5w6W2j5XuA0bIz3ZDIBztkquOhLw==
+            }
+
     '@sentry-internal/browser-utils@10.29.0':
         resolution:
             {
@@ -2672,6 +2712,30 @@ packages:
         resolution:
             {
                 integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==
+            }
+
+    '@statsig/client-core@3.33.0':
+        resolution:
+            {
+                integrity: sha512-i0eiAtFkm7Ny38etC5rJ/fkWiAECgyfK23/KIFk8z8LvPW77QmUXJfNeTqFikEOKAsAGU/pxXmchpo8hn9nWBA==
+            }
+
+    '@statsig/js-client@3.33.0':
+        resolution:
+            {
+                integrity: sha512-jwAjyCI0FQSvoviQqdO2u1pchuG88eUT2/EoCtEV4vda4XilzuX3eUBK+J2nhRZB2u8CLNV7PZoONdy/Tls7yQ==
+            }
+
+    '@statsig/session-replay@3.33.0':
+        resolution:
+            {
+                integrity: sha512-sHWFczZGnn9E0JzuB5QH02WGX61Q9ZsBEHD6Z0EHcldKMs33KanE1tTvraRlCMSy8hlbyVdtjwjc4KBAmtABxQ==
+            }
+
+    '@statsig/web-analytics@3.33.0':
+        resolution:
+            {
+                integrity: sha512-M0uNIWeJHkcWh6f1Dg4YeHMCza7nzBSk1wFktNsu48viwhp6qCz7ucNMdjgpM4s2FL/mzVf+jHvZpuB7Z9aL4A==
             }
 
     '@sveltejs/acorn-typescript@1.0.6':
@@ -2986,6 +3050,12 @@ packages:
         resolution:
             {
                 integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==
+            }
+
+    '@types/css-font-loading-module@0.0.7':
+        resolution:
+            {
+                integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==
             }
 
     '@types/deep-eql@4.0.2':
@@ -3364,6 +3434,12 @@ packages:
         engines: { node: '>=10.0.0' }
         deprecated: this version is no longer supported, please update to at least 0.8.*
 
+    '@xstate/fsm@1.6.5':
+        resolution:
+            {
+                integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==
+            }
+
     abbrev@1.1.1:
         resolution:
             {
@@ -3601,6 +3677,13 @@ packages:
             {
                 integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
             }
+
+    base64-arraybuffer@1.0.2:
+        resolution:
+            {
+                integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==
+            }
+        engines: { node: '>= 0.6.0' }
 
     base64-js@1.5.1:
         resolution:
@@ -4189,6 +4272,13 @@ packages:
             {
                 integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
             }
+
+    dom-mutator@0.6.0:
+        resolution:
+            {
+                integrity: sha512-iCt9o0aYfXMUkz/43ZOAUFQYotjGB+GNbYJiJdz4TgXkyToXbbRy5S6FbTp72lRBtfpUMwEc1KmpFEU4CZeoNg==
+            }
+        engines: { node: '>=10' }
 
     dom-serializer@2.0.0:
         resolution:
@@ -5167,6 +5257,12 @@ packages:
                 integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==
             }
         engines: { node: '>= 12' }
+
+    ip3country@5.0.0:
+        resolution:
+            {
+                integrity: sha512-lcFLMFU4eO1Z7tIpbVFZkaZ5ltqpeaRx7L9NsAbA9uA7/O/rj3RF8+evE5gDitooaTTIqjdzZrenFO/OOxQ2ew==
+            }
 
     iron-webcrypto@1.2.1:
         resolution:
@@ -6868,6 +6964,24 @@ packages:
         engines: { node: '>=18.0.0', npm: '>=8.0.0' }
         hasBin: true
 
+    rrdom@2.0.0-alpha.20:
+        resolution:
+            {
+                integrity: sha512-hoqjS4662LtBp82qEz9GrqU36UpEmCvTA2Hns3qdF7cklLFFy3G+0Th8hLytJENleHHWxsB5nWJ3eXz5mSRxdQ==
+            }
+
+    rrweb-snapshot@2.0.0-alpha.20:
+        resolution:
+            {
+                integrity: sha512-YTNf9YVeaGRo/jxY3FKBge2c/Ojd/KTHmuWloUSB+oyPXuY73ZeeG873qMMmhIpqEn7hn7aBF1eWEQmP7wjf8A==
+            }
+
+    rrweb@2.0.0-alpha.17:
+        resolution:
+            {
+                integrity: sha512-GQxBkCC4r9XL2bwSdv7iIS49M3cEA8OtObVq0rrQ4GUT4+h7omucGQ4x7m5YN5Vq1oalStBaBlYqF7yRnfG3JA==
+            }
+
     run-parallel@1.2.0:
         resolution:
             {
@@ -7062,6 +7176,13 @@ packages:
             {
                 integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==
             }
+
+    statsig-node@6.5.1:
+        resolution:
+            {
+                integrity: sha512-/rKvMMN9SWTK8+b7MyRP1wOsStsKf55Mdj8O2ffV/bCQ/38bXYCC/GVd3gVvBSwVCibAnkTz2v1gpRJSIKsBIg==
+            }
+        engines: { pnpm: never }
 
     std-env@3.10.0:
         resolution:
@@ -7572,6 +7693,13 @@ packages:
         engines: { node: '>=14.17' }
         hasBin: true
 
+    ua-parser-js@1.0.41:
+        resolution:
+            {
+                integrity: sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==
+            }
+        hasBin: true
+
     uc.micro@2.1.0:
         resolution:
             {
@@ -7662,6 +7790,13 @@ packages:
             {
                 integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
             }
+
+    uuid@8.3.2:
+        resolution:
+            {
+                integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+            }
+        hasBin: true
 
     validator@13.15.22:
         resolution:
@@ -7818,6 +7953,12 @@ packages:
         resolution:
             {
                 integrity: sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw==
+            }
+
+    web-vitals@5.0.3:
+        resolution:
+            {
+                integrity: sha512-4KmOFYxj7qT6RAdCH0SWwq8eKeXNhAFXR4PmgF6nrWFmrJ41n7lq3UCA6UK0GebQ4uu+XP8e8zGjaDO3wZlqTg==
             }
 
     webgl-sdf-generator@1.1.1:
@@ -8105,7 +8246,7 @@ snapshots:
             normalize.css: 8.0.1
             the-new-css-reset: 1.11.3
 
-    '@appwrite.io/specs@https://codeload.github.com/appwrite/specs/tar.gz/bd8ee024995358cea176e4279b1cc362fc6e9c00':
+    '@appwrite.io/specs@https://codeload.github.com/appwrite/specs/tar.gz/095d750d7036626d949279ddb7cd9510b902a13f':
         {}
 
     '@babel/code-frame@7.27.1':
@@ -8367,6 +8508,10 @@ snapshots:
     '@floating-ui/utils@0.2.10': {}
 
     '@gar/promisify@1.1.3': {}
+
+    '@growthbook/growthbook@1.6.5':
+        dependencies:
+            dom-mutator: 0.6.0
 
     '@humanfs/core@0.19.1': {}
 
@@ -9387,6 +9532,15 @@ snapshots:
     '@rollup/rollup-win32-x64-msvc@4.53.2':
         optional: true
 
+    '@rrweb/record@2.0.0-alpha.17':
+        dependencies:
+            '@rrweb/types': 2.0.0-alpha.20
+            rrweb: 2.0.0-alpha.17
+
+    '@rrweb/types@2.0.0-alpha.20': {}
+
+    '@rrweb/utils@2.0.0-alpha.20': {}
+
     '@sentry-internal/browser-utils@10.29.0':
         dependencies:
             '@sentry/core': 10.29.0
@@ -9583,6 +9737,24 @@ snapshots:
     '@sinclair/typebox@0.27.8': {}
 
     '@standard-schema/spec@1.0.0': {}
+
+    '@statsig/client-core@3.33.0': {}
+
+    '@statsig/js-client@3.33.0':
+        dependencies:
+            '@statsig/client-core': 3.33.0
+
+    '@statsig/session-replay@3.33.0':
+        dependencies:
+            '@rrweb/record': 2.0.0-alpha.17
+            '@statsig/client-core': 3.33.0
+            rrweb: 2.0.0-alpha.17
+
+    '@statsig/web-analytics@3.33.0':
+        dependencies:
+            '@statsig/client-core': 3.33.0
+            '@statsig/js-client': 3.33.0
+            web-vitals: 5.0.3
 
     '@sveltejs/acorn-typescript@1.0.6(acorn@8.15.0)':
         dependencies:
@@ -9817,6 +9989,8 @@ snapshots:
             '@types/node': 24.10.0
 
     '@types/cookie@0.6.0': {}
+
+    '@types/css-font-loading-module@0.0.7': {}
 
     '@types/deep-eql@4.0.2': {}
 
@@ -10089,6 +10263,8 @@ snapshots:
 
     '@xmldom/xmldom@0.7.13': {}
 
+    '@xstate/fsm@1.6.5': {}
+
     abbrev@1.1.1: {}
 
     abort-controller@3.0.0:
@@ -10211,6 +10387,8 @@ snapshots:
     axobject-query@4.1.0: {}
 
     balanced-match@1.0.2: {}
+
+    base64-arraybuffer@1.0.2: {}
 
     base64-js@1.5.1: {}
 
@@ -10549,6 +10727,8 @@ snapshots:
             path-type: 4.0.0
 
     dlv@1.1.3: {}
+
+    dom-mutator@0.6.0: {}
 
     dom-serializer@2.0.0:
         dependencies:
@@ -11145,6 +11325,8 @@ snapshots:
     inline-style-parser@0.2.6: {}
 
     ip-address@10.1.0: {}
+
+    ip3country@5.0.0: {}
 
     iron-webcrypto@1.2.1: {}
 
@@ -12059,6 +12241,25 @@ snapshots:
             '@rollup/rollup-win32-x64-msvc': 4.53.2
             fsevents: 2.3.3
 
+    rrdom@2.0.0-alpha.20:
+        dependencies:
+            rrweb-snapshot: 2.0.0-alpha.20
+
+    rrweb-snapshot@2.0.0-alpha.20:
+        dependencies:
+            postcss: 8.5.6
+
+    rrweb@2.0.0-alpha.17:
+        dependencies:
+            '@rrweb/types': 2.0.0-alpha.20
+            '@rrweb/utils': 2.0.0-alpha.20
+            '@types/css-font-loading-module': 0.0.7
+            '@xstate/fsm': 1.6.5
+            base64-arraybuffer: 1.0.2
+            mitt: 3.0.1
+            rrdom: 2.0.0-alpha.20
+            rrweb-snapshot: 2.0.0-alpha.20
+
     run-parallel@1.2.0:
         dependencies:
             queue-microtask: 1.2.3
@@ -12181,6 +12382,15 @@ snapshots:
             minipass: 3.3.6
 
     stackback@0.0.2: {}
+
+    statsig-node@6.5.1(encoding@0.1.13):
+        dependencies:
+            ip3country: 5.0.0
+            node-fetch: 2.7.0(encoding@0.1.13)
+            ua-parser-js: 1.0.41
+            uuid: 8.3.2
+        transitivePeerDependencies:
+            - encoding
 
     std-env@3.10.0: {}
 
@@ -12526,6 +12736,8 @@ snapshots:
 
     typescript@5.9.3: {}
 
+    ua-parser-js@1.0.41: {}
+
     uc.micro@2.1.0: {}
 
     ufo@1.6.1: {}
@@ -12570,6 +12782,8 @@ snapshots:
             pako: 1.0.11
 
     util-deprecate@1.0.2: {}
+
+    uuid@8.3.2: {}
 
     validator@13.15.22: {}
 
@@ -12689,6 +12903,8 @@ snapshots:
     web-streams-polyfill@3.3.3: {}
 
     web-vitals@4.2.4: {}
+
+    web-vitals@5.0.3: {}
 
     webgl-sdf-generator@1.1.1: {}
 
