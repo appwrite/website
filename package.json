@@ -42,7 +42,6 @@
         "@eslint/compat": "^1.4.1",
         "@eslint/js": "^9.39.1",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
-        "@growthbook/growthbook": "^1.6.5",
         "@internationalized/date": "3.5.0",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.86.6",

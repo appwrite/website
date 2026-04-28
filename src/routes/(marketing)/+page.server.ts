@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
             path: '/',
             maxAge: 60 * 60 * 24 * 365,
             sameSite: 'lax',
-            httpOnly: false,
+            httpOnly: false, // intentional: client JS reads this cookie to sync SSR and browser experiment assignments
             secure: url.protocol === 'https:'
         });
     }

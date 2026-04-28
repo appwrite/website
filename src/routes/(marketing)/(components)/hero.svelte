@@ -15,12 +15,8 @@
         subtitle?: string;
     };
 
-    const {
-        title = 'Build like a team of hundreds',
-        subtitle: subtitleProp = DEFAULT_HERO_SUBTITLE
-    }: Props = $props();
-
-    const subtitle = $derived(subtitleProp);
+    const { title = 'Build like a team of hundreds', subtitle = DEFAULT_HERO_SUBTITLE }: Props =
+        $props();
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">

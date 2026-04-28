@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { ENV } from '$lib/system';
 import { STATSIG_STABLE_ID_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from '$lib/statsig/constants';
 
-/** Statsig client SDK key (browser-safe; shipped to clients). */
+/** Statsig client SDK key (browser-safe; shipped to clients). Rotate by updating this constant. */
 const STATSIG_CLIENT_KEY = 'client-TRp4ODQ3Yfsha0XwmRayqwb7WW0ujUbiGrNlB0pfhTH';
 
 export { STATSIG_EXPERIMENT_BEST_DESCRIPTION };
@@ -12,11 +12,7 @@ export type StatsigBrowserClient = {
     initializeSync(options?: object): unknown;
     initializeAsync(options?: object): Promise<unknown>;
     getExperiment(name: string): { get(key: string, defaultValue: string): string };
-    logEvent(
-        eventOrName: string,
-        value?: string | number,
-        metadata?: Record<string, string>
-    ): void;
+    logEvent(eventOrName: string, value?: string | number, metadata?: Record<string, string>): void;
 };
 
 let client: StatsigBrowserClient | null = null;
@@ -36,7 +32,8 @@ function readStableIdFromCookie(): string | null {
 
 function persistStableIdToCookie(id: string): void {
     try {
-        const secure = typeof location !== 'undefined' && location.protocol === 'https:' ? ';Secure' : '';
+        const secure =
+            typeof location !== 'undefined' && location.protocol === 'https:' ? ';Secure' : '';
         document.cookie = `${STATSIG_STABLE_ID_KEY}=${encodeURIComponent(id)};path=/;max-age=31536000;SameSite=Lax${secure}`;
     } catch {
         /* ignore */
@@ -54,7 +51,8 @@ function getStableUserId(): string {
         persistStableIdToCookie(id);
         return id;
     } catch {
-        return 'anonymous';
+        // Can't persist; return an ephemeral random ID so each session gets its own experiment bucket.
+        return crypto.randomUUID?.() ?? `anon-${Date.now()}-${Math.random()}`;
     }
 }
 
@@ -73,12 +71,15 @@ function startStatsig(): void {
 
     syncPromise = (async (): Promise<StatsigBrowserClient | null> => {
         try {
-            const [{ StatsigClient }, { StatsigSessionReplayPlugin }, { StatsigAutoCapturePlugin }] =
-                await Promise.all([
-                    import('@statsig/js-client'),
-                    import('@statsig/session-replay'),
-                    import('@statsig/web-analytics')
-                ]);
+            const [
+                { StatsigClient },
+                { StatsigSessionReplayPlugin },
+                { StatsigAutoCapturePlugin }
+            ] = await Promise.all([
+                import('@statsig/js-client'),
+                import('@statsig/session-replay'),
+                import('@statsig/web-analytics')
+            ]);
 
             const instance = new StatsigClient(
                 STATSIG_CLIENT_KEY,
