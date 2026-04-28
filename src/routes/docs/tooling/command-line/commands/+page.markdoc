@@ -205,7 +205,7 @@ List commands across services accept a set of dedicated flags for the most commo
 * Description
 ---
 * `--where <expression>`
-* Filter using a simple comparison expression. Supports `field=value`, `field!=value`, `field>value`, `field>=value`, `field<value`, and `field<=value`. Repeat the flag to apply multiple filters.
+* Filter using a simple comparison expression. Supports `field=value`, `field!=value`, `field>value`, `field>=value`, `field<value`, and `field<=value`. Repeat the flag to apply multiple filters. Quote the expression (for example `'year>1999'`) so that `>` and `<` are not interpreted as shell redirection.
 ---
 * `--sort-asc <attribute>`
 * Sort results by an attribute in ascending order. Repeat for multiple sort fields.
@@ -226,7 +226,7 @@ List commands across services accept a set of dedicated flags for the most commo
 * Return results before this cursor ID. Use for backward cursor pagination.
 ---
 * `--select <attribute>`
-* Limit returned attributes on row and document list commands such as `databases list-rows` and `databases list-documents`. Repeat the flag to include multiple attributes.
+* Limit returned attributes on row and document list commands such as `databases list-rows`. Repeat the flag to include multiple attributes.
 ---
 {% /table %}
 
@@ -236,8 +236,8 @@ For example, to fetch the 10 most recently created rows where `year` is greater 
 appwrite databases list-rows \
     --database-id "<DATABASE_ID>" \
     --table-id "<TABLE_ID>" \
-    --where "year>1999" \
-    --sort-desc "$createdAt" \
+    --where 'year>1999' \
+    --sort-desc '$createdAt' \
     --limit 10
 ```
 
@@ -275,8 +275,8 @@ You can narrow the result set with the [filter, sort, and pagination flags](#fil
 
 ```sh
 appwrite users list \
-    --where "emailVerification=true" \
-    --sort-desc "$createdAt" \
+    --where 'emailVerification=true' \
+    --sort-desc '$createdAt' \
     --limit 25
 ```
 
