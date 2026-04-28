@@ -95,8 +95,8 @@ function startStatsig(): void {
             pendingBootstrapJson = undefined;
             if (bootstrap) {
                 try {
-                    (
-                        instance as unknown as { dataAdapter: { setData(data: string): void } }
+                    await (
+                        instance as unknown as { dataAdapter: { setData(data: string): Promise<void> } }
                     ).dataAdapter.setData(bootstrap);
                 } catch (err: unknown) {
                     console.error('[Statsig] dataAdapter.setData (bootstrap) failed', err);
