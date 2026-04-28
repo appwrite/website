@@ -156,11 +156,7 @@ export function whenStatsigNetworkReady(): Promise<void> {
  * the server has `STATSIG_SERVER_SECRET` so the client can bootstrap and avoid cache/loading checks.
  */
 export function initStatsig(clientBootstrapJson?: string | null): Promise<void> {
-    if (
-        !initPromise &&
-        typeof clientBootstrapJson === 'string' &&
-        clientBootstrapJson.length > 0
-    ) {
+    if (!initPromise && typeof clientBootstrapJson === 'string' && clientBootstrapJson.length > 0) {
         pendingBootstrapJson = clientBootstrapJson;
     }
     return whenStatsigNetworkReady();
