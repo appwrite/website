@@ -155,7 +155,7 @@ Choosing between Appwrite Cloud and self-hosting with Coolify depends on your pr
 | **Scalability** | Automatically adjusts based on demand, ensuring seamless performance. | You must provision additional resources as your app grows. |
 | **Maintenance** | Appwrite handles updates, scaling, and security patches. | You are responsible for server maintenance, updates, and security patches. |
 | **Security** | Built-in security features,DDoS protection, encryption, and backups without extra configuration. | Security is fully in your hands, configure firewalls, SSL, and backups manually. |
-| **Support** | Priority support depending on your Appwrite Cloud plan — faster issue resolution. | Community support or self-managed troubleshooting. |
+| **Support** | Priority support depending on your Appwrite Cloud plan, with faster issue resolution. | Community support or self-managed troubleshooting. |
 | **Cost** | Predictable, subscription-based pricing, ideal for teams wanting to avoid unexpected infrastructure costs. | Pay for VPS, storage, and bandwidth and other infrastructural requirements. |
 | **Customization** | Limited customization and depends on available features and settings provided by Appwrite. | Highly customizable since you can modify source code and integrate with other services. |
 | **Data sovereignty** | Data is stored in Appwrite’s cloud infrastructure, which is fully complaint with GDPR regulations. | Data remains on your own infrastructure. |

@@ -116,7 +116,7 @@ If your app allows uploads, storage must be part of your HIPAA-ready checklist, 
 
 ## 5) Encryption everywhere: In transit and at rest (HIPAA security rule)
 
-Encryption isn't just a security best practice, it's foundational for protecting PHI. Data security is a critical component of HIPAA compliance, and the HIPAA Security Rule specifically sets guidelines for implementing technical safeguards—such as encryption—to protect electronic PHI (ePHI). HIPAA security safeguards, including administrative, physical, and technical measures, are essential for ensuring the confidentiality and integrity of sensitive healthcare data.
+Encryption isn't just a security best practice, it's foundational for protecting PHI. Data security is a critical component of HIPAA compliance, and the HIPAA Security Rule specifically sets guidelines for implementing technical safeguards (such as encryption) to protect electronic PHI (ePHI). HIPAA security safeguards, including administrative, physical, and technical measures, are essential for ensuring the confidentiality and integrity of sensitive healthcare data.
 
 At a minimum, your tooling and infrastructure should support:
 

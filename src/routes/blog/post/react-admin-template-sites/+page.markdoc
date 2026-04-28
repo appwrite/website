@@ -106,7 +106,7 @@ Since the template creates a GitHub repository with the full source code, you ca
 
 ## Customize authentication
 
-The template already uses the official [`ra-appwrite`](https://github.com/marmelab/ra-appwrite) adapter, which provides both a Data Provider and an Auth Provider for Appwrite. Out of the box, it uses Appwrite's email and password authentication — the demo user created by the seed script is an example of this. You can extend the authentication to add role-based access control, restrict specific resources to certain users, or customize the login page to match your branding.
+The template already uses the official [`ra-appwrite`](https://github.com/marmelab/ra-appwrite) adapter, which provides both a Data Provider and an Auth Provider for Appwrite. Out of the box, it uses Appwrite's email and password authentication; the demo user created by the seed script is an example of this. You can extend the authentication to add role-based access control, restrict specific resources to certain users, or customize the login page to match your branding.
 
 ## Create new resources
 

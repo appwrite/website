@@ -29,7 +29,7 @@ TanStack didn't appear out of nowhere. It grew from the success of **TanStack Qu
 
 That same idea of **simplicity without shortcuts** is what's driving interest in TanStack Start. Developers already trust the TanStack team because their tools consistently solve real problems without hiding what's going on behind the scenes.
 
-As one developer put it, *"They did for routing and server logic what they already did for state management — made it simple, predictable, and type-safe."*
+As one developer put it, *"They did for routing and server logic what they already did for state management: made it simple, predictable, and type-safe."*
 
 # What TanStack Start actually is
 
@@ -58,7 +58,7 @@ Developers in the community consistently mention a few themes:
     
 3. **A smoother developer experience.**
     
-    Type-safe routes, integrated server functions, and predictable data fetching make debugging faster. One Reddit user said, *"When I first tried it, I thought I was missing something because it was so easy — it just worked."*
+    Type-safe routes, integrated server functions, and predictable data fetching make debugging faster. One Reddit user said, *"When I first tried it, I thought I was missing something because it was so easy; it just worked."*
     
 4. **Flexible hosting and tooling.**
     

@@ -152,7 +152,7 @@ Why this matters:
 
 - **Full control** → Decide where your data lives and how your infrastructure runs.
 - **Compliance** → For industries with strict requirements, self-hosting makes it easier to meet regulations like GDPR or HIPAA.
-- **Portability** → You’re not locked into one cloud provider — you can start with Appwrite Cloud and move to self-hosting later, or vice versa, without rewriting your app.
+- **Portability** → You’re not locked into one cloud provider; you can start with Appwrite Cloud and move to self-hosting later, or vice versa, without rewriting your app.
 
 # 12. Is Appwrite different from Supabase for authentication?
 

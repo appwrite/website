@@ -34,7 +34,7 @@ By utilizing hot backups, your application can continue to operate as usual. At 
 
 ## Remote destination
 
-Backups are stored in a geographically separate location, isolated from our primary data center in Frankfurt. This ensures full redundancy and strengthens your disaster recovery strategy. In the event of localized incidents—such as hardware failures, security breaches, or natural disasters—your data remains secure and recoverable, enabling rapid failover and minimizing operational downtime.
+Backups are stored in a geographically separate location, isolated from our primary data center in Frankfurt. This ensures full redundancy and strengthens your disaster recovery strategy. In the event of localized incidents (such as hardware failures, security breaches, or natural disasters), your data remains secure and recoverable, enabling rapid failover and minimizing operational downtime.
 
 # Automating Backups with Policies
 

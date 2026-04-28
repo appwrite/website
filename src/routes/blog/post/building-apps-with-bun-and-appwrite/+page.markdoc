@@ -90,7 +90,7 @@ Now that your function is set up, we can try some examples:
 
 **Example 1:** 
 
-Bun aims to provide a consistent and predictable module resolution system that just works. The specialty of Bun is that you can use `import` or `require` in the same file—they both work all the time.
+Bun aims to provide a consistent and predictable module resolution system that just works. The specialty of Bun is that you can use `import` or `require` in the same file; they both work all the time.
 
 Use the following code in your function to test the above statement:
 

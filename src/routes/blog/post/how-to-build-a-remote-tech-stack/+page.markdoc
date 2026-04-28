@@ -26,7 +26,7 @@ This list highlights the tech we use to organize our work as an open-source, ful
 
 ![Discord](/images/blog/how-to-build-remote-tech-stack/1.png)
 
-Initially created for gamers, [Discord](https://discord.com/) is designed for real-time communication, which is really important to help remote teams stay connected. We love grouping conversations per team and topic, with additional channels for cross-team collaboration. The “lobby” chat acts as an office space where team members say hi when they log on, have informal conversations, or share gifs — the water cooler talk of remote companies! This helps us feel connected even if our coworkers are online in a different timezone.
+Initially created for gamers, [Discord](https://discord.com/) is designed for real-time communication, which is really important to help remote teams stay connected. We love grouping conversations per team and topic, with additional channels for cross-team collaboration. The “lobby” chat acts as an office space where team members say hi when they log on, have informal conversations, or share gifs, the water cooler talk of remote companies! This helps us feel connected even if our coworkers are online in a different timezone.
 
 Discord is also a favorite of the open source community, with many OSS projects being developed in Discord servers. Appwrite has an active [public server on Discord](https://appwrite.io/discord), and you're welcome to join! 
 
@@ -61,7 +61,7 @@ Some Linear pros:
 
 You've probably heard of [Figma](http://figma.com) as a design tool. But did you know you can also use it for brainstorming, retrospectives, and collaboration? We love this versatility.
 
-At Appwrite, our design teams use Figma for everything—from product designs and web pages to blog covers and social assets. Meanwhile, the rest of the team can leave comments and collaborate seamlessly. 
+At Appwrite, our design teams use Figma for everything, from product designs and web pages to blog covers and social assets. Meanwhile, the rest of the team can leave comments and collaborate seamlessly. 
 
 Figma's whiteboard feature, FigJam, is perfect for brainstorming and real-time collaboration. You can set the topic, start a timer, and let ideas flow freely on a shared whiteboard. This makes brainstorming sessions more cohesive and focused.
 
@@ -81,7 +81,7 @@ Appwrite uses [Notion databases](http://notion.so) as its single source of truth
 
 Notion's collaborative features allow team members to work together in sync and async, making it an excellent choice for a remote setup. This centralization fosters a transparent and cohesive work environment, keeping information easily accessible and up-to-date. 
 
-Due to its versatility, Notion might be a bit daunting to get started with — but you can download plenty of free templates to customize your databases to your preference. 
+Due to its versatility, Notion might be a bit daunting to get started with, but you can download plenty of free templates to customize your databases to your preference. 
 
 Some Notion pros:
 
@@ -145,7 +145,7 @@ Some Appwrite pros:
 
 - Versatile APIs
 - Robust and quality features
-- Self-hosted or cloud — your choice
+- Self-hosted or cloud, your choice
 - Easy-to-use and understand
 
 # Bonus tools
