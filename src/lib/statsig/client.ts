@@ -75,7 +75,7 @@ function startStatsig(): void {
     initPromise = (async (): Promise<StatsigBrowserClient | null> => {
         try {
             const [
-                { StatsigClient },
+                { StatsigClient, Storage },
                 { StatsigSessionReplayPlugin },
                 { StatsigAutoCapturePlugin }
             ] = await Promise.all([
@@ -84,11 +84,25 @@ function startStatsig(): void {
                 import('@statsig/web-analytics')
             ]);
 
-            // No plugins during init — Session Replay / Auto Capture can evaluate configs while the SDK
-            // is still "Loading" and pollute Group Assignment Health. Bind them after values are ready.
+            // `initializeAsync` waits for this so `customIDs.stableID` applies synchronously in
+            // `_configureUser`. `initializeSync` does not — without it, StableID can lag userID and
+            // evaluations/bootstrap can disagree (dashboard mismatch + bad reasons).
+            if (!Storage.isReady()) {
+                const ready = Storage.isReadyResolver?.();
+                if (ready != null) {
+                    await ready;
+                }
+            }
+
+            // No plugins during init — bind after init on a macrotask so the client finishes any sync
+            // `values_updated` work before Session Replay / Auto Capture touch the client.
+            const stableId = getStableUserId();
             const instance = new StatsigClient(
                 STATSIG_CLIENT_SDK_KEY,
-                { userID: getStableUserId() },
+                {
+                    userID: stableId,
+                    customIDs: { stableID: stableId }
+                },
                 {
                     plugins: []
                 }
@@ -103,14 +117,12 @@ function startStatsig(): void {
                 }
             ).dataAdapter;
 
-            let usedBootstrapInit = false;
             try {
                 if (bootstrap) {
                     try {
                         // https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
                         await Promise.resolve(adapter.setData(bootstrap));
                         instance.initializeSync();
-                        usedBootstrapInit = true;
                     } catch (bootstrapErr: unknown) {
                         console.error(
                             '[Statsig] bootstrap init failed, falling back to initializeAsync',
@@ -128,23 +140,16 @@ function startStatsig(): void {
                 return null;
             }
 
+            await new Promise<void>((resolve) => {
+                setTimeout(resolve, 0);
+            });
+
             const sessionPlugin = new StatsigSessionReplayPlugin();
             const autoPlugin = new StatsigAutoCapturePlugin();
             sessionPlugin.bind(instance as never);
             autoPlugin.bind(instance as never);
 
             client = instance as StatsigBrowserClient;
-
-            // Defer experiment read until after sync init + plugin bind (Ready), for Pulse exposure.
-            if (usedBootstrapInit) {
-                queueMicrotask(() => {
-                    try {
-                        client?.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION);
-                    } catch {
-                        /* ignore */
-                    }
-                });
-            }
 
             return client;
         } catch (err: unknown) {
