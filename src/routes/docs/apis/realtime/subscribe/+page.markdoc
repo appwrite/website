@@ -4,7 +4,7 @@ title: Subscribe
 description: Learn how to subscribe to realtime events from Appwrite services. Subscribe to single or multiple channels and manage your subscriptions.
 ---
 
-The Appwrite Realtime API lets you subscribe to events from any Appwrite service through [channels](/docs/apis/realtime/channels). You can subscribe to a single channel, multiple channels at once, and unsubscribe when you no longer need updates.
+The Appwrite Realtime API lets you subscribe to events from any Appwrite service through [channels](/docs/apis/realtime/channels). You can subscribe to a single channel, multiple channels at once, and unsubscribe when you no longer need updates. On supported client SDKs (including the Web SDK), multiple subscriptions share one WebSocket and can be added, **updated**, or removed without reconnecting the whole client until you call **`disconnect()`** on `Realtime`.
 
 # Subscribe to a channel {% #subscribe-to-a-channel %}
 
@@ -213,9 +213,298 @@ RealtimeSubscription subscription = realtime.subscribe(
 
 {% /multicode %}
 
+# Multiple subscription handles {% #multiple-subscription-handles %}
+
+When you want **different callbacks** for different channels, call `subscribe` more than once on the same `Realtime` client. Each call returns its own handle. On supported SDKs, stopping or removing **one** handle does not stop the others on the same connection until you tear down the whole client (for example `disconnect()` in the Web SDK).
+
+## Subscribe twice on the same client {% #subscribe-twice-on-the-same-client %}
+
+{% multicode %}
+```client-web
+import { Client, Realtime, Channel } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+const sub1 = await realtime.subscribe(Channel.files(), response => {
+    console.log(response);
+});
+
+const sub2 = await realtime.subscribe(Channel.account(), response => {
+    console.log(response);
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+final sub1 = realtime.subscribe([Channel.files()]);
+final sub2 = realtime.subscribe([Channel.account()]);
+
+sub1.stream.listen((response) {
+    print(response);
+});
+
+sub2.stream.listen((response) {
+    print(response);
+});
+```
+
+```client-apple
+import Appwrite
+import AppwriteModels
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+let sub1 = realtime.subscribe(channels: [Channel.files()]) { response in
+    print(String(describing: response))
+}
+
+let sub2 = realtime.subscribe(channels: [Channel.account()]) { response in
+    print(String(describing: response))
+}
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+val sub1 = realtime.subscribe(Channel.files()) {
+    print(it.payload.toString())
+}
+
+val sub2 = realtime.subscribe(Channel.account()) {
+    print(it.payload.toString())
+}
+```
+
+```client-android-java
+import io.appwrite.Channel;
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+String accountChannel = Channel.Companion.account();
+
+RealtimeSubscription sub1 = realtime.subscribe(
+    new String[] {"files"},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+
+RealtimeSubscription sub2 = realtime.subscribe(
+    new String[] {accountChannel},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+```
+
+{% /multicode %}
+
+## Remove a single handle {% #remove-a-single-handle %}
+
+The examples below assume `sub1` and `sub2` from the previous section. Closing or unsubscribing from **only** `sub1` leaves `sub2` subscribed.
+
+{% multicode %}
+```client-web
+await sub1.unsubscribe();
+// sub2 is still active on the same WebSocket.
+```
+
+```client-flutter
+sub1.close();
+// sub2 continues to receive events.
+```
+
+```client-apple
+sub1.close()
+// sub2 continues to receive events.
+```
+
+```client-android-kotlin
+sub1.close()
+// sub2 continues to receive events.
+```
+
+```client-android-java
+sub1.close();
+// sub2 continues to receive events.
+```
+
+{% /multicode %}
+
+When every handle is removed and you want the WebSocket closed entirely, use **`realtime.disconnect()`** in the Web SDK (shown in the [Unsubscribe](#unsubscribe) section).
+
+# Update a subscription {% #update-a-subscription %}
+
+In the **Web SDK**, you can change which [channels](/docs/apis/realtime/channels) and which Realtime [queries](/docs/apis/realtime/queries) an existing subscription uses without necessarily reconnecting the underlying WebSocket.
+
+On **Flutter, Apple, and Android**, use a new `subscribe` call with the channels you need, then `close()` the previous subscription handle, until your SDK version exposes an in-place update API for Realtime.
+
+{% multicode %}
+```client-web
+import { Client, Realtime, Channel, Query } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe(Channel.files(), response => {
+    // Callback will be executed on changes for all files.
+    console.log(response);
+});
+
+await subscription.update({
+    channels: [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')],
+    queries: [Query.equal('title', 'todo')]
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+final subscription = realtime.subscribe([Channel.files()]);
+
+subscription.stream.listen((response) {
+    print(response);
+});
+
+final updated = realtime.subscribe([
+    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')
+]);
+
+updated.stream.listen((response) {
+    print(response);
+});
+
+subscription.close();
+```
+
+```client-apple
+import Appwrite
+import AppwriteModels
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
+    print(String(describing: response))
+}
+
+let updated = realtime.subscribe(channels: [
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
+]) { response in
+    print(String(describing: response))
+}
+
+subscription.close()
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Realtime
+import io.appwrite.extensions.Channel
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+val subscription = realtime.subscribe(Channel.files()) {
+    print(it.payload.toString())
+}
+
+val updated = realtime.subscribe(
+    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
+) {
+    print(it.payload.toString())
+}
+
+subscription.close()
+```
+
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.models.RealtimeResponseEvent;
+import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.services.Realtime;
+import kotlin.Unit;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>");
+
+Realtime realtime = new Realtime(client);
+
+RealtimeSubscription subscription = realtime.subscribe(
+    new String[] {"files"},
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+
+RealtimeSubscription updated = realtime.subscribe(
+    new String[] {
+        "tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>"
+    },
+    (RealtimeResponseEvent<Object> response) -> {
+        System.out.println(response);
+        return Unit.INSTANCE;
+    }
+);
+
+subscription.close();
+```
+
+{% /multicode %}
+
 # Unsubscribe {% #unsubscribe %}
 
-If you no longer want to receive updates from a subscription, you can unsubscribe so that your callbacks are no longer called. Leaving old subscriptions alive and resubscribing can result in duplicate subscriptions and cause race conditions.
+If you no longer want to receive updates from a subscription, remove that listener so your callbacks stop. Leaving duplicate subscriptions active can cause duplicate events and race conditions.
 
 {% multicode %}
 ```client-web
@@ -232,8 +521,11 @@ const subscription = await realtime.subscribe(Channel.files(), response => {
     console.log(response);
 });
 
-// Closes the subscription.
-await subscription.close();
+// Stops this subscription only; other subscriptions on the same Realtime client keep running.
+await subscription.unsubscribe();
+
+// When you are done with Realtime entirely (for example on component unmount):
+realtime.disconnect();
 ```
 
 ```client-flutter
@@ -258,13 +550,17 @@ subscription.close();
 
 ```client-apple
 import Appwrite
+import AppwriteModels
 
 let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
 let realtime = Realtime(client)
 
 let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
     // Callback will be executed on changes for all files.
-    print(response.toString())
+    print(String(describing: response))
 }
 
 // Closes the subscription.
@@ -284,7 +580,7 @@ val realtime = Realtime(client)
 
 val subscription = realtime.subscribe(Channel.files()) {
     // Callback will be executed on changes for all files.
-    print(it.toString())
+    print(it.payload.toString())
 }
 
 // Closes the subscription.

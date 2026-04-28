@@ -130,9 +130,9 @@ While the Realtime API offers robust capabilities, there are currently some limi
 
 ## Subscription changes {% #subscription-changes %}
 
-The SDK creates a single WebSocket connection for all subscribed channels. Each time a channel is added or unsubscribed, the SDK currently creates a completely new connection and terminates the old one.
+Client SDKs use a **single WebSocket** per `Realtime` client for all subscribed channels. Subscription changes are applied **incrementally over messages** where supported, so adding a listener, **updating** its channels or queries, or **unsubscribing** from one handle does not necessarily reconnect the whole client. Call **`disconnect()`** on `Realtime` when you intend to close the socket entirely (for example when tearing down a view or component).
 
-Therefore, subscriptions to channels should always be managed alongside your application state so they are not unnecessarily recreated during component lifecycle changes.
+Manage subscription handles alongside your application state so you unsubscribe or disconnect when listeners are no longer needed. See [Subscribe](/docs/apis/realtime/subscribe) for platform-specific APIs.
 
 ## Server SDKs {% #server-sdks %}
 
