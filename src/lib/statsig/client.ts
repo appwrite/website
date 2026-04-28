@@ -10,6 +10,7 @@ export { STATSIG_EXPERIMENT_BEST_DESCRIPTION };
 
 /** Narrow surface we use from `@statsig/js-client` (avoids static `import type` from that package, which can break Vite named re-exports). */
 export type StatsigBrowserClient = {
+    initializeSync(options?: object): unknown;
     initializeAsync(options?: object): Promise<unknown>;
     getExperiment(name: string): { get(key: string, defaultValue: string): string };
     logEvent(eventOrName: string, value?: string | number, metadata?: Record<string, string>): void;
@@ -83,48 +84,68 @@ function startStatsig(): void {
                 import('@statsig/web-analytics')
             ]);
 
+            // No plugins during init — Session Replay / Auto Capture can evaluate configs while the SDK
+            // is still "Loading" and pollute Group Assignment Health. Bind them after values are ready.
             const instance = new StatsigClient(
                 STATSIG_CLIENT_SDK_KEY,
                 { userID: getStableUserId() },
                 {
-                    plugins: [new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin()]
+                    plugins: []
                 }
             );
 
             const bootstrap = pendingBootstrapJson;
             pendingBootstrapJson = undefined;
-            if (bootstrap) {
-                try {
-                    await (
-                        instance as unknown as {
-                            dataAdapter: { setData(data: string): Promise<void> };
-                        }
-                    ).dataAdapter.setData(bootstrap);
-                } catch (err: unknown) {
-                    console.error('[Statsig] dataAdapter.setData (bootstrap) failed', err);
-                }
-            }
 
-            // Await network init. With server bootstrap on `/`, evaluations come from bootstrap first
-            // (better Group Assignment Health than cache-only reads during async init).
+            const adapter = (
+                instance as unknown as {
+                    dataAdapter: { setData(data: string): void | Promise<void> };
+                }
+            ).dataAdapter;
+
+            let usedBootstrapInit = false;
             try {
-                await instance.initializeAsync();
+                if (bootstrap) {
+                    try {
+                        // https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
+                        await Promise.resolve(adapter.setData(bootstrap));
+                        instance.initializeSync();
+                        usedBootstrapInit = true;
+                    } catch (bootstrapErr: unknown) {
+                        console.error(
+                            '[Statsig] bootstrap init failed, falling back to initializeAsync',
+                            bootstrapErr
+                        );
+                        await instance.initializeAsync();
+                    }
+                } else {
+                    await instance.initializeAsync();
+                }
             } catch (err: unknown) {
-                console.error('[Statsig] initializeAsync failed', err);
+                console.error('[Statsig] initialize failed', err);
                 client = null;
                 initPromise = null;
                 return null;
             }
 
+            const sessionPlugin = new StatsigSessionReplayPlugin();
+            const autoPlugin = new StatsigAutoCapturePlugin();
+            sessionPlugin.bind(instance as never);
+            autoPlugin.bind(instance as never);
+
             client = instance as StatsigBrowserClient;
-            // Log homepage experiment exposure only when server bootstrapped (healthy eval reason).
-            if (bootstrap) {
-                try {
-                    client.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION);
-                } catch {
-                    /* ignore */
-                }
+
+            // Defer experiment read until after sync init + plugin bind (Ready), for Pulse exposure.
+            if (usedBootstrapInit) {
+                queueMicrotask(() => {
+                    try {
+                        client?.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION);
+                    } catch {
+                        /* ignore */
+                    }
+                });
             }
+
             return client;
         } catch (err: unknown) {
             console.error('[Statsig] Failed to initialize', err);
@@ -136,7 +157,7 @@ function startStatsig(): void {
 }
 
 /**
- * Resolves once `initializeAsync()` has finished (full network round-trip, not cache-only).
+ * Resolves once the browser client is initialized (`initializeAsync`, or bootstrap + `initializeSync`).
  * Use before any `getExperiment` / gate checks on the client. Hero copy is SSR’d from the server.
  */
 export function whenStatsigReady(): Promise<StatsigBrowserClient | null> {
