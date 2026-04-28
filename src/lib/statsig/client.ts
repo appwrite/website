@@ -1,9 +1,10 @@
 import { browser } from '$app/environment';
 import { ENV } from '$lib/system';
-import { STATSIG_STABLE_ID_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from '$lib/statsig/constants';
-
-/** Statsig client SDK key (browser-safe; shipped to clients). Rotate by updating this constant. */
-const STATSIG_CLIENT_KEY = 'client-TRp4ODQ3Yfsha0XwmRayqwb7WW0ujUbiGrNlB0pfhTH';
+import {
+    STATSIG_STABLE_ID_KEY,
+    STATSIG_EXPERIMENT_BEST_DESCRIPTION,
+    STATSIG_CLIENT_SDK_KEY
+} from '$lib/statsig/constants';
 
 export { STATSIG_EXPERIMENT_BEST_DESCRIPTION };
 
@@ -17,6 +18,8 @@ export type StatsigBrowserClient = {
 let client: StatsigBrowserClient | null = null;
 /** In-flight or last completed browser init (`initializeAsync`); cleared on failure so callers can retry. */
 let initPromise: Promise<StatsigBrowserClient | null> | null = null;
+/** Server bootstrap JSON for first init (homepage); avoids cache-first experiment checks. */
+let pendingBootstrapJson: string | null | undefined;
 
 function readStableIdFromCookie(): string | null {
     if (typeof document === 'undefined' || !document.cookie) return null;
@@ -81,15 +84,27 @@ function startStatsig(): void {
             ]);
 
             const instance = new StatsigClient(
-                STATSIG_CLIENT_KEY,
+                STATSIG_CLIENT_SDK_KEY,
                 { userID: getStableUserId() },
                 {
                     plugins: [new StatsigSessionReplayPlugin(), new StatsigAutoCapturePlugin()]
                 }
             );
 
-            // Await `initializeAsync` only (no `initializeSync`). Group Assignment Health warns when
-            // checks run from cache or while still loading; plugins should evaluate after this resolves.
+            const bootstrap = pendingBootstrapJson;
+            pendingBootstrapJson = undefined;
+            if (bootstrap) {
+                try {
+                    (
+                        instance as unknown as { dataAdapter: { setData(data: string): void } }
+                    ).dataAdapter.setData(bootstrap);
+                } catch (err: unknown) {
+                    console.error('[Statsig] dataAdapter.setData (bootstrap) failed', err);
+                }
+            }
+
+            // Await network init. With server bootstrap on `/`, evaluations come from bootstrap first
+            // (better Group Assignment Health than cache-only reads during async init).
             try {
                 await instance.initializeAsync();
             } catch (err: unknown) {
@@ -100,6 +115,14 @@ function startStatsig(): void {
             }
 
             client = instance as StatsigBrowserClient;
+            // Log homepage experiment exposure only when server bootstrapped (healthy eval reason).
+            if (bootstrap) {
+                try {
+                    client.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION);
+                } catch {
+                    /* ignore */
+                }
+            }
             return client;
         } catch (err: unknown) {
             console.error('[Statsig] Failed to initialize', err);
@@ -128,8 +151,18 @@ export function whenStatsigNetworkReady(): Promise<void> {
     return (initPromise ?? Promise.resolve(null)).then(() => {});
 }
 
-/** Loads Statsig (session replay, auto-capture, event logging) after a full async init. */
-export function initStatsig(): Promise<void> {
+/**
+ * Loads Statsig after a full async init. Pass `statsigBootstrap` from `+page.server.ts` on `/` when
+ * the server has `STATSIG_SERVER_SECRET` so the client can bootstrap and avoid cache/loading checks.
+ */
+export function initStatsig(clientBootstrapJson?: string | null): Promise<void> {
+    if (
+        !initPromise &&
+        typeof clientBootstrapJson === 'string' &&
+        clientBootstrapJson.length > 0
+    ) {
+        pendingBootstrapJson = clientBootstrapJson;
+    }
     return whenStatsigNetworkReady();
 }
 
