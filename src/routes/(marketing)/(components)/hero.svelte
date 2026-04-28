@@ -1,7 +1,9 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
     import { DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
+    import { STATSIG_EXPERIMENT_BEST_DESCRIPTION, whenStatsigSyncReady } from '$lib/statsig/client';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
@@ -17,6 +19,12 @@
 
     const { title = 'Build like a team of hundreds', subtitle = DEFAULT_HERO_SUBTITLE }: Props =
         $props();
+
+    onMount(() => {
+        void whenStatsigSyncReady().then((client) => {
+            client?.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION);
+        });
+    });
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
