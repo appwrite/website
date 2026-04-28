@@ -31,5 +31,10 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         getStatsigClientBootstrapPayload(user)
     ]);
 
-    return { heroSubtitle, statsigBootstrap };
+    return {
+        heroSubtitle,
+        statsigBootstrap,
+        /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
+        statsigStableUserId: stableId
+    };
 };

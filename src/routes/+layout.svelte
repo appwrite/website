@@ -54,7 +54,7 @@
     import { navigating, updated } from '$app/state';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
-    import { beforeNavigate } from '$app/navigation';
+    import { afterNavigate, beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
     import { initStatsig } from '$lib/statsig/client';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
@@ -76,9 +76,15 @@
 
     const { children } = $props();
 
+    afterNavigate(() => {
+        const data = page.data as {
+            statsigBootstrap?: string | null;
+            statsigStableUserId?: string | null;
+        };
+        void initStatsig(data.statsigBootstrap ?? null, data.statsigStableUserId ?? null);
+    });
+
     onMount(() => {
-        const bootstrap = (page.data as { statsigBootstrap?: string | null }).statsigBootstrap;
-        void initStatsig(bootstrap);
         displayHiringMessage();
         saveReferrerAndUtmSource(page.url);
 

@@ -14,13 +14,22 @@ export type StatsigBrowserClient = {
     initializeAsync(options?: object): Promise<unknown>;
     getExperiment(name: string): { get(key: string, defaultValue: string): string };
     logEvent(eventOrName: string, value?: string | number, metadata?: Record<string, string>): void;
+    shutdown(): Promise<void>;
 };
 
 let client: StatsigBrowserClient | null = null;
 /** In-flight or last completed browser init (`initializeAsync`); cleared on failure so callers can retry. */
 let initPromise: Promise<StatsigBrowserClient | null> | null = null;
-/** Server bootstrap JSON for first init (homepage); avoids cache-first experiment checks. */
+/** Server bootstrap JSON for init (homepage); avoids cache-first experiment checks. */
 let pendingBootstrapJson: string | null | undefined;
+/** Same stable ID the server used for SSR + `getClientInitializeResponse` (avoids cookie timing / BootstrapStableIDMismatch). */
+let pendingServerStableUserId: string | null | undefined;
+/** Non-null once we initialized successfully with a bootstrap payload (SPA: skip re-init on later navigations). */
+let appliedBootstrapPayload: string | null = null;
+
+function statsigEnvironmentTier(): 'production' | 'development' {
+    return import.meta.env.PROD ? 'production' : 'development';
+}
 
 function readStableIdFromCookie(): string | null {
     if (typeof document === 'undefined' || !document.cookie) return null;
@@ -68,104 +77,121 @@ function toStringMetadata(data: Record<string, unknown>): Record<string, string>
     return out;
 }
 
+function wrapInitFailure(
+    p: Promise<StatsigBrowserClient | null>
+): Promise<StatsigBrowserClient | null> {
+    return p.catch((err: unknown) => {
+        console.error('[Statsig] Failed to initialize', err);
+        client = null;
+        initPromise = null;
+        return null;
+    });
+}
+
+async function runStatsigInit(): Promise<StatsigBrowserClient | null> {
+    const [
+        { StatsigClient, Storage },
+        { StatsigSessionReplayPlugin },
+        { StatsigAutoCapturePlugin }
+    ] = await Promise.all([
+        import('@statsig/js-client'),
+        import('@statsig/session-replay'),
+        import('@statsig/web-analytics')
+    ]);
+
+    if (typeof Storage?.isReady === 'function' && !Storage.isReady()) {
+        const ready = Storage.isReadyResolver?.();
+        if (ready != null) {
+            await ready;
+        }
+    }
+
+    const serverStableOverride = pendingServerStableUserId;
+    pendingServerStableUserId = undefined;
+
+    let stableId = getStableUserId();
+    if (typeof serverStableOverride === 'string' && serverStableOverride.length > 0) {
+        stableId = serverStableOverride;
+        try {
+            localStorage.setItem(STATSIG_STABLE_ID_KEY, stableId);
+            persistStableIdToCookie(stableId);
+        } catch {
+            /* ignore */
+        }
+    }
+
+    const bootstrap = pendingBootstrapJson;
+    pendingBootstrapJson = undefined;
+
+    const instance = new StatsigClient(
+        STATSIG_CLIENT_SDK_KEY,
+        {
+            userID: stableId,
+            customIDs: { stableID: stableId }
+        },
+        {
+            plugins: [],
+            environment: { tier: statsigEnvironmentTier() },
+            networkConfig: {
+                initializeHashAlgorithm: 'djb2'
+            }
+        }
+    );
+
+    const adapter = (
+        instance as unknown as {
+            dataAdapter: { setData(data: string): void | Promise<void> };
+        }
+    ).dataAdapter;
+
+    try {
+        if (bootstrap) {
+            try {
+                // https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
+                await Promise.resolve(adapter.setData(bootstrap));
+                instance.initializeSync();
+            } catch (bootstrapErr: unknown) {
+                console.error(
+                    '[Statsig] bootstrap init failed, falling back to initializeAsync',
+                    bootstrapErr
+                );
+                await instance.initializeAsync();
+            }
+        } else {
+            await instance.initializeAsync();
+        }
+    } catch (err: unknown) {
+        console.error('[Statsig] initialize failed', err);
+        client = null;
+        initPromise = null;
+        return null;
+    }
+
+    client = instance as StatsigBrowserClient;
+
+    if (typeof bootstrap === 'string' && bootstrap.length > 0) {
+        appliedBootstrapPayload = bootstrap;
+    }
+
+    try {
+        await new Promise<void>((resolve) => {
+            setTimeout(resolve, 0);
+        });
+        const sessionPlugin = new StatsigSessionReplayPlugin();
+        const autoPlugin = new StatsigAutoCapturePlugin();
+        sessionPlugin.bind(instance as never);
+        autoPlugin.bind(instance as never);
+    } catch (pluginErr: unknown) {
+        console.error('[Statsig] Session Replay / Auto Capture bind failed', pluginErr);
+    }
+
+    return client;
+}
+
 function startStatsig(): void {
     if (!browser || ENV.TEST) return;
     if (initPromise) return;
-
-    initPromise = (async (): Promise<StatsigBrowserClient | null> => {
-        try {
-            const [
-                { StatsigClient, Storage },
-                { StatsigSessionReplayPlugin },
-                { StatsigAutoCapturePlugin }
-            ] = await Promise.all([
-                import('@statsig/js-client'),
-                import('@statsig/session-replay'),
-                import('@statsig/web-analytics')
-            ]);
-
-            // `initializeAsync` waits for this so `customIDs.stableID` applies synchronously in
-            // `_configureUser`. `initializeSync` does not — without it, StableID can lag userID and
-            // evaluations/bootstrap can disagree (dashboard mismatch + bad reasons).
-            if (typeof Storage?.isReady === 'function' && !Storage.isReady()) {
-                const ready = Storage.isReadyResolver?.();
-                if (ready != null) {
-                    await ready;
-                }
-            }
-
-            // No plugins during init — bind after init on a macrotask so the client finishes any sync
-            // `values_updated` work before Session Replay / Auto Capture touch the client.
-            const stableId = getStableUserId();
-            const instance = new StatsigClient(
-                STATSIG_CLIENT_SDK_KEY,
-                {
-                    userID: stableId,
-                    customIDs: { stableID: stableId }
-                },
-                {
-                    plugins: []
-                }
-            );
-
-            const bootstrap = pendingBootstrapJson;
-            pendingBootstrapJson = undefined;
-
-            const adapter = (
-                instance as unknown as {
-                    dataAdapter: { setData(data: string): void | Promise<void> };
-                }
-            ).dataAdapter;
-
-            try {
-                if (bootstrap) {
-                    try {
-                        // https://docs.statsig.com/client/javascript-mono/UsingEvaluationsDataAdapter#bootstrapping
-                        await Promise.resolve(adapter.setData(bootstrap));
-                        instance.initializeSync();
-                    } catch (bootstrapErr: unknown) {
-                        console.error(
-                            '[Statsig] bootstrap init failed, falling back to initializeAsync',
-                            bootstrapErr
-                        );
-                        await instance.initializeAsync();
-                    }
-                } else {
-                    await instance.initializeAsync();
-                }
-            } catch (err: unknown) {
-                console.error('[Statsig] initialize failed', err);
-                client = null;
-                initPromise = null;
-                return null;
-            }
-
-            // Register the client for `logEvent` as soon as core init succeeded. Previously we set
-            // `client` only after Session Replay / Auto Capture `bind()`; if either threw (CSP,
-            // privacy extensions, rrweb errors), the whole init looked failed and **all** Statsig
-            // logging stopped.
-            client = instance as StatsigBrowserClient;
-
-            try {
-                await new Promise<void>((resolve) => {
-                    setTimeout(resolve, 0);
-                });
-                const sessionPlugin = new StatsigSessionReplayPlugin();
-                const autoPlugin = new StatsigAutoCapturePlugin();
-                sessionPlugin.bind(instance as never);
-                autoPlugin.bind(instance as never);
-            } catch (pluginErr: unknown) {
-                console.error('[Statsig] Session Replay / Auto Capture bind failed', pluginErr);
-            }
-
-            return client;
-        } catch (err: unknown) {
-            console.error('[Statsig] Failed to initialize', err);
-            client = null;
-            initPromise = null;
-            return null;
-        }
-    })();
+    initPromise = wrapInitFailure(runStatsigInit());
 }
 
 /**
@@ -185,12 +211,44 @@ export function whenStatsigNetworkReady(): Promise<void> {
 }
 
 /**
- * Loads Statsig after a full async init. Pass `statsigBootstrap` from `+page.server.ts` on `/` when
- * the server has `STATSIG_SERVER_SECRET` so the client can bootstrap and avoid cache/loading checks.
+ * Loads Statsig. Pass `statsigBootstrap` + `statsigStableUserId` from `(marketing)/+page.server.ts` on `/`
+ * when the server has `STATSIG_SERVER_SECRET` so the client matches SSR and avoids bootstrap user mismatch.
+ * Call from `afterNavigate` so client-side navigations (e.g. /docs → /) still receive bootstrap.
  */
-export function initStatsig(clientBootstrapJson?: string | null): Promise<void> {
-    if (!initPromise && typeof clientBootstrapJson === 'string' && clientBootstrapJson.length > 0) {
-        pendingBootstrapJson = clientBootstrapJson;
+export function initStatsig(
+    clientBootstrapJson?: string | null,
+    serverStableUserId?: string | null
+): Promise<void> {
+    pendingServerStableUserId =
+        typeof serverStableUserId === 'string' && serverStableUserId.length > 0
+            ? serverStableUserId
+            : undefined;
+    pendingBootstrapJson =
+        typeof clientBootstrapJson === 'string' && clientBootstrapJson.length > 0
+            ? clientBootstrapJson
+            : undefined;
+
+    const hasBootstrap =
+        typeof pendingBootstrapJson === 'string' && pendingBootstrapJson.length > 0;
+
+    if (client && hasBootstrap && appliedBootstrapPayload == null) {
+        const previous = client as unknown as StatsigBrowserClient;
+        client = null;
+        initPromise = wrapInitFailure(
+            (async (): Promise<StatsigBrowserClient | null> => {
+                try {
+                    await previous.shutdown();
+                } catch {
+                    /* ignore */
+                }
+                return runStatsigInit();
+            })()
+        );
+        return whenStatsigNetworkReady();
+    }
+
+    if (!initPromise) {
+        startStatsig();
     }
     return whenStatsigNetworkReady();
 }
