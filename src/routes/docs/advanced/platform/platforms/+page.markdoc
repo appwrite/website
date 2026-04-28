@@ -43,6 +43,10 @@ Flutter and React Native platforms shown in the Console map to the underlying Ap
 
 The example below registers a Web platform. Swap the method name and identifier param to register Apple, Android, Windows, or Linux platforms.
 
+{% info title="Required scopes" %}
+The API key used for these calls needs `platforms.write` to create, update, or delete platforms, and `platforms.read` to list or fetch them.
+{% /info %}
+
 {% multicode %}
 ```server-nodejs
 import { Client, Project, ID } from 'node-appwrite';

@@ -76,6 +76,16 @@
                     label: 'Platforms',
                     href: '/docs/advanced/platform/platforms',
                     new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Protocols',
+                    href: '/docs/advanced/platform/protocols',
+                    new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Services',
+                    href: '/docs/advanced/platform/services',
+                    new: isNewUntil('30 May 2026')
                 }
             ]
         },

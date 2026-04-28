@@ -1,56 +1,61 @@
 ---
 layout: article
-title: Auth methods
-description: Enable or disable authentication methods on your Appwrite project programmatically using server SDKs.
+title: Services
+description: Enable or disable individual Appwrite services on your project programmatically using server SDKs.
 ---
 
-Each Appwrite project ships with a configurable set of authentication methods, including email and password, magic URL, email OTP, phone, anonymous sessions, JWT, and team invites. Methods can be toggled on or off from the Appwrite Console under **Auth** > **Settings**, or programmatically through any server SDK using the Project service.
+Each Appwrite project ships with the full set of services enabled by default: Account, TablesDB, Storage, Functions, and so on. You can disable any service your clients don't use to remove it from the client-facing API. Disabled services remain accessible to server SDKs using an API key.
 
-When a method is disabled, the matching account endpoints reject requests for that project until it is re-enabled.
+Services can be toggled from the Appwrite Console, or programmatically through any server SDK using the Project service.
 
-# Toggle from the Console {% #toggle-console %}
+# Manage from the Console {% #manage-console %}
 
 {% only_dark %}
-![Auth methods settings in the Appwrite Console](/images/docs/platform/dark/auth-methods.png)
+![Project services in the Appwrite Console](/images/docs/platform/dark/services.png)
 {% /only_dark %}
 {% only_light %}
-![Auth methods settings in the Appwrite Console](/images/docs/platform/auth-methods.png)
+![Project services in the Appwrite Console](/images/docs/platform/services.png)
 {% /only_light %}
 
-To toggle auth methods manually:
+To toggle a service manually:
 
 1. Open your project in the Appwrite Console.
-2. Navigate to **Auth** in the sidebar, then open the **Settings** tab.
-3. In the **Auth methods** card, toggle individual methods on or off, or use **Enable all** or **Disable all** for bulk changes.
-4. Changes take effect immediately. No deploy or restart is required.
+2. Open **Settings** from the bottom of the side nav.
+3. Scroll to the **Services** card.
+4. Flip the switch next to the service you want to enable or disable. Use **Disable all** to turn off every optional service at once.
 
-OAuth2 providers are configured separately in the **OAuth2 Providers** section on the same page.
+# Available services {% #available-services %}
 
-# Method IDs {% #method-ids %}
-
-The `methodId` parameter accepts one of the following values:
-
-| Method ID | Description |
+| Service ID | Description |
 | --- | --- |
-| `email-password` | Email and password sign-up and login. |
-| `magic-url` | Passwordless login using a magic link sent to the user's email. |
-| `email-otp` | Time-based one-time password sent to the user's email. |
-| `phone` | SMS-based phone authentication. |
-| `anonymous` | Guest sessions for unauthenticated visitors. |
-| `invites` | Team invitations for collaborative access. |
-| `jwt` | JWT-based authentication for delegated access. |
+| `account` | User accounts and authentication. |
+| `avatars` | App image, icon, and avatar helpers. |
+| `tablesdb` | TablesDB tables, columns, and rows. |
+| `locale` | Locale and geographic helpers. |
+| `health` | Health checks and status. |
+| `project` | Project configuration. |
+| `storage` | File storage buckets and files. |
+| `teams` | Teams and shared resource access. |
+| `users` | User administration via server SDKs. |
+| `sites` | Sites hosting and deployments. |
+| `functions` | Cloud Functions. |
+| `proxy` | Custom domain proxy. |
+| `graphql` | GraphQL endpoint. |
+| `migrations` | Third-party data migrations. |
+| `messaging` | Push, SMS, and email messaging. |
+| `databases` | Legacy Databases collections and documents. |
 
-# Enable or disable a method {% #update-auth-method %}
+# Update a service {% #update-service %}
 
-Use the Project service `updateAuthMethod` endpoint with a method ID and the `enabled` flag.
+The example below disables the Account service. Pass `enabled: true` to re-enable it.
 
 {% info title="Required scope" %}
-The API key used for these calls needs the `project.write` scope.
+The API key used for this call needs the `project.write` scope.
 {% /info %}
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, AuthMethod } from 'node-appwrite';
+import { Client, Project, ServiceId } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -59,13 +64,13 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateAuthMethod({
-    methodId: AuthMethod.EmailPassword,
+const result = await project.updateService({
+    serviceId: ServiceId.Account,
     enabled: false
 });
 ```
 ```server-deno
-import { Client, Project, AuthMethod } from "npm:node-appwrite";
+import { Client, Project, ServiceId } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -74,8 +79,8 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateAuthMethod({
-    methodId: AuthMethod.EmailPassword,
+const result = await project.updateService({
+    serviceId: ServiceId.Account,
     enabled: false
 });
 ```
@@ -83,8 +88,8 @@ const result = await project.updateAuthMethod({
 <?php
 
 use Appwrite\Client;
+use Appwrite\Enums\ServiceId;
 use Appwrite\Services\Project;
-use Appwrite\Enums\AuthMethod;
 
 $client = new Client();
 
@@ -95,15 +100,15 @@ $client
 
 $project = new Project($client);
 
-$result = $project->updateAuthMethod(
-    methodId: AuthMethod::EMAILPASSWORD(),
+$result = $project->updateService(
+    serviceId: ServiceId::ACCOUNT(),
     enabled: false
 );
 ```
 ```server-python
 from appwrite.client import Client
+from appwrite.enums import ServiceId
 from appwrite.services.project import Project
-from appwrite.enums import AuthMethod
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -112,8 +117,8 @@ client.set_key('<YOUR_API_KEY>')
 
 project = Project(client)
 
-result = project.update_auth_method(
-    method_id = AuthMethod.EMAIL_PASSWORD,
+result = project.update_service(
+    service_id = ServiceId.ACCOUNT,
     enabled = False
 )
 ```
@@ -130,8 +135,8 @@ client = Client.new
 
 project = Project.new(client)
 
-response = project.update_auth_method(
-    method_id: AuthMethod::EMAIL_PASSWORD,
+response = project.update_service(
+    service_id: ServiceId::ACCOUNT,
     enabled: false
 )
 ```
@@ -147,8 +152,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-var result = await project.UpdateAuthMethod(
-    methodId: AuthMethod.EmailPassword,
+var result = await project.UpdateService(
+    serviceId: ServiceId.Account,
     enabled: false
 );
 ```
@@ -163,15 +168,15 @@ Client client = Client()
 
 Project project = Project(client);
 
-final result = await project.updateAuthMethod(
-    methodId: enums.AuthMethod.emailPassword,
+final result = await project.updateService(
+    serviceId: enums.ServiceId.account,
     enabled: false,
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
+import io.appwrite.enums.ServiceId
 import io.appwrite.services.Project
-import io.appwrite.enums.AuthMethod
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -180,16 +185,16 @@ val client = Client()
 
 val project = Project(client)
 
-val result = project.updateAuthMethod(
-    methodId = AuthMethod.EMAIL_PASSWORD,
+val response = project.updateService(
+    serviceId = ServiceId.ACCOUNT,
     enabled = false
 )
 ```
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.enums.ServiceId;
 import io.appwrite.services.Project;
-import io.appwrite.enums.AuthMethod;
 
 Client client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -198,8 +203,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-project.updateAuthMethod(
-    AuthMethod.EMAIL_PASSWORD, // methodId
+project.updateService(
+    ServiceId.ACCOUNT, // serviceId
     false, // enabled
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -221,8 +226,8 @@ let client = Client()
 
 let project = Project(client)
 
-let result = try await project.updateAuthMethod(
-    methodId: .emailPassword,
+let result = try await project.updateService(
+    serviceId: .account,
     enabled: false
 )
 ```
@@ -241,9 +246,9 @@ func main() {
         appwrite.WithKey("<YOUR_API_KEY>"),
     )
 
-    project := appwrite.NewProject(client)
-    result, err := project.UpdateAuthMethod(
-        "email-password",
+    service := appwrite.NewProject(client)
+    result, err := service.UpdateService(
+        "account",
         false,
     )
 
@@ -256,8 +261,8 @@ func main() {
 ```
 ```server-rust
 use appwrite::Client;
+use appwrite::enums::ServiceId;
 use appwrite::services::project::Project;
-use appwrite::enums::AuthMethod;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -268,8 +273,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let project = Project::new(&client);
 
-    let result = project.update_auth_method(
-        AuthMethod::EmailPassword,
+    let result = project.update_service(
+        ServiceId::Account,
         false,
     ).await?;
 
@@ -278,10 +283,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 ```bash
-appwrite project update-auth-method \
-    --method-id email-password \
+appwrite project update-service \
+    --service-id account \
     --enabled false
 ```
 {% /multicode %}
 
-The endpoint returns the updated [Project](/docs/references/cloud/models/project) document with the new method state applied.
+# Benefits {% #benefits %}
+
+- **Shrink the client surface area.** Disable services your client apps don't use so they're no longer callable from client SDKs.
+- **Server-only access.** Disabled services stay reachable from server SDKs using an API key, useful when you want a service available to your backend but hidden from clients.
+- **Repeatable provisioning.** Script the service set a project should expose and apply it from CI when spinning up a new environment.
