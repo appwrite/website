@@ -847,5 +847,9 @@
     {
         "link": "/the-appwrite-network",
         "redirect": "/docs/products/network"
+    },
+    {
+        "link": "/blog/post/announcing-message-based-realtime-sdk",
+        "redirect": "/blog/post/announcing-realtime-channel-helpers"
     }
 ]
