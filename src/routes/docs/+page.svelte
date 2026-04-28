@@ -17,6 +17,91 @@
         'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
+    type AiToolCard = {
+        href: string;
+        title: string;
+        logo: string;
+        event: string;
+    };
+
+    const ideAiTools: AiToolCard[] = [
+        {
+            href: '/docs/tooling/mcp/vscode',
+            title: 'VS Code',
+            logo: '/images/docs/mcp/logos/dark/vscode.svg',
+            event: 'docs-ai-ide_vscode-click'
+        },
+        {
+            href: '/docs/tooling/mcp/cursor',
+            title: 'Cursor',
+            logo: '/images/docs/mcp/logos/dark/cursor-ai.svg',
+            event: 'docs-ai-ide_cursor-click'
+        },
+        {
+            href: '/docs/tooling/mcp/windsurf',
+            title: 'Windsurf Editor',
+            logo: '/images/docs/mcp/logos/dark/windsurf.svg',
+            event: 'docs-ai-ide_windsurf-click'
+        },
+        {
+            href: '/docs/tooling/mcp/opencode',
+            title: 'OpenCode',
+            logo: '/images/docs/mcp/logos/dark/opencode.svg',
+            event: 'docs-ai-ide_opencode-click'
+        },
+        {
+            href: '/docs/tooling/mcp/antigravity',
+            title: 'Google Antigravity',
+            logo: '/images/docs/mcp/logos/dark/google-antigravity.svg',
+            event: 'docs-ai-ide_antigravity-click'
+        },
+        {
+            href: '/docs/tooling/mcp/claude-code',
+            title: 'Claude Code',
+            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            event: 'docs-ai-ide_claude-code-click'
+        },
+        {
+            href: '/docs/tooling/ai/ai-dev-tools/codex',
+            title: 'Codex',
+            logo: '/images/docs/mcp/logos/dark/openai.svg',
+            event: 'docs-ai-ide_codex-click'
+        }
+    ];
+
+    const vibeCodingTools: AiToolCard[] = [
+        {
+            href: '/docs/tooling/mcp/claude-desktop',
+            title: 'Claude Desktop',
+            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            event: 'docs-ai-vibe_claude-desktop-click'
+        },
+        {
+            href: '/docs/tooling/ai/ai-dev-tools/lovable',
+            title: 'Lovable',
+            logo: '/images/docs/mcp/logos/dark/lovable.svg',
+            event: 'docs-ai-vibe_lovable-click'
+        },
+        {
+            href: '/docs/tooling/ai/ai-dev-tools/emergent',
+            title: 'Emergent',
+            logo: '/images/docs/mcp/logos/dark/emergent.svg',
+            event: 'docs-ai-vibe_emergent-click'
+        },
+        {
+            href: '/docs/tooling/ai/ai-dev-tools/bolt',
+            title: 'Bolt',
+            logo: '/images/docs/mcp/logos/dark/bolt.svg',
+            event: 'docs-ai-vibe_bolt-click'
+        },
+        {
+            href: '/docs/tooling/mcp/zenflow',
+            title: 'Zenflow',
+            logo: '/images/docs/mcp/logos/dark/zenflow.svg',
+            event: 'docs-ai-vibe_zenflow-click'
+        }
+    ];
+
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
@@ -101,19 +186,6 @@
             >
         </section>
         <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
-        <section class="mt-12!">
-            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
-            <p class="text-description mt-4 max-w-[600px]">
-                If you learn best from code examples, follow one of our tutorials.
-            </p>
-            <Carousel size="medium">
-                {#each tutorials as tutorial}
-                    <li style:scroll-snap-align="start">
-                        <CodeCard {...tutorial} />
-                    </li>
-                {/each}
-            </Carousel>
-        </section>
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
@@ -335,113 +407,73 @@
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Build faster with AI
             </h2>
-            <p class="text-description max-w-[600px]">
-                Appwrite’s Model Context Protocol (MCP) server lets LLMs interact directly with your
-                Appwrite API.
+            <p class="text-description max-w-[720px]">
+                Wire up MCP so models can reach your Appwrite project and docs, install
+                <a class="web-link underline" href="/docs/tooling/ai/skills">agent skills</a>
+                for SDK-accurate codegen, and use
+                <a class="web-link underline" href="/docs/tooling/ai/quickstart-prompts"
+                    >quickstart prompts</a
+                >
+                to scaffold features - whether you work in an IDE or a vibe coding platform.
             </p>
-            <div class="mt-6">
-                <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/claude-desktop"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/claude.svg"
-                                alt="Claude"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">Claude Desktop</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/claude-code"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/claude.svg"
-                                alt="Claude"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">Claude Code</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/cursor"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/cursor-ai.svg"
-                                alt="Cursor"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">Cursor</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/windsurf"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/windsurf.svg"
-                                alt="Windsurf"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">Windsurf Editor</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/vscode"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/vscode.svg"
-                                alt="VS Code"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">VS Code</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/opencode"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/opencode.svg"
-                                alt="OpenCode"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">OpenCode</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/docs/tooling/mcp/antigravity"
-                            class="web-card is-normal flex flex-row! items-center gap-2!"
-                            onclick={() => trackEvent(`docs-mcp-click`)}
-                        >
-                            <img
-                                src="/images/docs/mcp/logos/dark/google-antigravity.svg"
-                                alt="Google Antigravity"
-                                class="w-6"
-                            />
-                            <h4 class="text-sub-body text-primary font-medium">
-                                Google Antigravity
-                            </h4>
-                        </a>
-                    </li>
+
+            <h3
+                class="text-subtitle font-aeonik-pro text-primary mt-10 max-w-[720px] font-medium text-pretty"
+            >
+                IDEs & coding agents
+            </h3>
+            <p class="text-description mt-2 max-w-[720px]">
+                Editors and agents where you ship code locally or in the terminal.
+            </p>
+            <div class="mt-4">
+                <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                    {#each ideAiTools as tool (tool.href)}
+                        <li>
+                            <a
+                                href={tool.href}
+                                class="web-card is-normal flex h-full flex-row! items-center gap-2! no-underline"
+                                onclick={() => trackEvent(tool.event)}
+                            >
+                                <img src={tool.logo} alt="" class="h-6 w-6 shrink-0" />
+                                <h4 class="text-sub-body text-primary font-medium">{tool.title}</h4>
+                            </a>
+                        </li>
+                    {/each}
                 </ul>
+            </div>
+
+            <h3
+                class="text-subtitle font-aeonik-pro text-primary mt-10 max-w-[720px] font-medium text-pretty"
+            >
+                Vibe coding platforms
+            </h3>
+            <p class="text-description mt-2 max-w-[720px]">
+                Build from prompts in the browser; connect docs or full MCP where supported.
+            </p>
+            <div class="mt-4">
+                <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                    {#each vibeCodingTools as tool (tool.href)}
+                        <li>
+                            <a
+                                href={tool.href}
+                                class="web-card is-normal flex h-full flex-row! items-center gap-2! no-underline"
+                                onclick={() => trackEvent(tool.event)}
+                            >
+                                <img src={tool.logo} alt="" class="h-6 w-6 shrink-0" />
+                                <h4 class="text-sub-body text-primary font-medium">{tool.title}</h4>
+                            </a>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+
+            <div class="mt-10 flex max-w-[720px] flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+                <Button variant="secondary" href="/docs/tooling/ai" event="docs-ai_hub-click"
+                    >Explore the AI tooling documentation</Button
+                >
+                <Button variant="text" href="/docs/tooling/mcp" event="docs-ai_mcp-overview-click"
+                    >Configure the MCP server</Button
+                >
             </div>
         </section>
         <section class="web-hero is-align-start is-no-max-width mt-12!">
@@ -506,6 +538,19 @@
                     </li>
                 </ul>
             </div>
+        </section>
+        <section class="web-hero is-align-start is-no-max-width mt-12!">
+            <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
+            <p class="text-description mt-4 max-w-[600px]">
+                If you learn best from code examples, follow one of our tutorials.
+            </p>
+            <Carousel size="medium">
+                {#each tutorials as tutorial}
+                    <li style:scroll-snap-align="start">
+                        <CodeCard {...tutorial} />
+                    </li>
+                {/each}
+            </Carousel>
         </section>
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
