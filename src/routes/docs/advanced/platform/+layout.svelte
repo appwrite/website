@@ -66,6 +66,31 @@
                 {
                     label: 'Dev keys',
                     href: '/docs/advanced/platform/dev-keys'
+                },
+                {
+                    label: 'Auth methods',
+                    href: '/docs/advanced/platform/auth-methods',
+                    new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Platforms',
+                    href: '/docs/advanced/platform/platforms',
+                    new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Protocols',
+                    href: '/docs/advanced/platform/protocols',
+                    new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Services',
+                    href: '/docs/advanced/platform/services',
+                    new: isNewUntil('30 May 2026')
+                },
+                {
+                    label: 'Policies',
+                    href: '/docs/advanced/platform/policies',
+                    new: isNewUntil('30 May 2026')
                 }
             ]
         },
