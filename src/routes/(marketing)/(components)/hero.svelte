@@ -59,8 +59,7 @@
     onMount(() => {
         if (!browser || ENV.TEST) return;
         /** Set `?debug_statsig` on the URL to log in non-dev builds (e.g. `pnpm preview`). */
-        const debugStatsigHero =
-            import.meta.env.DEV || page.url.searchParams.has('debug_statsig');
+        const debugStatsigHero = import.meta.env.DEV || page.url.searchParams.has('debug_statsig');
         const log = (...args: unknown[]) => {
             if (debugStatsigHero) console.log('[Statsig hero]', ...args);
         };
@@ -86,10 +85,9 @@
             const rawDescription = client
                 .getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION)
                 .get('description', subtitle);
-            const rawLayout = client.getExperiment(STATSIG_EXPERIMENT_HERO_LAYOUT).get(
-                'layout',
-                heroLayout
-            );
+            const rawLayout = client
+                .getExperiment(STATSIG_EXPERIMENT_HERO_LAYOUT)
+                .get('layout', heroLayout);
             const normalizedLayout = normalizeHeroLayout(rawLayout, heroLayout);
 
             log('experiment values (after get → exposure)', {
@@ -135,7 +133,9 @@
         <div
             class={cn(
                 'animate-blur-in flex flex-col [animation-delay:150ms] [animation-duration:1000ms]',
-                layoutAside ? 'gap-4 md:ml-12 lg:ml-0' : 'gap-3 w-full max-w-6xl items-center px-4 text-center sm:px-0'
+                layoutAside
+                    ? 'gap-4 md:ml-12 lg:ml-0'
+                    : 'w-full max-w-6xl items-center gap-3 px-4 text-center sm:px-0'
             )}
         >
             {#if layoutAside}
@@ -167,7 +167,7 @@
                 </GradientText>
             {:else}
                 <GradientText
-                    class="animate-fade-in my-2 flex w-full min-w-0 max-w-full justify-center [-webkit-overflow-scrolling:touch] overflow-x-auto [scrollbar-width:none] md:my-3 [&::-webkit-scrollbar]:hidden"
+                    class="animate-fade-in my-2 flex w-full max-w-full min-w-0 justify-center overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:my-3 [&::-webkit-scrollbar]:hidden"
                 >
                     <h1 class="font-aeonik-pro text-headline max-w-none shrink-0 whitespace-nowrap">
                         {resolved.heroTitle}<span class="text-accent">_</span>
@@ -178,7 +178,7 @@
             <p
                 class={cn(
                     'text-description text-secondary mt-2 font-medium md:mt-3',
-                    layoutBottom && 'max-w-2xl text-balance text-center'
+                    layoutBottom && 'max-w-2xl text-center text-balance'
                 )}
                 style:min-height={layoutAside
                     ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
@@ -190,7 +190,9 @@
             <div
                 class={cn(
                     'flex flex-col gap-2',
-                    layoutAside ? 'mt-4 lg:flex-row' : 'mt-3 w-full max-w-md items-stretch sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center'
+                    layoutAside
+                        ? 'mt-4 lg:flex-row'
+                        : 'mt-3 w-full max-w-md items-stretch sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center'
                 )}
             >
                 <Button
