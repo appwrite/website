@@ -10,9 +10,23 @@ import {
     evaluateHeroLayoutExperiment,
     getStatsigClientBootstrapPayload
 } from '$lib/statsig/hero-statsig.server';
+import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies, request, url }) => {
+    // Prerendered `/` must not embed per-user Statsig bootstrap or stable IDs — one static HTML is
+    // served to everyone; the hero applies experiments after `initializeAsync` in the browser.
+    if (building) {
+        return {
+            heroSubtitle: DEFAULT_HERO_SUBTITLE,
+            heroLayout: 0 as HeroLayoutVariant,
+            heroTitle: DEFAULT_HERO_TITLE,
+            statsigBootstrap: null,
+            statsigStableUserId: null,
+            statsigUserAgent: null
+        };
+    }
+
     let stableId = cookies.get(STATSIG_STABLE_ID_KEY);
     if (!stableId) {
         stableId = crypto.randomUUID();
@@ -41,7 +55,7 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
 
     // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
     // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.
-    const heroQueryParams = building ? new URLSearchParams() : url.searchParams;
+    const heroQueryParams = url.searchParams;
     const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(heroQueryParams, {
         heroLayout: heroLayoutBase,
         heroSubtitle: heroSubtitleBase,

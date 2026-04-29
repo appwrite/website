@@ -1,11 +1,18 @@
 <script lang="ts">
-    import { building } from '$app/environment';
+    import { browser, building } from '$app/environment';
     import { page } from '$app/state';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
-    import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
+    import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
+    import { readMarketingHeroExperimentsForExposure } from '$lib/statsig/experiments/marketing-hero-client';
+    import {
+        hasHeroExperimentQueryOverrides,
+        resolveHeroQueryOverrides
+    } from '$lib/statsig/hero-query-overrides';
     import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
+    import { ENV } from '$lib/system';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
@@ -27,13 +34,45 @@
         heroLayout?: HeroLayoutVariant;
     }>();
 
+    /** Same client hydration path as marketing `hero.svelte` (Statsig + query overrides). */
+    let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
+    let clientHeroSubtitle = $state<string | undefined>(undefined);
+
     const resolved = $derived(
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
-            heroLayout,
-            heroSubtitle: subtitle,
+            heroLayout: clientHeroLayout ?? heroLayout,
+            heroSubtitle: clientHeroSubtitle ?? subtitle,
             heroTitle: title
         })
     );
+
+    onMount(() => {
+        if (!browser || ENV.TEST) return;
+        if (hasHeroExperimentQueryOverrides(page.url.searchParams)) return;
+
+        const data = page.data as {
+            statsigBootstrap?: string | null;
+            statsigStableUserId?: string | null;
+            statsigUserAgent?: string | null;
+        };
+        void initStatsig(
+            data.statsigBootstrap ?? null,
+            data.statsigStableUserId ?? null,
+            data.statsigUserAgent ?? null
+        );
+
+        void whenStatsigReady().then((client) => {
+            if (!client) return;
+
+            const { heroSubtitle, heroLayout: nextLayout } =
+                readMarketingHeroExperimentsForExposure(client, {
+                    heroSubtitle: subtitle,
+                    heroLayout
+                });
+            clientHeroSubtitle = heroSubtitle;
+            clientHeroLayout = nextLayout;
+        });
+    });
 
     const layoutAside = $derived(resolved.heroLayout === 0);
     const layoutBottomTwoLineTitle = $derived(resolved.heroLayout === 1);
@@ -43,8 +82,8 @@
     class={cn(
         'relative flex max-w-screen items-center overflow-hidden',
         layoutAside
-            ? 'py-12 md:py-0 lg:min-h-[700px]'
-            : 'pt-16 pb-8 md:pt-20 md:pb-10 lg:min-h-[600px] lg:pt-24'
+            ? 'py-10 md:py-0 lg:min-h-[680px]'
+            : 'pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
@@ -59,8 +98,8 @@
         class={cn(
             'relative container mx-auto h-full',
             layoutAside
-                ? 'grid grid-cols-1 place-items-center gap-24 md:grid-cols-2'
-                : 'flex w-full flex-col items-center gap-16 md:gap-20 lg:gap-24'
+                ? 'grid grid-cols-1 place-items-center gap-16 md:grid-cols-2'
+                : 'flex w-full flex-col items-center gap-10 md:gap-14 lg:gap-16'
         )}
     >
         <div
