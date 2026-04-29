@@ -21,7 +21,7 @@
     - In `experiments/marketing-hero-server.ts`, add `evaluateYourThingExperiment(...)` using `getStatsigServerClient()` + `toStatsigUser()` + `getExperiment(..., { disableExposureLogging: true })` for SSR without exposure.
     - In `experiments/marketing-hero-client.ts`, extend `readMarketingHeroExperimentsForExposure` so the browser calls `getExperiment(...).get(...)` (exposure for Pulse / Results). Extend `MarketingHeroStatsigBaseline` if SSR + hydration share the field.
 3. **`(marketing)/+page.server.ts`** — `Promise.all` your new evaluator next to the existing ones; pass the value into `resolveHeroQueryOverrides` baseline or add a new field on `data`.
-4. **Hero Svelte** — Pass the new prop from `data`; merge into `resolveHeroQueryOverrides` if URL overrides should apply.
+4. **Hero Svelte** — Add fields to `+page.server.ts` / `+page.ts` load `data`; the marketing hero reads them from `page.data` (not props / not `onMount` state). Merge into `resolveHeroQueryOverrides` if URL overrides should apply.
 5. **URL overrides (optional)** — Add a query key + reader in `hero-query-overrides.ts` and document it in the table comment there.
 
 Do **not** read experiment params only in `onMount` without also defining SSR in step 2–3 unless you intentionally want client-only assignment (e.g. prerender shell + client fill). The marketing homepage is **`prerender = true`**, so production stays fast; expect a possible brief layout/copy update after the Statsig client loads unless you move `/` to per-request SSR (tradeoff: every hit waits on Statsig).
