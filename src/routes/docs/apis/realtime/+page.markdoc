@@ -69,9 +69,9 @@ let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -130,9 +130,9 @@ While the Realtime API offers robust capabilities, there are currently some limi
 
 ## Subscription changes {% #subscription-changes %}
 
-The SDK uses a single WebSocket connection for all subscriptions. Adding a subscription with `subscribe()`, dropping one with `subscription.unsubscribe()`, or replacing channels and queries via `subscription.update(...)` all happen on the existing socket — no reconnect required. The connection is only torn down when you call `realtime.disconnect()`, or when the legacy `subscription.close()` runs on the last remaining subscription.
+Client SDKs use a **single WebSocket** per `Realtime` client for all subscriptions. Adding a subscription with `subscribe()`, dropping one with `subscription.unsubscribe()`, or replacing channels and queries via `subscription.update(...)` applies on the existing socket where supported — no full reconnect required. The connection is torn down when you call `realtime.disconnect()`, or when the legacy `subscription.close()` runs on the last remaining subscription.
 
-Subscriptions should still be managed alongside your application state so they aren't unnecessarily recreated during component lifecycle changes.
+Manage subscription handles alongside your application state so you unsubscribe or disconnect when listeners are no longer needed. See [Subscribe](/docs/apis/realtime/subscribe) for platform-specific APIs.
 
 ## Server SDKs {% #server-sdks %}
 

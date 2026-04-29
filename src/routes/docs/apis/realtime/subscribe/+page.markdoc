@@ -4,7 +4,7 @@ title: Subscribe
 description: Learn how to subscribe to realtime events from Appwrite services. Subscribe to single or multiple channels and manage your subscriptions.
 ---
 
-The Appwrite Realtime API lets you subscribe to events from any Appwrite service through [channels](/docs/apis/realtime/channels). You can subscribe to a single channel, multiple channels at once, and unsubscribe when you no longer need updates.
+The Appwrite Realtime API lets you subscribe to events from any Appwrite service through [channels](/docs/apis/realtime/channels). You can subscribe to a single channel, multiple channels at once, and unsubscribe when you no longer need updates. On supported client SDKs (including the Web SDK), multiple subscriptions share one WebSocket and can be added, **updated**, or removed without reconnecting the whole client until you call **`disconnect()`** on `Realtime`.
 
 # Subscribe to a channel {% #subscribe-to-a-channel %}
 
@@ -60,9 +60,9 @@ let subscription = realtime.subscribe(channels: [Channel.account()]) { response 
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -77,7 +77,6 @@ val subscription = realtime.subscribe(Channel.account()) {
 ```
 
 ```client-android-java
-import io.appwrite.Channel;
 import io.appwrite.Client;
 import io.appwrite.models.RealtimeResponseEvent;
 import io.appwrite.models.RealtimeSubscription;
@@ -89,10 +88,9 @@ Client client = new Client(context)
     .setProject("<PROJECT_ID>");
 
 Realtime realtime = new Realtime(client);
-String accountChannel = Channel.Companion.account();
 
 RealtimeSubscription subscription = realtime.subscribe(
-    new String[] {accountChannel},
+    new String[] {"account"},
     (RealtimeResponseEvent<Object> response) -> {
         // Callback will be executed on all account events.
         System.out.println(response);
@@ -168,9 +166,9 @@ realtime.subscribe(channels: [
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -215,7 +213,7 @@ RealtimeSubscription subscription = realtime.subscribe(
 
 # Update channels or queries {% #update %}
 
-Channels and queries on an active subscription can be replaced in place without recreating the WebSocket. This is useful when, for example, a user changes which row they're viewing — swap the channel on the existing subscription instead of unsubscribing and resubscribing.
+Channels and queries on an active subscription can be replaced in place without recreating the WebSocket. This is useful when, for example, a user changes which row they're viewing. Swap the channel on the existing subscription instead of unsubscribing and resubscribing.
 
 `update()` accepts either or both of `channels` and `queries`. Pass only the field you want to replace; omitted fields are left unchanged.
 
@@ -286,9 +284,9 @@ try await subscription.update(RealtimeSubscriptionUpdate(
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 import io.appwrite.models.RealtimeSubscriptionUpdate
 
 val client = Client(context)
@@ -344,7 +342,7 @@ subscription.update(new RealtimeSubscriptionUpdate(
 
 # Unsubscribe {% #unsubscribe %}
 
-If you no longer want to receive updates from a particular subscription, call `unsubscribe()` on it. Other subscriptions and the underlying WebSocket connection are not affected, so callbacks for the rest of your app keep firing. To tear the whole connection down at once, see [Disconnect](#disconnect) below.
+If you no longer want to receive updates from a particular subscription, call `unsubscribe()` on it. Other subscriptions and the underlying WebSocket connection are not affected, so callbacks for the rest of your app keep firing. To close the entire connection at once, see [Disconnect](#disconnect) below.
 
 {% multicode %}
 ```client-web
@@ -389,6 +387,9 @@ await subscription.unsubscribe();
 import Appwrite
 
 let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
 let realtime = Realtime(client)
 
 let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
@@ -401,9 +402,9 @@ try await subscription.unsubscribe()
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -449,12 +450,12 @@ subscription.unsubscribe();
 {% /multicode %}
 
 {% info title="Legacy close()" %}
-`subscription.close()` still works for backwards compatibility — it calls `unsubscribe()` and additionally closes the WebSocket if this was the last active subscription. New code should prefer `unsubscribe()` and call `realtime.disconnect()` explicitly when full teardown is needed.
+`subscription.close()` still works for backwards compatibility. It calls `unsubscribe()` and additionally closes the WebSocket if this was the last active subscription. New code should prefer `unsubscribe()` and call `realtime.disconnect()` explicitly when full teardown is needed.
 {% /info %}
 
 # Disconnect {% #disconnect %}
 
-Call `realtime.disconnect()` to drop **all** active subscriptions and close the WebSocket in one step. Use this at app teardown or when a user logs out — there's no need to loop over each subscription and call `unsubscribe()` first.
+Call `realtime.disconnect()` to drop **all** active subscriptions and close the WebSocket in one step. Use this at app teardown or when a user logs out.
 
 {% multicode %}
 ```client-web
