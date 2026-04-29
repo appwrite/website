@@ -28,7 +28,7 @@
         placement === 'aside' &&
             'bg-smooth -mb-108 max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 mask-b-from-0% mask-b-to-70% px-2 pt-2 backdrop-blur-2xl md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 md:mask-b-to-100% lg:ml-12',
         placement === 'below' &&
-            'bg-smooth mx-auto -mb-8 max-h-[min(52vw,272px)] w-full max-w-[min(1185px,calc(100vw-2rem))] scale-[0.72] overflow-hidden rounded-t-2xl border-x border-t border-white/10 mask-b-from-[48%] mask-b-to-[100%] px-2 pt-2 backdrop-blur-2xl sm:max-h-[min(48vw,292px)] sm:scale-90 md:mb-0 md:max-h-[min(42vw,332px)] md:scale-100 md:mask-b-from-[52%]'
+            'bg-smooth mx-auto -mb-8 max-h-[min(60vw,320px)] w-full max-w-[min(1185px,calc(100vw-1rem))] scale-[0.88] overflow-hidden rounded-t-2xl border-x border-t border-white/10 mask-b-from-[44%] mask-b-to-[100%] px-2 pt-2 backdrop-blur-2xl sm:max-h-[min(56vw,360px)] sm:scale-95 md:mb-0 md:max-h-[min(50vw,400px)] md:scale-100 md:mask-b-from-[50%] lg:max-h-[min(48vw,440px)]'
     )}
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-t-xl">
