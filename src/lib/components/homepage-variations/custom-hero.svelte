@@ -64,13 +64,17 @@
         void whenStatsigReady().then((client) => {
             if (!client) return;
 
-            const { heroSubtitle, heroLayout: nextLayout } =
+            const { heroSubtitle: nextSubtitle, heroLayout: nextLayout } =
                 readMarketingHeroExperimentsForExposure(client, {
                     heroSubtitle: subtitle,
                     heroLayout
                 });
-            clientHeroSubtitle = heroSubtitle;
-            clientHeroLayout = nextLayout;
+            if (nextSubtitle !== subtitle) {
+                clientHeroSubtitle = nextSubtitle;
+            }
+            if (nextLayout !== heroLayout) {
+                clientHeroLayout = nextLayout;
+            }
         });
     });
 

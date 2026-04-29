@@ -24,7 +24,7 @@
 4. **Hero Svelte** — Pass the new prop from `data`; merge into `resolveHeroQueryOverrides` if URL overrides should apply.
 5. **URL overrides (optional)** — Add a query key + reader in `hero-query-overrides.ts` and document it in the table comment there.
 
-Do **not** read experiment params only in `onMount` without also defining SSR in step 2–3 unless you intentionally want client-only assignment (e.g. prerender shell + client fill).
+Do **not** read experiment params only in `onMount` without also defining SSR in step 2–3 unless you intentionally want client-only assignment. The marketing homepage uses **`prerender = false`** so `+page.server.ts` + bootstrap match hydration and avoid layout flash.
 
 **Why two files (`*-client` / `*-server`)?** `@statsig/statsig-node-core` ships native `.node` binaries. If any module imported by a `.svelte` file pulls in `server.ts` or `marketing-hero-server.ts`, Vite tries to bundle that SDK for the browser and fails with “No loader is configured for `.node` files”.
 
