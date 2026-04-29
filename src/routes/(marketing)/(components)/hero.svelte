@@ -38,8 +38,8 @@
     }: Props = $props();
 
     /**
-     * Filled after the browser Statsig client runs (`initializeAsync` when `/` is prerendered).
-     * Until then, SSR/prop baselines apply. URL query overrides still win via `resolveHeroQueryOverrides`.
+     * Optional overrides after the browser Statsig client runs (exposure logging). When bootstrap
+     * matches SSR, we leave these undefined so the UI stays on server props with no flash.
      */
     let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
     let clientHeroSubtitle = $state<string | undefined>(undefined);
@@ -112,8 +112,12 @@
                 heroLayout
             });
 
-            clientHeroSubtitle = nextSubtitle;
-            clientHeroLayout = nextLayout;
+            if (nextSubtitle !== subtitle) {
+                clientHeroSubtitle = nextSubtitle;
+            }
+            if (nextLayout !== heroLayout) {
+                clientHeroLayout = nextLayout;
+            }
 
             log('experiment values (after get → exposure)', {
                 [MARKETING_HERO_EXPERIMENTS.bestDescription]:
