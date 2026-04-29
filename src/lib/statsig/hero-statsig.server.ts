@@ -5,7 +5,12 @@ import {
     type StatsigOptions,
     type StatsigUserArgs
 } from '@statsig/statsig-node-core';
-import { STATSIG_CLIENT_SDK_KEY, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from './constants';
+import {
+    STATSIG_CLIENT_SDK_KEY,
+    STATSIG_EXPERIMENT_BEST_DESCRIPTION,
+    STATSIG_EXPERIMENT_HERO_LAYOUT
+} from './constants';
+import { normalizeHeroLayout, type HeroLayoutVariant } from './hero-layout';
 
 function buildStatsigServerOptions(): StatsigOptions {
     const explicit = env.STATSIG_ENVIRONMENT?.trim();
@@ -83,6 +88,31 @@ export async function evaluateHeroDescriptionExperiment(
             disableExposureLogging: true
         });
         return experiment.get('description', fallback) as string;
+    } catch {
+        return fallback;
+    }
+}
+
+/**
+ * Evaluates `hero_layout` for SSR. Exposure is logged on the client when the hero reads
+ * `getExperiment(STATSIG_EXPERIMENT_HERO_LAYOUT).get('layout', …)` after `whenStatsigReady()`.
+ *
+ * Configure a dynamic config / experiment parameter named `layout` with values `0`, `1`, or `2`.
+ */
+export async function evaluateHeroLayoutExperiment(
+    user: StatsigUser | StatsigServerUserInput,
+    fallback: HeroLayoutVariant
+): Promise<HeroLayoutVariant> {
+    const client = await getStatsigClient();
+    if (!client) return fallback;
+
+    try {
+        const statsigUser = toStatsigUser(user);
+        const experiment = client.getExperiment(statsigUser, STATSIG_EXPERIMENT_HERO_LAYOUT, {
+            disableExposureLogging: true
+        });
+        const raw = experiment.get('layout', fallback);
+        return normalizeHeroLayout(raw, fallback);
     } catch {
         return fallback;
     }

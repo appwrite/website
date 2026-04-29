@@ -23,7 +23,7 @@
 />
 
 <Main>
-    <Hero title="Build like a team of hundreds" subtitle={data.heroSubtitle} />
+    <Hero title={data.heroTitle} subtitle={data.heroSubtitle} heroLayout={data.heroLayout} />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
     <Bento />

@@ -1,6 +1,12 @@
-import { STATSIG_STABLE_ID_KEY, DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
+import {
+    STATSIG_STABLE_ID_KEY,
+    DEFAULT_HERO_SUBTITLE,
+    DEFAULT_HERO_TITLE
+} from '$lib/statsig/constants';
+import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
 import {
     evaluateHeroDescriptionExperiment,
+    evaluateHeroLayoutExperiment,
     getStatsigClientBootstrapPayload
 } from '$lib/statsig/hero-statsig.server';
 import type { PageServerLoad } from './$types';
@@ -26,13 +32,22 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const [heroSubtitle, statsigBootstrap] = await Promise.all([
+    const [heroSubtitleBase, heroLayoutBase, statsigBootstrap] = await Promise.all([
         evaluateHeroDescriptionExperiment(user, DEFAULT_HERO_SUBTITLE),
+        evaluateHeroLayoutExperiment(user, 0),
         getStatsigClientBootstrapPayload(user)
     ]);
 
+    const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(url.searchParams, {
+        heroLayout: heroLayoutBase,
+        heroSubtitle: heroSubtitleBase,
+        heroTitle: DEFAULT_HERO_TITLE
+    });
+
     return {
         heroSubtitle,
+        heroLayout,
+        heroTitle,
         statsigBootstrap,
         /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
         statsigStableUserId: stableId,

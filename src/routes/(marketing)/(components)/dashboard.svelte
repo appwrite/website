@@ -1,5 +1,9 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
+
+    type Placement = 'aside' | 'below';
+
+    const { placement = 'aside' }: { placement?: Placement } = $props();
     // import { animate, stagger } from 'motion';
 
     // $effect(() => {
@@ -21,8 +25,10 @@
 
 <div
     class={cn(
-        'bg-smooth -mb-108 max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 lg:ml-12 ',
-        'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%'
+        placement === 'aside' &&
+            'bg-smooth -mb-108 max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl mask-b-from-0% mask-b-to-70% md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 md:mask-b-to-100% lg:ml-12',
+        placement === 'below' &&
+            'bg-smooth mx-auto w-full max-h-[min(52vw,272px)] max-w-[min(1185px,calc(100vw-2rem))] -mb-8 scale-[0.72] overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl mask-b-from-[48%] mask-b-to-[100%] sm:max-h-[min(48vw,292px)] sm:scale-90 md:mb-0 md:max-h-[min(42vw,332px)] md:scale-100 md:mask-b-from-[52%]'
     )}
 >
     <div class="bg-greyscale-900 h-full overflow-hidden rounded-t-xl">
