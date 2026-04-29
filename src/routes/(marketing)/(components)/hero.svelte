@@ -5,16 +5,16 @@
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
     import {
-        whenStatsigReady,
-        STATSIG_EXPERIMENT_BEST_DESCRIPTION,
-        STATSIG_EXPERIMENT_HERO_LAYOUT
-    } from '$lib/statsig/client';
+        MARKETING_HERO_EXPERIMENTS,
+        readMarketingHeroExperimentsForExposure
+    } from '$lib/statsig/experiments/marketing-hero-client';
     import {
         hasHeroExperimentQueryOverrides,
         resolveHeroQueryOverrides
     } from '$lib/statsig/hero-query-overrides';
-    import { normalizeHeroLayout, type HeroLayoutVariant } from '$lib/statsig/hero-layout';
+    import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
     import { ENV } from '$lib/system';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
@@ -37,11 +37,18 @@
         heroLayout = 0
     }: Props = $props();
 
-    /** Statsig baseline from SSR; URL query params override in the browser (see `resolveHeroQueryOverrides`). */
+    /**
+     * Filled after the browser Statsig client runs (`initializeAsync` when `/` is prerendered).
+     * Until then, SSR/prop baselines apply. URL query overrides still win via `resolveHeroQueryOverrides`.
+     */
+    let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
+    let clientHeroSubtitle = $state<string | undefined>(undefined);
+
+    /** Statsig baseline from SSR + optional client overrides; URL query params override in the browser. */
     const resolved = $derived(
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
-            heroLayout,
-            heroSubtitle: subtitle,
+            heroLayout: clientHeroLayout ?? heroLayout,
+            heroSubtitle: clientHeroSubtitle ?? subtitle,
             heroTitle: title
         })
     );
@@ -67,8 +74,8 @@
         if (hasHeroExperimentQueryOverrides(page.url.searchParams)) {
             log('URL query overrides (client layout)', {
                 ...resolveHeroQueryOverrides(page.url.searchParams, {
-                    heroLayout,
-                    heroSubtitle: subtitle,
+                    heroLayout: clientHeroLayout ?? heroLayout,
+                    heroSubtitle: clientHeroSubtitle ?? subtitle,
                     heroTitle: title
                 }),
                 ssrBaseline: { heroLayout, subtitleLen: subtitle.length }
@@ -76,31 +83,39 @@
             return;
         }
 
+        const data = page.data as {
+            statsigBootstrap?: string | null;
+            statsigStableUserId?: string | null;
+            statsigUserAgent?: string | null;
+        };
+        void initStatsig(
+            data.statsigBootstrap ?? null,
+            data.statsigStableUserId ?? null,
+            data.statsigUserAgent ?? null
+        );
+
         void whenStatsigReady().then((client) => {
             if (!client) {
-                log('Statsig client not ready; SSR baseline only', { heroLayout });
+                log('Statsig client not ready; SSR baseline only', {
+                    heroLayout,
+                    subtitleLen: subtitle.length
+                });
                 return;
             }
 
-            const rawDescription = client
-                .getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION)
-                .get('description', subtitle);
-            const rawLayout = client
-                .getExperiment(STATSIG_EXPERIMENT_HERO_LAYOUT)
-                .get('layout', heroLayout);
-            const normalizedLayout = normalizeHeroLayout(rawLayout, heroLayout);
+            const { heroSubtitle: nextSubtitle, heroLayout: nextLayout, debug } =
+                readMarketingHeroExperimentsForExposure(client, {
+                    heroSubtitle: subtitle,
+                    heroLayout
+                });
+
+            clientHeroSubtitle = nextSubtitle;
+            clientHeroLayout = nextLayout;
 
             log('experiment values (after get → exposure)', {
-                [STATSIG_EXPERIMENT_BEST_DESCRIPTION]: {
-                    raw: rawDescription,
-                    rawType: typeof rawDescription
-                },
-                [STATSIG_EXPERIMENT_HERO_LAYOUT]: {
-                    raw: rawLayout,
-                    rawType: typeof rawLayout,
-                    normalized: normalizedLayout,
-                    ssrBaselineLayout: heroLayout
-                }
+                [MARKETING_HERO_EXPERIMENTS.bestDescription]:
+                    debug[MARKETING_HERO_EXPERIMENTS.bestDescription],
+                [MARKETING_HERO_EXPERIMENTS.heroLayout]: debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
             });
         });
     });
@@ -110,8 +125,8 @@
     class={cn(
         'relative flex max-w-screen items-center overflow-hidden',
         layoutAside
-            ? 'py-12 md:py-0 lg:min-h-[700px]'
-            : 'pt-16 pb-8 md:pt-20 md:pb-10 lg:min-h-[600px] lg:pt-24'
+            ? 'py-10 md:py-0 lg:min-h-[680px]'
+            : 'pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
@@ -126,8 +141,8 @@
         class={cn(
             'relative container mx-auto h-full',
             layoutAside
-                ? 'grid grid-cols-1 place-items-center gap-24 md:grid-cols-2'
-                : 'flex w-full flex-col items-center gap-16 md:gap-20 lg:gap-24'
+                ? 'grid grid-cols-1 place-items-center gap-16 md:grid-cols-2'
+                : 'flex w-full flex-col items-center gap-10 md:gap-14 lg:gap-16'
         )}
     >
         <div

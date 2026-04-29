@@ -20,8 +20,6 @@ type Payload = {
 };
 
 const plausible = (domain: string): AnalyticsPlugin => {
-    if (!browser) return { name: 'analytics-plugin-plausible' };
-
     const instance = Plausible({
         domain
     });
@@ -51,15 +49,26 @@ const plausible = (domain: string): AnalyticsPlugin => {
     };
 };
 
-const analytics = Analytics({
-    app: 'appwrite',
-    plugins: [plausible('appwrite.io')]
-});
+/** Lazily created in the browser only — avoids `Analytics()` (and any internal `fetch`) during SSR. */
+let analyticsClient: ReturnType<typeof Analytics> | null = null;
+
+function getAnalyticsClient(): ReturnType<typeof Analytics> | null {
+    if (!browser) return null;
+    if (!analyticsClient) {
+        analyticsClient = Analytics({
+            app: 'appwrite',
+            plugins: [plausible('appwrite.io')]
+        });
+    }
+    return analyticsClient;
+}
 
 export type TrackEventArgs = { name: string; data?: object };
 
 export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     if (!eventArgs || ENV.TEST) return;
+    /** All vendors below use `fetch`; they must not run during SSR. */
+    if (!browser) return;
 
     const path = page.url.pathname;
     const route =
@@ -70,7 +79,7 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     const data =
         typeof eventArgs === 'string' ? { path, route } : { ...eventArgs.data, path, route };
 
-    if (browser && shouldForwardAnalyticsToStatsig(name, path)) {
+    if (shouldForwardAnalyticsToStatsig(name, path)) {
         logStatsigCtaEvent(name, data as Record<string, unknown>);
     }
 
@@ -80,5 +89,5 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
     }
 
     posthogEvent.capture(name, data);
-    analytics.track(name, data).then();
+    getAnalyticsClient()?.track(name, data).then();
 };

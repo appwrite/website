@@ -1,21 +1,12 @@
 import { browser } from '$app/environment';
 import { ENV } from '$lib/system';
-import {
-    STATSIG_STABLE_ID_KEY,
-    STATSIG_EXPERIMENT_BEST_DESCRIPTION,
-    STATSIG_EXPERIMENT_HERO_LAYOUT,
-    STATSIG_CLIENT_SDK_KEY
-} from '$lib/statsig/constants';
-
-export { STATSIG_EXPERIMENT_BEST_DESCRIPTION, STATSIG_EXPERIMENT_HERO_LAYOUT };
+import { STATSIG_STABLE_ID_KEY, STATSIG_CLIENT_SDK_KEY } from '$lib/statsig/constants';
+import type { StatsigClientEvalSource } from '$lib/statsig/experiment-eval';
 
 /** Narrow surface we use from `@statsig/js-client` (avoids static `import type` from that package, which can break Vite named re-exports). */
-export type StatsigBrowserClient = {
+export type StatsigBrowserClient = StatsigClientEvalSource & {
     initializeSync(options?: object): unknown;
     initializeAsync(options?: object): Promise<unknown>;
-    getExperiment(name: string): {
-        get(key: string, defaultValue: string | number): string | number;
-    };
     logEvent(eventOrName: string, value?: string | number, metadata?: Record<string, string>): void;
     shutdown(): Promise<void>;
 };
