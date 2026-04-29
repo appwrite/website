@@ -66,7 +66,9 @@ function toStatsigUser(user: StatsigUser | StatsigServerUserInput): StatsigUser 
 }
 
 /**
- * Evaluates `best_description` for SSR. Exposure is not logged here so the client can log the real view.
+ * Evaluates `best_description` for SSR. Exposure is not logged here — the marketing hero client
+ * must call `getExperiment(...).get('description', …)` after `whenStatsigReady()` so Statsig
+ * records enrollments for Results / Pulse (see `hero.svelte`).
  */
 export async function evaluateHeroDescriptionExperiment(
     user: StatsigUser | StatsigServerUserInput,
