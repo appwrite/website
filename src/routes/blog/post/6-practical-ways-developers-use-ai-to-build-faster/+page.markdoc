@@ -73,7 +73,9 @@ You've got the ideas, and you've got the skills. What you don't want is to spend
 That's what Appwrite solves. It's an open source backend platform that gives you everything your product needs in one place: authentication, databases, file storage, realtime, and serverless functions, all behind one consistent API with SDKs for every major language and framework.
 
 Thousands of developers use Appwrite to go from idea to production without the infrastructure headache. Whether it's your first AI feature or your tenth, the backend layer scales with you so you can stay focused on the thing that actually matters: building something people want to use.
+
 [Appwrite Functions](https://appwrite.io/docs/products/functions) runs the triage step serverlessly on every error event, structured logging gives the AI the context it needs to diagnose the problem instead of guess at it.
+
 # Resources
 
 - [Get started free on Appwrite Cloud](https://cloud.appwrite.io/register)
