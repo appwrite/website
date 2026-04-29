@@ -1,27 +1,52 @@
 <script lang="ts">
+    import { building } from '$app/environment';
+    import { page } from '$app/state';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
+    import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
+    import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import Dashboard from '$routes/(marketing)/(components)/dashboard.svelte';
 
     const {
-        title = 'Build like a team of hundreds',
-        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.',
+        title = DEFAULT_HERO_TITLE,
+        subtitle = DEFAULT_HERO_SUBTITLE,
         showDashboard = true,
         ctaLabel = 'Start building for free',
-        ctaHref = PUBLIC_APPWRITE_DASHBOARD
+        ctaHref = PUBLIC_APPWRITE_DASHBOARD,
+        heroLayout = 0
     } = $props<{
         title?: string;
         subtitle?: string;
         showDashboard?: boolean;
         ctaLabel?: string;
         ctaHref?: string;
+        heroLayout?: HeroLayoutVariant;
     }>();
+
+    const resolved = $derived(
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
+            heroLayout,
+            heroSubtitle: subtitle,
+            heroTitle: title
+        })
+    );
+
+    const layoutAside = $derived(resolved.heroLayout === 0);
+    const layoutBottomTwoLineTitle = $derived(resolved.heroLayout === 1);
 </script>
 
-<div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
+<div
+    class={cn(
+        'relative flex max-w-screen items-center overflow-hidden',
+        layoutAside
+            ? 'py-12 md:py-0 lg:min-h-[700px]'
+            : 'pt-16 pb-8 md:pt-20 md:pb-10 lg:min-h-[600px] lg:pt-24'
+    )}
+>
     <div
         class={cn(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -31,25 +56,62 @@
     ></div>
 
     <div
-        class="relative container mx-auto grid h-full grid-cols-1 place-items-center gap-24 md:grid-cols-2"
+        class={cn(
+            'relative container mx-auto h-full',
+            layoutAside
+                ? 'grid grid-cols-1 place-items-center gap-24 md:grid-cols-2'
+                : 'flex w-full flex-col items-center gap-16 md:gap-20 lg:gap-24'
+        )}
     >
         <div
-            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
+            class={cn(
+                'animate-blur-in flex flex-col [animation-delay:150ms] [animation-duration:1000ms]',
+                layoutAside
+                    ? 'gap-4 md:ml-12 lg:ml-0'
+                    : 'w-full max-w-6xl items-center gap-3 px-4 text-center sm:px-0'
+            )}
         >
-            <GradientText class="animate-fade-in">
-                <h1 class="font-aeonik-pro text-headline text-pretty">
-                    {title}<span class="text-accent">_</span>
-                </h1>
-            </GradientText>
+            {#if layoutAside || layoutBottomTwoLineTitle}
+                <GradientText
+                    class={cn(
+                        'animate-fade-in my-2 md:my-3',
+                        layoutBottomTwoLineTitle && 'mx-auto block w-full max-w-4xl text-center'
+                    )}
+                >
+                    <h1 class="font-aeonik-pro text-headline text-pretty">
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {:else}
+                <GradientText
+                    class="animate-fade-in my-2 flex w-full max-w-full min-w-0 justify-center overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:my-3 [&::-webkit-scrollbar]:hidden"
+                >
+                    <h1 class="font-aeonik-pro text-headline max-w-none shrink-0 whitespace-nowrap">
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {/if}
 
-            <p class="text-description text-secondary font-medium">
-                {subtitle}
+            <p
+                class={cn(
+                    'text-description text-secondary mt-2 font-medium md:mt-3',
+                    !layoutAside && 'max-w-2xl text-center text-balance'
+                )}
+            >
+                {resolved.heroSubtitle}
             </p>
 
-            <div class="mt-4 flex flex-col gap-2 lg:flex-row">
+            <div
+                class={cn(
+                    'flex flex-col gap-2',
+                    layoutAside
+                        ? 'mt-4 lg:flex-row'
+                        : 'mt-3 w-full max-w-xs items-stretch sm:max-w-none sm:flex-row sm:justify-center'
+                )}
+            >
                 <Button
                     href={ctaHref}
-                    class="w-full! lg:w-fit!"
+                    class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
                     }}>{ctaLabel}</Button
@@ -58,7 +120,13 @@
         </div>
 
         {#if showDashboard}
-            <Dashboard />
+            {#if layoutAside}
+                <Dashboard />
+            {:else}
+                <div class="flex w-full justify-center">
+                    <Dashboard placement="below" />
+                </div>
+            {/if}
         {/if}
     </div>
 </div>

@@ -1,10 +1,20 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
+    import { browser, building } from '$app/environment';
+    import { page } from '$app/state';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import { DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
-    import { whenStatsigReady, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from '$lib/statsig/client';
+    import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import {
+        whenStatsigReady,
+        STATSIG_EXPERIMENT_BEST_DESCRIPTION,
+        STATSIG_EXPERIMENT_HERO_LAYOUT
+    } from '$lib/statsig/client';
+    import {
+        hasHeroExperimentQueryOverrides,
+        resolveHeroQueryOverrides
+    } from '$lib/statsig/hero-query-overrides';
+    import { normalizeHeroLayout, type HeroLayoutVariant } from '$lib/statsig/hero-layout';
     import { ENV } from '$lib/system';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
@@ -17,27 +27,93 @@
         title?: string;
         /** Resolved on the server from Statsig (`+page.server.ts`) so SSR matches the experiment. */
         subtitle?: string;
+        /** `hero_layout` experiment: `0` aside, `1` bottom + wrapped title, `2` bottom + single-line title. */
+        heroLayout?: HeroLayoutVariant;
     };
 
-    const { title = 'Build like a team of hundreds', subtitle = DEFAULT_HERO_SUBTITLE }: Props =
-        $props();
+    const {
+        title = DEFAULT_HERO_TITLE,
+        subtitle = DEFAULT_HERO_SUBTITLE,
+        heroLayout = 0
+    }: Props = $props();
+
+    /** Statsig baseline from SSR; URL query params override in the browser (see `resolveHeroQueryOverrides`). */
+    const resolved = $derived(
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
+            heroLayout,
+            heroSubtitle: subtitle,
+            heroTitle: title
+        })
+    );
+
+    const layoutAside = $derived(resolved.heroLayout === 0);
+    const layoutBottom = $derived(resolved.heroLayout !== 0);
+    const layoutBottomTwoLineTitle = $derived(resolved.heroLayout === 1);
 
     /**
-     * SSR evaluates the experiment with exposure logging disabled; Pulse / Results need a client
-     * exposure when the user actually sees the hero. Reading `description` logs the exposure and
-     * keeps the rendered line as the SSR value (default matches props).
+     * SSR evaluates experiments with exposure logging disabled; Pulse / Results need a client
+     * exposure when the user actually sees the hero. Reading params logs the exposure and keeps
+     * the rendered values as the SSR defaults when the client matches bootstrap.
      * @see https://docs.statsig.com/pulse (exposures enroll units in the experiment)
      */
     onMount(() => {
         if (!browser || ENV.TEST) return;
+        /** Set `?debug_statsig` on the URL to log in non-dev builds (e.g. `pnpm preview`). */
+        const debugStatsigHero = import.meta.env.DEV || page.url.searchParams.has('debug_statsig');
+        const log = (...args: unknown[]) => {
+            if (debugStatsigHero) console.log('[Statsig hero]', ...args);
+        };
+
+        if (hasHeroExperimentQueryOverrides(page.url.searchParams)) {
+            log('URL query overrides (client layout)', {
+                ...resolveHeroQueryOverrides(page.url.searchParams, {
+                    heroLayout,
+                    heroSubtitle: subtitle,
+                    heroTitle: title
+                }),
+                ssrBaseline: { heroLayout, subtitleLen: subtitle.length }
+            });
+            return;
+        }
+
         void whenStatsigReady().then((client) => {
-            if (!client) return;
-            client.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION).get('description', subtitle);
+            if (!client) {
+                log('Statsig client not ready; SSR baseline only', { heroLayout });
+                return;
+            }
+
+            const rawDescription = client
+                .getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION)
+                .get('description', subtitle);
+            const rawLayout = client
+                .getExperiment(STATSIG_EXPERIMENT_HERO_LAYOUT)
+                .get('layout', heroLayout);
+            const normalizedLayout = normalizeHeroLayout(rawLayout, heroLayout);
+
+            log('experiment values (after get → exposure)', {
+                [STATSIG_EXPERIMENT_BEST_DESCRIPTION]: {
+                    raw: rawDescription,
+                    rawType: typeof rawDescription
+                },
+                [STATSIG_EXPERIMENT_HERO_LAYOUT]: {
+                    raw: rawLayout,
+                    rawType: typeof rawLayout,
+                    normalized: normalizedLayout,
+                    ssrBaselineLayout: heroLayout
+                }
+            });
         });
     });
 </script>
 
-<div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
+<div
+    class={cn(
+        'relative flex max-w-screen items-center overflow-hidden',
+        layoutAside
+            ? 'py-12 md:py-0 lg:min-h-[700px]'
+            : 'pt-16 pb-8 md:pt-20 md:pb-10 lg:min-h-[600px] lg:pt-24'
+    )}
+>
     <div
         class={cn(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -47,34 +123,81 @@
     ></div>
 
     <div
-        class="relative container mx-auto grid h-full grid-cols-1 place-items-center gap-24 md:grid-cols-2"
+        class={cn(
+            'relative container mx-auto h-full',
+            layoutAside
+                ? 'grid grid-cols-1 place-items-center gap-24 md:grid-cols-2'
+                : 'flex w-full flex-col items-center gap-16 md:gap-20 lg:gap-24'
+        )}
     >
         <div
-            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
+            class={cn(
+                'animate-blur-in flex flex-col [animation-delay:150ms] [animation-duration:1000ms]',
+                layoutAside
+                    ? 'gap-4 md:ml-12 lg:ml-0'
+                    : 'w-full max-w-6xl items-center gap-3 px-4 text-center sm:px-0'
+            )}
         >
-            <HeroBanner
-                title="Appwrite partners with the world's best database company"
-                href="/blog/post/appwrite-mongodb-partnership-self-hosted"
-                icon="mongo"
-            />
+            {#if layoutAside}
+                <HeroBanner
+                    title="Appwrite partners with the world's best database company"
+                    href="/blog/post/appwrite-mongodb-partnership-self-hosted"
+                    icon="mongo"
+                />
+            {:else}
+                <div class="flex w-full justify-center">
+                    <HeroBanner
+                        title="Appwrite partners with the world's best database company"
+                        href="/blog/post/appwrite-mongodb-partnership-self-hosted"
+                        icon="mongo"
+                    />
+                </div>
+            {/if}
 
-            <GradientText class="animate-fade-in">
-                <h1 class="font-aeonik-pro text-headline text-pretty">
-                    {title}<span class="text-accent">_</span>
-                </h1>
-            </GradientText>
+            {#if layoutAside || layoutBottomTwoLineTitle}
+                <GradientText
+                    class={cn(
+                        'animate-fade-in my-2 md:my-3',
+                        layoutBottomTwoLineTitle && 'mx-auto block w-full max-w-4xl text-center'
+                    )}
+                >
+                    <h1 class="font-aeonik-pro text-headline text-pretty">
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {:else}
+                <GradientText
+                    class="animate-fade-in my-2 flex w-full max-w-full min-w-0 justify-center overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:my-3 [&::-webkit-scrollbar]:hidden"
+                >
+                    <h1 class="font-aeonik-pro text-headline max-w-none shrink-0 whitespace-nowrap">
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {/if}
 
             <p
-                class="text-description text-secondary font-medium"
-                style:min-height="calc(4.25 * var(--text-description--line-height, 1.5rem))"
+                class={cn(
+                    'text-description text-secondary mt-2 font-medium md:mt-3',
+                    layoutBottom && 'max-w-2xl text-center text-balance'
+                )}
+                style:min-height={layoutAside
+                    ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
+                    : 'calc(3.25 * var(--text-description--line-height, 1.5rem))'}
             >
-                {subtitle}
+                {resolved.heroSubtitle}
             </p>
 
-            <div class="mt-4 flex flex-col gap-2 lg:flex-row">
+            <div
+                class={cn(
+                    'flex flex-col gap-2',
+                    layoutAside
+                        ? 'mt-4 lg:flex-row'
+                        : 'mt-3 w-full max-w-md items-stretch sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center'
+                )}
+            >
                 <Button
                     href={PUBLIC_APPWRITE_DASHBOARD}
-                    class="w-full! lg:w-fit!"
+                    class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
                     }}>Start building for free</Button
@@ -82,24 +205,13 @@
                 <AppwriteIn100Seconds />
             </div>
         </div>
-        <Dashboard />
-        <!--
-        Console image variation (disabled for now)
-        <div
-            class={cn(
-                'bg-smooth -mb-108 w-[1185px] max-w-[150vw] translate-x-8 -translate-y-32 scale-70 overflow-hidden rounded-t-2xl border-x border-t border-white/10 px-2 pt-2 backdrop-blur-2xl md:mt-12 md:mb-0 md:ml-24 md:translate-x-1/4 md:translate-y-0 md:scale-100 lg:ml-12',
-                'mask-b-from-0% mask-b-to-70% md:mask-b-to-100%'
-            )}
-        >
-            <div class="bg-greyscale-900 aspect-[3022/1894] overflow-hidden rounded-t-xl">
-                <img
-                    src="/images/heroes/console.png"
-                    alt="Appwrite Console refetch dashboard screenshot"
-                    class="h-full w-full object-cover object-top"
-                    loading="eager"
-                />
+
+        {#if layoutAside}
+            <Dashboard />
+        {:else}
+            <div class="flex w-full justify-center">
+                <Dashboard placement="below" />
             </div>
-        </div>
-        -->
+        {/if}
     </div>
 </div>

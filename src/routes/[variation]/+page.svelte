@@ -27,6 +27,7 @@
         showDashboard={config.showDashboard}
         ctaLabel={config.ctaLabel}
         ctaHref={config.ctaHref}
+        heroLayout={config.heroLayout ?? 0}
     />
 
     {#if config.showPlatforms}

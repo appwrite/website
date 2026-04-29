@@ -1,7 +1,11 @@
+import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
+
 export interface HomepageVariationConfig {
     title: string;
     subtitle: string;
     pageTitle: string;
+    /** Hero structure: `0` aside dashboard, `1` bottom + wrapped title, `2` bottom + single-line title. */
+    heroLayout?: HeroLayoutVariant;
     slug?: string;
     ctaLabel?: string;
     ctaHref?: string;
