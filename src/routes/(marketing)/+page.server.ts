@@ -35,6 +35,8 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         heroSubtitle,
         statsigBootstrap,
         /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
-        statsigStableUserId: stableId
+        statsigStableUserId: stableId,
+        /** Must match `user` passed to `getClientInitializeResponse` or the JS SDK warns about bootstrap user mismatch. */
+        statsigUserAgent: userAgent ?? null
     };
 };

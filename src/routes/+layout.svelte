@@ -80,8 +80,13 @@
         const data = page.data as {
             statsigBootstrap?: string | null;
             statsigStableUserId?: string | null;
+            statsigUserAgent?: string | null;
         };
-        void initStatsig(data.statsigBootstrap ?? null, data.statsigStableUserId ?? null);
+        void initStatsig(
+            data.statsigBootstrap ?? null,
+            data.statsigStableUserId ?? null,
+            data.statsigUserAgent ?? null
+        );
     });
 
     onMount(() => {

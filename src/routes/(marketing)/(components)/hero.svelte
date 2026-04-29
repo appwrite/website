@@ -1,7 +1,11 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import { DEFAULT_HERO_SUBTITLE } from '$lib/statsig/constants';
+    import { whenStatsigReady, STATSIG_EXPERIMENT_BEST_DESCRIPTION } from '$lib/statsig/client';
+    import { ENV } from '$lib/system';
     import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
@@ -17,6 +21,20 @@
 
     const { title = 'Build like a team of hundreds', subtitle = DEFAULT_HERO_SUBTITLE }: Props =
         $props();
+
+    /**
+     * SSR evaluates the experiment with exposure logging disabled; Pulse / Results need a client
+     * exposure when the user actually sees the hero. Reading `description` logs the exposure and
+     * keeps the rendered line as the SSR value (default matches props).
+     * @see https://docs.statsig.com/pulse (exposures enroll units in the experiment)
+     */
+    onMount(() => {
+        if (!browser || ENV.TEST) return;
+        void whenStatsigReady().then((client) => {
+            if (!client) return;
+            client.getExperiment(STATSIG_EXPERIMENT_BEST_DESCRIPTION).get('description', subtitle);
+        });
+    });
 </script>
 
 <div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">

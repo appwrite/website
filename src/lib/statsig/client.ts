@@ -24,6 +24,8 @@ let initPromise: Promise<StatsigBrowserClient | null> | null = null;
 let pendingBootstrapJson: string | null | undefined;
 /** Same stable ID the server used for SSR + `getClientInitializeResponse` (avoids cookie timing / BootstrapStableIDMismatch). */
 let pendingServerStableUserId: string | null | undefined;
+/** Same `userAgent` the server passed into `getClientInitializeResponse` (avoids bootstrap vs client user mismatch warnings). */
+let pendingStatsigUserAgent: string | undefined;
 /** Non-null once we initialized successfully with a bootstrap payload (SPA: skip re-init on later navigations). */
 let appliedBootstrapPayload: string | null = null;
 
@@ -123,11 +125,15 @@ async function runStatsigInit(): Promise<StatsigBrowserClient | null> {
     const bootstrap = pendingBootstrapJson;
     pendingBootstrapJson = undefined;
 
+    const bootstrapUserAgent = pendingStatsigUserAgent;
+    pendingStatsigUserAgent = undefined;
+
     const instance = new StatsigClient(
         STATSIG_CLIENT_SDK_KEY,
         {
             userID: stableId,
-            customIDs: { stableID: stableId }
+            customIDs: { stableID: stableId },
+            ...(bootstrapUserAgent ? { userAgent: bootstrapUserAgent } : {})
         },
         {
             plugins: [],
@@ -211,13 +217,15 @@ export function whenStatsigNetworkReady(): Promise<void> {
 }
 
 /**
- * Loads Statsig. Pass `statsigBootstrap` + `statsigStableUserId` from `(marketing)/+page.server.ts` on `/`
- * when the server has `STATSIG_SERVER_SECRET` so the client matches SSR and avoids bootstrap user mismatch.
+ * Loads Statsig. Pass `statsigBootstrap`, `statsigStableUserId`, and `statsigUserAgent` from
+ * `(marketing)/+page.server.ts` on `/` when the server has `STATSIG_SERVER_SECRET` so the client
+ * `StatsigUser` matches `getClientInitializeResponse` (same fields the server evaluated).
  * Call from `afterNavigate` so client-side navigations (e.g. /docs → /) still receive bootstrap.
  */
 export function initStatsig(
     clientBootstrapJson?: string | null,
-    serverStableUserId?: string | null
+    serverStableUserId?: string | null,
+    bootstrapUserAgent?: string | null
 ): Promise<void> {
     pendingServerStableUserId =
         typeof serverStableUserId === 'string' && serverStableUserId.length > 0
@@ -226,6 +234,10 @@ export function initStatsig(
     pendingBootstrapJson =
         typeof clientBootstrapJson === 'string' && clientBootstrapJson.length > 0
             ? clientBootstrapJson
+            : undefined;
+    pendingStatsigUserAgent =
+        typeof bootstrapUserAgent === 'string' && bootstrapUserAgent.length > 0
+            ? bootstrapUserAgent
             : undefined;
 
     const hasBootstrap =
