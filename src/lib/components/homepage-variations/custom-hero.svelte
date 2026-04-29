@@ -64,10 +64,11 @@
         void whenStatsigReady().then((client) => {
             if (!client) return;
 
-            const { heroSubtitle, heroLayout: nextLayout } = readMarketingHeroExperimentsForExposure(
-                client,
-                { heroSubtitle: subtitle, heroLayout }
-            );
+            const { heroSubtitle, heroLayout: nextLayout } =
+                readMarketingHeroExperimentsForExposure(client, {
+                    heroSubtitle: subtitle,
+                    heroLayout
+                });
             clientHeroSubtitle = heroSubtitle;
             clientHeroLayout = nextLayout;
         });

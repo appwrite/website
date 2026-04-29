@@ -103,11 +103,14 @@
                 return;
             }
 
-            const { heroSubtitle: nextSubtitle, heroLayout: nextLayout, debug } =
-                readMarketingHeroExperimentsForExposure(client, {
-                    heroSubtitle: subtitle,
-                    heroLayout
-                });
+            const {
+                heroSubtitle: nextSubtitle,
+                heroLayout: nextLayout,
+                debug
+            } = readMarketingHeroExperimentsForExposure(client, {
+                heroSubtitle: subtitle,
+                heroLayout
+            });
 
             clientHeroSubtitle = nextSubtitle;
             clientHeroLayout = nextLayout;
@@ -115,7 +118,8 @@
             log('experiment values (after get → exposure)', {
                 [MARKETING_HERO_EXPERIMENTS.bestDescription]:
                     debug[MARKETING_HERO_EXPERIMENTS.bestDescription],
-                [MARKETING_HERO_EXPERIMENTS.heroLayout]: debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
+                [MARKETING_HERO_EXPERIMENTS.heroLayout]:
+                    debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
             });
         });
     });

@@ -60,12 +60,18 @@ export function readLayoutVariantFromStatsigClient(
     experimentOrConfigName: string,
     fallback: HeroLayoutVariant
 ): { layout: HeroLayoutVariant; source: StatsigLayoutReadSource } {
-    let r = readLayoutVariantFromStatsigEvaluation(client.getExperiment(experimentOrConfigName), fallback);
+    let r = readLayoutVariantFromStatsigEvaluation(
+        client.getExperiment(experimentOrConfigName),
+        fallback
+    );
     if (r.source !== 'none') {
         return r;
     }
     if (typeof client.getDynamicConfig === 'function') {
-        r = readLayoutVariantFromStatsigEvaluation(client.getDynamicConfig(experimentOrConfigName), fallback);
+        r = readLayoutVariantFromStatsigEvaluation(
+            client.getDynamicConfig(experimentOrConfigName),
+            fallback
+        );
         if (r.source !== 'none') {
             return { layout: r.layout, source: 'dynamic' };
         }
