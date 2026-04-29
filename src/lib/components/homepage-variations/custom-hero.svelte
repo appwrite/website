@@ -80,10 +80,10 @@
 
 <div
     class={cn(
-        'relative flex max-w-screen items-center overflow-hidden',
+        'relative flex max-w-screen items-center',
         layoutAside
-            ? 'py-10 md:py-0 lg:min-h-[680px]'
-            : 'pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
+            ? 'overflow-hidden py-10 md:py-0 lg:min-h-[680px]'
+            : 'overflow-x-visible overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
@@ -114,18 +114,31 @@
                 <GradientText
                     class={cn(
                         'animate-fade-in my-2 md:my-3',
-                        layoutBottomTwoLineTitle && 'mx-auto block w-full max-w-4xl text-center'
+                        layoutBottomTwoLineTitle &&
+                            'mx-auto block w-full max-w-full px-1 text-center sm:px-0 md:max-w-4xl'
                     )}
                 >
-                    <h1 class="font-aeonik-pro text-headline text-pretty">
+                    <h1
+                        class={cn(
+                            'font-aeonik-pro text-balance text-pretty',
+                            layoutBottomTwoLineTitle
+                                ? 'text-title sm:text-headline md:text-title lg:text-headline'
+                                : 'text-headline'
+                        )}
+                    >
                         {resolved.heroTitle}<span class="text-accent">_</span>
                     </h1>
                 </GradientText>
             {:else}
                 <GradientText
-                    class="animate-fade-in my-2 flex w-full max-w-full min-w-0 justify-center overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:my-3 [&::-webkit-scrollbar]:hidden"
+                    class={cn(
+                        'animate-fade-in my-2 w-full max-w-full self-stretch text-center md:my-3',
+                        'lg:flex lg:min-w-0 lg:justify-center lg:overflow-x-auto lg:[-webkit-overflow-scrolling:touch] lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden'
+                    )}
                 >
-                    <h1 class="font-aeonik-pro text-headline max-w-none shrink-0 whitespace-nowrap">
+                    <h1
+                        class="font-aeonik-pro text-title sm:text-headline md:text-title lg:text-headline max-w-full px-1 text-balance text-pretty lg:max-w-none lg:shrink-0 lg:px-0 lg:whitespace-nowrap"
+                    >
                         {resolved.heroTitle}<span class="text-accent">_</span>
                     </h1>
                 </GradientText>
