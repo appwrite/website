@@ -2,6 +2,7 @@ import { env } from '$env/dynamic/private';
 import {
     Statsig,
     StatsigUser,
+    type ClientInitResponseOptions,
     type StatsigOptions,
     type StatsigUserArgs
 } from '@statsig/statsig-node-core';
@@ -76,12 +77,24 @@ export async function getStatsigClientBootstrapPayload(
 ): Promise<string | null> {
     const client = await getStatsigServerClient();
     if (!client) return null;
+    return getStatsigClientBootstrapPayloadForClient(client, user);
+}
 
+/** Same as {@link getStatsigClientBootstrapPayload} when the Node client is already initialized. */
+export function getStatsigClientBootstrapPayloadForClient(
+    client: Statsig,
+    user: StatsigUser | StatsigServerUserInput,
+    initOverrides?: Pick<
+        ClientInitResponseOptions,
+        'experimentFilter' | 'dynamicConfigFilter' | 'featureGateFilter' | 'layerFilter'
+    >
+): string | null {
     try {
         const statsigUser = toStatsigUser(user);
         const response = client.getClientInitializeResponse(statsigUser, {
             hashAlgorithm: 'djb2',
-            clientSdkKey: STATSIG_CLIENT_SDK_KEY
+            clientSdkKey: STATSIG_CLIENT_SDK_KEY,
+            ...initOverrides
         });
         if (response == null || response === '') {
             return null;

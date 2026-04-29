@@ -5,11 +5,7 @@ import {
 } from '$lib/statsig/constants';
 import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
 import { building } from '$app/environment';
-import {
-    evaluateHeroDescriptionExperiment,
-    evaluateHeroLayoutExperiment,
-    getStatsigClientBootstrapPayload
-} from '$lib/statsig/hero-statsig.server';
+import { loadMarketingHomeStatsigBundle } from '$lib/statsig/hero-statsig.server';
 import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
 import type { PageServerLoad } from './$types';
 
@@ -47,11 +43,11 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const [heroSubtitleBase, heroLayoutBase, statsigBootstrap] = await Promise.all([
-        evaluateHeroDescriptionExperiment(user, DEFAULT_HERO_SUBTITLE),
-        evaluateHeroLayoutExperiment(user, 0),
-        getStatsigClientBootstrapPayload(user)
-    ]);
+    const { heroSubtitleBase, heroLayoutBase, statsigBootstrap } = await loadMarketingHomeStatsigBundle(
+        user,
+        stableId,
+        { subtitle: DEFAULT_HERO_SUBTITLE, layout: 0 }
+    );
 
     // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
     // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.

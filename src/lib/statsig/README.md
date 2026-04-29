@@ -7,7 +7,7 @@
 | `experiment-eval.ts`                   | Shared readers for typed Statsig evaluations (e.g. layout param keys + `.value` fallback).                      |
 | `experiments/marketing-hero-ids.ts`    | Experiment id strings only (safe on **client** and server).                                                     |
 | `experiments/marketing-hero-client.ts` | Browser-only: `readMarketingHeroExperimentsForExposure` (import from **Svelte** / client code).                 |
-| `experiments/marketing-hero-server.ts` | Server-only: `evaluateHeroDescriptionExperiment`, `evaluateHeroLayoutExperiment` (never import from `.svelte`). |
+| `experiments/marketing-hero-server.ts` | Server-only: `loadMarketingHomeStatsigBundle` (cached homepage batch), `evaluateHero*`, etc. (never import from `.svelte`). |
 | `hero-statsig.server.ts`               | Thin re-export barrel (legacy import path for `+page.server.ts`).                                               |
 | `hero-query-overrides.ts`              | URL query overrides for local QA (`?hero_layout=`, `?hero_subtitle=`, …).                                       |
 | `hero-layout.ts`                       | Pure `normalizeHeroLayout` + `HeroLayoutVariant` type (no network).                                             |
