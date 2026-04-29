@@ -4,6 +4,7 @@ import {
     DEFAULT_HERO_TITLE
 } from '$lib/statsig/constants';
 import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
+import { building } from '$app/environment';
 import {
     evaluateHeroDescriptionExperiment,
     evaluateHeroLayoutExperiment,
@@ -38,7 +39,10 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         getStatsigClientBootstrapPayload(user)
     ]);
 
-    const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(url.searchParams, {
+    // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
+    // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.
+    const heroQueryParams = building ? new URLSearchParams() : url.searchParams;
+    const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(heroQueryParams, {
         heroLayout: heroLayoutBase,
         heroSubtitle: heroSubtitleBase,
         heroTitle: DEFAULT_HERO_TITLE
