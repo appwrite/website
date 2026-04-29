@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 
-export const prerender = true;
+export const prerender = false;
 
 /**
  * Runs after `+page.server.ts` merges into `data` and before the page renders. The marketing hero
