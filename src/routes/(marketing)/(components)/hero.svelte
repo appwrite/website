@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { browser, building } from '$app/environment';
     import { page } from '$app/state';
-    import { browser } from '$app/environment';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
@@ -37,9 +37,9 @@
         heroLayout = 0
     }: Props = $props();
 
-    /** Statsig baseline from SSR; URL query params override for local QA (see `resolveHeroQueryOverrides`). */
+    /** Statsig baseline from SSR; URL query params override in the browser (see `resolveHeroQueryOverrides`). */
     const resolved = $derived(
-        resolveHeroQueryOverrides(page.url.searchParams, {
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout,
             heroSubtitle: subtitle,
             heroTitle: title

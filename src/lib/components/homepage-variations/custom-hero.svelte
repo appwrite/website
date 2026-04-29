@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { building } from '$app/environment';
     import { page } from '$app/state';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { trackEvent } from '$lib/actions/analytics';
@@ -27,7 +28,7 @@
     }>();
 
     const resolved = $derived(
-        resolveHeroQueryOverrides(page.url.searchParams, {
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout,
             heroSubtitle: subtitle,
             heroTitle: title
