@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "One WebSocket, many subscriptions: smarter Realtime in Appwrite"
-description: "Appwrite Realtime now keeps one persistent WebSocket and drives subscriptions with messages instead of cramming state into the connection URL, so you are not capped by URL length and you avoid unnecessary reconnects. Client SDKs expose unsubscribe(), update(), and disconnect() for clearer lifecycle control."
-date: 2026-04-28
+description: "Appwrite Realtime now keeps one persistent WebSocket and drives subscriptions with messages instead of cramming state into the connection URL. Client SDKs expose unsubscribe(), update(), and disconnect() for clearer lifecycle control."
+date: 2026-04-29
 cover: /images/blog/announcing-message-based-realtime-sdk/cover.png
 timeToRead: 9
 author: eldad-fux
@@ -14,11 +14,13 @@ Realtime features are where users feel your app is “alive”: collaborative ed
 
 **Appwrite Realtime** now uses a **message-based protocol** on a **single persistent WebSocket**. The service applies subscription changes incrementally over the socket instead of treating the WebSocket URL as the source of truth for what you listen to.
 
-Previously, subscription details were largely carried in the **query string of the Realtime WebSocket URL**. That tied you to **URL length limits** enforced by browsers, servers, and proxies, so in practice you could only combine so many channels and so much metadata before the connection string itself became a bottleneck. That friction grew once we shipped [Realtime queries](/blog/post/announcing-realtime-queries) to filter subscription events on the server, and larger query payloads made the URL ceiling easier to hit. Channels and queries are now sent **over the established socket**, so you are not capped by query-string size when scaling up listeners or filters.
+Previously, subscription details were largely carried in the **query string of the Realtime WebSocket URL**. That tied you to **URL length limits** enforced by browsers, servers, and proxies, so in practice you could only combine so many channels and so much metadata before the connection string itself became a bottleneck.
+
+That friction grew once we shipped [Realtime queries](/blog/post/announcing-realtime-queries) to filter subscription events on the server, and larger query payloads made the URL ceiling easier to hit. Channels and queries are now sent **over the established socket**, so you are not capped by query-string size when scaling up listeners or filters.
 
 # One connection, many subscriptions
 
-You create a `Realtime` instance from your configured `Client`, then call `subscribe` for each logical listener. The same **two-channel** idea looks like this across Appwrite clients (tabs below).
+You create a `Realtime` instance from your configured `Client`, then call `subscribe` for each logical listener. The example below subscribes to two channels (`files` and `account`) on a single connection, shown across Appwrite clients in the tabs below.
 
 {% multicode %}
 ```client-web
@@ -80,9 +82,9 @@ let sub2 = realtime.subscribe(channels: [Channel.account()]) { response in
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -100,7 +102,6 @@ val sub2 = realtime.subscribe(Channel.account()) {
 ```
 
 ```client-android-java
-import io.appwrite.Channel;
 import io.appwrite.Client;
 import io.appwrite.models.RealtimeResponseEvent;
 import io.appwrite.models.RealtimeSubscription;
@@ -112,7 +113,6 @@ Client client = new Client(context)
     .setProject("<PROJECT_ID>");
 
 Realtime realtime = new Realtime(client);
-String accountChannel = Channel.Companion.account();
 
 RealtimeSubscription sub1 = realtime.subscribe(
     new String[] {"files"},
@@ -123,7 +123,7 @@ RealtimeSubscription sub1 = realtime.subscribe(
 );
 
 RealtimeSubscription sub2 = realtime.subscribe(
-    new String[] {accountChannel},
+    new String[] {"account"},
     (RealtimeResponseEvent<Object> response) -> {
         System.out.println("account " + response);
         return Unit.INSTANCE;
@@ -133,7 +133,9 @@ RealtimeSubscription sub2 = realtime.subscribe(
 
 {% /multicode %}
 
-Unsubscribing one handle **does not** drop unrelated listeners: the Realtime service keeps the shared connection and removes only what you asked for. The **Web SDK** exposes that as `unsubscribe()` on each handle and `disconnect()` when you want the socket closed entirely. Other SDKs use their own names (often `close()` on the subscription); check your version and the [subscribe documentation](/docs/apis/realtime/subscribe).
+Unsubscribing one handle **does not** drop unrelated listeners: the Realtime service keeps the shared connection and removes only what you asked for.
+
+Call `unsubscribe()` on a subscription handle to stop that listener, and `realtime.disconnect()` to close the socket entirely. The legacy `close()` alias remains for backwards compatibility. See the [subscribe documentation](/docs/apis/realtime/subscribe) for the full API.
 
 {% multicode %}
 ```client-web
@@ -145,30 +147,38 @@ realtime.disconnect();
 ```
 
 ```client-flutter
-sub1.close();
-sub2.close();
+await sub1.unsubscribe();
+await sub2.unsubscribe();
+
+await realtime.disconnect();
 ```
 
 ```client-apple
-sub1.close()
-sub2.close()
+try await sub1.unsubscribe()
+try await sub2.unsubscribe()
+
+try await realtime.disconnect()
 ```
 
 ```client-android-kotlin
-sub1.close()
-sub2.close()
+sub1.unsubscribe()
+sub2.unsubscribe()
+
+realtime.disconnect()
 ```
 
 ```client-android-java
-sub1.close();
-sub2.close();
+sub1.unsubscribe();
+sub2.unsubscribe();
+
+realtime.disconnect();
 ```
 
 {% /multicode %}
 
-# Update in place, no reconnect storm
+# In-place subscription updates
 
-Changing channels or queries no longer has to mean closing the world and opening it again. In the **Web SDK**, call **`update()`** on the subscription handle so the server adjusts what it sends while the WebSocket stays up. On **Flutter, Apple, and Android**, use a new **`subscribe`** with the channels you need, wire up the new listener, then **`close()`** the previous handle (see [Subscribe](/docs/apis/realtime/subscribe#update-a-subscription)) until your SDK exposes the same in-place API.
+Changing channels or queries no longer requires recreating the subscription. Call **`update()`** on the subscription handle to adjust the channels or queries while the WebSocket stays open. The API is available across **Web, Flutter, Apple, and Android** SDKs (see [Subscribe](/docs/apis/realtime/subscribe#update-a-subscription)).
 
 {% multicode %}
 ```client-web
@@ -186,7 +196,7 @@ const subscription = await realtime.subscribe(Channel.files(), response => {
 
 await subscription.update({
     channels: [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')],
-    queries: [Query.equal('title', 'todo')]
+    queries: [Query.equal('title', ['todo'])],
 });
 ```
 
@@ -205,15 +215,10 @@ subscription.stream.listen((response) {
     print(response);
 });
 
-final updated = realtime.subscribe([
-    Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')
-]);
-
-updated.stream.listen((response) {
-    print(response);
-});
-
-subscription.close();
+await subscription.update(
+    channels: [Channel.tablesdb('<DATABASE_ID>').table('<TABLE_ID>').row('<ROW_ID>')],
+    queries: [Query.equal('title', ['todo'])],
+);
 ```
 
 ```client-apple
@@ -230,19 +235,18 @@ let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
     print(String(describing: response))
 }
 
-let updated = realtime.subscribe(channels: [
-    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
-]) { response in
-    print(String(describing: response))
-}
-
-subscription.close()
+try await subscription.update(RealtimeSubscriptionUpdate(
+    channels: [Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")],
+    queries: [Query.equal("title", value: ["todo"])]
+))
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
+import io.appwrite.Query
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
+import io.appwrite.models.RealtimeSubscriptionUpdate
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -254,21 +258,22 @@ val subscription = realtime.subscribe(Channel.files()) {
     print(it.payload.toString())
 }
 
-val updated = realtime.subscribe(
-    Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")
-) {
-    print(it.payload.toString())
-}
-
-subscription.close()
+subscription.update(RealtimeSubscriptionUpdate(
+    channels = listOf(Channel.tablesdb("<DATABASE_ID>").table("<TABLE_ID>").row("<ROW_ID>")),
+    queries = listOf(Query.equal("title", listOf("todo"))),
+))
 ```
 
 ```client-android-java
 import io.appwrite.Client;
+import io.appwrite.Query;
 import io.appwrite.models.RealtimeResponseEvent;
 import io.appwrite.models.RealtimeSubscription;
+import io.appwrite.models.RealtimeSubscriptionUpdate;
 import io.appwrite.services.Realtime;
 import kotlin.Unit;
+
+import java.util.Arrays;
 
 Client client = new Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -284,36 +289,21 @@ RealtimeSubscription subscription = realtime.subscribe(
     }
 );
 
-RealtimeSubscription updated = realtime.subscribe(
-    new String[] {
-        "tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>"
-    },
-    (RealtimeResponseEvent<Object> response) -> {
-        System.out.println(response);
-        return Unit.INSTANCE;
-    }
-);
-
-subscription.close();
+subscription.update(new RealtimeSubscriptionUpdate(
+    Arrays.asList("tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.<ROW_ID>"),
+    Arrays.asList(Query.equal("title", Arrays.asList("todo")))
+));
 ```
 
 {% /multicode %}
-
-That makes patterns like “user switched tabs” or “filter changed” map naturally to `update` or an extra `subscribe`, without reconnect churn for every transition.
 
 # Why this matters
 
 - **Clearer ownership**: Each subscription is its own handle with a predictable lifecycle.
 - **Better performance**: Fewer full reconnects when your app state shifts.
-- **Simpler UI code**: Mount paths call `subscribe` (or `update`), unmount paths call `unsubscribe` or `disconnect`, without special cases to avoid nuking unrelated listeners.
+- **Simpler UI code**: Mount paths call `subscribe` (or `update`), unmount paths call `unsubscribe` or `disconnect`.
 
-The wire format is incremental over messages rather than driving everything through subscription URLs alone, which keeps the client and server aligned as your feature set grows.
-
-# Try it
-
-For a hands-on playground against a real project, see the [Appwrite Realtime harness](https://github.com/ArnabChatterjee20k/appwrite-realtime-harness) maintained by the community.
-
-# Learn more
+# More resources
 
 - [Introducing Realtime queries: Server-side event filtering for subscriptions](/blog/post/announcing-realtime-queries)
 - [Realtime API overview](/docs/apis/realtime)

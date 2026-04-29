@@ -69,9 +69,9 @@ let subscription = realtime.subscribe(channels: [Channel.files()]) { response in
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
