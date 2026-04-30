@@ -20,36 +20,26 @@
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
+    import type { PageData } from '../$types';
     import Dashboard from './dashboard.svelte';
     import HeroBanner from './hero-banner.svelte';
 
-    type Props = {
-        title?: string;
-        /** Resolved on the server from Statsig (`+page.server.ts`) so SSR matches the experiment. */
-        subtitle?: string;
-        /** `hero_layout` experiment: `0` aside, `1` bottom + wrapped title, `2` bottom + single-line title. */
-        heroLayout?: HeroLayoutVariant;
+    /** Merged layout + page load; Statsig keys come from `+page.server.ts` (omitted from generated `PageData` in some setups). */
+    type MarketingHeroPageData = PageData & {
+        statsigBootstrap?: string | null;
+        statsigStableUserId?: string | null;
+        statsigUserAgent?: string | null;
     };
 
-    const {
-        title = DEFAULT_HERO_TITLE,
-        subtitle = DEFAULT_HERO_SUBTITLE,
-        heroLayout = 0
-    }: Props = $props();
+    /** From `+page.server.ts` + `+page.ts` — single source of truth for first paint (no `onMount` layout state). */
+    const data = $derived(page.data as MarketingHeroPageData);
 
-    /**
-     * Optional overrides after the browser Statsig client runs (exposure logging). When bootstrap
-     * matches SSR, we leave these undefined so the UI stays on server props with no flash.
-     */
-    let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
-    let clientHeroSubtitle = $state<string | undefined>(undefined);
-
-    /** Statsig baseline from SSR + optional client overrides; URL query params override in the browser. */
+    /** URL query overrides apply in the browser; baseline always comes from `page.data`. */
     const resolved = $derived(
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
-            heroLayout: clientHeroLayout ?? heroLayout,
-            heroSubtitle: clientHeroSubtitle ?? subtitle,
-            heroTitle: title
+            heroLayout: (data.heroLayout ?? 0) as HeroLayoutVariant,
+            heroSubtitle: data.heroSubtitle ?? DEFAULT_HERO_SUBTITLE,
+            heroTitle: data.heroTitle ?? DEFAULT_HERO_TITLE
         })
     );
 
@@ -58,36 +48,34 @@
     const layoutBottomTwoLineTitle = $derived(resolved.heroLayout === 1);
 
     /**
-     * SSR evaluates experiments with exposure logging disabled; Pulse / Results need a client
-     * exposure when the user actually sees the hero. Reading params logs the exposure and keeps
-     * the rendered values as the SSR defaults when the client matches bootstrap.
-     * @see https://docs.statsig.com/pulse (exposures enroll units in the experiment)
+     * SSR uses Statsig with exposure logging off; Pulse needs a browser exposure. We only call
+     * `.get` here — layout/subtitle/title stay on `page.data` from load so the UI does not switch
+     * after paint.
+     * @see https://docs.statsig.com/pulse
      */
     onMount(() => {
         if (!browser || ENV.TEST) return;
-        /** Set `?debug_statsig` on the URL to log in non-dev builds (e.g. `pnpm preview`). */
         const debugStatsigHero = import.meta.env.DEV || page.url.searchParams.has('debug_statsig');
         const log = (...args: unknown[]) => {
             if (debugStatsigHero) console.log('[Statsig hero]', ...args);
         };
 
+        const baselineSubtitle = data.heroSubtitle ?? DEFAULT_HERO_SUBTITLE;
+        const baselineLayout = (data.heroLayout ?? 0) as HeroLayoutVariant;
+        const baselineTitle = data.heroTitle ?? DEFAULT_HERO_TITLE;
+
         if (hasHeroExperimentQueryOverrides(page.url.searchParams)) {
             log('URL query overrides (client layout)', {
                 ...resolveHeroQueryOverrides(page.url.searchParams, {
-                    heroLayout: clientHeroLayout ?? heroLayout,
-                    heroSubtitle: clientHeroSubtitle ?? subtitle,
-                    heroTitle: title
+                    heroLayout: baselineLayout,
+                    heroSubtitle: baselineSubtitle,
+                    heroTitle: baselineTitle
                 }),
-                ssrBaseline: { heroLayout, subtitleLen: subtitle.length }
+                dataBaseline: { heroLayout: baselineLayout, subtitleLen: baselineSubtitle.length }
             });
             return;
         }
 
-        const data = page.data as {
-            statsigBootstrap?: string | null;
-            statsigStableUserId?: string | null;
-            statsigUserAgent?: string | null;
-        };
         void initStatsig(
             data.statsigBootstrap ?? null,
             data.statsigStableUserId ?? null,
@@ -96,30 +84,19 @@
 
         void whenStatsigReady().then((client) => {
             if (!client) {
-                log('Statsig client not ready; SSR baseline only', {
-                    heroLayout,
-                    subtitleLen: subtitle.length
+                log('Statsig client not ready; using `page.data` hero only', {
+                    heroLayout: baselineLayout,
+                    subtitleLen: baselineSubtitle.length
                 });
                 return;
             }
 
-            const {
-                heroSubtitle: nextSubtitle,
-                heroLayout: nextLayout,
-                debug
-            } = readMarketingHeroExperimentsForExposure(client, {
-                heroSubtitle: subtitle,
-                heroLayout
+            const { debug } = readMarketingHeroExperimentsForExposure(client, {
+                heroSubtitle: baselineSubtitle,
+                heroLayout: baselineLayout
             });
 
-            if (nextSubtitle !== subtitle) {
-                clientHeroSubtitle = nextSubtitle;
-            }
-            if (nextLayout !== heroLayout) {
-                clientHeroLayout = nextLayout;
-            }
-
-            log('experiment values (after get → exposure)', {
+            log('experiment exposure (display stays on `page.data`)', {
                 [MARKETING_HERO_EXPERIMENTS.bestDescription]:
                     debug[MARKETING_HERO_EXPERIMENTS.bestDescription],
                 [MARKETING_HERO_EXPERIMENTS.heroLayout]:

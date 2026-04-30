@@ -13,8 +13,6 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
     import Ai from './(components)/ai.svelte';
-
-    const { data } = $props();
 </script>
 
 <Head
@@ -23,7 +21,7 @@
 />
 
 <Main>
-    <Hero title={data.heroTitle} subtitle={data.heroSubtitle} heroLayout={data.heroLayout} />
+    <Hero />
     <Platforms headline="Designed for the tools you work with" />
     <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
     <Bento />

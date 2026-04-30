@@ -51,6 +51,7 @@ jobs:
                       "SENTRY_RELEASE=${{ github.event.release.tag_name }}"
 
     deploy_kubernetes:
+        if: github.event_name != 'release' || !contains(github.event.release.tag_name, '-rc')
         strategy:
             matrix:
                 region: [{ full: fra1, short: fra }]
