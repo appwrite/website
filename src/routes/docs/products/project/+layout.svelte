@@ -43,6 +43,10 @@
                 {
                     label: 'Policies',
                     href: '/docs/products/project/policies'
+                },
+                {
+                    label: 'Mock phones',
+                    href: '/docs/products/project/mock-phones'
                 }
             ]
         }

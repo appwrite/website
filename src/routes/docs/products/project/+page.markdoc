@@ -28,4 +28,7 @@ Turn individual Appwrite services on or off for your project.
 {% cards_item href="/docs/products/project/policies" title="Policies" %}
 Configure project-wide policies that apply across resources.
 {% /cards_item %}
+{% cards_item href="/docs/products/project/mock-phones" title="Mock phones" %}
+Register fictional phone numbers and OTPs to test phone authentication.
+{% /cards_item %}
 {% /cards %}
