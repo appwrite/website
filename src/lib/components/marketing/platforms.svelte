@@ -139,7 +139,7 @@
                                         sideOffset={8}
                                         side="top"
                                         class={cn(
-                                            'relative hidden rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium text-greyscale-900 md:block',
+                                            'text-greyscale-900 relative hidden rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium md:block',
                                             'dark:bg-greyscale-850 dark:text-greyscale-50',
                                             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                         )}
@@ -149,7 +149,9 @@
                                             aria-hidden="true"
                                         ></div>
                                         <span class="relative z-10">{platform.name}</span>
-                                        <Tooltip.Arrow class="text-greyscale-300 dark:text-greyscale-600" />
+                                        <Tooltip.Arrow
+                                            class="text-greyscale-300 dark:text-greyscale-600"
+                                        />
                                     </Tooltip.Content>
                                 </div>
                             </Tooltip.Root>

@@ -108,7 +108,7 @@
                                             sideOffset={8}
                                             side="bottom"
                                             align="center"
-                                            class="data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium text-greyscale-900 dark:bg-greyscale-850 dark:text-greyscale-50"
+                                            class="data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in text-greyscale-900 dark:bg-greyscale-850 dark:text-greyscale-50 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium"
                                         >
                                             <div
                                                 class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color)/6 to-(--secondary-color)/8 opacity-50 dark:from-white/5 dark:to-transparent"
