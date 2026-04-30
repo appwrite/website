@@ -25,7 +25,7 @@
 <Main>
     <Hero title={data.heroTitle} subtitle={data.heroSubtitle} heroLayout={data.heroLayout} />
     <Platforms headline="Designed for the tools you work with" />
-    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
+    <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
     <Bento />
     <Pullquote
         name="Phil McCluskey"
