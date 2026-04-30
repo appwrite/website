@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Variables API: Manage function, site, and project variables from your Server SDKs"
 description: Environment variables for functions, sites, and projects can now be created, updated, and deleted programmatically through the Appwrite Server SDKs. Provision configuration as code, rotate secrets in scripts, and bootstrap new environments without touching the Console.
-date: 2026-04-28
+date: 2026-04-30
 cover: /images/blog/announcing-variables-api/cover.png
 timeToRead: 4
 author: matej-baco
