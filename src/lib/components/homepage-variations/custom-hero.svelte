@@ -87,7 +87,7 @@
         'relative flex max-w-screen items-center',
         layoutAside
             ? 'overflow-hidden py-10 md:py-0 lg:min-h-[680px]'
-            : 'overflow-x-visible overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
+            : 'overflow-hidden overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
