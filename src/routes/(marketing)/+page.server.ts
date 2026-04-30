@@ -43,11 +43,11 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const { heroSubtitleBase, heroLayoutBase, statsigBootstrap } = await loadMarketingHomeStatsigBundle(
-        user,
-        stableId,
-        { subtitle: DEFAULT_HERO_SUBTITLE, layout: 0 }
-    );
+    const { heroSubtitleBase, heroLayoutBase, statsigBootstrap } =
+        await loadMarketingHomeStatsigBundle(user, stableId, {
+            subtitle: DEFAULT_HERO_SUBTITLE,
+            layout: 0
+        });
 
     // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
     // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.

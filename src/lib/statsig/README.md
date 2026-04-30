@@ -1,17 +1,17 @@
 # Statsig layout
 
-| Path                                   | Role                                                                                                            |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `server.ts`                            | Node `Statsig` singleton, `toStatsigUser`, bootstrap payload for the browser SDK.                               |
-| `client.ts`                            | Browser init (`initStatsig`, `whenStatsigReady`), stable id cookie, plugins.                                    |
-| `experiment-eval.ts`                   | Shared readers for typed Statsig evaluations (e.g. layout param keys + `.value` fallback).                      |
-| `experiments/marketing-hero-ids.ts`    | Experiment id strings only (safe on **client** and server).                                                     |
-| `experiments/marketing-hero-client.ts` | Browser-only: `readMarketingHeroExperimentsForExposure` (import from **Svelte** / client code).                 |
+| Path                                   | Role                                                                                                                        |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `server.ts`                            | Node `Statsig` singleton, `toStatsigUser`, bootstrap payload for the browser SDK.                                           |
+| `client.ts`                            | Browser init (`initStatsig`, `whenStatsigReady`), stable id cookie, plugins.                                                |
+| `experiment-eval.ts`                   | Shared readers for typed Statsig evaluations (e.g. layout param keys + `.value` fallback).                                  |
+| `experiments/marketing-hero-ids.ts`    | Experiment id strings only (safe on **client** and server).                                                                 |
+| `experiments/marketing-hero-client.ts` | Browser-only: `readMarketingHeroExperimentsForExposure` (import from **Svelte** / client code).                             |
 | `experiments/marketing-hero-server.ts` | Server-only: `loadMarketingHomeStatsigBundle` (cached homepage batch), `evaluateHero*`, etc. (never import from `.svelte`). |
-| `hero-statsig.server.ts`               | Thin re-export barrel (legacy import path for `+page.server.ts`).                                               |
-| `hero-query-overrides.ts`              | URL query overrides for local QA (`?hero_layout=`, `?hero_subtitle=`, …).                                       |
-| `hero-layout.ts`                       | Pure `normalizeHeroLayout` + `HeroLayoutVariant` type (no network).                                             |
-| `cta-events.ts`                        | Which analytics events mirror into Statsig.                                                                     |
+| `hero-statsig.server.ts`               | Thin re-export barrel (legacy import path for `+page.server.ts`).                                                           |
+| `hero-query-overrides.ts`              | URL query overrides for local QA (`?hero_layout=`, `?hero_subtitle=`, …).                                                   |
+| `hero-layout.ts`                       | Pure `normalizeHeroLayout` + `HeroLayoutVariant` type (no network).                                                         |
+| `cta-events.ts`                        | Which analytics events mirror into Statsig.                                                                                 |
 
 ## Adding a new experiment (marketing hero)
 

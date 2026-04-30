@@ -23,7 +23,8 @@
         "test:integration": "playwright test",
         "test:unit": "vitest",
         "optimize": "bun ./scripts/optimize-assets.js",
-        "optimize:all": "bun ./scripts/optimize-all.js"
+        "optimize:all": "bun ./scripts/optimize-all.js",
+        "benchmark:http": "k6 run scripts/benchmark-k6.js"
     },
     "dependencies": {
         "@sentry/sveltekit": "^10.28.0",
