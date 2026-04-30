@@ -57,7 +57,7 @@
         <Pricing />
     {:else}
         <!-- Placeholder to keep the footer below the fold on SSR -->
-        <div style="height: 100vh;" aria-hidden="true"></div>
+        <div class="h-screen" aria-hidden="true"></div>
     {/if}
 </Main>
 
