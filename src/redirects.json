@@ -1,5 +1,9 @@
 [
     {
+        "link": "/docs/advanced/platform/api-keys",
+        "redirect": "/docs/products/project/api-keys"
+    },
+    {
         "link": "/docs/getting-started-for-web",
         "redirect": "/docs/quick-starts"
     },
@@ -201,7 +205,7 @@
     },
     {
         "link": "/docs/keys",
-        "redirect": "/docs/advanced/platform/api-keys"
+        "redirect": "/docs/products/project/api-keys"
     },
     {
         "link": "/docs/permissions",

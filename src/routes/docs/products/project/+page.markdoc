@@ -1,0 +1,31 @@
+---
+layout: article
+title: Project
+description: Configure your Appwrite project, including auth methods, platforms, protocols, services, and policies.
+back: /docs
+---
+
+An Appwrite **Project** is the top-level container for all the resources your app uses, from users and databases to storage buckets and functions. The settings on a project control which authentication methods are available, which client platforms can connect, which protocols and services are exposed, and which policies apply to the resources inside it.
+
+# Concepts {% #concepts %}
+
+{% cards %}
+{% cards_item href="/docs/products/project/auth-methods" title="Auth methods" %}
+Enable or disable authentication methods on your project.
+{% /cards_item %}
+{% cards_item href="/docs/products/project/api-keys" title="API keys" %}
+Create and manage API keys used by Server SDKs.
+{% /cards_item %}
+{% cards_item href="/docs/products/project/platforms" title="Platforms" %}
+Register the apps and origins that are allowed to call your project.
+{% /cards_item %}
+{% cards_item href="/docs/products/project/protocols" title="Protocols" %}
+Toggle the API protocols clients can use to reach your project.
+{% /cards_item %}
+{% cards_item href="/docs/products/project/services" title="Services" %}
+Turn individual Appwrite services on or off for your project.
+{% /cards_item %}
+{% cards_item href="/docs/products/project/policies" title="Policies" %}
+Configure project-wide policies that apply across resources.
+{% /cards_item %}
+{% /cards %}
