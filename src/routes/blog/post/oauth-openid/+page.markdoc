@@ -18,7 +18,7 @@ OAuth is an open standard for access delegation commonly used as a way for inter
 ## The OAuth 2.0 authorization flow
 
 1. **User authorization request**: The process begins when a user tries to access a resource or service that requires them to log in via a third-party service (like logging into a website using their Google account). The website (client) redirects the user to log in to the third-party service (authorization server).
-2. **User login**: The user logs in to the third-party service. This step involves user authentication by the third-party service, but this authentication process is not part of OAuth—it's handled entirely by the third-party service.
+2. **User login**: The user logs in to the third-party service. This step involves user authentication by the third-party service, but this authentication process is not part of OAuth; it's handled entirely by the third-party service.
 3. **Grant access**: After successful login, the third-party service asks the user if they want to grant the requesting website access to their information. If the user consents, the third-party service (authorization server) redirects the user back to the website with an authorization code.
 4. **Access token request**: The website (now having the authorization code) makes a separate request to the third-party service, exchanging the authorization code for an access token.
 5. **Access token response**: The third-party service responds with an access token (and sometimes a refresh token).

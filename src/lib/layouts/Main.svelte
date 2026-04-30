@@ -243,11 +243,14 @@
                     href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
                     target={isOfferPage ? undefined : '_blank'}
                     rel={isOfferPage ? undefined : 'noopener noreferrer'}
-                    class="web-u-inline-width-100-percent-mobile"
+                    class="web-u-inline-width-100-percent-mobile is-github-stat-link"
                     style={isOfferPage ? 'pointer-events: none;' : ''}
+                    event={isOfferPage ? undefined : 'main-github_star_nav-click'}
+                    aria-label={isOfferPage
+                        ? 'Appwrite on GitHub'
+                        : `Appwrite on GitHub, ${SOCIAL_STATS.GITHUB.STAT} stars`}
                 >
-                    <Icon name="star" aria-hidden="true" />
-                    <span class="text">Star on GitHub</span>
+                    <Icon name="github" aria-hidden="true" />
                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                 </Button>
                 <IsLoggedIn offerButton={isOfferPage} />

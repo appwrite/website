@@ -138,6 +138,12 @@
                     isParent: true
                 },
                 {
+                    label: 'Terraform',
+                    href: '/docs/tooling/terraform',
+                    icon: 'web-icon-terraform',
+                    isParent: true
+                },
+                {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
                     icon: 'web-icon-command'

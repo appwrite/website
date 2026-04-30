@@ -497,7 +497,7 @@ The source code for the app we built in this guide is available on [GitHub](http
 
 **1. What makes WebLLM different from other LLM frameworks?**
 
-Unlike traditional LLM setups that rely on cloud APIs, WebLLM runs models entirely in your browser. It uses WebGPU for GPU acceleration, meaning everything—from token generation to inference—happens locally. This provides privacy, faster responses, and zero server dependency once the model is downloaded.
+Unlike traditional LLM setups that rely on cloud APIs, WebLLM runs models entirely in your browser. It uses WebGPU for GPU acceleration, meaning everything (from token generation to inference) happens locally. This provides privacy, faster responses, and zero server dependency once the model is downloaded.
 
 **2. Can WebLLM really run large models like Llama 3 or Phi on my device?**
 

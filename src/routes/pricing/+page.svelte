@@ -126,6 +126,7 @@
                                                         project</span
                                                     >
                                                 </li>
+                                                <li><span>15-minute build timeouts</span></li>
                                             </ul>
                                             <p class="text-caption text-secondary mt-4">
                                                 Free projects are paused after 1 week of inactivity.
@@ -202,6 +203,9 @@
                                                     <span
                                                         >Unlimited Databases, Buckets, and Functions</span
                                                     >
+                                                </li>
+                                                <li>
+                                                    <span>45-minute build timeouts</span>
                                                 </li>
                                             </ul>
                                         </div>

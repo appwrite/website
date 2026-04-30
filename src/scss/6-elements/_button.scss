@@ -289,3 +289,22 @@
     }
   }
 }
+
+// GitHub repo control: icon + star count only (no text label)
+.#{$p}-button.is-github-stat-link {
+  gap: pxToRem(6);
+  padding-inline: pxToRem(10);
+  min-inline-size: pxToRem(44);
+
+  & > svg {
+    flex-shrink: 0;
+  }
+
+  &.is-text > svg {
+    opacity: 0.72;
+  }
+
+  &.is-text:where(:hover, :active, [data-highlighted]):where(:not(#{$disabled})) > svg {
+    opacity: 1;
+  }
+}

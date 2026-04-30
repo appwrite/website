@@ -31,6 +31,9 @@ AI-powered IDEs and code editors provide intelligent code completion and context
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-code" title="Claude Code" image="/images/docs/mcp/logos/claude.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/codex" title="Codex" image="/images/docs/mcp/logos/openai.svg" %}
+{% /cards_item %}
+
 {% /cards %}
 {% /only_light %}
 
@@ -53,6 +56,9 @@ AI-powered IDEs and code editors provide intelligent code completion and context
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/ai-dev-tools/claude-code" title="Claude Code" image="/images/docs/mcp/logos/dark/claude.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/ai-dev-tools/codex" title="Codex" image="/images/docs/mcp/logos/dark/openai.svg" %}
 {% /cards_item %}
 
 {% /cards %}

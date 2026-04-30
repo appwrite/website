@@ -44,9 +44,9 @@ const STARTUPS_CTA: BlogCtaConfig = {
 const AUTH_CTA: BlogCtaConfig = {
     heading: 'Customer identity without the hassle',
     description: 'Add secure authentication in minutes, not weeks.',
-    label: 'Request a demo',
-    href: 'https://appwrite.io/contact-us/enterprise',
-    event: 'blog-cta-auth-demo-btn-click',
+    label: 'Get started',
+    href: getAppwriteDashboardUrl(),
+    event: 'blog-cta-auth-get-started-btn-click',
     points: [
         'Built-in security and compliance',
         'Multiple login methods',

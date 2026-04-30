@@ -21,12 +21,9 @@
 />
 
 <Main>
-    <Hero
-        title="Build like a team of hundreds"
-        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
-    />
+    <Hero />
     <Platforms headline="Designed for the tools you work with" />
-    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
+    <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
     <Bento />
     <Pullquote
         name="Phil McCluskey"

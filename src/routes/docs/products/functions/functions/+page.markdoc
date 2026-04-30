@@ -109,6 +109,10 @@ Under **Settings** - **Resource limits**, you can set **build** and **runtime** 
 
 On Appwrite Cloud, customizing specifications requires the **Pro** plan. See [Compute](/docs/advanced/platform/compute) for tiers, GB-hours, and pricing.
 
+## Build timeout {% #build-timeout %}
+
+On Appwrite Cloud, the **build** phase of each deployment must complete within your plan’s **maximum build duration** (for example, 15 minutes on Free and 45 minutes on Pro and Scale). See [Build timeouts](/docs/advanced/platform/compute#build-timeouts) and the [pricing page](/pricing).
+
 ## Git integration {% #git-integration %}
 You can update the entrypoint file and build settings of your function by navigating to your function > **Settings** > **Configuration**.
 

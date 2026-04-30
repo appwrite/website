@@ -717,6 +717,10 @@
         "redirect": "/docs/tooling/command-line/tables"
     },
     {
+        "link": "/docs/tooling/terraform/databases",
+        "redirect": "/docs/tooling/terraform/resources/databases"
+    },
+    {
         "link": "/docs/tooling/mcp/mcp-for-docs",
         "redirect": "/docs/tooling/mcp/docs"
     },
@@ -839,5 +843,9 @@
     {
         "link": "/install/env",
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
+    },
+    {
+        "link": "/the-appwrite-network",
+        "redirect": "/docs/products/network"
     }
 ]
