@@ -1216,4 +1216,3 @@ This lets you set a default at the project level (for example, `LOG_LEVEL=info`)
 | Variable ID    | 36 characters, `a-z A-Z 0-9 . - _`             |
 | Key            | 255 characters                                 |
 | Value          | 8192 characters                                |
-| Reserved keys  | Any key starting with `APPWRITE_` is reserved  |

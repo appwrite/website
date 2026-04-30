@@ -1304,4 +1304,3 @@ You can mark a variable as secret either when you create it or by updating an ex
 | Variable ID    | 36 characters, `a-z A-Z 0-9 . - _`             |
 | Key            | 255 characters                                 |
 | Value          | 8192 characters                                |
-| Reserved keys  | Any key starting with `APPWRITE_` is reserved  |
