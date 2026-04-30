@@ -125,10 +125,6 @@
             margin-inline-end: pxToRem(24);
         }
 
-        .#{$p}-inline-tag {
-            display: none;
-        }
-
         .#{$p}-button {
             min-block-size: pxToRem(36);
             padding-inline: pxToRem(12);
