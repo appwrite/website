@@ -48,8 +48,8 @@
             name: 'Mickaël Alves',
             role: 'Front-end Consultant',
             bio: 'Mickaël is a front-end developer working as a web consultant in Lyon at Zenika. He co-organizes meetups with LyonJS and speaks at conferences about Appwrite, Flutter, and Remotion.',
-            github: 'https://github.com/CruuzAzul',
-            twitter: 'https://twitter.com/CruuzAzul',
+            github: 'https://github.com/mickaelalvs',
+            twitter: 'https://twitter.com/mickaelalvs',
             linkedin: 'https://www.linkedin.com/in/mickaelalves',
             avatar: 'images/heroes/avatars/mickael.png'
         },
