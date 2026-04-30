@@ -49,6 +49,10 @@
                     href: '/docs/products/sites/domains'
                 },
                 {
+                    label: 'Environment variables',
+                    href: '/docs/products/sites/environment-variables'
+                },
+                {
                     label: 'Frameworks',
                     href: '/docs/products/sites/frameworks'
                 }

@@ -160,18 +160,6 @@ Here are some cron expressions for common intervals:
 | `0 0 * * *`      | Every day at 00:00    |
 | `0 0 * * 1`      | Every Monday at 00:00 |
 
-## Environment variables {% #environment-variables %}
-Set static environment variables that will be passed to your function 
-by navigating to your function > **Settings** > **Environment variables**.
-
-You can also configure global variables that apply to all your functions in the **Settings** of your project.
-
-{% info title="Redeployment required" %}
-This change requires your function to be redeployed to take effect.
-{% /info %}
-
-You can access environment variables inside functions using your [runtime language's system methods](/docs/products/functions/develop#environment-variables).
-
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.
 There is a system wide maximum timeout of 900 seconds (15 minutes).
