@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
     import { cn } from '$lib/utils/cn';
 
     type Props = {
