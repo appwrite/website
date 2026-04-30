@@ -10,18 +10,13 @@
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
     import { themeInUse } from '$routes/+layout.svelte';
+    import { fade } from 'svelte/transition';
 
     type StripItem = QuickStartStripItem;
 
     type MarqueeMobileEntry = StripItem & {
         trackPrefix: 'technologies' | 'ai-tooling';
     };
-
-    /** Full list on small viewports (marquee); desktop `lg+` uses paginated strip. */
-    const headlineMarqueeMobile: MarqueeMobileEntry[] = allFrameworkStrip.map((p) => ({
-        ...p,
-        trackPrefix: 'technologies' as const
-    }));
 
     /** Which page of `FRAMEWORKS_GALLERY_PAGE_SIZE` icons is shown; `+` replaces the strip with the next page. */
     let frameworkBatchIndex = $state(0);
@@ -115,6 +110,10 @@
 
     const { class: className, padded = true, headline }: PlatformsProps = $props();
 
+    const platformsHeading = $derived(
+        headline ?? 'Optimized for your frameworks and AI agents'
+    );
+
     function trackLogo(prefix: 'technologies' | 'ai-tooling', name: string) {
         trackEvent(`${prefix}-${name.replace(/\s+/g, '-').toLowerCase()}-click`);
     }
@@ -180,6 +179,7 @@
                                 class={cn(
                                     'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
                                     'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-w-0 lg:flex-1 lg:basis-0',
+                                    'animate-fade-in [animation-delay:var(--animation-delay,0ms)]',
                                     platformIndex === 0 && 'border-l border-dashed'
                                 )}
                             >
@@ -242,7 +242,7 @@
                 {#each items as platform, platformIndex (`${copy}-${platform.name}`)}
                     <a
                         href={platform.href}
-                        class="border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 shrink-0 items-center justify-center border-dashed"
+                        class="border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
                         style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
                             'transparent'};--animation-delay:{platformIndex * 25}ms"
                         aria-label={platform.name}
@@ -272,106 +272,72 @@
 {/snippet}
 
 <div class={cn('relative z-10', className)}>
-    {#if headline}
-        <div class="border-smooth border-y border-dashed">
-            <div
-                class={cn(
-                    'container flex flex-col items-center py-0 max-lg:pt-4 lg:hidden',
-                    {
-                        'px-0!': !padded
-                    }
-                )}
-            >
-                <GradientText>
-                    <span
-                        class="text-primary mb-3 flex items-center px-4 text-center text-sm font-medium"
-                        >{headline}</span
-                    >
-                </GradientText>
-                {@render marqueeMobileRow(headlineMarqueeMobile)}
-            </div>
-            <div
-                class={cn('container hidden py-0 lg:block', {
+    <div class="border-smooth border-y border-dashed">
+        <div
+            class={cn(
+                'container flex flex-col items-center py-0 max-lg:pt-4 lg:hidden',
+                {
                     'px-0!': !padded
-                })}
-            >
-                <div class="flex max-w-none flex-col gap-1 lg:gap-2">
-                    <h2
-                        class="font-aeonik-pro text-primary text-pretty hidden text-[0.9375rem] leading-snug font-medium tracking-tight lg:block lg:text-base"
-                    >
-                        {headline}
-                    </h2>
-                    {@render logoStrip(
-                        allFrameworkStrip.slice(0, FRAMEWORKS_GALLERY_PAGE_SIZE),
-                        'technologies',
+                }
+            )}
+        >
+            <GradientText>
+                <span
+                    class={cn(
+                        'text-primary mb-3 flex items-center px-4 text-center font-medium',
                         headline
-                    )}
-                </div>
+                            ? 'text-sm'
+                            : 'text-sub-body'
+                    )}>{platformsHeading}</span
+                >
+            </GradientText>
+            <div
+                class="w-full"
+                role="region"
+                aria-label="Frameworks and AI development tools"
+            >
+                {@render marqueeMobileRow(marketingCombinedMarqueeMobile)}
             </div>
         </div>
-    {:else}
-        <div class="border-smooth border-y border-dashed">
-            <div
-                class={cn(
-                    'container flex flex-col items-center py-0 max-lg:pt-4 lg:hidden',
-                    {
-                        'px-0!': !padded
-                    }
-                )}
-            >
-                <GradientText>
-                    <span
-                        class="text-sub-body text-primary mb-3 flex items-center px-4 text-center font-medium"
-                    >
-                        Optimized for your frameworks and AI agents
-                    </span>
-                </GradientText>
+        <div
+            class={cn('container hidden py-0 lg:block', {
+                'px-0!': !padded
+            })}
+        >
+            <div class="grid grid-cols-1 gap-1 lg:grid-cols-3 lg:items-start lg:gap-x-4 lg:gap-y-0">
                 <div
-                    class="w-full"
-                    role="region"
-                    aria-label="Frameworks and AI development tools"
+                    class="grid min-w-0 grid-cols-1 gap-1 sm:gap-2 lg:col-span-2 lg:grid-cols-[minmax(8.25rem,11rem)_minmax(0,1fr)] lg:items-center lg:gap-x-2"
                 >
-                    {@render marqueeMobileRow(marketingCombinedMarqueeMobile)}
-                </div>
-            </div>
-            <div
-                class={cn('container hidden py-0 lg:block', {
-                    'px-0!': !padded
-                })}
-            >
-                <div class="grid grid-cols-1 gap-1 lg:grid-cols-3 lg:items-start lg:gap-x-4 lg:gap-y-0">
-                    <div
-                        class="grid min-w-0 grid-cols-1 gap-1 sm:gap-2 lg:col-span-2 lg:grid-cols-[minmax(8.25rem,11rem)_minmax(0,1fr)] lg:items-center lg:gap-x-2"
-                    >
-                        <h2 class="m-0 hidden lg:max-w-[11rem] lg:block lg:pr-1">
-                            <GradientText
-                                class="font-aeonik-pro text-[0.8125rem] font-medium leading-[1.25] tracking-tight text-pretty lg:text-[0.875rem]"
-                            >
-                                <span class="block">Optimized for your frameworks and AI agents</span>
-                            </GradientText>
-                        </h2>
-                        <div
-                            id="platforms-framework-strip"
-                            role="region"
-                            aria-label="Optimized for your frameworks and AI agents"
-                            class="flex w-full min-w-0 flex-nowrap items-stretch"
+                    <h2 class="m-0 hidden lg:max-w-[11rem] lg:block lg:pr-1">
+                        <GradientText
+                            class="font-aeonik-pro text-[0.8125rem] font-medium leading-[1.25] tracking-tight text-pretty lg:text-[0.875rem]"
                         >
+                            <span class="block">{platformsHeading}</span>
+                        </GradientText>
+                    </h2>
+                    <div
+                        id="platforms-framework-strip"
+                        role="region"
+                        aria-label={platformsHeading}
+                        class="flex w-full min-w-0 flex-nowrap items-stretch"
+                    >
                             <div
                                 id="platforms-framework-strip-icons"
                                 class={cn(
-                                    'min-w-0 flex-1 overflow-x-auto overflow-y-hidden',
+                                    'relative h-14 min-h-14 min-w-0 flex-1 shrink-0 overflow-x-auto overflow-y-hidden',
                                     'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:mask-none',
                                     'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
                                     'lg:overflow-clip'
                                 )}
                             >
                                 <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                                    <div
-                                        class={cn(
-                                            'flex min-h-0 min-w-0 flex-nowrap items-stretch',
-                                            'w-full min-w-0 max-lg:w-max max-lg:min-w-min lg:w-full'
-                                        )}
-                                    >
+                                    {#key frameworkBatchIndex}
+                                        <div
+                                            transition:fade={{ duration: 220 }}
+                                            class={cn(
+                                                'absolute inset-0 flex min-h-14 w-full min-w-0 flex-nowrap items-stretch'
+                                            )}
+                                        >
                                         {#each frameworkStripSlots as platform, platformIndex (`${frameworkBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
                                             {#if platform}
                                                 <Tooltip.Root>
@@ -384,6 +350,7 @@
                                                             class={cn(
                                                                 'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
                                                                 'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-w-0 lg:flex-1 lg:basis-0',
+                                                                'animate-fade-in [animation-delay:var(--animation-delay,0ms)]',
                                                                 platformIndex === 0 && 'border-l border-dashed'
                                                             )}
                                                         >
@@ -438,7 +405,8 @@
                                                 ></div>
                                             {/if}
                                         {/each}
-                                    </div>
+                                        </div>
+                                    {/key}
                                 </Tooltip.Provider>
                             </div>
                             {#if hasFrameworkStripPagination}
@@ -456,35 +424,34 @@
                 </div>
             </div>
         </div>
-        <div
-            class={cn('container pt-3', {
-                'px-0!': !padded
-            })}
-        >
-            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4">
-                <div class="hidden lg:block lg:col-span-2" aria-hidden="true"></div>
-                <div class="flex min-w-0 justify-center lg:col-span-1">
-                    <nav
-                        class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] font-medium leading-tight lg:text-xs"
-                        aria-label="AI and MCP documentation"
-                    >
-                        {#each aiDocLinks as link, i (link.href)}
-                            {#if i > 0}
-                                <span class="text-primary/25 px-0.5 select-none" aria-hidden="true">·</span>
-                            {/if}
-                            <a
-                                href={link.href}
-                                class="text-secondary hover:text-primary underline-offset-4 transition-colors hover:underline"
-                                target={link.href.startsWith('https://') ? '_blank' : undefined}
-                                rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
-                                onclick={() => trackDoc(link.label)}
-                            >
-                                {link.label}
-                            </a>
-                        {/each}
-                    </nav>
-                </div>
+    <div
+        class={cn('container pt-3', {
+            'px-0!': !padded
+        })}
+    >
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4">
+            <div class="hidden lg:block lg:col-span-2" aria-hidden="true"></div>
+            <div class="flex min-w-0 justify-center lg:col-span-1">
+                <nav
+                    class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] font-medium leading-tight lg:text-xs"
+                    aria-label="AI and MCP documentation"
+                >
+                    {#each aiDocLinks as link, i (link.href)}
+                        {#if i > 0}
+                            <span class="text-primary/25 px-0.5 select-none" aria-hidden="true">·</span>
+                        {/if}
+                        <a
+                            href={link.href}
+                            class="text-secondary hover:text-primary underline-offset-4 transition-colors hover:underline"
+                            target={link.href.startsWith('https://') ? '_blank' : undefined}
+                            rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+                            onclick={() => trackDoc(link.label)}
+                        >
+                            {link.label}
+                        </a>
+                    {/each}
+                </nav>
             </div>
         </div>
-    {/if}
+    </div>
 </div>
