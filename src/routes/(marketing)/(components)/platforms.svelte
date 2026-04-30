@@ -11,6 +11,7 @@
     import { trackEvent } from '$lib/actions/analytics';
     import { themeInUse } from '$routes/+layout.svelte';
     import { fade } from 'svelte/transition';
+    import { Icon } from '$lib/components/ui';
 
     type StripItem = QuickStartStripItem;
 
@@ -138,10 +139,9 @@
         <button
             type="button"
             class={cn(
-                'inline-flex h-6 min-h-6 w-12 min-w-12 max-w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 px-0',
-                'text-[0.625rem] font-semibold tabular-nums leading-none tracking-wide',
-                'bg-black/[0.1] text-secondary transition-[color,background-color] hover:bg-black/[0.16] hover:text-primary',
-                'dark:bg-white/[0.12] dark:text-greyscale-300 dark:hover:bg-white/[0.18] dark:hover:text-white'
+                'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
+                'text-secondary transition-colors hover:text-primary',
+                'dark:text-greyscale-300 dark:hover:text-white'
             )}
             aria-controls="platforms-framework-strip-icons"
             aria-label={hasMoreFrameworks
@@ -149,7 +149,13 @@
                 : 'Return to start of quick-start frameworks'}
             onclick={advanceOrResetFrameworkStrip}
         >
-            {hasMoreFrameworks ? 'more' : 'start'}
+            <Icon
+                name="chevron-right"
+                width={18}
+                height={18}
+                class="shrink-0 opacity-90"
+                aria-hidden="true"
+            />
         </button>
     </div>
 {/snippet}
@@ -304,9 +310,9 @@
                 'px-0!': !padded
             })}
         >
-            <div class="grid grid-cols-1 gap-1 lg:grid-cols-3 lg:items-start lg:gap-x-4 lg:gap-y-0">
+            <div class="grid grid-cols-1 gap-3 lg:grid-cols-3 lg:items-start lg:gap-x-8 lg:gap-y-0">
                 <div
-                    class="grid min-w-0 grid-cols-1 gap-1 sm:gap-2 lg:col-span-2 lg:grid-cols-[minmax(8.25rem,11rem)_minmax(0,1fr)] lg:items-center lg:gap-x-2"
+                    class="grid min-w-0 grid-cols-1 gap-3 sm:gap-4 lg:col-span-2 lg:grid-cols-[minmax(8.25rem,11rem)_minmax(0,1fr)] lg:items-center lg:gap-x-4"
                 >
                     <h2 class="m-0 hidden lg:max-w-[11rem] lg:block lg:pr-1">
                         <GradientText
@@ -429,7 +435,7 @@
             'px-0!': !padded
         })}
     >
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8">
             <div class="hidden lg:block lg:col-span-2" aria-hidden="true"></div>
             <div class="flex min-w-0 justify-center lg:col-span-1">
                 <nav
