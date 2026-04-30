@@ -260,7 +260,6 @@ messaging.create_email(
                         <span class="text-eyebrow text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
-                        <span class="web-hero-banner-button text-eyebrow uppercase">BETA</span>
                     </div>
                     <h1 class="text-display font-aeonik-pro text-primary">
                         Open source messaging service for developers

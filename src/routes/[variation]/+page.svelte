@@ -35,10 +35,7 @@
     {/if}
 
     {#if config.showLogoList}
-        <LogoList
-            class="border-smooth border-b"
-            title="Loved by developers from the world's leading organizations"
-        />
+        <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
     {/if}
 
     {#if config.showBento}
