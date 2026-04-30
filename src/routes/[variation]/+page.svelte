@@ -31,7 +31,7 @@
     />
 
     {#if config.showPlatforms}
-        <Platforms headline="Designed for the tools you work with" />
+        <Platforms />
     {/if}
 
     {#if config.showLogoList}

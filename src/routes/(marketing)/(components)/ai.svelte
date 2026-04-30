@@ -9,14 +9,10 @@
     import AiTable from './ai-table.svelte';
 
     const tools = [
-        { name: 'VS Code', src: '/images/docs/mcp/logos/dark/vscode.svg', primary: '#0078D7' },
+        { name: 'Claude Code', src: '/images/docs/mcp/logos/dark/claude.svg', primary: '#D97659' },
+        { name: 'Codex', src: '/images/docs/mcp/logos/dark/openai.svg', primary: '#10A37F' },
         { name: 'Cursor', src: '/images/docs/mcp/logos/dark/cursor-ai.svg', primary: '#fff' },
-        {
-            name: 'Windsurf',
-            src: '/images/docs/mcp/logos/dark/windsurf.svg',
-            primary: '#0EA5E9'
-        },
-        { name: 'Claude', src: '/images/docs/mcp/logos/dark/claude.svg', primary: '#D97659' },
+        { name: 'VS Code', src: '/images/docs/mcp/logos/dark/vscode.svg', primary: '#0078D7' },
         { name: 'OpenCode', src: '/images/docs/mcp/logos/dark/opencode.svg', primary: '#fff' },
         {
             name: 'Google Antigravity',
@@ -48,7 +44,7 @@
 <div class="border-smooth border-t pb-16">
     <div class="container pt-20 pb-0">
         <h2 class="font-aeonik-pro text-title text-primary sm:text-subtitle mb-12">
-            Streamline your AI workflows<span class="text-accent">_</span>
+            Built for the AI agents in your workflow<span class="text-accent">_</span>
         </h2>
 
         <div class="grid grid-cols-1 overflow-hidden sm:grid-cols-2">
@@ -112,12 +108,13 @@
                                             sideOffset={8}
                                             side="bottom"
                                             align="center"
-                                            class="text-primary dark:bg-greyscale-900 data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm"
+                                            class="data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in text-greyscale-900 dark:bg-greyscale-850 dark:text-greyscale-50 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium"
                                         >
-                                            <span class="relative z-10">{tool.name}</span>
                                             <div
-                                                class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10"
+                                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color)/6 to-(--secondary-color)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                                aria-hidden="true"
                                             ></div>
+                                            <span class="relative z-10">{tool.name}</span>
                                         </Tooltip.Content>
                                     </Tooltip.Portal>
                                 </div>

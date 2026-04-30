@@ -26,10 +26,16 @@
 
     const ideAiTools: AiToolCard[] = [
         {
-            href: '/docs/tooling/mcp/vscode',
-            title: 'VS Code',
-            logo: '/images/docs/mcp/logos/dark/vscode.svg',
-            event: 'docs-ai-ide_vscode-click'
+            href: '/docs/tooling/mcp/claude-code',
+            title: 'Claude Code',
+            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            event: 'docs-ai-ide_claude-code-click'
+        },
+        {
+            href: '/docs/tooling/ai/ai-dev-tools/codex',
+            title: 'Codex',
+            logo: '/images/docs/mcp/logos/dark/openai.svg',
+            event: 'docs-ai-ide_codex-click'
         },
         {
             href: '/docs/tooling/mcp/cursor',
@@ -38,10 +44,10 @@
             event: 'docs-ai-ide_cursor-click'
         },
         {
-            href: '/docs/tooling/mcp/windsurf',
-            title: 'Windsurf Editor',
-            logo: '/images/docs/mcp/logos/dark/windsurf.svg',
-            event: 'docs-ai-ide_windsurf-click'
+            href: '/docs/tooling/mcp/vscode',
+            title: 'VS Code',
+            logo: '/images/docs/mcp/logos/dark/vscode.svg',
+            event: 'docs-ai-ide_vscode-click'
         },
         {
             href: '/docs/tooling/mcp/opencode',
@@ -54,18 +60,6 @@
             title: 'Google Antigravity',
             logo: '/images/docs/mcp/logos/dark/google-antigravity.svg',
             event: 'docs-ai-ide_antigravity-click'
-        },
-        {
-            href: '/docs/tooling/mcp/claude-code',
-            title: 'Claude Code',
-            logo: '/images/docs/mcp/logos/dark/claude.svg',
-            event: 'docs-ai-ide_claude-code-click'
-        },
-        {
-            href: '/docs/tooling/ai/ai-dev-tools/codex',
-            title: 'Codex',
-            logo: '/images/docs/mcp/logos/dark/openai.svg',
-            event: 'docs-ai-ide_codex-click'
         }
     ];
 
