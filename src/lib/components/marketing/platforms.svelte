@@ -139,14 +139,17 @@
                                         sideOffset={8}
                                         side="top"
                                         class={cn(
-                                            'text-primary bg-greyscale-900 relative hidden rounded-md border-0! px-2.5 py-1 text-sm md:block',
+                                            'relative hidden rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium text-greyscale-900 md:block',
+                                            'dark:bg-greyscale-850 dark:text-greyscale-50',
                                             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                         )}
-                                        >{platform.name}
+                                    >
                                         <div
-                                            class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
+                                            class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                            aria-hidden="true"
                                         ></div>
-                                        <Tooltip.Arrow class="text-(--primary-color)/4" />
+                                        <span class="relative z-10">{platform.name}</span>
+                                        <Tooltip.Arrow class="text-greyscale-300 dark:text-greyscale-600" />
                                     </Tooltip.Content>
                                 </div>
                             </Tooltip.Root>
