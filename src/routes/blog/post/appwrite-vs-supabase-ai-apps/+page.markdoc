@@ -18,7 +18,7 @@ This article looks at Appwrite as a Supabase alternative for AI apps, focused on
 
 Both Appwrite and Supabase are open-source backend platforms with managed cloud offerings and supported self-hosting. Both give an AI coding agent a single surface for identity, persistent data, files, server-side code, live updates, and (in Appwrite's case) deployment. The shape of each platform is what differs.
 
-Appwrite presents a unified suite: [Auth](/docs/products/auth), [databases with tables, rows, and columns](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Realtime](/docs/products/realtime), and [Sites](/docs/products/sites) for hosting full-stack frameworks. All of it is reachable through a consistent set of SDKs and through [Appwrite's MCP servers for the API and docs](/docs/tooling/ai/mcp-servers/api). The platform enforces permissions at the row level so AI-generated client code does not have to guess.
+Appwrite presents a unified suite: [Auth](/docs/products/auth), [databases with tables, rows, and columns](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), and [Sites](/docs/products/sites) for hosting full-stack frameworks. All of it is reachable through a consistent set of SDKs and through [Appwrite's MCP servers for the API and docs](/docs/tooling/ai/mcp-servers/api). The platform enforces permissions at the row level so AI-generated client code does not have to guess.
 
 Supabase wraps Postgres with generated REST and GraphQL APIs, Auth, Storage, Realtime, and Edge Functions. It leans into direct SQL access, Row Level Security policies, and pgvector for embeddings. Supabase also ships an official MCP server so AI tools can query and manipulate a project on your behalf. The shape favors developers who want Postgres as the source of truth and are comfortable with SQL and policy code, including when that code comes from an agent.
 
@@ -75,7 +75,7 @@ Supabase Edge Functions run on Deno at the edge, triggered by HTTP. Scheduling u
 
 # Realtime and live updates
 
-Appwrite [Realtime](/docs/products/realtime) broadcasts changes across databases, Auth, Storage, and Functions on a unified channel model, so an agent subscribing to "new rows in this table" uses the same API shape as "files uploaded in this bucket". The docs also describe [persistent agents with Realtime](/docs/tooling/ai) for live agent state.
+Appwrite [Realtime](/docs/apis/realtime) broadcasts changes across databases, Auth, Storage, and Functions on a unified channel model, so an agent subscribing to "new rows in this table" uses the same API shape as "files uploaded in this bucket". The docs also describe [persistent agents with Realtime](/docs/tooling/ai) for live agent state.
 
 Supabase Realtime covers Postgres changes, broadcast, and presence. Postgres Changes is tightly coupled to replication, which is a clean fit when your agent is thinking in tables and rows, and less clean when it wants to react to an auth or storage event.
 
@@ -127,7 +127,7 @@ Neither Appwrite nor Supabase does model inference for you; both plug into OpenA
 - [Appwrite databases](/docs/products/databases)
 - [Appwrite Storage](/docs/products/storage)
 - [Appwrite Functions](/docs/products/functions)
-- [Appwrite Realtime](/docs/products/realtime)
+- [Appwrite Realtime](/docs/apis/realtime)
 - [Appwrite Sites](/docs/products/sites)
 - [AI tooling on Appwrite](/docs/tooling/ai)
 - [MCP server for the Appwrite API](/docs/tooling/ai/mcp-servers/api)

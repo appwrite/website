@@ -18,7 +18,7 @@ This is a decision piece, not a tutorial. It compares the Replit Agent database 
 
 Replit Agent is an all-in-one AI app builder. Inside Replit, an app gets a built-in SQL database, App Storage for files, Replit Auth or Clerk Auth, Secrets for environment variables, and Publishing for deployments, all orchestrated by the agent. The pitch is speed and cohesion: one workspace, one chat thread, one bill.
 
-Appwrite is a backend platform. It gives an app [Auth](/docs/products/auth), [databases with tables, rows, and columns](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Realtime](/docs/products/realtime), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites), reachable through SDKs, REST APIs, and [official MCP servers](/docs/tooling/ai/mcp-servers/api). It runs on Appwrite Cloud or self-hosted through Docker.
+Appwrite is a backend platform. It gives an app [Auth](/docs/products/auth), [databases with tables, rows, and columns](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites), reachable through SDKs, REST APIs, and [official MCP servers](/docs/tooling/ai/mcp-servers/api). It runs on Appwrite Cloud or self-hosted through Docker.
 
 These are not direct substitutes. Replit Agent owns the builder experience and ships a backend so the generated app can run on day one. Appwrite owns the backend layer and expects the frontend to come from somewhere else, including a Replit Agent build, a Cursor project, or hand-written code.
 
@@ -80,7 +80,7 @@ The practical difference: on Replit, a scheduled cleanup job shares a runtime wi
 
 # Realtime and live updates
 
-Appwrite [Realtime](/docs/products/realtime) is a managed channel-based layer that broadcasts changes across databases, Auth, Storage, and Functions. An AI agent subscribing to "new rows in this table" uses the same API shape as "files uploaded in this bucket", which keeps live UI generation predictable.
+Appwrite [Realtime](/docs/apis/realtime) is a managed channel-based layer that broadcasts changes across databases, Auth, Storage, and Functions. An AI agent subscribing to "new rows in this table" uses the same API shape as "files uploaded in this bucket", which keeps live UI generation predictable.
 
 Replit does not ship a managed realtime service. Apps that need live updates build their own, typically using WebSockets or Server-Sent Events inside the deployed app. That works, and it is also one more piece of code for the AI builder to generate and keep correct as the schema changes.
 
@@ -134,7 +134,7 @@ Replit Agent is a builder that happens to include a backend. Appwrite is a backe
 - [Appwrite databases](/docs/products/databases)
 - [Appwrite Storage](/docs/products/storage)
 - [Appwrite Functions](/docs/products/functions)
-- [Appwrite Realtime](/docs/products/realtime)
+- [Appwrite Realtime](/docs/apis/realtime)
 - [Appwrite Sites](/docs/products/sites)
 - [AI tooling on Appwrite](/docs/tooling/ai)
 - [MCP server for the Appwrite API](/docs/tooling/ai/mcp-servers/api)
