@@ -18,12 +18,12 @@
 
 <Head
     title="Appwrite - Build like a team of hundreds"
-    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Hosting."
+    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Sites for static sites, SSR, and CSR frontends."
 />
 
 <Main>
     <Hero />
-    <Platforms headline="Designed for the tools you work with" />
+    <Platforms headline="Optimized for the frameworks, languages and agents you love" />
     <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
 
     {#if browser}

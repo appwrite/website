@@ -140,8 +140,8 @@
             <h3 class="font-aeonik-pro text-label text-primary">Sites</h3>
         </div>
         <p class="text-sub-body text-primary max-w-lg font-medium">
-            <span class="text-secondary">Host and maintain</span> your website domains and frontend code.
-            Integrated with all Appwrite products.
+            <span class="text-secondary">Deploy static, SSR, and CSR frontends</span> to your domains,
+            with full Appwrite platform behind them. CDN and DDoS protection built-in.
         </p>
     </div>
     <div

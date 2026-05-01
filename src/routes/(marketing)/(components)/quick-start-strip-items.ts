@@ -36,6 +36,7 @@ import Solid from '../(assets)/icons/solid.svg';
 import Qwik from '../(assets)/icons/qwik.svg';
 import Javascript from '../(assets)/icons/javascript.svg';
 import Refine from '$icons/svg/refine.svg';
+import Remix from '$icons/svg/remix.svg';
 
 export type QuickStartStripItem = {
     name: string;
@@ -54,7 +55,7 @@ export const MARKETING_HOME_FIRST_NAMES = [
     'React',
     'Next.js',
     'Vue',
-    'Angular',
+    'TanStack Start',
     'SvelteKit',
     'Nuxt',
     'Astro',
@@ -67,6 +68,13 @@ const quickStartStripSource: QuickStartStripItem[] = [
     { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
     { name: 'Next.js', dark: Nextjs, href: '/docs/quick-starts/nextjs', primary: '#fff' },
     { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
+    {
+        name: 'TanStack Start',
+        dark: TanStack,
+        light: TanStackLight,
+        href: '/docs/quick-starts/tanstack-start',
+        primary: '#fff'
+    },
     { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
     {
         name: 'SvelteKit',
@@ -76,16 +84,16 @@ const quickStartStripSource: QuickStartStripItem[] = [
     },
     { name: 'Nuxt', dark: Nuxt, href: '/docs/quick-starts/nuxt', primary: '#00DC82' },
     { name: 'Astro', dark: Astro, href: '/docs/quick-starts/astro', primary: '#FF5D01' },
-    {
-        name: 'TanStack Start',
-        dark: TanStack,
-        light: TanStackLight,
-        href: '/docs/quick-starts/tanstack-start',
-        primary: '#fff'
-    },
     { name: 'Qwik', dark: Qwik, href: '/docs/quick-starts/qwik', primary: '#18B6F6' },
     { name: 'Solid', dark: Solid, href: '/docs/quick-starts/solid', primary: '#518AC8' },
     { name: 'Refine', dark: Refine, href: '/docs/quick-starts/refine', primary: '#FF6E42' },
+    {
+        name: 'Remix',
+        dark: Remix,
+        href: '/docs/products/sites/quick-start/remix',
+        primary: '#3992FF',
+        secondary: '#121212'
+    },
     {
         name: 'Web',
         dark: Javascript,

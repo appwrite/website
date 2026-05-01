@@ -10,7 +10,6 @@
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
     import { themeInUse } from '$routes/+layout.svelte';
-    import { fade } from 'svelte/transition';
     import { Icon } from '$lib/components/ui';
 
     type StripItem = QuickStartStripItem;
@@ -84,14 +83,6 @@
             light: '/images/docs/mcp/logos/opencode.svg',
             href: '/docs/tooling/mcp/opencode',
             primary: '#fff'
-        },
-        {
-            name: 'Bolt',
-            dark: '/images/docs/mcp/logos/dark/bolt.svg',
-            light: '/images/docs/mcp/logos/bolt.svg',
-            href: '/docs/tooling/ai/ai-dev-tools/bolt',
-            primary: '#FCD34D',
-            secondary: '#18181B'
         }
     ];
 
@@ -114,7 +105,9 @@
 
     const { class: className, padded = true, headline }: PlatformsProps = $props();
 
-    const platformsHeading = $derived(headline ?? 'Optimized for your frameworks and AI agents');
+    const platformsHeading = $derived(
+        headline ?? 'Optimized for the frameworks, languages and agents you love'
+    );
 
     function trackLogo(prefix: 'technologies' | 'ai-tooling', name: string) {
         trackEvent(`${prefix}-${name.replace(/\s+/g, '-').toLowerCase()}-click`);
@@ -124,119 +117,119 @@
         trackEvent(`platforms-ai-doc-${label.toLowerCase().replace(/\s+/g, '-')}-click`);
     }
 
-    function advanceOrResetFrameworkStrip() {
+    function stepFrameworkStripBack() {
+        if (frameworkBatchIndex > 0) {
+            frameworkBatchIndex -= 1;
+            trackEvent('technologies-framework-strip-back-click');
+        }
+    }
+
+    function stepFrameworkStripForward() {
         if (hasMoreFrameworks) {
             frameworkBatchIndex += 1;
             trackEvent('technologies-framework-strip-advance-click');
-        } else {
-            frameworkBatchIndex = 0;
-            trackEvent('technologies-framework-strip-reset-click');
         }
     }
 </script>
 
-{#snippet frameworkStripPager()}
-    <div class="border-smooth flex h-14 shrink-0 items-center pr-0.5 pl-1">
+{#snippet frameworkStripPagerBack()}
+    <div class="-mr-1.5 flex h-14 shrink-0 items-center pr-0.5 pl-0 sm:-mr-2 lg:-mr-3">
         <button
             type="button"
             class={cn(
                 'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
-                'text-secondary hover:text-primary transition-colors',
-                'dark:text-greyscale-300 dark:hover:text-white'
+                'text-secondary transition-colors hover:text-primary',
+                'dark:text-greyscale-300 dark:hover:text-white',
+                'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:text-secondary',
+                'dark:disabled:hover:text-greyscale-300'
             )}
             aria-controls="platforms-framework-strip-icons"
-            aria-label={hasMoreFrameworks
-                ? 'Show next quick-start frameworks'
-                : 'Return to start of quick-start frameworks'}
-            onclick={advanceOrResetFrameworkStrip}
+            aria-label="Show previous quick-start frameworks"
+            disabled={frameworkBatchIndex === 0}
+            onclick={stepFrameworkStripBack}
         >
-            <Icon
-                name="chevron-right"
-                width={18}
-                height={18}
-                class="shrink-0 opacity-90"
-                aria-hidden="true"
-            />
+            <Icon name="chevron-left" width={18} height={18} class="shrink-0 opacity-90" aria-hidden="true" />
         </button>
     </div>
 {/snippet}
 
-{#snippet logoStrip(
-    items: StripItem[],
-    prefix: 'technologies' | 'ai-tooling',
-    regionLabel?: string
-)}
-    <div
-        role={regionLabel ? 'region' : undefined}
-        aria-label={regionLabel}
-        class={cn(
-            'flex w-full min-w-0 flex-nowrap overflow-x-auto overflow-y-hidden lg:overflow-clip',
-            'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:mask-none',
-            'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
-        )}
-    >
-        <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-            <div
-                class="flex min-w-0 flex-nowrap max-lg:w-max max-lg:min-w-min lg:w-full lg:min-w-0"
-            >
-                {#each items as platform, platformIndex (platform.name)}
-                    <Tooltip.Root>
-                        <div
-                            class="contents"
-                            style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                                'transparent'};--animation-delay:{platformIndex * 12}ms"
-                        >
-                            <Tooltip.Trigger
-                                class={cn(
-                                    'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
-                                    'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-w-0 lg:flex-1 lg:basis-0',
-                                    'animate-fade-in [animation-delay:var(--animation-delay,0ms)]',
-                                    platformIndex === 0 && 'border-l border-dashed'
-                                )}
-                            >
-                                <div
-                                    class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
-                                >
-                                    <Noise opacity={0.1} />
-                                </div>
-                                <a
-                                    href={platform.href}
-                                    class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
-                                    aria-label={platform.name}
-                                    onclick={() => trackLogo(prefix, platform.name)}
-                                >
-                                    <img
-                                        src={$themeInUse === 'light' && platform.light
-                                            ? platform.light
-                                            : platform.dark}
-                                        alt=""
-                                        class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
-                                    />
-                                </a>
-                            </Tooltip.Trigger>
-                            <Tooltip.Portal>
-                                <Tooltip.Content
-                                    sideOffset={6}
-                                    side="top"
-                                    class={cn(
-                                        'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
-                                        'dark:bg-greyscale-850 dark:text-greyscale-50',
-                                        'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
-                                    )}
-                                >
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
-                                        aria-hidden="true"
-                                    ></div>
-                                    <span class="relative z-10">{platform.name}</span>
-                                </Tooltip.Content>
-                            </Tooltip.Portal>
-                        </div>
-                    </Tooltip.Root>
-                {/each}
-            </div>
-        </Tooltip.Provider>
+{#snippet frameworkStripPagerForward()}
+    <div class="-ml-1.5 flex h-14 shrink-0 items-center pr-0.5 pl-0 sm:-ml-2 lg:-ml-3">
+        <button
+            type="button"
+            class={cn(
+                'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
+                'text-secondary transition-colors hover:text-primary',
+                'dark:text-greyscale-300 dark:hover:text-white',
+                'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:text-secondary',
+                'dark:disabled:hover:text-greyscale-300'
+            )}
+            aria-controls="platforms-framework-strip-icons"
+            aria-label="Show next quick-start frameworks"
+            disabled={!hasMoreFrameworks}
+            onclick={stepFrameworkStripForward}
+        >
+            <Icon name="chevron-right" width={18} height={18} class="shrink-0 opacity-90" aria-hidden="true" />
+        </button>
     </div>
+{/snippet}
+
+{#snippet aiToolingStripCells()}
+    <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
+        {#each marketingAiStrip as platform, platformIndex (platform.name)}
+            <Tooltip.Root>
+                <div
+                    class="contents"
+                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
+                        'transparent'};--animation-delay:{platformIndex * 12}ms"
+                >
+                    <Tooltip.Trigger
+                        class={cn(
+                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 cursor-pointer overflow-hidden border-r border-dashed basis-0',
+                            'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
+                        )}
+                    >
+                        <div
+                            class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                            <Noise opacity={0.1} />
+                        </div>
+                        <a
+                            href={platform.href}
+                            class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
+                            aria-label={platform.name}
+                            onclick={() => trackLogo('ai-tooling', platform.name)}
+                        >
+                            <img
+                                src={$themeInUse === 'light' && platform.light
+                                    ? platform.light
+                                    : platform.dark}
+                                alt=""
+                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
+                            />
+                        </a>
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                        <Tooltip.Content
+                            sideOffset={6}
+                            side="top"
+                            class={cn(
+                                'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                'dark:bg-greyscale-850 dark:text-greyscale-50',
+                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                            )}
+                        >
+                            <div
+                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                aria-hidden="true"
+                            ></div>
+                            <span class="relative z-10">{platform.name}</span>
+                        </Tooltip.Content>
+                    </Tooltip.Portal>
+                </div>
+            </Tooltip.Root>
+        {/each}
+    </Tooltip.Provider>
 {/snippet}
 
 {#snippet marqueeMobileRow(items: MarqueeMobileEntry[])}
@@ -292,7 +285,7 @@
             <GradientText>
                 <span
                     class={cn(
-                        'text-primary mb-3 flex items-center px-4 text-center font-medium',
+                        'text-primary mx-auto mb-3 block max-w-[22rem] px-4 text-center text-pretty leading-snug font-medium',
                         headline ? 'text-sm' : 'text-sub-body'
                     )}>{platformsHeading}</span
                 >
@@ -306,58 +299,51 @@
                 'px-0!': !padded
             })}
         >
-            <div class="grid grid-cols-1 gap-3 lg:grid-cols-3 lg:items-start lg:gap-x-8 lg:gap-y-0">
-                <div
-                    class="grid min-w-0 grid-cols-1 gap-3 sm:gap-4 lg:col-span-2 lg:grid-cols-[minmax(8.25rem,11rem)_minmax(0,1fr)] lg:items-center lg:gap-x-4"
-                >
-                    <h2 class="m-0 hidden lg:block lg:max-w-[11rem] lg:pr-1">
-                        <GradientText
-                            class="font-aeonik-pro text-[0.8125rem] leading-[1.25] font-medium tracking-tight text-pretty lg:text-[0.875rem]"
-                        >
-                            <span class="block">{platformsHeading}</span>
-                        </GradientText>
-                    </h2>
-                    <div
-                        id="platforms-framework-strip"
-                        role="region"
-                        aria-label={platformsHeading}
-                        class="flex w-full min-w-0 flex-nowrap items-stretch"
+            <div
+                class="grid min-w-0 grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-[minmax(10rem,13.75rem)_minmax(0,1fr)] lg:items-center lg:gap-x-8 lg:gap-y-0"
+            >
+                <h2 class="m-0 hidden min-w-0 max-w-[13.75rem] lg:block lg:pr-1">
+                    <GradientText
+                        class="font-aeonik-pro text-[0.8125rem] leading-snug font-medium tracking-tight text-pretty lg:text-[0.875rem]"
                     >
-                        <div
-                            id="platforms-framework-strip-icons"
-                            class={cn(
-                                'relative h-14 min-h-14 min-w-0 flex-1 shrink-0 overflow-x-auto overflow-y-hidden',
-                                'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:mask-none',
-                                'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-                                'lg:overflow-clip'
-                            )}
-                        >
-                            <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                                {#key frameworkBatchIndex}
-                                    <div
-                                        transition:fade={{ duration: 220 }}
-                                        class={cn(
-                                            'absolute inset-0 flex min-h-14 w-full min-w-0 flex-nowrap items-stretch'
-                                        )}
-                                    >
-                                        {#each frameworkStripSlots as platform, platformIndex (`${frameworkBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
-                                            {#if platform}
-                                                <Tooltip.Root>
-                                                    <div
-                                                        class="contents"
-                                                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                                                            'transparent'};--animation-delay:{platformIndex *
-                                                            12}ms"
+                        <span class="block">{platformsHeading}</span>
+                    </GradientText>
+                </h2>
+                <div
+                    id="platforms-framework-strip"
+                    role="region"
+                    aria-label={platformsHeading}
+                    class="flex min-w-0 w-full flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
+                >
+                    {#if hasFrameworkStripPagination}
+                        {@render frameworkStripPagerBack()}
+                    {/if}
+                    <div
+                        id="platforms-framework-strip-icons"
+                        class={cn(
+                            'relative min-h-14 flex-[10] basis-0 overflow-x-auto overflow-y-hidden',
+                            'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:overflow-clip',
+                            'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+                        )}
+                    >
+                        <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
+                            {#key frameworkBatchIndex}
+                                <div class="flex h-14 min-h-14 w-full min-w-0 flex-nowrap items-stretch">
+                                    {#each frameworkStripSlots as platform, platformIndex (`${frameworkBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
+                                        {#if platform}
+                                            <Tooltip.Root>
+                                                <div
+                                                    class="contents"
+                                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
+                                                        'transparent'};--animation-delay:{platformIndex * 12}ms"
+                                                >
+                                                    <Tooltip.Trigger
+                                                        class={cn(
+                                                            'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
+                                                            'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-h-14 lg:min-w-0 lg:flex-1 lg:basis-0',
+                                                            'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
+                                                        )}
                                                     >
-                                                        <Tooltip.Trigger
-                                                            class={cn(
-                                                                'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
-                                                                'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-w-0 lg:flex-1 lg:basis-0',
-                                                                'animate-fade-in [animation-delay:var(--animation-delay,0ms)]',
-                                                                platformIndex === 0 &&
-                                                                    'border-l border-dashed'
-                                                            )}
-                                                        >
                                                             <div
                                                                 class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
                                                             >
@@ -405,28 +391,29 @@
                                                     </div>
                                                 </Tooltip.Root>
                                             {:else}
-                                                <div
-                                                    class={cn(
-                                                        'border-smooth border-primary/8 flex h-14 min-h-14 shrink-0 border-r border-dashed bg-transparent',
-                                                        'max-lg:w-11 max-lg:flex-none lg:min-w-0 lg:flex-1 lg:basis-0',
-                                                        platformIndex === 0 &&
-                                                            'border-l border-dashed'
-                                                    )}
-                                                    aria-hidden="true"
-                                                ></div>
-                                            {/if}
-                                        {/each}
-                                    </div>
-                                {/key}
-                            </Tooltip.Provider>
-                        </div>
-                        {#if hasFrameworkStripPagination}
-                            {@render frameworkStripPager()}
-                        {/if}
+                                            <div
+                                                class={cn(
+                                                    'border-smooth border-primary/8 flex h-14 min-h-14 shrink-0 border-r border-dashed bg-transparent',
+                                                    'max-lg:w-11 max-lg:flex-none lg:min-h-14 lg:min-w-0 lg:flex-1 lg:basis-0'
+                                                )}
+                                                aria-hidden="true"
+                                            ></div>
+                                        {/if}
+                                    {/each}
+                                </div>
+                            {/key}
+                        </Tooltip.Provider>
                     </div>
-                </div>
-                <div class="flex min-w-0 flex-col lg:col-span-1">
-                    {@render logoStrip(marketingAiStrip, 'ai-tooling', 'AI tools and editors')}
+                    {#if hasFrameworkStripPagination}
+                        {@render frameworkStripPagerForward()}
+                    {/if}
+                    <div
+                        class="flex min-h-14 min-w-0 flex-[5] basis-0 flex-nowrap items-stretch"
+                        role="region"
+                        aria-label="AI tools and editors"
+                    >
+                        {@render aiToolingStripCells()}
+                    </div>
                 </div>
             </div>
         </div>
@@ -436,9 +423,11 @@
             'px-0!': !padded
         })}
     >
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8">
-            <div class="hidden lg:col-span-2 lg:block" aria-hidden="true"></div>
-            <div class="flex min-w-0 justify-center lg:col-span-1">
+        <div
+            class="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(10rem,13.75rem)_minmax(0,1fr)] lg:items-center lg:gap-x-8"
+        >
+            <div class="hidden min-w-0 lg:block" aria-hidden="true"></div>
+            <div class="flex min-w-0 justify-center lg:justify-end">
                 <nav
                     class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] leading-tight font-medium lg:text-xs"
                     aria-label="AI and MCP documentation"
