@@ -5,6 +5,8 @@
 export const MARKETING_HERO_EXPERIMENTS = {
     /** Param: `description` (string). */
     bestDescription: 'best_description',
+    /** Param: `cta` (string). Primary hero dashboard button label. */
+    bestCta: 'best_cta',
     /**
      * Experiment or dynamic config id. Params tried: `layout`, `hero_layout`, `heroLayout`; then `.value`.
      */

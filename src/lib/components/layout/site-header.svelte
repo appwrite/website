@@ -1,7 +1,13 @@
 <script lang="ts">
+    import { page } from '$app/state';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
     import { Button } from '../ui';
     import HamburgerMenu from './navigation/hamburger-menu.svelte';
     import PrimaryNav from './navigation/primary-nav.svelte';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 </script>
 
 <header
@@ -19,7 +25,7 @@
         >
 
         <PrimaryNav class="hidden md:block" />
-        <Button class="hidden! md:flex!">Start building for free</Button>
+        <Button class="hidden! md:flex!">{navCtaLabel}</Button>
 
         <HamburgerMenu class="block md:hidden" />
     </div>
