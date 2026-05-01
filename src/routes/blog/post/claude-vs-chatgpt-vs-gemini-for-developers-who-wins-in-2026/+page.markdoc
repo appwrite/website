@@ -28,7 +28,7 @@ With that said, the differences matter, and we're going to be specific.
 
 Claude has a reputation among developers who've used it seriously: give it the full context and it will actually read it. The catch is that it won't always slow down on its own. On shorter prompts it can jump to writing code before it's reasoned through the problem enough. The trick is feeding it the whole picture upfront. Do that, and it goes deeper than the other two.
 
-Where Claude genuinely earns its place is anything that requires understanding context at depth. Long files, multi-file logic, edge cases buried three layers into an abstraction. You can hand it an entire service, ask it why something is broken, and it will trace through the logic rather than guess. It also has a noticeable habit of flagging its own assumptions, which means you catch problems before they become bugs instead of after.
+Where Claude genuinely earns its place is anything that requires understanding context at depth. Long files, multi-file logic, edge cases buried three layers into an abstraction. You can hand it an entire service, ask it why something is broken, and it will trace through the logic rather than guess. It also has a noticeable habit of flagging its own assumptions, which means you catch problems before they become bugs instead of after. But sometimes at higher reasoning levels, this self-correction can be confusing to the model itself.
 
 For documentation and code review, it's the strongest of the three right now. Not because it writes the most, but because what it writes tends to be accurate to what your code actually does, not what a generic version of it would do.
 
