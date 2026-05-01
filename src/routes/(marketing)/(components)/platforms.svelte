@@ -138,9 +138,9 @@
             type="button"
             class={cn(
                 'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
-                'text-secondary transition-colors hover:text-primary',
+                'text-secondary hover:text-primary transition-colors',
                 'dark:text-greyscale-300 dark:hover:text-white',
-                'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:text-secondary',
+                'disabled:hover:text-secondary disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35',
                 'dark:disabled:hover:text-greyscale-300'
             )}
             aria-controls="platforms-framework-strip-icons"
@@ -148,7 +148,13 @@
             disabled={frameworkBatchIndex === 0}
             onclick={stepFrameworkStripBack}
         >
-            <Icon name="chevron-left" width={18} height={18} class="shrink-0 opacity-90" aria-hidden="true" />
+            <Icon
+                name="chevron-left"
+                width={18}
+                height={18}
+                class="shrink-0 opacity-90"
+                aria-hidden="true"
+            />
         </button>
     </div>
 {/snippet}
@@ -159,9 +165,9 @@
             type="button"
             class={cn(
                 'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
-                'text-secondary transition-colors hover:text-primary',
+                'text-secondary hover:text-primary transition-colors',
                 'dark:text-greyscale-300 dark:hover:text-white',
-                'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:text-secondary',
+                'disabled:hover:text-secondary disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35',
                 'dark:disabled:hover:text-greyscale-300'
             )}
             aria-controls="platforms-framework-strip-icons"
@@ -169,7 +175,13 @@
             disabled={!hasMoreFrameworks}
             onclick={stepFrameworkStripForward}
         >
-            <Icon name="chevron-right" width={18} height={18} class="shrink-0 opacity-90" aria-hidden="true" />
+            <Icon
+                name="chevron-right"
+                width={18}
+                height={18}
+                class="shrink-0 opacity-90"
+                aria-hidden="true"
+            />
         </button>
     </div>
 {/snippet}
@@ -185,7 +197,7 @@
                 >
                     <Tooltip.Trigger
                         class={cn(
-                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 cursor-pointer overflow-hidden border-r border-dashed basis-0',
+                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 basis-0 cursor-pointer overflow-hidden border-r border-dashed',
                             'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
                         )}
                     >
@@ -285,7 +297,7 @@
             <GradientText>
                 <span
                     class={cn(
-                        'text-primary mx-auto mb-3 block max-w-[22rem] px-4 text-center text-pretty leading-snug font-medium',
+                        'text-primary mx-auto mb-3 block max-w-[22rem] px-4 text-center leading-snug font-medium text-pretty',
                         headline ? 'text-sm' : 'text-sub-body'
                     )}>{platformsHeading}</span
                 >
@@ -302,7 +314,7 @@
             <div
                 class="grid min-w-0 grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-[minmax(10rem,13.75rem)_minmax(0,1fr)] lg:items-center lg:gap-x-8 lg:gap-y-0"
             >
-                <h2 class="m-0 hidden min-w-0 max-w-[13.75rem] lg:block lg:pr-1">
+                <h2 class="m-0 hidden max-w-[13.75rem] min-w-0 lg:block lg:pr-1">
                     <GradientText
                         class="font-aeonik-pro text-[0.8125rem] leading-snug font-medium tracking-tight text-pretty lg:text-[0.875rem]"
                     >
@@ -313,7 +325,7 @@
                     id="platforms-framework-strip"
                     role="region"
                     aria-label={platformsHeading}
-                    class="flex min-w-0 w-full flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
+                    class="flex w-full min-w-0 flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
                 >
                     {#if hasFrameworkStripPagination}
                         {@render frameworkStripPagerBack()}
@@ -328,14 +340,17 @@
                     >
                         <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
                             {#key frameworkBatchIndex}
-                                <div class="flex h-14 min-h-14 w-full min-w-0 flex-nowrap items-stretch">
+                                <div
+                                    class="flex h-14 min-h-14 w-full min-w-0 flex-nowrap items-stretch"
+                                >
                                     {#each frameworkStripSlots as platform, platformIndex (`${frameworkBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
                                         {#if platform}
                                             <Tooltip.Root>
                                                 <div
                                                     class="contents"
                                                     style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                                                        'transparent'};--animation-delay:{platformIndex * 12}ms"
+                                                        'transparent'};--animation-delay:{platformIndex *
+                                                        12}ms"
                                                 >
                                                     <Tooltip.Trigger
                                                         class={cn(
@@ -344,53 +359,53 @@
                                                             'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
                                                         )}
                                                     >
-                                                            <div
-                                                                class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
-                                                            >
-                                                                <Noise opacity={0.1} />
-                                                            </div>
-                                                            <a
-                                                                href={platform.href}
-                                                                class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
-                                                                aria-label={platform.name}
-                                                                onclick={() =>
-                                                                    trackLogo(
-                                                                        'technologies',
-                                                                        platform.name
-                                                                    )}
-                                                            >
-                                                                <img
-                                                                    src={$themeInUse === 'light' &&
-                                                                    platform.light
-                                                                        ? platform.light
-                                                                        : platform.dark}
-                                                                    alt=""
-                                                                    class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
-                                                                />
-                                                            </a>
-                                                        </Tooltip.Trigger>
-                                                        <Tooltip.Portal>
-                                                            <Tooltip.Content
-                                                                sideOffset={6}
-                                                                side="top"
-                                                                class={cn(
-                                                                    'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
-                                                                    'dark:bg-greyscale-850 dark:text-greyscale-50',
-                                                                    'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                                                        <div
+                                                            class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
+                                                        >
+                                                            <Noise opacity={0.1} />
+                                                        </div>
+                                                        <a
+                                                            href={platform.href}
+                                                            class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
+                                                            aria-label={platform.name}
+                                                            onclick={() =>
+                                                                trackLogo(
+                                                                    'technologies',
+                                                                    platform.name
                                                                 )}
+                                                        >
+                                                            <img
+                                                                src={$themeInUse === 'light' &&
+                                                                platform.light
+                                                                    ? platform.light
+                                                                    : platform.dark}
+                                                                alt=""
+                                                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
+                                                            />
+                                                        </a>
+                                                    </Tooltip.Trigger>
+                                                    <Tooltip.Portal>
+                                                        <Tooltip.Content
+                                                            sideOffset={6}
+                                                            side="top"
+                                                            class={cn(
+                                                                'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                                                'dark:bg-greyscale-850 dark:text-greyscale-50',
+                                                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                                                            )}
+                                                        >
+                                                            <div
+                                                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                                                aria-hidden="true"
+                                                            ></div>
+                                                            <span class="relative z-10"
+                                                                >{platform.name}</span
                                                             >
-                                                                <div
-                                                                    class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
-                                                                    aria-hidden="true"
-                                                                ></div>
-                                                                <span class="relative z-10"
-                                                                    >{platform.name}</span
-                                                                >
-                                                            </Tooltip.Content>
-                                                        </Tooltip.Portal>
-                                                    </div>
-                                                </Tooltip.Root>
-                                            {:else}
+                                                        </Tooltip.Content>
+                                                    </Tooltip.Portal>
+                                                </div>
+                                            </Tooltip.Root>
+                                        {:else}
                                             <div
                                                 class={cn(
                                                     'border-smooth border-primary/8 flex h-14 min-h-14 shrink-0 border-r border-dashed bg-transparent',
