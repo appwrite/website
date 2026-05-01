@@ -570,7 +570,7 @@ You can then visit `https://localhost:5173` in your browser and try out the app.
 
 **1. What’s the best tech stack for building a simple CRM or contact manager?**
 
-If you’re aiming for speed and control, a lightweight frontend like SvelteKit paired with a platform such as Appwrite is best. You get ready-to-use APIs for data, auth, and storage — no need to manage servers — and can still customize everything when needed.
+If you’re aiming for speed and control, a lightweight frontend like SvelteKit paired with a platform such as Appwrite is best. You get ready-to-use APIs for data, auth, and storage (no need to manage servers) and can still customize everything when needed.
 
 **2. How can I build a CRUD app quickly without setting up a full backend?**
 

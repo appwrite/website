@@ -23,6 +23,8 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
+export const latestVersion = allVersions[0];
+
 export const Service = {
     Account: 'account',
     Avatars: 'avatars',

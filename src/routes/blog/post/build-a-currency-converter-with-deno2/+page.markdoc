@@ -17,7 +17,7 @@ Let's get started.
 
 # Setting up your Deno project
 
-Before we dive into the code, we need to set up our project. If you've already worked with Appwrite before, this will be familiar. If not, don't worry—I'll guide you through it.
+Before we dive into the code, we need to set up our project. If you've already worked with Appwrite before, this will be familiar. If not, don't worry; I'll guide you through it.
 
 There are two ways you can set up a Deno project with Appwrite: through the Appwrite cloud console or using the Appwrite CLI.
 

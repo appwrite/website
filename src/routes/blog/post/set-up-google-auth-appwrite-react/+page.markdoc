@@ -296,11 +296,11 @@ OAuth2 takes all that off your plate. The user logs in through Google (or anothe
 
 Absolutely. In fact, OAuth2 is one of the most widely used and tested authentication standards out there. Companies like Google, Apple, and Microsoft all rely on it.
 
-As long as you use secure redirect URIs and handle tokens through a trusted service like Appwrite, you’re in great shape. The heavy lifting—like token security and validation—is handled by Appwrite and the provider.
+As long as you use secure redirect URIs and handle tokens through a trusted service like Appwrite, you’re in great shape. The heavy lifting, like token security and validation, is handled by Appwrite and the provider.
 
 **5. Can I mix OAuth2 with other login methods in my app?**
 
-Definitely! That’s one of the best parts of using Appwrite. You can let users choose—some might prefer logging in with Google, others might want the traditional email/password route or even phone OTPs.
+Definitely! That’s one of the best parts of using Appwrite. You can let users choose: some might prefer logging in with Google, others might want the traditional email/password route or even phone OTPs.
 
 Appwrite supports all of that out of the box. You just toggle on the methods you want, and users can pick whatever works best for them.
 

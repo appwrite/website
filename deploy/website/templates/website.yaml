@@ -31,13 +31,19 @@ spec:
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           resources:
             requests:
-              cpu: 400m
-              memory: 512Mi
+              cpu: 500m
+              memory: 1Gi
             limits:
-              memory: 512Mi
+              memory: 1Gi
           env:
             - name: NODE_OPTIONS
-              value: "--max-old-space-size=400"
+              value: "--max-old-space-size=768"
+            - name: STATSIG_SERVER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: website-secrets
+                  key: STATSIG_SERVER_SECRET
+                  optional: true
           ports:
             - containerPort: 3000
           startupProbe:

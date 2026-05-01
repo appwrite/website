@@ -72,7 +72,7 @@ Backend architecture is not just an engineering decision. It directly shapes del
 
 When your infrastructure reduces repetition and limits the surface area for mistakes, efficiency compounds. Each new project benefits from the last. The backend becomes leverage rather than a recurring cost to absorb.
 
-The teams that build the most sustainably across multiple clients are usually not the ones using the most sophisticated stack. They are the ones who decided early to stop reinventing infrastructure and started treating their backend foundation — including how they host and deploy frontends with Appwrite Sites — as a durable, reusable asset.
+The teams that build the most sustainably across multiple clients are usually not the ones using the most sophisticated stack. They are the ones who decided early to stop reinventing infrastructure and started treating their backend foundation, including how they host and deploy frontends with Appwrite Sites, as a durable, reusable asset.
 
 # Where Appwrite fits
 

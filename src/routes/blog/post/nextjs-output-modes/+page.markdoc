@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Next.js output modes — Standalone vs Default build
+title: "Next.js output modes: Standalone vs Default build"
 description: Learn about different output modes in Next.js and find out which of them would be the best for you.
 date: 2025-12-12
 cover: /images/blog/nextjs-output-modes/cover.png
@@ -81,7 +81,7 @@ The result was clear: standalone mode consistently showed lower build sizes. Int
 
 # Which is the best for me?
 
-Standalone mode seems to be the clear winner based on the results. That would make you think—why is it not the default? Because it's not the most reliable. There are some very unclear cases where your standalone build would break or cause problems in production:
+Standalone mode seems to be the clear winner based on the results. That would make you think: why is it not the default? Because it's not the most reliable. There are some very unclear cases where your standalone build would break or cause problems in production:
 
 - If you use monorepos and import packages from it, you might need to configure Next.js to be able to trace those packages.
 - If you dynamically import packages in your app, standalone mode cannot help you here, as only the code that is used and can be traced is bundled.

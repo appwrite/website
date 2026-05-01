@@ -14,9 +14,9 @@ Respect user's package manager at all times. Don't use NPM if the user uses some
 
 - First, check the current working directory contents.
 - If the directory contains files that appear unrelated to a development workspace (e.g., personal files, downloads, random documents, media files), ask the user: "The current directory contains files that don't appear to be part of a development project. Would you like to: (1) proceed here anyway, or (2) create a subdirectory with a specific folder name?" and proceed based on their choice.
-- If the directory is empty OR contains an existing project (e.g., `package.json`, `src` folder, config files), proceed directly without asking — integrate Appwrite into the existing project.
+- If the directory is empty OR contains an existing project (e.g., `package.json`, `src` folder, config files), proceed directly without asking; integrate Appwrite into the existing project.
 - For new projects, run: `npm init vue@latest .` (use `.` to create in current directory)
-- Do NOT use `cd` to switch directories — always work in the current directory.
+- Do NOT use `cd` to switch directories; always work in the current directory.
 
 ## Step 3: Install Appwrite SDK
 

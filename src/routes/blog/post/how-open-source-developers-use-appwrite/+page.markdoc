@@ -43,7 +43,7 @@ Appwrite ships idiomatic SDKs for JavaScript, TypeScript, Python, Dart, Swift, K
 
 # Running backend logic with Appwrite Functions
 
-Many open-source developers need server-side logic that runs in response to events — a new user signing up, a file being uploaded, a database record changing, or a scheduled job running at midnight. Appwrite Functions handles this without requiring a separate service.
+Many open-source developers need server-side logic that runs in response to events: a new user signing up, a file being uploaded, a database record changing, or a scheduled job running at midnight. Appwrite Functions handles this without requiring a separate service.
 
 Functions are written in your language of choice, versioned in Git, and deployed directly to Appwrite. They can be triggered by any Appwrite event, a cron schedule, or an HTTP request. The code is just code, there's no proprietary runtime format to learn, and the function lives in your repository alongside the rest of your project.
 

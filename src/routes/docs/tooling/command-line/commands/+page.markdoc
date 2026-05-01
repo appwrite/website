@@ -196,6 +196,61 @@ appwrite databases get-row \
   --console --open
 ```
 
+# Filter, sort, and paginate {% #filter-sort-paginate %}
+
+List commands across services accept a set of dedicated flags for the most common filtering, sorting, and pagination needs, so you don't have to hand-write JSON [query](/docs/products/databases/queries) strings for everyday cases. These flags are supported on `list-*` commands such as `tables-db list-tables`, `tables-db list-rows`, `users list`, `functions list`, `messaging list-messages`, and similar list endpoints across services.
+
+{% table %}
+* Flag
+* Description
+---
+* `--where <expression>`
+* Filter using a simple comparison expression. Supports `field=value`, `field!=value`, `field>value`, `field>=value`, `field<value`, and `field<=value`. Repeat the flag to apply multiple filters. Quote the expression (for example `'year>1999'`) so that `>` and `<` are not interpreted as shell redirection.
+---
+* `--sort-asc <attribute>`
+* Sort results by an attribute in ascending order. Repeat for multiple sort fields.
+---
+* `--sort-desc <attribute>`
+* Sort results by an attribute in descending order. Repeat for multiple sort fields.
+---
+* `--limit <number>`
+* Maximum number of results to return.
+---
+* `--offset <number>`
+* Number of results to skip from the beginning.
+---
+* `--cursor-after <id>`
+* Return results after this cursor ID. Use for forward [cursor pagination](/docs/products/databases/pagination).
+---
+* `--cursor-before <id>`
+* Return results before this cursor ID. Use for backward cursor pagination.
+---
+* `--select <attribute>`
+* Limit returned attributes on row and document list commands such as `tables-db list-rows`. Repeat the flag to include multiple attributes.
+---
+{% /table %}
+
+For example, to fetch the 10 most recently created rows where `year` is greater than 1999:
+
+```sh
+appwrite tables-db list-rows \
+    --database-id "<DATABASE_ID>" \
+    --table-id "<TABLE_ID>" \
+    --where 'year>1999' \
+    --sort-desc '$createdAt' \
+    --limit 10
+```
+
+The `--queries` flag is still supported and remains the way to pass raw [Appwrite query](/docs/products/databases/queries) JSON strings for advanced cases, automation pipelines, or operators that the new flags don't cover. When you mix `--queries` with the new flags, the raw queries are sent first and the flag-generated queries are appended after.
+
+```sh
+appwrite tables-db list-rows \
+    --database-id "<DATABASE_ID>" \
+    --table-id "<TABLE_ID>" \
+    --queries '[{"method":"search","attribute":"title","values":["Avatar"]}]' \
+    --limit 10
+```
+
 # Examples {% #examples %}
 
 ## Create user {% #create-user %}
@@ -214,6 +269,15 @@ To get a list of all your project users, you can use the list command.
 
 ```sh
 appwrite users list
+```
+
+You can narrow the result set with the [filter, sort, and pagination flags](#filter-sort-paginate). For example, to fetch the 25 most recently created users whose email is verified:
+
+```sh
+appwrite users list \
+    --where 'emailVerification=true' \
+    --sort-desc '$createdAt' \
+    --limit 25
 ```
 
 ## List tables {% #list-tables %}
