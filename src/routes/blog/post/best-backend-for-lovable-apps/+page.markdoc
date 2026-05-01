@@ -2,7 +2,7 @@
 layout: post
 title: "The best backend for Lovable apps: what to look for beyond the default integration"
 description: "Picking the best backend for Lovable apps means looking past the default integration. Here is what to evaluate for auth, data, storage, functions, and hosting."
-date: 2026-04-23
+date: 2026-04-25
 cover: /images/blog/best-backend-for-lovable-apps/cover.png
 timeToRead: 9
 author: atharva
@@ -40,7 +40,7 @@ Use this as a worksheet. Each item is a question to ask of any backend you are c
 
 ## 1. Authentication that covers your sign-in flows
 
-A lovable backend needs more than a demo sign-in screen. Look for:
+A Lovable backend needs more than a demo sign-in screen. Look for:
 
 - Email and password sign-up with confirmation flows you can enable or disable per environment
 - Social logins for the providers your users actually use
@@ -140,24 +140,6 @@ Here is how the pieces line up against the checklist.
 **Ownership.** Appwrite is open source. You can use Appwrite Cloud or self-host, which keeps the exit path open.
 
 In practice, a Lovable team using Appwrite as their backend works like this: build the UI in Lovable, connect the Appwrite docs MCP server inside Lovable's personal connectors so the chat has accurate Appwrite context, and wire the generated frontend to Appwrite through the web SDK. Heavier work such as schema changes, server-side logic, and deploys happen through the Appwrite console, SDKs, CLI, or other AI tools configured with the Appwrite MCP servers.
-
-# Comparing backend shapes at a glance
-
-Different backends take different shapes. Here is how the common options map onto the checklist categories, at a high level. Specifics change over time, so use this as a conversation starter rather than a feature matrix.
-
-| Category          | Lovable default (Supabase) | Appwrite                                   | Firebase                       | Custom stack            |
-| ----------------- | -------------------------- | ------------------------------------------ | ------------------------------ | ----------------------- |
-| Auth              | Built in                   | Built in, with teams and MFA               | Built in                       | You build or assemble   |
-| Structured data   | Postgres tables            | Databases with tables, rows, and columns   | Firestore or Realtime Database | You choose              |
-| File storage      | Storage buckets            | Storage buckets with permissions           | Cloud Storage                  | You choose              |
-| Server logic      | Edge Functions             | Functions                                  | Cloud Functions                | Your own runtime        |
-| Realtime          | Realtime channels          | Realtime subscriptions                     | Realtime Database or Firestore | You build               |
-| Hosting           | External                   | Sites on Appwrite Network                  | Firebase Hosting               | You choose              |
-| Docs MCP support  | Through Lovable connectors | Yes, via Appwrite docs MCP                 | Yes, via Firebase MCP          | Depends                 |
-| Open source       | Yes                        | Yes                                        | No                             | Depends                 |
-| Self-host option  | Yes                        | Yes                                        | No                             | Yes                     |
-
-The point is not that one row beats the other. It is that the right answer depends on which rows you actually care about, and on whether you want to tie the backend to the AI builder or keep them decoupled.
 
 # A pragmatic way to choose
 

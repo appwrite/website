@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite vs Cloudflare for stateful AI agents"
 description: "Compare Appwrite and Cloudflare as a stateful AI agents backend, from memory and state patterns to Auth, Databases, Storage, Functions, Realtime, and MCP."
-date: 2026-04-23
+date: 2026-04-30
 cover: /images/blog/appwrite-vs-cloudflare-stateful-ai-agents/cover.png
 timeToRead: 9
 author: atharva
@@ -53,6 +53,8 @@ Appwrite takes a different angle. Instead of shipping a dedicated Agent runtime,
 - **Realtime** channels that subscribe to row changes, user events, and custom events, which is how you push token output, tool call results, and agent status to every connected client.
 - **Messaging** for email, SMS, and push, useful for human-in-the-loop approval and async notifications from long-running agents.
 - **Appwrite MCP servers**, both the API MCP for acting on Appwrite resources and the Docs MCP for Appwrite context, so coding agents can build and operate against Appwrite directly.
+- **Agent Skills** for the Appwrite CLI and every major SDK including TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift, so agents generate idiomatic Appwrite code without docs in the prompt.
+- **Editor plugins** for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) that bundle the API MCP, Docs MCP, and skills into one install.
 - **Self-hosting** under an open-source license, or **Appwrite Cloud** with the same API surface.
 
 The point is not that Appwrite replaces Durable Objects one-to-one. The point is that once you have identity, structured tables, rows, storage, functions, realtime, and MCP, you already have what a stateful AI agent needs: users, durable state, memory, tool hosting, live updates to clients, and a way for coding agents to act on your backend.
@@ -68,7 +70,7 @@ The point is not that Appwrite replaces Durable Objects one-to-one. The point is
 | Functions / compute | Workers and Durable Objects, TypeScript-first Agents SDK | Functions in Node, Python, Go, Ruby, Deno, PHP, and more, with CRON schedules and event triggers |
 | Realtime | WebSockets and SSE from Durable Objects and Workers | Realtime channels for row changes, user events, and custom events |
 | Hosting | Workers, Pages, and related services | Sites with source control deploys, custom domains, env vars, rollbacks |
-| MCP | Agents SDK MCP tooling for Cloudflare workloads | Appwrite API MCP for actions on resources and Appwrite Docs MCP for context |
+| MCP, Skills, and editor plugins | Agents SDK MCP tooling for Cloudflare workloads | Appwrite API MCP, Appwrite Docs MCP, Agent Skills for CLI and 10 SDKs, Claude Code and Cursor plugins |
 | Self-hosting | Proprietary, Cloudflare platform only | Open source with unrestricted self-hosting, plus Appwrite Cloud |
 | Pricing model | Per-request, per-CPU, per-GB storage across Workers, Durable Objects, R2, D1 | Plan-based Appwrite Cloud with generous free tier, or self-host |
 
@@ -82,30 +84,23 @@ Appwrite answers it at a higher level. State lives in tables and rows with typed
 
 The Appwrite approach does not try to replace stateful edge compute. It treats agent state as application data that should live in the same place as the rest of your product data, protected by the same auth, permissions, and queries.
 
-# Where each choice lands
+# Where Appwrite fits
 
-**Cloudflare fits when:**
-
-- The agent is the product and the agent's state is the most important state in the system.
-- Your team writes TypeScript and wants agent code, state, and compute in one class.
-- You are already on Cloudflare for Workers, Pages, R2, and D1, and you want one more primitive that slots in.
-- You want hibernation, WebSockets, and SQL co-located inside each agent instance, and you are happy to bring auth separately.
-
-**Appwrite fits when:**
+Appwrite is the right pick when:
 
 - You need a broad backend that handles Auth, TablesDB, Storage, Functions, Realtime, Sites, Messaging, and MCP without stitching multiple vendors together.
-- You want relational-style tables, typed columns, and queries for thread state, message history, and RAG metadata, instead of per-instance SQL inside each agent.
+- You want relational-style tables, typed columns, and queries for thread state, message history, and RAG metadata, with permissions on rows that the platform enforces.
 - You want first-party Auth with Teams and roles from day one, not a third-party dependency.
-- You want coding agents to act on your backend through a first-party MCP, with the Docs MCP available for context inside tools like Cursor, Claude Code, and Lovable.
+- You want coding agents to act on your backend through a first-party MCP, with the Docs MCP, Agent Skills, and editor plugins available for context inside tools like Cursor, Claude Code, Lovable, and Windsurf.
 - You care about self-hosting under a standard open-source license or the option to move between Appwrite Cloud and your own infrastructure.
+
+Cloudflare's Agents SDK is a tighter fit when the agent itself is the entire product, the team is committed to TypeScript on Workers, and per-agent Durable Objects are the unit of state you want.
 
 # How teams usually split the decision
 
-There are two shapes of AI product this comes down to.
+Most AI products that reach users end up looking like a broader app: a CRM with agents, a support product with an AI assistant, a SaaS tool with background agents. The agent is one of many surfaces. You also need user accounts, teams, permissions, file uploads, notifications, scheduled jobs, webhooks, a hosted frontend, and coding agents that can operate on your backend through MCP. That is where Appwrite's breadth pays off. You are not spending the first month wiring up four Cloudflare services and a separate auth vendor before you get to the AI part.
 
-The first is a pure stateful agent where the compute and the state are the product. A long-running research agent, a background task runner, a multiplayer coordination agent. Teams building that sometimes start on Cloudflare because Durable Objects give them a stateful micro-server per agent with SQL and WebSockets. That works, and the edge placement story is clean.
-
-The second is a broader AI-powered app. A CRM with agents, a support product with an AI assistant, a SaaS tool with background agents. For those products, the agent is one of many surfaces. You also need user accounts, teams, permissions, file uploads, notifications, scheduled jobs, webhooks, a hosted frontend, and coding agents that can operate on your backend through MCP. That is where Appwrite's breadth tends to pay off. You are not spending the first month wiring up four Cloudflare services and a separate auth vendor before you get to the AI part.
+Pure stateful agents where the compute and the state are the entire product, like a long-running research agent or a multiplayer coordination agent, are the narrower case Cloudflare's Durable Objects model is built for. Even there, Appwrite Functions plus TablesDB cover most of the same ground without the per-instance edge runtime lock-in.
 
 # Stateful AI agents come down to primitives, not products
 
@@ -113,7 +108,7 @@ The useful question is not "does this platform sell an Agents SDK?" It is "does 
 
 Cloudflare answers that with an Agents SDK on top of Durable Objects and Workers, then leaves the rest of the backend to you. Appwrite answers it with a broader open-source backend where Auth, TablesDB, Storage, Functions, Realtime, Sites, and MCP line up with what stateful AI agents need, without making you adopt a per-instance edge runtime before your product shape is clear.
 
-If you want to explore Appwrite as the backend for your stateful AI agents, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api) for agentic access to your backend.
+If you want to explore Appwrite as the backend for your stateful AI agents, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api), [Agent Skills](/docs/tooling/ai/skills), and the editor plugins for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor).
 
 - [Appwrite Databases](/docs/products/databases)
 - [Appwrite Functions](/docs/products/functions)

@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite vs Convex for AI apps and agent workflows"
 description: "Compare Appwrite vs Convex for AI apps and agent workflows, from agent primitives to Auth, TablesDB, Realtime, Storage, Functions, and MCP."
-date: 2026-04-23
+date: 2026-04-28
 cover: /images/blog/appwrite-vs-convex-ai-agents/cover.png
 timeToRead: 9
 author: atharva
@@ -53,6 +53,8 @@ Appwrite takes a different angle. Instead of treating agents as a dedicated prod
 - **Realtime** channels that subscribe to row changes, user events, and custom events, which is how you push token updates, tool call results, and agent status to every connected client.
 - **Messaging** for email, SMS, and push, useful for human-in-the-loop approval and async notifications from long-running agents.
 - **Appwrite MCP servers**, both the API MCP (for acting on Appwrite resources) and the Docs MCP (for Appwrite context), so coding agents can build and operate against Appwrite directly.
+- **Agent Skills** for the Appwrite CLI and every major SDK including TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift, so agents generate idiomatic Appwrite code without docs in the prompt.
+- **Editor plugins** for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) that bundle the API MCP, Docs MCP, and skills into one install.
 - **Self-hosting** under an open-source license, or **Appwrite Cloud** with the same API surface.
 
 The point is not that Appwrite has a dedicated Agent component that matches Convex's one-to-one. The point is that once you have Auth, tables, rows, storage, functions, realtime, and MCP, you already have what an agent needs: identity, durable state, memory, tool hosting, live updates to clients, and a way for coding agents to operate on your backend.
@@ -71,34 +73,27 @@ The point is not that Appwrite has a dedicated Agent component that matches Conv
 | Realtime | Automatic through query subscriptions | Realtime channels for rows, events, and custom channels |
 | File handling | File Storage with upload, serve, delete, metadata | Storage with buckets, permissions, antivirus, and image transformations |
 | Frontend hosting | Not part of the backend platform | Sites with deploys, custom domains, env vars, rollbacks |
-| MCP | Component-level tool calls from agents | Appwrite API MCP and Appwrite Docs MCP for coding agents |
+| MCP, Skills, and editor plugins | Component-level tool calls from agents | Appwrite API MCP, Appwrite Docs MCP, Agent Skills for CLI and 10 SDKs, Claude Code and Cursor plugins |
 | Licensing | FSL Apache 2.0 that converts to Apache 2.0 after two years | Open source with unrestricted self-hosting and Appwrite Cloud |
 | Language surface | TypeScript and JavaScript | Multi-language SDKs across web, mobile, and server |
 
-# Where each choice lands
+# Where Appwrite fits
 
-**Convex fits when:**
-
-- Your entire team writes TypeScript and you want your agent code, backend code, and schema in one codebase.
-- You are happy to bring in Clerk, WorkOS, or Auth0 for production auth and prefer a narrower, opinionated surface.
-- You are comfortable modeling data as documents with optional schemas, and you want a dedicated Agent component you can slot in.
-- You want a single vendor whose agent primitives are named and documented as agent primitives.
-
-**Appwrite fits when:**
+Appwrite is the right pick when:
 
 - You need a broad backend that handles Auth, TablesDB, Storage, Functions, Realtime, Sites, Messaging, and MCP without stitching multiple vendors together.
-- You want relational-style tables, typed columns, and queries for thread state, message history, and RAG metadata, instead of fitting everything into documents.
+- You want relational-style tables, typed columns, and queries for thread state, message history, and RAG metadata, with permissions on rows that the platform enforces.
 - You want first-party auth with Teams and roles from day one, not a third-party dependency.
-- You want coding agents to act on your backend through a first-party MCP, with the Docs MCP available for context inside tools like Cursor and Lovable.
+- You want coding agents to act on your backend through a first-party MCP, with Agent Skills for your SDK and editor plugins for Claude Code and Cursor that install the whole agent surface in one step.
 - You care about self-hosting under a standard open-source license or the option to move between Appwrite Cloud and your own infrastructure.
+
+Convex is the tighter fit for an all-TypeScript team that wants a dedicated Agent component, is happy to add Clerk, WorkOS, or Auth0 for auth, and prefers a document-style data model.
 
 # How teams usually split the decision
 
-There are two shapes of AI product this usually comes down to.
+Most AI products that reach users are broader apps where the agent is one feature among many: a CRM with an AI assistant, an e-commerce product with an AI concierge, a SaaS tool with agents on the side. They also need user accounts, teams, permissions, file uploads, notifications, scheduled jobs, webhooks, a hosted frontend, and the ability for coding agents to operate on your backend through MCP. That is where Appwrite's breadth pays off. You are not spending the first month wiring up four vendors before you get to the AI part.
 
-The first is a pure TypeScript AI app where the agent is the product. A support agent, a coding copilot, a writing tool. Teams building that sometimes start on Convex because the Agent component gives them threads and tools out of the box, then add Clerk for auth, a CDN for assets, and a host for the frontend. That stack works, and the agent primitives are clean.
-
-The second is a broader AI-powered app. A CRM with an AI assistant, an e-commerce product with an AI concierge, a SaaS tool with agents on the side. For those products, the agent is one of many surfaces. You also need user accounts, teams, permissions, file uploads, notifications, scheduled jobs, webhooks, a hosted frontend, and the ability for coding agents to operate on your backend through MCP. That is where Appwrite's breadth tends to pay off. You are not spending the first month wiring up four vendors before you get to the AI part.
+The narrower case is a pure TypeScript AI app where the agent itself is the entire product, like a support agent, a coding copilot, or a writing tool. Convex's Agent component is shaped for that. Even there, modeling threads and tool calls as rows in TablesDB and pushing updates over Realtime gives you the same primitives without committing to a TypeScript-only backend.
 
 # Agent workflows come down to primitives, not labels
 
@@ -106,7 +101,7 @@ The useful question is not "does this platform have an agent product?" It is "do
 
 Convex answers that with an Agent component plus a narrower TypeScript-centric platform. Appwrite answers it with a broader open-source backend where Auth, TablesDB, Storage, Functions, Realtime, Sites, and MCP line up with what agents need, without making you adopt a dedicated agent abstraction before your product shape is clear.
 
-If you want to explore Appwrite for an AI app or agent workflow, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api) for agentic access to your backend.
+If you want to explore Appwrite for an AI app or agent workflow, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api), [Agent Skills](/docs/tooling/ai/skills), and the editor plugins for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor).
 
 - [Appwrite TablesDB](/docs/products/databases)
 - [Appwrite Functions](/docs/products/functions)

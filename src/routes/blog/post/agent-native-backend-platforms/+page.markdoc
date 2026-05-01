@@ -2,7 +2,7 @@
 layout: post
 title: "The rise of agent-native backend platforms"
 description: "Agent-native backend platforms let AI coding agents inspect, provision, and operate backend resources through MCP, structured APIs, and agent skills."
-date: 2026-04-23
+date: 2026-04-24
 cover: /images/blog/agent-native-backend-platforms/cover.png
 timeToRead: 9
 author: atharva
@@ -12,7 +12,7 @@ category: ai
 
 Something quiet has shifted in how backends get built. For most of the last decade, a backend platform was evaluated by how easy it was for a human developer to click through a console, read the docs, and wire up an SDK. That is still true, but a second audience has arrived. AI coding agents in Cursor, Claude Code, Windsurf, Antigravity, Lovable, Bolt, and Replit now read your docs, call your APIs, and write the code that ships to production.
 
-The platforms that win the next cycle will be the ones an agent can pick up on its own. That is the core idea behind the agent native backend: a platform where agents can inspect, provision, and operate backend resources through MCP servers, structured APIs, and agent skills, not just through a human sitting in front of a dashboard. This post walks through what an ai agent backend platform looks like today, how leading platforms are positioning against the category, and where Appwrite fits.
+The platforms that win the next cycle will be the ones an agent can pick up on its own. That is the core idea behind the agent native backend: a platform where agents can inspect, provision, and operate backend resources through MCP servers, structured APIs, and agent skills, not just through a human sitting in front of a dashboard. This post walks through what an ai agent backend platform looks like today, where Appwrite fits, and how other platforms are positioning against the category.
 
 # What agent-native means
 
@@ -37,7 +37,33 @@ The third is that coding agents now write a meaningful share of the code in new 
 
 Put together, these shifts mean backend platforms are being evaluated against a new checklist: does an agent already understand your product, can it act on it safely, and does it stay current?
 
-# How the leading platforms are positioning
+# Where Appwrite sits in this category
+
+Appwrite is designed so that agents can reason about it, manage it, and build on top of it, using the same primitives a human developer uses.
+
+On the management side, the [API MCP server](/docs/tooling/ai/mcp-servers/api) lets LLMs and coding agents perform operations directly on an Appwrite project: creating users, managing databases, tables, and columns, handling storage, invoking functions, and more. The server works with API keys, supports scoping through flags like `--tablesdb`, `--users`, `--teams`, `--storage`, `--functions`, and `--messaging`, and installs into the same editors as other MCP servers.
+
+On the knowledge side, the [Docs MCP server](/docs/tooling/ai/mcp-servers/docs) gives AI assistants access to Appwrite documentation at call time, so agents can answer questions about APIs, SDKs, and patterns without relying on training data. Together, these two servers cover the "act on your project" and "read the docs at call time" pillars of agent-native.
+
+Appwrite's agent surface goes further than MCP alone.
+
+- [Agent Skills](/docs/tooling/ai/skills) are open-source Markdown files that give AI agents language-specific SDK context. Skills cover the Appwrite CLI and every major SDK including TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift, and work across Claude Code, Cursor, Windsurf, and other compatible tools.
+- [Editor plugins](/docs/tooling/ai/ai-dev-tools/claude-code) for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) bundle the API MCP server, the Docs MCP server, and the agent skills into a single install, so an agent is set up to build with Appwrite in two commands.
+- [Appwrite Assistant](/docs/tooling/ai/assistant) is an AI helper inside the Appwrite Console, reachable through the Command Center under the `Ask the AI` tab. It is grounded in Appwrite documentation and helps with inline troubleshooting and code snippet generation.
+- [Appwrite Arena](/docs/tooling/ai/arena) is an open-source benchmark that scores how well AI models understand Appwrite, with and without Agent Skills.
+
+On the build side, the primitives that agents compose against are the same ones used by human developers:
+
+- [Auth](/docs/products/auth) for identity, sessions, OAuth, MFA, Teams, and roles.
+- [Databases](/docs/products/databases) with tables, typed columns, rows, relationships, queries, and transactions.
+- [Storage](/docs/products/storage) for buckets, permissions, antivirus, and image transformations.
+- [Functions](/docs/products/functions) in Node, Python, Go, PHP, Dart, Ruby, Deno, and more, with CRON and event triggers.
+- [Realtime](/docs/apis/realtime) for live updates on rows, events, and custom channels.
+- [Sites](/docs/products/sites) for deploying frontends with custom domains, env vars, logs, and rollbacks.
+
+Because these primitives are small and named, agents plan cleaner tool calls against them. Creating a table with typed columns, setting row permissions, wiring a function to an event trigger, and deploying a site to a custom domain each fit inside a single unit of intent.
+
+# How alternative platforms are positioning
 
 Almost every serious backend vendor has staked out some agent-native ground. The shapes are different.
 
@@ -55,31 +81,6 @@ Almost every serious backend vendor has staked out some agent-native ground. The
 
 These are all legitimate interpretations of agent-native. They diverge on one question: should the platform be something an agent builds on, something an agent manages, or both.
 
-# Where Appwrite sits in this category
-
-Appwrite is in the both camp. The platform is designed so that agents can reason about it, manage it, and build on top of it, using the same primitives a human developer uses.
-
-On the management side, the [API MCP server](/docs/tooling/mcp/api) lets LLMs and coding agents perform operations directly on an Appwrite project: creating users, managing databases, tables, and columns, handling storage, invoking functions, and more. The server works with API keys, supports scoping through flags like `--tablesdb`, `--users`, `--teams`, `--storage`, `--functions`, and `--messaging`, and installs into the same editors as other MCP servers.
-
-On the knowledge side, the [Docs MCP server](/docs/tooling/mcp/docs) gives AI assistants access to Appwrite documentation at call time, so agents can answer questions about APIs, SDKs, and patterns without relying on training data. Together, these two servers cover the "act on your project" and "read the docs at call time" pillars of agent-native.
-
-Appwrite's agent surface goes further than MCP alone.
-
-- [Agent Skills](/docs/tooling/skills) are open-source Markdown files that give AI agents language-specific SDK context. Skills install per project or globally and work across Cursor, Claude Code, Windsurf, Antigravity, OpenCode, and other compatible tools.
-- [Appwrite Assistant](/docs/tooling/ai/assistant) is an AI helper inside the Appwrite Console, reachable through the Command Center under the `Ask the AI` tab. It is grounded in Appwrite documentation and helps with inline troubleshooting and code snippet generation.
-- [Appwrite Arena](/docs/tooling/ai/arena) is an open-source benchmark that scores how well AI models understand Appwrite. It runs 191 questions across Foundation, Auth, Databases, Functions, Storage, Sites, Messaging, Realtime, and CLI, and reports scores with and without Agent Skills.
-
-On the build side, the primitives that agents compose against are the same ones used by human developers:
-
-- [Auth](/docs/products/auth) for identity, sessions, OAuth, MFA, Teams, and roles.
-- [Databases](/docs/products/databases) with tables, typed columns, rows, relationships, queries, and transactions.
-- [Storage](/docs/products/storage) for buckets, permissions, antivirus, and image transformations.
-- [Functions](/docs/products/functions) in Node, Python, Go, PHP, Dart, Ruby, Deno, and more, with CRON and event triggers.
-- [Realtime](/docs/apis/realtime) for live updates on rows, events, and custom channels.
-- [Sites](/docs/products/sites) for deploying frontends with custom domains, env vars, logs, and rollbacks.
-
-Because these primitives are small and named, agents plan cleaner tool calls against them. Creating a table with typed columns, setting row permissions, wiring a function to an event trigger, and deploying a site to a custom domain each fit inside a single unit of intent.
-
 # What a checklist for an agent-native backend looks like
 
 Pulling the pattern out of the vendors above, an agent native backend platform checklist starts to look like this:
@@ -95,7 +96,7 @@ Pulling the pattern out of the vendors above, an agent native backend platform c
 | Console assistant | AI help where human developers still do the oversight work. |
 | Observability agents can see | Logs, deploys, and events retrievable as structured data instead of screenshots. |
 
-Different vendors cover different rows. Firebase, Supabase, Neon, and Netlify concentrate on control-plane MCP. Convex focuses on agent application primitives. Cloudflare builds a runtime for agents themselves. Appwrite covers the full column: MCP for the API, MCP for the docs, Skills for the SDKs, Arena for model evaluation, Assistant for console help, and a set of primitives small enough for agents to compose cleanly.
+Different vendors cover different rows. Firebase, Supabase, Neon, and Netlify concentrate on control-plane MCP. Convex focuses on agent application primitives. Cloudflare builds a runtime for agents themselves. Appwrite covers the full column: MCP for the API, MCP for the docs, Skills for the SDKs, plugins for Claude Code and Cursor that bundle all of it in one install, Arena for model evaluation, Assistant for console help, and a set of primitives small enough for agents to compose cleanly.
 
 # What this means for teams building AI apps
 
@@ -107,11 +108,11 @@ Second, treat MCP, skills, and docs quality as product choices, not marketing. A
 
 The rise of agent-native backend platforms is not a rebrand. It is an admission that two audiences now read your product: the human who decides and the agent who writes the code. Platforms that take that seriously are the ones both audiences will reach for.
 
-To see what this looks like in practice, start with the [Appwrite AI tooling hub](/docs/tooling/ai), install the [API MCP server](/docs/tooling/mcp/api) and the [Docs MCP server](/docs/tooling/mcp/docs), add [Agent Skills](/docs/tooling/skills) for your SDK, and check your model's score on [Appwrite Arena](https://arena.appwrite.io).
+To see what this looks like in practice, start with the [Appwrite AI tooling hub](/docs/tooling/ai), install the [API MCP server](/docs/tooling/ai/mcp-servers/api) and the [Docs MCP server](/docs/tooling/ai/mcp-servers/docs), add [Agent Skills](/docs/tooling/ai/skills) for your SDK, or grab the editor plugin for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) or [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) to install everything in one step.
 
 - [Appwrite AI tooling](/docs/tooling/ai)
-- [API MCP server](/docs/tooling/mcp/api)
-- [Docs MCP server](/docs/tooling/mcp/docs)
-- [Agent Skills](/docs/tooling/skills)
+- [API MCP server](/docs/tooling/ai/mcp-servers/api)
+- [Docs MCP server](/docs/tooling/ai/mcp-servers/docs)
+- [Agent Skills](/docs/tooling/ai/skills)
 - [Appwrite Arena](/docs/tooling/ai/arena)
 - [Appwrite Assistant](/docs/tooling/ai/assistant)

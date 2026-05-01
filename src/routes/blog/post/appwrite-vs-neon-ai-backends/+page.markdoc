@@ -2,7 +2,7 @@
 layout: post
 title: "Appwrite vs Neon for AI app backends"
 description: "Compare Appwrite vs Neon for AI app backends. Neon owns Postgres for agents; Appwrite gives you a complete app backend with Auth, storage, MCP, and more."
-date: 2026-04-23
+date: 2026-04-29
 cover: /images/blog/appwrite-vs-neon-ai-backends/cover.png
 timeToRead: 9
 author: atharva
@@ -57,6 +57,8 @@ Appwrite is built as a backend platform for the whole app, with AI workloads sit
 - **Sites** for hosting the frontend of your AI app with source control deploys, custom domains, env vars, rollbacks, and logs.
 - **Messaging** for email, SMS, and push notifications, useful for approvals, human-in-the-loop flows, and background agent updates.
 - **Appwrite MCP servers.** Both the API MCP, which lets coding agents act on your Appwrite resources, and the Docs MCP, which gives agents Appwrite context inside tools like Cursor, Claude Code, Lovable, and Windsurf.
+- **Agent Skills** for the Appwrite CLI and every major SDK including TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift, so agents generate idiomatic Appwrite code without docs in the prompt.
+- **Editor plugins** for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) that bundle the API MCP, Docs MCP, and skills into one install.
 - **Self-hosting** under an open-source license, or Appwrite Cloud with the same API surface.
 
 The positioning is straightforward. Neon owns the database for agents. Appwrite owns the app backend for AI products.
@@ -71,40 +73,30 @@ The positioning is straightforward. Neon owns the database for agents. Appwrite 
 | Functions | Not included; bring your own runtime | Functions on Node, Python, Go, Ruby, Deno, PHP, and more, with event and CRON triggers |
 | Realtime | Data API and branching; no built-in pub/sub channels | Realtime channels for rows, events, and custom channels |
 | Hosting | Not included; bring your own host | Sites with deploys, custom domains, env vars, rollbacks, logs |
-| MCP | Neon MCP Server for projects, branches, SQL, migrations | Appwrite API MCP for live backend actions, Appwrite Docs MCP for context |
+| MCP, Skills, and editor plugins | Neon MCP Server for projects, branches, SQL, migrations | Appwrite API MCP, Appwrite Docs MCP, Agent Skills for CLI and 10 SDKs, Claude Code and Cursor plugins |
 | Self-hosting | Managed cloud; community-driven self-hosting options | Open-source self-hosting with the same API surface as Appwrite Cloud |
 | Open source | Core storage and compute open source; product is a managed service | Open-source backend platform across all products |
 | Agent features | Instant provisioning, database branching, database-per-tenant, Cursor and Copilot integrations, pgvector | TablesDB for durable agent state, Functions for tool hosting, Realtime for live UI, Storage for RAG sources, MCP for agent access |
 
-# Where each choice lands
+# Where Appwrite fits
 
-**Neon fits when:**
-
-- The job is the database. You want serverless Postgres that an agent can provision, branch, and operate through an API.
-- Your AI app is Postgres-centric and you are happy picking separate vendors for auth, storage, functions, realtime, and hosting.
-- Your AI tool story is IDE-first. You want agents working on your schemas and queries through Cursor, Claude Code, or Copilot with Neon's MCP.
-- You are building database-per-tenant workloads where you might run thousands of isolated Postgres projects.
-- You want pgvector next to your relational data and prefer keeping embeddings in Postgres instead of a separate vector store.
-
-**Appwrite fits when:**
+Appwrite is the right pick when:
 
 - You are building a full AI app, not just an AI feature on top of a database. You need identity, data, files, server-side logic, live updates, notifications, and hosting.
 - You want first-party Auth with Teams, roles, MFA, and OAuth from day one, not a beta layer or a third-party dependency.
 - You prefer modeling agent state, thread metadata, message history, and tool results as rows in typed tables with relationships and queries.
 - You want Functions for LLM tool calls, webhooks, and scheduled jobs on the same platform as your data.
 - You want Realtime channels to push tool outputs, agent progress, and row updates to clients without stitching in another service.
-- You want coding agents to operate on your backend through a first-party API MCP, with a Docs MCP available for context inside AI tools.
+- You want coding agents to operate on your backend through a first-party API MCP, Docs MCP, Agent Skills, and editor plugins for Claude Code and Cursor.
 - You want to self-host under a standard open-source license or move between Appwrite Cloud and your own infrastructure.
+
+Neon is the tighter fit when the database itself is the entire job, especially for database-per-tenant workloads or schema-heavy agent flows where instant Postgres provisioning and branching are the point.
 
 # How teams usually split the decision
 
-There are two product shapes where this choice comes up.
+Most AI products that reach users are broader apps where the agent is one feature among many: an AI CRM, an AI writing tool with user uploads, an AI copilot for a SaaS product, or a consumer chat app with files, notifications, and teams. The backend shopping list grows fast: Auth with Teams, file storage, scheduled jobs, webhooks, realtime updates, messaging, hosting, and an MCP your coding agents can drive. That is where Appwrite's breadth shortens the integration work. You do not spend the first month wiring four vendors together before you get to the AI part.
 
-The first is a data-heavy AI product where Postgres is the star. Analytics agents, data assistants, SQL copilots, and per-tenant AI workspaces. For these, Neon's branching, serverless compute, database-per-tenant model, and MCP tooling are a strong match. Teams pair Neon with their own auth, storage, functions, and hosting, and they accept the integration cost because the Postgres surface is the point.
-
-The second is a broader AI-powered app where the agent is one feature among many. An AI CRM, an AI writing tool with user uploads, an AI copilot for a SaaS product, or a consumer chat app with files, notifications, and teams. Here, the backend shopping list grows fast: Auth with Teams, file storage, scheduled jobs, webhooks, realtime updates, messaging, hosting, and an MCP your coding agents can drive. That is where Appwrite's breadth shortens the integration work. You do not spend the first month wiring four vendors together before you get to the AI part.
-
-A useful way to read the two platforms: Neon owns the database lane for agents, and Appwrite owns the app backend lane for AI products. If your job is clearly in Neon's lane, pick Neon. If your job is everything around and including the database, Appwrite gets you there with fewer moving parts.
+Data-heavy AI products where Postgres is the entire star, like analytics agents, SQL copilots, or per-tenant AI workspaces, are the narrower case Neon's branching and database-per-tenant model are built for. Even there, Appwrite TablesDB plus Functions covers most app-side workloads without committing to four extra vendors around the database.
 
 # Backends for AI products come down to primitives
 
@@ -114,7 +106,7 @@ Neon answers that with one excellent primitive: serverless Postgres for agents, 
 
 Pick the one that matches your product. If the product is a database an agent can drive, Neon is built for that. If the product is an AI app with users, files, workflows, and a frontend, Appwrite is built for that.
 
-If you want to explore Appwrite for an AI app backend, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api) for agentic access to your backend.
+If you want to explore Appwrite for an AI app backend, start with [Appwrite Cloud](https://cloud.appwrite.io), read the [AI tooling hub](/docs/tooling/ai), and check the [API MCP server](/docs/tooling/ai/mcp-servers/api), [Agent Skills](/docs/tooling/ai/skills), and the editor plugins for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor).
 
 - [Appwrite TablesDB](/docs/products/databases)
 - [Appwrite Auth](/docs/products/auth)

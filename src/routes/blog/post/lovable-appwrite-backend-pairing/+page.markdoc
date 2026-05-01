@@ -2,7 +2,7 @@
 layout: post
 title: "Lovable and Appwrite: a practical backend pairing for AI-generated apps"
 description: "How Lovable users can pair Appwrite as the backend for AI-generated apps, with Auth, tables, permissions, Storage, and Functions."
-date: 2026-04-23
+date: 2026-04-26
 cover: /images/blog/lovable-appwrite-backend-pairing/cover.png
 timeToRead: 8
 author: atharva
@@ -127,3 +127,15 @@ If you want to try the pairing:
 5. Deploy the frontend on Appwrite Sites if you want the full stack in one place.
 
 The goal is not to replace Lovable's speed. It is to give the generated app a backend it can keep growing into.
+
+## More resources
+
+- [Appwrite AI tooling](/docs/tooling/ai)
+- [Appwrite Lovable integration docs](/docs/tooling/ai/ai-dev-tools/lovable)
+- [Appwrite Auth](/docs/products/auth)
+- [Appwrite Databases](/docs/products/databases)
+- [Appwrite Storage](/docs/products/storage)
+- [Appwrite Functions](/docs/products/functions)
+- [Appwrite Sites](/docs/products/sites)
+- [Appwrite API MCP server](/docs/tooling/ai/mcp-servers/api)
+- [Appwrite Docs MCP server](/docs/tooling/ai/mcp-servers/docs)
