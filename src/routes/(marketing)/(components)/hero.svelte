@@ -4,7 +4,11 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import {
+        DEFAULT_HERO_CTA,
+        DEFAULT_HERO_SUBTITLE,
+        DEFAULT_HERO_TITLE
+    } from '$lib/statsig/constants';
     import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
     import {
         MARKETING_HERO_EXPERIMENTS,
@@ -39,7 +43,8 @@
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout: (data.heroLayout ?? 0) as HeroLayoutVariant,
             heroSubtitle: data.heroSubtitle ?? DEFAULT_HERO_SUBTITLE,
-            heroTitle: data.heroTitle ?? DEFAULT_HERO_TITLE
+            heroTitle: data.heroTitle ?? DEFAULT_HERO_TITLE,
+            heroCta: data.heroCta ?? DEFAULT_HERO_CTA
         })
     );
 
@@ -63,15 +68,21 @@
         const baselineSubtitle = data.heroSubtitle ?? DEFAULT_HERO_SUBTITLE;
         const baselineLayout = (data.heroLayout ?? 0) as HeroLayoutVariant;
         const baselineTitle = data.heroTitle ?? DEFAULT_HERO_TITLE;
+        const baselineCta = data.heroCta ?? DEFAULT_HERO_CTA;
 
         if (hasHeroExperimentQueryOverrides(page.url.searchParams)) {
             log('URL query overrides (client layout)', {
                 ...resolveHeroQueryOverrides(page.url.searchParams, {
                     heroLayout: baselineLayout,
                     heroSubtitle: baselineSubtitle,
-                    heroTitle: baselineTitle
+                    heroTitle: baselineTitle,
+                    heroCta: baselineCta
                 }),
-                dataBaseline: { heroLayout: baselineLayout, subtitleLen: baselineSubtitle.length }
+                dataBaseline: {
+                    heroLayout: baselineLayout,
+                    subtitleLen: baselineSubtitle.length,
+                    ctaLen: baselineCta.length
+                }
             });
             return;
         }
@@ -93,12 +104,14 @@
 
             const { debug } = readMarketingHeroExperimentsForExposure(client, {
                 heroSubtitle: baselineSubtitle,
-                heroLayout: baselineLayout
+                heroLayout: baselineLayout,
+                heroCta: baselineCta
             });
 
             log('experiment exposure (display stays on `page.data`)', {
                 [MARKETING_HERO_EXPERIMENTS.bestDescription]:
                     debug[MARKETING_HERO_EXPERIMENTS.bestDescription],
+                [MARKETING_HERO_EXPERIMENTS.bestCta]: debug[MARKETING_HERO_EXPERIMENTS.bestCta],
                 [MARKETING_HERO_EXPERIMENTS.heroLayout]:
                     debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
             });
@@ -215,7 +228,7 @@
                     class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
-                    }}>Start building for free</Button
+                    }}>{resolved.heroCta}</Button
                 >
                 <AppwriteIn100Seconds />
             </div>

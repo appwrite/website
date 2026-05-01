@@ -9,6 +9,7 @@ export {
     toStatsigUser
 } from './server';
 export {
+    evaluateHeroCtaExperiment,
     evaluateHeroDescriptionExperiment,
     evaluateHeroLayoutExperiment,
     loadMarketingHomeStatsigBundle,

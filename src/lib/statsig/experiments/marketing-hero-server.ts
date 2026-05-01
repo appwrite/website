@@ -7,7 +7,7 @@
 import type { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 import { readLayoutVariantFromStatsigEvaluation } from '../experiment-eval';
 import type { HeroLayoutVariant } from '../hero-layout';
-import { normalizeHeroSubtitle } from '../hero-query-overrides';
+import { normalizeHeroCta, normalizeHeroSubtitle } from '../hero-query-overrides';
 import {
     getStatsigClientBootstrapPayloadForClient,
     getStatsigServerClient,
@@ -23,6 +23,7 @@ const DISABLE_EXPOSURE = { disableExposureLogging: true } as const;
 export type MarketingHomeStatsigBundle = {
     heroSubtitleBase: string;
     heroLayoutBase: HeroLayoutVariant;
+    heroCtaBase: string;
     statsigBootstrap: string | null;
 };
 
@@ -86,6 +87,24 @@ async function evaluateHeroDescriptionWithClient(
     }
 }
 
+async function evaluateHeroCtaWithClient(
+    client: Statsig,
+    statsigUser: StatsigUser,
+    fallback: string
+): Promise<string> {
+    try {
+        const experiment = client.getExperiment(
+            statsigUser,
+            MARKETING_HERO_EXPERIMENTS.bestCta,
+            DISABLE_EXPOSURE
+        );
+        const raw = experiment.get('cta', fallback);
+        return normalizeHeroCta(raw, fallback);
+    } catch {
+        return fallback;
+    }
+}
+
 async function evaluateHeroLayoutWithClient(
     client: Statsig,
     statsigUser: StatsigUser,
@@ -113,7 +132,7 @@ async function evaluateHeroLayoutWithClient(
 export async function loadMarketingHomeStatsigBundle(
     user: StatsigUser | StatsigServerUserInput,
     cacheKey: string,
-    fallbacks: { subtitle: string; layout: HeroLayoutVariant }
+    fallbacks: { subtitle: string; layout: HeroLayoutVariant; cta: string }
 ): Promise<MarketingHomeStatsigBundle> {
     const now = Date.now();
     sweepExpiredMarketingHomeStatsigCache(now);
@@ -129,6 +148,7 @@ export async function loadMarketingHomeStatsigBundle(
         return {
             heroSubtitleBase: fallbacks.subtitle,
             heroLayoutBase: fallbacks.layout,
+            heroCtaBase: fallbacks.cta,
             statsigBootstrap: null
         };
     }
@@ -138,14 +158,16 @@ export async function loadMarketingHomeStatsigBundle(
     const bootstrapFilters = {
         experimentFilter: new Set([
             MARKETING_HERO_EXPERIMENTS.bestDescription,
+            MARKETING_HERO_EXPERIMENTS.bestCta,
             MARKETING_HERO_EXPERIMENTS.heroLayout
         ]),
         dynamicConfigFilter: new Set([MARKETING_HERO_EXPERIMENTS.heroLayout])
     };
 
-    const [heroSubtitleBase, heroLayoutBase, statsigBootstrap] = await Promise.all([
+    const [heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap] = await Promise.all([
         evaluateHeroDescriptionWithClient(client, statsigUser, fallbacks.subtitle),
         evaluateHeroLayoutWithClient(client, statsigUser, fallbacks.layout),
+        evaluateHeroCtaWithClient(client, statsigUser, fallbacks.cta),
         Promise.resolve(
             getStatsigClientBootstrapPayloadForClient(client, statsigUser, bootstrapFilters)
         )
@@ -154,6 +176,7 @@ export async function loadMarketingHomeStatsigBundle(
     const bundle: MarketingHomeStatsigBundle = {
         heroSubtitleBase,
         heroLayoutBase,
+        heroCtaBase,
         statsigBootstrap
     };
 
@@ -189,4 +212,16 @@ export async function evaluateHeroLayoutExperiment(
     const client = await getStatsigServerClient();
     if (!client) return fallback;
     return evaluateHeroLayoutWithClient(client, toStatsigUser(user), fallback);
+}
+
+/**
+ * SSR: `best_cta` (`cta` param). Client must still call `readMarketingHeroExperimentsForExposure` so Pulse gets an exposure.
+ */
+export async function evaluateHeroCtaExperiment(
+    user: StatsigUser | StatsigServerUserInput,
+    fallback: string
+): Promise<string> {
+    const client = await getStatsigServerClient();
+    if (!client) return fallback;
+    return evaluateHeroCtaWithClient(client, toStatsigUser(user), fallback);
 }

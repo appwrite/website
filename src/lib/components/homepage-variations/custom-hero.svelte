@@ -4,7 +4,11 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import { DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import {
+        DEFAULT_HERO_CTA,
+        DEFAULT_HERO_SUBTITLE,
+        DEFAULT_HERO_TITLE
+    } from '$lib/statsig/constants';
     import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
     import { readMarketingHeroExperimentsForExposure } from '$lib/statsig/experiments/marketing-hero-client';
     import {
@@ -22,7 +26,7 @@
         title = DEFAULT_HERO_TITLE,
         subtitle = DEFAULT_HERO_SUBTITLE,
         showDashboard = true,
-        ctaLabel = 'Start building for free',
+        ctaLabel = DEFAULT_HERO_CTA,
         ctaHref = PUBLIC_APPWRITE_DASHBOARD,
         heroLayout = 0
     } = $props<{
@@ -37,12 +41,14 @@
     /** Same client hydration path as marketing `hero.svelte` (Statsig + query overrides). */
     let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
     let clientHeroSubtitle = $state<string | undefined>(undefined);
+    let clientHeroCta = $state<string | undefined>(undefined);
 
     const resolved = $derived(
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout: clientHeroLayout ?? heroLayout,
             heroSubtitle: clientHeroSubtitle ?? subtitle,
-            heroTitle: title
+            heroTitle: title,
+            heroCta: clientHeroCta ?? ctaLabel
         })
     );
 
@@ -64,16 +70,23 @@
         void whenStatsigReady().then((client) => {
             if (!client) return;
 
-            const { heroSubtitle: nextSubtitle, heroLayout: nextLayout } =
-                readMarketingHeroExperimentsForExposure(client, {
-                    heroSubtitle: subtitle,
-                    heroLayout
-                });
+            const {
+                heroSubtitle: nextSubtitle,
+                heroLayout: nextLayout,
+                heroCta: nextCta
+            } = readMarketingHeroExperimentsForExposure(client, {
+                heroSubtitle: subtitle,
+                heroLayout,
+                heroCta: ctaLabel
+            });
             if (nextSubtitle !== subtitle) {
                 clientHeroSubtitle = nextSubtitle;
             }
             if (nextLayout !== heroLayout) {
                 clientHeroLayout = nextLayout;
+            }
+            if (nextCta !== ctaLabel) {
+                clientHeroCta = nextCta;
             }
         });
     });
@@ -170,7 +183,7 @@
                     class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
-                    }}>{ctaLabel}</Button
+                    }}>{resolved.heroCta}</Button
                 >
             </div>
         </div>

@@ -23,6 +23,7 @@
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
     import { changelogNavBadgeVisible } from '$routes/changelog/utils';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -157,11 +158,12 @@
 
     $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
 
+    $: navCtaLabel = (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
         ? 'mobile-claim_300_credits_btn-click'
         : 'main-start_building_btn-click';
-    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : 'Start building';
+    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : navCtaLabel;
 
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;

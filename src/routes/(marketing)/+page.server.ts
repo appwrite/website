@@ -1,5 +1,6 @@
 import {
     STATSIG_STABLE_ID_KEY,
+    DEFAULT_HERO_CTA,
     DEFAULT_HERO_SUBTITLE,
     DEFAULT_HERO_TITLE
 } from '$lib/statsig/constants';
@@ -17,6 +18,7 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
             heroSubtitle: DEFAULT_HERO_SUBTITLE,
             heroLayout: 0 as HeroLayoutVariant,
             heroTitle: DEFAULT_HERO_TITLE,
+            heroCta: DEFAULT_HERO_CTA,
             statsigBootstrap: null,
             statsigStableUserId: null,
             statsigUserAgent: null
@@ -43,25 +45,31 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const { heroSubtitleBase, heroLayoutBase, statsigBootstrap } =
+    const { heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap } =
         await loadMarketingHomeStatsigBundle(user, stableId, {
             subtitle: DEFAULT_HERO_SUBTITLE,
-            layout: 0
+            layout: 0,
+            cta: DEFAULT_HERO_CTA
         });
 
     // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
     // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.
     const heroQueryParams = url.searchParams;
-    const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(heroQueryParams, {
-        heroLayout: heroLayoutBase,
-        heroSubtitle: heroSubtitleBase,
-        heroTitle: DEFAULT_HERO_TITLE
-    });
+    const { heroSubtitle, heroLayout, heroTitle, heroCta } = resolveHeroQueryOverrides(
+        heroQueryParams,
+        {
+            heroLayout: heroLayoutBase,
+            heroSubtitle: heroSubtitleBase,
+            heroTitle: DEFAULT_HERO_TITLE,
+            heroCta: heroCtaBase
+        }
+    );
 
     return {
         heroSubtitle,
         heroLayout,
         heroTitle,
+        heroCta,
         statsigBootstrap,
         /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
         statsigStableUserId: stableId,

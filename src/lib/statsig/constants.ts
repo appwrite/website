@@ -8,3 +8,5 @@ export const DEFAULT_HERO_SUBTITLE =
     'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.';
 
 export const DEFAULT_HERO_TITLE = 'Build like a team of hundreds';
+
+export const DEFAULT_HERO_CTA = 'Start building for free';
