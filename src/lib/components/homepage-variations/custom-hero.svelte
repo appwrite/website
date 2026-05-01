@@ -4,7 +4,11 @@
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
     import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import { DEFAULT_HERO_CTA, DEFAULT_HERO_SUBTITLE, DEFAULT_HERO_TITLE } from '$lib/statsig/constants';
+    import {
+        DEFAULT_HERO_CTA,
+        DEFAULT_HERO_SUBTITLE,
+        DEFAULT_HERO_TITLE
+    } from '$lib/statsig/constants';
     import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
     import { readMarketingHeroExperimentsForExposure } from '$lib/statsig/experiments/marketing-hero-client';
     import {
@@ -66,12 +70,15 @@
         void whenStatsigReady().then((client) => {
             if (!client) return;
 
-            const { heroSubtitle: nextSubtitle, heroLayout: nextLayout, heroCta: nextCta } =
-                readMarketingHeroExperimentsForExposure(client, {
-                    heroSubtitle: subtitle,
-                    heroLayout,
-                    heroCta: ctaLabel
-                });
+            const {
+                heroSubtitle: nextSubtitle,
+                heroLayout: nextLayout,
+                heroCta: nextCta
+            } = readMarketingHeroExperimentsForExposure(client, {
+                heroSubtitle: subtitle,
+                heroLayout,
+                heroCta: ctaLabel
+            });
             if (nextSubtitle !== subtitle) {
                 clientHeroSubtitle = nextSubtitle;
             }

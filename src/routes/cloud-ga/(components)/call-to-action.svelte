@@ -1,9 +1,16 @@
 <script lang="ts">
+    import { page } from '$app/state';
     import Cell from './grid-system/cell.svelte';
     import { Button } from '$lib/components/ui';
     import Grid from './grid-system/grid.svelte';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { trackEvent } from '$lib/actions/analytics';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 </script>
 
 <div class="mx-auto -mb-[97px] flex max-w-6xl items-start justify-between">
@@ -22,7 +29,7 @@
                         class="w-full! lg:w-fit!"
                         onclick={() => {
                             trackEvent(`pricing-get-started-click`);
-                        }}>Start building</Button
+                        }}>{heroCtaIfShortStartBuilding('Start building', navCtaLabel)}</Button
                     >
                     <Button
                         onclick={() => {

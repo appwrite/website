@@ -1,4 +1,15 @@
+import { DEFAULT_HERO_CTA } from './constants';
 import { normalizeHeroLayout, type HeroLayoutVariant } from './hero-layout';
+
+/** Legacy fixed label on several CTAs — replaced by `best_cta` / `heroCta` when present. */
+export const SHORT_START_BUILDING_LABEL = 'Start building';
+
+/**
+ * Use homepage experiment CTA copy for buttons that historically used {@link SHORT_START_BUILDING_LABEL}.
+ */
+export function heroCtaIfShortStartBuilding(staticLabel: string, heroCta: string): string {
+    return staticLabel === SHORT_START_BUILDING_LABEL ? heroCta : staticLabel;
+}
 
 /** Query overrides for marketing hero experiments (Statsig parity for local QA). */
 
