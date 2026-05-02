@@ -9,18 +9,22 @@
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
+    import DocsPlatformsGrid from './DocsPlatformsGrid.svelte';
     import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
+    import { themeInUse } from '$routes/+layout.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
-        'Learn how to build like a team of hundreds. Get started with Authentication, Databases, Storage, Functions, and Messaging in your preferred framework.';
+        'Ship faster with Appwrite - by hand or with AI agents over MCP and skills. Quick starts and deep guides for web and mobile: Authentication, Databases, Storage, Functions, Messaging, and hosting.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
 
     type AiToolCard = {
         href: string;
         title: string;
-        logo: string;
+        /** Monotone glyph for dark UI (e.g. docs dark / cards on dark). */
+        logoDark: string;
+        /** Monotone glyph for light UI (`#2D2D31` fills). */
+        logoLight: string;
         event: string;
     };
 
@@ -28,37 +32,43 @@
         {
             href: '/docs/tooling/mcp/claude-code',
             title: 'Claude Code',
-            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            logoDark: '/images/docs/mcp/logos/dark/claude.svg',
+            logoLight: '/images/docs/mcp/logos/claude.svg',
             event: 'docs-ai-ide_claude-code-click'
         },
         {
             href: '/docs/tooling/ai/ai-dev-tools/codex',
             title: 'Codex',
-            logo: '/images/docs/mcp/logos/dark/openai.svg',
+            logoDark: '/images/docs/mcp/logos/dark/openai.svg',
+            logoLight: '/images/docs/mcp/logos/openai.svg',
             event: 'docs-ai-ide_codex-click'
         },
         {
             href: '/docs/tooling/mcp/cursor',
             title: 'Cursor',
-            logo: '/images/docs/mcp/logos/dark/cursor-ai.svg',
+            logoDark: '/images/docs/mcp/logos/dark/cursor-ai.svg',
+            logoLight: '/images/docs/mcp/logos/cursor-ai.svg',
             event: 'docs-ai-ide_cursor-click'
         },
         {
             href: '/docs/tooling/mcp/vscode',
             title: 'VS Code',
-            logo: '/images/docs/mcp/logos/dark/vscode.svg',
+            logoDark: '/images/docs/mcp/logos/dark/vscode.svg',
+            logoLight: '/images/docs/mcp/logos/vscode.svg',
             event: 'docs-ai-ide_vscode-click'
         },
         {
             href: '/docs/tooling/mcp/opencode',
             title: 'OpenCode',
-            logo: '/images/docs/mcp/logos/dark/opencode.svg',
+            logoDark: '/images/docs/mcp/logos/dark/opencode.svg',
+            logoLight: '/images/docs/mcp/logos/opencode.svg',
             event: 'docs-ai-ide_opencode-click'
         },
         {
             href: '/docs/tooling/mcp/antigravity',
             title: 'Google Antigravity',
-            logo: '/images/docs/mcp/logos/dark/google-antigravity.svg',
+            logoDark: '/images/docs/mcp/logos/dark/google-antigravity.svg',
+            logoLight: '/images/docs/mcp/logos/google-antigravity.svg',
             event: 'docs-ai-ide_antigravity-click'
         }
     ];
@@ -67,31 +77,36 @@
         {
             href: '/docs/tooling/mcp/claude-desktop',
             title: 'Claude Desktop',
-            logo: '/images/docs/mcp/logos/dark/claude.svg',
+            logoDark: '/images/docs/mcp/logos/dark/claude.svg',
+            logoLight: '/images/docs/mcp/logos/claude.svg',
             event: 'docs-ai-vibe_claude-desktop-click'
         },
         {
             href: '/docs/tooling/ai/ai-dev-tools/lovable',
             title: 'Lovable',
-            logo: '/images/docs/mcp/logos/dark/lovable.svg',
+            logoDark: '/images/docs/mcp/logos/dark/lovable.svg',
+            logoLight: '/images/docs/mcp/logos/lovable.svg',
             event: 'docs-ai-vibe_lovable-click'
         },
         {
             href: '/docs/tooling/ai/ai-dev-tools/emergent',
             title: 'Emergent',
-            logo: '/images/docs/mcp/logos/dark/emergent.svg',
+            logoDark: '/images/docs/mcp/logos/dark/emergent.svg',
+            logoLight: '/images/docs/mcp/logos/emergent.svg',
             event: 'docs-ai-vibe_emergent-click'
         },
         {
             href: '/docs/tooling/ai/ai-dev-tools/bolt',
             title: 'Bolt',
-            logo: '/images/docs/mcp/logos/dark/bolt.svg',
+            logoDark: '/images/docs/mcp/logos/dark/bolt.svg',
+            logoLight: '/images/docs/mcp/logos/bolt.svg',
             event: 'docs-ai-vibe_bolt-click'
         },
         {
             href: '/docs/tooling/mcp/zenflow',
             title: 'Zenflow',
-            logo: '/images/docs/mcp/logos/dark/zenflow.svg',
+            logoDark: '/images/docs/mcp/logos/dark/zenflow.svg',
+            logoLight: '/images/docs/mcp/logos/zenflow.svg',
             event: 'docs-ai-vibe_zenflow-click'
         }
     ];
@@ -165,21 +180,26 @@
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="web-hero is-align-start e-hero-docs relative">
+        <section class="web-hero is-align-start is-no-max-width e-hero-docs relative">
             <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Docs<span class="web-u-color-text-accent">_ </span>
             </h1>
-            <p class="text-description max-w-[600px]">
-                Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
-                powerful APIs to stop fighting technologies and start delivering value.
+            <p class="text-description max-w-[720px] leading-relaxed">
+                Appwrite helps you ship secure, scalable web and mobile apps - whether you code
+                everything yourself or steer AI agents that scaffold and integrate for you.
+                Authentication, databases, storage, functions, messaging, and hosting in one place,
+                so you spend less time on plumbing and more on what you are building.
             </p>
 
-            <Button variant="secondary" href="/docs/quick-starts" class="mt-8"
-                >Quickstart guides</Button
+            <DocsPlatformsGrid
+                padded={false}
+                class="mt-4 w-full min-w-0 self-stretch p-0! max-md:p-0!"
+            />
+            <Button variant="secondary" href="/docs/quick-starts" class="mt-8 w-fit"
+                >All quick start guides</Button
             >
         </section>
-        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
@@ -428,7 +448,11 @@
                                 class="web-card is-normal flex h-full flex-row! items-center gap-2! no-underline"
                                 onclick={() => trackEvent(tool.event)}
                             >
-                                <img src={tool.logo} alt="" class="h-6 w-6 shrink-0" />
+                                <img
+                                    src={$themeInUse === 'light' ? tool.logoLight : tool.logoDark}
+                                    alt=""
+                                    class="h-6 w-6 shrink-0"
+                                />
                                 <h4 class="text-sub-body text-primary font-medium">{tool.title}</h4>
                             </a>
                         </li>
@@ -453,7 +477,11 @@
                                 class="web-card is-normal flex h-full flex-row! items-center gap-2! no-underline"
                                 onclick={() => trackEvent(tool.event)}
                             >
-                                <img src={tool.logo} alt="" class="h-6 w-6 shrink-0" />
+                                <img
+                                    src={$themeInUse === 'light' ? tool.logoLight : tool.logoDark}
+                                    alt=""
+                                    class="h-6 w-6 shrink-0"
+                                />
                                 <h4 class="text-sub-body text-primary font-medium">{tool.title}</h4>
                             </a>
                         </li>

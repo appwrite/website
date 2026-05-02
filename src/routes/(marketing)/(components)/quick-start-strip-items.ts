@@ -2,49 +2,30 @@
  * Canonical list of `/docs/quick-starts/*` entries shown on the homepage platforms strip.
  * Order: homepage priority list first (`MARKETING_HOME_FIRST_NAMES`), then remaining frameworks in stable source order.
  * Keep in sync with docs quick-start routes (see `docs/quick-starts/+page.svelte`).
+ *
+ * Icons: console-style glyphs from `static/images/platforms/{dark|light}/*.svg`
+ * (synced from the Appwrite console / `vibes` repo `public/icons/` — light fills ~#32323C for docs light UI only).
  */
-import Python from '../(assets)/icons/python.svg';
-import Node from '../(assets)/icons/node.svg';
-import Flutter from '../(assets)/icons/flutter.svg';
-import Kotlin from '../(assets)/icons/kotlin.svg';
-import Apple from '../(assets)/icons/apple.svg';
-import AppleLight from '../(assets)/icons/light/apple.svg';
-import Android from '../(assets)/icons/android.svg';
-import Java from '../(assets)/icons/java.svg';
-import Dart from '../(assets)/icons/dart.svg';
-import Php from '../(assets)/icons/php.svg';
-import Ruby from '../(assets)/icons/ruby.svg';
-import Deno from '../(assets)/icons/deno.svg';
-import DenoLight from '../(assets)/icons/light/deno.svg';
-import Swift from '../(assets)/icons/swift.svg';
-import Net from '../(assets)/icons/net.svg';
-import Go from '../(assets)/icons/go.svg';
-import GoLight from '../(assets)/icons/light/go.svg';
-import React from '../(assets)/icons/react.svg';
-import Nextjs from '../(assets)/icons/nextjs.svg';
-import Svelte from '../(assets)/icons/svelte.svg';
-import Vue from '../(assets)/icons/vue.svg';
-import Angular from '../(assets)/icons/angular.svg';
-import ReactNative from '../(assets)/icons/react-native.svg';
-import TanStack from '../(assets)/icons/tanstack.svg';
-import TanStackLight from '../(assets)/icons/light/tanstack.svg';
-import Rust from '../(assets)/icons/rust.svg';
-import RustLight from '../(assets)/icons/light/rust.svg';
-import Nuxt from '../(assets)/icons/nuxt.svg';
-import Astro from '../(assets)/icons/astro.svg';
-import Solid from '../(assets)/icons/solid.svg';
-import Qwik from '../(assets)/icons/qwik.svg';
-import Javascript from '../(assets)/icons/javascript.svg';
-import Refine from '$icons/svg/refine.svg';
-import Remix from '$icons/svg/remix.svg';
+const ICON = '/images/platforms';
+
+function dual(slug: string): { dark: string; light: string } {
+    return {
+        dark: `${ICON}/dark/${slug}.svg`,
+        light: `${ICON}/light/${slug}.svg`
+    };
+}
 
 export type QuickStartStripItem = {
     name: string;
     href: string;
+    /** Brand tint for hover gradient (start). */
     primary: string;
-    secondary?: string;
+    /** Second brand stop for hover gradient; always set so tiles never fall back to transparent. */
+    secondary: string;
+    /** Console-style icon for dark UI */
     dark: string;
-    light?: string;
+    /** Same mark, strokes for docs light UI only (`#32323C`); marketing always uses `dark` */
+    light: string;
 };
 
 /** Icons per page on the homepage strip and headline strip (paginated on large viewports). */
@@ -65,122 +46,208 @@ export const MARKETING_HOME_FIRST_NAMES = [
 ] as const;
 
 const quickStartStripSource: QuickStartStripItem[] = [
-    { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
-    { name: 'Next.js', dark: Nextjs, href: '/docs/quick-starts/nextjs', primary: '#fff' },
-    { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
+    {
+        name: 'React',
+        href: '/docs/quick-starts/react',
+        primary: '#53C1DE',
+        secondary: '#087EA4',
+        ...dual('react')
+    },
+    {
+        name: 'Next.js',
+        href: '/docs/quick-starts/nextjs',
+        primary: '#000000',
+        secondary: '#0070F3',
+        ...dual('nextjs')
+    },
+    {
+        name: 'Vue',
+        href: '/docs/quick-starts/vue',
+        primary: '#4FC08D',
+        secondary: '#35495E',
+        ...dual('vue')
+    },
     {
         name: 'TanStack Start',
-        dark: TanStack,
-        light: TanStackLight,
         href: '/docs/quick-starts/tanstack-start',
-        primary: '#fff'
+        primary: '#FF4255',
+        secondary: '#0C1116',
+        ...dual('tanstack')
     },
-    { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
+    {
+        name: 'Angular',
+        href: '/docs/quick-starts/angular',
+        primary: '#DD0031',
+        secondary: '#9F1239',
+        ...dual('angular')
+    },
     {
         name: 'SvelteKit',
-        dark: Svelte,
         href: '/docs/quick-starts/sveltekit',
-        primary: '#FF3E00'
+        primary: '#FF3E00',
+        secondary: '#FF8C42',
+        ...dual('svelte')
     },
-    { name: 'Nuxt', dark: Nuxt, href: '/docs/quick-starts/nuxt', primary: '#00DC82' },
-    { name: 'Astro', dark: Astro, href: '/docs/quick-starts/astro', primary: '#FF5D01' },
-    { name: 'Qwik', dark: Qwik, href: '/docs/quick-starts/qwik', primary: '#18B6F6' },
-    { name: 'Solid', dark: Solid, href: '/docs/quick-starts/solid', primary: '#518AC8' },
-    { name: 'Refine', dark: Refine, href: '/docs/quick-starts/refine', primary: '#FF6E42' },
+    {
+        name: 'Nuxt',
+        href: '/docs/quick-starts/nuxt',
+        primary: '#00DC82',
+        secondary: '#003737',
+        ...dual('nuxt')
+    },
+    {
+        name: 'Astro',
+        href: '/docs/quick-starts/astro',
+        primary: '#FF5D01',
+        secondary: '#BC38E0',
+        ...dual('astro')
+    },
+    {
+        name: 'Qwik',
+        href: '/docs/quick-starts/qwik',
+        primary: '#18B6F6',
+        secondary: '#AC87EB',
+        ...dual('qwik')
+    },
+    {
+        name: 'Solid',
+        href: '/docs/quick-starts/solid',
+        primary: '#518AC8',
+        secondary: '#2C4F7C',
+        ...dual('solid')
+    },
+    {
+        name: 'Refine',
+        href: '/docs/quick-starts/refine',
+        primary: '#FF6E42',
+        secondary: '#0D131B',
+        ...dual('refine')
+    },
     {
         name: 'Remix',
-        dark: Remix,
         href: '/docs/products/sites/quick-start/remix',
         primary: '#3992FF',
-        secondary: '#121212'
+        secondary: '#121212',
+        ...dual('remix')
     },
     {
         name: 'Web',
-        dark: Javascript,
         href: '/docs/quick-starts/web',
         primary: '#FFCA28',
-        secondary: '#3E3E3E'
+        secondary: '#3E3E3E',
+        ...dual('javascript')
     },
     {
         name: 'React Native',
-        dark: ReactNative,
         href: '/docs/quick-starts/react-native',
-        primary: '#61DAFB'
+        primary: '#61DAFB',
+        secondary: '#087EA4',
+        ...dual('react-native')
     },
-    { name: 'Node.js', dark: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
+    {
+        name: 'Node.js',
+        href: '/docs/quick-starts/node',
+        primary: '#8CC84B',
+        secondary: '#3C873A',
+        ...dual('node')
+    },
     {
         name: 'Python',
-        dark: Python,
         href: '/docs/quick-starts/python',
         primary: '#F9C600',
-        secondary: '#327EBD'
+        secondary: '#327EBD',
+        ...dual('python')
     },
-    { name: 'PHP', dark: Php, href: '/docs/quick-starts/php', primary: '#8892BF' },
+    {
+        name: 'PHP',
+        href: '/docs/quick-starts/php',
+        primary: '#8892BF',
+        secondary: '#4F5B93',
+        ...dual('php')
+    },
     {
         name: 'Ruby',
-        dark: Ruby,
         href: '/docs/quick-starts/ruby',
         primary: '#791C12',
-        secondary: '#9E120B'
+        secondary: '#9E120B',
+        ...dual('ruby')
     },
-    { name: '.NET', dark: Net, href: '/docs/quick-starts/dotnet', primary: '#512BD4' },
-    { name: 'Go', dark: Go, light: GoLight, href: '/docs/quick-starts/go', primary: '#fff' },
+    {
+        name: '.NET',
+        href: '/docs/quick-starts/dotnet',
+        primary: '#512BD4',
+        secondary: '#68217A',
+        ...dual('dotnet')
+    },
+    {
+        name: 'Go',
+        href: '/docs/quick-starts/go',
+        primary: '#00ADD8',
+        secondary: '#007D9C',
+        ...dual('go')
+    },
     {
         name: 'Deno',
-        dark: Deno,
-        light: DenoLight,
         href: '/docs/quick-starts/deno',
-        primary: '#fff'
+        primary: '#70FFAF',
+        secondary: '#000000',
+        ...dual('deno')
     },
     {
         name: 'Dart',
-        dark: Dart,
         href: '/docs/quick-starts/dart',
         primary: '#01579B',
-        secondary: '#29B6F6'
+        secondary: '#29B6F6',
+        ...dual('dart')
     },
     {
         name: 'Rust',
-        dark: Rust,
-        light: RustLight,
         href: '/docs/quick-starts/rust',
-        primary: '#CE422B'
+        primary: '#CE422B',
+        secondary: '#3C1414',
+        ...dual('rust')
     },
     {
         name: 'Kotlin',
-        dark: Kotlin,
         href: '/docs/quick-starts/kotlin',
         primary: '#6D74E1',
-        secondary: '#E1725C'
+        secondary: '#E1725C',
+        ...dual('kotlin')
     },
     {
         name: 'Swift',
-        dark: Swift,
         href: '/docs/quick-starts/swift',
         primary: '#F88A36',
-        secondary: '#FD2020'
+        secondary: '#FD2020',
+        ...dual('swift')
     },
-    { name: 'Android', dark: Android, href: '/docs/quick-starts/android', primary: '#3DDC84' },
+    {
+        name: 'Android',
+        href: '/docs/quick-starts/android',
+        primary: '#3DDC84',
+        secondary: '#073042',
+        ...dual('android')
+    },
     {
         name: 'Android (Java)',
-        dark: Java,
         href: '/docs/quick-starts/android-java',
         primary: '#F89820',
-        secondary: '#5382A1'
+        secondary: '#5382A1',
+        ...dual('java')
     },
     {
         name: 'iOS',
-        dark: Apple,
-        light: AppleLight,
         href: '/docs/quick-starts/apple',
-        primary: '#fff'
+        primary: '#007AFF',
+        secondary: '#5856D6',
+        ...dual('apple')
     },
     {
         name: 'Flutter',
-        dark: Flutter,
         href: '/docs/quick-starts/flutter',
         primary: '#00569E',
-        secondary: '#47C5FB'
+        secondary: '#47C5FB',
+        ...dual('flutter')
     }
 ];
 

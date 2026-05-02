@@ -9,8 +9,14 @@
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
     import { Icon } from '$lib/components/ui';
+
+    /** Light platform SVGs are for docs light theme only; marketing always uses dark console icons. */
+    const useLightPlatformSvgs = $derived(
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light'
+    );
 
     type StripItem = QuickStartStripItem;
 
@@ -54,35 +60,40 @@
             dark: '/images/docs/mcp/logos/dark/claude.svg',
             light: '/images/docs/mcp/logos/claude.svg',
             href: '/docs/tooling/mcp/claude-code',
-            primary: '#D97659'
+            primary: '#D97659',
+            secondary: '#8B4A2E'
         },
         {
             name: 'Codex',
             dark: '/images/docs/mcp/logos/dark/openai.svg',
             light: '/images/docs/mcp/logos/openai.svg',
             href: '/docs/tooling/ai/ai-dev-tools/codex',
-            primary: '#10A37F'
+            primary: '#10A37F',
+            secondary: '#064E3B'
         },
         {
             name: 'Cursor',
             dark: '/images/docs/mcp/logos/dark/cursor-ai.svg',
             light: '/images/docs/mcp/logos/cursor-ai.svg',
             href: '/docs/tooling/mcp/cursor',
-            primary: '#fff'
+            primary: '#141414',
+            secondary: '#5B9BF8'
         },
         {
             name: 'Lovable',
             dark: '/images/docs/mcp/logos/dark/lovable.svg',
             light: '/images/docs/mcp/logos/lovable.svg',
             href: '/docs/tooling/ai/ai-dev-tools/lovable',
-            primary: '#FF6355'
+            primary: '#FF6355',
+            secondary: '#C43D32'
         },
         {
             name: 'OpenCode',
             dark: '/images/docs/mcp/logos/dark/opencode.svg',
             light: '/images/docs/mcp/logos/opencode.svg',
             href: '/docs/tooling/mcp/opencode',
-            primary: '#fff'
+            primary: '#FFFFFF',
+            secondary: '#6366F1'
         }
     ];
 
@@ -192,8 +203,8 @@
             <Tooltip.Root>
                 <div
                     class="contents"
-                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                        'transparent'};--animation-delay:{platformIndex * 12}ms"
+                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                        12}ms"
                 >
                     <Tooltip.Trigger
                         class={cn(
@@ -213,11 +224,9 @@
                             onclick={() => trackLogo('ai-tooling', platform.name)}
                         >
                             <img
-                                src={$themeInUse === 'light' && platform.light
-                                    ? platform.light
-                                    : platform.dark}
+                                src={useLightPlatformSvgs ? platform.light : platform.dark}
                                 alt=""
-                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
+                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                             />
                         </a>
                     </Tooltip.Trigger>
@@ -259,17 +268,15 @@
                     <a
                         href={platform.href}
                         class="border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
-                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                            'transparent'};--animation-delay:{platformIndex * 25}ms"
+                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                            25}ms"
                         aria-label={platform.name}
                         onclick={() => trackLogo(platform.trackPrefix, platform.name)}
                     >
                         <img
-                            src={$themeInUse === 'light' && platform.light
-                                ? platform.light
-                                : platform.dark}
+                            src={useLightPlatformSvgs ? platform.light : platform.dark}
                             alt=""
-                            class="h-8 w-auto grayscale transition-[filter] duration-500 group-hover:grayscale-0"
+                            class="h-8 w-auto object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                         />
                         <div
                             class={cn(
@@ -348,8 +355,7 @@
                                             <Tooltip.Root>
                                                 <div
                                                     class="contents"
-                                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary ??
-                                                        'transparent'};--animation-delay:{platformIndex *
+                                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
                                                         12}ms"
                                                 >
                                                     <Tooltip.Trigger
@@ -375,12 +381,11 @@
                                                                 )}
                                                         >
                                                             <img
-                                                                src={$themeInUse === 'light' &&
-                                                                platform.light
+                                                                src={useLightPlatformSvgs
                                                                     ? platform.light
                                                                     : platform.dark}
                                                                 alt=""
-                                                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 brightness-110 grayscale transition-[opacity,filter] duration-300 group-hover:opacity-100 group-hover:brightness-100 group-hover:grayscale-0"
+                                                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                                                             />
                                                         </a>
                                                     </Tooltip.Trigger>
