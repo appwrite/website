@@ -9,7 +9,7 @@
     import CodeCard, { type CodeCardProps } from './CodeCard.svelte';
     import Sidebar from './Sidebar.svelte';
     import { trackEvent } from '$lib/actions/analytics';
-    import Platforms from '$routes/(marketing)/(components)/platforms.svelte';
+    import DocsPlatformsGrid from './DocsPlatformsGrid.svelte';
     import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
@@ -165,7 +165,7 @@
             <enhanced:img src="./blur-2.png" alt="" />
         </div>
 
-        <section class="web-hero is-align-start e-hero-docs relative">
+        <section class="web-hero is-align-start is-no-max-width e-hero-docs relative">
             <HeroBanner title="MCP Server" href="/docs/tooling/mcp" />
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Docs<span class="web-u-color-text-accent">_ </span>
@@ -175,11 +175,14 @@
                 powerful APIs to stop fighting technologies and start delivering value.
             </p>
 
-            <Button variant="secondary" href="/docs/quick-starts" class="mt-8"
+            <DocsPlatformsGrid
+                padded={false}
+                class="mt-4 w-full min-w-0 self-stretch p-0! max-md:p-0!"
+            />
+            <Button variant="secondary" href="/docs/quick-starts" class="mt-8 w-fit"
                 >Quickstart guides</Button
             >
         </section>
-        <Platforms padded={false} class="mt-12! p-0! max-md:p-0!" />
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Explore capabilities
