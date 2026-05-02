@@ -4,9 +4,14 @@
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
     import type { SvelteHTMLElements } from 'svelte/elements';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
 
     const ICON = '/images/platforms';
+
+    const useLightPlatformSvgs = $derived(
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light'
+    );
 
     type PlatformRow = {
         name: string;
@@ -116,9 +121,7 @@
                                         aria-hidden={i < platforms.length - 1}
                                     >
                                         <img
-                                            src={$themeInUse === 'light'
-                                                ? `${ICON}/light/${platform.slug}.svg`
-                                                : `${ICON}/dark/${platform.slug}.svg`}
+                                            src={`${ICON}/${useLightPlatformSvgs ? 'light' : 'dark'}/${platform.slug}.svg`}
                                             alt={platform.name}
                                             class="h-8 w-auto object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                                         />

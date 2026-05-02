@@ -1,63 +1,66 @@
 <script lang="ts">
     import { trackEvent } from '$lib/actions/analytics';
     import Tooltip from '$lib/components/Tooltip.svelte';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
 
+    $: themeFolder =
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light' ? 'light' : 'dark';
     $: platforms = [
         {
             name: 'Flutter',
             href: '/docs/quick-starts/flutter',
-            image: `/images/platforms/${$themeInUse}/flutter.svg`
+            image: `/images/platforms/${themeFolder}/flutter.svg`
         },
         {
             name: 'Next',
             href: '/docs/quick-starts/nextjs',
-            image: `/images/platforms/${$themeInUse}/nextjs.svg`
+            image: `/images/platforms/${themeFolder}/nextjs.svg`
         },
         {
             name: 'React',
             href: '/docs/quick-starts/react',
-            image: `/images/platforms/${$themeInUse}/react.svg`
+            image: `/images/platforms/${themeFolder}/react.svg`
         },
         {
             name: 'Svelte',
             href: '/docs/quick-starts/sveltekit',
-            image: `/images/platforms/${$themeInUse}/svelte.svg`
+            image: `/images/platforms/${themeFolder}/svelte.svg`
         },
         {
             name: 'Nuxt',
             href: '/docs/quick-starts/nuxt',
-            image: `/images/platforms/${$themeInUse}/nuxt.svg`
+            image: `/images/platforms/${themeFolder}/nuxt.svg`
         },
         {
             name: 'Vue',
             href: '/docs/quick-starts/vue',
-            image: `/images/platforms/${$themeInUse}/vue.svg`
+            image: `/images/platforms/${themeFolder}/vue.svg`
         },
         {
             name: 'Angular',
             href: '/docs/quick-starts/angular',
-            image: `/images/platforms/${$themeInUse}/angular.svg`
+            image: `/images/platforms/${themeFolder}/angular.svg`
         },
         {
             name: 'Refine',
             href: '/docs/quick-starts/refine',
-            image: `/images/platforms/${$themeInUse}/refine.svg`
+            image: `/images/platforms/${themeFolder}/refine.svg`
         },
         {
             name: 'Apple',
             href: '/docs/quick-starts/apple',
-            image: `/images/platforms/${$themeInUse}/apple.svg`
+            image: `/images/platforms/${themeFolder}/apple.svg`
         },
         {
             name: 'Android',
             href: '/docs/quick-starts/android',
-            image: `/images/platforms/${$themeInUse}/android.svg`
+            image: `/images/platforms/${themeFolder}/android.svg`
         },
         {
             name: 'React Native',
             href: '/docs/quick-starts/react-native',
-            image: `/images/platforms/${$themeInUse}/react-native.svg`
+            image: `/images/platforms/${themeFolder}/react-native.svg`
         }
     ] as Array<{
         name: string;

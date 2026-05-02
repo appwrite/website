@@ -4,7 +4,7 @@
  * Keep in sync with docs quick-start routes (see `docs/quick-starts/+page.svelte`).
  *
  * Icons: console-style glyphs from `static/images/platforms/{dark|light}/*.svg`
- * (synced from the Appwrite console / `vibes` repo `public/icons/` — light fills tuned for light UI).
+ * (synced from the Appwrite console / `vibes` repo `public/icons/` — light fills ~#32323C for docs light UI only).
  */
 const ICON = '/images/platforms';
 
@@ -24,7 +24,7 @@ export type QuickStartStripItem = {
     secondary: string;
     /** Console-style icon for dark UI */
     dark: string;
-    /** Same mark, dark-colored strokes for light UI */
+    /** Same mark, strokes for docs light UI only (`#32323C`); marketing always uses `dark` */
     light: string;
 };
 

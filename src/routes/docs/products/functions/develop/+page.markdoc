@@ -1344,80 +1344,80 @@ By default, we include the following package managers in each runtime.
 * Package Manager
 * Commands
 ---
-* {% only_dark %}{% icon_image src="/images/platforms/dark/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/nodejs.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
+* {% only_dark %}{% icon_image src="/images/platforms/dark/node.svg" alt="Node.js logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/node.svg" alt="Node.js logo" size="m" /%}{% /only_light %}
 * Node.js
 * NPM
 * `npm install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/php.svg" alt="PHP logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/php.svg" alt="PHP logo" size="m" /%}{% /only_light %}
 * PHP
 * Composer
 * `composer install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/python.svg" alt="Python logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/python.svg" alt="Python logo" size="m" /%}{% /only_light %}
 * Python
 * pip
 * `pip install -r requirements.txt`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/ruby.svg" alt="Ruby logo" size="m" /%}{% /only_light %}
 * Ruby
 * Bundler
 * `bundle install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/deno.svg" alt="Deno logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/deno.svg" alt="Deno logo" size="m" /%}{% /only_light %}
 * Deno
 * deno
 * `deno cache <ENTRYPOINT_FILE>`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/go.svg" alt="Go logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/go.svg" alt="Go logo" size="m" /%}{% /only_light %}
 * Go
 * Go Modules
 * N/A
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dart.svg" alt="Dart logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/dart.svg" alt="Dart logo" size="m" /%}{% /only_light %}
 * Dart
 * pub
 * `pub get`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/swift.svg" alt="Swift logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/swift.svg" alt="Swift logo" size="m" /%}{% /only_light %}
 * Swift
 * Swift Package Manager
 * `swift package resolve`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/dotnet.svg" alt=".NET logo" size="m" /%}{% /only_light %}
 * .NET
 * NuGet
 * `dotnet restore`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/bun.svg" alt="Bun logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/bun.svg" alt="Bun logo" size="m" /%}{% /only_light %}
 * Bun
 * bun
 * `bun install`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/kotlin.svg" alt="Kotlin logo" size="m" /%}{% /only_light %}
 * Kotlin
 * Gradle
 * N/A
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/java.svg" alt="Java logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/java.svg" alt="Java logo" size="m" /%}{% /only_light %}
 * Java
 * Gradle
 * N/A
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/c.svg" alt="C++ logo" size="m" /%}{% /only_dark %}
-{% only_light %}{% icon_image src="/images/platforms/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
+{% only_light %}{% icon_image src="/images/platforms/light/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
 * C++
 * None
 * N/A

@@ -4,7 +4,12 @@
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
+
+    const useLightPlatformSvgs = $derived(
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light'
+    );
 
     interface DocsPlatformsGridProps {
         class?: string;
@@ -129,7 +134,7 @@
                                             onclick={() => trackLogo(platform.name)}
                                         >
                                             <img
-                                                src={$themeInUse === 'light' ? platform.light : platform.dark}
+                                                src={useLightPlatformSvgs ? platform.light : platform.dark}
                                                 alt=""
                                                 class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                                             />

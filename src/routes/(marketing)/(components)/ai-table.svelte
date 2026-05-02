@@ -8,7 +8,6 @@
     type ArenaModel = {
         name: string;
         logo: string;
-        colorLogo: string;
         cost: string; // The API provides cost fields, but format it appropriately
         overall: number;
         categories: Record<ModelCategory, number>;
@@ -24,23 +23,11 @@
         'Messaging'
     ]);
 
-    const logoMap: Record<string, { dark: string; color: string }> = {
-        OpenAI: {
-            dark: '/images/docs/mcp/logos/dark/openai.svg',
-            color: '/images/docs/mcp/logos/color/openai.svg'
-        },
-        Anthropic: {
-            dark: '/images/docs/mcp/logos/dark/claude.svg',
-            color: '/images/docs/mcp/logos/color/claude.svg'
-        },
-        MoonshotAI: {
-            dark: '/images/docs/mcp/logos/dark/kimi.svg',
-            color: '/images/docs/mcp/logos/color/kimi.svg'
-        },
-        Google: {
-            dark: '/images/docs/mcp/logos/dark/gemini.svg',
-            color: '/images/docs/mcp/logos/color/gemini.svg'
-        }
+    const logoMap: Record<string, string> = {
+        OpenAI: '/images/docs/mcp/logos/dark/openai.svg',
+        Anthropic: '/images/docs/mcp/logos/dark/claude.svg',
+        MoonshotAI: '/images/docs/mcp/logos/dark/kimi.svg',
+        Google: '/images/docs/mcp/logos/dark/gemini.svg'
     };
 
     onMount(async () => {
@@ -51,8 +38,7 @@
             // Map the parsed AI data to match the component's internal structure
             models = (data?.models || []).slice(0, 4).map((m: any) => ({
                 name: m.modelName,
-                logo: logoMap[m.provider]?.dark || '/images/docs/mcp/logos/dark/openai.svg', // Fallback icon
-                colorLogo: logoMap[m.provider]?.color || '/images/docs/mcp/logos/color/openai.svg',
+                logo: logoMap[m.provider] || '/images/docs/mcp/logos/dark/openai.svg',
                 cost: `$${(m.promptCostPerMillionTokens || 0).toFixed(2)}`,
                 overall: m.overall,
                 categories: {
@@ -225,9 +211,9 @@
                         <td class="min-w-[140px] shrink-0 px-4 py-3 sm:px-5">
                             <div class="flex min-w-0 items-center gap-3">
                                 <img
-                                    src={model.colorLogo}
+                                    src={model.logo}
                                     alt=""
-                                    class="h-5 w-5 shrink-0 opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                                    class="h-5 w-5 shrink-0 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                                 <span
                                     class="text-primary text-sm font-medium whitespace-nowrap sm:text-base"
