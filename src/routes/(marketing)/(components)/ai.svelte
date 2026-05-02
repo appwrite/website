@@ -143,7 +143,9 @@
                                             class="relative z-10 flex size-full items-center justify-center"
                                         >
                                             <img
-                                                src={$themeInUse === 'light' ? tool.light : tool.dark}
+                                                src={$themeInUse === 'light'
+                                                    ? tool.light
+                                                    : tool.dark}
                                                 alt=""
                                                 class="h-9 w-9 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                                             />

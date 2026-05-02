@@ -1,6 +1,9 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import { allFrameworkStrip, type QuickStartStripItem } from '$routes/(marketing)/(components)/quick-start-strip-items';
+    import {
+        allFrameworkStrip,
+        type QuickStartStripItem
+    } from '$routes/(marketing)/(components)/quick-start-strip-items';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
@@ -54,11 +57,7 @@
         return true;
     }
 
-    function tooltipVerticalSide(
-        r: DOMRect,
-        gridRect: DOMRect,
-        rowPx: number
-    ): 'top' | 'bottom' {
+    function tooltipVerticalSide(r: DOMRect, gridRect: DOMRect, rowPx: number): 'top' | 'bottom' {
         const firstRowBottom = gridRect.top + rowPx;
         const lastRowTop = gridRect.bottom - rowPx;
         const inTopRow = r.top < firstRowBottom - 0.5;
@@ -134,7 +133,9 @@
                                             onclick={() => trackLogo(platform.name)}
                                         >
                                             <img
-                                                src={useLightPlatformSvgs ? platform.light : platform.dark}
+                                                src={useLightPlatformSvgs
+                                                    ? platform.light
+                                                    : platform.dark}
                                                 alt=""
                                                 class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                                             />
@@ -145,7 +146,7 @@
                                             sideOffset={6}
                                             side={tileTooltipSide.get(platform.href) ?? 'top'}
                                             class={cn(
-                                                'z-[10000] text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                                'text-greyscale-900 relative z-[10000] rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
                                                 'dark:bg-greyscale-850 dark:text-greyscale-50',
                                                 'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                             )}

@@ -188,9 +188,8 @@
             <p class="text-description max-w-[720px] leading-relaxed">
                 Appwrite helps you ship secure, scalable web and mobile apps - whether you code
                 everything yourself or steer AI agents that scaffold and integrate for you.
-                Authentication, databases,
-                storage, functions, messaging, and hosting in one place, so you spend less time on
-                plumbing and more on what you are building.
+                Authentication, databases, storage, functions, messaging, and hosting in one place,
+                so you spend less time on plumbing and more on what you are building.
             </p>
 
             <DocsPlatformsGrid

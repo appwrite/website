@@ -46,7 +46,13 @@ export const MARKETING_HOME_FIRST_NAMES = [
 ] as const;
 
 const quickStartStripSource: QuickStartStripItem[] = [
-    { name: 'React', href: '/docs/quick-starts/react', primary: '#53C1DE', secondary: '#087EA4', ...dual('react') },
+    {
+        name: 'React',
+        href: '/docs/quick-starts/react',
+        primary: '#53C1DE',
+        secondary: '#087EA4',
+        ...dual('react')
+    },
     {
         name: 'Next.js',
         href: '/docs/quick-starts/nextjs',

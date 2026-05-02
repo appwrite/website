@@ -203,7 +203,8 @@
             <Tooltip.Root>
                 <div
                     class="contents"
-                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex * 12}ms"
+                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                        12}ms"
                 >
                     <Tooltip.Trigger
                         class={cn(
@@ -267,7 +268,8 @@
                     <a
                         href={platform.href}
                         class="border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
-                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex * 25}ms"
+                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                            25}ms"
                         aria-label={platform.name}
                         onclick={() => trackLogo(platform.trackPrefix, platform.name)}
                     >
