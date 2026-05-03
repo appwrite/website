@@ -47,7 +47,7 @@ We prepared a simple Railway template to get you started quickly. Alternatively,
 openssl rand -hex 16
 ```
 
-> **Note:** `ENCRYPTION_KEY` must be at least 16 bytes (32 hex characters) long.
+**Note:** `ENCRYPTION_KEY` must be at least 16 bytes (32 hex characters) long.
 
 4. Click **Save Config**, then **Deploy**.
 
@@ -63,7 +63,13 @@ With Pocket ID running, complete the one-time admin setup:
 
 1. Visit your Pocket ID URL and navigate to `/setup` (e.g., `https://pocket-id-production-4c96.up.railway.app/setup`).
 2. Register your **admin account** by entering a username and email.
+
+![Pocket ID Onboarding](/images/blog/pocket-id-appwrite-oidc/pocket-id-onboarding.png)
+
 3. Add a **passkey** to your admin account immediately — this is how you'll log back in. Follow the browser prompt to register your device's biometric or hardware key.
+
+![Pocket ID Passkey](/images/blog/pocket-id-appwrite-oidc/pocket-id-passkey.png)
+
 4. In the side menu, under the **Administration** section, click **OIDC Clients**.
 5. Click **Add OIDC Client** and fill in the form:
    - **Name**: Use the same name as your Appwrite project for clarity.
@@ -73,6 +79,9 @@ With Pocket ID running, complete the one-time admin setup:
    - **Client ID** (e.g., `4509e422-3797-40aa-9806-7f66e46d9712`)
    - **Client Secret** (e.g., `kSWAJet5oUhjlRdXBjujcBzQT5kQpx4k`)
    - **OIDC Discovery URL** (e.g., `https://pocket-id-production-8cb7.up.railway.app/.well-known/openid-configuration`)
+
+![Pocket ID OIDC Client](/images/blog/pocket-id-appwrite-oidc/pocket-id-oidc-client.png)
+
 7. **Recommended:** Scroll down to **Allowed User Groups**, expand the card, and click **Unrestrict**. Group restrictions are only useful when you share one Pocket ID instance across multiple tenants — for a single project, unrestricting keeps things simple.
 
 ## Connect Pocket ID to Appwrite
@@ -168,7 +177,11 @@ Finally, add the Appwrite SDK script just before the closing `</body>` tag. Repl
 </script>
 ```
 
+![Demo app sign-in](/images/blog/pocket-id-appwrite-oidc/demo-app-sign-in.png)
+
 When a user clicks **Sign in with Pocket ID**, they'll be redirected to your Pocket ID instance to authenticate with their passkey. After a successful login, Pocket ID redirects back to Appwrite, which creates a session and forwards the user to `/dashboard`.
+
+![Demo app consent screen](/images/blog/pocket-id-appwrite-oidc/demo-app-consent-screen.png)
 
 ## Build the dashboard page
 
@@ -224,6 +237,8 @@ Create a new file at `src/pages/dashboard.astro`. Copy the same layout from `ind
 ```
 
 If the user isn't authenticated, the script redirects them back to the home page. If they are authenticated, it displays their name and Appwrite account ID — proof that the full OIDC flow worked end to end.
+
+![Demo app dashboard](/images/blog/pocket-id-appwrite-oidc/demo-app-dashboard.png)
 
 ## Test it out
 
