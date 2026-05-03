@@ -1,0 +1,248 @@
+---
+layout: post
+title: Add passkey authentication to your app with Pocket ID and Appwrite OIDC
+description: Learn how to integrate Pocket ID, a self-hosted passkey authentication server, with Appwrite using the universal OIDC adapter.
+date: 2025-05-03
+cover: /images/blog/pocket-id-appwrite-oidc/cover.png
+timeToRead: 10
+author: matej-baco
+category: tutorial
+---
+
+Authentication is one of the most critical parts of any application. Get it wrong, and you risk exposing user data. Get it right, and users feel safe and trust your product. Appwrite provides a full suite of backend services — databases, storage, functions, messaging, and more — but authentication is where many projects have unique and sensitive requirements.
+
+While Appwrite supports email/password, magic links, phone OTPs, and over 30 OAuth2 providers out of the box, some projects demand even more control. That's where the universal **OIDC adapter** comes in. If your identity provider speaks [OpenID Connect](https://openid.net/connect/), Appwrite can connect to it — no matter who built it or where it runs.
+
+Today, we'll integrate Appwrite with [Pocket ID](https://pocket-id.org/), a lightweight, self-hosted authentication server built around **passkeys**. Passkeys replace traditional passwords with cryptographic credentials tied to your device (a fingerprint, face ID, or hardware key). They're phishing-resistant, simpler to use, and increasingly considered the gold standard for modern authentication. Pocket ID ([GitHub](https://github.com/pocket-id/pocket-id)) makes it trivially easy to run your own passkey auth server and expose it as an OIDC provider — which means Appwrite can use it as a first-class login option.
+
+By the end of this tutorial, you'll have:
+
+- A self-hosted Pocket ID instance running on Railway
+- Appwrite connected to it via the OIDC adapter
+- A small Astro web app where users can sign in with a passkey
+
+# Prepare your Appwrite project
+
+Head to [Appwrite Cloud](https://cloud.appwrite.io/) and sign in (or create a free account if you haven't already). Create a new project, or open an existing one.
+
+In the left sidebar, click **Auth**, then switch to the **Settings** tab. Scroll down to the OAuth2 providers list and click **OIDC** to open the configuration modal.
+
+Leave this modal open — you'll need to paste a few values into it shortly. But first, copy the **Redirect URI** shown at the bottom of the modal. You'll need it when registering your app inside Pocket ID.
+
+# Set up Pocket ID
+
+Pocket ID supports [several installation methods](https://pocket-id.org/docs/setup/installation), including Docker Compose and bare-metal setups. For this tutorial, we'll take the fastest route: a one-click Railway template.
+
+> We prepared a simple Railway template to get you started quickly. Alternatively, follow the [official Pocket ID installation docs](https://pocket-id.org/docs/setup/installation) for other deployment options.
+
+## Deploy Pocket ID on Railway
+
+1. **Sign up** for a free account at [Railway](https://railway.com/).
+2. Click **[Deploy on Railway](https://railway.com/deploy/u-A3IE)** to open the Pocket ID template. *(Referral link: [railway.com/deploy/u-A3IE?referralCode=Y3OU6o](https://railway.com/deploy/u-A3IE?referralCode=Y3OU6o))*
+3. Click **Configure** and enter a random value for `ENCRYPTION_KEY`. You can generate one by running the following command in your terminal:
+
+```bash
+openssl rand -hex 16
+```
+
+> **Note:** `ENCRYPTION_KEY` must be at least 16 bytes (32 hex characters) long.
+
+4. Click **Save Config**, then **Deploy**.
+5. Wait for the deployment to finish (it should turn green and show an **Active** status), then open the URL assigned by Railway — something like `https://pocket-id-production-4c96.up.railway.app/`.
+
+## Configure Pocket ID as an OIDC provider
+
+With Pocket ID running, complete the one-time admin setup:
+
+1. Visit your Pocket ID URL and navigate to `/setup` (e.g., `https://pocket-id-production-4c96.up.railway.app/setup`).
+2. Register your **admin account** by entering a username and email.
+3. Add a **passkey** to your admin account immediately — this is how you'll log back in. Follow the browser prompt to register your device's biometric or hardware key.
+4. In the side menu, under the **Administration** section, click **OIDC Clients**.
+5. Click **Add OIDC Client** and fill in the form:
+   - **Name**: Use the same name as your Appwrite project for clarity.
+   - **Callback URLs**: Paste the Redirect URI you copied from the Appwrite OIDC modal.
+   - Leave the remaining fields at their defaults, or customize the logo, theme, and re-authentication behavior as you like.
+6. Click **Save** and then open the newly created client. You may need to click **Show more details** to see the full credentials table. Copy the following three values:
+   - **Client ID** (e.g., `4509e422-3797-40aa-9806-7f66e46d9712`)
+   - **Client Secret** (e.g., `kSWAJet5oUhjlRdXBjujcBzQT5kQpx4k`)
+   - **OIDC Discovery URL** (e.g., `https://pocket-id-production-8cb7.up.railway.app/.well-known/openid-configuration`)
+7. **Recommended:** Scroll down to **Allowed User Groups**, expand the card, and click **Unrestrict**. Group restrictions are only useful when you share one Pocket ID instance across multiple tenants — for a single project, unrestricting keeps things simple.
+
+## Connect Pocket ID to Appwrite
+
+Return to the Appwrite Console and open the OIDC provider modal (**Project → Auth → Settings → OIDC**). Fill in the fields:
+
+1. **Enable** the OIDC toggle.
+2. **Client ID**: paste the Client ID from Pocket ID.
+3. **Well-known URL**: paste the OIDC Discovery URL from Pocket ID.
+4. **Client Secret**: paste the Client Secret from Pocket ID.
+5. Click **Update** to save.
+
+OIDC should now appear as **Enabled** and show at the top of your OAuth2 provider list in the Appwrite Console.
+
+# Build a demo web app
+
+Now let's wire everything together in a small frontend. We'll use [Astro](https://astro.build) because it's minimal and ships zero JavaScript by default — making it easy to reason about what's actually happening. The full source code is available at [github.com/Meldiron/pocket-id-demo](https://github.com/Meldiron/pocket-id-demo).
+
+## Create an Astro project
+
+```bash
+npm create astro@latest
+```
+
+When prompted:
+
+- **Directory**: `./pocket-id-demo`
+- **Template**: Minimal (empty)
+- **Install dependencies**: Yes
+- **Initialize a Git repository**: Yes
+
+Then enter the directory and install the Appwrite Web SDK:
+
+```bash
+cd ./pocket-id-demo
+npm install appwrite
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Build the sign-in page
+
+Open `src/pages/index.astro`. We'll add [Launch CSS](https://get.foundation/sites/docs/) for minimal, readable styling — add the following `<link>` inside the `<head>`:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/launch.css" />
+```
+
+Now replace the contents of `<body>` with a simple layout and a sign-in button:
+
+```html
+<header>
+    <nav>
+        <a href="/">My Site</a>
+        <menu>
+            <li><a href="/">Home</a></li>
+        </menu>
+    </nav>
+</header>
+<main>
+    <section>
+        <button onclick="signIn()">Sign in with Pocket ID</button>
+    </section>
+</main>
+```
+
+Finally, add the Appwrite SDK script just before the closing `</body>` tag. Replace `<PROJECT_API_ENDPOINT>` and `<PROJECT_ID>` with the values from your Appwrite project's API keys page:
+
+```html
+<script>
+    import { Client, Account } from "appwrite";
+
+    const client = new Client()
+        .setEndpoint("<PROJECT_API_ENDPOINT>")
+        .setProject("<PROJECT_ID>");
+
+    const account = new Account(client);
+
+    window.signIn = function signIn() {
+        const success = window.location.origin + "/dashboard";
+        const failure = window.location.origin + "/";
+
+        account.createOAuth2Session({
+            provider: "oidc",
+            success,
+            failure,
+        });
+    };
+</script>
+```
+
+When a user clicks **Sign in with Pocket ID**, they'll be redirected to your Pocket ID instance to authenticate with their passkey. After a successful login, Pocket ID redirects back to Appwrite, which creates a session and forwards the user to `/dashboard`.
+
+## Build the dashboard page
+
+Create a new file at `src/pages/dashboard.astro`. Copy the same layout from `index.astro`, replacing the `<button>` with a welcome heading and a script that fetches the current user from Appwrite:
+
+```html
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/launch.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">My Site</a>
+            <menu>
+                <li><a href="/">Home</a></li>
+            </menu>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 id="welcome-text">Loading...</h2>
+        </section>
+    </main>
+
+    <script>
+        import { Client, Account } from "appwrite";
+
+        const client = new Client()
+            .setEndpoint("<PROJECT_API_ENDPOINT>")
+            .setProject("<PROJECT_ID>");
+
+        const account = new Account(client);
+
+        (async () => {
+            try {
+                const user = await account.get();
+                document.getElementById("welcome-text").textContent =
+                    `Welcome, ${user.name || user.email}! Your account ID is: ${user.$id}`;
+            } catch {
+                window.location.href = "/";
+            }
+        })();
+    </script>
+</body>
+</html>
+```
+
+If the user isn't authenticated, the script redirects them back to the home page. If they are authenticated, it displays their name and Appwrite account ID — proof that the full OIDC flow worked end to end.
+
+## Test it out
+
+With your dev server running (`npm run dev`), open `http://localhost:4321` in your browser. Click **Sign in with Pocket ID** and authenticate using your passkey. You should land on the dashboard page with your Appwrite account ID displayed.
+
+# What you've built
+
+Here's the full picture of what's happening when a user clicks sign in:
+
+1. Appwrite generates an authorization URL and redirects the user to Pocket ID.
+2. Pocket ID prompts the user to authenticate with their passkey (fingerprint, Face ID, or hardware key).
+3. Pocket ID sends an authorization code back to Appwrite's redirect URI.
+4. Appwrite exchanges the code for tokens using the credentials you configured in the OIDC modal.
+5. Appwrite creates a user session and redirects the browser to your success URL (`/dashboard`).
+6. Your app calls `account.get()` to retrieve the authenticated user's details.
+
+The passkey never leaves the user's device. There are no passwords to steal, no phishing emails that can trick users into revealing credentials, and no credential database to protect on your server.
+
+# Next steps
+
+You now have a working passkey-based authentication stack with full control over the identity server. A few things worth exploring next:
+
+- **User groups in Pocket ID**: Restrict which users can access which OIDC clients by creating and assigning groups.
+- **Custom branding**: Upload a logo and choose a color theme inside the Pocket ID OIDC client settings to match your product.
+- **Multiple apps, one Pocket ID**: Register additional OIDC clients in Pocket ID to share a single identity provider across multiple projects.
+- **Appwrite Auth docs**: Explore other authentication methods and session management features in the [Appwrite Auth documentation](https://appwrite.io/docs/products/auth).
+- **OIDC deep dive**: Learn more about how the OpenID Connect protocol works in our [Understanding OAuth and OpenID Connect](https://appwrite.io/blog/post/oauth-openid) article.
+
+If you run into any issues or have questions, the [Appwrite Discord](https://appwrite.io/discord) community is a great place to get help.
