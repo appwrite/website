@@ -244,6 +244,48 @@ If the user isn't authenticated, the script redirects them back to the home page
 
 With your dev server running (`npm run dev`), open `http://localhost:4321` in your browser. Click **Sign in with Pocket ID** and authenticate using your passkey. You should land on the dashboard page with your Appwrite account ID displayed.
 
+# Deploy to Appwrite Sites
+
+The local demo works — now let's put it on the internet. [Appwrite Sites](/products/sites) is a free hosting platform built into Appwrite that serves static sites from a global CDN, so your Astro app is a natural fit.
+
+## Push your project to GitHub
+
+Before deploying, commit your project and push it to a GitHub repository:
+
+```bash
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/<your-username>/pocket-id-demo.git
+git push -u origin main
+```
+
+## Create a site in the Appwrite Console
+
+1. In your Appwrite project, click **Sites** in the left sidebar, then **Create site**.
+2. Select **Connect a repository** and authorize GitHub if prompted.
+3. Choose the `pocket-id-demo` repository and set `main` as the production branch.
+4. Verify the build settings — Appwrite should auto-detect Astro:
+   - **Install command:** `npm install`
+   - **Build command:** `npm run build`
+   - **Output directory:** `./dist`
+5. Under **Environment variables**, add the two values you hard-coded during development:
+   - `PUBLIC_APPWRITE_ENDPOINT` → your project's API endpoint (e.g., `https://cloud.appwrite.io/v1`)
+   - `PUBLIC_APPWRITE_PROJECT_ID` → your Appwrite project ID
+
+   Update the `<script>` blocks in both `index.astro` and `dashboard.astro` to read from these variables:
+
+   ```js
+   const client = new Client()
+       .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
+       .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+   ```
+
+6. Click **Deploy** and watch the build logs.
+
+Once the deployment turns green, click **Visit site** to open your live app. Copy the new public URL, then return to Appwrite Console → **Auth → Settings → OIDC** and add it to the allowed origins. Also update the **Callback URL** in your Pocket ID OIDC client to include the production redirect URI (Appwrite will show you the new URI in the OIDC modal).
+
+Your passkey authentication flow is now live and globally distributed — no separate hosting account required.
+
 # What you've built
 
 Here's the full picture of what's happening when a user clicks sign in:
