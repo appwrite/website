@@ -2,7 +2,7 @@
 layout: post
 title: Add passkey authentication to your app with Pocket ID and Appwrite OIDC
 description: Learn how to integrate Pocket ID, a self-hosted passkey authentication server, with Appwrite using the universal OIDC adapter.
-date: 2025-05-03
+date: 2026-05-03
 cover: /images/blog/pocket-id-appwrite-oidc/cover.png
 timeToRead: 10
 author: matej-baco
@@ -29,11 +29,13 @@ In the left sidebar, click **Auth**, then switch to the **Settings** tab. Scroll
 
 Leave this modal open — you'll need to paste a few values into it shortly. But first, copy the **Redirect URI** shown at the bottom of the modal. You'll need it when registering your app inside Pocket ID.
 
+![Appwrite OIDC Settings](/images/blog/pocket-id-appwrite-oidc/appwrite-oidc-settings.png)
+
 # Set up Pocket ID
 
 Pocket ID supports [several installation methods](https://pocket-id.org/docs/setup/installation), including Docker Compose and bare-metal setups. For this tutorial, we'll take the fastest route: a one-click Railway template.
 
-> We prepared a simple Railway template to get you started quickly. Alternatively, follow the [official Pocket ID installation docs](https://pocket-id.org/docs/setup/installation) for other deployment options.
+We prepared a simple Railway template to get you started quickly. Alternatively, follow the [official Pocket ID installation docs](https://pocket-id.org/docs/setup/installation) for other deployment options.
 
 ## Deploy Pocket ID on Railway
 
@@ -48,7 +50,12 @@ openssl rand -hex 16
 > **Note:** `ENCRYPTION_KEY` must be at least 16 bytes (32 hex characters) long.
 
 4. Click **Save Config**, then **Deploy**.
-5. Wait for the deployment to finish (it should turn green and show an **Active** status), then open the URL assigned by Railway — something like `https://pocket-id-production-4c96.up.railway.app/`.
+
+![Railway Pocket ID Template](/images/blog/pocket-id-appwrite-oidc/railway-pocket-id-template.png)
+
+Now we sit back, relax, and wait for the deployment to finish (it should turn green and show an **Active** status), then open the URL assigned by Railway — something like `https://pocket-id-production-4c96.up.railway.app/`.
+
+![Railway Setup complete](/images/blog/pocket-id-appwrite-oidc/railway-setup-complete.png)
 
 ## Configure Pocket ID as an OIDC provider
 
