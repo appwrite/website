@@ -33,7 +33,6 @@ The direct cost is obvious: time you could have spent shipping. But the compound
 * **Churn signals instability to your team.** If you're working with other developers, constant stack changes mean constant re-onboarding. What feels like iteration to you feels like chaos to someone joining the project.
 * **You delay the feedback that matters.** The only feedback loop that actually validates your backend decisions is real users interacting with a shipped product. Anything that delays shipping delays learning.
 
-
 # How to recognize you're in the fatigue loop
 
 Framework fatigue doesn't always look like paralysis. Sometimes it looks like productivity:
