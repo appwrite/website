@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { cn } from '$lib/utils/cn';
     import { slugify } from '$lib/utils/slugify';
     import MapNav from './map-nav.svelte';
     import { useMousePosition } from '$lib/actions/mouse-position.svelte';
@@ -16,9 +17,16 @@
         theme: 'light' | 'dark';
         navigable?: boolean;
         defaultSet?: PinSegment;
+        /** When true, no top margin on the map canvas (parent controls vertical rhythm). */
+        flushTop?: boolean;
     };
 
-    const { theme = 'dark', navigable = true, defaultSet = 'pop-locations' }: Props = $props();
+    const {
+        theme = 'dark',
+        navigable = true,
+        defaultSet = 'pop-locations',
+        flushTop = false
+    }: Props = $props();
 
     let activeSegment = $state<string>(untrack(() => defaultSet));
     let activeMarkers = $derived(pins[activeSegment as PinSegment]);
@@ -45,7 +53,10 @@
 <div class="relative w-full overflow-x-hidden [scrollbar-width:none]">
     <div class="relative mx-auto h-full [scrollbar-width:none] md:w-full" use:inView>
         <div
-            class="relative mx-auto my-10 h-fit max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:my-0 md:w-full md:-translate-x-20"
+            class={cn(
+                'relative mx-auto h-fit max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:w-full md:-translate-x-20',
+                flushTop ? 'mt-0 mb-10 md:my-0' : 'my-10 md:my-0'
+            )}
             use:mousePosition
         >
             <svg viewBox={`0 0 ${height * 2} ${height}`}>
