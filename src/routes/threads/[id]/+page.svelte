@@ -75,7 +75,7 @@
                 {#each data.messages ?? [] as message, i}
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
-                        {#if isFirst}
+                        {#if isFirst && data.tldr?.trim()}
                             <div class="web-inline-info web-u-margin-block-start-24">
                                 <div class="text-sub-body text-primary font-medium">TL;DR</div>
                                 {data.tldr}
