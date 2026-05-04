@@ -186,10 +186,7 @@ export function createDiscussionForumPageSchema(options: {
 }): string {
     const { canonicalUrl, thread, messages } = options;
     const first = messages[0];
-    const opText = nonEmptyText(
-        first?.text ?? '',
-        nonEmptyText(thread.content, thread.title)
-    );
+    const opText = nonEmptyText(first?.text ?? '', nonEmptyText(thread.content, thread.title));
     const opAuthor = (first?.author ?? thread.author).trim() || 'Anonymous';
     const opDate = toIso8601DateTime(first?.timestamp ?? thread.$createdAt);
 
