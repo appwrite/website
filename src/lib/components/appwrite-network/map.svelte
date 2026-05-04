@@ -55,7 +55,7 @@
         <div
             class={cn(
                 'relative mx-auto h-fit max-w-5xl origin-bottom transform-[perspective(25px)_rotateX(1deg)_scale3d(1.2,_1.2,_1)] transition-all [scrollbar-width:none] md:w-full md:-translate-x-20',
-                flushTop ? 'mt-0 mb-10 md:my-0' : 'my-10 md:my-0'
+                flushTop ? 'mt-0 mb-6 sm:mb-8 md:my-0' : 'my-10 md:my-0'
             )}
             use:mousePosition
         >
