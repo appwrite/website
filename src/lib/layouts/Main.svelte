@@ -21,7 +21,6 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
     import { changelogNavBadgeVisible } from '$routes/changelog/utils';
     import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
 
@@ -172,7 +171,6 @@
 </script>
 
 <div class="relative contents h-full">
-    <MongoPartnershipBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}

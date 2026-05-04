@@ -154,16 +154,16 @@
         >
             {#if layoutAside}
                 <HeroBanner
-                    title="Appwrite partners with the world's best database company"
-                    href="/blog/post/appwrite-mongodb-partnership-self-hosted"
-                    icon="mongo"
+                    title="New: Appwrite plugin for Claude Code"
+                    href="/blog/post/announcing-appwrite-claude-code-plugin"
+                    icon="claude"
                 />
             {:else}
                 <div class="flex w-full justify-center">
                     <HeroBanner
-                        title="Appwrite partners with the world's best database company"
-                        href="/blog/post/appwrite-mongodb-partnership-self-hosted"
-                        icon="mongo"
+                        title="New: Appwrite plugin for Claude Code"
+                        href="/blog/post/announcing-appwrite-claude-code-plugin"
+                        icon="claude"
                     />
                 </div>
             {/if}
