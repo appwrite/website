@@ -1,6 +1,13 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type ServiceValue, type Version } from '$lib/utils/references';
+import { Platform, type ServiceValue } from '$lib/utils/references';
+import { readFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
+
+const specsRoot = dirname(
+    createRequire(import.meta.url).resolve('@appwrite.io/specs/package.json')
+);
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -90,62 +97,15 @@ export const ModelType = {
 type ModelTypeType = keyof typeof ModelType;
 type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 
-type ExampleVersion = Exclude<Version, 'cloud'>;
-type ExampleLoaders = Record<string, () => Promise<unknown>>;
-
-const examplesByVersion: Record<ExampleVersion, ExampleLoaders> = {
-    '0.15.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/0.15.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.0.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.0.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.1.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.1.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.2.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.2.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.3.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.3.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.4.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.4.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.5.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.5.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.6.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.6.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.7.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.7.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.8.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.8.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.9.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.9.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    })
-};
-
-function getExamples(version: string) {
-    if (!(version in examplesByVersion)) {
-        return undefined;
+async function loadExample(relativePath: string): Promise<string | null> {
+    try {
+        return await readFile(join(specsRoot, relativePath), 'utf8');
+    } catch (e) {
+        if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
+            return null;
+        }
+        throw e;
     }
-
-    return examplesByVersion[version as ExampleVersion];
 }
 
 function stripMarkdownCodeFence(content: string): string {
@@ -396,23 +356,23 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     error(404, { message: `Not found` });
 }
 
-const specs = import.meta.glob('/node_modules/@appwrite.io/specs/specs/*/open-api3*.json', {
-    exhaustive: true
-});
-
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
     const isClient = platform.startsWith('client-');
     const mode = platform.startsWith('server-') ? 'server' : isClient ? 'client' : 'console';
     const filename = `open-api3-${version}-${mode}.json`;
+    const specPath = join(specsRoot, 'specs', version, filename);
 
-    const loader = Object.entries(specs).find(([key]) => key.endsWith(`/${filename}`))?.[1];
-
-    if (!loader) {
-        throw error(404, `Missing OpenAPI spec loader for ${filename}`);
+    let raw: string;
+    try {
+        raw = await readFile(specPath, 'utf8');
+    } catch (e) {
+        if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
+            throw error(404, `Missing OpenAPI spec ${filename}`);
+        }
+        throw e;
     }
 
-    const loaded = (await loader()) as OpenAPIV3.Document | { default: OpenAPIV3.Document };
-    return ('default' in loaded ? loaded.default : loaded) as OpenAPIV3.Document;
+    return JSON.parse(raw) as OpenAPIV3.Document;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
@@ -460,12 +420,6 @@ export async function getService(
         methods: []
     };
 
-    const examples = getExamples(version);
-
-    if (!examples) {
-        return data;
-    }
-
     for (const { method, value, url } of iterateAllMethods(api, service)) {
         const operation = value as AppwriteOperationObject;
         const parameters = getParameters(operation);
@@ -507,22 +461,21 @@ export async function getService(
             }
         );
 
-        const path = isAndroid
-            ? `/node_modules/@appwrite.io/specs/examples/${version}/${
+        const examplePath = isAndroid
+            ? `examples/${version}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `/node_modules/@appwrite.io/specs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+            : `examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
 
-        if (!(path in examples)) {
+        const demo = await loadExample(examplePath);
+        if (demo === null) {
             continue;
         }
-
-        const demo = (await examples[path]()) as unknown as string;
 
         data.methods.push({
             id: operation['x-appwrite'].method,
             group: operation['x-appwrite'].group,
-            demo: typeof demo === 'string' ? stripMarkdownCodeFence(demo) : '',
+            demo: stripMarkdownCodeFence(demo),
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],

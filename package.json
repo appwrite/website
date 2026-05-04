@@ -32,6 +32,7 @@
         "@statsig/session-replay": "^3.33.0",
         "@statsig/statsig-node-core": "^0.19.3",
         "@statsig/web-analytics": "^3.33.0",
+        "@appwrite.io/specs": "github:appwrite/specs#095d750d7036626d949279ddb7cd9510b902a13f",
         "h3": "^1.15.4",
         "sharp": "^0.34.5"
     },
@@ -39,7 +40,6 @@
         "@appwrite.io/console": "^0.6.4",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/specs": "github:appwrite/specs#095d750d7036626d949279ddb7cd9510b902a13f",
         "@eslint/compat": "^1.4.1",
         "@eslint/js": "^9.39.1",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
@@ -117,7 +117,6 @@
         "typescript-eslint": "^8.48.1",
         "vaul-svelte": "1.0.0-next.7",
         "vite": "^7.2.7",
-        "vite-plugin-dynamic-import": "^1.6.0",
         "vite-plugin-image-optimizer": "^2.0.3",
         "vite-plugin-manifest-sri": "^0.2.0",
         "vitest": "^3.2.4",
