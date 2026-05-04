@@ -16,7 +16,7 @@ This page is a **curated index**. For columns on open source, self-hosting, pric
 
 # Platforms worth a proof of concept
 
-- **[Appwrite](https://appwrite.io):** Apache 2.0 server, managed cloud or Docker self-host, broad function runtimes, unified auth/database/storage/messaging. Strong when you want **one console** and **API portability**.
+- **[Appwrite](https://appwrite.io):** BSD 3-Clause server, managed cloud or Docker self-host, broad function runtimes, unified auth/database/storage/messaging. Strong when you want **one console** and **API portability**.
 - **[Firebase](https://firebase.google.com):** Mature Google-managed stack, excellent mobile SDKs, Firestore and Cloud Functions. Strong when you optimize for **time-to-first-user** on Google Cloud and accept **proprietary lock-in**.
 - **[Supabase](https://supabase.com):** Postgres-first, Row Level Security, Edge Functions (TypeScript), good SQL ergonomics. Strong when your team wants **relational SQL** as the center of gravity and can operate or pay for the platform accordingly.
 - **[AWS Amplify](https://aws.amazon.com/amplify/):** Front door into Cognito, AppSync/Lambda, S3, and the rest of AWS. Strong when you are already **all-in on AWS IAM** and want Gen2/IaC-aligned workflows, not a minimal “single binary” BaaS.
