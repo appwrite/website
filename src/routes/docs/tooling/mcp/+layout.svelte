@@ -36,28 +36,28 @@
             label: 'Integrations',
             items: [
                 {
-                    label: 'Claude Desktop',
-                    href: '/docs/tooling/mcp/claude-desktop'
-                },
-                {
                     label: 'Claude Code',
                     href: '/docs/tooling/mcp/claude-code'
                 },
                 {
-                    label: 'Zenflow',
-                    href: '/docs/tooling/mcp/zenflow'
+                    label: 'Codex',
+                    href: '/docs/tooling/ai/ai-dev-tools/codex'
                 },
                 {
                     label: 'Cursor',
                     href: '/docs/tooling/mcp/cursor'
                 },
                 {
-                    label: 'Windsurf Editor',
-                    href: '/docs/tooling/mcp/windsurf'
-                },
-                {
                     label: 'VS Code',
                     href: '/docs/tooling/mcp/vscode'
+                },
+                {
+                    label: 'Claude Desktop',
+                    href: '/docs/tooling/mcp/claude-desktop'
+                },
+                {
+                    label: 'Zenflow',
+                    href: '/docs/tooling/mcp/zenflow'
                 },
                 {
                     label: 'OpenCode',

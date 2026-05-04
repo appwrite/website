@@ -83,6 +83,12 @@ jobs:
                     --docker-email=ci@appwrite.io \
                     --dry-run=client -o yaml | kubectl apply -f -
 
+            - name: Create app secrets
+              run: |
+                  kubectl -n website create secret generic website-secrets \
+                    --from-literal=STATSIG_SERVER_SECRET='${{ secrets.STATSIG_SERVER_SECRET }}' \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
             - name: Deploy
               run: |
                   helm upgrade --install --namespace website website deploy/website/ \

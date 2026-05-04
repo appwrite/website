@@ -37,7 +37,7 @@ With a BaaS platform, you can build an entire backend in minutes. For example, y
 
 What if you already have a library of technologies? A dedicated platform ensures they’re robust, up-to-date, and integrate well with your existing tools. This way, you can maintain the reliability and performance of your applications without the hassle of constant manual updates and compatibility checks.
 
-Let's take a look at some of the most common products that backend-as-a-service providers offer. We'll use [Appwrite](https://appwrite.io/) as an example, but many BaaS vendors offer similar technologies. What makes Appwrite convenient is that it combines everything into a single open-source platform, simplifying the development process. Our philosophy is to meet you (the developer) where you are, empowering you to use the tools and technologies you love.
+Let's take a look at some of the most common products that backend-as-a-service providers offer. We'll use [Appwrite](https://appwrite.io/) as an example, but many BaaS vendors offer similar technologies. What makes Appwrite convenient is that it combines everything into a single open-source platform, simplifying the development process. Our philosophy is to meet you, the developer, where you are, empowering you to use the tools and technologies you love.
 
 # BaaS for Authentication
 

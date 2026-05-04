@@ -163,10 +163,10 @@
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="is-full-width-mobile"
+                                    class="is-full-width-mobile is-github-stat-link"
+                                    aria-label={`Appwrite on GitHub, ${SOCIAL_STATS.GITHUB.STAT} stars`}
                                 >
-                                    <Icon name="star" aria-hidden="true" />
-                                    <span>Star on GitHub</span>
+                                    <Icon name="github" aria-hidden="true" />
                                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                                 </Button>
                             </div>

@@ -19,6 +19,7 @@
         getInlinedScriptTag
     } from '$lib/utils/metadata';
     import { isAnnouncement, parseCategories } from '$lib/utils/blog-cta';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
     import { prepareBlogCtaState, type BlogCallToActionInput } from '$lib/utils/blog-mid-cta';
     import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
@@ -89,7 +90,8 @@
         announcement,
         category,
         slug,
-        rawContent
+        rawContent,
+        heroExperimentCta: (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
     });
 
     if (midCta) {

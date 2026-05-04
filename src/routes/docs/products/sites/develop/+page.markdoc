@@ -28,41 +28,6 @@ You can configure your preferred rendering strategy through the following steps:
 ![Rendering strategy](/images/docs/sites/build-settings-rendering-ssr.png)
 {% /only_light %}
 
-# **Accessing environment variables**
-
-Appwrite Sites lets you set static environment variables to pass constants and secrets such as API keys, connection strings, etc., to your sites.
-
-To set static environment variables, follow these steps:
-
-1. Navigate to your site on Appwrite Console.
-2. Head to the **Settings** tab > **Environment variables** section.
-3. Click on the **Create variable** button and add the key and value of the environment variable.
-4. Select the **Secret** checkbox if you want to prevent any team member from reading the value of the environment variable after creation.
-5. Click on the **Create** button and redeploy the site.
-
-{% only_dark %}
-![Environment variables](/images/docs/sites/dark/env-variables.png)
-{% /only_dark %}
-{% only_light %}
-![Environment variables](/images/docs/sites/env-variables.png)
-{% /only_light %}
-
-You can also configure global variables that apply to all your sites in the **Settings** of your project.
-
-{% info title="Secret environment variables" %}
-
-Appwrite now allows you create secret environment variables, which are hidden from both the Appwrite Console and API. Once a variable is marked as secret, this action cannot be reversed.
-
-You can mark an environment variable as secret either at the time of creation or after it is created.
-
-{% /info %}
-
-## Appwrite-specific environment variables
-
-Appwrite passes the following environment variables into every deployed site by default.
-
-{% partial file="sites-env-vars.md" /%}
-
 # Timeouts {% #timeouts %}
 
 Each request made to a path on an Appwrite Site has a set time limit, after which the request will timeout. Here are the steps to configure those timeout period:

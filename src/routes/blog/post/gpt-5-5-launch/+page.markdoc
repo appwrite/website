@@ -31,7 +31,7 @@ GPT-5.5 is priced 2x GPT-5.4 on input and output. For Pro variants, the gap is w
 | Model | Input | Cached input | Output |
 | --- | --- | --- | --- |
 | **GPT-5.5** | $5.00 | $0.50 | $30.00 |
-| **GPT-5.5 Pro** | $30.00 | — | $180.00 |
+| **GPT-5.5 Pro** | $30.00 | - | $180.00 |
 | GPT-5.4 | $2.50 | $0.25 | $15.00 |
 | GPT-5.4 mini | $0.75 | $0.075 | $4.50 |
 | Claude Opus 4.7 | $5.00 | $0.50 | $25.00 |
@@ -54,10 +54,10 @@ OpenAI published a large benchmark sweep against **GPT-5.4**, **GPT-5.4 Pro**, *
 | Eval | GPT-5.5 | GPT-5.4 | Claude Opus 4.7 | Gemini 3.1 Pro |
 | --- | --- | --- | --- | --- |
 | Terminal-Bench 2.0 | **82.7%** | 75.1% | 69.4% | 68.5% |
-| Expert-SWE (internal) | **73.1%** | 68.5% | — | — |
+| Expert-SWE (internal) | **73.1%** | 68.5% | - | - |
 | SWE-Bench Pro (public) | 58.6% | 57.7% | **64.3%** | 54.2% |
-| OSWorld-Verified | **78.7%** | 75.0% | 78.0% | — |
-| Toolathlon | **55.6%** | 54.6% | — | 48.8% |
+| OSWorld-Verified | **78.7%** | 75.0% | 78.0% | - |
+| Toolathlon | **55.6%** | 54.6% | - | 48.8% |
 | GDPval (wins or ties) | **84.9%** | 83.0% | 80.3% | 67.3% |
 
 Key takeaways:
@@ -71,7 +71,7 @@ Key takeaways:
 
 | Eval | GPT-5.5 | GPT-5.4 | Claude Opus 4.7 | Gemini 3.1 Pro |
 | --- | --- | --- | --- | --- |
-| Tau2-Bench Telecom (original prompts) | **98.0%** | 92.8% | — | — |
+| Tau2-Bench Telecom (original prompts) | **98.0%** | 92.8% | - | - |
 | BrowseComp | 84.4% | 82.7% | 79.3% | 85.9% |
 | FrontierMath Tier 1–3 | **51.7%** | 47.6% | 43.8% | 36.9% |
 | FrontierMath Tier 4 | **35.4%** | 27.1% | 22.9% | 16.7% |
@@ -87,7 +87,7 @@ GPT-5.5 clears all competitors on FrontierMath Tier 4, the hardest tier. On Huma
 | Eval | GPT-5.5 | GPT-5.4 | GPT-5.5 Pro | GPT-5.4 Pro |
 | --- | --- | --- | --- | --- |
 | GeneBench | 25.0% | 19.0% | **33.2%** | 25.6% |
-| BixBench | **80.5%** | 74.0% | — | — |
+| BixBench | **80.5%** | 74.0% | - | - |
 
 OpenAI singles out scientific research as an area where the model is "strong enough to meaningfully accelerate progress at the frontiers of biomedical research". A concrete data point from the launch post: GPT-5.5 produced a new proof about off-diagonal Ramsey numbers, later verified in Lean.
 

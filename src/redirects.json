@@ -845,6 +845,10 @@
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
     },
     {
+        "link": "/the-appwrite-network",
+        "redirect": "/docs/products/network"
+    },
+    {
         "link": "/blog/post/backend-as-a-service-baas",
         "redirect": "/blog/post/backend-as-a-service"
     },

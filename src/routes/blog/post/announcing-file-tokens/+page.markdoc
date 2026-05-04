@@ -31,7 +31,7 @@ Just create a token and send the link. The file is accessible; no account or per
 # Important features
 
 - **Secure token-based sharing**: Generate a token and share the file link instantly.
-- **No permission changes required**: Keep your file rules intact—tokens work independently.
+- **No permission changes required**: Keep your file rules intact; tokens work independently.
 - **Configurable expiration**: Just like API Keys, File Tokens come with configurable expiration logic, giving you control over how long access is available.
 - **Perfect for external collaboration**: Great for sharing assets, reports, or temporary resources with clients, teammates, or partners.
 - **Works with Cloud and Self-hosted**: Full support across all Appwrite environments.
