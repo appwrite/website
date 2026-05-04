@@ -56,7 +56,10 @@
 
     $: selectedOption = options.find((o) => o.value === value);
 
-    $: if (selectedOption) {
+    // Sync external value changes into melt's store, but only when it differs.
+    // Without the guard, melt re-fires onSelectedChange after every set, which
+    // reassigns `value`, retriggers this reactive, and loops the main thread.
+    $: if (selectedOption && $selected?.value !== selectedOption.value) {
         selected.set(selectedOption);
     }
 

@@ -155,6 +155,11 @@ When the source code in a runtime with an interpreted languages is updated, the 
 {% only_light %}{% icon_image src="/images/platforms/light/c.svg" alt="C++ logo" size="m" /%}{% /only_light %}
 * C++
 * .h (Header Files)
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/rust.svg" alt="Rust logo" size="m" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/rust.svg" alt="Rust logo" size="m" /%}{% /only_light %}
+* Rust
+* Cargo.toml, Cargo.lock
 {% /table %}
 
 # Impersonate user {% #impersonate-user %}
