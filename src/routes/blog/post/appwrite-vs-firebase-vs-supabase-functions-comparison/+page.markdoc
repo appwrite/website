@@ -17,6 +17,8 @@ Serverless functions are a powerful tool for developers designed to provide flex
 
 In this comparison, we'll take a look at the serverless functions offered by three popular backend-as-a-service platforms: Firebase, Supabase, and Appwrite.
 
+For open source, self-hosting, and lock-in across the same vendors (plus AWS Amplify), see the [BaaS platform comparison](/blog/post/backend-as-a-service).
+
 # Firebase: the veteran
 
 ![Firebase-functions](/images/blog/comparing-functions/1.png)

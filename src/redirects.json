@@ -847,5 +847,21 @@
     {
         "link": "/the-appwrite-network",
         "redirect": "/docs/products/network"
+    },
+    {
+        "link": "/blog/post/backend-as-a-service-baas",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/baas-backend-as-a-service-explained-when-should-you-use-it",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-baas-in-2025",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-backend",
+        "redirect": "/blog/post/backend-as-a-service"
     }
 ]

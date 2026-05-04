@@ -185,11 +185,13 @@
             <h1 class="text-display font-aeonik-pro text-primary max-w-[600px]">
                 Docs<span class="web-u-color-text-accent">_ </span>
             </h1>
-            <p class="text-description max-w-[720px] leading-relaxed">
-                Appwrite helps you ship secure, scalable web and mobile apps - whether you code
-                everything yourself or steer AI agents that scaffold and integrate for you.
-                Authentication, databases, storage, functions, messaging, and hosting in one place,
-                so you spend less time on plumbing and more on what you are building.
+            <p class="text-description max-w-[600px]">
+                Appwrite helps you build secure and scalable apps, faster. Leverage Appwrite's
+                powerful APIs to stop fighting technologies and start delivering value. New to the
+                model? Read how <a class="web-link underline" href="/blog/post/backend-as-a-service"
+                    >backend as a service (BaaS)</a
+                >
+                compares to other platforms, then dive in here.
             </p>
 
             <DocsPlatformsGrid
