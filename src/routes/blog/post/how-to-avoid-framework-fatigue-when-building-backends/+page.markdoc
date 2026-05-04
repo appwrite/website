@@ -66,7 +66,7 @@ Pick a framework with a proven track record for your use case and set a time lim
 
 More importantly: separate the framework from the infrastructure. Most backend framework debates conflate two different things. The framework handles request routing, middleware, and response shaping. The infrastructure handles authentication, data persistence, file storage, and background jobs. You can swap frameworks more easily if your infrastructure isn't also tangled up in framework-specific code.
 
-This is where a [unified backend platform](/blog/post/avoid-backend-overengineering) changes the decision surface significantly. When auth, databases, storage, and functions are handled by a platform with a stable API, the framework choice becomes much less load-bearing. You're not choosing between frameworks, you're choosing between HTTP request handlers.
+This is where a unified backend platform changes the decision surface significantly. When auth, databases, storage, and functions are handled by a platform with a stable API, the framework choice becomes much less load-bearing. You're not choosing between frameworks, you're choosing between HTTP request handlers.
 
 # How to choose a backend stack you'll actually stick with
 
