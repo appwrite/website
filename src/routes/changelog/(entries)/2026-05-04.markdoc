@@ -14,7 +14,3 @@ A new **Starter** template for Rust is available in the function templates catal
 {% arrow_link href="/blog/post/announcing-rust-runtime" %}
 Read the announcement
 {% /arrow_link %}
-
-{% arrow_link href="/docs/products/functions/runtimes" %}
-View all available runtimes
-{% /arrow_link %}
