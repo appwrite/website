@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type ServiceValue } from '$lib/utils/references';
+import { Platform, VALID_PLATFORMS, versions, type ServiceValue } from '$lib/utils/references';
 import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
@@ -8,6 +8,24 @@ import { dirname, join } from 'node:path';
 const specsRoot = dirname(
     createRequire(import.meta.url).resolve('@appwrite.io/specs/package.json')
 );
+
+// URL segments reach this module from SvelteKit route params, so anything
+// interpolated into a filesystem path needs an explicit allowlist check.
+const VALID_VERSIONS = new Set<string>(versions as readonly string[]);
+
+function assertValidVersion(version: string): void {
+    if (!VALID_VERSIONS.has(version)) {
+        throw error(404, `Unknown spec version ${version}`);
+    }
+}
+
+function assertValidPlatform(platform: string): void {
+    if (!VALID_PLATFORMS.has(platform as Platform)) {
+        throw error(404, `Unknown platform ${platform}`);
+    }
+}
+
+const apiCache = new Map<string, OpenAPIV3.Document>();
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -357,6 +375,15 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 }
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
+    assertValidVersion(version);
+    assertValidPlatform(platform);
+
+    const cacheKey = `${version}|${platform}`;
+    const cached = apiCache.get(cacheKey);
+    if (cached) {
+        return cached;
+    }
+
     const isClient = platform.startsWith('client-');
     const mode = platform.startsWith('server-') ? 'server' : isClient ? 'client' : 'console';
     const filename = `open-api3-${version}-${mode}.json`;
@@ -372,7 +399,9 @@ export async function getApi(version: string, platform: string): Promise<OpenAPI
         throw e;
     }
 
-    return JSON.parse(raw) as OpenAPIV3.Document;
+    const parsed = JSON.parse(raw) as OpenAPIV3.Document;
+    apiCache.set(cacheKey, parsed);
+    return parsed;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
@@ -420,7 +449,7 @@ export async function getService(
         methods: []
     };
 
-    for (const { method, value, url } of iterateAllMethods(api, service)) {
+    const prepared = Array.from(iterateAllMethods(api, service)).map(({ method, value, url }) => {
         const operation = value as AppwriteOperationObject;
         const parameters = getParameters(operation);
         const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
@@ -467,10 +496,17 @@ export async function getService(
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
             : `examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
 
-        const demo = await loadExample(examplePath);
+        return { method, value: operation, url, parameters, responses, examplePath };
+    });
+
+    const demos = await Promise.all(prepared.map((p) => loadExample(p.examplePath)));
+
+    for (let i = 0; i < prepared.length; i++) {
+        const demo = demos[i];
         if (demo === null) {
             continue;
         }
+        const { method, value: operation, url, parameters, responses } = prepared[i];
 
         data.methods.push({
             id: operation['x-appwrite'].method,
