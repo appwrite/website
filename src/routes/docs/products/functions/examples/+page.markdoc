@@ -120,9 +120,12 @@ path = "lib.rs"
 openruntimes = { version = "1.0", package = "openruntimes-types-for-rust" }
 serde_json = "1.0"
 ureq = { version = "2.10", features = ["json"] }
+appwrite = "0.4"
+tokio = { version = "1", features = ["rt"] }
+urlencoding = "2.1"
 ```
 
-The `ureq` crate provides a blocking HTTP client. Cargo will pick up `Cargo.toml` automatically, so no extra build command is required.
+`ureq` is the blocking HTTP client used by the currency example. `appwrite` and `tokio` are used by the voting and contact form examples that call the Appwrite SDK. `urlencoding` is used by the contact form example to decode form fields. Cargo picks up `Cargo.toml` automatically, so no extra build command is required.
 {% /tabsitem %}
 
 {% /tabs %}
@@ -976,11 +979,13 @@ fn parse_form(body: &str) -> HashMap<String, String> {
     body.split('&')
         .filter_map(|pair| {
             let mut split = pair.splitn(2, '=');
-            let key = split.next()?;
-            let value = split.next().unwrap_or("");
+            // application/x-www-form-urlencoded encodes spaces as `+`, so
+            // replace `+` before percent-decoding any `%xx` sequences.
+            let key = split.next()?.replace('+', " ");
+            let value = split.next().unwrap_or("").replace('+', " ");
             Some((
-                urlencoding::decode(key).ok()?.into_owned(),
-                urlencoding::decode(value).ok()?.into_owned(),
+                urlencoding::decode(&key).ok()?.into_owned(),
+                urlencoding::decode(&value).ok()?.into_owned(),
             ))
         })
         .collect()
