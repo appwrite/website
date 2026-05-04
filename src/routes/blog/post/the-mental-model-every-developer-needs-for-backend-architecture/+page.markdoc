@@ -50,7 +50,7 @@ In practice, write functions that contain your decisions and keep your database 
 
 Not all data is alike. Reaching for the wrong storage type is one of the most common sources of performance and architectural problems.
 
-- **Relational or document databases:** For structured data you query often. User records, orders, posts. Use this for anything with relationships or filtering requirements.
+- **Databases:** For structured data you query often. User records, orders, posts. Use this for anything with relationships or filtering requirements.
 - **File storage:** For binary content. Images, PDFs, videos. Do not store files as blobs in a database row.
 - **Cache:** For data you read frequently but that can tolerate being slightly stale. Session tokens, computed results, rate limit counters.
 - **Message queue or event bus:** For work that should not happen inside the request cycle. Sending emails, processing uploads, triggering webhooks.
