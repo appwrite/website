@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to build and ship a side project alone (The backend stack that works)
+title: How to build and ship a side project alone
 description: Build and ship a side project alone using a backend stack that actually works. Learn how to choose the right tools, simplify infrastructure, and launch faster without managing multiple services.
 date: 2026-04-09
 cover: /images/blog/how-to-build-and-ship-a-side-project-alone-the-backend-stack-that-works/cover.png
