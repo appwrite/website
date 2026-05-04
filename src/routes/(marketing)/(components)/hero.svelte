@@ -103,14 +103,14 @@
             }
 
             const { debug } = readMarketingHeroExperimentsForExposure(client, {
+                heroTitle: baselineTitle,
                 heroSubtitle: baselineSubtitle,
                 heroLayout: baselineLayout,
                 heroCta: baselineCta
             });
 
             log('experiment exposure (display stays on `page.data`)', {
-                [MARKETING_HERO_EXPERIMENTS.bestDescription]:
-                    debug[MARKETING_HERO_EXPERIMENTS.bestDescription],
+                [MARKETING_HERO_EXPERIMENTS.bestTitle]: debug[MARKETING_HERO_EXPERIMENTS.bestTitle],
                 [MARKETING_HERO_EXPERIMENTS.bestCta]: debug[MARKETING_HERO_EXPERIMENTS.bestCta],
                 [MARKETING_HERO_EXPERIMENTS.heroLayout]:
                     debug[MARKETING_HERO_EXPERIMENTS.heroLayout]

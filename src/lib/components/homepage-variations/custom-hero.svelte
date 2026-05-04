@@ -40,6 +40,7 @@
 
     /** Same client hydration path as marketing `hero.svelte` (Statsig + query overrides). */
     let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
+    let clientHeroTitle = $state<string | undefined>(undefined);
     let clientHeroSubtitle = $state<string | undefined>(undefined);
     let clientHeroCta = $state<string | undefined>(undefined);
 
@@ -47,7 +48,7 @@
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout: clientHeroLayout ?? heroLayout,
             heroSubtitle: clientHeroSubtitle ?? subtitle,
-            heroTitle: title,
+            heroTitle: clientHeroTitle ?? title,
             heroCta: clientHeroCta ?? ctaLabel
         })
     );
@@ -71,14 +72,19 @@
             if (!client) return;
 
             const {
+                heroTitle: nextTitle,
                 heroSubtitle: nextSubtitle,
                 heroLayout: nextLayout,
                 heroCta: nextCta
             } = readMarketingHeroExperimentsForExposure(client, {
+                heroTitle: title,
                 heroSubtitle: subtitle,
                 heroLayout,
                 heroCta: ctaLabel
             });
+            if (nextTitle !== title) {
+                clientHeroTitle = nextTitle;
+            }
             if (nextSubtitle !== subtitle) {
                 clientHeroSubtitle = nextSubtitle;
             }
