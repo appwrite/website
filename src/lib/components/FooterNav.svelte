@@ -47,6 +47,10 @@
                 { label: 'Docs', href: '/docs' },
                 { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
+                {
+                    label: 'Backend as a service (BaaS)',
+                    href: '/blog/post/backend-as-a-service'
+                },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
                 { label: 'Changelog', href: '/changelog' },
@@ -133,7 +137,7 @@
                                 {rel}
                                 onclick={() =>
                                     trackEvent(
-                                        `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                        `footer-${label.toLowerCase().replaceAll(' ', '_')}-click`
                                     )}>{label}</a
                             >
                         </li>
@@ -172,7 +176,7 @@
                                     {rel}
                                     onclick={() =>
                                         trackEvent(
-                                            `footer-${label.toLowerCase().replace(' ', '_')}-click`
+                                            `footer-${label.toLowerCase().replaceAll(' ', '_')}-click`
                                         )}>{label}</a
                                 >
                             </li>
