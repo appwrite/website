@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
+    import { DEFAULT_DESCRIPTION, getInlinedScriptTag } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { Button, Icon } from '$lib/components/ui';
 
@@ -36,6 +36,9 @@
         title={shorten(data.title, 32)}
         description={shorten(data.seo_description ?? DEFAULT_DESCRIPTION, 64)}
     />
+    {#if data.structuredDataJsonLd}
+        {@html getInlinedScriptTag(data.structuredDataJsonLd)}
+    {/if}
 </svelte:head>
 
 <Main>
