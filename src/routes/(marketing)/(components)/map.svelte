@@ -24,12 +24,11 @@
                 The Appwrite Network<span class="text-accent">_</span>
             </h2>
 
-            <p class="text-description text-secondary text-pretty font-medium">
-                Built into every Appwrite project -
-                backend APIs, serverless functions, and hosted
-                websites - with requests and assets served through our CDN and DDoS protection at the
-                network edge. Choose global regions and edges to optimize latency, compliance, and
-                data residency.
+            <p class="text-description text-secondary font-medium text-pretty">
+                Built into every Appwrite project - backend APIs, serverless functions, and hosted
+                websites - with requests and assets served through our CDN and DDoS protection at
+                the network edge. Choose global regions and edges to optimize latency, compliance,
+                and data residency.
             </p>
 
             <ul
@@ -61,13 +60,9 @@
         </div>
     </div>
     <TheAppwriteNetwork {theme} flushTop />
-    <div
-        class="mt-8 flex w-full justify-center px-4 sm:mt-10 sm:px-6 md:mt-12 lg:mt-14 lg:px-0"
-    >
-        <Button
-            class="w-full max-w-sm sm:w-auto"
-            variant="secondary"
-            href="/docs/products/network">More about the Appwrite Network</Button
+    <div class="mt-8 flex w-full justify-center px-4 sm:mt-10 sm:px-6 md:mt-12 lg:mt-14 lg:px-0">
+        <Button class="w-full max-w-sm sm:w-auto" variant="secondary" href="/docs/products/network"
+            >More about the Appwrite Network</Button
         >
     </div>
 </div>
