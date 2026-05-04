@@ -375,8 +375,10 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
 }
 
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
+    // Only `version` reaches the filesystem path here; `platform` is collapsed to
+    // a fixed `mode` literal (server/client/console). Platform validation lives
+    // in `getService`, where the raw value is interpolated into the example path.
     assertValidVersion(version);
-    assertValidPlatform(platform);
 
     const cacheKey = `${version}|${platform}`;
     const cached = apiCache.get(cacheKey);
@@ -430,6 +432,10 @@ export async function getService(
     };
     methods: SDKMethod[];
 }> {
+    // `platform` is interpolated into example paths below, so validate against
+    // the public allowlist before any filesystem access.
+    assertValidPlatform(platform);
+
     /**
      * Exceptions for Android SDK.
      */
