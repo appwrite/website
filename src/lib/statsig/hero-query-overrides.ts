@@ -24,13 +24,21 @@ const MAX_CTA_LEN = 100;
 
 /**
  * Same rules as `hero_subtitle` URL overrides: collapse whitespace, trim, max length.
- * Use for `best_description` experiment values from Statsig (server or client).
+ * Use for `best_title` experiment `description` param from Statsig (server or client).
  */
 export function normalizeHeroSubtitle(raw: unknown, fallback: string): string {
     if (typeof raw !== 'string') return fallback;
     const t = raw.replace(/\s+/g, ' ').trim();
     if (t.length === 0) return fallback;
     return t.length > MAX_SUBTITLE_LEN ? t.slice(0, MAX_SUBTITLE_LEN) : t;
+}
+
+/** Hero headline — same clamp as `hero_title` URL override; used for `best_title` experiment `title` param. */
+export function normalizeHeroTitle(raw: unknown, fallback: string): string {
+    if (typeof raw !== 'string') return fallback;
+    const t = raw.replace(/\s+/g, ' ').trim();
+    if (t.length === 0) return fallback;
+    return t.length > MAX_TITLE_LEN ? t.slice(0, MAX_TITLE_LEN) : t;
 }
 
 /** Short button label — used for `best_cta` / `hero_cta` query override. */
@@ -94,9 +102,7 @@ function readHeroTitleOverride(params: URLSearchParams, fallback: string): strin
     if (!params.has(HERO_TITLE_QUERY_KEY)) return fallback;
     const raw = params.get(HERO_TITLE_QUERY_KEY);
     if (raw == null) return fallback;
-    const t = raw.replace(/\s+/g, ' ').trim();
-    if (t.length === 0) return fallback;
-    return t.length > MAX_TITLE_LEN ? t.slice(0, MAX_TITLE_LEN) : t;
+    return normalizeHeroTitle(raw, fallback);
 }
 
 function readHeroCtaOverride(params: URLSearchParams, fallback: string): string {

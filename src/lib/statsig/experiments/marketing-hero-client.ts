@@ -7,12 +7,17 @@
 import type { StatsigBrowserClient } from '../client';
 import { readLayoutVariantFromStatsigClient } from '../experiment-eval';
 import type { HeroLayoutVariant } from '../hero-layout';
-import { normalizeHeroCta, normalizeHeroSubtitle } from '../hero-query-overrides';
+import {
+    normalizeHeroCta,
+    normalizeHeroSubtitle,
+    normalizeHeroTitle
+} from '../hero-query-overrides';
 import { MARKETING_HERO_EXPERIMENTS } from './marketing-hero-ids';
 
 export { MARKETING_HERO_EXPERIMENTS };
 
 export type MarketingHeroStatsigBaseline = {
+    heroTitle: string;
     heroSubtitle: string;
     heroLayout: HeroLayoutVariant;
     heroCta: string;
@@ -28,14 +33,15 @@ export function readMarketingHeroExperimentsForExposure(
     client: StatsigBrowserClient,
     baseline: MarketingHeroStatsigBaseline
 ): {
+    heroTitle: string;
     heroSubtitle: string;
     heroLayout: HeroLayoutVariant;
     heroCta: string;
     debug: MarketingHeroClientExposureDebug;
 } {
-    const rawDescription = client
-        .getExperiment(MARKETING_HERO_EXPERIMENTS.bestDescription)
-        .get('description', baseline.heroSubtitle);
+    const bestTitleExperiment = client.getExperiment(MARKETING_HERO_EXPERIMENTS.bestTitle);
+    const rawTitle = bestTitleExperiment.get('title', baseline.heroTitle);
+    const rawDescription = bestTitleExperiment.get('description', baseline.heroSubtitle);
 
     const rawCta = client
         .getExperiment(MARKETING_HERO_EXPERIMENTS.bestCta)
@@ -47,19 +53,23 @@ export function readMarketingHeroExperimentsForExposure(
         baseline.heroLayout
     );
 
+    const heroTitle = normalizeHeroTitle(rawTitle, baseline.heroTitle);
     const heroSubtitle = normalizeHeroSubtitle(rawDescription, baseline.heroSubtitle);
     const heroCta = normalizeHeroCta(rawCta, baseline.heroCta);
 
     return {
+        heroTitle,
         heroSubtitle,
         heroLayout: layoutRead.layout,
         heroCta,
         debug: {
-            [MARKETING_HERO_EXPERIMENTS.bestDescription]: {
-                raw: rawDescription,
-                rawType: typeof rawDescription,
-                normalizedLen: heroSubtitle.length,
-                ssrBaselineLen: baseline.heroSubtitle.length
+            [MARKETING_HERO_EXPERIMENTS.bestTitle]: {
+                rawTitle,
+                rawDescription,
+                normalizedTitleLen: heroTitle.length,
+                normalizedDescriptionLen: heroSubtitle.length,
+                ssrBaselineTitleLen: baseline.heroTitle.length,
+                ssrBaselineDescriptionLen: baseline.heroSubtitle.length
             },
             [MARKETING_HERO_EXPERIMENTS.bestCta]: {
                 raw: rawCta,

@@ -10,7 +10,6 @@ export {
 } from './server';
 export {
     evaluateHeroCtaExperiment,
-    evaluateHeroDescriptionExperiment,
     evaluateHeroLayoutExperiment,
     loadMarketingHomeStatsigBundle,
     MARKETING_HERO_EXPERIMENTS,

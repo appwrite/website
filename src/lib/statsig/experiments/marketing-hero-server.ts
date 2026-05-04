@@ -7,7 +7,11 @@
 import type { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 import { readLayoutVariantFromStatsigEvaluation } from '../experiment-eval';
 import type { HeroLayoutVariant } from '../hero-layout';
-import { normalizeHeroCta, normalizeHeroSubtitle } from '../hero-query-overrides';
+import {
+    normalizeHeroCta,
+    normalizeHeroSubtitle,
+    normalizeHeroTitle
+} from '../hero-query-overrides';
 import {
     getStatsigClientBootstrapPayloadForClient,
     getStatsigServerClient,
@@ -21,6 +25,7 @@ export { MARKETING_HERO_EXPERIMENTS };
 const DISABLE_EXPOSURE = { disableExposureLogging: true } as const;
 
 export type MarketingHomeStatsigBundle = {
+    heroTitleBase: string;
     heroSubtitleBase: string;
     heroLayoutBase: HeroLayoutVariant;
     heroCtaBase: string;
@@ -69,21 +74,25 @@ function evictMarketingHomeStatsigCacheLru() {
     }
 }
 
-async function evaluateHeroDescriptionWithClient(
+async function evaluateBestTitleHeroWithClient(
     client: Statsig,
     statsigUser: StatsigUser,
-    fallback: string
-): Promise<string> {
+    fallbacks: { title: string; description: string }
+): Promise<{ title: string; description: string }> {
     try {
         const experiment = client.getExperiment(
             statsigUser,
-            MARKETING_HERO_EXPERIMENTS.bestDescription,
+            MARKETING_HERO_EXPERIMENTS.bestTitle,
             DISABLE_EXPOSURE
         );
-        const raw = experiment.get('description', fallback);
-        return normalizeHeroSubtitle(raw, fallback);
+        const rawTitle = experiment.get('title', fallbacks.title);
+        const rawDescription = experiment.get('description', fallbacks.description);
+        return {
+            title: normalizeHeroTitle(rawTitle, fallbacks.title),
+            description: normalizeHeroSubtitle(rawDescription, fallbacks.description)
+        };
     } catch {
-        return fallback;
+        return { title: fallbacks.title, description: fallbacks.description };
     }
 }
 
@@ -132,7 +141,7 @@ async function evaluateHeroLayoutWithClient(
 export async function loadMarketingHomeStatsigBundle(
     user: StatsigUser | StatsigServerUserInput,
     cacheKey: string,
-    fallbacks: { subtitle: string; layout: HeroLayoutVariant; cta: string }
+    fallbacks: { title: string; subtitle: string; layout: HeroLayoutVariant; cta: string }
 ): Promise<MarketingHomeStatsigBundle> {
     const now = Date.now();
     sweepExpiredMarketingHomeStatsigCache(now);
@@ -146,6 +155,7 @@ export async function loadMarketingHomeStatsigBundle(
     const client = await getStatsigServerClient();
     if (!client) {
         return {
+            heroTitleBase: fallbacks.title,
             heroSubtitleBase: fallbacks.subtitle,
             heroLayoutBase: fallbacks.layout,
             heroCtaBase: fallbacks.cta,
@@ -157,15 +167,23 @@ export async function loadMarketingHomeStatsigBundle(
 
     const bootstrapFilters = {
         experimentFilter: new Set([
-            MARKETING_HERO_EXPERIMENTS.bestDescription,
+            MARKETING_HERO_EXPERIMENTS.bestTitle,
             MARKETING_HERO_EXPERIMENTS.bestCta,
             MARKETING_HERO_EXPERIMENTS.heroLayout
         ]),
         dynamicConfigFilter: new Set([MARKETING_HERO_EXPERIMENTS.heroLayout])
     };
 
-    const [heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap] = await Promise.all([
-        evaluateHeroDescriptionWithClient(client, statsigUser, fallbacks.subtitle),
+    const [
+        { title: heroTitleBase, description: heroSubtitleBase },
+        heroLayoutBase,
+        heroCtaBase,
+        statsigBootstrap
+    ] = await Promise.all([
+        evaluateBestTitleHeroWithClient(client, statsigUser, {
+            title: fallbacks.title,
+            description: fallbacks.subtitle
+        }),
         evaluateHeroLayoutWithClient(client, statsigUser, fallbacks.layout),
         evaluateHeroCtaWithClient(client, statsigUser, fallbacks.cta),
         Promise.resolve(
@@ -174,6 +192,7 @@ export async function loadMarketingHomeStatsigBundle(
     ]);
 
     const bundle: MarketingHomeStatsigBundle = {
+        heroTitleBase,
         heroSubtitleBase,
         heroLayoutBase,
         heroCtaBase,
@@ -188,18 +207,6 @@ export async function loadMarketingHomeStatsigBundle(
     evictMarketingHomeStatsigCacheLru();
 
     return bundle;
-}
-
-/**
- * SSR: `best_description`. Client must still call `readMarketingHeroExperimentsForExposure` so Pulse gets an exposure.
- */
-export async function evaluateHeroDescriptionExperiment(
-    user: StatsigUser | StatsigServerUserInput,
-    fallback: string
-): Promise<string> {
-    const client = await getStatsigServerClient();
-    if (!client) return fallback;
-    return evaluateHeroDescriptionWithClient(client, toStatsigUser(user), fallback);
 }
 
 /**

@@ -3,8 +3,8 @@
  * Safe to import from **client** code (no Node Statsig SDK).
  */
 export const MARKETING_HERO_EXPERIMENTS = {
-    /** Param: `description` (string). */
-    bestDescription: 'best_description',
+    /** Params: `title` and `description` (strings) — hero headline and supporting copy. */
+    bestTitle: 'best_title',
     /** Param: `cta` (string). Primary hero dashboard button label. */
     bestCta: 'best_cta',
     /**
