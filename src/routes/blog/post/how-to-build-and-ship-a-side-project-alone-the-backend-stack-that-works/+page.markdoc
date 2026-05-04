@@ -49,7 +49,7 @@ The trade-off is the same one you make with any managed service: you're trusting
 
 The SQL vs. NoSQL debate doesn't matter at the side project stage. What matters is that your database is easy to set up, close to your application, and not something you have to maintain yourself.
 
-[Appwrite Databases](/docs/products/databases) gives you a document-model database with support for complex queries, relationships, and real-time subscriptions. You build the schema from the console or through the API and query it without writing raw SQL. If you outgrow it or have specific requirements later, you can bring in an external database alongside Appwrite. There's no lock-in.
+[Appwrite Databases](/docs/products/databases) gives you a relational database with support for complex queries, relationships, and real-time subscriptions. You build the schema from the console or through the API and query it without writing raw SQL.
 
 For most projects, the built-in database is everything you need until you have a real scaling problem. At that point, you have the revenue to solve it properly.
 
