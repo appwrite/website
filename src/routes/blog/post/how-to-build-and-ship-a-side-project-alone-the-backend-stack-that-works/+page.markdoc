@@ -51,7 +51,7 @@ The SQL vs. NoSQL debate doesn't matter at the side project stage. What matters 
 
 [Appwrite Databases](/docs/products/databases) gives you a relational database with support for complex queries, relationships, and real-time subscriptions. You build the schema from the console or through the API and query it without writing raw SQL.
 
-For most projects, the built-in database is everything you need until you have a real scaling problem. At that point, you have the revenue to solve it properly.
+The built-in database scales with your application, so you can focus on shipping features instead of capacity planning. You won't need to revisit this decision because you got traction.
 
 # File storage: don't configure S3 manually
 
