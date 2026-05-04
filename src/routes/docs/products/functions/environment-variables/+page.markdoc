@@ -1281,6 +1281,16 @@ func Main(Context openruntimes.Context) openruntimes.Response {
     return Context.Res.Text(os.Getenv("MY_VAR"))
 }
 ```
+```server-rust
+use openruntimes::{Context, Response};
+use std::env;
+
+pub fn main(context: Context) -> Response {
+    context
+        .res
+        .text(env::var("MY_VAR").unwrap_or_default(), None, None)
+}
+```
 {% /multicode %}
 
 # Appwrite-injected variables {% #appwrite-variables %}

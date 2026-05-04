@@ -101,6 +101,30 @@ bundle install
 Finally, add `bundle install` to your function's build commands in the Appwrite Console.
 {% /tabsitem %}
 
+{% tabsitem #rust title="Rust" %}
+
+Create a `Cargo.toml` file with the following contents. This file is used to manage your Rust project's dependencies.
+
+```toml
+[package]
+name = "handler"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.83"
+
+[lib]
+name = "handler"
+path = "lib.rs"
+
+[dependencies]
+openruntimes = { version = "1.0", package = "openruntimes-types-for-rust" }
+serde_json = "1.0"
+ureq = { version = "2.10", features = ["json"] }
+```
+
+The `ureq` crate provides a blocking HTTP client. Cargo will pick up `Cargo.toml` automatically, so no extra build command is required.
+{% /tabsitem %}
+
 {% /tabs %}
 
 
@@ -228,6 +252,45 @@ def main(context)
 
   return 'Invalid path'
 end
+```
+```rust
+use openruntimes::{Context, Response};
+use serde_json::Value;
+
+pub fn main(context: Context) -> Response {
+    let path = context.req.path.as_str();
+
+    if path == "/eur" || path == "/inr" {
+        let base = if path == "/eur" { "EUR" } else { "INR" };
+        let amount: f64 = context
+            .req
+            .query
+            .get("amount")
+            .and_then(|s| s.parse().ok())
+            .unwrap_or(0.0);
+
+        let url = format!(
+            "https://api.exchangerate.host/latest?base={}&symbols=USD",
+            base
+        );
+
+        let data: Value = ureq::get(&url)
+            .call()
+            .ok()
+            .and_then(|r| r.into_json().ok())
+            .unwrap_or(Value::Null);
+
+        let rate = data
+            .get("rates")
+            .and_then(|r| r.get("USD"))
+            .and_then(|v| v.as_f64())
+            .unwrap_or(0.0);
+
+        return context.res.text((amount * rate).to_string(), None, None);
+    }
+
+    context.res.text("Invalid path", None, None)
+}
 ```
 {% /multicode %}
 
@@ -498,6 +561,107 @@ def main(context)
       'vote': vote_row
     })
 end
+```
+```rust
+use appwrite::error::AppwriteError;
+use appwrite::id::ID;
+use appwrite::query::Query;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::Client;
+use openruntimes::{Context, Response};
+use serde_json::json;
+use std::env;
+
+pub fn main(context: Context) -> Response {
+    let user_id = context.req.query.get("userId").cloned().unwrap_or_default();
+    let topic_id = context.req.query.get("topicId").cloned().unwrap_or_default();
+    let vote = context.req.query.get("vote").cloned().unwrap_or_default();
+
+    if vote != "yes" && vote != "no" {
+        return context.res.json(
+            json!({ "ok": false, "message": "You must vote yes or no." }),
+            Some(400),
+            None,
+        );
+    }
+
+    // Set project and set API key
+    let client = Client::new()
+        .set_endpoint(env::var("APPWRITE_FUNCTION_API_ENDPOINT").unwrap_or_default())
+        .set_project(env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap_or_default())
+        .set_key(
+            context
+                .req
+                .headers
+                .get("x-appwrite-key")
+                .cloned()
+                .unwrap_or_default(),
+        );
+
+    let tables_db = TablesDB::new(&client);
+
+    let runtime = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap();
+
+    let user_id_q = user_id.clone();
+    let topic_id_q = topic_id.clone();
+
+    let result: Result<Option<serde_json::Value>, AppwriteError> = runtime.block_on(async move {
+        let existing = tables_db
+            .list_rows(
+                "<DATABASE_ID>",
+                "<VOTES_TABLE_ID>",
+                Some(vec![
+                    Query::equal("userId", json!(user_id_q)).to_string(),
+                    Query::equal("topicId", json!(topic_id_q)).to_string(),
+                ]),
+                None,
+                None,
+                None,
+            )
+            .await?;
+
+        if existing.total > 0 {
+            return Ok(None);
+        }
+
+        let row = tables_db
+            .create_row(
+                "<DATABASE_ID>",
+                "<VOTES_TABLE_ID>",
+                ID::unique(),
+                json!({
+                    "userId": user_id,
+                    "topicId": topic_id,
+                    "vote": vote,
+                }),
+                None,
+                None,
+            )
+            .await?;
+
+        Ok(Some(json!(row)))
+    });
+
+    match result {
+        Ok(Some(row)) => context.res.json(
+            json!({ "ok": true, "message": "Vote cast.", "vote": row }),
+            None,
+            None,
+        ),
+        Ok(None) => context.res.json(
+            json!({ "ok": false, "message": "You have already voted on this topic." }),
+            Some(400),
+            None,
+        ),
+        Err(e) => {
+            context.error(format!("Vote failed: {}", e));
+            context.res.text("Vote failed", Some(500), None)
+        }
+    }
+}
 ```
 {% /multicode %}
 Use the function by navigating to the function URL in the browser.
@@ -780,6 +944,112 @@ Future main(final context) async {
     }
 
     return context.res.text('Not found', 404);
+}
+```
+
+```rust
+use appwrite::id::ID;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::Client;
+use openruntimes::{Context, Response};
+use serde_json::json;
+use std::collections::HashMap;
+use std::env;
+
+const HTML: &str = r#"<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="content" name="content" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>"#;
+
+fn parse_form(body: &str) -> HashMap<String, String> {
+    body.split('&')
+        .filter_map(|pair| {
+            let mut split = pair.splitn(2, '=');
+            let key = split.next()?;
+            let value = split.next().unwrap_or("");
+            Some((
+                urlencoding::decode(key).ok()?.into_owned(),
+                urlencoding::decode(value).ok()?.into_owned(),
+            ))
+        })
+        .collect()
+}
+
+pub fn main(context: Context) -> Response {
+    if context.req.method == "GET" {
+        let mut headers = HashMap::new();
+        headers.insert("content-type".to_string(), "text/html".to_string());
+        return context.res.text(HTML, Some(200), Some(headers));
+    }
+
+    let content_type = context
+        .req
+        .headers
+        .get("content-type")
+        .map(|s| s.as_str())
+        .unwrap_or("");
+
+    if context.req.method == "POST" && content_type == "application/x-www-form-urlencoded" {
+        let body = context.req.body_text();
+        let form = parse_form(&body);
+
+        let client = Client::new()
+            .set_endpoint(env::var("APPWRITE_FUNCTION_API_ENDPOINT").unwrap_or_default())
+            .set_project(env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap_or_default())
+            .set_key(
+                context
+                    .req
+                    .headers
+                    .get("x-appwrite-key")
+                    .cloned()
+                    .unwrap_or_default(),
+            );
+
+        let tables_db = TablesDB::new(&client);
+
+        let runtime = tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .unwrap();
+
+        let result = runtime.block_on(async move {
+            tables_db
+                .create_row(
+                    "<DATABASE_ID>",
+                    "<MESSAGES_TABLE_ID>",
+                    ID::unique(),
+                    json!({
+                        "name": form.get("name").cloned().unwrap_or_default(),
+                        "email": form.get("email").cloned().unwrap_or_default(),
+                        "content": form.get("content").cloned().unwrap_or_default(),
+                    }),
+                    None,
+                    None,
+                )
+                .await
+        });
+
+        return match result {
+            Ok(_) => context.res.text("Message sent", None, None),
+            Err(e) => {
+                context.error(format!("Failed to save message: {}", e));
+                context.res.text("Failed to save message", Some(500), None)
+            }
+        };
+    }
+
+    context.res.text("Not found", Some(404), None)
 }
 ```
 

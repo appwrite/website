@@ -146,6 +146,12 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `cpp-20`
 * x86 / arm64 / armv7 / armv8
 ---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/rust.svg" alt="Rust logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/rust.svg" alt="Rust logo" size="l" /%}{% /only_light %}
+* [Rust](https://hub.docker.com/r/openruntimes/rust/tags)
+* `rust-1.83`
+* x86 / arm64
+---
 {% /table %}
 {% /tabsitem %}
 
@@ -223,6 +229,12 @@ While still in beta, Appwrite Cloud has limited support for Cloud runtimes. As w
 `ruby-3.3`
 `ruby-4.0`
 * x86 / arm64 / armv7 / armv8
+---
+* {% only_dark %}{% icon_image src="/images/platforms/dark/rust.svg" alt="Rust logo" size="l" /%}{% /only_dark %}
+{% only_light %}{% icon_image src="/images/platforms/light/rust.svg" alt="Rust logo" size="l" /%}{% /only_light %}
+* [Rust](https://hub.docker.com/r/openruntimes/rust/tags)
+* `rust-1.83`
+* x86 / arm64
 ---
 {% /table %}
 {% /tabsitem %}
