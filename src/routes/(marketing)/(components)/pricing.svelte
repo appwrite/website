@@ -1,9 +1,16 @@
 <script lang="ts">
+    import { page } from '$app/state';
     import { trackEvent } from '$lib/actions/analytics';
     import { Button } from '$lib/components/ui';
+    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
     import { cn } from '$lib/utils/cn';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
-    import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 
     const plans: Array<{
         name: string;
@@ -133,7 +140,10 @@
                         href={isEnterprise ? '/contact-us/enterprise' : getAppwriteDashboardUrl()}
                         onclick={() => {
                             trackEvent(event);
-                        }}>{isEnterprise ? 'Contact us' : 'Start building'}</Button
+                        }}
+                        >{isEnterprise
+                            ? 'Contact us'
+                            : heroCtaIfShortStartBuilding('Start building', navCtaLabel)}</Button
                     >
                 </div>
             {/each}

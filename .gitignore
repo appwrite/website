@@ -29,3 +29,5 @@ terraform/**/**/*.tfstate*
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+.playwright-mcp

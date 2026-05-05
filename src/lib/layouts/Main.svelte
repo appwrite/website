@@ -21,8 +21,8 @@
     import { page } from '$app/state';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
     import { changelogNavBadgeVisible } from '$routes/changelog/utils';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
 
     export let omitMainId = false;
     export let hideNavigation = false;
@@ -157,11 +157,12 @@
 
     $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
 
+    $: navCtaLabel = (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
         ? 'mobile-claim_300_credits_btn-click'
         : 'main-start_building_btn-click';
-    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : 'Start building';
+    $: mobileButtonText = isOfferPage ? 'Claim 300$ credits' : navCtaLabel;
 
     const handleNav = () => {
         $isMobileNavOpen = !$isMobileNavOpen;
@@ -170,7 +171,6 @@
 </script>
 
 <div class="relative contents h-full">
-    <MongoPartnershipBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
@@ -243,11 +243,14 @@
                     href={isOfferPage ? undefined : SOCIAL_STATS.GITHUB.LINK}
                     target={isOfferPage ? undefined : '_blank'}
                     rel={isOfferPage ? undefined : 'noopener noreferrer'}
-                    class="web-u-inline-width-100-percent-mobile"
+                    class="web-u-inline-width-100-percent-mobile is-github-stat-link"
                     style={isOfferPage ? 'pointer-events: none;' : ''}
+                    event={isOfferPage ? undefined : 'main-github_star_nav-click'}
+                    aria-label={isOfferPage
+                        ? 'Appwrite on GitHub'
+                        : `Appwrite on GitHub, ${SOCIAL_STATS.GITHUB.STAT} stars`}
                 >
-                    <Icon name="star" aria-hidden="true" />
-                    <span class="text">Star on GitHub</span>
+                    <Icon name="github" aria-hidden="true" />
                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                 </Button>
                 <IsLoggedIn offerButton={isOfferPage} />

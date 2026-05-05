@@ -8,9 +8,9 @@ Skills are open-source Markdown files that give AI agents deep knowledge of Appw
 
 Skills work across all major AI dev tools that support them. They are installed per-project or globally, and are available for all Appwrite client and server SDKs. Supported tools include but not limited to:
 
-- Cursor
 - Claude Code
-- Windsurf Editor
+- Codex
+- Cursor
 - Google Antigravity
 - OpenCode
 - *and more...*

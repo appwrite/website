@@ -54,8 +54,9 @@
     import { navigating, updated } from '$app/state';
     import { onMount } from 'svelte';
     import { loggedIn } from '$lib/utils/console';
-    import { beforeNavigate } from '$app/navigation';
+    import { afterNavigate, beforeNavigate } from '$app/navigation';
     import { trackEvent } from '$lib/actions/analytics';
+    import { initStatsig } from '$lib/statsig/client';
     import { saveReferrerAndUtmSource } from '$lib/utils/utm';
     import { Sprite } from '$lib/components/ui/icon/sprite';
     import { displayHiringMessage } from '$lib/utils/console';
@@ -72,6 +73,21 @@
 
     const thresholds = [0.25, 0.5, 0.75];
     const tracked = new Set();
+
+    const { children } = $props();
+
+    afterNavigate(() => {
+        const data = page.data as {
+            statsigBootstrap?: string | null;
+            statsigStableUserId?: string | null;
+            statsigUserAgent?: string | null;
+        };
+        void initStatsig(
+            data.statsigBootstrap ?? null,
+            data.statsigStableUserId ?? null,
+            data.statsigUserAgent ?? null
+        );
+    });
 
     onMount(() => {
         displayHiringMessage();
@@ -143,8 +159,6 @@
             reo.init({ clientID });
         });
     }
-
-    const { children } = $props();
 </script>
 
 <svelte:window on:scroll={handleScroll} />

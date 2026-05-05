@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { VARS } from '$lib/system';
     import { Button } from '$lib/components/ui';
     import Icon from '$lib/components/ui/icon/icon.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
@@ -7,21 +6,59 @@
     import McpAnimation from './(ai-animations)/mcp.svelte';
     import SkillsAnimation from './(ai-animations)/skills.svelte';
     import AiTable from './ai-table.svelte';
+    import { themeInUse } from '$routes/+layout.svelte';
 
-    const tools = [
-        { name: 'VS Code', src: '/images/docs/mcp/logos/dark/vscode.svg', primary: '#0078D7' },
-        { name: 'Cursor', src: '/images/docs/mcp/logos/dark/cursor-ai.svg', primary: '#fff' },
+    type AiStripTool = {
+        name: string;
+        dark: string;
+        light: string;
+        primary: string;
+        secondary: string;
+    };
+
+    /** Monotone MCP glyphs; subtle brand tint only on hover gradient (matches `platforms.svelte` strip). */
+    const tools: AiStripTool[] = [
         {
-            name: 'Windsurf',
-            src: '/images/docs/mcp/logos/dark/windsurf.svg',
-            primary: '#0EA5E9'
+            name: 'Claude Code',
+            dark: '/images/docs/mcp/logos/dark/claude.svg',
+            light: '/images/docs/mcp/logos/claude.svg',
+            primary: '#D97659',
+            secondary: '#8B4A2E'
         },
-        { name: 'Claude', src: '/images/docs/mcp/logos/dark/claude.svg', primary: '#D97659' },
-        { name: 'OpenCode', src: '/images/docs/mcp/logos/dark/opencode.svg', primary: '#fff' },
+        {
+            name: 'Codex',
+            dark: '/images/docs/mcp/logos/dark/openai.svg',
+            light: '/images/docs/mcp/logos/openai.svg',
+            primary: '#10A37F',
+            secondary: '#064E3B'
+        },
+        {
+            name: 'Cursor',
+            dark: '/images/docs/mcp/logos/dark/cursor-ai.svg',
+            light: '/images/docs/mcp/logos/cursor-ai.svg',
+            primary: '#141414',
+            secondary: '#5B9BF8'
+        },
+        {
+            name: 'VS Code',
+            dark: '/images/docs/mcp/logos/dark/vscode.svg',
+            light: '/images/docs/mcp/logos/vscode.svg',
+            primary: '#0078D7',
+            secondary: '#005A9E'
+        },
+        {
+            name: 'OpenCode',
+            dark: '/images/docs/mcp/logos/dark/opencode.svg',
+            light: '/images/docs/mcp/logos/opencode.svg',
+            primary: '#FFFFFF',
+            secondary: '#6366F1'
+        },
         {
             name: 'Google Antigravity',
-            src: '/images/docs/mcp/logos/dark/google-antigravity.svg',
-            primary: '#4285F4'
+            dark: '/images/docs/mcp/logos/dark/google-antigravity.svg',
+            light: '/images/docs/mcp/logos/google-antigravity.svg',
+            primary: '#4285F4',
+            secondary: '#1967D2'
         }
     ];
 
@@ -48,7 +85,7 @@
 <div class="border-smooth border-t pb-16">
     <div class="container pt-20 pb-0">
         <h2 class="font-aeonik-pro text-title text-primary sm:text-subtitle mb-12">
-            Streamline your AI workflows<span class="text-accent">_</span>
+            Built for the AI agents in your workflow<span class="text-accent">_</span>
         </h2>
 
         <div class="grid grid-cols-1 overflow-hidden sm:grid-cols-2">
@@ -89,7 +126,7 @@
                             <Tooltip.Root>
                                 <div
                                     class="contents"
-                                    style="--primary-color:{tool.primary};--secondary-color:transparent"
+                                    style="--primary-color:{tool.primary};--secondary-color:{tool.secondary}"
                                 >
                                     <Tooltip.Trigger
                                         class="border-smooth group relative flex h-16 w-full items-center justify-center border-r border-dashed {i ===
@@ -98,13 +135,20 @@
                                             : ''}"
                                     >
                                         <div
-                                            style="mask-image: url('{tool.src}'); -webkit-mask-image: url('{tool.src}'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
-                                            class="h-9 w-9 bg-white/40 transition-colors duration-500 group-hover:bg-[var(--primary-color)]"
-                                        ></div>
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
+                                            class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
                                         >
                                             <Noise opacity={0.1} />
+                                        </div>
+                                        <div
+                                            class="relative z-10 flex size-full items-center justify-center"
+                                        >
+                                            <img
+                                                src={$themeInUse === 'light'
+                                                    ? tool.light
+                                                    : tool.dark}
+                                                alt=""
+                                                class="h-9 w-9 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+                                            />
                                         </div>
                                     </Tooltip.Trigger>
                                     <Tooltip.Portal>
@@ -112,12 +156,13 @@
                                             sideOffset={8}
                                             side="bottom"
                                             align="center"
-                                            class="text-primary dark:bg-greyscale-900 data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm"
+                                            class="data-[state='closed']:animate-menu-out data-[state='instant-open']:animate-menu-in data-[state='delayed-open']:animate-menu-in text-greyscale-900 dark:bg-greyscale-850 dark:text-greyscale-50 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium"
                                         >
-                                            <span class="relative z-10">{tool.name}</span>
                                             <div
-                                                class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10"
+                                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color)/6 to-(--secondary-color)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                                aria-hidden="true"
                                             ></div>
+                                            <span class="relative z-10">{tool.name}</span>
                                         </Tooltip.Content>
                                     </Tooltip.Portal>
                                 </div>
@@ -137,21 +182,25 @@
                             0
                                 ? 'border-l'
                                 : ''}"
-                            style="--primary-color:{tool.primary};--secondary-color:transparent"
+                            style="--primary-color:{tool.primary};--secondary-color:{tool.secondary}"
                         >
                             <div
-                                style="mask-image: url('{tool.src}'); -webkit-mask-image: url('{tool.src}'); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
-                                class="h-9 w-9 transition-colors duration-500 {activeMobileIndex ===
+                                class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity {activeMobileIndex ===
                                 i
-                                    ? 'bg-[var(--primary-color)]'
-                                    : 'bg-white/40'}"
-                            ></div>
+                                    ? 'opacity-100'
+                                    : ''}"
+                            >
+                                <Noise opacity={0.1} />
+                            </div>
+                            <img
+                                src={$themeInUse === 'light' ? tool.light : tool.dark}
+                                alt=""
+                                class="relative z-10 h-9 w-9 shrink-0 object-contain opacity-90 transition-opacity duration-300 {activeMobileIndex ===
+                                i
+                                    ? 'opacity-100'
+                                    : ''}"
+                            />
                             {#if activeMobileIndex === i}
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10"
-                                >
-                                    <Noise opacity={0.1} />
-                                </div>
                                 <div
                                     class="text-primary dark:bg-greyscale-900 absolute top-full z-10 mt-2 rounded-md border-0 bg-[#EDEDF0] px-2.5 py-1 text-sm whitespace-nowrap {i ===
                                     tools.length - 1

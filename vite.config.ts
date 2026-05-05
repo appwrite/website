@@ -7,6 +7,11 @@ import { defineConfig } from 'vitest/config';
 // import { sentrySvelteKit } from '@sentry/sveltekit';
 
 export default defineConfig({
+    // Native N-API binary; must not be bundled by Vite SSR.
+    // https://docs.statsig.com/server-core/node-core
+    ssr: {
+        external: ['@statsig/statsig-node-core']
+    },
     plugins: [
         // sentrySvelteKit({
         //     sourceMapsUploadOptions: {

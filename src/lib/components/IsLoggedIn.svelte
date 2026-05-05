@@ -1,7 +1,9 @@
 <script lang="ts">
     import { browser } from '$app/environment';
+    import { page } from '$app/state';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 
     interface Props {
@@ -11,6 +13,11 @@
 
     const { class: className, offerButton = false }: Props = $props();
     const isLoggedIn = browser && 'loggedIn' in document.body.dataset;
+
+    /** Marketing homepage `best_cta` SSR value; other routes fall back to default. */
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 </script>
 
 <Button
@@ -25,7 +32,7 @@
             >Go to Console</span
         >
         <span class="block group-[&[data-logged-in]]/body:hidden" aria-hidden={isLoggedIn}
-            >Start building for free</span
+            >{navCtaLabel}</span
         >
     {/if}
 </Button>

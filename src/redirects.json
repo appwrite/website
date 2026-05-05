@@ -717,6 +717,10 @@
         "redirect": "/docs/tooling/command-line/tables"
     },
     {
+        "link": "/docs/tooling/terraform/databases",
+        "redirect": "/docs/tooling/terraform/resources/databases"
+    },
+    {
         "link": "/docs/tooling/mcp/mcp-for-docs",
         "redirect": "/docs/tooling/mcp/docs"
     },
@@ -839,5 +843,25 @@
     {
         "link": "/install/env",
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
+    },
+    {
+        "link": "/the-appwrite-network",
+        "redirect": "/docs/products/network"
+    },
+    {
+        "link": "/blog/post/backend-as-a-service-baas",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/baas-backend-as-a-service-explained-when-should-you-use-it",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-baas-in-2025",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-backend",
+        "redirect": "/blog/post/backend-as-a-service"
     }
 ]

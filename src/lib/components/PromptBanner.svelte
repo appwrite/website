@@ -85,7 +85,7 @@
             <div class="ai-banner_title">
                 <AiPromptIcon class="text-primary" aria-hidden="true" />
                 <span class="text-primary text-sub-body"
-                    >Use this pre-built prompt to get started faster</span
+                    >Use the pre-built prompt to get started faster</span
                 >
             </div>
             <div class="ai-banner_actions">

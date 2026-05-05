@@ -13,10 +13,10 @@
     href={SOCIAL_STATS.GITHUB.LINK}
     target="_blank"
     rel="noopener noreferrer"
-    class={className}
+    class={[className, 'is-github-stat-link'].filter(Boolean).join(' ')}
     variant="secondary"
+    aria-label={`Appwrite on GitHub, ${SOCIAL_STATS.GITHUB.STAT} stars`}
 >
-    <Icon name="star" aria-hidden="true" />
-    <span class="text">Star on GitHub</span>
+    <Icon name="github" aria-hidden="true" />
     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
 </Button>

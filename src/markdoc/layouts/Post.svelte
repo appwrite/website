@@ -13,11 +13,13 @@
     import { formatDate } from '$lib/utils/date';
     import {
         createBreadcrumbsSchema,
+        createFaqSchema,
         createPostSchema,
         DEFAULT_HOST,
         getInlinedScriptTag
     } from '$lib/utils/metadata';
     import { isAnnouncement, parseCategories } from '$lib/utils/blog-cta';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
     import { prepareBlogCtaState, type BlogCallToActionInput } from '$lib/utils/blog-mid-cta';
     import { getPostAuthors } from '$lib/utils/blog-authors';
     import type { AuthorData, PostsData } from '$routes/blog/content';
@@ -27,6 +29,8 @@
     import type { LayoutContext } from './Article.svelte';
 
     export let title: string;
+    /** When set, used for `<title>` / Open Graph title while `title` stays the on-page H1. */
+    export let metaTitle: string | undefined = undefined;
     export let description: string;
     export let author: string | string[];
     export let date: string;
@@ -35,6 +39,7 @@
     export let category: string;
     export let callToAction: BlogCallToActionInput;
     export let lastUpdated: string;
+    export let faqs: { question: string; answer: string }[] | undefined = undefined;
 
     const posts = getContext<PostsData[]>('posts')?.filter(
         (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
@@ -85,7 +90,8 @@
         announcement,
         category,
         slug,
-        rawContent
+        rawContent,
+        heroExperimentCta: (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
     });
 
     if (midCta) {
@@ -100,13 +106,14 @@
     }
 
     const currentURL = `https://appwrite.io${page.url.pathname}`;
+    const resolvedMetaTitle = metaTitle ?? title;
 </script>
 
 <svelte:head>
     <!-- Titles -->
-    <title>{title + TITLE_SUFFIX}</title>
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
+    <title>{resolvedMetaTitle + TITLE_SUFFIX}</title>
+    <meta property="og:title" content={resolvedMetaTitle} />
+    <meta name="twitter:title" content={resolvedMetaTitle} />
     <!-- Description -->
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
@@ -145,6 +152,11 @@
                 : undefined
         )
     )}
+
+    {#if faqs?.length}
+        <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+        {@html getInlinedScriptTag(createFaqSchema(faqs))}
+    {/if}
 </svelte:head>
 
 <Main>
