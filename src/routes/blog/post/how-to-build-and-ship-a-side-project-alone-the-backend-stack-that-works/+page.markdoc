@@ -10,7 +10,6 @@ category: startup
 featured: false
 unlisted: true
 ---
-
 Solo developers don't stall because they can't code. They stall because they burn through momentum on infrastructure before writing a single line of product logic.
 
 You spend the first weekend setting up authentication middleware, the second wiring up file uploads to S3, and the third debugging CORS errors. By the time the backend is technically ready, the idea feels stale and the energy is gone.
