@@ -14,6 +14,8 @@ Lovable turns a prompt into a working UI in minutes. The front end is the easy p
 
 The Lovable documentation frames backend as a connected service. The Supabase integration page describes a "hosted PostgreSQL database with real-time capabilities, user authentication, file storage, and serverless functions" that gets attached to your Lovable project. That framing is the right mental model. Swap the default for a different backend, and the generation workflow still works. Appwrite fits this pattern as an open-source option that brings Auth, Databases with tables and rows, Storage, Functions, Realtime, Messaging, and Sites under one roof.
 
+If you are still deciding whether Lovable is the right *front-end* vibe tool for your team versus Bolt, Cursor, or similar options, [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) summarizes how those tools tend to behave once you leave the happy path.
+
 ## Why pair Lovable and Appwrite
 
 The Lovable and Appwrite combination is worth considering when any of these matter to your project:

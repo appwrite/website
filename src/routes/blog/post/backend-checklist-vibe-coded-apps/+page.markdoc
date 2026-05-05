@@ -14,7 +14,7 @@ Vibe coding gets you from idea to working prototype faster than any previous wor
 
 This is the vibe coding backend checklist. It is a pre-launch review you can run before your app handles a login, a payment, or a file upload. It assumes your frontend works and focuses on the backend primitives that decide whether your launch holds up.
 
-If you use Appwrite behind a vibe-coded app, the primitives here map to Auth, Databases with tables and rows, Storage, Functions, Sites, and Appwrite Network. The checklist applies regardless of which tool generated your code: Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf.
+If you use Appwrite behind a vibe-coded app, the primitives here map to Auth, Databases with tables and rows, Storage, Functions, Sites, and Appwrite Network. The checklist applies regardless of which tool generated your code: Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf. If you are still choosing between those stacks, [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) walks through practical differences before you commit.
 
 # Why vibe-coded apps need a production checklist
 

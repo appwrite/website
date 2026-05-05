@@ -17,6 +17,8 @@ Anthropic just released Claude Code v2 along with Claude 4.5 Sonnet, a model whi
 
 In this article, we will look at the best tips and tricks for using Claude Code. Most of them would be prompting the model correctly.
 
+If you are weighing Claude Code against other AI coding surfaces (Cursor, Windsurf, Copilot in VS Code, or browser-first builders), [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) lays out how each tends to behave on real projects.
+
 # Prompt it to be better
 
 Some problems Claude has can simply be solved by prompting it to an extent.
