@@ -2,6 +2,19 @@ import { sitemaps } from './sitemap.js';
 import { createServer } from 'node:http';
 import { handler } from '../build/handler.js';
 import { createApp, defineEventHandler, fromNodeMiddleware, toNodeListener } from 'h3';
+import {
+    attachStaticCacheControl,
+    cacheControlForPath,
+    pathnameFromRequest
+} from './cache-static.js';
+
+/** Sirv serves `build/client` before SvelteKit; hooks never run for those files. */
+function wrapAdapterHandlerWithStaticCache(adapterHandler) {
+    return (req, res, next) => {
+        attachStaticCacheControl(res, cacheControlForPath(pathnameFromRequest(req)));
+        return adapterHandler(req, res, next);
+    };
+}
 
 async function main() {
     const port = process.env.PORT || 3000;
@@ -22,7 +35,7 @@ async function main() {
 
     app.use(['/sitemap.xml', '/sitemaps'], await sitemaps());
 
-    app.use(fromNodeMiddleware(handler));
+    app.use(fromNodeMiddleware(wrapAdapterHandlerWithStaticCache(handler)));
 
     const server = createServer(toNodeListener(app)).listen(port);
     server.addListener('listening', () => {
