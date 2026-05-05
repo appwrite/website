@@ -12,6 +12,7 @@
     import DocsPlatformsGrid from './DocsPlatformsGrid.svelte';
     import HeroBanner from '$routes/(marketing)/(components)/hero-banner.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
+    import DocsHubFaq from './DocsHubFaq.svelte';
 
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
@@ -567,18 +568,20 @@
         </section>
         <section class="web-hero is-align-start is-no-max-width mt-12!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">Show me some code</h2>
-            <p class="text-description mt-4 max-w-[600px]">
+            <p class="text-description max-w-[600px]">
                 If you learn best from code examples, follow one of our tutorials.
             </p>
-            <Carousel size="medium">
-                {#each tutorials as tutorial}
-                    <li style:scroll-snap-align="start">
-                        <CodeCard {...tutorial} />
-                    </li>
-                {/each}
-            </Carousel>
+            <div class="mt-6">
+                <Carousel size="medium" navPosition="bottom">
+                    {#each tutorials as tutorial}
+                        <li style:scroll-snap-align="start">
+                            <CodeCard {...tutorial} />
+                        </li>
+                    {/each}
+                </Carousel>
+            </div>
         </section>
-        <section class="web-hero is-align-start is-no-max-width mt-12!">
+        <section class="web-hero is-align-start is-no-max-width mt-6!">
             <h2 class="text-title font-aeonik-pro text-primary max-w-[600px]">
                 Migrate to Appwrite
             </h2>
@@ -638,6 +641,8 @@
                 </ul>
             </div>
         </section>
+
+        <DocsHubFaq />
 
         <MainFooter variant="docs" />
     </main>
