@@ -51,7 +51,7 @@ However, neither approach is always superior. Each works best in specific scenar
 
 # The AI factor
 
-The rise of AI-assisted coding, or "vibecoding," has changed how many developers approach database selection. Document databases often align more naturally with AI-driven workflows.
+The rise of AI-assisted coding, or "vibecoding," has changed how many developers approach database selection. Document databases often align more naturally with AI-driven workflows. The agents and IDEs you use for that workflow differ too; for a practical comparison across common tools, see [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools).
 
 **Native JSON support**: Large Language Models (LLMs) are trained to understand and generate JSON. When an AI agent generates a data object, it can often be saved directly to a document database without the need for translation or mapping layers.
 
@@ -81,6 +81,7 @@ If you're looking for a solution that combines the flexibility of the document m
 
 # More resources
 
+*   [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools)
 *   [SQL vs NoSQL: Choosing the right database for your project](/blog/post/sql-vs-nosql)
 *   [Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
 *   [Build a chat app with Appwrite and Gemini](/blog/post/build-a-chat-app-with-appwrite-and-gemini)

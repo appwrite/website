@@ -126,6 +126,12 @@
             description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
         },
         {
+            href: '/docs/tutorials/flutter',
+            cover: '/images/tutorials/flutter.png',
+            title: 'Flutter tutorial',
+            description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
+        },
+        {
             href: '/docs/tutorials/sveltekit',
             cover: '/images/tutorials/svelte.png',
             title: 'SvelteKit tutorial',
@@ -142,12 +148,6 @@
             cover: '/images/tutorials/android.png',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
-        },
-        {
-            href: '/docs/tutorials/flutter',
-            cover: '/images/tutorials/flutter.png',
-            title: 'Flutter tutorial',
-            description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         }
     ];
 </script>

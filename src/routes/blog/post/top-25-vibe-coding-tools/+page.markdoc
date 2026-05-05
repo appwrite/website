@@ -240,6 +240,8 @@ Its real-time assistance enhances developer creativity. Claude Code is renowned 
 
 When comparing vibe coding tools, it's crucial to consider features and use cases specific to your project's needs. These tools offer varied capabilities tailored to different aspects of the development process, enhancing productivity through innovative technologies.
 
+For a hands-on breakdown of how major options differ in daily use (including Cursor, Windsurf, Claude Code, GitHub Copilot, Bolt, and Lovable), see [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools).
+
 Key features to evaluate include AI-driven suggestions, automation, integration with development environments, and support for various programming languages. Look for tools that provide real-time collaboration and adaptive learning capabilities. Tailoring your choice to specific functions can enhance your workflow dramatically.
 
 Here’s a quick list of features and uses to consider:
@@ -294,6 +296,7 @@ By evaluating these factors, you ensure the tool enhances your workflow. The rig
 
 # More resources
 
+- [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools)
 - [Building with Appwrite AI Function templates](/blog/post/building-with-ai-function-templates)
 - [Announcing new Appwrite AI integrations](/blog/post/announcing-appwrite-new-ai-integrations)
 - [Build an offline AI chatbot with WebLLM and WebGPU](/blog/post/chatbot-with-webllm-and-webgpu)
