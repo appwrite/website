@@ -121,6 +121,9 @@
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
     <!-- Image -->
+    {#if cover}
+        <link rel="preload" as="image" href={DEFAULT_HOST + cover} fetchpriority="high" />
+    {/if}
     <meta property="og:image" content={DEFAULT_HOST + cover} />
     <meta property="og:image:width" content="1463" />
     <meta property="og:image:height" content="822" />
@@ -170,7 +173,12 @@
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
                         <div class="web-media my-8! aspect-video">
-                            <Media class="block aspect-video object-cover" src={cover} />
+                            <Media
+                                class="block aspect-video object-cover"
+                                src={cover}
+                                alt={title}
+                                priority
+                            />
                         </div>
                     {/if}
 

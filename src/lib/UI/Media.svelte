@@ -3,6 +3,8 @@
     export let alt = '';
     export let controls = true;
     export let autoplay = false;
+    /** When true (e.g. blog post hero), use eager load + `fetchpriority="high"` for LCP. */
+    export let priority = false;
     let className = '';
     export { className as class };
 
@@ -16,5 +18,12 @@
         <slot />
     </video>
 {:else}
-    <img loading="lazy" {src} {alt} class={className} data-active="" />
+    <img
+        {src}
+        {alt}
+        class={className}
+        data-active=""
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+    />
 {/if}
