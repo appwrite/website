@@ -218,7 +218,8 @@
                             <a
                                 href={tutorial.href}
                                 class="web-references-menu-link"
-                                class:tutorial-scroll-indicator={isCurrentStep && !tutorialSubToc.length}
+                                class:tutorial-scroll-indicator={isCurrentStep &&
+                                    !tutorialSubToc.length}
                                 class:is-selected={isCurrentStep}
                             >
                                 <span class="web-numeric-badge">{tutorial.step}</span>

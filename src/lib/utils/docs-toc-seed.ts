@@ -21,7 +21,9 @@ export type SeededHeading = {
 };
 
 /** Inner attribute string of `{% section … %}` — id, step, and title may appear in any order. */
-function parseSectionAttributes(attrs: string): { id: string; title: string; step?: number } | null {
+function parseSectionAttributes(
+    attrs: string
+): { id: string; title: string; step?: number } | null {
     const idMatch = attrs.match(/#([-\w]+)/);
     if (!idMatch) return null;
     const id = idMatch[1];
