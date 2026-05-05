@@ -1,13 +1,44 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
 import { Platform, VALID_PLATFORMS, versions, type ServiceValue } from '$lib/utils/references';
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const specsRoot = dirname(
-    createRequire(import.meta.url).resolve('@appwrite.io/specs/package.json')
-);
+// Spec data location. In environments where `@appwrite.io/specs` is installed
+// (local dev, Docker prod with `bun install --production`), resolve via Node
+// module resolution. In environments where only the build artifact ships
+// (Appwrite Sites runtime), fall back to `_specs_data/` copied next to the
+// server bundle by `scripts/build.js`.
+function locateSpecsRoot(): string {
+    try {
+        const fromNodeModules = dirname(
+            createRequire(import.meta.url).resolve('@appwrite.io/specs/package.json')
+        );
+        if (existsSync(join(fromNodeModules, 'specs'))) {
+            return fromNodeModules;
+        }
+    } catch {
+        // package not installed at runtime; fall through to bundled data
+    }
+
+    const here = dirname(fileURLToPath(import.meta.url));
+    const candidates = [
+        resolve(here, '../../_specs_data'),
+        resolve(here, '../_specs_data'),
+        resolve(process.cwd(), '_specs_data')
+    ];
+    for (const candidate of candidates) {
+        if (existsSync(join(candidate, 'specs'))) {
+            return candidate;
+        }
+    }
+    throw new Error('Unable to locate @appwrite.io/specs data');
+}
+
+const specsRoot = locateSpecsRoot();
 
 // URL segments reach this module from SvelteKit route params, so anything
 // interpolated into a filesystem path needs an explicit allowlist check.
