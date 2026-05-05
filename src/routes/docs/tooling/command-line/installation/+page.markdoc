@@ -147,6 +147,12 @@ This will create your `appwrite.config.json` file, where you will configure your
 }
 ```
 
+You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
+
+```sh
+appwrite projects get --project-id "<PROJECT_ID>"
+```
+
 # Multi-file configuration {% #multi-file-configuration %}
 
 By default, the Appwrite CLI stores your project settings and resource definitions in one `appwrite.config.json` file. In CLI version 20.0.0 and later, you can split top-level resource arrays into separate JSON files with the `includes` field.
@@ -201,12 +207,6 @@ The single-file format continues to work. You can split any supported resource a
 Supported include keys are `functions`, `sites`, `databases`, `collections`, `tablesDB`, `tables`, `topics`, `teams`, `buckets`, `webhooks`, and `messages`.
 
 Include paths must be local JSON files inside your project. They must be relative paths, end in `.json`, and cannot use parent-directory segments, absolute paths, URLs, URL-like schemes, null bytes, or JSON pointer fragments.
-
-You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
-
-```sh
-appwrite projects get --project-id "<PROJECT_ID>"
-```
 
 {% info title="Self-signed certificates" %}
 By default, requests to domains with self-signed SSL certificates (or no certificates) are disabled. If you trust the domain, you can bypass the certificate validation using
