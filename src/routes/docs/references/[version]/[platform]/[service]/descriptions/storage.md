@@ -1,5 +1,7 @@
 The Storage service allows you to manage your project files. Using the Storage service, you can upload, view, download, and query all your project files.
 
+Large files are uploaded in 5MB chunks. Appwrite SDKs handle chunking for you and, on runtimes with native concurrency, can upload multiple chunks in parallel for faster throughput without changing your `createFile`-style calls.
+
 Files are managed using buckets. Storage buckets are similar to Tables we have in our [Databases](/docs/products/databases) service. The difference is, buckets also provide more power to decide what kinds of files, what sizes you want to allow in that bucket, whether or not to encrypt the files, scan with antivirus and more.
 
 Using Appwrite permissions architecture, you can assign read or write access to each bucket or file in your project for either a specific user, team, user role, or even grant it with public access (`any`). You can learn more about [how Appwrite handles permissions and access control](/docs/advanced/platform/permissions).
