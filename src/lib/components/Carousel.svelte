@@ -31,10 +31,19 @@
     );
     let scroll = 0;
 
+    function firstSlideWidth(): number {
+        const slide = carousel?.querySelector(':scope > li');
+        return slide instanceof HTMLElement ? slide.clientWidth : 0;
+    }
+
     function calculateScrollAmount(prev = false) {
         const direction = prev ? -1 : 1;
-        const carouselSize = carousel?.clientWidth;
-        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+        const carouselSize = carousel?.clientWidth ?? 0;
+        const slideW = firstSlideWidth();
+        if (!carouselSize || !slideW) {
+            return 0;
+        }
+        const childSize = slideW + gap;
 
         scroll = scroll || carouselSize;
 

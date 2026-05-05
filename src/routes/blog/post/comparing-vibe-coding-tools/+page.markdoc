@@ -12,16 +12,16 @@ author:
   - ebenezer-don
 category: tutorial
 callToAction:
-  heading: "Appwrite: one backend for every vibe coding surface"
-  description: "If you are new here, Appwrite is an open-source backend platform for authentication, databases, file storage, functions, and realtime APIs—run it yourself or on Appwrite Cloud. Cursor, Windsurf, Claude Code, Copilot, Bolt, and Lovable change how you edit; Appwrite is the layer where users, data, and server logic stay real so agents can call documented APIs instead of improvising a backend."
-  label: Start building for free
+  heading: "Put Appwrite behind the apps you vibe code"
+  description: "Open-source auth, databases, storage, and functions. Use MCP so agents in Cursor, Claude Code, Copilot, or browser builders call your real APIs instead of inventing a backend."
+  label: Sign up
   href: https://cloud.appwrite.io/console/
   event: blog-cta-cloud-btn-click
   points:
-    - "MCP servers connect Claude Code, Cursor, Windsurf, and other agents to your Appwrite project"
-    - "Docs MCP keeps assistants grounded in up-to-date Appwrite APIs (great with Copilot and browser builders too)"
-    - "REST plus 13+ SDKs for whatever stack your tools generate"
-    - "Same open-source platform self-hosted or on Cloud when prototypes ship to production"
+    - "MCP hooks agents (Claude Code, Cursor, Windsurf, and more) to your Appwrite project"
+    - "Docs MCP keeps assistants on current Appwrite APIs"
+    - "REST and SDKs for whatever your tools generate"
+    - "Self-host or Appwrite Cloud for production"
 faqs:
   - question: "What is the best vibe coding tool?"
     answer: "There is no single winner. Cursor is the strongest AI-first IDE for large refactors and project rules, GitHub Copilot is the easiest default inside VS Code, Claude Code fits terminal-native agent workflows, Windsurf is a capable alternative IDE with a simpler surface, and Bolt or Lovable are better when you want a hosted prototype fast. Choose from how you work, not from a feature matrix alone."
@@ -43,13 +43,13 @@ The goal is not a feature checklist. It is how each tool behaves when you add fe
 
 Short picks if you only read one section:
 
-- **Cursor** — Best overall AI coding IDE for serious refactors, file context, and `.cursorrules`-style control (watch for performance on huge repos).
-- **Windsurf** — Best for agentic IDE workflows when you want direct edits and a polished UI; mind monthly credit caps on paid tiers.
-- **Claude Code** — Best terminal-native coding agent when you want Anthropic’s models driving repo work without living inside a forked editor.
-- **GitHub Copilot** — Best for teams already on VS Code and GitHub who want a mature agent without switching editors.
-- **Bolt** — Best for fast browser-based full-stack prototypes; expect to export when complexity grows.
-- **Lovable** — Best for non-technical builders and quick UI generation; similar ceiling to Bolt when requirements leave the template path.
-- **Replit** — Best all-in-one cloud development environment when hosting, editor, and AI should live in one tab (not deep-dived here, but it belongs on the same short list).
+- **Cursor** - Best overall AI coding IDE for serious refactors, file context, and `.cursorrules`-style control (watch for performance on huge repos).
+- **Windsurf** - Best for agentic IDE workflows when you want direct edits and a polished UI; mind monthly credit caps on paid tiers.
+- **Claude Code** - Best terminal-native coding agent when you want Anthropic’s models driving repo work without living inside a forked editor.
+- **GitHub Copilot** - Best for teams already on VS Code and GitHub who want a mature agent without switching editors.
+- **Bolt** - Best for fast browser-based full-stack prototypes; expect to export when complexity grows.
+- **Lovable** - Best for non-technical builders and quick UI generation; similar ceiling to Bolt when requirements leave the template path.
+- **Replit** - Best all-in-one cloud development environment when hosting, editor, and AI should live in one tab (not deep-dived here, but it belongs on the same short list).
 
 # VS Code with GitHub Copilot
 
