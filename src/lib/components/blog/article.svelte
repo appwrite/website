@@ -55,12 +55,12 @@
                 {/each}
             </div>
             <div class="flex items-baseline gap-3">
-                <h4 class="text-sub-body text-primary">
+                <p class="text-sub-body text-primary m-0">
                     {#each authors as author, i}
                         <a href={author.href} class="web-link">{author.name}</a
                         >{#if i < authors.length - 1},{' '}{/if}
                     {/each}
-                </h4>
+                </p>
             </div>
         </div>
     </div>

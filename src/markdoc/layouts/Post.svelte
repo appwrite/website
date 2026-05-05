@@ -109,6 +109,10 @@
 
     const currentURL = `https://appwrite.io${page.url.pathname}`;
     const resolvedMetaTitle = metaTitle ?? title;
+
+    /** Matches OG / Twitter card dimensions for blog covers (reserved space → CLS). */
+    const BLOG_COVER_WIDTH = 1463;
+    const BLOG_COVER_HEIGHT = 822;
 </script>
 
 <svelte:head>
@@ -125,8 +129,8 @@
         <link rel="preload" as="image" href={DEFAULT_HOST + cover} fetchpriority="high" />
     {/if}
     <meta property="og:image" content={DEFAULT_HOST + cover} />
-    <meta property="og:image:width" content="1463" />
-    <meta property="og:image:height" content="822" />
+    <meta property="og:image:width" content={String(BLOG_COVER_WIDTH)} />
+    <meta property="og:image:height" content={String(BLOG_COVER_HEIGHT)} />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -178,6 +182,8 @@
                                 src={cover}
                                 alt={title}
                                 priority
+                                width={BLOG_COVER_WIDTH}
+                                height={BLOG_COVER_HEIGHT}
                             />
                         </div>
                     {/if}
@@ -212,7 +218,9 @@
                 <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-                        {#each posts.filter((p) => p.title !== title).slice(0, 3) as post (post.href)}
+                        {#each posts
+                            .filter((p) => p.title !== title)
+                            .slice(0, 3) as post (post.href)}
                             {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
                                 post.author,
                                 authors

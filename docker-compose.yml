@@ -35,7 +35,6 @@ services:
                 - PUBLIC_APPWRITE_COL_THREADS_ID=$PUBLIC_APPWRITE_COL_THREADS_ID
                 - PUBLIC_APPWRITE_COL_MESSAGES_ID=$PUBLIC_APPWRITE_COL_MESSAGES_ID
                 - PUBLIC_APPWRITE_FN_TLDR_ID=$PUBLIC_APPWRITE_FN_TLDR_ID
-                - PUBLIC_POSTHOG_API_KEY=$PUBLIC_POSTHOG_API_KEY
         environment:
             # Runtime (`$env/dynamic/private`) — keep out of image build args.
             - STATSIG_SERVER_SECRET=${STATSIG_SERVER_SECRET}

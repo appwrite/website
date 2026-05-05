@@ -5,6 +5,9 @@
     export let autoplay = false;
     /** When true (e.g. blog post hero), use eager load + `fetchpriority="high"` for LCP. */
     export let priority = false;
+    /** Intrinsic dimensions (helps CLS); should match real asset aspect ratio when set. */
+    export let width: number | undefined = undefined;
+    export let height: number | undefined = undefined;
     let className = '';
     export { className as class };
 
@@ -25,5 +28,7 @@
         data-active=""
         loading={priority ? 'eager' : 'lazy'}
         fetchpriority={priority ? 'high' : 'auto'}
+        {width}
+        {height}
     />
 {/if}

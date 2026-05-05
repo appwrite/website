@@ -16,7 +16,9 @@ export type SeededHeading = {
  * (content pulled in via `{% partial %}` is not in `rawContent` and is still registered in
  * `Heading` after mount).
  */
-export function seedHeadingsFromMarkdocRaw(raw: string | null | undefined): Record<string, SeededHeading> {
+export function seedHeadingsFromMarkdocRaw(
+    raw: string | null | undefined
+): Record<string, SeededHeading> {
     if (!raw) return {};
     const out: Record<string, SeededHeading> = {};
 
