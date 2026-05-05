@@ -10,7 +10,6 @@ category: architecture
 featured: false
 unlisted: true
 ---
-
 Most junior developers don't struggle with writing code. They struggle with knowing *where* the code should go.
 
 You know what authentication is. You know what a database does. But when you sit down to build a feature, the questions pile up fast. Where does this logic live? Should this be a function or an API route? Why does my service know too much about my database?
