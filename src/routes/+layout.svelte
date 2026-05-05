@@ -1,5 +1,4 @@
 <script lang="ts" module>
-    import { type Reo, loadReoScript } from '$lib/reodotdev';
     import { derived as storeDerived, writable } from 'svelte/store';
 
     export type Theme = 'dark' | 'light' | 'system';
@@ -150,15 +149,6 @@
             }
         });
     }
-
-    if (!dev && browser) {
-        const clientID = '144fa7eaa4904e8';
-
-        const reoPromise = loadReoScript({ clientID });
-        reoPromise.then((reo: Reo) => {
-            reo.init({ clientID });
-        });
-    }
 </script>
 
 <svelte:window on:scroll={handleScroll} />
@@ -175,9 +165,6 @@
 
         <!--suppress JSUnresolvedLibraryURL -->
         <script defer data-domain="appwrite.io" src="https://plausible.io/js/script.js"></script>
-
-        <!-- ZoomInfo snippet -->
-        <script defer src="/scripts/zoominfo.js"></script>
     {/if}
 
     <!-- canonical url -->

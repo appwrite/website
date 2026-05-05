@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { afterNavigate } from '$app/navigation';
     import { page } from '$app/state';
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
@@ -27,6 +28,7 @@
     import { getContext, setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import type { LayoutContext } from './Article.svelte';
+    import { seedHeadingsFromMarkdocRaw } from '$lib/utils/docs-toc-seed';
 
     export let title: string;
     /** When set, used for `<title>` / Open Graph title while `title` stays the on-page H1. */
@@ -50,9 +52,26 @@
         .map((slug) => authors.find((a) => a.slug === slug))
         .filter((a): a is AuthorData => a !== undefined);
 
-    setContext<LayoutContext>('headings', writable({}));
+    /**
+     * Prefer `page.data` (updates on client navigation). Fall back to layout context for any edge
+     * case where merged load data is missing. Do not reset the headings store in `afterNavigate`
+     * with a partial seed — blog posts use `#` headings; an empty `##`-only seed would wipe TOC
+     * entries already registered by `Heading` in `onMount`.
+     */
+    const layoutRawContent = (): string | null =>
+        (page.data as { rawContent?: string | null }).rawContent ??
+        getContext<string | null>('rawContent') ??
+        null;
 
-    const headings = getContext<LayoutContext>('headings');
+    const headings = writable(seedHeadingsFromMarkdocRaw(layoutRawContent()));
+    setContext<LayoutContext>('headings', headings);
+
+    afterNavigate(() => {
+        const seeded = seedHeadingsFromMarkdocRaw(layoutRawContent());
+        if (Object.keys(seeded).length > 0) {
+            headings.set(seeded);
+        }
+    });
 
     let selected: string | undefined = undefined;
     headings.subscribe((n) => {
@@ -79,7 +98,6 @@
         return carry;
     }, []);
 
-    const rawContent = getContext<string | null>('rawContent');
     const slug = page.url.pathname.split('/').filter(Boolean).at(-1) ?? '';
     const parsedCategories = parseCategories(category);
     const announcement = isAnnouncement(slug, parsedCategories);
@@ -90,7 +108,7 @@
         announcement,
         category,
         slug,
-        rawContent,
+        rawContent: layoutRawContent(),
         heroExperimentCta: (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
     });
 
@@ -107,6 +125,10 @@
 
     const currentURL = `https://appwrite.io${page.url.pathname}`;
     const resolvedMetaTitle = metaTitle ?? title;
+
+    /** Matches OG / Twitter card dimensions for blog covers (reserved space → CLS). */
+    const BLOG_COVER_WIDTH = 1463;
+    const BLOG_COVER_HEIGHT = 822;
 </script>
 
 <svelte:head>
@@ -119,9 +141,12 @@
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
     <!-- Image -->
+    {#if cover}
+        <link rel="preload" as="image" href={DEFAULT_HOST + cover} fetchpriority="high" />
+    {/if}
     <meta property="og:image" content={DEFAULT_HOST + cover} />
-    <meta property="og:image:width" content="1463" />
-    <meta property="og:image:height" content="822" />
+    <meta property="og:image:width" content={String(BLOG_COVER_WIDTH)} />
+    <meta property="og:image:height" content={String(BLOG_COVER_HEIGHT)} />
     <meta name="twitter:image" content={DEFAULT_HOST + cover} />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -168,7 +193,14 @@
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
                         <div class="web-media my-8! aspect-video">
-                            <Media class="block aspect-video object-cover" src={cover} />
+                            <Media
+                                class="block aspect-video object-cover"
+                                src={cover}
+                                alt={title}
+                                priority
+                                width={BLOG_COVER_WIDTH}
+                                height={BLOG_COVER_HEIGHT}
+                            />
                         </div>
                     {/if}
 
@@ -202,7 +234,9 @@
                 <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-                        {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
+                        {#each posts
+                            .filter((p) => p.title !== title)
+                            .slice(0, 3) as post (post.href)}
                             {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
                                 post.author,
                                 authors

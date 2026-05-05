@@ -86,12 +86,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'blob:',
             "'unsafe-inline'",
             "'unsafe-eval'",
-            'https://*.posthog.com',
             'https://*.plausible.io',
-            'https://*.reo.dev',
             'https://plausible.io',
-            'https://js.zi-scripts.com',
-            'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
             'https://cdn-cookieyes.com'
         ]),
@@ -109,15 +105,9 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.appwrite.io',
             'https://*.appwrite.org',
             'https://*.appwrite.network',
-            'https://*.posthog.com',
             'https://*.sentry.io',
             'https://*.plausible.io',
             'https://plausible.io',
-            'https://*.reo.dev',
-            'https://js.zi-scripts.com',
-            'https://aorta.clickagy.com',
-            'https://hemsync.clickagy.com',
-            'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
             'https://cdn-cookieyes.com',
             // Statsig JS client + session replay + web analytics
@@ -142,7 +132,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://status.appwrite.online',
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
-            'https://hemsync.clickagy.com',
             'https://cdn-cookieyes.com'
         ])
     };
@@ -270,6 +259,64 @@ const seoOptimization: Handle = async ({ event, resolve }) => {
     return response;
 };
 
+/** Long-lived hashed build output from Vite/SvelteKit */
+const CACHE_IMMUTABLE = 'public, max-age=31536000, immutable';
+
+/** Blog and marketing images can be replaced at the same URL; avoid immutable */
+const CACHE_IMAGES_SAFE = 'public, max-age=604800, stale-while-revalidate=86400';
+
+/** Site UI assets (icons, illustrations) that rarely change */
+const CACHE_IMAGES_DEFAULT = 'public, max-age=2592000, stale-while-revalidate=86400';
+
+/** Third-party or vendor scripts we mirror under /scripts */
+const CACHE_SCRIPTS = 'public, max-age=86400, stale-while-revalidate=604800';
+
+/**
+ * Lighthouse: static responses had no Cache-Control. Set TTLs here (Kit adapter-node
+ * does not add them). Skip if something already set Cache-Control.
+ */
+function cacheControlForPath(pathname: string): string | null {
+    if (pathname === '/_app/version.json' || pathname === '/_app/env.js') {
+        return 'no-store';
+    }
+    if (pathname.startsWith('/_app/immutable/')) {
+        return CACHE_IMMUTABLE;
+    }
+    if (pathname.startsWith('/_app/')) {
+        return 'public, max-age=0, must-revalidate';
+    }
+    if (/\.(woff2?|ttf|otf|eot)$/i.test(pathname)) {
+        return CACHE_IMMUTABLE;
+    }
+    if (pathname.startsWith('/images/blog/')) {
+        if (/\.(png|jpe?g|webp|gif|avif)$/i.test(pathname)) {
+            return CACHE_IMAGES_SAFE;
+        }
+    } else if (/\.(png|jpe?g|webp|gif|avif|svg|ico)$/i.test(pathname)) {
+        return CACHE_IMAGES_DEFAULT;
+    }
+    if (pathname.startsWith('/scripts/') && pathname.endsWith('.js')) {
+        return CACHE_SCRIPTS;
+    }
+    return null;
+}
+
+const staticAssetCache: Handle = async ({ event, resolve }) => {
+    const response = await resolve(event);
+    if (response.headers.has('Cache-Control')) {
+        return response;
+    }
+    const s = response.status;
+    if (s !== 200 && s !== 206 && s !== 304) {
+        return response;
+    }
+    const directive = cacheControlForPath(event.url.pathname);
+    if (directive) {
+        response.headers.set('Cache-Control', directive);
+    }
+    return response;
+};
+
 export const handle = sequence(
     Sentry.sentryHandle(),
     markdownHandler,
@@ -277,6 +324,7 @@ export const handle = sequence(
     wwwRedirecter,
     securityheaders,
     initSession,
-    seoOptimization
+    seoOptimization,
+    staticAssetCache
 );
 export const handleError = Sentry.handleErrorWithSentry();

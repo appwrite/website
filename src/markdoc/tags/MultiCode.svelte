@@ -69,26 +69,6 @@
     let hasMounted = false;
 
     onMount(() => {
-        if ($preferredPlatform && $snippets.has($preferredPlatform)) {
-            selected.set($preferredPlatform);
-        } else if ($preferredPlatform && !$snippets.has($preferredPlatform)) {
-            /*
-             * Edge case handling:
-             *
-             * 1. `$preferredPlatform` defaults to `client-web`
-             * 2. `$snippets` may not include it (e.g., shell commands: bash, cmd, powershell, etc.)
-             * 3. Fallback: use the first available snippet, but restore `$preferredPlatform`.
-             */
-            const tempPreferredPlatform = $preferredPlatform;
-
-            // set the first available
-            selected.set(Array.from($snippets)[0]);
-
-            // reset back to original platform,
-            // manual changes should update correctly!
-            $preferredPlatform = tempPreferredPlatform;
-        }
-
         hasMounted = true;
     });
 
