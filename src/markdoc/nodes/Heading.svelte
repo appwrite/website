@@ -49,27 +49,45 @@
     let element: HTMLElement | undefined = $state();
 
     onMount(() => {
-        if (!element || !$ctx) {
+        const headingsStore = ctx;
+        if (!element || !headingsStore) {
             return;
         }
 
         const slug = id ?? slugify(element.innerText);
 
-        $ctx = {
-            ...$ctx,
-            [slug]: {
-                step,
-                title: element?.textContent ?? '',
-                visible: false,
-                level
+        headingsStore.update((h) => {
+            const domTitle = element?.textContent ?? '';
+            if (h[slug]) {
+                return {
+                    ...h,
+                    [slug]: {
+                        ...h[slug],
+                        title: domTitle || h[slug].title
+                    }
+                };
             }
-        };
+            return {
+                ...h,
+                [slug]: {
+                    step,
+                    title: domTitle,
+                    visible: false,
+                    level
+                }
+            };
+        });
 
         const callback = (entries: IntersectionObserverEntry[]) => {
             entries.forEach((entry) => {
-                if (slug && $ctx && slug in $ctx) {
-                    $ctx[slug].visible = entry.isIntersecting;
-                }
+                if (!slug) return;
+                headingsStore.update((h) => {
+                    if (!(slug in h)) return h;
+                    return {
+                        ...h,
+                        [slug]: { ...h[slug], visible: entry.isIntersecting }
+                    };
+                });
             });
         };
 
@@ -80,6 +98,8 @@
         });
 
         observer.observe(element);
+
+        return () => observer.disconnect();
     });
 
     let id = $derived(elementId ?? slugify(element?.innerText ?? ''));

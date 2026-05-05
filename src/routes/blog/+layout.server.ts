@@ -1,8 +1,10 @@
-import { getPageMarkdown } from '$lib/remote/markdown.remote';
-import type { LayoutRouteId } from './$types';
+import { getMarkdownContent } from '$lib/server/markdown';
 
-export const load = async ({ route }) => {
+/** Same as docs: nested blog posts need pathname so we resolve the correct `+page.markdoc`. */
+export const load = async ({ url }) => {
+    const path = url.pathname.replace(/\/$/, '') || '/';
+
     return {
-        rawContent: await getPageMarkdown(route.id as LayoutRouteId)
+        rawContent: await getMarkdownContent(path)
     };
 };

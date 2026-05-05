@@ -27,6 +27,7 @@
     import { getContext, setContext } from 'svelte';
     import { writable } from 'svelte/store';
     import type { LayoutContext } from './Article.svelte';
+    import { seedHeadingsFromMarkdocRaw } from '$lib/utils/docs-toc-seed';
 
     export let title: string;
     /** When set, used for `<title>` / Open Graph title while `title` stays the on-page H1. */
@@ -50,7 +51,9 @@
         .map((slug) => authors.find((a) => a.slug === slug))
         .filter((a): a is AuthorData => a !== undefined);
 
-    setContext<LayoutContext>('headings', writable({}));
+    const rawContent = getContext<string | null>('rawContent');
+
+    setContext<LayoutContext>('headings', writable(seedHeadingsFromMarkdocRaw(rawContent ?? null)));
 
     const headings = getContext<LayoutContext>('headings');
 
@@ -79,7 +82,6 @@
         return carry;
     }, []);
 
-    const rawContent = getContext<string | null>('rawContent');
     const slug = page.url.pathname.split('/').filter(Boolean).at(-1) ?? '';
     const parsedCategories = parseCategories(category);
     const announcement = isAnnouncement(slug, parsedCategories);
@@ -202,7 +204,7 @@
                 <h3 class="text-label text-primary">Read next</h3>
                 <section class="mt-8">
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-                        {#each posts.filter((p) => p.title !== title).slice(0, 3) as post}
+                        {#each posts.filter((p) => p.title !== title).slice(0, 3) as post (post.href)}
                             {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
                                 post.author,
                                 authors
