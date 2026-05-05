@@ -1,5 +1,6 @@
 <script lang="ts">
     import { slugify } from '$lib/utils/slugify';
+    import { stripInlineMarkdocTags } from '$lib/utils/docs-toc-seed';
     import { getContext, hasContext, onMount, untrack, type Snippet } from 'svelte';
     import type { InlineCtaProps } from '$lib/utils/blog-mid-cta';
     import type { LayoutContext } from '../layouts/Article.svelte';
@@ -57,7 +58,7 @@
         const slug = id ?? slugify(element.innerText);
 
         headingsStore.update((h) => {
-            const domTitle = element?.textContent ?? '';
+            const domTitle = stripInlineMarkdocTags(element?.textContent ?? '');
             if (h[slug]) {
                 return {
                     ...h,

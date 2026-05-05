@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { afterNavigate } from '$app/navigation';
     import { page } from '$app/state';
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
@@ -51,11 +52,26 @@
         .map((slug) => authors.find((a) => a.slug === slug))
         .filter((a): a is AuthorData => a !== undefined);
 
-    const rawContent = getContext<string | null>('rawContent');
+    /**
+     * Prefer `page.data` (updates on client navigation). Fall back to layout context for any edge
+     * case where merged load data is missing. Do not reset the headings store in `afterNavigate`
+     * with a partial seed — blog posts use `#` headings; an empty `##`-only seed would wipe TOC
+     * entries already registered by `Heading` in `onMount`.
+     */
+    const layoutRawContent = (): string | null =>
+        (page.data as { rawContent?: string | null }).rawContent ??
+        getContext<string | null>('rawContent') ??
+        null;
 
-    setContext<LayoutContext>('headings', writable(seedHeadingsFromMarkdocRaw(rawContent ?? null)));
+    const headings = writable(seedHeadingsFromMarkdocRaw(layoutRawContent()));
+    setContext<LayoutContext>('headings', headings);
 
-    const headings = getContext<LayoutContext>('headings');
+    afterNavigate(() => {
+        const seeded = seedHeadingsFromMarkdocRaw(layoutRawContent());
+        if (Object.keys(seeded).length > 0) {
+            headings.set(seeded);
+        }
+    });
 
     let selected: string | undefined = undefined;
     headings.subscribe((n) => {
@@ -92,7 +108,7 @@
         announcement,
         category,
         slug,
-        rawContent,
+        rawContent: layoutRawContent(),
         heroExperimentCta: (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
     });
 

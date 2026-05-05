@@ -21,6 +21,12 @@
     // currentStep starts from 1, the arrays start from 0.
     const currentStepItem = tutorials[currentStep - 1] ?? firstStepItem;
 
+    /** Drop synthetic entries (e.g. intro `Heading` using `id={href}`) from in-step TOC. */
+    $: tutorialSubToc = toc.filter((item) => {
+        const rawId = item.href.replace(/^#/, '');
+        return rawId.length > 0 && !rawId.startsWith('/');
+    });
+
     $: nextStep = tutorials.find((tutorial) => tutorial.step === currentStep + 1);
     $: prevStep = tutorials.find((tutorial) => tutorial.step === currentStep - 1);
 
@@ -54,13 +60,11 @@
         await tick();
 
         if (!page.url.hash) return;
-        const tocItem = toc.slice(1);
-
         // no sub-items, return.
-        if (!tocItem.length) return;
+        if (!tutorialSubToc.length) return;
 
         const pageHash = page.url.hash.replace('#', '');
-        const tocItemHref = tocItem[0].href.replace('#', '');
+        const tocItemHref = tutorialSubToc[0].href.replace('#', '');
 
         if (pageHash !== tocItemHref) return;
 
@@ -69,9 +73,7 @@
 
     // same issue as above, only happens on the first item.
     function scrollToItem(parent: TocItem, index: number) {
-        const tocItem = toc.slice(1);
-
-        if (!tocItem.length) return;
+        if (!tutorialSubToc.length) return;
         const tocItemHref = parent.href.replace('#', '');
 
         const element = document.getElementById(tocItemHref);
@@ -210,14 +212,13 @@
                     <h5 class="web-references-menu-title text-eyebrow uppercase">Tutorial Steps</h5>
                 </div>
                 <ol class="web-references-menu-list">
-                    {#each tutorials as tutorial, index}
+                    {#each tutorials as tutorial, index (tutorial.href)}
                         {@const isCurrentStep = currentStep === tutorial.step}
-                        {@const absoluteToc = toc.slice(1)}
                         <li class="web-references-menu-item">
                             <a
                                 href={tutorial.href}
                                 class="web-references-menu-link"
-                                class:tutorial-scroll-indicator={isCurrentStep && !toc.length}
+                                class:tutorial-scroll-indicator={isCurrentStep && !tutorialSubToc.length}
                                 class:is-selected={isCurrentStep}
                             >
                                 <span class="web-numeric-badge">{tutorial.step}</span>
@@ -226,11 +227,11 @@
                                     >{index === 0 ? 'Introduction' : tutorial.title}</span
                                 >
                             </a>
-                            {#if isCurrentStep && absoluteToc.length}
+                            {#if isCurrentStep && tutorialSubToc.length}
                                 <ol
                                     class="web-references-menu-list u-margin-block-start-16 u-margin-inline-start-32"
                                 >
-                                    {#each absoluteToc as parent, innerIndex}
+                                    {#each tutorialSubToc as parent, innerIndex (parent.href)}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={parent.href}
@@ -244,7 +245,7 @@
                                             </a>
                                             {#if parent.children}
                                                 <ol class="web-references-menu-list mt-4 ml-8">
-                                                    {#each parent.children as child}
+                                                    {#each parent.children as child (child.href)}
                                                         <li class="web-references-menu-item">
                                                             <a
                                                                 href={child.href}
