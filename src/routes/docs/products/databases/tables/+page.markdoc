@@ -73,6 +73,11 @@ const promise = tablesDB.createTable({
             required: false
         },
         {
+            key: 'total_views',
+            type: 'bigint',
+            required: false
+        },
+        {
             key: 'score',
             type: 'float',
             required: false
@@ -202,6 +207,11 @@ let promise = tablesDB.createTable({
         {
             key: 'age',
             type: 'integer',
+            required: false
+        },
+        {
+            key: 'total_views',
+            type: 'bigint',
             required: false
         },
         {
@@ -339,6 +349,11 @@ $result = $tablesDB->createTable(
             'required' => false
         ],
         [
+            'key' => 'total_views',
+            'type' => 'bigint',
+            'required' => false
+        ],
+        [
             'key' => 'score',
             'type' => 'float',
             'required' => false
@@ -465,6 +480,11 @@ result = tablesDB.create_table(
             'required': False
         },
         {
+            'key': 'total_views',
+            'type': 'bigint',
+            'required': False
+        },
+        {
             'key': 'score',
             'type': 'float',
             'required': False
@@ -586,6 +606,11 @@ response = tablesDB.create_table(
         {
             key: 'age',
             type: 'integer',
+            required: false
+        },
+        {
+            key: 'total_views',
+            type: 'bigint',
             required: false
         },
         {
@@ -719,6 +744,12 @@ Table result = await tablesDB.CreateTable(
         {
             { "key", "age" },
             { "type", "integer" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "total_views" },
+            { "type", "bigint" },
             { "required", false }
         },
         new Dictionary<string, object>
@@ -860,6 +891,11 @@ void main() { // Init SDK
             'required': false
         },
         {
+            'key': 'total_views',
+            'type': 'bigint',
+            'required': false
+        },
+        {
             'key': 'score',
             'type': 'float',
             'required': false
@@ -991,6 +1027,11 @@ val response = tablesDB.createTable(
             "required" to false
         ),
         mapOf(
+            "key" to "total_views",
+            "type" to "bigint",
+            "required" to false
+        ),
+        mapOf(
             "key" to "score",
             "type" to "float",
             "required" to false
@@ -1109,6 +1150,11 @@ List<Map<String, Object>> columns = Arrays.asList(
     new HashMap<String, Object>() {{
         put("key", "age");
         put("type", "integer");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "total_views");
+        put("type", "bigint");
         put("required", false);
     }},
     new HashMap<String, Object>() {{
@@ -1379,6 +1425,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "required": false
             }),
             json!({
+                "key": "total_views",
+                "type": "bigint",
+                "required": false
+            }),
+            json!({
                 "key": "score",
                 "type": "float",
                 "required": false
@@ -1517,6 +1568,7 @@ You can choose between the following types.
 | `mediumtext` | Text column. Prefix indexing only. Maximum 4,194,303 characters. |
 | `longtext`   | Text column. Prefix indexing only. Maximum 1,073,741,823 characters. |
 | `integer`    | Integer column.                                               |
+| `bigint`     | 64-bit integer column. Supports values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. Use for values that exceed 32-bit integer limits, such as timestamps in milliseconds, large counters, or external IDs. |
 | `float`      | Float column.                                                 |
 | `boolean`    | Boolean column.                                               |
 | `datetime`   | Datetime column formatted as an ISO 8601 string.              |

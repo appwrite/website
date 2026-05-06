@@ -308,6 +308,7 @@ You can choose between the following types.
 |--------------|------------------------------------------------------------------|
 | `string`     | String attribute.                                                |
 | `integer`    | Integer attribute.                                               |
+| `bigint`     | 64-bit integer attribute. Supports values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. Use for values that exceed 32-bit integer limits. |
 | `float`      | Float attribute.                                                 |
 | `boolean`    | Boolean attribute.                                               |
 | `datetime`   | Datetime attribute formatted as an ISO 8601 string.              |

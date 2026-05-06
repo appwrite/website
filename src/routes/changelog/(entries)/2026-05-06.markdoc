@@ -1,0 +1,20 @@
+---
+layout: changelog
+title: "Databases: BigInt support for large integers"
+date: 2026-05-06
+---
+
+Appwrite Databases now supports a **bigint** column type for both TablesDB and legacy Databases. Use `bigint` when you need to store 64-bit integer values that exceed the 32-bit range of the standard `integer` type.
+
+BigInt columns support values from **-9,223,372,036,854,775,808** to **9,223,372,036,854,775,807**, making them ideal for:
+
+- Timestamps in milliseconds
+- Large counters and analytics metrics
+- External IDs from third-party systems
+- Financial calculations requiring large whole numbers
+
+Create a BigInt column using the Console, Server SDKs, or CLI, just like any other column type. BigInt columns support `min`, `max`, and `default` value constraints.
+
+{% arrow_link href="/docs/products/databases/tables" %}
+Learn more about Databases column types
+{% /arrow_link %}
