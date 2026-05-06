@@ -20,16 +20,24 @@
             '/font-aeonik-pro mx-auto flex w-full max-w-[30rem] flex-col items-center justify-center gap-3 pb-16 text-center'
         )}
     >
-        <h2 class="text-description text-primary font-medium">
+        <p class="text-description text-primary font-medium">
             <span class="text-accent -mr-1">“</span>
             {@render children?.()}
             <span class="text-accent -ml-1">”</span>
-        </h2>
+        </p>
         <div class="flex items-center gap-2">
-            <img src={avatar} alt={name} class="size-6 rounded-full" />
-            <h5 class="text-caption text-primary font-medium">
+            <img
+                src={avatar}
+                alt={name}
+                class="size-6 rounded-full"
+                width="48"
+                height="48"
+                decoding="async"
+                loading="lazy"
+            />
+            <p class="text-caption text-primary font-medium m-0">
                 {name}, <span class="text-secondary">{title}</span>
-            </h5>
+            </p>
         </div>
     </blockquote>
 </div>

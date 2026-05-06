@@ -32,7 +32,7 @@
         <Pullquote
             name="Phil McCluskey"
             title="App Manager, Majik Kids"
-            avatar="/images/testimonials/phil.jpg"
+            avatar="/images/testimonials/phil-avatar.webp"
         >
             <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the
             tools that you need with Appwrite.</Pullquote

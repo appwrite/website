@@ -125,7 +125,7 @@
         /** Aside: clip mockup bleed. Stacked: avoid clipping long titles on tablet (overflow-hidden + nowrap). */
         layoutAside
             ? 'overflow-hidden py-10 md:py-0 lg:min-h-[680px]'
-            : 'overflow-hidden overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
+            : 'overflow-hidden overflow-y-clip pt-10 pb-3 md:pt-14 md:pb-4 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
@@ -206,7 +206,7 @@
             <p
                 class={cn(
                     'text-description text-secondary mt-2 font-medium md:mt-3',
-                    layoutBottom && 'max-w-2xl text-center text-balance'
+                    layoutBottom && 'max-w-2xl text-center text-pretty'
                 )}
                 style:min-height={layoutAside
                     ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
