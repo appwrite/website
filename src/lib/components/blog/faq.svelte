@@ -17,10 +17,7 @@
 
 {#if items.length}
     <section class="web-blog-faq mt-16" aria-labelledby="blog-faq-heading">
-        <h2
-            id="blog-faq-heading"
-            class="text-title font-aeonik-pro text-primary scroll-mt-24"
-        >
+        <h2 id="blog-faq-heading" class="text-title font-aeonik-pro text-primary scroll-mt-24">
             Frequently asked questions
         </h2>
 
@@ -71,9 +68,7 @@
                         </div>
                     {:else}
                         <details class="collapsible-wrapper">
-                            <summary
-                                class="collapsible-button cursor-pointer appearance-none"
-                            >
+                            <summary class="collapsible-button cursor-pointer appearance-none">
                                 <span class="text-label text-primary">
                                     {faqItem.question}
                                 </span>
