@@ -8,6 +8,15 @@ timeToRead: 10
 author: veeresh-mulge
 unlisted: true
 category: product
+faqs:
+  - question: "What makes Appwrite Sites different from Netlify or Vercel?"
+    answer: "Unlike Netlify or Vercel, which mainly focus on static hosting, Appwrite Sites is part of an all-in-one platform. It combines hosting with backend features like authentication, databases, storage, and serverless functions. This means you can deploy your frontend and backend in one place without relying on multiple services."
+  - question: "Does Appwrite Sites support custom domains and SSL?"
+    answer: "Yes. You can easily connect your custom domains on Appwrite Sites, and SSL is automatically included at no extra cost. This gives you secure hosting out of the box."
+  - question: "Can I use Appwrite Sites for enterprise projects?"
+    answer: "Yes. Appwrite offers enterprise plans that include advanced features, dedicated assistance, and deployment options to fit compliance and scaling needs. For organizations that need more than just static hosting, Appwrite's broader backend services make it a strong fit."
+  - question: "How does Appwrite save costs compared to other hosting platforms?"
+    answer: "With Appwrite, you don't need to pay for separate providers for hosting, authentication, databases, and storage. Everything is bundled into one platform. This helps you save money while reducing the complexity of managing multiple services."
 ---
 Static site hosting has come a long way from just serving HTML files on a basic server. Today, platforms like **Vercel, Netlify, Azure Static Web Apps, and Appwrite Sites** make it possible to push code from a Git repo and have a live site up in seconds.
 
@@ -156,20 +165,3 @@ Static hosting has become the default for modern web projects. Instead of managi
 | Enterprise compliance and global reach | Overkill for small teams |
 | Seamless GitHub workflows | Steeper learning curve |
 
-# FAQ
-
-**1. What makes Appwrite Sites different from Netlify or Vercel?**
-
-Unlike Netlify or Vercel, which mainly focus on static hosting, **Appwrite Sites** is part of an all-in-one platform. It combines hosting with backend features like authentication, databases, storage, and serverless functions. This means you can deploy your frontend and backend in one place without relying on multiple services.
-
-**2. Does Appwrite Sites support custom domains and SSL?**
-
-Yes. You can easily connect your **custom domains** on Appwrite Sites, and SSL is automatically included at no extra cost. This gives you secure hosting out of the box.
-
-**3. Can I use Appwrite Sites for enterprise projects?**
-
-Yes. Appwrite offers **enterprise plans** that include advanced features, dedicated assistance, and deployment options to fit compliance and scaling needs. For organizations that need more than just static hosting, Appwrite’s broader backend services make it a strong fit.
-
-**4. How does Appwrite save costs compared to other hosting platforms?**
-
-With Appwrite, you don’t need to pay for separate providers for hosting, authentication, databases, and storage. Everything is bundled into one platform. This helps you **save money** while reducing the complexity of managing multiple services.

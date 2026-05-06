@@ -9,6 +9,13 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is RBAC?"
+    answer: "RBAC is a system that limits access based on user roles."
+  - question: "Why use Appwrite for RBAC?"
+    answer: "Appwrite offers a straightforward way to set up and manage RBAC, with secure access control that aligns with standards like HIPAA."
+  - question: "Can RBAC enhance security?"
+    answer: "Yes, it helps in limiting access to sensitive data efficiently."
 ---
 
 # Role-Based Access Control (RBAC) with Appwrite
@@ -194,27 +201,6 @@ In financial services, RBAC restricts sensitive data access to authorized person
 - **Healthcare systems**: Control access to patient data based on staff roles.
 
 Appwrite’s ease of use makes implementing RBAC straightforward, thereby securing data across different industries effectively.
-
-# Frequently asked questions about RBAC and Appwrite
-
-Many developers have questions about implementing RBAC in their systems. Here are some frequently asked questions and their answers.
-
-## Common questions
-
-- **What is RBAC?**
-    
-    RBAC is a system that limits access based on user roles.
-    
-- **Why use Appwrite for RBAC?**
-    
-    Appwrite offers a straightforward way to set up and manage RBAC, with secure access control that aligns with standards like HIPAA.
-    
-- **Can RBAC enhance security?**
-    
-    Yes, it helps in limiting access to sensitive data efficiently.
-    
-
-Understanding RBAC with Appwrite can significantly improve data security and ease of access management.
 
 # Conclusion: Enhancing Data Security with RBAC and Appwrite
 

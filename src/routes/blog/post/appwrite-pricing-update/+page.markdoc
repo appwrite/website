@@ -9,6 +9,21 @@ author: eldad-fux
 callToAction: true
 category: announcement
 lastUpdated: 2025-10-29
+faqs:
+  - question: "How much more bandwidth do I get per project?"
+    answer: "You will get 2TB of bandwidth per project on the paid plans, Pro and Scale. Previously, you got 300GB bandwidth across all projects. If we calculate just for one project, you will have 1700GB more, which is an increase of +566.67%."
+  - question: "Are there any changes in other resources?"
+    answer: "All other resources remain the same."
+  - question: "How many seats will I have on paid plans?"
+    answer: "On both the Pro and Scale plans, you will have unlimited seats. This is part of the pricing model change, moving from per seat to per project."
+  - question: "Why the change to per-project vs per-seat?"
+    answer: "With the recent features, improvements, and going GA, it's time to re-align our pricing with the value that Appwrite provides. Customers experience Appwrite's value at the project level (Databases, Auth, Storage, etc.), not by individual seats. Charging where we deliver the most value is industry best practice. We've also noticed people share accounts, indicating they don't find value in paying for the seat. This change puts Appwrite on a more sustainable revenue model, ensuring longevity and growth for all."
+  - question: "How much will I pay for my projects after September 1st?"
+    answer: "This depends on your situation. It is important to understand whether you are paying for add-ons or not. In this case, you will pay a lot less for your add-ons, and if you're paying for additional bandwidth, there is a big chance you won't have to due to the jump from 300GB to 2TB in resources. However, you will be charged $15 for each additional project you have. Please get in touch with us if you have any questions concerning your projects and the new pricing at billing@appwrite.io."
+  - question: "Are resources shared across projects?"
+    answer: "No, resources are per project, not pooled. Each project gets its own allocation of database reads/writes, storage, bandwidth, and all other resources."
+  - question: "How will the per-project pricing affect the Education (GitHub student) plan?"
+    answer: "The Education plan will allow up to 10 projects. Please remember that the Education plan is only for educational purposes and is not allowed for commercial purposes (fair use policy)."
 ---
 
 We are updating Appwrite’s pricing as part of Appwrite Cloud’s move from beta to General Availability. For an extended period, Appwrite Cloud beta remained free for all users. As of January 2024, we introduced pricing for beta. Today, we are introducing a new base price and an updated pricing model that aligns with developer needs and industry standards. This will include pricing for Appwrite Sites and Messaging.
@@ -149,40 +164,3 @@ We’re excited to provide you with the most complete development platform and w
 The Appwrite team’s commitment to your developer experience will continue to drive these important updates to help you get to production faster. Thank you for your support and we look forward to what you build next.
 
 Build like a team of hundreds.
-
-# Frequently asked questions
-
-## How much more bandwidth do I get per project?
-
-You will get 2TB of bandwidth per project on the paid plans, Pro and Scale. Previously, you got 300GB bandwidth across all projects. If we calculate just for one project, you will have 1700GB more, which is an increase of +566.67%.
-
-## Are there any changes in other resources?
-
-All other resources remain the same.
-
-## How many seats will I have on paid plans?
-
-On both the Pro and Scale plans, you will have unlimited seats. This is part of the pricing model change, moving from per seat to per project.
-
-## Why the change to per-project vs per-seat?
-
-With the recent features, improvements, and going GA, it’s time to re-align our pricing with the value that Appwrite provides.
-Customers experience Appwrite’s value at the project level (Databases, Auth, Storage, etc.), not by individual seats. Charging where we deliver the most value is industry best practice.
-We’ve also noticed people share accounts, indicating they don’t find value in paying for the seat.
-This change puts Appwrite on a more sustainable revenue model, ensuring longevity and growth for all.
-
-## How much will I pay for my projects after September 1st?
-
-This depends on your situation. It is important to understand whether you are paying for add-ons or not. In this case, you will pay a lot less for your add-ons, and if you’re paying for additional bandwidth, there is a big chance you won’t have to due to the jump from 300GB to 2TB in resources. However, you will be charged $15 for each additional project you have.
-
-Please get in touch with us if you have any questions concerning your projects and the new pricing at billing@appwrite.io.
-
-## Are resources shared across projects?
-
-No, resources are per project, not pooled. Each project gets its own allocation of database reads/writes, storage, bandwidth, and all other resources.
-
-## How will the per-project pricing affect the Education (GitHub student) plan?
-
-The Education plan will allow up to 10 projects.
-
-Please remember that the Education plan is only for educational purposes and is not allowed for commercial purposes ([fair use policy](https://appwrite.io/docs/advanced/platform/fair-use-policy)).
