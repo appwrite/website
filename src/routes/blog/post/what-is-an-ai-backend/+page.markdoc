@@ -8,6 +8,19 @@ timeToRead: 9
 author: aditya-oberai
 unlisted: true
 category: ai
+faqs:
+  - question: "What is an AI backend?"
+    answer: "An AI backend is the server-side layer that holds durable state, identity, permissions, server-side logic, files, hosting, and observability for an application that uses AI models or agents. It is the part of the system that survives between prompts, sessions, model swaps, and UI regenerations, holding things like conversation history, tool call records, embeddings metadata, and scoped credentials for both human users and agents."
+  - question: "How does an AI backend differ from a traditional backend?"
+    answer: "At the primitive level they are the same: auth, data, files, functions, hosting, and logs. The workload pattern shifts. AI backends store messages, threads, runs, and tool calls as first-class records, issue scoped credentials for agents alongside user sessions, run model and embedding work in server-side functions, integrate with vector stores, and serve both humans through a UI and agents through APIs and MCP."
+  - question: "Do I need a vector database to build an AI backend?"
+    answer: "Not always. RAG and semantic search need a vector store, but it does not have to live inside your backend platform. A common pattern is to call a specialized vector database like Pinecone, Weaviate, Milvus, Qdrant, Chroma, or Upstash Vector from server-side functions, while keeping the link between vector records and your tables or files inside ordinary rows. Postgres with pgvector is another option."
+  - question: "Why do AI agents need their own identity in a backend?"
+    answer: "An automated workflow that reads or writes a user's data should run under a scoped credential, not the user's session. Separating user sessions from server-side keys means tool calls and scheduled jobs cannot be replayed from a browser, and an agent's blast radius can be scoped to specific resources or services. This is why scoped API keys and role-based permissions matter for AI workloads."
+  - question: "How does Appwrite work as an AI backend?"
+    answer: "Appwrite covers identity, durable data, files, server-side functions, hosting, realtime, and messaging under one permission model. For AI workloads it adds an API MCP server so agents can act on project resources, a Docs MCP and Agent Skills so generated code uses current APIs, an Assistant inside the Console, and an Arena benchmark for measuring how well models understand the platform. Vector workloads plug in through Functions with documented integrations for major providers."
+  - question: "What should I check when evaluating an AI backend?"
+    answer: "Identity (sessions, OAuth, MFA, scoped agent credentials), data (typed columns, relationships, indexes, per-row permissions), files (per-bucket and per-file permissions, previews, encryption), server-side logic (HTTP, event, and schedule triggers with secrets and logs), permissions evaluated on the server, vector integrations callable from server code, hosting with environment separation, observability across services, agent access through MCP, and a self-host path with a license that allows it."
 ---
 
 AI-native apps look new on the surface and familiar underneath. A chat interface, a copilot panel, or an agent that edits a document still needs a place to store users, data, files, server-side code, and a deployed UI. What changes is the set of jobs that layer has to do. It now holds conversation history, embeddings metadata, tool call records, long-running workflows, and permissions that cover both human users and agents acting on their behalf.

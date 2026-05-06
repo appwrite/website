@@ -9,6 +9,17 @@ author: aishwari
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What should I actually evaluate when picking a backend platform?"
+    answer: "Look past feature lists at predictable pricing, vendor lock-in, SDK and developer experience, full-stack coverage (auth, databases, storage, functions, messaging), built-in security, and a clear path from prototype to scale. These are the dimensions that determine whether a platform stays usable when you are deep in a deadline or watching costs climb, not whether it ticks a feature box on a landing page."
+  - question: "Why is per-operation pricing a problem for backend platforms?"
+    answer: "Per-operation billing makes costs hard to estimate at scale and easy to spike during traffic events. Predictable pricing meters on dimensions you can model in advance and supports budget caps that stop charges rather than surprise you. Appwrite's Pro plan supports configurable budget caps so you can set a hard spending limit and have the platform stop instead of charging past it."
+  - question: "How does Appwrite reduce vendor lock-in compared to other backend platforms?"
+    answer: "Appwrite is open source under BSD 3-Clause and self-hostable, so your data and your deployment are not contingent on Appwrite's pricing or product decisions. Most teams use Appwrite Cloud to avoid operational work, but the same server, APIs, and SDKs are available for self-hosting whenever you need that escape valve."
+  - question: "What does full-stack backend coverage mean in practice?"
+    answer: "It means one platform handles authentication (email, phone, magic links, OAuth, MFA, sessions), databases (queries, relationships, realtime, row-level permissions), storage (uploads, access control, transformations), serverless functions, and messaging (push, email, SMS) under one permission model and one set of SDKs. You stop gluing together separate vendors for auth, image handling, and transactional email."
+  - question: "How does Appwrite handle scaling from MVP to production?"
+    answer: "Appwrite Cloud scales automatically, and upgrading from the free tier to Pro or Scale happens without touching infrastructure. Permissions are first-class on tables and rows, sessions and OAuth are tested primitives, and the migration documentation covers moving from Firebase or Supabase. For teams that need data sovereignty or specific configurations, self-hosting keeps that option open at any stage."
 ---
 
 Picking a backend platform on feature lists alone is a mistake. Every serious platform offers authentication, databases, storage, and functions. The differentiation isn't in what's listed on a landing page. It's in how the platform behaves when you're deep in a deadline, debugging an auth edge case, or watching costs spike unexpectedly.

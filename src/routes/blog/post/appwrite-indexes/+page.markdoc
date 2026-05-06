@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is a database index in Appwrite?"
+    answer: "An index is a separate, sorted data structure that the database (MariaDB under the hood) maintains alongside your table. It stores the values of one or more columns with pointers back to the matching rows, so queries can jump directly to results instead of scanning the entire table. Indexes are essential for keeping queries fast as your data grows."
+  - question: "Which index types does Appwrite support?"
+    answer: "Appwrite supports four index types: key indexes for equality, range, and ordering queries; unique indexes which add a uniqueness constraint on top of a key index; fulltext indexes which are required for Query.search on string columns; and spatial indexes for geographic Point, Line, and Polygon columns used with geo queries."
+  - question: "Which columns should I index?"
+    answer: "Index columns you filter on with Query.equal, Query.greaterThan, Query.between, and similar operators, columns you sort on with Query.orderAsc or Query.orderDesc, columns that must be unique like emails or slugs, and string columns you run Query.search against. Spatial columns used in geo queries should have a spatial index."
+  - question: "Can adding too many indexes hurt performance?"
+    answer: "Yes. Every index has to be updated on inserts, updates, and deletes, so a table with many redundant indexes pays a write-time cost that scales with the index count. Add indexes for queries you actually run, drop ones you do not use, and prefer composite indexes over multiple single-column indexes when several columns are queried together."
+  - question: "How do I create an index in Appwrite?"
+    answer: "You can create indexes from the Console by opening the table and using the Indexes tab, or programmatically with the Databases API by calling createIndex with a key, type, attributes array, and orders array. Indexes are built asynchronously and report a processing status until ready, which can take time on large tables."
 ---
 
 If your Appwrite queries are slow, or getting slower as your data grows, the most likely fix is an index. Without indexes, every filtered or sorted query requires a full table scan: the database reads every row and checks whether it matches your conditions. That is fine for a table with 100 rows. It becomes a serious problem at 100,000.

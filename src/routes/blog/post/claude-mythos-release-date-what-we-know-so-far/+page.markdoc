@@ -9,6 +9,17 @@ author: aishwari
 category: ai
 featured: false
 unlisted: true
+faqs:
+  - question: "When is Claude Mythos releasing?"
+    answer: "There is no official public release date for Claude Mythos yet. The model was introduced through a limited preview in April 2026 and is currently in a controlled rollout with selected partners. Rumors suggest a late-2026 release, but this has not been confirmed by Anthropic."
+  - question: "What is Claude Mythos?"
+    answer: "Claude Mythos is Anthropic's latest AI model, introduced through a limited preview in April 2026. Early signals suggest it represents a significant leap in capability, particularly in reasoning and cybersecurity. It is being handled as a controlled release with a strong focus on safety and real-world impact rather than a broadly accessible launch from day one."
+  - question: "Why is Anthropic delaying the public release of Claude Mythos?"
+    answer: "Mythos is being tested in restricted environments because of its advanced capabilities, particularly in identifying and exploiting security vulnerabilities. Anthropic is limiting access to selected partners, focusing testing on security and reliability, and tying broader availability to risk mitigation. This is a different posture from typical AI releases where speed and accessibility are prioritized."
+  - question: "Is Claude Mythos available through the Anthropic API?"
+    answer: "No. As of now, Claude Mythos is not available as a general API or product. Access is restricted to a small set of organizations as part of an early rollout phase that sits between a research preview and a production-ready system."
+  - question: "What does the Claude Mythos rollout pattern look like?"
+    answer: "Controlled rollouts of this kind typically follow three phases: a limited preview with select partners, expanded access for enterprises and developers, and a public release once risks are better understood. Mythos is currently in the first phase, and broader access is expected to expand gradually rather than launch all at once."
 ---
 
 Interest around **Claude Mythos** is growing quickly. Search volume is rising, discussions are picking up, and one question keeps coming up:

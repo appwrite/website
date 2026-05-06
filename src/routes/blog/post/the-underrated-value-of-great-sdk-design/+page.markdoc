@@ -9,6 +9,17 @@ author: aishwari
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Why does SDK design matter so much for backend platform adoption?"
+    answer: "SDK quality is directly correlated with time to first success, which is one of the strongest leading indicators of whether a developer adopts a tool. A well-designed SDK feels native to the language, surfaces clear errors, and gets developers to a working integration in minutes. A poorly designed SDK creates friction at every call, and developers usually move on rather than fight through it."
+  - question: "What makes an SDK feel idiomatic in a given language?"
+    answer: "Idiomatic SDKs use the patterns developers already expect in that language, such as promises and async/await in JavaScript, suspend functions in Kotlin, structured concurrency in Swift, context-based patterns in Go, and type hints with dataclasses in Python. Method names, error shapes, and async semantics should match the language conventions, not look like a thin wrapper around HTTP calls."
+  - question: "How does type safety reduce bugs in an SDK?"
+    answer: "Type-safe SDKs move entire classes of errors from runtime to compile time. Passing a wrong enum, a missing required field, or an incorrectly shaped object becomes a compiler error that takes seconds to fix instead of a production incident that takes hours to debug. Appwrite ships enum classes for predefined values across all SDKs and supports type generation from your database schema."
+  - question: "What languages does Appwrite provide official SDKs for?"
+    answer: "Appwrite maintains official SDKs for Web, Flutter, React Native, Apple, Android, Node.js, Python, Dart, PHP, Ruby, .NET, Go, Swift, and Kotlin. Each SDK is built to follow the conventions of its target platform, and the SDK generator itself is open source so the community can contribute support for new languages and runtimes."
+  - question: "What should I check when evaluating an SDK before integrating it?"
+    answer: "Try a quick start cold and see how long it takes to reach a working call. Check whether async, naming, and errors feel idiomatic for your language. Trigger a validation error intentionally and see if the message tells you what to fix. Verify that type coverage is complete (partial coverage is often worse than none), that the surface stays consistent across services, and that releases are recent and frequent."
 ---
 
 Most developers evaluate a backend platform by its features, pricing, and scalability. The SDK barely gets a second look. That's a mistake.

@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What does vendor lock-in actually mean for a backend platform?"
+    answer: "Lock-in is not binary, it has degrees. Deep lock-in means your data model and business logic are tightly coupled to proprietary APIs, so migration requires rewriting significant parts of the application. Moderate lock-in uses platform SDKs but keeps data portable and logic decoupled. Shallow lock-in covers commodity infrastructure where switching means updating configuration and credentials."
+  - question: "How do you evaluate data portability for a backend?"
+    answer: "Ask whether data is stored in a standard format (JSON, CSV, Parquet, SQL dump), whether there is a documented self-service export process, and whether you could recover your data in usable form if the service shut down tomorrow. Platforms that store data in proprietary formats or require vendor assistance to export carry higher lock-in than those with self-service exports."
+  - question: "Why does open source and self-hosting reduce lock-in?"
+    answer: "Open-source platforms with self-hosting support offer a specific kind of insurance: even if the vendor's managed cloud changes pricing, changes terms, or shuts down, the software continues to exist and can be operated independently. You are not dependent on a single vendor's continued business decisions to keep your application running."
+  - question: "How does Appwrite score against these lock-in criteria?"
+    answer: "Appwrite is BSD 3-Clause licensed and fully self-hostable. It exposes a standard REST API alongside native SDKs, uses standard JWTs for authentication tokens, and stores data in portable formats. Self-service migration tooling moves projects between Cloud and self-hosted deployments without vendor intervention. Pricing is based on compute and storage rather than per-operation billing that scales unpredictably."
+  - question: "Should you avoid all backend lock-in?"
+    answer: "No. Every backend technology decision creates some lock-in, and the goal is not to avoid it entirely. The goal is to be clear-eyed about which dependencies you are taking and choose platforms where the trade-offs are reasonable. Spending an hour thinking about the migration path before committing to a platform helps clarify what you are signing up for."
 ---
 
 Every backend technology decision creates some amount of lock-in. The question is never "how do I avoid lock-in entirely"; it's "which dependencies are worth taking, and how do I minimize the cost of the ones I take?"

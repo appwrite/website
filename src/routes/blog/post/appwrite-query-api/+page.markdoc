@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the Appwrite Query API?"
+    answer: "The Query API is a set of helper methods on the Query class that you pass as an array to listRows or equivalent calls. Each method generates a filter, sort directive, or pagination instruction. Multiple queries are combined with AND logic, while passing several values to a single method behaves like an OR across those values."
+  - question: "Which filter operators does Query support?"
+    answer: "Query supports equal, notEqual, greaterThan, lessThan, greaterThanEqual, lessThanEqual, contains, search, isNull, isNotNull, startsWith, endsWith, and between. The search operator requires a fulltext index on the target column. Numeric and date comparisons work directly on indexed columns for best performance."
+  - question: "How do I sort results in Appwrite?"
+    answer: "Use Query.orderAsc(field) and Query.orderDesc(field), and chain multiple ordering calls to break ties on additional fields. Sorting works on small datasets without an index, but large tables need a key index on any column you frequently sort on to avoid slow scans."
+  - question: "What is the difference between offset and cursor pagination?"
+    answer: "Offset pagination uses Query.limit and Query.offset together and is straightforward for jump-to-page UIs, but it gets slow on deep pages and can skip or repeat rows when data changes between requests. Cursor pagination uses Query.cursorAfter or Query.cursorBefore with a stable row ID, scales well to large datasets, and is the right choice for infinite scroll or feed-style experiences."
+  - question: "What is the default and maximum limit for listRows?"
+    answer: "If you omit Query.limit, Appwrite returns 25 rows by default. The maximum value you can pass to Query.limit is 5000, after which you must paginate to fetch more rows."
 ---
 
 Every app that reads data from a database eventually needs to answer the same three questions: which rows do I want, in what order, and how many at a time. Appwrite's Query API is the answer to all three.

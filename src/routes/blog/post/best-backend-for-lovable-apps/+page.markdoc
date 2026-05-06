@@ -8,6 +8,17 @@ timeToRead: 9
 author: aishwari
 unlisted: true
 category: ai
+faqs:
+  - question: "Why look beyond Lovable's default Supabase integration?"
+    answer: "Lovable's Supabase integration is a one-click way to scaffold tables, auth, file uploads, realtime, and Edge Functions, which is great for a prototype. It is not the only option, and treating it as the backend decision skips real questions: do you want vendor separation between builder and backend, do you want a self-host path, do you want primitives your team already understands, and do you want a backend you can drive from other tools and agents."
+  - question: "What should I evaluate when picking a backend for a Lovable app?"
+    answer: "Auth that covers email, OAuth, MFA, and roles; a data model with explicit tables, columns, and row-level access rules; file storage with permissions tied to the data model; server-side functions with secrets and logs; realtime updates without standing up a message bus; hosting with custom domains, env vars, and rollbacks; agent access through a docs MCP and an API MCP; and an exit path through data export and self-hosting."
+  - question: "Can I use Appwrite as a backend for a Lovable app?"
+    answer: "Yes. The integration is not the in-chat one-click flow Supabase has. It happens through the Appwrite docs MCP server connected as a Lovable personal connector pointing at https://mcp-for-docs.appwrite.io, plus the Appwrite web SDK for the generated frontend. Heavier work like schema changes, server-side logic, and deploys happens through the Appwrite Console, SDKs, CLI, or other AI tools configured with the Appwrite MCP servers."
+  - question: "Does Appwrite Functions stream LLM responses for Lovable apps?"
+    answer: "No. Appwrite Functions, like most serverless function products, return complete HTTP responses rather than streamed output. If your Lovable app needs token-by-token streaming from a model, plan for that at the client or proxy layer, not inside an Appwrite Function. Functions still cover model calls, webhooks, scheduled jobs, and admin actions where streaming is not required."
+  - question: "Should I migrate an existing Lovable plus Supabase app to Appwrite?"
+    answer: "Not automatically. If your Lovable app is on Supabase and working, audit what you have against the checklist first: are permissions explicit, are secrets on the server, do you have a deploy surface with logs and rollbacks, can your AI tools read the backend's docs through MCP. If you are starting fresh and want one platform covering Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites with an open-source foundation, evaluating Appwrite makes sense."
 ---
 
 Lovable is one of the easiest ways to get a working app out of an AI chat. You describe what you want, it scaffolds the UI, and when you reach for a backend the obvious path is the native Supabase integration. That path works, and Lovable's own docs walk you through it in a few clicks. The question this article tries to answer is different: if you care about what runs behind your Lovable app once users show up, what is the best backend for Lovable apps, and how do you look at it beyond whatever the default integration hands you?

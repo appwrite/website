@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What channels does Appwrite Messaging support?"
+    answer: "Appwrite Messaging handles push notifications, email, and SMS from a single API. You configure providers once, attach targets to users, and send or schedule messages to individuals, groups, or topics, without integrating a separate SDK for each channel."
+  - question: "How do I set up push notifications with Appwrite?"
+    answer: "Add a push provider in the Console under Messaging, Providers, Add provider, choosing APNs for Apple devices or FCM for Android devices and supplying the matching credentials. Then in your app, register a push target for each logged-in user by calling createPushTarget with the device token returned by APNs or FCM. FCM tokens can rotate, so call updatePushTarget when the token refreshes."
+  - question: "What email providers does Appwrite Messaging work with?"
+    answer: "Email in Appwrite Messaging is sent through an SMTP-based provider. The Console currently supports Mailgun and SendGrid out of the box. You add the provider once with your API credentials and then send messages with createEmail."
+  - question: "When should I use push notifications versus email?"
+    answer: "Use push for time-sensitive content the user should see immediately, like chat messages, delivery updates, or security alerts. Use email for content with longer shelf life or more detail, like receipts, invoices, newsletters, and password resets. SMS sits between the two and is well suited to one-time passcodes or notifications that need to reach users without the app installed."
+  - question: "Can I schedule messages with Appwrite Messaging?"
+    answer: "Yes. The same APIs that send messages immediately also accept a scheduled time, so a single call can handle send-now and send-later cases identically. This keeps your targeting and templating logic in one place rather than across separate scheduling services."
 ---
 
 Most apps eventually need to reach users outside the app itself. A background sync completes, a purchase is confirmed, a security alert fires. The question is not whether you need messaging, it is which channel to use and how to wire it up without managing separate services for each one.
