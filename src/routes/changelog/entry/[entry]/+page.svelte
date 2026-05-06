@@ -157,9 +157,7 @@
                 </div>
             </div>
             <div class="border-smooth relative border-t pt-20 md:pt-24">
-                <Pricing
-                    class="mt-0 mb-0 min-h-0 overflow-visible pt-10 pb-20 md:pt-12 md:pb-24"
-                />
+                <Pricing embedded class="mt-0 mb-0 min-h-0 pt-10 pb-20 md:pt-12 md:pb-24" />
                 <div class="container">
                     <FooterNav />
                     <MainFooter />
