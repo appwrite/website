@@ -7,7 +7,7 @@ cover:
 
 Appwrite CLI 20.0.0 adds support for splitting large `appwrite.config.json` files into multiple local JSON files with a new `includes` field.
 
-You can move supported resource arrays, such as functions, sites, databases, collections, tablesDB, tables, topics, teams, buckets, webhooks, and messages, into their own files while keeping `init`, `pull`, `push`, and `run` workflows unchanged. The CLI reads included resources into the same in-memory config shape and writes updates back to the file where each resource is defined.
+You can move supported resource arrays, such as functions, sites, tablesDB, tables, topics, teams, buckets, webhooks, and messages, into their own files while keeping `init`, `pull`, `push`, and `run` workflows unchanged. The CLI reads included resources into the same in-memory config shape and writes updates back to the file where each resource is defined.
 
 Function and site paths are resolved relative to the file that defines them, so nested workspaces, packages, and submodules can keep resource configuration and source paths together.
 
