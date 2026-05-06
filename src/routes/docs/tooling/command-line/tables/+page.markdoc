@@ -132,6 +132,12 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 }
 ```
 
+You can also move the `tablesDB` and `tables` arrays into separate JSON files with the `includes` field.
+
+{% arrow_link href="/docs/tooling/command-line/installation#multi-file-configuration" %}
+Learn more about multi-file configuration
+{% /arrow_link %}
+
 # Push table {% #push-table %}
 
 {% partial file="cli-push-command.md" /%}
