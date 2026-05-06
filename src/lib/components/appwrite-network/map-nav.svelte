@@ -57,9 +57,7 @@
         <Tabs.List
             class={cn(
                 'border-smooth animate-fade-in relative grid w-full max-w-xl grid-cols-1 place-content-center gap-3 overflow-hidden p-1 px-8 shadow-[0px_4px_8p_rgba(0,0,0,0.04)] md:grid-cols-3 md:rounded-full md:border md:px-1',
-                theme === 'light'
-                    ? 'md:bg-white md:text-[#19191C]'
-                    : 'md:bg-card'
+                theme === 'light' ? 'md:bg-white md:text-[#19191C]' : 'md:bg-card'
             )}
         >
             {#each navItems as { label, icon, value }, index}
@@ -68,8 +66,8 @@
                     class={cn(
                         'group text-caption animate-enter flex h-8 cursor-pointer items-center justify-center gap-2 rounded-full border font-medium outline-0 transition-colors',
                         theme === 'light'
-                            ? 'border-black/10 bg-black/[0.04] text-[#19191C] hover:border-black/18 data-[state=active]:border-accent/45 data-[state=active]:bg-accent/10 data-[state=active]:text-[#9E1B45]'
-                            : 'border-smooth bg-smooth text-primary hover:border-white/12 data-[state=active]:border-accent/36 data-[state=active]:bg-accent/4 data-[state=active]:text-accent'
+                            ? 'data-[state=active]:border-accent/45 data-[state=active]:bg-accent/10 border-black/10 bg-black/[0.04] text-[#19191C] hover:border-black/18 data-[state=active]:text-[#9E1B45]'
+                            : 'border-smooth bg-smooth text-primary data-[state=active]:border-accent/36 data-[state=active]:bg-accent/4 data-[state=active]:text-accent hover:border-white/12'
                     )}
                     style="animation-delay:{index * 75}ms;"
                     onclick={() => {
@@ -84,7 +82,7 @@
                             '-ml-2',
                             theme === 'light'
                                 ? 'text-[#19191C] group-data-[state=active]:text-[#9E1B45]'
-                                : 'text-inherit group-data-[state=active]:text-accent'
+                                : 'group-data-[state=active]:text-accent text-inherit'
                         )}
                     />
                     {label}

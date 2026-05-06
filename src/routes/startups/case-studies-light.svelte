@@ -51,7 +51,7 @@
     <ToggleGroup.Root
         bind:value
         type="single"
-        class="container flex h-full w-full max-lg:min-h-[40rem] flex-col items-stretch gap-3 sm:gap-4 lg:min-h-0 lg:flex-row"
+        class="container flex h-full w-full flex-col items-stretch gap-3 max-lg:min-h-[40rem] sm:gap-4 lg:min-h-0 lg:flex-row"
     >
         {#each studies as study, index}
             <CaseStudyCardLight

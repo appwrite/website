@@ -78,7 +78,7 @@
             <!-- MCP -->
             <a
                 href="/docs/tooling/ai/mcp-servers"
-                class="border-smooth group relative flex cursor-pointer flex-col border border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                class="border-smooth group focus-visible:outline-accent relative flex cursor-pointer flex-col border border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2"
                 style="--tile-primary:#FD366E;--tile-secondary:#6366F1"
                 aria-label="MCP servers — Appwrite documentation"
             >
@@ -102,7 +102,7 @@
             <!-- Appwrite Skills -->
             <a
                 href="/docs/tooling/ai/skills"
-                class="border-smooth group relative flex cursor-pointer flex-col border border-t-0 border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:border-t sm:border-l-0"
+                class="border-smooth group focus-visible:outline-accent relative flex cursor-pointer flex-col border border-t-0 border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2 sm:border-t sm:border-l-0"
                 style="--tile-primary:#6366F1;--tile-secondary:#FD366E"
                 aria-label="Appwrite agent skills — documentation"
             >

@@ -109,7 +109,10 @@
 
     /** Always `FRAMEWORKS_GALLERY_PAGE_SIZE` slots so row width stays even when the last page has fewer icons. */
     const unifiedStripSlots = $derived(
-        Array.from({ length: FRAMEWORKS_GALLERY_PAGE_SIZE }, (_, i) => unifiedStrip[stripBatchStart + i] ?? null)
+        Array.from(
+            { length: FRAMEWORKS_GALLERY_PAGE_SIZE },
+            (_, i) => unifiedStrip[stripBatchStart + i] ?? null
+        )
     );
 
     const hasMoreStrip = $derived(
@@ -278,7 +281,11 @@
                 'px-0!': !padded
             })}
         >
-            <div class="w-full lg:hidden" role="region" aria-label="Frameworks and AI development tools">
+            <div
+                class="w-full lg:hidden"
+                role="region"
+                aria-label="Frameworks and AI development tools"
+            >
                 {@render marqueeMobileRow(unifiedStrip)}
             </div>
             <div
@@ -287,7 +294,9 @@
                 role="region"
                 aria-label={platformsHeading}
             >
-                <div class="flex w-full min-w-0 flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2">
+                <div
+                    class="flex w-full min-w-0 flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
+                >
                     {#if hasStripPagination}
                         {@render frameworkStripPagerBack()}
                     {/if}
@@ -328,7 +337,10 @@
                                                             class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
                                                             aria-label={platform.name}
                                                             onclick={() =>
-                                                                trackLogo(platform.trackPrefix, platform.name)}
+                                                                trackLogo(
+                                                                    platform.trackPrefix,
+                                                                    platform.name
+                                                                )}
                                                         >
                                                             <img
                                                                 src={useLightPlatformSvgs
@@ -344,7 +356,7 @@
                                                             sideOffset={6}
                                                             side="top"
                                                             class={cn(
-                                                                'z-[10000] text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                                                'text-greyscale-900 relative z-[10000] rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
                                                                 'dark:bg-greyscale-850 dark:text-greyscale-50',
                                                                 'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                                             )}
@@ -362,7 +374,7 @@
                                             </Tooltip.Root>
                                         {:else}
                                             <div
-                                                class="border-smooth border-primary/8 flex h-14 min-h-14 min-w-0 flex-1 basis-0 shrink-0 border-r border-dashed bg-transparent"
+                                                class="border-smooth border-primary/8 flex h-14 min-h-14 min-w-0 flex-1 shrink-0 basis-0 border-r border-dashed bg-transparent"
                                                 aria-hidden="true"
                                             ></div>
                                         {/if}

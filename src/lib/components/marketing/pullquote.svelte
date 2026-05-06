@@ -35,7 +35,7 @@
                 decoding="async"
                 loading="lazy"
             />
-            <p class="text-caption text-primary font-medium m-0">
+            <p class="text-caption text-primary m-0 font-medium">
                 {name}, <span class="text-secondary">{title}</span>
             </p>
         </div>

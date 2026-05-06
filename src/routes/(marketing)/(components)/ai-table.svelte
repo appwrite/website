@@ -198,7 +198,8 @@
                         >Overall</td
                     >
                     {#each categoryKeys as cat}
-                        <td class="hidden px-5 py-3 text-center text-xs text-[#B4B4BA] md:table-cell"
+                        <td
+                            class="hidden px-5 py-3 text-center text-xs text-[#B4B4BA] md:table-cell"
                             >{cat}</td
                         >
                     {/each}
