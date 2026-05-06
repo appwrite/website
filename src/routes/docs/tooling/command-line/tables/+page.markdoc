@@ -142,10 +142,10 @@ appwrite push tables
 
 # Commands {% #commands %}
 
-The databases command allows you to create structured tables of rows, queries, and filter lists of rows. Appwrite database CLI commands generally follow the following syntax:
+The tables-db command allows you to create structured tables of rows, queries, and filter lists of rows. Appwrite TablesDB CLI commands generally follow the following syntax:
 
 ```sh
-appwrite databases [COMMAND] [OPTIONS]
+appwrite tables-db [COMMAND] [OPTIONS]
 ```
 
 {% table %}
