@@ -7,6 +7,7 @@
     import CallToAction from '../tags/Call_To_Action.svelte';
     import Article from '$lib/components/blog/article.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
+    import Faq from '$lib/components/blog/faq.svelte';
     import PostMeta from '$lib/components/blog/post-meta.svelte';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Main } from '$lib/layouts';
@@ -216,6 +217,10 @@
 
                         <slot />
                     </div>
+
+                    {#if faqs?.length}
+                        <Faq items={faqs} />
+                    {/if}
                 </div>
 
                 <TableOfContents {toc} />
