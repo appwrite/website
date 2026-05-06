@@ -29,12 +29,18 @@
         states: { open }
     } = createTooltip({
         positioning: {
-            placement
+            get placement() {
+                return placement;
+            }
         },
         openDelay: 0,
-        closeOnPointerDown,
+        get closeOnPointerDown() {
+            return closeOnPointerDown;
+        },
         forceVisible: true,
-        disableHoverableContent
+        get disableHoverableContent() {
+            return disableHoverableContent;
+        }
     });
 
     let flyParams = $derived(

@@ -1,227 +1,420 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import Python from '../(assets)/icons/python.svg';
-    import Node from '../(assets)/icons/node.svg';
-    import Javascript from '../(assets)/icons/javascript.svg';
-    import Flutter from '../(assets)/icons/flutter.svg';
-    import Kotlin from '../(assets)/icons/kotlin.svg';
-    import Apple from '../(assets)/icons/apple.svg';
-    import AppleLight from '../(assets)/icons/light/apple.svg';
-    import Android from '../(assets)/icons/android.svg';
-    import Dart from '../(assets)/icons/dart.svg';
-    import Php from '../(assets)/icons/php.svg';
-    import Ruby from '../(assets)/icons/ruby.svg';
-    import Deno from '../(assets)/icons/deno.svg';
-    import DenoLight from '../(assets)/icons/light/deno.svg';
-    import Swift from '../(assets)/icons/swift.svg';
-    import Net from '../(assets)/icons/net.svg';
-    import Go from '../(assets)/icons/go.svg';
-    import GoLight from '../(assets)/icons/light/go.svg';
-    import React from '../(assets)/icons/react.svg';
-    import Nextjs from '../(assets)/icons/nextjs.svg';
-    import Svelte from '../(assets)/icons/svelte.svg';
-    import Vue from '../(assets)/icons/vue.svg';
-    import Angular from '../(assets)/icons/angular.svg';
-    import ReactNative from '../(assets)/icons/react-native.svg';
-    import TanStack from '../(assets)/icons/tanstack.svg';
-    import TanStackLight from '../(assets)/icons/light/tanstack.svg';
-    import GradientText from '$lib/components/fancy/gradient-text.svelte';
+    import {
+        allFrameworkStrip,
+        FRAMEWORKS_GALLERY_PAGE_SIZE,
+        type QuickStartStripItem
+    } from './quick-start-strip-items';
     import Noise from '$lib/components/fancy/noise.svelte';
+    import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Tooltip } from 'bits-ui';
     import { trackEvent } from '$lib/actions/analytics';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { themeInUse } from '$routes/+layout.svelte';
+    import { Icon } from '$lib/components/ui';
 
-    const platforms = [
-        // Web Frameworks (by popularity)
-        { name: 'Next.js', dark: Nextjs, href: '/docs/quick-starts/nextjs', primary: '#fff' },
-        { name: 'React', dark: React, href: '/docs/quick-starts/react', primary: '#53C1DE' },
-        { name: 'Vue', dark: Vue, href: '/docs/quick-starts/vue', primary: '#4FC08D' },
-        { name: 'Angular', dark: Angular, href: '/docs/quick-starts/angular', primary: '#DD0031' },
-        { name: 'Svelte', dark: Svelte, href: '/docs/quick-starts/sveltekit', primary: '#FF3E00' },
-        {
-            name: 'TanStack Start',
-            dark: TanStack,
-            light: TanStackLight,
-            href: '/docs/quick-starts/tanstack-start',
-            primary: '#fff'
-        },
+    /** Light platform SVGs are for docs light theme only; marketing always uses dark console icons. */
+    const useLightPlatformSvgs = $derived(
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light'
+    );
 
-        // Mobile Frameworks
-        {
-            name: 'React Native',
-            dark: ReactNative,
-            href: '/docs/quick-starts/react-native',
-            primary: '#61DAFB'
-        },
-        {
-            name: 'Flutter',
-            dark: Flutter,
-            href: '/docs/quick-starts/flutter',
-            primary: '#00569E',
-            secondary: '#47C5FB'
-        },
-        {
-            name: 'iOS',
-            dark: Apple,
-            light: AppleLight,
-            href: '/docs/quick-starts/apple',
-            primary: '#fff'
-        },
-        { name: 'Android', dark: Android, href: '/docs/quick-starts/android', primary: '#3DDC84' },
-        {
-            name: 'Kotlin',
-            dark: Kotlin,
-            href: '/docs/quick-starts/kotlin',
-            primary: '#6D74E1',
-            secondary: '#E1725C'
-        },
-        {
-            name: 'Swift',
-            dark: Swift,
-            href: '/docs/quick-starts/swift',
-            primary: '#F88A36',
-            secondary: '#FD2020'
-        },
+    type StripItem = QuickStartStripItem;
 
-        // Backend Languages & Runtimes
-        { name: 'Node.js', dark: Node, href: '/docs/quick-starts/node', primary: '#8CC84B' },
+    type MarqueeMobileEntry = StripItem & {
+        trackPrefix: 'technologies' | 'ai-tooling';
+    };
+
+    const marketingAiStrip: StripItem[] = [
         {
-            name: 'Python',
-            dark: Python,
-            href: '/docs/quick-starts/python',
-            primary: '#F9C600',
-            secondary: '#327EBD'
-        },
-        { name: 'PHP', dark: Php, href: '/docs/quick-starts/php', primary: '#8892BF' },
-        {
-            name: 'Ruby',
-            dark: Ruby,
-            href: '/docs/quick-starts/ruby',
-            primary: '#791C12',
-            secondary: '#9E120B'
-        },
-        { name: '.NET', dark: Net, href: '/docs/quick-starts/dotnet', primary: '#512BD4' },
-        { name: 'Go', dark: Go, light: GoLight, href: '/docs/quick-starts/go', primary: '#fff' },
-        {
-            name: 'Deno',
-            dark: Deno,
-            light: DenoLight,
-            href: '/docs/quick-starts/deno',
-            primary: '#fff'
+            name: 'Claude Code',
+            dark: '/images/docs/mcp/logos/dark/claude.svg',
+            light: '/images/docs/mcp/logos/claude.svg',
+            href: '/docs/tooling/mcp/claude-code',
+            primary: '#D97659',
+            secondary: '#8B4A2E'
         },
         {
-            name: 'Dart',
-            dark: Dart,
-            href: '/docs/quick-starts/dart',
-            primary: '#01579B',
-            secondary: '#29B6F6'
+            name: 'Codex',
+            dark: '/images/docs/mcp/logos/dark/openai.svg',
+            light: '/images/docs/mcp/logos/openai.svg',
+            href: '/docs/tooling/ai/ai-dev-tools/codex',
+            primary: '#10A37F',
+            secondary: '#064E3B'
+        },
+        {
+            name: 'Cursor',
+            dark: '/images/docs/mcp/logos/dark/cursor-ai.svg',
+            light: '/images/docs/mcp/logos/cursor-ai.svg',
+            href: '/docs/tooling/mcp/cursor',
+            primary: '#141414',
+            secondary: '#5B9BF8'
+        },
+        {
+            name: 'Lovable',
+            dark: '/images/docs/mcp/logos/dark/lovable.svg',
+            light: '/images/docs/mcp/logos/lovable.svg',
+            href: '/docs/tooling/ai/ai-dev-tools/lovable',
+            primary: '#FF6355',
+            secondary: '#C43D32'
+        },
+        {
+            name: 'OpenCode',
+            dark: '/images/docs/mcp/logos/dark/opencode.svg',
+            light: '/images/docs/mcp/logos/opencode.svg',
+            href: '/docs/tooling/mcp/opencode',
+            primary: '#FFFFFF',
+            secondary: '#6366F1'
         }
     ];
 
+    /**
+     * First gallery page: `FRAMEWORKS_GALLERY_PAGE_SIZE` tiles = early frameworks (skipping some to
+     * make room) plus all AI marks in `marketingAiStrip` order (…Lovable, then OpenCode).
+     */
+    const DEFERRED_FIRST_PAGE_FRAMEWORKS = new Set(['Nuxt', 'Angular', 'Qwik', 'Refine', 'Solid']);
+    const FIRST_PAGE_AI_COUNT = marketingAiStrip.length;
+
+    /** Frameworks and AI tools in one list (desktop paginated strip + mobile marquee). */
+    const unifiedStrip = $derived.by(() => {
+        const firstPageFrameworkSlots = FRAMEWORKS_GALLERY_PAGE_SIZE - FIRST_PAGE_AI_COUNT;
+        const firstPageFw: MarqueeMobileEntry[] = [];
+        for (const p of allFrameworkStrip) {
+            if (DEFERRED_FIRST_PAGE_FRAMEWORKS.has(p.name)) continue;
+            firstPageFw.push({ ...p, trackPrefix: 'technologies' });
+            if (firstPageFw.length >= firstPageFrameworkSlots) break;
+        }
+        const usedNames = new Set(firstPageFw.map((e) => e.name));
+        const firstPageAi = marketingAiStrip
+            .slice(0, FIRST_PAGE_AI_COUNT)
+            .map((p) => ({ ...p, trackPrefix: 'ai-tooling' as const }));
+        for (const p of firstPageAi) usedNames.add(p.name);
+
+        const restFw: MarqueeMobileEntry[] = [];
+        for (const p of allFrameworkStrip) {
+            if (usedNames.has(p.name)) continue;
+            restFw.push({ ...p, trackPrefix: 'technologies' });
+            usedNames.add(p.name);
+        }
+        const restAi = marketingAiStrip
+            .slice(FIRST_PAGE_AI_COUNT)
+            .map((p) => ({ ...p, trackPrefix: 'ai-tooling' as const }));
+
+        return [...firstPageFw, ...firstPageAi, ...restFw, ...restAi];
+    });
+
+    /** Which page of `FRAMEWORKS_GALLERY_PAGE_SIZE` icons is shown. */
+    let stripBatchIndex = $state(0);
+
+    const stripBatchStart = $derived(stripBatchIndex * FRAMEWORKS_GALLERY_PAGE_SIZE);
+
+    /** Always `FRAMEWORKS_GALLERY_PAGE_SIZE` slots so row width stays even when the last page has fewer icons. */
+    const unifiedStripSlots = $derived(
+        Array.from(
+            { length: FRAMEWORKS_GALLERY_PAGE_SIZE },
+            (_, i) => unifiedStrip[stripBatchStart + i] ?? null
+        )
+    );
+
+    const hasMoreStrip = $derived(
+        stripBatchStart + FRAMEWORKS_GALLERY_PAGE_SIZE < unifiedStrip.length
+    );
+    const hasStripPagination = $derived(unifiedStrip.length > FRAMEWORKS_GALLERY_PAGE_SIZE);
+
+    const aiDocLinks = [
+        { label: 'MCP servers', href: '/docs/tooling/ai/mcp-servers' },
+        { label: 'Appwrite Skills', href: '/docs/tooling/ai/skills' },
+        { label: 'AI Arena', href: 'https://arena.appwrite.io/' }
+    ] as const;
+
     interface PlatformsProps {
         class?: string;
-        headline?: string;
         padded?: boolean;
+        headline?: string;
     }
 
-    const { headline, class: className, padded = true }: PlatformsProps = $props();
+    const { class: className, padded = true, headline }: PlatformsProps = $props();
+
+    const platformsHeading = $derived(
+        headline ?? 'Optimized for the frameworks, languages and agents you love'
+    );
+
+    function trackLogo(prefix: 'technologies' | 'ai-tooling', name: string) {
+        trackEvent(`${prefix}-${name.replace(/\s+/g, '-').toLowerCase()}-click`);
+    }
+
+    function trackDoc(label: string) {
+        trackEvent(`platforms-ai-doc-${label.toLowerCase().replace(/\s+/g, '-')}-click`);
+    }
+
+    function stepStripBack() {
+        if (stripBatchIndex > 0) {
+            stripBatchIndex -= 1;
+            trackEvent('technologies-framework-strip-back-click');
+        }
+    }
+
+    function stepStripForward() {
+        if (hasMoreStrip) {
+            stripBatchIndex += 1;
+            trackEvent('technologies-framework-strip-advance-click');
+        }
+    }
 </script>
 
-<div class={cn('border-smooth relative z-10 border-y border-dashed', className)}>
+{#snippet frameworkStripPagerBack()}
+    <div class="-mr-1.5 flex h-14 shrink-0 items-center pr-0.5 pl-0 sm:-mr-2 lg:-mr-3">
+        <button
+            type="button"
+            class={cn(
+                'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
+                'text-secondary hover:text-primary transition-colors',
+                'dark:text-greyscale-300 dark:hover:text-white',
+                'disabled:hover:text-secondary disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35',
+                'dark:disabled:hover:text-greyscale-300'
+            )}
+            aria-controls="platforms-framework-strip-icons"
+            aria-label="Show previous frameworks and AI tools"
+            disabled={stripBatchIndex === 0}
+            onclick={stepStripBack}
+        >
+            <Icon
+                name="chevron-left"
+                width={18}
+                height={18}
+                class="shrink-0 opacity-90"
+                aria-hidden="true"
+            />
+        </button>
+    </div>
+{/snippet}
+
+{#snippet frameworkStripPagerForward()}
+    <div class="-ml-1.5 flex h-14 shrink-0 items-center pr-0.5 pl-0 sm:-ml-2 lg:-ml-3">
+        <button
+            type="button"
+            class={cn(
+                'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent',
+                'text-secondary hover:text-primary transition-colors',
+                'dark:text-greyscale-300 dark:hover:text-white',
+                'disabled:hover:text-secondary disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-35',
+                'dark:disabled:hover:text-greyscale-300'
+            )}
+            aria-controls="platforms-framework-strip-icons"
+            aria-label="Show next frameworks and AI tools"
+            disabled={!hasMoreStrip}
+            onclick={stepStripForward}
+        >
+            <Icon
+                name="chevron-right"
+                width={18}
+                height={18}
+                class="shrink-0 opacity-90"
+                aria-hidden="true"
+            />
+        </button>
+    </div>
+{/snippet}
+
+{#snippet marqueeMobileRow(items: MarqueeMobileEntry[])}
     <div
-        class={cn('container flex flex-col items-center md:flex-row', {
+        class={cn(
+            'flex w-full flex-nowrap overflow-clip',
+            'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl'
+        )}
+    >
+        {#each [0, 1] as copy (copy)}
+            <div
+                class="divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-x divide-dashed"
+            >
+                {#each items as platform, platformIndex (`${copy}-${platform.name}`)}
+                    <a
+                        href={platform.href}
+                        class="border-smooth group animate-fade-in relative mt-2 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
+                        style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                            25}ms"
+                        aria-label={platform.name}
+                        onclick={() => trackLogo(platform.trackPrefix, platform.name)}
+                    >
+                        <img
+                            src={useLightPlatformSvgs ? platform.light : platform.dark}
+                            alt=""
+                            class="h-8 w-auto object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+                        />
+                        <div
+                            class={cn(
+                                'pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
+                                'bg-gradient-to-tl from-transparent to-transparent',
+                                'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
+                            )}
+                        >
+                            <Noise opacity={0.1} />
+                        </div>
+                    </a>
+                {/each}
+            </div>
+        {/each}
+    </div>
+{/snippet}
+
+<div class={cn('relative z-10', className)}>
+    <div
+        class={cn('container flex flex-col items-center pt-1 md:pt-2', {
             'px-0!': !padded
         })}
     >
-        {#if headline}
-            <GradientText>
-                <span class="flex items-center pr-4 text-sm font-medium md:w-full md:max-w-[175px]"
-                    >{headline}</span
+        <h2 class="m-0 w-full px-4 text-center">
+            <GradientText
+                class="font-aeonik-pro text-[0.9375rem] leading-snug font-normal tracking-tight text-pretty lg:text-[1rem]"
+            >
+                <span
+                    class={cn(
+                        'mx-auto mb-1.5 block max-w-[22rem] text-center lg:mb-2 lg:max-w-3xl',
+                        headline ? 'text-base' : 'text-main-body'
+                    )}>{platformsHeading}</span
                 >
             </GradientText>
-        {/if}
-
+        </h2>
+    </div>
+    <div class="border-smooth border-y border-dashed">
         <div
-            class={cn(
-                'flex w-full flex-nowrap overflow-clip md:overflow-visible',
-                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
-            )}
+            class={cn('container flex flex-col items-center py-0', {
+                'px-0!': !padded
+            })}
         >
-            {#each [1, 2] as _, i}
+            <div
+                class="w-full lg:hidden"
+                role="region"
+                aria-label="Frameworks and AI development tools"
+            >
+                {@render marqueeMobileRow(unifiedStrip)}
+            </div>
+            <div
+                class="hidden w-full min-w-0 lg:block"
+                id="platforms-framework-strip"
+                role="region"
+                aria-label={platformsHeading}
+            >
                 <div
-                    class={cn(
-                        'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
-                        {
-                            'md:hidden': i === 0
-                        }
-                    )}
+                    class="flex w-full min-w-0 flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
                 >
-                    <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                        {#each platforms as platform, i}
-                            <Tooltip.Root>
+                    {#if hasStripPagination}
+                        {@render frameworkStripPagerBack()}
+                    {/if}
+                    <div
+                        id="platforms-framework-strip-icons"
+                        class={cn(
+                            'relative min-h-14 min-w-0 flex-1 basis-0 overflow-x-auto overflow-y-hidden',
+                            'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:overflow-clip',
+                            'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+                        )}
+                    >
+                        <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
+                            {#key stripBatchIndex}
                                 <div
-                                    class="contents"
-                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
-                                        25}ms"
+                                    class="flex h-14 min-h-14 w-full min-w-0 flex-nowrap items-stretch"
                                 >
-                                    <Tooltip.Trigger
-                                        class={cn(
-                                            'border-smooth group animate-fade-in /mt-4 relative flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
-                                            {
-                                                'lg:border-l': i === 0
-                                            }
-                                        )}
-                                        aria-hidden={i < platforms.length - 1}
-                                    >
-                                        <a
-                                            href={platform.href}
-                                            class="contents"
-                                            onclick={() =>
-                                                trackEvent(
-                                                    `technologies-${platform.name.replace(' ', '-').toLowerCase()}-click`
-                                                )}
-                                        >
-                                            <img
-                                                src={$themeInUse === 'light' && platform.light
-                                                    ? platform.light
-                                                    : platform.dark}
-                                                alt={platform.name}
-                                                class={cn(
-                                                    'h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0'
-                                                )}
-                                            />
-
+                                    {#each unifiedStripSlots as platform, platformIndex (`${stripBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
+                                        {#if platform}
+                                            <Tooltip.Root>
+                                                <div
+                                                    class="contents"
+                                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
+                                                        12}ms"
+                                                >
+                                                    <Tooltip.Trigger
+                                                        class={cn(
+                                                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 basis-0 cursor-pointer overflow-hidden border-r border-dashed',
+                                                            'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
+                                                        )}
+                                                    >
+                                                        <div
+                                                            class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
+                                                        >
+                                                            <Noise opacity={0.1} />
+                                                        </div>
+                                                        <a
+                                                            href={platform.href}
+                                                            class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
+                                                            aria-label={platform.name}
+                                                            onclick={() =>
+                                                                trackLogo(
+                                                                    platform.trackPrefix,
+                                                                    platform.name
+                                                                )}
+                                                        >
+                                                            <img
+                                                                src={useLightPlatformSvgs
+                                                                    ? platform.light
+                                                                    : platform.dark}
+                                                                alt=""
+                                                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+                                                            />
+                                                        </a>
+                                                    </Tooltip.Trigger>
+                                                    <Tooltip.Portal>
+                                                        <Tooltip.Content
+                                                            sideOffset={6}
+                                                            side="top"
+                                                            class={cn(
+                                                                'text-greyscale-900 relative z-[10000] rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                                                'dark:bg-greyscale-850 dark:text-greyscale-50',
+                                                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
+                                                            )}
+                                                        >
+                                                            <div
+                                                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                                                aria-hidden="true"
+                                                            ></div>
+                                                            <span class="relative z-10"
+                                                                >{platform.name}</span
+                                                            >
+                                                        </Tooltip.Content>
+                                                    </Tooltip.Portal>
+                                                </div>
+                                            </Tooltip.Root>
+                                        {:else}
                                             <div
-                                                class={cn(
-                                                    'absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100',
-                                                    'bg-gradient-to-tl from-transparent to-transparent',
-                                                    'hover:from-(--primary-color,_#fff)/4 hover:to-(--secondary-color,_transparent)/10'
-                                                )}
-                                            >
-                                                <Noise opacity={0.1} />
-                                            </div>
-                                        </a>
-                                    </Tooltip.Trigger>
-                                    <Tooltip.Portal>
-                                        <Tooltip.Content
-                                            sideOffset={8}
-                                            side="top"
-                                            class={cn(
-                                                'text-primary dark:bg-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm',
-                                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
-                                            )}
-                                            >{platform.name}
-                                            <div
-                                                class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
+                                                class="border-smooth border-primary/8 flex h-14 min-h-14 min-w-0 flex-1 shrink-0 basis-0 border-r border-dashed bg-transparent"
+                                                aria-hidden="true"
                                             ></div>
-                                        </Tooltip.Content>
-                                    </Tooltip.Portal>
+                                        {/if}
+                                    {/each}
                                 </div>
-                            </Tooltip.Root>
-                        {/each}
-                    </Tooltip.Provider>
+                            {/key}
+                        </Tooltip.Provider>
+                    </div>
+                    {#if hasStripPagination}
+                        {@render frameworkStripPagerForward()}
+                    {/if}
                 </div>
-            {/each}
+            </div>
+        </div>
+    </div>
+    <div
+        class={cn('container pt-2', {
+            'px-0!': !padded
+        })}
+    >
+        <div class="flex min-w-0 justify-center">
+            <nav
+                class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] leading-tight font-medium lg:text-xs"
+                aria-label="AI and MCP documentation"
+            >
+                {#each aiDocLinks as link, i (link.href)}
+                    {#if i > 0}
+                        <span class="text-primary/25 px-0.5 select-none" aria-hidden="true">·</span>
+                    {/if}
+                    <a
+                        href={link.href}
+                        class="text-secondary hover:text-primary underline-offset-4 transition-colors hover:underline"
+                        target={link.href.startsWith('https://') ? '_blank' : undefined}
+                        rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+                        onclick={() => trackDoc(link.label)}
+                    >
+                        {link.label}
+                    </a>
+                {/each}
+            </nav>
         </div>
     </div>
 </div>

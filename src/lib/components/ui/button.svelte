@@ -52,12 +52,10 @@
     }: Props = $props();
 
     const isSplit = getContext<boolean>(BUTTON_SPLIT_CONTEXT);
-    const splitClasses = isSplit
-        ? splitPosition
-            ? `is-split is-split-${splitPosition}`
-            : 'is-split'
-        : '';
-    const buttonClasses = cn(button({ variant }), splitClasses, classes);
+    const splitClasses = $derived(
+        isSplit ? (splitPosition ? `is-split is-split-${splitPosition}` : 'is-split') : ''
+    );
+    const buttonClasses = $derived(cn(button({ variant }), splitClasses, classes));
 </script>
 
 {#if href}

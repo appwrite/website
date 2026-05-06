@@ -18,7 +18,7 @@
         ...rest
     }: Props = $props();
 
-    const baseFrequency = grainSize! / 1;
+    const baseFrequency = $derived(grainSize! / 1);
 </script>
 
 <svg

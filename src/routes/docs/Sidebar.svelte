@@ -26,6 +26,12 @@
                     icon: 'icon-cog'
                 },
                 {
+                    label: 'Blog',
+                    href: '/blog',
+                    icon: 'icon-document-text',
+                    openInNewTab: true
+                },
+                {
                     label: 'Changelog',
                     href: '/changelog',
                     icon: 'icon-clock',
@@ -135,6 +141,12 @@
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
+                    isParent: true
+                },
+                {
+                    label: 'Terraform',
+                    href: '/docs/tooling/terraform',
+                    icon: 'web-icon-terraform',
                     isParent: true
                 },
                 {

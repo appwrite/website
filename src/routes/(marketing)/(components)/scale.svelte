@@ -2,7 +2,7 @@
     import { cn } from '$lib/utils/cn';
     import NumberFlow from '@number-flow/svelte';
     import { inView } from 'motion';
-    import { onDestroy, type Snippet } from 'svelte';
+    import { onDestroy, untrack, type Snippet } from 'svelte';
     import { browser } from '$app/environment';
 
     const animationDuration = 3;
@@ -47,8 +47,8 @@
         ]
     }: Props = $props();
 
-    let localStats = $state(stats.map((stat) => ({ ...stat, number: 0 })));
-    const originalNumbers = stats.map((stat) => stat.number);
+    let localStats = $state(untrack(() => stats.map((stat) => ({ ...stat, number: 0 }))));
+    const originalNumbers = untrack(() => stats.map((stat) => stat.number));
 
     const updateNumbers = () => {
         localStats.forEach((stat, index) => {

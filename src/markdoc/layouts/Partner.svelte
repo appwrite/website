@@ -30,7 +30,7 @@
         children
     }: Props = $props();
 
-    const ogImage = DEFAULT_HOST + cover;
+    const ogImage = $derived(DEFAULT_HOST + cover);
 </script>
 
 <svelte:head>

@@ -7,7 +7,7 @@
     import Checkmark from '$lib/components/fancy/checkmark.svelte';
 
     let container: HTMLElement;
-    let activePill: HTMLElement;
+    let activePill: HTMLElement = $state()!;
     let active = $state(false);
     let complete = $state(false);
     let typedText = $state('');
@@ -127,7 +127,7 @@
             </svg>
             <span class="flex-1"
                 >{#if typedText}<span class="text-primary">{typedText}</span>{:else}<span
-                        class="text-white/20">Ask anything...</span
+                        class="text-[#9CA3AF]">Ask anything...</span
                     >{/if}</span
             >
         </div>

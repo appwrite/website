@@ -150,6 +150,31 @@ var users = new Users(client);
 var token = await users.CreateToken("<USER_ID>");
 var secret = token.secret;
 ```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::users::Users;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>")                 // Your project ID
+        .set_key("<API_KEY>");                        // Your project API key
+
+    let users = Users::new(&client);
+
+    let token = users.create_token(
+        "<USER_ID>",
+        None, // length (optional)
+        None, // expire (optional)
+    ).await?;
+
+    let secret = token.secret;
+    println!("{}", secret);
+    Ok(())
+}
+```
 {% /multicode %}
 
 The newly created token includes a `secret` which is 6 character long hexadecimal string. You can configure length of the secret and expiry when creating a token.

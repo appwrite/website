@@ -33,11 +33,11 @@ Whether you're tracking a counter, enforcing quotas, or updating state in real t
 
 Use it for:
 
-- **Social features** — likes, followers, reactions
-- **Usage metering** — API credits, storage consumption, billing units
-- **Games** — player scores, lives, retry counters
-- **E-commerce** — stock levels, inventory counts, cart items
-- **Workflows and infrastructure** — rate limits, retries, processing attempts
+- **Social features**: likes, followers, reactions
+- **Usage metering**: API credits, storage consumption, billing units
+- **Games**: player scores, lives, retry counters
+- **E-commerce**: stock levels, inventory counts, cart items
+- **Workflows and infrastructure**: rate limits, retries, processing attempts
 
 # Performing an atomic operation
 

@@ -57,5 +57,6 @@ Redeployment behavior varies depending on how the initial deployment was created
 Users subscribed to the Appwrite Pro plan or above receive certain special benefits:
 
 - [Express builds](/changelog/entry/2024-08-10) for quicker deployments, resulting in reduced wait times and smoother workflows
-- Customizable [runtime specifications](/blog/post/introducing-new-compute-capabilities-appwrite-functions), allowing for tailored performance and resource allocation
+- Longer [build timeouts](/docs/advanced/platform/compute#build-timeouts) (45 minutes vs 15 minutes on Free; Enterprise is custom)
+- Customizable [build and runtime specifications](/docs/advanced/platform/compute) for CPU and memory on each function
 {% /info %}

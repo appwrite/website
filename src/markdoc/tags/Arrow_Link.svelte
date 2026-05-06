@@ -9,9 +9,9 @@
 
     const { href, children }: ArrowLinkProps = $props();
 
-    const isExternal = /https?:\/\//.test(href);
-    const target = isExternal ? '_blank' : '_self';
-    const rel = isExternal ? 'noopener nofollow' : undefined;
+    const isExternal = $derived(/https?:\/\//.test(href));
+    const target = $derived(isExternal ? '_blank' : '_self');
+    const rel = $derived(isExternal ? 'noopener nofollow' : undefined);
 </script>
 
 <a

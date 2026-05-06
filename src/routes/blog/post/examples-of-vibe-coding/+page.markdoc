@@ -9,6 +9,15 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What are some real examples of vibe coding projects?"
+    answer: "There are tons, but some standouts include Refetch, an open-source Hacker News alternative built with Appwrite and Cursor in just 15 hours; Mealmuse, which turns fridge photos into meal plans; and Found My Focus, a psychology-based productivity app built with Bolt. These projects show how both developers and non-developers are turning ideas into live products fast using AI-assisted workflows."
+  - question: "How long does it usually take to build something with vibe coding?"
+    answer: "It depends on your skill level and project scope, but most examples we've seen, from side apps to working prototypes, come together in a few focused sessions or a weekend. The key is that you're not writing every line from scratch; you're guiding the AI with intent, feedback, and structure, which speeds up iteration dramatically."
+  - question: "What makes a good vibe coding project idea?"
+    answer: "The best projects start simple: a clear goal, a limited scope, and a problem you personally care about. Tools like Cursor, Lovable, or Bolt work best when you give them focus: think small apps, utilities, or creative experiments that can evolve fast."
+  - question: "Can non-developers build real apps with vibe coding tools?"
+    answer: "Absolutely. Many of the examples above were built by non-engineers or solo creators using AI-driven builders. The key isn't knowing every syntax detail. It's knowing how to communicate your intent clearly and refine the results. Vibe coding lowers the barrier between idea and execution, letting anyone with curiosity and persistence build something real."
 ---
 Everyone seems to be talking about vibe coding lately. It's all over Twitter, YouTube tutorials, and weekend project threads. But beyond the hype, we were curious: what does it actually look like in practice?
 
@@ -99,24 +108,6 @@ Vibe coding tool used: Replit
 [CareerCloud](https://careercloud.io/) helps job seekers create and refine resumes using AI. You can upload your resume or start fresh, and the platform automatically optimizes it for ATS systems, matches it to job descriptions, and gives clear feedback on how to improve.
 
 It also offers templates for different roles, from technical to creative, and tracks your application performance so you know what's working.
-
-# Frequently asked questions (FAQs)
-
-**1. What are some real examples of vibe coding projects?**
-
-There are tons, but some standouts include [**Refetch**](https://refetch.io/), an open-source Hacker News alternative built with Appwrite and Cursor in just 15 hours; [**Mealmuse**](https://mealmuse.ai/), which turns fridge photos into meal plans; and [**Found My Focus**](https://www.flowbound.app/), a psychology-based productivity app built with Bolt. These projects show how both developers and non-developers are turning ideas into live products fast using AI-assisted workflows.
-
-**2. How long does it usually take to build something with vibe coding?**
-
-It depends on your skill level and project scope, but most examples we've seen, from side apps to working prototypes, come together in **a few focused sessions or a weekend**. The key is that you're not writing every line from scratch; you're guiding the AI with intent, feedback, and structure, which speeds up iteration dramatically.
-
-**3. What makes a good vibe coding project idea?**
-
-The best projects start simple: a clear goal, a limited scope, and a problem you personally care about. Tools like Cursor, Lovable, or Bolt work best when you give them focus—think **small apps, utilities, or creative experiments** that can evolve fast.
-
-**4. Can non-developers build real apps with vibe coding tools?**
-
-Absolutely. Many of the examples above were built by non-engineers or solo creators using AI-driven builders. The key isn't knowing every syntax detail. It's knowing how to communicate your intent clearly and refine the results. Vibe coding lowers the barrier between *idea* and *execution*, letting anyone with curiosity and persistence build something real.
 
 # Wrapping up
 

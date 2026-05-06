@@ -24,13 +24,7 @@
         {#each links as link}
             <li class="web-main-header-nav-item text-primary hover:text-accent">
                 {#if link.submenu}
-                    <div
-                        class="web-main-header-nav-item-button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        aria-controls="submenu"
-                        data-submenu-button
-                    >
+                    <div class="web-main-header-nav-item-button">
                         <svelte:component this={link.submenu} label={link.label} />
                     </div>
                 {:else}

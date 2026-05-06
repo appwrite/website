@@ -21,10 +21,10 @@
 </script>
 
 <div class="group flex w-full flex-col gap-8 pb-3 transition">
-    <a class="block overflow-hidden rounded-lg bg-transparent" {href}>
+    <a class="block w-full overflow-hidden rounded-lg bg-transparent" {href}>
         <Media
             src={cover}
-            class="aspect-video transition duration-250 ease-in-out group-hover:scale-105"
+            class="web-u-media-ratio-16-9 w-full transition duration-250 ease-in-out group-hover:scale-105"
             alt={title}
         />
     </a>
@@ -55,12 +55,12 @@
                 {/each}
             </div>
             <div class="flex items-baseline gap-3">
-                <h4 class="text-sub-body text-primary">
+                <p class="text-sub-body text-primary m-0">
                     {#each authors as author, i}
                         <a href={author.href} class="web-link">{author.name}</a
                         >{#if i < authors.length - 1},{' '}{/if}
                     {/each}
-                </h4>
+                </p>
             </div>
         </div>
     </div>

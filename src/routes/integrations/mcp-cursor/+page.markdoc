@@ -59,8 +59,7 @@ To configure the MCP server on Cursor, head to the **Cursor Settings** page, nav
         "appwrite": {
             "command": "uvx",
             "args": [
-                "mcp-server-appwrite",
-                "--users"
+                "mcp-server-appwrite"
             ],
             "env": {
                 "APPWRITE_API_KEY": "<your-api-key>",
@@ -73,8 +72,6 @@ To configure the MCP server on Cursor, head to the **Cursor Settings** page, nav
 ```
 
 This configuration will set up the MCP server to connect to your Appwrite project using the API key, project ID, and endpoint, which you must update before saving and exiting the file.
-
-You may have noticed the `--users` argument, which enables Cursor to interact with the Appwrite Users API. To enable other Appwrite services, you can add their respective [command-line arguments](/docs/tooling/mcp#command-line-arguments).
 
 Once you have updated and saved the `mcp.json` file, Cursor will connect with the Appwrite MCP server and load all available tools. You may need to restart Cursor if it is unable to start the MCP server.
 

@@ -9,6 +9,17 @@ author: aditya-oberai
 category: tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is an Appwrite Storage bucket?"
+    answer: "A bucket is a container for files in Appwrite Storage with its own permission settings, file type restrictions, and size limits. Think of it as a folder with configurable access control. Each bucket can be configured for a specific use case (for example, profile photos with a 10MB limit and only image extensions allowed)."
+  - question: "What is the maximum file size Appwrite can upload?"
+    answer: "Appwrite Storage supports files up to 5GB through its createFile method, with chunked upload handling built into the SDK. The SDK transparently splits large files into chunks so you do not have to implement chunking, retry, or resume logic yourself."
+  - question: "How do you restrict files so only the uploader can access them?"
+    answer: "Enable fileSecurity on the bucket and pass per-file permissions when creating the file, for example Permission.read(Role.user(currentUserId)) and Permission.delete(Role.user(currentUserId)). Other authenticated users will not be able to access the file, and unauthenticated requests will receive a 401 response."
+  - question: "Can Appwrite resize images on the fly?"
+    answer: "Yes. Appwrite Storage supports on-the-fly image transformations via URL parameters. The getFilePreview method lets you request a resized version of an image (with width, height, gravity, and quality options) without modifying the original file or running a separate image processing pipeline."
+  - question: "How do you handle cleanup of orphaned files?"
+    answer: "Appwrite Functions can subscribe to database row delete events and call storage.deleteFile to remove the associated files. This means cleanup of orphaned files when their parent records are deleted can be handled automatically without manual scripts or batch jobs."
 ---
 
 Adding file uploads to an application is one of those features that looks simple until you're actually doing it. Choose a storage provider, configure permissions, generate upload URLs, handle chunking for large files, serve files with proper content types, restrict access to authorized users, and avoid storing sensitive files publicly. Each of these is a real problem that needs a real solution.

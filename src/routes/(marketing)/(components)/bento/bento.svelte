@@ -52,8 +52,8 @@
 
 <div class="container py-20">
     <div class="mx-auto mb-16 flex max-w-5xl flex-col gap-8">
-        <h2 class="text-primary font-aeonik-pro text-title mx-auto max-w-lg text-center">
-            Build like a team of hundreds
+        <h2 class="text-primary font-aeonik-pro text-title mx-auto text-center">
+            All the services you need <br />in one platform
         </h2>
 
         <div class="hidden justify-between gap-8 lg:flex">

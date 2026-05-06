@@ -98,6 +98,41 @@ result = databases.create_documents(
     ]
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.create_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "Document 1"
+            }),
+            json!({
+                "$id": ID::unique(),
+                "name": "Document 2"
+            }),
+        ],
+        None, // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Update documents {% #update-documents %}
@@ -154,6 +189,37 @@ result = databases.update_documents(
         Query.equal('status', 'draft')
     ]
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::query::Query;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.update_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        Some(json!({
+            "status": "published"
+        })),
+        Some(vec![
+            Query::equal("status", "draft").to_string()
+        ]),
+        None, // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -220,6 +286,41 @@ result = databases.upsert_documents(
     ]
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.upsert_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "name": "New Document 1"
+            }),
+            json!({
+                "$id": "document-id-2",
+                "name": "New Document 2"
+            }),
+        ],
+        None, // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Delete documents {% #delete-documents %}
@@ -270,6 +371,33 @@ result = databases.delete_documents(
         Query.equal('status', 'archived')
     ]
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::query::Query;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.delete_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        Some(vec![
+            Query::equal("status", "archived").to_string()
+        ]),
+        None, // transaction_id (optional)
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
 ```
 {% /multicode %}
 

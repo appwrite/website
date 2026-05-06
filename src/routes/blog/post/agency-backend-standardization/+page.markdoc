@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Why should a development agency standardize on a single backend stack?"
+    answer: "Using a different backend per client compounds onboarding, debugging, and estimation costs. Standardizing on one platform lets developers reuse patterns across projects, share security defaults, and price new work accurately. It turns the backend layer from a per-project decision into solved infrastructure."
+  - question: "What features matter most when an agency picks a backend platform?"
+    answer: "Agencies need clean per-client project isolation, fast project setup (ideally scriptable), broad feature coverage so fewer vendors are involved, self-hosting or data ownership options for regulated clients, and pricing that stays reasonable from MVP through mid-market scale. Good documentation and an active community accelerate every engagement."
+  - question: "How do agencies isolate data between clients on a shared backend platform?"
+    answer: "Most platforms expose a project, workspace, or organization construct that creates a hard boundary between clients. Each client gets its own authentication system, database, storage, and access policies inside that boundary. Used consistently, this gives every client a clean environment without forcing the agency to run separate installations per project."
+  - question: "How does Appwrite fit an agency workflow?"
+    answer: "Appwrite is an open-source backend platform with project-based isolation, authentication, databases, storage, functions, real-time, messaging, and hosting in one product. The Appwrite CLI supports scripted project creation so new client environments can be templated, and self-hosting allows deployment inside a client's own cloud account when compliance or data residency demand it."
+  - question: "Can clients access their own Appwrite project without seeing other clients' work?"
+    answer: "Yes. Appwrite's teams and membership system lets you grant client stakeholders read or admin access to a single project while keeping every other client environment private. This avoids shared logins and gives clients legitimate visibility into their own data."
 ---
 
 Running a development agency means context-switching constantly. One client needs an e-commerce platform, another needs a healthcare app, a third wants an internal operations tool. Each project has different requirements, but if each one also uses a different backend stack, you've built yourself an operational nightmare.

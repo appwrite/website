@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What are Appwrite Webhooks?"
+    answer: "Appwrite Webhooks are HTTP POST callbacks that your project sends to a URL you control whenever a subscribed event fires. They let your server react to things like user signups, file uploads, or row updates without polling the API. Webhooks are configured per project from the Console under Settings."
+  - question: "How do I verify that a webhook request actually came from Appwrite?"
+    answer: "Appwrite signs every webhook payload with HMAC-SHA1 using a secret key, and includes the signature in the X-Appwrite-Webhook-Signature header. On your server, recompute the HMAC over the endpoint URL plus the raw request body using the same secret, then compare it to the header value with a constant-time comparison. Reject requests where the signatures do not match."
+  - question: "Can I subscribe to events from a specific resource?"
+    answer: "Yes. Event patterns support wildcards or specific resource IDs, so you can subscribe to all rows in a table or only a particular table, bucket, or function. Keeping subscriptions specific avoids flooding your endpoint with traffic from unrelated resources on busy projects."
+  - question: "What happens if my webhook endpoint is down or returns an error?"
+    answer: "Appwrite will retry failed deliveries, so your handler needs to be idempotent. Design it so processing the same event twice produces the same result, typically by checking the event ID or the resource state before applying changes. Returning a 2xx response quickly and doing slow work asynchronously is the safest pattern."
+  - question: "What does a webhook payload contain?"
+    answer: "The body is JSON that mirrors the API response for the event type. For a row create event you get the full row object, and for a user create event you get the user object. Appwrite also sends headers identifying the webhook ID, the matching events, the project ID, the user who triggered the event, and the HMAC signature."
 ---
 
 Webhooks are the simplest way to react to things happening in your Appwrite project without polling. A user signs up. A file gets uploaded. A database row is updated. Appwrite fires an HTTP POST to a URL you control, and your server handles it.

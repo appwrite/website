@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION } from '$lib/utils/metadata';
+    import { DEFAULT_DESCRIPTION, getInlinedScriptTag } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { Button, Icon } from '$lib/components/ui';
 
@@ -12,9 +12,11 @@
 
     let { data } = $props();
 
-    const title = data.title + ' - Threads' + TITLE_SUFFIX;
+    const title = $derived(data.title + ' - Threads' + TITLE_SUFFIX);
     const description = DEFAULT_DESCRIPTION;
-    const discordLink = `https://discord.com/channels/564160730845151244/${data.discord_id}`;
+    const discordLink = $derived(
+        `https://discord.com/channels/564160730845151244/${data.discord_id}`
+    );
 
     function shorten(str: string, len: number) {
         return str.length > len ? str.slice(0, len) + '...' : str;
@@ -34,6 +36,9 @@
         title={shorten(data.title, 32)}
         description={shorten(data.seo_description ?? DEFAULT_DESCRIPTION, 64)}
     />
+    {#if data.structuredDataJsonLd}
+        {@html getInlinedScriptTag(data.structuredDataJsonLd)}
+    {/if}
 </svelte:head>
 
 <Main>
@@ -70,7 +75,7 @@
                 {#each data.messages ?? [] as message, i}
                     {@const isFirst = i === 0}
                     <MessageCard {message}>
-                        {#if isFirst}
+                        {#if isFirst && data.tldr?.trim()}
                             <div class="web-inline-info web-u-margin-block-start-24">
                                 <div class="text-sub-body text-primary font-medium">TL;DR</div>
                                 {data.tldr}

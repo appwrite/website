@@ -9,6 +9,15 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What is meant by vibe coding?"
+    answer: "Vibe coding means building software with the help of AI coding assistants that understand natural language. Instead of typing every line yourself, you guide the AI through context, intent, and feedback, almost like mentoring a junior developer."
+  - question: "What are the benefits of vibe coding?"
+    answer: "The biggest advantage is speed. You can move from an idea to working code much faster. It also helps reduce boilerplate work, improves iteration cycles, and acts as a learning companion that can explain or optimize code."
+  - question: "What is vibe coding vs prompt engineering?"
+    answer: "Prompt engineering focuses on crafting precise inputs for AI models, mainly to get consistent or high-quality responses. Vibe coding goes beyond that. It's about using those prompts within a live development workflow: writing, testing, debugging, and shipping real software with AI collaboration."
+  - question: "Is vibe coding the future?"
+    answer: "It's definitely shaping it. While traditional coding isn't going away, the tools we use and how we approach development are evolving. Vibe coding represents a shift toward human-AI collaboration, where developers act more as architects and reviewers, while AI handles repetitive or mechanical tasks."
 ---
 Something interesting is happening in how people build software. Devs are working alongside AI tools to plan, test, and write code in new ways, and non-devs are turning ideas into real projects without the need for deep technical knowledge. The gap between an idea and what it takes to build it is getting smaller. That's where **vibe coding** comes in.
 
@@ -117,24 +126,6 @@ It's accessible. You can start building immediately without setup. It's solid fo
 [v0](https://v0.app/) focuses on generating React-based UIs from text prompts. It's designed for front-end work:  components, layouts, and interactions. 
 
 The generated code is clean and integrates easily into Next.js projects. It's limited to UI, though, so you'll still need to handle backend logic elsewhere.
-
-# Frequently asked questions (FAQs)
-
-**1. What is meant by vibe coding?**
-
-Vibe coding means building software with the help of AI coding assistants that understand natural language. Instead of typing every line yourself, you guide the AI through context, intent, and feedback, almost like mentoring a junior developer. 
-
-**2. What are the benefits of vibe coding?**
-
-The biggest advantage is **speed**. You can move from an idea to working code much faster. It also helps reduce boilerplate work, improves iteration cycles, and acts as a learning companion that can explain or optimize code. 
-
-**3. What is vibe coding vs prompt engineering?**
-
-Prompt engineering focuses on crafting precise inputs for AI models, mainly to get consistent or high-quality responses. Vibe coding goes beyond that. It's about using those prompts **within a live development workflow**: writing, testing, debugging, and shipping real software with AI collaboration.
-
-**4. Is vibe coding the future?**
-
-It's definitely shaping it. While traditional coding isn't going away, the tools we use and how we approach development are evolving. Vibe coding represents a shift toward **human-AI collaboration**, where developers act more as architects and reviewers, while AI handles repetitive or mechanical tasks.
 
 # Conclusion
 

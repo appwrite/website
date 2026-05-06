@@ -1,9 +1,9 @@
 <script lang="ts">
     import { globToTutorial } from '$lib/utils/tutorials.js';
-    import { setContext } from 'svelte';
+    import { setContext, untrack } from 'svelte';
 
     let { data, children } = $props();
-    const tutorials = globToTutorial(data);
+    const tutorials = untrack(() => globToTutorial(data));
     setContext('tutorials', tutorials);
 </script>
 

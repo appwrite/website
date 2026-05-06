@@ -4,6 +4,7 @@
     import Badge from './badge.svelte';
     import Counter from './counter.svelte';
     import type { DayProps } from './day.svelte';
+    import { untrack } from 'svelte';
 
     type $$Props = Pick<DayProps, 'illustration' | 'release' | 'index' | 'title'>;
 
@@ -16,7 +17,7 @@
 
     const { illustration = '', release, index, title }: Props = $props();
 
-    const { days, hours, minutes, seconds, hasReleased } = createCountdown(release);
+    const { days, hours, minutes, seconds, hasReleased } = untrack(() => createCountdown(release));
 </script>
 
 <a href="#day-{index}">

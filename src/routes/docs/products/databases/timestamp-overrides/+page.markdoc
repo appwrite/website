@@ -201,6 +201,38 @@ await databases.createDocument(
     },
 );
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.create_document(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        &ID::unique(),
+        json!({
+            "$createdAt": "2025-08-10T12:34:56.000Z",
+            "$updatedAt": "2025-08-10T12:34:56.000Z"
+            // ...your attributes
+        }),
+        None,
+        None,
+    ).await?;
+
+    println!("Created: {:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 ### Update with custom timestamps {% #update-custom %}
@@ -343,6 +375,36 @@ await databases.updateDocument(
     // ...your attributes
   },
 );
+```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.update_document(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        "<DOCUMENT_ID>",
+        Some(json!({
+            "$updatedAt": "2025-08-10T12:34:56.000Z"
+            // ...your attributes
+        })),
+        None,
+        None,
+    ).await?;
+
+    println!("Updated: {:?}", result);
+    Ok(())
+}
 ```
 {% /multicode %}
 
@@ -568,6 +630,45 @@ await databases.createDocuments(
   ],
 );
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.create_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        vec![
+            json!({
+                "$id": ID::unique(),
+                "$createdAt": "2024-01-01T00:00:00.000Z",
+                "$updatedAt": "2024-01-01T00:00:00.000Z"
+                // ...your attributes
+            }),
+            json!({
+                "$id": ID::unique(),
+                "$createdAt": "2024-02-01T00:00:00.000Z",
+                "$updatedAt": "2024-02-01T00:00:00.000Z"
+                // ...your attributes
+            }),
+        ],
+        None,
+    ).await?;
+
+    println!("Bulk create: {:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 ### Bulk upsert {% #bulk-upsert %}
@@ -744,6 +845,38 @@ await databases.upsertDocuments(
   ],
 );
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.upsert_documents(
+        "<DATABASE_ID>",
+        "<COLLECTION_ID>",
+        vec![
+            json!({
+                "$id": "<DOCUMENT_ID_OR_NEW_ID>",
+                "$createdAt": "2024-01-01T00:00:00.000Z",
+                "$updatedAt": "2025-01-01T00:00:00.000Z"
+                // ...your attributes
+            }),
+        ],
+        None,
+    ).await?;
+
+    println!("Bulk upsert: {:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 # Common use cases {% #use-cases %}
@@ -847,6 +980,39 @@ await databases.createDocument(
   },
 );
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.create_document(
+        "<DATABASE_ID>",
+        "blog_posts",
+        &ID::unique(),
+        json!({
+            "$createdAt": "<ORIGINAL_CREATED_AT_ISO>",
+            "$updatedAt": "<LAST_MODIFIED_ISO>",
+            "title": "<TITLE>",
+            "content": "<CONTENT>"
+        }),
+        None,
+        None,
+    ).await?;
+
+    println!("Created: {:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 ## Backdating records {% #backdating %}
@@ -945,6 +1111,39 @@ await databases.createDocument(
   },
 );
 ```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use appwrite::id::ID;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.create_document(
+        "<DATABASE_ID>",
+        "transactions",
+        &ID::unique(),
+        json!({
+            "$createdAt": "2023-12-31T23:59:59.000Z",
+            "$updatedAt": "2023-12-31T23:59:59.000Z",
+            "amount": 1000,
+            "type": "year-end-bonus"
+        }),
+        None,
+        None,
+    ).await?;
+
+    println!("Created: {:?}", result);
+    Ok(())
+}
+```
 {% /multicode %}
 
 ## Synchronization {% #synchronization %}
@@ -1028,6 +1227,36 @@ await databases.upsertDocument(
     'profile': '<PROFILE_DATA>'
   },
 );
+```
+```rust
+use appwrite::Client;
+use appwrite::services::databases::Databases;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let databases = Databases::new(&client);
+
+    let result = databases.upsert_document(
+        "<DATABASE_ID>",
+        "users",
+        "<DOCUMENT_ID_OR_NEW_ID>",
+        Some(json!({
+            "$updatedAt": "<EXTERNAL_LAST_MODIFIED_ISO>",
+            "profile": "<PROFILE_DATA>"
+        })),
+        None,
+        None,
+    ).await?;
+
+    println!("Upserted: {:?}", result);
+    Ok(())
+}
 ```
 {% /multicode %}
 

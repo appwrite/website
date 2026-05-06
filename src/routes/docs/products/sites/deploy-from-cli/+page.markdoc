@@ -20,6 +20,8 @@ you can do so by editing the `appwrite.config.json` file.
 Learn more about appwrite.config.json
 {% /arrow_link %}
 
+For larger projects, you can split site definitions into a separate JSON file with [multi-file CLI configuration](/docs/tooling/command-line/installation#multi-file-configuration).
+
 # Debugging
 
 - If you updated your site's configuration but the deployment is not working as expected, you may need to first redeploy your site before the changes take effect.

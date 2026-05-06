@@ -180,6 +180,40 @@ func main() {
     fmt.Printf("Rows: %+v\n", rows)
 }
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::tables_db::TablesDB;
+use appwrite::query::Query;
+use serde_json::Value;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let tables_db = TablesDB::new(&client);
+
+    let rows = tables_db.list_rows(
+        "<DATABASE_ID>",
+        "<TABLE_ID>",
+        Some(vec![
+            Query::equal("title", Value::Array(vec![
+                Value::String("Avatar".to_string()),
+                Value::String("Lord of the Rings".to_string()),
+            ])).to_string(),
+            Query::greater_than("year", 1999).to_string(),
+        ]),
+        None,
+        None,
+        None,
+    ).await?;
+
+    println!("{:?}", rows);
+    Ok(())
+}
+```
 ```server-php
 <?php
 
@@ -286,6 +320,9 @@ Query.select(["name", "title"])
 ```server-go
 query.Select([]string{"name", "title"})
 ```
+```server-rust
+Query::select(vec!["name", "title"]).to_string()
+```
 ```http
 {"method":"select","values":["name","title"]}
 ```
@@ -340,6 +377,15 @@ $doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["name", "age"])]
 );
+```
+```server-rust
+let doc = tables_db.get_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some(vec![Query::select(vec!["name", "age"]).to_string()]),
+    None,
+).await?;
 ```
 ```client-apple
 let doc = try await tablesDB.getRow(
@@ -401,6 +447,15 @@ $doc = $tablesDB->getRow(
     '<DATABASE_ID>', '<TABLE_ID>', '<ROW_ID>',
     [Query::select(["*", "reviews.*"])]
 );
+```
+```server-rust
+let doc = tables_db.get_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some(vec![Query::select(vec!["*", "reviews.*"]).to_string()]),
+    None,
+).await?;
 ```
 ```client-apple
 let doc = try await tablesDB.getRow(
@@ -465,6 +520,15 @@ $doc = $tablesDB->getRow(
     [Query::select(["name", "age", "reviews.author", "reviews.rating"])]
 );
 ```
+```server-rust
+let doc = tables_db.get_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some(vec![Query::select(vec!["name", "age", "reviews.author", "reviews.rating"]).to_string()]),
+    None,
+).await?;
+```
 ```client-apple
 let doc = try await tablesDB.getRow(
     databaseId: "<DATABASE_ID>",
@@ -500,6 +564,9 @@ Query.select(["*", "reviews.*", "reviews.author.*"])
 ```
 ```server-php
 Query::select(["*", "reviews.*", "reviews.author.*"])
+```
+```server-rust
+Query::select(vec!["*", "reviews.*", "reviews.author.*"]).to_string()
 ```
 ```client-apple
 Query.select(["*", "reviews.*", "reviews.author.*"])
@@ -565,6 +632,9 @@ Query.equal("title", value: ["Iron Man"])
 ```server-go
 query.Equal("title", []string{"Iron Man"})
 ```
+```server-rust
+Query::equal("title", Value::Array(vec![Value::String("Iron Man".to_string())])).to_string()
+```
 ```http
 {"method":"equal","column":"title","values":["Iron Man"]}
 ```
@@ -598,6 +668,9 @@ Query.notEqual("title", value: "Iron Man")
 ```
 ```server-go
 query.NotEqual("title", "Iron Man")
+```
+```server-rust
+Query::not_equal("title", "Iron Man").to_string()
 ```
 ```http
 {"method":"notEqual","column":"title","values":"Iron Man"}
@@ -633,6 +706,9 @@ Query.lessThan("score", value: 10)
 ```server-go
 query.LessThan("score", 10)
 ```
+```server-rust
+Query::less_than("score", 10).to_string()
+```
 ```http
 {"method":"lessThan","column":"score","values":[10]}
 ```
@@ -666,6 +742,9 @@ Query.lessThanEqual("score", value: 10)
 ```
 ```server-go
 query.LessThanEqual("score", 10)
+```
+```server-rust
+Query::less_than_equal("score", 10).to_string()
 ```
 ```http
 {"method":"lessThanEqual","column":"score","values":[10]}
@@ -701,6 +780,9 @@ Query.greaterThan("score", value: 10)
 ```server-go
 query.GreaterThan("score", 10)
 ```
+```server-rust
+Query::greater_than("score", 10).to_string()
+```
 ```http
 {"method":"greaterThan","column":"score","values":[10]}
 ```
@@ -735,6 +817,9 @@ Query.greaterThanEqual("score", value: 10)
 ```server-go
 query.GreaterThanEqual("score", 10)
 ```
+```server-rust
+Query::greater_than_equal("score", 10).to_string()
+```
 ```http
 {"method":"greaterThanEqual","column":"score","values":[10]}
 ```
@@ -768,6 +853,9 @@ Query.between("price", start: 5, end: 10)
 ```
 ```server-go
 query.Between("price", 5, 10)
+```
+```server-rust
+Query::between("price", 5, 10).to_string()
 ```
 ```http
 {"method":"between","column":"price","values":[5,10]}
@@ -813,6 +901,9 @@ Query::notBetween("price", 5, 10)
 ```server-swift
 Query.notBetween("price", start: 5, end: 10)
 ```
+```server-rust
+Query::not_between("price", 5, 10).to_string()
+```
 ```http
 {"method":"notBetween","column":"price","values":[5,10]}
 ```
@@ -849,6 +940,9 @@ Query.isNull("name")
 ```server-go
 query.IsNull("name")
 ```
+```server-rust
+Query::is_null("name").to_string()
+```
 ```http
 {"method":"isNull","column":"name"}
 ```
@@ -882,6 +976,9 @@ Query.isNotNull("name")
 ```
 ```server-go
 query.IsNotNull("name")
+```
+```server-rust
+Query::is_not_null("name").to_string()
 ```
 ```http
 {"method":"isNotNull","column":"name"}
@@ -918,6 +1015,9 @@ Query.startsWith("name", value: "Once upon a time")
 ```
 ```server-go
 query.StartsWith("name", "Once upon a time")
+```
+```server-rust
+Query::starts_with("name", "Once upon a time").to_string()
 ```
 ```http
 {"method":"startsWith","column":"name","values":["Once upon a time"]}
@@ -962,6 +1062,9 @@ Query::notStartsWith("name", "Once upon a time")
 ```server-swift
 Query.notStartsWith("name", value: "Once upon a time")
 ```
+```server-rust
+Query::not_starts_with("name", "Once upon a time").to_string()
+```
 ```http
 {"method":"notStartsWith","column":"name","values":["Once upon a time"]}
 ```
@@ -995,6 +1098,9 @@ Query.endsWith("name", value: "happily ever after.")
 ```
 ```server-go
 query.EndsWith("name", "happily ever after.")
+```
+```server-rust
+Query::ends_with("name", "happily ever after.").to_string()
 ```
 ```http
 {"method":"endsWith","column":"name","values":["happily ever after."]}
@@ -1038,6 +1144,9 @@ Query::notEndsWith("name", "happily ever after.")
 ```
 ```server-swift
 Query.notEndsWith("name", value: "happily ever after.")
+```
+```server-rust
+Query::not_ends_with("name", "happily ever after.").to_string()
 ```
 ```http
 {"method":"notEndsWith","column":"name","values":["happily ever after."]}
@@ -1103,6 +1212,16 @@ query.Contains("ingredients", []string{"apple", "banana"})
 
 // For strings
 query.Contains("name", "Tom")
+```
+```server-rust
+// For arrays
+Query::contains("ingredients", Value::Array(vec![
+    Value::String("apple".to_string()),
+    Value::String("banana".to_string()),
+])).to_string()
+
+// For strings
+Query::contains("name", "Tom").to_string()
 ```
 ```http
 # For arrays
@@ -1231,6 +1350,16 @@ Query.notContains("ingredients", listOf("apple", "banana"))
 // For strings
 Query.notContains("name", "Tom")
 ```
+```server-rust
+// For arrays
+Query::not_contains("ingredients", Value::Array(vec![
+    Value::String("apple".to_string()),
+    Value::String("banana".to_string()),
+])).to_string()
+
+// For strings
+Query::not_contains("name", "Tom").to_string()
+```
 ```http
 # For arrays
 {"method":"notContains","column":"ingredients","values":["apple","banana"]}
@@ -1272,6 +1401,9 @@ Query.search("text", value: "key words")
 ```
 ```server-go
 query.Search("text", "key words")
+```
+```server-rust
+Query::search("text", "key words").to_string()
 ```
 ```http
 {"method":"search","column":"text","values":["key words"]}
@@ -1321,6 +1453,9 @@ Query::notSearch("text", "key words")
 ```
 ```server-swift
 Query.notSearch("text", value: "key words")
+```
+```server-rust
+Query::not_search("text", "key words").to_string()
 ```
 ```http
 {"method":"notSearch","column":"text","values":["key words"]}
@@ -1382,6 +1517,12 @@ query.And([]string{
     query.GreaterThan("size", 5),
 })
 ```
+```server-rust
+Query::and(vec![
+    Query::less_than("size", 10).to_string(),
+    Query::greater_than("size", 5).to_string(),
+]).to_string()
+```
 ```http
 {"method":"and","values":[{"method":"lessThan","column":"size","values":[10]},{"method":"greaterThan","column":"size","values":[5]}]}
 ```
@@ -1440,6 +1581,12 @@ query.Or([]string{
     query.GreaterThan("size", 10),
 })
 ```
+```server-rust
+Query::or(vec![
+    Query::less_than("size", 5).to_string(),
+    Query::greater_than("size", 10).to_string(),
+]).to_string()
+```
 ```http
 {"method":"or","values":[{"method":"lessThan","column":"size","values":[5]},{"method":"greaterThan","column":"size","values":[10]}]}
 ```
@@ -1476,6 +1623,9 @@ Query.orderDesc("column")
 ```server-go
 query.OrderDesc("attribute")
 ```
+```server-rust
+Query::order_desc("column").to_string()
+```
 ```http
 {"method":"orderDesc","column":"column"}
 ```
@@ -1510,6 +1660,9 @@ Query.orderAsc("column")
 ```server-go
 query.OrderAsc("attribute")
 ```
+```server-rust
+Query::order_asc("column").to_string()
+```
 ```http
 {"method":"orderAsc","column":"column"}
 ```
@@ -1543,6 +1696,9 @@ Query.orderRandom()
 ```
 ```server-go
 query.OrderRandom()
+```
+```server-rust
+Query::order_random().to_string()
 ```
 ```http
 {"method":"orderRandom"}
@@ -1580,6 +1736,9 @@ Query.limit(25)
 ```server-go
 query.Limit(25)
 ```
+```server-rust
+Query::limit(25).to_string()
+```
 ```http
 {"method":"limit","values":[25]}
 ```
@@ -1613,6 +1772,9 @@ Query.offset(0)
 ```
 ```server-go
 query.Offset(0)
+```
+```server-rust
+Query::offset(0).to_string()
 ```
 ```http
 {"method":"offset","values":[0]}
@@ -1648,6 +1810,9 @@ Query.cursorAfter("62a7...f620")
 ```server-go
 query.CursorAfter("62a7...f620")
 ```
+```server-rust
+Query::cursor_after("62a7...f620").to_string()
+```
 ```http
 {"method":"cursorAfter","values":["62a7...f620"]}
 ```
@@ -1681,6 +1846,9 @@ Query.cursorBefore("62a7...a600")
 ```
 ```server-go
 query.CursorBefore("62a7...a600")
+```
+```server-rust
+Query::cursor_before("62a7...a600").to_string()
 ```
 ```http
 {"method":"cursorBefore","values":["62a7...a600"]}
@@ -1730,6 +1898,9 @@ Query::createdBefore("2025-01-01T00:00:00Z")
 ```server-swift
 Query.createdBefore("2025-01-01T00:00:00Z")
 ```
+```server-rust
+Query::created_before("2025-01-01T00:00:00Z").to_string()
+```
 ```http
 {"method":"createdBefore","values":["2025-01-01T00:00:00Z"]}
 ```
@@ -1772,6 +1943,9 @@ Query::createdAfter("2025-01-01T00:00:00Z")
 ```
 ```server-swift
 Query.createdAfter("2025-01-01T00:00:00Z")
+```
+```server-rust
+Query::created_after("2025-01-01T00:00:00Z").to_string()
 ```
 ```http
 {"method":"createdAfter","values":["2025-01-01T00:00:00Z"]}
@@ -1816,6 +1990,9 @@ Query::updatedBefore("2025-01-01T00:00:00Z")
 ```server-swift
 Query.updatedBefore("2025-01-01T00:00:00Z")
 ```
+```server-rust
+Query::updated_before("2025-01-01T00:00:00Z").to_string()
+```
 ```http
 {"method":"updatedBefore","values":["2025-01-01T00:00:00Z"]}
 ```
@@ -1858,6 +2035,9 @@ Query::updatedAfter("2025-01-01T00:00:00Z")
 ```
 ```server-swift
 Query.updatedAfter("2025-01-01T00:00:00Z")
+```
+```server-rust
+Query::updated_after("2025-01-01T00:00:00Z").to_string()
 ```
 ```http
 {"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
@@ -1933,6 +2113,14 @@ Query.distanceEqual("location", listOf(-73.9851, 40.7589), 200)
 ```server-java
 Query.distanceEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
 ```
+```server-rust
+Query::distance_equal(
+    "location",
+    Value::Array(vec![Value::from(-73.9851), Value::from(40.7589)]),
+    200,
+    true,
+).to_string()
+```
 ```http
 {"method":"distanceEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
 ```
@@ -1997,6 +2185,14 @@ Query.distanceNotEqual("location", listOf(-73.9851, 40.7589), 200)
 ```server-java
 Query.distanceNotEqual("location", Arrays.asList(-73.9851, 40.7589), 200)
 ```
+```server-rust
+Query::distance_not_equal(
+    "location",
+    Value::Array(vec![Value::from(-73.9851), Value::from(40.7589)]),
+    200,
+    true,
+).to_string()
+```
 ```http
 {"method":"distanceNotEqual","column":"location","values":[[-73.9851, 40.7589], 200]}
 ```
@@ -2058,6 +2254,14 @@ Query.distanceGreaterThan("location", [-73.9851, 40.7589], 200)
 ```server-kotlin
 Query.distanceGreaterThan("location", listOf(-73.9851, 40.7589), 200)
 ```
+```server-rust
+Query::distance_greater_than(
+    "location",
+    Value::Array(vec![Value::from(-73.9851), Value::from(40.7589)]),
+    200,
+    true,
+).to_string()
+```
 ```http
 {"method":"distanceGreaterThan","column":"location","values":[[-73.9851, 40.7589], 200]}
 ```
@@ -2118,6 +2322,14 @@ Query.distanceLessThan("location", [-73.9851, 40.7589], 200)
 ```
 ```server-kotlin
 Query.distanceLessThan("location", listOf(-73.9851, 40.7589), 200)
+```
+```server-rust
+Query::distance_less_than(
+    "location",
+    Value::Array(vec![Value::from(-73.9851), Value::from(40.7589)]),
+    200,
+    true,
+).to_string()
 ```
 ```http
 {"method":"distanceLessThan","column":"location","values":[[-73.9851, 40.7589], 200]}
@@ -2191,6 +2403,14 @@ Query.intersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 4
 ```server-kotlin
 Query.intersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
 ```
+```server-rust
+Query::intersects("area", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
+```
 ```http
 {"method":"intersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
 ```
@@ -2262,6 +2482,14 @@ Query.notIntersects("area", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733
 ```
 ```server-kotlin
 Query.notIntersects("area", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```server-rust
+Query::not_intersects("area", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
 ```
 ```http
 {"method":"notIntersects","column":"area","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2335,6 +2563,14 @@ Query.overlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.
 ```server-kotlin
 Query.overlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
 ```
+```server-rust
+Query::overlaps("zone", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
+```
 ```http
 {"method":"overlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
 ```
@@ -2406,6 +2642,14 @@ Query.notOverlaps("zone", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 
 ```
 ```server-kotlin
 Query.notOverlaps("zone", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
+```
+```server-rust
+Query::not_overlaps("zone", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
 ```
 ```http
 {"method":"notOverlaps","column":"zone","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
@@ -2479,6 +2723,14 @@ Query.touches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 
 ```server-kotlin
 Query.touches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
 ```
+```server-rust
+Query::touches("boundary", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
+```
 ```http
 {"method":"touches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
 ```
@@ -2551,6 +2803,14 @@ Query.notTouches("boundary", [[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.973
 ```server-kotlin
 Query.notTouches("boundary", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614), listOf(-73.9733, 40.7505), listOf(-73.9851, 40.7589)))
 ```
+```server-rust
+Query::not_touches("boundary", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614],
+    [-73.9733, 40.7505],
+    [-73.9851, 40.7589]
+])).to_string()
+```
 ```http
 {"method":"notTouches","column":"boundary","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614], [-73.9733, 40.7505], [-73.9851, 40.7589]]]}
 ```
@@ -2619,6 +2879,12 @@ Query.crosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```server-kotlin
 Query.crosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
 ```
+```server-rust
+Query::crosses("route", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614]
+])).to_string()
+```
 ```http
 {"method":"crosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
 ```
@@ -2686,6 +2952,12 @@ Query.notCrosses("route", [[-73.9851, 40.7589], [-73.9776, 40.7614]])
 ```
 ```server-kotlin
 Query.notCrosses("route", listOf(listOf(-73.9851, 40.7589), listOf(-73.9776, 40.7614)))
+```
+```server-rust
+Query::not_crosses("route", serde_json::json!([
+    [-73.9851, 40.7589],
+    [-73.9776, 40.7614]
+])).to_string()
 ```
 ```http
 {"method":"notCrosses","column":"route","values":[[[-73.9851, 40.7589], [-73.9776, 40.7614]]]}
@@ -2771,6 +3043,27 @@ rows, err := tablesDB.ListRows(
 if err != nil {
     log.Fatal(err)
 }
+```
+```server-rust
+let rows = tables_db.list_rows(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    Some(vec![
+        Query::or(vec![
+            Query::and(vec![
+                Query::equal("category", Value::Array(vec![Value::String("books".to_string())])).to_string(),
+                Query::less_than("price", 20).to_string(),
+            ]).to_string(),
+            Query::and(vec![
+                Query::equal("category", Value::Array(vec![Value::String("magazines".to_string())])).to_string(),
+                Query::less_than("price", 10).to_string(),
+            ]).to_string(),
+        ]).to_string(),
+    ]),
+    None,
+    None,
+    None,
+).await?;
 ```
 ```http
 {"method":"or","values":[{"method":"and","values":[{"method":"equal","column":"category","values":["books"]},{"method":"lessThan","column":"price","values":[20]}]},{"method":"and","values":[{"method":"equal","column":"category","values":["magazines"]},{"method":"lessThan","column":"price","values":[10]}]}]}

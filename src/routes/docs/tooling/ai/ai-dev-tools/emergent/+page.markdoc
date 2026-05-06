@@ -23,8 +23,7 @@ To connect Appwrite MCP servers to Emergent:
     "appwrite-api": {
       "command": "uvx",
       "args": [
-        "mcp-server-appwrite",
-        "--users"
+        "mcp-server-appwrite"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
@@ -64,12 +63,6 @@ To connect Appwrite MCP servers to Emergent:
 
 {% /tabsitem %}
 {% /tabs %}
-
-{% info title="Enable other API MCP tools" %}
-
-To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
-
-{% /info %}
 
 {% /section %}
 

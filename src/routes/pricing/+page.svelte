@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import { page } from '$app/state';
+    import { FooterNav, MainFooter } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
@@ -10,6 +11,12 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
     import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description =
@@ -109,7 +116,10 @@
                                                 event="pricing-cards-free-click"
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Start building</span
+                                                    >{heroCtaIfShortStartBuilding(
+                                                        'Start building',
+                                                        navCtaLabel
+                                                    )}</span
                                                 >
                                             </Button>
                                         </header>
@@ -126,6 +136,7 @@
                                                         project</span
                                                     >
                                                 </li>
+                                                <li><span>15-minute build timeouts</span></li>
                                             </ul>
                                             <p class="text-caption text-secondary mt-4">
                                                 Free projects are paused after 1 week of inactivity.
@@ -181,7 +192,10 @@
                                                 event="pricing-cards-pro-click"
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Start building</span
+                                                    >{heroCtaIfShortStartBuilding(
+                                                        'Start building',
+                                                        navCtaLabel
+                                                    )}</span
                                                 >
                                             </Button>
                                         </header>
@@ -202,6 +216,9 @@
                                                     <span
                                                         >Unlimited Databases, Buckets, and Functions</span
                                                     >
+                                                </li>
+                                                <li>
+                                                    <span>45-minute build timeouts</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -250,7 +267,10 @@
                                                     rel="noopener noreferrer"
                                                 >
                                                     <span class="text-sub-body font-medium"
-                                                        >Start building</span
+                                                        >{heroCtaIfShortStartBuilding(
+                                                            'Start building',
+                                                            navCtaLabel
+                                                        )}</span
                                                     >
                                                 </Button>
                                             </header>
@@ -415,7 +435,6 @@
             </div>
             <div class="web-big-padding-section-level-2 relative !mb-0">
                 <div class="container">
-                    <PreFooter />
                     <FooterNav />
                     <MainFooter />
                 </div>

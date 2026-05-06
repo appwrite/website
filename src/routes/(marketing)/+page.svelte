@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import Bento from './(components)/bento/bento.svelte';
     import CaseStudies from './(components)/case-studies.svelte';
     import Features from './(components)/features.svelte';
@@ -17,43 +18,47 @@
 
 <Head
     title="Appwrite - Build like a team of hundreds"
-    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Hosting."
+    description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Sites for static sites, SSR, and CSR frontends."
 />
 
 <Main>
-    <Hero
-        title="Build like a team of hundreds"
-        subtitle="Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place."
-    />
-    <Platforms headline="Designed for the tools you work with" />
-    <LogoList class="border-smooth border-b" title="Loved by startups and world leaders" />
-    <Bento />
-    <Pullquote
-        name="Phil McCluskey"
-        title="App Manager, Majik Kids"
-        avatar="/images/testimonials/phil.jpg"
-    >
-        <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the tools
-        that you need with Appwrite.</Pullquote
-    >
-    <Ai />
-    <CaseStudies />
-    <Features theme="light" />
-    <div class="light bg-[#EDEDF0]">
-        <Map theme="light" />
-        <Scale
-            testimonial={{
-                name: 'Ryan O’Connor',
-                title: 'Founder',
-                company: 'K-Collect',
-                image: '/images/testimonials/ryan-oconner-testimonial.png'
-            }}
+    <Hero />
+    <Platforms headline="Optimized for the frameworks, languages and agents you love" />
+    <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
+
+    {#if browser}
+        <!-- Below the fold — client-side only to avoid SSR CPU cost -->
+        <Bento />
+        <Pullquote
+            name="Phil McCluskey"
+            title="App Manager, Majik Kids"
+            avatar="/images/testimonials/phil-avatar.webp"
         >
-            The switch to using Appwrite brought
-            <span class="text-primary">infinite value that I'm still discovering today.</span>
-        </Scale>
-    </div>
-    <Pricing />
+            <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the
+            tools that you need with Appwrite.</Pullquote
+        >
+        <Ai />
+        <CaseStudies />
+        <Features theme="light" />
+        <div class="light bg-[#EDEDF0]">
+            <Map theme="light" />
+            <Scale
+                testimonial={{
+                    name: 'Ryan O’Connor',
+                    title: 'Founder',
+                    company: 'K-Collect',
+                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                }}
+            >
+                The switch to using Appwrite brought
+                <span class="text-primary">infinite value that I'm still discovering today.</span>
+            </Scale>
+        </div>
+        <Pricing />
+    {:else}
+        <!-- Placeholder to keep the footer below the fold on SSR -->
+        <div class="h-screen" aria-hidden="true"></div>
+    {/if}
 </Main>
 
 <div class="container">

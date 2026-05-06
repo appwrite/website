@@ -23,6 +23,8 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
+export const latestVersion = allVersions[0];
+
 export const Service = {
     Account: 'account',
     Avatars: 'avatars',
@@ -36,7 +38,8 @@ export const Service = {
     Teams: 'teams',
     Users: 'users',
     Sites: 'sites',
-    Tokens: 'tokens'
+    Tokens: 'tokens',
+    Project: 'project'
 } as const;
 
 export type ServiceType = typeof Service;
@@ -61,6 +64,7 @@ export const Platform = {
     ServerGo: 'server-go',
     ServerSwift: 'server-swift',
     ServerKotlin: 'server-kotlin',
+    ServerRust: 'server-rust',
     ServerJava: 'server-java',
     ServerGraphql: 'server-graphql',
     ServerRest: 'server-rest'
@@ -100,6 +104,7 @@ export const platformMap: Record<Language | string, string> = {
     [Platform.ServerJava]: 'Java',
     [Platform.ServerGraphql]: 'GraphQL',
     [Platform.ServerRest]: 'REST',
+    [Platform.ServerRust]: 'Rust',
     [Platform.ServerGo]: 'Go',
     sh: 'Shell',
     js: 'JavaScript',
@@ -138,6 +143,7 @@ export const platformMap: Record<Language | string, string> = {
     svelte: 'Svelte',
     groovy: 'Groovy',
     go: 'Go',
+    rust: 'Rust',
     dockerfile: 'Dockerfile',
     docker: 'Dockerfile',
     ini: 'INI',
@@ -158,7 +164,8 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',
     [Service.Sites]: 'Sites',
-    [Service.Tokens]: 'Tokens'
+    [Service.Tokens]: 'Tokens',
+    [Service.Project]: 'Project'
 };
 
 export const preferredVersion = writable<Version | null>(

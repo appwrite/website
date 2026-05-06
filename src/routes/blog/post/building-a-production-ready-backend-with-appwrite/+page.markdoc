@@ -9,6 +9,17 @@ author: atharva
 category: tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What does production-ready mean for a backend?"
+    answer: "Production-ready means your auth handles edge cases like expired sessions and brute-force attempts, your database enforces permissions at the row level rather than only in frontend code, your file storage serves assets through a CDN, and your serverless functions recover gracefully from failures. Treating these as later problems usually leads to rewriting core infrastructure under pressure."
+  - question: "Which authentication features does Appwrite include out of the box?"
+    answer: "Appwrite Auth supports over 30 OAuth providers, email and password, phone OTP, magic links, anonymous sessions, and custom token flows. Multi-factor authentication is built in. Session management handles token rotation, expiry, and device tracking. Password security uses Argon2 hashing with breach detection and configurable strength requirements. Teams and labels let you model role-based access without building a permissions system from scratch."
+  - question: "How does Appwrite enforce data permissions in production?"
+    answer: "Appwrite Databases support row-level permissions, so every row can have its own read and write rules. Access control lives in the data layer rather than in application code, which means a misconfigured frontend route cannot expose data it should not. Indexes, atomic operations, and Realtime subscriptions also keep queries fast and consistent at scale."
+  - question: "How should you choose a runtime for Appwrite Functions?"
+    answer: "Appwrite Functions support Node.js, Python, Go, PHP, Dart, Bun, Deno, and more. Compiled languages like Go have faster cold starts and are a good fit for latency-sensitive endpoints. Keep functions focused on one responsibility, use environment variables for secrets, and connect Functions to Git so deployments happen automatically when you push to your repo."
+  - question: "What does Appwrite offer beyond the core backend services?"
+    answer: "Appwrite Messaging unifies email (Mailgun, SendGrid), SMS (Twilio, Vonage, MSG91), and push notifications (FCM, APNs) behind one configuration, which is useful for transactional emails and security alerts. Appwrite Sites provides Git-based hosting with global CDN, DDoS protection, a web application firewall, automatic TLS, and instant rollbacks for frameworks like Next.js, SvelteKit, Nuxt, TanStack Start, and Astro."
 ---
 
 Most teams don't struggle with building a backend. They struggle with building one that holds up. Authentication gets bolted on, database schemas grow without structure, file uploads break under load, and security becomes an afterthought patched in after the first incident.

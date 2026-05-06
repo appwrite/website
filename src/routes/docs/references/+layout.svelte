@@ -99,6 +99,11 @@
                     label: 'Avatars',
                     icon: 'icon-user-circle',
                     href: `${prefix}/avatars`
+                },
+                {
+                    label: 'Project',
+                    icon: 'icon-cube',
+                    href: `${prefix}/project`
                 }
             ]
         }

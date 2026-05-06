@@ -662,6 +662,46 @@ let message = try await messaging.createPush(
   scheduledAt: ""     // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<PROJECT_ID>")                 // Your project ID
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2"); // Your secret API key
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_push(
+        "<MESSAGE_ID>",
+        Some("<TITLE>"),                    // title (optional)
+        Some("<BODY>"),                     // body (optional)
+        Some(vec![]),                       // topics (optional)
+        Some(vec![]),                       // users (optional)
+        Some(vec![]),                       // targets (optional)
+        Some(json!({})),                    // data (optional)
+        Some("<ACTION>"),                   // action (optional)
+        Some("<IMAGE>"),                    // image (optional)
+        Some("<ICON>"),                     // icon (optional)
+        Some("<SOUND>"),                    // sound (optional)
+        Some("<COLOR>"),                    // color (optional)
+        Some("<TAG>"),                      // tag (optional)
+        Some(1),                            // badge (optional)
+        Some(false),                        // draft (optional)
+        None,                               // scheduled_at (optional)
+        None,                               // content_available (optional)
+        None,                               // critical (optional)
+        None,                               // priority (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}

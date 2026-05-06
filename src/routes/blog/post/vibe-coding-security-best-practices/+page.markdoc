@@ -17,6 +17,8 @@ AI-generated code is not inherently secure, and without proper oversight, it can
 
 Security must be a top priority for vibe coders, and as a developer, you must take responsibility for reviewing, testing, and securing AI-generated code. In this article, we'll explore **20 essential security best practices** you must follow as a vibe coder to ensure your applications remain safe.
 
+Which tools you allow into your workflow matters too: permissions, data handling, and how much of the repo an assistant can touch vary widely. For strengths, limits, and fit across common AI IDEs and builders, see [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools).
+
 # 1. Always review and understand AI-generated code
 
 One of the most common mistakes developers make when using AI-generated code is assuming that it is correct and secure by default. AI models do not "think" like humans. They generate code based on patterns from their training data. **They don't have feelings, and therefore, cannot feel responsible for the code they generate.** This means they can produce insecure, inefficient, or completely incorrect solutions that may work at first glance but introduce serious risks.

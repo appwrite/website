@@ -56,8 +56,7 @@ Update the `mcp.json` file to include the API server:
     "appwrite-api": {
       "command": "uvx",
       "args": [
-        "mcp-server-appwrite",
-        "--sites"
+        "mcp-server-appwrite"
       ],
       "env": {
         "APPWRITE_PROJECT_ID": "your-project-id",
@@ -98,12 +97,6 @@ Update the `mcp.json` file to include the docs server:
 {% /tabs %}
 
 Once you save the configuration, Copilot Chat will connect with the MCP server(s) and load all available tools.
-
-{% info title="Enable other API MCP tools" %}
-
-To enable additional API tools, learn more about [command-line arguments](/docs/tooling/ai/mcp-servers/api#command-line-arguments).
-
-{% /info %}
 
 {% /section %}
 

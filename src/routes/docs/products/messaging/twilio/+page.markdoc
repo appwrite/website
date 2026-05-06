@@ -323,6 +323,33 @@ let message = try await messaging.createSms(
   scheduledAt: ""                                // optional
 )
 ```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let message = messaging.create_sms(
+        "<MESSAGE_ID>",                              // messageId
+        "<CONTENT>",                                 // content
+        Some(vec![]),                                // topics (optional)
+        Some(vec![]),                                // users (optional)
+        Some(vec![]),                                // targets (optional)
+        Some(true),                                  // draft (optional)
+        None,                                        // scheduledAt (optional)
+    ).await?;
+
+    println!("{:?}", message);
+    Ok(())
+}
+```
 {% /multicode %}
 {% /tabsitem %}
 {% /tabs %}
@@ -585,6 +612,32 @@ let provider = try await messaging.updateTwilioProvider(
   authToken: "<AUTH_TOKEN>",                     // optional
   from: "<FROM>"                                 // optional
 )
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::messaging::Messaging;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("919c2d18fb5d4...a2ae413da83346ad2");
+
+    let messaging = Messaging::new(&client);
+
+    let provider = messaging.update_twilio_provider(
+        "<PROVIDER_ID>",                             // providerId
+        Some("<NAME>"),                              // name (optional)
+        Some(false),                                 // enabled (optional)
+        Some("<ACCOUNT_SID>"),                       // accountSid (optional)
+        Some("<AUTH_TOKEN>"),                         // authToken (optional)
+        Some("<FROM>"),                              // from (optional)
+    ).await?;
+
+    println!("{:?}", provider);
+    Ok(())
+}
 ```
 {% /multicode %}
 {% /tabsitem %}

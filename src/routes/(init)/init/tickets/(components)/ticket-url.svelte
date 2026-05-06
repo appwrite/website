@@ -5,7 +5,7 @@
 
     let { username }: Props = $props();
 
-    const copyUrl = `https://appwrite.io/init/tickets/${username}`;
+    const copyUrl = $derived(`https://appwrite.io/init/tickets/${username}`);
 </script>
 
 <div

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { browser } from '$app/environment';
+    import { page } from '$app/state';
     import { Tabs } from '$lib/UI';
     import { visible } from '$lib/actions/visible';
     import { Tooltip } from '$lib/components';
@@ -12,6 +13,10 @@
     import { fly } from 'svelte/transition';
     import { trackEvent } from '$lib/actions/analytics';
     import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
+
+    $: navCtaLabel = (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
 
     type LinkRow = { text: string; url: string; event: string };
     type Row = string | true | LinkRow;
@@ -363,6 +368,14 @@
                     free: '-',
                     pro: '$2 per 1m',
                     scale: '$2 per 1m',
+                    enterprise: 'Custom'
+                },
+                {
+                    title: 'Build timeout',
+                    info: 'Maximum duration for Sites and Functions build jobs',
+                    free: '15 minutes',
+                    pro: '45 minutes',
+                    scale: '45 minutes',
                     enterprise: 'Custom'
                 },
                 {
@@ -757,7 +770,12 @@
                                     href={getAppwriteDashboardUrl('/register')}
                                     event="pricing-compare-free-click"
                                 >
-                                    <span class="text-sub-body font-medium">Start building</span>
+                                    <span class="text-sub-body font-medium"
+                                        >{heroCtaIfShortStartBuilding(
+                                            'Start building',
+                                            navCtaLabel
+                                        )}</span
+                                    >
                                 </Button>
                             </div>
                         </div>
@@ -773,7 +791,12 @@
                                     event="pricing-compare-pro-click"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="text-sub-body font-medium">Start building</span>
+                                    <span class="text-sub-body font-medium"
+                                        >{heroCtaIfShortStartBuilding(
+                                            'Start building',
+                                            navCtaLabel
+                                        )}</span
+                                    >
                                 </Button>
                             </div>
                         </div>
@@ -791,7 +814,11 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span class="text-sub-body font-medium">Start building</span
+                                        <span class="text-sub-body font-medium"
+                                            >{heroCtaIfShortStartBuilding(
+                                                'Start building',
+                                                navCtaLabel
+                                            )}</span
                                         >
                                     </Button>
                                 </div>

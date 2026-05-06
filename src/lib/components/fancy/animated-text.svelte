@@ -8,7 +8,7 @@
 
     let { text, class: className = '' }: Props = $props();
 
-    const words = text.split(' ');
+    const words = $derived(text.split(' '));
 </script>
 
 <span class="sr-only">{text}</span>

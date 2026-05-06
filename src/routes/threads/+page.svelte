@@ -12,6 +12,7 @@
     import PreFooter from './PreFooter.svelte';
     import TagsDropdown from './TagsDropdown.svelte';
     import { getThreads } from './helpers';
+    import { untrack } from 'svelte';
 
     const title = 'Threads' + TITLE_SUFFIX;
     const description =
@@ -20,7 +21,7 @@
 
     let { data } = $props();
 
-    let threads = $state(data.threads);
+    let threads = $state(untrack(() => data.threads));
 
     let searching = false; // Do some sick animation
     let query = $state('');

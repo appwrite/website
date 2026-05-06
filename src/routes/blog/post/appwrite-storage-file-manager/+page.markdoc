@@ -9,6 +9,19 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the difference between Appwrite Storage and Appwrite Databases?"
+    answer: "Appwrite Databases store structured data such as user profiles, product records, and settings. Appwrite Storage stores files such as images, PDFs, videos, and documents in buckets. They are intentionally separate, and it is common to store a file ID in a database row to link a file to its structured metadata."
+  - question: "What does the fileSecurity flag on a bucket do?"
+    answer: "When fileSecurity is set to true, each file can have its own permissions in addition to the bucket-level permissions. When false, only bucket-level permissions apply. For a multi-user file manager where each user owns specific files, you should enable fileSecurity so per-file permissions take effect."
+  - question: "How does Appwrite Storage handle large files?"
+    answer: "The Appwrite SDK handles chunked uploads automatically when you call createFile with a standard browser File object. You do not need to manage chunking yourself, which makes it straightforward to upload large files reliably from a browser file input or drag-and-drop zone."
+  - question: "Can Appwrite generate image thumbnails or previews?"
+    answer: "Yes. Appwrite Storage offers built-in image transformations through getFilePreview, where you can request a resized thumbnail with parameters like width, height, gravity, and quality. This means you can serve thumbnails without integrating a separate image transformation service."
+  - question: "How do I make sure each user can only see their own uploaded files?"
+    answer: "Set the bucket to allow authenticated users to create files (for example create(\"users\")) and set per-file permissions on upload to the uploading user only (read, update, and delete on user:USER_ID). Enable fileSecurity on the bucket so file-level permissions are enforced alongside the bucket-level permissions."
+  - question: "What is the difference between getFileDownload and getFileView?"
+    answer: "getFileDownload returns a URL that forces a browser download of the file. getFileView returns a URL that serves the file with appropriate content headers, which makes it suitable for inline display such as showing an image directly in an img tag."
 ---
 
 File management is one of those features that sounds simple until you're deep in the weeds: S3 bucket policies, pre-signed URLs, CORS headers, permission checks. [Appwrite Storage](/docs/products/storage) is designed to cut through that complexity with a clean API and bucket-based organization that maps naturally to most app architectures.

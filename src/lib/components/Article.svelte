@@ -22,10 +22,10 @@
 </script>
 
 <li>
-    <a class="block overflow-hidden rounded-lg bg-transparent" {href}>
+    <a class="block w-full overflow-hidden rounded-lg bg-transparent" {href}>
         <Media
             src={cover}
-            class="aspect-video transition-transform duration-250 hover:scale-105"
+            class="web-u-media-ratio-16-9 w-full transition-transform duration-250 hover:scale-105"
             alt={title}
             autoplay
             controls={false}

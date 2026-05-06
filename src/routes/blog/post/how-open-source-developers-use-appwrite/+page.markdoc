@@ -9,6 +9,17 @@ author: aishwari
 category: open-source
 featured: false
 unlisted: true
+faqs:
+  - question: "Is Appwrite open source?"
+    answer: "Yes. Appwrite is BSD-3-Clause licensed and the entire codebase lives on GitHub. You can read the source, fork it, run it on your own infrastructure, and contribute changes back. Over 55,000 developers have starred the repository."
+  - question: "Can I self-host Appwrite?"
+    answer: "Yes. A single Docker command spins up a full Appwrite instance on any infrastructure, whether that is a VPS, a home server, a cloud VM, or a local development machine. Self-hosting is a first-class experience and is a common choice for privacy-sensitive products, contributor-friendly open-source apps, and teams with strict data residency requirements."
+  - question: "What does Appwrite include out of the box?"
+    answer: "Appwrite provides authentication (email and password, OAuth, magic links, and phone), a database with querying, indexing, and permissions, file storage with image transformations and CDN delivery, serverless functions, and real-time subscriptions. Idiomatic SDKs ship for JavaScript, TypeScript, Python, Dart, Swift, Kotlin, PHP, Ruby, Go, and .NET."
+  - question: "How are Appwrite Functions used by open-source developers?"
+    answer: "Functions run server-side logic in response to Appwrite events, cron schedules, or HTTP requests, in your language of choice. Developers use them for transactional emails, webhook processing, thumbnail generation, scheduled syncs, and similar background work. Because the runtime is open source, contributors can add support for new languages or customize behavior."
+  - question: "How can I contribute to Appwrite?"
+    answer: "The repository is actively maintained and accepts community pull requests, with a Good First Issue label that points to suitable starting points. Developers contribute bug fixes, new features, SDK improvements, documentation, and runtimes for Functions. Appwrite also participates in Hacktoberfest each year, which brings new contributors into the project."
 ---
 
 Most backend platforms ask you to trust them. Trust that they won't change their pricing. Trust that your data is handled responsibly. Trust that the API you built against today will exist tomorrow. Open-source developers don't work that way, and they shouldn't have to.
@@ -43,7 +54,7 @@ Appwrite ships idiomatic SDKs for JavaScript, TypeScript, Python, Dart, Swift, K
 
 # Running backend logic with Appwrite Functions
 
-Many open-source developers need server-side logic that runs in response to events — a new user signing up, a file being uploaded, a database record changing, or a scheduled job running at midnight. Appwrite Functions handles this without requiring a separate service.
+Many open-source developers need server-side logic that runs in response to events: a new user signing up, a file being uploaded, a database record changing, or a scheduled job running at midnight. Appwrite Functions handles this without requiring a separate service.
 
 Functions are written in your language of choice, versioned in Git, and deployed directly to Appwrite. They can be triggered by any Appwrite event, a cron schedule, or an HTTP request. The code is just code, there's no proprietary runtime format to learn, and the function lives in your repository alongside the rest of your project.
 

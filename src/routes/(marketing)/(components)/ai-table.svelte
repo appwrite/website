@@ -8,7 +8,6 @@
     type ArenaModel = {
         name: string;
         logo: string;
-        colorLogo: string;
         cost: string; // The API provides cost fields, but format it appropriately
         overall: number;
         categories: Record<ModelCategory, number>;
@@ -24,23 +23,11 @@
         'Messaging'
     ]);
 
-    const logoMap: Record<string, { dark: string; color: string }> = {
-        OpenAI: {
-            dark: '/images/docs/mcp/logos/dark/openai.svg',
-            color: '/images/docs/mcp/logos/color/openai.svg'
-        },
-        Anthropic: {
-            dark: '/images/docs/mcp/logos/dark/claude.svg',
-            color: '/images/docs/mcp/logos/color/claude.svg'
-        },
-        MoonshotAI: {
-            dark: '/images/docs/mcp/logos/dark/kimi.svg',
-            color: '/images/docs/mcp/logos/color/kimi.svg'
-        },
-        Google: {
-            dark: '/images/docs/mcp/logos/dark/gemini.svg',
-            color: '/images/docs/mcp/logos/color/gemini.svg'
-        }
+    const logoMap: Record<string, string> = {
+        OpenAI: '/images/docs/mcp/logos/dark/openai.svg',
+        Anthropic: '/images/docs/mcp/logos/dark/claude.svg',
+        MoonshotAI: '/images/docs/mcp/logos/dark/kimi.svg',
+        Google: '/images/docs/mcp/logos/dark/gemini.svg'
     };
 
     onMount(async () => {
@@ -51,8 +38,7 @@
             // Map the parsed AI data to match the component's internal structure
             models = (data?.models || []).slice(0, 4).map((m: any) => ({
                 name: m.modelName,
-                logo: logoMap[m.provider]?.dark || '/images/docs/mcp/logos/dark/openai.svg', // Fallback icon
-                colorLogo: logoMap[m.provider]?.color || '/images/docs/mcp/logos/color/openai.svg',
+                logo: logoMap[m.provider] || '/images/docs/mcp/logos/dark/openai.svg',
                 cost: `$${(m.promptCostPerMillionTokens || 0).toFixed(2)}`,
                 overall: m.overall,
                 categories: {
@@ -202,17 +188,18 @@
             <thead>
                 <tr class="border-smooth border-b border-dashed bg-[#232325]">
                     <td
-                        class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-white/50 sm:px-5"
+                        class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-[#B4B4BA] sm:px-5"
                         >Model</td
                     >
-                    <td class="hidden px-5 py-3 text-left text-xs text-white/50 sm:table-cell"
+                    <td class="hidden px-5 py-3 text-left text-xs text-[#B4B4BA] sm:table-cell"
                         >Cost/1M</td
                     >
-                    <td class="px-4 py-3 text-right text-xs text-white/50 sm:px-5 sm:text-left"
+                    <td class="px-4 py-3 text-right text-xs text-[#B4B4BA] sm:px-5 sm:text-left"
                         >Overall</td
                     >
                     {#each categoryKeys as cat}
-                        <td class="hidden px-5 py-3 text-center text-xs text-white/50 md:table-cell"
+                        <td
+                            class="hidden px-5 py-3 text-center text-xs text-[#B4B4BA] md:table-cell"
                             >{cat}</td
                         >
                     {/each}
@@ -225,9 +212,9 @@
                         <td class="min-w-[140px] shrink-0 px-4 py-3 sm:px-5">
                             <div class="flex min-w-0 items-center gap-3">
                                 <img
-                                    src={model.colorLogo}
+                                    src={model.logo}
                                     alt=""
-                                    class="h-5 w-5 shrink-0 opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                                    class="h-5 w-5 shrink-0 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
                                 />
                                 <span
                                     class="text-primary text-sm font-medium whitespace-nowrap sm:text-base"
@@ -235,7 +222,7 @@
                                 >
                             </div>
                         </td>
-                        <td class="hidden px-5 py-3 text-base text-white/40 sm:table-cell"
+                        <td class="hidden px-5 py-3 text-base text-[#C4C4CC] sm:table-cell"
                             >{model.cost}</td
                         >
                         <td class="px-4 py-3 text-right sm:px-5 sm:text-left">
@@ -248,7 +235,7 @@
                         {#each categoryKeys as cat}
                             <td class="hidden px-5 py-3 text-center md:table-cell">
                                 <span
-                                    class="text-sm text-white/60 transition-colors duration-300 group-hover:text-[color:var(--hover-color)]"
+                                    class="text-sm text-[#C8C8D0] transition-colors duration-300 group-hover:text-[color:var(--hover-color)]"
                                     style="--hover-color: {getScoreColor(model.categories[cat])};"
                                     >{model.categories[cat]}%</span
                                 >

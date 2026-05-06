@@ -18,6 +18,7 @@
     import { Button, Icon } from '$lib/components/ui';
     import { initDates } from '../../+page.svelte';
     import CustomizationDrawer from './(components)/customization-drawer.svelte';
+    import { untrack } from 'svelte';
 
     let { data } = $props();
 
@@ -31,11 +32,13 @@
         { minQuietPeriodMs: 2500 }
     );
 
-    let originalTicketData = $state({
-        name: data.ticket?.name ?? '',
-        title: data.ticket?.title ?? '',
-        sticker: data.ticket?.sticker
-    });
+    let originalTicketData = $state(
+        untrack(() => ({
+            name: data.ticket?.name ?? '',
+            title: data.ticket?.title ?? '',
+            sticker: data.ticket?.sticker
+        }))
+    );
 
     let updatedTicketData = $derived({
         name: originalTicketData.name.split(' ')[0],

@@ -172,6 +172,12 @@
                     icon: 'icon-kotlin',
                     image: '/images/blog/placeholder.png',
                     href: 'kotlin'
+                },
+                {
+                    title: 'Rust',
+                    icon: 'web-icon-rust',
+                    image: '/images/blog/placeholder.png',
+                    href: 'rust'
                 }
             ]
         }

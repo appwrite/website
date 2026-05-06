@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the difference between Appwrite's Client SDK and Server SDK?"
+    answer: "The Client SDK authenticates as a logged-in user using a session and is bound by the permissions you set on tables, buckets, and functions. The Server SDK authenticates with an API key, which can bypass row-level permissions within the scopes the key was created with. Client SDKs ship for browsers and mobile, while Server SDKs ship for backend languages and Appwrite Functions."
+  - question: "Which Appwrite SDK should I use in a mobile or web app?"
+    answer: "Use a Client SDK. Client SDKs are available for Web, Flutter, React Native, Apple, and Android, and they handle session management automatically through cookies in browsers or secure storage on mobile. Each request runs as the logged-in user, so they can only access resources that user is permitted to read or write."
+  - question: "Can I use an Appwrite API key in client-side code?"
+    answer: "No. API keys grant elevated access at the project level, so embedding one in browser JavaScript or a mobile app exposes that access to anyone who extracts the key. API keys belong on a server you control, ideally inside an Appwrite Function or a backend service that authenticates user requests separately."
+  - question: "Which languages have Appwrite Server SDKs?"
+    answer: "Appwrite ships Server SDKs for Node.js, Python, Dart, PHP, Ruby, .NET, Go, Swift, and Kotlin. They are initialized with an API key created in the Console and scoped to specific capabilities like databases.write or messaging.write, so each backend service only holds the permissions it actually needs."
+  - question: "Do I need both SDKs in the same project?"
+    answer: "Often yes. A typical setup uses a Client SDK in your frontend to authenticate users and access their own data, and a Server SDK in Appwrite Functions or a backend service for administrative work, cross-user operations, and scheduled jobs. Mixing the two intentionally is the standard pattern."
 ---
 
 One of the most common points of confusion when starting with Appwrite is which SDK to use. Appwrite ships two distinct sets of [SDKs](/docs/sdks): one for client-side code running in browsers and mobile apps, and one for server-side code. They share a similar structure, but they authenticate differently and have different levels of access. Using the wrong one in the wrong context is a real security problem.
@@ -55,7 +66,7 @@ const tablesDB = new TablesDB(client);
 // Log in
 await account.createEmailPasswordSession("user@example.com", "password");
 
-// Read data — scoped to what this user can access
+// Read data, scoped to what this user can access
 const docs = await tablesDB.listRows({
   databaseId: "<DATABASE_ID>",
   tableId: "<TABLE_ID>",
@@ -84,7 +95,7 @@ const client = new Client()
 const tablesDB = new TablesDB(client);
 const users = new Users(client);
 
-// List all users — not possible from the Client SDK
+// List all users (not possible from the Client SDK)
 const allUsers = await users.list();
 
 // Write a row on behalf of the system
@@ -154,7 +165,7 @@ if (session) {
   sessionClient.setSession(session);
 }
 
-// Fetch data as the user — permissions are enforced
+// Fetch data as the user; permissions are enforced
 const account = new Account(sessionClient);
 const user = await account.get();
 ```

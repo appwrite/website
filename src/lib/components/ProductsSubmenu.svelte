@@ -191,8 +191,10 @@
                         class="my-4 flex flex-1 flex-col gap-3 outline-none xl:flex-row"
                     >
                         <img
-                            src="/images/blog/customer-story-storealert/cover.png"
+                            src="/images/blog/customer-story-storealert/cover-menu.webp"
                             alt="Case study cover"
+                            width="320"
+                            height="180"
                             class="min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] xl:max-w-30"
                         />
                         <p class="w-full text-pretty">

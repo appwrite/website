@@ -3,10 +3,11 @@
     import { isInTutorialDocs } from '$lib/layouts/Docs.svelte';
     import { getCodeHtml, type Language } from '$lib/utils/code';
     import { copy } from '$lib/utils/copy';
-    import { platformMap } from '$lib/utils/references';
+    import { platformMap, preferredPlatform } from '$lib/utils/references';
     import '$scss/hljs.css';
     import { melt } from '@melt-ui/svelte';
     import { getContext, hasContext } from 'svelte';
+    import { get } from 'svelte/store';
     import type { CodeContext } from '../tags/MultiCode.svelte';
 
     interface FenceProps {
@@ -57,6 +58,18 @@
 
             return n;
         });
+
+        const snippetSet = get(ctx.snippets);
+        const pref = get(preferredPlatform);
+        if (pref && snippetSet.has(pref as Language)) {
+            ctx.selected.set(pref);
+        } else {
+            const first = Array.from(snippetSet)[0] as Language;
+            ctx.selected.set(first);
+            if (pref && !snippetSet.has(pref as Language)) {
+                preferredPlatform.set(pref);
+            }
+        }
 
         ctx.selected.subscribe((n) => {
             if (n === language) {

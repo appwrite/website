@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "How does Appwrite Realtime work under the hood?"
+    answer: "Appwrite Realtime opens a single WebSocket connection per client and streams events for every channel that client subscribes to. When data changes in your project (a row is updated, a file is uploaded, a function execution completes), Appwrite emits an event and pushes it to every subscribed client over that connection."
+  - question: "What channels can I subscribe to with Appwrite Realtime?"
+    answer: "You can subscribe to channels for Databases (row-level changes), Storage (file events within buckets), Functions (execution status updates), Teams and memberships, and the authenticated user's account. Channels follow a hierarchical pattern, so you can subscribe broadly to all rows in a database or narrowly to a single row by ID."
+  - question: "Does Realtime enforce permissions?"
+    answer: "Yes. Permissions are enforced at the subscription level. A user only receives events for resources they have read access to. If a row update fires but the subscribed user does not have read permission on that row, the event is not delivered, so you do not need extra client-side filtering."
+  - question: "When should I avoid using Realtime?"
+    answer: "Realtime is not available for Server SDKs using API keys; for server-side reactions to events, use Appwrite Functions triggered by events instead. It is also overkill when updates are infrequent and a 30-second polling interval would suffice, when channels emit too many events for a client to keep up, or when you need offline-first sync semantics."
+  - question: "How do Realtime events relate to Appwrite Functions?"
+    answer: "Realtime events map to the same event system that triggers Appwrite Functions. The same event string (for example storage.*.files.*.create on a file upload) can fan out to subscribed clients via Realtime and to a Function via the event system simultaneously, which makes designing event-driven features predictable."
 ---
 
 Most apps start with a simple request-response model. A user submits a form, the server responds, the page updates. That model works fine until users need to see changes made by someone else, in real time, without refreshing the page. At that point you have a choice: poll the server on a timer, or open a persistent connection and let the server push updates.

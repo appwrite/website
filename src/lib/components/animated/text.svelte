@@ -10,7 +10,7 @@
 
     const { text, splitBy = 'words', staggerBy = 75, class: className, ...rest }: Props = $props();
 
-    const words = splitBy === 'words' ? text.split(' ') : text.split('');
+    const words = $derived(splitBy === 'words' ? text.split(' ') : text.split(''));
 </script>
 
 <span class="sr-only">{text}</span>

@@ -50,16 +50,20 @@
             label: 'IDEs',
             items: [
                 {
-                    label: 'VS Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
+                    label: 'Claude Code',
+                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
+                },
+                {
+                    label: 'Codex',
+                    href: '/docs/tooling/ai/ai-dev-tools/codex'
                 },
                 {
                     label: 'Cursor',
                     href: '/docs/tooling/ai/ai-dev-tools/cursor'
                 },
                 {
-                    label: 'Windsurf',
-                    href: '/docs/tooling/ai/ai-dev-tools/windsurf'
+                    label: 'VS Code',
+                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
                 },
                 {
                     label: 'OpenCode',
@@ -68,20 +72,12 @@
                 {
                     label: 'Google Antigravity',
                     href: '/docs/tooling/ai/ai-dev-tools/antigravity'
-                },
-                {
-                    label: 'Claude Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
                 }
             ]
         },
         {
             label: 'Vibe coding',
             items: [
-                {
-                    label: 'Imagine',
-                    href: '/docs/tooling/ai/ai-dev-tools/imagine'
-                },
                 {
                     label: 'Claude Desktop',
                     href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'

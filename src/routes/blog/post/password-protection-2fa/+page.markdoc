@@ -8,6 +8,17 @@ timeToRead: 7
 author: aditya-oberai
 category: security
 featured: false
+faqs:
+  - question: "What is Two-Factor Authentication (2FA) and why is it important?"
+    answer: "2FA adds an extra layer of security to your login process by requiring something you know (like a password) and something you have (like a phone or app code). It makes it much harder for attackers to gain access, even if they steal your password."
+  - question: "What types of 2FA can I use in my app?"
+    answer: "Common methods include SMS codes, email codes, authenticator apps (like Google Authenticator), hardware tokens, and push notifications. Each method adds a second layer of protection against unauthorized logins."
+  - question: "Is SMS-based 2FA secure enough?"
+    answer: "While SMS-based 2FA improves security over password-only logins, it's not the most secure option due to risks like SIM swapping. Authenticator apps or hardware tokens are more secure because they don't rely on telecom networks."
+  - question: "How can I add 2FA to my app with Appwrite?"
+    answer: "With Appwrite, you can enable 2FA directly through Appwrite Authentication. It supports TOTP apps, email, and SMS verification. You can easily configure these options via the Appwrite Console or API."
+  - question: "What should users do if they lose access to their 2FA method?"
+    answer: "Always provide backup options, like recovery codes, secondary email, or phone verification. This ensures users can safely regain access without compromising security."
 ---
 
 Updated on October 6, 2025
@@ -73,28 +84,6 @@ With the release of Appwrite 1.5, we have introduced the ability to implement [2
 - **Authenticator Apps (TOTP):** Use common authenticator apps like Google Authenticator or Twilio Authy for authentication.
 - **Emails:** A verified email can be used for authentication, providing a 6-digit code to the user.
 - **SMS:** A verified phone number can be used for authentication, providing a 6-digit code to the user.
-
-# Frequently asked questions (FAQs)
-
-**1. What is Two-Factor Authentication (2FA) and why is it important?**
-
-2FA adds an extra layer of security to your login process by requiring something you know (like a password) and something you have (like a phone or app code). It makes it much harder for attackers to gain access, even if they steal your password.
-
-**2. What types of 2FA can I use in my app?**
-
-Common methods include SMS codes, email codes, authenticator apps (like Google Authenticator), hardware tokens, and push notifications. Each method adds a second layer of protection against unauthorized logins.
-
-**3. Is SMS-based 2FA secure enough?**
-
-While SMS-based 2FA improves security over password-only logins, it’s not the most secure option due to risks like SIM swapping. Authenticator apps or hardware tokens are more secure because they don’t rely on telecom networks.
-
-**4. How can I add 2FA to my app with Appwrite?**
-
-With Appwrite, you can enable 2FA directly through Appwrite Authentication. It supports TOTP apps, email, and SMS verification. You can easily configure these options via the Appwrite Console or API.
-
-**5. What should users do if they lose access to their 2FA method?**
-
-Always provide backup options—like recovery codes, secondary email, or phone verification. This ensures users can safely regain access without compromising security.
 
 # Resources
 
