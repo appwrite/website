@@ -11,14 +11,7 @@
  * If you build paths with template literals (e.g. `` `/images/foo/${id}.png` ``), update the
  * extension manually when those assets are AVIF.
  */
-import {
-    readdirSync,
-    statSync,
-    existsSync,
-    readFileSync,
-    writeFileSync,
-    unlinkSync
-} from 'fs';
+import { readdirSync, statSync, existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 import { join, relative, sep, basename } from 'path';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
@@ -204,7 +197,9 @@ function update_code_references(replacements) {
             if (st.isDirectory()) {
                 walk_text(full);
             } else {
-                const ext = name.includes('.') ? name.slice(name.lastIndexOf('.')).toLowerCase() : '';
+                const ext = name.includes('.')
+                    ? name.slice(name.lastIndexOf('.')).toLowerCase()
+                    : '';
                 if (TEXT_EXTENSIONS.has(ext)) files_to_scan.push(full);
             }
         }

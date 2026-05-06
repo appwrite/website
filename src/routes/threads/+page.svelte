@@ -197,7 +197,11 @@
                             <ThreadCard {thread} {query} />
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
-                                <enhanced:img class="img" src="./(assets)/empty-state.avif" alt="" />
+                                <enhanced:img
+                                    class="img"
+                                    src="./(assets)/empty-state.avif"
+                                    alt=""
+                                />
                                 <span class="text-main-body font-medium"
                                     >No support threads found</span
                                 >
