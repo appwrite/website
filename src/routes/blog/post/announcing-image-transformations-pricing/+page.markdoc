@@ -3,7 +3,7 @@ layout: post
 title: Announcing image transformation pricing
 description: To keep Appwrite Cloud sustainable, we are introducing pricing for image transformations.
 date: 2025-03-03
-cover: /images/blog/announcing-image-transformations-pricing/cover.png
+cover: /images/blog/announcing-image-transformations-pricing/cover.avif
 timeToRead: 4
 author: eldad-fux
 category: product
@@ -31,7 +31,7 @@ This change will help support the computational resources required for this valu
 
 Please refer to our [Pricing Page](/pricing) for detailed pricing information, including origin image costs and included quotas for different plans.
 
-![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
+![console image](/images/blog/announcing-image-transformations-pricing/usage-component.avif)
 
 # How it works
 

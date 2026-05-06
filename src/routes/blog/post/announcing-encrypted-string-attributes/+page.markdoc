@@ -3,7 +3,7 @@ layout: post
 title: "Announcing Encrypted string attribute support: Built-in encryption for sensitive fields"
 description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
 date: 2025-07-10
-cover: /images/blog/announcing-encrypted-string-attributes/cover.png
+cover: /images/blog/announcing-encrypted-string-attributes/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import fingerprint from '../../(assets)/identity-bg.png';
+    import fingerprint from '../../(assets)/identity-bg.avif';
 
     const columns = 40;
     const rows = 40;

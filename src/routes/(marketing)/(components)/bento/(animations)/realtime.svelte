@@ -70,7 +70,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/realtime.png"
+                src="/images/icons/illustrated/dark/realtime.avif"
                 alt="Realtime icon"
                 class="size-7"
             />

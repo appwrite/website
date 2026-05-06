@@ -64,7 +64,7 @@
     const title = 'Enterprise' + TITLE_SUFFIX;
     const description =
         "Want to learn more about Appwrite's Enterprise plan? Send us a message, and we'll propose a pricing solution that fits your unique use case.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -85,7 +85,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <enhanced:img src="../bg.png" alt="" />
+    <enhanced:img src="../bg.avif" alt="" />
 </div>
 
 <Main>
@@ -278,7 +278,7 @@
                     name: 'Ryan O’Connor',
                     title: 'Founder',
                     company: 'K-Collect',
-                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                    image: '/images/testimonials/ryan-oconner-testimonial.avif'
                 }}
                 theme="dark"
             >

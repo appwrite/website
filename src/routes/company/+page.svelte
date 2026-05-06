@@ -9,7 +9,7 @@
     const title = 'Company' + TITLE_SUFFIX;
     const description =
         'At Appwrite, we aim to remove technical barriers with our backend solutions. Click here to learn more about our organization, its mission and goals.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -30,8 +30,8 @@
 </svelte:head>
 
 <Main>
-    <enhanced:img class="absolute start-0" src="./bg-left.png" alt="" />
-    <enhanced:img class="absolute end-0" src="./bg-right.png" alt="" />
+    <enhanced:img class="absolute start-0" src="./bg-left.avif" alt="" />
+    <enhanced:img class="absolute end-0" src="./bg-right.avif" alt="" />
     <div class="web-big-padding-section relative">
         <div class="relative py-10">
             <div class="web-big-padding-section-level-2" style:margin-block="8rem">
@@ -198,7 +198,7 @@
 												<div class="web-social-item flex flex-col gap-6">
 													<div class="flex gap-4 justify-between">
 														<div class="web-user-box">
-															<img class="web-user-box-image" src="/images/avatars/eldad.png" alt="Avatar of Eldad Fux">
+															<img class="web-user-box-image" src="/images/avatars/eldad.avif" alt="Avatar of Eldad Fux">
 															<div class="web-user-box-name text-sub-body font-medium">Eldad Fux</div>
 															<div class="web-user-box-username text-sub-body">@eldadfux</div>
 														</div>
@@ -542,7 +542,7 @@
         <div class="overflow-hidden p-0 pt-10">
             <div class="web-big-padding-section-level-2 is-margin-replace-padding relative">
                 <img
-                    src="/images/bgs/pre-footer.png"
+                    src="/images/bgs/pre-footer.avif"
                     alt=""
                     class="web-pre-footer-bg"
                     style="z-index:-1"

@@ -20,7 +20,7 @@
     const title = 'Sites' + TITLE_SUFFIX;
     const description =
         'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     const isShortFormat = $derived(page.url.searchParams.get('format') === 'short');
 </script>
@@ -63,7 +63,7 @@
                     name: "Ryan O'Connor",
                     title: 'Founder',
                     company: 'K-Collect',
-                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                    image: '/images/testimonials/ryan-oconner-testimonial.avif'
                 }}
                 theme="light"
             >

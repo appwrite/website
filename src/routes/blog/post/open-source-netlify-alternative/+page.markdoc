@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite Sites vs Netlify: Choosing the right web hosting platform"
 description: This article explores how Appwrite Sites and Netlify compare, offering an integrated approach to full-stack deployment without the usual complexity.
 date: 2025-05-19
-cover: /images/blog/oss-netlify-cover.png
+cover: /images/blog/oss-netlify-cover.avif
 timeToRead: 8
 author: ebenezer-don
 category: product,init

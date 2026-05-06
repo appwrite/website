@@ -18,7 +18,7 @@
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/state';
+    import { page } from '$app/stores';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
     import { changelogNavBadgeVisible } from '$routes/changelog/utils';
@@ -123,7 +123,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: changelogNavBadgeVisible(page)
+            showBadge: changelogNavBadgeVisible($page)
         }
     ];
 
@@ -155,9 +155,9 @@
 
     $: ($isHeaderHidden, updateSideNav());
 
-    $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
+    $: isOfferPage = $page.route.id?.includes('/offer-300') ?? false;
 
-    $: navCtaLabel = (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
+    $: navCtaLabel = ($page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
         ? 'mobile-claim_300_credits_btn-click'

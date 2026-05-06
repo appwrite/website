@@ -26,10 +26,10 @@ This lets you track your code using Git, which makes it easy to integrate Appwri
 If you need to create a new function, select a **Quick start** template or search for more templates under **All templates**.
 5. Follow the wizard to configure your new Appwrite Function.
 {% only_dark %}
-![Create project screen](/images/docs/functions/dark/template.png)
+![Create project screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/functions/template.png)
+![Create project screen](/images/docs/functions/template.avif)
 {% /only_light %}
 {% /tabsitem %}
 

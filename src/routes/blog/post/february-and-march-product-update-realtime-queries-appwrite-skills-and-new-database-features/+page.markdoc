@@ -3,7 +3,7 @@ layout: post
 title: "February and March product update: Realtime queries, Appwrite Skills, and new database features"
 description: Get a full recap of features, improvements, and tools we shipped across Databases, Realtime, and AI in February and March.
 date: 2026-04-24
-cover: /images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/cover.png
+cover: /images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/cover.avif
 timeToRead: 5
 author: aishwari
 category: product
@@ -23,7 +23,7 @@ Here is a quick overview of what we shipped:
 
 Let's dive in.
 
-![Relationship queries.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Relationship_queries.png)
+![Relationship queries.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Relationship_queries.avif)
 
 # Relationship queries in Appwrite Databases
 
@@ -31,7 +31,7 @@ You can now filter directly on relationship columns in Appwrite Databases using 
 
 [Read the announcement](https://appwrite.io/blog/post/announcing-relationship-queries)
 
-![Introducing new string column types for Appwrite Databases.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_new_string_column_types_for_Appwrite_Databases.png)
+![Introducing new string column types for Appwrite Databases.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_new_string_column_types_for_Appwrite_Databases.avif)
 
 # New string column types for Appwrite Databases
 
@@ -39,7 +39,7 @@ Appwrite Databases now supports four explicit string column types: `varchar`, 
 
 [Learn more](https://appwrite.io/blog/post/new-string-types)
 
-![Announcing Realtime Channel helpers_ Type-safe subscriptions made simple.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Announcing_Realtime_Channel_helpers__Type-safe_subscriptions_made_simple.png)
+![Announcing Realtime Channel helpers_ Type-safe subscriptions made simple.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Announcing_Realtime_Channel_helpers__Type-safe_subscriptions_made_simple.avif)
 
 # Realtime channel helpers
 
@@ -47,7 +47,7 @@ Appwrite Realtime now includes channel helpers, a fluent type-safe API for build
 
 [Read the full announcement](https://appwrite.io/blog/post/announcing-realtime-channel-helpers)
 
-![Introducing Realtime queries.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_Realtime_queries.png)
+![Introducing Realtime queries.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_Realtime_queries.avif)
 
 # Realtime queries: Server-side event filtering
 
@@ -55,7 +55,7 @@ Appwrite Realtime now supports queries when subscribing to channels. Events are 
 
 [Learn more](https://appwrite.io/blog/post/announcing-realtime-queries)
 
-![Announcing Appwrite Skills_ Give your AI agents Appwrite expertise.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Announcing_Appwrite_Skills__Give_your_AI_agents_Appwrite_expertise.png)
+![Announcing Appwrite Skills_ Give your AI agents Appwrite expertise.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Announcing_Appwrite_Skills__Give_your_AI_agents_Appwrite_expertise.avif)
 
 # Introducing Appwrite Skills
 
@@ -63,7 +63,7 @@ Appwrite Skills are open-source Markdown files that give AI coding agents like C
 
 [Read the full announcement](https://appwrite.io/blog/post/announcing-appwrite-skills)
 
-![Introducing Appwrite Arena_ Which AI model knows Appwrite best_.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_Appwrite_Arena__Which_AI_model_knows_Appwrite_best_.png)
+![Introducing Appwrite Arena_ Which AI model knows Appwrite best_.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/Introducing_Appwrite_Arena__Which_AI_model_knows_Appwrite_best_.avif)
 
 # Introducing Appwrite Arena
 
@@ -71,7 +71,7 @@ Appwrite Arena is an open-source benchmark that tests how well AI models underst
 
 [Explore](https://arena.appwrite.io/)
 
-![comm recoggg.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/comm_recoggg.png)
+![comm recoggg.png](/images/blog/february-and-march-product-update-realtime-queries-appwrite-skills-and-new-database-features/comm_recoggg.avif)
 
 # Community recognitions
 

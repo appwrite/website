@@ -1,8 +1,8 @@
 <script lang="ts">
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
 
-    import TeamsConsole from '../(assets)/teams-console.png';
-    import PermissionsConsole from '../(assets)/permissions-console.png';
+    import TeamsConsole from '../(assets)/teams-console.avif';
+    import PermissionsConsole from '../(assets)/permissions-console.avif';
     import { cn } from '$lib/utils/cn';
     import { Button } from '$lib/components/ui';
 

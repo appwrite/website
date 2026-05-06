@@ -3,7 +3,7 @@ layout: post
 title: "Announcing the Rust runtime for Appwrite Functions"
 description: Appwrite Functions now supports Rust as a first-class runtime, bringing memory-safe, compiled performance to your serverless workloads.
 date: 2026-05-04
-cover: /images/blog/announcing-rust-runtime/cover.png
+cover: /images/blog/announcing-rust-runtime/cover.avif
 timeToRead: 6
 author: chirag-aggarwal
 category: announcement

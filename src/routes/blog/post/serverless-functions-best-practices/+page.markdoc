@@ -3,7 +3,7 @@ layout: post
 title: "Serverless functions 101: Best practices"
 description: Some do's, don'ts and best practices for creating and maintaining serverless functions.
 date: 2024-08-19
-cover: /images/blog/serverless-functions/cover.png
+cover: /images/blog/serverless-functions/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
@@ -100,7 +100,7 @@ For example, if your function handles image processing, it may require more reso
 
 In Appwrite, you can configure your function specification by navigating to your function settings and scrolling to “**Runtime**”:
 
-![Functions-specifications](/images/blog/serverless-functions/1.png)
+![Functions-specifications](/images/blog/serverless-functions/1.avif)
 
 This will allow you to choose the CPU and memory allocation for your function. It's important to choose the right settings based on your function's requirements to ensure optimal performance.
 
@@ -120,7 +120,7 @@ Avoid hardcoding configuration values like API keys or database URLs. Instead, u
 
 In Appwrite, you can set environment variables for your functions in the Cloud Console. Navigate to your function settings and scroll down to the "Environment Variables" section. Here, you can add key-value pairs for your configurations. It should look like this:
 
-![Environment-variables](/images/blog/serverless-functions/2.png)
+![Environment-variables](/images/blog/serverless-functions/2.avif)
 After setting environment variables, you can access them in your function code like this (for Node.js):
 
 ```jsx
@@ -146,11 +146,11 @@ Ensure only authorized users can execute your functions. Appwrite provides built
 
 You must ensure that authorization is enforced on your serverless functions and not solely on the client side. Client-side authorization can be bypassed, leading to security vulnerabilities. Appwrite Databases and Storage services can be configured to enforce access control rules. For example, you can restrict read and write access to documents by navigating to your database collection settings in the Appwrite Console and setting the appropriate permissions. It looks like this:
 
-![Functions-authorization](/images/blog/serverless-functions/3.png)
+![Functions-authorization](/images/blog/serverless-functions/3.avif)
 
 You can also configure **execute access** for your Appwrite functions, allowing you to specify who can execute the function using the client API.
 
-![Functions-access](/images/blog/serverless-functions/4.png)
+![Functions-access](/images/blog/serverless-functions/4.avif)
 
 # Encrypt sensitive data
 
@@ -187,7 +187,7 @@ Appwrite provides built-in logging and monitoring tools that you can use to trac
 
 When using Appwrite Functions, you can keep your log statements within the source code and disable logging from the function settings. This allows you to re-enable logging with a single click in the future if you need to debug or monitor specific requests.
 
-![Functions-logging](/images/blog/serverless-functions/5.png)
+![Functions-logging](/images/blog/serverless-functions/5.avif)
 
 # Automate deployment process
 

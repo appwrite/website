@@ -3,7 +3,7 @@ layout: post
 title: "Introducing Type generation: Automate your type definitions with Appwrite"
 description: "Automatically generate types from your collections with support for multiple languages."
 date: 2025-06-24
-cover: /images/blog/type-generation-feature/cover.png
+cover: /images/blog/type-generation-feature/cover.avif
 timeToRead: 4
 author: chirag-aggarwal
 category: announcement
@@ -40,7 +40,7 @@ To automatically detect the language used in your project, you can skip the `[op
 appwrite types <output-directory>
 ```
 
-![Workflow](/images/blog/type-generation-feature/workflow.png)
+![Workflow](/images/blog/type-generation-feature/workflow.avif)
 
 # Better experience
 

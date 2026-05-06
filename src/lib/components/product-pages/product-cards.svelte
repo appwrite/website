@@ -4,44 +4,44 @@
         auth: {
             title: 'Auth',
             description: 'Build secure authentication and manage your users.',
-            icon: '/images/icons/illustrated/dark/auth.png',
+            icon: '/images/icons/illustrated/dark/auth.avif',
             url: '/products/auth'
         },
         databases: {
             title: 'Databases',
             description: 'Store and query structured data, ensuring scalable storage.',
-            icon: '/images/icons/illustrated/dark/databases.png',
+            icon: '/images/icons/illustrated/dark/databases.avif',
             url: '/docs/products/databases'
         },
         storage: {
             title: 'Storage',
             description: 'Manage your files project, using convenient APIs and utilities.',
-            icon: '/images/icons/illustrated/dark/storage.png',
+            icon: '/images/icons/illustrated/dark/storage.avif',
             url: '/products/storage'
         },
         functions: {
             title: 'Functions',
             description: ' Scale big and unlock limitless potential with Appwrite functions.',
-            icon: '/images/icons/illustrated/dark/functions.png',
+            icon: '/images/icons/illustrated/dark/functions.avif',
             url: '/products/functions'
         },
 
         messaging: {
             title: 'Messaging',
             description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
-            icon: '/images/icons/illustrated/dark/messaging.png',
+            icon: '/images/icons/illustrated/dark/messaging.avif',
             url: '/products/messaging'
         },
         realtime: {
             title: 'Realtime',
             description: 'Subscribe and react to any event using the Realtime API.',
-            icon: '/images/icons/illustrated/dark/realtime.png',
+            icon: '/images/icons/illustrated/dark/realtime.avif',
             url: '/docs/realtime'
         },
         sites: {
             title: 'Sites',
             description: 'The open-source Vercel alternative.',
-            icon: '/images/icons/illustrated/dark/sites.png',
+            icon: '/images/icons/illustrated/dark/sites.avif',
             url: '/products/sites'
         }
     } as const;

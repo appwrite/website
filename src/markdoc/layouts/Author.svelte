@@ -25,7 +25,7 @@
 
     const seoTitle = name + TITLE_SUFFIX;
     const description = bio;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.avif';
 </script>
 
 <svelte:head>

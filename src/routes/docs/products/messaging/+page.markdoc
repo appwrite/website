@@ -10,10 +10,10 @@ Sending personalized communication for marketing, updates, and realtime alerts c
 You can also use Appwrite Messaging to implement security checks and custom authentication flows.
 
 {% only_dark %}
-![Messaging overview](/images/docs/messaging/dark/message-overview.png)
+![Messaging overview](/images/docs/messaging/dark/message-overview.avif)
 {% /only_dark %}
 {% only_light %}
-![Messaging overview](/images/docs/messaging/message-overview.png)
+![Messaging overview](/images/docs/messaging/message-overview.avif)
 {% /only_light %}
 
 Explore what you can build with Appwrite Messaging. 

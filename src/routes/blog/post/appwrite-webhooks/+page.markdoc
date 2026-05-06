@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite Webhooks: triggering events the right way"
 description: Learn how to configure Appwrite Webhooks, select the right events, verify payloads with HMAC-SHA1, and build reliable real-world integrations.
 date: 2026-03-25
-cover: /images/blog/appwrite-webhooks/cover.png
+cover: /images/blog/appwrite-webhooks/cover.avif
 timeToRead: 4
 author: aditya-oberai
 category: product, tutorial

@@ -3,7 +3,7 @@ layout: post
 title: Build a personal CRM with SvelteKit and Appwrite Databases
 description: Learn how to build a personal CRM with SvelteKit and Appwrite Databases.
 date: 2025-07-03
-cover: /images/blog/build-personal-crm-sveltekit/cover.png
+cover: /images/blog/build-personal-crm-sveltekit/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: tutorial
@@ -575,7 +575,7 @@ npm run dev
 
 You can then visit `https://localhost:5173` in your browser and try out the app.
 
-![Personal CRM demo](/images/blog/build-personal-crm-sveltekit/personal-crm-demo.png)
+![Personal CRM demo](/images/blog/build-personal-crm-sveltekit/personal-crm-demo.avif)
 
 # Next steps
 

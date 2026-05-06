@@ -6,7 +6,7 @@
     import MainFooter from '../../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
     import { anyify } from '$lib/utils/anyify';
-    import Pink from './bg.png';
+    import Pink from './bg.avif';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { Button } from '$lib/components/ui';
@@ -63,7 +63,7 @@
     const title = 'Become a Technology Partner' + TITLE_SUFFIX;
     const description =
         "Want to integrate your app with Appwrite's API? Apply to our Technology Partners program by filling a short form.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>

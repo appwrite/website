@@ -6,20 +6,20 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/ai-hugging-face-image-classification/cover.png
+cover: /images/integrations/ai-hugging-face-image-classification/cover.avif
 category: ai
 product: 
-    avatar: '/images/integrations/avatars/hugging-face.png'
+    avatar: '/images/integrations/avatars/hugging-face.avif'
     vendor: Hugging Face
     description: 'Hugging Face is a leading AI company that offers an extensive library of pre-trained models for various natural language processing and computer vision tasks, including image classification.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/ai-hugging-face-image-classification/cover.png
-    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.png
-    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.png
-    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-env-variables-image-classification-hugging-face.png
+    - /images/integrations/ai-hugging-face-image-classification/cover.avif
+    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.avif
+    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.avif
+    - /images/integrations/ai-hugging-face-image-classification/appwrite-functions-env-variables-image-classification-hugging-face.avif
 ---
 
 Image classification is a key application of machine learning that involves categorizing images into predefined classes. Hugging Face is a leading AI company that offers an extensive library of pre-trained models for various natural language processing and computer vision tasks, including image classification. By integrating Hugging Face's powerful models with your applications, you can leverage state-of-the-art technology to automate and enhance image analysis.
@@ -36,7 +36,7 @@ To implement the Hugging Face image classification function, there are several s
 
 First, you must [sign up for a Hugging Face account](https://huggingface.co/join). Once your account is set up, visit your profile settings, head to the [Access Tokens](https://huggingface.co/settings/tokens) page, and create an **access token** with the **Inference** permissions. Save this token for further usage.
 
-![Create API token](/images/integrations/ai-hugging-face-image-classification/hugging-face-create-api-token.png)
+![Create API token](/images/integrations/ai-hugging-face-image-classification/hugging-face-create-api-token.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -44,11 +44,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click on the **Templates** tab, and search for the **Image Classification** function template.
 
-![Function template](/images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.png)
+![Function template](/images/integrations/ai-hugging-face-image-classification/appwrite-functions-image-classification-hugging-face.avif)
 
 During the setup process, click on the checkbox to generate an Appwrite API key on completion and add the **Hugging Face access token** in the **Variables** step. If you are self-hosting Appwrite, then click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
 
-![Environment variables](/images/integrations/ai-hugging-face-image-classification/appwrite-functions-env-variables-image-classification-hugging-face.png)
+![Environment variables](/images/integrations/ai-hugging-face-image-classification/appwrite-functions-env-variables-image-classification-hugging-face.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 

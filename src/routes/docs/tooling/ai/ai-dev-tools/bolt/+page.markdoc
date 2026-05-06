@@ -12,10 +12,10 @@ To connect the Appwrite docs MCP server to Bolt:
 2. Click **Custom MCP server**.
 
 {% only_dark %}
-![Bolt MCP settings](/images/docs/mcp/bolt/bolt-mcp-settings.png)
+![Bolt MCP settings](/images/docs/mcp/bolt/bolt-mcp-settings.avif)
 {% /only_dark %}
 {% only_light %}
-![Bolt MCP settings](/images/docs/mcp/bolt/light/bolt-mcp-settings.png)
+![Bolt MCP settings](/images/docs/mcp/bolt/light/bolt-mcp-settings.avif)
 {% /only_light %}
 
 3. Enter the following details:
@@ -26,10 +26,10 @@ To connect the Appwrite docs MCP server to Bolt:
 4. Click **Add MCP server**.
 
 {% only_dark %}
-![Bolt add MCP server](/images/docs/mcp/bolt/bolt-add-mcp.png)
+![Bolt add MCP server](/images/docs/mcp/bolt/bolt-add-mcp.avif)
 {% /only_dark %}
 {% only_light %}
-![Bolt add MCP server](/images/docs/mcp/bolt/light/bolt-add-mcp.png)
+![Bolt add MCP server](/images/docs/mcp/bolt/light/bolt-add-mcp.avif)
 {% /only_light %}
 
 The Appwrite docs MCP server will now be available in your Bolt projects.

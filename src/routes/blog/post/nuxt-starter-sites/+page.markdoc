@@ -3,7 +3,7 @@ layout: post
 title: How to setup the Nuxt starter template on Appwrite Sites
 description: Learn the process of deploying the Nuxt starter template on Appwrite Sites.
 date: 2025-05-20
-cover: /images/blog/nuxt-starter-sites/cover.png
+cover: /images/blog/nuxt-starter-sites/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: tutorial
@@ -25,21 +25,21 @@ Appwrite's Nuxt starter template includes:
 - Integration with Appwrite's SDK
 - Pre-configured deployment settings for Appwrite Sites' SSR rendering strategy
 
-![Deployed app](/images/blog/nuxt-starter-sites/deployed.png)
+![Deployed app](/images/blog/nuxt-starter-sites/deployed.avif)
 
 # Deploy the starter template on Appwrite
 
 Firstly, you must head to Appwrite Cloud and [create an account](https://cloud.appwrite.io/console/register) if you haven't already (or [self-host Appwrite 1.7](/docs/advanced/self-hosting)). Next, create your first project, which will lead you to the project overview page.
 
-![Add platform](/images/blog/nuxt-starter-sites/add-platform.png)
+![Add platform](/images/blog/nuxt-starter-sites/add-platform.avif)
 
 Head to the **Sites** page from the left sidebar, click on the **Create site** button, and select the **Clone a template** option. This will take you to the Appwrite Sites templates listing, where you should search `Nuxt starter` and click on the template.
 
-![Starter template](/images/blog/nuxt-starter-sites/template.png)
+![Starter template](/images/blog/nuxt-starter-sites/template.avif)
 
 After selecting the template, you can choose to connect a GitHub repository now or at a later time. If you choose to connect a repository, ensure you select a production branch (leave the root directory as is). Then, review the preset environment variables, update the domain name if you want, and click on the **Deploy** button. You can watch the deployment logs as the site is built.
 
-![Deployment logs](/images/blog/nuxt-starter-sites/deployment-logs.png)
+![Deployment logs](/images/blog/nuxt-starter-sites/deployment-logs.avif)
 
 {% info title="Alternative method to deploy starter template" %}
 
@@ -65,7 +65,7 @@ appwrite push sites
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. You can then either choose to view the site by clicking on the **Visit site** button or view the site configuration (deployments, logs, domains, usage, and settings) by clicking on the **Go to dashboard** button.
 
-![Congratulations](/images/blog/nuxt-starter-sites/congrats.png)
+![Congratulations](/images/blog/nuxt-starter-sites/congrats.avif)
 
 # Next steps
 

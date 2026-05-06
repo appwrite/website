@@ -3,7 +3,7 @@ layout: post
 title: "Comparing serverless functions: Appwrite vs. Supabase vs. Firebase"
 description: Compare the serverless functions of Appwrite, Supabase and Firebase.
 date: 2024-08-21
-cover: /images/blog/comparing-functions/cover.png
+cover: /images/blog/comparing-functions/cover.avif
 timeToRead: 8
 author: aditya-oberai
 category: product
@@ -30,7 +30,7 @@ For open source, self-hosting, and lock-in across the same vendors (plus AWS Amp
 
 # Firebase: the veteran
 
-![Firebase-functions](/images/blog/comparing-functions/1.png)
+![Firebase-functions](/images/blog/comparing-functions/1.avif)
 ## Overview:
 Firebase, a product of Google, is a comprehensive app development platform with a rich set of tools and services, including real-time databases, authentication, hosting, and serverless functions. Its extensive ecosystem and seamless integration with other Google services make it a popular choice among developers.
 
@@ -50,7 +50,7 @@ Firebase Cloud Functions allow you to run backend code in response to events tri
 
 # Supabase: SQL made simple
 
-![Supabase-functions](/images/blog/comparing-functions/2.png)
+![Supabase-functions](/images/blog/comparing-functions/2.avif)
 
 ## Overview:
 Supabase, an open-source Firebase alternative, is rapidly gaining popularity for its seamless integration with PostgreSQL. It provides developers with a powerful SQL database, real-time capabilities, and serverless functions.
@@ -71,7 +71,7 @@ Supabase functions, also known as Edge Functions, are deployed at the edge, ensu
 
 # Appwrite: developer-centric and flexible
 
-![Appwrite-functions](/images/blog/comparing-functions/3.png)
+![Appwrite-functions](/images/blog/comparing-functions/3.avif)
 
 ## Overview:
 Appwrite is an open-source, all-in-one cloud development platform. Use built-in backend infrastructure and web hosting, all from a single place. 

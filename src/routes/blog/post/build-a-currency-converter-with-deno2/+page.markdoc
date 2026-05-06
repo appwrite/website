@@ -3,7 +3,7 @@ layout: post
 title: Building a currency converter API with Deno 2 and Appwrite
 description: Learn how to build a currency converter API with Deno 2 and how to use Appwrite Functions to deploy and run your API.
 date: 2024-10-18
-cover: /images/blog/build-a-currency-converter-with-deno2/cover.png
+cover: /images/blog/build-a-currency-converter-with-deno2/cover.avif
 timeToRead: 12
 author: ebenezer-don
 category: tutorial
@@ -28,7 +28,7 @@ There are two ways you can set up a Deno project with Appwrite: through the Appw
 3. Navigate to the **Functions** tab and create a new function.
 4. Choose **Deno** as the runtime and set up your function configuration.
 
-    ![Create a new deno function](/images/blog/build-a-currency-converter-with-deno2/deno-create-function.png)
+    ![Create a new deno function](/images/blog/build-a-currency-converter-with-deno2/deno-create-function.avif)
 
 5. Choose where you want your code to live (GitHub or manual deployment), and click **Create** to finish.
 6. You can now clone/download your function and start working on it.
@@ -349,7 +349,7 @@ appwrite push function
 
 You'll get a response asking you to choose the function you want to deploy. Select the function you just created, and Appwrite will deploy it to your cloud project. You can view the function in the Appwrite dashboard and access it using the provided URL.
 
-![Function overview page](/images/blog/build-a-currency-converter-with-deno2/function-overview-page.png)
+![Function overview page](/images/blog/build-a-currency-converter-with-deno2/function-overview-page.avif)
 
 # Wrapping up
 

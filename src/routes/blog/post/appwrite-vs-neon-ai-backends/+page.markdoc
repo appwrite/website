@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Neon for AI app backends"
 description: "Compare Appwrite vs Neon for AI app backends. Neon owns Postgres for agents; Appwrite gives you a complete app backend with Auth, storage, MCP, and more."
 date: 2026-04-29
-cover: /images/blog/appwrite-vs-neon-ai-backends/cover.png
+cover: /images/blog/appwrite-vs-neon-ai-backends/cover.avif
 timeToRead: 9
 author: aishwari
 unlisted: true

@@ -3,7 +3,7 @@ layout: post
 title: How Radar scaled media curation while saving $1M with Appwrite Cloud
 description: Discover how the team at Paradox used Appwrite Cloud to save 10,000+ engineering hours and $1M+ in overhead costs to build Radar.
 date: 2025-09-25
-cover: /images/blog/customer-story-radar/cover.png
+cover: /images/blog/customer-story-radar/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: customer-stories
@@ -32,7 +32,7 @@ By focusing on these goals, the Radar team aimed to create an app that's not jus
 
 [Radar](https://justuseradar.com/) is an all-in-one social curation app that allows users to keep track of media recommendations across five categories: movies, TV shows, video games, books, and audiobooks.
 
-![Discover Radar](/images/blog/customer-story-radar/radar.png)
+![Discover Radar](/images/blog/customer-story-radar/radar.avif)
 
 Key highlights include:
 
@@ -73,4 +73,4 @@ For Martino, building Radar has proven that a small team can deliver a product t
 
 Radar has launched on [Product Hunt](https://www.producthunt.com/products/radar-6), and we encourage our community to support them by trying out the product, sharing their feedback, and upvoting the launch.
 
-![Support Radar on Product Hunt!](/images/blog/customer-story-radar/product-hunt.png)
+![Support Radar on Product Hunt!](/images/blog/customer-story-radar/product-hunt.avif)

@@ -4,7 +4,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import Templates from './(components)/Templates.svelte';
 
-    import Phone from './(assets)/phone.png';
+    import Phone from './(assets)/phone.avif';
     import Bento from './(components)/Bento.svelte';
     import OpenSource from './(components)/OpenSource.svelte';
     import { PreFooter, FooterNav, MainFooter } from '$lib/components';
@@ -20,7 +20,7 @@
     const title = 'Functions' + TITLE_SUFFIX;
     const description =
         'Appwrite Functions offer everything you need to deploy and scale serverless functions easily, without any server management overhead.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -45,7 +45,7 @@
         <Hero
             eyebrow={{
                 label: 'Functions',
-                icon: '/images/icons/illustrated/dark/functions.png'
+                icon: '/images/icons/illustrated/dark/functions.avif'
             }}
             title="Serverless functions done your way"
             image={{

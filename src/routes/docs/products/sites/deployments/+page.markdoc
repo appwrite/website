@@ -24,10 +24,10 @@ Throughout the life cycle of a deployment, it can have any of the following stat
 When you build a deployment, the logs generated will be saved for debugging purposes. You can find these build logs by navigating to the **Deployments** tab of your site, clicking the three-dots menu beside a deployment, and clicking **Logs**.
 
 {% only_dark %}
-![Deployment logs](/images/docs/sites/dark/deployment-logs.png)
+![Deployment logs](/images/docs/sites/dark/deployment-logs.avif)
 {% /only_dark %}
 {% only_light %}
-![Deployment logs](/images/docs/sites/deployment-logs.png)
+![Deployment logs](/images/docs/sites/deployment-logs.avif)
 {% /only_light %}
 
 # Create deployment
@@ -39,10 +39,10 @@ To manually trigger a deployment of your app from the Appwrite Console, you can 
 - **Manual**: Lets you upload a [.tar.gz file](/docs/products/sites/deploy-manually#manual-deployment) containing your site's build output
 
 {% only_dark %}
-![Create deployment](/images/docs/sites/dark/create-deployment.png)
+![Create deployment](/images/docs/sites/dark/create-deployment.avif)
 {% /only_dark %}
 {% only_light %}
-![Create deployment](/images/docs/sites/create-deployment.png)
+![Create deployment](/images/docs/sites/create-deployment.avif)
 {% /only_light %}
 
 # Cancel deployment
@@ -50,10 +50,10 @@ To manually trigger a deployment of your app from the Appwrite Console, you can 
 If a site is being deployed and you wish to stop this deployment, you can head to the **Deployments** tab of your site, click on the three-dots menu, and click on the **Cancel** button.
 
 {% only_dark %}
-![Cancel deployment](/images/docs/sites/dark/cancel-deployment.png)
+![Cancel deployment](/images/docs/sites/dark/cancel-deployment.avif)
 {% /only_dark %}
 {% only_light %}
-![Cancel deployment](/images/docs/sites/cancel-deployment.png)
+![Cancel deployment](/images/docs/sites/cancel-deployment.avif)
 {% /only_light %}
 
 # Update deployment
@@ -69,10 +69,10 @@ After updating the configuration, redeploy your site for changes to take effect.
 3. Redeploy by clicking the triple-dots beside a deployment and hitting the **Redeploy** button.
 
 {% only_dark %}
-![Redeploy](/images/docs/sites/dark/redeploy.png)
+![Redeploy](/images/docs/sites/dark/redeploy.avif)
 {% /only_dark %}
 {% only_light %}
-![Redeploy](/images/docs/sites/redeploy.png)
+![Redeploy](/images/docs/sites/redeploy.avif)
 {% /only_light %}
 
 Redeployment behavior varies depending on how the initial deployment was created.

@@ -6,12 +6,12 @@ date: 2025-06-19
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/bld.png
+cover: /images/partners/covers/bld.avif
 category: agency
 website: https://blackleafdigital.com/
 email: mailto:contact@blackleafdigital.com
 product: 
-    avatar: '/images/partners/avatars/bld.png'
+    avatar: '/images/partners/avatars/bld.avif'
     vendor: Black Leaf Digital
     description: 
 technologies: 

@@ -3,7 +3,7 @@ layout: post
 title: How to plan and execute database migration successfully with the new Appwrite CLI
 description: Learn how to use the new Appwrite CLI to migrate your databases.
 date: 2024-08-26
-cover: /images/blog/how-to-migrate-database-with-cli/cover.png
+cover: /images/blog/how-to-migrate-database-with-cli/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
@@ -115,7 +115,7 @@ appwrite push collections
 
 The Appwrite CLI will display a table summarizing all pending changes, allowing you to review them before applying. This ensures transparency and gives you a chance to verify changes before they take effect.
 
-![Executing database migrations](/images/blog/how-to-migrate-database-with-cli/1.png)
+![Executing database migrations](/images/blog/how-to-migrate-database-with-cli/1.avif)
 
 ## Step 5: Confirming changes
 

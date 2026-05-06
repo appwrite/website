@@ -3,7 +3,7 @@ layout: post
 title: How to implement Sign in with GitHub
 description: In this tutorial, you'll learn how to create a fully functional GitHub login system in your app.
 date: 2024-10-11
-cover: /images/blog/implement-sign-in-with-github/cover.png
+cover: /images/blog/implement-sign-in-with-github/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
@@ -68,7 +68,7 @@ We need to set up an OAuth application on GitHub to enable authentication for us
 
 You'll see a form titled **Register a new OAuth app**. This is where you'll fill in the details of your GitHub OAuth app:
 
-![GitHub OAuth app setup](/images/blog/implement-sign-in-with-github/image-1.png)
+![GitHub OAuth app setup](/images/blog/implement-sign-in-with-github/image-1.avif)
 
 - **Application Name**: You can name it "GitHub Auth with Appwrite".
 - **Homepage URL**: Input your homepage URL. You can use your localhost URL for now.
@@ -76,7 +76,7 @@ You'll see a form titled **Register a new OAuth app**. This is where you'll fill
 
 Once you've filled out the form, click **Register Application**. GitHub will provide you with a **Client ID** and **Client Secret**. **Save these details** because we'll need them when configuring Appwrite.
 
-![GitHub OAuth app details](/images/blog/implement-sign-in-with-github/image-2.png)
+![GitHub OAuth app details](/images/blog/implement-sign-in-with-github/image-2.avif)
 
  # **Step 3: Setting up Appwrite**
 
@@ -92,7 +92,7 @@ If you already have an Appwrite project, you can skip this step.
 
 Take note of the **Project ID** and **API Endpoint** for this project, as we will need these later when configuring our frontend. You can find these in the **Settings** page of your Appwrite project.
 
-![Appwrite project settings](/images/blog/implement-sign-in-with-github/image-3.png)
+![Appwrite project settings](/images/blog/implement-sign-in-with-github/image-3.avif)
 
  ## **3.2. Add GitHub as an authentication provider**
 
@@ -102,7 +102,7 @@ Take note of the **Project ID** and **API Endpoint** for this project, as we wil
 4. Enter the **Client ID** and **Client Secret** that you obtained from GitHub earlier.
 5. At the bottom of the form, you'll see a URI field. This is the **Authorization Callback URL** that you'll need for GitHub.
 
-![Appwrite GitHub OAuth settings](/images/blog/implement-sign-in-with-github/image-4.png)
+![Appwrite GitHub OAuth settings](/images/blog/implement-sign-in-with-github/image-4.avif)
 
 You need to copy this URL and **update the callback URL** in your GitHub OAuth app (from **Step 2.1**) to this new value.
 

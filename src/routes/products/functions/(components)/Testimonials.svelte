@@ -3,42 +3,42 @@
         {
             name: 'Ryan O’Conner',
             copy: `The switch to using Appwrite brought infinite value that I'm still discovering today, but a major impact that it made was the amount of time and stress that it saved me as it simply just works.`,
-            image: '/images/testimonials/k-collect.png',
+            image: '/images/testimonials/k-collect.avif',
             title: 'Founder',
             company: 'K-Collect'
         },
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/open-mind.png',
+            image: '/images/testimonials/open-mind.avif',
             title: 'Founder',
             company: 'Open Mind'
         },
         {
             name: 'Marius Bolik',
             copy: `The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time.`,
-            image: '/images/testimonials/shoefitter.png',
+            image: '/images/testimonials/shoefitter.avif',
             title: 'CTO',
             company: 'mySHOEFITTER'
         },
         {
             name: 'Sergio Ponguta',
             copy: `Just go for it, don’t think twice. Try Appwrite, and you will love it!`,
-            image: '/images/testimonials/smartbee.png',
+            image: '/images/testimonials/smartbee.avif',
             title: 'Founder',
             company: 'Smart Bee'
         },
         {
             name: 'Phil McClusky',
             copy: 'Just like a Swiss Army Knife, you can choose and use the tools that you need with Appwrite.',
-            image: '/images/testimonials/majik.png',
+            image: '/images/testimonials/majik.avif',
             title: 'Developer',
             company: 'Majik Kids'
         },
         {
             name: 'Zach Handley',
             copy: `We have somewhere between 200,000 to 600,000 function executions per day. It's especially nice that you guys have to deal with the scaling now and not me.`,
-            image: '/images/testimonials/zach-handley.jpg',
+            image: '/images/testimonials/zach-handley.avif',
             title: 'CTO',
             company: 'Socialaize'
         }

@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/logging-raygun/cover.png
+cover: /images/integrations/logging-raygun/cover.avif
 category: logging
 product:
-    avatar: '/images/integrations/avatars/raygun.png'
+    avatar: '/images/integrations/avatars/raygun.avif'
     vendor: Raygun
     description: 'Raygun is an application performance monitoring (APM) and error tracking tool designed for software developers to identify and resolve issues in their applications quickly. It provides real-time insights into software performance, error diagnostics, and user experience, helping teams to detect, diagnose, and fix errors faster. With features like crash reporting, real user monitoring, and deployment tracking, Raygun helps ensure the stability and efficiency of applications.'
 platform:
     - 'Self-hosted'
 images:
-    - /images/integrations/logging-raygun/cover.png
-    - /images/integrations/logging-raygun/api-key.png
-    - /images/integrations/logging-raygun/crash-reporting.png
-    - /images/integrations/logging-raygun/error.png
+    - /images/integrations/logging-raygun/cover.avif
+    - /images/integrations/logging-raygun/api-key.avif
+    - /images/integrations/logging-raygun/crash-reporting.avif
+    - /images/integrations/logging-raygun/error.avif
 ---
 
 Raygun is an application performance monitoring (APM) and error tracking tool designed for software developers to identify and resolve issues in their applications quickly. It provides real-time insights into software performance, error diagnostics, and user experience, helping teams to detect, diagnose, and fix errors faster. With features like crash reporting, real user monitoring, and deployment tracking, Raygun helps ensure the stability and efficiency of applications, making it an essential tool for maintaining high-quality software and delivering a seamless user experience.
@@ -35,7 +35,7 @@ To implement the Raygun provider for logging, there are several steps you must c
 
 First, [sign up on Raygun](https://app.raygun.com/signup?product=cr) (pick **Crash Reporting** as the product you're most interested in) and create your first application. Head to **Application settings** from the left-side navbar and copy your **API Key**.
 
-![API key](/images/integrations/logging-raygun/api-key.png)
+![API key](/images/integrations/logging-raygun/api-key.avif)
 
 ## Step 2: Add Raygun provider to your Appwrite instance
 
@@ -74,11 +74,11 @@ docker compose exec appwrite ssl --domain="wrongdomain.com"
 
 Doing so will show errors in your Raygun Crash Reporting dashboard.
 
-![Raygun Crash Reporting](/images/integrations/logging-raygun/crash-reporting.png)
+![Raygun Crash Reporting](/images/integrations/logging-raygun/crash-reporting.avif)
 
 You can also view the error summary for further details.
 
-![Error](/images/integrations/logging-raygun/error.png)
+![Error](/images/integrations/logging-raygun/error.avif)
 
 # Read more about Raygun and Appwrite
 

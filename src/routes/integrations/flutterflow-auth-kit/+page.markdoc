@@ -6,21 +6,21 @@ date: 2024-03-01
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/flutterflow-auth-kit/cover.png
+cover: /images/integrations/flutterflow-auth-kit/cover.avif
 category: auth
 product:
-  avatar: '/images/integrations/avatars/flutterflow.png'
+  avatar: '/images/integrations/avatars/flutterflow.avif'
   vendor: FlutterFlow
   description: 'FlutterFlow is a low-code platform that lets you visually build and deploy mobile and web apps using Flutter.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images:
-  - /images/integrations/flutterflow-auth-kit/cover.png
-  - /images/integrations/flutterflow-auth-kit/featured.png
-  - /images/integrations/flutterflow-auth-kit/auth-login-overview.png
-  - /images/integrations/flutterflow-auth-kit/login-pointers.png
-  - /images/integrations/flutterflow-auth-kit/dashboard-pointers.png
+  - /images/integrations/flutterflow-auth-kit/cover.avif
+  - /images/integrations/flutterflow-auth-kit/featured.avif
+  - /images/integrations/flutterflow-auth-kit/auth-login-overview.avif
+  - /images/integrations/flutterflow-auth-kit/login-pointers.avif
+  - /images/integrations/flutterflow-auth-kit/dashboard-pointers.avif
 ---
 
 FlutterFlow is a powerful visual builder that lets you create beautiful Flutter apps without writing much code. It's perfect for both beginners and experienced developers who want to build apps quickly. With its drag-and-drop interface and pre-built components, you can focus on creating great user experiences.
@@ -39,7 +39,7 @@ By the end of this guide, you’ll have a fully functional authentication system
 
 Want to see the final result first? Check out our [Appwrite Flutterflow Demo App](https://app.flutterflow.io/project/appwrite-auth-yxmd9b) to experience all these features in action! Then follow along to build your own custom version.
 
-![Welcome screen](/images/integrations/flutterflow-auth-kit/welcomescreen.png)
+![Welcome screen](/images/integrations/flutterflow-auth-kit/welcomescreen.avif)
 
 # Before you start
 
@@ -93,7 +93,7 @@ The Authentication library provides essential core functionality:
    - Find “Appwrite Authentication Kit” under FlutterFlow Libraries.
    - Click “Add Library”.
 
-![Screenshot of login](/images/integrations/flutterflow-auth-kit/screenshot.png)
+![Screenshot of login](/images/integrations/flutterflow-auth-kit/screenshot.avif)
 
 ### Configure the Authentication Library
 
@@ -171,7 +171,7 @@ Each authentication action follows this consistent pattern:
 3. Success/failure conditions based on `response.success`.  
 4. Error handling using `response.formattedError`.
 
-![Flow example](/images/integrations/flutterflow-auth-kit/flow.png)
+![Flow example](/images/integrations/flutterflow-auth-kit/flow.avif)
 
 
 ### Example: Sign Up flow

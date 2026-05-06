@@ -15,7 +15,7 @@
     const title = 'Messaging' + TITLE_SUFFIX;
     const description =
         'Appwrite Messaging allows you to communicate with your audience across various mediums. Push notifications, SMS and emails - set up within minutes!';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     const codeTopic = [
         {
@@ -243,12 +243,12 @@ messaging.create_email(
     <div class="web-big-padding-section overflow-hidden">
         <div class="hero">
             <img
-                src="/images/products/messaging/blur-left.png"
+                src="/images/products/messaging/blur-left.avif"
                 alt=""
                 class="blur-left web-u-hide-2800"
             />
             <img
-                src="/images/products/messaging/blur-right.png"
+                src="/images/products/messaging/blur-right.avif"
                 alt=""
                 class="blur-right web-u-hide-2800"
             />
@@ -256,7 +256,7 @@ messaging.create_email(
             <div class="container">
                 <div>
                     <div class="product">
-                        <img src="/images/icons/illustrated/dark/messaging.png" alt="" />
+                        <img src="/images/icons/illustrated/dark/messaging.avif" alt="" />
                         <span class="text-eyebrow text-primary uppercase">
                             Messaging<span class="web-u-color-text-accent">_</span>
                         </span>
@@ -281,7 +281,7 @@ messaging.create_email(
                 </div>
 
                 <div class="phone-wrapper">
-                    <img class="phone" src="/images/products/messaging/phone.png" alt="" />
+                    <img class="phone" src="/images/products/messaging/phone.avif" alt="" />
                 </div>
             </div>
         </div>
@@ -533,7 +533,7 @@ messaging.create_email(
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/auth.png"
+                                        src="/images/icons/illustrated/dark/auth.avif"
                                         alt="auth"
                                         width="32"
                                         height="32"
@@ -559,7 +559,7 @@ messaging.create_email(
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/functions.png"
+                                        src="/images/icons/illustrated/dark/functions.avif"
                                         alt="functions"
                                         width="32"
                                         height="32"
@@ -586,7 +586,7 @@ messaging.create_email(
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/databases.png"
+                                        src="/images/icons/illustrated/dark/databases.avif"
                                         alt=""
                                         width="37"
                                         height="32"
@@ -612,7 +612,7 @@ messaging.create_email(
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/storage.png"
+                                        src="/images/icons/illustrated/dark/storage.avif"
                                         alt="storage"
                                         width="32"
                                         height="32"
@@ -638,7 +638,7 @@ messaging.create_email(
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/realtime.png"
+                                        src="/images/icons/illustrated/dark/realtime.avif"
                                         alt="realtime"
                                         width="32"
                                         height="32"

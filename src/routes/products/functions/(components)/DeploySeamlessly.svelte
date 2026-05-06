@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Window from '../(assets)/deploy-window.png';
+    import Window from '../(assets)/deploy-window.avif';
 </script>
 
 <section class="pt-12 pb-20">

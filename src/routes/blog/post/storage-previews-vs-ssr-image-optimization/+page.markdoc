@@ -3,7 +3,7 @@ layout: post
 title: "Storage previews vs SSR image optimization: when to use which"
 description: More frameworks are adding server-side image manipulation. Learn when to use service-based image transformations like Appwrite Storage previews versus SSR functions for image optimization.
 date: 2025-11-06
-cover: /images/blog/storage-previews-vs-ssr-image-optimization/cover.png
+cover: /images/blog/storage-previews-vs-ssr-image-optimization/cover.avif
 timeToRead: 8
 author: ebenezer-don
 category: product

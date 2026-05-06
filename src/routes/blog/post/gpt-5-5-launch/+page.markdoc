@@ -3,7 +3,7 @@ layout: post
 title: "GPT-5.5 is here: benchmarks, pricing, and what changes for developers"
 description: OpenAI shipped GPT-5.5 on April 23, 2026. Here's a source-backed look at benchmarks, pricing versus GPT-5.4 and Claude Opus 4.7, the system card, and where the model still falls short.
 date: 2026-04-24
-cover: /images/blog/gpt-5-5-launch/cover.png
+cover: /images/blog/gpt-5-5-launch/cover.avif
 timeToRead: 8
 author: atharva
 category: ai
@@ -107,7 +107,7 @@ Here's the thing GPT-5.5 has not fixed. Ask it to generate a UI from a plain-lan
 
 Below is a UI generated with GPT-5.5 from a short bakery-storefront prompt. Same pattern as every other model in this class:
 
-![GPT-5.5 generated bakery UI using card grid](/images/blog/gpt-5-5-launch/card-problem.png)
+![GPT-5.5 generated bakery UI using card grid](/images/blog/gpt-5-5-launch/card-problem.avif)
 
 The benchmarks above suggest the model has become meaningfully better at *reasoning about* code, carrying context across files, and running agentic workflows. It has not clearly moved on *visual design*. The defaults are still "cards on a soft background with generous padding".
 
