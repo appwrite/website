@@ -1,0 +1,37 @@
+---
+layout: changelog
+title: "Databases: BigInt column support"
+date: 2026-05-06
+---
+
+Appwrite Databases now supports **BigInt** columns (and legacy attributes), giving you a 64-bit signed integer type alongside the existing 32-bit `integer`. Use BigInt when your values may exceed the ±2.1 billion range of a regular integer — for example, large counters, high-resolution timestamps, or external IDs from systems that use 64-bit keys.
+
+BigInt columns accept optional `min`, `max`, and `default` parameters and work with atomic increment/decrement operations, just like regular integers.
+
+**TablesDB (recommended)**
+```js
+columns: [
+    {
+        key: 'total_views',
+        type: 'bigint',
+        required: false,
+        min: 0
+    }
+]
+```
+
+**Legacy Collections API**
+```js
+// createBigIntAttribute is also available
+databases.createBigintAttribute(
+    databaseId, collectionId, 'total_views',
+    false, // required
+    0,     // min
+    null,  // max
+    null   // default
+);
+```
+
+{% arrow_link href="/docs/products/databases/tables#columns" %}
+Learn more about column types
+{% /arrow_link %}
