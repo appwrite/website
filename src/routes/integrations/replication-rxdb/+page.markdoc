@@ -6,17 +6,17 @@ date: 2025-04-17
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/replication-rxdb/cover.png
+cover: /images/integrations/replication-rxdb/cover.avif
 category: databases
 product: 
-    avatar: '/images/integrations/avatars/rxdb.png'
+    avatar: '/images/integrations/avatars/rxdb.avif'
     vendor: Upstash
     description: 'RxDB (Reactive Database) is a local-first, NoSQL database for JavaScript applications.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/replication-rxdb/cover.png
+    - /images/integrations/replication-rxdb/cover.avif
 ---
 
 RxDB (Reactive Database) is a client-side, NoSQL database designed for JavaScript applications. It emphasizes real-time data synchronization, offline-first capabilities, and reactive programming paradigms. RxDB is particularly suited for applications that require seamless user experiences across various platforms, including web browsers, mobile devices, and desktop environments.

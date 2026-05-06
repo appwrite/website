@@ -3,7 +3,7 @@ layout: post
 title: Build a notes app with user impersonation
 description: Learn how to build a notes app where an admin can impersonate users to view and manage their private data using Appwrite's user impersonation feature.
 date: 2026-03-31
-cover: /images/blog/user-impersonation-tutorial/cover.png
+cover: /images/blog/user-impersonation-tutorial/cover.avif
 timeToRead: 12
 author: atharva
 category: tutorial, product
@@ -24,7 +24,7 @@ In this tutorial, you will build a notes app where an admin with the impersonato
 
 Start by creating a new project in the Appwrite Console. Head to the Console, create a project, and note the **project ID** and **API endpoint** from the overview page.
 
-![Project overview in the Appwrite Console](/images/blog/user-impersonation-tutorial/project-overview.png)
+![Project overview in the Appwrite Console](/images/blog/user-impersonation-tutorial/project-overview.avif)
 
 # Create users
 
@@ -43,7 +43,7 @@ Sarah Chen will be the admin with impersonation capability. The other three are 
 
 Open Sarah Chen's user profile and scroll down to the **User impersonation** section. Toggle it on and click **Update**.
 
-![Impersonator toggle enabled for Sarah Chen](/images/blog/user-impersonation-tutorial/impersonator-toggle.png)
+![Impersonator toggle enabled for Sarah Chen](/images/blog/user-impersonation-tutorial/impersonator-toggle.avif)
 
 When a user is marked as an impersonator, Appwrite automatically grants them the `users.read` scope. This allows them to list all users in the project, which is what makes the "Users" tab in our app possible. Regular users without this capability cannot call the list users endpoint.
 
@@ -67,7 +67,7 @@ Go to the table's **Settings** tab. You need two things:
 
 With this setup, when a user creates a note through the Client SDK, Appwrite automatically grants that user read, update, and delete permissions on the row. No manual permission assignment needed in your code.
 
-![Table permissions and row security settings](/images/blog/user-impersonation-tutorial/table-permissions.png)
+![Table permissions and row security settings](/images/blog/user-impersonation-tutorial/table-permissions.avif)
 
 # Build the app
 
@@ -238,19 +238,19 @@ The app flow works like this:
 
 1. **Sign in as Sarah Chen.** The app detects her impersonator capability and shows the Users tab in the sidebar.
 
-![Dashboard showing Sarah's notes with the Users tab visible](/images/blog/user-impersonation-tutorial/demo-dashboard.png)
+![Dashboard showing Sarah's notes with the Users tab visible](/images/blog/user-impersonation-tutorial/demo-dashboard.avif)
 
 2. **Click Users** to see all other users in the project with an Impersonate button next to each one.
 
-![Users list with Impersonate buttons](/images/blog/user-impersonation-tutorial/demo-users.png)
+![Users list with Impersonate buttons](/images/blog/user-impersonation-tutorial/demo-users.avif)
 
 3. **Click Impersonate** on a user. The Users tab disappears, an amber banner shows who you are viewing as, and the notes switch to that user's private notes.
 
-![Impersonating Alex Rivera with the amber banner](/images/blog/user-impersonation-tutorial/demo-impersonating.png)
+![Impersonating Alex Rivera with the amber banner](/images/blog/user-impersonation-tutorial/demo-impersonating.avif)
 
 4. **Create or edit notes** as the impersonated user. The notes are created with that user's permissions.
 
-![A note created while impersonating Alex](/images/blog/user-impersonation-tutorial/demo-impersonating-note.png)
+![A note created while impersonating Alex](/images/blog/user-impersonation-tutorial/demo-impersonating-note.avif)
 
 5. **Click Stop impersonating** to return to Sarah's own notes. The Users tab reappears.
 

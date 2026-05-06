@@ -17,19 +17,19 @@ If you're looking to add MFA to your app, follow the [Multi-factor authenticatio
 To enable MFA on your Appwrite account, navigate to your Appwrite Console > your account menu on the top right > **Your account** > **Multi-factor authentication**.
 
 {% only_dark %}
-![Multi-factor authentication settings](/images/docs/advanced/security/dark/mfa.png)
+![Multi-factor authentication settings](/images/docs/advanced/security/dark/mfa.avif)
 {% /only_dark %}
 {% only_light %}
-![Multi-factor authentication settings](/images/docs/advanced/security/mfa.png)
+![Multi-factor authentication settings](/images/docs/advanced/security/mfa.avif)
 {% /only_light %}
 
 Toggle **Multi-factor authentication** to enable MFA for your account, then click **Add authentication factor**.
 
 {% only_dark %}
-![Multi-factor authentication modal](/images/docs/advanced/security/dark/mfa-modal.png)
+![Multi-factor authentication modal](/images/docs/advanced/security/dark/mfa-modal.avif)
 {% /only_dark %}
 {% only_light %}
-![Multi-factor authentication modal](/images/docs/advanced/security/mfa-modal.png)
+![Multi-factor authentication modal](/images/docs/advanced/security/mfa-modal.avif)
 {% /only_light %}
 
 Scan the QR code with your authenticator app, then enter the code from your authenticator app to verify the setup.

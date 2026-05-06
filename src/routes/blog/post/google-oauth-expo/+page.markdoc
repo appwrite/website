@@ -3,7 +3,7 @@ layout: post
 title: Implementing Google OAuth with Expo Router
 description: Learn how to implement Google authentication in Expo React Native.
 date: 2025-09-16
-cover: /images/blog/google-oauth-expo/cover.png
+cover: /images/blog/google-oauth-expo/cover.avif
 timeToRead: 7
 author: atharva
 category: tutorial
@@ -231,11 +231,11 @@ This should help you test your authentication flow. In this file, we have import
 
 The final app, when first opened, shows a button to sign in with Google.
 
-![App login splash screen](/images/blog/google-oauth-expo/login-screen.png)
+![App login splash screen](/images/blog/google-oauth-expo/login-screen.avif)
 
 Once you sign in with your Google account, you will receive the following greeting in your app.
 
-![App login successful](/images/blog/google-oauth-expo/login-successful.png)
+![App login successful](/images/blog/google-oauth-expo/login-successful.avif)
 
 # More resources
 

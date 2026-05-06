@@ -3,7 +3,7 @@
 </script>
 
 <div class="wrapper">
-    <img src="/images/bgs/pre-footer.png" alt="" class="web-pre-footer-bg -z-1" />
+    <img src="/images/bgs/pre-footer.avif" alt="" class="web-pre-footer-bg -z-1" />
     <div class="container">
         <h2 class="text-display font-aeonik-pro text-primary">Need support?</h2>
         <div class="cards">

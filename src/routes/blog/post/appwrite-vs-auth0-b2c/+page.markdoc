@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Auth0: Which is better for a B2C app?"
 description: Learn the difference between Appwrite and Auth0 in terms of pricing, features, and scalability.
 date: 2025-05-13
-cover: /images/blog/appwrite-vs-auth0-b2c/cover.png
+cover: /images/blog/appwrite-vs-auth0-b2c/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
@@ -71,7 +71,7 @@ Let's say your app hits 100,000 monthly active users:
 - **Auth0**: Transparent pricing only goes up to 20,000 MAUs at $1400. Beyond that, you need to contact the sales team and might have to sign an enterprise contract. Some users have reported paying **as much as $13,000/month** at this scale.
 - **Appwrite**: Still on the [**$15/month Pro plan**](https://appwrite.io/pricing), assuming your resource usage is within limits. Even with overages, your total cost is likely to stay **well under $100/month**.
 
-![Appwrite vs Auth0 pricing chart](/images/blog/appwrite-vs-auth0-b2c/appwrite-vs-auth0-chart.png)
+![Appwrite vs Auth0 pricing chart](/images/blog/appwrite-vs-auth0-b2c/appwrite-vs-auth0-chart.avif)
 
 This is not just about affordability but about pricing that reflects actual usage and not only user count, so you're not penalized for gaining traction.
 

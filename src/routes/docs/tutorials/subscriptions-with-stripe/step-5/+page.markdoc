@@ -11,10 +11,10 @@ You are now ready to use the Appwrite Function in your front end. You can initia
 You can visit our Function's domain in the browser to see the demo application.
 
 {% only_dark %}
-![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/dark/stripe.png)
+![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/dark/stripe.avif)
 {% /only_dark %}
 {% only_light %}
-![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/stripe.png)
+![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/stripe.avif)
 {% /only_light %}
 
 In the demo app, click the **Register as anonymous** button to create a guest session. This will create a new user in your Appwrite Project. After registering, the demo app will show that you are **Not subscribed**. This means that your user does not have a `subscriber` label. You can click **Subscribe with Stripe** to start the payment process.
@@ -34,10 +34,10 @@ Let's click on this user to see the details.
 After scrolling down to the **Labels** card, you can see the `subscriber` label has been added to this user.
 
 {% only_dark %}
-![Appwrite User screen](/images/docs/tutorials/subscriptions-with-stripe/dark/user-subscriber-label.png)
+![Appwrite User screen](/images/docs/tutorials/subscriptions-with-stripe/dark/user-subscriber-label.avif)
 {% /only_dark %}
 {% only_light %}
-![Appwrite User screen](/images/docs/tutorials/subscriptions-with-stripe/user-subscriber-label.png)
+![Appwrite User screen](/images/docs/tutorials/subscriptions-with-stripe/user-subscriber-label.avif)
 {% /only_light %}
 
 

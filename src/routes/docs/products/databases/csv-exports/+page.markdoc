@@ -89,10 +89,10 @@ To export rows using the Appwrite Console:
 5. Click **Export**
 
 {% only_dark %}
-![CSV export screen](/images/docs/databases/dark/csv-export.png)
+![CSV export screen](/images/docs/databases/dark/csv-export.avif)
 {% /only_dark %}
 {% only_light %}
-![CSV export screen](/images/docs/databases/csv-export.png)
+![CSV export screen](/images/docs/databases/csv-export.avif)
 {% /only_light %}
 
 The export will begin processing in the background. You'll see a progress indicator and receive an email when the export is ready to download.

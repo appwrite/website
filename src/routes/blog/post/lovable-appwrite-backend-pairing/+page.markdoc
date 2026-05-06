@@ -3,7 +3,7 @@ layout: post
 title: "Lovable and Appwrite: a practical backend pairing for AI-generated apps"
 description: "How Lovable users can pair Appwrite as the backend for AI-generated apps, with Auth, tables, permissions, Storage, and Functions."
 date: 2026-04-26
-cover: /images/blog/lovable-appwrite-backend-pairing/cover.png
+cover: /images/blog/lovable-appwrite-backend-pairing/cover.avif
 timeToRead: 8
 author: aditya-oberai
 unlisted: true

@@ -5,7 +5,7 @@
     import FooterNav from '../../lib/components/FooterNav.svelte';
     import MainFooter from '../../lib/components/MainFooter.svelte';
     import { socials } from '$lib/constants';
-    import GradientBackground from './bg.png';
+    import GradientBackground from './bg.avif';
     import { PUBLIC_GROWTH_ENDPOINT } from '$env/static/public';
     import { getReferrerAndUtmSource } from '$lib/utils/utm';
     import { Button } from '$lib/components/ui';
@@ -53,7 +53,7 @@
 
     const title = 'OSS program' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>

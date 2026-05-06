@@ -3,7 +3,7 @@ layout: post
 title: "Designing Init: Event logo and theme"
 description: "How the Appwrite Visual Design team crafted Init 2.0"
 date: 2024-08-23
-cover: /images/blog/designing-init/cover.png
+cover: /images/blog/designing-init/cover.avif
 timeToRead: 5
 author: jesse-winton
 category: design
@@ -16,11 +16,11 @@ After the success of our first [Init](https://appwrite.io/init) event in Spring 
 
 As a team, we always begin these design sprints with an empty FigJam board, where we can add notes, add screenshots that might give us inspiration, and have discussions about the things we like and dislike. Since this was our second time ideating for Init, we were able to apply many learnings from previous processes, which made this (and subsequent phases) feel more streamlined.
 
-![FigJam inspiration](/images/blog/designing-init/figjam-1.png)
+![FigJam inspiration](/images/blog/designing-init/figjam-1.avif)
 
 With the new feature set in mind, we needed to make sure that every piece of the design language was communicating the ways these new features would boost developer productivity, remove friction, and enhance performance. As we all gathered inspiration, we ultimately started to come together on the concept of line art; it felt dynamic and had a sense of organic movement that was in line with the key themes of performance that we wanted to focus on.
 
-![FigJam inspiration](/images/blog/designing-init/figjam-2.png)
+![FigJam inspiration](/images/blog/designing-init/figjam-2.avif)
 
 Once the team agreed on our visual style, we began to iterate on concepts.
 
@@ -28,7 +28,7 @@ Once the team agreed on our visual style, we began to iterate on concepts.
 
 We had a few iterations of the event logo before settling on our final version. In situations like this, there can be a lot of value in iterating in code; it’s easy to preview, you can start to get a feel for the real world implementation, and once the team finds something that works the job is halfway done.
 
-![Sara's pass](/images/blog/designing-init/saras-pass.png)
+![Sara's pass](/images/blog/designing-init/saras-pass.avif)
 
 {% video src="/images/blog/designing-init/first-browser-pass.mov" /%}
 
@@ -236,11 +236,11 @@ Of course, the Init lockup was not the only component of design work needed for 
 
 We worked together with Appwrite engineers to understand how each new feature launched could be illustrated using the dynamic line art concept we developed. This resulted in a set of key illustrations we used across different channels such as campaign announcements on social media, website illustrations, blog covers, and animations.
 
-![Day 0](/images/blog/designing-init/day0.png)
-![Day 1](/images/blog/designing-init/day1.png)
-![Day 2](/images/blog/designing-init/day2.png)
-![Day 3](/images/blog/designing-init/day3.png)
-![Day 4](/images/blog/designing-init/day4.png)
+![Day 0](/images/blog/designing-init/day0.avif)
+![Day 1](/images/blog/designing-init/day1.avif)
+![Day 2](/images/blog/designing-init/day2.avif)
+![Day 3](/images/blog/designing-init/day3.avif)
+![Day 4](/images/blog/designing-init/day4.avif)
 
 This helped expand the concept we began developing with the Init lockup and made the whole event’s identity feel more expressive, diverse, and complete.
 

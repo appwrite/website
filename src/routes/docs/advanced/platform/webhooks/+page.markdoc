@@ -19,10 +19,10 @@ To add a webhook from the Appwrite Console:
 7. Click **Create webhook**.
 
 {% only_dark %}
-![Create webhook screen](/images/docs/platform/dark/create-webhook.png)
+![Create webhook screen](/images/docs/platform/dark/create-webhook.avif)
 {% /only_dark %}
 {% only_light %}
-![Create webhook screen](/images/docs/platform/create-webhook.png)
+![Create webhook screen](/images/docs/platform/create-webhook.avif)
 {% /only_light %}
 
 # Manage webhooks with a Server SDK {% #manage-webhooks-with-a-server-sdk %}

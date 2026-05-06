@@ -2,7 +2,7 @@
 layout: changelog
 title: "Announcing Auto-increment support: Built-in numeric sequencing for your documents"
 date: 2025-07-15
-cover: /images/changelog/2025-07-15.png
+cover: /images/changelog/2025-07-15.avif
 ---
 
 We're excited to introduce a new Database feature: Auto-increment support.

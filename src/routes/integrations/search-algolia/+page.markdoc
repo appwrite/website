@@ -6,22 +6,22 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/search-algolia/cover.png
+cover: /images/integrations/search-algolia/cover.avif
 category: search
 product: 
-    avatar: '/images/integrations/avatars/algolia.png'
+    avatar: '/images/integrations/avatars/algolia.avif'
     vendor: Algolia
     description: 'Algolia is a search platform that helps you add fast and relevant search capabilities to your app.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/search-algolia/cover.png
-    - /images/integrations/search-algolia/overview.png
-    - /images/integrations/search-algolia/index.png
-    - /images/integrations/search-algolia/template.png
-    - /images/integrations/search-algolia/variables.png
-    - /images/integrations/search-algolia/demo.png
+    - /images/integrations/search-algolia/cover.avif
+    - /images/integrations/search-algolia/overview.avif
+    - /images/integrations/search-algolia/index.avif
+    - /images/integrations/search-algolia/template.avif
+    - /images/integrations/search-algolia/variables.avif
+    - /images/integrations/search-algolia/demo.avif
 ---
 
 Algolia is a search platform that helps you add fast and relevant search capabilities to your app. It makes it easy to find and explore data quickly.
@@ -38,11 +38,11 @@ To implement the Algolia integration, follow these simple steps:
 
 First, [sign up on Algolia](https://dashboard.algolia.com/users/sign_up) and create a new application. Save the **Application ID**, **Search API Key**, and **Write API Key** for further usage.
 
-![Algolia overview](/images/integrations/search-algolia/overview.png)
+![Algolia overview](/images/integrations/search-algolia/overview.avif)
 
 Then, click on the **Search** page from the left sidebar and **create a new Index** to store your searchable data. Save your **Index ID** for further usage.
 
-![New index](/images/integrations/search-algolia/index.png)
+![New index](/images/integrations/search-algolia/index.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -50,11 +50,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Algolia** function template.
 
-![Function template](/images/integrations/search-algolia/template.png)
+![Function template](/images/integrations/search-algolia/template.avif)
 
 During the setup process, click on the checkbox to create an Appwrite API key on completion and add the Appwrite Database ID and Collection ID for the data you want to index and search as well as the **Algolia application ID**, **search API key**, **write API key** (under Admin API Key), and **index ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
 
-![Env variables](/images/integrations/search-algolia/variables.png)
+![Env variables](/images/integrations/search-algolia/variables.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 
@@ -73,7 +73,7 @@ In case you have a large collection of data and your function executions timeout
 Then, open your function URL in the browser to try the interactive search UI.
     
 
-![Demo](/images/integrations/search-algolia/demo.png)
+![Demo](/images/integrations/search-algolia/demo.avif)
 
 # Read more about Algolia
 

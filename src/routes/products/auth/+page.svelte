@@ -17,7 +17,7 @@
     const title = 'Auth' + TITLE_SUFFIX;
     const description =
         'Enable secure and reliable user login with Appwrite Auth. We support multiple authentication methods with compliance features out of the box.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -69,7 +69,7 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/messaging.png"
+                                        src="/images/icons/illustrated/dark/messaging.avif"
                                         alt="auth"
                                         width="32"
                                         height="32"
@@ -96,7 +96,7 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/functions.png"
+                                        src="/images/icons/illustrated/dark/functions.avif"
                                         alt="functions"
                                         width="32"
                                         height="32"
@@ -123,7 +123,7 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/databases.png"
+                                        src="/images/icons/illustrated/dark/databases.avif"
                                         alt=""
                                         width="37"
                                         height="32"
@@ -149,7 +149,7 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/storage.png"
+                                        src="/images/icons/illustrated/dark/storage.avif"
                                         alt="storage"
                                         width="32"
                                         height="32"
@@ -175,7 +175,7 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/realtime.png"
+                                        src="/images/icons/illustrated/dark/realtime.avif"
                                         alt="realtime"
                                         width="32"
                                         height="32"

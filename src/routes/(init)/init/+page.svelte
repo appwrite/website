@@ -10,13 +10,13 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
-    import Poster from './(assets)/poster.png';
-    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
-    import PosterDeploy from './(assets)/posterDeploy.png';
-    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
-    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
-    import PosterFileTokens from './(assets)/posterFileTokens.png';
-    import PosterClosingParty from './(assets)/eventClosingParty.png';
+    import Poster from './(assets)/poster.avif';
+    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.avif';
+    import PosterDeploy from './(assets)/posterDeploy.avif';
+    import PosterIndustryPanel from './(assets)/posterIndustryPanel.avif';
+    import PosterNewImageFormats from './(assets)/posterNewImageFormats.avif';
+    import PosterFileTokens from './(assets)/posterFileTokens.avif';
+    import PosterClosingParty from './(assets)/eventClosingParty.avif';
     import Sites from './(assets)/illustrations/sites.svg';
     import Flutter from './(assets)/illustrations/flutter.svg';
     import Formats from './(assets)/illustrations/formats.svg';

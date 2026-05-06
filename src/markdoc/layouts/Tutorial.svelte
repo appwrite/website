@@ -62,7 +62,7 @@
     }, []);
 
     const seoTitle = title + DOCS_TITLE_SUFFIX;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.avif';
 </script>
 
 <svelte:head>

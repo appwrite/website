@@ -4,7 +4,7 @@ title: "Announcing CSV Import: Bring in large datasets to Appwrite with ease"
 description: Learn how to import documents into your Appwrite collections using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
 date: 2025-07-01
 # update this cover later, once available!
-cover: /images/blog/announcing-csv-imports/cover.png
+cover: /images/blog/announcing-csv-imports/cover.avif
 timeToRead: 5
 author: darshan-pandya
 category: announcement
@@ -28,7 +28,7 @@ To get started, create a collection and define its attributes in the Appwrite Co
 You can optionally include the `$id` column to assign custom document IDs.
 {% /info %}
 
-![Collections screen](/images/blog/announcing-csv-imports/csv-import.png)
+![Collections screen](/images/blog/announcing-csv-imports/csv-import.avif)
 
 All required attributes must be present in the CSV, and Appwrite will validate each row before importing it.
 

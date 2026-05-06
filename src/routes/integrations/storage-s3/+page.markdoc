@@ -6,20 +6,20 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/storage-s3/cover.png
+cover: /images/integrations/storage-s3/cover.avif
 category: storage
 product:
-    avatar: '/images/integrations/avatars/aws.png'
+    avatar: '/images/integrations/avatars/aws.avif'
     vendor: AWS
     description: 'Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.'
 platform:
     - 'Self-hosted'
 images:
-    - /images/integrations/storage-s3/cover.png
-    - /images/integrations/storage-s3/bucket.png
-    - /images/integrations/storage-s3/access-key.png
-    - /images/integrations/storage-s3/appwrite-file.png
-    - /images/integrations/storage-s3/s3-file.png
+    - /images/integrations/storage-s3/cover.avif
+    - /images/integrations/storage-s3/bucket.avif
+    - /images/integrations/storage-s3/access-key.avif
+    - /images/integrations/storage-s3/appwrite-file.avif
+    - /images/integrations/storage-s3/s3-file.avif
 ---
 
 Amazon S3 (Simple Storage Service) is an object storage service that offers industry-leading scalability, data availability, security, and performance. You can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
@@ -36,11 +36,11 @@ To implement the Amazon S3 provider for Appwrite Storage, there are several step
 
 First, you must [sign up for an AWS account](https://signin.aws.amazon.com/signup?request_type=register) and create an S3 bucket. Save the **Bucket name** and **AWS Region** mentioned here for later use.
 
-![Create S3 bucket](/images/integrations/storage-s3/bucket.png)
+![Create S3 bucket](/images/integrations/storage-s3/bucket.avif)
 
 To access this bucket from Appwrite Storage, we also need to generate an access key within our AWS account. To do so, click on your username in the top-right corner, click on **Security credentials**, and scroll below to create an access key. Save your **Access key ID** and **Secret access key** for later usage.
 
-![Create AWS access key](/images/integrations/storage-s3/access-key.png)
+![Create AWS access key](/images/integrations/storage-s3/access-key.avif)
 
 ## Step 2: Add S3 provider to your Appwrite instance
 
@@ -79,11 +79,11 @@ docker compose exec appwrite vars
 
 To test your S3, open your Appwrite project, go to the Storage page, create a new bucket, and upload a file.
 
-![File on Appwrite Storage](/images/integrations/storage-s3/appwrite-file.png)
+![File on Appwrite Storage](/images/integrations/storage-s3/appwrite-file.avif)
 
 When you visit your S3 bucket via the AWS Management Console, you should see the same file uploaded there.
 
-![File on Amazon S3](/images/integrations/storage-s3/s3-file.png)
+![File on Amazon S3](/images/integrations/storage-s3/s3-file.avif)
 
 # Read more about S3 and Appwrite Storage
 

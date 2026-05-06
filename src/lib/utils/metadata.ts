@@ -38,7 +38,7 @@ export function organizationJsonSchema() {
         legalName: 'Appwrite Code Ltd.',
         description:
             'A secure open-source backend server provides the core APIs required to build web and mobile applications. Appwrite provides authentication, database, storage, functions, messaging, and advanced realtime capabilities.',
-        logo: 'https://appwrite.io/assets/logotype/white.png'
+        logo: 'https://appwrite.io/assets/logotype/white.avif'
     });
 }
 

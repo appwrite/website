@@ -3,7 +3,7 @@ layout: post
 title: "Exploring AI and vibe coding: Insights from the Appwrite developer community"
 description: Survey insights on how developers are using AI, vibe coding tools, and the Appwrite MCP server.
 date: 2025-08-25
-cover: /images/blog/ai-vibe-coding-insights/cover.png
+cover: /images/blog/ai-vibe-coding-insights/cover.avif
 timeToRead: 10
 author: laura-du-ry
 category: tutorial
@@ -13,7 +13,7 @@ The way developers write code is changing fast. What used to be a carefully stru
 
 [A viral tweet](https://x.com/karpathy/status/1886192184808149383?lang=en) from Andrej Karpathy summed this up perfectly, coining the term **“vibe coding”:** building apps by trusting AI tools to do most of the work, skipping over error messages, and rarely touching the keyboard.
 
-![Tweet screenshot](/images/blog/ai-vibe-coding-insights/tweet.png)
+![Tweet screenshot](/images/blog/ai-vibe-coding-insights/tweet.avif)
 
 This idea resonated because it reflects what many developers are already doing. Tools like GitHub Copilot, Cursor, and even newer “vibe-first” platforms make it possible to go from an idea to a working prototype in minutes, not by obsessing over every line of code, but by iterating quickly and leaning on AI for the heavy lifting.
 

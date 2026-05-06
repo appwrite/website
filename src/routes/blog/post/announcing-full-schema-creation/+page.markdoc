@@ -3,7 +3,7 @@ layout: post
 title: "Announcing Full Schema Creation: Provision complete tables in one atomic call"
 description: Create a table, all its columns, and indexes synchronously, ready to use instantly, with no background jobs.
 date: 2025-12-30
-cover: /images/blog/full-schema.png
+cover: /images/blog/full-schema.avif
 timeToRead: 5
 author: aditya-oberai
 category: announcement

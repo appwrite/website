@@ -3,7 +3,7 @@ layout: post
 title: "Announcing the Appwrite Network: Appwrite’s vision for a global cloud infrastructure"
 description: Announcing more regions for Cloud, and many more to come with the introduction of the Appwrite Network.
 date: 2025-04-16
-cover: /images/blog/the-appwrite-network/network-cover-image.png
+cover: /images/blog/the-appwrite-network/network-cover-image.avif
 timeToRead: 05
 author: christy-jacob
 category: product
@@ -15,7 +15,7 @@ We are happy to announce the launch of the Appwrite Network, a network of cloud 
 
 Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come.
 
-![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.png)
+![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.avif)
 
 # The plan
 
@@ -63,7 +63,7 @@ Building a fully fledged network from scratch is not a decision we take lightly.
 
 # Regions vs Edges vs PoPs
 
-![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges-pops.png)
+![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges-pops.avif)
 
 In Appwrite, Regions are where all your core data and services live. This includes your databases, auth, functions, messaging, and storage. Regions are the source of truth, handling heavy workloads and ensuring your application runs reliably while keeping your data compliant with local regulations.
 

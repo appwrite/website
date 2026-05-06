@@ -19,7 +19,7 @@
     export let cover: Integration['cover'];
 
     //const title = 'Integrations' + TITLE_SUFFIX;
-    //const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    //const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
     const ogImage = DEFAULT_HOST + cover;
     const categoryHeading = integrationCategoryDescriptions.find(
         (key) => key.slug === category.toLowerCase()
@@ -149,7 +149,7 @@
         <div class="container">
             <div class="web-big-padding-section-level-2 relative">
                 <img
-                    src="/images/bgs/pre-footer.png"
+                    src="/images/bgs/pre-footer.avif"
                     alt=""
                     class="web-pre-footer-bg"
                     style="z-index:-1"

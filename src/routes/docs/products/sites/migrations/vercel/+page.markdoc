@@ -150,10 +150,10 @@ Navigate to your site > **Settings** > **Build settings** and configure the foll
 - **Rendering:** Select the appropriate rendering mode (Static or SSR)
 
 {% only_dark %}
-![Build settings](/images/docs/sites/dark/build-settings-install-command.png)
+![Build settings](/images/docs/sites/dark/build-settings-install-command.avif)
 {% /only_dark %}
 {% only_light %}
-![Build settings](/images/docs/sites/build-settings-install-command.png)
+![Build settings](/images/docs/sites/build-settings-install-command.avif)
 {% /only_light %}
 {% /section %}
 
@@ -188,10 +188,10 @@ Vercel automatically provides system variables like `VERCEL_URL`. You'll need to
 4. Toggle **Secret** for sensitive variables that should be hidden
 
 {% only_dark %}
-![Environment variables](/images/docs/sites/dark/env-variables.png)
+![Environment variables](/images/docs/sites/dark/env-variables.avif)
 {% /only_dark %}
 {% only_light %}
-![Environment variables](/images/docs/sites/env-variables.png)
+![Environment variables](/images/docs/sites/env-variables.avif)
 {% /only_light %}
 {% /section %}
 

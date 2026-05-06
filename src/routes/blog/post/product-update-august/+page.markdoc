@@ -3,7 +3,7 @@ layout: post
 title: "August product update: Init | 1.6 release to Cloud and Self-hosted"
 description: Get a full recap of last month's Init and everything else that happened in August.
 date: 2024-09-02
-cover: /images/blog/init-recap-august/product-update.png
+cover: /images/blog/init-recap-august/product-update.avif
 timeToRead: 7
 author: dennis-ivy
 category: product
@@ -14,7 +14,7 @@ Great news for all of you who cannot wait to get started with all the newly anno
 
 [Visit Init](https://appwrite.io/init)
 
-![1.6 release](/images/blog/init-recap-august/localdev.png)
+![1.6 release](/images/blog/init-recap-august/localdev.avif)
 
 # Local Development
 
@@ -26,7 +26,7 @@ Watch the product tour for more, or visit our [documentation](https://appwrite.i
 
 [Watch product tour](https://youtu.be/GMwrHds4Oa8)
 
-![1.6 release](/images/blog/init-recap-august/newcli.png)
+![1.6 release](/images/blog/init-recap-august/newcli.avif)
 
 # New Appwrite CLI
 
@@ -46,7 +46,7 @@ Watch the product tour for more, or visit our [documentation](https://appwrite.i
 
 [Watch product tour](https://youtu.be/nlzFl3AHlog)
 
-![1.6 release](/images/blog/init-recap-august/functionseco.png)
+![1.6 release](/images/blog/init-recap-august/functionseco.avif)
 
 # Functions ecosystem
 
@@ -64,7 +64,7 @@ Watch the product tour for more.
 
 [Watch product tour](https://youtu.be/G2UBTOBumII)
 
-![1.6 release](/images/blog/init-recap-august/go.png)
+![1.6 release](/images/blog/init-recap-august/go.avif)
 
 # Go support
 
@@ -82,7 +82,7 @@ Are you excited to start building with Go? Here are a few use cases to get you s
 
 [Read announcement](https://appwrite.io/blog/post/announcing-go-support)
 
-![1.6 release](/images/blog/init-recap-august/mock.png)
+![1.6 release](/images/blog/init-recap-august/mock.avif)
 
 # Mock numbers & Session alerts
 

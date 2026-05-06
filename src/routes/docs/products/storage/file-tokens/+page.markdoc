@@ -22,19 +22,19 @@ To create a file token, you must [upload a file](/docs/products/storage/upload-d
 Head to the **Storage** page, open a file inside a bucket, scroll down to the **File tokens** section, and click on the **Create file token** button.
 
 {% only_dark %}
-![Create file token](/images/docs/storage/dark/create-file-token.png)
+![Create file token](/images/docs/storage/dark/create-file-token.avif)
 {% /only_dark %}
 {% only_light %}
-![Create file token](/images/docs/storage/create-file-token.png)
+![Create file token](/images/docs/storage/create-file-token.avif)
 {% /only_light %}
 
 You can then click on the three-dots menu, click on **Copy URL** and get the token-based preview, view, and download URLs for the file.
 
 {% only_dark %}
-![Copy file token-based URL](/images/docs/storage/dark/copy-file-token-url.png)
+![Copy file token-based URL](/images/docs/storage/dark/copy-file-token-url.avif)
 {% /only_dark %}
 {% only_light %}
-![Copy file token-based URL](/images/docs/storage/copy-file-token-url.png)
+![Copy file token-based URL](/images/docs/storage/copy-file-token-url.avif)
 {% /only_light %}
 
 {% /tabsitem %}
@@ -335,10 +335,10 @@ You can use the Appwrite Console or one of the Server SDKs to view all created f
 Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section.
 
 {% only_dark %}
-![List of file tokens](/images/docs/storage/dark/list-file-tokens.png)
+![List of file tokens](/images/docs/storage/dark/list-file-tokens.avif)
 {% /only_dark %}
 {% only_light %}
-![List of file tokens](/images/docs/storage/list-file-tokens.png)
+![List of file tokens](/images/docs/storage/list-file-tokens.avif)
 {% /only_light %}
 
 {% /tabsitem %}
@@ -714,10 +714,10 @@ While the expiry of a file token is set at the time of creation, you can update 
 Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section. Click on the three-dots menu next to the created file token and click on **Edit expiry**.
 
 {% only_dark %}
-![Update file token expiry](/images/docs/storage/dark/update-file-token-expiry.png)
+![Update file token expiry](/images/docs/storage/dark/update-file-token-expiry.avif)
 {% /only_dark %}
 {% only_light %}
-![Update file token expiry](/images/docs/storage/update-file-token-expiry.png)
+![Update file token expiry](/images/docs/storage/update-file-token-expiry.avif)
 {% /only_light %}
 
 {% /tabsitem %}
@@ -1004,10 +1004,10 @@ You can use the Appwrite Console or one of the Server SDKs to delete a file toke
 Head to the **Storage** page, open a file inside a bucket, and scroll down to the **File tokens** section. Click on the three-dots menu next to the created file token and click on **Delete**.
 
 {% only_dark %}
-![Delete file token](/images/docs/storage/dark/delete-file-token.png)
+![Delete file token](/images/docs/storage/dark/delete-file-token.avif)
 {% /only_dark %}
 {% only_light %}
-![Delete file token](/images/docs/storage/delete-file-token.png)
+![Delete file token](/images/docs/storage/delete-file-token.avif)
 {% /only_light %}
 
 {% /tabsitem %}

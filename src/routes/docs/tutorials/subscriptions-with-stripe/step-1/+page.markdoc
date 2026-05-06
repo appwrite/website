@@ -14,10 +14,10 @@ This is an important part of growing your idea into a business.
 This tutorial will show you how to accept payments and provide subscribers with premium features using **Stripe**, a popular payment platform.
 
 {% only_dark %}
-![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/dark/stripe.png)
+![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/dark/stripe.avif)
 {% /only_dark %}
 {% only_light %}
-![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/stripe.png)
+![Stripe subscription demo](/images/docs/tutorials/subscriptions-with-stripe/stripe.avif)
 {% /only_light %}
 
 ## Prerequisites {% #prerequisites %}

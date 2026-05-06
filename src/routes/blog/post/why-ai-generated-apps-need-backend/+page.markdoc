@@ -3,7 +3,7 @@ layout: post
 title: "Why AI-generated apps still need a real backend"
 description: "AI builders can scaffold a UI in minutes, but durable data, identity, access control, and server-side logic still decide whether the app survives launch."
 date: 2026-04-23
-cover: /images/blog/why-ai-generated-apps-need-backend/cover.png
+cover: /images/blog/why-ai-generated-apps-need-backend/cover.avif
 timeToRead: 8
 author: atharva
 unlisted: true

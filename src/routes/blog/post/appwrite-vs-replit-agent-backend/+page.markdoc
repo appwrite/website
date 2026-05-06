@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Replit Agent backend: where should production data live?"
 description: "Compare Replit Agent's built-in database and services with Appwrite as a backend for Replit Agent apps graduating to production."
 date: 2026-05-01
-cover: /images/blog/appwrite-vs-replit-agent-backend/cover.png
+cover: /images/blog/appwrite-vs-replit-agent-backend/cover.avif
 timeToRead: 9
 author: atharva
 unlisted: true

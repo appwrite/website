@@ -3,7 +3,7 @@ layout: post
 title: Self-hosting Appwrite with MongoDB as the underlying database
 description: Learn how to self-host Appwrite with MongoDB as the database backend using the new installation wizard.
 date: 2026-04-01
-cover: /images/blog/self-hosting-appwrite-with-mongodb/cover.png
+cover: /images/blog/self-hosting-appwrite-with-mongodb/cover.avif
 timeToRead: 6
 author: atharva
 category: tutorial
@@ -66,7 +66,7 @@ Once the command is running, open your browser and go to `http://localhost:20080
 
 The first screen asks you to configure the basics of your Appwrite instance.
 
-![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.avif)
 
 - **Hostname:** Enter the domain or IP address where your Appwrite instance will be accessible. If you're just testing locally, `localhost` works fine.
 - **Database:** This is the important part. Select **MongoDB**. It's already selected by default, but make sure it's the one highlighted.
@@ -78,7 +78,7 @@ One thing to note here: the database choice is permanent. You cannot switch from
 
 Next, the wizard generates a secret API key for your instance. This key is used to encrypt sensitive data on your server.
 
-![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.avif)
 
 Copy this key and store it somewhere safe. You won't be able to see it again after this step. If you lose it, you won't be able to decrypt your data. Use the copy button to grab it, or click regenerate if you want a new one.
 
@@ -86,7 +86,7 @@ Copy this key and store it somewhere safe. You won't be able to see it again aft
 
 Set up the email and password for your Appwrite account. You can use these credentials to sign in to the Appwrite Console later, but you'll be automatically signed in when the installer completes.
 
-![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.avif)
 
 Make sure you use a strong password (minimum 8 characters). This is the account that will have full access to your Appwrite instance.
 
@@ -94,7 +94,7 @@ Make sure you use a strong password (minimum 8 characters). This is the account 
 
 The final step shows a summary of everything you've configured. Double-check the settings, especially the database selection showing **MongoDB**.
 
-![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.avif)
 
 If everything looks good, hit **Install**. The wizard will pull the necessary Docker images and set up your Appwrite instance with MongoDB. This might take a few minutes depending on your internet speed.
 

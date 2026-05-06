@@ -8,7 +8,7 @@
     import { stickerPack } from '../customize/+page.svelte';
     import { initDates } from '../../+page.svelte';
     import { enhance } from '$app/forms';
-    import InitGiveaway from '$routes/(init)/init/(assets)/init-giveaway.png';
+    import InitGiveaway from '$routes/(init)/init/(assets)/init-giveaway.avif';
     import { Media } from '$lib/UI';
     import { FooterNav, MainFooter } from '$lib/components';
     import { untrack } from 'svelte';

@@ -20,11 +20,11 @@ Integrating LMNT into your Appwrite project is simple. This tutorial will guide 
 Head to the [Appwrite Console](https://cloud.appwrite.io/console), click on **Functions** in the left sidebar and click the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -269,5 +269,5 @@ This should finish up the Function. Deploy it to Appwrite by pushing it to the g
 Now that the Function is deployed test it by visiting the function URL in your browser.
 This should show the UI created earlier. To test it, write a prompt and click the submit button. After a brief moment, you should see the audio below the input.
 
-![Testing the function](/images/docs/ai/integrations/lmnt/demo.png)
+![Testing the function](/images/docs/ai/integrations/lmnt/demo.avif)
 {% /section %}

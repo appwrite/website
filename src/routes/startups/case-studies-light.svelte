@@ -11,7 +11,7 @@
             blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
             name: 'Hassan Ahmed',
             title: 'Engineer at DevKind',
-            avatar: '/images/testimonials/hassan.png',
+            avatar: '/images/testimonials/hassan.avif',
             url: '/blog/post/customer-story-storealert'
         },
         {
@@ -20,7 +20,7 @@
             blurb: 'With its comprehensive suite of services, Appwrite emerged as an ideal choice for my needs.',
             name: 'Xue',
             title: 'Founder at LangX',
-            avatar: '/images/testimonials/xue.webp',
+            avatar: '/images/testimonials/xue.avif',
             url: '/blog/post/customer-stories-langx'
         },
         {
@@ -29,7 +29,7 @@
             blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
             name: "Ryan O'Connor",
             title: 'Founder at K-Collect',
-            avatar: '/images/testimonials/ryan.png',
+            avatar: '/images/testimonials/ryan.avif',
             url: '/blog/post/customer-stories-kcollect'
         }
     ];

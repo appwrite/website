@@ -3,7 +3,7 @@ layout: post
 title: "Announcing TanStack Start support in Appwrite Sites"
 description: Appwrite Sites now supports TanStack Start with full Server-Side Rendering (SSR). Build and deploy TanStack Start apps directly on Appwrite Cloud with zero configuration. 
 date: 2025-10-28
-cover: /images/blog/tanstack-start-support-in-appwrite-sites/cover.png
+cover: /images/blog/tanstack-start-support-in-appwrite-sites/cover.avif
 timeToRead: 5
 author: matej-baco
 category: announcement

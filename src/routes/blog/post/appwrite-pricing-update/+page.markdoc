@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Appwrite's new pricing plans"
 description: Starting September 1st, Appwrite's new pricing will go into effect. Learn more about the changes made and why.
-cover: /images/blog/appwrite-pricing-update/cover-pricing.png
+cover: /images/blog/appwrite-pricing-update/cover-pricing.avif
 timeToRead: 7
 date: 2025-08-08
 author: eldad-fux
@@ -51,13 +51,13 @@ Since launching Appwrite Cloud, we’ve introduced significant improvements that
 
 The updated base pricing from $15 to $25 helps us sustainably support this growing feature set and scale our infrastructure. Every paid project will now come with its dedicated pool of resources, giving you better performance, more transparency, and a more apparent connection between what you pay and what you get.
 
-![Your first project will be free. After that, it’s only $15 per project.](/images/blog/appwrite-pricing-update/project.png)
+![Your first project will be free. After that, it’s only $15 per project.](/images/blog/appwrite-pricing-update/project.avif)
 
 The increased bandwidth, from 300GB to 2TB per project, and the reduced price for additional bandwidth from $40 to $15 per 100GB, significantly impact costs. Where you initially had to pay up to $680 extra to get to the same bandwidth, you now pay $15.
 
 For larger projects, the reduced bandwidth price has an even more significant impact on costs, as this chart shows.
 
-![Reduced price for large projects.](/images/blog/appwrite-pricing-update/large-project.png)
+![Reduced price for large projects.](/images/blog/appwrite-pricing-update/large-project.avif)
 
 ## More products more capabilities
 
@@ -87,17 +87,17 @@ Another important factor we considered is valuing output, not input. This means 
 
 We have created graph overviews to show how costs evolve per project with the new project price and new resource pricing.
 
-![combined costs](/images/blog/appwrite-pricing-update/combined.png)
+![combined costs](/images/blog/appwrite-pricing-update/combined.avif)
 
 *Showing the starting point of $15 and showing the growth rate of pricing based on the new additional resource prices.
 
 This chart shows that each project, even with a $15 starting price per project, will be more cost-effective in the long run due to lower costs for additional resources. Resource prices will become cheaper as we continue to optimize Appwrite.
 
-![More resources](/images/blog/appwrite-pricing-update/bandwidth-project.png)
+![More resources](/images/blog/appwrite-pricing-update/bandwidth-project.avif)
 
 Previously, you got 300GB bandwidth across all projects. As of the first of September, you will get 2TB of bandwidth per project. This is **6.7× more** free bandwidth per project.
 
-![What you get for 50 dollars](/images/blog/appwrite-pricing-update/add-ons.png)
+![What you get for 50 dollars](/images/blog/appwrite-pricing-update/add-ons.avif)
 
 With $50 add-ons, you now get more compute, storage, and bandwidth.
 
@@ -155,7 +155,7 @@ With the introduction of Messaging and Sites, Appwrite became an all-in-one deve
 | **Open source** | Yes | Yes | No | No | No | Yes |
 | **Monthly base price** | $25 | $25 | Pay as you go | $20 | $19 | $30 |
 
-![One subscription to replace them all.](/images/blog/appwrite-pricing-update/one-subscription.png)
+![One subscription to replace them all.](/images/blog/appwrite-pricing-update/one-subscription.avif)
 
 # Conclusion
 

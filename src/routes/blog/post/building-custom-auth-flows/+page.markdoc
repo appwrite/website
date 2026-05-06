@@ -3,7 +3,7 @@ layout: post
 title: Building custom authentication flows with Appwrite
 description: Learn how to integrate custom authentication flows with Appwrite using custom tokens.
 date: 2025-01-14
-cover: /images/blog/building-custom-auth-flows/cover.png
+cover: /images/blog/building-custom-auth-flows/cover.avif
 timeToRead: 11
 author: ebenezer-don
 category: tutorial

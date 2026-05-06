@@ -6,21 +6,21 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/ai-openai/cover.png
+cover: /images/integrations/ai-openai/cover.avif
 category: ai
 product: 
-    avatar: '/images/integrations/avatars/openai.png'
+    avatar: '/images/integrations/avatars/openai.avif'
     vendor: OpenAI
     description: 'The OpenAI API allows you to integrate advanced AI models into your app.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/ai-openai/cover.png
-    - /images/integrations/ai-openai/api-key.png
-    - /images/integrations/ai-openai/template.png
-    - /images/integrations/ai-openai/variables.png
-    - /images/integrations/ai-openai/demo.png
+    - /images/integrations/ai-openai/cover.avif
+    - /images/integrations/ai-openai/api-key.avif
+    - /images/integrations/ai-openai/template.avif
+    - /images/integrations/ai-openai/variables.avif
+    - /images/integrations/ai-openai/demo.avif
 ---
 
 The OpenAI API allows you to integrate advanced AI models into your app. With the API, you can access powerful language models like GPT-3.5, GPT-4, and GPT-4o, which can perform a variety of tasks, including text generation, translation, summarization, and even coding assistance.
@@ -39,7 +39,7 @@ To implement the OpenAI, there are several steps you must complete:
 
 First, [create an account on the OpenAI platform](https://platform.openai.com/) and set up your default project. Visit the [**API keys**](https://platform.openai.com/api-keys) page to create your secret key. Save this key for later usage.
 
-![API key](/images/integrations/ai-openai/api-key.png)
+![API key](/images/integrations/ai-openai/api-key.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -47,17 +47,17 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click on the **Templates** tab, and search for the **ChatGPT** function template.
 
-![Function template](/images/integrations/ai-openai/template.png)
+![Function template](/images/integrations/ai-openai/template.avif)
 
 Add the **OpenAI API key** you saved in the **Variables** step. Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 
-![Env variables](/images/integrations/ai-openai/variables.png)
+![Env variables](/images/integrations/ai-openai/variables.avif)
 
 ## Step 3: Test the function
 
 Once the function is ready, visit the **Domains** tab on the **Functions** page and copy the domain URL to test the function. You can open this URL in your browser to test with our pre-built interface.
 
-![Demo](/images/integrations/ai-openai/demo.png)
+![Demo](/images/integrations/ai-openai/demo.avif)
 
 You can also use tools like Postman, cURL, or your favorite programming language to send a POST (HTTP) request with a prompt and receive a response from the Perplexity API.
 

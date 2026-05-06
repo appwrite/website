@@ -3,7 +3,7 @@ layout: post
 title: Building a chat app with Appwrite and Google Gemini
 description: Learn how to build a chat application using Appwrite and the Google Gemini API.
 date: 2024-09-27
-cover: /images/blog/build-a-chat-app-with-appwrite-and-gemini/cover.png
+cover: /images/blog/build-a-chat-app-with-appwrite-and-gemini/cover.avif
 timeToRead: 15
 author: ebenezer-don
 category: tutorial
@@ -238,16 +238,16 @@ Follow these steps to generate an API key:
 1. Visit [Google AI Studio](https://aistudio.google.com/).
 2. Click **"Get API Key"** in the top-left corner.
 
-![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/build-a-chat-app-with-appwrite-and-gemini/google-ai-studio-dashboard.png)
+![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/build-a-chat-app-with-appwrite-and-gemini/google-ai-studio-dashboard.avif)
 
 3. On the API key page, click **"Create API Key"**.
 
-![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.png)
+![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.avif)
 
 4. Choose your project (or create a new one), then click **"Create API Key"**.
 5. Copy the API key and save it securely; you'll need it in the next step.
 
-![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.png)
+![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.avif)
 
 
  ## Step 3.2: Store the API key in an environment file
@@ -544,7 +544,7 @@ This will return a prompt asking you to select the function(s) you want to deplo
 
 You can now navigate to your [Appwrite cloud console](https://cloud.appwrite.io/console) > Projects (select your project) > Functions to see the deployed function. Click on the function to view its details, including the function URL.
 
-![Screenshot of the function details in the Appwrite console](/images/blog/build-a-chat-app-with-appwrite-and-gemini/appwrite-function-details.png)
+![Screenshot of the function details in the Appwrite console](/images/blog/build-a-chat-app-with-appwrite-and-gemini/appwrite-function-details.avif)
 
 With the function deployed, you now have a live chat application built with Appwrite and Google Gemini API. Users can interact with the AI chatbot in real-time, and you can continue to enhance the app with more features, customizations, and integrations.
 

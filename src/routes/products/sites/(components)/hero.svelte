@@ -3,7 +3,7 @@
     import Platforms from '$lib/components/marketing/platforms.svelte';
     import { cn } from '$lib/utils/cn';
 
-    import Illustration from '../(assets)/images/illustration.png';
+    import Illustration from '../(assets)/images/illustration.avif';
     import ProductHuntBadge from '../(assets)/images/producthunt-badge.svelte';
 </script>
 
@@ -20,7 +20,7 @@
         <div class="cols-span-full flex flex-col gap-6 lg:col-span-5">
             <div class="flex items-center gap-2">
                 <img
-                    src="/images/icons/illustrated/dark/sites.png"
+                    src="/images/icons/illustrated/dark/sites.avif"
                     class="size-8"
                     alt="Sites icon"
                 />

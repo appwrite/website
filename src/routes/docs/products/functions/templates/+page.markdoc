@@ -10,10 +10,10 @@ You can use Appwrite Function Templates as examples or boilerplates to add new f
 You can find all available templates by navigating to the Appwrite Console, under your project > **Functions** > **Templates**.
 
 {% only_dark %}
-![Templates screen](/images/docs/functions/templates/dark/templates.png)
+![Templates screen](/images/docs/functions/templates/dark/templates.avif)
 {% /only_dark %}
 {% only_light %}
-![Templates screen](/images/docs/functions/templates/templates.png)
+![Templates screen](/images/docs/functions/templates/templates.avif)
 {% /only_light %}
 
 You can filter functions by searching, filter by use case, or filter by runtime.
