@@ -98,6 +98,7 @@
             'text-accent': $open
         }
     )}
+    aria-haspopup="menu"
     use:melt={$trigger}
 >
     {label}
