@@ -9,6 +9,19 @@ author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What does Firebase actually do well?"
+    answer: "Firebase is fast to get started with, runs on Google Cloud, ships real-time listeners as a first-class abstraction, has a generous Spark free tier, and integrates broadly with the Google ecosystem. For many small to medium applications, this combination is genuinely productive."
+  - question: "What are the main trade-offs of building deeply on Firebase?"
+    answer: "Firebase's APIs, data models, and SDKs are proprietary, so vendor lock-in is significant. Pricing is per document read, write, and delete, which is hard to predict at scale. Data lives in Google's infrastructure with limited portability, the feature set is fixed, and Firebase cannot be self-hosted."
+  - question: "Can I self-host Firebase?"
+    answer: "No. Firebase is a fully managed, cloud-only platform. For teams that need on-premise deployment, strict data residency, or operation in regulated industries, that is a hard constraint. Open-source alternatives such as Appwrite can be self-hosted on any Docker-compatible infrastructure."
+  - question: "How does Appwrite compare to Firebase on pricing?"
+    answer: "Appwrite Cloud pricing is based on compute and storage rather than per-document operations, and self-hosted Appwrite has only the cost of the underlying infrastructure. Neither model produces per-query billing surprises that come from frequent real-time listeners or denormalized read patterns."
+  - question: "Does Appwrite cover the same surface area as Firebase?"
+    answer: "Yes, broadly. Appwrite provides authentication (email, OAuth2 with 30+ providers, phone, anonymous, MFA), a document database with real-time subscriptions, file storage with permissions and antivirus scanning, serverless functions, and messaging, plus integrated hosting for static and SSR frontends."
+  - question: "What license is Appwrite released under?"
+    answer: "Appwrite is open source under the BSD 3-Clause license. That license imposes no restrictions on commercial use and does not require you to open-source your application code, which makes it usable in commercial and proprietary projects."
 ---
 
 Firebase is often the first backend platform developers reach for. The documentation is good, the quickstart experience is fast, and the combination of real-time database, authentication, and hosting in one place made it genuinely novel when it launched. Millions of applications are built on it, and for many use cases it continues to be a reasonable choice.

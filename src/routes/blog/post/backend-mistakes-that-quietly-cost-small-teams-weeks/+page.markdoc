@@ -9,6 +9,17 @@ author: aishwari
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Which backend mistakes cost small teams the most time?"
+    answer: "The most expensive mistakes are rebuilding backend infrastructure from scratch every project, over-engineering for hypothetical scale, fragmenting the stack across too many vendors, treating permissions as a feature to add later, keeping manual operations past the point they are manageable, and letting backend conventions drift between features. Each one creates compounding friction over many sprints."
+  - question: "Why is over-engineering early so harmful for small teams?"
+    answer: "Designing for hypothetical scale (microservices, premature segmentation, infrastructure tuned for traffic that may not arrive) introduces failure points, slower deployments, and operational overhead the team is not staffed to manage. Simpler architecture is easier to evolve when real scale arrives than complex architecture is to untangle once embedded."
+  - question: "When should permissions be added to a backend?"
+    answer: "From day one. Retrofitting granular access control into an existing system is slow, error-prone, and frequently forced by a security review or incident. Defining roles, ownership, and access levels as a foundational layer eliminates an entire category of future refactoring."
+  - question: "How does fragmenting backend services across many vendors hurt velocity?"
+    answer: "Each vendor adds configuration, security policy, and integration glue. The cost is not in any one tool but in the accumulated context switching, the coordination overhead between disconnected services, and the glue code nobody wants to maintain but everyone has to debug when something breaks."
+  - question: "How does Appwrite help small teams avoid these mistakes?"
+    answer: "Appwrite gives every project the same set of backend primitives (auth, databases, storage, functions, real-time, messaging) inside a single platform, with granular permissions as a first-class concept and full open-source transparency. That removes stack debates, integration glue between vendors, and the urge to bolt on access control after the fact."
 ---
 
 Small teams don't lose velocity because they lack talent. They lose it because of backend architecture mistakes that seemed reasonable at the start and compounded quietly over every sprint that followed.

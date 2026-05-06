@@ -9,6 +9,17 @@ author: aishwari
 category: ai
 featured: false
 unlisted: true
+faqs:
+  - question: "Why should I assign the AI a role before giving it a task?"
+    answer: "Setting a role tunes the model's reasoning lens before it produces output. Asking a 'senior backend engineer reviewing production Node.js code' weighs trade-offs differently than a generic 'helpful assistant'. You are establishing what good output looks like, not just what to produce."
+  - question: "What is the right way to structure a debug prompt?"
+    answer: "Include the actual error message, the relevant code, and the steps you have already tried. A prompt like 'Here's the error, here's the code, I've already verified the API returns data, what's the root cause?' removes obvious dead ends. You skip rounds of basic suggestions and get to the actual cause faster."
+  - question: "Why ask for trade-offs instead of a single solution?"
+    answer: "Asking 'what's the best way' makes the model commit to one path and defend it. Asking for three approaches with trade-offs forces parallel thinking and gives you a comparison you would normally have to do yourself. Combined with your specific constraints, it turns a vague question into a decision framework."
+  - question: "How do I get useful unit tests from an AI?"
+    answer: "Specify the cases you want covered. Listing the happy path, specific edge cases like empty strings or null values, and failure modes like expired tokens produces tests for what actually matters, not just easy ones. Adding 'tell me what you're not testing' surfaces blind spots you would otherwise miss."
+  - question: "What's the pattern behind a good prompt?"
+    answer: "Every effective prompt does three things: it sets context, specifies the task clearly, and defines what good output looks like. Role, constraints, and coverage requirements are the levers you pull each time. The extra 30 seconds spent writing a structured prompt typically saves several minutes of follow-ups and rewrites."
 ---
 
 Most developers use AI tools the same way every day: paste some code, type "fix this", and hope for the best. The output is often generic, half-wrong, or requires three follow-ups to get to something actually useful.

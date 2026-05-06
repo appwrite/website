@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product, tutorial, security
 featured: false
 unlisted: true
+faqs:
+  - question: "Why should I use a custom domain with Appwrite?"
+    answer: "Without a custom domain, your app on my-app.com calls Appwrite on cloud.appwrite.io and the browser treats Appwrite cookies as third-party. Modern browsers block third-party cookies, so Appwrite falls back to localStorage, which any JavaScript on the page can read. Pointing a subdomain like appwrite.my-app.com at Appwrite restores HttpOnly cookies and removes that XSS exposure."
+  - question: "How do I configure a custom domain in Appwrite?"
+    answer: "In the Appwrite Console, open Settings, Custom domains, Create domain, and enter the subdomain you want to use. Add the CNAME record Appwrite provides at your DNS provider, then click Verify in the Console once the record propagates. After verification, Appwrite automatically provisions an SSL certificate for the domain."
+  - question: "How long does DNS propagation take for a custom domain?"
+    answer: "DNS changes can take up to 48 hours globally, but most providers propagate in 15 to 30 minutes. If verification fails on the first try, wait a while and retry, and use a tool like dnschecker.org to confirm the CNAME has propagated before retrying."
+  - question: "Do I need to update my app code after adding a custom domain?"
+    answer: "Yes, but only the SDK endpoint. Update your Client SDK initialization to call setEndpoint with https://your-subdomain/v1 instead of the default Appwrite endpoint. The /v1 path suffix is required, and the rest of your application code stays the same."
+  - question: "Does Appwrite handle SSL certificates for custom domains automatically?"
+    answer: "Yes. Once your CNAME is verified, Appwrite automatically issues and renews an SSL certificate for the domain. There is no manual configuration, and your custom domain is served over HTTPS immediately. If issuance fails, retry verification, since DNS propagation timing can occasionally cause the first attempt to fail."
 ---
 
 If your web app runs on `my-app.com` and your Appwrite instance is on `cloud.appwrite.io`, the browser sees them as different domains. That distinction has a direct effect on how your users' sessions are stored, and it is not in your users' favor.

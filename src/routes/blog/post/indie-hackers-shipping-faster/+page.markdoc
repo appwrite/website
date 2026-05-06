@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Why are indie hackers shipping apps faster than they used to?"
+    answer: "The infrastructure layer (authentication, storage, database, APIs) is now largely solved by managed platforms, modern frontend frameworks handle routing and rendering with minimal config, AI coding tools accelerate pattern implementation, and managed deployment removes server work. Combined, these decisions let solo developers ship in weeks what used to take a small team months."
+  - question: "What does a fast indie stack typically look like?"
+    answer: "A modern meta-framework like Next.js, Nuxt, or SvelteKit on the frontend, a component library or design system, a backend platform that provides auth, database, storage, and serverless functions out of the box, AI-assisted coding tools, and managed deployment. The unifying idea is to buy or use the commodity layers and only build the thing that differentiates the product."
+  - question: "Which habits matter as much as the tool choices?"
+    answer: "Scoping aggressively so v1 only validates the core value, deciding architecture quickly using whatever the developer knows best, launching before the product feels polished to get real feedback, and reusing patterns across projects rather than redesigning each one. These habits compound across every sprint."
+  - question: "What does Appwrite provide for indie developers specifically?"
+    answer: "Appwrite bundles authentication with 30+ OAuth providers, a relational database with real-time subscriptions, file storage with image transformations, serverless functions in multiple languages, messaging, and Sites for frontend hosting from Git. One platform replaces the collection of services that would otherwise each need their own account, billing, and learning curve."
+  - question: "Is the Appwrite Cloud free tier enough to launch a project?"
+    answer: "For most indie projects at launch, yes. The free tier covers the typical usage of an early-stage application across auth, database, storage, and functions, with predictable pricing as the project grows. SDKs for web, mobile, and server environments mean the same backend logic works across all clients."
 ---
 
 Something has shifted in the past few years in independent software development. Solo developers and two-person teams are shipping products that used to require a 10-person engineering team. They're launching in weeks instead of months, getting to first paying customer faster than ever, and doing it without burning out on infrastructure work.

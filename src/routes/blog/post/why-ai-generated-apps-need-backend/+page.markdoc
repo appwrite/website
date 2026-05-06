@@ -8,6 +8,17 @@ timeToRead: 8
 author: atharva
 unlisted: true
 category: ai
+faqs:
+  - question: "Do AI-generated apps still need a real backend?"
+    answer: "Yes. AI builders like Lovable, Bolt, v0, and Replit Agent are excellent at producing front ends from a prompt, but durable identity, access control, file handling, server-side logic, deployment, and observability all live outside that bundle. A generated UI is a snapshot. The backend is the part that has to stay consistent while prompts, components, and the team around the app keep changing."
+  - question: "Where do AI-generated apps usually break first?"
+    answer: "The breakage tends to follow a predictable shape: a second user signs in, two people try to edit the same row, a file upload fails silently, a model key ends up in a browser bundle, or a regenerated screen rewrites the database schema. These are not AI problems. They are the absence of durable identity, server-evaluated permissions, secret-handling, and stable schema management that a real backend provides."
+  - question: "Why should secrets and model keys never live in a generated client?"
+    answer: "Anything that hits a model provider, payment gateway, or email vendor uses a secret that, in a browser bundle, becomes public the moment the app ships. Server-side functions hold those secrets in environment variables and expose only the endpoints the client needs. The generated UI calls a function, the function makes the privileged call, and the credential never leaves the server."
+  - question: "What does a sensible backend stack for an AI-generated app look like?"
+    answer: "Durable data with typed columns and relationships, identity with sessions and OAuth, table and file-level permissions bound to the authenticated user, file storage with per-bucket limits and previews, server-side functions for any work that touches secrets, hosted deployment with custom domains and rollbacks, and observability across all of those. Appwrite organizes these as Auth, Databases, Storage, Functions, Sites, Realtime, and Messaging."
+  - question: "How do AI builders and a durable backend fit together?"
+    answer: "The agent owns the generated UI and the glue connecting it to backend APIs. The backend owns identity, data, permissions, files, server-side work, deployment, and observability. When that boundary is clear, regenerating a screen does not wipe out the schema, and changing the schema does not force a UI rewrite. Tools like the Appwrite API MCP and Lovable, Cursor, and Claude Code integrations help agents call the backend correctly."
 ---
 
 AI app builders have changed the first hour of development. You describe an idea, an agent scaffolds a working interface, and you are clicking around a prototype before you have written a line of code. The gap between idea and something you can show a friend has collapsed.

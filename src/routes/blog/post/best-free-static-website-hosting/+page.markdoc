@@ -8,6 +8,23 @@ timeToRead: 10
 author: veeresh-mulge
 unlisted: true
 category: product
+faqs:
+  - question: "What is the best open source alternative to Vercel?"
+    answer: "Appwrite Sites is a strong open source alternative to Vercel. Unlike most static site hosts, it combines static and server-side rendering with built-in backend services such as authentication, databases, and serverless functions. This makes it ideal for developers who want more control without vendor lock-in."
+  - question: "Can I host a static website with a secure custom domain using Appwrite?"
+    answer: "Yes. Appwrite Sites supports custom domains with free SSL certificates. You can deploy your static or SSR site and serve it securely over HTTPS, all managed through the Appwrite dashboard."
+  - question: "Does Appwrite offer enterprise support plans?"
+    answer: "Yes. Appwrite provides enterprise-grade support, including SLAs, security compliance, and dedicated assistance for larger teams and organizations building critical applications."
+  - question: "What makes Appwrite different from Firebase or Netlify?"
+    answer: "While Firebase and Netlify focus either on backend services or frontend hosting, Appwrite combines both. You get static site hosting, server-side rendering, databases, authentication, storage, and functions in one open source platform."
+  - question: "Can I deploy a React app with backend services in Appwrite?"
+    answer: "Absolutely. You can deploy your React frontend with Appwrite Sites and connect it directly to Appwrite's backend services, such as database, authentication, and storage. This gives you a full-stack setup without relying on multiple providers."
+  - question: "How does Appwrite compare to Render, Netlify, and Vercel?"
+    answer: "Render and Netlify provide solid free static site hosting, while Vercel is optimized for frontend frameworks like Next.js. Appwrite Sites goes further by combining hosting with backend services, making it more versatile for teams building full-stack applications."
+  - question: "Can I use GitHub Actions to deploy to Appwrite Sites?"
+    answer: "Not directly. While Appwrite integrates with GitHub repositories for automatic deployments, GitHub Actions do not work with Sites out of the box today. Instead, you can connect your GitHub repo directly in the Appwrite console, and every push will trigger a deployment automatically. This gives you the benefits of continuous deployment without having to manually configure GitHub Actions."
+  - question: "Does Appwrite Sites support preview deployments like Vercel and Netlify?"
+    answer: "Yes. Appwrite Sites offers preview deployments for every pull request or branch. This means that whenever you push a new feature or bug fix, Appwrite automatically creates a live preview URL. Your team can test the changes in a production-like environment before merging, making collaboration faster and safer."
 ---
 
 If you’ve ever built a static website, you know the feeling of getting it ready to go live and then asking yourself, “Where do I host this… without paying a dime?” The good news is that there are plenty of platforms today that let you publish static websites for free. Whether it’s a personal portfolio, a side project, or an MVP you’re testing, free static site hosting has become the default way to get started fast.
@@ -172,36 +189,3 @@ If all you need is **free static webpage hosting**, [GitHub Pages](https://docs.
 | Generous free tier with unlimited requests | More setup needed compared to plug-and-play hosts like Netlify |
 
 
-# FAQ
-
-**1. What is the best open source alternative to Vercel?**
-
-Appwrite Sites is a strong open source alternative to Vercel. Unlike most static site hosts, it combines static and [server-side rendering](/docs/products/sites/rendering/ssr) with built-in backend services such as [authentication](/docs/products/auth), [databases](/docs/products/databases), and serverless functions. This makes it ideal for developers who want more control without vendor lock-in.
-
-**2. Can I host a static website with a secure custom domain using Appwrite?**
-
-Yes. Appwrite Sites supports [custom domains](/docs/products/sites/domains) with free SSL certificates. You can deploy your static or SSR site and serve it securely over HTTPS, all managed through the Appwrite dashboard.
-
-**3. Does Appwrite offer enterprise support plans?**
-
-Yes. Appwrite provides enterprise-grade support, including SLAs, [security](/docs/advanced/security) compliance, and dedicated assistance for larger teams and organizations building critical applications.
-
-**4. What makes Appwrite different from Firebase or Netlify?**
-
-While Firebase and Netlify focus either on backend services or frontend hosting, Appwrite combines both. You get static site hosting, server-side rendering, databases, authentication, storage, and functions in one open source platform.
-
-**5. Can I deploy a React app with backend services in Appwrite?**
-
-Absolutely. You can deploy your [React frontend](/docs/products/sites/quick-start/react) with Appwrite Sites and connect it directly to Appwrite’s backend services, such as database, authentication, and storage. This gives you a full-stack setup without relying on multiple providers.
-
-**6. How does Appwrite compare to Render, Netlify, and Vercel?**
-
-Render and Netlify provide solid **free static site hosting**, while Vercel is optimized for frontend frameworks like Next.js. Appwrite Sites goes further by combining hosting with backend services, making it more versatile for teams building full-stack applications.
-
-**7. Can I use GitHub Actions to deploy to Appwrite Sites?**
-
-Not directly. While Appwrite integrates with GitHub repositories for [automatic deployments](/docs/products/sites), GitHub Actions do not work with Sites out of the box today. Instead, you can connect your GitHub repo directly in the Appwrite console, and every push will trigger a deployment automatically. This gives you the benefits of continuous deployment without having to manually configure GitHub Actions.
-
-**8. Does Appwrite Sites support preview deployments like Vercel and Netlify?**
-
-Yes. Appwrite Sites offers [preview deployments](/docs/products/sites/previews) for every pull request or branch. This means that whenever you push a new feature or bug fix, Appwrite automatically creates a live preview URL. Your team can test the changes in a production-like environment before merging, making collaboration faster and safer.

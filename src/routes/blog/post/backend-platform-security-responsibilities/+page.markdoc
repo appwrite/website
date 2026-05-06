@@ -9,6 +9,17 @@ author: aditya-oberai
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the shared responsibility model for backend platforms?"
+    answer: "It is a framework, originally formalized by cloud providers like AWS and Azure, that divides security duties between the platform and the customer. The platform secures underlying infrastructure (hardware, networking, hypervisors, managed service software), and you secure your application code, data, access policies, and platform configuration."
+  - question: "What does a backend platform typically secure on my behalf?"
+    answer: "A well-maintained platform usually handles physical and network security, platform-level patching of the OS and runtimes, encryption in transit and at rest, high availability and redundancy, and the internals of authentication services such as password hashing and session management. The exact line varies between IaaS, PaaS, and BaaS offerings."
+  - question: "What security tasks remain my responsibility when using a BaaS?"
+    answer: "Your application code, access control configuration, API key and secret management, the data you choose to send to the platform, third-party integrations, user account policies (such as MFA and password rules), and monitoring and incident response are all on you. The platform provides primitives, but applying them correctly is the developer's job."
+  - question: "How does Appwrite handle authentication security at the platform layer?"
+    answer: "Appwrite handles password hashing using Argon2, brute-force protection with configurable thresholds, secure session token management, and multi-factor authentication. These are implemented at the platform layer, so you do not need to build or audit them yourself."
+  - question: "Why is open source useful for evaluating a backend platform's security?"
+    answer: "Because Appwrite is open source, you can review every line of security-relevant code instead of trusting vendor claims. This is valuable for compliance reviews, internal audits, and any environment where you want to verify the implementation of authentication, permissions, or audit logging directly."
 ---
 
 When you build on a backend platform (whether that's a cloud provider, a BaaS solution, or a managed database service) you're entering into what the industry calls a "shared responsibility model." The platform secures some things. You secure others. Understanding exactly where that boundary sits is one of the most important security decisions a development team makes.

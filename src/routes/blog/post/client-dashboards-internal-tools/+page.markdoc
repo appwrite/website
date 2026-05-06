@@ -8,6 +8,17 @@ timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "What backend features do most internal tools and client dashboards need?"
+    answer: "Authentication with role-based access, secure data access against production data, file handling with permissions, audit trails for who modified what, and reliable deployment. These requirements often consume a week of backend work before a dashboard's UI begins, even when the tool looks simple."
+  - question: "When is a backend platform a better fit than a low-code builder for internal tools?"
+    answer: "Low-code builders like Retool, Appsmith, or Budibase work well for simple data interfaces over existing data sources. A backend platform is a better fit when you need custom UI, embedded experiences inside another app, custom server-side logic, or fine-grained role-based access that goes beyond drag-and-drop components."
+  - question: "Can I use the Appwrite Console as the internal tool itself?"
+    answer: "Often, yes. The Appwrite Console is a fully functional web interface for managing data, users, files, and settings. For many client and internal use cases, configuring the right tables, permissions, and views in the Console is all the management UI a team actually needs without writing custom code."
+  - question: "How does Appwrite support custom dashboards when the Console is not enough?"
+    answer: "Appwrite provides REST APIs and SDKs for JavaScript, Flutter, iOS, Android, and several server-side languages. You build the front end while Appwrite covers authentication, team-based permissions, real-time WebSocket subscriptions, file storage, and serverless functions, so the dashboard is not built from scratch each time."
+  - question: "How do team-based permissions help with client dashboards?"
+    answer: "Appwrite's teams and memberships system lets you assign different client staff members appropriate access levels to their project data. You can give read-only analysts and full admins different roles without sharing passwords or writing custom role logic, and resource permissions can reference specific team roles directly."
 unlisted: true
 ---
 

@@ -8,6 +8,19 @@ timeToRead: 9
 author: atharva
 unlisted: true
 category: comparisons
+faqs:
+  - question: "What is the main difference between Appwrite and Convex for AI agents?"
+    answer: "Convex centers on a dedicated Agent component with threads, messages, RAG, and workflow primitives, on a TypeScript-first platform with a document-style database. Appwrite is a broader open-source backend covering Auth, TablesDB, Storage, Functions, Realtime, Sites, Messaging, and MCP, where agents sit on the same primitives that power any application."
+  - question: "Does Convex include first-party authentication?"
+    answer: "Convex Auth is documented as beta, and the Convex docs point to Clerk, WorkOS AuthKit, or Auth0 as the more complete path for production identity. Appwrite ships first-party Auth with email, OAuth, phone, anonymous, and MFA, plus Teams and roles, with no third-party dependency required on day one."
+  - question: "How does Convex's function model differ from Appwrite Functions?"
+    answer: "Convex splits backend logic into queries, mutations, and actions, where only actions can call external APIs. Appwrite Functions run on Node, Python, Go, Ruby, Deno, PHP, and more, with HTTP, event, and CRON triggers, and any function can call external services. Appwrite's multi-language surface gives agents more room to reach for libraries in Python, Go, or other ecosystems."
+  - question: "Is Convex open source and self-hostable?"
+    answer: "Convex offers self-hosting under an FSL Apache 2.0 license that converts to Apache 2.0 after two years. The license blocks running a competing hosted Convex product. Appwrite is open source under a standard license with unrestricted self-hosting, plus Appwrite Cloud with the same API surface."
+  - question: "Where does Convex's data model differ from Appwrite TablesDB?"
+    answer: "Convex's database is document-oriented with optional schemas. Teams that want structured tables, typed columns, and relational queries use schema and ID-reference patterns to get there. Appwrite TablesDB is relational-style with databases, tables, typed columns, rows, relationships, indexes, queries, and transactions, which fits agent state, message history, and RAG metadata naturally."
+  - question: "How do AI coding agents interact with each platform?"
+    answer: "Appwrite ships official MCP servers for the API and docs, plus Agent Skills for the CLI and SDKs across TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift, with editor plugins for Claude Code and Cursor. Convex exposes component-level tool calls from agents and is geared around an all-TypeScript platform."
 ---
 
 Picking a backend for AI apps and agent workflows is not the same decision it was two years ago. You are no longer just choosing a database and an auth service. You are choosing where threads live, how tool calls get durably retried, how files attach to chat history, how realtime updates reach every client, and how coding agents talk to your backend through MCP.

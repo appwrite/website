@@ -9,6 +9,19 @@ author: aditya-oberai
 category: product, tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What are Appwrite Functions?"
+    answer: "Appwrite Functions are self-contained units of code that run inside isolated containers, triggered by HTTP requests, events, schedules, or SDK calls. They support runtimes like Node.js, Python, Go, Dart, PHP, and Ruby, and integrate directly with the rest of your Appwrite project for server-side logic without managing servers."
+  - question: "What trigger types do Appwrite Functions support?"
+    answer: "Appwrite Functions support five trigger types: HTTP requests to a unique URL, SDK execution from client or server SDKs, server events (like row creation or user signup), scheduled cron executions as frequent as once per minute, and delayed executions that run at a future time via the SDK delay parameter."
+  - question: "What is the difference between synchronous and asynchronous executions?"
+    answer: "Synchronous executions make the caller wait for the function and have a hard 30-second timeout, which suits API endpoints and short tasks. Asynchronous executions return an execution ID immediately and run in the background, which suits long-running tasks like batch processing, email sending, or upload post-processing."
+  - question: "How can I deploy Appwrite Functions?"
+    answer: "You can upload a compressed archive directly via the Appwrite Console or CLI, or you can connect a GitHub, GitLab, or Bitbucket repository for continuous deployment. Git deployment is recommended for production because it gives you version history, automatic redeployment on push, rollback to any previous deployment, and code review via pull requests."
+  - question: "How are environment variables and secrets handled?"
+    answer: "Each function has its own environment variables that are encrypted at rest and injected into the function at runtime. You should always use environment variables for secrets such as third-party API keys instead of hard-coding them, since this keeps credentials out of source control and out of client-visible code."
+  - question: "How do permissions work for executing a function?"
+    answer: "By default, no client can execute a function; you must explicitly grant the execute permission to a role, such as Role.users() or Role.team(TEAM_ID). Server SDK calls with an API key bypass function-level permissions but require the functions.executions.write scope. HTTP calls also go through the permission check."
 ---
 
 Every app eventually needs server-side logic that does not fit neatly into a database write or a storage upload. Sending an email after a user signs up, resizing an image after it is uploaded, charging a customer after an order is placed. This is the gap that Appwrite Functions fills.

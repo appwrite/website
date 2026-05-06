@@ -9,6 +9,13 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What are common mistakes to avoid when vibe coding?"
+    answer: "The biggest ones are giving vague prompts, skipping context, and trusting outputs blindly. Always define your goals clearly, review every piece of code, and use version control."
+  - question: "How much coding knowledge do I need for vibe coding?"
+    answer: "You don't have to be an expert, but knowing the basics, such as HTML, CSS, JavaScript, or how APIs and databases work, is helpful. AI can generate code, but it can't always reason about system design or security."
+  - question: "How do I get started with vibe coding the right way?"
+    answer: "Start small. Pick a simple project, something like a to-do app or portfolio site, and focus on learning how to communicate with your AI tool. Spend time crafting clear prompts and giving feedback instead of trying to automate everything at once."
 ---
 If done right, vibe coding can unlock a whole new way of building for both devs and non-devs. Devs can turn ideas into working apps, be more productive, and get more things done using AI tools like Replit or Lovable instead of starting from scratch. Non-devs can experiment, automate routine tasks, and build prototypes without deep technical expertise.
 
@@ -81,20 +88,6 @@ The last thing you want is to ship something fast that ends up leaking data or b
 Always review what the AI writes, especially around auth, APIs, and data handling. Use trusted tools for authentication, validate and sanitize all inputs, and never hardcode secrets or expose API keys in frontend code. Keep dependencies updated, run audits often, and make sure everything goes over HTTPS.
 
 Security isn't optional in vibe coding. It's what keeps speed from turning into risk. We've put together a detailed guide with [20 security best practices for vibe coding](/blog/post/vibe-coding-security-best-practices) if you want to go deeper.
-
-# Frequently asked questions (FAQs)
-
-**1. What are common mistakes to avoid when vibe coding?**
-
-The biggest ones are giving vague prompts, skipping context, and trusting outputs blindly. Always define your goals clearly, review every piece of code, and use version control.
-
-**2. How much coding knowledge do I need for vibe coding?**
-
-You don't have to be an expert, but knowing the basics, such as HTML, CSS, JavaScript, or how APIs and databases work, is helpful. AI can generate code, but it can't always reason about system design or security. 
-
-**3. How do I get started with vibe coding the right way?**
-
-Start small. Pick a simple project, something like a to-do app or portfolio site, and focus on learning how to communicate with your AI tool. Spend time crafting clear prompts and giving feedback instead of trying to automate everything at once.
 
 # Wrapping up
 

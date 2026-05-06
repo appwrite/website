@@ -85,21 +85,3 @@ For a narrower functions comparison across vendors, see [Appwrite vs Supabase vs
 Create a project in [Appwrite Cloud](https://cloud.appwrite.io/console) or follow [self-hosting](/docs/advanced/self-hosting), then use the [Quick starts](/docs/quick-starts) for your framework. Core API references live under [REST](/docs/apis/rest) and [Realtime](/docs/apis/realtime).
 
 **Related on this site:** [Best backend as a service platforms](/blog/post/best-backend-as-a-service-platforms) · [BaaS vs custom backend](/blog/post/baas-vs-custom-backend) · [Leveraging BaaS tools to scale faster](/blog/post/leveraging-baas-tools-to-scale-faster)
-
-# Frequently asked questions (FAQs)
-
-**What is backend as a service (BaaS)?**
-
-BaaS is a model where a vendor runs common backend primitives (authentication, databases, file storage, APIs, and often serverless functions), and you integrate through SDKs and HTTP APIs instead of provisioning and operating that infrastructure yourself.
-
-**How does BaaS differ from a custom backend?**
-
-A custom backend gives you full control over runtime, data layout, and networking at the cost of build time and operational load. BaaS trades some control and compositional freedom for speed, standardized APIs, and managed scaling, until you hit edge requirements that outgrow the platform abstractions.
-
-**Is Firebase open source?**
-
-No. Firebase is a proprietary Google product. Client SDKs are open source, but the server implementation is not something you can self-host as a full Firebase-equivalent stack.
-
-**Can you self-host Appwrite?**
-
-Yes. Appwrite publishes server code and supports self-hosted deployments, typically via Docker, in addition to its managed cloud offering.

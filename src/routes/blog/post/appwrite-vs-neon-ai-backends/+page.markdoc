@@ -8,6 +8,19 @@ timeToRead: 9
 author: aishwari
 unlisted: true
 category: comparisons
+faqs:
+  - question: "What is the difference between Appwrite and Neon for AI app backends?"
+    answer: "Neon is a serverless Postgres database focused on agents, with one-second provisioning, branching, pgvector, and an MCP server for managing databases. Appwrite is a broader app backend covering Auth, TablesDB, Storage, Functions, Realtime, Sites, Messaging, and MCP. Neon owns the database for agents, while Appwrite owns the full app backend behind an AI product."
+  - question: "Does Neon include authentication, file storage, and server-side functions?"
+    answer: "Neon Auth is available in beta, built on Better Auth. Neon does not ship object storage, server-side functions, realtime channels, or frontend hosting. AI app teams typically pair Neon with separate vendors for auth, storage, functions, realtime, and hosting. Appwrite covers all of these as first-party services."
+  - question: "What is Neon's branching feature for?"
+    answer: "Every Neon branch snapshots the full database state, so agents or developers can roll back, preview, or test against isolated copies of the database. Combined with one-second provisioning, this makes Neon a strong fit for database-per-tenant patterns, schema-heavy agent flows, and SQL copilots where the database itself is the entire product."
+  - question: "When does Appwrite fit better than Neon?"
+    answer: "Pick Appwrite when you are building a full AI app rather than just an AI feature on top of a database, when you need first-party Auth with Teams and MFA, file storage with permissions, Functions for tool calls, Realtime for live UI, and hosting for the frontend, all under one platform. Neon plus four extra vendors usually solves the same surface, but with more integration work."
+  - question: "Do both platforms support MCP for AI coding agents?"
+    answer: "Yes. The Neon MCP server lets coding agents provision projects and branches, run SQL, and run branch-based migrations from inside Cursor, Claude Code, Codex, VS Code, and other MCP clients. Appwrite ships an API MCP and a Docs MCP, plus Agent Skills for the CLI and 10 SDKs and editor plugins for Claude Code and Cursor."
+  - question: "Can I self-host Appwrite and Neon?"
+    answer: "Appwrite is open source with unrestricted self-hosting and the same API surface as Appwrite Cloud. Neon's core storage and compute are open source, and self-hosting options exist primarily through the community, with the Neon product itself offered as a managed service."
 ---
 
 Teams building AI apps in 2026 keep running into the same question: where should the backend live? Neon has become one of the most talked-about answers thanks to its focus on Postgres for agents, instant branching, and a tight MCP story. Appwrite takes a different approach by shipping a broader app backend that covers Auth, TablesDB, Storage, Functions, Realtime, Sites, Messaging, and MCP in one platform.

@@ -9,6 +9,17 @@ author: aishwari
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "How does Appwrite scale services independently?"
+    answer: "Appwrite is built on microservices principles, so each product (Auth, Databases, Storage, Functions, Messaging, and Sites) operates as its own independent service. Heavy storage demand will not degrade auth performance, and a spike in function executions will not slow database queries. You scale only the components that need scaling, when they need it, without touching the rest of the system."
+  - question: "Can Appwrite Auth handle millions of users?"
+    answer: "Yes. Appwrite Auth is designed to handle scale from day one, supporting millions of users without architectural changes. It includes multiple auth methods (OAuth, email and password, magic links, phone OTP, and more), fine-grained roles and permissions, and secure scalable session handling."
+  - question: "Why does open source matter for scaling an application?"
+    answer: "Because Appwrite is open source, you can self-host on your own infrastructure or use Appwrite Cloud, migrate and evolve your infrastructure as needs change, customize deployments without restrictions, and maintain full ownership of your data and stack. You are never locked into a pricing model or deployment constraint that no longer fits as your application grows."
+  - question: "How do Appwrite Functions help applications absorb traffic spikes?"
+    answer: "Appwrite Functions let you offload heavy processing to background workers, trigger logic from database, auth, and HTTP events, and scale compute independently from your main application. You can ship functions in your language of choice. When traffic spikes, functions absorb the load asynchronously so your core application stays responsive."
+  - question: "What practices make scaling on Appwrite smoother?"
+    answer: "Design permissions early to avoid retrofitting access control later, use Functions for heavy processing to keep the core application responsive, monitor real usage patterns instead of assumptions, modularize features along Appwrite's architecture, and avoid overbuilding. Scaling is a continuous process, so build a foundation that grows with reality rather than every hypothetical future."
 ---
 
 Building an application is one thing. Scaling it without losing sleep is another.

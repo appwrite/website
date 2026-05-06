@@ -9,6 +9,17 @@ author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What actually causes most backend scaling problems?"
+    answer: "Scaling failures usually trace back to a small set of architectural patterns: unindexed or N+1 database queries, stateful servers that cannot scale horizontally, slow operations running synchronously inside request handlers, and missing caching. These are predictable antipatterns that can be avoided during initial design rather than diagnosed under load."
+  - question: "Why does a stateless server architecture matter for scaling?"
+    answer: "Stateless servers store no per-request state in local memory or disk, so additional instances can be added without coordination. Sessions, files, and cached data live in external stores like a database, cache, or object storage. This is what allows horizontal scaling and is much harder to retrofit than to design in from the start."
+  - question: "Which performance work should small teams do early, and which should they defer?"
+    answer: "Do early: a sound database schema with the right indexes, stateless server design, and asynchronous processing for slow operations. Defer until measured: caching layers, sharding, microservice decomposition, and aggressive CDN tuning. Premature optimization in the second list adds operational complexity without clear payoff."
+  - question: "How does a managed backend platform reduce scaling work?"
+    answer: "Managed platforms run authentication, databases, and storage as services that scale on the platform side. Teams do not provision database replicas, tune connection pools, or size compute capacity manually. There are still platform limits and costs at high volume, but the day-to-day infrastructure scaling problem is handled by the vendor."
+  - question: "How does Appwrite support scalable applications?"
+    answer: "Appwrite's API layer is stateless, its databases require indexes on queried fields, and its Functions can run asynchronously to keep slow work out of the request cycle. Appwrite Cloud handles infrastructure scaling automatically, and self-hosted deployments can be scaled horizontally using Docker-based orchestration tools like Docker Swarm or Kubernetes."
 ---
 
 Scaling is the word that makes early-stage developers nervous. The fear is some version of this: we build something, it gets popular, and then it falls over because we didn't plan for scale. Then we have to rewrite everything under pressure while real users are experiencing problems.
