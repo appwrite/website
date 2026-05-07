@@ -15,9 +15,14 @@ export function buildOpenGraphImage(title: string, description: string): string 
 
 /**
  * Returns an inlined JSON-LD script tag without breaking IDE formatting.
+ *
+ * Escapes `<` as `\u003c` so content like `</script>` inside string values
+ * (e.g. code samples in forum posts) cannot prematurely close the script element
+ * in HTML; JSON.parse still yields the original `<`.
  */
 export function getInlinedScriptTag(jsonSchema: string): string {
-    return `<script type="application/ld+json">${jsonSchema}</` + 'script>';
+    const safeForInlineScript = jsonSchema.replace(/</g, '\\u003c');
+    return `<script type="application/ld+json">${safeForInlineScript}</` + 'script>';
 }
 
 /**
