@@ -137,7 +137,7 @@ pub fn main(mut context: Context) -> Response {
 
     let img = match ImageReader::new(Cursor::new(&bytes))
         .with_guessed_format()
-        .and_then(|r| Ok(r.decode()))
+        .map(|r| r.decode())
     {
         Ok(Ok(img)) => img,
         Ok(Err(e)) => return error_response(&context, 400, &format!("Decode failed: {}", e)),
@@ -470,8 +470,13 @@ pub fn main(context: Context) -> Response {
         .cloned()
         .unwrap_or_default();
 
-    context.log(format!("Verified Appwrite webhook: {}", event));
-    context.log(format!("Payload: {}", payload));
+    // Webhook payloads can include PII like emails or IP addresses, so log only
+    // the event name and payload size by default. Add field-level logging as needed.
+    context.log(format!(
+        "Verified Appwrite webhook: {} ({} bytes)",
+        event,
+        payload.len()
+    ));
 
     context.res.json(json!({ "ok": true, "event": event }), None, None)
 }
