@@ -128,6 +128,10 @@ pub fn main(mut context: Context) -> Response {
         .and_then(|v| v.as_u64())
         .unwrap_or(800) as u32;
 
+    if width == 0 {
+        return error_response(&context, 400, "`width` must be greater than 0");
+    }
+
     let bytes = match base64::engine::general_purpose::STANDARD.decode(image_b64) {
         Ok(b) => b,
         Err(e) => return error_response(&context, 400, &format!("Invalid base64: {}", e)),
