@@ -1,5 +1,14 @@
 <script lang="ts">
-    import { browser } from '$app/environment';
+    import { browser, building } from '$app/environment';
+    import { page } from '$app/state';
+    import {
+        DEFAULT_HERO_CTA,
+        DEFAULT_HERO_SUBTITLE,
+        DEFAULT_HERO_TITLE
+    } from '$lib/statsig/constants';
+    import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
+    import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
+    import type { PageData } from './$types';
     import Bento from './(components)/bento/bento.svelte';
     import CaseStudies from './(components)/case-studies.svelte';
     import Features from './(components)/features.svelte';
@@ -14,10 +23,30 @@
     import { FooterNav, MainFooter } from '$lib/components';
     import LogoList from './(components)/logo-list.svelte';
     import Ai from './(components)/ai.svelte';
+
+    /** Same baseline + query resolution as `hero.svelte`; tab title prefixes the brand. */
+    type MarketingHeroPageData = PageData & {
+        statsigBootstrap?: string | null;
+        statsigStableUserId?: string | null;
+        statsigUserAgent?: string | null;
+    };
+
+    const data = $derived(page.data as MarketingHeroPageData);
+
+    const heroPageTitle = $derived(
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
+            heroLayout: (data.heroLayout ?? 0) as HeroLayoutVariant,
+            heroSubtitle: data.heroSubtitle ?? DEFAULT_HERO_SUBTITLE,
+            heroTitle: data.heroTitle ?? DEFAULT_HERO_TITLE,
+            heroCta: data.heroCta ?? DEFAULT_HERO_CTA
+        }).heroTitle
+    );
+
+    const homepageDocumentTitle = $derived(`Appwrite - ${heroPageTitle}`);
 </script>
 
 <Head
-    title="Appwrite - Build like a team of hundreds"
+    title={homepageDocumentTitle}
     description="Build like a team of hundreds with Appwrite's all-in-one, open-source infrastructure. Launch in minutes, use any framework, and scale affordably with Auth, Database, Storage, Functions, Realtime, Messaging, and Sites for static sites, SSR, and CSR frontends."
 />
 

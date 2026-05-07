@@ -14,14 +14,20 @@ export function buildOpenGraphImage(title: string, description: string): string 
 }
 
 /**
+ * Escapes `<` as the JSON unicode escape `\u003c` so the result can be embedded
+ * inside HTML `<script>` tags (including SvelteKit route data) without `</script>`
+ * or similar sequences in string values ending the script early. `JSON.parse`
+ * still yields the original `<`.
+ */
+export function escapeJsonLtForHtmlScript(json: string): string {
+    return json.replace(/</g, '\\u003c');
+}
+
+/**
  * Returns an inlined JSON-LD script tag without breaking IDE formatting.
- *
- * Escapes `<` as `\u003c` so content like `</script>` inside string values
- * (e.g. code samples in forum posts) cannot prematurely close the script element
- * in HTML; JSON.parse still yields the original `<`.
  */
 export function getInlinedScriptTag(jsonSchema: string): string {
-    const safeForInlineScript = jsonSchema.replace(/</g, '\\u003c');
+    const safeForInlineScript = escapeJsonLtForHtmlScript(jsonSchema);
     return `<script type="application/ld+json">${safeForInlineScript}</` + 'script>';
 }
 
@@ -43,7 +49,7 @@ export function organizationJsonSchema() {
         legalName: 'Appwrite Code Ltd.',
         description:
             'A secure open-source backend server provides the core APIs required to build web and mobile applications. Appwrite provides authentication, database, storage, functions, messaging, and advanced realtime capabilities.',
-        logo: 'https://appwrite.io/assets/logotype/white.avif'
+        logo: 'https://appwrite.io/assets/logotype/white.png'
     });
 }
 
@@ -246,5 +252,5 @@ export function createDiscussionForumPageSchema(options: {
         mainEntity
     };
 
-    return JSON.stringify(graph);
+    return escapeJsonLtForHtmlScript(JSON.stringify(graph));
 }
