@@ -3,7 +3,7 @@ layout: post
 title: "Anthropic just doubled Claude Code's 5-hour rate limits"
 description: "Anthropic doubled Claude Code's 5-hour rate limits across paid plans, dropped peak-hour throttling for Pro and Max, and lifted API rate limits for Opus. The compute behind it comes from a new SpaceX deal."
 date: 2026-05-07
-cover: /images/blog/claude-mythos-preview/cover.avif
+cover: /images/blog/anthropic-doubles-claude-code-rate-limits/cover.avif
 timeToRead: 6
 author: atharva
 category: ai
