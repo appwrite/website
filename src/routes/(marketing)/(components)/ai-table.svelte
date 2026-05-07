@@ -3,7 +3,7 @@
     import { Button } from '$lib/components/ui';
     import { VARS } from '$lib/system';
 
-    type ModelCategory = 'Auth' | 'Databases' | 'Functions' | 'Storage' | 'Sites' | 'Messaging';
+    type ModelCategory = 'Auth' | 'TablesDB' | 'Functions' | 'Storage' | 'Sites' | 'Messaging';
 
     type ArenaModel = {
         name: string;
@@ -16,7 +16,7 @@
     let models = $state<ArenaModel[]>([]);
     let categoryKeys = $state<ModelCategory[]>([
         'Auth',
-        'Databases',
+        'TablesDB',
         'Functions',
         'Storage',
         'Sites',
@@ -43,7 +43,7 @@
                 overall: m.overall,
                 categories: {
                     Auth: m.scores?.auth ?? 0,
-                    Databases: m.scores?.databases ?? 0,
+                    TablesDB: m.scores?.tablesdb ?? 0,
                     Functions: m.scores?.functions ?? 0,
                     Storage: m.scores?.storage ?? 0,
                     Sites: m.scores?.sites ?? 0,
