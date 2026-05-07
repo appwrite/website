@@ -7,7 +7,6 @@ cover: /images/blog/anthropic-doubles-claude-code-rate-limits/cover.avif
 timeToRead: 6
 author: atharva
 category: ai
-unlisted: true
 faqs:
   - question: "What changed for Claude Code users on May 6, 2026?"
     answer: "Anthropic doubled the 5-hour rate limits on Claude Code for Pro, Max, Team, and Enterprise plans. They also removed the peak-hour reduction that previously throttled Pro and Max accounts during high-traffic windows, and they lifted API rate limits for Claude Opus models. Weekly limits were left unchanged in this announcement."
