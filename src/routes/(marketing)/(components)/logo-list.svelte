@@ -65,10 +65,10 @@
             height: 41
         },
         {
-            src: '/images/logos/trusted-by/k-collect.svg',
+            src: '/images/logos/trusted-by/k-collect.avif',
             alt: 'K-collect',
-            width: 108,
-            height: 30
+            width: 127,
+            height: 35
         },
         {
             src: '/images/logos/trusted-by/bosch.svg',

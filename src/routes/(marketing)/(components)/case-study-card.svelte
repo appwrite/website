@@ -28,8 +28,8 @@
         loading="lazy"
         src={study.logo}
         alt={study.headline}
-        width={100}
-        height={100}
+        width={study.logoWidth}
+        height={study.logoHeight}
         class={cn(
             'h-5 shrink-0 opacity-100 transition-all [grid-area:stack] lg:h-12',
             'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
@@ -44,8 +44,8 @@
     >
         <img
             loading="lazy"
-            width={80}
-            height={80}
+            width={study.logoWidth}
+            height={study.logoHeight}
             src={study.logo}
             alt={study.headline}
             class={cn('-mt-8 h-20 w-20', {

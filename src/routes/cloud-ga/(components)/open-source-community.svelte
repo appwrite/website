@@ -2,8 +2,12 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import Graph from '../(assets)/graphs/stats-graph.svg';
-    import GraphMobile from '../(assets)/graphs/stats-mobile-graph.svg';
+    const GRAPH_SRC = '/images/cloud-ga/graphs/stats-graph.avif';
+    const GRAPH_W = 1200;
+    const GRAPH_H = 400;
+    const GRAPH_MOBILE_SRC = '/images/cloud-ga/graphs/stats-mobile-graph.avif';
+    const GRAPH_MOBILE_W = 320;
+    const GRAPH_MOBILE_H = 176;
     import Numbers from './numbers.svelte';
 
     let animate: boolean = false;
@@ -68,8 +72,22 @@
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
-                    <img class="hidden w-full md:block" src={Graph} alt="Placeholder" />
-                    <img class="w-full md:hidden" src={GraphMobile} alt="Placeholder" />
+                    <img
+                        class="hidden h-auto w-full md:block"
+                        src={GRAPH_SRC}
+                        width={GRAPH_W}
+                        height={GRAPH_H}
+                        alt="Open source community activity chart"
+                        decoding="async"
+                    />
+                    <img
+                        class="h-auto w-full md:hidden"
+                        src={GRAPH_MOBILE_SRC}
+                        width={GRAPH_MOBILE_W}
+                        height={GRAPH_MOBILE_H}
+                        alt="Open source community activity chart"
+                        decoding="async"
+                    />
                 </div>
             </Cell>
 
