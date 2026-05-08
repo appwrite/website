@@ -131,7 +131,7 @@ A code editor is often the first and most frequently used tool in any developerâ
 
 **CodeSandbox pricing:** Free for learning and experimenting. $170 per month per workspace for the Scale plan.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Open source"  point2="Start for free" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/console/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Open source"  point2="Start for free" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/console/" /%}
 
 # The 5 best IDEs
 

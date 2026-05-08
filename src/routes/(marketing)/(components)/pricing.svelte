@@ -94,7 +94,7 @@
                     class="w-full! lg:w-fit!"
                     onclick={() => {
                         trackEvent(`pricing-get-started-click`);
-                    }}>Start building for free</Button
+                    }}>Start building</Button
                 >
                 <Button
                     onclick={() => {

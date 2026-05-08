@@ -54,14 +54,14 @@
 
 <div class={cn('relative w-full max-w-[100vw] overflow-hidden', className)}>
     <div class="group light flex w-fit flex-nowrap gap-8 overflow-clip md:overflow-visible">
-        {#each Array.from({ length: 2 }) as _, i}
+        {#each Array.from({ length: 2 }) as _, rowIndex}
             <div
-                class="animate-scroll-x flex items-center gap-8 group-hover:[animation-play-state:paused]"
+                class="animate-scroll-x flex items-center gap-8 will-change-transform group-hover:[animation-play-state:paused]"
+                aria-hidden={rowIndex === 1 ? true : undefined}
             >
                 {#each testimonials as testimonial}
                     <div
                         class="flex h-fit w-[90vw] flex-col justify-center rounded-2xl bg-white p-6 transition-all md:w-lg"
-                        aria-hidden={i < testimonials.length - 1}
                     >
                         <p class="text-sub-body text-secondary flex-1 font-medium">
                             {testimonial.copy}
@@ -71,6 +71,11 @@
                             <img
                                 src={testimonial.image}
                                 class="size-12 rounded-full"
+                                width="48"
+                                height="48"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
                                 alt="{testimonial.company} Logo"
                             />
                             <div>

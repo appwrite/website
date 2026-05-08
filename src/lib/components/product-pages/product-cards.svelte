@@ -53,7 +53,7 @@
 
 <section class="border-smooth border-t py-20 md:py-40">
     <div class="container max-md:px-5!">
-        <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
+        <h2 class="text-label text-primary text-center">Keep exploring our products</h2>
         <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {#each products as product}
                 <a
@@ -65,8 +65,16 @@
                         class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                     >
                         <div class="flex items-center gap-2">
-                            <img src={product.icon} alt="auth" width="32" height="32" />
-                            <h4 class="text-main-body text-primary">{product.title}</h4>
+                            <img
+                                src={product.icon}
+                                alt=""
+                                width="32"
+                                height="32"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
+                            />
+                            <h3 class="text-main-body text-primary">{product.title}</h3>
                             <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
                         </div>
                         <p class="text-sub-body">

@@ -12,7 +12,6 @@
     import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
-    import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
@@ -29,21 +28,27 @@
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
-        const handleVisibility = () => {
-            theme = getVisibleTheme();
+        let visibilityFrame = 0;
+        const scheduleVisibility = () => {
+            if (visibilityFrame) return;
+            visibilityFrame = requestAnimationFrame(() => {
+                visibilityFrame = 0;
+                theme = getVisibleTheme();
+            });
         };
 
-        const observer = new MutationObserver(handleVisibility);
+        const observer = new MutationObserver(scheduleVisibility);
         observer.observe(document.body, { childList: true, subtree: true });
 
-        const callbacks = [
-            addEventListener(window, 'scroll', handleVisibility),
-            addEventListener(window, 'resize', handleVisibility)
-        ];
+        const passiveScroll: AddEventListenerOptions = { passive: true };
+        window.addEventListener('scroll', scheduleVisibility, passiveScroll);
+        window.addEventListener('resize', scheduleVisibility, passiveScroll);
 
         return () => {
             observer.disconnect();
-            callbacks.forEach((callback) => callback());
+            window.removeEventListener('scroll', scheduleVisibility, passiveScroll);
+            window.removeEventListener('resize', scheduleVisibility, passiveScroll);
+            if (visibilityFrame) cancelAnimationFrame(visibilityFrame);
         };
     }
 

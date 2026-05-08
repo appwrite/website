@@ -49,7 +49,7 @@
     <div class="group light flex w-fit gap-8">
         {#each Array.from({ length: 4 }) as _, i}
             <div
-                class="animate-scroll-deprecate group-hover:[animation-play-state:paused;] flex items-center gap-8"
+                class="animate-scroll-deprecate group-hover:[animation-play-state:paused;] flex items-center gap-8 will-change-transform"
                 aria-hidden={i !== 0}
             >
                 {#each testimonials as testimonial}
@@ -64,6 +64,11 @@
                             <img
                                 src={testimonial.image}
                                 class="size-12 rounded-full"
+                                width="48"
+                                height="48"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
                                 alt="{testimonial.company} Logo"
                             />
                             <div>
