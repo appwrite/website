@@ -48,7 +48,11 @@
             <div class="web-article-header-start web-u-cross-start flex flex-col">
                 <div class="mobile-header-row mb-2 flex w-full items-center lg:hidden">
                     {#if back}
-                        <a href={back} class="web-icon-button" aria-label="previous page">
+                        <a
+                            href={back}
+                            class="web-icon-button docs-article-back-mobile"
+                            aria-label="previous page"
+                        >
                             <span class="web-icon-chevron-left" aria-hidden="true"></span>
                         </a>
                     {/if}
@@ -65,13 +69,13 @@
                     {#if back}
                         <Button
                             href={back}
-                            class="web-u-translate-x-negative absolute size-10 items-center"
+                            class="docs-article-back-desktop absolute items-center justify-center"
                             aria-label="previous page"
                             variant="icon"
                         >
                             <Icon
                                 name="chevron-left"
-                                class="text-primary hidden text-[24px] md:flex"
+                                class="text-primary hidden text-[18px] md:flex"
                                 aria-hidden="true"
                             />
                         </Button>
@@ -134,6 +138,42 @@
         .copy-button-wrapper {
             align-self: center;
             width: auto;
+        }
+    }
+
+    /* Back control: compact square (1:1), smaller than default icon / size-10 */
+    .mobile-header-row a.docs-article-back-mobile.web-icon-button {
+        box-sizing: border-box;
+        aspect-ratio: 1;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    /*
+     * Back control sits left of the title’s start (same anchor as body text). From md, nudge a
+     * few px further left for a hairline gap — no h1 padding so the title lines up with `.prose`.
+     */
+    :global(
+        .web-article-header-start .relative.flex.items-center > a.web-button.is-icon.is-text.docs-article-back-desktop
+    ) {
+        box-sizing: border-box;
+        aspect-ratio: 1;
+        inline-size: 2rem;
+        block-size: 2rem;
+        min-block-size: 0;
+        min-inline-size: 0;
+        padding: 0;
+        padding-inline: 0;
+        padding-block: 0;
+        transform: translateX(-100%);
+    }
+
+    @media (min-width: 768px) {
+        :global(
+            .web-article-header-start .relative.flex.items-center > a.web-button.is-icon.is-text.docs-article-back-desktop
+        ) {
+            transform: translateX(calc(-100% - 3px));
         }
     }
 </style>
