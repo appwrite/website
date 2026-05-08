@@ -863,5 +863,9 @@
     {
         "link": "/blog/post/choosing-the-right-backend",
         "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/heroes",
+        "redirect": "/"
     }
 ]
