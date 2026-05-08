@@ -21,7 +21,7 @@
     const title = 'Integrations' + TITLE_SUFFIX;
     const description =
         'Connect your favorite apps to Appwrite for a unified tech stack. Explore the Appwrite catalog: a marketplace to find integrations for your projects.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     // search functionality
     let fuseOptions = {
@@ -80,21 +80,21 @@
     <header class="web-u-sep-block-end web-u-padding-block-end-0 relative overflow-hidden pb-0">
         <div class="hero web-u-padding-block-end-0 relative container">
             <img
-                src="/images/pages/integration/integration-bg-top-1.png"
+                src="/images/pages/integration/integration-bg-top-1.avif"
                 alt=""
                 width="983"
                 height="985"
                 class="l-bg-1 web-is-not-mobile absolute"
             />
             <img
-                src="/images/pages/integration/net-desktop.png"
+                src="/images/pages/integration/net-desktop.avif"
                 alt=""
                 width="895"
                 height="560"
                 class="l-bg-2 web-is-not-mobile absolute"
             />
             <img
-                src="/images/pages/integration/net-desktop.png"
+                src="/images/pages/integration/net-desktop.avif"
                 alt=""
                 width="360"
                 height="560"
@@ -118,7 +118,7 @@
             </div>
 
             <div>
-                <img src="/images/integrations/rubiks-cube.png" alt="" />
+                <img src="/images/integrations/rubiks-cube.avif" alt="" />
             </div>
         </div>
     </header>
@@ -405,7 +405,7 @@
         <div class="container">
             <div class="web-big-padding-section-level-2 relative">
                 <img
-                    src="/images/bgs/pre-footer.png"
+                    src="/images/bgs/pre-footer.avif"
                     alt=""
                     class="web-pre-footer-bg"
                     style="z-index:-1"

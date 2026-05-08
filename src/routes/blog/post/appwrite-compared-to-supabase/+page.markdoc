@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Supabase: a comparison of Backend-as-a-Service platforms"
 description: Get a comprehensive comparison between Appwrite and Supabase to decide what platform to use for your project's backend.
 date: 2024-03-01
-cover: /images/blog/appwrite-competitor-comparison/cover.png
+cover: /images/blog/appwrite-competitor-comparison/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: product
@@ -16,6 +16,8 @@ Updated on October 6, 2025
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. One of these solutions is a Backend-as-a-Service (BaaS). It provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these solutions are Appwrite and Supabase, and although both are solid options for your BaaS, they’re somewhat different.
 
 This article will give you a rundown of Appwrite and Supabase to understand the feature sets. Then, we’ll provide a quick Appwrite vs Supabase comparison so you can understand how each provider will fit your specific needs.
+
+For a wider **backend infrastructure** comparison that also includes Firebase and AWS Amplify, read [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
 
 # Appwrite
 
@@ -78,7 +80,7 @@ Storage allows you to manage files in your project. It can store images, videos,
 - Appwrite offers an image manipulation API, including functionalities such as manipulating resolution, image reformatting, caching, and compression, in the free tier. Supabase offers image manipulation only in their paid tiers.
 - Supabase offers a CDN to serve assets via an edge network in their paid tiers.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 ## Functions
 

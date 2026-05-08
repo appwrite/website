@@ -5,13 +5,30 @@
   .web-logo { align-self:start; }
   &-main {
     &-title { margin-block-end:pxToRem(24); }
-    &-list  { display:flex; justify-content:space-between;  flex-basis:pxToRem(830); }
+    &-list {
+      display: flex;
+      justify-content: space-between;
+      flex-basis: pxToRem(830);
+      gap: pxToRem(16);
+      min-inline-size: 0;
+
+      /* Equal column widths so a long link in one column does not widen it past the others */
+      > .#{$p}-footer-nav-main-item.#{$p}-is-not-mobile {
+        flex: 1 1 0;
+        min-inline-size: 0;
+      }
+    }
     &-item {}
     &-button {}
   }
 
   &-secondary {
-    &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: pxToRem(10);
+      overflow-wrap: anywhere;
+    }
     &-item {}
   }
 

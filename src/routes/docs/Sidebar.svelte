@@ -26,6 +26,12 @@
                     icon: 'icon-cog'
                 },
                 {
+                    label: 'Blog',
+                    href: '/blog',
+                    icon: 'icon-document-text',
+                    openInNewTab: true
+                },
+                {
                     label: 'Changelog',
                     href: '/changelog',
                     icon: 'icon-clock',

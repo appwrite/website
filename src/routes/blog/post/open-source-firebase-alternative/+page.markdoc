@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite vs Firebase: An open source alternative for Firebase"
 description: Get a comprehensive comparison between Appwrite and Firebase to decide what platform to use for your project's backend. And learn how Appwrite's open source nature allows you total control of your project's data.
 date: 2024-02-03
-cover: /images/blog/open-source-firebase-alternative/cover.png
+cover: /images/blog/open-source-firebase-alternative/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: product
@@ -15,6 +15,8 @@ Updated on October 6, 2025
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite.
 
 Appwrite and Firebase are both solid options to choose as the Backend-as-a-Service (BaaS) for your app. However, their feature sets can vary substantially. In this article, we will give you a rundown of Appwrite and Firebase to understand how each provider will fit your specific needs.
+
+For a multi-vendor snapshot of **BaaS platforms** (open source, self-hosting, pricing shape, lock-in), see [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
 
 # Appwrite - Open-source backend platform
 
@@ -76,7 +78,7 @@ Storage allows you to manage files in your project. It can store images, videos,
 - Appwrite Storage offers a dedicated API for [image transformations](/docs/products/storage/images), including functionalities such as manipulating resolution, image reformatting, caching, and compression.
 - Appwrite Storage offers file encryption for increased security as well as gzip and zstd compression for network transfer optimization.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 ## Functions
 

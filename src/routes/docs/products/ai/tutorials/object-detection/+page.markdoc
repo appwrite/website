@@ -17,11 +17,11 @@ Learn to setup an Appwrite Function utilizing object detection with Hugging Face
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -76,11 +76,11 @@ This code will parse the body of the request and check if the request is a POST 
 Create a new bucket in the Appwrite Storage. Navigate to the Appwrite Console and click on **Storage** in the left sidebar, then the **Create Bucket** button.
 
 {% only_dark %}
-![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+![Create bucket on console](/images/docs/storage/dark/create-bucket.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create bucket on console](/images/docs/storage/create-bucket.png)
+![Create bucket on console](/images/docs/storage/create-bucket.avif)
 {% /only_light %}
 
 Note down the bucket ID so we can add it as an environment variable later.
@@ -173,11 +173,11 @@ Add two string columns to our table, `image` and `labels`. The `image` column wi
 Both of these columns should be `required` with `image` having the size of `256` and `labels` having the size of around `4096`.
 
 {% only_dark %}
-![Object detection database](/images/docs/ai/tutorials/object-detection/dark/database.png)
+![Object detection database](/images/docs/ai/tutorials/object-detection/dark/database.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Object detection database](/images/docs/ai/tutorials/object-detection/database.png)
+![Object detection database](/images/docs/ai/tutorials/object-detection/database.avif)
 {% /only_light %}
 {% /section %}
 
@@ -225,11 +225,11 @@ At the bottom of the dialog within the text input, click on the pen icon and ent
 Making sure to replace `[Bucket ID]` with the ID of the bucket you created earlier.
 
 {% only_dark %}
-![Object detection event](/images/docs/ai/tutorials/object-detection/dark/event.png)
+![Object detection event](/images/docs/ai/tutorials/object-detection/dark/event.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Object detection event](/images/docs/ai/tutorials/object-detection/event.png)
+![Object detection event](/images/docs/ai/tutorials/object-detection/event.avif)
 {% /only_light %}
 {% /section %}
 
@@ -240,10 +240,10 @@ Navigate to the Appwrite Console and click on **Storage** in the left sidebar, t
 After a few seconds, you should see an execution appear in the function's execution logs and the object detection result should be saved to the Appwrite Database.
 
 {% only_dark %}
-![Object detection test](/images/docs/ai/tutorials/object-detection/dark/result.png)
+![Object detection test](/images/docs/ai/tutorials/object-detection/dark/result.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Object detection test](/images/docs/ai/tutorials/object-detection/result.png)
+![Object detection test](/images/docs/ai/tutorials/object-detection/result.avif)
 {% /only_light %}
 {% /section %}

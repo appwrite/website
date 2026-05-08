@@ -3,7 +3,7 @@ layout: post
 title: "One WebSocket, many subscriptions: smarter Realtime in Appwrite"
 description: "Appwrite Realtime now keeps one persistent WebSocket and drives subscriptions with messages instead of cramming state into the connection URL. Client SDKs expose unsubscribe(), update(), and disconnect() for clearer lifecycle control."
 date: 2026-04-29
-cover: /images/blog/announcing-message-based-realtime-sdk/cover.jpg
+cover: /images/blog/announcing-message-based-realtime-sdk/cover.avif
 timeToRead: 9
 author: eldad-fux
 category: announcement

@@ -6,23 +6,23 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/lemon-squeezy-payments/cover.png
+cover: /images/integrations/lemon-squeezy-payments/cover.avif
 category: payments
 product: 
-    avatar: '/images/integrations/avatars/lemon-squeezy.png'
+    avatar: '/images/integrations/avatars/lemon-squeezy.avif'
     vendor: Lemon Squeezy
     description: 'Lemon Squeezy is a platform designed to simplify the process of selling digital products online.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/lemon-squeezy-payments/cover.png
-    - /images/integrations/lemon-squeezy-payments/dashboard.png
-    - /images/integrations/lemon-squeezy-payments/template.png
-    - /images/integrations/lemon-squeezy-payments/variables.png
-    - /images/integrations/lemon-squeezy-payments/web-platform.png
-    - /images/integrations/lemon-squeezy-payments/demo.png
-    - /images/integrations/lemon-squeezy-payments/database.png
+    - /images/integrations/lemon-squeezy-payments/cover.avif
+    - /images/integrations/lemon-squeezy-payments/dashboard.avif
+    - /images/integrations/lemon-squeezy-payments/template.avif
+    - /images/integrations/lemon-squeezy-payments/variables.avif
+    - /images/integrations/lemon-squeezy-payments/web-platform.avif
+    - /images/integrations/lemon-squeezy-payments/demo.avif
+    - /images/integrations/lemon-squeezy-payments/database.avif
 ---
 
 Lemon Squeezy is a platform designed to simplify the process of selling digital products online. Their product focuses on providing an all-in-one solution for creators to manage sales, subscriptions, and digital delivery. It includes features such as easy product creation, automated tax handling, customizable checkout pages, and robust analytics. This comprehensive tool is tailored for digital entrepreneurs, allowing them to focus on creating content while Lemon Squeezy handles the technical aspects of online sales.
@@ -39,7 +39,7 @@ To implement the Lemon Squeezy payments integration, there are several steps you
 
 First, [sign up on Lemon Squeezy](https://www.lemonsqueezy.com/) and add a new store. 
 
-![Lemon Squeezy dashboard](/images/integrations/lemon-squeezy-payments/dashboard.png)
+![Lemon Squeezy dashboard](/images/integrations/lemon-squeezy-payments/dashboard.avif)
 
 From your Lemon Squeezy dashboard, save the following details for further usage:
 
@@ -56,11 +56,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Payments with Lemon Squeezy** function template.
 
-![Function template](/images/integrations/lemon-squeezy-payments/template.png)
+![Function template](/images/integrations/lemon-squeezy-payments/template.avif)
 
 During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Lemon Squeezy API key**, **webhook secret**, **store ID**, and **variant ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
 
-![Env variables](/images/integrations/lemon-squeezy-payments/variables.png)
+![Env variables](/images/integrations/lemon-squeezy-payments/variables.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic. Once the function is deployed, go to the **Domains** tab on the **Function** page, copy the domain, and update it in your **Webhooks settings** in the following format:
 
@@ -74,15 +74,15 @@ Additionally, edit the product you created and add your function URL as the **Bu
 
 Once all the steps are complete, it is time to test the function! First, copy the function URL, go to the **Appwrite project dashboard**, and add it to the **Platforms** section as a web app. This will register your function URL as an authorized hostname to interact with Appwrite (to prevent CORS).
 
-![Add web platform](/images/integrations/lemon-squeezy-payments/web-platform.png)
+![Add web platform](/images/integrations/lemon-squeezy-payments/web-platform.avif)
 
 Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a payment order using [Lemon Squeezy's test card number](https://docs.lemonsqueezy.com/help/getting-started/test-mode#test-card-numbers). As soon as this process is completed, the function UI will show you the complete order.
 
-![Demo](/images/integrations/lemon-squeezy-payments/demo.png)
+![Demo](/images/integrations/lemon-squeezy-payments/demo.avif)
 
 You can visit the **Databases** page in your Appwrite project, enter the `orders` database and the `orders` collection within that, and find your orders.
 
-![Paid orders in database](/images/integrations/lemon-squeezy-payments/database.png)
+![Paid orders in database](/images/integrations/lemon-squeezy-payments/database.avif)
 
 # Read more about Lemon Squeezy Payments and Appwrite Functions
 

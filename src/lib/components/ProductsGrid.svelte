@@ -10,7 +10,7 @@
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            src="/images/icons/illustrated/dark/auth.png"
+                            src="/images/icons/illustrated/dark/auth.avif"
                             alt=""
                             class=""
                             width="32"
@@ -32,7 +32,7 @@
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            src="/images/icons/illustrated/dark/functions.png"
+                            src="/images/icons/illustrated/dark/functions.avif"
                             alt=""
                             class=""
                             width="32"
@@ -54,7 +54,7 @@
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            src="/images/icons/illustrated/dark/databases.png"
+                            src="/images/icons/illustrated/dark/databases.avif"
                             alt=""
                             class=""
                             width="32"
@@ -76,7 +76,7 @@
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            src="/images/icons/illustrated/dark/messaging.png"
+                            src="/images/icons/illustrated/dark/messaging.avif"
                             alt=""
                             class=""
                             width="32"
@@ -98,7 +98,7 @@
                 >
                     <div class="flex items-center gap-2">
                         <img
-                            src="/images/icons/illustrated/dark/realtime.png"
+                            src="/images/icons/illustrated/dark/realtime.avif"
                             alt=""
                             class=""
                             width="32"

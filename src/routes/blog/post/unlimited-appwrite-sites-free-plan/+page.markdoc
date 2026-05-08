@@ -3,7 +3,7 @@ layout: post
 title: Appwrite Sites now offers unlimited sites on the free plan
 description: Appwrite Sites now supports unlimited sites per project on the Free plan. We initially limited it to one site for stability, and it’s now ready to scale. You can deploy as many sites as you need for testing, staging, or production.
 date: 2025-10-28
-cover: /images/blog/sites-free-plan.png
+cover: /images/blog/sites-free-plan.avif
 timeToRead: 4
 author: laura-du-ry
 category: announcement

@@ -4,7 +4,7 @@
     import { Button, Icon } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import { initDates } from '../+page.svelte';
-    import LockupImage from '../(assets)/lockup.png';
+    import LockupImage from '../(assets)/lockup.avif';
 
     import Badge from './badge.svelte';
     import Lockup from './lockup.svelte';

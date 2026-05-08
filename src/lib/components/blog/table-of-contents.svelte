@@ -10,8 +10,6 @@
 
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import { onMount, tick } from 'svelte';
-    import CopyAsMarkdown from './copy-as-markdown.svelte';
     interface TableOfContentProps {
         toc?: Array<TocItem>;
         heading?: string;
@@ -22,15 +20,25 @@
     let height = $state<number>(0);
     let position = $state<number>(0);
 
-    const onScroll = () => {
-        for (let i = 0; i < toc.length; i++) {
-            const item = toc[i];
+    function updateActiveMarkerPosition(
+        tocList: Array<TocItem> = toc,
+        listHeight: number = height
+    ) {
+        for (let i = 0; i < tocList.length; i++) {
+            const item = tocList[i];
             if (item.selected || item.children?.some((child) => child.selected)) {
-                position = Math.min(i * 38, height - 22);
+                position = Math.min(i * 38, Math.max(0, listHeight - 22));
                 return;
             }
         }
-    };
+    }
+
+    const onScroll = () => updateActiveMarkerPosition();
+
+    /** Keep the active marker aligned when TOC items or list height first appear (no scroll yet). */
+    $effect(() => {
+        updateActiveMarkerPosition(toc, height);
+    });
 </script>
 
 <svelte:window onscroll={onScroll} on:hashchange={onScroll} />
@@ -57,7 +65,7 @@
                         <ul
                             class="border-smooth text-caption mt-11 ml-9 flex flex-col gap-7 border-b pb-10"
                         >
-                            {#each parent.children as child}
+                            {#each parent.children as child (child.href)}
                                 <li
                                     class={cn(
                                         'text-secondary hover:text-accent relative transition-colors',

@@ -25,6 +25,8 @@
                     <CountdownCard
                         title={day.title}
                         illustration={day.illustration}
+                        illustrationWidth={day.illustrationWidth}
+                        illustrationHeight={day.illustrationHeight}
                         release={day.release}
                         {index}
                     />

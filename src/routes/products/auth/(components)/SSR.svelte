@@ -42,17 +42,17 @@
         {
             name: 'Next',
             href: '/docs/quick-starts/nextjs',
-            image: `/images/platforms/light/nextjs.svg`
+            image: `/images/platforms/dark/nextjs.svg`
         },
         {
             name: 'Svelte',
             href: '/docs/quick-starts/sveltekit',
-            image: `/images/platforms/light/svelte.svg`
+            image: `/images/platforms/dark/svelte.svg`
         },
         {
             name: 'Nuxt',
             href: '/docs/quick-starts/nuxt',
-            image: `/images/platforms/light/nuxt.svg`
+            image: `/images/platforms/dark/nuxt.svg`
         }
     ] as Array<{
         name: string;

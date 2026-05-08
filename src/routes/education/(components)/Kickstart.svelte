@@ -1,5 +1,7 @@
 <script lang="ts">
-    import Kickstart from '../(assets)/kickstart.svg';
+    const KICKSTART_SRC = '/images/education/kickstart.avif';
+    const KICKSTART_W = 584;
+    const KICKSTART_H = 450;
 </script>
 
 <div
@@ -20,5 +22,12 @@
             students. The plan is valid until you graduate from GitHub Education.
         </p>
     </div>
-    <img src={Kickstart} alt="Kickstart" class="mx-auto" />
+    <img
+        src={KICKSTART_SRC}
+        width={KICKSTART_W}
+        height={KICKSTART_H}
+        alt="Kickstart"
+        class="mx-auto h-auto max-w-full"
+        decoding="async"
+    />
 </div>

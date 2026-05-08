@@ -1,12 +1,12 @@
 <script lang="ts">
     import { page } from '$app/state';
     import { FooterNav, MainFooter, Tooltip } from '$lib/components';
-    import PreFooter from '$lib/components/PreFooter.svelte';
     import { type SocialShareOption, socialSharingOptions } from '$lib/constants';
     import { Main } from '$lib/layouts';
     import { copy } from '$lib/utils/copy';
     import { formatDate } from '$lib/utils/date';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
     import { CHANGELOG_TITLE_SUFFIX } from '$routes/titles';
 
     let { data } = $props();
@@ -16,7 +16,7 @@
         description: data.description ?? DEFAULT_DESCRIPTION,
         ogImage: data.cover
             ? DEFAULT_HOST + data.cover
-            : `${DEFAULT_HOST}/images/open-graph/website.png`
+            : `${DEFAULT_HOST}/images/open-graph/website.avif`
     });
 
     const sharingOptions = socialSharingOptions.filter((option) => option.label !== 'YCombinator');
@@ -156,13 +156,11 @@
                     </article>
                 </div>
             </div>
-            <div class="relative overflow-hidden pt-10">
-                <div class="pt-[7.5rem]">
-                    <div class="container">
-                        <PreFooter />
-                        <FooterNav />
-                        <MainFooter />
-                    </div>
+            <div class="border-smooth relative border-t pt-20 md:pt-24">
+                <Pricing embedded class="mt-0 mb-0 min-h-0 pt-10 pb-20 md:pt-12 md:pb-24" />
+                <div class="container">
+                    <FooterNav />
+                    <MainFooter />
                 </div>
             </div>
         </div>

@@ -6,21 +6,21 @@ date: 2025-05-19
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/sites-nxtlnk/cover.png
+cover: /images/integrations/sites-nxtlnk/cover.avif
 category: sites
 product: 
-    avatar: '/images/integrations/avatars/nxtlnk.png'
+    avatar: '/images/integrations/avatars/nxtlnk.avif'
     vendor: Nxtlnk
     description: 'Custom bio links for creatives who love coding. A template to create your custom bio link and self-host on your own domain.'
 platform: 
     - 'Cloud'
     - 'Self-hosted'
 images: 
-    - /images/integrations/sites-nxtlnk/cover.png
-    - /images/integrations/sites-nxtlnk/homepage.png
-    - /images/integrations/sites-nxtlnk/clone-template.png
-    - /images/integrations/sites-nxtlnk/site-details.png
-    - /images/integrations/sites-nxtlnk/success.png
+    - /images/integrations/sites-nxtlnk/cover.avif
+    - /images/integrations/sites-nxtlnk/homepage.avif
+    - /images/integrations/sites-nxtlnk/clone-template.avif
+    - /images/integrations/sites-nxtlnk/site-details.avif
+    - /images/integrations/sites-nxtlnk/success.avif
 ---
 
 Nxtlnk is a modern bio links template that makes it easy to create and maintain your personal links page. Made for creatives who love coding, this template lets you create a custom bio link page and self-host it on your own domain.
@@ -40,11 +40,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Create new site](/images/integrations/sites-nxtlnk/create-site.png)
+![Create new site](/images/integrations/sites-nxtlnk/create-site.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning the Nxtlnk template, which lets you quickly set up a bio links site based on a pre-built project.
 
-![Create new site](/images/integrations/sites-nxtlnk/clone-template.png)
+![Create new site](/images/integrations/sites-nxtlnk/clone-template.avif)
 
 ##  Finding the Nxtlnk template
 
@@ -52,7 +52,7 @@ When you select **Clone a template**, you'll see a library of templates. To find
 
 1. Use the search bar at the top and type "Nxtlnk"
 
-![Search templates](/images/integrations/sites-nxtlnk/search-site.png)
+![Search templates](/images/integrations/sites-nxtlnk/search-site.avif)
 
 
 After selecting the template, you'll need to choose how to deploy it, Clicking the Nxtlnk template will open a new page where you can configure your bio links site.
@@ -68,7 +68,7 @@ Once you have selected the Nxtlnk template, you will be prompted to enter basic 
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
 
-![Configure site details](/images/integrations/sites-nxtlnk/site-details.png)
+![Configure site details](/images/integrations/sites-nxtlnk/site-details.avif)
 At this stage, you can choose whether to connect your repository now or later.
 
 
@@ -93,13 +93,13 @@ Once you initiate the deployment, you will be taken to a progress page where you
 
 The logs will show you the different stages of the build process. Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Configure site details](/images/integrations/sites-nxtlnk/deployment-screen.png)
+![Configure site details](/images/integrations/sites-nxtlnk/deployment-screen.avif)
 
 ## Access your site
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. 
 
-![Configure site details](/images/integrations/sites-nxtlnk/success.png)
+![Configure site details](/images/integrations/sites-nxtlnk/success.avif)
 
 ## Next step
 

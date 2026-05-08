@@ -3,7 +3,7 @@ layout: post
 title: "November product update: Database AI suggestions and ElevenLabs template"
 description: Get a full recap of products, features and programs we released in the month of November.
 date: 2025-12-09
-cover: /images/blog/product-update-november-2025/cover.png
+cover: /images/blog/product-update-november-2025/cover.avif
 timeToRead: 8
 author: dennis-ivy
 category: product
@@ -24,7 +24,7 @@ So, here's what to expect:
 
 Let's dive in.
 
-![An open letter to Appwrite Community](/images/blog/product-update-november-2025/open-letter.png)
+![An open letter to Appwrite Community](/images/blog/product-update-november-2025/open-letter.avif)
 
 # An open letter to Appwrite Community
 
@@ -34,7 +34,7 @@ If you want the full story behind why Sites matters and where the platform is go
 
 [Read the full open letter](/blog/post/the-developers-cloud)
 
-![Database AI suggestions](/images/blog/product-update-november-2025/ai-suggestions.png)
+![Database AI suggestions](/images/blog/product-update-november-2025/ai-suggestions.avif)
 
 # Database AI suggestions
 
@@ -48,7 +48,7 @@ That means:
 
 [Read the announcement](/blog/post/announcing-database-ai-suggestions)
 
-![DB operators](/images/blog/product-update-november-2025/db-operators.png)
+![DB operators](/images/blog/product-update-november-2025/db-operators.avif)
 
 # DB operators
 
@@ -58,7 +58,7 @@ With DB Operators, you can now send inline, atomic update instructions directly 
 
 [Read the announcement](/blog/post/announcing-db-operators)
 
-![ElevenLabs Text-to-Speech template](/images/blog/product-update-november-2025/elevenlabs.png)
+![ElevenLabs Text-to-Speech template](/images/blog/product-update-november-2025/elevenlabs.avif)
 
 # ElevenLabs Text-to-Speech template
 
@@ -68,7 +68,7 @@ And the best part? We've shipped a ready-to-use Appwrite Sites template built wi
 
 [Check out the integration](/integrations/ai-elevenlabs-text-to-speech)
 
-![Skip total counts](/images/blog/product-update-november-2025/skip-totals.png)
+![Skip total counts](/images/blog/product-update-november-2025/skip-totals.avif)
 
 # Skip total counts for faster list queries
 
@@ -76,7 +76,7 @@ A new way to optimize your Appwrite Databases. You can now skip total counting o
 
 [Learn more from the documentation](/docs/products/databases/pagination#skip-totals)
 
-![Next.js standalone builds](/images/blog/product-update-november-2025/nextjs.png)
+![Next.js standalone builds](/images/blog/product-update-november-2025/nextjs.avif)
 
 # Next.js standalone builds are now supported on Appwrite Sites
 
@@ -88,7 +88,7 @@ You can now deploy Next.js apps built in [standalone mode](https://nextjs.org/do
 
 Image transformations allow actions like resizing, cropping, and format conversion through the Appwrite Storage API. With this new update, you have full control to turn off these operations when they're not needed, reducing the chance of unintentional processing or costs.
 
-![Community recognitions](/images/blog/product-update-november-2025/community.png)
+![Community recognitions](/images/blog/product-update-november-2025/community.avif)
 
 # Community recognitions
 

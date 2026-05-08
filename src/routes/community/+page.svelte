@@ -14,7 +14,7 @@
             ...baseEvent,
             href: 'https://discord.com/events/564160730845151244/1279026334496067669/1357434273753338106',
             cover: {
-                src: '/images/community/events/office-hours.png',
+                src: '/images/community/events/office-hours.avif',
                 alt: ''
             },
             date: '2025-04-10'
@@ -23,7 +23,7 @@
             ...baseEvent,
             href: 'https://discord.com/events/564160730845151244/1279026334496067669/1362457578700800000',
             cover: {
-                src: '/images/community/events/office-hours-2.png',
+                src: '/images/community/events/office-hours-2.avif',
                 alt: ''
             },
             date: '2025-04-17'
@@ -32,7 +32,7 @@
             ...baseEvent,
             href: 'https://discord.com/events/564160730845151244/1279026334496067669/1364994293760000000',
             cover: {
-                src: '/images/community/events/office-hours-3.png',
+                src: '/images/community/events/office-hours-3.avif',
                 alt: ''
             },
             date: '2025-04-24'
@@ -84,7 +84,7 @@
             description:
                 'Appwrite-powered platform where you can sell your digital products online.',
             image: {
-                src: '/images/community/projects/ucanearn.png',
+                src: '/images/community/projects/ucanearn.avif',
                 alt: "A screenshot of uCanEarn's website"
             },
             href: 'https://builtwith.appwrite.io/projects/648606ad9cd179190b28/'
@@ -105,7 +105,7 @@
     const title = 'Community' + TITLE_SUFFIX;
     const description =
         'Join our vibrant community of developers. Ask questions, contribute solutions, and inspire others to improve the backend development experience.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -135,7 +135,7 @@
                 style:left="calc((50% - 704px / 2) + 18rem)"
                 style:top="-4rem"
             >
-                <img src="/images/community/sphere.png" alt="" />
+                <img src="/images/community/sphere.avif" alt="" />
             </div>
             <div class="web-big-padding-section-level-2">
                 <section class="web-u-padding-block-end-0 relative container">
@@ -163,10 +163,10 @@
                                     href={SOCIAL_STATS.GITHUB.LINK}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="is-full-width-mobile"
+                                    class="is-full-width-mobile is-github-stat-link"
+                                    aria-label={`Appwrite on GitHub, ${SOCIAL_STATS.GITHUB.STAT} stars`}
                                 >
-                                    <Icon name="star" aria-hidden="true" />
-                                    <span>Star on GitHub</span>
+                                    <Icon name="github" aria-hidden="true" />
                                     <InlineTag>{SOCIAL_STATS.GITHUB.STAT}</InlineTag>
                                 </Button>
                             </div>
@@ -193,16 +193,16 @@
                 <div class="pink-gradient"></div>
                 <FloatingHeads
                     images={[
-                        '/images/community/avatars/1.png',
-                        '/images/community/avatars/2.png',
-                        '/images/avatars/torsten.png',
-                        '/images/community/avatars/3.png',
-                        '/images/avatars/jade.png',
-                        '/images/community/avatars/4.png',
-                        '/images/community/avatars/5.png',
-                        '/images/avatars/haimantika.png',
-                        '/images/community/avatars/6.png',
-                        '/images/avatars/may.png'
+                        '/images/community/avatars/1.avif',
+                        '/images/community/avatars/2.avif',
+                        '/images/avatars/torsten.avif',
+                        '/images/community/avatars/3.avif',
+                        '/images/avatars/jade.avif',
+                        '/images/community/avatars/4.avif',
+                        '/images/community/avatars/5.avif',
+                        '/images/avatars/haimantika.avif',
+                        '/images/community/avatars/6.avif',
+                        '/images/avatars/may.avif'
                     ]}
                 />
             </div>

@@ -3,7 +3,7 @@ layout: post
 title: How to change regions in Appwrite Cloud using migrations
 description: Learn how to migrate your Appwrite Cloud project from one region to another.
 date: 2025-04-16
-cover: /images/blog/change-regions-with-migrations/cover.png
+cover: /images/blog/change-regions-with-migrations/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
@@ -40,7 +40,7 @@ Once you've finished setting it up, you'll have a clean project ready to receive
 
 Inside your new project, go to **Settings**, and look for the **Migrations** tab.
 
-![Migrations tab](/images/blog/change-regions-with-migrations/migrations-tab.png)
+![Migrations tab](/images/blog/change-regions-with-migrations/migrations-tab.avif)
 
 There you'll find the option to **Import project data**. Click the button to open the migration configuration screen.
 
@@ -64,7 +64,7 @@ Here's how to get each one:
 
 From your source project, go to **Settings → API Keys** and create a new key. Give it a name that'll make it easy to identify later.
 
-![Create API key](/images/blog/change-regions-with-migrations/create-api-key.png)
+![Create API key](/images/blog/change-regions-with-migrations/create-api-key.avif)
 
 Set an expiration date. Since this key is likely to have access to a lot of data, you don't want it hanging around forever.
 
@@ -89,7 +89,7 @@ Go back to your destination project, and in the **Settings** page, go to the **M
 
 Choose **Appwrite** as the source platform.
 
-![Migrations screen](/images/blog/change-regions-with-migrations/migrations-screen.png)
+![Migrations screen](/images/blog/change-regions-with-migrations/migrations-screen.avif)
 
 Then fill in the details from the source project:
 
@@ -117,7 +117,7 @@ How long this takes depends on your data. If your project is lightweight, it mig
 
 When the migration is complete, you'll see an indication in the console.
 
-![Migration complete](/images/blog/change-regions-with-migrations/migrations-complete.png)
+![Migration complete](/images/blog/change-regions-with-migrations/migrations-complete.avif)
 
 ## After migration: what to verify
 

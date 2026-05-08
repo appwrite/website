@@ -1,26 +1,24 @@
 import {
     STATSIG_STABLE_ID_KEY,
+    DEFAULT_HERO_CTA,
     DEFAULT_HERO_SUBTITLE,
     DEFAULT_HERO_TITLE
 } from '$lib/statsig/constants';
 import { resolveHeroQueryOverrides } from '$lib/statsig/hero-query-overrides';
 import { building } from '$app/environment';
-import {
-    evaluateHeroDescriptionExperiment,
-    evaluateHeroLayoutExperiment,
-    getStatsigClientBootstrapPayload
-} from '$lib/statsig/hero-statsig.server';
+import { loadMarketingHomeStatsigBundle } from '$lib/statsig/hero-statsig.server';
 import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies, request, url }) => {
-    // `+page.ts` sets `prerender = false` for `/` so this load runs per request with real cookies.
-    // During `vite build` the marketing page may still be analyzed with `building === true`; keep a safe fallback.
+    // Prerendered `/` must not embed per-user Statsig bootstrap or stable IDs — one static HTML is
+    // served to everyone; the hero applies experiments after `initializeAsync` in the browser.
     if (building) {
         return {
             heroSubtitle: DEFAULT_HERO_SUBTITLE,
             heroLayout: 0 as HeroLayoutVariant,
             heroTitle: DEFAULT_HERO_TITLE,
+            heroCta: DEFAULT_HERO_CTA,
             statsigBootstrap: null,
             statsigStableUserId: null,
             statsigUserAgent: null
@@ -47,25 +45,32 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const [heroSubtitleBase, heroLayoutBase, statsigBootstrap] = await Promise.all([
-        evaluateHeroDescriptionExperiment(user, DEFAULT_HERO_SUBTITLE),
-        evaluateHeroLayoutExperiment(user, 0),
-        getStatsigClientBootstrapPayload(user)
-    ]);
+    const { heroTitleBase, heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap } =
+        await loadMarketingHomeStatsigBundle(user, stableId, {
+            title: DEFAULT_HERO_TITLE,
+            subtitle: DEFAULT_HERO_SUBTITLE,
+            layout: 0,
+            cta: DEFAULT_HERO_CTA
+        });
 
-    // `url.searchParams` is unavailable while prerendering other routes; `/` is not prerendered.
+    // `url.searchParams` is unavailable while prerendering (`+page.ts` has `prerender = true`).
     // Query overrides still apply in the browser via `hero.svelte` + `page.url.searchParams`.
     const heroQueryParams = url.searchParams;
-    const { heroSubtitle, heroLayout, heroTitle } = resolveHeroQueryOverrides(heroQueryParams, {
-        heroLayout: heroLayoutBase,
-        heroSubtitle: heroSubtitleBase,
-        heroTitle: DEFAULT_HERO_TITLE
-    });
+    const { heroSubtitle, heroLayout, heroTitle, heroCta } = resolveHeroQueryOverrides(
+        heroQueryParams,
+        {
+            heroLayout: heroLayoutBase,
+            heroSubtitle: heroSubtitleBase,
+            heroTitle: heroTitleBase,
+            heroCta: heroCtaBase
+        }
+    );
 
     return {
         heroSubtitle,
         heroLayout,
         heroTitle,
+        heroCta,
         statsigBootstrap,
         /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
         statsigStableUserId: stableId,

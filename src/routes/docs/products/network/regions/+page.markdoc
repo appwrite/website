@@ -7,10 +7,10 @@ description: Learn about Appwrite regions, where core services like databases, a
 Appwrite regions are geographic locations where all your application's core infrastructure is deployed. Each region operates as an independent, highly available cluster, managing the storage, processing, and serving of your data and Appwrite services.
 
 {% only_dark %}
-![Regions map](/images/docs/network/dark/regions-map.png)
+![Regions map](/images/docs/network/dark/regions-map.avif)
 {% /only_dark %}
 {% only_light %}
-![Regions map](/images/docs/network/regions-map.png)
+![Regions map](/images/docs/network/regions-map.avif)
 {% /only_light %}
 
 # List {% #list %}

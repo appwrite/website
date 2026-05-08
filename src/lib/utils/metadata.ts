@@ -14,10 +14,21 @@ export function buildOpenGraphImage(title: string, description: string): string 
 }
 
 /**
+ * Escapes `<` as the JSON unicode escape `\u003c` so the result can be embedded
+ * inside HTML `<script>` tags (including SvelteKit route data) without `</script>`
+ * or similar sequences in string values ending the script early. `JSON.parse`
+ * still yields the original `<`.
+ */
+export function escapeJsonLtForHtmlScript(json: string): string {
+    return json.replace(/</g, '\\u003c');
+}
+
+/**
  * Returns an inlined JSON-LD script tag without breaking IDE formatting.
  */
 export function getInlinedScriptTag(jsonSchema: string): string {
-    return `<script type="application/ld+json">${jsonSchema}</` + 'script>';
+    const safeForInlineScript = escapeJsonLtForHtmlScript(jsonSchema);
+    return `<script type="application/ld+json">${safeForInlineScript}</` + 'script>';
 }
 
 /**
@@ -146,4 +157,100 @@ export function createFaqSchema(
             }
         }))
     });
+}
+
+export type DiscussionForumMessageForSchema = {
+    author: string;
+    /** Full message body as shown on the page (e.g. markdown source). */
+    text: string;
+    timestamp: string;
+    $id?: string;
+};
+
+export type DiscussionForumThreadForSchema = {
+    title: string;
+    /** Fallback when there are no messages in the thread. */
+    content: string;
+    author: string;
+    $createdAt: string;
+    vote_count?: number;
+};
+
+function toIso8601DateTime(value: string): string {
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+}
+
+function nonEmptyText(value: string, fallback: string): string {
+    const t = value.trim();
+    return t.length > 0 ? value : fallback;
+}
+
+/**
+ * JSON-LD for thread / forum pages (DiscussionForumPosting), per
+ * https://developers.google.com/search/docs/appearance/structured-data/discussion-forum
+ */
+export function createDiscussionForumPageSchema(options: {
+    canonicalUrl: string;
+    thread: DiscussionForumThreadForSchema;
+    messages: DiscussionForumMessageForSchema[];
+}): string {
+    const { canonicalUrl, thread, messages } = options;
+    const first = messages[0];
+    const opText = nonEmptyText(first?.text ?? '', nonEmptyText(thread.content, thread.title));
+    const opAuthor = (first?.author ?? thread.author).trim() || 'Anonymous';
+    const opDate = toIso8601DateTime(first?.timestamp ?? thread.$createdAt);
+
+    const comments = messages.slice(1).map((m) => {
+        const text = nonEmptyText(m.text, '(No text)');
+        const comment: Record<string, unknown> = {
+            '@type': 'Comment',
+            text,
+            author: {
+                '@type': 'Person',
+                name: m.author.trim() || 'Anonymous'
+            },
+            datePublished: toIso8601DateTime(m.timestamp)
+        };
+        if (m.$id) {
+            comment.url = `${canonicalUrl}#message-${m.$id}`;
+        }
+        return comment;
+    });
+
+    const mainEntity: Record<string, unknown> = {
+        '@type': 'DiscussionForumPosting',
+        headline: thread.title,
+        url: canonicalUrl,
+        mainEntityOfPage: canonicalUrl,
+        text: opText,
+        author: {
+            '@type': 'Person',
+            name: opAuthor
+        },
+        datePublished: opDate
+    };
+
+    if (typeof thread.vote_count === 'number' && thread.vote_count >= 0) {
+        mainEntity.interactionStatistic = {
+            '@type': 'InteractionCounter',
+            interactionType: 'https://schema.org/LikeAction',
+            userInteractionCount: thread.vote_count
+        };
+    }
+
+    const replyCount = Math.max(0, messages.length - 1);
+    if (replyCount > 0) {
+        mainEntity.commentCount = replyCount;
+        mainEntity.comment = comments;
+    }
+
+    const graph = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        url: canonicalUrl,
+        mainEntity
+    };
+
+    return escapeJsonLtForHtmlScript(JSON.stringify(graph));
 }

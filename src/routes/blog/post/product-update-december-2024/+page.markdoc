@@ -3,7 +3,7 @@ layout: post
 title: "Product update December 2024: Highlights of the year"
 description: Get a full recap of products, features and programs we released in 2024.
 date: 2025-01-09
-cover: /images/blog/product-update-december-2024/cover-image.png
+cover: /images/blog/product-update-december-2024/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -22,7 +22,7 @@ From launching the highly requested features to launching new programs, here is 
 - 28 integrations
 - 2 programs
 
-![Products & features](/images/blog/product-update-december-2024/products-features.png)
+![Products & features](/images/blog/product-update-december-2024/products-features.avif)
 
 # Products and features highlights 2024
 
@@ -62,7 +62,7 @@ In September, we launched the much-requested [Roles](https://appwrite.io/blog/po
 
 Custom roles are on the way, giving you even more control. Stay tuned.
 
-![Integrations catalog](/images/blog/product-update-december-2024/integrations.png)
+![Integrations catalog](/images/blog/product-update-december-2024/integrations.avif)
 
 # Integrations catalog
 
@@ -70,7 +70,7 @@ We launched the Integrations Catalog with a ton of popular integrations like Str
 
 We will continue to update the catalog with more integrations. You can also apply to become a [Technology partner](https://appwrite.io/integrations/technology-partner) and get your integration listed in the catalog. Check out the catalog [here](https://appwrite.io/integrations).
 
-![Runtimes](/images/blog/product-update-december-2024/runtimes-sdk.png)
+![Runtimes](/images/blog/product-update-december-2024/runtimes-sdk.avif)
 
 # Runtimes
 
@@ -100,7 +100,7 @@ Making Appwrite language agnostic is a high priority. So this year, we worked di
 - [New SDK versions released for Web, Flutter, and Android](https://appwrite.io/changelog/entry/2024-04-25-2)
 - [New SDK versions released](https://appwrite.io/changelog/entry/2024-02-15)
 
-![Programs](/images/blog/product-update-december-2024/programs.png)
+![Programs](/images/blog/product-update-december-2024/programs.avif)
 
 # Programs
 
@@ -118,7 +118,7 @@ In 2024, we also launched Appwrite Education Program for students in partnership
 
 We already have thousands of students building cool projects and learning along the way. What’s holding you back? [Join the program](https://appwrite.io/education) and start building today!
 
-![Community recognitions](/images/blog/product-update-december-2024/community-recognitions.png)
+![Community recognitions](/images/blog/product-update-december-2024/community-recognitions.avif)
 
 # Community recognitions
 

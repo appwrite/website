@@ -6,12 +6,12 @@ date: 2025-03-21
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/makeshyft.png
+cover: /images/partners/covers/makeshyft.avif
 category: agency
 website: http://www.makeshyft.com
 email: mailto:makeshfty@makeshyft.com
 product: 
-    avatar: '/images/partners/avatars/makeshyft.png'
+    avatar: '/images/partners/avatars/makeshyft.avif'
     vendor: MakeShyft
     description: MakeShyft is a software company currently transitioning from client work to B2C & B2B software products.  Our goal is to build productivity, communication, and collaboration tools.
 technologies: 

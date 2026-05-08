@@ -1,12 +1,13 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import { FooterNav, MainFooter } from '$lib/components';
     import { Main } from '$lib/layouts';
     import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
     import { onMount } from 'svelte';
     import ChangelogEntry from '../ChangelogEntry.svelte';
     import { page } from '$app/state';
     import { CHANGELOG_KEY } from '../utils';
+    import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
     import { TITLE_SUFFIX } from '$routes/titles';
     import { Button } from '$lib/components/ui';
 
@@ -16,7 +17,7 @@
         title: 'Changelog' + TITLE_SUFFIX,
         description:
             "Explore Appwrite's changelog to stay on top of all the product updates and track our journey.",
-        ogImage: `${DEFAULT_HOST}/images/open-graph/website.png`
+        ogImage: `${DEFAULT_HOST}/images/open-graph/website.avif`
     };
 
     function loadMore() {
@@ -72,13 +73,11 @@
                 </div>
             </div>
         </div>
-        <div class="relative overflow-hidden pt-10">
-            <div class="pt-[7.5rem]">
-                <div class="container">
-                    <PreFooter />
-                    <FooterNav />
-                    <MainFooter />
-                </div>
+        <div class="border-smooth relative border-t pt-20 md:pt-24">
+            <Pricing embedded class="mt-0 mb-0 min-h-0 pt-10 pb-20 md:pt-12 md:pb-24" />
+            <div class="container">
+                <FooterNav />
+                <MainFooter />
             </div>
         </div>
     </div>

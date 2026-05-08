@@ -9,9 +9,11 @@ export {
     toStatsigUser
 } from './server';
 export {
-    evaluateHeroDescriptionExperiment,
+    evaluateHeroCtaExperiment,
     evaluateHeroLayoutExperiment,
-    MARKETING_HERO_EXPERIMENTS
+    loadMarketingHomeStatsigBundle,
+    MARKETING_HERO_EXPERIMENTS,
+    type MarketingHomeStatsigBundle
 } from './experiments/marketing-hero-server';
 export type {
     MarketingHeroClientExposureDebug,

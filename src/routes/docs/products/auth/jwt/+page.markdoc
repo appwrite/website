@@ -204,7 +204,6 @@ const rows = await tablesDB.listRows({
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 });
-// ... More code to manipulate the results
 ```
 ```php
 use Appwrite\Client;
@@ -220,7 +219,6 @@ $rows = $tablesDB->listRows(
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 );
-// ... More code to manipulate the results
 ```
 ```python
 from appwrite.client import Client
@@ -239,7 +237,6 @@ rows = tablesDB.list_rows(
     database_id='642f358bf4084c662590',
     table_id='642f3592aa5fc856ad1e'
 )
-# ... More code to manipulate the results
 ```
 ```ruby
 require 'appwrite'
@@ -257,7 +254,6 @@ rows = tablesDB.list_rows(
     database_id: '642f358bf4084c662590',
     table_id: '642f3592aa5fc856ad1e'
 )
-# ... More code to manipulate the results
 ```
 ```deno
 import { Client } from "npm:node-appwrite";
@@ -273,7 +269,6 @@ let rows = await tablesDB.listRows({
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 });
-// ... More code to manipulate the results
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -289,7 +284,6 @@ final rows = await tablesDB.listRows(
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e',
 );
-// ... More code to manipulate the results
 ```
 ```kotlin
 import io.appwrite.Client
@@ -305,7 +299,6 @@ val rows = tablesDB.listRows(
     databaseId = "642f358bf4084c662590",
     tableId = "642f3592aa5fc856ad1e",
 )
-// ... More code to manipulate the results
 ```
 ```swift
 import Appwrite
@@ -321,7 +314,6 @@ let rows = try await tablesDB.listRows(
     databaseId: "642f358bf4084c662590",
     tableId: "642f3592aa5fc856ad1e"
 )
-// ... More code to manipulate the results
 ```
 ```csharp
 using Appwrite;
@@ -339,7 +331,6 @@ var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",
     tableId: "642f3592aa5fc856ad1e");
 
-// ... More code to manipulate the results
 ```
 
 {% /multicode %}
@@ -382,7 +373,6 @@ const rows = await tablesDB.listRows({
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 });
-// ... More code to manipulate the results
 ```
 
 ```php
@@ -399,7 +389,6 @@ $rows = $tablesDB->listRows(
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 );
-// ... More code to manipulate the results
 ```
 
 ```python
@@ -418,7 +407,6 @@ rows = tablesDB.list_rows(
     database_id='642f358bf4084c662590',
     table_id='642f3592aa5fc856ad1e'
 )
-// ... More code to manipulate the results
 ```
 ```ruby
 require 'appwrite'
@@ -436,7 +424,6 @@ rows = tablesDB.list_rows(
     database_id: '642f358bf4084c662590',
     table_id: '642f3592aa5fc856ad1e'
 )
-# ... More code to manipulate the results
 ```
 ```deno
 import { Client } from "npm:node-appwrite";
@@ -452,7 +439,6 @@ let rows = await tablesDB.listRows({
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e'
 });
-// ... More code to manipulate the results
 ```
 ```dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -468,7 +454,6 @@ final rows = await tablesDB.listRows(
     databaseId: '642f358bf4084c662590',
     tableId: '642f3592aa5fc856ad1e',
 );
-// ... More code to manipulate the results
 ```
 ```kotlin
 import io.appwrite.Client
@@ -484,7 +469,6 @@ val rows = tablesDB.listRows(
     databaseId = "642f358bf4084c662590",
     tableId = "642f3592aa5fc856ad1e",
 )
-// ... More code to manipulate the results
 ```
 ```swift
 import Appwrite
@@ -500,7 +484,6 @@ let rows = try await tablesDB.listRows(
     databaseId: "642f358bf4084c662590",
     tableId: "642f3592aa5fc856ad1e"
 )
-// ... More code to manipulate the results
 ```
 ```csharp
 using Appwrite;
@@ -518,7 +501,6 @@ var rows = await databases.listRows(
     databaseId: "642f358bf4084c662590",
     tableId: "642f3592aa5fc856ad1e");
 
-// ... More code to manipulate the results
 ```
 {% /multicode %}
 

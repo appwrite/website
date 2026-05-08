@@ -21,6 +21,8 @@
     import type { LayoutContext } from './Article.svelte';
     import { DOCS_TITLE_SUFFIX } from '$routes/titles';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
+    import { page } from '$app/state';
+    import { seedHeadingsFromMarkdocRaw } from '$lib/utils/docs-toc-seed';
 
     export let title: string;
     export let description: string;
@@ -28,7 +30,8 @@
     export let date: string;
     export let back: string;
 
-    setContext<LayoutContext>('headings', writable({}));
+    const rawContent = (page.data as { rawContent?: string | null }).rawContent ?? null;
+    setContext<LayoutContext>('headings', writable(seedHeadingsFromMarkdocRaw(rawContent)));
 
     const tutorials = getContext<Tutorial[]>('tutorials');
     const headings = getContext<LayoutContext>('headings');
@@ -59,7 +62,7 @@
     }, []);
 
     const seoTitle = title + DOCS_TITLE_SUFFIX;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.avif';
 </script>
 
 <svelte:head>

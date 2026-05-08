@@ -1,69 +1,70 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import Node from './(assets)/icons/node.svg';
-    import Javascript from './(assets)/icons/javascript.svg';
-    import Flutter from './(assets)/icons/flutter.svg';
-    import Nextjs from './(assets)/icons/nextjs.svg';
-    import Svelte from './(assets)/icons/svelte.svg';
-    import Remix from './(assets)/icons/remix.svg';
-    import Lynx from './(assets)/icons/lynx.svg';
-    import Astro from './(assets)/icons/astro.svg';
-    import Vue from './(assets)/icons/vue.svg';
-    import Deno from './(assets)/icons/deno.svg';
-    import Angular from './(assets)/icons/angular.svg';
-    import Nuxt from './(assets)/icons/nuxt.svg';
-    import Vite from './(assets)/icons/vite.svg';
-    import ReactNative from './(assets)/icons/react-native.svg';
-    import React from './(assets)/icons/react.svg';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import Noise from '$lib/components/fancy/noise.svelte';
     import { Tooltip } from 'bits-ui';
     import type { SvelteHTMLElements } from 'svelte/elements';
+    import { isInDocs, isInTutorialDocs } from '$lib/layouts/Docs.svelte';
+    import { themeInUse } from '$routes/+layout.svelte';
 
-    const platforms = [
-        {
-            name: 'JS',
-            icon: Javascript,
-            primary: '#FFCA28'
-        },
+    const ICON = '/images/platforms';
+
+    const useLightPlatformSvgs = $derived(
+        (isInDocs() || isInTutorialDocs()) && $themeInUse === 'light'
+    );
+
+    type PlatformRow = {
+        name: string;
+        slug: string;
+        primary: string;
+        secondary: string;
+    };
+
+    const platforms: PlatformRow[] = [
+        { name: 'JS', slug: 'javascript', primary: '#FFCA28', secondary: '#3E3E3E' },
         {
             name: 'Flutter',
-            icon: Flutter,
+            slug: 'flutter',
             primary: '#00569E',
             secondary: '#47C5FB'
         },
-        { name: 'Node.js', icon: Node, primary: '#8CC84B' },
+        { name: 'Node.js', slug: 'node', primary: '#8CC84B', secondary: '#3C873A' },
         {
             name: 'React Native',
-            icon: ReactNative,
-            primary: '#53C1DE'
+            slug: 'react-native',
+            primary: '#61DAFB',
+            secondary: '#087EA4'
         },
-        { name: 'Next.js', icon: Nextjs, primary: '#000000' },
-        { name: 'Astro', icon: Astro, primary: '#ffffff' },
+        { name: 'Next.js', slug: 'nextjs', primary: '#000000', secondary: '#0070F3' },
+        { name: 'Astro', slug: 'astro', primary: '#FF5D01', secondary: '#BC38E0' },
         {
             name: 'Vite',
-            icon: Vite,
-            primary: '#BD34FE'
+            slug: 'vite',
+            primary: '#BD34FE',
+            secondary: '#FFC517'
         },
-        { name: 'Svelte', icon: Svelte, primary: '#fc5732' },
+        { name: 'Svelte', slug: 'svelte', primary: '#FF3E00', secondary: '#FF8C42' },
         {
             name: 'Remix',
-            icon: Remix,
-            primary: '#ffffff'
+            slug: 'remix',
+            primary: '#3992FF',
+            secondary: '#121212'
         },
-        { name: 'Deno', icon: Deno, primary: '#fff' },
-        { name: 'Vue', icon: Vue, primary: '#41B883', secondary: '#35495E' },
-        { name: 'Angular', icon: Angular, primary: '#C3002F' },
+        { name: 'Deno', slug: 'deno', primary: '#70FFAF', secondary: '#000000' },
+        { name: 'Vue', slug: 'vue', primary: '#41B883', secondary: '#35495E' },
+        { name: 'Angular', slug: 'angular', primary: '#C3002F', secondary: '#9F1239' },
         {
             name: 'Nuxt',
-            icon: Nuxt,
-            primary: '#00DC82'
+            slug: 'nuxt',
+            primary: '#00DC82',
+            secondary: '#003737'
         },
-        { name: 'React', icon: React, primary: '#53C1DE' },
+        { name: 'React', slug: 'react', primary: '#53C1DE', secondary: '#087EA4' },
         {
             name: 'Lynx',
-            icon: Lynx,
-            primary: '#78D9EA'
+            slug: 'lynx',
+            primary: '#78D9EA',
+            secondary: '#1E8BC3'
         }
     ];
 
@@ -90,39 +91,42 @@
         <div
             class={cn(
                 'flex w-full flex-nowrap overflow-clip md:overflow-visible',
-                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
+                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-md md:mask-none md:backdrop-blur-none'
             )}
         >
-            {#each [1, 2] as _, i}
+            {#each [1, 2] as _, rowIndex}
                 <div
                     class={cn(
-                        'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
+                        'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed will-change-transform md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
                         {
-                            'md:hidden': i === 1
+                            'md:hidden': rowIndex === 1
                         }
                     )}
+                    aria-hidden={rowIndex === 1 ? true : undefined}
                 >
                     <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                        {#each platforms as platform, i}
+                        {#each platforms as platform, platformIndex}
                             <Tooltip.Root>
                                 <div
                                     class="contents"
-                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
+                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
                                         25}ms"
                                 >
                                     <Tooltip.Trigger
                                         class={cn(
                                             'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
                                             {
-                                                'lg:border-l': i === 0
+                                                'lg:border-l': platformIndex === 0
                                             }
                                         )}
-                                        aria-hidden={i < platforms.length - 1}
                                     >
                                         <img
-                                            src={platform.icon}
+                                            src={`${ICON}/${useLightPlatformSvgs ? 'light' : 'dark'}/${platform.slug}.svg`}
                                             alt={platform.name}
-                                            class="h-8 w-auto grayscale transition-all duration-500 group-hover:grayscale-0"
+                                            loading="lazy"
+                                            decoding="async"
+                                            fetchpriority="low"
+                                            class="h-8 w-auto object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                                         />
 
                                         <div
@@ -139,14 +143,19 @@
                                         sideOffset={8}
                                         side="top"
                                         class={cn(
-                                            'text-primary bg-greyscale-900 relative hidden rounded-md border-0! px-2.5 py-1 text-sm md:block',
+                                            'text-greyscale-900 relative hidden rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium md:block',
+                                            'dark:bg-greyscale-850 dark:text-greyscale-50',
                                             'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                         )}
-                                        >{platform.name}
+                                    >
                                         <div
-                                            class="absolute inset-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/4 to-(--secondary-color,_transparent)/10"
+                                            class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
+                                            aria-hidden="true"
                                         ></div>
-                                        <Tooltip.Arrow class="text-(--primary-color)/4" />
+                                        <span class="relative z-10">{platform.name}</span>
+                                        <Tooltip.Arrow
+                                            class="text-greyscale-300 dark:text-greyscale-600"
+                                        />
                                     </Tooltip.Content>
                                 </div>
                             </Tooltip.Root>

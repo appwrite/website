@@ -16,7 +16,8 @@
 <ToggleGroup.Item
     {value}
     class={cn(
-        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
+        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"]',
+        'lg:h-[467px] lg:max-h-[467px] lg:min-h-[467px]',
         'group/card hover:bg-black/24',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
         'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16 data-[state="off"]:p-8',
@@ -27,8 +28,8 @@
         loading="lazy"
         src={study.logo}
         alt={study.headline}
-        width={100}
-        height={100}
+        width={study.logoWidth}
+        height={study.logoHeight}
         class={cn(
             'h-5 shrink-0 opacity-100 transition-all [grid-area:stack] lg:h-12',
             'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
@@ -37,14 +38,14 @@
 
     <div
         class={cn(
-            'relative hidden w-full space-y-4 overflow-hidden transition-opacity delay-400 [grid-area:stack]',
+            'relative hidden h-full max-h-full w-full space-y-4 overflow-x-hidden overflow-y-auto transition-opacity delay-400 [grid-area:stack]',
             'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
         )}
     >
         <img
             loading="lazy"
-            width={80}
-            height={80}
+            width={study.logoWidth}
+            height={study.logoHeight}
             src={study.logo}
             alt={study.headline}
             class={cn('-mt-8 h-20 w-20', {

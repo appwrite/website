@@ -3,7 +3,7 @@ layout: post
 title: "Did Claude Design just kill Lovable?"
 description: "Anthropic dropped a design tool that turns prompts into code-powered prototypes and hands them straight to Claude Code. Is this the end for Lovable, or are we comparing apples and oranges?"
 date: 2026-04-18
-cover: /images/blog/did-claude-design-kill-lovable/cover.png
+cover: /images/blog/did-claude-design-kill-lovable/cover.avif
 timeToRead: 8
 author: aditya-oberai
 category: ai
@@ -123,6 +123,7 @@ A few practical reads:
 - **If you are a non-developer building an MVP this weekend:** Lovable is still probably the faster path to a working URL. Come back to Claude Design when you need more design control or when you are ready to bring in a developer.
 - **If you are a design or product team:** Claude Design changes the cost of producing polished visual work inside a product org. A PM can now prototype a feature well enough to ship it, which is new.
 - **If you are watching the AI-native tooling space:** Pay attention to the handoff interfaces between tools. Claude Design packaging a bundle for Claude Code is the first example of what this pattern looks like when both ends are the same model. More of this is coming.
+- **If you are comparing stacks before you standardize:** [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) covers Cursor, Windsurf, Claude Code, Copilot, Bolt, Lovable, and how they differ outside the Claude-only lane.
 
 # Build the rest with Claude Code and Appwrite
 

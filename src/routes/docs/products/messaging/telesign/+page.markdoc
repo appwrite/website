@@ -12,10 +12,10 @@ You can send SMS messages for purposes like reminders, promotions, announcements
 
 To add Telesign as a provider, navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**.
 {% only_dark %}
-![Add a Telesign provider](/images/docs/messaging/providers/telesign/dark/provider.png)
+![Add a Telesign provider](/images/docs/messaging/providers/telesign/dark/provider.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a Telesign provider](/images/docs/messaging/providers/telesign/provider.png)
+![Add a Telesign provider](/images/docs/messaging/providers/telesign/provider.avif)
 {% /only_light %}
 
 Give your provider a name > choose **Telesign** > click **Save and continue**.
@@ -51,10 +51,10 @@ make sure you've configured [a topic](/docs/products/messaging/topics) and [a ta
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **SMS**.
 {% only_dark %}
-![Create SMS message](/images/docs/messaging/messages/dark/create-sms-message.png)
+![Create SMS message](/images/docs/messaging/messages/dark/create-sms-message.avif)
 {% /only_dark %}
 {% only_light %}
-![Create SMS message](/images/docs/messaging/messages/create-sms-message.png)
+![Create SMS message](/images/docs/messaging/messages/create-sms-message.avif)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.

@@ -26,10 +26,10 @@ This lets you track your code using Git, which makes it easy to integrate Appwri
 If you need to create a new function, select a **Quick start** template or search for more templates under **All templates**.
 5. Follow the wizard to configure your new Appwrite Function.
 {% only_dark %}
-![Create project screen](/images/docs/functions/dark/template.png)
+![Create project screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/functions/template.png)
+![Create project screen](/images/docs/functions/template.avif)
 {% /only_light %}
 {% /tabsitem %}
 
@@ -159,18 +159,6 @@ Here are some cron expressions for common intervals:
 | `0 * * * *`      | Every Hour            |
 | `0 0 * * *`      | Every day at 00:00    |
 | `0 0 * * 1`      | Every Monday at 00:00 |
-
-## Environment variables {% #environment-variables %}
-Set static environment variables that will be passed to your function 
-by navigating to your function > **Settings** > **Environment variables**.
-
-You can also configure global variables that apply to all your functions in the **Settings** of your project.
-
-{% info title="Redeployment required" %}
-This change requires your function to be redeployed to take effect.
-{% /info %}
-
-You can access environment variables inside functions using your [runtime language's system methods](/docs/products/functions/develop#environment-variables).
 
 ## Timeout {% #timeout %}
 You can limit the execution time of your function by navigating to your function > **Settings** > **Timeout**.

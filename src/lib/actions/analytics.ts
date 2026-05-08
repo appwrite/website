@@ -4,7 +4,6 @@ import { browser } from '$app/environment';
 import { shouldForwardAnalyticsToStatsig } from '$lib/statsig/cta-events';
 import { logStatsigCtaEvent } from '$lib/statsig/client';
 
-import posthogEvent from 'posthog-js';
 import Plausible from 'plausible-tracker';
 import { Analytics, type AnalyticsPlugin } from 'analytics';
 
@@ -88,6 +87,5 @@ export const trackEvent = (eventArgs?: string | TrackEventArgs): void => {
         return;
     }
 
-    posthogEvent.capture(name, data);
     getAnalyticsClient()?.track(name, data).then();
 };

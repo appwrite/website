@@ -6,12 +6,12 @@ date: 2025-06-25
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/devkind.png
+cover: /images/partners/covers/devkind.avif
 category: agency
 website: devkind.com.au
 email: mailto:ali@devkind.com.au
 product: 
-    avatar: '/images/partners/avatars/devkind.png'
+    avatar: '/images/partners/avatars/devkind.avif'
     vendor: Devkind
     description: Devkind is a Melbourne-based web application development agency specializing in crafting robust and scalable digital solutions.
 technologies: 

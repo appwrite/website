@@ -2,7 +2,7 @@
     import Platforms from '$lib/components/marketing/platforms.svelte';
     import { cn } from '$lib/utils/cn';
 
-    import Illustration from '../../(assets)/images/illustration.png';
+    import Illustration from '../../(assets)/images/illustration.avif';
     import ProductHuntBadge from '../../(assets)/images/producthunt-badge.svelte';
 </script>
 
@@ -19,8 +19,12 @@
         <div class="cols-span-full flex flex-col gap-6 lg:col-span-5">
             <div class="flex items-center gap-2">
                 <img
-                    src="/images/icons/illustrated/dark/sites.png"
+                    src="/images/icons/illustrated/dark/sites.avif"
                     class="size-8"
+                    width="32"
+                    height="32"
+                    decoding="async"
+                    fetchpriority="low"
                     alt="Sites icon"
                 />
                 <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
@@ -44,13 +48,24 @@
                 </a>
             </div>
         </div>
-        <img src={Illustration} alt="Illustration" class="col-span-full lg:col-span-7" />
+        <img
+            src={Illustration}
+            alt="Illustration of Appwrite Sites hosting workflow"
+            class="col-span-full h-auto w-full max-w-full lg:col-span-7"
+            width="1280"
+            height="939"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            decoding="async"
+            fetchpriority="high"
+        />
         <a
             href="https://www.producthunt.com/posts/appwrite-sites"
             target="_blank"
+            rel="noopener noreferrer"
             title="Check Appwrite Sites on ProductHunt"
+            aria-label="Check Appwrite Sites on Product Hunt"
             class="col-span-full flex w-full justify-center lg:col-span-7 lg:col-start-6"
-            ><div><ProductHuntBadge /></div></a
+            ><div aria-hidden="true"><ProductHuntBadge /></div></a
         >
     </div>
     <Platforms class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />

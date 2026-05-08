@@ -69,9 +69,9 @@
                                 />
                             {/if}
                             <div class="flex flex-col">
-                                <h4 class="text-sub-body text-primary">
+                                <p class="text-sub-body text-primary m-0">
                                     {author.name}
-                                </h4>
+                                </p>
                                 {#if author.role}
                                     <p class="text-caption">{author.role}</p>
                                 {/if}

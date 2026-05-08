@@ -3,12 +3,23 @@ layout: post
 title: "Developer-first thinking about compliance requirements"
 description: A developer-first guide to understanding compliance requirements, identifying what applies to your application, and making informed architecture decisions.
 date: 2026-03-17
-cover: /images/blog/developer-compliance-thinking/cover.png
+cover: /images/blog/developer-compliance-thinking/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "Why should developers think about compliance before legal does?"
+    answer: "Legal teams interpret compliance requirements, but developers implement them. By the time a developer sees a requirement turned into a checklist, architectural choices that affect data flow, storage, and access have often already been made. Building a working technical understanding of the relevant frameworks earlier prevents costly rework."
+  - question: "Which compliance frameworks matter most for typical applications?"
+    answer: "GDPR for any application processing personal data of EU residents, HIPAA for systems handling Protected Health Information in the United States, PCI DSS for anyone storing or transmitting cardholder data, and SOC 2 as a commercial requirement when selling to enterprise buyers. Each maps to specific technical controls developers must implement."
+  - question: "What questions should developers be able to answer before a compliance review?"
+    answer: "What categories of personal or sensitive data the application collects, where the data lives (regions, databases, third parties), who has access and how it is controlled, how data is encrypted at rest and in transit, what happens when a user requests deletion, what audit trails exist, and which third-party services receive user data."
+  - question: "How can developers reduce PCI scope?"
+    answer: "Avoid storing raw cardholder data wherever possible. Using a PCI-compliant payment processor like Stripe or Braintree to handle the cardholder data keeps it off your systems entirely, which dramatically shrinks your PCI scope and the controls you have to implement and audit."
+  - question: "How does Appwrite map to common compliance requirements?"
+    answer: "Appwrite supports user account deletion and granular per-resource permissions for GDPR, self-hosting and audit logging that align with HIPAA Security Rule technical safeguards, and a documented permission model plus encryption at rest and in transit for SOC 2 security and availability criteria. The explicit permission system also gives auditors a concrete, reviewable answer to access-control questions."
 ---
 
 Compliance conversations usually happen in one of two ways. Either a legal or compliance officer drops a list of requirements in a developer's lap and asks for sign-off, or a developer gets two days before a customer call to figure out if the product is GDPR compliant. Neither scenario produces good outcomes.

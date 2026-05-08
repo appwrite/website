@@ -1,7 +1,14 @@
 <script lang="ts">
+    import { page } from '$app/state';
     import { Button, type Variant } from '$lib/components/ui';
-    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 
     const plans: Array<{
         name: string;
@@ -61,7 +68,7 @@
 </script>
 
 <img
-    src="/images/bgs/pre-footer.png"
+    src="/images/bgs/pre-footer.avif"
     alt=""
     class="web-pre-footer-bg"
     loading="lazy"
@@ -124,7 +131,8 @@
                             variant={plan.buttonVariant}
                             class="w-full! flex-3 self-end md:w-fit"
                         >
-                            <span class="text" style:padding-inline="0.5rem">{plan.buttonText}</span
+                            <span class="text" style:padding-inline="0.5rem"
+                                >{heroCtaIfShortStartBuilding(plan.buttonText, navCtaLabel)}</span
                             >
                         </Button>
                     </div>

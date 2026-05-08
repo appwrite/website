@@ -1,20 +1,27 @@
 <script lang="ts">
-    import { FooterNav, MainFooter, PreFooter } from '$lib/components';
+    import { page } from '$app/state';
+    import { FooterNav, MainFooter } from '$lib/components';
     import { DEFAULT_HOST } from '$lib/utils/metadata';
 
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
-    import BG from './bg.png?enhanced';
+    import BG from './bg.avif?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
     import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
+    import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+    import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
+
+    const navCtaLabel = $derived(
+        (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA
+    );
 
     const title = 'Pricing' + TITLE_SUFFIX;
     const description =
         'All your cloud services under one subscription. Build, deploy, and observe your app from a unified stack under one subscription.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -109,7 +116,10 @@
                                                 event="pricing-cards-free-click"
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Start building</span
+                                                    >{heroCtaIfShortStartBuilding(
+                                                        'Start building',
+                                                        navCtaLabel
+                                                    )}</span
                                                 >
                                             </Button>
                                         </header>
@@ -182,7 +192,10 @@
                                                 event="pricing-cards-pro-click"
                                             >
                                                 <span class="text-sub-body font-medium"
-                                                    >Start building</span
+                                                    >{heroCtaIfShortStartBuilding(
+                                                        'Start building',
+                                                        navCtaLabel
+                                                    )}</span
                                                 >
                                             </Button>
                                         </header>
@@ -254,7 +267,10 @@
                                                     rel="noopener noreferrer"
                                                 >
                                                     <span class="text-sub-body font-medium"
-                                                        >Start building</span
+                                                        >{heroCtaIfShortStartBuilding(
+                                                            'Start building',
+                                                            navCtaLabel
+                                                        )}</span
                                                     >
                                                 </Button>
                                             </header>
@@ -419,7 +435,6 @@
             </div>
             <div class="web-big-padding-section-level-2 relative !mb-0">
                 <div class="container">
-                    <PreFooter />
                     <FooterNav />
                     <MainFooter />
                 </div>

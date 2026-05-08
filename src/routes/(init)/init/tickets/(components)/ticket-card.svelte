@@ -5,7 +5,7 @@
     import type { TicketData } from '../../(utils)/tickets';
     import TicketUrl from './ticket-url.svelte';
     import { initDates } from '../../+page.svelte';
-    import LockupImage from '../../(assets)/lockup.png';
+    import LockupImage from '../../(assets)/lockup.avif';
 
     let coords = $state({ x: 0, y: 0 });
 

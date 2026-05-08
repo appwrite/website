@@ -15,10 +15,10 @@ Appwrite Functions let you build anything you can imagine, but this flexibility 
 Start exploring by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features.
 
 {% only_dark %}
-![Create project screen](/images/docs/functions/dark/template.png)
+![Create project screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/functions/template.png)
+![Create project screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 {% arrow_link href="/docs/products/functions/quick-start" %}

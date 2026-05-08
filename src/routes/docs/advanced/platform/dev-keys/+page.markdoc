@@ -28,10 +28,10 @@ Dev keys are for client SDKs in development environments, while API keys are for
 To create a new dev key, navigate to **Overview** > **Integrations** > **Dev keys** and click **Create Dev key**.
 
 {% only_dark %}
-![Create dev key](/images/docs/dev-keys/dark.png)
+![Create dev key](/images/docs/dev-keys/dark.avif)
 {% /only_dark %}
 {% only_light %}
-![Create dev key](/images/docs/dev-keys/light.png)
+![Create dev key](/images/docs/dev-keys/light.avif)
 {% /only_light %}
 
 You can then implement the dev key while initializing the Appwrite client in your app.
