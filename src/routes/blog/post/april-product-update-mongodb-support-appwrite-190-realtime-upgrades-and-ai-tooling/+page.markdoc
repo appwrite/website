@@ -3,7 +3,7 @@ layout: post
 title: "April Product update: MongoDB support, Appwrite 1.9.0, Realtime upgrades and AI tooling"
 description: Get a full recap of everything shipped across Appwrite in April, including the official MongoDB partnership in Appwrite 1.9.0, Terraform support, Realtime upgrades, performance improvements, new infrastructure APIs, and deeper AI integrations for Claude Code, Cursor, and MCP workflows.
 date: 2026-05-08
-cover: /images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/cover.png
+cover: /images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/cover.avif
 timeToRead: 5
 author: aishwari
 category: product
@@ -26,7 +26,7 @@ Here is a quick overview of what we shipped:
 
 Let's dive in.
 
-![1200x628-2.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/1200x628-2.jpg)
+![1200x628-2.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/1200x628-2.avif)
 
 # Appwrite and MongoDB join forces in Appwrite 1.9.0
 
@@ -40,7 +40,7 @@ This release also includes improvements across Databases, Realtime, Auth, and in
 
 [Read the announcement](https://appwrite.io/blog/post/appwrite-mongodb-partnership-self-hosted)
 
-![LinkedIn.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/LinkedIn.png)
+![LinkedIn.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/LinkedIn.avif)
 
 # Terraform provider for Appwrite
 
@@ -52,7 +52,7 @@ Works with both Appwrite Cloud and self-hosted setups.
 
 [Read the announcement](https://appwrite.io/blog/post/introducing-terraform-provider-for-appwrite)
 
-![realtime subscriptions final.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/realtime_subscriptions_final.png)
+![realtime subscriptions final.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/realtime_subscriptions_final.avif)
 
 # Message-based Realtime over a single WebSocket
 
@@ -62,7 +62,7 @@ You can now manage multiple subscriptions on one connection, update them without
 
 [Learn more](https://appwrite.io/blog/post/announcing-message-based-realtime-sdk)
 
-![ttl caching@0.75x.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/ttl_caching0.75x.png)
+![ttl caching@0.75x.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/ttl_caching0.75x.avif)
 
 # List response caching with TTL
 
@@ -74,7 +74,7 @@ Caching is permission-aware, so users only see data they are allowed to access.
 
 [Learn more](https://appwrite.io/blog/post/announcing-list-cache-ttl)
 
-![Twitter, LinkedIn, Facebook.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Twitter_LinkedIn_Facebook.png)
+![Twitter, LinkedIn, Facebook.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Twitter_LinkedIn_Facebook.avif)
 
 # Introducing the Webhooks API
 
@@ -86,7 +86,7 @@ Available across all major Server SDKs.
 
 [Learn more](https://appwrite.io/blog/post/announcing-webhooks-api)
 
-![Announcing Webhooks API](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/hhhhh.png)
+![Announcing Webhooks API](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/hhhhh.avif)
 
 # Introducing the Appwrite Rust SDK
 
@@ -96,7 +96,7 @@ It is async-first, type-safe, and designed for backend services and infrastructu
 
 [Learn more](https://appwrite.io/blog/post/announcing-appwrite-rust-sdk)
 
-![announcing appwrite mcp server.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/announcing_appwrite_mcp_server.png)
+![announcing appwrite mcp server.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/announcing_appwrite_mcp_server.avif)
 
 # Appwrite MCP Server 2.0
 
@@ -106,7 +106,7 @@ Instead of passing service flags, everything is now enabled by default. The serv
 
 [Read the announcement](https://appwrite.io/blog/post/announcing-appwrite-mcp-server-2)
 
-![Claude plugin cover-2.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Claude_plugin_cover-2.jpg)
+![Claude plugin cover-2.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Claude_plugin_cover-2.avif)
 
 # Appwrite plugin for Claude Code
 
@@ -116,7 +116,7 @@ The Appwrite plugin removes that. With a single install, your agent can interact
 
 [Learn more](https://appwrite.io/blog/post/announcing-appwrite-claude-code-plugin)
 
-![app.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/app.jpg)
+![app.jpg](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/app.avif)
 
 # Appwrite plugin now available on Cursor
 
@@ -126,7 +126,7 @@ No need to configure MCP servers or install skills separately. Just install and 
 
 [Install from the Cursor marketplace](https://cursor.com/marketplace/appwrite)
 
-![Image.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Image.png)
+![Image.png](/images/blog/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling/Image.avif)
 
 # Community Recognitions
 
