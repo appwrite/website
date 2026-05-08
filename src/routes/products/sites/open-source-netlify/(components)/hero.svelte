@@ -45,9 +45,11 @@
         <a
             href="https://www.producthunt.com/posts/appwrite-sites"
             target="_blank"
+            rel="noopener noreferrer"
             title="Check Appwrite Sites on ProductHunt"
+            aria-label="Check Appwrite Sites on Product Hunt"
             class="col-span-full flex w-full justify-center lg:col-span-7 lg:col-start-6"
-            ><div><ProductHuntBadge /></div></a
+            ><div aria-hidden="true"><ProductHuntBadge /></div></a
         >
     </div>
     <Platforms class="mt-auto mb-0 w-full" headline="Host your favorite web frameworks" />

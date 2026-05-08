@@ -94,31 +94,31 @@
                 'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
             )}
         >
-            {#each [1, 2] as _, i}
+            {#each [1, 2] as _, rowIndex}
                 <div
                     class={cn(
                         'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
                         {
-                            'md:hidden': i === 1
+                            'md:hidden': rowIndex === 1
                         }
                     )}
+                    aria-hidden={rowIndex === 1 ? true : undefined}
                 >
                     <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                        {#each platforms as platform, i}
+                        {#each platforms as platform, platformIndex}
                             <Tooltip.Root>
                                 <div
                                     class="contents"
-                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{i *
+                                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
                                         25}ms"
                                 >
                                     <Tooltip.Trigger
                                         class={cn(
                                             'border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 items-center justify-center border-dashed md:mt-0 md:w-full lg:border-r',
                                             {
-                                                'lg:border-l': i === 0
+                                                'lg:border-l': platformIndex === 0
                                             }
                                         )}
-                                        aria-hidden={i < platforms.length - 1}
                                     >
                                         <img
                                             src={`${ICON}/${useLightPlatformSvgs ? 'light' : 'dark'}/${platform.slug}.svg`}
