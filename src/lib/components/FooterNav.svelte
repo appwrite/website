@@ -86,7 +86,6 @@
                 // }
             ],
             Programs: [
-                { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' },
                 { label: 'Education', href: '/education' },
                 { label: 'Partners', href: '/partners' }
