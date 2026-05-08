@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Kimi K2.6 lands on Appwrite Arena, alongside a full leaderboard refresh"
+title: "Kimi K2.6 lands on Appwrite Arena: the May 2026 leaderboard update"
 description: "Kimi K2.6 from MoonshotAI ranks #3 without skills and #4 with skills on Appwrite Arena, in a refresh that swaps in eleven current frontier models and hardens the benchmark runner."
 date: 2026-05-08
 cover: /images/blog/kimi-k2-6-arena-leaderboard-refresh/cover.avif
@@ -10,7 +10,7 @@ category: ai
 featured: false
 ---
 
-[Appwrite Arena](https://arena.appwrite.io) measures how well AI models understand Appwrite, and the leaderboard has just had its biggest change since launch. Kimi K2.6 from MoonshotAI is the new headline addition, the model roster is now refreshed to current frontier versions across the board, and the benchmark runner has picked up retries, deterministic output, and configurable concurrency.
+[Appwrite Arena](https://arena.appwrite.io) measures how well AI models understand Appwrite. The May 2026 update is the leaderboard's biggest change since launch: Kimi K2.6 from MoonshotAI is the new headline addition, the model roster is now refreshed to current frontier versions across the board, and the benchmark runner has picked up retries, deterministic output, and configurable concurrency.
 
 This post walks through what changed, where Kimi K2.6 lands, and how to read the new numbers.
 
