@@ -65,7 +65,15 @@
                         class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                     >
                         <div class="flex items-center gap-2">
-                            <img src={product.icon} alt="" width="32" height="32" />
+                            <img
+                                src={product.icon}
+                                alt=""
+                                width="32"
+                                height="32"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
+                            />
                             <h3 class="text-main-body text-primary">{product.title}</h3>
                             <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
                         </div>

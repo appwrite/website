@@ -155,7 +155,9 @@
      * few px further left for a hairline gap — no h1 padding so the title lines up with `.prose`.
      */
     :global(
-        .web-article-header-start .relative.flex.items-center > a.web-button.is-icon.is-text.docs-article-back-desktop
+        .web-article-header-start
+            .relative.flex.items-center
+            > a.web-button.is-icon.is-text.docs-article-back-desktop
     ) {
         box-sizing: border-box;
         aspect-ratio: 1;
@@ -171,7 +173,9 @@
 
     @media (min-width: 768px) {
         :global(
-            .web-article-header-start .relative.flex.items-center > a.web-button.is-icon.is-text.docs-article-back-desktop
+            .web-article-header-start
+                .relative.flex.items-center
+                > a.web-button.is-icon.is-text.docs-article-back-desktop
         ) {
             transform: translateX(calc(-100% - 3px));
         }

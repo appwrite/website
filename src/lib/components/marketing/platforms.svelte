@@ -91,13 +91,13 @@
         <div
             class={cn(
                 'flex w-full flex-nowrap overflow-clip md:overflow-visible',
-                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-3xl md:mask-none'
+                'mask-r-from-75% mask-r-to-99% mask-l-from-75% mask-l-to-99% mask-alpha backdrop-blur-md md:mask-none md:backdrop-blur-none'
             )}
         >
             {#each [1, 2] as _, rowIndex}
                 <div
                     class={cn(
-                        'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
+                        'divide-smooth animate-scroll-x flex w-max flex-1 grow flex-nowrap divide-dashed will-change-transform md:w-full md:[animation:none] md:divide-x md:[animation-play-state:paused]',
                         {
                             'md:hidden': rowIndex === 1
                         }
@@ -123,6 +123,9 @@
                                         <img
                                             src={`${ICON}/${useLightPlatformSvgs ? 'light' : 'dark'}/${platform.slug}.svg`}
                                             alt={platform.name}
+                                            loading="lazy"
+                                            decoding="async"
+                                            fetchpriority="low"
                                             class="h-8 w-auto object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                                         />
 

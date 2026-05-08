@@ -21,6 +21,10 @@
                 <img
                     src="/images/icons/illustrated/dark/sites.avif"
                     class="size-8"
+                    width="32"
+                    height="32"
+                    decoding="async"
+                    fetchpriority="low"
                     alt="Sites icon"
                 />
                 <span class="font-aeonik-fono tracking-loose text-eyebrow text-primary uppercase">
@@ -41,7 +45,16 @@
                 </a>
             </div>
         </div>
-        <img src={Illustration} alt="Illustration" class="col-span-full lg:col-span-7" />
+        <img
+            src={Illustration}
+            alt="Illustration of Appwrite Sites hosting workflow"
+            class="col-span-full h-auto w-full max-w-full lg:col-span-7"
+            width="1280"
+            height="939"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            decoding="async"
+            fetchpriority="high"
+        />
         <a
             href="https://www.producthunt.com/posts/appwrite-sites"
             target="_blank"
