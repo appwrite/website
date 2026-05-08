@@ -5,11 +5,11 @@ description: Learn about the custom Appwriter mechanical keyboard and its specif
 ---
 
 {% only_dark %}
-![The Appwriter](/images/docs/keyboard/dark/appwriter.png)
+![The Appwriter](/images/docs/keyboard/dark/appwriter.avif)
 {% /only_dark %}
 
 {% only_light %}
-![The Appwriter](/images/docs/keyboard/appwriter.png)
+![The Appwriter](/images/docs/keyboard/appwriter.avif)
 {% /only_light %}
 
 The Appwriter is an exclusive mechanical keyboard custom-designed by the Appwrite team. It is optimized to improve developer productivity and is specially tuned to use with the Appwrite Console.

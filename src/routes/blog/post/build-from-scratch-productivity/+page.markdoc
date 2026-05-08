@@ -3,12 +3,23 @@ layout: post
 title: "Why building from scratch is killing developer productivity"
 description: The hidden costs of building custom solutions for solved problems and how to develop better judgment about when to build versus when to use existing tools.
 date: 2026-03-17
-cover: /images/blog/build-from-scratch-productivity/cover.png
+cover: /images/blog/build-from-scratch-productivity/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Why is building everything from scratch a productivity problem?"
+    answer: "Custom solutions for solved problems carry ongoing maintenance, frequent subtle security mistakes (especially in authentication and validation), and high opportunity cost. Time spent on infrastructure is time not spent on the unique product logic that differentiates your application. Custom code also tends to become a knowledge silo when its author leaves."
+  - question: "When is building from scratch actually the right call?"
+    answer: "Build custom when the component is genuinely your core differentiation, when existing solutions truly do not fit (after honest evaluation), when you have specific compliance or customization needs that managed services cannot meet, and when you have the engineering capacity to maintain it properly long term."
+  - question: "What questions should a team ask before deciding to build from scratch?"
+    answer: "Ask whether the problem is already solved by a reliable managed service or library, what the long-term maintenance cost is, what the security risk of a custom implementation looks like, what product work is being deferred, and what concrete advantage custom actually provides. If the gain is marginal and the risks are real, use the existing solution."
+  - question: "Which infrastructure categories does Appwrite replace?"
+    answer: "Appwrite covers authentication (with Argon2 hashing, 30+ OAuth providers, MFA, password history and dictionary checks, brute-force protection), databases with REST and GraphQL access, file storage with image transformations and antivirus scanning, serverless functions, real-time subscriptions, and messaging. These are the infrastructure layers most often rebuilt from scratch unnecessarily."
+  - question: "Is Appwrite open source, and can it be self-hosted?"
+    answer: "Yes. Appwrite is open source and can be fully self-hosted on any Docker-compatible infrastructure, or used as a managed service through Appwrite Cloud. That gives teams the ability to inspect or customize the platform when needed without taking on the burden of building all of it themselves."
 ---
 
 Every developer has an internal instinct to build things. It's part of what makes software development satisfying: the ability to create something from nothing, tailored exactly to your requirements. But this instinct, when left unchecked, is one of the most reliable ways to slow a team down.

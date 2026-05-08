@@ -60,7 +60,7 @@
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
         "Join Appwrite's Startups program and benefit from discounts and Cloud credits to cut your cloud costs.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -81,7 +81,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <enhanced:img src="./bg.png" alt="" />
+    <enhanced:img src="./bg.avif" alt="" />
 </div>
 
 <Main>
@@ -233,7 +233,7 @@
                     name: 'Ryan O’Connor',
                     title: 'Founder',
                     company: 'K-Collect',
-                    image: '/images/testimonials/ryan-oconner-testimonial.png'
+                    image: '/images/testimonials/ryan-oconner-testimonial.avif'
                 }}
                 theme="dark"
             >

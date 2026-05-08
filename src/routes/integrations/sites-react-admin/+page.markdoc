@@ -6,22 +6,22 @@ date: 2026-04-03
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/sites-react-admin/cover.png
+cover: /images/integrations/sites-react-admin/cover.avif
 category: sites
 product:
-    avatar: '/images/integrations/avatars/react-admin.png'
+    avatar: '/images/integrations/avatars/react-admin.avif'
     vendor: React Admin
     description: 'React Admin is an open-source framework for building B2B applications and internal tools on top of REST or GraphQL APIs, powered by Material-UI.'
 platform:
     - 'Cloud'
     - 'Self-hosted'
 images:
-    - /images/integrations/sites-react-admin/cover.png
-    - /images/integrations/sites-react-admin/search-site.png
-    - /images/integrations/sites-react-admin/clone-template.png
-    - /images/integrations/sites-react-admin/site-details.png
-    - /images/integrations/sites-react-admin/deployment-screen.png
-    - /images/integrations/sites-react-admin/success.png
+    - /images/integrations/sites-react-admin/cover.avif
+    - /images/integrations/sites-react-admin/search-site.avif
+    - /images/integrations/sites-react-admin/clone-template.avif
+    - /images/integrations/sites-react-admin/site-details.avif
+    - /images/integrations/sites-react-admin/deployment-screen.avif
+    - /images/integrations/sites-react-admin/success.avif
 ---
 
 React Admin is an open-source framework for building B2B applications and internal tools on top of REST or GraphQL APIs. It provides a rich set of UI components, including data grids, forms, filters, authentication, and more, all powered by Material-UI and following best practices for enterprise-grade admin interfaces.
@@ -40,11 +40,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Create new site](/images/integrations/sites-react-admin/create-site.png)
+![Create new site](/images/integrations/sites-react-admin/create-site.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning the CRM dashboard with React Admin template, which lets you quickly set up a CRM dashboard based on a pre-built project.
 
-![Create new site](/images/integrations/sites-react-admin/clone-template.png)
+![Create new site](/images/integrations/sites-react-admin/clone-template.avif)
 
 ## Finding the React Admin template
 
@@ -52,7 +52,7 @@ When you select **Clone a template**, you'll see a library of templates. To find
 
 1. Filter by **Use case** and select **Dashboard**, or use the search bar at the top and type "React Admin"
 
-![Search templates](/images/integrations/sites-react-admin/search-site.png)
+![Search templates](/images/integrations/sites-react-admin/search-site.avif)
 
 After selecting the template, click on **CRM dashboard with React Admin** to open a new page where you can configure your site.
 
@@ -64,7 +64,7 @@ Once you have selected the React Admin template, you will be prompted to enter b
 
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
-![Configure site details](/images/integrations/sites-react-admin/site-details.png)
+![Configure site details](/images/integrations/sites-react-admin/site-details.avif)
 
 At this stage, you can choose whether to connect your repository now or later.
 
@@ -108,13 +108,13 @@ Once you initiate the deployment, you will be taken to a progress page where you
 
 The logs will show you the different stages of the build process, including the database seeding step. Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Deployment screen](/images/integrations/sites-react-admin/deployment-screen.png)
+![Deployment screen](/images/integrations/sites-react-admin/deployment-screen.avif)
 
 ## Access your site
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page.
 
-![Congratulations](/images/integrations/sites-react-admin/success.png)
+![Congratulations](/images/integrations/sites-react-admin/success.avif)
 
 You can log in to the CRM dashboard using the demo credentials created by the seed script:
 

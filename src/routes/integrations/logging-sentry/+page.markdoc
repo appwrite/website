@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/logging-sentry/cover.png
+cover: /images/integrations/logging-sentry/cover.avif
 category: logging
 product:
-    avatar: '/images/integrations/avatars/sentry.png'
+    avatar: '/images/integrations/avatars/sentry.avif'
     vendor: Sentry
     description: 'Sentry is an open-source error-tracking and performance-monitoring tool designed to help developers identify, diagnose, and fix issues in real-time.'
 platform:
     - 'Self-hosted'
 images:
-    - /images/integrations/logging-sentry/cover.png
-    - /images/integrations/logging-sentry/project.png
-    - /images/integrations/logging-sentry/issues.png
-    - /images/integrations/logging-sentry/issue-details.png
+    - /images/integrations/logging-sentry/cover.avif
+    - /images/integrations/logging-sentry/project.avif
+    - /images/integrations/logging-sentry/issues.avif
+    - /images/integrations/logging-sentry/issue-details.avif
 ---
 
 Sentry is an open-source error-tracking and performance-monitoring tool designed to help developers identify, diagnose, and fix issues in real-time. It provides comprehensive insights into application health by capturing and analyzing error events, performance metrics, and user feedback. Sentry supports multiple programming languages and frameworks, making it versatile for various development environments. With features like stack traces, context data, and alerting, Sentry allows teams to quickly pinpoint the root cause of issues and improve the overall quality and reliability of their software applications.
@@ -35,7 +35,7 @@ To implement the Sentry provider for logging, there are several steps you must c
 
 First, [sign up on Sentry](https://sentry.io/signup/) and create a new project.
 
-![Create project](/images/integrations/logging-sentry/project.png)
+![Create project](/images/integrations/logging-sentry/project.avif)
 
 Head to **Settings** > **Projects** > Select your Sentry project > **Client Keys (DSN)**. Save the DSN for further usage.
 
@@ -76,11 +76,11 @@ docker compose exec appwrite ssl --domain="your-domain.com"
 
 Doing so will show errors in your Sentry **Issues** page.
 
-![Issues](/images/integrations/logging-sentry/issues.png)
+![Issues](/images/integrations/logging-sentry/issues.avif)
 
 You can also view the error details for more information.
 
-![Issue details](/images/integrations/logging-sentry/issue-details.png)
+![Issue details](/images/integrations/logging-sentry/issue-details.avif)
 
 # Read more about Sentry and Appwrite
 

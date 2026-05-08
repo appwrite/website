@@ -3,11 +3,24 @@ layout: post
 title: "The rise of agent-native backend platforms"
 description: "Agent-native backend platforms let AI coding agents inspect, provision, and operate backend resources through MCP, structured APIs, and agent skills."
 date: 2026-04-24
-cover: /images/blog/agent-native-backend-platforms/cover.png
+cover: /images/blog/agent-native-backend-platforms/cover.avif
 timeToRead: 9
 author: aishwari
 unlisted: true
 category: ai
+faqs:
+  - question: "What does agent-native mean for a backend platform?"
+    answer: "A backend platform is agent-native when an AI coding agent can act on your project through MCP or a similar tool-calling protocol, read current documentation at call time, reason about clearly named primitives and typed APIs, and operate in production safely with scoped keys and role-based permissions. It is not enough to ship a blog post about AI; the platform's control plane and docs have to be reachable by agents, not just by humans in a dashboard."
+  - question: "Why is the agent-native category emerging now?"
+    answer: "Three pressures arrived together. MCP gave coding agents a portable way to call tools across editors. Prompt-built app builders like Lovable, Bolt, and Replit put non-backend-engineers in front of backend decisions. And coding agents now write a meaningful share of new application code, so platform-specific knowledge (not general coding ability) decides whether generated code works the first time."
+  - question: "How does Appwrite support AI coding agents?"
+    answer: "Appwrite ships an API MCP server for acting on project resources, a Docs MCP server for fetching current reference material, Agent Skills with language-specific SDK context for major SDKs, editor plugins for Claude Code and Cursor that bundle all of that into one install, an Assistant inside the Console, and Arena, an open-source benchmark that scores how well AI models understand Appwrite."
+  - question: "How do other backend platforms position around agents?"
+    answer: "Firebase ships an MCP server through firebase-tools covering Firestore, Auth, Data Connect, Storage, and Functions. Supabase exposes SQL and Edge Function tools through a managed MCP server. Neon focuses on per-agent Postgres branching through its MCP. Netlify and Cloudflare take hosting and runtime angles, and Convex emphasizes agent application primitives like threads and RAG inside its TypeScript backend. They diverge on whether the platform is something agents build on, manage, or both."
+  - question: "What should I include in an agent-native backend checklist?"
+    answer: "A control-plane MCP server, a docs MCP or equivalent, agent skills or guides for SDK context, typed primitives with stable names, scoped API keys and least-privilege permissions, first-party model benchmarks for the platform, a console assistant for human oversight, and observability that agents can read as structured data instead of screenshots."
+  - question: "How should I evaluate a backend if my team uses AI coding tools?"
+    answer: "Run a few real tasks through an agent before committing. Ask it to create a project, design a table with typed columns, set row permissions, write a function that runs on a webhook, and deploy a frontend to a custom domain. Watch where it stalls, hallucinates, or asks you to read the docs for it. That is a more honest benchmark of agent-native fit than any vendor comparison table."
 ---
 
 Something quiet has shifted in how backends get built. For most of the last decade, a backend platform was evaluated by how easy it was for a human developer to click through a console, read the docs, and wire up an SDK. That is still true, but a second audience has arrived. AI coding agents in Cursor, Claude Code, Windsurf, Antigravity, Lovable, Bolt, and Replit now read your docs, call your APIs, and write the code that ships to production.

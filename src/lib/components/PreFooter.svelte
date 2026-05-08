@@ -68,7 +68,7 @@
 </script>
 
 <img
-    src="/images/bgs/pre-footer.png"
+    src="/images/bgs/pre-footer.avif"
     alt=""
     class="web-pre-footer-bg"
     loading="lazy"

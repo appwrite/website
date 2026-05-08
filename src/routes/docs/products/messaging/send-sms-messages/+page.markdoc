@@ -14,10 +14,10 @@ Appwrite supports [Twilio](/docs/products/messaging/twilio/),
 and [Vonage](/docs/products/messaging/vonage/)
 as SMS providers. You must configure one of them as a provider.
 {% only_dark %}
-![Add a SMTP provider](/images/docs/messaging/providers/twilio/dark/provider.png)
+![Add a SMTP provider](/images/docs/messaging/providers/twilio/dark/provider.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a SMTP provider](/images/docs/messaging/providers/twilio/provider.png)
+![Add a SMTP provider](/images/docs/messaging/providers/twilio/provider.avif)
 {% /only_light %}
 To add a new provider navigate to **Messaging** > **Providers** > {% icon icon="plus" size="m" /%} **Add provider** > **SMS**
 and follow the wizard. You can find more details about configuring in the provider guides for
@@ -32,19 +32,19 @@ In Appwrite Messaging, each user has **targets** like their email, phone number,
 You can deliver messages to users through their **targets**.
 
 {% only_dark %}
-![Target overview](/images/docs/messaging/targets/dark/target-overview.png)
+![Target overview](/images/docs/messaging/targets/dark/target-overview.avif)
 {% /only_dark %}
 {% only_light %}
-![Target overview](/images/docs/messaging/targets/target-overview.png)
+![Target overview](/images/docs/messaging/targets/target-overview.avif)
 {% /only_light %}
 
 If the user signed up with phone (SMS) authentication, their account would already have a phone number as a target.
 During development, you can add targets to existing accounts by navigating to **Authentication** > **Users** > **Select a user** > **Targets** > **Add a subscriber**.
 {% only_dark %}
-![Add a target](/images/docs/messaging/targets/dark/add-targets.png)
+![Add a target](/images/docs/messaging/targets/dark/add-targets.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a target](/images/docs/messaging/targets/add-targets.png)
+![Add a target](/images/docs/messaging/targets/add-targets.avif)
 {% /only_light %}
 
 You can also implement forms in your app to collect contact information and add it as a target with the [createSubscriber](/docs/references/cloud/server-nodejs/messaging#createSubscriber) endpoint.
@@ -307,10 +307,10 @@ This step is optional if you plan to only send SMS messages to individual target
 
 To create a topic in the Appwrite Console, navigate to **Messaging** > **Topics** > {% icon icon="plus" size="m" /%} **Create topic**.
 {% only_dark %}
-![Add a target](/images/docs/messaging/topics/dark/create-topics.png)
+![Add a target](/images/docs/messaging/topics/dark/create-topics.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a target](/images/docs/messaging/topics/create-topics.png)
+![Add a target](/images/docs/messaging/topics/create-topics.avif)
 {% /only_light %}
 
 You can also create topics programmatically using an [Appwrite Server SDK](/docs/references/cloud/server-nodejs/messaging#createTopic).

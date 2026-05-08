@@ -15,7 +15,7 @@
     const {
         title = 'Appwrite',
         description = 'Appwrite is an open-source platform for building applications at any scale, using your preferred programming languages and tools.',
-        ogImage = `${DEFAULT_HOST}/images/open-graph/website.png`
+        ogImage = `${DEFAULT_HOST}/images/open-graph/website.avif`
     }: Props = $props();
 </script>
 

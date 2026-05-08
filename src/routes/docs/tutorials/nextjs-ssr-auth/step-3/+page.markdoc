@@ -71,10 +71,10 @@ NEXT_PUBLIC_APPWRITE_PROJECT=<PROJECT_ID>
 The `NEXT_PUBLIC_APPWRITE_ENDPOINT` is the endpoint of your appwrite instance , and the `NEXT_PUBLIC_APPWRITE_PROJECT` is the ID of the project you want to use. 
 You can get the values for these variables from the Appwrite console. 
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+![Create project screen](/images/docs/quick-starts/dark/create-project.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/quick-starts/create-project.png)
+![Create project screen](/images/docs/quick-starts/create-project.avif)
 {% /only_light %}
 
 The `NEXT_APPWRITE_KEY` is an Appwrite API key with the necessary permissions to create new sessions.
@@ -86,9 +86,9 @@ For this tutorial you'll need an API key with the following scopes:
 | Sessions  | `sessions.write`    | Allows API key to create, update, and delete sessions. |
 
 {% only_dark %}
-![Server integrations](/images/docs/quick-starts/dark/integrate-server.png)
+![Server integrations](/images/docs/quick-starts/dark/integrate-server.avif)
 {% /only_dark %}
 {% only_light %}
-![Server integrations](/images/docs/quick-starts/integrate-server.png)
+![Server integrations](/images/docs/quick-starts/integrate-server.avif)
 {% /only_light %}
 

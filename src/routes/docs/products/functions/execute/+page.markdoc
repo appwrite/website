@@ -506,10 +506,10 @@ You test a function by hitting the **Execute now** button, which will display a 
 You'll be able to mock executions by configuring the path, method, headers, and body.
 
 {% only_dark %}
-![Create project screen](/images/docs/functions/execution/dark/execute-function.png)
+![Create project screen](/images/docs/functions/execution/dark/execute-function.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/functions/execution/execute-function.png)
+![Create project screen](/images/docs/functions/execution/execute-function.avif)
 {% /only_light %}
 
 
@@ -567,10 +567,10 @@ You can also delay function executions, which trigger the function only once at 
 To schedule an execution, navigate to **Your function** > **Executions** > **Execute now** > **Schedule** in the Appwrite Console.
 
 {% only_dark %}
-![Scheduled execution details screen](/images/docs/functions/execution/dark/scheduled-execution-function.png)
+![Scheduled execution details screen](/images/docs/functions/execution/dark/scheduled-execution-function.avif)
 {% /only_dark %}
 {% only_light %}
-![Scheduled execution details screen](/images/docs/functions/execution/scheduled-execution-function.png)
+![Scheduled execution details screen](/images/docs/functions/execution/scheduled-execution-function.avif)
 {% /only_light %}
 {% /tabsitem %}
 

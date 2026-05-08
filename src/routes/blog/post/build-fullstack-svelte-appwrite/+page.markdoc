@@ -3,7 +3,7 @@ layout: post
 title: Building a full-stack app with Svelte and Appwrite
 description: Learn how to build full-stack apps with Svelte and Appwrite by building an expense tracker.
 date: 2025-01-31
-cover: /images/blog/build-fullstack-svelte-appwrite/cover.png
+cover: /images/blog/build-fullstack-svelte-appwrite/cover.avif
 timeToRead: 15
 author: ebenezer-don
 category: tutorial
@@ -93,7 +93,7 @@ To ensure that users can only access their own expenses, Open the collection's *
 
 Next, enable **Document Security** to allow users to access their documents. We'll ensure this by giving users the **Read** permission when creating documents in our code.
 
-![permissions-document-security](/images/blog/build-fullstack-svelte-appwrite/permissions-document-security.png)
+![permissions-document-security](/images/blog/build-fullstack-svelte-appwrite/permissions-document-security.avif)
 
 ## Project structure
 
@@ -936,7 +936,7 @@ pnpm dev
 
 Visit the displayed URL in your browser, and you should see a fully functional expense tracking application that looks like this:
 
-![Expense app final look](/images/blog/build-fullstack-svelte-appwrite/expense-app-final-look.png)
+![Expense app final look](/images/blog/build-fullstack-svelte-appwrite/expense-app-final-look.avif)
 
 ## Next steps
 

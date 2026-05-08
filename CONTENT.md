@@ -73,10 +73,10 @@ In most cases, we need images in both light and dark mode such as:
 
 ```md
 {% only_dark %}
-![Project settings screen](/images/docs/platform/dark/create-api-key.png)
+![Project settings screen](/images/docs/platform/dark/create-api-key.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/platform/create-api-key.png)
+![Project settings screen](/images/docs/platform/create-api-key.avif)
 {% /only_light %}
 ```
 
@@ -243,10 +243,10 @@ Available sizes are `s`, `m`, `l` and `xl`. Default: `s`.
 
 ```
 {% only_dark %}
-![Project settings screen](/images/docs/platform/dark/create-api-key.png)
+![Project settings screen](/images/docs/platform/dark/create-api-key.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/platform/create-api-key.png)
+![Project settings screen](/images/docs/platform/create-api-key.avif)
 {% /only_light %}
 ```
 

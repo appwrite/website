@@ -3,11 +3,24 @@ layout: post
 title: "Open-source backend for AI apps: why ownership matters"
 description: "Why the open-source backend for AI apps matters in 2026. Compare licenses and self-hosting across Appwrite, Supabase, Convex, Neon, Cloudflare, and Firebase."
 date: 2026-04-24
-cover: /images/blog/open-source-backend-for-ai-apps/cover.png
+cover: /images/blog/open-source-backend-for-ai-apps/cover.avif
 timeToRead: 9
 author: aditya-oberai
 unlisted: true
 category: open-source
+faqs:
+  - question: "What counts as an open-source backend for AI apps?"
+    answer: "The server code is published under a recognized open-source license, the same server can be self-hosted that the vendor runs, core AI-adjacent primitives (Auth, Databases, Storage, server-side logic, Realtime) live in the same open repository, and there is a documented production install path. Client SDKs or a CLI being open source is not sufficient when the server holding your users and rows is closed."
+  - question: "Why does ownership matter more for AI apps than for normal SaaS?"
+    answer: "AI apps push more logic into places that used to be small. Prompt templates sit next to business logic, tool calls reach into customer data, embeddings move across buckets and tables, and background agents schedule work without humans in the loop. Each of those paths needs to be inspected, logged, and controlled, and a closed AI builder hides those paths behind a dashboard you do not own."
+  - question: "What are the typical lock-in patterns in closed AI builders?"
+    answer: "Generated server logic that runs only in a proprietary runtime, schemas hidden inside an admin panel that cannot be versioned, auth and organization data that does not export cleanly, files and generated media held in vendor buckets, and agent action logs that cannot be piped into your observability stack. The fix is not to avoid AI builders but to keep durable parts of the app in a backend you own."
+  - question: "How do major backend platforms compare on open-source ownership?"
+    answer: "As of April 2026, Appwrite is BSD-3-Clause with a Docker Compose self-host. Supabase is Apache 2.0 with a Docker self-host. Convex uses FSL-1.1-Apache-2.0, which restricts competing use until a delayed Apache grant kicks in. Neon Cloud is mostly used hosted; the storage and compute core is Apache 2.0. Cloudflare's workerd runtime is Apache 2.0 but the platform around it is proprietary. Firebase is hosted-only and not self-hostable."
+  - question: "Why is Appwrite positioned as an open-source backend for AI apps?"
+    answer: "Appwrite is a full backend platform under BSD 3-Clause, with Auth, TablesDB, Storage, Functions, Sites, Realtime, Messaging, and MCP servers in one open repository. The same server runs on a laptop, in a VPC, in a regulated environment, or on Appwrite Cloud, with the same APIs. That gives AI app teams one audit path for every layer instead of a stitched stack."
+  - question: "What should I check before choosing a backend for a production AI app?"
+    answer: "Server license, self-host parity with the managed offering, documented data export across tables, files, users, and logs, code you can read when an agent writes a function or a migration, row-level and file-level permissions, observability you can pipe into your own stack, license terms covering generated content and embeddings, and community signals like public issues, public roadmap, and accepted external pull requests."
 ---
 
 Every week, another team ships an AI product on top of a closed builder or a hosted backend they have never inspected. The app works, the demo lands, and then someone asks the hard questions. Who owns the user data. What happens if the vendor pivots. Can the team move off if prices change. Can they audit the server code when an AI agent starts writing to production. Can they run the stack offline, behind a VPC, or in a region the vendor does not cover.

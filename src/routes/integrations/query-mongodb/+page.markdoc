@@ -6,22 +6,22 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/query-mongodb/cover.png
+cover: /images/integrations/query-mongodb/cover.avif
 category: databases
 product: 
-    avatar: '/images/integrations/avatars/mongodb.png'
+    avatar: '/images/integrations/avatars/mongodb.avif'
     vendor: MongoDB
     description: 'MongoDB is a popular NoSQL database known for its flexibility and scalability.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/query-mongodb/cover.png
-    - /images/integrations/query-mongodb/first-cluster.png
-    - /images/integrations/query-mongodb/connection-string.png
-    - /images/integrations/query-mongodb/network-access.png
-    - /images/integrations/query-mongodb/template.png
-    - /images/integrations/query-mongodb/variables.png
+    - /images/integrations/query-mongodb/cover.avif
+    - /images/integrations/query-mongodb/first-cluster.avif
+    - /images/integrations/query-mongodb/connection-string.avif
+    - /images/integrations/query-mongodb/network-access.avif
+    - /images/integrations/query-mongodb/template.avif
+    - /images/integrations/query-mongodb/variables.avif
 ---
 
 MongoDB is a popular NoSQL database known for its flexibility and scalability. It allows developers to store and manage large amounts of data with ease.
@@ -38,15 +38,15 @@ To implement the MongoDB Atlas integration, follow these simple steps:
 
 First, [create an account on MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and deploy your first cluster.
 
-![MongoDB Atlas first cluster](/images/integrations/query-mongodb/first-cluster.png)
+![MongoDB Atlas first cluster](/images/integrations/query-mongodb/first-cluster.avif)
 
 Create your username and password and copy the **connection string** for your MongoDB Atlas cluster. This connection string will be used to connect the Appwrite Function to your MongoDB cluster.
 
-![MongoDB Atlas connection string](/images/integrations/query-mongodb/connection-string.png)
+![MongoDB Atlas connection string](/images/integrations/query-mongodb/connection-string.avif)
 
 Next, head to the **Network Access** page from the left sidebar, click on the **Add IP Address** button, and allow access from anywhere.
 
-![MongoDB Atlas network access](/images/integrations/query-mongodb/network-access.png)
+![MongoDB Atlas network access](/images/integrations/query-mongodb/network-access.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -54,11 +54,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click on the **Templates** tab, and search for the **MongoDB** function template.
 
-![Function template](/images/integrations/query-mongodb/template.png)
+![Function template](/images/integrations/query-mongodb/template.avif)
 
 Add the **MongoDB connection string** you saved in the **Variables** step. Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 
-![Env variables](/images/integrations/query-mongodb/variables.png)
+![Env variables](/images/integrations/query-mongodb/variables.avif)
 
 ## Step 3: Test the function
 

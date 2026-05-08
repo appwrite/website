@@ -1,7 +1,7 @@
 <script lang="ts">
     import TicketCard from '../tickets/(components)/ticket-card.svelte';
-    import Avatar from '../(assets)/avatar.png';
-    import InitGiveaway from '../(assets)/init-giveaway.png';
+    import Avatar from '../(assets)/avatar.avif';
+    import InitGiveaway from '../(assets)/init-giveaway.avif';
     import { cn } from '$lib/utils/cn';
     import { Button } from '$lib/components/ui';
     import { Media } from '$lib/UI';

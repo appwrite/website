@@ -2,7 +2,9 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import Graph from '../(assets)/graphs/journey-graph.svg';
+    const GRAPH_SRC = '/images/cloud-ga/graphs/journey-graph.avif';
+    const GRAPH_W = 1200;
+    const GRAPH_H = 400;
 
     let animate: boolean = false;
 
@@ -77,7 +79,14 @@
                     style:--border-gradient-before="linear-gradient(180deg,rgba(255,255,255,0.12),transparent)"
                     style:--border-gradient-after="linear-gradient(180deg,rgba(255,255,255,0),transparent)"
                 >
-                    <img class="rounded-3xl" src={Graph} alt="Placeholder" />
+                    <img
+                        class="h-auto w-full rounded-3xl"
+                        src={GRAPH_SRC}
+                        width={GRAPH_W}
+                        height={GRAPH_H}
+                        alt="Appwrite Cloud milestones timeline"
+                        decoding="async"
+                    />
                 </div>
                 <div class="contents md:hidden">
                     {@render MobileGraph()}

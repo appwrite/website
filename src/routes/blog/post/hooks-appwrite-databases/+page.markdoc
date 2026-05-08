@@ -3,7 +3,7 @@ layout: post
 title: How Appwrite streamlines database operations using hooks
 description: Learn how Appwrite implemented hook functions to develop custom filters in the Databases services.
 date: 2025-01-18
-cover: /images/blog/hooks-appwrite-databases/cover.png
+cover: /images/blog/hooks-appwrite-databases/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: tutorial

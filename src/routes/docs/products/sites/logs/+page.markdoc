@@ -24,10 +24,10 @@ In your site's **Logs** tab, you will see a table of your recent logs. The foll
 When you click on a log, you will be shown a set of log details.
 
 {% only_dark %}
-![Log details](/images/docs/sites/dark/log-details.png)
+![Log details](/images/docs/sites/dark/log-details.avif)
 {% /only_dark %}
 {% only_light %}
-![Log details](/images/docs/sites/log-details.png)
+![Log details](/images/docs/sites/log-details.avif)
 {% /only_light %}
 
 You can find both request and response information, including parameters and headers.
@@ -47,10 +47,10 @@ You can optionally disable logging for your site, which will exclude `console.lo
 3. Disable logs and click on the **Update** button.
 
 {% only_dark %}
-![Logging settings](/images/docs/sites/dark/logging-settings.png)
+![Logging settings](/images/docs/sites/dark/logging-settings.avif)
 {% /only_dark %}
 {% only_light %}
-![Logging settings](/images/docs/sites/logging-settings.png)
+![Logging settings](/images/docs/sites/logging-settings.avif)
 {% /only_light %}
 
 # Log retention

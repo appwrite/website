@@ -3,7 +3,7 @@ layout: post
 title: "Everything new in Next.js 16"
 description: Next.js 16 is now available, bringing Cache Components, Turbopack, and refined caching, now fully supported on Appwrite Sites.
 date: 2025-10-30
-cover: /images/blog/everything-new-in-nextjs16/cover.png
+cover: /images/blog/everything-new-in-nextjs16/cover.avif
 timeToRead: 5
 author: matej-baco
 category: tutorial

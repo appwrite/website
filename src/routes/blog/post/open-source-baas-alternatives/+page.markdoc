@@ -3,12 +3,23 @@ layout: post
 title: "Open-source alternatives to proprietary BaaS tools"
 description: A look at the open-source BaaS landscape, what to evaluate when choosing a platform, and why open-source matters for backend ownership and cost control.
 date: 2026-03-18
-cover: /images/blog/open-source-baas-alternatives/cover.png
+cover: /images/blog/open-source-baas-alternatives/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "Why does open-source BaaS matter compared to proprietary platforms?"
+    answer: "Proprietary BaaS platforms create lock-in around their APIs, pricing, and roadmap. You cannot leave without rewriting, pricing changes are not in your control, data portability is limited, and shutdown risk is real. Open-source platforms can typically be self-hosted, the code continues to exist independently of any vendor's cloud service, and migration paths are more tractable."
+  - question: "What should you evaluate when comparing open-source BaaS platforms?"
+    answer: "Compare feature coverage (auth, database, storage, functions, real-time), data model (relational vs document), self-hosting quality and operational simplicity, community and maintenance activity, SDK and language support, migration paths between cloud and self-hosted, and the license. Some open-source projects use licenses like BSL that restrict commercial use, so license terms matter."
+  - question: "How does Appwrite compare to Supabase, PocketBase, and other open-source BaaS options?"
+    answer: "Among the platforms compared, Appwrite covers the widest feature surface in a single deployable unit, including auth, database, storage, functions, real-time, messaging, and frontend hosting. Supabase exposes PostgreSQL directly with raw SQL access, PocketBase ships as a single binary for minimal operational overhead, Nhost is GraphQL-first on PostgreSQL with Hasura, and Convex is a TypeScript-native reactive document database."
+  - question: "What license does Appwrite use?"
+    answer: "Appwrite is BSD 3-Clause licensed. There are no restrictions on commercial use, no source-available clauses, and no licensing fees at scale. This is more permissive than some other open-source BaaS projects which use Business Source License or Functional Source License variants."
+  - question: "Does Appwrite support migrating from other backend platforms?"
+    answer: "Yes. Appwrite's Migrations tool can automatically transfer users, databases, and storage files from Firebase, Supabase, and Nhost. It also moves projects between Appwrite Cloud and self-hosted Appwrite instances, since the two share identical APIs and SDKs."
 ---
 
 Backend-as-a-service has matured into a crowded market. Firebase brought the category to mainstream developer awareness, and since then dozens of platforms have emerged, some proprietary, some open source, some somewhere in between. For teams evaluating their backend options, the open-source tier deserves serious consideration, not just as a cost-saving measure, but as a fundamentally different way of thinking about backend ownership.

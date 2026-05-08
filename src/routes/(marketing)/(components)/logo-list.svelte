@@ -65,10 +65,10 @@
             height: 41
         },
         {
-            src: '/images/logos/trusted-by/k-collect.svg',
+            src: '/images/logos/trusted-by/k-collect.avif',
             alt: 'K-collect',
-            width: 108,
-            height: 30
+            width: 127,
+            height: 35
         },
         {
             src: '/images/logos/trusted-by/bosch.svg',
@@ -85,7 +85,7 @@
     ];
 </script>
 
-<div class={cn('py-12', className)}>
+<div class={cn('py-16 md:py-20 lg:py-24', className)}>
     <div class="mx-auto max-w-6xl px-4 md:px-8">
         <h2
             class="font-aeonik-pro text-greyscale-100 text-description text-center text-pretty md:whitespace-nowrap"

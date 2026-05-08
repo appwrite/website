@@ -32,7 +32,7 @@ then provide the device token to Appwrite.
 First, enable push notification in your app.
 Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 
-{% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.png) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/xcode-enable-pn.png) {% /only_light %}
+{% only_dark %} ![Authentication Key](/images/docs/messaging/providers/apns/dark/xcode-enable-pn.avif) {% /only_dark %} {% only_light %} ![Authentication Key](/images/docs/messaging/providers/apns/xcode-enable-pn.avif) {% /only_light %}
 
 First, register for remote notifications in your app delegate's `application(_:didFinishLaunchingWithOptions:)` method.
 
@@ -321,10 +321,10 @@ Then manually select a **Provisioning profile** that is a **Distribution profile
 {% tabsitem #console title="Console" %}
 To send a test message, navigate to **Messaging** > **Messages** > {% icon icon="plus" size="m" /%} **Create message** > **Push notification**.
 {% only_dark %}
-![Create email message](/images/docs/messaging/messages/dark/create-push-notification.png)
+![Create email message](/images/docs/messaging/messages/dark/create-push-notification.avif)
 {% /only_dark %}
 {% only_light %}
-![Create email message](/images/docs/messaging/messages/create-push-notification.png)
+![Create email message](/images/docs/messaging/messages/create-push-notification.avif)
 {% /only_light %}
 
 Add your message and in the targets step, select one of your test targets. Set the schedule to **Now** and click **Send**.

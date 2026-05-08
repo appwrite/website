@@ -170,8 +170,11 @@
             <p
                 class={cn(
                     'text-description text-secondary mt-2 font-medium md:mt-3',
-                    !layoutAside && 'max-w-2xl text-center text-balance'
+                    !layoutAside && 'max-w-2xl text-center text-pretty'
                 )}
+                style:min-height={layoutAside
+                    ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
+                    : 'calc(3.25 * var(--text-description--line-height, 1.5rem))'}
             >
                 {resolved.heroSubtitle}
             </p>

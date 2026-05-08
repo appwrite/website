@@ -62,7 +62,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/messaging.png"
+                src="/images/icons/illustrated/dark/messaging.avif"
                 alt="Messaging icon"
                 class="size-7"
             />

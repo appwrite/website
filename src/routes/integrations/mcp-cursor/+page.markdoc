@@ -6,19 +6,19 @@ date: 2025-07-01
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/mcp-cursor/cover.png
+cover: /images/integrations/mcp-cursor/cover.avif
 category: mcp
 product: 
-    avatar: '/images/integrations/avatars/cursor.png'
+    avatar: '/images/integrations/avatars/cursor.avif'
     vendor: Cursor
     description: 'Cursor is an AI-powered code editor based on VS Code, designed for context-aware development and seamless collaboration with large language models.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/mcp-cursor/cover.png
-    - /images/integrations/mcp-cursor/appwrite-api-key.png
-    - /images/docs/mcp/cursor/cursor-create-user.png
+    - /images/integrations/mcp-cursor/cover.avif
+    - /images/integrations/mcp-cursor/appwrite-api-key.avif
+    - /images/docs/mcp/cursor/cursor-create-user.avif
 ---
 
 Cursor is an AI-powered code editor built on VS Code, designed to enhance developer workflows with intelligent, context-aware assistance. It offers features like inline code generation, natural language explanations, and project-aware chat, enabling developers to prototype, debug, and refactor code faster with the help of integrated large language models such as Anthropic's Claude 4.0 Sonnet, Google's Gemini 2.5 Pro, and OpenAI's GPT-4.1.
@@ -39,7 +39,7 @@ First, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/
 
 Select your project (or create a new one), and head to the **Overview** page from the left sidebar. Under the **Integrations** section, click on the **API Keys** tab, and then click on **Create API Key**. Select the scopes for whichever Appwrite services you want to work with, set the duration, and create the API key. You must then copy it for future usage.
 
-![Create API Key](/images/integrations/mcp-cursor/appwrite-api-key.png)
+![Create API Key](/images/integrations/mcp-cursor/appwrite-api-key.avif)
 
 Then, head to the **Settings** page from the left sidebar, and copy the **Project ID** and **API Endpoint** for future usage.
 
@@ -99,7 +99,7 @@ This will automatically configure the MCP server, and you will only need to upda
 
 Finally, you can test the integration by asking Cursor Agent to create a new user in your Appwrite project.
 
-![Cursor Agent](/images/docs/mcp/cursor/cursor-create-user.png)
+![Cursor Agent](/images/docs/mcp/cursor/cursor-create-user.avif)
 
 # Read more about MCP with Cursor
 

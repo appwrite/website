@@ -53,9 +53,11 @@
 
     type PricingProps = {
         class?: string;
+        /** Omits the animated wash; use on changelog and other tight layouts. */
+        embedded?: boolean;
     };
 
-    const { class: className }: PricingProps = $props();
+    const { class: className, embedded = false }: PricingProps = $props();
 
     const visiblePlans = SHOW_SCALE_PLAN ? plans : plans.filter((plan) => plan.name !== 'Scale');
 
@@ -69,13 +71,15 @@
     )}
 >
     <div class="container flex w-full flex-col items-center justify-center gap-10">
-        <div
-            class={cn(
-                'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
-                'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
-                'bg-position-[0%_0%]'
-            )}
-        ></div>
+        {#if !embedded}
+            <div
+                class={cn(
+                    'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
+                    'bg-[image:radial-gradient(ellipse_390px_50px_at_10%_30%,_rgba(254,_149,_103,_0.2)_0%,_rgba(254,_149,_103,_0)_70%),_radial-gradient(ellipse_1100px_170px_at_15%_40%,rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%),_radial-gradient(ellipse_1200px_180px_at_30%_30%,_rgba(253,_54,_110,_0.08)_0%,_rgba(253,_54,_110,_0)_70%)]',
+                    'bg-position-[0%_0%]'
+                )}
+            ></div>
+        {/if}
 
         <div
             class="animate-fade-in relative flex w-full flex-col justify-between gap-8 [animation-delay:150ms] [animation-duration:1000ms] md:flex-row md:items-center"
@@ -90,7 +94,7 @@
                     class="w-full! lg:w-fit!"
                     onclick={() => {
                         trackEvent(`pricing-get-started-click`);
-                    }}>Start building for free</Button
+                    }}>Start building</Button
                 >
                 <Button
                     onclick={() => {

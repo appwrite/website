@@ -7,7 +7,7 @@
     import { TITLE_SUFFIX } from '$routes/titles';
     import ComparePlans from './compare-plans.svelte';
     import Faq from './faq.svelte';
-    import BG from './bg.png?enhanced';
+    import BG from './bg.avif?enhanced';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, BadgeTransparent, Icon } from '$lib/components/ui';
     import { SHOW_SCALE_PLAN } from '$lib/constants/feature-flags';
@@ -21,7 +21,7 @@
     const title = 'Pricing' + TITLE_SUFFIX;
     const description =
         'All your cloud services under one subscription. Build, deploy, and observe your app from a unified stack under one subscription.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>

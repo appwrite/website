@@ -3,7 +3,7 @@ layout: post
 title: Pioneering asset management solutions for the circular economy with UNDŌ
 description: Learn how UNDŌ has leveraged Appwrite to transform logistics and supply chain management for circular businesses, supporting 5 businesses with over 9000 articles within 6 months of its inception.
 date: 2024-07-09
-cover: /images/blog/case-study-undo/cover.png
+cover: /images/blog/case-study-undo/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: customer-stories
@@ -33,7 +33,7 @@ UNDŌ is a low barrier-to-entry asset management platform allowing businesses to
 
 The product also includes miscellaneous features such as an AI assistant to get any information about the current state, location, or performance of your assets; automated, repeatable tasks to improve workflows; a physical device for your business that can be used as an on-site assistant for any relevant stakeholders, and more.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 # How UNDŌ was built
 

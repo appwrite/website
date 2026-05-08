@@ -26,7 +26,7 @@ export const DEFAULT_CTA_POINTS: [string, string, string, string] = [
 const DEVELOPERS_CLOUD_CTA: BlogCtaConfig = {
     heading: 'Build fast, scale faster',
     description: 'Backend infrastructure and web hosting built for developers who ship.',
-    label: 'Start building for free',
+    label: 'Start building',
     href: getAppwriteDashboardUrl(),
     event: 'blog-cta-cloud-btn-click',
     points: DEFAULT_CTA_POINTS

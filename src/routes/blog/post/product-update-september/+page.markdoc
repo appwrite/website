@@ -3,7 +3,7 @@ layout: post
 title: "September product update: New Roles | Hackathon | CCPA | 1.6 for self-hosted"
 description: "A recap of everything new at Appwrite in September."
 date: 2024-09-30
-cover: /images/blog/product-update-september/cover.png
+cover: /images/blog/product-update-september/cover.avif
 timeToRead: 5
 author: dennis-ivy
 category: product
@@ -12,7 +12,7 @@ Right after Init, we hit the ground running with a busy month. We introduced the
 
 Let’s dive into it!
 
-![New roles announcement](/images/blog/product-update-september/3.png)
+![New roles announcement](/images/blog/product-update-september/3.avif)
 # New roles
 
 We’ve introduced Roles, a feature designed to bring granular permissions to the Appwrite Console, available for both the Pro and Scale plans.
@@ -28,7 +28,7 @@ To celebrate the new feature, you can invite members with the new roles to your 
 [Read the annoucement.](https://appwrite.io/blog/post/announcing-roles-for-enhanced-collaboration-and-security)
 
 
-![Hacktoberfest Hackathon](/images/blog/product-update-september/4.png)
+![Hacktoberfest Hackathon](/images/blog/product-update-september/4.avif)
 # Hacktoberfest Hackathon
 
 We’ve heard your requests, and we're excited to deliver: Appwrite is organizing its very first Hacktoberfest Hackathon this October! Here’s what you need to know:
@@ -42,7 +42,7 @@ Ready to join? Registration is open now until Oct 31.
 
 [Register here.](https://apwr.dev/htf24-hackathon)
 
-![1.6 for self-hosted](/images/blog/product-update-september/1.png)
+![1.6 for self-hosted](/images/blog/product-update-september/1.avif)
 # 1.6 for self-hosted
 
 Appwrite 1.6 is now LIVE for self-hosted instances!
@@ -59,7 +59,7 @@ Everything we launched during Init is now ready for your self-hosted instance, i
 
 [Check out the release notes for more details.](https://github.com/appwrite/appwrite/releases/tag/1.6.0)
 
-![CCPA announcement](/images/blog/product-update-september/2.png)
+![CCPA announcement](/images/blog/product-update-september/2.avif)
 # CCPA
 
 Appwrite is now fully CCPA-compliant, bringing you even more security and peace of mind when building your apps. 

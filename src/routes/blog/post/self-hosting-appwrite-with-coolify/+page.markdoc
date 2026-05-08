@@ -3,10 +3,17 @@ layout: post
 title: Self-hosting Appwrite with Coolify
 description: Learn how to self-host Appwrite with Coolify.
 date: 2025-02-28
-cover: /images/blog/self-hosting-appwrite-with-coolify/cover.png
+cover: /images/blog/self-hosting-appwrite-with-coolify/cover.avif
 timeToRead: 15
 author: chirag-aggarwal
 category: tutorial
+faqs:
+  - question: "Can I self-host Appwrite on my own server?"
+    answer: "Yes, absolutely! Appwrite was built with self-hosting in mind. You can run it on your own hardware, a VPS, or cloud providers like DigitalOcean, AWS, or Azure. Self-hosting gives you control over your data, security, and setup. You can even modify the source code to fit your exact needs. Tools like Coolify make it even easier by handling the deployment for you, so you don't have to manage containers or complex configurations manually."
+  - question: "When should I choose Appwrite Cloud over self-hosting?"
+    answer: "If you want to move fast: launch prototypes, MVPs, or production apps without managing servers, Appwrite Cloud is ideal. It's fully managed, so you can deploy and host your entire stack (frontend plus backend). It's also great for teams that want predictable costs and built-in scalability. The platform automatically handles updates, scaling, and backups, letting you focus on building, not maintaining infrastructure."
+  - question: "Can I start with Appwrite Cloud and move to self-hosting later?"
+    answer: "Yes, absolutely. That's one of the biggest advantages of Appwrite being open-source and cloud-compatible. You can start on Appwrite Cloud to build and test your product quickly, and later migrate to a self-hosted setup with Coolify if you want to. The APIs and developer experience stay consistent between both environments, so switching later in the future should not be a huge deal."
 ---
 
 Updated on October 6, 2025
@@ -21,7 +28,7 @@ Coolify is an all-in-one Platform as a Service (PaaS) that allows developers to 
 
 It’s intuitive dashboard serves as a centralised command center, allowing users to effortlessly manage and configure all their services from a single, user-friendly interface.
 
-![Coolify Dashboard](/images/blog/self-hosting-appwrite-with-coolify/coolify-dashboard.png)
+![Coolify Dashboard](/images/blog/self-hosting-appwrite-with-coolify/coolify-dashboard.avif)
 
 
 # Setting up a VPS
@@ -37,7 +44,7 @@ This blog will focus on droplets from the DigitalOcean, but the same steps shoul
 3. You can choose any region and data centre. (Choosing one near your location might improve performance and latency.)
 
 4. 
-    ![Create Droplet](/images/blog/self-hosting-appwrite-with-coolify/create-droplet.png)
+    ![Create Droplet](/images/blog/self-hosting-appwrite-with-coolify/create-droplet.avif)
 
 4. For OS, select **Ubuntu** and select the latest version.
 5. Choose a Droplet plan based on your expected workload.
@@ -51,19 +58,19 @@ SSH stands for **Secure Shell**. It is a protocol that allows you to securely ac
 
 **a.** Select an existing key if you've previously added one.
 
-![Add SSH Key](/images/blog/self-hosting-appwrite-with-coolify/add-ssh-key.png)
+![Add SSH Key](/images/blog/self-hosting-appwrite-with-coolify/add-ssh-key.avif)
 
 **b.** Click on “New SSH Key” if creating a new one.
 
 **c.** Open your system’s command line or terminal, and generate a new SSH key pair using `ssh-keygen -t rsa -b 4096`.
 
-![Generate SSH Key](/images/blog/self-hosting-appwrite-with-coolify/generate-ssh-key.png)
+![Generate SSH Key](/images/blog/self-hosting-appwrite-with-coolify/generate-ssh-key.avif)
 
 **d.** The command will generate two keys, one private and one public. One ending with .pub will be the public one; copy it.
 
 **e.** Add the public key to DigitalOcean and give it a name.
 
-![Add SSH Key to DigitalOcean](/images/blog/self-hosting-appwrite-with-coolify/add-ssh-key-to-digitalocean.png)
+![Add SSH Key to DigitalOcean](/images/blog/self-hosting-appwrite-with-coolify/add-ssh-key-to-digitalocean.avif)
 
 Choose a hostname that helps identify your Appwrite instance (e.g., appwrite-self-hosting), and then click "Create Droplet". It will take a few minutes to provision the droplet.
 
@@ -115,7 +122,7 @@ Once the installation is complete, open the Coolify dashboard in your web browse
 4. Click **Add new resource**.
 5. Search for and select **Appwrite** from the list of services.
 
-![Add Appwrite](/images/blog/self-hosting-appwrite-with-coolify/add-appwrite.png)
+![Add Appwrite](/images/blog/self-hosting-appwrite-with-coolify/add-appwrite.avif)
 
 The configuration fields will be pre-filled with the recommended settings, but you can customise them. When ready, click the **Deploy** button to initiate the deployment process.
 
@@ -132,7 +139,7 @@ While accessing the console, you might run into the error `ERR_TOO_MANY_REDIRECT
 
 ## Container Health Checks Failing
 
-![Container Health Checks Failing](/images/blog/self-hosting-appwrite-with-coolify/container-health-checks-failing.png)
+![Container Health Checks Failing](/images/blog/self-hosting-appwrite-with-coolify/container-health-checks-failing.avif)
 
 Currently, Coolify will mark all the Appwrite containers as unhealthy due to a lack of health checks configured. Still to verify if a container is healthy manually:
 
@@ -165,26 +172,6 @@ Choosing between Appwrite Cloud and self-hosting with Coolify depends on your pr
 Self-hosting Appwrite with Coolify combines the strength of an all-in-one dev platform with the flexibility and autonomy of self-hosting. It enables developers to create powerful applications while retaining data sovereignty and possibly incurring lower operational expenses.
 
 By following this guide, you've successfully deployed a production-capable Appwrite instance that you completely own. As your application grows, the union of Appwrite's robust features and Coolify's efficient management will continue to provide a solid foundation for your development requirements.
-
-# Frequently asked questions (FAQs)
-
-**1. Can I self-host Appwrite on my own server?**
-
-Yes, absolutely! Appwrite was built with self-hosting in mind. You can run it on your own hardware, a VPS, or cloud providers like DigitalOcean, AWS, or Azure.
-
-Self-hosting gives you control over your data, security, and setup. You can even modify the source code to fit your exact needs. Tools like **Coolify** make it even easier by handling the deployment for you, so you don’t have to manage containers or complex configurations manually.
-
-**2. When should I choose Appwrite Cloud over self-hosting?**
-
-If you want to move fast: launch prototypes, MVPs, or production apps without managing servers, Appwrite Cloud is ideal. It’s fully managed, so you can deploy and host your entire stack (frontend + backend).
-
-It’s also great for teams that want predictable costs and built-in scalability. The platform automatically handles updates, scaling, and backups, letting you focus on building, not maintaining infrastructure.
-
-**3. Can I start with Appwrite Cloud and move to self-hosting later?**
-
-Yes, absolutely. That’s one of the biggest advantages of Appwrite being open-source and cloud-compatible. You can start on Appwrite Cloud to build and test your product quickly, and later migrate to a self-hosted setup with Coolify if you want to.
-
-The APIs and developer experience stay consistent between both environments, so switching later in the future should not be a huge deal.
 
 # More resources
 

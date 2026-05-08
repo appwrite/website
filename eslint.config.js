@@ -29,6 +29,12 @@ export default defineConfig(
         }
     },
     {
+        files: ['server/cache-static.js'],
+        rules: {
+            '@typescript-eslint/ban-ts-comment': 'off'
+        }
+    },
+    {
         files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
         languageOptions: {
             parserOptions: {

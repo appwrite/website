@@ -28,10 +28,10 @@ export type QuickStartStripItem = {
     light: string;
 };
 
-/** Icons per page on the homepage strip and headline strip (paginated on large viewports). */
-export const FRAMEWORKS_GALLERY_PAGE_SIZE = 10;
+/** Icons per page on the homepage paginated strip (large viewports; full-width row). */
+export const FRAMEWORKS_GALLERY_PAGE_SIZE = 14;
 
-/** First screen of homepage strip; order matches the start of `allFrameworkStrip` (length matches page size). */
+/** Priority order for the start of `allFrameworkStrip` (homepage / docs ordering). */
 export const MARKETING_HOME_FIRST_NAMES = [
     'React',
     'Next.js',

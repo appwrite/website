@@ -3,7 +3,7 @@ layout: post
 title: Make the best use of Appwrite’s MCP server
 description: Learn how to make the best use of Appwrite’s MCP server.
 date: 2025-09-05
-cover: /images/blog/make-best-use-appwrite-mcp/cover.png
+cover: /images/blog/make-best-use-appwrite-mcp/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -25,7 +25,7 @@ Create a new markdown file called `DATABASE.md` and write a detailed documentati
 
 By running this prompt, the AI agent should start accessing your database (if it has access) and analyze all the tables and their columns. A final summary should appear in your `DATABASE.md` file shortly.
 
-![Database documentation generated](/images/blog/make-best-use-appwrite-mcp/doc-generated.png)
+![Database documentation generated](/images/blog/make-best-use-appwrite-mcp/doc-generated.avif)
 
 # Creating tables dynamically
 
@@ -39,7 +39,7 @@ Create a new table in the database `db` called `products`. Within the table, cre
 
 By running this prompt, the AI agent should create a new table and then add the specified columns. You can mix this up with a new feature asking your agent to “create required database table schema for the feature”.
 
-![Table created by the AI agent](/images/blog/make-best-use-appwrite-mcp/table-created.png)
+![Table created by the AI agent](/images/blog/make-best-use-appwrite-mcp/table-created.avif)
 
 # Selective CSV export
 
@@ -51,7 +51,7 @@ In the `products` table in the database `db`, export all the products that cost 
 
 This will run the necessary database queries and create a CSV file with all the extracted records.
 
-![CSV file created by the AI agent](/images/blog/make-best-use-appwrite-mcp/csv-created.png)
+![CSV file created by the AI agent](/images/blog/make-best-use-appwrite-mcp/csv-created.avif)
 
 Similarly, you can run this the other way around and import a CSV file with selective requirements, i.e., only importing if the product price is less than $100, for example.
 
@@ -65,7 +65,7 @@ Replicate the database schema for the database `db` (with tables and columns), i
 
 This should make the AI agent scan through all your database tables, record the schemas, and replicate them into a new database for you.
 
-![Database schema replicated](/images/blog/make-best-use-appwrite-mcp/db-replicated.png)
+![Database schema replicated](/images/blog/make-best-use-appwrite-mcp/db-replicated.avif)
 
 # Wrapping up
 

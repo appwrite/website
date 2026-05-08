@@ -4,7 +4,7 @@
 
 <section class="container grid grid-cols-1 place-items-center gap-16 pt-12 md:grid-cols-2 md:pt-20">
     <div class="hidden md:block">
-        <img src="/images/pages/storage/product-shot-3.png" width="687" alt="" />
+        <img src="/images/pages/storage/product-shot-3.avif" width="687" alt="" />
     </div>
     <div class="mx-auto max-w-md">
         <h2 class="text-title font-aeonik-pro text-primary">Optimized for small and large files</h2>
@@ -24,7 +24,7 @@
     </div>
     <div class="block md:hidden">
         <img
-            src="/images/pages/storage/product-shot-3.png"
+            src="/images/pages/storage/product-shot-3.avif"
             width="100%"
             alt=""
             class="mx-auto block max-w-[580px]"

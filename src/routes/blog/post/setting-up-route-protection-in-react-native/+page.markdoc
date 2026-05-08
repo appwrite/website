@@ -3,7 +3,7 @@ layout: post
 title: "Setting up route protection in React Native"
 description: Learn how to set up route protection in a React Native application using Appwrite.
 date: 2025-02-08
-cover: /images/blog/setting-up-route-protection-in-react-native/cover.png
+cover: /images/blog/setting-up-route-protection-in-react-native/cover.avif
 timeToRead: 4
 author: nishant-jain
 category: tutorial
@@ -14,7 +14,7 @@ callToAction: true
 In this guide, we'll walk through implementing protected routes in React Native using a simplified authentication approach with hardcoded values. The implementation uses a straightforward application structure that's easy to follow along with. 
 
 While you can start from scratch, we recommend having a basic React Native project already set up. If you need help with the initial setup, refer to our React Native Appwrite SDK Tutorial below:
-{% youtube src="https://www.youtube-nocookie.com/embed/YSUmzHH_OMg?si=EWm7gnPUASMKygrr" thumbnail="/images/blog/setting-up-route-protection-in-react-native/thumbnail-1.png" /%}
+{% youtube src="https://www.youtube-nocookie.com/embed/YSUmzHH_OMg?si=EWm7gnPUASMKygrr" thumbnail="/images/blog/setting-up-route-protection-in-react-native/thumbnail-1.avif" /%}
 
 
 # Prerequisites

@@ -3,7 +3,7 @@ layout: post
 title: Build an Uber clone with Geo Queries and Realtime
 description: Learn how to build a real-time ride-hailing app using Appwrite's Geo Queries and Realtime features with Next.js and Leaflet maps.
 date: 2026-04-03
-cover: /images/blog/uber-clone-nextjs-appwrite/cover.png
+cover: /images/blog/uber-clone-nextjs-appwrite/cover.avif
 timeToRead: 15
 author: atharva
 category: tutorial, product
@@ -35,7 +35,7 @@ The tech stack is Next.js for the frontend, Tailwind CSS for styling, Leaflet wi
 
 Create a new project in the Appwrite Console. Note the **project ID** and **API endpoint** from the overview page.
 
-![Appwrite project overview](/images/blog/uber-clone-nextjs-appwrite/project-overview.png)
+![Appwrite project overview](/images/blog/uber-clone-nextjs-appwrite/project-overview.avif)
 
 # Create the database
 
@@ -213,7 +213,7 @@ The profile row ID is set to the user's ID (`rowId: user.$id`), so you can look 
 
 During signup, users pick their role (rider or driver). This role determines which dashboard they see after logging in.
 
-![Signup page with role selection](/images/blog/uber-clone-nextjs-appwrite/signup-page.png)
+![Signup page with role selection](/images/blog/uber-clone-nextjs-appwrite/signup-page.avif)
 
 # Coordinate helpers
 
@@ -307,11 +307,11 @@ The `otp` is a 6-digit code that the rider shares with the driver at pickup to v
 
 The rider taps two points on the map to set a pickup and drop-off, then confirms the request.
 
-![Ride request with pickup selection](/images/blog/uber-clone-nextjs-appwrite/ride-request.png)
+![Ride request with pickup selection](/images/blog/uber-clone-nextjs-appwrite/ride-request.avif)
 
 Once submitted, the ride enters the `pending` state. The rider sees pickup and drop-off markers on the map while waiting for a driver to accept.
 
-![Waiting for driver with markers on the map](/images/blog/uber-clone-nextjs-appwrite/ride-pending.png)
+![Waiting for driver with markers on the map](/images/blog/uber-clone-nextjs-appwrite/ride-pending.avif)
 
 ## Updating driver location
 
@@ -406,7 +406,7 @@ export async function getNearbyDrivers(
 
 When a pending ride is within range, the driver sees the pickup and drop-off addresses with an accept button.
 
-![Driver seeing a nearby ride request](/images/blog/uber-clone-nextjs-appwrite/driver-ride-request.png)
+![Driver seeing a nearby ride request](/images/blog/uber-clone-nextjs-appwrite/driver-ride-request.avif)
 
 ## Accepting a ride
 
@@ -471,7 +471,7 @@ export async function acceptRideAction(rideId: string, driverId: string) {
 
 After accepting, the driver sees the pickup location on the map and heads there.
 
-![Driver accepted, heading to pickup](/images/blog/uber-clone-nextjs-appwrite/driver-accepted.png)
+![Driver accepted, heading to pickup](/images/blog/uber-clone-nextjs-appwrite/driver-accepted.avif)
 
 # Realtime: live ride tracking
 
@@ -535,7 +535,7 @@ The complete ride flow through the status field looks like this:
 
 When the driver arrives at the pickup, the rider sees the OTP and shares it with the driver to verify their identity.
 
-![Rider showing OTP to share with driver](/images/blog/uber-clone-nextjs-appwrite/rider-otp-display.png)
+![Rider showing OTP to share with driver](/images/blog/uber-clone-nextjs-appwrite/rider-otp-display.avif)
 
 ## Live location updates
 
@@ -599,7 +599,7 @@ export async function endRideAction(rideId: string) {
 
 When the driver is close enough to the drop-off, the "End Ride" button activates.
 
-![End ride button enabled near drop-off](/images/blog/uber-clone-nextjs-appwrite/end-ride.png)
+![End ride button enabled near drop-off](/images/blog/uber-clone-nextjs-appwrite/end-ride.avif)
 
 # Key takeaways
 

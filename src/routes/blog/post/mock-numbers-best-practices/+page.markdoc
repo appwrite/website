@@ -3,7 +3,7 @@ layout: post
 title: "Mock numbers for phone sign-in: Use cases and best practices"
 description: Dive deeper into use cases, best practices and examples of mock numbers in action.
 date: 2024-08-23
-cover: /images/blog/mock-numbers-use-cases/cover.png
+cover: /images/blog/mock-numbers-use-cases/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
@@ -45,7 +45,7 @@ Log in to your Appwrite account and select the project you want to configure. En
 1. **Navigate to `Project > Auth > Security` :** Scroll to the **Mock phone numbers** section
 2. **Generate Mock Number**: Click the **generate number** button. This will generate a mock phone number and verification code that you can use to test user authentication.
 
-    ![Mock-numbers-Appwrite](/images/blog/mock-numbers-use-cases/1.png)
+    ![Mock-numbers-Appwrite](/images/blog/mock-numbers-use-cases/1.avif)
 
     You can regenerate the number and verification code by clicking the icon beside the input field or you can edit it directly. To generate another mock phone number and verification code, click the **Add number** button.
 

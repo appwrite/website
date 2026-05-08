@@ -17,7 +17,7 @@
     const title = 'Docs' + TITLE_SUFFIX;
     const description =
         'Ship faster with Appwrite - by hand or with AI agents over MCP and skills. Quick starts and deep guides for web and mobile: Authentication, Databases, Storage, Functions, Messaging, and hosting.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.avif';
 
     type AiToolCard = {
         href: string;
@@ -115,37 +115,37 @@
     const tutorials: CodeCardProps[] = [
         {
             href: '/docs/tutorials/react',
-            cover: '/images/tutorials/react.png',
+            cover: '/images/tutorials/react.avif',
             title: 'React tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with React.'
         },
         {
             href: '/docs/tutorials/nextjs',
-            cover: '/images/tutorials/nextjs.png',
+            cover: '/images/tutorials/nextjs.avif',
             title: 'Next.js tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Next.js.'
         },
         {
             href: '/docs/tutorials/flutter',
-            cover: '/images/tutorials/flutter.png',
+            cover: '/images/tutorials/flutter.avif',
             title: 'Flutter tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Flutter.'
         },
         {
             href: '/docs/tutorials/sveltekit',
-            cover: '/images/tutorials/svelte.png',
+            cover: '/images/tutorials/svelte.avif',
             title: 'SvelteKit tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with SvelteKit.'
         },
         {
             href: '/docs/tutorials/vue',
-            cover: '/images/tutorials/vue.png',
+            cover: '/images/tutorials/vue.avif',
             title: 'Vue tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Vue.'
         },
         {
             href: '/docs/tutorials/android',
-            cover: '/images/tutorials/android.png',
+            cover: '/images/tutorials/android.avif',
             title: 'Android tutorial',
             description: 'Learn Appwrite Auth, Databases, and more with Android.'
         }
@@ -178,7 +178,7 @@
         </div>
 
         <div class="web-u-opacity-40-mobile absolute top-4 left-0">
-            <enhanced:img src="./blur-2.png" alt="" />
+            <enhanced:img src="./blur-2.avif" alt="" />
         </div>
 
         <section class="web-hero is-align-start is-no-max-width e-hero-docs relative">
@@ -220,14 +220,14 @@
                             onclick={() => trackEvent(`docs-products_auth-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/auth.png"
+                                src="/images/icons/illustrated/dark/auth.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/auth.png"
+                                src="/images/icons/illustrated/light/auth.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -246,14 +246,14 @@
                             onclick={() => trackEvent(`docs-products_databases-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/databases.png"
+                                src="/images/icons/illustrated/dark/databases.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/databases.png"
+                                src="/images/icons/illustrated/light/databases.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -270,14 +270,14 @@
                             onclick={() => trackEvent(`docs-products_functions-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/functions.png"
+                                src="/images/icons/illustrated/dark/functions.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/functions.png"
+                                src="/images/icons/illustrated/light/functions.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -296,14 +296,14 @@
                             onclick={() => trackEvent(`docs-products_sites-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/sites.png"
+                                src="/images/icons/illustrated/dark/sites.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/sites.png"
+                                src="/images/icons/illustrated/light/sites.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -322,14 +322,14 @@
                             onclick={() => trackEvent(`docs-products_messaging-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/messaging.png"
+                                src="/images/icons/illustrated/dark/messaging.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/messaging.png"
+                                src="/images/icons/illustrated/light/messaging.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -348,14 +348,14 @@
                             onclick={() => trackEvent(`docs-products_storage-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/storage.png"
+                                src="/images/icons/illustrated/dark/storage.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/storage.png"
+                                src="/images/icons/illustrated/light/storage.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -374,14 +374,14 @@
                             onclick={() => trackEvent(`docs-products_avatars-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/avatars.png"
+                                src="/images/icons/illustrated/dark/avatars.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/avatars.png"
+                                src="/images/icons/illustrated/light/avatars.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"
@@ -400,14 +400,14 @@
                             onclick={() => trackEvent(`docs-products_realtime-click`)}
                         >
                             <img
-                                src="/images/icons/illustrated/dark/realtime.png"
+                                src="/images/icons/illustrated/dark/realtime.avif"
                                 alt=""
                                 class="web-u-only-dark"
                                 width="40"
                                 height="40"
                             />
                             <img
-                                src="/images/icons/illustrated/light/realtime.png"
+                                src="/images/icons/illustrated/light/realtime.avif"
                                 alt=""
                                 class="web-u-only-light"
                                 width="40"

@@ -3,7 +3,7 @@ layout: post
 title: "Introducing the Appwrite plugin for Cursor: Skills, MCP, and commands in one install"
 description: The Appwrite plugin for Cursor bundles agent skills, MCP servers, and deployment commands into a single install, so your AI agents can build with Appwrite out of the box.
 date: 2026-04-06
-cover: /images/blog/announcing-appwrite-cursor-plugin/cover.png
+cover: /images/blog/announcing-appwrite-cursor-plugin/cover.avif
 timeToRead: 4
 author: atharva
 category: announcement

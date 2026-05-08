@@ -9,10 +9,10 @@ In Appwrite, data is stored as a table of rows.
 Create a table inside a database in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
+![Create project screen](/images/docs/tutorials/idea-tracker-table.avif)
 {% /only_light %}
 
 Create the following columns within the table:

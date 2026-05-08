@@ -2,7 +2,7 @@
 layout: changelog
 title: "New string column types for Appwrite Databases"
 date: 2026-02-12
-cover: /images/blog/new-string-types/cover.png
+cover: /images/blog/new-string-types/cover.avif
 ---
 
 Appwrite Databases now supports four explicit string column types - `varchar`, `text`, `mediumtext`, and `longtext` - giving you transparent control over storage behavior and indexing.

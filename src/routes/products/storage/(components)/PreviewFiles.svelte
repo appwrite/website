@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ProductPreview from '../(assets)/product-preview.png';
+    import ProductPreview from '../(assets)/product-preview.avif';
     import { Button } from '$lib/components/ui';
 </script>
 

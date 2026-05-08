@@ -3,12 +3,25 @@ layout: post
 title: "Appwrite Auth explained: every auth method, compared"
 description: A complete comparison of every Appwrite auth method, from email/password to OAuth2, magic URLs, OTP, and MFA, with guidance on when to use each.
 date: 2026-03-23
-cover: /images/blog/appwrite-auth-methods/cover.png
+cover: /images/blog/appwrite-auth-methods/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, tutorial, security
 featured: false
 unlisted: true
+faqs:
+  - question: "How many authentication methods does Appwrite support?"
+    answer: "Appwrite supports ten authentication methods out of the box: email and password, phone SMS, magic URL, email OTP, OAuth2, anonymous sessions, JWT, SSR auth, custom tokens, and MFA. Each fits a different use case, from passwordless flows to server-rendered apps to migrating users from existing systems."
+  - question: "How does Appwrite store and protect passwords?"
+    answer: "Appwrite hashes passwords with Argon2, which is widely considered the gold standard for password hashing today and is resistant to brute-force attacks. The platform also rate-limits login attempts, but you still need to enforce HTTPS and prompt users to verify their email after registration."
+  - question: "When should I use magic URL versus email OTP?"
+    answer: "Magic URL sends a one-time link the user clicks to sign in, which works well on desktop where switching to email and back is low friction. Email OTP sends a numeric code that the user types into your app, which is often less friction on mobile because it avoids the link round-trip between email and app."
+  - question: "Does Appwrite support multi-factor authentication?"
+    answer: "Yes. Appwrite MFA adds a second verification step on top of any primary auth method and supports TOTP-based authenticator apps and email OTP as factors. MFA is recommended for any app handling sensitive data, financial information, or accounts with elevated privileges, and is often required for B2B SaaS enterprise customers."
+  - question: "What is the difference between authentication and authorization in Appwrite?"
+    answer: "Authentication proves identity, while authorization decides what that identity can do. Appwrite separates them cleanly: auth methods establish a session, while teams and labels handle authorization. Teams group users with roles and labels tag individual users with arbitrary strings, both of which can be referenced from permission rules."
+  - question: "When should I use custom tokens?"
+    answer: "Custom tokens let your backend issue a short-lived token that a client exchanges for an Appwrite session. They are useful when migrating users from an existing auth system without forcing a password reset, or when integrating auth flows not covered by the built-in methods (such as biometrics or proprietary SSO)."
 ---
 
 Picking the wrong auth method early in a project creates real pain later. You end up bolt-on patching SMS flows onto a system built only for email, or adding OAuth2 to an app that was never designed for external identity providers. Getting the choice right from the start saves you that work.

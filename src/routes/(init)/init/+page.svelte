@@ -10,19 +10,19 @@
     import { buildOpenGraphImage } from '$lib/utils/metadata';
 
     import CountdownGrid from './(components)/countdown-grid.svelte';
-    import Poster from './(assets)/poster.png';
-    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.png';
-    import PosterDeploy from './(assets)/posterDeploy.png';
-    import PosterIndustryPanel from './(assets)/posterIndustryPanel.png';
-    import PosterNewImageFormats from './(assets)/posterNewImageFormats.png';
-    import PosterFileTokens from './(assets)/posterFileTokens.png';
-    import PosterClosingParty from './(assets)/eventClosingParty.png';
-    import Sites from './(assets)/illustrations/sites.svg';
-    import Flutter from './(assets)/illustrations/flutter.svg';
-    import Formats from './(assets)/illustrations/formats.svg';
-    import DevKeys from './(assets)/illustrations/devkeys.svg';
-    import Tokens from './(assets)/illustrations/tokens.svg';
+    import Poster from './(assets)/poster.avif';
+    import PosterFutureAppwrite from './(assets)/posterFutureOfAppwrite.avif';
+    import PosterDeploy from './(assets)/posterDeploy.avif';
+    import PosterIndustryPanel from './(assets)/posterIndustryPanel.avif';
+    import PosterNewImageFormats from './(assets)/posterNewImageFormats.avif';
+    import PosterFileTokens from './(assets)/posterFileTokens.avif';
+    import PosterClosingParty from './(assets)/eventClosingParty.avif';
     import { addDays, format } from 'date-fns';
+
+    const illustration = (id: string) => `/images/init/illustrations/${id}.avif`;
+    /** Raster sizes match exported AVIFs (from design SVG viewBoxes). */
+    const illustrationSquare = { illustrationWidth: 645, illustrationHeight: 643 };
+    const illustrationFormats = { illustrationWidth: 645, illustrationHeight: 529 };
     import Day, { type DayProps } from './(components)/day.svelte';
     import Hero from './(components)/hero.svelte';
     import Giveaway from './(components)/giveaway.svelte';
@@ -41,7 +41,8 @@
         {
             title: 'Sites',
             release: base,
-            illustration: Sites,
+            illustration: illustration('sites'),
+            ...illustrationSquare,
             description:
                 'Introducing the open-source Vercel alternative. A new Appwrite product that lets you deploy and host your websites and web apps right inside Appwrite.',
             url: 'https://www.youtube-nocookie.com/embed/0cERQxFjTW4',
@@ -86,7 +87,8 @@
         {
             title: 'Flutter Web',
             release: addDays(otherFeaturesBase, 1),
-            illustration: Flutter,
+            illustration: illustration('flutter'),
+            ...illustrationSquare,
             description:
                 'Appwrite and Flutter have always worked well together, and now, you can deploy your Flutter web apps directly from Appwrite Sites.',
             url: '/blog/post/hosting-flutter-web',
@@ -112,7 +114,8 @@
         {
             title: 'Dev Keys',
             release: addDays(otherFeaturesBase, 2),
-            illustration: DevKeys,
+            illustration: illustration('devkeys'),
+            ...illustrationSquare,
             description:
                 'Introducing Dev Keys. A new Appwrite feature that lets you bypass rate limits *during local development*. No more slowdowns. No more artificial blockers. Just fast, uninterrupted building.',
             url: '/blog/post/announcing-dev-keys',
@@ -133,7 +136,8 @@
         {
             title: 'Image formats',
             release: addDays(otherFeaturesBase, 3),
-            illustration: Formats,
+            illustration: illustration('formats'),
+            ...illustrationFormats,
             description:
                 'We have added support for two new image formats in Appwrite Storage: HEIC and AVIF. This will give you more tools to manage, manipulate, and serve images the way you need.',
             url: '/blog/post/new-image-formats-avif-heic',
@@ -172,7 +176,8 @@
         {
             title: 'File Tokens',
             release: addDays(otherFeaturesBase, 4),
-            illustration: Tokens,
+            illustration: illustration('tokens'),
+            ...illustrationSquare,
             description:
                 'Introducing File Tokens. This feature lets you share files easily and securely, without modifying permissions or changing project access. Just generate a token and share the link.',
             url: 'https://www.youtube-nocookie.com/embed/eiwCCjBD3cw',

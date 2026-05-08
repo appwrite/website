@@ -31,10 +31,10 @@ you or your company when personal data is processed.
 
 You can find and sign a DPA in your organization's **Settings** > **Download DPA document**.
 {% only_dark %}
-![Project settings screen](/images/docs/advanced/security/dark/dpa.png)
+![Project settings screen](/images/docs/advanced/security/dark/dpa.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/advanced/security/dpa.png)
+![Project settings screen](/images/docs/advanced/security/dpa.avif)
 {% /only_light %}
 
 Please note that while Appwrite Cloud serves as a GDPR-compliant platform to handle data, it is the responsibility of developers to ensure that their application is also compliant with CCPA regulations.

@@ -16,10 +16,10 @@ To store your ideas, you need to create a database first.
 In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
+![Create project screen](/images/docs/tutorials/idea-tracker-table.avif)
 {% /only_light %}
 
 ## Columns
@@ -33,10 +33,10 @@ Create a new table with the following columns:
 
 ## Configure permissions {% #configure-permissions %}
 {% only_dark %}
-![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.avif)
 {% /only_dark %}
 {% only_light %}
-![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.avif)
 {% /only_light %}
 
 Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.

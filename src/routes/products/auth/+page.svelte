@@ -17,7 +17,7 @@
     const title = 'Auth' + TITLE_SUFFIX;
     const description =
         'Enable secure and reliable user login with Appwrite Auth. We support multiple authentication methods with compliance features out of the box.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -53,7 +53,7 @@
         </div>
         <section class="web-u-sep-block-start -mt-8 py-40">
             <div class="container">
-                <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
+                <h2 class="text-label text-primary text-center">Keep exploring our products</h2>
                 <ul
                     class="mt-8 grid gap-8"
                     style="grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))"
@@ -69,12 +69,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/messaging.png"
-                                        alt="auth"
+                                        src="/images/icons/illustrated/dark/messaging.avif"
+                                        alt=""
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-main-body text-primary">Messaging</h4>
+                                    <h3 class="text-main-body text-primary">Messaging</h3>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -96,12 +96,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/functions.png"
-                                        alt="functions"
+                                        src="/images/icons/illustrated/dark/functions.avif"
+                                        alt=""
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-main-body text-primary">Functions</h4>
+                                    <h3 class="text-main-body text-primary">Functions</h3>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -123,12 +123,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/databases.png"
+                                        src="/images/icons/illustrated/dark/databases.avif"
                                         alt=""
                                         width="37"
                                         height="32"
                                     />
-                                    <h4 class="text-main-body text-primary">Databases</h4>
+                                    <h3 class="text-main-body text-primary">Databases</h3>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -149,12 +149,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/storage.png"
-                                        alt="storage"
+                                        src="/images/icons/illustrated/dark/storage.avif"
+                                        alt=""
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-main-body text-primary">Storage</h4>
+                                    <h3 class="text-main-body text-primary">Storage</h3>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>
@@ -175,12 +175,12 @@
                             >
                                 <div class="flex items-center gap-2">
                                     <img
-                                        src="/images/icons/illustrated/dark/realtime.png"
-                                        alt="realtime"
+                                        src="/images/icons/illustrated/dark/realtime.avif"
+                                        alt=""
                                         width="32"
                                         height="32"
                                     />
-                                    <h4 class="text-main-body text-primary">Realtime</h4>
+                                    <h3 class="text-main-body text-primary">Realtime</h3>
                                     <span class="web-icon-arrow-right ml-auto" aria-hidden="true"
                                     ></span>
                                 </div>

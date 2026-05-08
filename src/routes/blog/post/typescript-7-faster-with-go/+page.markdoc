@@ -3,7 +3,7 @@ layout: post
 title: TypeScript 7.0 will be 10x faster with Go
 description: Microsoft is rewriting TypeScript's compiler in Go. Learn what this means and how it will impact your workflow.
 date: 2025-03-18
-cover: /images/blog/typescript-7-faster-with-go/cover.png
+cover: /images/blog/typescript-7-faster-with-go/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
