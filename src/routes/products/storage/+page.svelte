@@ -3,7 +3,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Permissions from './(components)/Permissions.svelte';
     import PreviewFiles from './(components)/PreviewFiles.svelte';
@@ -17,9 +17,9 @@
     import Optimized from './(components)/Optimized.svelte';
     import { Button } from '$lib/components/ui';
 
-    const title = 'Storage' + TITLE_SUFFIX;
+    const title = 'Appwrite Storage' + TITLE_SUFFIX;
     const description =
-        'Get to know Appwrite Storage - our robust infrastructure allows you to store, optimize and encrypt all of your project files in one place.';
+        'Store every file type and serve responsive image previews from one backend. Buckets, permissions, compression, and on-the-fly transformations—self-hosted or on Appwrite Cloud.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
@@ -47,8 +47,8 @@
                 label: 'Storage',
                 icon: '/images/icons/illustrated/dark/storage.avif'
             }}
-            title="Robust and secure storage infrastructure"
-            description="Securely store files with advanced compression, encryption and image transformations."
+            title="Storage for every file - with smart image previews built in"
+            description="Store documents, media, and user uploads with encryption, compression, and on-the-fly image transformations. Same project as Auth and databases—no separate media stack just to ship responsive images."
             image={{
                 url: HeroImage
             }}
@@ -172,8 +172,9 @@
                                 What you can do with Storage APIs
                             </h2>
                             <p class="text-main-body font-medium">
-                                Appwrite's Storage APIs allow you to create and update your files,
-                                apply image transformations, and more.
+                                Create buckets, stream uploads, read metadata, and generate
+                                transformed previews from your SDKs—all with the same permission
+                                model as the rest of Appwrite.
                             </p>
                             <Button
                                 href="/docs/references/cloud/client-web/storage"
