@@ -94,10 +94,6 @@
         padding-inline: var(--padding-inline);
     }
 
-    .changelog-heading {
-        padding-inline: 1rem;
-    }
-
     .changelog-list {
         --padding-is: 2rem;
         --dot-offset: 0.25rem;
@@ -141,7 +137,7 @@
 
     @media screen and (max-width: 512px) {
         .changelog-heading {
-            padding-inline: 0;
+            padding-inline: 1rem;
         }
 
         .changelog-list {
