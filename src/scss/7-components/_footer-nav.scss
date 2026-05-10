@@ -59,6 +59,10 @@
         min-inline-size: 0;
       }
 
+      > .#{$p}-footer-nav-main-item--compare-col.#{$p}-is-not-mobile {
+        flex: 1.35 1 0;
+      }
+
       > .#{$p}-footer-nav-main-item--with-bottom-logo.#{$p}-is-not-mobile {
         .#{$p}-logo {
           align-self: flex-end;

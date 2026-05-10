@@ -81,6 +81,12 @@
                 //     rel: 'noopener noreferrer'
                 // }
             ],
+            Programs: [
+                { label: 'Heroes', href: '/heroes' },
+                { label: 'Startups', href: '/startups' },
+                { label: 'Education', href: '/education' },
+                { label: 'Partners', href: '/partners' }
+            ],
             Compare: [
                 {
                     label: 'Appwrite vs. Supabase',
@@ -89,6 +95,10 @@
                 {
                     label: 'Appwrite vs. Firebase',
                     href: '/blog/post/open-source-firebase-alternative'
+                },
+                {
+                    label: 'Appwrite vs. Neon',
+                    href: '/blog/post/appwrite-vs-neon-ai-backends'
                 },
                 {
                     label: 'Appwrite vs. Vercel',
@@ -107,19 +117,9 @@
                     href: '/blog/post/appwrite-vs-auth0'
                 },
                 {
-                    label: 'Appwrite vs. Neon',
-                    href: '/blog/post/appwrite-vs-neon-ai-backends'
-                },
-                {
                     label: 'Backend as a service (BaaS)',
                     href: '/blog/post/backend-as-a-service'
                 }
-            ],
-            Programs: [
-                { label: 'Heroes', href: '/heroes' },
-                { label: 'Startups', href: '/startups' },
-                { label: 'Education', href: '/education' },
-                { label: 'Partners', href: '/partners' }
             ],
             About: [
                 { label: 'Company', href: '/company' },
@@ -159,6 +159,7 @@
         {#each Object.entries(links) as [title, items]}
             <li
                 class="web-footer-nav-main-item web-is-not-mobile"
+                class:web-footer-nav-main-item--compare-col={title === 'Compare'}
                 class:web-footer-nav-main-item--with-bottom-logo={title === 'About'}
             >
                 <h2
