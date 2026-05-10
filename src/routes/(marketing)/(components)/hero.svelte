@@ -110,7 +110,6 @@
 
             log('experiment exposure (display stays on `page.data`)', {
                 [MARKETING_HERO_EXPERIMENTS.bestTitle]: debug[MARKETING_HERO_EXPERIMENTS.bestTitle],
-                [MARKETING_HERO_EXPERIMENTS.bestCta]: debug[MARKETING_HERO_EXPERIMENTS.bestCta],
                 [MARKETING_HERO_EXPERIMENTS.heroLayout]:
                     debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
             });
