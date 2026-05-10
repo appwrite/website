@@ -20,13 +20,12 @@
     } from '$lib/statsig/hero-query-overrides';
     import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
     import { ENV } from '$lib/system';
-    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import type { PageData } from '../$types';
-    import Dashboard from './dashboard.svelte';
     import HeroBanner from './hero-banner.svelte';
+    import HeroDashboardMockup from './hero-dashboard-mockup.svelte';
 
     /** Merged layout + page load; Statsig keys come from `+page.server.ts` (omitted from generated `PageData` in some setups). */
     type MarketingHeroPageData = PageData & {
@@ -230,15 +229,22 @@
                         trackEvent(`main-get_started_btn_hero-click`);
                     }}>{resolved.heroCta}</Button
                 >
-                <AppwriteIn100Seconds />
+                <Button
+                    href="/contact-us/enterprise"
+                    variant="secondary"
+                    class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
+                    onclick={() => {
+                        trackEvent('main-request_demo_btn_hero-click');
+                    }}>Request a demo</Button
+                >
             </div>
         </div>
 
         {#if layoutAside}
-            <Dashboard />
+            <HeroDashboardMockup />
         {:else}
             <div class="flex w-full justify-center">
-                <Dashboard placement="below" />
+                <HeroDashboardMockup placement="below" />
             </div>
         {/if}
     </div>

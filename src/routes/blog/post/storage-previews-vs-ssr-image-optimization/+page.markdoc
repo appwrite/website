@@ -16,6 +16,8 @@ This raises an important question: if frameworks can now handle image processing
 
 In this post, we'll compare service-based image transformations with SSR image functions, examine their tradeoffs, and help you decide which approach fits your needs.
 
+For a separate comparison of Appwrite Storage against dedicated media platforms (not framework SSR), read [Appwrite vs Cloudinary](/blog/post/appwrite-vs-cloudinary).
+
 # What are service-based image transformations?
 
 Service-based image transformations handle image processing through a dedicated API, completely separate from your application server. With Appwrite Storage previews, you upload an image once, and the service generates transformed versions on demand using URL parameters.

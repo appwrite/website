@@ -67,9 +67,9 @@
             height: 41
         },
         {
-            src: '/images/logos/trusted-by/k-collect.avif',
+            src: '/images/logos/trusted-by/k-collect.svg',
             alt: 'K-collect',
-            width: 127,
+            width: 110,
             height: 35
         },
         {

@@ -47,10 +47,6 @@
                 { label: 'Docs', href: '/docs' },
                 { label: 'Integrations', href: '/integrations' },
                 { label: 'Community', href: '/community' },
-                {
-                    label: 'Backend as a service (BaaS)',
-                    href: '/blog/post/backend-as-a-service'
-                },
                 { label: 'Init', href: '/init' },
                 { label: 'Threads', href: '/threads' },
                 { label: 'Changelog', href: '/changelog' },
@@ -85,6 +81,40 @@
                 //     rel: 'noopener noreferrer'
                 // }
             ],
+            Compare: [
+                {
+                    label: 'Appwrite vs. Supabase',
+                    href: '/blog/post/appwrite-compared-to-supabase'
+                },
+                {
+                    label: 'Appwrite vs. Firebase',
+                    href: '/blog/post/open-source-firebase-alternative'
+                },
+                {
+                    label: 'Appwrite vs. Vercel',
+                    href: '/blog/post/open-source-vercel-alternative'
+                },
+                {
+                    label: 'Appwrite vs. Netlify',
+                    href: '/blog/post/open-source-netlify-alternative'
+                },
+                {
+                    label: 'Appwrite vs. Cloudinary',
+                    href: '/blog/post/appwrite-vs-cloudinary'
+                },
+                {
+                    label: 'Appwrite vs. Auth0',
+                    href: '/blog/post/appwrite-vs-auth0'
+                },
+                {
+                    label: 'Appwrite vs. Neon',
+                    href: '/blog/post/appwrite-vs-neon-ai-backends'
+                },
+                {
+                    label: 'Backend as a service (BaaS)',
+                    href: '/blog/post/backend-as-a-service'
+                }
+            ],
             Programs: [
                 { label: 'Heroes', href: '/heroes' },
                 { label: 'Startups', href: '/startups' },
@@ -118,16 +148,28 @@
     class="web-footer-nav relative mt-24"
     class:web-u-sep-block-start={!noBorder}
 >
-    <img class="web-logo" src="/images/logos/appwrite.svg" alt="appwrite" height="24" width="130" />
+    <img
+        class="web-logo web-is-only-mobile"
+        src="/images/logos/appwrite.svg"
+        alt="appwrite"
+        height="24"
+        width="130"
+    />
     <ul class="web-footer-nav-main-list" use:melt={$root}>
         {#each Object.entries(links) as [title, items]}
-            <li class="web-footer-nav-main-item web-is-not-mobile">
+            <li
+                class="web-footer-nav-main-item web-is-not-mobile"
+                class:web-footer-nav-main-item--with-bottom-logo={title === 'About'}
+            >
                 <h2
                     class="web-footer-nav-main-title web-is-not-mobile text-caption font-medium uppercase"
                 >
                     {title}
                 </h2>
-                <ul class="web-footer-nav-secondary-list text-sub-body">
+                <ul
+                    class="web-footer-nav-secondary-list text-sub-body"
+                    class:web-footer-nav-secondary-list--compare={title === 'Compare'}
+                >
                     {#each items as { href, label, target, rel }}
                         <li>
                             <a
@@ -143,6 +185,15 @@
                         </li>
                     {/each}
                 </ul>
+                {#if title === 'About'}
+                    <img
+                        class="web-logo web-is-not-mobile"
+                        src="/images/logos/appwrite.svg"
+                        alt="appwrite"
+                        height="24"
+                        width="130"
+                    />
+                {/if}
             </li>
             <li
                 class="web-footer-nav-main-item web-is-only-mobile"
@@ -164,6 +215,7 @@
                 {#if $isSelected(title)}
                     <ul
                         class="web-footer-nav-secondary-list text-sub-body"
+                        class:web-footer-nav-secondary-list--compare={title === 'Compare'}
                         use:melt={$content({ value: title })}
                         transition:slide={{ duration: 250 }}
                     >

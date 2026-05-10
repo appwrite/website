@@ -10,7 +10,7 @@
         {
             name: 'David Forster',
             copy: `We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. I am still surprised how easy the implementation into Flutter was.`,
-            image: '/images/testimonials/open-mind.avif',
+            image: '/images/testimonials/david-forster.avif',
             title: 'Founder',
             company: 'Open Mind'
         },
@@ -60,7 +60,9 @@
                 <div class="mt-4 flex items-center gap-3">
                     <img
                         src={testimonial.image}
-                        class="size-12 rounded-full"
+                        class="size-8 rounded-full"
+                        width="32"
+                        height="32"
                         alt="{testimonial.company} Logo"
                     />
                     <div>
@@ -86,7 +88,9 @@
                 <div class="mt-4 flex items-center gap-3">
                     <img
                         src={testimonial.image}
-                        class="size-12 rounded-full"
+                        class="size-8 rounded-full"
+                        width="32"
+                        height="32"
                         alt="{testimonial.company} Logo"
                     />
                     <div>

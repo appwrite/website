@@ -26,7 +26,7 @@
         },
         {
             label: 'Enterprise',
-            href: '/enterprise'
+            href: '/contact-us/enterprise'
         }
     ];
     type Props = NavigationMenu.RootProps;

@@ -24,17 +24,22 @@
         'data-[state="on"]:basis-[70%] data-[state="on"]:border-black/12 data-[state="on"]:bg-white data-[state="on"]:p-4 data-[state="on"]:shadow-[0px_0px_0px_4px_rgba(0,0,0,0.08)]! sm:data-[state="on"]:p-6 md:data-[state="on"]:p-8 lg:data-[state="on"]:p-12'
     )}
 >
-    <img
-        loading="lazy"
-        src={study.logo}
-        alt={study.headline}
-        width={study.logoWidth}
-        height={study.logoHeight}
+    <div
         class={cn(
-            'h-4 shrink-0 opacity-100 transition-all [grid-area:stack] sm:h-5 lg:h-12',
-            'self-center justify-self-center group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
+            'flex h-4 w-full shrink-0 items-center justify-center [grid-area:stack] sm:h-5 lg:h-8',
+            'self-center justify-self-center opacity-100 transition-all',
+            'group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
         )}
-    />
+    >
+        <img
+            loading="lazy"
+            src={study.logo}
+            alt={study.headline}
+            width={study.logoWidth}
+            height={study.logoHeight}
+            class="block h-full max-h-full w-auto max-w-full object-contain object-center"
+        />
+    </div>
 
     <div
         class={cn(
@@ -49,7 +54,7 @@
             height={study.logoHeight}
             src={study.logo}
             alt={study.headline}
-            class={cn('h-6 w-auto sm:h-7 md:h-8', {
+            class={cn('h-5 w-auto sm:h-6 md:h-7', {
                 'animate-fade-in': isActive
             })}
         />
@@ -67,7 +72,9 @@
         </span>
 
         <!-- Testimonial quote -->
-        <div class="text-left text-sm leading-relaxed font-bold text-black sm:text-base">
+        <div
+            class="min-h-[2lh] text-left text-sm leading-relaxed font-bold text-black sm:text-base"
+        >
             "{study.blurb}"
         </div>
 

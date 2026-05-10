@@ -16,7 +16,7 @@
     import Network from './(components)/network.svelte';
     import Scale from '$routes/(marketing)/(components)/scale.svelte';
 
-    const title = 'Sites' + TITLE_SUFFIX;
+    const title = 'Appwrite Sites' + TITLE_SUFFIX;
     const description =
         'Appwrite Sites, the open-source Vercel alternative. Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';

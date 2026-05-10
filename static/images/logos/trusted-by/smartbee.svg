@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="32" viewBox="0 0 656 246" fill="none" aria-hidden="true">
+  <g id="bee-mark" fill="none" stroke="#ADADB0" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1.441576, 0, 0, 1.441576, -76.414688, -45.043736)" style="">
+    <path d="M 99.5 85.666 C 98.8 69.166 89 57.966 65 54.166" stroke-width="6.5"/>
+    <circle cx="64.5" cy="53.666" r="6" fill="#ADADB0" stroke="none"/>
+    <path d="M 149.5 85.666 C 150.2 69.166 160 57.966 181 54.166" stroke-width="6.5"/>
+    <circle cx="181.5" cy="53.666" r="6" fill="#ADADB0" stroke="none"/>
+    <path d="M124.0 76.5 L174.0 101.8 L174.0 161.6 L124.0 187.5 L73.5 161.6 L73.5 101.8 Z" fill="transparent" stroke-width="5.2"/>
+    <circle cx="98.5" cy="132.0" r="16.5" stroke-width="4.8"/>
+    <circle cx="149.5" cy="132.0" r="16.5" stroke-width="4.8"/>
+    <path d="M115.2 132.0 L132.8 132.0" stroke-width="5.0"/>
+    <path d="M82.0 132.0 L73.5 132.0" stroke-width="4.6"/>
+    <path d="M166.0 132.0 L174.0 132.0" stroke-width="4.6"/>
+  </g>
+  <g id="wordmark" transform="matrix(1.441576, 0, 0, 1.441576, -161.856033, -45.043736)" style="">
+    <text x="205" y="145" fill="#ADADB0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="300" letter-spacing="0.5" style="white-space: pre">
+			smart<tspan font-weight="700" letter-spacing="-1">bee</tspan>
+		</text>
+  </g>
+</svg>

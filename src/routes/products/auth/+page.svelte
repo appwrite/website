@@ -14,7 +14,7 @@
     import Features from './(components)/features/Features.svelte';
     import Pricing from '$routes/(marketing)/(components)/pricing.svelte';
 
-    const title = 'Auth' + TITLE_SUFFIX;
+    const title = 'Appwrite Auth' + TITLE_SUFFIX;
     const description =
         'Enable secure and reliable user login with Appwrite Auth. We support multiple authentication methods with compliance features out of the box.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
