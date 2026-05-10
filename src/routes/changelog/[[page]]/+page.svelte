@@ -52,7 +52,7 @@
             <div class="web-big-padding-section-level-2">
                 <div class="wrapper container">
                     <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
-                    <ul>
+                    <ul class="changelog-list">
                         {#each data.entries as entry}
                             <li>
                                 <div class="web-dot"></div>
@@ -88,15 +88,17 @@
         --padding-inline: 1rem;
         box-sizing: border-box;
         max-width: calc(49.375rem + var(--padding-inline) * 2);
+        min-width: 0;
         padding-inline: var(--padding-inline);
     }
 
-    ul {
+    .changelog-list {
         --padding-is: 2rem;
         --dot-offset: 0.25rem;
 
         display: grid;
         gap: 5rem;
+        min-width: 0;
 
         padding-inline-start: var(--padding-is);
         border-inline-start: 2px solid transparent;
@@ -120,6 +122,7 @@
         }
 
         li {
+            min-width: 0;
             position: relative;
 
             .web-dot {
@@ -131,7 +134,7 @@
     }
 
     @media screen and (max-width: 512px) {
-        ul {
+        .changelog-list {
             padding-inline-start: 0;
             margin-block-start: 2.5rem;
 
