@@ -136,7 +136,7 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre><code class="web-code language-${language} ${
+    return `<pre class="web-code-pre"><code class="web-code web-code-body language-${language} ${
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };

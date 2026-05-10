@@ -35,20 +35,4 @@
     .entry-content {
         overflow-x: clip;
     }
-
-    .entry-content :global(.web-code-snippet) {
-        max-width: 100%;
-    }
-
-    .entry-content :global(.web-code-snippet-content),
-    .entry-content :global(pre) {
-        max-width: 100%;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-    }
-
-    .entry-content :global(code.line-numbers) {
-        display: block;
-        min-width: max-content;
-    }
 </style>
