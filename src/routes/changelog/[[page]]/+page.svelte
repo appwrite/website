@@ -51,7 +51,9 @@
         <div class="pt-10">
             <div class="web-big-padding-section-level-2">
                 <div class="wrapper container">
-                    <h1 class="text-display font-aeonik-pro text-primary">Changelog</h1>
+                    <h1 class="changelog-heading text-display font-aeonik-pro text-primary">
+                        Changelog
+                    </h1>
                     <ul class="changelog-list">
                         {#each data.entries as entry}
                             <li>
@@ -90,6 +92,10 @@
         max-width: calc(49.375rem + var(--padding-inline) * 2);
         min-width: 0;
         padding-inline: var(--padding-inline);
+    }
+
+    .changelog-heading {
+        padding-inline: 1rem;
     }
 
     .changelog-list {
@@ -134,6 +140,10 @@
     }
 
     @media screen and (max-width: 512px) {
+        .changelog-heading {
+            padding-inline: 0;
+        }
+
         .changelog-list {
             padding-inline-start: 0;
             margin-block-start: 2.5rem;
