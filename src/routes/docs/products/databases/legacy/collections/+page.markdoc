@@ -307,8 +307,7 @@ You can choose between the following types.
 | Attribute    | Description                                                      |
 |--------------|------------------------------------------------------------------|
 | `string`     | String attribute.                                                |
-| `integer`    | Integer attribute. 32-bit signed.                                |
-| `bigint`     | Big integer attribute. 64-bit signed, for values beyond 32-bit integer range. |
+| `integer`    | Integer attribute.                                               |
 | `float`      | Float attribute.                                                 |
 | `boolean`    | Boolean attribute.                                               |
 | `datetime`   | Datetime attribute formatted as an ISO 8601 string.              |
