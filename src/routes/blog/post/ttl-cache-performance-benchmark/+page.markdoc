@@ -3,7 +3,7 @@ layout: post
 title: "Benchmarking TTL list caching: a 100,000-request look at Appwrite at scale"
 description: We ran 100,000 listRows calls per phase against a 10,000-row table, with and without TTL caching, to measure the latency gains. The results were more decisive than we expected.
 date: 2026-04-21
-cover: /images/blog/ttl-cache-performance-benchmark/cover.png
+cover: /images/blog/ttl-cache-performance-benchmark/cover.avif
 timeToRead: 8
 author: atharva
 category: performance
@@ -148,7 +148,7 @@ After both phases finish, the script writes a markdown report to `results/` with
 
 Here is the final output from the benchmark, run against a locally hosted Appwrite instance with the TTL feature enabled:
 
-![Benchmark output in the terminal](/images/blog/ttl-cache-performance-benchmark/benchmark-output.png)
+![Benchmark output in the terminal](/images/blog/ttl-cache-performance-benchmark/benchmark-output.avif)
 
 And the same data in a table, for readers who prefer it that way:
 

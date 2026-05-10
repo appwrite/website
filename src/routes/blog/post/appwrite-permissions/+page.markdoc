@@ -3,12 +3,25 @@ layout: post
 title: "Understanding Appwrite permissions: a complete breakdown"
 description: A complete breakdown of Appwrite's permission system, covering permission types, role types, common patterns, and pitfalls to avoid in your app.
 date: 2026-03-23
-cover: /images/blog/appwrite-permissions/cover.png
+cover: /images/blog/appwrite-permissions/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, tutorial, security
 featured: false
 unlisted: true
+faqs:
+  - question: "What permission types does Appwrite support?"
+    answer: "Appwrite defines five permission types: read, create, update, delete, and write. Write is a convenience alias that combines create, update, and delete. Importantly, write does not include read, so a role with only write permissions can mutate resources but cannot list or fetch them."
+  - question: "What role types can I use in Appwrite permissions?"
+    answer: "Appwrite provides role types including any() for everyone, guests() for unauthenticated requests, users() for all authenticated users, user(USER_ID) for a specific user, team(TEAM_ID) and team(TEAM_ID, ROLE) for team-based access, member(MEMBERSHIP_ID), and label(LABEL_ID) for users tagged with a specific label."
+  - question: "How do default permissions differ between Server SDK and Client SDK?"
+    answer: "When a Server SDK with an API key creates a resource without explicit permissions, nobody (other than callers using the same API key) can access it. When a Client SDK creates a resource for a logged-in user without explicit permissions, Appwrite automatically grants read, update, and delete to that specific user."
+  - question: "Does the Server SDK respect row-level permissions?"
+    answer: "No. Server SDK requests made with a valid API key bypass row-level and file-level permissions entirely. The only constraint is the API key's scope, which controls which services and actions it can access. This is why API keys must never be exposed to clients."
+  - question: "When should I use labels instead of teams?"
+    answer: "Labels are useful when you need user-level flags without creating a dedicated team for each one. Examples include tagging users as beta testers or marking premium subscribers. You assign labels server-side, then reference them in permissions with Role.label(LABEL_ID), and removing the label revokes access immediately."
+  - question: "What is the most common permissions pitfall in Appwrite?"
+    answer: "Forgetting that write does not include read. If you grant Permission.write(Role.user(userId)) without also granting Permission.read(Role.user(userId)), the user can create and modify resources but cannot fetch them back. Always check both dimensions when configuring permissions."
 ---
 
 Permissions are one of those things that feel obvious until something goes wrong. A row that should be private turns out to be readable by anyone. A file that should be editable by a team member throws a 401. An admin endpoint that works fine in development breaks in production because the API key scope was wrong.

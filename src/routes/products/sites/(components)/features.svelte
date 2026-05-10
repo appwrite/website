@@ -1,7 +1,7 @@
 <script lang="ts">
-    import DDOS from '../(assets)/icons/ddos.png';
-    import SSR from '../(assets)/icons/ssr.png';
-    import Domains from '../(assets)/icons/domains.png';
+    import DDOS from '../(assets)/icons/ddos.avif';
+    import SSR from '../(assets)/icons/ssr.avif';
+    import Domains from '../(assets)/icons/domains.avif';
 
     const items = [
         {

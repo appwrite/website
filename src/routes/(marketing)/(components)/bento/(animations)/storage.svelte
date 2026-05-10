@@ -1,6 +1,6 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import Image from '../../../(assets)/images/storage.webp';
+    import Image from '../../../(assets)/images/storage.avif';
     import { animate, hover, inView, type AnimationSequence } from 'motion';
     import GridPaper from '../../grid-paper.svelte';
     import { isMobile } from '$lib/utils/is-mobile';
@@ -68,7 +68,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/storage.png"
+                src="/images/icons/illustrated/dark/storage.avif"
                 alt="Storage icon"
                 class="size-7"
             />

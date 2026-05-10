@@ -3,12 +3,23 @@ layout: post
 title: 7 prompting mistakes you need to stop making right now
 description: Avoid these 7 common prompting mistakes that lead to poor AI outputs. Learn how to write better prompts and get more accurate and reliable results.
 date: 2026-04-27
-cover: /images/blog/7-prompting-mistakes-you-need-to-stop-making-right-now/cover.png
+cover: /images/blog/7-prompting-mistakes-you-need-to-stop-making-right-now/cover.avif
 timeToRead: 5
 author: aishwari
 category: ai
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the most common prompting mistake developers make?"
+    answer: "Writing vague, context-free prompts is the most common mistake. Asking an AI to fix a bug or write a function without specifying the language, framework, constraints, naming conventions, or expected behavior forces the model to fill gaps with assumptions, which are usually wrong. Including the stack, the goal, and the failure mode gives the model real direction."
+  - question: "Why do single mega-prompts produce poor results?"
+    answer: "Asking a model to plan, implement, add error handling, and write tests in one prompt produces shallow output across all of it. Models work better when they can focus on one well-scoped task at a time. Breaking work into a sequence of focused requests almost always beats a single massive ask."
+  - question: "How important are examples in a prompt?"
+    answer: "Examples are one of the highest-leverage things you can add to a prompt. Showing the model an example of the output you want, in code style, data shape, or tone, narrows the solution space far more efficiently than describing it in words. Even one example dramatically improves accuracy."
+  - question: "Should I treat the first AI response as final?"
+    answer: "No. Most developers accept the first output and move on, which leaves quality on the table. AI outputs are a starting point. Iterating with specific feedback like asking the model to revise a specific section or push deeper on one part typically produces noticeably better results than rewriting the original prompt from scratch."
+  - question: "What should I do when a prompt consistently fails?"
+    answer: "Treat it like a failing test and debug it. Identify whether the issue is missing context, an ambiguous instruction, or a poorly specified constraint, and change one variable at a time. Once a pattern works, save it. Reusable prompt templates are one of the highest-leverage investments for anyone using AI tools regularly."
 ---
 
 You write a prompt. The AI gives you something half-baked. You try again, tweak the wording, and still get something that misses the point. Sound familiar?

@@ -2,7 +2,7 @@
 layout: changelog
 title: Updates to AI assistant
 date: 2024-01-18
-cover: /images/changelog/2024-01-18.png
+cover: /images/changelog/2024-01-18.avif
 ---
 
 We've updated our AI assistant. It's now trained on the latest available documentation and examples. Additionally, Appwrite Assistant now displays a list of relevant documentation pages with each query.

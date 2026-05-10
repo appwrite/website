@@ -53,6 +53,12 @@ After [initializing](/docs/tooling/command-line/installation#initialization) you
 }
 ```
 
+You can also move the `sites` array into a separate JSON file with the `includes` field. When sites are loaded from an included file, each site `path` is resolved relative to that included file.
+
+{% arrow_link href="/docs/tooling/command-line/installation#multi-file-configuration" %}
+Learn more about multi-file configuration
+{% /arrow_link %}
+
 # Push site {% #push-site %}
 
 {% partial file="cli-push-command.md" /%}

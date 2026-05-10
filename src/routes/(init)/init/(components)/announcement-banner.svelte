@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from '$lib/components/ui/icon';
-    import Lockup from '../(assets)/small-lockup.png';
+    import Lockup from '../(assets)/small-lockup.avif';
     import { initDates } from '../+page.svelte';
 
     import Badge from './badge.svelte';

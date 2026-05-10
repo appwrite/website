@@ -39,7 +39,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 Show me how to set up real-time subscriptions that trigger on creation of a user
 ```
 
-![Code generation example](/images/docs/mcp/mcp-for-docs/code-generation.png)
+![Code generation example](/images/docs/mcp/mcp-for-docs/code-generation.avif)
 
 ## Example 2: Troubleshooting
 
@@ -49,7 +49,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 I'm getting a 401 error when trying to delete a user. What could be wrong?
 ```
 
-![Troubleshooting example](/images/docs/mcp/mcp-for-docs/troubleshooting.png)
+![Troubleshooting example](/images/docs/mcp/mcp-for-docs/troubleshooting.avif)
 
 ## Example 3: Best practices
 
@@ -59,7 +59,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 What are some of the best security practices for Appwrite Auth in a web app with SSR?
 ```
 
-![Best practices example](/images/docs/mcp/mcp-for-docs/best-practices.png)
+![Best practices example](/images/docs/mcp/mcp-for-docs/best-practices.avif)
 
 ## Example 4: API reference
 
@@ -69,4 +69,4 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 I want an example of how I can list all users in a Python app
 ```
 
-![API reference example](/images/docs/mcp/mcp-for-docs/api-reference.png)
+![API reference example](/images/docs/mcp/mcp-for-docs/api-reference.avif)

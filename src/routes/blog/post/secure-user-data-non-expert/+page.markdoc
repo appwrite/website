@@ -3,12 +3,23 @@ layout: post
 title: "How to secure user data without becoming a security expert"
 description: Practical security steps that every developer can implement to protect user data, without needing deep security expertise or a dedicated security team.
 date: 2026-03-17
-cover: /images/blog/secure-user-data-non-expert/cover.png
+cover: /images/blog/secure-user-data-non-expert/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "Do you need to be a security expert to protect user data?"
+    answer: "No. Most application security incidents do not happen because developers lacked advanced security knowledge. They happen because basic, well-understood practices were not followed. Applying a small set of consistent practices (managed authentication, least-privilege access, dependency updates, HTTPS, secrets management, and input validation) prevents the majority of real-world incidents."
+  - question: "Why use a managed authentication system instead of building your own?"
+    answer: "Authentication has many well-known failure modes (password hashing, brute-force protection, session management, token rotation, secure password reset). Building it correctly from scratch is a significant investment, and the failure modes are easy to get wrong. A managed authentication service that has been audited and implements these patterns correctly is typically more secure and saves substantial engineering time."
+  - question: "What password hashing algorithms are considered secure?"
+    answer: "Modern, slow hashing algorithms designed for passwords are bcrypt, scrypt, and Argon2. Fast algorithms like MD5, SHA-1, and SHA-256 are designed for integrity checking, not password storage, and should not be used for passwords. Plaintext passwords should never be stored. Appwrite uses Argon2, which is the current recommended algorithm."
+  - question: "What security responsibilities remain when using a managed backend?"
+    answer: "A managed backend handles authentication, password hashing, rate limiting on login endpoints, session management, and granular permissions at the data layer. The remaining responsibilities are still yours: input validation and sanitization, keeping dependencies updated, protecting secrets outside source code, configuring HTTPS everywhere, and validating file uploads by type and content."
+  - question: "How does Appwrite enforce least-privilege access?"
+    answer: "Appwrite's permission system lets you define exactly which users or teams can read, create, update, or delete each resource. Authorization is enforced at the data layer, not just in the UI, which prevents users from accessing data they should not see through ID enumeration or direct API calls. You can also configure password policies and enable multi-factor authentication with minimal setup."
 ---
 
 Security is one of those topics that can feel overwhelming for developers who didn't specialize in it. The threat landscape is complex, the terminology is opaque, and the stakes feel high. But most application security incidents don't happen because developers lacked advanced security knowledge; they happen because basic, well-understood security practices weren't followed.

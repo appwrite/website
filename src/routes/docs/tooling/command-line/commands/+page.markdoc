@@ -84,6 +84,8 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 {% /table %}
 
+The `init`, `pull`, `push`, and `run` commands support [multi-file project configuration](/docs/tooling/command-line/installation#multi-file-configuration). Use the `includes` field in `appwrite.config.json` to move supported resource arrays into separate JSON files while keeping CLI behavior unchanged.
+
 ## Project commands {% #appwrite-project-commands %}
 
 {% table %}

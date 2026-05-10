@@ -3,7 +3,7 @@ layout: post
 title: Next.js standalone builds now supported on Appwrite Sites
 description: Deploy Next.js apps in standalone mode on Appwrite Sites with full Next.js 16 support, smaller builds, faster cold starts, and lighter deployments.
 date: 2025-11-12
-cover: /images/blog/nextjs-standalone-builds/cover.png
+cover: /images/blog/nextjs-standalone-builds/cover.avif
 timeToRead: 4
 author: ebenezer-don
 category: announcement

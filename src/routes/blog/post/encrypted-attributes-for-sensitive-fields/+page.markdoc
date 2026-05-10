@@ -3,7 +3,7 @@ layout: post
 title: Secure sensitive database fields with encrypted string attributes
 description: Learn how to use encrypted string attributes to protect sensitive data in your Appwrite database.
 date: 2025-07-10
-cover: /images/blog/encrypted-attributes-for-sensitive-fields/cover.png
+cover: /images/blog/encrypted-attributes-for-sensitive-fields/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
@@ -30,18 +30,18 @@ To create an encrypted attribute:
 3. Choose a collection and open the **Attributes** tab
 4. Click **Create attribute**, then select **String**
 
-    ![create attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/create-attribute-modal.png)
+    ![create attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/create-attribute-modal.avif)
 
 5. In the attribute creation modal, enable the **Encrypted** checkbox
 
-    ![string attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/string-attribute-modal.png)
+    ![string attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/string-attribute-modal.avif)
 
 
 You may also configure standard settings, such as size limits, default values, whether the field is required, or whether it supports arrays. Note that encrypted string attributes require a **minimum size of 150 characters**.
 
 Once created, the attribute will appear in your schema with a lock icon indicating that its contents are encrypted at rest.
 
-![encrypted attribute screen](/images/blog/encrypted-attributes-for-sensitive-fields/encrypted-attribute-screen.png)
+![encrypted attribute screen](/images/blog/encrypted-attributes-for-sensitive-fields/encrypted-attribute-screen.avif)
 
 Note that the encrypted string attribute feature is available only on **Pro plans and higher**.
 

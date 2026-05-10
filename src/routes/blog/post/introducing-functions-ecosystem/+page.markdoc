@@ -3,7 +3,7 @@ layout: post
 title: "Leveling up the Appwrite Functions ecosystem"
 description: The new Appwrite Functions ecosystem is now faster, smoother, better and more secure.
 date: 2024-08-21
-cover: /images/blog/init-day2/cover.png
+cover: /images/blog/init-day2/cover.avif
 timeToRead: 5
 author: luke-silver
 category: product, announcement
@@ -77,7 +77,7 @@ await functions.createExecution({
 
 This feature is perfect for scheduling marketing emails, cleanup tasks, or precisely timed events.
 
-![Delayed-executions](/images/blog/init-day2/1.png)
+![Delayed-executions](/images/blog/init-day2/1.avif)
 
 # Binary executions
 
@@ -132,7 +132,7 @@ const executions = await functions.listExecutions({
 
 Of course, it’s also possible to filter executions from the Appwrite Console:
 
-![Execution-filters](/images/blog/init-day2/2.png)
+![Execution-filters](/images/blog/init-day2/2.avif)
 
 You can now quickly find and analyze specific executions based on criteria like status, request method, or deployment ID.
 

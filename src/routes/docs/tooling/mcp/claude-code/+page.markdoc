@@ -62,7 +62,7 @@ Run the following command in your terminal (where Claude Code is running).
 
 You should see the added MCP servers listed there.
 
-![Verify MCP tools](/images/docs/mcp/claude-code/verify-mcp-tools.png)
+![Verify MCP tools](/images/docs/mcp/claude-code/verify-mcp-tools.avif)
 
 {% /section %}
 
@@ -95,6 +95,6 @@ Try out the following example prompts based on the MCP server you have configure
 
 {% /tabs %}
 
-![Implement file uploads with Appwrite Storage](/images/docs/mcp/claude-code/implement-file-uploads.png)
+![Implement file uploads with Appwrite Storage](/images/docs/mcp/claude-code/implement-file-uploads.avif)
 
 {% /section %}

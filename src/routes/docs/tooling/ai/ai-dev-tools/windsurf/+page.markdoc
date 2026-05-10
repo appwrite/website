@@ -43,7 +43,7 @@ Before you begin, ensure you have the following **pre-requisites** installed on 
 
 Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
 
-![Windsurf add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.png)
+![Windsurf add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.avif)
 
 Choose which MCP server you want to configure:
 
@@ -132,6 +132,6 @@ Open Cascade chat in the Windsurf Editor and test your MCP integrations. You can
 
 {% /tabs %}
 
-![Windsurf Cascade chat](/images/docs/mcp/windsurf/windsurf-cascade-chat.png)
+![Windsurf Cascade chat](/images/docs/mcp/windsurf/windsurf-cascade-chat.avif)
 
 {% /section %}

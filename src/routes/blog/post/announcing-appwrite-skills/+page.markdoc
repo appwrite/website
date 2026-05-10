@@ -3,7 +3,7 @@ layout: post
 title: "Introducing Appwrite Skills: Give your AI agents Appwrite expertise"
 description: Appwrite Skills are open source markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Install once, and your agents generate correct Appwrite code automatically.
 date: 2026-03-09
-cover: /images/blog/introducing-appwrite-skills/cover.png
+cover: /images/blog/introducing-appwrite-skills/cover.avif
 timeToRead: 4
 author: atharva
 category: product, announcement

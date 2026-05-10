@@ -8,7 +8,7 @@
 
     const title = 'Support' + TITLE_SUFFIX;
     const description = DEFAULT_DESCRIPTION;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>

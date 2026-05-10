@@ -6,19 +6,19 @@ date: 2026-04-09
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/oauth-x/cover.png
+cover: /images/integrations/oauth-x/cover.avif
 category: auth
 product:
-    avatar: '/images/integrations/avatars/x.png'
+    avatar: '/images/integrations/avatars/x.avif'
     vendor: X
     description: 'X is a social media platform where users can post short messages, follow others, and engage in real-time conversations on topics ranging from news and politics to entertainment and technology.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/oauth-x/cover.png
-    - /images/integrations/oauth-x/new-app.png
-    - /images/integrations/oauth-x/oauth2.png
-    - /images/integrations/oauth-x/provider.png
+    - /images/integrations/oauth-x/cover.avif
+    - /images/integrations/oauth-x/new-app.avif
+    - /images/integrations/oauth-x/oauth2.avif
+    - /images/integrations/oauth-x/provider.avif
 ---
 
 X, formerly known as Twitter, is a social media platform where users can post short messages, follow others, and engage in real-time conversations on topics ranging from news and politics to entertainment and technology. With hundreds of millions of active users worldwide, X is one of the most widely used social platforms and provides OAuth 2.0 support, allowing developers to authenticate users through their existing X accounts.
@@ -41,7 +41,7 @@ In your app's settings, scroll down to **User authentication settings** and clic
 - **Type of App**: Select **Web App, Automated App or Bot**.
 - **Callback URI / Redirect URL**: Temporarily add `https://temporary-endpoint.com/`. This will be replaced with the actual URI once the OAuth2 adapter is configured on Appwrite.
 
-![OAuth 2.0 settings](/images/integrations/oauth-x/oauth2.png)
+![OAuth 2.0 settings](/images/integrations/oauth-x/oauth2.avif)
 
 After saving, X will display a **Client ID** and **Client Secret**. Save both values for later use.
 
@@ -49,7 +49,7 @@ After saving, X will display a **Client ID** and **Client Secret**. Save both va
 
 For this step, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/register) if you haven't already. In your Appwrite project, head over to the **Auth** page, open the **Settings** tab, and click on **X** under the **OAuth2 Providers** section.
 
-![X provider](/images/integrations/oauth-x/provider.png)
+![X provider](/images/integrations/oauth-x/provider.avif)
 
 Add the **Client ID** and **Client Secret** you saved from your X app and copy the URI to replace the temporary URL in the **Callback URI / Redirect URL** field in your X app's user authentication settings.
 

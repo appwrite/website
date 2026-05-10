@@ -52,7 +52,7 @@
     const title = 'Contact us' + TITLE_SUFFIX;
     const description =
         'Fill in this short form to get in touch with the Appwrite team. Questions, feature requests or bug reports - all input is welcome!';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -73,7 +73,7 @@
 </svelte:head>
 
 <div class="absolute" style="pointer-events:none;">
-    <enhanced:img src="./bg.png" alt="" />
+    <enhanced:img src="./bg.avif" alt="" />
 </div>
 
 <Main>

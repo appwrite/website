@@ -3,7 +3,7 @@ layout: post
 title: "March product update: Product Hunt launch, Appwrite MCP server, and faster backups."
 description: Get a full recap of products, features and programs we released in the month of March.
 date: 2025-04-11
-cover: /images/blog/product-update-march-2025/cover-image.png
+cover: /images/blog/product-update-march-2025/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -19,7 +19,7 @@ Welcome back to the March product update. Here’s what happened the past month:
 
 Plus, we've got something exciting to share with you. Let’s dive in.
 
-![Product Hunt announcement](/images/blog/product-update-march-2025/ph.png)
+![Product Hunt announcement](/images/blog/product-update-march-2025/ph.avif)
 
 # Big announcement coming soon
 
@@ -29,7 +29,7 @@ Visit our ‘Coming Soon’ page and click Notify Me to get an email when we go 
 
 [Go to Product Hunt](https://www.producthunt.com/products/appwrite)
 
-![Appwrite MCP server](/images/blog/product-update-march-2025/mcp.png)
+![Appwrite MCP server](/images/blog/product-update-march-2025/mcp.avif)
 
 # Appwrite MCP server
 
@@ -43,7 +43,7 @@ Not sure where to start? No worries, we’ve got you covered.
 
 The Appwrite MCP server opens up infinite possibilities, and this is just the beginning. We can't wait to see how you’ll use it in your projects.
 
-![Cloud improvements](/images/blog/product-update-march-2025/cloud-backups.png)
+![Cloud improvements](/images/blog/product-update-march-2025/cloud-backups.avif)
 
 # Appwrite Cloud backups are now faster
 
@@ -59,7 +59,7 @@ Now, setting the budget to 0 means your organization will not exceed its allocat
 
 [Learn more](https://appwrite.io/changelog/entry/2025-03-19)
 
-![Community recognitions](/images/blog/product-update-march-2025/community.png)
+![Community recognitions](/images/blog/product-update-march-2025/community.avif)
 
 # Community recognitions
 

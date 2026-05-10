@@ -192,7 +192,7 @@
     let serviceName = $derived(serviceMap[data.service?.name]);
     let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
     let description = $derived(shortenedDescription);
-    let ogImage = $derived(DEFAULT_HOST + '/images/open-graph/docs.png');
+    let ogImage = $derived(DEFAULT_HOST + '/images/open-graph/docs.avif');
 </script>
 
 <svelte:head>

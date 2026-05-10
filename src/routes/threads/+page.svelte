@@ -17,7 +17,7 @@
     const title = 'Threads' + TITLE_SUFFIX;
     const description =
         "Appwrite's Threads page showcases our community interactions on Discord. Join the conversation, ask questions, or assist other members with their issues.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     let { data } = $props();
 
@@ -197,7 +197,11 @@
                             <ThreadCard {thread} {query} />
                         {:else}
                             <div class="web-card is-normal has-border-gradient empty-card">
-                                <enhanced:img class="img" src="./(assets)/empty-state.png" alt="" />
+                                <enhanced:img
+                                    class="img"
+                                    src="./(assets)/empty-state.avif"
+                                    alt=""
+                                />
                                 <span class="text-main-body font-medium"
                                     >No support threads found</span
                                 >

@@ -3,7 +3,7 @@ layout: post
 title: "Faster and safer Functions development in your local environment"
 description: You can now develop and test functions on your local machine.
 date: 2024-08-19
-cover: /images/blog/init-day0/cover.png
+cover: /images/blog/init-day0/cover.avif
 timeToRead: 5
 author: matej-baco
 category: init, announcement, product
@@ -87,7 +87,7 @@ Finally, the command starts your function, which will listen on `http://localhos
 
 Opening the URL in a browser or HTTP client will execute your function. If you started a brand new function, you should see a sample JSON response.
 
-![Local-host](/images/blog/init-day0/1.png)
+![Local-host](/images/blog/init-day0/1.avif)
 
 ## Make changes to your Appwrite Function
 

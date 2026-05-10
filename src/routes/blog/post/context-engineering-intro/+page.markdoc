@@ -2,13 +2,22 @@
 layout: post
 title: "Context engineering intro: Why prompts alone aren't enough anymore"
 description: Learn what context engineering is, how it evolved from prompt engineering, and why it's key to building reliable AI systems.
-cover: /images/blog/context-engineering-intro/cover.png
+cover: /images/blog/context-engineering-intro/cover.avif
 timeToRead: 10
 date: 2025-10-31
 author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What is context engineering in simple terms?"
+    answer: "Context engineering is the process of designing everything around an AI model: rules, data, tools, memory, and structure, so it can reason instead of guessing. Instead of just prompting the model once, you create an environment where it has enough information to consistently make accurate decisions."
+  - question: "How is context engineering different from prompt engineering?"
+    answer: "Prompt engineering focuses on crafting good instructions, getting one accurate or creative response from a model. Context engineering goes a level deeper: it's about building the entire setup that the model works within. You decide what inputs it sees, what rules it follows, what tools it can use, and how information flows between steps. Prompt engineering is the message; context engineering is the system."
+  - question: "Why does context matter so much for coding with AI?"
+    answer: "Because AI tools can't infer your full setup unless you tell them, in coding workflows, context refers to providing the model with access to your project files, API documentation, frameworks, or design choices. Without that, it can't produce code that actually fits your stack. It'll just generate something generic."
+  - question: "What are common mistakes to avoid in context engineering?"
+    answer: "The biggest mistakes are overloading the model with too much data, mixing unstructured inputs, and forgetting to reassert key rules as a conversation or workflow evolves. Small habits like labelling inputs or pruning old memory drastically improve consistency."
 ---
 Not long ago, we were all caught up in "vibe coding". You'd open ChatGPT, type "Build me a to-do app", and watch code appear like magic. No setup, no planning, just vibes.
 
@@ -108,26 +117,6 @@ As systems grow, stored memory can become messy, and the model starts pulling in
 Long conversations or chained tasks can slowly shift the model off course; it starts forgetting tone, rules, or formatting.
 
 **Fix:** Reassert the essentials. Include a short reminder in every new request, like, “Remember: use Appwrite auth, React, and JSON format.” Small nudges keep consistency.
-
-# Frequently asked questions (FAQs)
-
-**1. What is context engineering in simple terms?**
-
-Context engineering is the process of designing everything around an AI model: rules, data, tools, memory, and structure, so it can reason instead of guessing. Instead of just prompting the model once, you create an environment where it has enough information to consistently make accurate decisions.
-
-**2. How is context engineering different from prompt engineering?**
-
-Prompt engineering focuses on crafting good instructions, getting one accurate or creative response from a model.
-
-Context engineering goes a level deeper: it's about building the entire setup that the model works within. You decide what inputs it sees, what rules it follows, what tools it can use, and how information flows between steps. Prompt engineering is the message; context engineering is the system.
-
-**3. Why does context matter so much for coding with AI?**
-
-Because AI tools can't infer your full setup unless you tell them, in coding workflows, context refers to providing the model with access to your project files, API documentation, frameworks, or design choices. Without that, it can't produce code that actually fits your stack. It'll just generate something generic.
-
-**4. What are common mistakes to avoid in context engineering?**
-
-The biggest mistakes are overloading the model with too much data, mixing unstructured inputs, and forgetting to reassert key rules as a conversation or workflow evolves. Small habits like labelling inputs or pruning old memory drastically improve consistency.
 
 # Wrapping up
 

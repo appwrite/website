@@ -2,7 +2,7 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Templates from '../(assets)/templates.png';
+    import Templates from '../(assets)/templates.avif';
 
     const icons = {
         node: '/images/platforms/dark/node.svg',

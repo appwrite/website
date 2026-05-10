@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/logging-appsignal/cover.png
+cover: /images/integrations/logging-appsignal/cover.avif
 category: logging
 product:
-    avatar: '/images/integrations/avatars/appsignal.png'
+    avatar: '/images/integrations/avatars/appsignal.avif'
     vendor: AppSignal
     description: 'AppSignal is a comprehensive monitoring and error-tracking tool designed for developers to gain insights into the performance of their applications.'
 platform:
     - 'Self-hosted'
 images:
-    - /images/integrations/logging-appsignal/cover.png
-    - /images/integrations/logging-appsignal/api-key.png
-    - /images/integrations/logging-appsignal/errors-list.png
-    - /images/integrations/logging-appsignal/error.png
+    - /images/integrations/logging-appsignal/cover.avif
+    - /images/integrations/logging-appsignal/api-key.avif
+    - /images/integrations/logging-appsignal/errors-list.avif
+    - /images/integrations/logging-appsignal/error.avif
 ---
 
 AppSignal is a comprehensive monitoring and error-tracking tool designed for developers to gain insights into the performance of their applications. It provides detailed metrics on application performance, error tracking, and server health, enabling developers to diagnose and resolve issues efficiently. AppSignal supports various programming languages and frameworks, offering seamless integration and an intuitive interface. It helps teams monitor application health in real time, receive alerts on critical issues, and analyze performance data to optimize their code and infrastructure, ultimately ensuring a smooth user experience and maintaining high application reliability.
@@ -35,7 +35,7 @@ To implement the AppSignal provider for logging, there are several steps you mus
 
 First, [sign up on AppSignal](https://appsignal.com/users/sign_up) and create your first organization (or join an existing one). Head to the **App settings** from the left sidebar and click on **Push & deploy**. Copy the **app-specific Push API key** for further usage.
 
-![API key](/images/integrations/logging-appsignal/api-key.png)
+![API key](/images/integrations/logging-appsignal/api-key.avif)
 
 ## Step 2: Add AppSignal provider to your Appwrite instance
 
@@ -74,11 +74,11 @@ docker compose exec appwrite ssl --domain="wrongdomain.com"
 
 Doing so will show errors in your AppSignal **Errors** page.
 
-![Errors list](/images/integrations/logging-appsignal/errors-list.png)
+![Errors list](/images/integrations/logging-appsignal/errors-list.avif)
 
 You can also view the error summary for further details.
 
-![Error](/images/integrations/logging-appsignal/error.png)
+![Error](/images/integrations/logging-appsignal/error.avif)
 
 # Read more about AppSignal and Appwrite
 

@@ -26,7 +26,7 @@ Before you begin, ensure you have the following **pre-requisites** installed on 
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.
 
-![Claude Settings](/images/docs/mcp/claude-desktop/claude-settings.png)
+![Claude Settings](/images/docs/mcp/claude-desktop/claude-settings.avif)
 
 Clicking on the **Edit Config** button will take you to the `claude_desktop_config.json` file. In case the file is missing, please visit the [Model Context Protocol](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server) docs.
 
@@ -100,7 +100,7 @@ To enable additional API tools, learn more about [command-line arguments](/docs/
 
 Restart the Claude Desktop app, click on the MCP tools button (at the bottom right section of the prompt input) and click on it to view available Appwrite MCP tools.
 
-![Appwrite MCP tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.png)
+![Appwrite MCP tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.avif)
 
 {% info title="uvx ENOENT error" %}
 
@@ -139,6 +139,6 @@ Try out the following example prompts based on the MCP server you have configure
 
 {% /tabs %}
 
-![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.png)
+![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.avif)
 
 {% /section %}

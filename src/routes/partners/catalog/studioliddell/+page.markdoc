@@ -6,12 +6,12 @@ date: 2025-08-12
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/studioliddell.png
+cover: /images/partners/covers/studioliddell.avif
 category: agency
 website: https://studioliddell.com
 email: mailto:bizdev@studioliddell.com
 product: 
-    avatar: '/images/partners/avatars/studioliddell.png'
+    avatar: '/images/partners/avatars/studioliddell.avif'
     vendor: Studio Liddell
     description: Studio Liddell is a premier digital solutions company, enhancing brands and online presence through captivating design, immersive VR and AR experiences, innovative apps, and strategic digital initiatives.
 technologies: 

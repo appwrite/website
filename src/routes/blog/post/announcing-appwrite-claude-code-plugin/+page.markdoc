@@ -3,7 +3,7 @@ layout: post
 title: "Introducing the Appwrite plugin for Claude Code: Skills and MCP servers in one install"
 description: The Appwrite plugin for Claude Code bundles agent skills and MCP servers into a single install, so your Claude Code agent can build with Appwrite out of the box.
 date: 2026-04-20
-cover: /images/blog/announcing-appwrite-claude-code-plugin/cover.png
+cover: /images/blog/announcing-appwrite-claude-code-plugin/cover.avif
 timeToRead: 4
 author: atharva
 category: announcement

@@ -6,20 +6,20 @@ date: 2026-04-01
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/self-hosted-mongodb/cover.jpg
+cover: /images/integrations/self-hosted-mongodb/cover.avif
 category: databases
 product:
-    avatar: '/images/integrations/avatars/mongodb.png'
+    avatar: '/images/integrations/avatars/mongodb.avif'
     vendor: MongoDB
     description: 'MongoDB is a popular NoSQL database known for its flexibility and scalability.'
 platform:
     - 'Self-hosted'
 images:
-    - /images/integrations/self-hosted-mongodb/cover.jpg
-    - /images/docs/advanced/self-hosting/installation/dark/wizard-setup.png
-    - /images/docs/advanced/self-hosting/installation/dark/wizard-secure.png
-    - /images/docs/advanced/self-hosting/installation/dark/wizard-account.png
-    - /images/docs/advanced/self-hosting/installation/dark/wizard-review.png
+    - /images/integrations/self-hosted-mongodb/cover.avif
+    - /images/docs/advanced/self-hosting/installation/dark/wizard-setup.avif
+    - /images/docs/advanced/self-hosting/installation/dark/wizard-secure.avif
+    - /images/docs/advanced/self-hosting/installation/dark/wizard-account.avif
+    - /images/docs/advanced/self-hosting/installation/dark/wizard-review.avif
 ---
 
 [MongoDB](https://www.mongodb.com/) is a popular NoSQL database known for its flexibility and scalability. It allows developers to store and manage large amounts of data with ease.
@@ -86,7 +86,7 @@ Once the command is running, open your browser and go to `http://localhost:20080
 
 On visiting the aforementioned URL, Appwrite's self-hosting installation wizard will ask you to configure certain necessary fields:
 
-![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.avif)
 
 - **Hostname:** Enter the domain or IP address where your Appwrite instance will be accessible. If you're just testing locally, `localhost` works fine.
 - **Database:** Select `MongoDB`. It should already be selected by default, but ensure it is the one highlighted.
@@ -96,7 +96,7 @@ On visiting the aforementioned URL, Appwrite's self-hosting installation wizard 
 
 Once your instance is set up, the wizard will generate a secret key to encrypt sensitive data on your server.
 
-![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.avif)
 
 Copy this key and store it somewhere safe. You will not be able to see it again after this step.
 
@@ -104,13 +104,13 @@ Copy this key and store it somewhere safe. You will not be able to see it again 
 
 Create the email and password for your Appwrite account. These credentials will allow you to sign in to the Appwrite Console on your instance after installation.
 
-![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.avif)
 
 ## Step 5: Review your setup
 
 Before concluding, the installation wizard will show you a summary of your configuration. Double-check all the settings and verify that the database selection shows MongoDB.
 
-![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.avif)
 
 Once everything looks good, hit the **Install** button. The wizard will pull the necessary Docker images and set up your Appwrite instance with MongoDB configured as the underlying database.
 

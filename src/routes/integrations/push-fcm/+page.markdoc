@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/push-fcm/cover.png
+cover: /images/integrations/push-fcm/cover.avif
 category: messaging
 product: 
-    avatar: '/images/integrations/avatars/fcm.png'
+    avatar: '/images/integrations/avatars/fcm.avif'
     vendor: Firebase
     description: 'Firebase Cloud Messaging is a cross-platform messaging solution from Google that enables you to send notifications and messages to users across Android, iOS, and web applications.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/push-fcm/cover.png
-    - /images/integrations/push-fcm/private-key.png
-    - /images/integrations/push-fcm/provider.png
+    - /images/integrations/push-fcm/cover.avif
+    - /images/integrations/push-fcm/private-key.avif
+    - /images/integrations/push-fcm/provider.avif
 ---
 
 Firebase Cloud Messaging (FCM) is a cross-platform messaging solution from Google that enables you to send notifications and messages to users across Android, iOS, and web applications. It supports both notification messages displayed by the system UI and data messages handled by your app’s code.
@@ -35,7 +35,7 @@ To implement the FCM provider in Appwrite Messaging, there are several steps you
 
 First, you must [sign up for a Firebase account](https://firebase.google.com/) and create a new project. Head to the **Project settings** page, click on the **Service accounts** tab, and **generate new private key**. Download the JSON file for later use.
 
-![Firebase service account private key](/images/integrations/push-fcm/private-key.png)
+![Firebase service account private key](/images/integrations/push-fcm/private-key.avif)
 
 You must also verify that FCM has been enabled on your project by visiting the **Cloud Messaging** tab. If FCM is disabled, click the three-dots menu, open the link, and click **Enable**.
 
@@ -45,7 +45,7 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Select **FCM** and upload the JSON file you downloaded from Firebase.
 
-![FCM provider](/images/integrations/push-fcm/provider.png)
+![FCM provider](/images/integrations/push-fcm/provider.avif)
 
 ## Step 3: Test the provider
 

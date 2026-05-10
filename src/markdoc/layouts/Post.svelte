@@ -7,6 +7,7 @@
     import CallToAction from '../tags/Call_To_Action.svelte';
     import Article from '$lib/components/blog/article.svelte';
     import Breadcrumbs from '$lib/components/blog/breadcrumbs.svelte';
+    import Faq from '$lib/components/blog/faq.svelte';
     import PostMeta from '$lib/components/blog/post-meta.svelte';
     import TableOfContents from '$lib/components/blog/table-of-contents.svelte';
     import { Main } from '$lib/layouts';
@@ -192,9 +193,9 @@
                 <div class="border-smooth md:border-r md:pr-12 lg:col-span-9">
                     <PostMeta {authorData} {title} {timeToRead} {currentURL} {date} {description} />
                     {#if cover}
-                        <div class="web-media my-8! aspect-video">
+                        <div class="web-media my-8! w-full overflow-hidden rounded-lg">
                             <Media
-                                class="block aspect-video object-cover"
+                                class="web-u-media-ratio-16-9 w-full"
                                 src={cover}
                                 alt={title}
                                 priority
@@ -216,6 +217,10 @@
 
                         <slot />
                     </div>
+
+                    {#if faqs?.length}
+                        <Faq items={faqs} />
+                    {/if}
                 </div>
 
                 <TableOfContents {toc} />
@@ -236,7 +241,7 @@
                     <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
                         {#each posts
                             .filter((p) => p.title !== title)
-                            .slice(0, 3) as post (post.href)}
+                            .slice(0, 6) as post (post.href)}
                             {@const { postAuthors, authorAvatars, primaryAuthor } = getPostAuthors(
                                 post.author,
                                 authors

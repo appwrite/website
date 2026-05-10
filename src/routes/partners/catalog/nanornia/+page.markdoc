@@ -6,11 +6,11 @@ date: 2025-03-21
 featured: true
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/nanornia.png
+cover: /images/partners/covers/nanornia.avif
 category: agency
 website: https://nanornia.se
 product: 
-    avatar: '/images/partners/avatars/nanornia.png'
+    avatar: '/images/partners/avatars/nanornia.avif'
     vendor: nanornia
     description: 'Nanornia is a digital agency that creates websites, apps, and visual designs. We help businesses of all sizes build professional and user-friendly digital solutions, using both custom development and low-code tools to deliver high-quality results.'
 technologies: 

@@ -3,7 +3,7 @@ layout: post
 title: "Announcing Appwrite MCP Server 2.0"
 description: The Appwrite MCP server has been rebuilt with a compact two-tool architecture that uses less context, requires zero configuration flags, and automatically supports all Appwrite services.
 date: 2026-04-13
-cover: /images/blog/announcing-appwrite-mcp-server-2/cover.png
+cover: /images/blog/announcing-appwrite-mcp-server-2/cover.avif
 timeToRead: 4
 author: chirag-aggarwal
 category: product, announcement

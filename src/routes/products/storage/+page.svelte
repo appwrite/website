@@ -3,7 +3,7 @@
     import MainFooter from '$lib/components/MainFooter.svelte';
     import PreFooter from '$lib/components/PreFooter.svelte';
     import { Main } from '$lib/layouts';
-    import { DEFAULT_DESCRIPTION, DEFAULT_HOST } from '$lib/utils/metadata';
+    import { DEFAULT_HOST } from '$lib/utils/metadata';
     import { TITLE_SUFFIX } from '$routes/titles';
     import Permissions from './(components)/Permissions.svelte';
     import PreviewFiles from './(components)/PreviewFiles.svelte';
@@ -12,15 +12,15 @@
     import Hero from '$lib/components/product-pages/hero.svelte';
     import Testimonials from '$lib/components/product-pages/testimonials.svelte';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
-    import HeroImage from './(assets)/hero-image.png';
+    import HeroImage from './(assets)/hero-image.avif';
     import ProductCards from '$lib/components/product-pages/product-cards.svelte';
     import Optimized from './(components)/Optimized.svelte';
     import { Button } from '$lib/components/ui';
 
-    const title = 'Storage' + TITLE_SUFFIX;
+    const title = 'Appwrite Storage' + TITLE_SUFFIX;
     const description =
-        'Get to know Appwrite Storage - our robust infrastructure allows you to store, optimize and encrypt all of your project files in one place.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+        'Store every file type and serve responsive image previews from one backend. Buckets, permissions, compression, and on-the-fly transformations—self-hosted or on Appwrite Cloud.';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
 <svelte:head>
@@ -45,10 +45,10 @@
         <Hero
             eyebrow={{
                 label: 'Storage',
-                icon: '/images/icons/illustrated/dark/storage.png'
+                icon: '/images/icons/illustrated/dark/storage.avif'
             }}
-            title="Robust and secure storage infrastructure"
-            description="Securely store files with advanced compression, encryption and image transformations."
+            title="Storage for every file - with smart image previews built in"
+            description="Store documents, media, and user uploads with encryption, compression, and on-the-fly image transformations. Same project as Auth and databases—no separate media stack just to ship responsive images."
             image={{
                 url: HeroImage
             }}
@@ -62,10 +62,10 @@
             }}
         />
 
-        <div class="!mb-0 bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.png)]">
+        <div class="!mb-0 bg-right-top bg-no-repeat md:bg-[url(/images/bgs/mint-gradient.avif)]">
             <PreviewFiles />
             <div
-                class="relative bg-[url('/images/pages/storage/pattern-1.png')] [background-size:1200px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
+                class="relative bg-[url('/images/pages/storage/pattern-1.avif')] [background-size:1200px] [background-position:center_bottom_-50%] bg-no-repeat md:[background-size:1350px] md:[background-position:center_bottom]"
             >
                 <Optimized />
                 <Permissions />
@@ -116,7 +116,7 @@
                             </div>
                             <img
                                 class="u-height-auto web-u-max-width-580 mx-auto"
-                                src="/images/pages/storage/console-illustration.png"
+                                src="/images/pages/storage/console-illustration.avif"
                                 alt=""
                                 width="568"
                                 height="536"
@@ -140,7 +140,7 @@
                             <div>
                                 <img
                                     class="l-drop-shadow u-height-auto hidden md:block"
-                                    src="/images/pages/storage/settings.png"
+                                    src="/images/pages/storage/settings.avif"
                                     alt=""
                                     width="568"
                                     height="536"
@@ -148,7 +148,7 @@
                                 />
                                 <img
                                     class="l-drop-shadow u-height-auto block md:hidden"
-                                    src="/images/pages/storage/settings-mobile.png"
+                                    src="/images/pages/storage/settings-mobile.avif"
                                     alt=""
                                     width="568"
                                     height="536"
@@ -161,7 +161,7 @@
             </div>
         </div>
         <div
-            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.png)] bg-left bg-no-repeat pb-20"
+            class="web-big-padding-section-level-1 web-white-section light bg-[url(/images/bgs/purple-gradient.avif)] bg-left bg-no-repeat pb-20"
         >
             <div class="!my-0 py-24 md:py-20">
                 <div class="container">
@@ -172,8 +172,9 @@
                                 What you can do with Storage APIs
                             </h2>
                             <p class="text-main-body font-medium">
-                                Appwrite's Storage APIs allow you to create and update your files,
-                                apply image transformations, and more.
+                                Create buckets, stream uploads, read metadata, and generate
+                                transformed previews from your SDKs—all with the same permission
+                                model as the rest of Appwrite.
                             </p>
                             <Button
                                 href="/docs/references/cloud/client-web/storage"

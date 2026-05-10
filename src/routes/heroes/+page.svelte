@@ -11,7 +11,7 @@
     const title = 'Heroes' + TITLE_SUFFIX;
     const description =
         "If you're passionate about helping developers build great products with Appwrite - join our Heroes program and get access to a number of exclusive perks.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     const heroCards: HeroCardProps[] = [
         {
@@ -22,7 +22,7 @@
             github: 'https://github.com/dianapham',
             twitter: 'https://twitter.com/dianasoyster',
             linkedin: 'https://www.linkedin.com/in/dianasoyster',
-            avatar: 'images/heroes/avatars/diana.png'
+            avatar: 'images/heroes/avatars/diana.avif'
         },
         {
             name: 'Lucas Audart',
@@ -32,7 +32,7 @@
             github: 'https://github.com/Slocaly',
             twitter: 'https://twitter.com/Slocalyy',
             linkedin: 'https://www.linkedin.com/in/lucas-audart',
-            avatar: 'images/heroes/avatars/lucas.png'
+            avatar: 'images/heroes/avatars/lucas.avif'
         },
         {
             name: 'Bishwajeet Parhi',
@@ -42,7 +42,7 @@
             github: 'https://github.com/2002Bishwajeet',
             twitter: 'https://twitter.com/biswa_20p',
             linkedin: 'https://www.linkedin.com/in/2002bishwajeet',
-            avatar: 'images/heroes/avatars/bishwajeet.png'
+            avatar: 'images/heroes/avatars/bishwajeet.avif'
         },
         {
             name: 'Mickaël Alves',
@@ -51,7 +51,7 @@
             github: 'https://github.com/CruuzAzul',
             twitter: 'https://twitter.com/CruuzAzul',
             linkedin: 'https://www.linkedin.com/in/mickaelalves',
-            avatar: 'images/heroes/avatars/mickael.png'
+            avatar: 'images/heroes/avatars/mickael.avif'
         },
         {
             name: 'Jason Torres',
@@ -60,7 +60,7 @@
             github: 'https://github.com/jasonetorres',
             twitter: 'https://twitter.com/tasonjorres',
             linkedin: 'https://www.linkedin.com/in/thejasontorres',
-            avatar: 'images/heroes/avatars/jason.png'
+            avatar: 'images/heroes/avatars/jason.avif'
         },
         {
             name: 'Vincent Ge',
@@ -69,7 +69,7 @@
             github: 'https://github.com/gewenyu99/',
             twitter: 'https://x.com/WenYuGe1',
             linkedin: 'https://www.linkedin.com/in/wen-yu-ge/',
-            avatar: 'images/heroes/avatars/vincent.png'
+            avatar: 'images/heroes/avatars/vincent.avif'
         },
         {
             name: 'Taylor Desseyn',
@@ -78,7 +78,7 @@
             github: 'https://github.com/tdesseyn',
             twitter: 'https://x.com/tdesseyn',
             linkedin: 'https://www.linkedin.com/in/taylordesseyn/',
-            avatar: 'images/heroes/avatars/taylor.png'
+            avatar: 'images/heroes/avatars/taylor.avif'
         },
         {
             name: 'Demola Malomo',
@@ -87,7 +87,7 @@
             github: 'https://github.com/Mr-Malomz',
             twitter: 'https://x.com/malomz',
             linkedin: 'https://www.linkedin.com/in/malomoademola/',
-            avatar: 'images/heroes/avatars/demola.png'
+            avatar: 'images/heroes/avatars/demola.avif'
         },
         {
             name: 'Danny Thompson',
@@ -96,7 +96,7 @@
             github: 'https://github.com/TheDThompsonDev',
             twitter: 'https://x.com/DThompsonDev',
             linkedin: 'https://www.linkedin.com/in/dthompsondev',
-            avatar: 'images/heroes/avatars/danny.png'
+            avatar: 'images/heroes/avatars/danny.avif'
         },
         {
             name: 'Christina Petit',
@@ -105,7 +105,7 @@
             github: 'http://github.com/petipois',
             twitter: 'http://x.com/petitpois28',
             linkedin: 'https://www.linkedin.com/in/christina-petitpois',
-            avatar: 'images/heroes/avatars/christina.png'
+            avatar: 'images/heroes/avatars/christina.avif'
         },
         {
             name: 'Nick Gatzoulis',
@@ -114,7 +114,7 @@
             github: 'https://github.com/nickgatzoulis',
             twitter: 'https://x.com/nickgatzoulis',
             linkedin: 'https://www.linkedin.com/in/nickgatzoulis',
-            avatar: 'images/heroes/avatars/nick.png'
+            avatar: 'images/heroes/avatars/nick.avif'
         }
     ];
 
@@ -166,7 +166,7 @@
                         </Button>
                     </div>
                     <div>
-                        <img src="/images/heroes/bg.png" width="" alt="" />
+                        <img src="/images/heroes/bg.avif" width="" alt="" />
                     </div>
                 </section>
             </div>
@@ -188,15 +188,15 @@
                             </p>
                         </div>
                         <div class="avatar-1">
-                            <FloatingHead src="/images/heroes/avatars/bishwajeet.png" size={64} />
+                            <FloatingHead src="/images/heroes/avatars/bishwajeet.avif" size={64} />
                         </div>
                         <div class="avatar-2">
-                            <FloatingHead src="/images/heroes/avatars/tanmoy.png" size={80} />
+                            <FloatingHead src="/images/heroes/avatars/tanmoy.avif" size={80} />
                         </div>
                         <div class="avatar-3">
-                            <FloatingHead src="/images/heroes/avatars/emilia.png" size={64} />
+                            <FloatingHead src="/images/heroes/avatars/emilia.avif" size={64} />
                         </div>
-                        <enhanced:img class="teal-blur" src="./teal-blur.png" alt="" />
+                        <enhanced:img class="teal-blur" src="./teal-blur.avif" alt="" />
                     </div>
                 </section>
             </div>
@@ -229,7 +229,7 @@
                                 >
                                     <img
                                         class="rounded-xl"
-                                        src="/images/heroes/photos/{i + 1}.png"
+                                        src="/images/heroes/photos/{i + 1}.avif"
                                         loading="lazy"
                                         alt=""
                                     />
@@ -334,7 +334,7 @@
         </div>
 
         <div class="footer-wrapper relative pt-10">
-            <enhanced:img src="./bg-pre.png" alt="" class="absolute" style:inset-block-start="0" />
+            <enhanced:img src="./bg-pre.avif" alt="" class="absolute" style:inset-block-start="0" />
             <div class="web-big-padding-section-level-2 relative">
                 <div class="container">
                     <div class="web-hero web-u-max-width-800">

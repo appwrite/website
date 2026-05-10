@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite vs Replit Agent backend: where should production data live?"
 description: "Compare Replit Agent's built-in database and services with Appwrite as a backend for Replit Agent apps graduating to production."
 date: 2026-05-01
-cover: /images/blog/appwrite-vs-replit-agent-backend/cover.png
+cover: /images/blog/appwrite-vs-replit-agent-backend/cover.avif
 timeToRead: 9
 author: atharva
 unlisted: true
 category: comparisons
+faqs:
+  - question: "What is the difference between Replit Agent and Appwrite?"
+    answer: "Replit Agent is an all-in-one AI app builder with a built-in SQL database, App Storage for files, Replit Auth or Clerk Auth, Secrets, and Publishing for deployments, all orchestrated by the agent. Appwrite is a backend platform with Auth, TablesDB, Storage, Functions, Realtime, Messaging, and Sites that any frontend can talk to. Replit owns the builder experience, Appwrite owns the backend layer."
+  - question: "When do teams move off the Replit Agent backend?"
+    answer: "Teams usually move when an app reaches production: Auth needs to be decoupled from the builder's identity provider, the schema holds customer data with audit needs, file handling needs predictable quotas and access rules, server-side work has outgrown a single function shape, or the team wants self-hosting for data residency. At that point, the backend question benefits from its own answer."
+  - question: "Can I use Appwrite alongside Replit Agent?"
+    answer: "Yes. A common pattern is to keep the frontend on Replit during the prototype phase, point the generated code at an Appwrite project for Auth, tables, Storage, and Functions, and later move the frontend to Appwrite Sites when the team outgrows Replit's runtime. Replit Agent generates UI and client code, while Appwrite owns the durable surface."
+  - question: "Does Replit support a managed realtime service?"
+    answer: "No. Replit does not ship a managed realtime service. Apps that need live updates typically build their own using WebSockets or Server-Sent Events inside the deployed app. Appwrite Realtime is a managed channel-based layer that broadcasts changes across databases, Auth, Storage, and Functions through a unified API."
+  - question: "Can I self-host Appwrite or Replit?"
+    answer: "Appwrite is fully self-hostable through Docker on a single host or Kubernetes cluster, and the same APIs work across Appwrite Cloud and self-hosted instances. Replit is a hosted product, with apps running on Replit infrastructure and databases living inside Replit. Replit exposes SQL exports and app downloads, but the runtime around the data belongs to Replit."
+  - question: "How does MCP work on each platform?"
+    answer: "Replit's beta MCP Server lets external MCP clients create Replit Apps from a prompt, open existing apps, and manage them through Replit Agent, turning Replit into a tool another AI client can drive. Appwrite's MCP servers, Agent Skills, and Claude Code and Cursor plugins let any agent operate on backend resources directly from a local editor."
 ---
 
 Replit Agent is one of the fastest ways to go from an idea in chat to a running app. You describe the product, the agent writes the code, and a working version shows up in the workspace minutes later. That first stretch is built in, and for many prototypes it is enough. The question this post answers is different: once a Replit Agent app earns paying users or a compliance ask, where should the backend for Replit Agent apps actually live?

@@ -14,7 +14,7 @@
     const title: string = 'Assets' + TITLE_SUFFIX;
     const description =
         "This page features Appwrite's key brand assets including the logotype, colors, product visuals, and practical guidelines for their usage.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     const Section = {
         NAMING: 'Naming',
@@ -64,7 +64,7 @@
 </svelte:head>
 
 <div class="web-u-pointer-events-none absolute">
-    <enhanced:img src="./bg.png" alt="" />
+    <enhanced:img src="./bg.avif" alt="" />
 </div>
 
 <Main omitMainId>
@@ -144,7 +144,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logotype/white.png"
+                                                href="/assets/logotype/white.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -172,7 +172,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logotype/black.png"
+                                                href="/assets/logotype/black.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -241,7 +241,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logomark/logo.png"
+                                                href="/assets/logomark/logo.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -269,7 +269,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logomark/logo.png"
+                                                href="/assets/logomark/logo.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -364,13 +364,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/dashboard.png"
+                                            src="/assets/visuals/dashboard.avif"
                                             alt="Dashboard"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/dashboard.jpg"
+                                                href="/assets/visuals/dashboard.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -378,7 +378,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/dashboard.png'}
+                                                href={'/assets/visuals/dashboard.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -389,13 +389,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/auth.png"
+                                            src="/assets/visuals/auth.avif"
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/auth.jpg"
+                                                href="/assets/visuals/auth.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -403,7 +403,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/auth.png'}
+                                                href={'/assets/visuals/auth.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -414,13 +414,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/databases.png"
+                                            src="/assets/visuals/databases.avif"
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/databases.jpg"
+                                                href="/assets/visuals/databases.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -428,7 +428,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/databases.png'}
+                                                href={'/assets/visuals/databases.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -440,13 +440,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/storage.png"
+                                            src="/assets/visuals/storage.avif"
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/storage.jpg"
+                                                href="/assets/visuals/storage.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -454,7 +454,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/storage.png'}
+                                                href={'/assets/visuals/storage.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -466,13 +466,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/functions.png"
+                                            src="/assets/visuals/functions.avif"
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/functions.jpg"
+                                                href="/assets/visuals/functions.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -480,7 +480,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/functions.png'}
+                                                href={'/assets/visuals/functions.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -491,13 +491,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/messaging.png"
+                                            src="/assets/visuals/messaging.avif"
                                             alt="Appwrite Messaging"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/messaging.jpg"
+                                                href="/assets/visuals/messaging.avif"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -505,7 +505,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/messaging.png'}
+                                                href={'/assets/visuals/messaging.avif'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />

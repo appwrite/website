@@ -3,12 +3,23 @@ layout: post
 title: "Serverless functions 101: Best practices"
 description: Some do's, don'ts and best practices for creating and maintaining serverless functions.
 date: 2024-08-19
-cover: /images/blog/serverless-functions/cover.png
+cover: /images/blog/serverless-functions/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
 lastUpdated: 2025-10-14
+faqs:
+  - question: "What are serverless functions?"
+    answer: "Serverless functions let you run small pieces of code in the cloud without managing servers. You just define a function, deploy it, and the platform (like Appwrite, AWS Lambda, or Vercel) automatically scales it up or down based on usage. You only pay for the time your code runs, no idle costs, no manual infrastructure setup."
+  - question: "How do I decide what logic should go into a serverless function?"
+    answer: "Keep functions small, focused, and event-driven. A good rule of thumb: one function should do one thing well, like sending an email, processing an image, or verifying a payment. Avoid cramming multiple workflows into a single function; it makes testing, scaling, and debugging much easier."
+  - question: "How can I reduce the cost of running serverless functions?"
+    answer: "Design your architecture to be event-driven and avoid functions running longer than needed. Split heavy or continuous tasks (like file processing or large data syncs) into smaller chunks or move them to specialized services. Also, clean up unused triggers and logs, they can silently add to costs over time."
+  - question: "How do I secure my serverless functions?"
+    answer: "Enforce authentication and authorization at the function level. Use minimal API scopes and regularly rotate keys. Never rely solely on client-side validation. Always validate tokens or permissions in the function itself. In Appwrite, you can configure execute permissions to restrict who can run each function."
+  - question: "How do I manage versions of serverless functions?"
+    answer: "Versioning helps you roll back safely if something breaks. Assign version numbers when making breaking changes and maintain backward-compatible routes for existing clients. Appwrite lets you manage multiple function versions directly from the console."
 ---
 
 Serverless functions have become a popular choice for modern application development due to their scalability, cost-effectiveness, and ease of use. Appwrite offers an integrated serverless platform that allows you to build and deploy functions seamlessly. However, to make the most of serverless functions, it's essential to follow best practices that ensure efficiency, security, and maintainability.
@@ -89,7 +100,7 @@ For example, if your function handles image processing, it may require more reso
 
 In Appwrite, you can configure your function specification by navigating to your function settings and scrolling to “**Runtime**”:
 
-![Functions-specifications](/images/blog/serverless-functions/1.png)
+![Functions-specifications](/images/blog/serverless-functions/1.avif)
 
 This will allow you to choose the CPU and memory allocation for your function. It's important to choose the right settings based on your function's requirements to ensure optimal performance.
 
@@ -109,7 +120,7 @@ Avoid hardcoding configuration values like API keys or database URLs. Instead, u
 
 In Appwrite, you can set environment variables for your functions in the Cloud Console. Navigate to your function settings and scroll down to the "Environment Variables" section. Here, you can add key-value pairs for your configurations. It should look like this:
 
-![Environment-variables](/images/blog/serverless-functions/2.png)
+![Environment-variables](/images/blog/serverless-functions/2.avif)
 After setting environment variables, you can access them in your function code like this (for Node.js):
 
 ```jsx
@@ -135,11 +146,11 @@ Ensure only authorized users can execute your functions. Appwrite provides built
 
 You must ensure that authorization is enforced on your serverless functions and not solely on the client side. Client-side authorization can be bypassed, leading to security vulnerabilities. Appwrite Databases and Storage services can be configured to enforce access control rules. For example, you can restrict read and write access to documents by navigating to your database collection settings in the Appwrite Console and setting the appropriate permissions. It looks like this:
 
-![Functions-authorization](/images/blog/serverless-functions/3.png)
+![Functions-authorization](/images/blog/serverless-functions/3.avif)
 
 You can also configure **execute access** for your Appwrite functions, allowing you to specify who can execute the function using the client API.
 
-![Functions-access](/images/blog/serverless-functions/4.png)
+![Functions-access](/images/blog/serverless-functions/4.avif)
 
 # Encrypt sensitive data
 
@@ -176,7 +187,7 @@ Appwrite provides built-in logging and monitoring tools that you can use to trac
 
 When using Appwrite Functions, you can keep your log statements within the source code and disable logging from the function settings. This allows you to re-enable logging with a single click in the future if you need to debug or monitor specific requests.
 
-![Functions-logging](/images/blog/serverless-functions/5.png)
+![Functions-logging](/images/blog/serverless-functions/5.avif)
 
 # Automate deployment process
 
@@ -197,28 +208,6 @@ Another tip is to use event triggers to invoke functions only when necessary. Th
 # Avoid long-running functions
 
 Serverless platforms have execution time limits. Avoid long-running tasks to prevent timeouts and increased costs. When a function runs for an extended period, it consumes resources and can impact the performance of other executions. So, design your functions to be short-lived and efficient. And when you notice that a function is taking too long to execute, consider breaking it down into smaller tasks.
-
-# Frequently asked questions (FAQs)
-
-**1. What are serverless functions?**
-
-Serverless functions let you run small pieces of code in the cloud without managing servers. You just define a function, deploy it, and the platform (like Appwrite, AWS Lambda, or Vercel) automatically scales it up or down based on usage. You only pay for the time your code runs, no idle costs, no manual infrastructure setup.
-
-**2. How do I decide what logic should go into a serverless function?**
-
-Keep functions small, focused, and event-driven. A good rule of thumb: one function should do one thing well, like sending an email, processing an image, or verifying a payment. Avoid cramming multiple workflows into a single function; it makes testing, scaling, and debugging much easier.
-
-**3. How can I reduce the cost of running serverless functions?**
-
-Design your architecture to be event-driven and avoid functions running longer than needed. Split heavy or continuous tasks (like file processing or large data syncs) into smaller chunks or move them to specialized services. Also, clean up unused triggers and logs, they can silently add to costs over time.
-
-**4. How do I secure my serverless functions?**
-
-Enforce authentication and authorization at the function level. Use minimal API scopes and regularly rotate keys. Never rely solely on client-side validation. Always validate tokens or permissions in the function itself. In Appwrite, you can configure execute permissions to restrict who can run each function.
-
-**5. How do I manage versions of serverless functions?**
-
-Versioning helps you roll back safely if something breaks. Assign version numbers when making breaking changes and maintain backward-compatible routes for existing clients. Appwrite lets you manage multiple function versions directly from the console.
 
 # Conclusion
 

@@ -76,10 +76,10 @@ The setup wizard walks you through four steps to configure your Appwrite instanc
 Configure your Appwrite instance's basic settings.
 
 {% only_dark %}
-![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.avif)
 {% /only_dark %}
 {% only_light %}
-![Setup your app](/images/docs/advanced/self-hosting/installation/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/wizard-setup.avif)
 {% /only_light %}
 
 - **Hostname** - The domain or IP address where your Appwrite instance will be accessible.
@@ -91,10 +91,10 @@ Configure your Appwrite instance's basic settings.
 A secret API key is automatically generated for your instance. This key is used to encrypt sensitive data.
 
 {% only_dark %}
-![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.avif)
 {% /only_dark %}
 {% only_light %}
-![Secure your app](/images/docs/advanced/self-hosting/installation/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/wizard-secure.avif)
 {% /only_light %}
 
 {% info title="Save your key" %}
@@ -108,10 +108,10 @@ You can use the **Copy** button to copy the key or **Regenerate** to create a ne
 Set up the email and password for your Appwrite account. You'll use these credentials to sign in to the Appwrite Console after installation.
 
 {% only_dark %}
-![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.avif)
 {% /only_dark %}
 {% only_light %}
-![Create your account](/images/docs/advanced/self-hosting/installation/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/wizard-account.avif)
 {% /only_light %}
 
 ## Step 4: Review your setup {% #wizard-review %}
@@ -119,10 +119,10 @@ Set up the email and password for your Appwrite account. You'll use these creden
 Review all your configuration settings. If anything looks wrong, use the **Back** button to make changes. When you're ready, click **Install** to begin the installation.
 
 {% only_dark %}
-![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.avif)
 {% /only_dark %}
 {% only_light %}
-![Review your setup](/images/docs/advanced/self-hosting/installation/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/wizard-review.avif)
 {% /only_light %}
 
 # Manual installation {% #manual-installation %}

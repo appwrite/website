@@ -3,7 +3,7 @@ layout: post
 title: "Building with Appwrite Sites templates"
 description: To make it easier, and a lot faster to build a website, we have added templates. From e-commerce stores, to documentation, you can get started with a couple of clicks.
 date: 2025-05-19
-cover: /images/blog/sites-templates/templates-cover.png
+cover: /images/blog/sites-templates/templates-cover.avif
 timeToRead: 9
 author: ebenezer-don
 category: tutorial
@@ -21,11 +21,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Sites Concole](/images/blog/sites-templates/sites-templates1.png)
+![Sites Concole](/images/blog/sites-templates/sites-templates1.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning a template, which lets you quickly set up a site based on a pre-built project.
 
-![Clone or connect Git](/images/blog/sites-templates/sites-templates2.png)
+![Clone or connect Git](/images/blog/sites-templates/sites-templates2.avif)
 
 # Choosing a template
 
@@ -44,7 +44,7 @@ Templates can also be sorted by use case. The available categories include:
 
 You can also use the search bar above the list to find a template by name. For this walkthrough, we'll use the **Store template** under the Ecommerce category, so if you don't see it right away, you can search for it.
 
-![Search templates](/images/blog/sites-templates/sites-templates3.png)
+![Search templates](/images/blog/sites-templates/sites-templates3.avif)
 
 Clicking the template will open a new page where you can configure your new site.
 
@@ -54,7 +54,7 @@ Once you have selected the template, you will be prompted to enter basic details
 
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
-![set details](/images/blog/sites-templates/sites-templates4.png)
+![set details](/images/blog/sites-templates/sites-templates4.avif)
 
 At this stage, you can choose whether to connect your repository now or later.
 
@@ -89,7 +89,7 @@ You can edit these values if needed, and you can add more environment variables 
 
 Additionally, you can define the domain for your site, using the Appwrite Sites domain.
 
-![Configure](/images/blog/sites-templates/sites-templates5.png)
+![Configure](/images/blog/sites-templates/sites-templates5.avif)
 
 After reviewing your configuration, click **Deploy**.
 
@@ -100,7 +100,7 @@ Once you initiate the deployment, you will be taken to a progress page where you
 The logs will show you the different stages of the build process.
 Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Deploy](/images/blog/sites-templates/sites-templates6.png)
+![Deploy](/images/blog/sites-templates/sites-templates6.avif)
 
 When deployment is complete, Appwrite will display a success screen showing:
 
@@ -110,7 +110,7 @@ When deployment is complete, Appwrite will display a success screen showing:
 - Global CDN status (should show **Connected**)
 - DDoS protection status (should show **Connected**)
 
-![Build](/images/blog/sites-templates/sites-templates7.png)
+![Build](/images/blog/sites-templates/sites-templates7.avif)
 
 You will also see a **Visit site** button that you can click to view your newly deployed website.
 

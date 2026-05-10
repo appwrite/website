@@ -3,11 +3,24 @@ layout: post
 title: "Supabase alternatives for Lovable projects"
 description: "Compare Supabase alternatives for Lovable projects across Appwrite, Firebase, Convex, Neon, and Lovable Cloud, and pick the right backend fit."
 date: 2026-04-26
-cover: /images/blog/supabase-alternatives-lovable-projects/cover.png
+cover: /images/blog/supabase-alternatives-lovable-projects/cover.avif
 timeToRead: 9
 author: atharva
 unlisted: true
 category: ai
+faqs:
+  - question: "What are credible Supabase alternatives for a Lovable project?"
+    answer: "Appwrite is the broadest open-source backend platform for Lovable, covering Auth, Databases, Storage, Functions, Sites, Realtime, and Messaging with docs MCP support inside Lovable. Firebase is a managed BaaS from Google with Firestore. Convex is a reactive backend platform aimed at TypeScript chat and agent apps. Neon is serverless Postgres with one-second provisioning and database branching. You can also skip integrations and run your own backend, though that gives up most of why you picked Lovable."
+  - question: "How does Appwrite compare to Supabase for Lovable apps?"
+    answer: "Supabase makes one slice of the Lovable backend easy through a native one-click integration. Appwrite covers the full backend platform (Auth, Databases, Storage, Functions, Sites, Realtime, Messaging, MCP, self-hosting) reachable through docs-aware AI tooling, MCP servers, SDKs, and APIs. The integration is less automatic, which is the trade-off for breadth, ownership, and a single vendor across more of the stack."
+  - question: "When is Convex a better fit than Supabase for a Lovable project?"
+    answer: "When the Lovable app is purely an AI agent or chat product where the data model is mostly conversations and their state. Convex emphasizes persisted LLM message history, live updates, workflows, RAG, file storage, usage tracking, and rate limiting. It is more opinionated than Supabase, which makes it sharper for a narrower job and less general-purpose for the rest of the backend surface."
+  - question: "When does Neon make sense as the backend for a Lovable app?"
+    answer: "When the database itself is the entire job and instant Postgres branching is the point, especially for agent-native apps where each tenant or each agent task might want its own database. Neon adds Neon Auth and an MCP server, but storage, server-side functions, and hosting still have to be assembled around it. It is a database-first alternative, not a full backend platform."
+  - question: "Is Firebase still a reasonable backend for Lovable apps?"
+    answer: "Yes, for teams committed to Google Cloud and Firestore's document model. Firebase provides Authentication, Firestore, Cloud Storage, Cloud Functions, Hosting, and AI assistance features including Gemini in Firebase and Firebase MCP. The trade-off is that Firebase is not open source and not self-hostable, which matters if ownership is one of the reasons you are looking past Supabase in the first place."
+  - question: "How do I actually use Appwrite from inside Lovable?"
+    answer: "Connect the Appwrite Docs MCP server in Lovable's personal connectors so the chat has grounded Appwrite context. Build the frontend in Lovable with Appwrite as the backend target. Use Appwrite Auth, Databases, Storage, Realtime, and Functions through SDKs and the API. Deploy on Appwrite Sites, or hand the project to Claude Code or Cursor through the Appwrite MCP servers for further iteration."
 ---
 
 Lovable ships with a native Supabase integration. Click a button, authorize your account, and Lovable will scaffold a Postgres backend, auth, storage, Edge Functions, and realtime for whatever the chat produces. For a lot of projects that is the fastest path from prompt to working app, which is why the integration is the default story across Lovable's docs, templates, and community content.

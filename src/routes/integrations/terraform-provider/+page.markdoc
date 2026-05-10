@@ -6,7 +6,7 @@ date: 2026-04-24
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/terraform/cover.png
+cover: /images/integrations/terraform/cover.avif
 category: deployments
 product:
     avatar: '/images/integrations/avatars/terraform.svg'
@@ -16,7 +16,7 @@ platform:
     - 'Cloud'
     - 'Self-hosted'
 images:
-    - /images/integrations/terraform/cover.png
+    - /images/integrations/terraform/cover.avif
 ---
 
 [HashiCorp Terraform](https://www.terraform.io/) lets you describe infrastructure and cloud configuration in declarative files, then apply changes in a repeatable way. The official [**appwrite/appwrite**](https://registry.terraform.io/providers/appwrite/appwrite/latest) provider connects Terraform to your Appwrite project so you can manage resources through the same workflows you use for the rest of your stack.

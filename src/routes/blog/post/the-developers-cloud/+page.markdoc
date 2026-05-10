@@ -3,7 +3,7 @@ layout: post
 title: "Introducing the developers' cloud"
 description: This is an open letter to the Appwrite community about the future ahead. Appwrite is no longer just a backend platform; we are building towards the most complete cloud development platform to date. 
 date: 2025-11-14
-cover: /images/blog/the-developers-cloud/dev-cloud-cover.png
+cover: /images/blog/the-developers-cloud/dev-cloud-cover.avif
 timeToRead: 7
 author: eldad-fux
 category: announcement
@@ -40,7 +40,7 @@ We think about this journey as a continuous chain:
 
 **Protect** - operate with confidence, keep your data and users safe
 
-![The cloud journey](/images/blog/the-developers-cloud/graph1.png)
+![The cloud journey](/images/blog/the-developers-cloud/graph1.avif)
 
 Our goal is to bring these stages together into one seamless flow. The result is a platform that reduces cognitive overhead, minimizes integration work, and lets developers focus on shipping.
 
@@ -96,7 +96,7 @@ You'll also see us continue to explore new layers of flexibility, especially in 
 
 This isn't a single release. It's a long-term evolution guided by the same mission that has always defined Appwrite: empowering developers to create, innovate, and succeed at scale with a platform that grows as they do.
 
-![The cloud journey](/images/blog/the-developers-cloud/graph2.png)
+![The cloud journey](/images/blog/the-developers-cloud/graph2.avif)
 
 As these pieces come together, Appwrite becomes not just where you build, but where your product lives and scales. One platform. Consistent experience. Full lifecycle.
 

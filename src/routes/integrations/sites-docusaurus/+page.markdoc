@@ -6,22 +6,22 @@ date: 2025-05-19
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/sites-docusaurus/cover.png
+cover: /images/integrations/sites-docusaurus/cover.avif
 category: sites
 product: 
-    avatar: '/images/integrations/avatars/docusaurus.png'
+    avatar: '/images/integrations/avatars/docusaurus.avif'
     vendor: Docusaurus
     description: 'Docusaurus is a modern static website generator optimized for building fast, accessible documentation websites with React.'
 platform: 
     - 'Cloud'
     - 'Self-hosted'
 images: 
-    - /images/integrations/sites-docusaurus/cover.png
-    - /images/integrations/sites-docusaurus/search-site.png
-    - /images/integrations/sites-docusaurus/success.png
-    - /images/integrations/sites-docusaurus/homepage.png
-    - /images/integrations/sites-docusaurus/tutorial-page.png
-    - /images/integrations/sites-docusaurus/blog-page.png
+    - /images/integrations/sites-docusaurus/cover.avif
+    - /images/integrations/sites-docusaurus/search-site.avif
+    - /images/integrations/sites-docusaurus/success.avif
+    - /images/integrations/sites-docusaurus/homepage.avif
+    - /images/integrations/sites-docusaurus/tutorial-page.avif
+    - /images/integrations/sites-docusaurus/blog-page.avif
 ---
 
 Docusaurus is a modern static website generator that makes it easy to create and maintain documentation websites. Built with React and powered by Markdown, Docusaurus helps you focus on writing content while taking care of the technical details.
@@ -41,11 +41,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Create new site](/images/integrations/sites-docusaurus/create-site.png)
+![Create new site](/images/integrations/sites-docusaurus/create-site.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning the Docusaurus template, which lets you quickly set up a documentation site based on a pre-built project.
 
-![Create new site](/images/integrations/sites-docusaurus/clone-template.png)
+![Create new site](/images/integrations/sites-docusaurus/clone-template.avif)
 
 ##  Finding the Docusaurus template
 
@@ -53,7 +53,7 @@ When you select **Clone a template**, you'll see a library of templates. To find
 
 1. Use the search bar at the top and type "Docusaurus"
 
-![Search templates](/images/integrations/sites-docusaurus/search-site.png)
+![Search templates](/images/integrations/sites-docusaurus/search-site.avif)
 
 
 After selecting the template, you'll need to choose how to deploy it, Clicking the Docusaurus template will open a new page where you can configure your documentation site.
@@ -69,7 +69,7 @@ Once you have selected the Docusaurus template, you will be prompted to enter ba
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
 
-![Configure site details](/images/integrations/sites-docusaurus/site-details.png)
+![Configure site details](/images/integrations/sites-docusaurus/site-details.avif)
 At this stage, you can choose whether to connect your repository now or later.
 
 
@@ -94,13 +94,13 @@ Once you initiate the deployment, you will be taken to a progress page where you
 
 The logs will show you the different stages of the build process. Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Configure site details](/images/integrations/sites-docusaurus/deployment-screen.png)
+![Configure site details](/images/integrations/sites-docusaurus/deployment-screen.avif)
 
 ## Access your site
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. 
 
-![Configure site details](/images/integrations/sites-docusaurus/success.png)
+![Configure site details](/images/integrations/sites-docusaurus/success.avif)
 
 ## Next step
 
