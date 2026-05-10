@@ -27,8 +27,8 @@
             url: '/blog/post/customer-stories-langx'
         },
         {
-            logo: '/images/logos/trusted-by/k-collect-light.avif',
-            logoWidth: 127,
+            logo: '/images/logos/trusted-by/k-collect.svg',
+            logoWidth: 110,
             logoHeight: 35,
             headline: 'K-Collect reduced infrastructure costs by 700%',
             blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',

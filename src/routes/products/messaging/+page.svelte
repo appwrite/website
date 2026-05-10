@@ -12,7 +12,7 @@
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button } from '$lib/components/ui';
 
-    const title = 'Messaging' + TITLE_SUFFIX;
+    const title = 'Appwrite Messaging' + TITLE_SUFFIX;
     const description =
         'Appwrite Messaging allows you to communicate with your audience across various mediums. Push notifications, SMS and emails - set up within minutes!';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';

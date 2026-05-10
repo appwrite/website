@@ -63,9 +63,9 @@
                         <div class="mt-4 flex items-center gap-3">
                             <img
                                 src={testimonial.image}
-                                class="size-12 rounded-full"
-                                width="48"
-                                height="48"
+                                class="size-8 rounded-full"
+                                width="32"
+                                height="32"
                                 loading="lazy"
                                 decoding="async"
                                 fetchpriority="low"

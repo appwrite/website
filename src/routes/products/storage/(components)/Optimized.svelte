@@ -7,10 +7,10 @@
         <img src="/images/pages/storage/product-shot-3.avif" width="687" alt="" />
     </div>
     <div class="mx-auto max-w-md">
-        <h2 class="text-title font-aeonik-pro text-primary">Optimized for small and large files</h2>
+        <h2 class="text-title font-aeonik-pro text-primary">Fast uploads, lighter transfers</h2>
         <p class="text-main-body mt-4 font-medium">
-            Appwrite offers chunked uploads for large files and several compression options for
-            optimized upload times.
+            Chunked uploads handle large video and design files, while compression and preview
+            parameters keep everyday images efficient on browsers and mobile networks.
         </p>
         <div class="mt-8 flex gap-2">
             <Button

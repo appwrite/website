@@ -7,11 +7,7 @@
 import type { StatsigBrowserClient } from '../client';
 import { readLayoutVariantFromStatsigClient } from '../experiment-eval';
 import type { HeroLayoutVariant } from '../hero-layout';
-import {
-    normalizeHeroCta,
-    normalizeHeroSubtitle,
-    normalizeHeroTitle
-} from '../hero-query-overrides';
+import { normalizeHeroSubtitle, normalizeHeroTitle } from '../hero-query-overrides';
 import { MARKETING_HERO_EXPERIMENTS } from './marketing-hero-ids';
 
 export { MARKETING_HERO_EXPERIMENTS };
@@ -43,10 +39,6 @@ export function readMarketingHeroExperimentsForExposure(
     const rawTitle = bestTitleExperiment.get('title', baseline.heroTitle);
     const rawDescription = bestTitleExperiment.get('description', baseline.heroSubtitle);
 
-    const rawCta = client
-        .getExperiment(MARKETING_HERO_EXPERIMENTS.bestCta)
-        .get('cta', baseline.heroCta);
-
     const layoutRead = readLayoutVariantFromStatsigClient(
         client,
         MARKETING_HERO_EXPERIMENTS.heroLayout,
@@ -55,7 +47,7 @@ export function readMarketingHeroExperimentsForExposure(
 
     const heroTitle = normalizeHeroTitle(rawTitle, baseline.heroTitle);
     const heroSubtitle = normalizeHeroSubtitle(rawDescription, baseline.heroSubtitle);
-    const heroCta = normalizeHeroCta(rawCta, baseline.heroCta);
+    const heroCta = baseline.heroCta;
 
     return {
         heroTitle,
@@ -70,12 +62,6 @@ export function readMarketingHeroExperimentsForExposure(
                 normalizedDescriptionLen: heroSubtitle.length,
                 ssrBaselineTitleLen: baseline.heroTitle.length,
                 ssrBaselineDescriptionLen: baseline.heroSubtitle.length
-            },
-            [MARKETING_HERO_EXPERIMENTS.bestCta]: {
-                raw: rawCta,
-                rawType: typeof rawCta,
-                normalizedLen: heroCta.length,
-                ssrBaselineLen: baseline.heroCta.length
             },
             [MARKETING_HERO_EXPERIMENTS.heroLayout]: {
                 normalized: layoutRead.layout,

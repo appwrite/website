@@ -9,11 +9,12 @@
     >
         <div class="max-w-md">
             <h2 class="text-title font-aeonik-pro text-primary">
-                Preview media files however you want
+                Serve the right image for every screen
             </h2>
             <p class="text-main-body mt-4 font-medium">
-                Appwrite Storage's preview endpoint lets you manipulate image previews while also
-                managing different formats and compression algorithms.
+                Request resized, cropped, and format-optimized previews from one stored file—ideal
+                for avatars, catalogs, and user-generated content—without running a separate image
+                delivery service on the side.
             </p>
             <div class="mt-8 flex gap-2">
                 <Button
