@@ -9,6 +9,19 @@ author: arnab-chatterjee
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is a BigInt column in Appwrite Databases?"
+    answer: "BigInt is a column type that stores 64-bit signed integers natively. It accepts any value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807, which is roughly 4 billion times the range of the 32-bit integer column. Use it whenever a numeric value can exceed the ±2.1 billion limit of a regular integer."
+  - question: "When should I use BigInt instead of integer?"
+    answer: "Stick with the integer type if your values will always fit in the 32-bit signed range. Reach for BigInt when you expect values larger than about 2.1 billion in either direction, when you import IDs from systems that use 64-bit keys, when a counter or accumulator grows unbounded over time, or when you store high-resolution timestamps. If the upper bound is uncertain, BigInt is the safer default."
+  - question: "Does BigInt work with Appwrite's Operators?"
+    answer: "Yes. BigInt columns work with every numeric operator, including Operator.increment, Operator.decrement, Operator.multiply, and Operator.divide. The change is applied atomically on the server under concurrency control, respects any min or max bounds you set on the column, and returns the updated value without needing to fetch the row first."
+  - question: "Can I migrate an existing integer column to BigInt?"
+    answer: "There is no automatic migration between integer and BigInt today. The recommended approach is to add a new BigInt column, backfill data from the existing integer column, and then drop the old column once the cutover is complete. Picking BigInt up front when the upper bound is unclear saves a future schema change."
+  - question: "Which Appwrite SDKs support BigInt columns?"
+    answer: "BigInt is available in every Server SDK that ships with Appwrite, including Node.js, Python, PHP, Ruby, Dart, Kotlin, Java, Swift, .NET, Go, and Rust. Each SDK exposes a createBigIntColumn (or language-equivalent) method on the TablesDB service, with optional min, max, and default parameters."
+  - question: "Where can I create a BigInt column from the Appwrite Console?"
+    answer: "Open the table you want to extend, head to the Columns tab, and click Create column. Pick BigInt from the type dropdown, give the column a key, and optionally set min, max, and default values. The column is ready to read and write the moment the request returns."
 ---
 
 A 32-bit signed integer caps out at roughly **-2.1 billion** on the low end and **+2.1 billion** on the high end. The moment your column needs to hold a value outside that range, in either direction, the existing integer type stops being enough.
@@ -404,9 +417,9 @@ func main() {
         "<TABLE_ID>",
         "total_views",
         false,
-        tablesdb.WithCreateBigIntColumnMin(0),
-        tablesdb.WithCreateBigIntColumnMax(9223372036854775807),
-        tablesdb.WithCreateBigIntColumnDefault(0),
+        service.WithCreateBigIntColumnMin(0),
+        service.WithCreateBigIntColumnMax(9223372036854775807),
+        service.WithCreateBigIntColumnDefault(0),
     )
     if err != nil {
         panic(err)
