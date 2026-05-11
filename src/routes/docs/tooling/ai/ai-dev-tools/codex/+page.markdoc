@@ -6,7 +6,7 @@ description: Learn how to use Codex with Appwrite through the Appwrite plugin, q
 
 {% section #install-plugin step=1 title="Install the Appwrite plugin" %}
 
-The fastest way to get started with Appwrite in Codex is to install the **Appwrite plugin** from the Appwrite marketplace. The plugin includes agent skills for the Appwrite CLI and all major SDKs and registers the Appwrite Docs MCP server, giving Codex everything it needs to work with your Appwrite projects.
+The fastest way to get started with Appwrite in Codex is to install the **Appwrite plugin** from the Appwrite marketplace. The plugin includes agent skills for the Appwrite CLI and all major SDKs and registers the Appwrite Docs MCP server, giving Codex access to the Appwrite documentation so that it follows the latest and suggested code patterns.
 
 Add the Appwrite marketplace to Codex by running the following command in your terminal:
 
