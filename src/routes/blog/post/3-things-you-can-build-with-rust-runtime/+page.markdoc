@@ -2,7 +2,7 @@
 layout: post
 title: "3 things you can build with the Rust runtime"
 description: Explore three workloads that play to the Rust runtime's strengths, including image optimization, PDF generation, and HMAC-verified webhooks.
-date: 2026-05-07
+date: 2026-05-11
 cover: /images/blog/3-things-you-can-build-with-rust-runtime/cover.avif
 timeToRead: 10
 author: atharva
@@ -59,6 +59,10 @@ appwrite init function
 ```
 
 Pick the `rust-1.83` runtime and the CLI sets up `Cargo.toml` and `lib.rs` with a starter handler.
+
+{% info title="Grab the code" %}
+The full source for all three examples lives in the [appwrite-community/rust-function-examples](https://github.com/appwrite-community/rust-function-examples) repo. Clone it, swap in your project ID, and deploy with `appwrite push functions`.
+{% /info %}
 
 With that out of the way, here are three things worth building on it.
 
