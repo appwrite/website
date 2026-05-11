@@ -2,8 +2,14 @@
     import { browser } from '$app/environment';
     import { createAccordion, melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
+    import { parseInline } from '$lib/utils/markdown';
 
     export let items: { question: string; answer: string }[] = [];
+
+    $: renderedItems = items.map((item) => ({
+        question: item.question,
+        answer: parseInline(item.answer)
+    }));
 
     const {
         elements: { root, heading, content, item, trigger },
@@ -49,7 +55,7 @@
                             use:melt={$root}
                             id="blog-faq"
                         >
-                            {#each items as faqItem, index (index)}
+                            {#each renderedItems as faqItem, index (index)}
                                 <li class="collapsible-item">
                                     <div
                                         class="collapsible-wrapper py-2"
@@ -114,7 +120,7 @@
                 </summary>
 
                 <ul class="w-full min-w-0 divide-y divide-white/5 border-t border-white/10 px-5">
-                    {#each items as faqItem, index (index)}
+                    {#each renderedItems as faqItem, index (index)}
                         <li class="collapsible-item">
                             <details class="collapsible-wrapper">
                                 <summary class="collapsible-button cursor-pointer appearance-none">
