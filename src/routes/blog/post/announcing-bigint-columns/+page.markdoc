@@ -11,11 +11,11 @@ featured: false
 callToAction: true
 ---
 
-A 32-bit signed integer caps out at around 2.1 billion. The moment your column needs to hold a larger value, the existing integer type stops being enough.
+A 32-bit signed integer caps out at roughly **-2.1 billion** on the low end and **+2.1 billion** on the high end. The moment your column needs to hold a value outside that range, in either direction, the existing integer type stops being enough.
 
 To close this gap, we’re introducing **BigInt columns** in Appwrite Databases.
 
-BigInt is a new column type that stores 64-bit signed integers natively, with the same `min`, `max`, `default`, and atomic increment/decrement support you already use with regular integer columns. If your data fits in a 32-bit integer, you don’t need to change anything. If it doesn’t, BigInt is the column type you reach for.
+BigInt is a new column type that stores 64-bit signed integers natively, with the same `min`, `max`, and `default` parameters you already use with regular integer columns. Previously, the only way to store 64-bit values was to set `size: 8` on an integer column, which was easy to miss and felt out of place on a type called integer. BigInt makes the intent explicit: if your data fits in a 32-bit integer, you don’t need to change anything; if it doesn’t, BigInt is the column type you reach for.
 
 # What BigInt gives you
 
@@ -26,11 +26,136 @@ A BigInt column accepts any value in the 64-bit signed integer range, from **-9,
 - **High-resolution timestamps**: nanosecond or microsecond epochs, monotonic clocks, sequence numbers from event logs.
 - **Financial values in minor units**: balances, totals, or ledger entries stored as integers in the smallest currency unit, where you want to avoid floating-point rounding entirely.
 
-# Atomic operations work out of the box
+# Works with Operators
 
-If you’ve been using [Atomic numeric operations](/docs/products/databases/atomic-numeric-operations) on integer or float columns, BigInt slots in with no changes. The `incrementRowColumn` and `decrementRowColumn` methods accept BigInt columns transparently, so you can safely increment a 64-bit counter under concurrency without ever fetching or rewriting the row.
+BigInt columns plug straight into [Operators](/docs/products/databases/operators), so you can update a 64-bit value directly on the server without fetching the row first. `Operator.increment`, `Operator.decrement`, and the rest of the numeric operators treat BigInt the same way they treat integer and float columns: the change is applied atomically under concurrency control, respects any `min` or `max` bounds you set, and returns the new value.
 
-This means a counter like `total_views` can sit at 12 billion, get hammered with concurrent `+1` requests across regions, and stay consistent. The server applies each delta atomically and respects whatever `min` or `max` bounds you set on the column, exactly as it does for 32-bit integers.
+This means a counter like `total_views` can sit at 12 billion, get hammered with concurrent `+1` requests across regions, and stay consistent without any client-side coordination.
+
+{% multicode %}
+
+```server-nodejs
+const result = await tablesDB.updateRow({
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: {
+        total_views: sdk.Operator.increment(1)
+    }
+});
+```
+
+```server-python
+result = tables_db.update_row(
+    database_id = '<DATABASE_ID>',
+    table_id = '<TABLE_ID>',
+    row_id = '<ROW_ID>',
+    data = { 'total_views': Operator.increment(1) }
+)
+```
+
+```server-php
+$result = $tablesDB->updateRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: [ 'total_views' => Operator::increment(1) ]
+);
+```
+
+```server-ruby
+result = tables_db.update_row(
+    database_id: '<DATABASE_ID>',
+    table_id: '<TABLE_ID>',
+    row_id: '<ROW_ID>',
+    data: { 'total_views' => Operator.increment(1) }
+)
+```
+
+```server-dart
+await tablesDB.updateRow(
+    databaseId: '<DATABASE_ID>',
+    tableId: '<TABLE_ID>',
+    rowId: '<ROW_ID>',
+    data: {
+        'total_views': Operator.increment(1)
+    },
+);
+```
+
+```server-kotlin
+val response = tablesDB.updateRow(
+    databaseId = "<DATABASE_ID>",
+    tableId = "<TABLE_ID>",
+    rowId = "<ROW_ID>",
+    data = mapOf("total_views" to Operator.increment(1))
+)
+```
+
+```server-java
+tablesDB.updateRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Map.of("total_views", Operator.increment(1)),
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+_ = try await tablesDB.updateRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: [
+        "total_views": Operator.increment(1)
+    ]
+)
+```
+
+```server-dotnet
+await tablesDB.UpdateRow(
+    databaseId: "<DATABASE_ID>",
+    tableId: "<TABLE_ID>",
+    rowId: "<ROW_ID>",
+    data: new Dictionary<string, object>
+    {
+        { "total_views", Operator.Increment(1) }
+    }
+);
+```
+
+```server-go
+_, err := tablesDB.UpdateRow(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    tablesDB.WithUpdateRowData(map[string]any{
+        "total_views": operator.Increment(1),
+    }),
+)
+```
+
+```server-rust
+tables_db.update_row(
+    "<DATABASE_ID>",
+    "<TABLE_ID>",
+    "<ROW_ID>",
+    Some(json!({
+        "total_views": operator::increment_by(1)
+    })),
+    None,
+    None,
+).await?;
+```
+
+{% /multicode %}
 
 # Creating a BigInt column
 
@@ -339,10 +464,10 @@ There is no automatic migration between integer and BigInt, so picking the right
 
 BigInt columns are available on **Appwrite Cloud** today.
 
-You can create your first BigInt column directly from the Console, or roll it out programmatically through any of the Server SDKs above. The new column type works with every TablesDB feature you already use, including atomic numeric operations, indexes, and full schema creation.
+You can create your first BigInt column directly from the Console, or roll it out programmatically through any of the Server SDKs above. The new column type works with every TablesDB feature you already use, including Operators, indexes, and full schema creation.
 
 # More resources
 
 - [Read the Databases documentation](/docs/products/databases/tables#columns)
-- [Announcing Atomic numeric operations](/blog/post/announcing-atomic-numeric-operations)
+- [Announcing Database Operators](/blog/post/announcing-db-operators)
 - [Announcing Full Schema Creation](/blog/post/announcing-full-schema-creation)
