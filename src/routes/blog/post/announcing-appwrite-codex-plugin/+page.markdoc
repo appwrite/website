@@ -3,7 +3,7 @@ layout: post
 title: "Introducing the Appwrite plugin for Codex: Skills and MCP in one install"
 description: The Appwrite plugin for Codex bundles agent skills and the Appwrite Docs MCP server into a single install, so Codex can build with Appwrite out of the box.
 date: 2026-05-11
-cover: /images/blog/announcing-appwrite-codex-plugin/cover.png
+cover: /images/blog/announcing-appwrite-codex-plugin/cover.avif
 timeToRead: 4
 author: aditya-oberai
 category: announcement
