@@ -56,7 +56,7 @@
     <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
 
     {#if browser}
-        <!-- Below the fold — client-side only to avoid SSR CPU cost -->
+        <!-- Below the fold - client-side only to avoid SSR CPU cost -->
         <Bento />
         <Pullquote
             name="Phil McCluskey"

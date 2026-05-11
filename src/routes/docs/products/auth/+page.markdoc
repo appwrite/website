@@ -1,24 +1,33 @@
 ---
 layout: article
 title: Authentication
-description: Explore Appwrite's powerful authentication solutions. Learn how to implement secure user authentication, manage user identities, and enhance your application's security."
+description: "Identity and session management for Appwrite projects: credential-based and passwordless flows, MFA, SSR-aware clients, and OAuth 2 across 30+ providers (GitHub, Google, Microsoft, Apple, and others). Built-in teams support multi-tenancy, invite flows, and org-scoped permissions; labels align with Databases and Storage authorization rules."
 back: /docs
 ---
 
-Appwrite **Authentication** delivers more than just user sign up and log in.
-Authentication makes it easy to build secure and robust authentication with support for many different authentication methods.
+Appwrite Authentication (AKA Appwrite Auth) is the control plane for principals in your project: account lifecycle, session establishment, and the primitives downstream Appwrite services use when authorizing reads and writes.
+
+Primary sign-in is available through one API: email and password, SMS and email OTP, magic links, guest [anonymous](/docs/products/auth/anonymous) sessions, and patterns suited to server-rendered clients.
+
+[Multifactor authentication (MFA)](/docs/products/auth/mfa) adds server-verified second factors on eligible primary flows. MFA policy and enforcement use the same Console and API model as other Authentication settings.
+
+OAuth 2 integrates 30+ providers, including major consumer and enterprise IdPs (GitHub, Google, Microsoft, Apple) and common developer or collaboration identities (for example Slack, Discord). Provider setup is done in the Console; the redirect-based client flow is documented under [OAuth 2 login](/docs/products/auth/oauth2).
+
+Teams map membership to `team` scopes in [Databases](/docs/products/databases) and [Storage](/docs/products/storage) for multi-tenant products, shared workspaces, and org boundaries. [Team invites](/docs/products/auth/team-invites) support email-based onboarding, roles, and acceptance flows. Partitioning and permission patterns are covered in [Teams](/docs/products/auth/teams) and [Multi-tenancy](/docs/products/auth/multi-tenancy).
+
+[Labels](/docs/products/auth/labels) expose coarse attributes (tiers, entitlements, feature flags) for use in rules. [Preferences](/docs/products/auth/preferences) store built-in account key-value fields (locale, theme, notification toggles) so common settings do not require a separate profile table. Verification, impersonation, and related server APIs are described in the linked workflow guides.
 
 {% arrow_link href="/docs/products/auth/quick-start" %}
 Add authentication to your app in 5 minutes
 {% /arrow_link %}
 
-# Authentication methods {% #auth-methods %}
+# Core concepts {% #core-concepts %}
 
-Appwrite supports a variety of authentication methods to fit every app and every niche. Explore Appwrite's authentication flows.
+Each guide covers one mechanism: Console configuration, relevant security options, and client or server SDK usage.
 
 {% cards %}
 {% cards_item href="/docs/products/auth/email-password" title="Email and password" %}
-Email and password login with just a few lines of code secured with state of the art Argon2 hashing.
+Email and password login with just a few lines of code secured with state-of-the-art Argon2 hashing.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/phone-sms" title="Phone (SMS)" %}
 Log in users without a password using their phone number and SMS verification.
@@ -36,7 +45,7 @@ Authenticate users with existing accounts from GitHub, Google, Facebook, and 30+
 Create guest sessions for visitors and convert to full accounts when they're ready.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/jwt" title="JWT" %}
-Deligate access for a user through passing JWT tokens.
+Delegate access for a user by issuing and validating JWT tokens.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/server-side-rendering" title="Server-side rendering (SSR)" %}
 Authenticate users in server-side rendered applications.
@@ -45,16 +54,14 @@ Authenticate users in server-side rendered applications.
 Implement custom authentication methods like biometric and passkey login by generating custom tokens.
 {% /cards_item %}
 {% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
-Implementing MFA to add extra layers of security to your app.
+Add MFA to increase assurance for sensitive accounts and operations.
 {% /cards_item %}
 {% /cards %}
 
-# Flexible permissions {% #flexible-permissions %}
+# Security and permissions {% #security-and-permissions %}
 
-When users sign up using Appwrite, their identity is automatically attached to a robust permissions system.
-Appwrite Authentication provides permissions for individual users and groups of users through [teams](/docs/products/auth/teams) and [labels](/docs/products/auth/labels).
+Security guidance is grouped at two levels: project configuration (sessions, API keys, MFA policy, password rules, JWT usage) and end-user protections (password hashing, transport security, rate limits, and platform-layer abuse defenses).
 
-# Built in preferences {% #built-in-preferences %}
+[Authentication security](/docs/products/auth/security) covers product-specific controls and recommendations. [Security](/docs/advanced/security) covers compliance, encryption, TLS, audit logging, and broader platform posture.
 
-Appwrite **Authentication** comes with built-in [preferences](/docs/products/auth/preferences) for users to manage their account settings.
-Store notification settings, themes, and other user preferences to be shared across devices.
+Authorization for [Databases](/docs/products/databases) and [Storage](/docs/products/storage) uses the same scope vocabulary as Authentication: `user`, `team`, `role`, and `public`. Team and membership scopes apply to organization-scoped data. [Labels](/docs/products/auth/labels) support tags and coarse roles referenced from rules without hard-coding user identifiers in application logic.

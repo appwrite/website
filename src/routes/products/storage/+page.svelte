@@ -19,7 +19,7 @@
 
     const title = 'Appwrite Storage' + TITLE_SUFFIX;
     const description =
-        'Store every file type and serve responsive image previews from one backend. Buckets, permissions, compression, and on-the-fly transformations—self-hosted or on Appwrite Cloud.';
+        'Store every file type and serve responsive image previews from one backend. Buckets, permissions, compression, and on-the-fly transformations-self-hosted or on Appwrite Cloud.';
     const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 </script>
 
@@ -48,7 +48,7 @@
                 icon: '/images/icons/illustrated/dark/storage.avif'
             }}
             title="Storage for every file - with smart image previews built in"
-            description="Store documents, media, and user uploads with encryption, compression, and on-the-fly image transformations. Same project as Auth and databases—no separate media stack just to ship responsive images."
+            description="Store documents, media, and user uploads with encryption, compression, and on-the-fly image transformations. Same project as Auth and databases-no separate media stack just to ship responsive images."
             image={{
                 url: HeroImage
             }}
@@ -173,7 +173,7 @@
                             </h2>
                             <p class="text-main-body font-medium">
                                 Create buckets, stream uploads, read metadata, and generate
-                                transformed previews from your SDKs—all with the same permission
+                                transformed previews from your SDKs-all with the same permission
                                 model as the rest of Appwrite.
                             </p>
                             <Button

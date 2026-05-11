@@ -1,6 +1,6 @@
 /**
  * Reads Appwrite Cloud aggregate status from the public status page API
- * (same source as console `../vibes` — `status.appwrite.online/index.json`).
+ * (same source as console `../vibes` - `status.appwrite.online/index.json`).
  */
 
 const APPWRITE_CLOUD_STATUS_URL = 'https://status.appwrite.online/index.json';
@@ -35,7 +35,7 @@ function timeoutSignal(): AbortSignal | undefined {
     return undefined;
 }
 
-/** Non-blocking network read; never throws — failures map to `operational`. */
+/** Non-blocking network read; never throws - failures map to `operational`. */
 export async function fetchAppwriteCloudAggregateState(): Promise<AppwriteCloudAggregateState> {
     try {
         const response = await fetch(APPWRITE_CLOUD_STATUS_URL, {

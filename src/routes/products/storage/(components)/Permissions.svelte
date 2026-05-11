@@ -12,7 +12,7 @@
                 Protect your files and set permissions
             </h2>
             <p class="text-main-body max-width-[380px] mx-auto font-medium">
-                Encrypt files at rest and enforce per-user and team permissions—so private uploads
+                Encrypt files at rest and enforce per-user and team permissions-so private uploads
                 stay private, not just hidden behind a public URL pattern.
             </p>
             <Button

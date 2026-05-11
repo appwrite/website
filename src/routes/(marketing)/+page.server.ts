@@ -11,7 +11,7 @@ import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies, request, url }) => {
-    // Prerendered `/` must not embed per-user Statsig bootstrap or stable IDs — one static HTML is
+    // Prerendered `/` must not embed per-user Statsig bootstrap or stable IDs - one static HTML is
     // served to everyone; the hero applies experiments after `initializeAsync` in the browser.
     if (building) {
         return {
@@ -72,7 +72,7 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         heroTitle,
         heroCta,
         statsigBootstrap,
-        /** Same value as `STATSIG_STABLE_ID_KEY` cookie — pass to client init to avoid bootstrap / stableID mismatch. */
+        /** Same value as `STATSIG_STABLE_ID_KEY` cookie - pass to client init to avoid bootstrap / stableID mismatch. */
         statsigStableUserId: stableId,
         /** Must match `user` passed to `getClientInitializeResponse` or the JS SDK warns about bootstrap user mismatch. */
         statsigUserAgent: userAgent ?? null

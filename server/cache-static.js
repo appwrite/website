@@ -1,4 +1,4 @@
-// @ts-nocheck — wraps `writeHead` / `write` / `end`; overloads are not worth typing in JS.
+// @ts-nocheck - wraps `writeHead` / `write` / `end`; overloads are not worth typing in JS.
 /**
  * Cache-Control for static assets. Used by `server/main.js` (sirv serves `build/client`
  * before SvelteKit `handle`) and by `src/hooks.server.ts` for SSR responses.

@@ -13,9 +13,9 @@ All Avatars endpoints support image transformations including resizing, cropping
 Get started with Avatars in minutes
 {% /arrow_link %}
 
-# Capabilities {% #capabilities %}
+# Core concepts {% #core-concepts %}
 
-Appwrite Avatars supports multiple image generation and manipulation features to enhance your application's visual elements.
+Avatars covers the image helpers you reach for often - initials, flags, favicons, QR codes, and more - without running your own image workers.
 
 {% cards %}
 {% cards_item href="/docs/products/avatars/initials" title="User initials" %}

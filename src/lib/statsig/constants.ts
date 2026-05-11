@@ -1,4 +1,4 @@
-/** Cookie + localStorage key — must match server `+page.server.ts` for consistent experiment assignment. */
+/** Cookie + localStorage key - must match server `+page.server.ts` for consistent experiment assignment. */
 export const STATSIG_STABLE_ID_KEY = 'statsig_stable_id';
 
 /** Browser SDK key (public). Server uses it for `getClientInitializeResponse` / client bootstrap. */

@@ -1,30 +1,59 @@
 ---
 layout: article
 title: Messaging
-description: Send push notifications, text, or emails to users or groups of users using your app.
+description: Send push, email, and SMS from Appwrite with the same overall flow. Connect providers such as APNs, FCM, or email and SMS services, organize recipients with topics and targets, then send using the Messages API.
 back: /docs
 ---
 
-Appwrite Messaging helps you communicate with your users through push notifications, emails, and SMS text messages.
-Sending personalized communication for marketing, updates, and realtime alerts can increase user engagement and retention.
-You can also use Appwrite Messaging to implement security checks and custom authentication flows.
+Appwrite **Messaging** helps you reach users on push, email, and SMS without wiring a different integration for each channel from scratch. Use it for receipts and alerts, login codes, or newsletters - whatever your product needs to send.
 
-{% only_dark %}
-![Messaging overview](/images/docs/messaging/dark/message-overview.avif)
-{% /only_dark %}
-{% only_light %}
-![Messaging overview](/images/docs/messaging/message-overview.avif)
-{% /only_light %}
+You group people with [topics](/docs/products/messaging/topics), store how to reach them with [targets](/docs/products/messaging/targets), and connect real providers under [providers](/docs/products/messaging/providers) (for example Apple or Google for push, Mailgun or Twilio for email or SMS). Your app usually calls [messages](/docs/products/messaging/messages) to send; Appwrite routes to the right channel.
 
-Explore what you can build with Appwrite Messaging. 
+You can add [Functions](/docs/products/functions) in front of sends if you want extra steps first (custom templates, throttling, or pulling rows from [Databases](/docs/products/databases)).
+
+{% arrow_link href="/docs/products/messaging/providers" %}
+Connect your first messaging provider
+{% /arrow_link %}
+
+# Core concepts {% #core-concepts %}
+
+Connect providers, model your audience, and send through one API - the building blocks you configure before you pick a channel.
+
 {% cards %}
-{% cards_item href="/docs/products/messaging/send-email-messages" title="Emails" icon="icon-mail" %}
-Send newsletters, invoices, promotions and other emails.
+{% cards_item href="/docs/products/messaging/providers" title="Providers" %}
+Link Appwrite to Apple, Google, email services, SMS carriers, and other backends with stored credentials.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/send-sms-messages" title="SMS messages" icon="icon-annotation" %}
-Send SMS messages straight to your user's phone.
+{% cards_item href="/docs/products/messaging/topics" title="Topics" %}
+Group subscribers for broadcast-style messages and shared campaigns.
 {% /cards_item %}
-{% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" icon="icon-device-mobile" %}
-Send push notifications to your user's devices.
+{% cards_item href="/docs/products/messaging/targets" title="Targets" %}
+Map users and devices to emails, phone numbers, and push tokens per provider.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/messages" title="Messages" %}
+Create sends with the Messages API and let Appwrite route to the right channel.
 {% /cards_item %}
 {% /cards %}
+
+# Channels and journeys {% #channels-and-journeys %}
+
+Pick the channel that matches the message: push for timely alerts, email for longer content, SMS for short text or codes.
+
+{% cards %}
+{% cards_item href="/docs/products/messaging/send-push-notifications" title="Push notifications" %}
+Reach mobile and web clients with timely, permission-based alerts.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/send-email-messages" title="Email" %}
+Send newsletters, receipts, digests, and lifecycle email from one API.
+{% /cards_item %}
+{% cards_item href="/docs/products/messaging/send-sms-messages" title="SMS" %}
+Deliver OTPs, reminders, and short updates straight to the handset.
+{% /cards_item %}
+{% /cards %}
+
+# How messaging fits together {% #how-messaging-fits-together %}
+
+**Providers** hold the credentials Appwrite uses to talk to Apple, Google, email services, SMS carriers, and similar backends. Your app should not embed those secrets.
+
+**Topics** are lists of who should get a broadcast-style message. **Targets** link a user (or device) to an email, phone number, or push token for a given provider. **Messages** are what your code creates; Appwrite takes care of routing and the channel-specific details where supported.
+
+Use [Auth](/docs/products/auth) so you know who each recipient is. Use [Functions](/docs/products/functions) if you want to change the payload, load rows from [Databases](/docs/products/databases), or add [Storage](/docs/products/storage) links before a message goes out.

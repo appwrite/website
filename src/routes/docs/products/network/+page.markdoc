@@ -2,6 +2,7 @@
 layout: article
 title: Network
 description: Discover Appwrite's network architecture with global regions, edge nodes, and optimized routing. Explore how it ensures low latency, reliable performance, and scalable infrastructure for modern applications.
+back: /docs
 ---
 
 Appwrite's network is designed to deliver low-latency, high-performance experiences for developers and end-users alike. It leverages a robust Content Delivery Network (CDN) with edge locations across multiple regions to ensure fast and reliable data delivery.
@@ -15,8 +16,9 @@ With distributed infrastructure and multiple deployment regions, Appwrite enable
 ![Network map](/images/docs/network/all-maps.avif)
 {% /only_light %}
 
-# Components {% #components %}
-The Appwrite Network is composed of multiple components that work together to deliver a seamless experience for developers and end-users. These components include:
+# Core concepts {% #core-concepts %}
+
+The Appwrite Network is made of regions, edges, the CDN, and endpoints - together they move traffic close to users while keeping core data in the right place.
 
 {% cards %}
 {% cards_item href="/docs/products/network/regions" title="Regions" %}

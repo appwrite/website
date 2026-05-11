@@ -198,7 +198,7 @@ export async function evaluateHeroLayoutExperiment(
     return evaluateHeroLayoutWithClient(client, toStatsigUser(user), fallback);
 }
 
-/** `best_cta` Statsig experiment is disabled — always returns the provided fallback (e.g. `DEFAULT_HERO_CTA`). */
+/** `best_cta` Statsig experiment is disabled - always returns the provided fallback (e.g. `DEFAULT_HERO_CTA`). */
 export async function evaluateHeroCtaExperiment(
     _user: StatsigUser | StatsigServerUserInput,
     fallback: string

@@ -44,10 +44,12 @@
     export let lastUpdated: string;
     export let faqs: { question: string; answer: string }[] | undefined = undefined;
 
-    const posts = getContext<PostsData[]>('posts')?.filter(
-        (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
-    );
-    const authors = getContext<AuthorData[]>('authors');
+    const posts =
+        getContext<PostsData[]>('posts')?.filter(
+            (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
+        ) ?? [];
+    /** Blog +layout.svelte sets this; default avoids crashes if context is missing (e.g. partial navigation). */
+    const authors = getContext<AuthorData[]>('authors') ?? [];
     const authorSlugs = Array.isArray(author) ? author : [author];
     const authorData = authorSlugs
         .map((slug) => authors.find((a) => a.slug === slug))
@@ -56,7 +58,7 @@
     /**
      * Prefer `page.data` (updates on client navigation). Fall back to layout context for any edge
      * case where merged load data is missing. Do not reset the headings store in `afterNavigate`
-     * with a partial seed — blog posts use `#` headings; an empty `##`-only seed would wipe TOC
+     * with a partial seed - blog posts use `#` headings; an empty `##`-only seed would wipe TOC
      * entries already registered by `Heading` in `onMount`.
      */
     const layoutRawContent = (): string | null =>

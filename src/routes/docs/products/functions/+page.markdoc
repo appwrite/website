@@ -1,26 +1,47 @@
 ---
 layout: article
 title: Functions
-description: Appwrite Functions is your gateway to scalable applications. Explore our complete guide to building and deploying serverless functions effortlessly.
+description: Run backend code on Appwrite without managing servers. Trigger functions over HTTP, on a schedule, from the SDK, or from events - deploy from Git or a zip, and connect them to Databases, Storage, and Messaging.
+back: /docs
 ---
 
-Appwrite Functions unlock limitless potential for developers to extend Appwrite with code snippets. 
-Appwrite Functions are user-defined functions that can start small and scale big, deploying automatically from source control. 
-These Functions can be triggered by HTTP requests, SDK methods, server events, webhooks, and scheduled executions. 
-Each function will have its own URL, execute in its own isolated container, and have its own configurable environment variables and permissions.
+Appwrite **Functions** runs your server-side code next to your project. Use it when something should not run in the browser or app: webhooks, scheduled jobs, payments, moderation, admin tools, or glue code that talks to other APIs.
 
-# Getting started {% #getting-started %}
+Each function has its own URL, [environment variables](/docs/products/functions/environment-variables) for API keys, and a history of [deployments](/docs/products/functions/deployments). When something fails, [executions](/docs/products/functions/executions) and logs help you see what ran.
 
-Appwrite Functions let you build anything you can imagine, but this flexibility makes it difficult to know where to start. 
-Start exploring by cloning one of the quick start templates or using a template with pre-built integration to quickly implement features.
-
-{% only_dark %}
-![Create project screen](/images/docs/functions/dark/template.avif)
-{% /only_dark %}
-{% only_light %}
-![Create project screen](/images/docs/functions/template.avif)
-{% /only_light %}
+You can [deploy from Git](/docs/products/functions/deploy-from-git), [develop locally](/docs/products/functions/develop-locally), and pick a [runtime](/docs/products/functions/runtimes) that matches your language. Call functions from HTTP, timers, platform events, or your app with [execute](/docs/products/functions/execute). They work well alongside [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Messaging](/docs/products/messaging).
 
 {% arrow_link href="/docs/products/functions/quick-start" %}
-Quick start 
+Deploy your first function from a template
 {% /arrow_link %}
+
+# Core concepts {% #core-concepts %}
+
+Learn how a function is defined, versioned, run, and called in production - the pieces you will use in the console and SDK every time you ship backend code.
+
+{% cards %}
+{% cards_item href="/docs/products/functions/functions" title="Functions" %}
+Define entrypoints, timeouts, and scaling behavior for each unit of logic.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/deployments" title="Deployments" %}
+Ship immutable versions and roll forward when you are ready.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/executions" title="Executions" %}
+Inspect runs, logs, and cold-start behavior for debugging and tuning.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/domains" title="Domains" %}
+Attach custom domains to HTTP-triggered functions when needed.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/environment-variables" title="Environment variables" %}
+Inject secrets and configuration without baking them into source control.
+{% /cards_item %}
+{% cards_item href="/docs/products/functions/runtimes" title="Runtimes" %}
+Pick language versions that match your services and dependencies.
+{% /cards_item %}
+{% /cards %}
+
+# Build and ship {% #build-and-ship %}
+
+Start from [templates](/docs/products/functions/templates) or your own repo. Use the console to [develop](/docs/products/functions/develop), or work locally, then [deploy from Git](/docs/products/functions/deploy-from-git) or [deploy manually](/docs/products/functions/deploy-manually).
+
+Functions are a good place for checks and side effects you do not want in client code - validation, calling payment or email providers, or updating [Databases](/docs/products/databases) and [Storage](/docs/products/storage) - while [Messaging](/docs/products/messaging) handles outbound mail and push when you use that product.

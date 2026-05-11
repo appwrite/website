@@ -12,8 +12,8 @@
                 Serve the right image for every screen
             </h2>
             <p class="text-main-body mt-4 font-medium">
-                Request resized, cropped, and format-optimized previews from one stored file—ideal
-                for avatars, catalogs, and user-generated content—without running a separate image
+                Request resized, cropped, and format-optimized previews from one stored file-ideal
+                for avatars, catalogs, and user-generated content-without running a separate image
                 delivery service on the side.
             </p>
             <div class="mt-8 flex gap-2">

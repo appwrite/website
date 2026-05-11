@@ -40,7 +40,7 @@
             avatar: '/images/testimonials/ryan.avif',
             url: '/blog/post/customer-stories-kcollect'
         },
-        /* Open Mind — restore when trusted-by logo is finalized
+        /* Open Mind - restore when trusted-by logo is finalized
         {
             logo: '/images/logos/trusted-by/open-mind.svg',
             logoWidth: 64,
@@ -54,7 +54,7 @@
             url: '/blog/post/customer-stories-open-mind'
         },
         */
-        /* Smartbee — restore when trusted-by logo is finalized
+        /* Smartbee - restore when trusted-by logo is finalized
         {
             logo: '/images/logos/trusted-by/smartbee.svg',
             logoWidth: 120,

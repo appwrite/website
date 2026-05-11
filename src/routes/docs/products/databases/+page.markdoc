@@ -1,19 +1,65 @@
 ---
 layout: article
 title: Databases
-description: Store and query structured data with Appwrite Databases. Databases provide performant and scalable storage for your application, business, and user data.
+description: "Structured application data in Appwrite projects: databases and tables with typed attributes and indexes, row-level permissions aligned with Authentication (`user`, `team`, `role`, `public`), queries and ordering, relationships and geo queries, plus transactions, pagination, bulk and CSV tools, backups, and type generation for production teams."
+back: /docs
 ---
 
-Appwrite Databases let you store and query structured data. 
-Databases provide high-performance and scalable data storage for your key application, business, and user data.
+Appwrite Databases is the managed tables layer for structured records: schema definition, row lifecycle, and the APIs clients and backends use to read and write data consistently.
+
+You organize work into databases and tables, then define attributes, indexes, and constraints that match your domain. The model maps cleanly to common product data (profiles, orders, content, inventory) without exposing a shared database password to every client.
+
+[Permissions](/docs/products/databases/permissions) are evaluated per row and can reference the same identities and membership you manage in [Authentication](/docs/products/auth): `user`, `team`, `role`, and `public` scopes, including team-scoped multi-tenant patterns. [Labels](/docs/products/auth/labels) from Authentication can participate in rules when you need coarse tiers or entitlements without hard-coding user identifiers in application code.
+
+For reads and navigation you use [queries](/docs/products/databases/queries) and [order](/docs/products/databases/order) for lists and search, [relationships](/docs/products/databases/relationships) when data spans tables, and [geo queries](/docs/products/databases/geo-queries) for maps or "near me" behavior. For writes and data movement at volume you add [transactions](/docs/products/databases/transactions), [pagination](/docs/products/databases/pagination), [bulk operations](/docs/products/databases/bulk-operations), [CSV imports](/docs/products/databases/csv-imports) and [CSV exports](/docs/products/databases/csv-exports), [backups](/docs/products/databases/backups), and [type generation](/docs/products/databases/type-generation). Where it fits your stack, [offline sync](/docs/products/databases/offline) and [AI suggestions](/docs/products/databases/ai-suggestions) extend the same surface.
 
 {% info title="Looking for file storage?" %}
-Databases store data, if you need to store files like images, PDFs or videos, use [Appwrite Storage](/docs/products/storage).
+Databases hold structured rows. For images, PDFs, or video, use [Appwrite Storage](/docs/products/storage).
 {% /info %}
 
-You can organize data into databases, tables, and rows. You can also paginate, order, and query rows.
-For complex business logic, Appwrite supports relationships to help you model your data.
-
 {% arrow_link href="/docs/products/databases/quick-start" %}
-Quick start 
+Create your first database and table in minutes
 {% /arrow_link %}
+
+# Core concepts {% #core-concepts %}
+
+Each guide covers one mechanism: how data is modeled in the Console, how permissions attach to rows, and how to call the feature from client or server SDKs.
+
+{% cards %}
+{% cards_item href="/docs/products/databases/databases" title="Databases" %}
+Isolate data per environment or tenant and keep schemas organized.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/tables" title="Tables" %}
+Define attributes, indexes, and constraints that match your domain.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/rows" title="Rows" %}
+Create, read, update, and delete records with SDKs and predictable APIs.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/permissions" title="Permissions" %}
+Scope read and write access to users, teams, roles, or public rules.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/relationships" title="Relationships" %}
+Model one-to-one, one-to-many, and many-to-many links between tables.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/queries" title="Queries" %}
+Filter, limit, and cursor through large datasets efficiently.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/geo-queries" title="Geo queries" %}
+Query rows by distance for maps, delivery, and location-based features.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/backups" title="Backups" %}
+Protect production data with exports and backup policies.
+{% /cards_item %}
+{% /cards %}
+
+# Security and permissions {% #security-and-permissions %}
+
+Access control is defined at the row: who may create, read, update, or delete each record, and how team membership or roles participate in those checks. Console configuration, API keys, and client session context all affect what a given call is allowed to do.
+
+[Databases permissions](/docs/products/databases/permissions) is the product reference for scopes, rule composition, and common multi-tenant layouts. [Authentication security](/docs/products/auth/security) and [Security](/docs/advanced/security) cover identity hardening, transport and encryption posture, audit logging, and broader platform guarantees. [Platform permissions](/docs/advanced/platform/permissions) documents project-level roles for Console and API access separate from end-user row rules.
+
+# Operations at scale {% #operations-at-scale %}
+
+These guides focus on predictable list behavior, coordinated writes, and moving large batches without surprises.
+
+Use [pagination](/docs/products/databases/pagination) and [order](/docs/products/databases/order) for feeds and admin tables. Use [transactions](/docs/products/databases/transactions) when several writes must succeed or fail together, and [atomic numeric operations](/docs/products/databases/atomic-numeric-operations) for counters under concurrent updates. Import or export big batches with [CSV imports](/docs/products/databases/csv-imports) and [CSV exports](/docs/products/databases/csv-exports). On the client, combine [type generation](/docs/products/databases/type-generation) with [offline sync](/docs/products/databases/offline) when typed models or disconnected use matter, and [AI suggestions](/docs/products/databases/ai-suggestions) where supported to accelerate schema work.

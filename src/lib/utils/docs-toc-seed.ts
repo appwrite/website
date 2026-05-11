@@ -20,7 +20,7 @@ export type SeededHeading = {
     level: number;
 };
 
-/** Inner attribute string of `{% section … %}` — id, step, and title may appear in any order. */
+/** Inner attribute string of `{% section … %}` - id, step, and title may appear in any order. */
 function parseSectionAttributes(
     attrs: string
 ): { id: string; title: string; step?: number } | null {

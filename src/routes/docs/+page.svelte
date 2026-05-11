@@ -638,6 +638,18 @@
                             </p>
                         </a>
                     </li>
+                    <li>
+                        <a
+                            href="/docs/products/sites/migrations/vercel"
+                            class="web-card is-normal"
+                            onclick={() => trackEvent(`docs-migrations_vercel_sites-click`)}
+                        >
+                            <h4 class="text-sub-body text-primary font-medium">Vercel</h4>
+                            <p class="text-sub-body mt-1">
+                                Migrate web apps from Vercel to Appwrite Sites.
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>

@@ -284,7 +284,7 @@ async function main() {
         }
 
         if (max_files > 0 && processed >= max_files) {
-            console.log(`OPTIMIZE_MAX_FILES=${max_files} — stopping early (dev only).`);
+            console.log(`OPTIMIZE_MAX_FILES=${max_files} - stopping early (dev only).`);
             break;
         }
 

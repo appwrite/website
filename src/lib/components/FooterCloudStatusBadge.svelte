@@ -124,7 +124,7 @@
             var(--text-caption--letter-spacing)
         );
         /*
-         * `web-icon.css` matches `[class*=' web-icon-']` — that substring appears inside the
+         * `web-icon.css` matches `[class*=' web-icon-']` - that substring appears inside the
          * token `web-icon-button`, so the whole anchor wrongly gets `font-family: web-icon !important`.
          * Reset to body UI font; keep icon font only on the glyph span.
          */

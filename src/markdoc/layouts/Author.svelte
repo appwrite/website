@@ -17,8 +17,8 @@
     export let linkedin: string;
     export let github: string;
 
-    const posts = getContext<PostsData[]>('posts');
-    const authors = getContext<AuthorData[]>('authors');
+    const posts = getContext<PostsData[]>('posts') ?? [];
+    const authors = getContext<AuthorData[]>('authors') ?? [];
     const author = authors.find(
         (p) => page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1) === p.slug
     );

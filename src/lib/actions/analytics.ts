@@ -48,7 +48,7 @@ const plausible = (domain: string): AnalyticsPlugin => {
     };
 };
 
-/** Lazily created in the browser only — avoids `Analytics()` (and any internal `fetch`) during SSR. */
+/** Lazily created in the browser only - avoids `Analytics()` (and any internal `fetch`) during SSR. */
 let analyticsClient: ReturnType<typeof Analytics> | null = null;
 
 function getAnalyticsClient(): ReturnType<typeof Analytics> | null {

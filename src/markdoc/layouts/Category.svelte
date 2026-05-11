@@ -12,8 +12,8 @@
     export let description: string;
 
     const pageSlug = page.url.pathname.substring(page.url.pathname.lastIndexOf('/') + 1);
-    const authors = getContext<AuthorData[]>('authors');
-    const postsList = getContext<PostsData[]>('posts');
+    const authors = getContext<AuthorData[]>('authors') ?? [];
+    const postsList = getContext<PostsData[]>('posts') ?? [];
     const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
     const seoTitle = name + TITLE_SUFFIX;

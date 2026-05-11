@@ -1,7 +1,7 @@
 import { DEFAULT_HERO_CTA } from './constants';
 import { normalizeHeroLayout, type HeroLayoutVariant } from './hero-layout';
 
-/** Legacy fixed label on several CTAs — replaced by homepage `heroCta` when present (`best_cta` experiment retired). */
+/** Legacy fixed label on several CTAs - replaced by homepage `heroCta` when present (`best_cta` experiment retired). */
 export const SHORT_START_BUILDING_LABEL = 'Start building';
 
 /**
@@ -33,7 +33,7 @@ export function normalizeHeroSubtitle(raw: unknown, fallback: string): string {
     return t.length > MAX_SUBTITLE_LEN ? t.slice(0, MAX_SUBTITLE_LEN) : t;
 }
 
-/** Hero headline — same clamp as `hero_title` URL override; used for `best_title` experiment `title` param. */
+/** Hero headline - same clamp as `hero_title` URL override; used for `best_title` experiment `title` param. */
 export function normalizeHeroTitle(raw: unknown, fallback: string): string {
     if (typeof raw !== 'string') return fallback;
     const t = raw.replace(/\s+/g, ' ').trim();
@@ -41,7 +41,7 @@ export function normalizeHeroTitle(raw: unknown, fallback: string): string {
     return t.length > MAX_TITLE_LEN ? t.slice(0, MAX_TITLE_LEN) : t;
 }
 
-/** Short button label — used for `best_cta` / `hero_cta` query override. */
+/** Short button label - used for `best_cta` / `hero_cta` query override. */
 export function normalizeHeroCta(raw: unknown, fallback: string): string {
     if (typeof raw !== 'string') return fallback;
     const t = raw.replace(/\s+/g, ' ').trim();

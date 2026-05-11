@@ -80,7 +80,7 @@
                 href="/docs/tooling/ai/mcp-servers"
                 class="border-smooth group focus-visible:outline-accent relative flex cursor-pointer flex-col border border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2"
                 style="--tile-primary:#FD366E;--tile-secondary:#6366F1"
-                aria-label="MCP servers — Appwrite documentation"
+                aria-label="MCP servers - Appwrite documentation"
             >
                 <div
                     class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--tile-primary)/4 to-(--tile-secondary)/10 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
@@ -104,7 +104,7 @@
                 href="/docs/tooling/ai/skills"
                 class="border-smooth group focus-visible:outline-accent relative flex cursor-pointer flex-col border border-t-0 border-dashed no-underline outline-none focus-visible:outline-2 focus-visible:outline-offset-2 sm:border-t sm:border-l-0"
                 style="--tile-primary:#6366F1;--tile-secondary:#FD366E"
-                aria-label="Appwrite agent skills — documentation"
+                aria-label="Appwrite agent skills - documentation"
             >
                 <div
                     class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--tile-primary)/4 to-(--tile-secondary)/10 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
@@ -150,7 +150,7 @@
                                     <a
                                         href={tool.href}
                                         class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center"
-                                        aria-label={`${tool.name} — Appwrite docs`}
+                                        aria-label={`${tool.name} - Appwrite docs`}
                                     >
                                         <img
                                             src={$themeInUse === 'light' ? tool.light : tool.dark}

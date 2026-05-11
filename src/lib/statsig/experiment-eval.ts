@@ -14,7 +14,7 @@ export type StatsigLayoutReadSource = 'none' | 'get' | 'value' | 'dynamic';
 const LAYOUT_PARAM_KEYS = ['layout', 'hero_layout', 'heroLayout'] as const;
 
 /**
- * Numeric sentinel for `.get` — Statsig types `hero_layout` as number; a string default triggers SDK warnings.
+ * Numeric sentinel for `.get` - Statsig types `hero_layout` as number; a string default triggers SDK warnings.
  */
 const LAYOUT_GET_SENTINEL = -999_999;
 

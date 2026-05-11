@@ -152,7 +152,7 @@
 
     /*
      * Back control sits left of the title’s start (same anchor as body text). From md, nudge a
-     * few px further left for a hairline gap — no h1 padding so the title lines up with `.prose`.
+     * few px further left for a hairline gap - no h1 padding so the title lines up with `.prose`.
      */
     :global(
         .web-article-header-start

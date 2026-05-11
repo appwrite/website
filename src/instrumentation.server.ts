@@ -8,5 +8,5 @@ Sentry.init({
 
 /** Start Node Statsig `initialize()` before the first HTTP request so `/` load is not cold. */
 void getStatsigServerClient().catch(() => {
-    /* No `STATSIG_SERVER_SECRET` or network failure — homepage uses defaults until init succeeds. */
+    /* No `STATSIG_SERVER_SECRET` or network failure - homepage uses defaults until init succeeds. */
 });

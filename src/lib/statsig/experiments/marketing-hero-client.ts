@@ -1,6 +1,6 @@
 /**
  * Browser-only marketing hero Statsig reads (`@statsig/js-client`).
- * Do not import `marketing-hero-server.ts` or `server.ts` from Svelte/components — that pulls native `@statsig/statsig-node-core` into Vite client.
+ * Do not import `marketing-hero-server.ts` or `server.ts` from Svelte/components - that pulls native `@statsig/statsig-node-core` into Vite client.
  *
  * @see ../README.md
  */
@@ -22,7 +22,7 @@ export type MarketingHeroStatsigBaseline = {
 export type MarketingHeroClientExposureDebug = Record<string, unknown>;
 
 /**
- * Read experiments once the JS client is ready — logs exposures for Pulse / Results.
+ * Read experiments once the JS client is ready - logs exposures for Pulse / Results.
  * Pass the same baselines as SSR (or prerender defaults) so `.get` defaults stay consistent.
  */
 export function readMarketingHeroExperimentsForExposure(

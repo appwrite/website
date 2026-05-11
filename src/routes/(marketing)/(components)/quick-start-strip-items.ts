@@ -4,7 +4,7 @@
  * Keep in sync with docs quick-start routes (see `docs/quick-starts/+page.svelte`).
  *
  * Icons: console-style glyphs from `static/images/platforms/{dark|light}/*.svg`
- * (synced from the Appwrite console / `vibes` repo `public/icons/` — light fills ~#32323C for docs light UI only).
+ * (synced from the Appwrite console / `vibes` repo `public/icons/` - light fills ~#32323C for docs light UI only).
  */
 const ICON = '/images/platforms';
 

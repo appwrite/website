@@ -14,7 +14,7 @@
  *   BASE_URL      default http://127.0.0.1:5173
  *   TARGET_PATH   default /
  *   VUS           virtual users (default 5)
- *   DURATION      e.g. 30s, 1m (default 30s) — used when ITERATIONS is unset
+ *   DURATION      e.g. 30s, 1m (default 30s) - used when ITERATIONS is unset
  *   ITERATIONS    if set, uses shared-iterations instead of fixed duration
  *   MAX_DURATION  cap for shared-iterations (default 5m)
  *   COOKIE        optional Cookie header

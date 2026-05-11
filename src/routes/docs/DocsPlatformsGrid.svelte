@@ -25,7 +25,7 @@
     /** Per-tile `side`: first row → above (`top`), last row → below (`bottom`), middle → `top`. */
     let tileTooltipSide = $state(new Map<string, 'top' | 'bottom'>());
 
-    /** Matches `lg:grid-cols-[repeat(15,...)]` — fillers only apply at that breakpoint (hidden below `lg`). */
+    /** Matches `lg:grid-cols-[repeat(15,...)]` - fillers only apply at that breakpoint (hidden below `lg`). */
     const GRID_COLS_LG = 15;
 
     const trailingPlaceholderCount = $derived(

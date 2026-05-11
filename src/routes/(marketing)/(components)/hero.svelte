@@ -34,7 +34,7 @@
         statsigUserAgent?: string | null;
     };
 
-    /** From `+page.server.ts` + `+page.ts` — single source of truth for first paint (no `onMount` layout state). */
+    /** From `+page.server.ts` + `+page.ts` - single source of truth for first paint (no `onMount` layout state). */
     const data = $derived(page.data as MarketingHeroPageData);
 
     /** URL query overrides apply in the browser; baseline always comes from `page.data`. */
@@ -53,7 +53,7 @@
 
     /**
      * SSR uses Statsig with exposure logging off; Pulse needs a browser exposure. We only call
-     * `.get` here — layout/subtitle/title stay on `page.data` from load so the UI does not switch
+     * `.get` here - layout/subtitle/title stay on `page.data` from load so the UI does not switch
      * after paint.
      * @see https://docs.statsig.com/pulse
      */
