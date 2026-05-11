@@ -1,0 +1,90 @@
+---
+layout: post
+title: ChatGPT ads have officially launched
+description: "ChatGPT ads have officially launched and are expanding to more markets, as OpenAI expands its advertising rollout globally. Here's what's actually changing and what brands should do next."
+date: 2026-05-11
+cover: /images/blog/chatgpt-ads-have-officially-launched/cover.png
+timeToRead: 5
+author: aishwari
+category: ai
+featured: false
+---
+
+After months of speculation, **ChatGPT ads are officially live**.
+
+What started as a quiet test in the US is now expanding to more markets. The rollout has been measured, but the implications are anything but. This marks OpenAI's biggest step yet toward becoming a commercial platform.
+
+Here's what's actually happening, and what it means for brands.
+
+# What's actually launched
+
+The early ChatGPT ad test has a deliberately tight shape, based on what OpenAI and reporting around the rollout have confirmed:
+
+Ads only appear on the Free and Go tiers. Paid plans stay ad free. Users under 18 won't see ads, and privacy controls are built in. Ads are clearly labelled and separated from organic responses. OpenAI has introduced both CPM and CPC based buying models for ChatGPT ads. The company has also launched a beta self-serve Ads Manager for advertisers. In platform reporting is limited at launch, and the rollout is now expanding beyond the initial US pilot to more markets.
+
+The rollout is still measured, but OpenAI is clearly building toward a broader advertising platform. It's a controlled test, and that tells you a lot about how OpenAI is approaching this. They're prioritising control and learning over scale.
+
+# Why OpenAI had to move now
+
+OpenAI needs to monetise meaningfully, and quickly.
+
+Running frontier models at global scale is brutally expensive, and the competitive pressure is intensifying from every direction. Subscription revenue alone won't cover the bill, and ads are one of the few levers that can generate revenue at the speed and scale required without immediately degrading the user experience or fragmenting the product.
+
+The move also signals something bigger. OpenAI wants to build a sustainable business, not just a category-defining product. It reframes ChatGPT less as a tool and more as a platform.
+
+# The competitive context
+
+Zoom out and the timing makes more sense.
+
+Anthropic recently strengthened its enterprise AI position through a major new funding round. Meta is pushing into the agent space through acquisitions and internal investment, with explicit superintelligence ambition and unmatched distribution. Google has the infrastructure, search dominance, and capital to accelerate its position in consumer AI whenever it chooses to.
+
+In that context, OpenAI doesn't have the luxury of moving slowly.
+
+# What this could change for brands
+
+If ads in ChatGPT work, they open up a new performance environment. One rooted not in feeds or interruption, but in **intent, context, and problem solving moments**.
+
+When someone asks ChatGPT for the best tool, service, or solution for their specific situation, they're at the bottom of a buying funnel that took multiple Google searches and comparison articles to reach a decade ago. Showing up in that answer, paid or organic, is closer to a real decision than almost any ad placement on the open web.
+
+That's powerful, and potentially disruptive to the digital advertising stack. It also raises real questions around measurement, transparency, user trust, and long term incentives. Limited reporting and high minimums suggest OpenAI is wrestling with these tradeoffs in real time.
+
+# What this means for everyday users
+
+For users, the picture is more mixed. Ads could help support the long term sustainability of the free tier and could improve product recommendations, but they raise real trust questions. Will ChatGPT recommend the *best* answer or the *paid* one? Will sponsored content be clearly labelled?
+
+OpenAI's early choices, including keeping paid plans ad free and excluding ads for minors, suggest they understand the stakes. Whether those guardrails hold under commercial pressure is the question that will define the next 12 months.
+
+# What smart marketers should do this quarter
+
+You don't need to overhaul everything overnight, but a few moves now will compound.
+
+Audit how your brand currently surfaces in ChatGPT, Gemini, and Claude. Restructure your top content to be citable, with clear claims, fact rich writing, and proper attribution. Map your customer's natural language questions and make sure you have content that genuinely answers them better than competitors. And watch the rollout closely, because pricing, formats, and access tiers are still being shaped.
+
+# Frequently asked questions (FAQs)
+
+**Are ChatGPT ads live right now?**
+Yes. OpenAI launched ChatGPT ads in the US, and the rollout is now expanding to additional markets and advertisers.
+
+**How much do ChatGPT ads cost?**
+Early reporting suggests a CPM based model priced around $60, with minimum commitments rumoured to be around $200k for the initial test. These figures have not been formally published by OpenAI.
+
+**Will ads appear on paid ChatGPT plans?**
+No. The current rollout shows ads only on the Free and Go tiers. Paid plans remain ad free.
+
+**Are ChatGPT ads shown to minors?**
+No. Users under 18 will not be shown ads, and privacy controls are built in.
+
+**Will ads interfere with ChatGPT's answers?**
+Based on what's been disclosed, ads sit alongside the core answer experience rather than inside the response itself. The long term implementation is what users and advertisers will be watching closely.
+
+# The bigger picture
+
+This feels like a defining moment for OpenAI, and for the AI advertising stack as a whole. The next 12 months will decide whether ChatGPT becomes the next great consumer ad platform, or a cautionary tale about monetisation done wrong.
+
+For brands, creators, and SMBs, the message is simple. The rules of digital visibility are being rewritten in real time, and the work you do this quarter will decide how visible you are in the next.
+
+A quick note for the builders reading this. The brands that win the next phase of AI-mediated discovery won't just buy ads inside ChatGPT. They'll build the AI products, agents, and experiences that users open by name. If that's where you're headed, [Appwrite](https://appwrite.io/) is the open source backend a lot of teams are quietly shipping on. Auth, databases, storage, and serverless functions in one place, so you ship product instead of plumbing.
+
+AI native advertising is officially becoming a real platform category. The brands paying attention now are the ones that will own the next one.
+
+[Start building with Appwrite for free →](https://appwrite.io/)
