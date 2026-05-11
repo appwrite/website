@@ -26,7 +26,7 @@ The Appwrite API MCP server isn't bundled in the plugin: it needs your endpoint,
 
 {% info title="Prefer manual setup?" %}
 
-If you'd rather copy skills and configure the MCP server yourself, skip to [Step 3](#step-3).
+If you'd rather configure MCP servers individually, skip to [Step 3](#step-3).
 
 {% /info %}
 
