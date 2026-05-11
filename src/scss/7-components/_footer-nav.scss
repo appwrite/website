@@ -1,21 +1,74 @@
 @use '../abstract' as *;
 
 .#{$p}-footer-nav {
-  display:flex; justify-content:space-between; padding-block-start:pxToRem(64); font-size:var(--web-font-size-tiny);
-  .web-logo { align-self:start; }
+  display: flex;
+  /* default align-items: stretch so the link grid matches the full link block height */
+  justify-content: space-between;
+  gap: pxToRem(32);
+  inline-size: 100%;
+  padding-block-start: pxToRem(64);
+  /*
+   * Compare column uses a compact sub-body scale; that size is the single source of truth
+   * for every footer column link list and matching legal strip / status label.
+   */
+  --web-footer-nav-link-font-size: calc(var(--text-sub-body) * 0.88);
+  --web-footer-nav-link-line-height: 1.35;
+  --web-footer-nav-link-letter-spacing: var(--text-sub-body--letter-spacing);
+  font-size: var(--web-footer-nav-link-font-size);
+  line-height: var(--web-footer-nav-link-line-height);
+
+  .text-caption {
+    font-size: var(--web-footer-nav-link-font-size);
+    line-height: var(--web-footer-nav-link-line-height);
+    letter-spacing: var(--web-footer-nav-link-letter-spacing);
+  }
+
+  .text-sub-body {
+    font-size: var(--web-footer-nav-link-font-size);
+    line-height: var(--web-footer-nav-link-line-height);
+    letter-spacing: var(--web-footer-nav-link-letter-spacing);
+  }
+
+  .#{$p}-footer-nav-button {
+    cursor: pointer;
+  }
+
+  .#{$p}-logo {
+    align-self: flex-start;
+  }
+
   &-main {
-    &-title { margin-block-end:pxToRem(24); }
+    &-title {
+      margin-block-end: pxToRem(24);
+    }
+
     &-list {
       display: flex;
-      justify-content: space-between;
-      flex-basis: pxToRem(830);
-      gap: pxToRem(16);
+      align-items: stretch;
+      flex: 1 1 0;
+      justify-content: flex-start;
+      gap: pxToRem(24);
       min-inline-size: 0;
 
-      /* Equal column widths so a long link in one column does not widen it past the others */
+      /* Equal-width columns; column flex so the About + logo cell can pin the logo to the row bottom */
       > .#{$p}-footer-nav-main-item.#{$p}-is-not-mobile {
+        display: flex;
         flex: 1 1 0;
+        flex-direction: column;
+        align-items: flex-start;
         min-inline-size: 0;
+      }
+
+      > .#{$p}-footer-nav-main-item--compare-col.#{$p}-is-not-mobile {
+        flex: 1.35 1 0;
+      }
+
+      > .#{$p}-footer-nav-main-item--with-bottom-logo.#{$p}-is-not-mobile {
+        .#{$p}-logo {
+          align-self: flex-end;
+          margin-block-start: auto;
+          padding-block-start: pxToRem(32);
+        }
       }
     }
     &-item {}
@@ -28,14 +81,45 @@
       flex-direction: column;
       gap: pxToRem(10);
       overflow-wrap: anywhere;
+
+      &--compare {
+        > li {
+          min-inline-size: 0;
+        }
+
+        .#{$p}-link {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
     }
     &-item {}
   }
 
-  @media #{$break1} {
-    flex-direction:column; gap:pxToRem(40);
+  @media #{$break2open} {
+    gap: pxToRem(40);
+
     &-main {
-      &-list { display:flex; flex-direction:column; gap:pxToRem(12); flex-basis:0; }
+      &-list {
+        gap: pxToRem(48);
+      }
+    }
+  }
+
+  @media #{$break1} {
+    flex-direction: column;
+    gap: pxToRem(48);
+
+    &-main {
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: pxToRem(20);
+        flex: 0 1 auto;
+        inline-size: 100%;
+      }
       &-item {
         display:flex; flex-direction:column; 
         
@@ -48,6 +132,13 @@
         .#{$p}-footer-nav-secondary-list {
           padding:pxToRem(16);
         }
+
+        /* Accordion panels: main-body scale for comfortable tap targets on small viewports */
+        &.#{$p}-is-only-mobile .#{$p}-footer-nav-secondary-list.text-sub-body {
+          font-size: var(--text-main-body);
+          line-height: var(--text-main-body--line-height);
+          letter-spacing: var(--text-main-body--letter-spacing);
+        }
       }
     }
     &-button {
@@ -56,5 +147,28 @@
       padding:pxToRem(16);
       &-arrow { transition:var(--transition);}
     }
+  }
+}
+
+/*
+ * Bottom legal row(s): same type scale as Compare links inside `.web-footer-nav`.
+ * Use on marketing `MainFooter` (with `web-main-footer`) and `sub-footer`.
+ */
+.#{$p}-footer-legal-strip,
+.#{$p}-main-footer.#{$p}-footer-legal-strip {
+  --web-footer-nav-link-font-size: calc(var(--text-sub-body) * 0.88);
+  --web-footer-nav-link-line-height: 1.35;
+  --web-footer-nav-link-letter-spacing: var(--text-sub-body--letter-spacing);
+  font-size: var(--web-footer-nav-link-font-size);
+  line-height: var(--web-footer-nav-link-line-height);
+  letter-spacing: var(--web-footer-nav-link-letter-spacing);
+
+  .text-sub-body,
+  .text-secondary,
+  a.#{$p}-link,
+  p {
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 }

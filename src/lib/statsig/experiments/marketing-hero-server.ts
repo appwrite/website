@@ -7,11 +7,7 @@
 import type { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 import { readLayoutVariantFromStatsigEvaluation } from '../experiment-eval';
 import type { HeroLayoutVariant } from '../hero-layout';
-import {
-    normalizeHeroCta,
-    normalizeHeroSubtitle,
-    normalizeHeroTitle
-} from '../hero-query-overrides';
+import { normalizeHeroSubtitle, normalizeHeroTitle } from '../hero-query-overrides';
 import {
     getStatsigClientBootstrapPayloadForClient,
     getStatsigServerClient,
@@ -96,24 +92,6 @@ async function evaluateBestTitleHeroWithClient(
     }
 }
 
-async function evaluateHeroCtaWithClient(
-    client: Statsig,
-    statsigUser: StatsigUser,
-    fallback: string
-): Promise<string> {
-    try {
-        const experiment = client.getExperiment(
-            statsigUser,
-            MARKETING_HERO_EXPERIMENTS.bestCta,
-            DISABLE_EXPOSURE
-        );
-        const raw = experiment.get('cta', fallback);
-        return normalizeHeroCta(raw, fallback);
-    } catch {
-        return fallback;
-    }
-}
-
 async function evaluateHeroLayoutWithClient(
     client: Statsig,
     statsigUser: StatsigUser,
@@ -168,7 +146,6 @@ export async function loadMarketingHomeStatsigBundle(
     const bootstrapFilters = {
         experimentFilter: new Set([
             MARKETING_HERO_EXPERIMENTS.bestTitle,
-            MARKETING_HERO_EXPERIMENTS.bestCta,
             MARKETING_HERO_EXPERIMENTS.heroLayout
         ]),
         dynamicConfigFilter: new Set([MARKETING_HERO_EXPERIMENTS.heroLayout])
@@ -177,7 +154,6 @@ export async function loadMarketingHomeStatsigBundle(
     const [
         { title: heroTitleBase, description: heroSubtitleBase },
         heroLayoutBase,
-        heroCtaBase,
         statsigBootstrap
     ] = await Promise.all([
         evaluateBestTitleHeroWithClient(client, statsigUser, {
@@ -185,11 +161,12 @@ export async function loadMarketingHomeStatsigBundle(
             description: fallbacks.subtitle
         }),
         evaluateHeroLayoutWithClient(client, statsigUser, fallbacks.layout),
-        evaluateHeroCtaWithClient(client, statsigUser, fallbacks.cta),
         Promise.resolve(
             getStatsigClientBootstrapPayloadForClient(client, statsigUser, bootstrapFilters)
         )
     ]);
+
+    const heroCtaBase = fallbacks.cta;
 
     const bundle: MarketingHomeStatsigBundle = {
         heroTitleBase,
@@ -221,14 +198,10 @@ export async function evaluateHeroLayoutExperiment(
     return evaluateHeroLayoutWithClient(client, toStatsigUser(user), fallback);
 }
 
-/**
- * SSR: `best_cta` (`cta` param). Client must still call `readMarketingHeroExperimentsForExposure` so Pulse gets an exposure.
- */
+/** `best_cta` Statsig experiment is disabled — always returns the provided fallback (e.g. `DEFAULT_HERO_CTA`). */
 export async function evaluateHeroCtaExperiment(
-    user: StatsigUser | StatsigServerUserInput,
+    _user: StatsigUser | StatsigServerUserInput,
     fallback: string
 ): Promise<string> {
-    const client = await getStatsigServerClient();
-    if (!client) return fallback;
-    return evaluateHeroCtaWithClient(client, toStatsigUser(user), fallback);
+    return fallback;
 }

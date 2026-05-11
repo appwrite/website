@@ -6,6 +6,7 @@
     import { platformMap, preferredPlatform } from '$lib/utils/references';
     import '$scss/hljs.css';
     import { melt } from '@melt-ui/svelte';
+    import { isInChangelog } from '../layouts/Changelog.svelte';
     import { getContext, hasContext } from 'svelte';
     import { get } from 'svelte/store';
     import type { CodeContext } from '../tags/MultiCode.svelte';
@@ -29,6 +30,7 @@
     }: FenceProps = $props();
 
     const inTutorialDocs = isInTutorialDocs();
+    const inChangelog = isInChangelog();
     const insideMultiCode = hasContext('multi-code');
     const selected = insideMultiCode ? getContext<CodeContext>('multi-code').selected : null;
 
@@ -93,6 +95,7 @@
 {:else}
     <section
         class="dark web-code-snippet not-prose my-8!"
+        class:in-changelog={inChangelog}
         class:no-top-margin={inTutorialDocs}
         aria-label="code-snippet panel"
     >
@@ -136,5 +139,25 @@
 <style>
     .no-top-margin {
         margin-top: unset !important;
+    }
+
+    .in-changelog {
+        max-width: 100%;
+    }
+
+    .in-changelog .web-code-snippet-content {
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+    }
+
+    .in-changelog :global(.web-code-pre) {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .in-changelog :global(.web-code-body.line-numbers) {
+        display: block;
+        min-width: max-content;
     }
 </style>

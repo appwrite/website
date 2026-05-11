@@ -12,7 +12,8 @@
                 Protect your files and set permissions
             </h2>
             <p class="text-main-body max-width-[380px] mx-auto font-medium">
-                Set up file encryption and granular user permissions in your storage infrastructure
+                Encrypt files at rest and enforce per-user and team permissions—so private uploads
+                stay private, not just hidden behind a public URL pattern.
             </p>
             <Button
                 href="/docs/products/storage/permissions"

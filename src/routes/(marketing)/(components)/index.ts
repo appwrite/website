@@ -2,7 +2,6 @@ export { default as Features } from './features.svelte';
 export { default as Benefits } from './benefits.svelte';
 export { default as CaseStudies } from './case-studies.svelte';
 export { default as CaseStudyCard } from './case-study-card.svelte';
-export { default as Dashboard } from './dashboard.svelte';
 export { default as DevelopersToolkit } from './developers-toolkit.svelte';
 export { default as GridPaper } from './grid-paper.svelte';
 export { default as HeroBanner } from './hero-banner.svelte';
