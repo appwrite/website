@@ -22,11 +22,11 @@ Inside an Appwrite Function, we'll create a method to that indexes an Appwrite t
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.

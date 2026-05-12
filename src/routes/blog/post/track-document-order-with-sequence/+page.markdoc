@@ -3,7 +3,7 @@ layout: post
 title: Using $sequence to track document order in Appwrite
 description: Learn how to use Appwrite's $sequence attribute to track document order in your database.
 date: 2025-07-16
-cover: /images/blog/track-document-order-with-sequence/cover.png
+cover: /images/blog/track-document-order-with-sequence/cover.avif
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
@@ -332,7 +332,7 @@ The `padStart(3, '0')` method formats the sequence number with leading zeros.
 
 You now have a working support ticket tracker that looks like this:
 
-![Support tracker demo](/images/blog/track-document-order-with-sequence/support-tracker-demo.png)
+![Support tracker demo](/images/blog/track-document-order-with-sequence/support-tracker-demo.avif)
 
 - Each submitted ticket is stored as a document in Appwrite
 - Every document receives a `$sequence` number, guaranteed to be unique and increasing

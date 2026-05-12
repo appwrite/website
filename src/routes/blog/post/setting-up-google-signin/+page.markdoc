@@ -3,7 +3,7 @@ layout: post
 title: Setting up “Sign in with Google” in your app
 description: Learn how to set up Google OAuth2 authentication in your app.
 date: 2025-09-09
-cover: /images/blog/setting-up-google-signin/cover.png
+cover: /images/blog/setting-up-google-signin/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -33,12 +33,12 @@ Head to [Google Cloud Console](https://console.cloud.google.com) and sign in wit
 
 After creating your project, you will be redirected to your project dashboard, which should look similar to the following image.
 
-![Google developer console project dashboard](/images/blog/setting-up-google-signin/google-console.png)
+![Google developer console project dashboard](/images/blog/setting-up-google-signin/google-console.avif)
 
 - Click on **APIs & Services** in the quick access section and then on **OAuth Consent Screen** in the sidebar. If you're doing this for the first time, you should see a page that mentions the Google Auth Platform is not set up. Click on **Get Started**, which should open a wizard that guides you to creating your OAuth consent screen.
 - When creating an OAuth consent screen, you will be presented with a wizard that asks a series of questions, starting with your app name and user support email address. Google will share this email with your users for support-related queries. Hit **Next** once you’re ready to proceed to the next step.
 
-![Setting up audience for OAuth consent screen](/images/blog/setting-up-google-signin/audience.png)
+![Setting up audience for OAuth consent screen](/images/blog/setting-up-google-signin/audience.avif)
 
 - In the **Audience** section, as shown in the above image, you must mention who will use your application.
     - If your application is meant to be used by a closed group of people, select **Internal**.
@@ -52,7 +52,7 @@ When working with Google OAuth, there are details about the users to whom your a
 
 Click on **Data Access** on the sidebar and click on **Add or remove scopes**. A menu should now appear displaying all the available scopes you can enable.
 
-![Setting up scopes for OAuth consent screen](/images/blog/setting-up-google-signin/scopes.png)
+![Setting up scopes for OAuth consent screen](/images/blog/setting-up-google-signin/scopes.avif)
 
 For standard usage, you can use `.../auth/userinfo.email`, `.../auth/userinfo.profile` and `openid`.
 
@@ -64,7 +64,7 @@ Now that your consent screen is set up, we can create an OAuth Client ID. An OAu
 
 To create an OAuth Client ID, click on **Clients** on the sidebar and then click on **Create Client** on the top bar. This should open another wizard to help you configure your OAuth Client ID.
 
-![Setting up OAuth client ID](/images/blog/setting-up-google-signin/client.png)
+![Setting up OAuth client ID](/images/blog/setting-up-google-signin/client.avif)
 
 Let’s dive into the fields that you need to enter here:
 
@@ -75,7 +75,7 @@ Let’s dive into the fields that you need to enter here:
 
 When you have filled all the required fields, click on **Create**. This should process your request and create your OAuth Client ID. Now, go ahead and open the entry for your client and you should see a screen similar to the following. 
 
-![OAuth client ID details](/images/blog/setting-up-google-signin/client-details.png)
+![OAuth client ID details](/images/blog/setting-up-google-signin/client-details.avif)
 
 Note the **Client ID** and **Client secret;** we will need them later in this guide. The client ID could be public, but make sure you don’t share your client secret with others.
 
@@ -88,11 +88,11 @@ Once you have created your Google OAuth credentials, you can integrate them into
 - Go to [Appwrite Cloud](https://cloud.appwrite.io) and log in using your preferred authentication method. Once you’re logged in, click on **Create Project**.
 - Give the project a name, select a desired location (which should be closer to most of your users), and click **Create**. You should now be presented with your project dashboard.
 
-![Appwrite Cloud Console](/images/blog/setting-up-google-signin/appwrite-console.png)
+![Appwrite Cloud Console](/images/blog/setting-up-google-signin/appwrite-console.avif)
 
 - Now, click on **Auth** on the sidebar, and click on the **Settings** tab. Here you will see many OAuth providers you can configure for authentication in your application. Click on **Google,** and you will find options to fill out in Appwrite and the Google Cloud Console.
 
-![Setting up Google authentication in Appwrite console](/images/blog/setting-up-google-signin/appwrite-google-oauth.png)
+![Setting up Google authentication in Appwrite console](/images/blog/setting-up-google-signin/appwrite-google-oauth.avif)
 
 - Enter the client ID and secret you obtained from the Google Cloud Console. Also, copy the URI and add it to the redirect URIs section of your Google client on Google Cloud Console. Once that's done, click on **Update**. This should enable Google to be an authentication provider in your Appwrite app.
 

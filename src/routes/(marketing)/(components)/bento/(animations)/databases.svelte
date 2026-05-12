@@ -152,7 +152,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/databases.png"
+                src="/images/icons/illustrated/dark/databases.avif"
                 alt="Databases icon"
                 class="size-7"
             />

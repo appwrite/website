@@ -2,7 +2,7 @@
 layout: post
 title: Add a search function to your application
 description: Learn how to add a search function to your application.
-cover: /images/blog/add-a-search-function-to-your-app/cover.png
+cover: /images/blog/add-a-search-function-to-your-app/cover.avif
 timeToRead: 5
 date: 2023-11-17
 author: haimantika-mitra
@@ -38,17 +38,17 @@ Here’s the keys you need:
 - `MEILISEARCH_ENDPOINT` - This is the host URL of the Meilisearch server. Once you have logged in to Meilisearch Cloud and created a new project, you will find the URL under “Overview” and this is how it should look like 👇
 
 
-![Overview Meilisearch](/images/blog/add-a-search-function-to-your-app/functions.png)
+![Overview Meilisearch](/images/blog/add-a-search-function-to-your-app/functions.avif)
 
 -  `MEILISEARCH_ADMIN_API_KEY` - This is the admin API key for Meilisearch. You will find it in the Meilisearch Console under “API Key”. 
 -  `MEILISEARCH_SEARCH_API_KEY` - This is the API Key for Meilisearch search operations. To get this, you need you create a new index from the Meilisearch Console. Once created you will find it under `Overview` as `Default Search API Key`
 
 
 
-![Creating an index from the Console](/images/blog/add-a-search-function-to-your-app/variables.png)
+![Creating an index from the Console](/images/blog/add-a-search-function-to-your-app/variables.avif)
 
 
-![Keys](/images/blog/add-a-search-function-to-your-app/connect.png)
+![Keys](/images/blog/add-a-search-function-to-your-app/connect.avif)
 
 - `MEILISEARCH_INDEX_NAME` - Name of the Meilisearch index to which the documents will be synchronized. For e.g, in the above picture, the Index name is `Newindex`. You can also find it under `Settings` as `Index Name`.
  
@@ -61,7 +61,7 @@ If you want to see the source code, you can find it on our [templates GitHub re
 
 
 
-![templates](/images/blog/add-a-search-function-to-your-app/templates.png)
+![templates](/images/blog/add-a-search-function-to-your-app/templates.avif)
 
 The function requires `APPWRITE_API_KEY`, `APPWRITE_DATABASE_ID`, `APPWRITE_COLLECTION_ID` , `MEILISEARCH_ENDPOINT`, `MEILISEARCH_ADMIN_API_KEY`, `MEILISEARCH_SEARCH_API_KEY`, `MEILISEARCH_INDEX_NAME`. Once you have added them you can proceed to the Connect step.
 
@@ -69,7 +69,7 @@ Select **Create a new repository** (this will generate a GitHub repository for
 
 
 
-![connect](/images/blog/add-a-search-function-to-your-app/connecttemplate.png)
+![connect](/images/blog/add-a-search-function-to-your-app/connecttemplate.avif)
 
 
 # Testing the Template

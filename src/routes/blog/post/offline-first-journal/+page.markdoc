@@ -3,7 +3,7 @@ layout: post
 title: Build an offline-first journal app with RxDB and Appwrite
 description: Learn how you can use RxDB to setup data replication and enable offline synchronization with Appwrite Databases in a JavaScript app.
 date: 2025-04-17
-cover: /images/blog/offline-first-journal/cover.png
+cover: /images/blog/offline-first-journal/cover.avif
 timeToRead: 14
 author: aditya-oberai
 category: integrations
@@ -32,7 +32,7 @@ RxDB has recently introduced a plugin that allows developers to replicate data t
 
 To understand how to build an offline-first application with RxDB and Appwrite, let’s build a journal app. Our app will be a simplified version of the [demo app](https://offline-journal.vercel.app/) shown below.
 
-![Demo app](/images/blog/offline-first-journal/demo.png)
+![Demo app](/images/blog/offline-first-journal/demo.avif)
 
 Our tech stack for this app will be:
 

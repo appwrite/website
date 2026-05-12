@@ -20,7 +20,7 @@
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Dashboard from '$routes/(marketing)/(components)/dashboard.svelte';
+    import HeroDashboardMockup from '$routes/(marketing)/(components)/hero-dashboard-mockup.svelte';
 
     const {
         title = DEFAULT_HERO_TITLE,
@@ -199,10 +199,10 @@
 
         {#if showDashboard}
             {#if layoutAside}
-                <Dashboard />
+                <HeroDashboardMockup />
             {:else}
                 <div class="flex w-full justify-center">
-                    <Dashboard placement="below" />
+                    <HeroDashboardMockup placement="below" />
                 </div>
             {/if}
         {/if}

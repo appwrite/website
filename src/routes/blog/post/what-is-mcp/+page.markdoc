@@ -3,7 +3,7 @@ layout: post
 title: What exactly is MCP, and why is it trending?
 description: Appwrite introduces its own Model Context Protocol (MCP). Learn what it is and why it's becoming a popular solution for AI assistants to interact with real-world tools, and how to install Appwrite's new MCP server.
 date: 2025-03-13
-cover: /images/blog/what-is-mcp/cover.png
+cover: /images/blog/what-is-mcp/cover.avif
 timeToRead: 7
 author: ebenezer-don
 category: tutorial
@@ -198,7 +198,7 @@ Next, edit your config file and add this:
 
 Next, opening Claude Desktop should show you a tool icon in the chat input field with a list of the available MCP tools.
 
-![Claude Desktop MCP tool icon](/images/blog/what-is-mcp/claude-mcp-tools.png)
+![Claude Desktop MCP tool icon](/images/blog/what-is-mcp/claude-mcp-tools.avif)
 
 If you get an error that the Appwrite MCP server failed to start, it might be that your computer hasn't recognized the `uvx` command yet. In that case, you can replace the `uvx` string in your config object's `command` property with the direct path to your uv installation. Here's an example for MacOS:
 
@@ -208,7 +208,7 @@ If you get an error that the Appwrite MCP server failed to start, it might be th
 
 With the MCP server successfully started on Claude Desktop, you should now be able to ask Claude to retrieve data or perform an action on your Appwrite project.
 
-![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.png)
+![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.avif)
 
 You can also set up the Appwrite MCP server with other AI tools like Cursor and WindSurf. For more examples and specific setup instructions, check out the [MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true).
 

@@ -2,7 +2,7 @@
     import { isMobile } from '$lib/utils/is-mobile';
     import GridPaper from '../../grid-paper.svelte';
     import { animate, hover, inView, stagger, transform } from 'motion';
-    import Site from '../../../(assets)/images/site.png';
+    import Site from '../../../(assets)/images/site.avif';
     import { cn } from '$lib/utils/cn';
     import Spinner from '../../spinner.svelte';
     import { unwrite, write, type WriteAnimation } from '$lib/animations';
@@ -133,7 +133,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/sites.png"
+                src="/images/icons/illustrated/dark/sites.avif"
                 alt="Sites icon"
                 class="size-7"
             />

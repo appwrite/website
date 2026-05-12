@@ -2,7 +2,7 @@
     import type { DayProps } from './day.svelte';
     import DiscordIcon from '../(assets)/icons/discord.svg';
     import PlayIcon from '../(assets)/icons/play.svg';
-    import Poster from '../(assets)/poster.png';
+    import Poster from '../(assets)/poster.avif';
     import VideoDialog from '$lib/components/shared/dialog.svelte';
 
     type Props = NonNullable<DayProps['links']>[number];

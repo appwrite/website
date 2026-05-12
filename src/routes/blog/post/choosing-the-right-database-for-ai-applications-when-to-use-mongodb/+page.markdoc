@@ -3,7 +3,7 @@ layout: post
 title: "Choosing the right database for AI applications: When to use MongoDB"
 description: Choose the right database for AI workloads. Learn when MongoDB fits dynamic, high-write AI data and how Appwrite lets you build on it without managing backend infrastructure.
 date: 2026-04-03
-cover: /images/blog/choosing-the-right-database-for-ai-applications-when-to-use-mongodb/cover.png
+cover: /images/blog/choosing-the-right-database-for-ai-applications-when-to-use-mongodb/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product

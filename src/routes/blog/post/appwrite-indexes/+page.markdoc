@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite Indexes: how to speed up your database queries"
 description: Learn what indexes are in Appwrite Databases, which types to use, when to create them, and when adding more indexes actually hurts performance.
 date: 2026-03-26
-cover: /images/blog/appwrite-indexes/cover.png
+cover: /images/blog/appwrite-indexes/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, tutorial

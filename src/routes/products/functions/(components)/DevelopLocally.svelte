@@ -1,8 +1,8 @@
 <script lang="ts">
     import { cn } from '$lib/utils/cn';
-    import Hat from '../(assets)/hat.png';
-    import Shirt from '../(assets)/shirt.png';
-    import Window from '../(assets)/checkout-window.png';
+    import Hat from '../(assets)/hat.avif';
+    import Shirt from '../(assets)/shirt.avif';
+    import Window from '../(assets)/checkout-window.avif';
     import { Button } from '$lib/components/ui';
 
     const products = [

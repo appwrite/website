@@ -6,20 +6,20 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/query-upstash/cover.png
+cover: /images/integrations/query-upstash/cover.avif
 category: databases
 product: 
-    avatar: '/images/integrations/avatars/upstash.png'
+    avatar: '/images/integrations/avatars/upstash.avif'
     vendor: Upstash
     description: 'Upstash Vector provides a powerful vector database designed to handle complex queries and search functionalities.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/query-upstash/cover.png
-    - /images/integrations/query-upstash/index.png
-    - /images/integrations/query-upstash/template.png
-    - /images/integrations/query-upstash/variables.png
+    - /images/integrations/query-upstash/cover.avif
+    - /images/integrations/query-upstash/index.avif
+    - /images/integrations/query-upstash/template.avif
+    - /images/integrations/query-upstash/variables.avif
 ---
 
 Upstash Vector provides a powerful vector database designed to handle complex queries and search functionalities. It’s ideal for applications that require fast and efficient handling of vector data.
@@ -36,7 +36,7 @@ To implement the Upstash Vector integration, follow these simple steps:
 
 First, [create an account on Upstash](https://console.upstash.com/login) and set up a **new Vector index** with your preferred region and embedding model. Once it is ready, copy your **endpoint** and **token** from the index’s dashboard for further usage
 
-![Upstash vector index](/images/integrations/query-upstash/index.png)
+![Upstash vector index](/images/integrations/query-upstash/index.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -44,11 +44,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Upstash** function template.
 
-![Function template](/images/integrations/query-upstash/template.png)
+![Function template](/images/integrations/query-upstash/template.avif)
 
 Add the **Upstash endpoint** and **token** you saved in the **Variables** step. Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 
-![Env variables](/images/integrations/query-upstash/variables.png)
+![Env variables](/images/integrations/query-upstash/variables.avif)
 
 ## Step 3: Test the function
 

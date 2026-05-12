@@ -17,7 +17,7 @@
     const posts = postsList.filter((post) => post.category.includes(pageSlug));
 
     const seoTitle = name + TITLE_SUFFIX;
-    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.avif';
 </script>
 
 <svelte:head>

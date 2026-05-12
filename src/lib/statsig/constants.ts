@@ -9,4 +9,4 @@ export const DEFAULT_HERO_SUBTITLE =
 
 export const DEFAULT_HERO_TITLE = 'Build like a team of hundreds';
 
-export const DEFAULT_HERO_CTA = 'Start building for free';
+export const DEFAULT_HERO_CTA = 'Start project';

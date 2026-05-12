@@ -3,7 +3,7 @@ layout: post
 title: How to set up Sign in with Apple
 description: This step-by-step guide will walk you through setting up Sign in with Apple, configuring your Appwrite project, and integrating it into various platforms like web, Android, iOS, and Flutter.
 date: 2024-10-04
-cover: /images/blog/how-to-set-up-sign-in-with-apple/cover.png
+cover: /images/blog/how-to-set-up-sign-in-with-apple/cover.avif
 timeToRead: 13
 author: ebenezer-don
 category: tutorial
@@ -43,7 +43,7 @@ To start, you'll need to create a new project in your Appwrite instance. This pr
 1. **Log in to the Appwrite console**: Access your Appwrite console at [cloud.appwrite.io](https://cloud.appwrite.io/console).
 2. **Create a new project**: In the dashboard, click **Create Project**, enter a name for your project, and click **Create**.
 
-![Create a new Appwrite project](/images/blog/how-to-set-up-sign-in-with-apple/create-project.png)
+![Create a new Appwrite project](/images/blog/how-to-set-up-sign-in-with-apple/create-project.avif)
 
 
 Once the project is created, you'll be taken to the project dashboard. Here, you can monitor usage and configure settings for your project.
@@ -58,11 +58,11 @@ In the project dashboard, navigate to the **Overview** tab, and in the **Add a p
 - Choose the **Web** option.
 - Enter a **platform name** (e.g., "WebApp") and the **hostname** of your app (e.g., `example.com`).
 
-  ![Add a platform for Web](/images/blog/how-to-set-up-sign-in-with-apple/add-web-platform.png)
+  ![Add a platform for Web](/images/blog/how-to-set-up-sign-in-with-apple/add-web-platform.avif)
 
   After registering the platform, Appwrite will provide a code snippet for initializing the SDK. You'll use this later to integrate the Appwrite SDK into your project.
 
-  ![Add a web platform - step 2](/images/blog/how-to-set-up-sign-in-with-apple/add-web-platform-2.png)
+  ![Add a web platform - step 2](/images/blog/how-to-set-up-sign-in-with-apple/add-web-platform-2.avif)
 
 **For Mobile**:
 - Select **iOS** or **Android** depending on your platform.
@@ -78,11 +78,11 @@ Now that your Appwrite project is ready, you can configure Appwrite to use Apple
 
 In the Appwrite console, navigate to **Auth** > **Settings**.
 
-![Enable Apple OAuth2 in Appwrite](/images/blog/how-to-set-up-sign-in-with-apple/enable-apple-oauth2.png)
+![Enable Apple OAuth2 in Appwrite](/images/blog/how-to-set-up-sign-in-with-apple/enable-apple-oauth2.avif)
 
 In the **OAuth2 Providers** section, click the **Apple** provider. This will return a modal with a toggle button to enable Apple authentication.
 
-![Enable Apple Oauth2 in Appwrite - step 2](/images/blog/how-to-set-up-sign-in-with-apple/enable-apple-oauth2-2.png)
+![Enable Apple Oauth2 in Appwrite - step 2](/images/blog/how-to-set-up-sign-in-with-apple/enable-apple-oauth2-2.avif)
 
 
 ## 2.2 Providing Apple credentials in Appwrite

@@ -3,7 +3,7 @@ layout: post
 title: "Announcing HEIC and AVIF support: modern image formats now in Appwrite"
 description:
 date: 2025-05-22
-cover: /images/blog/new-image-formats.png
+cover: /images/blog/new-image-formats.avif
 timeToRead: 6
 author: damodar-lohani
 category: product, announcement

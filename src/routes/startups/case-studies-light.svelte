@@ -1,35 +1,40 @@
 <script lang="ts" module>
     import DevKind from '$routes/(marketing)/(assets)/logos/devkind-light.svg';
     import LangX from '$routes/(marketing)/(assets)/logos/langx-light.svg';
-    import KCollect from '$routes/(marketing)/(assets)/logos/k-collect-light.svg';
     import CaseStudyCardLight from './case-study-card-light.svelte';
 
     const studies = [
         {
             logo: DevKind,
+            logoWidth: 107,
+            logoHeight: 32,
             headline: 'DevKind reduced development time by 60% and lowered server costs by 40%',
             blurb: 'A special thanks to Appwrite for providing robust features and seamless functionality.',
             name: 'Hassan Ahmed',
             title: 'Engineer at DevKind',
-            avatar: '/images/testimonials/hassan.png',
+            avatar: '/images/testimonials/hassan.avif',
             url: '/blog/post/customer-story-storealert'
         },
         {
             logo: LangX,
+            logoWidth: 134,
+            logoHeight: 29,
             headline: 'LangX handled millions of requests using Appwrite',
             blurb: 'With its comprehensive suite of services, Appwrite emerged as an ideal choice for my needs.',
             name: 'Xue',
             title: 'Founder at LangX',
-            avatar: '/images/testimonials/xue.webp',
+            avatar: '/images/testimonials/xue.avif',
             url: '/blog/post/customer-stories-langx'
         },
         {
-            logo: KCollect,
+            logo: '/images/logos/trusted-by/k-collect.svg',
+            logoWidth: 110,
+            logoHeight: 35,
             headline: 'K-Collect reduced infrastructure costs by 700%',
             blurb: 'A major impact that Appwrite made was the amount of time and stress saved.',
             name: "Ryan O'Connor",
             title: 'Founder at K-Collect',
-            avatar: '/images/testimonials/ryan.png',
+            avatar: '/images/testimonials/ryan.avif',
             url: '/blog/post/customer-stories-kcollect'
         }
     ];

@@ -133,10 +133,10 @@ To import rows using the Appwrite Console:
 4. Upload a new CSV file or choose an existing file from your Storage bucket
 
 {% only_dark %}
-![CSV import screen](/images/docs/databases/dark/csv-import.png)
+![CSV import screen](/images/docs/databases/dark/csv-import.avif)
 {% /only_dark %}
 {% only_light %}
-![CSV import screen](/images/docs/databases/csv-import.png)
+![CSV import screen](/images/docs/databases/csv-import.avif)
 {% /only_light %}
 
 CSV imports run as background tasks. The Console displays a floating progress bar while the import is active.

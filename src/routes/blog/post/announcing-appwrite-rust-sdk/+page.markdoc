@@ -3,7 +3,7 @@ layout: post
 title: "Introducing the Appwrite Rust SDK"
 description: Appwrite now has an official Rust SDK, bringing type-safe, async-first Appwrite integration to the Rust ecosystem.
 date: 2026-04-08
-cover: /images/blog/announcing-appwrite-rust-sdk/cover.png
+cover: /images/blog/announcing-appwrite-rust-sdk/cover.avif
 timeToRead: 4
 author: chirag-aggarwal
 category: announcement

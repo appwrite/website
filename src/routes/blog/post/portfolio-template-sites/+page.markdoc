@@ -3,7 +3,7 @@ layout: post
 title: Build and deploy a personal portfolio on Appwrite Sites
 description: Learn how to configure the Appwrite Sites portfolio template and deploy your changes via the GitHub integration.
 date: 2025-05-28
-cover: /images/blog/portfolio-template-sites/cover.png
+cover: /images/blog/portfolio-template-sites/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: tutorial
@@ -35,25 +35,25 @@ The Appwrite portfolio template is a personal portfolio app for developers. Buil
 - Individual project pages
 - Contact me page with an email form (currently just logs form data on the console)
 
-![Deployed site](/images/blog/portfolio-template-sites/deployed.png)
+![Deployed site](/images/blog/portfolio-template-sites/deployed.avif)
 
 # Deploy the portfolio template on Appwrite
 
 Firstly, you must head to Appwrite Cloud and [create an account](https://cloud.appwrite.io/console/register) if you haven't already (or [self-host Appwrite 1.7](https://appwrite.io/docs/advanced/self-hosting)). Next, create your first project, which will lead you to the project overview page.
 
-![Get started](/images/blog/portfolio-template-sites/get-started.png)
+![Get started](/images/blog/portfolio-template-sites/get-started.avif)
 
 Head to the **Sites** page from the left sidebar, click on the **Create site** button, and select the **Clone a template** option. This will take you to the Appwrite Sites templates listing, where you should select **Portfolio** under the **Use case** category on the left sidebar. This will show you numerous templates, some developed by our team and some by our partners, from which you must click on the `Portfolio template` option.
 
-![Site templates](/images/blog/portfolio-template-sites/templates.png)
+![Site templates](/images/blog/portfolio-template-sites/templates.avif)
 
 After selecting the template, connect a GitHub repository now (you can do this later, too). Leave the production branch and root directory as is, update the domain name if you want, and click the **Deploy** button. You can watch the deployment logs as Appwrite builds your site.
 
-![Deployment logs](/images/blog/portfolio-template-sites/deployment-logs.png)
+![Deployment logs](/images/blog/portfolio-template-sites/deployment-logs.avif)
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. You can view the site by clicking the **Visit site** button, or view the site configuration (deployments, logs, domains, usage, and settings) by clicking the **Go to dashboard** button.
 
-![Congratulations](/images/blog/portfolio-template-sites/congrats.png)
+![Congratulations](/images/blog/portfolio-template-sites/congrats.avif)
 
 # Making changes and deploying them to the site
 
@@ -61,7 +61,7 @@ To learn how to make changes in the portfolio site, let's update the contact for
 
 First, create an account on [Resend](https://resend.com/), then go to the **API Keys** tab in the left sidebar to create a new API key. Save this API key for later usage.
 
-![Resend API key](/images/blog/portfolio-template-sites/resend-api-key.png)
+![Resend API key](/images/blog/portfolio-template-sites/resend-api-key.avif)
 
 > Note: While this isn't mandatory for the demo, for production apps, you should add and verify a [domain](https://resend.com/docs/dashboard/domains/introduction) to send emails via Resend.
 
@@ -70,7 +70,7 @@ Next, you must update the environment variables of our Appwrite Site. Head back 
 - `RESEND_API_KEY`: The Resend API key you created earlier
 - `EMAIL_ADDRESS`: The email address you want to receive contact form messages on
 
-![Site environment variables](/images/blog/portfolio-template-sites/env-vars.png)
+![Site environment variables](/images/blog/portfolio-template-sites/env-vars.avif)
 
 Lastly, clone the repository Appwrite created for your portfolio site. Enter the directory, and install Resend's Node.js library by running the following command:
 

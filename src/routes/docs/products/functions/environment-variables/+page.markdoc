@@ -25,10 +25,10 @@ Variable changes only take effect on the next deployment. Redeploy your function
 5. Click **Create**, then redeploy the function for the change to take effect.
 
 {% only_dark %}
-![Function environment variables](/images/docs/functions/dark/env-variables.png)
+![Function environment variables](/images/docs/functions/dark/env-variables.avif)
 {% /only_dark %}
 {% only_light %}
-![Function environment variables](/images/docs/functions/env-variables.png)
+![Function environment variables](/images/docs/functions/env-variables.avif)
 {% /only_light %}
 
 You can also configure global variables that apply to all your functions from your project's **Settings** page. See [project variables](/docs/advanced/platform/environment-variables) for details.

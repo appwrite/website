@@ -2,7 +2,7 @@
 layout: post
 title: "Mastering prompt engineering tools for AI apps"
 description: A practical guide to prompt engineering best practices, tools, skills, and career opportunities.
-cover: /images/blog/master-prompt-engineering-tools/cover.png
+cover: /images/blog/master-prompt-engineering-tools/cover.avif
 date: 2025-09-03
 timeToRead: 10
 author: laura-du-ry
@@ -109,7 +109,7 @@ If you’re looking to integrate AI tools with your backend, [Appwrite](https://
 
 As AI continues to grow, prompt engineering tools are evolving rapidly. In 2025, new and improved tools will enhance application development, offering better accuracy and efficiency for complex AI tasks.
 
-![LangChain](/images/blog/master-prompt-engineering-tools/langchain.png)
+![LangChain](/images/blog/master-prompt-engineering-tools/langchain.avif)
 
 **LangChain**
 
@@ -123,7 +123,7 @@ As AI continues to grow, prompt engineering tools are evolving rapidly. In 2025,
 
 It's excellent for creating applications that require deep language understanding.
 
-![PromptAppGPT](/images/blog/master-prompt-engineering-tools/promptappgpt.png)
+![PromptAppGPT](/images/blog/master-prompt-engineering-tools/promptappgpt.avif)
 
 **PromptAppGPT**
 
@@ -137,7 +137,7 @@ It's excellent for creating applications that require deep language understandin
 
 It's perfect for users looking to get started promptly with minimal complexity.
 
-![PromptLayer](/images/blog/master-prompt-engineering-tools/promptlayer.png)
+![PromptLayer](/images/blog/master-prompt-engineering-tools/promptlayer.avif)
 
 **PromptLayer**
 
@@ -151,7 +151,7 @@ It's perfect for users looking to get started promptly with minimal complexity.
 
 Its cloud capabilities streamline collaborative efforts effectively.
 
-![Promptmetheus](/images/blog/master-prompt-engineering-tools/promptmetheus.png)
+![Promptmetheus](/images/blog/master-prompt-engineering-tools/promptmetheus.avif)
 
 **Promptmetheus**
 

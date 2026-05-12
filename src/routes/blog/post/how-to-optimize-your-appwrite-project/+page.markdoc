@@ -3,7 +3,7 @@ layout: post
 title: How to optimize your Appwrite project for cost and performance
 description: Learn how to optimize your Appwrite project, manage resource usage, costs, and ensure smooth performance as yout application scales.
 date: 2024-09-20
-cover: /images/blog/how-to-optimize-your-appwrite-project/cover.png
+cover: /images/blog/how-to-optimize-your-appwrite-project/cover.avif
 timeToRead: 12
 author: ebenezer-don
 category: product
@@ -224,7 +224,7 @@ You can also enable budget alerts to monitor your spending and prevent unexpecte
 
 To configure budget alerts, start by navigating to the **Appwrite Cloud Console**, then go to the **Organisation** section and select **Billing**. Here, you'll find options to manage your budget. You can set a **budget cap** to define a hard limit on your spending, and in the **Budget Alerts** section, you can enable notifications that trigger when your spending reaches a certain threshold. This ensures you are alerted before exceeding your desired budget.
 
-![Budget controls in Appwrite Cloud Console](/images/blog/how-to-optimize-your-appwrite-project/budget-controls.png)
+![Budget controls in Appwrite Cloud Console](/images/blog/how-to-optimize-your-appwrite-project/budget-controls.avif)
 
 # 6. Monitoring and scaling your Appwrite project
 
@@ -244,7 +244,7 @@ Appwrite provides built-in monitoring to help track API usage, database operatio
 
 You can monitor your Appwrite project's performance via the dashboard, which gives insights into your API request count, database operations, and storage usage. This data helps you manage your plan limits more effectively and optimize your app to avoid unexpected scaling needs.
 
-![Monitoring resource usage in Appwrite dashboard](/images/blog/how-to-optimize-your-appwrite-project/resource-monitoring.png)
+![Monitoring resource usage in Appwrite dashboard](/images/blog/how-to-optimize-your-appwrite-project/resource-monitoring.avif)
 
 ## Horizontal scaling
 

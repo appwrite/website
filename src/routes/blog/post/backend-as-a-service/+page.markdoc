@@ -3,7 +3,7 @@ layout: post
 title: "Backend as a service (BaaS)"
 metaTitle: "Backend as a Service (BaaS): Firebase vs Supabase vs Appwrite"
 description: "Compare BaaS platforms: Firebase, Supabase, Appwrite, Amplify. Open source, self-hosting, pricing, lock-in. Technical overview for senior developers."
-cover: /images/blog/baas-backend-as-a-service/cover.png
+cover: /images/blog/baas-backend-as-a-service/cover.avif
 timeToRead: 12
 date: 2024-10-09
 author: aditya-oberai

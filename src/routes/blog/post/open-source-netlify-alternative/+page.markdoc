@@ -3,7 +3,7 @@ layout: post
 title: "Appwrite Sites vs Netlify: Choosing the right web hosting platform"
 description: This article explores how Appwrite Sites and Netlify compare, offering an integrated approach to full-stack deployment without the usual complexity.
 date: 2025-05-19
-cover: /images/blog/oss-netlify-cover.png
+cover: /images/blog/oss-netlify-cover.avif
 timeToRead: 8
 author: ebenezer-don
 category: product,init
@@ -87,7 +87,7 @@ Each framework can be customized with its own build and install commands. If you
 
 If you're using SSR with anything beyond Next.js or Astro, Appwrite Sites provides broader and more consistent support out of the box.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 # Hosting options: Static vs SSR
 

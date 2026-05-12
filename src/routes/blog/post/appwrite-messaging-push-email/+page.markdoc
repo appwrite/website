@@ -3,7 +3,7 @@ layout: post
 title: "Using Appwrite Messaging for push notifications and email"
 description: Learn how to set up Appwrite Messaging to send push notifications and emails, when to use each channel, and how to target users and topics effectively.
 date: 2026-03-26
-cover: /images/blog/appwrite-messaging-push-email/cover.png
+cover: /images/blog/appwrite-messaging-push-email/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, tutorial

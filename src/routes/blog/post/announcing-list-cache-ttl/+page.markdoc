@@ -3,7 +3,7 @@ layout: post
 title: "Announcing list response caching: Instant reads with TTL-based caching"
 description: Cache list query responses in memory with a single parameter. Set a TTL, skip the database round-trip on repeated reads, and purge on demand when freshness matters.
 date: 2026-04-17
-cover: /images/blog/announcing-list-cache-ttl/cover.png
+cover: /images/blog/announcing-list-cache-ttl/cover.avif
 timeToRead: 4
 author: jake-barnby
 category: announcement

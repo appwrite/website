@@ -138,7 +138,7 @@
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 4rem;
-        align-items: center;
+        align-items: start;
 
         margin-block-start: 2.5rem;
     }

@@ -11,32 +11,32 @@
     const build = [
         {
             label: 'Auth',
-            icon: '/images/icons/illustrated/dark/auth.png',
+            icon: '/images/icons/illustrated/dark/auth.avif',
             href: '/products/auth'
         },
         {
             label: 'Databases',
-            icon: '/images/icons/illustrated/dark/databases.png',
+            icon: '/images/icons/illustrated/dark/databases.avif',
             href: '/docs/products/databases'
         },
         {
             label: 'Storage',
-            icon: '/images/icons/illustrated/dark/storage.png',
+            icon: '/images/icons/illustrated/dark/storage.avif',
             href: '/products/storage'
         },
         {
             label: 'Functions',
-            icon: '/images/icons/illustrated/dark/functions.png',
+            icon: '/images/icons/illustrated/dark/functions.avif',
             href: '/products/functions'
         },
         {
             label: 'Realtime',
-            icon: '/images/icons/illustrated/dark/realtime.png',
+            icon: '/images/icons/illustrated/dark/realtime.avif',
             href: '/docs/apis/realtime'
         },
         {
             label: 'Messaging',
-            icon: '/images/icons/illustrated/dark/messaging.png',
+            icon: '/images/icons/illustrated/dark/messaging.avif',
             href: '/products/messaging'
         }
     ];
@@ -44,7 +44,7 @@
     const deploy = [
         {
             label: 'Sites',
-            icon: '/images/icons/illustrated/dark/sites.png',
+            icon: '/images/icons/illustrated/dark/sites.avif',
             href: '/products/sites'
         }
     ];

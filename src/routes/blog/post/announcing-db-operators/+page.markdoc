@@ -3,7 +3,7 @@ layout: post
 title: "Announcing DB operators: Update multiple fields without fetching the entire row"
 description: With Appwrite's DB operators, make precise, atomic updates across fields in a single call. No redundant reads or race conditions.
 date: 2025-11-04
-cover: /images/blog/announcing-db-operators/cover.png
+cover: /images/blog/announcing-db-operators/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement

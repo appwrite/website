@@ -18,10 +18,10 @@ This is useful when you want to:
 - Include documentation in your project's reference files
 
 {% only_dark %}
-![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/copy-page-dark.png)
+![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/copy-page-dark.avif)
 {% /only_dark %}
 {% only_light %}
-![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/copy-page-light.png)
+![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/copy-page-light.avif)
 {% /only_light %}
 
 # AI-ready prompts
@@ -29,10 +29,10 @@ This is useful when you want to:
 Some pages, like the quick start guides, include prompts designed for AI agents. These pages have options to open the prompt directly in AI tools like Cursor or copy it to your clipboard.
 
 {% only_dark %}
-![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/quickstart-dark.png)
+![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/quickstart-dark.avif)
 {% /only_dark %}
 {% only_light %}
-![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/quickstart-light.png)
+![AI-ready prompts in quick start guides](/images/docs/ai/docs-as-markdown/quickstart-light.avif)
 {% /only_light %}
 
 # Markdown URLs

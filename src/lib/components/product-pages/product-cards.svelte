@@ -4,44 +4,44 @@
         auth: {
             title: 'Auth',
             description: 'Build secure authentication and manage your users.',
-            icon: '/images/icons/illustrated/dark/auth.png',
+            icon: '/images/icons/illustrated/dark/auth.avif',
             url: '/products/auth'
         },
         databases: {
             title: 'Databases',
             description: 'Store and query structured data, ensuring scalable storage.',
-            icon: '/images/icons/illustrated/dark/databases.png',
+            icon: '/images/icons/illustrated/dark/databases.avif',
             url: '/docs/products/databases'
         },
         storage: {
             title: 'Storage',
             description: 'Manage your files project, using convenient APIs and utilities.',
-            icon: '/images/icons/illustrated/dark/storage.png',
+            icon: '/images/icons/illustrated/dark/storage.avif',
             url: '/products/storage'
         },
         functions: {
             title: 'Functions',
             description: ' Scale big and unlock limitless potential with Appwrite functions.',
-            icon: '/images/icons/illustrated/dark/functions.png',
+            icon: '/images/icons/illustrated/dark/functions.avif',
             url: '/products/functions'
         },
 
         messaging: {
             title: 'Messaging',
             description: 'Use Appwrite messaging to send email, SMS, and push notifications.',
-            icon: '/images/icons/illustrated/dark/messaging.png',
+            icon: '/images/icons/illustrated/dark/messaging.avif',
             url: '/products/messaging'
         },
         realtime: {
             title: 'Realtime',
             description: 'Subscribe and react to any event using the Realtime API.',
-            icon: '/images/icons/illustrated/dark/realtime.png',
+            icon: '/images/icons/illustrated/dark/realtime.avif',
             url: '/docs/realtime'
         },
         sites: {
             title: 'Sites',
             description: 'The open-source Vercel alternative.',
-            icon: '/images/icons/illustrated/dark/sites.png',
+            icon: '/images/icons/illustrated/dark/sites.avif',
             url: '/products/sites'
         }
     } as const;
@@ -53,7 +53,7 @@
 
 <section class="border-smooth border-t py-20 md:py-40">
     <div class="container max-md:px-5!">
-        <h4 class="text-label text-primary text-center">Keep exploring our products</h4>
+        <h2 class="text-label text-primary text-center">Keep exploring our products</h2>
         <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {#each products as product}
                 <a
@@ -65,8 +65,16 @@
                         class="web-u-padding-inline-8 web-u-padding-block-end-8 flex flex-col gap-2"
                     >
                         <div class="flex items-center gap-2">
-                            <img src={product.icon} alt="auth" width="32" height="32" />
-                            <h4 class="text-main-body text-primary">{product.title}</h4>
+                            <img
+                                src={product.icon}
+                                alt=""
+                                width="32"
+                                height="32"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
+                            />
+                            <h3 class="text-main-body text-primary">{product.title}</h3>
                             <span class="web-icon-arrow-right ml-auto" aria-hidden="true"></span>
                         </div>
                         <p class="text-sub-body">

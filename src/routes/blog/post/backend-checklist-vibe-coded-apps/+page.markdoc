@@ -3,7 +3,7 @@ layout: post
 title: "The backend checklist for vibe-coded apps before launch"
 description: "The vibe coding backend checklist: auth, permissions, tables, files, secrets, logs, domains, backups, and AI-generated code review before launch."
 date: 2026-04-25
-cover: /images/blog/backend-checklist-vibe-coded-apps/cover.png
+cover: /images/blog/backend-checklist-vibe-coded-apps/cover.avif
 timeToRead: 9
 author: atharva
 unlisted: true

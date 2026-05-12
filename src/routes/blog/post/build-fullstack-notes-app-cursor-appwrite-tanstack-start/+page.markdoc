@@ -3,7 +3,7 @@ layout: post
 title: Build a fullstack Notes app with Cursor, Appwrite, and TanStack Start
 description: Learn how to build a modern fullstack notes application using Cursor AI, Appwrite for backend, and TanStack Start for the frontend.
 date: 2025-11-05
-cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.png
+cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.avif
 timeToRead: 15
 author: tessa
 category: tutorial
@@ -54,7 +54,7 @@ Go to **Project → Overview**, hover over **Project ID**, and copy it.
 ## 3. Add the MCP Server in Cursor
 In Cursor → **Tools → Installed MCP Servers → Add Custom MCP**:
 
-![Cursor MCP Settings](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cursor-mcp-settings.PNG)
+![Cursor MCP Settings](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cursor-mcp-settings.avif)
 
 You can specify specific routes instead of choosing --all, such as --tables, --users, --functions since having too many may degrade performance in Cursor.
 
@@ -88,7 +88,7 @@ Click **Install**, then verify it appears in your MCP list.
 
 > **Preview:** Here's what we'll build by the end of this tutorial.
 
-![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.PNG)
+![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.avif)
 
 ---
 

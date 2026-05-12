@@ -3,7 +3,7 @@ layout: post
 title: "Deno 2 vs Bun: which JavaScript runtime is right for you?"
 description: Deno vs Bun, how they fit in the Node.js ecosystem, and when you might want to use one over the other.
 date: 2024-11-22
-cover: /images/blog/deno-vs-bun-javascript-runtime/cover.png
+cover: /images/blog/deno-vs-bun-javascript-runtime/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial

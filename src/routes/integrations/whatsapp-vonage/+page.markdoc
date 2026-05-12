@@ -6,21 +6,21 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/whatsapp-vonage/cover.png
+cover: /images/integrations/whatsapp-vonage/cover.avif
 category: messaging
 product: 
-    avatar: '/images/integrations/avatars/vonage.png'
+    avatar: '/images/integrations/avatars/vonage.avif'
     vendor: Vonage
     description: 'Vonage is a cloud communications provider that offers residential telecommunications services based on voice over Internet Protocol as well as programmable communications tools via web APIs.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/whatsapp-vonage/cover.png
-    - /images/integrations/whatsapp-vonage/settings.png
-    - /images/integrations/whatsapp-vonage/template.png
-    - /images/integrations/whatsapp-vonage/variables.png
-    - /images/integrations/whatsapp-vonage/demo.png
+    - /images/integrations/whatsapp-vonage/cover.avif
+    - /images/integrations/whatsapp-vonage/settings.avif
+    - /images/integrations/whatsapp-vonage/template.avif
+    - /images/integrations/whatsapp-vonage/variables.avif
+    - /images/integrations/whatsapp-vonage/demo.avif
 ---
 
 Vonage is a cloud communications provider that offers residential telecommunications services based on voice over Internet Protocol as well as programmable communications tools such as phone calls, SMSes, WhatsApp messages, etc. via web APIs.
@@ -37,7 +37,7 @@ To implement the **WhatsApp with Vonage** Appwrite Function template, there are 
 
 First, [sign up for a Vonage account](https://ui.idp.vonage.com/ui/auth/registration) to use the Vonage Communications APIs. This will create a trial account and give you access to the Vonage API dashboard.
 
-![Vonage API settings](/images/integrations/whatsapp-vonage/settings.png)
+![Vonage API settings](/images/integrations/whatsapp-vonage/settings.avif)
 
 Ensure you save the following information for later use:
 
@@ -56,11 +56,11 @@ For this step, [create an account on Appwrite Cloud](https://cloud.appwrite.io/r
 
 In your Appwrite project, go to the **Functions** page, click on the **Templates** tab, search for ‘Vonage’, and select the **WhatsApp with Vonage** function template. 
 
-![Function template](/images/integrations/whatsapp-vonage/template.png)
+![Function template](/images/integrations/whatsapp-vonage/template.avif)
 
 During the setup process, add the Vonage **API key**, **API secret, signature secret**, and **WhatsApp phone number** in the **Variables** step**.** 
 
-![Env variables](/images/integrations/whatsapp-vonage/variables.png)
+![Env variables](/images/integrations/whatsapp-vonage/variables.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic. Once the function is ready, visit the **Domains** tab on the function page and copy the domain to add to the **Inbound Webhook** link on the **Messages API Sandbox** page on your Vonage account.
 
@@ -68,7 +68,7 @@ Then, create a new repository with the default branch and root directory setting
 
 Open **WhatsApp** on your phone, join the Vonage WhatsApp Channel (via the steps mentioned on the *Messaging API Sandbox* on *Vonage*), and send any message to the WhatsApp number. You shall receive a message in the format: `Hi there! You sent me: <SENT MESSAGE>`
 
-![demo](/images/integrations/whatsapp-vonage/demo.png)
+![demo](/images/integrations/whatsapp-vonage/demo.avif)
 
 # Read more about Vonage and Appwrite
 

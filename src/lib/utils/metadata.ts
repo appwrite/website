@@ -14,10 +14,21 @@ export function buildOpenGraphImage(title: string, description: string): string 
 }
 
 /**
+ * Escapes `<` as the JSON unicode escape `\u003c` so the result can be embedded
+ * inside HTML `<script>` tags (including SvelteKit route data) without `</script>`
+ * or similar sequences in string values ending the script early. `JSON.parse`
+ * still yields the original `<`.
+ */
+export function escapeJsonLtForHtmlScript(json: string): string {
+    return json.replace(/</g, '\\u003c');
+}
+
+/**
  * Returns an inlined JSON-LD script tag without breaking IDE formatting.
  */
 export function getInlinedScriptTag(jsonSchema: string): string {
-    return `<script type="application/ld+json">${jsonSchema}</` + 'script>';
+    const safeForInlineScript = escapeJsonLtForHtmlScript(jsonSchema);
+    return `<script type="application/ld+json">${safeForInlineScript}</` + 'script>';
 }
 
 /**
@@ -241,5 +252,5 @@ export function createDiscussionForumPageSchema(options: {
         mainEntity
     };
 
-    return JSON.stringify(graph);
+    return escapeJsonLtForHtmlScript(JSON.stringify(graph));
 }

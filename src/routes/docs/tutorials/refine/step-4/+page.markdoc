@@ -157,7 +157,7 @@ Key concepts to handle authentication and routing:
 
 When you refresh the page, the login screen appears.
 
-![Refine login screen](/images/docs/tutorials/refine/refine-login-page.png)
+![Refine login screen](/images/docs/tutorials/refine/refine-login-page.avif)
 
 
 We'll activate the authentication mechanisim with Appwrite in the next section.

@@ -5,7 +5,7 @@
 export const MARKETING_HERO_EXPERIMENTS = {
     /** Params: `title` and `description` (strings) — hero headline and supporting copy. */
     bestTitle: 'best_title',
-    /** Param: `cta` (string). Primary hero dashboard button label. */
+    /** Retired — no longer evaluated; hero CTA is fixed in code (`DEFAULT_HERO_CTA`). */
     bestCta: 'best_cta',
     /**
      * Experiment or dynamic config id. Params tried: `layout`, `hero_layout`, `heroLayout`; then `.value`.
