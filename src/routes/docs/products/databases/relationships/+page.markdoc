@@ -9,10 +9,6 @@ Relationships describe how rows in different tables are associated, so that rela
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
-{% info title="Experimental feature" %}
-Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
-{% /info %}
-
 # Relationship columns {% #relationship-columns %}
 
 Relationships are represented in a table using **relationship columns**.

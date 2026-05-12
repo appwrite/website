@@ -9,10 +9,6 @@ Relationships describe how documents in different collections are associated, so
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
-{% info title="Experimental feature" %}
-Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
-{% /info %}
-
 # Relationship Attributes {% #relationship-attributes %}
 
 Relationships are represented in a collection using **relationship attributes**.
@@ -518,7 +514,11 @@ databases.createDocument(
 {% /tabs %}
 
 # Queries {% #queries %}
-Queries are currently not available in the experimental version of Appwrite Relationships but will be added in a later version.
+You can use filter queries directly against relationship attributes using dot notation in the format `relationshipKey.field`. This lets you filter documents based on the values of their related documents.
+
+{% arrow_link href="/docs/products/databases/legacy/queries#relationship-select" %}
+Learn how to select and load relationship data
+{% /arrow_link %}
 
 # Update Relationships {% #update %}
 Relationships can be updated by updating the relationship attribute.
