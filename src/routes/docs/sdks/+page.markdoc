@@ -124,30 +124,35 @@ If you would like to help us extend our platforms and SDKs stack, you are more t
 
 # Version compatibility {% #version-compatibility %}
 
-The tables below map each released self-hosted Appwrite version to the SDK versions that match its API surface. Pins are verified by diffing each published SDK's `(verb, path)` endpoint set against the SDK that sdk-generator would produce from that Appwrite version's OpenAPI spec, then selecting the highest-version published SDK with zero endpoints missing from the server. The latest stable self-hosted Appwrite release is `1.9.0`.
-
-Rows are grouped by API surface. Patches that share a spec share a pin: `1.7.0` and `1.7.1` ship with the same spec, as do `1.7.2` through `1.7.5`. `1.8.1` added three endpoints to `1.8.0` (avatars screenshots and the Resend messaging provider).
+The tables below map each released self-hosted Appwrite version to the SDK versions that were current at the time of that release. Use this to pin your SDK to a version known to work with your server. The latest stable self-hosted Appwrite release is `1.9.0`.
 
 If you are running Appwrite Cloud, use the latest published SDK for your platform. Cloud rolls forward ahead of self-hosted releases.
 
 ## Client SDKs {% #client-compatibility %}
 
 {% table %}
-* Appwrite {% width=140 %}
+* Appwrite {% width=120 %}
 * Web
 * Flutter
 * React Native
 * Apple
 * Android
 ---
-* `1.7.0` to `1.7.1`
+* `1.7.0`
 * `18.0.0`
 * `16.0.0`
 * `0.9.0`
 * `10.0.0`
 * `8.0.0`
 ---
-* `1.7.2` to `1.7.5`
+* `1.7.1` to `1.7.3`
+* `18.0.0`
+* `16.0.0`
+* `0.9.0`
+* `10.0.0`
+* `8.0.0`
+---
+* `1.7.4`
 * `18.1.1`
 * `17.0.0`
 * `0.10.0`
@@ -160,6 +165,13 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * `0.18.0`
 * `13.3.0`
 * `11.3.0`
+---
+* `1.7.5`
+* `18.1.1`
+* `17.0.0`
+* `0.10.0`
+* `10.0.0`
+* `8.0.0`
 ---
 * `1.8.1`
 * `21.4.0`
@@ -179,7 +191,7 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 ## Server SDKs {% #server-compatibility %}
 
 {% table %}
-* Appwrite {% width=140 %}
+* Appwrite {% width=120 %}
 * Node.js
 * Python
 * PHP
@@ -191,7 +203,7 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * Kotlin
 * CLI
 ---
-* `1.7.0` to `1.7.1`
+* `1.7.0`
 * `17.0.0`
 * `11.0.0`
 * `15.0.0`
@@ -203,7 +215,19 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * `9.0.0`
 * `6.2.3`
 ---
-* `1.7.2` to `1.7.5`
+* `1.7.1` to `1.7.3`
+* `17.0.0`
+* `11.0.0`
+* `15.0.0`
+* `16.0.0`
+* `16.0.0`
+* `0.13.0`
+* `v0.7.0`
+* `10.0.0`
+* `9.0.0`
+* `6.2.3`
+---
+* `1.7.4`
 * `17.1.0`
 * `11.0.0`
 * `15.0.0`
@@ -225,6 +249,18 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * `v0.13.1`
 * `13.2.2`
 * `12.3.0`
+* `12.0.1`
+---
+* `1.7.5`
+* `17.1.0`
+* `11.0.0`
+* `15.0.0`
+* `16.1.0`
+* `16.0.0`
+* `0.13.0`
+* `v0.7.0`
+* `10.0.0`
+* `9.0.0`
 * `12.0.1`
 ---
 * `1.8.1`
@@ -252,9 +288,9 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * `17.3.0`
 {% /table %}
 
-The Rust SDK is recommended starting at Appwrite `1.9.0`, pinned at `0.2.0`. Earlier rust SDK releases target Cloud-only endpoints that do not exist on self-hosted `1.7.x` or `1.8.x` servers.
+The Rust SDK is available from Appwrite `1.8.1` onwards, pinned at `0.2.0` for both `1.8.1` and `1.9.0`.
 
-Client SDKs (Web, Flutter, React Native, Apple, Android) include a small number of OAuth callback paths that aren't enumerated in the OpenAPI spec but are valid on every Appwrite server. Those are not counted as incompatibilities in the matrix above.
+Appwrite `1.7.5` was released as a backport patch on 2025-11-06, after `1.8.0` had shipped. The SDK versions in its row are the latest at that publish date and target the `1.8.x` line, so they may not be fully compatible with the `1.7.x` API. If you run a `1.7.x` self-hosted server, prefer the SDKs listed in the `1.7.4` row.
 
 # Protocols {% #protocols %}
 We are always looking to add new SDKs to our platform. If the SDK you are looking for is still missing, labeled as beta or experimental, or you simply do not want to integrate with an SDK, you can always integrate with Appwrite directly using any standard HTTP, GraphQL, or WebSocket clients and the relevant Appwrite protocol.
