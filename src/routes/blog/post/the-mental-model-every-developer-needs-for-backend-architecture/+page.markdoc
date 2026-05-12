@@ -3,14 +3,34 @@ layout: post
 title: The mental model every developer needs for backend architecture
 description: A practical mental model for backend architecture that helps developers design scalable systems, reduce complexity, and choose the right backend components with confidence.
 date: 2026-04-09
-cover: /images/blog/the-mental-model-every-developer-needs-for-backend-architecture/cover.png
+cover: /images/blog/the-mental-model-every-developer-needs-for-backend-architecture/cover.avif
 timeToRead: 5
 author: atharva
 category: architecture
 featured: false
 unlisted: true
+faqs:
+    - question: 'What is a backend architecture mental model?'
+      answer: 'A backend architecture mental model is a simplified way of thinking about how the parts of a backend fit together. It helps developers decide where logic should live, which storage layer to use, and how requests flow through the system. A good mental model reduces decision fatigue and makes design choices feel obvious instead of arbitrary.'
+    - question: "What's the difference between authentication and authorization?"
+      answer: 'Authentication answers "who are you?" by verifying a user''s identity through credentials, tokens, or OAuth providers. Authorization answers "what are you allowed to do?" by checking permissions and roles for that user. Treating them as a single concept leads to permission checks scattered throughout the codebase, which is a common source of security bugs.'
+    - question: 'Why should business logic be separated from data access?'
+      answer: 'Mixing business logic with database queries means a schema change can break business rules, and a business rule change forces query rewrites. Separating them lets each evolve independently. The cleanest pattern is functions that make decisions calling a thin data-access layer that only reads and writes. Logic decides, storage remembers.'
+    - question: 'When should I use serverless functions instead of API routes?'
+      answer: "Use serverless functions for work that should not block a user's request: sending transactional emails, processing uploaded files, running scheduled cleanups, or reacting to events like sign-ups. Use API routes for synchronous operations the user is actively waiting on. Functions are asynchronous workers, not a replacement for your entire API."
+    - question: 'What kind of data belongs in a database vs. file storage vs. a cache?'
+      answer: "Use a database for structured data you query frequently, like users, orders, and posts. Use file storage for binary content like images, PDFs, and videos. Use a cache for data that's read often and tolerates being slightly stale, like session tokens or computed results. Storing files as database blobs or caching data that needs strong consistency are two of the most common mistakes."
+    - question: 'How do I know if my backend has clear boundaries?'
+      answer: "A clean boundary is a contract: defined inputs, defined outputs, no shared internals. The test is whether you can change what's inside a service or module without breaking anything outside it. If Service A reads directly from Service B's database table, the boundary is broken even if B's API is untouched. The same rule applies within a monolith."
+    - question: "Do I need to follow this mental model if I'm building a small app?"
+      answer: "Yes, and arguably more so. Small apps grow into messy ones precisely because boundaries weren't defined early. The mental model isn't about adding complexity; it's about putting code in predictable places so the project stays maintainable as it grows. Skipping it doesn't save time, it just defers the cost."
+    - question: 'What questions should I answer before starting a new backend feature?'
+      answer: "Before writing code, answer five questions: What does the user want to do? Who's allowed to do it? What needs to happen? What needs to be stored, and where? What happens after? These map directly to your API surface, auth rules, business logic, storage layer, and background functions. Most architectural debt comes from skipping one of these."
+    - question: 'How does Appwrite map to a clean backend architecture?'
+      answer: 'Each Appwrite product maps to a layer in the mental model: Auth handles the authentication layer, Databases handle structured persistence, Storage handles binary files, Functions handle event-driven and scheduled work, and Messaging handles outbound notifications. Using a unified platform means the boundaries between layers are already enforced by the SDK rather than something you have to design from scratch.'
 ---
-Most junior developers don't struggle with writing code. They struggle with knowing *where* the code should go.
+
+Most junior developers don't struggle with writing code. They struggle with knowing _where_ the code should go.
 
 You know what authentication is. You know what a database does. But when you sit down to build a feature, the questions pile up fast. Where does this logic live? Should this be a function or an API route? Why does my service know too much about my database?
 
@@ -107,44 +127,6 @@ When starting a new feature or project, run through these five questions before 
 Answer all five before touching the keyboard. You will spend less time refactoring and more time shipping. Most architectural debt starts with skipping one of these questions.
 
 For a deeper look at how these pieces come together in practice when shipping a product end to end, see [how to build and ship a side project alone](/blog/post/how-to-build-and-ship-a-side-project-alone-the-backend-stack-that-works).
-
-# Frequently asked questions (FAQs)
-
-## What is a backend architecture mental model?
-
-A backend architecture mental model is a simplified way of thinking about how the parts of a backend fit together. It helps developers decide where logic should live, which storage layer to use, and how requests flow through the system. A good mental model reduces decision fatigue and makes design choices feel obvious instead of arbitrary.
-
-## What's the difference between authentication and authorization?
-
-Authentication answers "who are you?" by verifying a user's identity through credentials, tokens, or OAuth providers. Authorization answers "what are you allowed to do?" by checking permissions and roles for that user. Treating them as a single concept leads to permission checks scattered throughout the codebase, which is a common source of security bugs.
-
-## Why should business logic be separated from data access?
-
-Mixing business logic with database queries means a schema change can break business rules, and a business rule change forces query rewrites. Separating them lets each evolve independently. The cleanest pattern is functions that make decisions calling a thin data-access layer that only reads and writes. Logic decides, storage remembers.
-
-## When should I use serverless functions instead of API routes?
-
-Use serverless functions for work that should not block a user's request: sending transactional emails, processing uploaded files, running scheduled cleanups, or reacting to events like sign-ups. Use API routes for synchronous operations the user is actively waiting on. Functions are asynchronous workers, not a replacement for your entire API.
-
-## What kind of data belongs in a database vs. file storage vs. a cache?
-
-Use a database for structured data you query frequently, like users, orders, and posts. Use file storage for binary content like images, PDFs, and videos. Use a cache for data that's read often and tolerates being slightly stale, like session tokens or computed results. Storing files as database blobs or caching data that needs strong consistency are two of the most common mistakes.
-
-## How do I know if my backend has clear boundaries?
-
-A clean boundary is a contract: defined inputs, defined outputs, no shared internals. The test is whether you can change what's inside a service or module without breaking anything outside it. If Service A reads directly from Service B's database table, the boundary is broken even if B's API is untouched. The same rule applies within a monolith.
-
-## Do I need to follow this mental model if I'm building a small app?
-
-Yes, and arguably more so. Small apps grow into messy ones precisely because boundaries weren't defined early. The mental model isn't about adding complexity; it's about putting code in predictable places so the project stays maintainable as it grows. Skipping it doesn't save time, it just defers the cost.
-
-## What questions should I answer before starting a new backend feature?
-
-Before writing code, answer five questions: What does the user want to do? Who's allowed to do it? What needs to happen? What needs to be stored, and where? What happens after? These map directly to your API surface, auth rules, business logic, storage layer, and background functions. Most architectural debt comes from skipping one of these.
-
-## How does Appwrite map to a clean backend architecture?
-
-Each Appwrite product maps to a layer in the mental model: Auth handles the authentication layer, Databases handle structured persistence, Storage handles binary files, Functions handle event-driven and scheduled work, and Messaging handles outbound notifications. Using a unified platform means the boundaries between layers are already enforced by the SDK rather than something you have to design from scratch.
 
 # Getting started with backend architecture on Appwrite
 

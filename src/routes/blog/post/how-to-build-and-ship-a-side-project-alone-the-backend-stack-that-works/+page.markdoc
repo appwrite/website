@@ -3,13 +3,33 @@ layout: post
 title: How to build and ship a side project alone
 description: Build and ship a side project alone using a backend stack that actually works. Learn how to choose the right tools, simplify infrastructure, and launch faster without managing multiple services.
 date: 2026-04-09
-cover: /images/blog/how-to-build-and-ship-a-side-project-alone-the-backend-stack-that-works/cover.png
+cover: /images/blog/how-to-build-and-ship-a-side-project-alone-the-backend-stack-that-works/cover.avif
 timeToRead: 5
-author: aditya-oberai
+author: atharva
 category: startup
 featured: false
 unlisted: true
+faqs:
+    - question: "What's the fastest backend stack for a solo developer's side project?"
+      answer: 'The fastest stack is one that minimizes setup decisions. A unified backend platform that bundles authentication, database, file storage, and serverless functions into a single SDK is faster to ship with than stitching together separate services. The fewer dashboards, accounts, and integrations you manage, the more time you spend on actual product features.'
+    - question: 'Should I build authentication from scratch for a side project?'
+      answer: 'No. Building auth from scratch is the most common reason solo side projects stall. Sessions, refresh tokens, OAuth2 callbacks, password hashing, and MFA each have edge cases that take days to handle correctly. Use a managed authentication service so you can focus on the parts of your product that are genuinely unique.'
+    - question: 'Do I need microservices for a side project?'
+      answer: 'No. Microservices solve coordination problems for large engineering teams, not technical problems for solo developers. A single application backed by a unified platform is easier to build, debug, and deploy. Stick with a monolith until you have real users and a real bottleneck.'
+    - question: 'How much backend infrastructure do I actually need before launching?'
+      answer: 'Most side projects need only five things: user authentication, structured data storage, file uploads, occasional background or scheduled logic, and frontend hosting. Anything beyond that, including caching layers, message queues, and separate microservices, can wait until you have paying users.'
+    - question: 'Is it worth using a Backend-as-a-Service (BaaS) for a side project?'
+      answer: 'For most solo developers, yes. A BaaS removes the infrastructure decisions that consume the first few weekends of a new project. The trade-off is some loss of low-level control, which rarely matters at the side-project stage. If you later need full control, an open-source BaaS like Appwrite can be self-hosted, so the migration path stays open.'
+    - question: 'When should I use serverless functions vs. direct database access?'
+      answer: 'Use serverless functions for background jobs, scheduled tasks, webhooks, and business logic that must run server-side. Use direct database access through the SDK for straightforward reads and writes from your client. Replacing every API call with a function adds deployment complexity without adding product value.'
+    - question: "How do I avoid over-engineering my side project's backend?"
+      answer: "Set a rule: don't optimize for scale you don't have yet. Skip microservices, custom auth, managed Kubernetes, and elaborate caching until a real bottleneck appears. The goal of a side project is to validate whether anyone wants what you're building. Premature optimization delays that answer."
+    - question: "What's the best way to host the frontend for a side project?"
+      answer: 'Host it on the same platform as your backend if possible. Keeping frontend and backend in one console reduces context switching, simplifies environment management, and removes the overhead of monitoring multiple dashboards. Git-based deployments with automatic preview environments on pull requests are the lightweight workflow most solo developers want.'
+    - question: 'Will a unified backend platform lock me in?'
+      answer: 'Not if you choose an open-source one. With a platform like Appwrite, you can self-host the exact same stack on your own infrastructure using Docker if pricing or policies change. That makes the migration path real instead.'
 ---
+
 Solo developers don't stall because they can't code. They stall because they burn through momentum on infrastructure before writing a single line of product logic.
 
 You spend the first weekend setting up authentication middleware, the second wiring up file uploads to S3, and the third debugging CORS errors. By the time the backend is technically ready, the idea feels stale and the energy is gone.
@@ -50,7 +70,7 @@ The SQL vs. NoSQL debate doesn't matter at the side project stage. What matters 
 
 [Appwrite Databases](/docs/products/databases) gives you a relational database with support for complex queries, relationships, and real-time subscriptions. You build the schema from the console or through the API and query it without writing raw SQL.
 
-The built-in database scales with your application, so you can focus on shipping features instead of capacity planning. You won't need to revisit this decision because you got traction.
+Appwrite scales along with your usage, so you can focus on shipping features instead of capacity planning early on.
 
 # File storage: don't configure S3 manually
 
@@ -92,44 +112,6 @@ The other mistake solo developers make is picking technologies for 100,000 users
 Ship the simplest version that works. Upgrade the parts that actually bottleneck you, when they bottleneck you. The goal of a side project is to find out whether anyone wants what you're building. A 10ms database query difference does not matter when you have zero users.
 
 If you're weighing a BaaS against building your own custom backend, the trade-offs are covered in detail here: [BaaS vs. custom backend](/blog/post/baas-vs-custom-backend).
-
-# Frequently asked questions (FAQs)
-
-## What's the fastest backend stack for a solo developer's side project?
-
-The fastest stack is one that minimizes setup decisions. A unified backend platform that bundles authentication, database, file storage, and serverless functions into a single SDK is faster to ship with than stitching together separate services. The fewer dashboards, accounts, and integrations you manage, the more time you spend on actual product features.
-
-## Should I build authentication from scratch for a side project?
-
-No. Building auth from scratch is the most common reason solo side projects stall. Sessions, refresh tokens, OAuth2 callbacks, password hashing, and MFA each have edge cases that take days to handle correctly. Use a managed authentication service so you can focus on the parts of your product that are genuinely unique.
-
-## Do I need microservices for a side project?
-
-No. Microservices solve coordination problems for large engineering teams, not technical problems for solo developers. A single application backed by a unified platform is easier to build, debug, and deploy. Stick with a monolith until you have real users and a real bottleneck.
-
-## How much backend infrastructure do I actually need before launching?
-
-Most side projects need only five things: user authentication, structured data storage, file uploads, occasional background or scheduled logic, and frontend hosting. Anything beyond that, including caching layers, message queues, and separate microservices, can wait until you have paying users.
-
-## Is it worth using a Backend-as-a-Service (BaaS) for a side project?
-
-For most solo developers, yes. A BaaS removes the infrastructure decisions that consume the first few weekends of a new project. The trade-off is some loss of low-level control, which rarely matters at the side-project stage. If you later need full control, an open-source BaaS like Appwrite can be self-hosted, so the migration path stays open.
-
-## When should I use serverless functions vs. direct database access?
-
-Use serverless functions for background jobs, scheduled tasks, webhooks, and business logic that must run server-side. Use direct database access through the SDK for straightforward reads and writes from your client. Replacing every API call with a function adds deployment complexity without adding product value.
-
-## How do I avoid over-engineering my side project's backend?
-
-Set a rule: don't optimize for scale you don't have yet. Skip microservices, custom auth, managed Kubernetes, and elaborate caching until a real bottleneck appears. The goal of a side project is to validate whether anyone wants what you're building. Premature optimization delays that answer.
-
-## What's the best way to host the frontend for a side project?
-
-Host it on the same platform as your backend if possible. Keeping frontend and backend in one console reduces context switching, simplifies environment management, and removes the overhead of monitoring multiple dashboards. Git-based deployments with automatic preview environments on pull requests are the lightweight workflow most solo developers want.
-
-## Will a unified backend platform lock me in?
-
-Not if you choose an open-source one. With a platform like Appwrite, you can self-host the exact same stack on your own infrastructure using Docker if pricing or policies change. That makes the migration path real instead
 
 # Start building your side project with Appwrite
 
