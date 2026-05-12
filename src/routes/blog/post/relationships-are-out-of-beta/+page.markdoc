@@ -8,17 +8,28 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: true
+faqs:
+  - question: "What does 'production-ready' mean for Appwrite Relationships?"
+    answer: "It means the API and behavior are stable, performance is fast enough for real workloads, and the feature set is complete. Column types, directionality, on-delete behaviors, nested creation, query selection, and dot-notation filter queries are all locked in. We'll evolve relationships, but we won't break them."
+  - question: "Do I need to update my code or SDK to benefit from this?"
+    answer: "No. If you're already using relationships, you don't need to do anything. The 12-18x performance improvements apply automatically, and existing queries continue to work. Opt-in relationship loading is fully backward compatible, so older SDK versions retain their previous behavior."
+  - question: "Can I filter rows based on related row data?"
+    answer: "Yes. You can use filter queries directly on relationship columns using dot notation, like `Query.equal('author.name', ['Jake'])`. All comparison operators are supported, including equal, notEqual, greaterThan, lessThan, between, contains, and spatial queries."
+  - question: "Are there any remaining limitations?"
+    answer: "Relationships are restricted to a maximum nesting depth of three levels. Relationship column key, type, and directionality cannot be updated after creation, only the on-delete behavior can be changed. These limits keep query performance predictable."
+  - question: "Is this available on self-hosted Appwrite?"
+    answer: "Yes. Relationships are production-ready on both Appwrite Cloud and self-hosted installations. The performance gains, query support, and stability guarantees apply to both."
 ---
 
 Relationships have been part of Appwrite Databases for a while, but they shipped with an "experimental" label and a real set of rough edges. Payloads got bloated, queries couldn't reach across related rows, and performance wasn't where it needed to be for production workloads.
 
 Over the past year, we've fixed all of that. Today, we're dropping the experimental label.
 
-**Relationships in Appwrite Databases are now production-ready.** The API is stable, the performance is fast, and the feature set is complete enough to model real-world connected data with confidence.
+**Relationships in Appwrite Databases are now production-ready.** The API is stable, performance is fast, and the feature set is complete.
 
 # What changed over the past year
 
-This isn't a single release, it's the accumulation of a year of work. Here's everything that landed on the path to production-ready.
+This isn't a single release, it's the accumulation of a year of work. Here's what landed along the way.
 
 ## Opt-in relationship loading
 
@@ -30,7 +41,7 @@ We flipped the default. Now, rows return only their own fields unless you explic
 
 For a long time, the answer to "how do I find all posts by a specific author?" was "fetch everything and filter in your app." That changed in February 2026 with [relationship queries](/blog/post/announcing-relationship-queries).
 
-You can now filter directly against relationship columns using dot notation:
+You can now filter directly against relationship columns:
 
 ```js
 // Get all posts where the author's name is 'Jake'
@@ -49,7 +60,7 @@ Every comparison operator works on relationship fields: `equal`, `notEqual`, `gr
 
 Alongside [query support](/blog/post/announcing-relationship-queries), we rewrote the internals of how relationships are resolved. Reads, writes, and joins across related tables are now **12-18x faster** across the board. There's nothing to configure, no flag to flip. If you're using relationships today, they're already faster.
 
-That performance work is what made it safe to drop the experimental label. Relationships aren't just usable now, they're fast enough to be the default way you model connected data.
+That performance work is what made it safe to drop the experimental label. Relationships are now fast enough to be the default way you model connected data.
 
 ## CSV export with relationship support
 
@@ -60,7 +71,7 @@ The Console now [exports relationship fields cleanly as IDs](/blog/post/announci
 When we called relationships experimental, we were telling you two things: the API might change, and the performance might not hold up under real load. Both of those caveats are gone.
 
 - **The API is stable.** Column types, directionality, on-delete behaviors, nested creation, dot-notation queries, and query selection are all locked in. We'll evolve them, but we won't break them.
-- **Performance is production-grade.** With the 12-18x improvements and opt-in loading, relationships handle real workloads without the payload-bloat or latency footguns that originally earned the experimental label.
+- **Performance holds up under load.** With the 12-18x improvements and opt-in loading, relationships handle real workloads without the payload bloat or latency footguns that originally earned the experimental label.
 - **The feature set is complete.** All four relationship types, both directionalities, all three on-delete behaviors, full query support, and full permission inheritance. You can model what you need to model.
 
 # What this unlocks
@@ -75,7 +86,7 @@ With queryable, fast, stable relationships, you can confidently build:
 
 # Availability
 
-Relationships are production-ready on both **Appwrite Cloud** and **self-hosted**. If you're already using relationships, you don't need to do anything. You've been on the path to production-ready the whole time.
+Relationships are production-ready on both **Appwrite Cloud** and **self-hosted**. If you're already using relationships, you don't need to do anything, the performance and stability gains have been rolling out to you all along.
 
 # More resources
 
