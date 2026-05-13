@@ -97,6 +97,13 @@ To configure deployment retention from the Appwrite Console:
 4. Turn on **Keep deployments forever**, or turn it off and choose how long to keep non-active deployments.
 5. Click **Update**.
 
+{% only_dark %}
+![Site deployment retention settings](/images/docs/sites/dark/deployment-retention.avif)
+{% /only_dark %}
+{% only_light %}
+![Site deployment retention settings](/images/docs/sites/deployment-retention.avif)
+{% /only_light %}
+
 The Console provides common presets from `1 Week` to `10 Years`. When using the API or a Server SDK, set `deploymentRetention` to the number of days to keep non-active deployments. The value must be between `0` and `36500`, where `0` means unlimited retention.
 
 When updating a site with a Server SDK, pass the existing settings you do not intend to change and update only `deploymentRetention`.

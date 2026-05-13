@@ -41,13 +41,13 @@ Deployment retention lets you choose how long Appwrite keeps non-active deployme
 
 In the Appwrite Console, open the Function or Site you want to configure, go to **Settings** > **Deployment retention**, then choose whether to keep deployments forever or keep non-active deployments for a specific period.
 
+![Deployment retention settings for an Appwrite Function](/images/docs/functions/dark/deployment-retention.avif)
+
 For example, you might keep deployments for 90 days on a production Function and 30 days on a preview-heavy Site. Appwrite will keep the active deployment and clean up older non-active deployments during maintenance.
 
 You can also configure retention through the Server SDKs using `deploymentRetention`. The examples below focus on the relevant field. When you update an existing resource, include any current settings you want to preserve.
 
-{% multicode %}
-
-```server-nodejs
+```js
 const func = await functions.get({
     functionId: '<FUNCTION_ID>'
 });
@@ -72,8 +72,6 @@ await sites.update({
     deploymentRetention: 30
 });
 ```
-
-{% /multicode %}
 
 # When to use deployment retention
 
