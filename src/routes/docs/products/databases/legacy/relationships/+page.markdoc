@@ -514,7 +514,88 @@ databases.createDocument(
 {% /tabs %}
 
 # Queries {% #queries %}
-You can use filter queries directly against relationship attributes using dot notation in the format `relationshipKey.field`. This lets you filter documents based on the values of their related documents.
+
+You can use filter queries directly against relationship attributes using dot notation. This lets you filter documents based on the values of their related documents, such as filtering posts by an author's name or filtering orders by a product's category.
+
+Use the format `relationshipKey.field` to reference fields on related documents.
+
+{% multicode %}
+```js
+const { Client, Databases, Query } = require('node-appwrite');
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>');               // Your project ID
+
+const databases = new Databases(client);
+
+await databases.listDocuments(
+    'marvel',
+    'movies',
+    [
+        Query.equal('reviews.author', ['Bob'])
+    ]
+);
+```
+
+```dart
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final databases = Databases(client);
+
+await databases.listDocuments(
+  databaseId: 'marvel',
+  collectionId: 'movies',
+  queries: [
+    Query.equal('reviews.author', ['Bob']),
+  ],
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let databases = Databases(client)
+
+databases.listDocuments(
+    databaseId: "marvel",
+    collectionId: "movies",
+    queries: [
+        Query.equal("reviews.author", value: ["Bob"])
+    ]
+)
+```
+
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Databases
+import io.appwrite.Query
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val databases = Databases(client)
+
+databases.listDocuments(
+    databaseId = "marvel",
+    collectionId = "movies",
+    queries = listOf(
+        Query.equal("reviews.author", listOf("Bob"))
+    )
+)
+```
+{% /multicode %}
+
+All filter queries are supported on relationship fields, including `equal`, `notEqual`, `greaterThan`, `lessThan`, `between`, `contains`, and other [comparison operators](/docs/products/databases/legacy/queries#comparison).
 
 {% arrow_link href="/docs/products/databases/legacy/queries#relationship-select" %}
 Learn how to select and load relationship data
