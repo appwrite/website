@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Relationships are out of beta"
-description: After a year of performance overhauls, opt-in loading, and full query support, relationships in Appwrite Databases are graduating from experimental to production-ready.
+title: "Database relationships are out of beta"
+description: After a year of performance overhauls, opt-in loading, and full query support, database relationships in Appwrite are graduating from experimental to production-ready.
 date: 2026-05-12
 cover: /images/blog/relationships-are-out-of-beta/cover.avif
 timeToRead: 5
@@ -9,8 +9,8 @@ author: jake-barnby
 category: announcement
 featured: true
 faqs:
-  - question: "What does 'production-ready' mean for Appwrite Relationships?"
-    answer: "It means the API and behavior are stable, performance is fast enough for real workloads, and the feature set is complete. Column types, directionality, on-delete behaviors, nested creation, query selection, and dot-notation filter queries are all locked in. We'll evolve relationships, but we won't break them."
+  - question: "What does 'production-ready' mean for database relationships in Appwrite?"
+    answer: "It means the API and behavior are stable, performance is fast enough for real workloads, and the feature set is complete. Column types, directionality, on-delete behaviors, nested creation, query selection, and dot-notation filter queries are all locked in. We'll evolve database relationships, but we won't break them."
   - question: "Do I need to update my code or SDK to benefit from this?"
     answer: "No. If you're already using relationships, you don't need to do anything. The 12-18x performance improvements apply automatically, and existing queries continue to work. Opt-in relationship loading is fully backward compatible, so older SDK versions retain their previous behavior."
   - question: "Can I filter rows based on related row data?"
@@ -18,14 +18,14 @@ faqs:
   - question: "Are there any remaining limitations?"
     answer: "Relationships are restricted to a maximum nesting depth of three levels. Relationship column key, type, and directionality cannot be updated after creation, only the on-delete behavior can be changed. These limits keep query performance predictable."
   - question: "Is this available on self-hosted Appwrite?"
-    answer: "Yes. Relationships are production-ready on both Appwrite Cloud and self-hosted installations. The performance gains, query support, and stability guarantees apply to both."
+    answer: "Yes. Database relationships are production-ready on both Appwrite Cloud and self-hosted installations. The performance gains, query support, and stability guarantees apply to both."
 ---
 
-Relationships have been part of Appwrite Databases for a while, but they shipped with an "experimental" label and a real set of rough edges. Payloads got bloated, queries couldn't reach across related rows, and performance wasn't where it needed to be for production workloads.
+Database relationships have been part of Appwrite for a while, but they shipped with an "experimental" label and a real set of rough edges. Payloads got bloated, queries couldn't reach across related rows, and performance wasn't where it needed to be for production workloads.
 
 Over the past year, we've fixed all of that. Today, we're dropping the experimental label.
 
-**Relationships in Appwrite Databases are now production-ready.** The API is stable, performance is fast, and the feature set is complete.
+**Database relationships in Appwrite are now production-ready.** The API is stable, performance is fast, and the feature set is complete.
 
 # What changed over the past year
 
