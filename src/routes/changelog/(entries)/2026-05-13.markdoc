@@ -2,7 +2,7 @@
 layout: changelog
 title: "Relationships are out of beta"
 date: 2026-05-13
-cover: /images/blog/relationships-are-out-of-beta/cover.avif
+cover: /images/blog/relationships-are-out-of-beta/cover.png
 ---
 
 Appwrite Databases relationships are graduating from experimental to **production-ready**. After a year of performance, ergonomics, and capability improvements, relationships are now a first-class way to model connected data.
