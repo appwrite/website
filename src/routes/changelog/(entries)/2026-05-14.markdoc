@@ -1,0 +1,14 @@
+---
+layout: changelog
+title: "Control how long inactive Functions and Sites deployments are retained"
+date: 2026-05-14
+cover: /images/blog/announcing-deployment-retention/cover.avif
+---
+
+Appwrite now supports deployment retention for [Functions](/docs/products/functions/deployments#deployment-retention) and [Sites](/docs/products/sites/deployments#deployment-retention), letting you automatically delete old non-active deployments after a retention window you control.
+
+The active deployment is always kept. Set `deploymentRetention` to `0` to keep non-active deployments forever, or choose a day-based value up to `36500` days. You can configure it from the Console or through the Functions and Sites APIs.
+
+{% arrow_link href="/blog/post/announcing-deployment-retention" %}
+Read the announcement
+{% /arrow_link %}

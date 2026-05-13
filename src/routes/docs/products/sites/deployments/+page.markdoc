@@ -84,3 +84,53 @@ Users subscribed to the Appwrite Pro plan or above receive certain special benef
 - Longer [build timeouts](/docs/advanced/platform/compute#build-timeouts) (45 minutes vs 15 minutes on Free; Enterprise is custom)
 - Customizable [build and runtime specifications](/docs/advanced/platform/compute) for CPU and memory on each site
 {% /info %}
+
+# Deployment retention
+
+Deployment retention controls how long Appwrite keeps non-active site deployments. The active deployment is always kept. When a non-active deployment is older than the configured retention period, Appwrite automatically deletes it during maintenance. Set the value to `0` to keep non-active deployments forever.
+
+To configure deployment retention from the Appwrite Console:
+
+1. Navigate to **Sites**.
+2. Open the site you want to configure.
+3. Go to **Settings** > **Deployment retention**.
+4. Turn on **Keep deployments forever**, or turn it off and choose how long to keep non-active deployments.
+5. Click **Update**.
+
+The Console provides common presets from `1 Week` to `10 Years`. When using the API or a Server SDK, set `deploymentRetention` to the number of days to keep non-active deployments. The value must be between `0` and `36500`, where `0` means unlimited retention.
+
+When updating a site with a Server SDK, pass the existing settings you do not intend to change and update only `deploymentRetention`.
+
+{% multicode %}
+
+```server-nodejs
+const site = await sites.get({
+    siteId: '<SITE_ID>'
+});
+
+await sites.update({
+    siteId: site.$id,
+    name: site.name,
+    framework: site.framework,
+    enabled: site.enabled ?? undefined,
+    logging: site.logging ?? undefined,
+    timeout: site.timeout ?? undefined,
+    installCommand: site.installCommand ?? undefined,
+    buildCommand: site.buildCommand ?? undefined,
+    startCommand: site.startCommand ?? undefined,
+    outputDirectory: site.outputDirectory ?? undefined,
+    buildRuntime: site.buildRuntime ?? undefined,
+    adapter: site.adapter ?? undefined,
+    fallbackFile: site.fallbackFile ?? undefined,
+    installationId: site.installationId ?? undefined,
+    providerRepositoryId: site.providerRepositoryId ?? undefined,
+    providerBranch: site.providerBranch ?? undefined,
+    providerSilentMode: site.providerSilentMode ?? undefined,
+    providerRootDirectory: site.providerRootDirectory ?? undefined,
+    buildSpecification: site.buildSpecification ?? undefined,
+    runtimeSpecification: site.runtimeSpecification ?? undefined,
+    deploymentRetention: 90
+});
+```
+
+{% /multicode %}
