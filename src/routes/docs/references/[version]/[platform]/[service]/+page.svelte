@@ -434,9 +434,7 @@
        route via .web-article-content-grid-6-4 (used only by the reference page) so it
        does not leak into Section.svelte / DocsTutorial.svelte. The sticky article
        header sits at --p-grid-huge-navs-secondary-sticky-position (~189px). */
-    :global(
-        .web-article-content-grid-6-4 .web-article-content-header :is(h2, h3, h4, h5, h6)
-    ) {
+    :global(.web-article-content-grid-6-4 .web-article-content-header :is(h2, h3, h4, h5, h6)) {
         scroll-margin-top: calc(var(--p-grid-huge-navs-secondary-sticky-position) + 1.5rem);
     }
 </style>
