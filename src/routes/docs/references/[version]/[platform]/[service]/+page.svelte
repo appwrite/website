@@ -430,4 +430,9 @@
             margin-bottom: 0;
         }
     }
+    /* The article header is sticky at --p-grid-huge-navs-secondary-sticky-position (189px),
+       so anchor jumps must clear it or the method heading lands behind the sticky bar. */
+    :global(.web-article-content-header :is(h2, h3, h4, h5, h6)) {
+        scroll-margin-top: calc(var(--p-grid-huge-navs-secondary-sticky-position) + 1.5rem);
+    }
 </style>
