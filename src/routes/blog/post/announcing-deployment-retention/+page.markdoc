@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Customize the deployment retention duration for Appwrite Functions and Sites"
+title: "Announcing deployment retention for Appwrite Functions and Sites"
 description: Deployment retention lets you automatically delete inactive Appwrite Functions and Sites deployments while keeping active deployments available for rollback.
-date: 2026-05-14
+date: 2026-05-15
 cover: /images/blog/announcing-deployment-retention/cover.avif
 timeToRead: 4
 author: aditya-oberai
