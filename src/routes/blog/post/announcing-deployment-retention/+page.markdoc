@@ -23,14 +23,15 @@ faqs:
     answer: "Yes. Set `deploymentRetention` when you create or update a Function or Site. When using an update method, pass the existing settings you want to keep along with the new retention value."
 ---
 
-Deployments pile up quickly. Every push to a production branch, every preview deployment, and every manual rebuild leaves behind a version you may need for debugging or rollback. Some of that history is useful. Some of it stops being useful after a week, a month, or a release cycle.
+Deployments pile up quickly. Every push to a production branch, every preview deployment, and every manual rebuild leaves behind a version you may need for debugging or rollback. Some of that history is useful. Some of it stops being useful after a week, a month, or a release cycle, but it keeps occupying storage long after you would ever roll back to it.
 
 Today, we are announcing **deployment retention for Appwrite Functions and Sites**.
 
-Deployment retention lets you choose how long Appwrite keeps non-active deployments before automatically deleting them. Your active deployment is always protected, and you can still keep deployments forever when your workflow calls for a long rollback window.
+Deployment retention lets you choose how long Appwrite keeps non-active deployments before automatically deleting them. You free up storage, lower your storage costs, and keep your deployment list focused on the builds you actually care about. Your active deployment is always protected, and you can still keep deployments forever when your workflow calls for a long rollback window.
 
 # What deployment retention gives you
 
+- **Lower storage costs:** Deployment artifacts count toward your project's overall storage allowance on Appwrite Cloud. Retention reclaims that space automatically, so unused builds stop pushing you toward [additional storage overage](/pricing).
 - **Cleaner deployment history:** Keep the deployment list focused on recent builds instead of every preview or retry your team has ever created.
 - **Protected active deployments:** The deployment currently serving your Function or Site is never removed by retention cleanup.
 - **Simple Console controls:** Choose **Keep deployments forever** or pick a retention window from common presets like 1 week, 1 month, 6 months, or 1 year.
@@ -75,9 +76,9 @@ await sites.update({
 
 # When to use deployment retention
 
-Use deployment retention when your deployment history grows faster than your need to inspect it. That is common for teams using Git-based deploys, preview deployments, frequent rebuilds, or short-lived feature branches.
+Use deployment retention when your deployment history grows faster than your need to inspect it. Every non-active deployment keeps occupying storage in your project, and those artifacts count toward the storage allowance on your [Appwrite Cloud plan](/pricing). For teams using Git-based deploys, preview deployments, frequent rebuilds, or short-lived feature branches, that footprint adds up quickly and can push you into additional storage charges for builds you would never roll back to.
 
-A shorter retention window works well for staging, preview, and internal environments where old builds lose value quickly. A longer window fits production resources where you want more historical context for support, incident review, or rollback planning. If your compliance or operational process requires keeping every deployment, set retention to `0` and Appwrite will keep non-active deployments forever.
+A shorter retention window works well for staging, preview, and internal environments where old builds lose value quickly and storage savings add up the fastest. A longer window fits production resources where you want more historical context for support, incident review, or rollback planning. If your compliance or operational process requires keeping every deployment, set retention to `0` and Appwrite will keep non-active deployments forever.
 
 # Configure deployment retention in Appwrite
 
