@@ -3,7 +3,7 @@ layout: post
 title: "How to deploy vibe coding projects to production"
 description: "A step-by-step guide to deploying vibe-coded apps to production: hosting, domains, secrets, permissions, logs, backups, and a pre-launch review path."
 date: 2026-05-12
-cover: /images/blog/deploy-vibe-coding-projects-to-production/cover.png
+cover: /images/blog/deploy-vibe-coding-projects-to-production/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: ai
