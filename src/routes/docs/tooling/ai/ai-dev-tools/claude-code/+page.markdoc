@@ -93,7 +93,7 @@ claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite"
 {% tabsitem #docs-only title="Docs server" %}
 
 ```bash
-claude mcp add appwrite-docs <https://mcp-for-docs.appwrite.io> -t http
+claude mcp add appwrite-docs https://mcp-for-docs.appwrite.io -t http
 
 ```
 

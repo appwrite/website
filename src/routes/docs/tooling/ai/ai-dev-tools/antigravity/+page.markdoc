@@ -86,7 +86,7 @@ Update the `mcp_config.json` file to include the docs server:
           "command": "npx",
           "args": [
               "mcp-remote",
-              "<https://mcp-for-docs.appwrite.io>"
+              "https://mcp-for-docs.appwrite.io"
           ]
       }
   }
