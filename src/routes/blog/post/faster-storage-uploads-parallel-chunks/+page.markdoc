@@ -14,8 +14,6 @@ Uploading large files to [Appwrite Storage](/docs/products/storage) should feel 
 
 We are releasing updated **Appwrite SDKs** that upload **multiple chunks at the same time**, with defaults tuned for how browsers and HTTP clients actually behave. The speedup scales with file size: in our Node SDK benchmarks, a 1.28 GB upload dropped from **4 minutes 44 seconds to under 40 seconds, a 7.10x improvement** at the default concurrency of 8.
 
-We are adding this behavior to all Appwrite SDKs that run on platforms with native concurrency support - environments where the runtime can keep several HTTP requests in flight at once (for example overlapping requests via async I/O in JavaScript, Python, and Dart, or goroutines and similar primitives in other server stacks). If a target environment cannot overlap network calls in a supported way, the SDK continues to upload chunks sequentially, which remains correct but does not unlock the same throughput.
-
 # Why sequential chunks cap your speed
 
 Chunked uploads exist so large files do not need to live entirely in memory and so failures can be retried at chunk granularity. The tradeoff is that strictly sequential chunking means:
@@ -50,6 +48,79 @@ const uploaded = await storage.createFile({
     fileId: ID.unique(),
     file: document.getElementById('uploader').files[0]
 });
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final storage = Storage(client);
+
+final uploaded = await storage.createFile(
+    bucketId: 'videos',
+    fileId: ID.unique(),
+    file: InputFile.fromPath(
+        path: './large-video.mp4',
+        filename: 'large-video.mp4',
+    ),
+);
+```
+```client-react-native
+import { Client, Storage, ID } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const storage = new Storage(client);
+
+const uploaded = await storage.createFile({
+    bucketId: 'videos',
+    fileId: ID.unique(),
+    file: {
+        name: 'large-video.mp4',
+        type: 'video/mp4',
+        size: fileSize,
+        uri: fileUri
+    }
+});
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let storage = Storage(client)
+
+let uploaded = try await storage.createFile(
+    bucketId: "videos",
+    fileId: ID.unique(),
+    file: InputFile.fromPath("./large-video.mp4")
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.models.InputFile
+import io.appwrite.services.Storage
+
+suspend fun upload() {
+    val client = Client(applicationContext)
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+
+    val storage = Storage(client)
+
+    val uploaded = storage.createFile(
+        bucketId = "videos",
+        fileId = ID.unique(),
+        file = InputFile.fromPath("./large-video.mp4")
+    )
+}
 ```
 ```server-nodejs
 import { Client, Storage, ID } from 'node-appwrite';
@@ -87,12 +158,13 @@ uploaded = storage.create_file(
     file=InputFile.from_path('./large-video.mp4'),
 )
 ```
-```client-flutter
-import 'package:appwrite/appwrite.dart';
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>');
+    .setProject('<PROJECT_ID>')
+    .setKey('<API_KEY>');
 
 final storage = Storage(client);
 
@@ -103,6 +175,156 @@ final uploaded = await storage.createFile(
         path: './large-video.mp4',
         filename: 'large-video.mp4',
     ),
+);
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\ID;
+use Appwrite\InputFile;
+use Appwrite\Services\Storage;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<API_KEY>');
+
+$storage = new Storage($client);
+
+$uploaded = $storage->createFile(
+    bucketId: 'videos',
+    fileId: ID::unique(),
+    file: InputFile::withPath('./large-video.mp4'),
+);
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<API_KEY>')
+
+storage = Storage.new(client)
+
+uploaded = storage.create_file(
+    bucket_id: 'videos',
+    file_id: ID.unique,
+    file: InputFile.from_path('./large-video.mp4'),
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/file"
+    "github.com/appwrite/sdk-for-go/id"
+    "github.com/appwrite/sdk-for-go/storage"
+)
+
+func main() {
+    clt := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<PROJECT_ID>"),
+        client.WithKey("<API_KEY>"),
+    )
+
+    service := storage.New(clt)
+
+    uploaded, err := service.CreateFile(
+        "videos",
+        id.Unique(),
+        file.NewInputFile("./large-video.mp4", "large-video.mp4"),
+    )
+    _ = uploaded
+    _ = err
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::Storage;
+use appwrite::InputFile;
+use appwrite::id::ID;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<API_KEY>");
+
+    let storage = Storage::new(&client);
+
+    let file = InputFile::from_path("./large-video.mp4", None).await?;
+
+    let uploaded = storage.create_file(
+        "videos",
+        ID::unique(),
+        file,
+        None,
+    ).await?;
+
+    let _ = uploaded;
+    Ok(())
+}
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.models.InputFile
+import io.appwrite.services.Storage
+
+suspend fun upload() {
+    val client = Client()
+        .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .setProject("<PROJECT_ID>")
+        .setKey("<API_KEY>")
+
+    val storage = Storage(client)
+
+    val uploaded = storage.createFile(
+        bucketId = "videos",
+        fileId = ID.unique(),
+        file = InputFile.fromPath("./large-video.mp4")
+    )
+}
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<API_KEY>")
+
+let storage = Storage(client)
+
+let uploaded = try await storage.createFile(
+    bucketId: "videos",
+    fileId: ID.unique(),
+    file: InputFile.fromPath("./large-video.mp4")
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<API_KEY>");
+
+Storage storage = new Storage(client);
+
+File uploaded = await storage.CreateFile(
+    bucketId: "videos",
+    fileId: ID.Unique(),
+    file: InputFile.FromPath("./large-video.mp4")
 );
 ```
 {% /multicode %}
@@ -122,7 +344,12 @@ We benchmarked the Node SDK uploading files from 10 MB up to 1.28 GB, comparing 
 | 640 MB | 141,923 ms | 20,863 ms | 6.80x | 8 | 128 |
 | 1.28 GB | 283,823 ms | 39,956 ms | **7.10x** | 8 | 256 |
 
-The pattern is clear: very small files (a single chunk or two) cannot benefit from concurrency and stay close to the sequential baseline. Once a file has enough chunks to saturate the worker pool, the speedup climbs steeply, reaching 7.10x at 1.28 GB. Your mileage will vary with region, device, bucket location, and network, but the larger the file, the larger the win.
+The pattern is clear:
+
+- **Small files** (a single chunk or two) cannot benefit from concurrency and stay close to the sequential baseline.
+- **Large files** have enough chunks to saturate the worker pool, so the speedup climbs steeply, reaching up to 7.10x at 1.28 GB.
+
+Your mileage will vary with region, device, bucket location, and network, but the larger the file, the larger the win.
 
 # Get started
 
