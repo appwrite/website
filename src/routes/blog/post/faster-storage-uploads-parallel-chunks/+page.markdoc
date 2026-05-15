@@ -355,6 +355,8 @@ Your mileage will vary with region, device, bucket location, and network, but th
 
 Parallel chunked uploads are now available on Appwrite Cloud. Upgrade your Appwrite SDK to the latest release for your language and your existing `createFile` calls inherit the faster uploads automatically - no API migration, no extra configuration.
 
+The Appwrite Console also uses parallel chunking, so file uploads through the Console are faster too.
+
 # More resources
 
 - [Appwrite Storage documentation](/docs/products/storage)
