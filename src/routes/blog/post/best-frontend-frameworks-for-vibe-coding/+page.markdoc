@@ -37,7 +37,7 @@ The frameworks below all clear a usable bar for vibe coding. The differences bel
 
 # Next.js
 
-Next.js is the strongest default for a vibe-coded app in 2026. Three reasons.
+Next.js is one of the strongest default for a vibe-coded app in 2026. Three reasons.
 
 The training-data footprint is the largest of any modern framework. Cursor, Claude Code, Windsurf, Bolt, v0, and Lovable all produce more correct first drafts on Next.js than on anything else. The App Router has settled enough that agents stop mixing it with Pages Router conventions in the same file. The TypeScript story is strong, and the framework's primitives (`route handlers`, `server actions`, server and client components) map cleanly to backend operations.
 
