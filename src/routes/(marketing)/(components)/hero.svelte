@@ -20,13 +20,12 @@
     } from '$lib/statsig/hero-query-overrides';
     import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
     import { ENV } from '$lib/system';
-    import AppwriteIn100Seconds from '$lib/components/AppwriteIn100Seconds.svelte';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
     import type { PageData } from '../$types';
-    import Dashboard from './dashboard.svelte';
     import HeroBanner from './hero-banner.svelte';
+    import HeroDashboardMockup from './hero-dashboard-mockup.svelte';
 
     /** Merged layout + page load; Statsig keys come from `+page.server.ts` (omitted from generated `PageData` in some setups). */
     type MarketingHeroPageData = PageData & {
@@ -111,7 +110,6 @@
 
             log('experiment exposure (display stays on `page.data`)', {
                 [MARKETING_HERO_EXPERIMENTS.bestTitle]: debug[MARKETING_HERO_EXPERIMENTS.bestTitle],
-                [MARKETING_HERO_EXPERIMENTS.bestCta]: debug[MARKETING_HERO_EXPERIMENTS.bestCta],
                 [MARKETING_HERO_EXPERIMENTS.heroLayout]:
                     debug[MARKETING_HERO_EXPERIMENTS.heroLayout]
             });
@@ -125,7 +123,7 @@
         /** Aside: clip mockup bleed. Stacked: avoid clipping long titles on tablet (overflow-hidden + nowrap). */
         layoutAside
             ? 'overflow-hidden py-10 md:py-0 lg:min-h-[680px]'
-            : 'overflow-hidden overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
+            : 'overflow-hidden overflow-y-clip pt-10 pb-3 md:pt-14 md:pb-4 lg:min-h-[560px] lg:pt-16'
     )}
 >
     <div
@@ -206,7 +204,7 @@
             <p
                 class={cn(
                     'text-description text-secondary mt-2 font-medium md:mt-3',
-                    layoutBottom && 'max-w-2xl text-center text-balance'
+                    layoutBottom && 'max-w-2xl text-center text-pretty'
                 )}
                 style:min-height={layoutAside
                     ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
@@ -230,15 +228,22 @@
                         trackEvent(`main-get_started_btn_hero-click`);
                     }}>{resolved.heroCta}</Button
                 >
-                <AppwriteIn100Seconds />
+                <Button
+                    href="/contact-us/enterprise"
+                    variant="secondary"
+                    class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
+                    onclick={() => {
+                        trackEvent('main-request_demo_btn_hero-click');
+                    }}>Request a demo</Button
+                >
             </div>
         </div>
 
         {#if layoutAside}
-            <Dashboard />
+            <HeroDashboardMockup />
         {:else}
             <div class="flex w-full justify-center">
-                <Dashboard placement="below" />
+                <HeroDashboardMockup placement="below" />
             </div>
         {/if}
     </div>

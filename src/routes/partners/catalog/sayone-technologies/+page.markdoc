@@ -6,12 +6,12 @@ date: 2025-09-09
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/sayone.png
+cover: /images/partners/covers/sayone.avif
 category: agency
 website: https://www.sayonetech.com/
 email: mailto:renjith@sayonetech.com
 product: 
-    avatar: '/images/partners/avatars/sayone.png'
+    avatar: '/images/partners/avatars/sayone.avif'
     vendor: Sayone Technologies
     description: SayOne is a fast-growing IT company providing AI consulting, custom software, and modern digital solutions.
 technologies: 

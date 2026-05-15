@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite vs Firebase for AI-assisted development"
 description: "Appwrite vs Firebase AI: compare MCP, SDK breadth, Auth, databases, Storage, Functions, Sites, and self-hosting for AI-assisted development."
 date: 2026-04-27
-cover: /images/blog/appwrite-vs-firebase-ai-development/cover.png
+cover: /images/blog/appwrite-vs-firebase-ai-development/cover.avif
 timeToRead: 9
 author: aishwari
 unlisted: true
 category: comparisons
+faqs:
+  - question: "What is the main difference between Appwrite and Firebase for AI-assisted development?"
+    answer: "Appwrite is an open-source, self-hostable backend with typed tables, broad runtime choice, Sites for hosting, and MCP coverage across the full product surface. Firebase is a proprietary managed service on Google Cloud that bundles Authentication, Firestore, Cloud Storage, Cloud Functions, App Hosting, and a Gemini-centric AI assistance layer. The choice usually comes down to whether you want self-hosting and open source or Google's managed stack."
+  - question: "Does Appwrite have an MCP server like Firebase?"
+    answer: "Yes. Appwrite ships official MCP servers for both the API and the documentation. The API server uses a compact two-tool workflow with automatic service discovery, so an agent can operate across Auth, databases, Storage, Functions, Sites, and Messaging without hand-written glue. The Docs MCP server keeps the agent grounded in current documentation rather than training-data memories."
+  - question: "Which platform supports more language runtimes for server-side code?"
+    answer: "Appwrite Functions supports Node.js, PHP, Ruby, Python, Python ML, Deno, Bun, Dart, .NET, Java, Swift, Kotlin, C++, and Go. Firebase Cloud Functions runs JavaScript, TypeScript, and Python with experimental Dart. If your AI agent needs to reach for Python ML packages, Go, C++, or Kotlin, Appwrite gives it more room."
+  - question: "How do permissions differ between Appwrite and Firestore?"
+    answer: "Appwrite Databases use typed tables with permissions attached directly to rows and tables, so the rule protecting a user's data lives next to the data it governs. Firestore is a NoSQL document store where access is expressed through Firebase Security Rules, a separate rules language the agent must learn alongside your data shape."
+  - question: "Can I self-host Appwrite or Firebase?"
+    answer: "Appwrite is fully self-hostable through a single docker-compose deployment that brings up the entire stack including Sites, with no licensing constraints on running it. Firebase is a managed-only service on Google Cloud with no first-party self-hosted option. For regulated workloads or teams that want data residency or to avoid lock-in, that distinction matters more than any feature comparison."
+  - question: "Does Appwrite support hosting AI-generated frontends?"
+    answer: "Yes. Appwrite Sites deploys frontends across Next.js, SvelteKit, Nuxt, Astro, React, Vue, Remix, TanStack Start, Angular, Analog, Vite, and more, with custom domains, environment variables, rollbacks, and deploy logs. Both backend and frontend live under one control plane that you can self-host."
 ---
 
 Picking a backend for an app that an AI coding agent will help build is a decision with a long half-life. The agent spends most of its context budget reasoning about identity, data, files, server-side code, and hosting, so the platform underneath has to give it clear primitives, a stable API, and an MCP surface the model can use directly. Appwrite vs Firebase AI is the comparison teams run when they weigh an open-source, self-hostable backend against Google's AI assistance ecosystem.

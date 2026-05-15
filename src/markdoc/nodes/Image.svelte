@@ -14,6 +14,9 @@
 
     let { src, alt, title }: ImageProps = $props();
 
+    const contain = $derived(title === 'contain');
+    const resolvedTitle = $derived(contain ? undefined : title);
+
     const inTable = isInTable();
     const isAudio = $derived(/\.(wav|mp3|m4a|ogg)$/i.test(src));
 
@@ -38,11 +41,17 @@
             Your browser does not support the audio element.
         </audio>
     {:else}
-        <img {src} {alt} {title} loading="lazy" style:vertical-align="middle" />
+        <img {src} {alt} title={resolvedTitle} loading="lazy" style:vertical-align="middle" />
     {/if}
 {:else}
     <span class="web-media relative my-8! block">
-        <img {src} {alt} {title} loading="lazy" class="aspect-video w-full object-cover" />
+        <img
+            {src}
+            {alt}
+            title={resolvedTitle}
+            loading="lazy"
+            class="w-full {contain ? '' : 'aspect-video object-cover'}"
+        />
         <span class="absolute right-4 bottom-4 opacity-25 transition hover:opacity-100">
             <Tooltip closeOnPointerDown>
                 <Button variant="secondary" class="cursor-pointer" action={trigger}>
@@ -64,7 +73,7 @@
                 use:melt={$content}
                 {src}
                 {alt}
-                {title}
+                title={resolvedTitle}
                 loading="lazy"
                 transition:scale={{ duration: 150, start: 0.95, easing: quadInOut }}
             />

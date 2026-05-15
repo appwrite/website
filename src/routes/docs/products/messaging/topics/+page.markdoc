@@ -6,10 +6,10 @@ description: Allow groups of users to subscribe to a common topic and receive th
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once.
 
 {% only_dark %}
-![Add a target](/images/docs/messaging/topics/dark/topics.png)
+![Add a target](/images/docs/messaging/topics/dark/topics.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a target](/images/docs/messaging/topics/topics.png)
+![Add a target](/images/docs/messaging/topics/topics.avif)
 {% /only_light %}
 
 # Topics and targets {% #topics-and-targets %}
@@ -34,10 +34,10 @@ You can create topics
 {% tabs %}
 {% tabsitem #console title="Console" %}
 {% only_dark %}
-![Add a topic](/images/docs/messaging/topics/dark/create-topics.png)
+![Add a topic](/images/docs/messaging/topics/dark/create-topics.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a topic](/images/docs/messaging/topics/create-topics.png)
+![Add a topic](/images/docs/messaging/topics/create-topics.avif)
 {% /only_light %}
 Navigate to your Appwrite Console > **Messaging** > **Topics** > **Create topic**.
 {% /tabsitem %}
@@ -331,10 +331,10 @@ Learn more about permission roles
 {% tabsitem #console title="Console" %}
 During development, you can subscribe targets to a topic for testing right in the Appwrite console.
 {% only_dark %}
-![Add a topic](/images/docs/messaging/topics/dark/add-subscriber.png)
+![Add a topic](/images/docs/messaging/topics/dark/add-subscriber.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a topic](/images/docs/messaging/topics/add-subscriber.png)
+![Add a topic](/images/docs/messaging/topics/add-subscriber.avif)
 {% /only_light %}
 Navigate to your Appwrite Console > **Messaging** > **Topics** > click on your topic > **Subscribers** > **Create topic** > **Add subscriber**.
 

@@ -6,12 +6,12 @@ date: 2025-09-09
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/appbisweb.png
+cover: /images/partners/covers/appbisweb.avif
 category: agency
 website: https://app-bis-web.de/
 email: mailto:luther@app-bis-web.de
 product: 
-    avatar: '/images/partners/avatars/appbisweb.png'
+    avatar: '/images/partners/avatars/appbisweb.avif'
     vendor: Jan Luther
     description: Freelance web developer from Germany, building custom solutions with modern web technologies.
 technologies: 

@@ -20,10 +20,10 @@ Here are some of the key benefits of using the MCP server:
 Before launching the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) and create an **API key** with the necessary scopes enabled.
 
 {% only_light %}
-![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.png)
+![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.avif)
 {% /only_light %}
 {% only_dark %}
-![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.png)
+![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.avif)
 {% /only_dark %}
 
 Ensure you save the **API key** along with the **project ID**, **region** and **endpoint URL** from the Settings page of your project as you'll need them later.
@@ -95,7 +95,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 List users in my Appwrite project
 ```
 
-![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.png)
+![List users in Appwrite project](/images/docs/mcp/claude-desktop/claude-list-users.avif)
 
 ## Example 2: Search a site
 
@@ -105,7 +105,7 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 Get the details of my portfolio site from Appwrite
 ```
 
-![Search for portfolio site in Appwrite project](/images/docs/mcp/vscode/copilot-chat.png)
+![Search for portfolio site in Appwrite project](/images/docs/mcp/vscode/copilot-chat.avif)
 
 ## Example 3: Create a user
 
@@ -115,4 +115,4 @@ Run the following prompt in your preferred code editor/LLM after enabling the MC
 Add a user john.doe@example.com to the Appwrite project
 ```
 
-![Create user in Appwrite project](/images/docs/mcp/cursor/cursor-create-user.png)
+![Create user in Appwrite project](/images/docs/mcp/cursor/cursor-create-user.avif)

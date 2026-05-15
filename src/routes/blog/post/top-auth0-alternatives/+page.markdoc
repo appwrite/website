@@ -3,7 +3,7 @@ layout: post
 title: "Top 8 Auth0 alternatives in 2026"
 description: "Explore top Auth0 alternatives that offer more control, flexibility and better pricing."
 date: 2025-06-27
-cover: /images/blog/top-auth0-alternatives/cover.png
+cover: /images/blog/top-auth0-alternatives/cover.avif
 timeToRead: 10
 author: veeresh-mulge
 category: tutorial
@@ -24,7 +24,7 @@ Top 8 Auth0 alternatives in 2026
 
 # 1. Appwrite
 
-![Appwrite](/images/blog/top-auth0-alternatives/Appwrite.png)
+![Appwrite](/images/blog/top-auth0-alternatives/Appwrite.avif)
 
 - **Deployment**: Fully managed cloud service and self-hosted options.
 - **Start for free**
@@ -55,7 +55,7 @@ Use Appwrite when you want a fully managed, all-in-one cloud platform with built
 
 # 2. Frontegg
 
-![Frontegg](/images/blog/top-auth0-alternatives/Frontegg.png)
+![Frontegg](/images/blog/top-auth0-alternatives/Frontegg.avif)
 
 - **Deployment**: Fully managed cloud service.
 - **Start for free**
@@ -83,7 +83,7 @@ Use Frontegg if you're building a B2B SaaS application where you need to manage 
 
 # 3. ForegeRock
 
-![ForegeRock](/images/blog/top-auth0-alternatives/ForegeRock.png)
+![ForegeRock](/images/blog/top-auth0-alternatives/ForegeRock.avif)
 
 - **Deployment**: Fully managed cloud service.
 
@@ -110,7 +110,7 @@ Use ForgeRock for large enterprises or government-scale projects where security,
 
 # 4. Keycloak
 
-![Keycloak](/images/blog/top-auth0-alternatives/Keycloak.png)
+![Keycloak](/images/blog/top-auth0-alternatives/Keycloak.avif)
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
@@ -139,7 +139,7 @@ Using Keycloak can be great when building an in-house platform or internal tool 
 
 # 5. FusionAuth
 
-![FusionAuth](/images/blog/top-auth0-alternatives/FusionAuth.png)
+![FusionAuth](/images/blog/top-auth0-alternatives/FusionAuth.avif)
 
 - **Deployment**: Cloud and self-hosted options.
 - **Start for free**
@@ -167,7 +167,7 @@ Use FusionAuth when you want control and customization in an auth platform witho
 
 # 6. Firebase Authentication
 
-![Firebase](/images/blog/top-auth0-alternatives/Firebase.png)
+![Firebase](/images/blog/top-auth0-alternatives/Firebase.avif)
 
 - **Deployment**: Cloud only.
 - **Start for free**
@@ -195,7 +195,7 @@ Use Firebase Auth if you're already part Firebase ecosystem, using other service
 
 # 7. AWS Cognito
 
-![Cognito](/images/blog/top-auth0-alternatives/Cognito.png)
+![Cognito](/images/blog/top-auth0-alternatives/Cognito.avif)
 
 - **Deployment**: Cloud only.
 - **Start for free**
@@ -223,7 +223,7 @@ AWS Cognito might make more sense if you're already using AWS infrastructure as 
 
 # 8. Stytch
 
-![Stytch](/images/blog/top-auth0-alternatives/Stytch.png)
+![Stytch](/images/blog/top-auth0-alternatives/Stytch.avif)
 
 - **Deployment**: Cloud only.
 - **Start for free**

@@ -3,7 +3,7 @@ layout: post
 title: "Introducing Terraform support for Appwrite projects"
 description: "The official Appwrite Terraform provider brings your entire Appwrite project into HashiCorp Configuration Language (HCL): TablesDB, Storage, Functions, Sites, Auth, Messaging, webhooks, backups, and more, with Registry docs, imports, and guides for Cloud and self-hosted Community Edition."
 date: 2026-04-24
-cover: /images/blog/terraform-provider-appwrite/cover.png
+cover: /images/blog/terraform-provider-appwrite/cover.avif
 timeToRead: 10
 author: levi-van-noort
 category: product, announcement

@@ -3,12 +3,23 @@ layout: post
 title: CNAME flattening for Appwrite sites
 description: Appwrite Sites now supports CNAME flattening, making it easier to connect custom domains without transferring DNS control or changing nameservers.
 date: 2026-03-16
-cover: /images/blog/cname-flattening-for-appwrite-sites/cover.png
+cover: /images/blog/cname-flattening-for-appwrite-sites/cover.avif
 timeToRead: 5
 author: aishwari
 category: tutorial
 featured: false
 unlisted: true
+faqs:
+  - question: "What is CNAME flattening and why does it matter for apex domains?"
+    answer: "CNAME flattening lets a DNS provider resolve a CNAME-like alias at the apex of a domain and return only the final A or AAAA record. This works around the rule that a real CNAME record cannot coexist with the MX, SPF, DKIM, and TXT records that a root domain needs. The result is that yourdomain.com can point to Appwrite without breaking email or domain verification."
+  - question: "How is CNAME flattening different from changing nameservers?"
+    answer: "Changing nameservers transfers full DNS control to a new provider, which can cause downtime during propagation, force you to recreate every existing record, and break features tied to your current provider, like Cloudflare proxying or email forwarding. CNAME flattening keeps you on your existing DNS provider and only adds the records needed to point your apex domain at Appwrite."
+  - question: "Which DNS providers support CNAME flattening for Appwrite Sites?"
+    answer: "Most modern providers support an equivalent feature under different names: Cloudflare calls it CNAME Flattening, AWS Route 53 calls it ALIAS records, DNSimple uses ALIAS, NS1 uses ANAME, and Google Cloud DNS supports it via forwarding zones. If your provider does not support flattening, you can still point your nameservers to Appwrite instead."
+  - question: "How do I set up an apex domain on Appwrite Sites?"
+    answer: "There is no special toggle. In the Appwrite Console, open your project, go to Settings then Domains, click Add Domain, enter your root domain, and add the DNS records Appwrite provides at your DNS provider. Once verified, Appwrite handles CNAME flattening on its end and your apex domain serves your site directly."
+  - question: "Will my domain break if Appwrite's IP addresses change?"
+    answer: "No. Because flattening resolves the alias dynamically at query time, your DNS response always returns Appwrite's current IPs. If those addresses change on the platform side, your domain follows automatically with no manual updates required."
 ---
 
 For most developers, the last step of deploying a site is connecting a custom domain. It should be the easiest part, but DNS often makes it the hardest. Previously, when using Appwrite Sites, pointing an apex domain to your site required changing your nameservers to Appwrite. While this approach worked, migrating nameservers comes with several inconveniences:

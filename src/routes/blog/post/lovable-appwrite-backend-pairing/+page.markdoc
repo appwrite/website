@@ -3,16 +3,31 @@ layout: post
 title: "Lovable and Appwrite: a practical backend pairing for AI-generated apps"
 description: "How Lovable users can pair Appwrite as the backend for AI-generated apps, with Auth, tables, permissions, Storage, and Functions."
 date: 2026-04-26
-cover: /images/blog/lovable-appwrite-backend-pairing/cover.png
+cover: /images/blog/lovable-appwrite-backend-pairing/cover.avif
 timeToRead: 8
 author: aditya-oberai
 unlisted: true
 category: ai
+faqs:
+  - question: "How do I connect Appwrite to Lovable?"
+    answer: "Add the Appwrite Docs MCP server to Lovable's personal connectors. In Lovable, open Settings, go to Connectors, open Personal connectors, click New MCP server, and add the Appwrite Docs server with name Appwrite Docs and URL https://mcp-for-docs.appwrite.io with no authentication. Once it is added, Lovable can answer Appwrite questions and write code with documentation-grounded context instead of guessing."
+  - question: "Why pair Lovable with Appwrite specifically?"
+    answer: "Appwrite is open source, self-hostable, and covers Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites under one platform. That replaces stitching several services together for a Lovable app and keeps the backend portable as the project grows. The pairing also gives Lovable accurate Appwrite context through the docs MCP, so generated code calls real APIs instead of inventing them."
+  - question: "Should I let Lovable design the backend or define it in Appwrite first?"
+    answer: "For prototypes, letting Lovable invent the schema is fine. For apps heading to production, define the backend in Appwrite first: create the project, tables with typed columns, row-level permissions, Storage buckets, and Functions for any secret-handling work. Then point Lovable at the backend you already defined. That stops the schema, permissions, and storage assumptions from drifting every time the UI is regenerated."
+  - question: "Where should secrets live in a Lovable plus Appwrite app?"
+    answer: "On Appwrite Functions, never in the generated client. Common patterns are calling a model provider with a server-held API key and writing the result back to a row, handling payment or email webhooks, running scheduled cleanups and digests, and reacting to row creation or file upload events. The generated UI calls a Function, the Function holds the credentials, and the same logic runs whether a human or an agent triggered the event."
+  - question: "When is the Lovable plus Appwrite pairing the right choice?"
+    answer: "When you want an open-source backend under an AI builder, a single platform covering Auth, tables and rows, Storage, Functions, Messaging, and Sites, Lovable's assistant grounded in Appwrite documentation through MCP, and a path from prompt-built prototype to production app without rebuilding the backend. It is less interesting if you are committed to a specific Postgres stack or shipping a throwaway demo."
+  - question: "Does Appwrite Sites host Lovable-generated frontends?"
+    answer: "Yes. Appwrite Sites supports source control deploys, isolated containers, custom domains, environment variables, rollbacks, and deploy logs, with the Appwrite Network handling global delivery. Pairing Sites with Functions and Databases puts the Lovable-generated UI, the backend APIs, and server-side logic on a single operational surface."
 ---
 
 Lovable turns a prompt into a working UI in minutes. The front end is the easy part. The part that decides whether an AI-generated app ships is the backend: where user accounts live, how rows get stored and permissioned, where files land, and which server-side logic runs on a schedule or on demand. This post looks at pairing Lovable with Appwrite, so the speed of AI generation sits on top of a backend platform you can host, audit, and grow into.
 
 The Lovable documentation frames backend as a connected service. The Supabase integration page describes a "hosted PostgreSQL database with real-time capabilities, user authentication, file storage, and serverless functions" that gets attached to your Lovable project. That framing is the right mental model. Swap the default for a different backend, and the generation workflow still works. Appwrite fits this pattern as an open-source option that brings Auth, Databases with tables and rows, Storage, Functions, Realtime, Messaging, and Sites under one roof.
+
+If you are still deciding whether Lovable is the right *front-end* vibe tool for your team versus Bolt, Cursor, or similar options, [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) summarizes how those tools tend to behave once you leave the happy path.
 
 ## Why pair Lovable and Appwrite
 

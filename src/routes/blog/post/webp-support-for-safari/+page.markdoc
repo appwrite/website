@@ -3,7 +3,7 @@ layout: post
 title: "WebP support now available for Safari on all devices"
 description: With WebP now supported in Safari, Appwrite developers can use this format on any browser and device.
 date: 2024-10-02
-cover: /images/blog/webp-support-for-safari/cover.png
+cover: /images/blog/webp-support-for-safari/cover.avif
 timeToRead: 3
 author: eldad-fux
 category: product

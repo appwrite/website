@@ -3,7 +3,7 @@ layout: post
 title: Build a “delivery store locator” using Spatial Columns in Appwrite Databases
 description: Learn how to use spatial columns in a real-world application.
 date: 2025-09-18
-cover: /images/blog/build-delivery-store-locator-spatial-columns/cover.png
+cover: /images/blog/build-delivery-store-locator-spatial-columns/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -15,13 +15,13 @@ In this article, we will look at an example delivery store locator and how it us
 
 # Overview
 
-![Overview of the delivery store locator app](/images/blog/build-delivery-store-locator-spatial-columns/overview.png)
+![Overview of the delivery store locator app](/images/blog/build-delivery-store-locator-spatial-columns/overview.avif)
 
 The nearest delivery store locator allows the user to pick a point on a map and check if any stores are available to deliver to the user. Any stores that can deliver will appear on the right side. In this case, **Store 1** is available to deliver the order as the store is within a ~10 mile radius of the location picked by the user.
 
 To make the development of the app easy, we aren’t using authentication and allowing anyone to freely add and remove stores.
 
-![Add and remove stores](/images/blog/build-delivery-store-locator-spatial-columns/add-store.png)
+![Add and remove stores](/images/blog/build-delivery-store-locator-spatial-columns/add-store.avif)
 
 You can manage stores by using the hamburger menu at the top right side, where you can add and remove stores from the database.
 
@@ -31,7 +31,7 @@ You can access the [delivery store locator](https://delivery-store-locator.appwr
 
 Head to [Appwrite Cloud](https://cloud.appwrite.io) and choose your project. Go to **Databases** section from the sidebar and create/choose your database. Here, we will create a new table called `stores`. In the columns tab for your new table, let’s create two columns that will be needed.
 
-![Adding spatial columns in Appwrite console](/images/blog/build-delivery-store-locator-spatial-columns/required-columns.png)
+![Adding spatial columns in Appwrite console](/images/blog/build-delivery-store-locator-spatial-columns/required-columns.avif)
 
 - `name`: name of the store, this should be a column of type **String**.
 - `location`: exact location coordinates of the store, this should be a column of type **Point**.
@@ -42,7 +42,7 @@ These are the only two columns we need that represent a store in our application
 
 In the application, we have a hamburger on the top right to manage stores we have in our application. When you click on **Add Store**, you will get a popup similar to the following:
 
-![Adding stores](/images/blog/build-delivery-store-locator-spatial-columns/add-store.png)
+![Adding stores](/images/blog/build-delivery-store-locator-spatial-columns/add-store.avif)
 
 This modal will accept a store name, and you can select a location on the map where you want to set to have the store at. Once you click **Add store**, it gets added to the database, and the updated stores appear on the sidebar.
 
@@ -63,7 +63,7 @@ In the above code, we're passing location coordinates in an array format (`[lon,
 
 After you add a store, if you choose a location very close to the store on the map on the main screen, you should be able to see the store in the list of nearby stores. However, if you choose a location far away from the store, it should not show you the store you just added.
 
-![Finding nearby stores](/images/blog/build-delivery-store-locator-spatial-columns/finding-nearby-store.png)
+![Finding nearby stores](/images/blog/build-delivery-store-locator-spatial-columns/finding-nearby-store.avif)
 
 To make this work, we are not using some highly logical geometrical calculations, we are simply running a query on our Appwrite database mentioning the distance limit we want to limit our store search to.
 
@@ -81,7 +81,7 @@ This will return the stores within the range, without you needing to iterate thr
 
 This way, you can sort multiple stores based on their distance, if you receive more than one record from the database.
 
-![Two stores displayed in locator](/images/blog/build-delivery-store-locator-spatial-columns/two-stores.png)
+![Two stores displayed in locator](/images/blog/build-delivery-store-locator-spatial-columns/two-stores.avif)
 
 # Wrapping up
 

@@ -1,7 +1,7 @@
 import { DEFAULT_HERO_CTA } from './constants';
 import { normalizeHeroLayout, type HeroLayoutVariant } from './hero-layout';
 
-/** Legacy fixed label on several CTAs — replaced by `best_cta` / `heroCta` when present. */
+/** Legacy fixed label on several CTAs — replaced by homepage `heroCta` when present (`best_cta` experiment retired). */
 export const SHORT_START_BUILDING_LABEL = 'Start building';
 
 /**

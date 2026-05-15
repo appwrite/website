@@ -70,7 +70,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/realtime.png"
+                src="/images/icons/illustrated/dark/realtime.avif"
                 alt="Realtime icon"
                 class="size-7"
             />
@@ -167,7 +167,7 @@
                 </defs>
             </svg>
             <div
-                class="absolute right-0 bottom-0 rounded-r-md rounded-bl-md bg-blue-500 px-2 py-0.5 font-medium text-white"
+                class="absolute right-0 bottom-0 rounded-r-md rounded-bl-md bg-[#1D4ED8] px-2 py-0.5 text-xs font-medium text-white"
             >
                 <span>Jayden</span>
             </div>

@@ -13,10 +13,10 @@ Appwrite Sites leverages the [Appwrite Network](/docs/products/network) infrastr
 Appwrite Sites lets you host any web application with ease. However, to make this process even simpler, you can begin by exploring starter kits developed by the Appwrite team or leverage a pre-configured template with built-in integrations to implement essential features.
 
 {% only_dark %}
-![Create first site](/images/docs/sites/dark/create-first-site.png)
+![Create first site](/images/docs/sites/dark/create-first-site.avif)
 {% /only_dark %}
 {% only_light %}
-![Create first site](/images/docs/sites/create-first-site.png)
+![Create first site](/images/docs/sites/create-first-site.avif)
 {% /only_light %}
 
 Try out one of our most popular framework quick-starts:

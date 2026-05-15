@@ -3,12 +3,23 @@ layout: post
 title: "BAA explained: what it is and when you need one"
 description: A practical guide to Business Associate Agreements for developers building healthcare apps, covering what they include, when they apply, and how to get them.
 date: 2026-03-19
-cover: /images/blog/baa-explained/cover.png
+cover: /images/blog/baa-explained/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "What is a Business Associate Agreement (BAA)?"
+    answer: "A BAA is a legally binding contract required under HIPAA in the United States. It governs how a business associate (any vendor or third party that handles Protected Health Information on behalf of a covered entity) can access, use, and safeguard that information. It defines permitted uses, required safeguards, breach notification obligations, sub-contractor requirements, and data return or destruction terms."
+  - question: "When does a developer need a BAA?"
+    answer: "You typically need a BAA when PHI is in scope and you are using a third-party service to handle it. Common scenarios include patient portals or EHR integrations, building for a healthcare provider, storing user-generated health data, claims and billing systems, and processing insurance information. If no health-related data enters your system, you usually do not need a BAA."
+  - question: "Does a BAA make your system HIPAA compliant?"
+    answer: "No. A BAA is a contractual mechanism that formalizes responsibilities, but it does not on its own make a system compliant. Actual HIPAA compliance requires implementing the underlying security controls in your application and infrastructure, including encryption at rest and in transit, access controls, audit logging, and documented administrative, physical, and technical safeguards."
+  - question: "How does self-hosting Appwrite simplify the BAA conversation?"
+    answer: "When Appwrite is self-hosted within your own cloud account or on-premise infrastructure, and PHI does not flow through external processors (third-party email or SMS providers, analytics, monitoring, or backup vendors), the primary BAA relationship can be scoped to the underlying cloud provider rather than a separate backend vendor. This narrows the BAA register to vendors that actually touch PHI."
+  - question: "What should developers look for in a backend that supports HIPAA-relevant applications?"
+    answer: "Look for vendors that offer formal BAA agreements (not just a compliance FAQ page), document their security controls (encryption at rest and in transit, access controls, audit logging), are transparent about sub-processors, and provide SOC 2 Type II reports or equivalent third-party audit documentation. Appwrite Cloud and self-hosted Appwrite both expose Argon2 password hashing, OAuth integrations, and granular access controls suitable for compliance-sensitive workloads."
 ---
 
 If you've ever built a product that touches healthcare data, you've probably heard the term "BAA" thrown around, often by a legal team, sometimes by a prospective enterprise customer, and occasionally in a sales call that suddenly got very serious. But what exactly is a Business Associate Agreement, and when does your team actually need one?

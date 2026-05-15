@@ -1,6 +1,28 @@
 import MarkdownIt from 'markdown-it';
 
 const md = new MarkdownIt('commonmark');
+
+const inlineMd = new MarkdownIt('commonmark');
+inlineMd.renderer.rules.link_open = (tokens, idx, options, _env, self) => {
+    const token = tokens[idx];
+    const href = token.attrGet('href');
+    if (href?.startsWith('http') && !href.startsWith('https://appwrite.io')) {
+        token.attrPush(['rel', 'noopener noreferrer']);
+        token.attrPush(['target', '_blank']);
+    }
+    token.attrPush(['class', 'web-link']);
+    return self.renderToken(tokens, idx, options);
+};
+
+/**
+ * Renders inline markdown (code spans, bold, italics, links) without wrapping
+ * the output in a block element. Use when the surrounding markup already
+ * provides a paragraph or other block container.
+ */
+export function parseInline(content: string): string {
+    return inlineMd.renderInline(content);
+}
+
 export function parse(content: string): string {
     const env = {};
 

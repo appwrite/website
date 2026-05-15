@@ -17,11 +17,11 @@ Learn to setup an Appwrite Function utilizing image classification with Hugging 
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -74,11 +74,11 @@ export default async ({ req, res, log, error }) => {
 In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
-![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+![Create bucket on console](/images/docs/storage/dark/create-bucket.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create bucket on console](/images/docs/storage/create-bucket.png)
+![Create bucket on console](/images/docs/storage/create-bucket.avif)
 {% /only_light %}
 
 Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
@@ -98,11 +98,11 @@ Next, create the following schema for the table:
 | labels    | String    | 256       | Yes       | Yes       |
 
 {% only_dark %}
-![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.png)
+![Image Classification Database](/images/docs/ai/tutorials/image-classification/dark/database.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Image Classification Database](/images/docs/ai/tutorials/image-classification/database.png)
+![Image Classification Database](/images/docs/ai/tutorials/image-classification/database.avif)
 {% /only_light %}
 {% /section %}
 
@@ -221,11 +221,11 @@ At the bottom of the dialog within the text input, click on the pen icon and ent
 Making sure to replace `[Bucket ID]` with the ID of the bucket you created earlier.
 
 {% only_dark %}
-![Image Classification Event](/images/docs/ai/tutorials/image-classification/dark/event.png)
+![Image Classification Event](/images/docs/ai/tutorials/image-classification/dark/event.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Image Classification Event](/images/docs/ai/tutorials/image-classification/event.png)
+![Image Classification Event](/images/docs/ai/tutorials/image-classification/event.avif)
 {% /only_light %}
 {% /section %}
 
@@ -238,10 +238,10 @@ Navigate to the Appwrite Console and click on **Storage** in the left sidebar, t
 After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
 
 {% only_dark %}
-![Image Classification Test](/images/docs/ai/tutorials/image-classification/dark/result.png)
+![Image Classification Test](/images/docs/ai/tutorials/image-classification/dark/result.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Image Classification Test](/images/docs/ai/tutorials/image-classification/result.png)
+![Image Classification Test](/images/docs/ai/tutorials/image-classification/result.avif)
 {% /only_light %}
 {% /section %}

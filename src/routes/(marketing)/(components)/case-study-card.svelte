@@ -16,41 +16,49 @@
 <ToggleGroup.Item
     {value}
     class={cn(
-        'relative grid w-full cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"] md:max-h-[467px]',
+        'relative grid w-full min-w-0 cursor-pointer overflow-hidden rounded-2xl border border-transparent backdrop-blur-3xl transition-all ease-in-out [grid-template-areas:"stack"]',
+        'lg:h-[467px] lg:max-h-[467px] lg:min-h-[467px]',
         'group/card hover:bg-black/24',
         'outline-0 duration-250 hover:shadow-[0px_0px_0px_4px_var(--color-offset)] focus:shadow-[0px_0px_0px_4px_var(--color-offset)]!',
         'data-[state="off"]:basis-[15%] data-[state="off"]:bg-black/16 data-[state="off"]:p-8',
         'data-[state="on"]:basis-[70%] data-[state="on"]:bg-black/2  data-[state="on"]:p-8 data-[state="on"]:shadow-[0px_0px_0px_4px_var(--color-offset)]! md:data-[state="on"]:p-12'
     )}
 >
-    <img
-        loading="lazy"
-        src={study.logo}
-        alt={study.headline}
-        width={100}
-        height={100}
-        class={cn(
-            'h-5 shrink-0 opacity-100 transition-all [grid-area:stack] lg:h-12',
-            'self-center justify-self-center brightness-50 group-[&[data-state=on]]/card:invisible group-[&[data-state=on]]/card:opacity-0'
-        )}
-    />
-
     <div
         class={cn(
-            'relative hidden w-full space-y-4 overflow-hidden transition-opacity delay-400 [grid-area:stack]',
-            'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
+            'flex h-4 w-full max-w-full shrink-0 items-center justify-center [grid-area:stack] lg:h-8',
+            'self-center justify-self-center transition-opacity',
+            'group-[&[data-state=on]]/card:hidden'
         )}
     >
         <img
             loading="lazy"
-            width={80}
-            height={80}
             src={study.logo}
             alt={study.headline}
-            class={cn('-mt-8 h-20 w-20', {
-                'animate-fade-in': isActive
-            })}
+            width={study.logoWidth}
+            height={study.logoHeight}
+            class="block h-full max-h-full w-auto max-w-full object-contain object-center brightness-50"
         />
+    </div>
+
+    <div
+        class={cn(
+            'relative hidden h-full max-h-full w-full min-w-0 space-y-4 overflow-y-auto transition-opacity delay-400 [grid-area:stack]',
+            'group-[&[data-state=on]]/card:block group-[&[data-state=on]]/card:opacity-100 group-[&[data-state=on]]/card:blur-none'
+        )}
+    >
+        <div class="h-6 w-full max-w-[min(100%,120px)] sm:h-7 md:h-8 md:max-w-[min(100%,150px)]">
+            <img
+                loading="lazy"
+                width={study.logoWidth}
+                height={study.logoHeight}
+                src={study.logo}
+                alt={study.headline}
+                class={cn('block h-full max-h-full w-full max-w-full object-contain object-left', {
+                    'animate-fade-in': isActive
+                })}
+            />
+        </div>
 
         <span
             class={cn(
@@ -68,7 +76,9 @@
                 'animate-fade-in [animation-delay:500ms]': isActive
             })}
         >
-            <div class="text-primary text-sub-body text-left font-medium md:max-w-[60%]">
+            <div
+                class="text-primary text-sub-body min-h-[2lh] max-w-full pr-6 text-left font-medium md:max-w-[min(100%,40rem)] md:pr-10 lg:max-w-[min(100%,44rem)] lg:pr-12"
+            >
                 "{study.blurb}"
             </div>
 
@@ -82,7 +92,8 @@
                     />
                     <span class="text-caption text-primary text-left font-medium text-pretty"
                         >{study.name}<span class="hidden md:inline">,</span>
-                        <span class="text-secondary block md:inline">{study.title}</span></span
+                        <span class="text-secondary md:inline">{study.title} @ {study.company}</span
+                        ></span
                     >
                 </div>
 

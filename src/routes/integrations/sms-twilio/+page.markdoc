@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/sms-twilio/cover.png
+cover: /images/integrations/sms-twilio/cover.avif
 category: messaging
 product: 
-    avatar: '/images/integrations/avatars/twilio.png'
+    avatar: '/images/integrations/avatars/twilio.avif'
     vendor: Twilio
     description: 'Twilio is a cloud communications platform that provides programmable communication tools using web APIs and SDKs.'
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/sms-twilio/cover.png
-    - /images/integrations/sms-twilio/twilio-console.png
-    - /images/integrations/sms-twilio/config.png
-    - /images/integrations/sms-twilio/sms.png
+    - /images/integrations/sms-twilio/cover.avif
+    - /images/integrations/sms-twilio/twilio-console.avif
+    - /images/integrations/sms-twilio/config.avif
+    - /images/integrations/sms-twilio/sms.avif
 ---
 
 Twilio is a cloud communications platform that provides programmable communication tools for making and receiving phone calls, sending and receiving text messages, and performing other communication functions using web APIs and SDKs.
@@ -35,7 +35,7 @@ To implement the Twilio provider in Appwrite Messaging, there are several steps 
 
 First, you must [sign up for a Twilio account](https://www.twilio.com/try-twilio), upgrade your account (in case you want to message numbers other than your own), and purchase a phone number with the SMS capability.
 
-![Twilio console](/images/integrations/sms-twilio/twilio-console.png)
+![Twilio console](/images/integrations/sms-twilio/twilio-console.avif)
 
 Ensure you save the following information for later use:
 
@@ -51,7 +51,7 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Select **Twilio** and add the **account SID**, **auth token**, and **phone number** that you saved from the Twilio console.
 
-![Twilio provider config](/images/integrations/sms-twilio/config.png)
+![Twilio provider config](/images/integrations/sms-twilio/config.avif)
 
 ## Step 3: Test the Twilio provider
 
@@ -59,7 +59,7 @@ Before you proceed, you must already have at least one [topic](https://appwrite.
 
 Once the provider is set up, you can go to the **Messages** tab on the **Messaging** page and **create an SMS message**. You can add the test message, configure the users to send the message to, and pick when the message should be sent out. 
 
-![SMS message console](/images/integrations/sms-twilio/sms.png)
+![SMS message console](/images/integrations/sms-twilio/sms.avif)
 
 # Read more about Twilio and Appwrite Messaging
 

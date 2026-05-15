@@ -3,7 +3,7 @@ layout: post
 title: "Simplify your CI pipeline and ship faster with Appwrite"
 description: Tired of juggling multiple tools for builds and tests? See how Appwrite unifies your CI pipeline, cuts costs, and helps your team ship faster with full visibility and production-level confidence.
 date: 2025-10-23
-cover: /images/blog/reasons-to-run-your-ci-pipeline-on-appwrite/cover.png
+cover: /images/blog/reasons-to-run-your-ci-pipeline-on-appwrite/cover.avif
 timeToRead: 6
 author: eldad-fux
 category: product

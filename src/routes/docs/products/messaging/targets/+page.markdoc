@@ -8,10 +8,10 @@ For example, a user might have two emails, a phone number as well as a phone and
 This means, the user has five different targets that you can deliver messages to.
 
 {% only_dark %}
-![Target overview](/images/docs/messaging/targets/dark/target-overview.png)
+![Target overview](/images/docs/messaging/targets/dark/target-overview.avif)
 {% /only_dark %}
 {% only_light %}
-![Target overview](/images/docs/messaging/targets/target-overview.png)
+![Target overview](/images/docs/messaging/targets/target-overview.avif)
 {% /only_light %}
 
 # Topics and targets {% #topics-and-targets %}
@@ -62,7 +62,7 @@ Push notifications require configuration on both the Appwrite platform and your 
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 1. If using SwiftUI, disable swizzling by setting `FirebaseAppDelegateProxyEnabled` to `NO` in your `Info.plist`.
 
-{% only_dark %}![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.png){% /only_dark %}{% only_light %}![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.png){% /only_light %}
+{% only_dark %}![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.avif){% /only_dark %}{% only_light %}![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.avif){% /only_light %}
 {% /tabsitem %}
 
 {% tabsitem #fcm-android title="Android with FCM" %}
@@ -86,10 +86,10 @@ Push notifications require configuration on both the Appwrite platform and your 
 1. Create a new key, note down the key ID and download your key.
 1. Add push notification capability to your app by clicking your root-level app in XCode > **Signing & Capabilities** > {% icon icon="plus" size="m" /%} Capabilities > Search for **Push Notifications**.
 {% only_dark %}
-![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.png)
+![Enable Push Notification in XCode](/images/docs/messaging/targets/dark/xcode-enable-pn.avif)
 {% /only_dark %}
 {% only_light %}
-![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.png)
+![Enable Push Notification in XCode](/images/docs/messaging/targets/xcode-enable-pn.avif)
 {% /only_light %}
 
 {% /tabsitem %}

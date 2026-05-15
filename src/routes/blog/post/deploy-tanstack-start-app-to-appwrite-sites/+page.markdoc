@@ -3,7 +3,7 @@ layout: post
 title: Deploy a TanStack Start app to Appwrite Sites
 description: Learn how to deploy a TanStack Start app to Appwrite Sites.
 date: 2025-10-31
-cover: /images/blog/deploy-tanstack-start-app-to-appwrite-sites/cover.png
+cover: /images/blog/deploy-tanstack-start-app-to-appwrite-sites/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -42,13 +42,13 @@ Now, let's link your GitHub repository to Appwrite Sites.
 
 Now, you should be able to see the most recent GitHub repositories based on activity.
 
-![Selecting the repository](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/repository-selection.png)
+![Selecting the repository](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/repository-selection.avif)
 
 Click **Connect** against the desired GitHub repository. The TanStack logo should be the icon of any valid TanStack Start app.
 
 Once you connect your GitHub repository, you will be presented with options for deployment.
 
-![Configuring the site](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/configuring-site.png)
+![Configuring the site](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/configuring-site.avif)
 
 Fill in the details as desired. Although there are some things you must know before moving forward.
 
@@ -63,7 +63,7 @@ Now, hit the **Deploy** button, and the deployment process will begin. You can s
 
 # Next steps
 
-![Site successfully deployed](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/deployed.png)
+![Site successfully deployed](/images/blog/deploy-tanstack-start-app-to-appwrite-sites/deployed.avif)
 
 Once your TanStack Start application is deployed, you can view it on the provided domains on the deployment success splash screen or in the Sites section of the Appwrite console.
 

@@ -3,12 +3,23 @@ layout: post
 title: "Self-hosted vs managed backends: a practical comparison"
 description: Compare self-hosted and managed backends to understand tradeoffs in control, cost, and speed, and choose the right approach with Appwrite.
 date: 2026-03-19
-cover: /images/blog/self-hosted-vs-managed-backends-a-practical-comparison/cover.png
+cover: /images/blog/self-hosted-vs-managed-backends-a-practical-comparison/cover.avif
 timeToRead: 5
 author: aishwari
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What is the difference between self-hosted and managed backends?"
+    answer: "Self-hosted means your team provisions servers, manages databases, configures scaling, applies security patches, and handles backups directly. A managed backend takes care of infrastructure on your behalf, so you focus on application features instead of operational work. The choice trades control for velocity."
+  - question: "When should a team choose to self-host instead of using a managed service?"
+    answer: "Self-hosting tends to make sense when you have strict data residency or regulatory requirements, when you operate in regulated industries where data cannot leave your environment, when you need deep infrastructure customization, or when you have an experienced DevOps team and want to avoid vendor lock-in. It is a fit for teams that already run mature infrastructure processes."
+  - question: "What hidden costs do teams underestimate with self-hosting?"
+    answer: "Engineering hours spent on setup and maintenance, on-call coverage and incident response, monitoring and observability tooling, security audits and patch cycles, and the debugging time after scaling failures all add up. Even when raw cloud compute looks cheap on paper, internal engineering time rarely is."
+  - question: "Can I switch between self-hosted Appwrite and Appwrite Cloud later?"
+    answer: "Yes. Appwrite is open source and can be self-hosted on any Docker-compatible infrastructure or used as a fully managed service through Appwrite Cloud. The APIs are identical across both, so you can start managed and migrate to self-hosted (or the other way) without rewriting your application."
+  - question: "Is Appwrite open source?"
+    answer: "Yes. Appwrite is open source and supports full self-hosting on any Docker-compatible infrastructure. It is also available as a managed service via Appwrite Cloud, with the same APIs across deployments so you are not locked into a single hosting model."
 ---
 
 Choosing a backend strategy is no longer just a technical decision. It affects velocity, reliability, security posture, hiring needs, and long-term cost. And one question comes up more than most:

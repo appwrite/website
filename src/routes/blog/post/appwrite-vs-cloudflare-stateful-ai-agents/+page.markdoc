@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite vs Cloudflare for stateful AI agents"
 description: "Compare Appwrite and Cloudflare as a stateful AI agents backend, from memory and state patterns to Auth, Databases, Storage, Functions, Realtime, and MCP."
 date: 2026-04-30
-cover: /images/blog/appwrite-vs-cloudflare-stateful-ai-agents/cover.png
+cover: /images/blog/appwrite-vs-cloudflare-stateful-ai-agents/cover.avif
 timeToRead: 9
 author: aditya-oberai
 unlisted: true
 category: comparisons
+faqs:
+  - question: "How do Appwrite and Cloudflare differ for stateful AI agents?"
+    answer: "Cloudflare's Agents SDK is built on Durable Objects and Workers, where each agent is a TypeScript class running on a stateful micro-server with its own SQL storage. Appwrite is a broader open-source backend where agent state lives as rows in TablesDB, accessible to any function, agent, or authenticated client through the same API. Cloudflare provides stateful compute, while Appwrite provides a complete app backend."
+  - question: "Does Cloudflare Agents include first-party authentication?"
+    answer: "No. Cloudflare's Agents SDK does not ship a first-party identity layer for agents. Teams bring their own auth provider and wire sessions and permissions into agent logic. Appwrite ships first-party Auth with email, OAuth, phone, anonymous, MFA, Teams, and roles, with no third-party dependency required."
+  - question: "What languages can I use with each platform?"
+    answer: "Cloudflare's Agents SDK is TypeScript-first, with Workers and Durable Objects also centered on TypeScript. Appwrite Functions support Node, Python, Go, Ruby, Deno, PHP, and more, with CRON schedules and event triggers. Teams writing Python, Go, or other server languages have more room on Appwrite."
+  - question: "How does state management compare between Durable Objects and Appwrite TablesDB?"
+    answer: "Durable Objects scope state per agent instance with its own SQL, and Cloudflare handles placement and hibernation. Cross-agent queries and shared user tables become a coordination problem across objects. Appwrite stores state as rows in shared tables with relationships, indexes, and platform-enforced permissions, so reading another user's row or running cross-thread analytics is a normal query."
+  - question: "Is Cloudflare Agents open source and self-hostable?"
+    answer: "No. Cloudflare's stateful agent infrastructure is proprietary and tied to the Cloudflare platform, including Durable Objects, Workers, R2, and D1. Appwrite is open source with unrestricted self-hosting, or you can run on Appwrite Cloud with the same API surface."
+  - question: "Can I host an AI app's frontend on either platform?"
+    answer: "Cloudflare provides Workers, Pages, and related services for hosting. Appwrite Sites deploys frontends with source-control deploys, custom domains, environment variables, rollbacks, and logs in the same project as your data, auth, and functions, so the agent backend and the frontend live under one control plane."
 ---
 
 The conversation around stateful AI agents has shifted. Teams are no longer just asking "where does my model run?" They are asking where threads live, how tool calls recover after a crash, how files attach to agent sessions, how live updates reach every client, and how coding agents operate on the backend through MCP.

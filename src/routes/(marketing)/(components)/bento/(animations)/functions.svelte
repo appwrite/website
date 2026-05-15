@@ -85,7 +85,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/functions.png"
+                src="/images/icons/illustrated/dark/functions.avif"
                 alt="Functions icon"
                 class="size-7"
             />

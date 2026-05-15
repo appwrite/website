@@ -32,10 +32,31 @@
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Appwrite" />
-        <!-- preload font for headlines -->
+        <!-- Critical fonts: reduce CLS when swap replaces fallback metrics (hero + body). -->
+        <link
+            rel="preload"
+            href="/fonts/inter/inter-latin-400-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/inter/inter-latin-500-normal.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
         <link
             rel="preload"
             href="/fonts/aeonik-pro/AeonikPro-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/aeonik-pro/AeonikPro-Medium.woff2"
             as="font"
             type="font/woff2"
             crossorigin

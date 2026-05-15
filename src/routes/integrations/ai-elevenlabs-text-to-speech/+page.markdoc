@@ -6,20 +6,20 @@ date: 2025-11-12
 featured: true
 isPartner: true
 isNew: true
-cover: /images/integrations/ai-elevenlabs-text-to-speech/cover.png
+cover: /images/integrations/ai-elevenlabs-text-to-speech/cover.avif
 category: ai
 product: 
-    avatar: '/images/integrations/avatars/elevenlabs.png'
+    avatar: '/images/integrations/avatars/elevenlabs.avif'
     vendor: ElevenLabs
     description: 'ElevenLabs is an advanced AI voice technology platform that generates natural, human-like speech from text using cutting-edge voice synthesis and cloning technology.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/ai-elevenlabs-text-to-speech/cover.png
-    - /images/integrations/ai-elevenlabs-text-to-speech/api-key.png
-    - /images/integrations/ai-elevenlabs-text-to-speech/template.png
-    - /images/integrations/ai-elevenlabs-text-to-speech/variable.png
+    - /images/integrations/ai-elevenlabs-text-to-speech/cover.avif
+    - /images/integrations/ai-elevenlabs-text-to-speech/api-key.avif
+    - /images/integrations/ai-elevenlabs-text-to-speech/template.avif
+    - /images/integrations/ai-elevenlabs-text-to-speech/variable.avif
 ---
 
 ElevenLabs provides developers with powerful tools to integrate realistic, human-like voice capabilities into their applications through APIs and SDKs.
@@ -38,7 +38,7 @@ To implement the ElevenLabs text-to-speech integration, there are several steps 
 
 First, you must [sign up for an ElevenLabs account](https://elevenlabs.io/app/sign-up). Once your account is set up, navigate to the [Developers](https://elevenlabs.io/app/developers) page from the sidebar, click on the **API Keys** tab, and generate an **API key** with the **Text to Speech** endpoint access enabled. Save this API key for further usage.
 
-![Create API key](/images/integrations/ai-elevenlabs-text-to-speech/api-key.png)
+![Create API key](/images/integrations/ai-elevenlabs-text-to-speech/api-key.avif)
 
 ## Step 2: Create the Appwrite Site
 
@@ -46,11 +46,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Sites** page, click on **Create site** and select the **Clone a template** option, and search for the **Text-to-speech with ElevenLabs** site template.
 
-![Site template](/images/integrations/ai-elevenlabs-text-to-speech/template.png)
+![Site template](/images/integrations/ai-elevenlabs-text-to-speech/template.avif)
 
 During the setup process, add the **ElevenLabs API key** in the **Variables** section.
 
-![Environment variables](/images/integrations/ai-elevenlabs-text-to-speech/variable.png)
+![Environment variables](/images/integrations/ai-elevenlabs-text-to-speech/variable.avif)
 
 ## Step 3: Test the site
 

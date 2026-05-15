@@ -90,7 +90,7 @@
                     <div class="flex items-center gap-5">
                         <Switch checked={button.checked} />
                         <div class="flex flex-col">
-                            <h5 class="text-caption text-primary font-medium">{button.label}</h5>
+                            <p class="text-caption text-primary font-medium">{button.label}</p>
                             <p class="text-caption font-medium">
                                 {button.description}
                             </p>

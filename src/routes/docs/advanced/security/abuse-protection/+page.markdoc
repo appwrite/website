@@ -28,10 +28,10 @@ will not be accepted.
 You can add new platforms by navigating to **Overview** > **Platforms** > **Add platform**.
 
 {% only_dark %}
-![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+![Add a platform](/images/docs/quick-starts/dark/add-platform.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a platform](/images/docs/quick-starts/add-platform.png)
+![Add a platform](/images/docs/quick-starts/add-platform.avif)
 {% /only_light %}
 
 {% arrow_link href="/blog/post/cors-error" %}

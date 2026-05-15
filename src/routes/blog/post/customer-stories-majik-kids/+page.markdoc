@@ -3,7 +3,7 @@ layout: post
 title: "Majik Kids: Building an audio-based content platform for children"
 description: Learn how Appwrite Cloud simplified their development process and accelerated productivity for Majik Kids as they worked 100s of artists, including musicians, voice artists, and illustrators, to build an alternative content platform with a focus on audio storytelling, creating a healthier learning experience for children.
 date: 2024-01-19
-cover: /images/blog/majik-kids.png
+cover: /images/blog/majik-kids.avif
 timeToRead: 7
 author: aditya-oberai
 category: customer-stories
@@ -37,7 +37,7 @@ The Grown Up Mode is designed for parents to use. Access to it is protected by a
 
 In August 2022, Bradley reached out to Phil McCluskey, the eventual Development Lead behind the Majik Kids app, to discuss the product idea. Considering the application idea, he saw Appwrite Cloud as the perfect fit for the backend.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 ## Why Appwrite was the perfect backend
 

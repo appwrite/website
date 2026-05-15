@@ -20,10 +20,10 @@ Server APIs require [API keys](/docs/advanced/platform/api-keys).
 
 
 {% only_dark %}
-![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+![Project settings screen](/images/docs/quick-starts/dark/project-id.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/quick-starts/project-id.png)
+![Project settings screen](/images/docs/quick-starts/project-id.avif)
 {% /only_light %}
 
 {% cards %}

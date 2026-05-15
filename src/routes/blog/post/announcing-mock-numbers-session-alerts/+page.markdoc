@@ -3,7 +3,7 @@ layout: post
 title: "Introducing mock numbers and session alerts in Auth"
 description: In response to popular demand, we're thrilled to announce two significant improvements to Appwrite Auth.
 date: 2024-08-23
-cover: /images/blog/init-day4/cover.png
+cover: /images/blog/init-day4/cover.avif
 timeToRead: 4
 author: luke-silver
 category: init, announcement, product
@@ -23,7 +23,7 @@ Ready to implement mock numbers in your project? Here's how to get started:
 
 First, configure your mock numbers. You can do it with the Appwrite console (go to your project, and then **Auth > Security**)
 
-![Mock-numbers](/images/blog/init-day4/1.png)
+![Mock-numbers](/images/blog/init-day4/1.avif)
 
 Now, in your Flutter app, you can use these mock numbers for authentication:
 
@@ -58,11 +58,11 @@ When you sign into your Appwrite Cloud account, you will receive an email tellin
 
 End-users won't receive an email if it's their first time signing in, or if they haven't set up an email address.
 
-![Email-session-alert](/images/blog/init-day4/2.png)
+![Email-session-alert](/images/blog/init-day4/2.avif)
 
 This is a security feature that allows you to quickly secure your account if compromised. It's enabled by default for Cloud, and you can enable it for your Appwrite project in the **Auth > Security** menu:
 
-![Session-alert](/images/blog/init-day4/3.png)
+![Session-alert](/images/blog/init-day4/3.avif)
 
 # Get started
 

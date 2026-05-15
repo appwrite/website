@@ -6,22 +6,22 @@ date: 2025-05-19
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/sites-starlight/cover.png
+cover: /images/integrations/sites-starlight/cover.avif
 category: sites
 product: 
-    avatar: '/images/integrations/avatars/starlight.png'
+    avatar: '/images/integrations/avatars/starlight.avif'
     vendor: Starlight
     description: 'Starlight is a documentation website framework built with Astro that helps you build beautiful, high-performance documentation sites with minimal setup.'
 platform: 
     - 'Cloud'
     - 'Self-hosted'
 images: 
-    - /images/integrations/sites-starlight/cover.png
-    - /images/integrations/sites-starlight/homepage.png
-    - /images/integrations/sites-starlight/search-site.png
-    - /images/integrations/sites-starlight/clone-template.png
-    - /images/integrations/sites-starlight/site-details.png
-    - /images/integrations/sites-starlight/success.png
+    - /images/integrations/sites-starlight/cover.avif
+    - /images/integrations/sites-starlight/homepage.avif
+    - /images/integrations/sites-starlight/search-site.avif
+    - /images/integrations/sites-starlight/clone-template.avif
+    - /images/integrations/sites-starlight/site-details.avif
+    - /images/integrations/sites-starlight/success.avif
 ---
 
 Starlight is a modern documentation framework built on top of Astro that makes it easy to create beautiful, high-performance documentation websites. Built with Astro and powered by Markdown, Starlight helps you focus on writing content while taking care of the technical details.
@@ -41,11 +41,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Create new site](/images/integrations/sites-starlight/create-site.png)
+![Create new site](/images/integrations/sites-starlight/create-site.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning the Starlight template, which lets you quickly set up a documentation site based on a pre-built project.
 
-![Create new site](/images/integrations/sites-starlight/clone-template.png)
+![Create new site](/images/integrations/sites-starlight/clone-template.avif)
 
 ##  Finding the Starlight template
 
@@ -53,7 +53,7 @@ When you select **Clone a template**, you'll see a library of templates. To find
 
 1. Use the search bar at the top and type "Starlight"
 
-![Search templates](/images/integrations/sites-starlight/search-site.png)
+![Search templates](/images/integrations/sites-starlight/search-site.avif)
 
 
 After selecting the template, you'll need to choose how to deploy it, Clicking the Starlight template will open a new page where you can configure your documentation site.
@@ -69,7 +69,7 @@ Once you have selected the Starlight template, you will be prompted to enter bas
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
 
-![Configure site details](/images/integrations/sites-starlight/site-details.png)
+![Configure site details](/images/integrations/sites-starlight/site-details.avif)
 At this stage, you can choose whether to connect your repository now or later.
 
 
@@ -94,13 +94,13 @@ Once you initiate the deployment, you will be taken to a progress page where you
 
 The logs will show you the different stages of the build process. Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Configure site details](/images/integrations/sites-starlight/deployment-screen.png)
+![Configure site details](/images/integrations/sites-starlight/deployment-screen.avif)
 
 ## Access your site
 
 After your site has been successfully deployed, Appwrite will show you a **Congratulations** page. 
 
-![Configure site details](/images/integrations/sites-starlight/success.png)
+![Configure site details](/images/integrations/sites-starlight/success.avif)
 
 ## Next step
 

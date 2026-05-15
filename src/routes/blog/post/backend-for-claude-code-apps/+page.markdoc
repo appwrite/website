@@ -3,7 +3,7 @@ layout: post
 title: "How to add a backend to apps built with Claude Code"
 description: Learn how to give apps built with Claude Code a reliable backend with Appwrite. Create a project, set up an API key, install the Appwrite Claude Code plugin, and let your agent build authentication, databases, and storage for you.
 date: 2026-04-25
-cover: /images/blog/backend-for-claude-code-apps/cover.png
+cover: /images/blog/backend-for-claude-code-apps/cover.avif
 timeToRead: 10
 author: atharva
 category: tutorial
@@ -55,7 +55,7 @@ The Appwrite API MCP server authenticates to your project with a server-side API
 
 In the Console, go to **Overview → Integrations → API keys** and click **Create API key**.
 
-![Create API key dialog in the Appwrite Console](/images/docs/platform/dark/create-api-key.png)
+![Create API key dialog in the Appwrite Console](/images/docs/platform/dark/create-api-key.avif)
 
 Fill in the dialog:
 

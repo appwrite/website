@@ -1,11 +1,11 @@
 <script lang="ts">
-    import ProjectTimeline from './(assets)/project-timeline.webp';
+    import ProjectTimeline from './(assets)/project-timeline.avif';
     import UsageGraphs from './(assets)/usage-graphs.avif';
     import SecurityOptions from './(assets)/security-options.avif';
 
     import BackgroundHero from './(assets)/bg-hero.svg';
-    import BackgroundLeft from './(assets)/bg-left.png';
-    import BackgroundRight from './(assets)/bg-right.png';
+    import BackgroundLeft from './(assets)/bg-left.avif';
+    import BackgroundRight from './(assets)/bg-right.avif';
     import BlobGreen from './(assets)/blob-green.svg';
     import BlobPink from './(assets)/blob-pink.svg';
     import BlobGreenMobile from './(assets)/blob-green-mobile.svg';
@@ -31,7 +31,7 @@
     const title = 'Startups' + TITLE_SUFFIX;
     const description =
         "Get cloud credits to fulfill all your startup's backend and hosting needs. Apply for Appwrite's Startups Program today.";
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     let personName: string;
     let personEmail: string;
@@ -94,7 +94,7 @@
             name,
             handle,
             text,
-            image: `/images/testimonials/${image}.png`
+            image: `/images/testimonials/${image}.avif`
         };
     };
 

@@ -3,12 +3,23 @@ layout: post
 title: "Backend platform longevity: What to look for beyond features"
 description: "Learn what to look for beyond features when choosing a backend platform: maintenance cadence, governance, security posture, data portability, and long-term stability."
 date: 2026-04-07
-cover: /images/blog/backend-platform-longevity-what-to-look-for-beyond-features/cover.png
+cover: /images/blog/backend-platform-longevity-what-to-look-for-beyond-features/cover.avif
 timeToRead: 5
 author: atharva
 category: open-source
 featured: false
 unlisted: true
+faqs:
+  - question: "What should I evaluate beyond features when choosing a backend platform?"
+    answer: "Look at release cadence and active maintenance, governance and organizational backing, real community adoption signals, security posture and vulnerability response, the open-source license and self-hosting options, and data portability. These determine whether the platform will still be a good decision in three years, even if today's feature list looks fine."
+  - question: "Why is data portability so important for long-term platform decisions?"
+    answer: "Platforms that store data in proprietary formats or require vendor assistance to export create high switching costs by design. Platforms that use standard formats like SQL dumps, JSON, or CSV with self-service export tooling treat data portability as a first-class concern, which lowers the cost of leaving if pricing, terms, or product direction changes."
+  - question: "How do I judge whether an open-source backend platform is genuinely open?"
+    answer: "Verify the actual license terms, not the marketing claim. A permissive open-source license like BSD or MIT permits self-hosting and forks without restriction, while some licenses that look open in name restrict commercial self-hosting or require proprietary plugins for essential features. Also check whether external contributors land changes regularly or the roadmap is fully controlled by one vendor."
+  - question: "Why are GitHub stars a poor longevity signal on their own?"
+    answer: "Stars track popularity at a moment in time, not durability. Better signals include active forum or community discussion, third-party tutorials and integrations, public production usage references, contributor diversity beyond the core company, and a steady stream of merged community pull requests. A repo with 5,000 stars and a thriving contributor base is more durable than one with 20,000 stars and a dead community."
+  - question: "How does Appwrite score against longevity criteria?"
+    answer: "Appwrite is BSD-3-Clause licensed, supports self-hosting on any Docker-compatible infrastructure, ships consistent releases with documented changelogs and migration paths, follows a public security disclosure process, and has an active community contributing tutorials, integrations, and code. It bundles authentication, databases, storage, functions, real-time, messaging, and hosting under one platform, with Appwrite Cloud available as a managed option."
 ---
 
 Most backend platform comparisons focus on features: which authentication methods are supported, how the database query API works, whether there's a serverless functions layer. These are the wrong questions to lead with.

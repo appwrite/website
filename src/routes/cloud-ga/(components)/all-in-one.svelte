@@ -8,16 +8,13 @@
     import Sites from '../(assets)/icons/sites.svg';
     import { cn } from '$lib/utils/cn';
 
-    import AuthSlide from '../(assets)/slides/auth.svg';
-    import DatabasesSlide from '../(assets)/slides/databases.svg';
-    import FunctionsSlide from '../(assets)/slides/functions.svg';
-    import StorageSlide from '../(assets)/slides/storage.svg';
-    import RealtimeSlide from '../(assets)/slides/realtime.svg';
-    import MessagingSlide from '../(assets)/slides/messaging.svg';
-    import SitesSlide from '../(assets)/slides/sites.svg';
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
+
+    const slide = (id: string) => `/images/products/sites/slides/${id}.avif`;
+    const SLIDE_WIDTH = 568;
+    const SLIDE_HEIGHT = 326;
 
     const lineClass = (isActive: boolean) =>
         `group-hover:stroke-white ${isActive ? 'stroke-white' : ''} group-focus-within:stroke-white transition-all stroke-smooth`;
@@ -36,7 +33,7 @@
             ) => `<svg width="98" height="107" viewBox="0 0 98 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 1H45.3623C51.9897 1 57.3623 6.37258 57.3623 13V94C57.3623 100.627 62.7349 106 69.3623 106H98" stroke-dasharray="4 4" class="${lineClass(isActive)}"/>
                    </svg>`,
-            image: AuthSlide
+            image: slide('auth')
         },
         {
             label: 'Databases',
@@ -46,7 +43,7 @@
             ) => `<svg width="98" height="36" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 1H35.3626C41.9899 1 47.3624 6.37239 47.3626 12.9997L47.3629 23.0003C47.363 29.6276 52.7356 35 59.3629 35H98.0009" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: DatabasesSlide
+            image: slide('databases')
         },
         {
             label: 'Functions',
@@ -56,7 +53,7 @@
             ) => `<svg width="98" height="36" viewBox="0 0 98 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 35H35.3626C41.9899 35 47.3624 29.6276 47.3626 23.0003L47.3629 12.9997C47.363 6.37239 52.7356 1 59.3629 1H98.0009" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: FunctionsSlide
+            image: slide('functions')
         },
         {
             label: 'Storage',
@@ -66,7 +63,7 @@
             ) => `<svg width="98" height="107" viewBox="0 0 98 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 106H45.3623C51.9897 106 57.3623 100.627 57.3623 94V13C57.3623 6.37258 62.7349 0.999995 69.3623 0.999995H98" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: StorageSlide
+            image: slide('storage')
         },
         {
             label: 'Realtime',
@@ -76,7 +73,7 @@
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M98 1H62.6377C56.0103 1 50.6377 6.37258 50.6377 13V62C50.6377 68.6274 45.2651 74 38.6377 74H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: RealtimeSlide
+            image: slide('realtime')
         },
 
         {
@@ -87,7 +84,7 @@
             ) => `<svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 1L98 1.00001" class="group-hover:stroke-white group-focus-within:stroke-white ${isActive && 'stroke-white'} transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: MessagingSlide
+            image: slide('messaging')
         },
         {
             label: 'Sites',
@@ -97,7 +94,7 @@
             ) => `<svg width="98" height="75" viewBox="0 0 98 75" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M98 74H62.6377C56.0103 74 50.6377 68.6274 50.6377 62V13C50.6377 6.37258 45.2651 0.999998 38.6377 0.999998H-9.53674e-07" class="group-hover:stroke-white ${isActive && 'stroke-white'} group-focus-within:stroke-white transition-all stroke-smooth" stroke-dasharray="4 4"/>
                    </svg>`,
-            image: SitesSlide
+            image: slide('sites')
         }
     ];
 
@@ -240,6 +237,8 @@
                                                 {@const isActive = i === activeIndex}
                                                 <img
                                                     src={product.image}
+                                                    width={SLIDE_WIDTH}
+                                                    height={SLIDE_HEIGHT}
                                                     class={cn(
                                                         'absolute inset-0 h-full w-full rounded-2xl object-cover transition-all duration-500 ease-out',
                                                         'scale-102 opacity-0 blur-md',
@@ -252,6 +251,7 @@
                                                     )}
                                                     aria-hidden={!isActive}
                                                     alt=""
+                                                    decoding="async"
                                                 />
                                             {/each}
                                         </div>
