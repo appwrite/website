@@ -29,7 +29,7 @@ This is a working view of how agencies are using vibe coding to ship client proj
 
 For a long time, the bottleneck on agency throughput was developers per project. Three engineers could ship two apps a quarter. Vibe coding moved the bottleneck. The same three engineers can now scaffold five apps in the same quarter, and the constraint becomes review, discovery, and client communication, not typing.
 
-This is more disruptive to agency economics than to product economics. A product company keeps the same product after a fast prototype. An agency starts over every engagement, so the win on the first day of a build compounds across every project the team takes on. A 40 percent reduction in time-to-first-working-version is 40 percent more pitches you can win this year.
+This is more disruptive to agency economics than to product economics. A product company keeps the same product after a fast prototype. An agency starts over every engagement, so the win on the first day of a build compounds across every project the team takes on. A meaningful reduction in time-to-first-working-version can translate into more pitches and faster iteration across the year.
 
 The honest catch is that the time you do not spend on the build is partially eaten by the time you spend on the review. The agencies that hit the leverage cleanly are the ones that built a review habit before vibe coding mattered. The ones that did not are shipping more bugs faster.
 
