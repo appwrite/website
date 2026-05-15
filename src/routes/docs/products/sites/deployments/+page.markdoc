@@ -85,7 +85,7 @@ Users subscribed to the Appwrite Pro plan or above receive certain special benef
 - Customizable [build and runtime specifications](/docs/advanced/platform/compute) for CPU and memory on each site
 {% /info %}
 
-# Deployment retention
+# Deployment retention {% #deployment-retention %}
 
 Deployment retention controls how long Appwrite keeps non-active site deployments. The active deployment is always kept. When a non-active deployment is older than the configured retention period, Appwrite automatically deletes it during maintenance. Set the value to `0` to keep non-active deployments forever.
 
