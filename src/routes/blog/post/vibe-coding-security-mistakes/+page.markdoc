@@ -41,7 +41,7 @@ The [Appwrite API MCP server](/docs/tooling/ai/mcp-servers/api) authenticates wi
 
 # 3. Treating chat history as ephemeral
 
-Prompts and pasted payloads sit on the vendor side longer than developers expect. A database URL pasted once to fix a bug is now in chat history. A sample customer record pasted to ask the agent to generate a query is now in chat history. Most cloud AI vendors do not promise that this data is unused after the session ends.
+Prompts and pasted payloads sit on the vendor side longer than developers expect. A database URL pasted once to fix a bug is now in chat history. A sample customer record pasted to ask the agent to generate a query is now in chat history. Developers should assume that prompts and pasted data may be retained or logged by cloud AI vendors.
 
 The fix is to treat any secret that ever appeared in a cloud-hosted chat as compromised and rotate it. Avoid pasting customer data into prompts. If you need to share data with the agent for debugging, use anonymized samples and dispose of them after the session. For long-running workflows, an [Appwrite Functions](/docs/products/functions) deployment is the right place to debug with real data, not a chat window.
 
