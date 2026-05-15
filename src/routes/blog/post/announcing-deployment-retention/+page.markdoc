@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing deployment retention for Appwrite Functions and Sites"
-description: Deployment retention lets you automatically delete inactive Appwrite Functions and Sites deployments while keeping active deployments available for rollback.
+description: Deployment retention lets you automatically delete inactive Appwrite Functions and Sites deployments while keeping deployments within the retention window available for rollback.
 date: 2026-05-15
 cover: /images/blog/announcing-deployment-retention/cover.avif
 timeToRead: 4
@@ -33,7 +33,7 @@ Deployment retention lets you choose how long Appwrite keeps non-active deployme
 
 - **Lower storage costs:** Deployment artifacts count toward your project's overall storage allowance on Appwrite Cloud. Retention reclaims that space automatically, so unused builds stop pushing you toward [additional storage overage](/pricing).
 - **Cleaner deployment history:** Keep the deployment list focused on recent builds instead of every preview or retry your team has ever created.
-- **Protected active deployments:** The deployment currently serving your Function or Site is never removed by retention cleanup.
+- **Protected active deployment:** The deployment currently serving your Function or Site is never removed by retention cleanup.
 - **Simple Console controls:** Choose **Keep deployments forever** or pick a retention window from common presets like 1 week, 1 month, 6 months, or 1 year.
 - **API support:** Configure the same behavior with the `deploymentRetention` field when creating or updating Functions and Sites.
 - **Custom retention windows:** Use any value from `1` to `36500` days, or `0` for unlimited retention.
