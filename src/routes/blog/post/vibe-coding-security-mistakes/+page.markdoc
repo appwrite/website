@@ -2,7 +2,7 @@
 layout: post
 title: "Vibe coding security mistakes developers ignore"
 description: "The vibe coding security mistakes developers ignore: leaked keys, open permissions, prompt-history leaks, weak auth defaults, and the fixes that actually work."
-date: 2026-05-12
+date: 2026-05-15
 cover: /images/blog/vibe-coding-security-mistakes/cover.avif
 timeToRead: 10
 author: aditya-oberai
