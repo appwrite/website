@@ -60,7 +60,7 @@ Before launch:
 - Review every table and confirm read and write permissions are scoped to the right roles. Default-deny, then add the minimum.
 - Check row-level permissions for any table that stores per-user data: profiles, orders, messages, uploads. [Appwrite Databases](/docs/products/databases) expose row-level permissions per row.
 - Confirm that file buckets do not allow public uploads unless the product requires them. [Appwrite Storage](/docs/products/storage) exposes per-bucket and per-file permissions, plus antivirus and encryption flags.
-- For collaboration, use [Appwrite Teams](/docs/products/auth) instead of broadening table access.
+- For collaboration, use [Appwrite Teams](/docs/products/auth/teams) instead of broadening table access.
 - Sign in as user A and try to read user B's data. You should fail.
 
 # Step 5: Wire auth against a real inbox
