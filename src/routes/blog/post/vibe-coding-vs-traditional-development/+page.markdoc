@@ -93,7 +93,7 @@ There are kinds of work where vibe coding does not pay back yet.
 - **Highly regulated code.** Audited code paths often need provenance the agent does not provide cleanly. The pattern still works, the process around it has to change.
 - **Education.** A student who lets the agent write everything learns less than one who writes it themselves. The leverage is real for someone with judgment to apply.
 
-For everything else, including the vast majority of application code that fills a startup's first year, vibe coding is the default workflow.
+For everything else, including much of the application code that fills a startup's first year, vibe coding is becoming a default workflow.
 
 # Picking the workflow your team should default to
 
