@@ -50,8 +50,6 @@ The category of agent-native backends has been forming since MCP shipped. Here i
 
 For the agent loop, the [API MCP server](/docs/tooling/ai/mcp-servers/api) lets the agent create users, manage tables, run queries, invoke functions, and operate on storage; the API key's scopes decide which of those the agent can actually call. The [Docs MCP server](/docs/tooling/ai/mcp-servers/docs) lets the agent read current docs at call time. [Agent Skills](/docs/tooling/ai/skills) cover the Appwrite CLI and every major SDK, including TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, Rust, and Swift. Editor plugins for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor) install MCP, docs MCP, and skills in one command.
 
-Appwrite is open source and runs anywhere Docker runs. For production, Cloud is the path of least resistance, and self-hosting is there when compliance or data residency demands it. Appwrite ships a separate Docs MCP alongside the API MCP, plus Agent Skills covering the CLI and every major SDK, with editor plugins for Claude Code and Cursor that install all three in one command.
-
 ## Supabase
 
 Supabase exposes a managed MCP server at `mcp.supabase.com/mcp` with tools grouped into Database, Debugging, Development, Edge Functions, Account management, Docs, and experimental Branching. Database tools include `list_tables`, `apply_migration`, and `execute_sql`. Edge Functions can be listed, fetched, and deployed. OAuth, read-only mode, and project scoping contain blast radius.
