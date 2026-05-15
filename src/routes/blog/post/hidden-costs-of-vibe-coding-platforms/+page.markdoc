@@ -69,7 +69,7 @@ Backends with typed columns and explicit relationships make this pass easier. [A
 
 # Vendor risk is real and unevenly distributed
 
-Vibe coding tools move faster than any previous developer category. New entrants ship every quarter. Existing tools change pricing, change limits, get acquired, or shut down. Windsurf's founders left for Google. Tools change hands. Roadmaps shift.
+Vibe coding tools move faster than any previous developer category. New entrants ship every quarter. Existing tools change pricing, change limits, get acquired, or shut down. Tools change hands. Roadmaps shift.
 
 The platform risk lives in two places. One is the tool itself: the editor, the agent, the prompt history. The other is the backend the tool nudged you toward. Tool churn is annoying. Backend churn is rebuilding the app.
 
