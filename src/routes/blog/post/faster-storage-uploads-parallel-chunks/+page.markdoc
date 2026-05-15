@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Up to 2x faster Appwrite Storage uploads with parallel chunks"
-description: Appwrite SDKs now upload Storage chunks in parallel on runtimes with native concurrency, tuned for real browsers and networks, often roughly 2x faster, with no API changes.
-date: 2026-05-05
+title: "Up to 7x faster Appwrite Storage uploads with parallel chunks"
+description: Appwrite SDKs now upload Storage chunks in parallel on runtimes with native concurrency. Our Node SDK benchmarks show up to 7.10x faster uploads on large files, with no API changes.
+date: 2026-05-15
 cover: /images/blog/faster-storage-uploads-parallel-chunks/cover.png
 timeToRead: 9
 author: eldad-fux
@@ -10,29 +10,30 @@ category: announcement
 featured: false
 ---
 
-Uploading large files to [Appwrite Storage](/docs/products/storage) should feel snappy on a good connection and **bearable on real-world networks**. Until now, SDKs typically sent file chunks **one after another**. That approach is simple and reliable, but it leaves performance on the table. Each chunk waits for the previous one, so you rarely saturate bandwidth or use the browser's ability to run several HTTP requests in parallel.
+Uploading large files to [Appwrite Storage](/docs/products/storage) should feel snappy on a good connection and **bearable on real-world networks**. Until now, SDKs typically sent file chunks one after another. That approach is simple and reliable, but it leaves performance on the table. Each chunk waits for the previous one, so you rarely saturate bandwidth or use the browser's ability to run several HTTP requests in parallel.
 
-We are releasing updated **Appwrite SDKs** that upload **multiple chunks at the same time**, with defaults tuned for **how browsers and HTTP clients actually behave**. In our benchmarks, uploads are often **about twice as fast** - and in many cases we see gains in the **roughly 100-200%** range depending on file size, latency, and network conditions.
+We are releasing updated **Appwrite SDKs** that upload **multiple chunks at the same time**, with defaults tuned for how browsers and HTTP clients actually behave. The speedup scales with file size: in our Node SDK benchmarks, a 1.28 GB upload dropped from **4 minutes 44 seconds to under 40 seconds, a 7.10x improvement** at the default concurrency of 8.
 
-We are adding this behavior to **all Appwrite SDKs that run on platforms with native concurrency support** - environments where the runtime can keep **several HTTP requests in flight at once** (for example overlapping requests via **async I/O** in JavaScript, Python, and Dart, or **goroutines** and similar primitives in other server stacks). If a target environment **cannot** overlap network calls in a supported way, the SDK continues to upload chunks **sequentially**, which remains correct but does not unlock the same throughput.
+We are adding this behavior to all Appwrite SDKs that run on platforms with native concurrency support - environments where the runtime can keep several HTTP requests in flight at once (for example overlapping requests via async I/O in JavaScript, Python, and Dart, or goroutines and similar primitives in other server stacks). If a target environment cannot overlap network calls in a supported way, the SDK continues to upload chunks sequentially, which remains correct but does not unlock the same throughput.
 
 # Why sequential chunks cap your speed
 
-Chunked uploads exist so large files do not need to live entirely in memory and so failures can be retried at chunk granularity. The tradeoff is that **strictly sequential** chunking means **underused bandwidth** (the connection often sits idle while the client waits on the next chunk), **latency stacked in series** (every chunk pays its own round trip one after another), and **browser limits left unused** (browsers allow multiple connections per origin, but a single in-flight upload does not use that capacity).
+Chunked uploads exist so large files do not need to live entirely in memory and so failures can be retried at chunk granularity. The tradeoff is that strictly sequential chunking means:
 
-The server must accept chunks in a well-defined way and assemble a complete file safely. Making uploads parallel required **both** smarter clients **and** a backend that could handle **out-of-order** and **concurrent** chunk writes without corrupting metadata or final assembly.
+- **Underused bandwidth** - the connection often sits idle while the client waits on the next chunk.
+- **Latency stacked in series** - every chunk pays its own round trip one after another.
+- **Browser limits left unused** - browsers allow multiple connections per origin, but a single in-flight upload does not use that capacity.
+
+The server must accept chunks in a well-defined way and assemble a complete file safely. Making uploads parallel required both smarter clients and a backend that could handle out-of-order and concurrent chunk writes without corrupting metadata or final assembly.
 
 # What we shipped
 
-The same **establish-then-parallelize** pattern is implemented **everywhere the host runtime supports it**. Each SDK uses that language's native concurrency primitives so multiple chunk requests run together without blocking each other on the wire. The updated SDKs establish the upload - for example, by sending the **first chunk** in a controlled way to obtain an upload identifier - then upload **remaining chunks concurrently** up to a **fixed maximum parallelism**. We intentionally avoid "as many requests as possible," which can hurt performance or run into browser and server limits.
+The same establish-then-parallelize pattern is implemented everywhere the host runtime supports it. Each SDK uses that language's native concurrency primitives so multiple chunk requests run together without blocking each other on the wire. The updated SDKs:
 
-For **JavaScript-family** SDKs (Web, Node, React Native), testing under throttling and more realistic network conditions pointed to a **concurrency of eight** as a practical sweet spot. Higher concurrency is not always better. Beyond a point you contend for connections, CPU, and memory without gaining throughput. Other languages pick limits that fit their **runtime defaults and HTTP stacks**. The goal is the same everywhere - use **native concurrency** where it exists, instead of bolting on fragile custom thread pools at the application layer.
+- Establish the upload by sending the first chunk in a controlled way to obtain an upload identifier.
+- Upload the remaining chunks concurrently up to a fixed maximum parallelism.
 
-On the server, parallel uploads only work in production if the stack can accept chunks **in any order** (within the rules of the API), **assemble** the final file correctly when multiple workers are involved, and keep **metadata consistent** when several requests touch the same upload state at nearly the same time. We hardened the platform for exactly that. Chunk data can flow concurrently while **short, scoped critical sections** protect the small amount of state that must stay atomic - so you get **parallel throughput** without sacrificing **correctness** under load.
-
-All of this stays **fully inside the Appwrite SDK**. Your integration keeps the same Storage upload calls and patterns as today; chunking, concurrency, and ordering on the wire are implementation details you do not configure or branch on. **Update to the latest Appwrite SDK** for your language or runtime and you inherit the faster uploads without rewriting upload code.
-
-The examples below are the same **`createFile`** calls you use today. Point them at a large file, bump the SDK and server, and uploads get faster with **no extra parameters** for parallelism. Use the drop-down to switch between Web, Node.js, Python, and Flutter.
+The examples below are the same `createFile` calls you use today. Point them at a large file, bump the SDK and server, and uploads get faster with no extra parameters for parallelism.
 
 {% multicode %}
 ```client-web
@@ -106,24 +107,26 @@ final uploaded = await storage.createFile(
 ```
 {% /multicode %}
 
-# Numbers that match "real internet," not just localhost
+# Benchmarks
 
-Local benchmarks are misleading. Everything feels fast until you add **latency**, **loss**, and **variable bandwidth**. We focused on **throttled** and **staging-style** runs to approximate what your users see.
+We benchmarked the Node SDK uploading files from 10 MB up to 1.28 GB, comparing the old sequential client against the new parallel client at the default concurrency of 8.
 
-One representative large-file case is a **~256 MB** upload that dropped from on the order of **two minutes** to under **a minute** with parallel chunks and tuned concurrency - **in the ballpark of 2x faster** in that scenario. Across different file sizes and setups, we repeatedly saw improvements in the **~100-200%** range relative to the older sequential behavior.
+| File size | Sequential | Parallel | Speedup | Concurrency | Chunks |
+| --- | --- | --- | --- | --- | --- |
+| 10 MB | 2,650 ms | 2,472 ms | 1.07x | 1 | 2 |
+| 20 MB | 4,589 ms | 2,434 ms | 1.89x | 3 | 4 |
+| 40 MB | 9,413 ms | 2,680 ms | 3.51x | 7 | 8 |
+| 80 MB | 18,233 ms | 4,037 ms | 4.52x | 8 | 16 |
+| 160 MB | 36,606 ms | 6,545 ms | 5.59x | 8 | 32 |
+| 320 MB | 71,036 ms | 11,451 ms | 6.20x | 8 | 64 |
+| 640 MB | 141,923 ms | 20,863 ms | 6.80x | 8 | 128 |
+| 1.28 GB | 283,823 ms | 39,956 ms | **7.10x** | 8 | 256 |
 
-Your mileage will vary with region, device, bucket location, and network. The consistent story is **materially faster uploads** without asking application developers to hand-roll concurrency.
+The pattern is clear: very small files (a single chunk or two) cannot benefit from concurrency and stay close to the sequential baseline. Once a file has enough chunks to saturate the worker pool, the speedup climbs steeply, reaching 7.10x at 1.28 GB. Your mileage will vary with region, device, bucket location, and network, but the larger the file, the larger the win.
 
-# What you need to do
+# Get started
 
-1. **Upgrade** your Appwrite SDKs to the latest release that includes parallel chunked uploads (see the changelog for your language). No API migration - same methods and flows as before.
-2. **Ensure your Appwrite instance** is on a release that includes the server-side support for concurrent and out-of-order chunk handling (self-hosters should upgrade the platform, not only the SDK).
-
-# Why this matters everywhere you upload
-
-Whether the uploader runs in a **browser**, on a **phone**, or in a **backend job**, the wins show up whenever the SDK can use the runtime's **native concurrency** to overlap chunk uploads. You do not need different strategies per platform beyond upgrading the SDK and server. The same Storage API keeps working, with smarter client-side scheduling.
-
-Faster uploads mean snappier dashboards, quicker backups, and less time staring at progress bars in mobile and web apps. By combining **parallel chunk uploads** in the SDKs with **realistic per-runtime concurrency limits** and a **server built for concurrent assembly**, we are delivering a clear step forward in performance - measured in **real-world conditions**, not only ideal lab networks.
+Parallel chunked uploads are now available on Appwrite Cloud. Upgrade your Appwrite SDK to the latest release for your language and your existing `createFile` calls inherit the faster uploads automatically - no API migration, no extra configuration.
 
 # More resources
 
