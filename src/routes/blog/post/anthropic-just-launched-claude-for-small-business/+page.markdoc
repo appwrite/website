@@ -36,10 +36,10 @@ It ships with **15 ready-to-run agentic workflows** across finance, operations, 
 
 Named workflows include:
 
-* **Planning payroll with confidence.** Settle your QuickBooks cash position against incoming PayPal settlements, build a 30-day forecast, rank what's overdue, and queue the reminders for you to approve and send.
-* **Closing the month with fewer errors.** Reconcile your books against settlements, flag what doesn't match, write a plain-English P\&L, and export a close packet you can forward to your accountant through Intuit QuickBooks.
-* **Getting a pulse on your business.** Surface your most important business insights on a schedule on one page: cash position from QuickBooks, sales trend, pipeline movement, this week's commitments, and more.
-* **Running your next campaign.** Find the slow stretch in your revenue, analyze HubSpot campaign performance, draft the promo strategy, and generate the assets in Canva to prepare your next send.
+- **Planning payroll with confidence.** Settle your QuickBooks cash position against incoming PayPal settlements, build a 30-day forecast, rank what's overdue, and queue the reminders for you to approve and send.
+- **Closing the month with fewer errors.** Reconcile your books against settlements, flag what doesn't match, write a plain-English P\&L, and export a close packet you can forward to your accountant through Intuit QuickBooks.
+- **Getting a pulse on your business.** Surface your most important business insights on a schedule on one page: cash position from QuickBooks, sales trend, pipeline movement, this week's commitments, and more.
+- **Running your next campaign.** Find the slow stretch in your revenue, analyze HubSpot campaign performance, draft the promo strategy, and generate the assets in Canva to prepare your next send.
 
 There is also an invoice chaser, margin analyzer, month-end prepper, tax-season organizer, contract reviewer, lead triager, and content strategist.
 
@@ -47,19 +47,19 @@ There is also an invoice chaser, margin analyzer, month-end prepper, tax-season 
 
 Running through Cowork, each connected tool handles a specific job:
 
-* **PayPal** powers settlements, invoicing, disputes, and refunds inside Claude.
-* **Intuit QuickBooks** handles payroll planning, the monthly close, cash-flow, tax season prep, and reconciliation that touches every other system.
-* **HubSpot** runs lead triage, customer pulse, and campaign attribution.
-* **Canva** generates content for every channel, with the ability to collaborate and edit with your team, publish assets, and track performance.
-* **Docusign** sends contracts out for signature, tracks status, and files the executed copy back where it belongs.
+- **PayPal** powers settlements, invoicing, disputes, and refunds inside Claude.
+- **Intuit QuickBooks** handles payroll planning, the monthly close, cash-flow, tax season prep, and reconciliation that touches every other system.
+- **HubSpot** runs lead triage, customer pulse, and campaign attribution.
+- **Canva** generates content for every channel, with the ability to collaborate and edit with your team, publish assets, and track performance.
+- **Docusign** sends contracts out for signature, tracks status, and files the executed copy back where it belongs.
 
 # Built for trust
 
 In a survey Anthropic ran with small business owners, half named data security as their single biggest hesitation about AI. The launch addresses that with three defaults:
 
-* **You stay in the loop.** Every task and workflow is initiated by you. You approve the plan first, or when you are ready, let it run end-to-end.
-* **Your existing permissions hold.** If an employee cannot see something in QuickBooks or Drive today, they cannot see it through Claude.
-* **Anthropic does not train on customer data by default** on Team and Enterprise plans.
+- **You stay in the loop.** Every task and workflow is initiated by you. You approve the plan first, or when you are ready, let it run end-to-end.
+- **Your existing permissions hold.** If an employee cannot see something in QuickBooks or Drive today, they cannot see it through Claude.
+- **Anthropic does not train on customer data by default** on Team and Enterprise plans.
 
 # AI Fluency for Small Business
 
@@ -83,8 +83,8 @@ Anthropic is also partnering with three Community Development Financial Institut
 
 Claude for Small Business is a Cowork product, so you consume it through Cowork, not as an API tier. It also hints at the kind of vertical AI workflow experiences developers can build for their own customers: connectors into the systems where the work happens, a library of named workflows on top, and a plan-then-approve UI in front.
 
-If you are building that, [Appwrite](https://appwrite.io/) gives you the backend half of the stack with [Auth](https://appwrite.io/docs/products/auth), [Databases](https://appwrite.io/docs/products/databases), [Storage](https://appwrite.io/docs/products/storage), [Functions](https://appwrite.io/docs/products/functions), [Messaging](https://appwrite.io/docs/products/messaging), and [Sites](https://appwrite.io/docs/products/sites). The Claude API gives you the model. Your MCP servers can expose customer tools to Claude through structured integrations and workflows.
+If you are building that, [Appwrite](/) gives you the backend half of the stack with [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites). The Claude API gives you the model. Your MCP servers can expose customer tools to Claude through structured integrations and workflows.
 
-The [Appwrite plugin for Claude Code](https://appwrite.io/blog/post/announcing-appwrite-claude-code-plugin) bundles the Appwrite API MCP server, the Appwrite Docs MCP server, and eleven SDK-specific agent skills into a single install, so your Claude Code agent can stand up users, databases, storage, and functions against your Appwrite project without manually wiring together the MCP infrastructure yourself.
+The [Appwrite plugin for Claude Code](/blog/post/announcing-appwrite-claude-code-plugin) bundles the Appwrite API MCP server, the Appwrite Docs MCP server, and eleven SDK-specific agent skills into a single install, so your Claude Code agent can stand up users, databases, storage, and functions against your Appwrite project without manually wiring together the MCP infrastructure yourself.
 
-Check out the [Claude Code integration guide](https://appwrite.io/docs/tooling/ai/ai-dev-tools/claude-code) and the [Appwrite MCP server docs](https://appwrite.io/docs/tooling/ai/mcp-servers) to get started, or [join us on Discord](https://appwrite.io/discord).
+Check out the [Claude Code integration guide](/docs/tooling/ai/ai-dev-tools/claude-code) and the [Appwrite MCP server docs](/docs/tooling/ai/mcp-servers) to get started, or [join us on Discord](https://appwrite.io/discord).
