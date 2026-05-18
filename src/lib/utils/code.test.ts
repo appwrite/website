@@ -12,4 +12,13 @@ describe('getCodeHtml', () => {
         expect(html).not.toContain('language-csharp ');
         expect(html).toContain('hljs-keyword');
     });
+
+    test('uses the fallback language class when language is omitted', () => {
+        const html = getCodeHtml({
+            content: 'echo appwrite'
+        });
+
+        expect(html).toContain('language-sh');
+        expect(html).not.toContain('language-undefined');
+    });
 });
