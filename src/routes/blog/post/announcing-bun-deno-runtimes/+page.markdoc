@@ -11,9 +11,7 @@ featured: false
 callToAction: true
 ---
 
-When you deploy a site, the build runtime is the part you rarely think about until it slows you down. Cold installs, slow lockfile resolution, and toolchains that need a long list of flags to behave can quietly add minutes to every deploy and friction to every framework upgrade.
-
-Today, we are happy to announce that **Bun and Deno are now available as build runtimes for Appwrite Sites**. You can pick any supported version, from **Bun 1.0** up to the latest **Bun 1.3**, and from **Deno 1.40** up to the latest **Deno 2.6**, in the Console build runtime dropdown for any Node-based framework.
+Today, we are happy to announce that **Bun and Deno are now available as build runtimes for Appwrite Sites, and they work out of the box with zero configuration**. You can pick any supported version, from **Bun 1.0** up to the latest **Bun 1.3**, and from **Deno 1.40** up to the latest **Deno 2.6**, in the Console build runtime dropdown for any Node-based framework, and your existing site will build without any changes to your project, your `package.json`, or your build command.
 
 # Why Bun and Deno on Sites
 
