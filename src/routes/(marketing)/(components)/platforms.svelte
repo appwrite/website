@@ -37,7 +37,7 @@
             name: 'Codex',
             dark: '/images/docs/mcp/logos/dark/openai.svg',
             light: '/images/docs/mcp/logos/openai.svg',
-            href: '/docs/tooling/ai/ai-dev-tools/codex',
+            href: '/docs/tooling/ai/agentic-coding/codex',
             primary: '#10A37F',
             secondary: '#064E3B'
         },
@@ -53,7 +53,7 @@
             name: 'Lovable',
             dark: '/images/docs/mcp/logos/dark/lovable.svg',
             light: '/images/docs/mcp/logos/lovable.svg',
-            href: '/docs/tooling/ai/ai-dev-tools/lovable',
+            href: '/docs/tooling/ai/vibe-coding/lovable',
             primary: '#FF6355',
             secondary: '#C43D32'
         },

@@ -51,27 +51,27 @@
             items: [
                 {
                     label: 'Claude Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
+                    href: '/docs/tooling/ai/agentic-coding/claude-code'
                 },
                 {
                     label: 'Codex',
-                    href: '/docs/tooling/ai/ai-dev-tools/codex'
+                    href: '/docs/tooling/ai/agentic-coding/codex'
                 },
                 {
                     label: 'Cursor',
-                    href: '/docs/tooling/ai/ai-dev-tools/cursor'
+                    href: '/docs/tooling/ai/agentic-coding/cursor'
                 },
                 {
                     label: 'VS Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
+                    href: '/docs/tooling/ai/agentic-coding/vscode'
                 },
                 {
                     label: 'OpenCode',
-                    href: '/docs/tooling/ai/ai-dev-tools/opencode'
+                    href: '/docs/tooling/ai/agentic-coding/opencode'
                 },
                 {
                     label: 'Google Antigravity',
-                    href: '/docs/tooling/ai/ai-dev-tools/antigravity'
+                    href: '/docs/tooling/ai/agentic-coding/antigravity'
                 }
             ]
         },
@@ -80,23 +80,23 @@
             items: [
                 {
                     label: 'Claude Desktop',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
+                    href: '/docs/tooling/ai/vibe-coding/claude-desktop'
                 },
                 {
                     label: 'Lovable',
-                    href: '/docs/tooling/ai/ai-dev-tools/lovable'
+                    href: '/docs/tooling/ai/vibe-coding/lovable'
                 },
                 {
                     label: 'Emergent',
-                    href: '/docs/tooling/ai/ai-dev-tools/emergent'
+                    href: '/docs/tooling/ai/vibe-coding/emergent'
                 },
                 {
                     label: 'Bolt',
-                    href: '/docs/tooling/ai/ai-dev-tools/bolt'
+                    href: '/docs/tooling/ai/vibe-coding/bolt'
                 },
                 {
                     label: 'Zenflow',
-                    href: '/docs/tooling/ai/ai-dev-tools/zenflow'
+                    href: '/docs/tooling/ai/vibe-coding/zenflow'
                 }
             ]
         },

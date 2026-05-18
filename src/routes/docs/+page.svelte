@@ -38,7 +38,7 @@
             event: 'docs-ai-ide_claude-code-click'
         },
         {
-            href: '/docs/tooling/ai/ai-dev-tools/codex',
+            href: '/docs/tooling/ai/agentic-coding/codex',
             title: 'Codex',
             logoDark: '/images/docs/mcp/logos/dark/openai.svg',
             logoLight: '/images/docs/mcp/logos/openai.svg',
@@ -83,21 +83,21 @@
             event: 'docs-ai-vibe_claude-desktop-click'
         },
         {
-            href: '/docs/tooling/ai/ai-dev-tools/lovable',
+            href: '/docs/tooling/ai/vibe-coding/lovable',
             title: 'Lovable',
             logoDark: '/images/docs/mcp/logos/dark/lovable.svg',
             logoLight: '/images/docs/mcp/logos/lovable.svg',
             event: 'docs-ai-vibe_lovable-click'
         },
         {
-            href: '/docs/tooling/ai/ai-dev-tools/emergent',
+            href: '/docs/tooling/ai/vibe-coding/emergent',
             title: 'Emergent',
             logoDark: '/images/docs/mcp/logos/dark/emergent.svg',
             logoLight: '/images/docs/mcp/logos/emergent.svg',
             event: 'docs-ai-vibe_emergent-click'
         },
         {
-            href: '/docs/tooling/ai/ai-dev-tools/bolt',
+            href: '/docs/tooling/ai/vibe-coding/bolt',
             title: 'Bolt',
             logoDark: '/images/docs/mcp/logos/dark/bolt.svg',
             logoLight: '/images/docs/mcp/logos/bolt.svg',

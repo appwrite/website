@@ -782,31 +782,31 @@
     },
     {
         "link": "/docs/tooling/mcp/cursor",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/cursor"
+        "redirect": "/docs/tooling/ai/agentic-coding/cursor"
     },
     {
         "link": "/docs/tooling/mcp/vscode",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/vscode"
+        "redirect": "/docs/tooling/ai/agentic-coding/vscode"
     },
     {
         "link": "/docs/tooling/mcp/windsurf",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/windsurf"
+        "redirect": "/docs/tooling/ai/agentic-coding/windsurf"
     },
     {
         "link": "/docs/tooling/mcp/opencode",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/opencode"
+        "redirect": "/docs/tooling/ai/agentic-coding/opencode"
     },
     {
         "link": "/docs/tooling/mcp/antigravity",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/antigravity"
+        "redirect": "/docs/tooling/ai/agentic-coding/antigravity"
     },
     {
         "link": "/docs/tooling/mcp/claude-code",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-code"
+        "redirect": "/docs/tooling/ai/agentic-coding/claude-code"
     },
     {
         "link": "/docs/tooling/mcp/claude-desktop",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-desktop"
+        "redirect": "/docs/tooling/ai/vibe-coding/claude-desktop"
     },
     {
         "link": "/docs/tooling/mcp/api",
@@ -830,11 +830,59 @@
     },
     {
         "link": "/docs/tooling/mcp/zenflow",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/zenflow"
+        "redirect": "/docs/tooling/ai/vibe-coding/zenflow"
     },
     {
         "link": "/docs/tooling/ai/ai-dev-tools",
         "redirect": "/docs/tooling/ai/"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/claude-code",
+        "redirect": "/docs/tooling/ai/agentic-coding/claude-code"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/codex",
+        "redirect": "/docs/tooling/ai/agentic-coding/codex"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/cursor",
+        "redirect": "/docs/tooling/ai/agentic-coding/cursor"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/vscode",
+        "redirect": "/docs/tooling/ai/agentic-coding/vscode"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/opencode",
+        "redirect": "/docs/tooling/ai/agentic-coding/opencode"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/antigravity",
+        "redirect": "/docs/tooling/ai/agentic-coding/antigravity"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/windsurf",
+        "redirect": "/docs/tooling/ai/agentic-coding/windsurf"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/claude-desktop",
+        "redirect": "/docs/tooling/ai/vibe-coding/claude-desktop"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/lovable",
+        "redirect": "/docs/tooling/ai/vibe-coding/lovable"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/emergent",
+        "redirect": "/docs/tooling/ai/vibe-coding/emergent"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/bolt",
+        "redirect": "/docs/tooling/ai/vibe-coding/bolt"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/zenflow",
+        "redirect": "/docs/tooling/ai/vibe-coding/zenflow"
     },
     {
         "link": "/install/compose",
