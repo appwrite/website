@@ -9,13 +9,13 @@ You can add the MCP server to various AI tools and code editors:
 {% cards_item href="/docs/tooling/ai/agentic-coding/codex" title="Codex" image="/images/docs/mcp/logos/openai.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="/docs/tooling/ai/agentic-coding/cursor" title="Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/vibe-coding/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/claude.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/zenflow" title="Zenflow" image="/images/docs/mcp/logos/zenflow.svg" %}
+{% cards_item href="/docs/tooling/ai/vibe-coding/zenflow" title="Zenflow" image="/images/docs/mcp/logos/zenflow.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agentic-coding/vscode" title="VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
@@ -39,13 +39,13 @@ You can add the MCP server to various AI tools and code editors:
 {% cards_item href="/docs/tooling/ai/agentic-coding/codex" title="Codex" image="/images/docs/mcp/logos/dark/openai.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/cursor" title="Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="/docs/tooling/ai/agentic-coding/cursor" title="Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/vibe-coding/claude-desktop" title="Claude Desktop" image="/images/docs/mcp/logos/dark/claude.svg" %}
 {% /cards_item %}
 
-{% cards_item href="/docs/tooling/mcp/zenflow" title="Zenflow" image="/images/docs/mcp/logos/dark/zenflow.svg" %}
+{% cards_item href="/docs/tooling/ai/vibe-coding/zenflow" title="Zenflow" image="/images/docs/mcp/logos/dark/zenflow.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agentic-coding/vscode" title="VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
