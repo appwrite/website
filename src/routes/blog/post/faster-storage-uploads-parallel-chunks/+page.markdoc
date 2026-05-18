@@ -2,7 +2,7 @@
 layout: post
 title: "Up to 7x faster Appwrite Storage uploads with parallel chunks"
 description: Appwrite SDKs now upload Storage chunks in parallel on runtimes with native concurrency. Our Node SDK benchmarks show up to 7.10x faster uploads on large files, with no API changes.
-date: 2026-05-15
+date: 2026-05-18
 cover: /images/blog/faster-storage-uploads-parallel-chunks/cover.avif
 timeToRead: 9
 author: eldad-fux
