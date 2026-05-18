@@ -116,6 +116,8 @@ hljs.registerAliases(['hcl', 'terraform', 'tf'], { languageName: 'ini' });
 
 export type Language = keyof typeof languages | Platform;
 
+const normalizeLanguage = (language?: Language) => language?.trim() as Language | undefined;
+
 type Args = {
     content: string;
     language?: Language;
@@ -124,7 +126,8 @@ type Args = {
 
 export const getCodeHtml = (args: Args) => {
     const { content, language, withLineNumbers } = args;
-    const res = hljs.highlight(content, { language: language ?? 'sh' }).value;
+    const highlightedLanguage = normalizeLanguage(language) ?? 'sh';
+    const res = hljs.highlight(content, { language: highlightedLanguage }).value;
     const lines = res.split(/\n/g);
 
     while (lines.length > 0 && lines[lines.length - 1] === '') {
@@ -136,7 +139,7 @@ export const getCodeHtml = (args: Args) => {
         return carry;
     }, '');
 
-    return `<pre class="web-code-pre"><code class="web-code web-code-body language-${language} ${
+    return `<pre class="web-code-pre"><code class="web-code web-code-body language-${highlightedLanguage} ${
         withLineNumbers ? 'line-numbers' : ''
     }">${final}</code></pre>`;
 };
