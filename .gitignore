@@ -31,3 +31,6 @@ terraform/**/**/*.tfstate*
 .env.sentry-build-plugin
 
 .playwright-mcp
+
+SKILL.md
+AGENTS.md
