@@ -1460,10 +1460,10 @@ const client = new Client()
 const realtime = new Realtime(client);
 
 const subscription = await realtime.subscribe(Channel.presences(), response => {
-    if (response.events.includes('presences.update')) {
+    if (response.events.includes('presences.*.update')) {
         console.log('Presence updated', response.payload);
     }
-    if (response.events.includes('presences.delete')) {
+    if (response.events.includes('presences.*.delete')) {
         console.log('Presence expired or removed', response.payload);
     }
 });
