@@ -142,9 +142,36 @@ await realtime.subscribe(Channel.presences(), response => {
 
 The `delete` event fires both when you remove a presence explicitly and when it expires automatically, so a single handler can drive the "user just went offline" branch of your UI either way.
 
+# Pair it with Realtime queries
+
+Presence gets sharper when you combine it with [Realtime queries](/blog/post/announcing-realtime-queries), which let you pass SDK queries to `realtime.subscribe(...)` so events are filtered server-side. Instead of receiving every presence event on `Channel.presences()` and discarding the ones you do not care about in your callback, you subscribe with a query and only see the events that match.
+
+```client-web
+import { Client, Realtime, Channel, Query } from "appwrite";
+
+const realtime = new Realtime(client);
+
+// Only receive online players, filtered server-side.
+await realtime.subscribe(
+    Channel.presences(),
+    response => {
+        console.log(response.payload);
+    },
+    [Query.equal('status', ['online'])]
+);
+```
+
+This is what makes the API a fit for the more demanding use cases on top of online indicators:
+
+- **Multiplayer games.** Set a `status` per zone or party and subscribe with a matching query, so a client only receives presence updates for the players it actually needs to render on screen.
+- **Live movement tracking.** In a collaborative editor or shared map, subscribe with a query keyed to the document or tile the user is on, so cursor positions from people elsewhere never reach the client.
+- **Filtered "who is online" lists.** Subscribe with `Query.equal('status', ['online'])` and `away` records never trigger your handler.
+
+**Realtime + Presence + Queries** together give you a low-bandwidth, server-filtered "who is here right now, doing what" stream that scales without per-client filtering logic.
+
 # When to reach for Presence
 
-Presence is the right primitive for any UI cue that should appear when a user is around and disappear when they are not:
+Beyond the demanding scenarios above, Presence is the right primitive for any UI cue that should appear when a user is around and disappear when they are not:
 
 - Online indicators in a team directory, contacts list, or member sidebar.
 - Collaboration cursors that show which document or row a teammate is viewing.

@@ -9,6 +9,8 @@ Appwrite now ships a first-class **Presence API** for short-lived user statuses 
 
 Presences broadcast every change over dedicated Realtime channels (`presences` and `presences.<ID>`), so an "online now" list, a typing indicator, or a "viewing this page" cue is a single `Channel.presences()` subscription away. Stale records expire and emit `delete` events automatically, no cleanup job required.
 
+Combine it with [Realtime queries](/blog/post/announcing-realtime-queries) and a client only receives the presence events its UI actually needs to render, which makes the API a fit for multiplayer games and live movement tracking as much as for online indicators.
+
 {% arrow_link href="/blog/post/announcing-presence-api" %}
 Read the announcement
 {% /arrow_link %}
