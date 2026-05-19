@@ -1549,7 +1549,7 @@ This gives you a clean signal for "user just came online", "user changed status"
 ---
 * `presences`
 * `Channel.presences()`
-* Any create, update, or delete event on any presence the subscriber can read.
+* Any create, upsert, update, or delete event on any presence the subscriber can read.
 ---
 * `presences.<ID>`
 * `Channel.presence('<PRESENCE_ID>')`
