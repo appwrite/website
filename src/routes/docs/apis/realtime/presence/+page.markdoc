@@ -1,0 +1,283 @@
+---
+layout: article
+title: Presence
+description: Use the Appwrite Presence API to track which users are currently active, broadcast their status, and subscribe to live presence updates over Realtime.
+---
+
+The Appwrite **Presence API** tracks which users are currently active in your app and lets every connected client see those statuses in realtime. You can use it to render online indicators next to teammates, show who is viewing a document, broadcast a "typing" status in a chat, or surface "looking at the same page" cues during collaboration.
+
+A presence is a short-lived record tied to a user. Each record carries a `userId`, an optional `status` string (for example `online`, `away`, `editing`), an optional `metadata` JSON object for richer context (a cursor position, the document the user is viewing, the device they are on), and an `expiresAt` timestamp that controls when the record is automatically cleaned up.
+
+Presences are exposed as both a regular HTTP resource and a [Realtime](/docs/apis/realtime) channel, so the same record can be written by any client or server SDK and read live by every subscriber that has permission.
+
+# How it works {% #how-it-works %}
+
+A presence has two sides that are always in sync.
+
+**It is durable.** When you write a presence, it sticks around until it expires or you delete it. That means you can `list()` presences at any time to see who is online right now, including from a server-side function, without having to keep a Realtime connection open.
+
+**It is live.** Every change to a presence fires an event on the `presences` and `presences.<PRESENCE_ID>` [Realtime](/docs/apis/realtime) channels. Subscribers get `create`, `upsert`, `update`, and `delete` events in milliseconds, over the same Realtime connection they are already using for rows and files.
+
+A typical "online dot" loop looks like this:
+
+1. Client A signs in and calls `presences.upsert({...})`. An `upsert` event fires on the presence channels.
+2. Client B, subscribed to `Channel.presences()`, receives the event and shows A as online.
+3. Client A keeps the record alive by upserting again on focus, route change, or a periodic timer, which slides `expiresAt` forward.
+4. When `expiresAt` passes, the record is removed and a `delete` event fires. B drops A from its list.
+5. If A signs out cleanly, they call `presences.delete(...)` and the `delete` event fires immediately, no waiting on expiry.
+
+This gives you two ways to keep a presence alive, and you pick whichever fits your UI:
+
+- **Heartbeat.** Upsert on focus, route change, or a periodic timer to push `expiresAt` forward. Best when presence should persist briefly across short disconnects (a quick network blip, a tab switch) or when you write presence from server code that has no live socket.
+- **While connected.** If you keep a Realtime connection open, presence written over that connection is cleaned up automatically when the connection closes. Best for "online while the tab is open" UIs where you do not want to manage a heartbeat yourself.
+
+# Set a presence {% #set-a-presence %}
+
+A presence is created with an **upsert** on the user's `presenceId`. Calling the same endpoint again updates the existing record, so you can safely call it on every page navigation, focus change, or heartbeat without worrying about duplicates.
+
+{% multicode %}
+```client-web
+import { Client, Presences, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+const presence = await presences.upsert({
+    presenceId: ID.unique(),
+    status: 'online',
+    metadata: { page: '/dashboard' }
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+final presence = await presences.upsert(
+    presenceId: ID.unique(),
+    status: 'online',
+    metadata: { 'page': '/dashboard' },
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+let presence = try await presences.upsert(
+    presenceId: ID.unique(),
+    status: "online",
+    metadata: ["page": "/dashboard"]
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+val presence = presences.upsert(
+    presenceId = ID.unique(),
+    status = "online",
+    metadata = mapOf("page" to "/dashboard")
+)
+```
+{% /multicode %}
+
+A few notes on the parameters:
+
+- `presenceId` (**required**) is the unique ID of the presence record. Use `ID.unique()` on first creation and persist it for subsequent updates so the same record is reused for the same user across sessions.
+- `status` (**required**) is a free-form string up to 256 characters. There are no reserved values, so pick whatever vocabulary fits your app (`online`, `away`, `busy`, `editing`, `typing`).
+- `userId` is set automatically from the authenticated session on client SDKs. Server SDKs (API key, JWT, Admin) must pass `userId` explicitly because there is no session to read it from.
+- `metadata` is an arbitrary JSON object. Use it to carry any context that subscribers should see together with the status.
+- `expiresAt` is optional. Without it, Appwrite applies a default TTL (see [Expiry and cleanup](#expiry-and-cleanup) below).
+- `permissions` controls who can read or modify the presence record, the same way it works on rows and files. Without permissions, only the owner and project keys can see it.
+
+Call `presences.update(...)` with the same `presenceId` to patch any subset of these fields without re-sending the whole record; every field on `update` is optional.
+
+# Subscribe to presence updates {% #subscribe-to-presence-updates %}
+
+Presence is most useful when other clients can react to it live. Use the `Channel.presences()` helper to subscribe to the global presences channel, or `Channel.presence('<PRESENCE_ID>')` to follow a single record. All Realtime subscriptions are gated by the [permissions system](/docs/advanced/platform/permissions), so a client will only receive updates for presences it has permission to read.
+
+{% multicode %}
+```client-web
+import { Client, Realtime, Channel } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+const subscription = await realtime.subscribe(Channel.presences(), response => {
+    if (response.events.includes('presences.*.update')) {
+        console.log('Presence updated', response.payload);
+    }
+    if (response.events.includes('presences.*.delete')) {
+        console.log('Presence expired or removed', response.payload);
+    }
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+final subscription = realtime.subscribe([Channel.presences()]);
+
+subscription.stream.listen((response) {
+    if (response.events.contains('presences.*.update')) {
+        print('Presence updated: ${response.payload}');
+    }
+    if (response.events.contains('presences.*.delete')) {
+        print('Presence expired or removed: ${response.payload}');
+    }
+});
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+let subscription = realtime.subscribe(channels: [Channel.presences()]) { response in
+    if (response.events?.contains("presences.*.update") == true) {
+        print("Presence updated: \(String(describing: response.payload))")
+    }
+    if (response.events?.contains("presences.*.delete") == true) {
+        print("Presence expired or removed: \(String(describing: response.payload))")
+    }
+}
+```
+
+```client-android-kotlin
+import io.appwrite.Channel
+import io.appwrite.Client
+import io.appwrite.services.Realtime
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+val subscription = realtime.subscribe(Channel.presences()) {
+    if (it.events.contains("presences.*.update")) {
+        println("Presence updated: ${it.payload}")
+    }
+    if (it.events.contains("presences.*.delete")) {
+        println("Presence expired or removed: ${it.payload}")
+    }
+}
+```
+{% /multicode %}
+
+The `events` array follows the same pattern as every other Appwrite resource:
+
+- `presences.*.create` and `presences.<PRESENCE_ID>.create` for new records.
+- `presences.*.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
+- `presences.*.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
+- `presences.*.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
+
+This gives you a clean signal for "user just came online", "user changed status", and "user went offline", without writing any custom socket logic.
+
+# Presence channels {% #presence-channels %}
+
+{% table %}
+* Channel
+* Channel Helper
+* Description
+---
+* `presences`
+* `Channel.presences()`
+* Any create, update, or delete event on any presence the subscriber can read.
+---
+* `presences.<ID>`
+* `Channel.presence('<PRESENCE_ID>')`
+* Any update or delete event on a specific presence record.
+{% /table %}
+
+You can also append `.create()`, `.upsert()`, `.update()`, or `.delete()` to `Channel.presence('<PRESENCE_ID>')` to narrow the stream to a single event type, identical to how channel filters work on every other resource.
+
+# Expiry and cleanup {% #expiry-and-cleanup %}
+
+Every presence carries an `expiresAt` timestamp. Once that time passes, Appwrite removes the record automatically and emits a `delete` event on the presence channels, so subscribers can react to "user went offline" without any explicit signal from the client that owned the presence.
+
+You can pass an explicit `expiresAt` up to **30 days in the future**. If you omit it, Appwrite applies a sensible default that fits the typical heartbeat pattern: keep upserting the presence every few seconds while the user is active, and let it expire naturally a short time after the last heartbeat.
+
+To remove a presence immediately, for example on sign out or when the user closes a document, send a delete:
+
+{% multicode %}
+```client-web
+await presences.delete({ presenceId: '<PRESENCE_ID>' });
+```
+
+```client-flutter
+await presences.delete(presenceId: '<PRESENCE_ID>');
+```
+
+```client-apple
+try await presences.delete(presenceId: "<PRESENCE_ID>")
+```
+
+```client-android-kotlin
+presences.delete(presenceId = "<PRESENCE_ID>")
+```
+{% /multicode %}
+
+# Permissions and scopes {% #permissions-and-scopes %}
+
+Presences use the standard Appwrite [permissions system](/docs/advanced/platform/permissions). Set read permissions on a presence to control who can subscribe to it:
+
+- `Role.any()` makes the presence visible to anyone, including unauthenticated visitors.
+- `Role.users()` restricts visibility to signed-in users.
+- `Role.team('<TEAM_ID>')` shares the presence with a specific team, which is the right choice for collaboration features where only teammates should see each other's status.
+
+Server SDKs need an API key with the `presences.read` scope to list or read presences, and `presences.write` to create, update, or delete them. Client sessions can always update their own presence without an extra scope.
+
+# Use cases {% #use-cases %}
+
+The Presence API is a good fit any time you need to render "who is here right now" rather than "what has been written to storage":
+
+- **Online indicators** in a directory or contacts list
+- **Collaboration cursors** that show which document or section each teammate is viewing
+- **Typing indicators** in chat or comment threads
+- **Live attendee lists** for live streams, classrooms, or shared dashboards
+- **Locking signals** that warn a teammate when someone else is already editing a row
+
+For longer-lived state, like a user's profile or settings, use [account preferences](/docs/products/auth/preferences) or a row in your database instead. Presence is intentionally short-lived and self-cleaning.
+
+# Related {% #related %}
+
+- [Realtime overview](/docs/apis/realtime)
+- [Realtime channels reference](/docs/apis/realtime/channels)
+- [Realtime payload structure](/docs/apis/realtime/payload)
+- [Authentication: Presence](/docs/products/auth/presence)

@@ -47,6 +47,9 @@ Implement custom authentication methods like biometric and passkey login by gene
 {% cards_item href="/docs/products/auth/mfa" title="Multifactor authentication (MFA)" %}
 Implementing MFA to add extra layers of security to your app.
 {% /cards_item %}
+{% cards_item href="/docs/products/auth/presence" title="Presence" %}
+Track which signed-in users are active right now and broadcast online, typing, and viewing status in realtime.
+{% /cards_item %}
 {% /cards %}
 
 # Flexible permissions {% #flexible-permissions %}
