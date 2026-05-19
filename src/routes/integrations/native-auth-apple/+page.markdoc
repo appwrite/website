@@ -6,20 +6,20 @@ date: 2025-08-26
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/native-auth-apple/cover.png
+cover: /images/integrations/native-auth-apple/cover.avif
 category: auth
 product: 
-    avatar: '/images/integrations/avatars/apple.png'
+    avatar: '/images/integrations/avatars/apple.avif'
     vendor: Apple
     description: 'An Apple ID is a unique account that allows access to Apple services, including the App Store, iCloud, iTunes, Apple Music, and more.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/native-auth-apple/cover.png
-    - /images/integrations/native-auth-apple/apple-developer-program.png
-    - /images/integrations/native-auth-apple/template.png
-    - /images/integrations/native-auth-apple/variables.png
+    - /images/integrations/native-auth-apple/cover.avif
+    - /images/integrations/native-auth-apple/apple-developer-program.avif
+    - /images/integrations/native-auth-apple/template.avif
+    - /images/integrations/native-auth-apple/variables.avif
 ---
 
 An Apple ID is a unique account that allows access to Apple services, including the App Store, iCloud, iTunes, Apple Music, and more. It serves as a key to the Apple ecosystem, allowing users to synchronize their data across Apple devices, download apps, purchase music, and access various features like FaceTime and iMessage. The Apple ID consists of an email address and a password, with options for added security through two-factor authentication. It is essential for managing personal information, subscriptions, and settings across all Apple products.
@@ -36,7 +36,7 @@ To implement the Appwrite Function template for native authentication on Apple d
 
 First, [sign up for the Apple Developer program](https://developer.apple.com/programs). 
 
-![Apple Developer Program](/images/integrations/native-auth-apple/apple-developer-program.png)
+![Apple Developer Program](/images/integrations/native-auth-apple/apple-developer-program.avif)
 
 Before you configure any other details, you must enable the **Sign in with Apple capability** and **set a Bundle ID**. To do this, head to XCode and open your project directory. In the Project Navigator, select your project followed by the correct target. Then, navigate to the **Signing & Capabilities** tab, click the ➕ **Capability** button, search for `Sign in with Apple`, and double-click the result to add it. Then, modify the **Bundle Identifier** to a unique string by prefixing it with any letters of your choice and change the **Team** to your Apple Developer team. Save the **Bundle ID** for further usage.
 
@@ -54,11 +54,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Sign in with Apple** function template.
 
-![Function template](/images/integrations/native-auth-apple/template.png)
+![Function template](/images/integrations/native-auth-apple/template.avif)
 
 During the setup process, add the **Bundle ID**, **Team ID**, **Authentication key ID**, and **Encoded authentication key** in the **Variables** step..
 
-![Env variables](/images/integrations/native-auth-apple/variables.png)
+![Env variables](/images/integrations/native-auth-apple/variables.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 

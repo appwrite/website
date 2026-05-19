@@ -155,7 +155,7 @@
                 >
                     <span class="min-h-[2lh] flex-1"
                         >{#if typedText}<span class="text-primary">{typedText}</span>{:else}<span
-                                class="text-white/20">Ask anything...</span
+                                class="text-[#9CA3AF]">Ask anything...</span
                             >{/if}</span
                     >
                     <div

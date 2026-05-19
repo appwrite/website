@@ -3,7 +3,7 @@ layout: post
 title: "Announcing Timestamp Overrides: Accurate timelines for production workloads"
 description: Move historical data into Appwrite without losing context or disrupting chronological accuracy.
 date: 2025-08-13
-cover: /images/blog/announcing-timestamp-overrides/cover.png
+cover: /images/blog/announcing-timestamp-overrides/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement

@@ -20,7 +20,7 @@
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Dashboard from '$routes/(marketing)/(components)/dashboard.svelte';
+    import HeroDashboardMockup from '$routes/(marketing)/(components)/hero-dashboard-mockup.svelte';
 
     const {
         title = DEFAULT_HERO_TITLE,
@@ -40,6 +40,7 @@
 
     /** Same client hydration path as marketing `hero.svelte` (Statsig + query overrides). */
     let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
+    let clientHeroTitle = $state<string | undefined>(undefined);
     let clientHeroSubtitle = $state<string | undefined>(undefined);
     let clientHeroCta = $state<string | undefined>(undefined);
 
@@ -47,7 +48,7 @@
         resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
             heroLayout: clientHeroLayout ?? heroLayout,
             heroSubtitle: clientHeroSubtitle ?? subtitle,
-            heroTitle: title,
+            heroTitle: clientHeroTitle ?? title,
             heroCta: clientHeroCta ?? ctaLabel
         })
     );
@@ -71,14 +72,19 @@
             if (!client) return;
 
             const {
+                heroTitle: nextTitle,
                 heroSubtitle: nextSubtitle,
                 heroLayout: nextLayout,
                 heroCta: nextCta
             } = readMarketingHeroExperimentsForExposure(client, {
+                heroTitle: title,
                 heroSubtitle: subtitle,
                 heroLayout,
                 heroCta: ctaLabel
             });
+            if (nextTitle !== title) {
+                clientHeroTitle = nextTitle;
+            }
             if (nextSubtitle !== subtitle) {
                 clientHeroSubtitle = nextSubtitle;
             }
@@ -164,8 +170,11 @@
             <p
                 class={cn(
                     'text-description text-secondary mt-2 font-medium md:mt-3',
-                    !layoutAside && 'max-w-2xl text-center text-balance'
+                    !layoutAside && 'max-w-2xl text-center text-pretty'
                 )}
+                style:min-height={layoutAside
+                    ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
+                    : 'calc(3.25 * var(--text-description--line-height, 1.5rem))'}
             >
                 {resolved.heroSubtitle}
             </p>
@@ -190,10 +199,10 @@
 
         {#if showDashboard}
             {#if layoutAside}
-                <Dashboard />
+                <HeroDashboardMockup />
             {:else}
                 <div class="flex w-full justify-center">
-                    <Dashboard placement="below" />
+                    <HeroDashboardMockup placement="below" />
                 </div>
             {/if}
         {/if}

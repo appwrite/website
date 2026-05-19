@@ -3,7 +3,7 @@ layout: post
 title: "Product update February 2025: Appwrite 1.6.1, usage metrics improvements."
 description: Get a full recap of products, features and programs we released in February.
 date: 2025-03-06
-cover: /images/blog/product-update-feb-2025/cover-image.png
+cover: /images/blog/product-update-feb-2025/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -13,7 +13,7 @@ callToAction: true
 
 Welcome back to the February product update. From shipping Appwrite 1.6.1 to upgrading our usage metrics system, we have some interesting things to share with you. Let’s dive in!
 
-![The Appwrite 1.6.1](/images/blog/product-update-feb-2025/new-version.png)
+![The Appwrite 1.6.1](/images/blog/product-update-feb-2025/new-version.avif)
 
 # Appwrite 1.6.1 is now available
 
@@ -37,7 +37,7 @@ So now you can have a clearer traffic overview, making it easy to track requests
 
 [Learn more](https://appwrite.io/docs/advanced/platform/pro#check-resource-usage)
 
-![Community recognitions](/images/blog/product-update-feb-2025/community.png)
+![Community recognitions](/images/blog/product-update-feb-2025/community.avif)
 
 # Community recognitions
 

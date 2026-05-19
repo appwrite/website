@@ -6,12 +6,12 @@ date: 2025-10-07
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/cookey.png
+cover: /images/partners/covers/cookey.avif
 category: agency
 website: https://cookeyllc.com
 email: mailto:ryan@cookey.ai
 product: 
-    avatar: '/images/partners/avatars/cookey.png'
+    avatar: '/images/partners/avatars/cookey.avif'
     vendor: COOKEY LLC
     description: A technology company focused on building innovative, AI-driven solutions that make everyday life easier. 
 technologies: 

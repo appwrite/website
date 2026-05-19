@@ -15,10 +15,10 @@ To access a preview deployment, follow these steps:
 3. Click on the **Visit** button. This preview URL is also visible under the **Domains** section.
 
 {% only_dark %}
-![Preview deployment](/images/docs/sites/dark/preview-deployment.png)
+![Preview deployment](/images/docs/sites/dark/preview-deployment.avif)
 {% /only_dark %}
 {% only_light %}
-![Preview deployment](/images/docs/sites/preview-deployment.png)
+![Preview deployment](/images/docs/sites/preview-deployment.avif)
 {% /only_light %}
 
 Appwrite Sites will then verify whether you are authorized to access the Appwrite project in which the site is deployed and allow you to access this preview accordingly.
@@ -30,8 +30,8 @@ Aside from the preview URL, Appwrite also generates a [URL for the branch and co
 You can also directly access the branch and commit that these deployments are created from, by clicking on **GitHub** under the **Source** section.
 
 {% only_dark %}
-![GitHub as source](/images/docs/sites/dark/github-source.png)
+![GitHub as source](/images/docs/sites/dark/github-source.avif)
 {% /only_dark %}
 {% only_light %}
-![GitHub as source](/images/docs/sites/github-source.png)
+![GitHub as source](/images/docs/sites/github-source.avif)
 {% /only_light %}

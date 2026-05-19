@@ -38,7 +38,7 @@
     let seo = {
         title: title + TITLE_SUFFIX,
         description: description,
-        ogImage: DEFAULT_HOST + '/images/open-graph/website.png',
+        ogImage: DEFAULT_HOST + '/images/open-graph/website.avif',
 
         APP_NAME: 'Appwrite'
     };

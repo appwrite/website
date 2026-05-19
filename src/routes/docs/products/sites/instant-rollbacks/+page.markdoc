@@ -17,10 +17,10 @@ To use the instant rollback feature, follow these steps:
 3. Once the modal opens, click on the **Rollback** button.
 
 {% only_dark %}
-![Instant rollback](/images/docs/sites/dark/instant-rollback.png)
+![Instant rollback](/images/docs/sites/dark/instant-rollback.avif)
 {% /only_dark %}
 {% only_light %}
-![Instant rollback](/images/docs/sites/instant-rollback.png)
+![Instant rollback](/images/docs/sites/instant-rollback.avif)
 {% /only_light %}
 
 This will allow you to select a previously active, ready deployment to promote to currently active state.

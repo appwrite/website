@@ -14,10 +14,10 @@ back: /docs/tutorials
 In this tutorial, you will build an Idea Tracker with Appwrite and Next.js.
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/dark/idea-tracker.png)
+![Create project screen](/images/docs/tutorials/dark/idea-tracker.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/idea-tracker.png)
+![Create project screen](/images/docs/tutorials/idea-tracker.avif)
 {% /only_light %}
 
 ## Concepts {% #concepts %}

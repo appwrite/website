@@ -6,21 +6,21 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/ai-perplexity/cover.png
+cover: /images/integrations/ai-perplexity/cover.avif
 category: ai
 product: 
-    avatar: '/images/integrations/avatars/perplexity.png'
+    avatar: '/images/integrations/avatars/perplexity.avif'
     vendor: Perplexity
     description: 'Perplexity is an advanced AI tool that generates high-quality text based on given prompts.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/ai-perplexity/cover.png
-    - /images/integrations/ai-perplexity/api-key.png
-    - /images/integrations/ai-perplexity/template.png
-    - /images/integrations/ai-perplexity/variables.png
-    - /images/integrations/ai-perplexity/demo.png
+    - /images/integrations/ai-perplexity/cover.avif
+    - /images/integrations/ai-perplexity/api-key.avif
+    - /images/integrations/ai-perplexity/template.avif
+    - /images/integrations/ai-perplexity/variables.avif
+    - /images/integrations/ai-perplexity/demo.avif
 ---
 
 Perplexity is an advanced AI tool that generates high-quality text based on given prompts. It's designed to improve applications by providing sophisticated text analysis and generation capabilities.
@@ -37,7 +37,7 @@ To implement the Perplexity integration, follow these simple steps:
 
 First, [create an account on Perplexity](https://perplexity.ai), head to the [API Settings](https://www.perplexity.ai/settings/api), configure your credit card for payments, and generate an API key. Save this API key for further usage.
 
-![API key](/images/integrations/ai-perplexity/api-key.png)
+![API key](/images/integrations/ai-perplexity/api-key.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -45,17 +45,17 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click on the **Templates** tab, and search for the **Perplexity** function template.
 
-![Function template](/images/integrations/ai-perplexity/template.png)
+![Function template](/images/integrations/ai-perplexity/template.avif)
 
 Add the **Perplexity API key** you saved in the **Variables** step. Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic.
 
-![Env variables](/images/integrations/ai-perplexity/variables.png)
+![Env variables](/images/integrations/ai-perplexity/variables.avif)
 
 ## Step 3: Test the function
 
 Once the function is ready, visit the **Domains** tab on the **Functions** page and copy the domain URL to test the function. You can open this URL in your browser to test with our pre-built interface.
 
-![Demo](/images/integrations/ai-perplexity/demo.png)
+![Demo](/images/integrations/ai-perplexity/demo.avif)
 
 You can also use tools like Postman, cURL, or your favorite programming language to send a POST (HTTP) request with a prompt and receive a response from the Perplexity API.
 

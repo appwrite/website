@@ -304,7 +304,7 @@
 
 /* override partial styles */
 .collapsible {
-  &-button { padding-block:pxToRem(24); }
+  &-button { padding-block:pxToRem(32); }
   &-content { margin-block-start:pxToRem(-8); }
 }
 

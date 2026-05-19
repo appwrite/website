@@ -3,12 +3,23 @@ layout: post
 title: How to evaluate open-source maturity before using it in production
 description: Evaluate open-source maturity before using it in production. Learn what to check, common risks, and a practical framework to choose reliable tools with confidence.
 date: 2026-04-07
-cover: /images/blog/how-to-evaluate-open-source-maturity-before-using-it-in-production/cover.png
+cover: /images/blog/how-to-evaluate-open-source-maturity-before-using-it-in-production/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: open-source
 featured: false
 unlisted: true
+faqs:
+  - question: "What does open-source maturity actually mean?"
+    answer: "Open-source maturity is the combination of signals that suggest a project will keep being maintained, secured, and improved over a multi-year horizon. It includes maintenance cadence, contributor diversity, license clarity, security posture, and evidence of real production adoption. A project can be popular without being mature, and the gap is usually what hurts teams in production."
+  - question: "How do I check if an open-source project is still actively maintained?"
+    answer: "Look at the last commit and last release date, the release cadence over the past year, response time on recent issues and pull requests, and the quality of the changelog. Long silences, vague changelogs, and unanswered issues are warning signs even if the star count is high. Projects backed by a funded company with revenue tied to the project tend to stay maintained more reliably than pure volunteer efforts."
+  - question: "Why does the license matter when adopting an open-source backend?"
+    answer: "The license decides what you can do with the software at scale and in distribution. Permissive licenses like MIT, Apache 2.0, and BSD allow commercial use without forcing you to open-source your own code. Copyleft licenses (GPL, AGPL) and source-available licenses (BSL, FSL) can create obligations or restrictions that only show up when your product reaches certain users, distribution models, or revenue thresholds."
+  - question: "What is bus factor and why should I care about it?"
+    answer: "Bus factor is the number of contributors who would need to leave before a project stalls. A solo-maintained project has a bus factor of one, which is structurally riskier than a project with a team of active contributors or a funded company behind it. Higher bus factor means the project is more likely to keep shipping security patches, ecosystem updates, and breaking-change migrations on a predictable timeline."
+  - question: "How does Appwrite score against an open-source maturity checklist?"
+    answer: "Appwrite is licensed under BSD 3-Clause, which is permissive with no copyleft and no commercial restrictions. It is backed by a commercial entity with consistent release cadence, public security policy, and active community channels including GitHub and Discord. The self-hosting documentation covers production scenarios such as high availability, scaling, and major-version upgrades."
 ---
 
 You rarely find out a project is abandoned while you're evaluating it. You find out six months after shipping, when a CVE drops and there's no patch on the horizon, or when the project's sole maintainer archives the repository and the last release is two years old.

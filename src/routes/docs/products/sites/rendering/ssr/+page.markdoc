@@ -20,10 +20,10 @@ If you need to manually update these settings, here are the steps to do so:
 4. Click on the **Update** button and redeploy your site
 
 {% only_dark %}
-![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.png)
+![Rendering strategy](/images/docs/sites/dark/build-settings-rendering-ssr.avif)
 {% /only_dark %}
 {% only_light %}
-![Rendering strategy](/images/docs/sites/build-settings-rendering-ssr.png)
+![Rendering strategy](/images/docs/sites/build-settings-rendering-ssr.avif)
 {% /only_light %}
 
 ## Enabling SSR builds on your web app

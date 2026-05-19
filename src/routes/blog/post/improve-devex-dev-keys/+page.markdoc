@@ -3,7 +3,7 @@ layout: post
 title: Improve your Appwrite developer experience with dev keys
 description: Learn how you can create a dev key on Appwrite and use it in a web project to improve your developer experience.
 date: 2025-05-21
-cover: /images/blog/improve-devex-dev-keys/cover.png
+cover: /images/blog/improve-devex-dev-keys/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: tutorial
@@ -101,7 +101,7 @@ If you open the HTML page in your browser and click on the `Add documents` butto
 
 Head back to your Appwrite project. On the overview page, select the **Dev keys** tab under the Integrations section and create a new dev key. You can add whatever name and expiry date you like.
 
-![Dev key](/images/blog/improve-devex-dev-keys/dev-key.png)
+![Dev key](/images/blog/improve-devex-dev-keys/dev-key.avif)
 
 After creating this dev key, head to the `app.js` file and update the Appwrite client to the following:
 

@@ -27,10 +27,10 @@ Push this project to a [GitHub repository](https://github.com/new).
 Head to the [Appwrite Console](https://cloud.appwrite.io).
 
 {% only_dark %}
-![Create Appwrite project](/images/docs/quick-starts/dark/create-project.png)
+![Create Appwrite project](/images/docs/quick-starts/dark/create-project.avif)
 {% /only_dark %}
 {% only_light %}
-![Create Appwrite project](/images/docs/quick-starts/create-project.png)
+![Create Appwrite project](/images/docs/quick-starts/create-project.avif)
 {% /only_light %}
 
 If this is your first time using Appwrite, create an account and create your first project.

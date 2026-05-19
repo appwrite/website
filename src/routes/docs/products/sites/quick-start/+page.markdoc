@@ -13,10 +13,10 @@ You can create and execute your first Appwrite Site in minutes.
 Before deploying your web app with Git, create a new Site attached to your GitHub repository.
 
 {% only_dark %}
-![Create site wizard](/images/docs/sites/dark/create-site-wizard.png)
+![Create site wizard](/images/docs/sites/dark/create-site-wizard.avif)
 {% /only_dark %}
 {% only_light %}
-![Create site wizard](/images/docs/sites/create-site-wizard.png)
+![Create site wizard](/images/docs/sites/create-site-wizard.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Sites**.

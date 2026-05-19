@@ -2,11 +2,11 @@
     import embla from 'embla-carousel-svelte';
     import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
     import { Button, Icon } from '$lib/components/ui';
-    import EventFutureOfAppwrite from '../(assets)/eventFutureOfAppwrite.png';
-    import EventLiveDemo from '../(assets)/eventLiveDemo.png';
-    import EventBuildingWithFlutter from '../(assets)/eventBuildingWithFlutter.png';
-    import EventClosingParty from '../(assets)/eventClosingParty.png';
-    import EventIndustryPanel from '../(assets)/eventIndustryPanel.png';
+    import EventFutureOfAppwrite from '../(assets)/eventFutureOfAppwrite.avif';
+    import EventLiveDemo from '../(assets)/eventLiveDemo.avif';
+    import EventBuildingWithFlutter from '../(assets)/eventBuildingWithFlutter.avif';
+    import EventClosingParty from '../(assets)/eventClosingParty.avif';
+    import EventIndustryPanel from '../(assets)/eventIndustryPanel.avif';
 
     let emblaApi: EmblaCarouselType;
 

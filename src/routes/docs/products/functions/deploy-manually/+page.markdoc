@@ -22,6 +22,8 @@ you can do so by editing the `appwrite.config.json` file.
 Learn more about appwrite.config.json
 {% /arrow_link %}
 
+For larger projects, you can split function definitions into a separate JSON file with [multi-file CLI configuration](/docs/tooling/command-line/installation#multi-file-configuration).
+
 # Manual Deployment {% #manual %} 
 
 You can upload your functions to be deployed using the Appwrite Console. The example below shows a simple Node.js function.

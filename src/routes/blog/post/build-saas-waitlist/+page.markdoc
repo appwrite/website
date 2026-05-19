@@ -3,7 +3,7 @@ layout: post
 title: Build a SaaS waitlist landing page with Appwrite
 description: Learn how to ship a production-ready waitlist page with Vite, React, and Appwrite, including unique email validation and clean error handling.
 date: 2026-04-23
-cover: /images/blog/build-saas-waitlist/cover.png
+cover: /images/blog/build-saas-waitlist/cover.avif
 timeToRead: 10
 author: atharva
 category: tutorial, product
@@ -24,7 +24,7 @@ In this tutorial, you will build exactly that: a polished waitlist landing page 
 
 Start by creating a new project in the Appwrite Console. Head to the Console, click **Create project**, name it **SaaS Waitlist**, pick a region, and open it. On the overview page, copy the **Project ID** and **API endpoint**. You will need both in a moment.
 
-![SaaS Waitlist project overview in the Appwrite Console](/images/blog/build-saas-waitlist/project-overview.png)
+![SaaS Waitlist project overview in the Appwrite Console](/images/blog/build-saas-waitlist/project-overview.avif)
 
 ## Register a web platform
 
@@ -41,7 +41,7 @@ Navigate to **Databases** and create a new database called **Waitlist** (ID: `wa
 
 `varchar` is the right pick for a short, bounded string like a name. The `email` type validates the format on write, so you do not need to hand-roll a regex on the server. Both columns are required so that the frontend cannot accidentally submit a half-filled row.
 
-![Entries table columns in the Appwrite Console](/images/blog/build-saas-waitlist/table-columns.png)
+![Entries table columns in the Appwrite Console](/images/blog/build-saas-waitlist/table-columns.avif)
 
 ## Prevent duplicate emails with a unique index
 
@@ -64,7 +64,7 @@ Open the table's **Settings** tab and configure permissions there:
 - Check only **Create**. Leave **Read**, **Update**, and **Delete** unchecked.
 - Keep **Row security** off.
 
-![Permissions panel with Any role granted Create only](/images/blog/build-saas-waitlist/table-permissions.png)
+![Permissions panel with Any role granted Create only](/images/blog/build-saas-waitlist/table-permissions.avif)
 
 This is the minimum viable permission set for a public waitlist:
 
@@ -256,15 +256,15 @@ pnpm dev
 
 The landing page renders immediately.
 
-![The Stratum waitlist landing page](/images/blog/build-saas-waitlist/waitlist-initial.png)
+![The Stratum waitlist landing page](/images/blog/build-saas-waitlist/waitlist-initial.avif)
 
 Fill in a name and email, submit, and the form is replaced with a confirmation. Behind the scenes, the helper fired a single `createRow` request to the Appwrite endpoint, which returned a row object with `$id`, `$createdAt`, and the values you sent.
 
-![Confirmation state after a successful submission](/images/blog/build-saas-waitlist/waitlist-success.png)
+![Confirmation state after a successful submission](/images/blog/build-saas-waitlist/waitlist-success.avif)
 
 Open the **Entries** table in the Appwrite Console and the row is there, timestamped and ready.
 
-![The new waitlist entry in the Appwrite Console](/images/blog/build-saas-waitlist/table-rows.png)
+![The new waitlist entry in the Appwrite Console](/images/blog/build-saas-waitlist/table-rows.avif)
 
 Submit the same email again and the helper catches the 409 from the unique index, the UI shifts to the "already on file" confirmation, and no second row is created. Submit a malformed email and the client validator blocks the request before it ever leaves the browser.
 

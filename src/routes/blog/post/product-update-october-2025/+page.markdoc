@@ -3,7 +3,7 @@ layout: post
 title: "October product update: Unlimited Sites, Transactions API, and 1.8 to Self-hosted"
 description: Get a full recap of products, features and programs we released in the month of October.
 date: 2025-11-07
-cover: /images/blog/product-update-october-2025/cover.png
+cover: /images/blog/product-update-october-2025/cover.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
@@ -21,7 +21,7 @@ So, here's what to expect:
 
 Let's dive in.
 
-![Unlimited sites](/images/blog/product-update-october-2025/sites.png)
+![Unlimited sites](/images/blog/product-update-october-2025/sites.avif)
 
 # Unlimited Sites on the Free plan
 
@@ -31,7 +31,7 @@ Now that the platform has matured, that limit's gone. With the Free plan, you ca
 
 [Read the announcement](/blog/post/unlimited-appwrite-sites-free-plan)
 
-![Transactions API](/images/blog/product-update-october-2025/transactions.png)
+![Transactions API](/images/blog/product-update-october-2025/transactions.avif)
 
 # Transactions API
 
@@ -44,7 +44,7 @@ With Transactions API, you can stage multiple operations across one or more tabl
 
 [Read the announcement](/blog/post/announcing-transactions-api)
 
-![Self hosted](/images/blog/product-update-october-2025/sh.png)
+![Self hosted](/images/blog/product-update-october-2025/sh.avif)
 
 # 1.8 Self-hosted support
 
@@ -60,7 +60,7 @@ Version 1.8 continues that commitment, giving self-hosted users access to:
 
 [Read the announcement](/blog/post/appwrite-1-8-0-self-hosted-release)
 
-![TanStack Start](/images/blog/product-update-october-2025/tanstack.png)
+![TanStack Start](/images/blog/product-update-october-2025/tanstack.avif)
 
 # TanStack Start support for Appwrite Sites
 
@@ -70,7 +70,7 @@ You can now run TanStack Start with full Server-Side Rendering (SSR) directly on
 
 [Read the announcement](/blog/post/tanstack-start-support-in-appwrite-sites)
 
-![New cloud](/images/blog/product-update-october-2025/cloud.png)
+![New cloud](/images/blog/product-update-october-2025/cloud.avif)
 
 # New Cloud regions
 
@@ -83,7 +83,7 @@ This means you can:
 
 [Learn more](/docs/products/network/regions)
 
-![Next.js](/images/blog/product-update-october-2025/nextjs.png)
+![Next.js](/images/blog/product-update-october-2025/nextjs.avif)
 
 # Next.js 16 SSR support
 
@@ -93,7 +93,7 @@ And if you're deploying on Appwrite Sites, you can start using Next.js 16. The 
 
 [Visit docs](/docs/products/sites/quick-start/nextjs)
 
-![Community](/images/blog/product-update-october-2025/community.png)
+![Community](/images/blog/product-update-october-2025/community.avif)
 
 # Community recognitions
 

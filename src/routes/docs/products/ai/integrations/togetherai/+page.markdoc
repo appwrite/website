@@ -20,11 +20,11 @@ Integrating Together AI into your Appwrite project is simple. This tutorial will
 Head to the [Appwrite Console](https://cloud.appwrite.io/console), click, on **Functions** in the left sidebar, and click, the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -324,5 +324,5 @@ The function can now be deployed to Appwrite by pushing the changes to your repo
 Now that the function is deployed test it by visiting the function URL in your browser.
 This should show the UI created earlier. To test it, write a prompt and click the submit button. After a brief moment, you should see the results.
 
-![Testing the function](/images/docs/ai/integrations/together/demo.png)
+![Testing the function](/images/docs/ai/integrations/together/demo.avif)
 {% /section %}

@@ -2,7 +2,7 @@
 layout: post
 title: "Should I encrypt my backups?"
 description: In this blog, we’ll explore the most popular methods for backup encryption and why encrypting is important.
-cover: /images/blog/backup-encryption/cover.png
+cover: /images/blog/backup-encryption/cover.avif
 timeToRead: 5
 date: 2024-10-15
 author: aditya-oberai

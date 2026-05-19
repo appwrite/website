@@ -22,61 +22,61 @@
                 {
                     title: 'Next.js',
                     icon: 'icon-nextjs',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'nextjs'
                 },
                 {
                     title: 'React',
                     icon: 'icon-react',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'react'
                 },
                 {
                     title: 'Vue.js',
                     icon: 'web-icon-vue',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'vue'
                 },
                 {
                     title: 'SvelteKit',
                     icon: 'icon-svelte',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'sveltekit'
                 },
                 {
                     title: 'Angular',
                     icon: 'icon-angular',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'angular'
                 },
                 {
                     title: 'Nuxt',
                     icon: 'web-icon-nuxt',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'nuxt'
                 },
                 {
                     title: 'Refine',
                     icon: 'web-icon-refine',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'refine'
                 },
                 {
                     title: 'Solid',
                     icon: 'icon-solidjs',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'solid'
                 },
                 {
                     title: 'TanStack Start',
                     icon: 'web-icon-tanstack',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'tanstack-start'
                 },
                 {
                     title: 'Web',
                     icon: 'icon-js',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'web'
                 }
             ]
@@ -87,25 +87,25 @@
                 {
                     title: 'Flutter',
                     icon: 'icon-flutter',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'flutter'
                 },
                 {
                     title: 'React Native',
                     icon: 'icon-react-native',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'react-native'
                 },
                 {
                     title: 'Android',
                     icon: 'icon-android',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'android'
                 },
                 {
                     title: 'Apple',
                     icon: 'icon-apple',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'apple'
                 }
             ]
@@ -116,67 +116,67 @@
                 {
                     title: 'Node.js',
                     icon: 'icon-node_js',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'node'
                 },
                 {
                     title: 'Python',
                     icon: 'icon-python',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'python'
                 },
                 {
                     title: '.NET',
                     icon: 'icon-dotnet',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'dotnet'
                 },
                 {
                     title: 'PHP',
                     icon: 'icon-php',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'php'
                 },
                 {
                     title: 'Dart',
                     icon: 'icon-dart',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'dart'
                 },
                 {
                     title: 'Ruby',
                     icon: 'icon-ruby',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'ruby'
                 },
                 {
                     title: 'Deno',
                     icon: 'icon-deno',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'deno'
                 },
                 {
                     title: 'Go',
                     icon: 'icon-go',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'go'
                 },
                 {
                     title: 'Swift',
                     icon: 'icon-swift',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'swift'
                 },
                 {
                     title: 'Kotlin',
                     icon: 'icon-kotlin',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'kotlin'
                 },
                 {
                     title: 'Rust',
                     icon: 'web-icon-rust',
-                    image: '/images/blog/placeholder.png',
+                    image: '/images/blog/placeholder.avif',
                     href: 'rust'
                 }
             ]
@@ -186,7 +186,7 @@
     const title = 'Quick starts' + DOCS_TITLE_SUFFIX;
     const description =
         'Get started with your favorite framework and language in just a few clicks.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/docs.avif';
 </script>
 
 <svelte:head>

@@ -78,6 +78,11 @@ const promise = tablesDB.createTable({
             required: false
         },
         {
+            key: 'total_views',
+            type: 'bigint',
+            required: false
+        },
+        {
             key: 'is_active',
             type: 'boolean',
             required: true
@@ -207,6 +212,11 @@ let promise = tablesDB.createTable({
         {
             key: 'score',
             type: 'float',
+            required: false
+        },
+        {
+            key: 'total_views',
+            type: 'bigint',
             required: false
         },
         {
@@ -344,6 +354,11 @@ $result = $tablesDB->createTable(
             'required' => false
         ],
         [
+            'key' => 'total_views',
+            'type' => 'bigint',
+            'required' => false
+        ],
+        [
             'key' => 'is_active',
             'type' => 'boolean',
             'required' => true
@@ -470,6 +485,11 @@ result = tablesDB.create_table(
             'required': False
         },
         {
+            'key': 'total_views',
+            'type': 'bigint',
+            'required': False
+        },
+        {
             'key': 'is_active',
             'type': 'boolean',
             'required': True
@@ -591,6 +611,11 @@ response = tablesDB.create_table(
         {
             key: 'score',
             type: 'float',
+            required: false
+        },
+        {
+            key: 'total_views',
+            type: 'bigint',
             required: false
         },
         {
@@ -725,6 +750,12 @@ Table result = await tablesDB.CreateTable(
         {
             { "key", "score" },
             { "type", "float" },
+            { "required", false }
+        },
+        new Dictionary<string, object>
+        {
+            { "key", "total_views" },
+            { "type", "bigint" },
             { "required", false }
         },
         new Dictionary<string, object>
@@ -865,6 +896,11 @@ void main() { // Init SDK
             'required': false
         },
         {
+            'key': 'total_views',
+            'type': 'bigint',
+            'required': false
+        },
+        {
             'key': 'is_active',
             'type': 'boolean',
             'required': true
@@ -996,6 +1032,11 @@ val response = tablesDB.createTable(
             "required" to false
         ),
         mapOf(
+            "key" to "total_views",
+            "type" to "bigint",
+            "required" to false
+        ),
+        mapOf(
             "key" to "is_active",
             "type" to "boolean",
             "required" to true
@@ -1114,6 +1155,11 @@ List<Map<String, Object>> columns = Arrays.asList(
     new HashMap<String, Object>() {{
         put("key", "score");
         put("type", "float");
+        put("required", false);
+    }},
+    new HashMap<String, Object>() {{
+        put("key", "total_views");
+        put("type", "bigint");
         put("required", false);
     }},
     new HashMap<String, Object>() {{
@@ -1255,6 +1301,11 @@ let table = try await tablesDB.createTable(
             "required": false
         ],
         [
+            "key": "total_views",
+            "type": "bigint",
+            "required": false
+        ],
+        [
             "key": "is_active",
             "type": "boolean",
             "required": true
@@ -1381,6 +1432,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             json!({
                 "key": "score",
                 "type": "float",
+                "required": false
+            }),
+            json!({
+                "key": "total_views",
+                "type": "bigint",
                 "required": false
             }),
             json!({
@@ -1516,7 +1572,8 @@ You can choose between the following types.
 | `text`       | Text column. Prefix indexing only. Maximum 16,383 characters. |
 | `mediumtext` | Text column. Prefix indexing only. Maximum 4,194,303 characters. |
 | `longtext`   | Text column. Prefix indexing only. Maximum 1,073,741,823 characters. |
-| `integer`    | Integer column.                                               |
+| `integer`    | Integer column. 32-bit signed, range -2,147,483,648 to 2,147,483,647. |
+| `bigint`     | Big integer column. 64-bit signed, range -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. Ideal for timestamps, large counters, or IDs that exceed 32-bit limits. |
 | `float`      | Float column.                                                 |
 | `boolean`    | Boolean column.                                               |
 | `datetime`   | Datetime column formatted as an ISO 8601 string.              |

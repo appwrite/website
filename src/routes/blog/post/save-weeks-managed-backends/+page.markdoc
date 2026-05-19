@@ -3,12 +3,23 @@ layout: post
 title: "How developers can save weeks by using managed backends"
 description: A concrete look at the development time saved when using a managed backend platform instead of building and maintaining backend infrastructure from scratch.
 date: 2026-03-16
-cover: /images/blog/save-weeks-managed-backends/cover.png
+cover: /images/blog/save-weeks-managed-backends/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "How much development time can a managed backend actually save?"
+    answer: "Building authentication, a database and API layer, file storage, email notifications, and serverless infrastructure from scratch takes roughly 4 to 7 weeks for an experienced backend developer. The same components configured on a managed platform like Appwrite typically take 1 to 2 days. The saved weeks redirect into product features, user feedback loops, and earlier launch."
+  - question: "What does a managed backend not eliminate?"
+    answer: "Application-specific business logic, data modeling for your domain, integration with niche third-party services, and security configuration like setting appropriate permissions are still your responsibility. Managed platforms remove the commodity infrastructure work, not the work that is unique to your product."
+  - question: "Are there ongoing maintenance savings beyond the initial build?"
+    answer: "Yes. Security patches for the auth system, infrastructure scaling as users grow, dependency updates, and new feature additions arrive as platform updates rather than engineering tickets. A self-managed backend often consumes 1 to 2 days of engineering per month for maintenance and incident response, while a managed platform reduces this to near zero in most months."
+  - question: "What does Appwrite include that would otherwise be built from scratch?"
+    answer: "Appwrite covers email and password plus 30+ OAuth2 providers, MFA, password policies, sessions, and brute-force protection out of the box. It provides databases with indexes and queries, storage buckets with chunking and antivirus scanning, serverless functions deployable from Git, and messaging for push, email, and SMS, all configurable instead of implemented from parts."
+  - question: "Can a managed backend be self-hosted if compliance requires it?"
+    answer: "Appwrite can. The same backend that runs on Appwrite Cloud is open source and can be self-hosted on any Docker-compatible infrastructure, so teams can use the managed service when convenient and self-host when control or compliance requirements demand it without rewriting the application."
 ---
 
 Developer time is the most constrained resource in most software projects. When teams are small, every engineering hour spent on infrastructure is an hour not spent on the product features that differentiate the application and drive growth. The decision of where to spend those hours is one of the highest-leverage choices a development team makes.

@@ -3,7 +3,7 @@ layout: post
 title: Claude Code tips and best practices
 description: Learn how to use Claude Code to its full potential.
 date: 2025-10-01
-cover: /images/blog/claude-code-tips-tricks/cover.png
+cover: /images/blog/claude-code-tips-tricks/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
@@ -16,6 +16,8 @@ However, if you're someone like me who still likes to use Claude over any other 
 Anthropic just released Claude Code v2 along with Claude 4.5 Sonnet, a model which provides upto a 1M context window, so we thought it'd be best to write an article about Claude Code.
 
 In this article, we will look at the best tips and tricks for using Claude Code. Most of them would be prompting the model correctly.
+
+If you are weighing Claude Code against other AI coding surfaces (Cursor, Windsurf, Copilot in VS Code, or browser-first builders), [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) lays out how each tends to behave on real projects.
 
 # Prompt it to be better
 

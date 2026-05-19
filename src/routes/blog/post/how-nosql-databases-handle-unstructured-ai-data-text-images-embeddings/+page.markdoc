@@ -3,7 +3,7 @@ layout: post
 title: How NoSQL databases handle unstructured AI data (text, images, embeddings)
 description: Learn how NoSQL for unstructured data handles text, images, and embeddings in AI applications and why it outperforms relational databases for modern AI pipelines.
 date: 2026-04-02
-cover: /images/blog/how-nosql-databases-handle-unstructured-ai-data-text-images-embeddings/cover.png
+cover: /images/blog/how-nosql-databases-handle-unstructured-ai-data-text-images-embeddings/cover.avif
 timeToRead: 5
 author: atharva
 category: product

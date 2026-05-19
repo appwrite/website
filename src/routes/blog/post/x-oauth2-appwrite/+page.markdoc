@@ -3,7 +3,7 @@ layout: post
 title: Announcing X OAuth support in Appwrite Auth
 description: Appwrite now supports X (formerly Twitter) OAuth2 login. Learn how to add it to your app in minutes.
 date: 2026-04-09
-cover: /images/blog/x-oauth2-appwrite/cover.png
+cover: /images/blog/x-oauth2-appwrite/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: announcement, tutorial
@@ -43,7 +43,7 @@ To connect Appwrite to X, you first need to register an app on the [X Developer 
 
 Log in and create a new project, then create a new app inside that project (or use an existing one). Give your app a name that reflects what you're building.
 
-![X Developer Console - New App](/images/integrations/oauth-x/new-app.png)
+![X Developer Console - New App](/images/integrations/oauth-x/new-app.avif)
 
 Once the app is created, open the app's **Settings** and scroll down to **User authentication settings**. Click **Set up** and configure the following:
 
@@ -51,7 +51,7 @@ Once the app is created, open the app's **Settings** and scroll down to **User a
 - **Type of App**: Select **Web App, Automated App or Bot**.
 - **Callback URI / Redirect URL**: Temporarily add `https://temporary-endpoint.com/`. You'll replace this with the real URI from Appwrite in the next step.
 
-![X OAuth2 user authentication settings](/images/integrations/oauth-x/oauth2.png)
+![X OAuth2 user authentication settings](/images/integrations/oauth-x/oauth2.avif)
 
 After saving, X will display a **Client ID** and **Client Secret**. Save both. The Client Secret is only shown once, so copy it somewhere safe before closing the page.
 
@@ -59,7 +59,7 @@ After saving, X will display a **Client ID** and **Client Secret**. Save both. T
 
 Head to your [Appwrite Console](https://cloud.appwrite.io/) and open your project. Navigate to **Auth** > **Settings**, scroll to **OAuth2 Providers**, and click on **X**.
 
-![X OAuth2 provider in Appwrite](/images/integrations/oauth-x/provider.png)
+![X OAuth2 provider in Appwrite](/images/integrations/oauth-x/provider.avif)
 
 Enable the provider and paste in your **Client ID** and **Client Secret**. Appwrite will display a **Redirect URI**. Copy it and go back to your X app's **User authentication settings** to replace the temporary callback URL with this value.
 

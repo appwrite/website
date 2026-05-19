@@ -74,3 +74,11 @@
     }
   }
 }
+
+/* Docs (side nav + references layouts): main column title slightly under global `text-title` max */
+.#{$p}-grid-two-side-navs .#{$p}-article-header h1.text-title,
+.#{$p}-grid-huge-navs .#{$p}-article-header h1.text-title {
+  font-size: clamp(var(--font-size-xxl), 0.95rem + 2.55vw, 2.75rem);
+  line-height: clamp(var(--leading-lg), 1rem + 2.85vw, 2.875rem);
+  letter-spacing: var(--text-title--letter-spacing);
+}

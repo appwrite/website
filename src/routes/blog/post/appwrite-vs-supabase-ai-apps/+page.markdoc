@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite vs Supabase for AI app builders"
 description: "Appwrite vs Supabase AI: compare Auth, databases, Storage, Functions, Realtime, Sites, MCP, and self-hosting for AI-generated apps."
 date: 2026-04-27
-cover: /images/blog/appwrite-vs-supabase-ai-apps/cover.png
+cover: /images/blog/appwrite-vs-supabase-ai-apps/cover.avif
 timeToRead: 8
 author: aditya-oberai
 unlisted: true
 category: comparisons
+faqs:
+  - question: "How do Appwrite and Supabase differ in their data models?"
+    answer: "Appwrite exposes a typed layer with tables, rows, and columns where permissions attach directly to rows. Supabase wraps Postgres with generated REST and GraphQL APIs, direct SQL access, and Row Level Security policies authored in SQL. Appwrite's typed tables are easier for an AI agent to introspect safely, while Supabase favors teams that want Postgres as the source of truth."
+  - question: "Does Supabase offer hosting for AI-generated frontends?"
+    answer: "No. Supabase does not include frontend hosting, so teams typically pair it with Vercel, Netlify, Cloudflare Pages, or a self-hosted setup. Appwrite Sites deploys Next.js, SvelteKit, Nuxt, Astro, React, Vue, Remix, TanStack Start, Angular, Analog, Vite, and more under the same project that holds your data."
+  - question: "Which platform supports more server-side language runtimes?"
+    answer: "Appwrite Functions supports Node.js, Python, Ruby, PHP, Deno, Bun, Go, Dart, Swift, Kotlin, Java, C#, and C++. Supabase Edge Functions run on Deno only. The single-language constraint can steer an AI agent away from Python AI libraries it would otherwise reach for."
+  - question: "Are Appwrite and Supabase open source and self-hostable?"
+    answer: "Both are open source and Docker-friendly. Appwrite ships as a single docker-compose deployment that brings up the full stack. Supabase self-hosting uses Docker Compose with separate containers for Postgres, Auth, Storage, Realtime, and Edge Functions."
+  - question: "How do they handle vector search for RAG?"
+    answer: "Supabase has first-class pgvector integration with embedding generation in Edge Functions and documented integrations with LangChain, Hugging Face, and LlamaIndex. Appwrite handles vectors through Functions and integrates with Pinecone, Weaviate, Milvus, Qdrant, Chroma, and Upstash Vector, with embedding metadata stored in TablesDB rows linked back to your application data."
+  - question: "Do both platforms have official MCP servers for AI agents?"
+    answer: "Yes. Appwrite ships two official MCP servers, one for the API and one for the docs, with a compact two-tool workflow that covers a wide surface including Sites and Functions deployments. Supabase ships an official MCP server with read-only mode, project scoping, and feature-group toggles, focused on database and project operations."
 ---
 
 If you are shipping an application built partly or entirely by an AI coding agent, the backend choice you make in the first hour tends to stick for months. Lovable, Bolt, Cursor, Claude Code, and similar tools produce working UI quickly, but the moment your app needs accounts, durable data, file uploads, scheduled work, and public hosting, the backend becomes the thing your agent talks to on every turn. Appwrite vs Supabase AI is the comparison most teams run when they decide where those backend primitives will live.

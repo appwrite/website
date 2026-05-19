@@ -25,10 +25,10 @@ Variable changes only take effect on the next deployment. Redeploy your site aft
 5. Click **Create**, then redeploy the site for the change to take effect.
 
 {% only_dark %}
-![Site environment variables](/images/docs/sites/dark/env-variables.png)
+![Site environment variables](/images/docs/sites/dark/env-variables.avif)
 {% /only_dark %}
 {% only_light %}
-![Site environment variables](/images/docs/sites/env-variables.png)
+![Site environment variables](/images/docs/sites/env-variables.avif)
 {% /only_light %}
 
 You can also configure global variables that apply to all your sites from your project's **Settings** page. See [project variables](/docs/advanced/platform/environment-variables) for details.

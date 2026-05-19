@@ -15,10 +15,10 @@ You can create your bucket from the Appwrite Console, a [Server SDK](/docs/sdks#
 You can create a bucket by heading to the **Storage** page and clicking **Create bucket**.
 
 {% only_dark %}
-![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+![Create bucket on console](/images/docs/storage/dark/create-bucket.avif)
 {% /only_dark %}
 {% only_light %}
-![Create bucket on console](/images/docs/storage/create-bucket.png)
+![Create bucket on console](/images/docs/storage/create-bucket.avif)
 {% /only_light %}
 {% /tabsitem %}
 

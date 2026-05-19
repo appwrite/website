@@ -3,7 +3,7 @@
     import { Button } from '$lib/components/ui';
     import { VARS } from '$lib/system';
 
-    type ModelCategory = 'Auth' | 'Databases' | 'Functions' | 'Storage' | 'Sites' | 'Messaging';
+    type ModelCategory = 'Auth' | 'TablesDB' | 'Functions' | 'Storage' | 'Sites' | 'Messaging';
 
     type ArenaModel = {
         name: string;
@@ -16,7 +16,7 @@
     let models = $state<ArenaModel[]>([]);
     let categoryKeys = $state<ModelCategory[]>([
         'Auth',
-        'Databases',
+        'TablesDB',
         'Functions',
         'Storage',
         'Sites',
@@ -43,7 +43,7 @@
                 overall: m.overall,
                 categories: {
                     Auth: m.scores?.auth ?? 0,
-                    Databases: m.scores?.databases ?? 0,
+                    TablesDB: m.scores?.tablesdb ?? 0,
                     Functions: m.scores?.functions ?? 0,
                     Storage: m.scores?.storage ?? 0,
                     Sites: m.scores?.sites ?? 0,
@@ -188,17 +188,18 @@
             <thead>
                 <tr class="border-smooth border-b border-dashed bg-[#232325]">
                     <td
-                        class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-white/50 sm:px-5"
+                        class="min-w-[140px] shrink-0 px-4 py-3 text-left text-xs text-[#B4B4BA] sm:px-5"
                         >Model</td
                     >
-                    <td class="hidden px-5 py-3 text-left text-xs text-white/50 sm:table-cell"
+                    <td class="hidden px-5 py-3 text-left text-xs text-[#B4B4BA] sm:table-cell"
                         >Cost/1M</td
                     >
-                    <td class="px-4 py-3 text-right text-xs text-white/50 sm:px-5 sm:text-left"
+                    <td class="px-4 py-3 text-right text-xs text-[#B4B4BA] sm:px-5 sm:text-left"
                         >Overall</td
                     >
                     {#each categoryKeys as cat}
-                        <td class="hidden px-5 py-3 text-center text-xs text-white/50 md:table-cell"
+                        <td
+                            class="hidden px-5 py-3 text-center text-xs text-[#B4B4BA] md:table-cell"
                             >{cat}</td
                         >
                     {/each}
@@ -221,7 +222,7 @@
                                 >
                             </div>
                         </td>
-                        <td class="hidden px-5 py-3 text-base text-white/40 sm:table-cell"
+                        <td class="hidden px-5 py-3 text-base text-[#C4C4CC] sm:table-cell"
                             >{model.cost}</td
                         >
                         <td class="px-4 py-3 text-right sm:px-5 sm:text-left">
@@ -234,7 +235,7 @@
                         {#each categoryKeys as cat}
                             <td class="hidden px-5 py-3 text-center md:table-cell">
                                 <span
-                                    class="text-sm text-white/60 transition-colors duration-300 group-hover:text-[color:var(--hover-color)]"
+                                    class="text-sm text-[#C8C8D0] transition-colors duration-300 group-hover:text-[color:var(--hover-color)]"
                                     style="--hover-color: {getScoreColor(model.categories[cat])};"
                                     >{model.categories[cat]}%</span
                                 >

@@ -3,18 +3,31 @@ layout: post
 title: "The backend checklist for vibe-coded apps before launch"
 description: "The vibe coding backend checklist: auth, permissions, tables, files, secrets, logs, domains, backups, and AI-generated code review before launch."
 date: 2026-04-25
-cover: /images/blog/backend-checklist-vibe-coded-apps/cover.png
+cover: /images/blog/backend-checklist-vibe-coded-apps/cover.avif
 timeToRead: 9
 author: atharva
 unlisted: true
 category: best-practices
+faqs:
+  - question: "What is vibe coding and why does it need a backend checklist?"
+    answer: "Vibe coding is the workflow of describing a product to an AI builder like Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf and letting it scaffold the UI, data layer, and integrations. The output is demo-ready, not launch-ready. A pre-launch backend review catches the predictable failure modes: open table permissions, secrets in client bundles, missing indexes, no logs, and preview URLs that were never replaced with a custom domain."
+  - question: "What is the most common backend failure in AI-generated apps?"
+    answer: "Permissions. Generated code often writes to a table from the client with whatever role the signed-in user has, without narrowing to the rows that user actually owns. The fix is to default-deny on every table and bucket, add row-level permissions for per-user data, route admin actions through server-side functions, and spot-check by signing in as user A and trying to read user B's rows. You should fail."
+  - question: "What should I do about secrets that an AI builder may have committed?"
+    answer: "Search the repo for hard-coded API keys, database URLs, and webhook signing keys, and move all of them to server-side environment variables. Rotate any key ever pasted into a cloud-hosted AI tool. Use separate keys for development, staging, and production, and scope backend keys to the minimum permissions the calling code needs. If .env was ever committed to git, treat every key in it as compromised."
+  - question: "What auth checks should I run before launching a vibe-coded app?"
+    answer: "Decide which identity methods you actually support and remove the rest, turn on email verification, enforce a minimum password length, configure session length and revocation, offer MFA for admin and billing surfaces, test password recovery on a real inbox (not the builder's preview mailer), register production OAuth callback URLs, rate limit signup and login endpoints, and remove any test accounts the AI tool created during prototyping."
+  - question: "What is the right pre-launch order if I only have an hour?"
+    answer: "Get secrets out of the client. Close down table, row, and file permissions to owner-only where applicable. Attach a custom domain with SSL. Test auth flows on a working email inbox. Enable execution logs on every production function. Confirm the backup cadence and run one restore in staging. Confirm the rollback path. Read every AI-generated function end to end before shipping it."
+  - question: "How does this checklist map to Appwrite specifically?"
+    answer: "It maps cleanly. Auth covers OAuth, sessions, MFA, and Teams. Databases provide tables, rows, relationships, indexes, and per-row permissions. Storage handles per-bucket size and MIME limits, encryption, and antivirus. Functions hold server-side logic with environment variables and execution logs. Sites provides custom domains, env vars, rollbacks, and deploy logs. The MCP servers let coding agents operate the project safely with scoped keys."
 ---
 
 Vibe coding gets you from idea to working prototype faster than any previous workflow. You describe a product, an AI builder assembles the UI, calls an API, and renders something usable on the first preview. The shipping question comes later: what does the backend for a vibe-coded app need before it meets users?
 
 This is the vibe coding backend checklist. It is a pre-launch review you can run before your app handles a login, a payment, or a file upload. It assumes your frontend works and focuses on the backend primitives that decide whether your launch holds up.
 
-If you use Appwrite behind a vibe-coded app, the primitives here map to Auth, Databases with tables and rows, Storage, Functions, Sites, and Appwrite Network. The checklist applies regardless of which tool generated your code: Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf.
+If you use Appwrite behind a vibe-coded app, the primitives here map to Auth, Databases with tables and rows, Storage, Functions, Sites, and Appwrite Network. The checklist applies regardless of which tool generated your code: Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf. If you are still choosing between those stacks, [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) walks through practical differences before you commit.
 
 # Why vibe-coded apps need a production checklist
 

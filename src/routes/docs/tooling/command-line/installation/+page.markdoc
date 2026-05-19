@@ -153,6 +153,61 @@ You can run your first CLI command after logging in. Try fetching information ab
 appwrite projects get --project-id "<PROJECT_ID>"
 ```
 
+# Multi-file configuration {% #multi-file-configuration %}
+
+By default, the Appwrite CLI stores your project settings and resource definitions in one `appwrite.config.json` file. In CLI version 20.0.0 and later, you can split top-level resource arrays into separate JSON files with the `includes` field.
+
+Use this when your project has many functions, sites, buckets, teams, topics, tables, or other deployable resources and you want to keep each resource type in its own file.
+
+```json
+{
+    "projectId": "<PROJECT_ID>",
+    "endpoint": "https://<REGION>.cloud.appwrite.io/v1",
+    "includes": {
+        "functions": "./appwrite/functions.json",
+        "sites": "./appwrite/sites.json",
+        "buckets": "./appwrite/buckets.json",
+        "teams": "./appwrite/teams.json",
+        "topics": "./appwrite/topics.json"
+    }
+}
+```
+
+Each included file contains the JSON array that would normally live under that key in `appwrite.config.json`.
+
+```json
+[
+    {
+        "$id": "<FUNCTION_ID>",
+        "name": "api",
+        "runtime": "node-22",
+        "path": "functions/api",
+        "entrypoint": "src/main.js",
+        "commands": "npm install",
+        "execute": [],
+        "events": [],
+        "schedule": "",
+        "timeout": 15,
+        "enabled": true,
+        "logging": true,
+        "ignore": [
+            "node_modules",
+            ".git"
+        ],
+        "scopes": [],
+        "vars": []
+    }
+]
+```
+
+The CLI resolves resource paths relative to the file that defines the resource. For example, if `functions` is included from `./appwrite/functions.json`, the function `path` above resolves from `./appwrite/`, not from the folder that contains the root `appwrite.config.json`.
+
+The single-file format continues to work. You can split any supported resource arrays over time and keep other arrays in the root config.
+
+Supported include keys are `functions`, `sites`, `databases`, `collections`, `tablesDB`, `tables`, `topics`, `teams`, `buckets`, `webhooks`, and `messages`.
+
+Include paths must be local JSON files inside your project. They must be relative paths, end in `.json`, and cannot use parent-directory segments, absolute paths, URLs, URL-like schemes, null bytes, or JSON pointer fragments.
+
 {% info title="Self-signed certificates" %}
 By default, requests to domains with self-signed SSL certificates (or no certificates) are disabled. If you trust the domain, you can bypass the certificate validation using
 

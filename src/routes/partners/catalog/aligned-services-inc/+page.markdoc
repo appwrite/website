@@ -6,12 +6,12 @@ date: 2025-09-09
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/aligned.png
+cover: /images/partners/covers/aligned.avif
 category: agency
 website: https://www.aligned.com/
 email: mailto:jkryzak@mac.com
 product: 
-    avatar: '/images/partners/avatars/aligned.png'
+    avatar: '/images/partners/avatars/aligned.avif'
     vendor: Jan Luther
     description: Delivering high-tech solutions across semiconductors, aerospace, and healthcare with expertise in hardware and AI.
 technologies: 

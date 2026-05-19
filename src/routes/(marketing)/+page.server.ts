@@ -45,8 +45,9 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         ...(userAgent ? { userAgent } : {})
     };
 
-    const { heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap } =
+    const { heroTitleBase, heroSubtitleBase, heroLayoutBase, heroCtaBase, statsigBootstrap } =
         await loadMarketingHomeStatsigBundle(user, stableId, {
+            title: DEFAULT_HERO_TITLE,
             subtitle: DEFAULT_HERO_SUBTITLE,
             layout: 0,
             cta: DEFAULT_HERO_CTA
@@ -60,7 +61,7 @@ export const load: PageServerLoad = async ({ cookies, request, url }) => {
         {
             heroLayout: heroLayoutBase,
             heroSubtitle: heroSubtitleBase,
-            heroTitle: DEFAULT_HERO_TITLE,
+            heroTitle: heroTitleBase,
             heroCta: heroCtaBase
         }
     );

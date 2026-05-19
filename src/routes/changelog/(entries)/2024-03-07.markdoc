@@ -2,7 +2,7 @@
 layout: changelog
 title: Appwrite API references now display the rate limits per endpoint.
 date: 2024-03-07
-cover: /images/changelog/2024-03-07.png
+cover: /images/changelog/2024-03-07.avif
 ---
 
 Find them in [references documentation](/docs/references).

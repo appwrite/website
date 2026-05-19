@@ -3,7 +3,7 @@ layout: post
 title: Image transformation with Appwrite Storage
 description: Learn how to dynamically transform images with Appwrite Storage for better performance.
 date: 2025-03-10
-cover: /images/blog/image-transformation-with-appwrite-storage/cover.png
+cover: /images/blog/image-transformation-with-appwrite-storage/cover.avif
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
@@ -14,6 +14,8 @@ Images are a core part of any modern web or mobile application. Whether you're d
 Instead of manually editing images before uploading them or storing multiple variations of the same file, Appwrite lets you manipulate images on the fly using the Storage preview endpoint. With a simple API call, you can resize, crop, compress, change formats, add borders, round corners, adjust opacity, and even apply background colors. The best part is that Appwrite automatically caches the transformed images, speeding up repeat requests.
 
 This guide will walk you through everything you need to know about image transformation with Appwrite, and how to use the Storage preview endpoint to transform images. By the end, you'll be able to integrate image transformations into your app without touching an image editor.
+
+If you are deciding between Appwrite Storage previews and a dedicated media CDN, see [Appwrite vs Cloudinary](/blog/post/appwrite-vs-cloudinary) for trade-offs around features, CDN delivery, and pricing.
 
 # Why dynamic image transformations?
 

@@ -3,7 +3,7 @@ layout: post
 title: "Security is a revolving door, and here's how Appwrite keeps you safe"
 description: A look at what recent security incidents teach us about modern app development, and how Appwrite's built-in security features help protect the apps you build and the users who rely on them.
 date: 2026-04-24
-cover: /images/blog/security-is-a-revolving-door/cover.png
+cover: /images/blog/security-is-a-revolving-door/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: security

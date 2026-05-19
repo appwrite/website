@@ -119,7 +119,9 @@ export const prepareBlogCtaState = ({
                       point2: cta.points[1],
                       point3: cta.points[2],
                       point4: cta.points[3],
-                      cta: heroCtaIfShortStartBuilding(cta.label, heroCta),
+                      cta: manualOverride
+                          ? cta.label
+                          : heroCtaIfShortStartBuilding(cta.label, heroCta),
                       url: cta.href,
                       event: cta.event
                   } satisfies InlineCtaProps
@@ -130,7 +132,9 @@ export const prepareBlogCtaState = ({
         manualOverride && cta
             ? {
                   heading: cta.heading,
-                  label: heroCtaIfShortStartBuilding(cta.label, heroCta),
+                  label: manualOverride
+                      ? cta.label
+                      : heroCtaIfShortStartBuilding(cta.label, heroCta),
                   href: cta.href,
                   description: cta.description,
                   event: cta.event

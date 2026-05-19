@@ -12,16 +12,14 @@
     import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
-    import { addEventListener } from '@melt-ui/svelte/internal/helpers';
     import { onMount } from 'svelte';
     import ProductsSubmenu from '$lib/components/ProductsSubmenu.svelte';
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
-    import { page } from '$app/state';
+    import { page } from '$app/stores';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
-    import MongoPartnershipBanner from '$lib/components/MongoPartnershipBanner.svelte';
     import { changelogNavBadgeVisible } from '$routes/changelog/utils';
     import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
 
@@ -30,21 +28,27 @@
     let theme: 'light' | 'dark' | null = 'dark';
 
     function setupThemeObserver() {
-        const handleVisibility = () => {
-            theme = getVisibleTheme();
+        let visibilityFrame = 0;
+        const scheduleVisibility = () => {
+            if (visibilityFrame) return;
+            visibilityFrame = requestAnimationFrame(() => {
+                visibilityFrame = 0;
+                theme = getVisibleTheme();
+            });
         };
 
-        const observer = new MutationObserver(handleVisibility);
+        const observer = new MutationObserver(scheduleVisibility);
         observer.observe(document.body, { childList: true, subtree: true });
 
-        const callbacks = [
-            addEventListener(window, 'scroll', handleVisibility),
-            addEventListener(window, 'resize', handleVisibility)
-        ];
+        const passiveScroll: AddEventListenerOptions = { passive: true };
+        window.addEventListener('scroll', scheduleVisibility, passiveScroll);
+        window.addEventListener('resize', scheduleVisibility, passiveScroll);
 
         return () => {
             observer.disconnect();
-            callbacks.forEach((callback) => callback());
+            window.removeEventListener('scroll', scheduleVisibility, passiveScroll);
+            window.removeEventListener('resize', scheduleVisibility, passiveScroll);
+            if (visibilityFrame) cancelAnimationFrame(visibilityFrame);
         };
     }
 
@@ -114,6 +118,10 @@
             href: '/pricing'
         },
         {
+            label: 'Enterprise',
+            href: '/contact-us/enterprise'
+        },
+        {
             label: 'Customers',
             href: '/blog/category/customer-stories'
         },
@@ -124,7 +132,7 @@
         {
             label: 'Changelog',
             href: '/changelog',
-            showBadge: changelogNavBadgeVisible(page)
+            showBadge: changelogNavBadgeVisible($page)
         }
     ];
 
@@ -156,9 +164,9 @@
 
     $: ($isHeaderHidden, updateSideNav());
 
-    $: isOfferPage = page.route.id?.includes('/offer-300') ?? false;
+    $: isOfferPage = $page.route.id?.includes('/offer-300') ?? false;
 
-    $: navCtaLabel = (page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
+    $: navCtaLabel = ($page.data as { heroCta?: string | null }).heroCta ?? DEFAULT_HERO_CTA;
     $: mobileButtonHref = isOfferPage ? 'https://apwr.dev/DCMWDSw' : getAppwriteDashboardUrl();
     $: mobileButtonEvent = isOfferPage
         ? 'mobile-claim_300_credits_btn-click'
@@ -172,7 +180,6 @@
 </script>
 
 <div class="relative contents h-full">
-    <MongoPartnershipBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}

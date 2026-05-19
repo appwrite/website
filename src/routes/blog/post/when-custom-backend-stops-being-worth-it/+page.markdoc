@@ -3,12 +3,23 @@ layout: post
 title: "When 'custom backend' stops being worth it for small teams"
 description: The real costs of maintaining a custom backend and how to decide when switching to a managed backend platform makes more business sense for your team.
 date: 2026-03-18
-cover: /images/blog/when-custom-backend-stops-being-worth-it/cover.png
+cover: /images/blog/when-custom-backend-stops-being-worth-it/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
 unlisted: true
+faqs:
+  - question: "What are the hidden costs of maintaining a custom backend?"
+    answer: "Beyond the initial development time, custom backends carry ongoing maintenance for libraries and security patches, security expertise required for auth and session management, operational burden for deployments and incident response, knowledge concentration in one or two engineers, and scaling complexity around connection pools and caching. These costs grow over time and often crowd out product development."
+  - question: "What signs indicate a custom backend is costing more than it's worth?"
+    answer: "Common signals include slow new feature development due to architectural friction, fear of changing the system, perceived likelihood of security incidents, deployment processes that consume significant developer time, and the backend consuming a disproportionate share of engineering attention. When maintaining infrastructure repeatedly takes time away from building product, the cost-benefit math has shifted."
+  - question: "When is a custom backend still the right choice?"
+    answer: "A custom backend can still be the right choice when the application has genuinely unique backend requirements, when there are dedicated backend or DevOps engineers whose full-time job is maintaining the infrastructure, when scale or compliance requirements rule out managed platforms, or when the backend itself is part of the product's competitive moat. Most small product teams do not meet these criteria."
+  - question: "Do you have to migrate everything at once?"
+    answer: "No. Modern backend platforms support gradual migration. With Appwrite, authentication can move first, then storage, then databases, with each migrated service reducing maintenance burden. Appwrite's REST API and SDKs let your existing frontend call Appwrite endpoints with modest changes, so the migration is service by service rather than all at once."
+  - question: "Can self-hosting Appwrite preserve data control during migration?"
+    answer: "Yes. Teams that built a custom backend specifically to keep data on their own infrastructure can self-host Appwrite within their own cloud account or on-premise environment. This satisfies data control requirements while eliminating the maintenance burden of a custom implementation. The APIs and SDKs are identical to Appwrite Cloud, so application code does not change."
 ---
 
 There's a point in many small teams' development journey where the backend they built (once a source of pride and flexibility) starts feeling like a liability. Deployments take longer than they used to. A security update broke something unexpectedly. The one person who understands the authentication system is on vacation. Every new feature requires touching infrastructure that nobody is confident enough to change quickly.

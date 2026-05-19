@@ -8,14 +8,14 @@
 </script>
 
 <section
-    class="relative bg-[url(/images/bgs/checker-bg.png)] [background-size:350%] bg-center bg-no-repeat pt-32 pb-40 md:bg-contain"
+    class="relative bg-[url(/images/bgs/checker-bg.avif)] [background-size:350%] bg-center bg-no-repeat pt-32 pb-40 md:bg-contain"
 >
     <div class="container">
-        <div class="mx-auto flex max-w-[325px] flex-col gap-4 text-center">
-            <h2 class="font-aeonik-pro text-primary text-subtitle text-pretty">
+        <div class="mx-auto flex max-w-2xl flex-col gap-4 text-center">
+            <h2 class="md:text-display text-title text-primary font-aeonik-pro text-pretty">
                 Built-in<br /> advanced security
             </h2>
-            <p>
+            <p class="text-main-body md:text-description font-medium md:font-normal">
                 Provide top security and protection with built-in security and compliance features.
             </p>
         </div>

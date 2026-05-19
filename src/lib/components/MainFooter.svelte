@@ -1,6 +1,7 @@
 <script lang="ts">
     import { socials } from '$lib/constants';
     import ThemeSelect from './ThemeSelect.svelte';
+    import FooterCloudStatusBadge from './FooterCloudStatusBadge.svelte';
     import { trackEvent } from '$lib/actions/analytics';
 
     export let variant: 'homepage' | 'docs' = 'homepage';
@@ -9,37 +10,38 @@
 </script>
 
 {#if variant === 'homepage'}
-    <footer class="web-main-footer relative mt-12 flex flex-col justify-between gap-10 lg:flex-row">
-        <ul class="flex gap-2">
-            {#each socials as social}
-                <li>
-                    <a
-                        href={social.link}
-                        class="web-icon-button"
-                        aria-label={social.label}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span class={social.icon} aria-hidden="true"></span>
-                    </a>
-                </li>
-            {/each}
-        </ul>
-        <div class="mt-1 grid grid-cols-1 gap-y-4 md:grid-cols-3">
-            <div>Copyright © {year} Appwrite</div>
-
-            <iframe
-                class="w-full md:w-fit md:max-w-[230px]"
-                title="Appwrite Status"
-                src="https://status.appwrite.online/badge?theme=dark"
-                height="35"
-                frameborder="0"
-                scrolling="no"
-                style:color-scheme="none"
-                style:margin-top="-4px"
-            ></iframe>
-
-            <ul class="flex gap-4 text-right md:justify-end">
+    <footer
+        class="web-main-footer web-footer-legal-strip relative mt-12 flex w-full flex-col items-center gap-10 xl:flex-row xl:items-center xl:justify-between"
+    >
+        <div
+            class="flex w-full min-w-0 shrink-0 flex-wrap items-center justify-center gap-2 sm:gap-3 xl:w-auto xl:justify-start"
+        >
+            <ul class="flex gap-2">
+                {#each socials as social}
+                    <li>
+                        <a
+                            href={social.link}
+                            class="web-icon-button"
+                            aria-label={social.label}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class={social.icon} aria-hidden="true"></span>
+                        </a>
+                    </li>
+                {/each}
+            </ul>
+            <FooterCloudStatusBadge />
+        </div>
+        <div
+            class="web-main-footer__meta text-sub-body mt-1 flex w-full max-w-full min-w-0 flex-1 flex-col items-center gap-y-2 text-center md:mt-0 md:flex-row md:flex-nowrap md:items-center md:justify-center md:gap-x-4 md:gap-y-0 md:overflow-x-auto md:[scrollbar-width:thin] xl:mt-0 xl:max-w-none xl:justify-end xl:text-end"
+        >
+            <p class="text-secondary m-0 w-full shrink-0 md:w-auto md:whitespace-nowrap">
+                Copyright © {year} Appwrite
+            </p>
+            <ul
+                class="flex w-full shrink-0 flex-nowrap items-center justify-center gap-x-4 md:w-auto"
+            >
                 <li>
                     <a
                         class="web-link"
@@ -114,15 +116,7 @@
 {/if}
 
 <style lang="scss">
-    @use '$scss/abstract/variables/devices';
     .web-icon-button {
         display: grid;
-    }
-
-    @media #{devices.$break1} {
-        .status {
-            height: 55px;
-            margin-bottom: 6px; /* balancing due to style:margin-top="-4px" & the `iframe` has some spacings too I think */
-        }
     }
 </style>

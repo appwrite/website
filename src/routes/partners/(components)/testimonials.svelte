@@ -3,7 +3,7 @@
     import GradientBorderCard from '$lib/components/shared/gradient-border-card.svelte';
     import Marquee from '$lib/components/ui/marquee.svelte';
 
-    import Avatar from '../(assets)/icons/avatar.png';
+    import Avatar from '../(assets)/icons/avatar.avif';
 </script>
 
 <div class="border-smooth -mt-6 border-b border-dashed py-20">

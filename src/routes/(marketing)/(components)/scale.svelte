@@ -25,17 +25,17 @@
         children,
         stats = [
             {
-                number: 50,
-                suffix: 'K+',
-                description: 'GitHub stars'
-            },
-            {
                 number: 300,
                 suffix: '+',
                 description: 'PoP locations'
             },
             {
-                number: 300,
+                number: 56,
+                suffix: 'K+',
+                description: 'GitHub stars'
+            },
+            {
+                number: 500,
                 suffix: 'K+',
                 description: 'developers'
             },
@@ -98,11 +98,11 @@
     use:visible
 >
     <div class="relative z-100 container w-fit md:w-full">
-        <div class="relative z-100 md:max-w-xl">
+        <div class="relative z-100 md:max-w-3xl">
             <h2 class="text-primary font-aeonik-pro text-title tracking-tighter text-pretty">
-                Thousands of developers <span class="text-secondary">scale with Appwrite</span><span
-                    class="text-accent">_</span
-                >
+                Over half a million developers <span class="text-secondary"
+                    >scale with Appwrite</span
+                ><span class="text-accent">_</span>
             </h2>
             <p class="text-secondary border-accent mt-5 border-l-2 pl-4 font-medium md:pr-28">
                 <span class="text-accent">“</span>{@render children()}<span class="text-accent"

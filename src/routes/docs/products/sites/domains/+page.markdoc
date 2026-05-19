@@ -26,10 +26,10 @@ https://64d4d22db370ae41a32e.appwrite.network
 Additional to the site URL, Appwrite also generates a URL for the branch and commit that your site has been deployed from. The branch URL will remain consistent for all deployments made for code pushed to a specific branch, whereas the commit URL will be updated every time a new deployment is made via the Git integration (i.e. when code is pushed to your repo).
 
 {% only_dark %}
-![Branch and commit URLs](/images/docs/sites/dark/branch-commit-urls.png)
+![Branch and commit URLs](/images/docs/sites/dark/branch-commit-urls.avif)
 {% /only_dark %}
 {% only_light %}
-![Branch and commit URLs](/images/docs/sites/branch-commit-urls.png)
+![Branch and commit URLs](/images/docs/sites/branch-commit-urls.avif)
 {% /only_light %}
 
 To find the branch and commit URLs of any deployment, follow these steps:
@@ -57,10 +57,10 @@ To add an apex domain via NS records:
 7. Return to the Appwrite Console and wait for the verification process to complete.
 
 {% only_dark %}
-![Add domain](/images/docs/sites/dark/add-domain-ns.png)
+![Add domain](/images/docs/sites/dark/add-domain-ns.avif)
 {% /only_dark %}
 {% only_light %}
-![Add domain](/images/docs/sites/add-domain-ns.png)
+![Add domain](/images/docs/sites/add-domain-ns.avif)
 {% /only_light %}
 
 DNS changes can take up to 48 hours to fully propagate across the internet. During this time, your domain might not be accessible or might show inconsistent behavior.
@@ -96,10 +96,10 @@ To add an apex domain without changing your NS records via [CNAME flattening](/d
 10. Return to the Site settings and wait for verification status.
 
 {% only_dark %}
-![Add domain](/images/docs/sites/dark/add-domain-cname.png)
+![Add domain](/images/docs/sites/dark/add-domain-cname.avif)
 {% /only_dark %}
 {% only_light %}
-![Add domain](/images/docs/sites/add-domain-cname.png)
+![Add domain](/images/docs/sites/add-domain-cname.avif)
 {% /only_light %}
 
 DNS changes can take up to 48 hours to propagate. Once verified, your apex domain will be ready to use with full control over your remaining DNS configuration.
@@ -118,10 +118,10 @@ To add a subdomain:
 6. Return to the Site settings and wait for verification status.
 
 {% only_dark %}
-![Add domain](/images/docs/sites/dark/add-domain.png)
+![Add domain](/images/docs/sites/dark/add-domain.avif)
 {% /only_dark %}
 {% only_light %}
-![Add domain](/images/docs/sites/add-domain.png)
+![Add domain](/images/docs/sites/add-domain.avif)
 {% /only_light %}
 
 DNS records can take up to 48 hours to propagate. Once verified, the domain is ready to use.

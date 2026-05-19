@@ -24,36 +24,6 @@
         trackPrefix: 'technologies' | 'ai-tooling';
     };
 
-    /** Which page of `FRAMEWORKS_GALLERY_PAGE_SIZE` icons is shown; `+` replaces the strip with the next page. */
-    let frameworkBatchIndex = $state(0);
-
-    const frameworkBatchStart = $derived(frameworkBatchIndex * FRAMEWORKS_GALLERY_PAGE_SIZE);
-    const shownFrameworkStrip = $derived(
-        allFrameworkStrip.slice(
-            frameworkBatchStart,
-            frameworkBatchStart + FRAMEWORKS_GALLERY_PAGE_SIZE
-        )
-    );
-
-    /** Always `FRAMEWORKS_GALLERY_PAGE_SIZE` slots so row width stays even when the last page has fewer icons. */
-    const frameworkStripSlots = $derived(
-        Array.from(
-            { length: FRAMEWORKS_GALLERY_PAGE_SIZE },
-            (_, i) => shownFrameworkStrip[i] ?? null
-        )
-    );
-
-    const hasMoreFrameworks = $derived(
-        frameworkBatchStart + FRAMEWORKS_GALLERY_PAGE_SIZE < allFrameworkStrip.length
-    );
-    const hasFrameworkStripPagination = $derived(
-        allFrameworkStrip.length > FRAMEWORKS_GALLERY_PAGE_SIZE
-    );
-
-    const marketingFrameworkMarquee = $derived(
-        allFrameworkStrip.map((p) => ({ ...p, trackPrefix: 'technologies' as const }))
-    );
-
     const marketingAiStrip: StripItem[] = [
         {
             name: 'Claude Code',
@@ -97,10 +67,58 @@
         }
     ];
 
-    const marketingCombinedMarqueeMobile = $derived([
-        ...marketingFrameworkMarquee,
-        ...marketingAiStrip.map((p) => ({ ...p, trackPrefix: 'ai-tooling' as const }))
-    ]);
+    /**
+     * First gallery page: `FRAMEWORKS_GALLERY_PAGE_SIZE` tiles = early frameworks (skipping some to
+     * make room) plus all AI marks in `marketingAiStrip` order (…Lovable, then OpenCode).
+     */
+    const DEFERRED_FIRST_PAGE_FRAMEWORKS = new Set(['Nuxt', 'Angular', 'Qwik', 'Refine', 'Solid']);
+    const FIRST_PAGE_AI_COUNT = marketingAiStrip.length;
+
+    /** Frameworks and AI tools in one list (desktop paginated strip + mobile marquee). */
+    const unifiedStrip = $derived.by(() => {
+        const firstPageFrameworkSlots = FRAMEWORKS_GALLERY_PAGE_SIZE - FIRST_PAGE_AI_COUNT;
+        const firstPageFw: MarqueeMobileEntry[] = [];
+        for (const p of allFrameworkStrip) {
+            if (DEFERRED_FIRST_PAGE_FRAMEWORKS.has(p.name)) continue;
+            firstPageFw.push({ ...p, trackPrefix: 'technologies' });
+            if (firstPageFw.length >= firstPageFrameworkSlots) break;
+        }
+        const usedNames = new Set(firstPageFw.map((e) => e.name));
+        const firstPageAi = marketingAiStrip
+            .slice(0, FIRST_PAGE_AI_COUNT)
+            .map((p) => ({ ...p, trackPrefix: 'ai-tooling' as const }));
+        for (const p of firstPageAi) usedNames.add(p.name);
+
+        const restFw: MarqueeMobileEntry[] = [];
+        for (const p of allFrameworkStrip) {
+            if (usedNames.has(p.name)) continue;
+            restFw.push({ ...p, trackPrefix: 'technologies' });
+            usedNames.add(p.name);
+        }
+        const restAi = marketingAiStrip
+            .slice(FIRST_PAGE_AI_COUNT)
+            .map((p) => ({ ...p, trackPrefix: 'ai-tooling' as const }));
+
+        return [...firstPageFw, ...firstPageAi, ...restFw, ...restAi];
+    });
+
+    /** Which page of `FRAMEWORKS_GALLERY_PAGE_SIZE` icons is shown. */
+    let stripBatchIndex = $state(0);
+
+    const stripBatchStart = $derived(stripBatchIndex * FRAMEWORKS_GALLERY_PAGE_SIZE);
+
+    /** Always `FRAMEWORKS_GALLERY_PAGE_SIZE` slots so row width stays even when the last page has fewer icons. */
+    const unifiedStripSlots = $derived(
+        Array.from(
+            { length: FRAMEWORKS_GALLERY_PAGE_SIZE },
+            (_, i) => unifiedStrip[stripBatchStart + i] ?? null
+        )
+    );
+
+    const hasMoreStrip = $derived(
+        stripBatchStart + FRAMEWORKS_GALLERY_PAGE_SIZE < unifiedStrip.length
+    );
+    const hasStripPagination = $derived(unifiedStrip.length > FRAMEWORKS_GALLERY_PAGE_SIZE);
 
     const aiDocLinks = [
         { label: 'MCP servers', href: '/docs/tooling/ai/mcp-servers' },
@@ -128,16 +146,16 @@
         trackEvent(`platforms-ai-doc-${label.toLowerCase().replace(/\s+/g, '-')}-click`);
     }
 
-    function stepFrameworkStripBack() {
-        if (frameworkBatchIndex > 0) {
-            frameworkBatchIndex -= 1;
+    function stepStripBack() {
+        if (stripBatchIndex > 0) {
+            stripBatchIndex -= 1;
             trackEvent('technologies-framework-strip-back-click');
         }
     }
 
-    function stepFrameworkStripForward() {
-        if (hasMoreFrameworks) {
-            frameworkBatchIndex += 1;
+    function stepStripForward() {
+        if (hasMoreStrip) {
+            stripBatchIndex += 1;
             trackEvent('technologies-framework-strip-advance-click');
         }
     }
@@ -155,9 +173,9 @@
                 'dark:disabled:hover:text-greyscale-300'
             )}
             aria-controls="platforms-framework-strip-icons"
-            aria-label="Show previous quick-start frameworks"
-            disabled={frameworkBatchIndex === 0}
-            onclick={stepFrameworkStripBack}
+            aria-label="Show previous frameworks and AI tools"
+            disabled={stripBatchIndex === 0}
+            onclick={stepStripBack}
         >
             <Icon
                 name="chevron-left"
@@ -182,9 +200,9 @@
                 'dark:disabled:hover:text-greyscale-300'
             )}
             aria-controls="platforms-framework-strip-icons"
-            aria-label="Show next quick-start frameworks"
-            disabled={!hasMoreFrameworks}
-            onclick={stepFrameworkStripForward}
+            aria-label="Show next frameworks and AI tools"
+            disabled={!hasMoreStrip}
+            onclick={stepStripForward}
         >
             <Icon
                 name="chevron-right"
@@ -195,62 +213,6 @@
             />
         </button>
     </div>
-{/snippet}
-
-{#snippet aiToolingStripCells()}
-    <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-        {#each marketingAiStrip as platform, platformIndex (platform.name)}
-            <Tooltip.Root>
-                <div
-                    class="contents"
-                    style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
-                        12}ms"
-                >
-                    <Tooltip.Trigger
-                        class={cn(
-                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 basis-0 cursor-pointer overflow-hidden border-r border-dashed',
-                            'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
-                        )}
-                    >
-                        <div
-                            class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tl from-(--primary-color)/4 to-(--secondary-color)/10 opacity-0 transition-opacity group-hover:opacity-100"
-                        >
-                            <Noise opacity={0.1} />
-                        </div>
-                        <a
-                            href={platform.href}
-                            class="relative z-10 flex size-full min-h-0 min-w-0 items-center justify-center p-2"
-                            aria-label={platform.name}
-                            onclick={() => trackLogo('ai-tooling', platform.name)}
-                        >
-                            <img
-                                src={useLightPlatformSvgs ? platform.light : platform.dark}
-                                alt=""
-                                class="size-7 max-h-7 min-h-7 max-w-7 min-w-7 shrink-0 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
-                            />
-                        </a>
-                    </Tooltip.Trigger>
-                    <Tooltip.Portal>
-                        <Tooltip.Content
-                            sideOffset={6}
-                            side="top"
-                            class={cn(
-                                'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
-                                'dark:bg-greyscale-850 dark:text-greyscale-50',
-                                'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
-                            )}
-                        >
-                            <div
-                                class="pointer-events-none absolute inset-0 z-0 rounded-md bg-gradient-to-tl from-(--primary-color,_#fff)/6 to-(--secondary-color,_transparent)/8 opacity-50 dark:from-white/5 dark:to-transparent"
-                                aria-hidden="true"
-                            ></div>
-                            <span class="relative z-10">{platform.name}</span>
-                        </Tooltip.Content>
-                    </Tooltip.Portal>
-                </div>
-            </Tooltip.Root>
-        {/each}
-    </Tooltip.Provider>
 {/snippet}
 
 {#snippet marqueeMobileRow(items: MarqueeMobileEntry[])}
@@ -267,7 +229,7 @@
                 {#each items as platform, platformIndex (`${copy}-${platform.name}`)}
                     <a
                         href={platform.href}
-                        class="border-smooth group animate-fade-in relative mt-4 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
+                        class="border-smooth group animate-fade-in relative mt-2 flex h-16 w-16 shrink-0 items-center justify-center border-dashed [animation-delay:var(--animation-delay,0ms)]"
                         style="--primary-color:{platform.primary};--secondary-color:{platform.secondary};--animation-delay:{platformIndex *
                             25}ms"
                         aria-label={platform.name}
@@ -295,62 +257,63 @@
 {/snippet}
 
 <div class={cn('relative z-10', className)}>
-    <div class="border-smooth border-y border-dashed">
-        <div
-            class={cn('container flex flex-col items-center py-0 max-lg:pt-4 lg:hidden', {
-                'px-0!': !padded
-            })}
-        >
-            <GradientText>
+    <div
+        class={cn('container flex flex-col items-center pt-1 md:pt-2', {
+            'px-0!': !padded
+        })}
+    >
+        <h2 class="m-0 w-full px-4 text-center">
+            <GradientText
+                class="font-aeonik-pro text-[0.9375rem] leading-snug font-normal tracking-tight text-pretty lg:text-[1rem]"
+            >
                 <span
                     class={cn(
-                        'text-primary mx-auto mb-3 block max-w-[22rem] px-4 text-center leading-snug font-medium text-pretty',
-                        headline ? 'text-sm' : 'text-sub-body'
+                        'mx-auto mb-1.5 block max-w-[22rem] text-center lg:mb-2 lg:max-w-3xl',
+                        headline ? 'text-base' : 'text-main-body'
                     )}>{platformsHeading}</span
                 >
             </GradientText>
-            <div class="w-full" role="region" aria-label="Frameworks and AI development tools">
-                {@render marqueeMobileRow(marketingCombinedMarqueeMobile)}
-            </div>
-        </div>
+        </h2>
+    </div>
+    <div class="border-smooth border-y border-dashed">
         <div
-            class={cn('container hidden py-0 lg:block', {
+            class={cn('container flex flex-col items-center py-0', {
                 'px-0!': !padded
             })}
         >
             <div
-                class="grid min-w-0 grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-[minmax(10rem,13.75rem)_minmax(0,1fr)] lg:items-center lg:gap-x-8 lg:gap-y-0"
+                class="w-full lg:hidden"
+                role="region"
+                aria-label="Frameworks and AI development tools"
             >
-                <h2 class="m-0 hidden max-w-[13.75rem] min-w-0 lg:block lg:pr-1">
-                    <GradientText
-                        class="font-aeonik-pro text-[0.8125rem] leading-snug font-medium tracking-tight text-pretty lg:text-[0.875rem]"
-                    >
-                        <span class="block">{platformsHeading}</span>
-                    </GradientText>
-                </h2>
+                {@render marqueeMobileRow(unifiedStrip)}
+            </div>
+            <div
+                class="hidden w-full min-w-0 lg:block"
+                id="platforms-framework-strip"
+                role="region"
+                aria-label={platformsHeading}
+            >
                 <div
-                    id="platforms-framework-strip"
-                    role="region"
-                    aria-label={platformsHeading}
                     class="flex w-full min-w-0 flex-nowrap items-stretch gap-x-1 sm:gap-x-1.5 lg:gap-x-2"
                 >
-                    {#if hasFrameworkStripPagination}
+                    {#if hasStripPagination}
                         {@render frameworkStripPagerBack()}
                     {/if}
                     <div
                         id="platforms-framework-strip-icons"
                         class={cn(
-                            'relative min-h-14 flex-[10] basis-0 overflow-x-auto overflow-y-hidden',
+                            'relative min-h-14 min-w-0 flex-1 basis-0 overflow-x-auto overflow-y-hidden',
                             'mask-r-from-90% mask-r-to-100% mask-l-from-90% mask-l-to-100% mask-alpha lg:overflow-clip',
                             'scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
                         )}
                     >
                         <Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
-                            {#key frameworkBatchIndex}
+                            {#key stripBatchIndex}
                                 <div
                                     class="flex h-14 min-h-14 w-full min-w-0 flex-nowrap items-stretch"
                                 >
-                                    {#each frameworkStripSlots as platform, platformIndex (`${frameworkBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
+                                    {#each unifiedStripSlots as platform, platformIndex (`${stripBatchIndex}-${platformIndex}-${platform?.href ?? 'slot'}`)}
                                         {#if platform}
                                             <Tooltip.Root>
                                                 <div
@@ -360,8 +323,7 @@
                                                 >
                                                     <Tooltip.Trigger
                                                         class={cn(
-                                                            'border-smooth group relative flex h-14 min-h-14 cursor-pointer overflow-hidden border-r border-dashed',
-                                                            'max-lg:w-11 max-lg:flex-none max-lg:shrink-0 lg:min-h-14 lg:min-w-0 lg:flex-1 lg:basis-0',
+                                                            'border-smooth group relative flex h-14 min-h-14 min-w-0 flex-1 basis-0 cursor-pointer overflow-hidden border-r border-dashed',
                                                             'animate-fade-in [animation-delay:var(--animation-delay,0ms)]'
                                                         )}
                                                     >
@@ -376,7 +338,7 @@
                                                             aria-label={platform.name}
                                                             onclick={() =>
                                                                 trackLogo(
-                                                                    'technologies',
+                                                                    platform.trackPrefix,
                                                                     platform.name
                                                                 )}
                                                         >
@@ -394,7 +356,7 @@
                                                             sideOffset={6}
                                                             side="top"
                                                             class={cn(
-                                                                'text-greyscale-900 relative rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
+                                                                'text-greyscale-900 relative z-[10000] rounded-md border-0! bg-[#EDEDF0] px-2.5 py-1 text-sm font-medium',
                                                                 'dark:bg-greyscale-850 dark:text-greyscale-50',
                                                                 'data-[state="closed"]:animate-menu-out data-[state="instant-open"]:animate-menu-in data-[state="delayed-open"]:animate-menu-in'
                                                             )}
@@ -412,10 +374,7 @@
                                             </Tooltip.Root>
                                         {:else}
                                             <div
-                                                class={cn(
-                                                    'border-smooth border-primary/8 flex h-14 min-h-14 shrink-0 border-r border-dashed bg-transparent',
-                                                    'max-lg:w-11 max-lg:flex-none lg:min-h-14 lg:min-w-0 lg:flex-1 lg:basis-0'
-                                                )}
+                                                class="border-smooth border-primary/8 flex h-14 min-h-14 min-w-0 flex-1 shrink-0 basis-0 border-r border-dashed bg-transparent"
                                                 aria-hidden="true"
                                             ></div>
                                         {/if}
@@ -424,54 +383,38 @@
                             {/key}
                         </Tooltip.Provider>
                     </div>
-                    {#if hasFrameworkStripPagination}
+                    {#if hasStripPagination}
                         {@render frameworkStripPagerForward()}
                     {/if}
-                    <div
-                        class="flex min-h-14 min-w-0 flex-[5] basis-0 flex-nowrap items-stretch"
-                        role="region"
-                        aria-label="AI tools and editors"
-                    >
-                        {@render aiToolingStripCells()}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div
-        class={cn('container pt-3', {
+        class={cn('container pt-2', {
             'px-0!': !padded
         })}
     >
-        <div
-            class="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(10rem,13.75rem)_minmax(0,1fr)] lg:items-center lg:gap-x-8"
-        >
-            <div class="hidden min-w-0 lg:block" aria-hidden="true"></div>
-            <div class="flex min-w-0 justify-center lg:justify-end">
-                <nav
-                    class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] leading-tight font-medium lg:text-xs"
-                    aria-label="AI and MCP documentation"
-                >
-                    {#each aiDocLinks as link, i (link.href)}
-                        {#if i > 0}
-                            <span class="text-primary/25 px-0.5 select-none" aria-hidden="true"
-                                >·</span
-                            >
-                        {/if}
-                        <a
-                            href={link.href}
-                            class="text-secondary hover:text-primary underline-offset-4 transition-colors hover:underline"
-                            target={link.href.startsWith('https://') ? '_blank' : undefined}
-                            rel={link.href.startsWith('https://')
-                                ? 'noopener noreferrer'
-                                : undefined}
-                            onclick={() => trackDoc(link.label)}
-                        >
-                            {link.label}
-                        </a>
-                    {/each}
-                </nav>
-            </div>
+        <div class="flex min-w-0 justify-center">
+            <nav
+                class="text-secondary flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-0.5 text-center text-[0.6875rem] leading-tight font-medium lg:text-xs"
+                aria-label="AI and MCP documentation"
+            >
+                {#each aiDocLinks as link, i (link.href)}
+                    {#if i > 0}
+                        <span class="text-primary/25 px-0.5 select-none" aria-hidden="true">·</span>
+                    {/if}
+                    <a
+                        href={link.href}
+                        class="text-secondary hover:text-primary underline-offset-4 transition-colors hover:underline"
+                        target={link.href.startsWith('https://') ? '_blank' : undefined}
+                        rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+                        onclick={() => trackDoc(link.label)}
+                    >
+                        {link.label}
+                    </a>
+                {/each}
+            </nav>
         </div>
     </div>
 </div>
