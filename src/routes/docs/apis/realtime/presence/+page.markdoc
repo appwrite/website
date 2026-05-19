@@ -6,7 +6,7 @@ description: Use the Appwrite Presence API to track which users are currently ac
 
 The Appwrite **Presence API** tracks which users are currently active in your app and lets every connected client see those statuses in realtime. You can use it to render online indicators next to teammates, show who is viewing a document, broadcast a "typing" status in a chat, or surface "looking at the same page" cues during collaboration.
 
-A presence is a short-lived record tied to a user. Each record carries a `userId`, an optional `status` string (for example `online`, `away`, `editing`), an optional `metadata` JSON object for richer context (a cursor position, the document the user is viewing, the device they are on), and an `expiresAt` timestamp that controls when the record is automatically cleaned up.
+A presence is a short-lived record tied to a user. Each record carries a `userId`, a `status` string (for example `online`, `away`, `editing`), an optional `metadata` JSON object for richer context (a cursor position, the document the user is viewing, the device they are on), and an `expiresAt` timestamp that controls when the record is automatically cleaned up.
 
 Presences are exposed as both a regular HTTP resource and a [Realtime](/docs/apis/realtime) channel, so the same record can be written by any client or server SDK and read live by every subscriber that has permission.
 
@@ -31,9 +31,9 @@ This gives you two ways to keep a presence alive, and you pick whichever fits yo
 - **Heartbeat.** Upsert on focus, route change, or a periodic timer to push `expiresAt` forward. Best when presence should persist briefly across short disconnects (a quick network blip, a tab switch) or when you write presence from server code that has no live socket.
 - **While connected.** If you keep a Realtime connection open, presence written over that connection is cleaned up automatically when the connection closes. Best for "online while the tab is open" UIs where you do not want to manage a heartbeat yourself.
 
-# Set a presence {% #set-a-presence %}
+# Upsert a presence {% #upsert-a-presence %}
 
-A presence is created with an **upsert** on the user's `presenceId`. Calling the same endpoint again updates the existing record, so you can safely call it on every page navigation, focus change, or heartbeat without worrying about duplicates.
+`upsert` creates a presence or updates the existing record with the same `presenceId`. Call it on every page navigation, focus change, or heartbeat without worrying about duplicates. From a client session, `userId` is inferred from the signed-in user; from a server SDK with an API key, pass `userId` explicitly. Server SDKs need an [API key](/docs/advanced/platform/api-keys) with the `presences.write` scope.
 
 {% multicode %}
 ```client-web
@@ -101,18 +101,1345 @@ val presence = presences.upsert(
     metadata = mapOf("page" to "/dashboard")
 )
 ```
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const presences = new sdk.Presences(client);
+
+const presence = await presences.upsert({
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'online'
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.presences import Presences
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+presences = Presences(client)
+
+presence = presences.upsert(
+    presence_id = '<PRESENCE_ID>',
+    user_id = '<USER_ID>',
+    status = 'online'
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Presences;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$presences = new Presences($client);
+
+$presence = $presences->upsert(
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'online'
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<YOUR_PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+presences = Presences.new(client)
+
+presence = presences.upsert(
+    presence_id: '<PRESENCE_ID>',
+    user_id: '<USER_ID>',
+    status: 'online'
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Presences presences = Presences(client);
+
+Presence presence = await presences.upsert(
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'online',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val presences = Presences(client)
+
+val presence = presences.upsert(
+    presenceId = "<PRESENCE_ID>",
+    userId = "<USER_ID>",
+    status = "online"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Presences;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+presences.upsert(
+    "<PRESENCE_ID>", // presenceId
+    "<USER_ID>",     // userId
+    "online",        // status
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let presences = Presences(client)
+
+let presence = try await presences.upsert(
+    presenceId: "<PRESENCE_ID>",
+    userId: "<USER_ID>",
+    status: "online"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+Presence presence = await presences.Upsert(
+    presenceId: "<PRESENCE_ID>",
+    userId: "<USER_ID>",
+    status: "online"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/presences"
+)
+
+func main() {
+    cli := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := presences.New(cli)
+
+    presence, err := service.Upsert(
+        "<PRESENCE_ID>",
+        "<USER_ID>",
+        "online",
+    )
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(presence)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Presences;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<YOUR_PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let presences = Presences::new(&client);
+
+    let presence = presences.upsert(
+        "<PRESENCE_ID>",
+        "<USER_ID>",
+        "online",
+        None,
+        None,
+        None,
+    ).await?;
+
+    println!("{:?}", presence);
+
+    Ok(())
+}
+```
 {% /multicode %}
 
 A few notes on the parameters:
 
 - `presenceId` (**required**) is the unique ID of the presence record. Use `ID.unique()` on first creation and persist it for subsequent updates so the same record is reused for the same user across sessions.
 - `status` (**required**) is a free-form string up to 256 characters. There are no reserved values, so pick whatever vocabulary fits your app (`online`, `away`, `busy`, `editing`, `typing`).
-- `userId` is set automatically from the authenticated session on client SDKs. Server SDKs (API key, JWT, Admin) must pass `userId` explicitly because there is no session to read it from.
+- `userId` is set automatically from the authenticated session on client SDKs and is required on server SDKs.
 - `metadata` is an arbitrary JSON object. Use it to carry any context that subscribers should see together with the status.
 - `expiresAt` is optional. Without it, Appwrite applies a default TTL (see [Expiry and cleanup](#expiry-and-cleanup) below).
 - `permissions` controls who can read or modify the presence record, the same way it works on rows and files. Without permissions, only the owner and project keys can see it.
 
-Call `presences.update(...)` with the same `presenceId` to patch any subset of these fields without re-sending the whole record; every field on `update` is optional.
+# Get a presence {% #get-a-presence %}
+
+Fetch a single presence by its `presenceId`. Records whose `expiresAt` is in the past are treated as not found.
+
+{% multicode %}
+```client-web
+import { Client, Presences } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+const presence = await presences.get({
+    presenceId: '<PRESENCE_ID>'
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+final presence = await presences.get(
+    presenceId: '<PRESENCE_ID>',
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+let presence = try await presences.get(
+    presenceId: "<PRESENCE_ID>"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+val presence = presences.get(
+    presenceId = "<PRESENCE_ID>"
+)
+```
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const presences = new sdk.Presences(client);
+
+const presence = await presences.get({
+    presenceId: '<PRESENCE_ID>'
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.presences import Presences
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+presences = Presences(client)
+
+presence = presences.get(
+    presence_id = '<PRESENCE_ID>'
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Presences;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$presences = new Presences($client);
+
+$presence = $presences->get(
+    presenceId: '<PRESENCE_ID>'
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<YOUR_PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+presences = Presences.new(client)
+
+presence = presences.get(
+    presence_id: '<PRESENCE_ID>'
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Presences presences = Presences(client);
+
+Presence presence = await presences.get(
+    presenceId: '<PRESENCE_ID>',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val presences = Presences(client)
+
+val presence = presences.get(
+    presenceId = "<PRESENCE_ID>"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Presences;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+presences.get(
+    "<PRESENCE_ID>", // presenceId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let presences = Presences(client)
+
+let presence = try await presences.get(
+    presenceId: "<PRESENCE_ID>"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+Presence presence = await presences.Get(
+    presenceId: "<PRESENCE_ID>"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/presences"
+)
+
+func main() {
+    cli := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := presences.New(cli)
+
+    presence, err := service.Get("<PRESENCE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(presence)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Presences;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<YOUR_PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let presences = Presences::new(&client);
+
+    let presence = presences.get("<PRESENCE_ID>").await?;
+
+    println!("{:?}", presence);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+# List presences {% #list-presences %}
+
+`list` returns the active set. Expired records are filtered out automatically, so the response is always "who is here right now". Pass [Queries](/docs/products/databases/queries) to filter by `status`, `userId`, or any indexed field, and pass `ttl` to cache the response server-side for a configurable number of seconds.
+
+{% multicode %}
+```client-web
+import { Client, Presences, Query } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+const result = await presences.list({
+    queries: [Query.equal('status', ['online'])]
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+final result = await presences.list(
+    queries: [Query.equal('status', ['online'])],
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+let result = try await presences.list(
+    queries: [Query.equal("status", value: ["online"])]
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+val result = presences.list(
+    queries = listOf(Query.equal("status", listOf("online")))
+)
+```
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const presences = new sdk.Presences(client);
+
+const result = await presences.list({
+    queries: [sdk.Query.equal('status', ['online'])]
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.presences import Presences
+from appwrite.query import Query
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+presences = Presences(client)
+
+result = presences.list(
+    queries = [Query.equal('status', ['online'])]
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Query;
+use Appwrite\Services\Presences;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$presences = new Presences($client);
+
+$result = $presences->list(
+    queries: [Query::equal('status', ['online'])]
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<YOUR_PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+presences = Presences.new(client)
+
+result = presences.list(
+    queries: [Query.equal('status', ['online'])]
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Presences presences = Presences(client);
+
+PresenceList result = await presences.list(
+    queries: [Query.equal('status', ['online'])],
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.Presences
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val presences = Presences(client)
+
+val response = presences.list(
+    queries = listOf(Query.equal("status", listOf("online")))
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.Query;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Presences;
+
+import java.util.List;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+presences.list(
+    List.of(Query.equal("status", List.of("online"))), // queries
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let presences = Presences(client)
+
+let response = try await presences.list(
+    queries: [Query.equal("status", value: ["online"])]
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+PresenceList result = await presences.List(
+    queries: new List<string> { Query.Equal("status", new List<object> { "online" }) }
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/presences"
+    "github.com/appwrite/sdk-for-go/query"
+)
+
+func main() {
+    cli := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := presences.New(cli)
+
+    result, err := service.List(
+        service.WithListQueries([]string{
+            query.Equal("status", "online"),
+        }),
+    )
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(result)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Presences;
+use appwrite::query::Query;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<YOUR_PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let presences = Presences::new(&client);
+
+    let result = presences.list(
+        Some(vec![Query::equal("status", vec!["online".into()])]),
+        None,
+        None,
+    ).await?;
+
+    println!("{:?}", result);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+# Update a presence {% #update-a-presence %}
+
+`update` patches a subset of fields on an existing record without re-sending the whole payload. Every field except `presenceId` is optional, so a "go away" handler only needs to send `status`. **One naming difference to watch for:** the method is named `update` on client SDKs and `updatePresence` (with each language's case convention) on server SDKs, where it also requires `userId`. This is the only point at which the client and server surfaces diverge.
+
+{% multicode %}
+```client-web
+import { Client, Presences } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+const presence = await presences.update({
+    presenceId: '<PRESENCE_ID>',
+    status: 'away'
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+final presence = await presences.update(
+    presenceId: '<PRESENCE_ID>',
+    status: 'away',
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+let presence = try await presences.update(
+    presenceId: "<PRESENCE_ID>",
+    status: "away"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+val presence = presences.update(
+    presenceId = "<PRESENCE_ID>",
+    status = "away"
+)
+```
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const presences = new sdk.Presences(client);
+
+const presence = await presences.updatePresence({
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'away'
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.presences import Presences
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+presences = Presences(client)
+
+presence = presences.update_presence(
+    presence_id = '<PRESENCE_ID>',
+    user_id = '<USER_ID>',
+    status = 'away'
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Presences;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$presences = new Presences($client);
+
+$presence = $presences->updatePresence(
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'away'
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<YOUR_PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+presences = Presences.new(client)
+
+presence = presences.update_presence(
+    presence_id: '<PRESENCE_ID>',
+    user_id: '<USER_ID>',
+    status: 'away'
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Presences presences = Presences(client);
+
+Presence presence = await presences.updatePresence(
+    presenceId: '<PRESENCE_ID>',
+    userId: '<USER_ID>',
+    status: 'away',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val presences = Presences(client)
+
+val presence = presences.updatePresence(
+    presenceId = "<PRESENCE_ID>",
+    userId = "<USER_ID>",
+    status = "away"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Presences;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+presences.updatePresence(
+    "<PRESENCE_ID>", // presenceId
+    "<USER_ID>",     // userId
+    "away",          // status
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let presences = Presences(client)
+
+let presence = try await presences.updatePresence(
+    presenceId: "<PRESENCE_ID>",
+    userId: "<USER_ID>",
+    status: "away"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+Presence presence = await presences.UpdatePresence(
+    presenceId: "<PRESENCE_ID>",
+    userId: "<USER_ID>",
+    status: "away"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/presences"
+)
+
+func main() {
+    cli := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := presences.New(cli)
+
+    presence, err := service.UpdatePresence(
+        "<PRESENCE_ID>",
+        "<USER_ID>",
+        service.WithUpdatePresenceStatus("away"),
+    )
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(presence)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Presences;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<YOUR_PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let presences = Presences::new(&client);
+
+    let presence = presences.update_presence(
+        "<PRESENCE_ID>",
+        "<USER_ID>",
+        Some("away"),
+        None,
+        None,
+        None,
+        None,
+    ).await?;
+
+    println!("{:?}", presence);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+# Delete a presence {% #delete-a-presence %}
+
+`delete` removes a record immediately and fires a `delete` event on the presence channels. Use it when you want a user to go offline without waiting for `expiresAt` to elapse, for example on sign out or admin force-offline.
+
+{% multicode %}
+```client-web
+import { Client, Presences } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+await presences.delete({
+    presenceId: '<PRESENCE_ID>'
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+await presences.delete(
+    presenceId: '<PRESENCE_ID>',
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+_ = try await presences.delete(
+    presenceId: "<PRESENCE_ID>"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+presences.delete(
+    presenceId = "<PRESENCE_ID>"
+)
+```
+
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const presences = new sdk.Presences(client);
+
+await presences.delete({
+    presenceId: '<PRESENCE_ID>'
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.presences import Presences
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<YOUR_PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+presences = Presences(client)
+
+presences.delete(
+    presence_id = '<PRESENCE_ID>'
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Presences;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<YOUR_PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$presences = new Presences($client);
+
+$presences->delete(
+    presenceId: '<PRESENCE_ID>'
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<YOUR_PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+presences = Presences.new(client)
+
+presences.delete(
+    presence_id: '<PRESENCE_ID>'
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Presences presences = Presences(client);
+
+await presences.delete(
+    presenceId: '<PRESENCE_ID>',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val presences = Presences(client)
+
+presences.delete(
+    presenceId = "<PRESENCE_ID>"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Presences;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+presences.delete(
+    "<PRESENCE_ID>", // presenceId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let presences = Presences(client)
+
+_ = try await presences.delete(
+    presenceId: "<PRESENCE_ID>"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<YOUR_PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Presences presences = new Presences(client);
+
+await presences.Delete(
+    presenceId: "<PRESENCE_ID>"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/presences"
+)
+
+func main() {
+    cli := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := presences.New(cli)
+
+    _, err := service.Delete("<PRESENCE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println("Presence deleted")
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Presences;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<YOUR_PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let presences = Presences::new(&client);
+
+    presences.delete("<PRESENCE_ID>").await?;
+
+    Ok(())
+}
+```
+{% /multicode %}
 
 # Subscribe to presence updates {% #subscribe-to-presence-updates %}
 
@@ -129,10 +1456,10 @@ const client = new Client()
 const realtime = new Realtime(client);
 
 const subscription = await realtime.subscribe(Channel.presences(), response => {
-    if (response.events.includes('presences.*.update')) {
+    if (response.events.includes('presences.update')) {
         console.log('Presence updated', response.payload);
     }
-    if (response.events.includes('presences.*.delete')) {
+    if (response.events.includes('presences.delete')) {
         console.log('Presence expired or removed', response.payload);
     }
 });
@@ -150,10 +1477,10 @@ final realtime = Realtime(client);
 final subscription = realtime.subscribe([Channel.presences()]);
 
 subscription.stream.listen((response) {
-    if (response.events.contains('presences.*.update')) {
+    if (response.events.contains('presences.update')) {
         print('Presence updated: ${response.payload}');
     }
-    if (response.events.contains('presences.*.delete')) {
+    if (response.events.contains('presences.delete')) {
         print('Presence expired or removed: ${response.payload}');
     }
 });
@@ -169,10 +1496,10 @@ let client = Client()
 let realtime = Realtime(client)
 
 let subscription = realtime.subscribe(channels: [Channel.presences()]) { response in
-    if (response.events?.contains("presences.*.update") == true) {
+    if (response.events?.contains("presences.update") == true) {
         print("Presence updated: \(String(describing: response.payload))")
     }
-    if (response.events?.contains("presences.*.delete") == true) {
+    if (response.events?.contains("presences.delete") == true) {
         print("Presence expired or removed: \(String(describing: response.payload))")
     }
 }
@@ -190,10 +1517,10 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 val subscription = realtime.subscribe(Channel.presences()) {
-    if (it.events.contains("presences.*.update")) {
+    if (it.events.contains("presences.update")) {
         println("Presence updated: ${it.payload}")
     }
-    if (it.events.contains("presences.*.delete")) {
+    if (it.events.contains("presences.delete")) {
         println("Presence expired or removed: ${it.payload}")
     }
 }
@@ -202,10 +1529,10 @@ val subscription = realtime.subscribe(Channel.presences()) {
 
 The `events` array follows the same pattern as every other Appwrite resource:
 
-- `presences.*.create` and `presences.<PRESENCE_ID>.create` for new records.
-- `presences.*.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
-- `presences.*.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
-- `presences.*.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
+- `presences.create` and `presences.<PRESENCE_ID>.create` for new records.
+- `presences.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
+- `presences.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
+- `presences.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
 
 This gives you a clean signal for "user just came online", "user changed status", and "user went offline", without writing any custom socket logic.
 
@@ -233,25 +1560,7 @@ Every presence carries an `expiresAt` timestamp. Once that time passes, Appwrite
 
 You can pass an explicit `expiresAt` up to **30 days in the future**. If you omit it, Appwrite applies a sensible default that fits the typical heartbeat pattern: keep upserting the presence every few seconds while the user is active, and let it expire naturally a short time after the last heartbeat.
 
-To remove a presence immediately, for example on sign out or when the user closes a document, send a delete:
-
-{% multicode %}
-```client-web
-await presences.delete({ presenceId: '<PRESENCE_ID>' });
-```
-
-```client-flutter
-await presences.delete(presenceId: '<PRESENCE_ID>');
-```
-
-```client-apple
-try await presences.delete(presenceId: "<PRESENCE_ID>")
-```
-
-```client-android-kotlin
-presences.delete(presenceId = "<PRESENCE_ID>")
-```
-{% /multicode %}
+To remove a presence immediately, for example on sign out or when the user closes a document, use the [Delete a presence](#delete-a-presence) operation above.
 
 # Permissions and scopes {% #permissions-and-scopes %}
 

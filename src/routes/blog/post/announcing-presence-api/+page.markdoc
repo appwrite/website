@@ -11,7 +11,7 @@ featured: false
 callToAction: true
 faqs:
     - question: "What is the Appwrite Presence API?"
-      answer: "Presence is a new Appwrite API for tracking short-lived user statuses, like online, away, editing, or typing. Each presence is a small record attached to a user, with optional status text and metadata, and it broadcasts every change over a dedicated Realtime channel. It is built for online indicators, collaboration cursors, typing dots, and live attendee lists, the kind of UI signals that should disappear automatically when a user goes offline."
+      answer: "Presence is a new Appwrite API for tracking short-lived user statuses, like online, away, editing, or typing. Each presence is a small record attached to a user, with a status string and optional metadata, and it broadcasts every change over a dedicated Realtime channel. It is built for online indicators, collaboration cursors, typing dots, and live attendee lists, the kind of UI signals that should disappear automatically when a user goes offline."
     - question: "How is Presence different from storing status in a database row?"
       answer: "A database row stays around until you delete it. Presence records expire automatically based on an expiresAt timestamp you control, so a stale online indicator never gets stuck after a user closes the tab or loses connection. Presence also ships with its own Realtime channels, so you do not need to write subscription logic or maintenance jobs on top of a regular table to get a live who-is-here view."
     - question: "How long does a presence record live?"
