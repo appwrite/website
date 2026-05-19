@@ -100,4 +100,4 @@ The loop is straightforward. Kick off a task from your phone on the way to the o
 
 Want to try this loop end to end? [Create a free Appwrite project](https://cloud.appwrite.io/), open Codex on your phone, and ask it to wire up auth and a database against your new project. By the time you sit down at your desk, you have a working backend and a diff to review.
 
-Start with the [Appwrite quick start](https://appwrite.io/docs/quick-starts) for your stack, browse the [SDKs](https://appwrite.io/docs/sdks), or [join us on Discord](https://appwrite.io/discord) to share what you build.
+Start with the [Appwrite quick start](/docs/quick-starts) for your stack, browse the [SDKs](/docs/sdks), or [join us on Discord](https://appwrite.io/discord) to share what you build.
