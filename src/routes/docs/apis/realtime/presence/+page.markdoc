@@ -341,6 +341,10 @@ A few notes on the parameters:
 - `expiresAt` is optional. Without it, Appwrite applies a default TTL (see [Expiry and cleanup](#expiry-and-cleanup) below).
 - `permissions` controls who can read or modify the presence record, the same way it works on rows and files. Without permissions, only the owner and project keys can see it.
 
+{% info title="Upsert is keyed by userId" %}
+A user can have at most one active presence at a time. `upsert` looks up an existing record by `userId` first and updates it in place if one is found, so the `presenceId` you pass is only used as the new record's `$id` on the very first create. For `get`, `update`, and `delete`, the actual `$id` returned by upsert is still the addressing key.
+{% /info %}
+
 # Get a presence {% #get-a-presence %}
 
 Fetch a single presence by its `presenceId`. Records whose `expiresAt` is in the past are treated as not found.
