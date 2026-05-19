@@ -55,6 +55,11 @@
                     href: '/docs/products/auth/security'
                 },
                 {
+                    label: 'Email policies',
+                    href: '/docs/products/auth/email-policies',
+                    new: isNewUntil('30 June 2026')
+                },
+                {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
                 },
