@@ -46,6 +46,10 @@
                     href: '/docs/products/network/dns'
                 },
                 {
+                    label: 'CAA records',
+                    href: '/docs/products/network/caa-records'
+                },
+                {
                     label: 'DDoS mitigation',
                     href: '/docs/products/network/ddos'
                 },
