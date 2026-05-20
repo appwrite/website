@@ -77,7 +77,7 @@ The model card lists head-to-head numbers against Gemini 3 Flash, Gemini 3.1 Pro
 
 Gemini 3.5 Flash leads Pro-class models on agentic tasks (MCP Atlas, Toolathlon, Finance Agent v2) and on multimodal reasoning (CharXiv, MMMU-Pro). It trails on academic reasoning (Humanity's Last Exam, ARC-AGI-2). For coding, results sit between 3.1 Pro and GPT-5.5 depending on the benchmark.
 
-The largest gain is MCP Atlas: a 21.6 point increase over Gemini 3 Flash and 4.5 points over 3.1 Pro. On MCP tool-call workloads, 3.5 Flash is Google's strongest model in the Gemini 3 series.
+The largest gain is MCP Atlas: a 21.6 point increase over Gemini 3 Flash and 5.4 points over 3.1 Pro. On MCP tool-call workloads, 3.5 Flash is Google's strongest model in the Gemini 3 series.
 
 # Artificial Analysis
 
@@ -86,7 +86,7 @@ The largest gain is MCP Atlas: a 21.6 point increase over Gemini 3 Flash and 4.5
 Gemini 3.5 Flash on Artificial Analysis:
 
 - **Intelligence Index: 55** (rank #7 of 147). Top three: GPT-5.5 (xhigh) at 60.2, GPT-5.5 (high) at 58.9, Claude Opus 4.7 (max) at 57.3.
-- **Speed: 278 output tokens per second** (rank #2 of 147 in its AA price class). The closest frontier peer is gpt-oss-120b (high) at 246. Other frontier-class models are well behind: Gemini 3.1 Pro Preview at 123, GPT-5.5 (xhigh) at 64, Claude Opus 4.7 (max) at 50.
+- **Speed: 278 output tokens per second** (rank #2 of 147 in its AA price class). The closest frontier peer is gpt-oss-120b (high) at 246. Other frontier-class models are well behind: Gemini 3.1 Pro Preview at 123, GPT-5.5 (xhigh) at 65, Claude Opus 4.7 (max) at 50.
 - **Verbosity: 73M tokens** generated across the Intelligence Index suite, against a leaderboard average of 36M. Verbosity counts how many output tokens the model produced to complete the eval suite. Higher means the model spent more reasoning tokens per answer, which raises latency and bill size even when the per-token price is low.
 - **Cost to evaluate the Intelligence Index: $1,551.60.** That is 5.5x Gemini 3 Flash and 75% more than Gemini 3.1 Pro despite the lower per-token rate. This is the total dollar cost to run the full Intelligence Index once, combining per-token pricing and token volume. It serves as a proxy for what the model costs on heavy reasoning workloads in production.
 - **Hallucination rate: 61%** on the AA hallucination measure, 31 points lower than Gemini 3 Flash. The hallucination measure is the share of responses on a fabrication-probing prompt set where the model produces incorrect or invented content. Lower is better, and a 31-point drop versus the predecessor indicates a material gain in factual reliability.
@@ -143,11 +143,11 @@ Top finishers on the May 20, 2026 run:
 
 Three observations from the Arena data.
 
-**It is the fastest model in the top tier.** 20 minutes with Skills and 13 minutes without is faster than every model scoring above 90. The next-fastest top finisher is Gemini 3.1 Flash Lite at 19 minutes with Skills, but it scores 7.9 points lower.
+**It is the fastest model in the top tier.** 20 minutes with Skills and 13 minutes without is faster than every other model scoring above 90. The only model in the with-Skills table with a shorter run is Gemini 3.1 Flash Lite at 19 minutes, but it scores 88.3, below the 90-point top tier.
 
 **Skills materially improve the freeform score.** Without Skills, freeform scores 77.5%. With Skills, freeform reaches 91.9%, a 14.4-point increase. The same delta for GPT 5.5 is +4.8 points (90.0 to 94.8), and for Claude Opus 4.7 is −0.6 points (94.8 to 94.2), where Skills slightly lowered the score because the model's built-in Appwrite knowledge is already near the ceiling. 3.5 Flash relies more on in-context documentation than its frontier peers, consistent with the January 2025 knowledge cutoff.
 
-**Category profile.** With Skills, 3.5 Flash scores 100% on Messaging, MCQ Foundation, MCQ Auth, MCQ Functions, and MCQ Sites, and 94.1% on Realtime. The weakest categories are TablesDB (89.1% with Skills, 77.8% without) and CLI (95.0% with Skills, 73.3% without). Both require the most current API surface, which the knowledge cutoff does not cover.
+**Category profile.** With Skills, 3.5 Flash scores 100% on Messaging, MCQ Foundation, MCQ Auth, MCQ Functions, and MCQ Sites, and 94.1% on MCQ Realtime. The weakest categories are TablesDB (89.1% with Skills, 77.8% without) and CLI (95.0% with Skills, 73.3% without). Both require the most current API surface, which the knowledge cutoff does not cover.
 
 # Workloads where 3.5 Flash is the right choice
 
