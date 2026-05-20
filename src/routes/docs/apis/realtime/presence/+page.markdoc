@@ -1533,10 +1533,10 @@ val subscription = realtime.subscribe(Channel.presences()) {
 
 The `events` array follows the same pattern as every other Appwrite resource:
 
-- `presences.create` and `presences.<PRESENCE_ID>.create` for new records.
-- `presences.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
-- `presences.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
-- `presences.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
+- `presences.*.create` and `presences.<PRESENCE_ID>.create` for new records.
+- `presences.*.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
+- `presences.*.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
+- `presences.*.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
 
 This gives you a clean signal for "user just came online", "user changed status", and "user went offline", without writing any custom socket logic.
 
