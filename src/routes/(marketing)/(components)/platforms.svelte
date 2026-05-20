@@ -37,7 +37,7 @@
             name: 'Codex',
             dark: '/images/docs/mcp/logos/dark/openai.svg',
             light: '/images/docs/mcp/logos/openai.svg',
-            href: '/docs/tooling/ai/agentic-coding/codex',
+            href: '/docs/tooling/ai/agents/codex',
             primary: '#10A37F',
             secondary: '#064E3B'
         },

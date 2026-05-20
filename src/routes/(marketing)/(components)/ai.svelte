@@ -19,7 +19,7 @@
     const tools: AiStripTool[] = [
         {
             name: 'Claude Code',
-            href: '/docs/tooling/ai/agentic-coding/claude-code',
+            href: '/docs/tooling/ai/agents/claude-code',
             dark: '/images/docs/mcp/logos/dark/claude.svg',
             light: '/images/docs/mcp/logos/claude.svg',
             primary: '#D97659',
@@ -27,7 +27,7 @@
         },
         {
             name: 'Codex',
-            href: '/docs/tooling/ai/agentic-coding/codex',
+            href: '/docs/tooling/ai/agents/codex',
             dark: '/images/docs/mcp/logos/dark/openai.svg',
             light: '/images/docs/mcp/logos/openai.svg',
             primary: '#10A37F',
@@ -35,7 +35,7 @@
         },
         {
             name: 'Cursor',
-            href: '/docs/tooling/ai/agentic-coding/cursor',
+            href: '/docs/tooling/ai/agents/cursor',
             dark: '/images/docs/mcp/logos/dark/cursor-ai.svg',
             light: '/images/docs/mcp/logos/cursor-ai.svg',
             primary: '#141414',
@@ -43,7 +43,7 @@
         },
         {
             name: 'VS Code',
-            href: '/docs/tooling/ai/agentic-coding/vscode',
+            href: '/docs/tooling/ai/agents/vscode',
             dark: '/images/docs/mcp/logos/dark/vscode.svg',
             light: '/images/docs/mcp/logos/vscode.svg',
             primary: '#0078D7',
@@ -51,7 +51,7 @@
         },
         {
             name: 'OpenCode',
-            href: '/docs/tooling/ai/agentic-coding/opencode',
+            href: '/docs/tooling/ai/agents/opencode',
             dark: '/images/docs/mcp/logos/dark/opencode.svg',
             light: '/images/docs/mcp/logos/opencode.svg',
             primary: '#FFFFFF',
@@ -59,7 +59,7 @@
         },
         {
             name: 'Google Antigravity',
-            href: '/docs/tooling/ai/agentic-coding/antigravity',
+            href: '/docs/tooling/ai/agents/antigravity',
             dark: '/images/docs/mcp/logos/dark/google-antigravity.svg',
             light: '/images/docs/mcp/logos/google-antigravity.svg',
             primary: '#4285F4',

@@ -51,27 +51,27 @@
             items: [
                 {
                     label: 'Claude Code',
-                    href: '/docs/tooling/ai/agentic-coding/claude-code'
+                    href: '/docs/tooling/ai/agents/claude-code'
                 },
                 {
                     label: 'Codex',
-                    href: '/docs/tooling/ai/agentic-coding/codex'
+                    href: '/docs/tooling/ai/agents/codex'
                 },
                 {
                     label: 'Cursor',
-                    href: '/docs/tooling/ai/agentic-coding/cursor'
+                    href: '/docs/tooling/ai/agents/cursor'
                 },
                 {
                     label: 'VS Code',
-                    href: '/docs/tooling/ai/agentic-coding/vscode'
+                    href: '/docs/tooling/ai/agents/vscode'
                 },
                 {
                     label: 'OpenCode',
-                    href: '/docs/tooling/ai/agentic-coding/opencode'
+                    href: '/docs/tooling/ai/agents/opencode'
                 },
                 {
                     label: 'Google Antigravity',
-                    href: '/docs/tooling/ai/agentic-coding/antigravity'
+                    href: '/docs/tooling/ai/agents/antigravity'
                 }
             ]
         },

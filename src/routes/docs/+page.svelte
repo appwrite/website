@@ -38,7 +38,7 @@
             event: 'docs-ai-ide_claude-code-click'
         },
         {
-            href: '/docs/tooling/ai/agentic-coding/codex',
+            href: '/docs/tooling/ai/agents/codex',
             title: 'Codex',
             logoDark: '/images/docs/mcp/logos/dark/openai.svg',
             logoLight: '/images/docs/mcp/logos/openai.svg',
