@@ -145,7 +145,7 @@ Three observations from the Arena data.
 
 **It is the fastest model in the top tier.** 20 minutes with Skills and 13 minutes without is faster than every model scoring above 90. The next-fastest top finisher is Gemini 3.1 Flash Lite at 19 minutes with Skills, but it scores 7.9 points lower.
 
-**Skills materially improve the freeform score.** Without Skills, freeform scores 77.5%. With Skills, freeform reaches 91.9%, a 14.4-point increase. The same delta for GPT 5.5 is 4.8 points (94.8 to 90.0), and for Claude Opus 4.7 is 0.6 points (94.8 to 94.2). 3.5 Flash relies more on in-context documentation than its frontier peers, consistent with the January 2025 knowledge cutoff.
+**Skills materially improve the freeform score.** Without Skills, freeform scores 77.5%. With Skills, freeform reaches 91.9%, a 14.4-point increase. The same delta for GPT 5.5 is +4.8 points (90.0 to 94.8), and for Claude Opus 4.7 is −0.6 points (94.8 to 94.2), where Skills slightly lowered the score because the model's built-in Appwrite knowledge is already near the ceiling. 3.5 Flash relies more on in-context documentation than its frontier peers, consistent with the January 2025 knowledge cutoff.
 
 **Category profile.** With Skills, 3.5 Flash scores 100% on Messaging, MCQ Foundation, MCQ Auth, MCQ Functions, and MCQ Sites, and 94.1% on Realtime. The weakest categories are TablesDB (89.1% with Skills, 77.8% without) and CLI (95.0% with Skills, 73.3% without). Both require the most current API surface, which the knowledge cutoff does not cover.
 
