@@ -8,6 +8,7 @@ timeToRead: 10
 author: aditya-oberai
 category: security
 unlisted: true
+lastUpdated: 2026-05-20
 faqs:
   - question: "What is the most ignored vibe coding security mistake?"
     answer: "Trusting that table and bucket permissions are correct because the demo worked. Generated code routinely defaults to read and write for every authenticated user, with no narrowing to the row or file that the user owns. The fix is to sign in as user A and try to read user B's data. You should fail."
@@ -55,7 +56,7 @@ The fix is to never ship server-side logic without reading it. Every [Appwrite F
 
 Generated auth setups tend to enable everything: email and password, OAuth, magic URL, phone OTP, anonymous. Every method that is enabled is a surface to defend. Most products only need one or two.
 
-The fix is to decide which identity methods you actually support in [Appwrite Auth](/docs/products/auth) and disable the rest. Verify the methods you keep: enforce email verification, require a minimum password length, configure session length and revocation, rate limit signup and login, and remove any test accounts the agent created during prototyping.
+The fix is to decide which identity methods you actually support in [Appwrite Auth](/docs/products/auth) and disable the rest. Verify the methods you keep: enforce email verification, require a minimum password length, configure session length and revocation, rate limit signup and login, restrict who can sign up with [email policies](/docs/products/auth/email-policies) that block free, aliased, or disposable email providers, and remove any test accounts the agent created during prototyping.
 
 # 6. Missing MFA on the surfaces that need it
 
