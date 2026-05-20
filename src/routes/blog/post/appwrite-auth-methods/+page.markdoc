@@ -9,7 +9,7 @@ author: aditya-oberai
 category: product, tutorial, security
 featured: false
 unlisted: true
-lastUpdated: 2026-05-21
+lastUpdated: 2026-05-20
 faqs:
   - question: "How many authentication methods does Appwrite support?"
     answer: "Appwrite supports ten authentication methods out of the box: email and password, phone SMS, magic URL, email OTP, OAuth2, anonymous sessions, JWT, SSR auth, custom tokens, and MFA. Each fits a different use case, from passwordless flows to server-rendered apps to migrating users from existing systems."

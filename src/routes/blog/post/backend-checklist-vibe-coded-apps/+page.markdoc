@@ -8,7 +8,7 @@ timeToRead: 9
 author: atharva
 unlisted: true
 category: best-practices
-lastUpdated: 2026-05-21
+lastUpdated: 2026-05-20
 faqs:
   - question: "What is vibe coding and why does it need a backend checklist?"
     answer: "Vibe coding is the workflow of describing a product to an AI builder like Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf and letting it scaffold the UI, data layer, and integrations. The output is demo-ready, not launch-ready. A pre-launch backend review catches the predictable failure modes: open table permissions, secrets in client bundles, missing indexes, no logs, and preview URLs that were never replaced with a custom domain."
