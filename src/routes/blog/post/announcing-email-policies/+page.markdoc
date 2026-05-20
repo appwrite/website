@@ -20,6 +20,10 @@ faqs:
     answer: "Yes. Each policy is an independent toggle. You can enable any combination of deny free, deny aliased, and deny disposable from the Console or by calling only the methods you need."
   - question: "How do I fight spam users?"
     answer: "Email policies are the first line of defense. Enable deny disposable emails to block temporary inboxes like Mailinator, deny aliased emails to stop one user from spinning up dozens of accounts from a single Gmail with subaddresses, and deny free emails on B2B products that should only accept corporate addresses."
+  - question: "Which email providers does Appwrite block?"
+    answer: "The lists are powered by our open-source utopia-php/emails database, which currently tracks over 72,000 disposable domains and 4,000 free email providers. The data is continuously refreshed from six upstream community sources, with a manual override layer on top for edge cases the upstream lists miss."
+  - question: "Can I add a missing email provider to the blocklist?"
+    answer: "Yes. The utopia-php/emails repository is open source and accepts contributions. Open a PR against the manual list in the data directory and the next import picks it up."
 ---
 
 Most teams discover the hard way that signups happen with whatever address a user feels like typing. Throwaway inboxes, plus-tagged aliases of a single Gmail, and ten-minute mail providers all create real accounts, count toward seat quotas, and eventually show up in your support queue with mail that never delivers.
