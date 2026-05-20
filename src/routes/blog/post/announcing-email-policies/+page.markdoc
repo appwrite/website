@@ -38,6 +38,12 @@ Each policy is its own toggle. Enabling one does not enable the others, so a B2B
 
 The policies run at signup and on email updates. They do not affect session creation, so any user who signed up before a policy was enabled can still log in.
 
+# Backed by a curated provider database
+
+Email policies do not ship with a hard-coded list of a few dozen well-known providers. They are powered by [utopia-php/emails](https://github.com/utopia-php/emails), an open-source database we maintain that currently tracks **72,906 disposable domains** and **4,785 free email providers**. The lists are continuously refreshed from six upstream community sources, on top of a manual override layer for edge cases that the upstream lists miss or get wrong.
+
+The data lives in the open and accepts contributions, so if you spot a provider that should be blocked or unblocked you can [open a PR against the manual list](https://github.com/utopia-php/emails/tree/main/data) and the next import picks it up.
+
 # Configure from the Console
 
 Open your project, navigate to **Auth** in the sidebar, and open the **Security** tab. The **Email policies** card has a toggle for each policy and an **Update** button that applies your changes immediately.
