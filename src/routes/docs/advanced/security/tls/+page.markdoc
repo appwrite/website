@@ -20,6 +20,6 @@ This protects your users from attack vectors like man-in-the-middle and eavesdro
 
 # CAA records {% #caa-records %}
 
-If your domain has restrictive [CAA records](/docs/products/network/caa-records) in DNS, you must authorize the certificate authority Appwrite uses before a certificate can be issued. On Appwrite Cloud, add `certainly.com` to your CAA policy. On self-hosted deployments, add `letsencrypt.org`. Domains without any CAA records do not require this step.
+If your domain has restrictive [CAA records](/docs/products/network/caa-records) in DNS, you must authorize the certificate authority Appwrite uses before a certificate can be issued. On Appwrite Cloud, add `certainly.com` to your CAA policy. Domains without any CAA records do not require this step.
 
 [Learn more about CAA records >](/docs/products/network/caa-records)
