@@ -1,0 +1,146 @@
+---
+layout: post
+title: The best Supabase alternatives developers should know
+description: Compare the best Supabase alternatives in 2026, from Appwrite and Firebase to PocketBase and Convex. Explore realtime, self hosting, pricing, and developer experience.
+date: 2026-05-20
+cover: /images/blog/the-best-supabase-alternatives-developers-should-know/cover.avif
+timeToRead: 5
+author: aishwari
+category: comparisons
+featured: false
+unlisted: true
+faqs:
+  - question: What is the best alternative to Supabase?
+    answer: "There isn't one best answer, it depends on what you're optimizing for. Appwrite and Nhost are the closest one-for-one swaps. Firebase is the most mature hosted option. PocketBase is the lightest. Convex has the best DX for heavily reactive apps."
+  - question: Is Firebase better than Supabase?
+    answer: "Neither is strictly better. Firebase wins on maturity, mobile SDKs, and Google Cloud integration. Supabase wins on Postgres, open source, and predictable SQL-shaped pricing. Pick Firebase if you want fully managed and don't mind NoSQL; pick Supabase if you want SQL and the option to self-host."
+  - question: What is the best free Supabase alternative?
+    answer: "For free self-hosting (just pay for the server): PocketBase, Appwrite, Directus, Hasura, and Nhost. For hosted free tiers: Firebase, Convex, and Nhost all have free plans good enough for prototypes and small production apps."
+  - question: What is the best self-hosted alternative to Supabase?
+    answer: "Appwrite for the most complete feature set in one package. PocketBase for the simplest deployment. Nhost if you want Postgres plus GraphQL. Directus if you're wrapping an existing SQL database."
+---
+Supabase put Postgres-backed BaaS on the map. It is a solid platform with great DX. But "solid" does not mean "right for every project."
+
+Maybe you want a fully self-hosted backend without babysitting Postgres. Maybe you need more than auth, database, and storage. Maybe Postgres is overkill and you want something lighter. Maybe pricing got loud once you hit production traffic. Maybe you just want options.
+
+Whatever pushed you to look, there are real alternatives worth knowing. This is the short list every developer should have in their head before picking a backend in 2026.
+
+# What to look for in a Supabase alternative
+
+Before the list, the criteria. A backend platform should give you:
+
+* **Auth that works on day one.** Email, OAuth, magic links, MFA, passkeys, without writing a session table from scratch.
+* **A database you can actually query.** SQL or NoSQL, but with permissions, indexes, and relations built in.
+* **File storage with rules.** Not just an S3 bucket and a URL.
+* **A way to run server code.** Functions, webhooks, cron, custom logic.
+* **Realtime out of the box.** Subscriptions, presence, live data.
+* **Self-host as an option.** Lock-in is a tax you pay later.
+* **Pricing that scales like your product, not faster.**
+
+If a tool is missing two of these, it is a piece of your backend, not your backend. Treat it accordingly.
+
+# The best Supabase alternatives in 2026
+
+## 1. Appwrite
+
+Open-source BaaS with auth, databases, storage, functions, messaging, and realtime. Self-hostable or run on Appwrite Cloud.
+
+* Document-style database with per-row, per-role, per-user permissions
+* Many built-in auth methods, including passkeys, SSO, and anonymous sessions
+* Functions in multiple runtimes, deployable from Git
+* SDKs for most major frameworks and languages
+
+Trade-offs: the document model isn't ideal if you need complex relational queries, transactions, or heavy joins. Self-hosting works well but adds operational overhead.
+
+## 2. Firebase
+
+Google's BaaS, deeply integrated with Google Cloud, mature, and used at scale by many teams.
+
+* Firestore (NoSQL) plus Realtime Database for syncing
+* Auth, Cloud Functions, Cloud Storage, and Hosting in one console
+* Strong mobile SDKs and tooling
+* Large ecosystem and battle-tested infrastructure
+
+Trade-offs: NoSQL only, hosted only, and read/write-based pricing can spike under traffic. Migrating off Firebase later tends to be painful.
+
+## 3. PocketBase
+
+A single Go binary bundling auth, database, file storage, and an admin dashboard. SQLite under the hood.
+
+* Deploys anywhere a binary runs, including a small VPS
+* Built-in admin UI and JavaScript/Dart SDKs
+* Hooks and a Go API for custom server logic
+* No external dependencies to manage
+
+Trade-offs: SQLite means a single-node story, so horizontal scaling and high-concurrency writes are limited. Best fit for solo work, side projects, and small teams.
+
+## 4. Nhost
+
+Postgres plus Hasura plus auth and storage, bundled into a single platform. GraphQL is the primary API.
+
+* Real Postgres database with full SQL access
+* Instant GraphQL via Hasura, including subscriptions
+* Auth and storage included out of the box
+* Open source and self-hostable
+
+Trade-offs: you inherit Hasura's conventions. If your team doesn't want GraphQL, much of the value disappears.
+
+## 5. Convex
+
+A reactive backend with a typed database, server functions written in TypeScript, and queries that re-run automatically when underlying data changes.
+
+* Excellent DX for reactive applications
+* End-to-end type safety from database to client
+* No separate realtime layer to wire up
+* Strong tooling around schema, functions, and scheduling
+
+Trade-offs: proprietary query model and hosted-only deployment. You commit to the platform or you don't use it.
+
+## 6. Hasura
+
+Not a full BaaS, but the GraphQL layer many teams build a backend around. Point it at Postgres (or other supported databases) and get an API with permissions and subscriptions.
+
+* Instant GraphQL over existing databases
+* Granular role-based permissions
+* Actions and event triggers for custom logic
+* Open source, self-hostable, with a managed cloud option
+
+Trade-offs: you still need to bring auth, storage, and anything outside the data layer. Stronger as a piece of the stack than a complete one.
+
+## 7. Directus
+
+An open-source data platform that wraps any SQL database with an admin UI, REST and GraphQL APIs, and a permissions layer.
+
+* Works with existing schemas without forcing migrations
+* Admin UI usable by non-developers
+* Flows for automation and custom logic
+* Strong fit for content-heavy applications
+
+Trade-offs: closer to "headless CMS plus API" than developer-first BaaS. Auth and realtime exist but are less central than in other options.
+
+# How they compare at a glance
+
+| Platform   | Database          | Self-host | Realtime    | Functions | Open source |
+| ---------- | ----------------- | --------- | ----------- | --------- | ----------- |
+| Appwrite   | NoSQL (document)  | Yes       | Yes         | Yes       | Yes         |
+| Firebase   | NoSQL (Firestore) | No        | Yes         | Yes       | No          |
+| PocketBase | SQLite            | Yes       | Yes         | Hooks     | Yes         |
+| Nhost      | Postgres          | Yes       | Via GraphQL | Yes       | Yes         |
+| Convex     | Proprietary       | No        | Yes         | Yes       | No          |
+| Hasura     | Postgres          | Yes       | Via GraphQL | Actions   | Yes         |
+| Directus   | Any SQL           | Yes       | Yes         | Flows     | Yes         |
+
+The right pick depends on your stack, your scale, and how much of the backend you want to own.
+
+# Start building with Appwrite
+
+Appwrite is the alternative most developers settle on once they have tried a few. Open source. Self-hostable. A Cloud version that gets out of your way so you can ship. One platform for auth, database, storage, functions, messaging, and realtime, with SDKs that feel native in whatever framework you already use.
+
+Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and have a real backend running before the coffee gets cold.
+
+# Resources
+
+* [Appwrite documentation](https://appwrite.io/docs)
+* [Appwrite quick start guides](https://appwrite.io/docs/quick-starts)
+* [Appwrite on GitHub](https://github.com/appwrite/appwrite)
+* [Join the Appwrite Discord](https://appwrite.io/discord)
