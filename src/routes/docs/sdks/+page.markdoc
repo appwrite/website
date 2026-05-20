@@ -288,10 +288,6 @@ If you are running Appwrite Cloud, use the latest published SDK for your platfor
 * `17.3.0`
 {% /table %}
 
-The Rust SDK is available from Appwrite `1.8.1` onwards, pinned at `0.2.0` for both `1.8.1` and `1.9.0`.
-
-Appwrite `1.7.5` was released as a backport patch on 2025-11-06, after `1.8.0` had shipped. The SDK versions in its row are the latest at that publish date and target the `1.8.x` line, so they may not be fully compatible with the `1.7.x` API. If you run a `1.7.x` self-hosted server, prefer the SDKs listed in the `1.7.4` row.
-
 # Protocols {% #protocols %}
 We are always looking to add new SDKs to our platform. If the SDK you are looking for is still missing, labeled as beta or experimental, or you simply do not want to integrate with an SDK, you can always integrate with Appwrite directly using any standard HTTP, GraphQL, or WebSocket clients and the relevant Appwrite protocol.
 
