@@ -1,6 +1,6 @@
 ---
 layout: article
-title: CAA records
+title: Certification Authority Authorization (CAA) records
 description: Learn what DNS Certification Authority Authorization (CAA) records are, when they are required to use a custom domain with Appwrite, and how to configure one or more of them at your DNS provider.
 ---
 
