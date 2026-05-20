@@ -6,38 +6,32 @@ description: Learn what DNS Certification Authority Authorization (CAA) records 
 
 A Certification Authority Authorization (CAA) record is a DNS record that specifies which certificate authorities (CAs) are allowed to issue TLS certificates for your domain. CAA records help prevent unauthorized certificate issuance and are defined in [RFC 8659](https://datatracker.ietf.org/doc/html/rfc8659).
 
-When Appwrite issues a TLS certificate for a [custom domain](/docs/advanced/platform/custom-domains), an [Appwrite Sites domain](/docs/products/sites/domains), or a [Function domain](/docs/products/functions/domains), the certificate authority used by Appwrite checks your domain's CAA records before issuing. If your CAA records do not authorize the CA that Appwrite uses, issuance fails and your domain stays unverified.
+When Appwrite issues a TLS certificate for a [custom domain](/docs/advanced/platform/custom-domains), an [Appwrite Sites domain](/docs/products/sites/domains), or a [Function domain](/docs/products/functions/domains), the certificate authority used by Appwrite checks your domain's CAA records before issuing. If your domain has no CAA records at all, any CA, including Appwrite's, is allowed to issue and no action is needed from you. If your domain already has CAA records and none of them authorize the CA that Appwrite uses, issuance fails and your domain stays unverified until you add the required record.
 
 {% info title="CAA records are additive, not exclusive" %}
 Adding a CAA record for Appwrite does **not** replace your existing CAA records, override certificates issued by other CAs, or invalidate certificates already in use elsewhere. CAA only controls **future** certificate issuance. You can safely keep every CAA record you already have and add Appwrite's alongside them. See [Setting multiple CAA records](#multiple).
 {% /info %}
 
-# Certificate authorities used by Appwrite {% #certificate-authorities %}
+# Certificate authority used by Appwrite {% #certificate-authority %}
 
-The CA that needs authorization depends on your deployment.
-
-| Deployment | Certificate authority | CAA value |
-| ---------- | --------------------- | --------- |
-| Appwrite Cloud (Sites, Functions, custom domains) | [Certainly](https://docs.fastly.com/products/certainly) (operated by Fastly) | `certainly.com` |
-| Self-hosted | [Let's Encrypt](https://letsencrypt.org/) | `letsencrypt.org` |
+Appwrite Cloud uses [Certainly](https://docs.fastly.com/products/certainly), Fastly's certificate authority, to issue TLS certificates for Sites, Functions, and custom API domains. If you need to authorize Appwrite's CA in a CAA record, use the value `certainly.com`.
 
 For more on how Appwrite manages certificates, see the [TLS documentation](/docs/advanced/security/tls).
 
-# When CAA records are optional {% #optional %}
+# Do you need a CAA record? {% #do-you-need-one %}
 
-CAA records are not mandatory in DNS. If your domain has no CAA records at all, any publicly trusted CA, including the one Appwrite uses, is permitted to issue a certificate for it. In this case, you do not need to add a CAA record to use a custom domain with Appwrite.
+By default, no. CAA records are not mandatory in DNS, and if your domain has no CAA records at all, any publicly trusted CA, including the one Appwrite uses, is permitted to issue a certificate for it. This is the common case for most domains, and no action is needed from you.
 
-This is the common case for most domains that have never been configured with a CAA policy.
+You **do** need to add a CAA record that authorizes Appwrite's CA in either of these situations.
 
-# When CAA records are required {% #required %}
-
-You must add a CAA record that authorizes Appwrite's CA in any of these situations.
-
-- Your domain already has one or more CAA records that do not include `certainly.com` (Appwrite Cloud) or `letsencrypt.org` (self-hosted). Existing CAA records form an allow-list, and any CA not on it is blocked.
+- Your domain already has one or more CAA records that do not include `certainly.com`. Existing CAA records form an allow-list, and any CA not on it is blocked.
 - Your DNS provider, registrar, or organization adds CAA records automatically for new domains.
-- The Appwrite Console shows a CAA record alongside the CNAME or NS record when adding a domain. The Console only shows CAA records when one is needed for your domain to be verified.
 
-If you are unsure, you can inspect existing CAA records for your domain with a public tool like [DNS Checker](https://dnschecker.org/) or by running `dig CAA example.com` from a terminal.
+If you are unsure, inspect your existing CAA records with a tool like [DNS Checker](https://dnschecker.org/) or by running `dig CAA example.com` from a terminal.
+
+{% info title="What the Appwrite Console shows" %}
+When you add a custom domain, the Appwrite Console may surface a CAA value alongside the CNAME or NS record as part of the standard setup. Adding it is only strictly necessary when one of the conditions above applies. If neither applies, you can safely skip the CAA step.
+{% /info %}
 
 ## Apex domains and subdomains {% #scope %}
 
@@ -60,7 +54,7 @@ The exact UI differs between DNS providers, but the values are the same.
 3. Set the **name** (or **host**) to the domain you are configuring, for example `example.com` for an apex domain or `app.example.com` for a subdomain.
 4. Set the **flags** to `0`.
 5. Set the **tag** to `issue`.
-6. Set the **value** to the CA shown in the Appwrite Console, for example `certainly.com` on Appwrite Cloud.
+6. Set the **value** to the CA shown in the Appwrite Console (`certainly.com` for Appwrite Cloud).
 7. Save the record and wait for DNS propagation. This can take up to 48 hours.
 
 A complete CAA record in zone file format looks like this.
@@ -81,6 +75,10 @@ example.com. IN CAA 0 issue "letsencrypt.org"
 ```
 
 Most DNS dashboards model this as two separate CAA entries on the same host. Do not replace existing CAA records when adding the one Appwrite needs. Add the Appwrite record next to them so both your existing CAs and Appwrite's CA stay authorized.
+
+{% info title="Using Appwrite DNS as your nameserver?" %}
+If you have delegated your domain to [Appwrite DNS](/docs/products/network/dns) by pointing your nameservers to `ns1.appwrite.zone` and `ns2.appwrite.zone`, Appwrite automatically applies the CAA record needed for its certificate authority. You do not need to add a CAA record manually in this case. You can still add additional CAA records for other CAs from the **Domains** tab in your organization if you want to authorize them alongside Appwrite's CA.
+{% /info %}
 
 ## Wildcard certificates {% #wildcard %}
 
