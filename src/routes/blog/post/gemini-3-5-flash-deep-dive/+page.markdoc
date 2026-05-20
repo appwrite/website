@@ -50,7 +50,7 @@ API pricing per million tokens:
 How it compares:
 
 - **vs Gemini 3 Flash** ($0.50 / $3.00): 3x more on both input and output.
-- **vs Gemini 3.1 Pro** (blended): approximately 40% cheaper.
+- **vs Gemini 3.1 Pro** ($2.00 / $12.00): 25% cheaper per token on both input and output.
 - **Within the Flash tier:** the most expensive Flash-tier model Google has released.
 
 # Google's published benchmark table
