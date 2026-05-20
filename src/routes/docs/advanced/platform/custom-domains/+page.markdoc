@@ -32,8 +32,9 @@ This will allow browsers to respect the Appwrite sessions cookies as they are se
 2. Click on the **Settings** tab in the left sidebar.
 3. Select the **Custom domains** section and click **Create domain**.
 4. Add your domain, and copy associated CNAME record to your DNS provider. See the [Add a CNAME record](#cname-record) section.
-5. Verify your domain. DNS changes might take up to 48 hours to propagate worldwide, you may not be able to do this in the same day.
-6. Once you verify your domain, you can generate an SSL certificate.
+5. If the Console also shows a [CAA record](/docs/products/network/caa-records), add it to your DNS provider so Appwrite's certificate authority is authorized to issue a certificate for your domain. Existing CAA records should be kept in place. See [Setting multiple CAA records](/docs/products/network/caa-records#multiple).
+6. Verify your domain. DNS changes might take up to 48 hours to propagate worldwide, you may not be able to do this in the same day.
+7. Once you verify your domain, you can generate an SSL certificate.
 
 With these steps, your Appwrite project will accept API requests from your custom domain.
 
