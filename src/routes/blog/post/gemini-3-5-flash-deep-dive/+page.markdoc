@@ -7,7 +7,6 @@ cover: /images/blog/gemini-3-5-flash-deep-dive/cover.avif
 timeToRead: 11
 author: atharva
 category: ai
-unlisted: true
 faqs:
   - question: "What is Gemini 3.5 Flash?"
     answer: "Gemini 3.5 Flash is Google DeepMind's mid-2026 Flash-tier reasoning model, built on the Gemini 3 Flash foundation with explicit thinking levels that trade quality for cost and latency. It accepts text, images, audio, video, and PDF input, outputs up to 64K text tokens, and has a 1M token context window."
