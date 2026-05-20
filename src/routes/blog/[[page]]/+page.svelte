@@ -44,6 +44,10 @@
 
     let selectedCategory = $state(page.url.searchParams.get('category') ?? 'Latest');
 
+    $effect(() => {
+        selectedCategory = page.url.searchParams.get('category') ?? 'Latest';
+    });
+
     const handleSearch = async () => {
         const searchQuery = query.toLowerCase();
 
