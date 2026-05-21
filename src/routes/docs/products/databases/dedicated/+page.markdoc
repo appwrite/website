@@ -81,7 +81,7 @@ Per-database connection pooler with automatic read/write split when HA is enable
 Run parameterised SQL over HTTP without opening a TCP connection. Useful from edge runtimes.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
-TLS by default, optional IP allowlists, and a private hostname per database.
+TLS by default, optional IP allowlists, and a dedicated hostname per database.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/monitoring" title="Monitoring & insights" %}
 CPU, memory, IOPS, slow queries, and index recommendations, pushed to the Console live.
