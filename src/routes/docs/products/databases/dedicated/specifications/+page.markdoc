@@ -55,7 +55,7 @@ The following features are billed as a percentage of the underlying specificatio
 
 | Feature                     | Rate                            | Example on a $100/mo specification |
 |-----------------------------|---------------------------------|------------------------------------|
-| High availability replicas  | 50% of specification per replica | $50/mo per replica                |
+| High availability replicas  | 75% of specification per replica | $75/mo per replica                |
 | Cross-region replicas       | 75% of specification per replica | $75/mo per replica                |
 | Cross-region standby        | 50% of specification             | $50/mo                            |
 | Point-in-time recovery      | 20% of specification             | $20/mo                            |

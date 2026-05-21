@@ -57,7 +57,7 @@ Enable HA with one update call and the platform provisions the replicas, places 
 
 When the primary stays unhealthy across two 3-second probes, Appwrite takes a 15-second distributed lock, selects the lowest-lag replica, promotes it in place (no restart for SQL engines), runs a write-verification probe, drains connections from the old primary, and emits a `failover.completed` event to your webhooks, realtime channels, and functions. There's a 60-second cooldown so transient infrastructure events don't cause failover flapping.
 
-Up to five replicas per database. Replicas are billed at 50% of the underlying specification per replica.
+Up to five replicas per database. Replicas are billed at 75% of the underlying specification per replica.
 
 ## Backups and point-in-time recovery
 
