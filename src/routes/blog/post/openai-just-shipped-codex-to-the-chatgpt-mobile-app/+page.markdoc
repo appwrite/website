@@ -97,3 +97,15 @@ The loop is straightforward. Kick off a task from your phone on the way to the o
 Want to try this loop end to end? [Create a free Appwrite project](https://cloud.appwrite.io/), open Codex on your phone, and ask it to wire up auth and a database against your new project. By the time you sit down at your desk, you have a working backend and a diff to review.
 
 Start with the [Appwrite quick start](/docs/quick-starts) for your stack, browse the [SDKs](/docs/sdks), or [join us on Discord](https://appwrite.io/discord) to share what you build.
+
+# The Appwrite plugin for Codex
+
+If you want to try this loop without wiring anything up yourself, we just shipped the [Appwrite plugin for Codex](https://appwrite.io/blog/post/announcing-appwrite-codex-plugin). One install gives Codex the Appwrite Docs MCP server and thirteen agent skills covering the CLI, every major SDK, and guided deploys for Sites and Functions.
+
+To install, run:
+
+```bash
+codex plugin marketplace add appwrite/codex-plugin
+```
+
+Then start Codex, open `/plugins`, and confirm. Once active, try a prompt like "Scaffold a Next.js app that uses Appwrite for email/password auth and a todos table." Codex picks up the right skills, queries the docs MCP when it needs specifics, and generates code that uses real SDK calls instead of guessed ones. Kick that off from your phone on the way to the office, and there is a working diff waiting when you sit down.
