@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: startup
+faqs:
+  - question: "Why should startups care about open source software?"
+    answer: "Open source gives you control over your stack, lets you self-host to avoid surprise pricing, and protects you if a vendor shuts down or pivots. For a startup, that flexibility can be the difference between pivoting and rebuilding from scratch."
+  - question: "Is open source software actually free?"
+    answer: "The code is free to use and modify, but running it is not always free. You still pay for infrastructure, time to operate it, and sometimes for managed hosting or premium tiers. The trade off is that you control where you spend."
+  - question: "What is the open source alternative to Firebase?"
+    answer: "[Appwrite](/) is a common open source alternative to Firebase. It bundles authentication, databases, storage, functions, and messaging in a self-hostable platform with a managed cloud option."
+  - question: "How do I evaluate open source tools for production use?"
+    answer: "Look at the license (permissive vs copyleft), release cadence, community size, security disclosure process, and whether a company backs the project. Also check that self-hosting is documented and that the managed version, if any, does not diverge from the open source release."
+  - question: "Can I mix open source and closed source tools?"
+    answer: "Yes, most startups do. A common pattern is open source for the core stack (backend, database, observability) and managed SaaS for things like email delivery, billing, and CRM. The goal is to keep your most critical pieces portable."
+  - question: "What licenses should I watch out for?"
+    answer: "Permissive licenses like MIT, Apache 2.0, and BSD are safe defaults for most startups. Copyleft licenses like AGPL can require you to open source derived work, which matters if you plan to fork and self-host with custom changes. Always read the license before you build on top of a project."
 ---
 
 Time and time again, we've seen that startups that change and adapt to market needs are the ones who win big. However, with startups using traditional software products, it becomes increasingly difficult to pivot. High costs, vendor lock-in, limited control, and flexibility can hold them back to do so.

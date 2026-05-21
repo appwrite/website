@@ -9,6 +9,19 @@ author: aditya-oberai
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What are Appwrite dev keys?"
+    answer: "Dev keys are secrets used by Appwrite's client SDKs that bypass rate limits and suppress CORS errors caused by unconfigured hostnames. They are designed for local development, automated tests, and CI/CD workflows where strict client limits get in the way."
+  - question: "How is a dev key different from an API key?"
+    answer: "API keys are server side credentials with scoped permissions and are used by the server SDKs. Dev keys are tied to client SDKs and only relax rate limiting and hostname checks. They do not grant elevated permissions to bypass collection or storage rules."
+  - question: "Are dev keys safe to use in production?"
+    answer: "No. Dev keys disable protections that exist specifically to prevent abuse, so shipping one in a production app exposes you to floods of requests and denial of service. Use them only in development, testing, and CI environments."
+  - question: "How long does a dev key last?"
+    answer: "When you create a dev key, you pick an expiration of 1 day, 7 days, or 30 days. The key stops working after that window, which limits the blast radius if it ever leaks."
+  - question: "Can I use dev keys in CI/CD pipelines?"
+    answer: "Yes, that is one of the primary use cases. A dev key lets your test suite hit Appwrite endpoints without being throttled, so end to end tests stay reliable even when they run hundreds of requests in a short window."
+  - question: "Where do I create a dev key for my project?"
+    answer: "Open your project in the Appwrite Console, go to the Overview page, and use the Dev Keys section. You can generate, copy, and rotate keys from there without affecting your existing API keys."
 ---
 
 When building applications with Appwrite, developers often need a way to test and debug services repeatedly over short periods. Sometimes, this can become a hassle, as Appwrite enforces strict rate limits on client apps to prevent abuse. Developers needed a way to bypass these rate limits in their test environments and CI/CD workflows to ensure the robustness of their app functionalities.

@@ -7,6 +7,19 @@ cover: /images/blog/majik-kids.avif
 timeToRead: 7
 author: aditya-oberai
 category: customer-stories
+faqs:
+  - question: "What is Majik Kids?"
+    answer: "Majik Kids is an audio-first content platform for children, featuring audio stories, kids' songs across 14 genres, and meditation. It has a Kid Mode (designed for minimal screen time and easy navigation) and a Grown Up Mode (pin-protected, with parental tools and a parents' podcast)."
+  - question: "How does Majik Kids use Appwrite?"
+    answer: "The Flutter app uses [Appwrite Storage](/docs/products/storage) for MP3 audio, cover art, and PDF activity books, [Appwrite Databases](/docs/products/databases) for story and artist metadata, [Appwrite Teams](/docs/products/auth) to separate artists from regular users, and [Appwrite Functions](/docs/products/functions) for revenue share calculations."
+  - question: "Can I build a mobile app with Appwrite?"
+    answer: "Yes. Appwrite ships SDKs for Flutter, React Native, Android (Kotlin and Java), and iOS (Swift). The Flutter SDK was the key reason Majik Kids chose Appwrite, since it let them ship both iOS and Android from a single codebase with the same backend."
+  - question: "How do I automate content uploads to Appwrite Storage?"
+    answer: "Use the [Appwrite server SDK](/docs/sdks) in your language of choice (for example, Python, Node.js, Go) to script uploads. Majik Kids built a Python script that pulls files from Google Drive, verifies and converts them, and uploads to Appwrite Storage automatically."
+  - question: "What is Appwrite Teams used for?"
+    answer: "[Appwrite Teams](/docs/products/auth) groups users together and assigns permissions at the team level. Majik Kids uses Teams to separate artists from regular users, which makes it easy to give artists free access to their own content while tracking metrics for both groups independently."
+  - question: "Can Appwrite handle revenue share or payouts logic?"
+    answer: "Appwrite does not handle payouts directly, but [Appwrite Functions](/docs/products/functions) can run any custom logic on a schedule or in response to events. Majik Kids uses Functions to calculate revenue share for each artist based on content consumption metrics stored in Appwrite Databases."
 ---
 
 # Ideating an alternative content platform for children

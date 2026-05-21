@@ -8,6 +8,19 @@ timeToRead: 8
 author: eldad-fux
 category: product, announcement
 featured: false
+faqs:
+  - question: "What roles can I assign to team members in the Appwrite Console?"
+    answer: "Appwrite offers five built-in organization roles: Owner, Developer, Editor, Analyst, and Billing. Each role grants a different scope of access, from full administrative control to read-only or billing-only access. Custom roles for Scale and Enterprise plans are also available."
+  - question: "What is the difference between an Owner and a Developer in Appwrite?"
+    answer: "Owners have full control including team management, billing, and project creation. Developers have access to all development resources like databases, functions, and storage but cannot manage the team or billing. Use Developer for engineers who need to build but should not change membership or financial settings."
+  - question: "Can I give a team member read-only access in Appwrite?"
+    answer: "Yes. The Analyst role provides read-only access to all resources in the project, ideal for stakeholders who need to view data, analytics, or reports without making changes. They can browse the console without any risk of modifying state."
+  - question: "What is the principle of least privilege?"
+    answer: "Least privilege means giving users only the permissions they need to do their job and nothing more. Applied to a backend platform, it means using purpose-built roles like Editor or Analyst for non-engineers rather than handing everyone Owner access. This limits the blast radius if a credential is compromised."
+  - question: "Are custom roles available in Appwrite?"
+    answer: "Custom Roles are available on the Scale and Enterprise plans and let you fine-tune permissions to match your team structure. If the built-in roles do not match your access policy, you can define exactly which actions each role can perform."
+  - question: "How is organization-level access different from project-level permissions in Appwrite?"
+    answer: "Organization roles control what users can do in the Appwrite Console, like creating projects or managing billing. Resource-level permissions on databases, files, and other [Appwrite resources](/docs/products/databases) control what end users of your application can read or write. They serve different purposes and are configured separately."
 ---
 
 We’re excited to announce a new feature available in the Pro and Scale plans: **Roles**. This enhancement is designed to bring granular permissions to the Appwrite Console, improving both team collaboration and security across your projects. 

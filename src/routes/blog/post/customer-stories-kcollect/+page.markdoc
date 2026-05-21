@@ -7,6 +7,19 @@ cover: /images/blog/kcollect.avif
 timeToRead: 5
 author: aditya-oberai
 category: customer-stories
+faqs:
+  - question: "What is K-Collect?"
+    answer: "K-Collect is a SaaS web platform that helps K-pop fans track, manage, and share their collectible photo cards. It was founded by Ryan O'Connor and grew to over 50,000 users. The platform is built on Next.js with Appwrite handling the backend."
+  - question: "How did K-Collect reduce infrastructure costs with Appwrite?"
+    answer: "K-Collect's previous proprietary backend (with database replication and sharding) cost about £2000 per month and still hit bottlenecks. After switching to Appwrite, total infrastructure costs dropped to £200 to £300 per month, roughly a 700% decrease, while tripling concurrent load capacity."
+  - question: "Which Appwrite products does K-Collect use?"
+    answer: "K-Collect uses [Appwrite Auth](/docs/products/auth) for user identity, [Appwrite Databases](/docs/products/databases) for album, artist, and photo card metadata, [Appwrite Storage](/docs/products/storage) for the photo card images, and [Appwrite Functions](/docs/products/functions) for third-party integrations like sending emails."
+  - question: "Why did K-Collect move from native mobile apps to a web platform?"
+    answer: "The founder is a web developer by background. The native mobile stack created problems with state management, cache invalidation, and backend scaling. Moving to a Next.js web platform unified the codebase in JavaScript and aligned with his existing skills, which sped up shipping new features."
+  - question: "Why did K-Collect choose Appwrite over Firebase?"
+    answer: "Firebase's pricing scaled poorly for a pre-revenue product, and the lack of transparency in the underlying code was a concern. Appwrite is open source, has predictable pricing, and offers consistent SDKs across web and Node.js, which made the migration straightforward."
+  - question: "Can Appwrite handle high-traffic apps like K-Collect?"
+    answer: "Yes. K-Collect serves around 3.5TB of bandwidth and 28 million requests per month on Appwrite Cloud across more than 50,000 users. Appwrite handles authentication, storage, databases, and functions at that scale without the team needing to manage servers themselves."
 ---
 
 In 2019, Ryan O’Connor was a mere university student when he started exploring the world of Korean popular music, or K-pop. One of the areas within the K-pop fan ecosystem that caught his interest was the concept of photo cards. For those new to the K-pop community, K-pop photo cards are artist-specific collectible cards that are possessed and traded similarly to sports or Pokemon trading cards. These photo cards are produced and distributed by K-pop record labels and have developed a substantial interest and following over the last few years. 

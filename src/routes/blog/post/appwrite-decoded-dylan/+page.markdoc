@@ -7,6 +7,17 @@ timeToRead: 8
 date: 2024-06-04
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Dylan Graham at Appwrite?"
+    answer: "Dylan is the operations and finance lead at Appwrite. He moved from a background in safety operations and other non-tech fields into ops at Appwrite, where he runs internal logistics, finance, and the planning behind the team's offsites."
+  - question: "What does an operations lead do at a remote-first company?"
+    answer: "Operations covers the non-product side of the business: legal paperwork, contracts, travel, team offsites, swag, and the small workflows that keep a distributed team running. Dylan's role focuses on making those processes simpler so the rest of the team can focus on product work."
+  - question: "What are Appwrite Camps?"
+    answer: "Camps are Appwrite's twice-a-year team gatherings, where the globally distributed team meets in person to plan, ship work together, and spend time as a team. Camp 3.0 in New York is one Dylan calls out as a personal favorite in the post."
+  - question: "What is the work culture like at Appwrite?"
+    answer: "Dylan describes it as laid-back but focused: collaboration, inspiration, and fun. The team works hard and ships fast, while still making space for personal time and supporting each other when the workload spikes."
+  - question: "How does Appwrite support remote work?"
+    answer: "Appwrite is fully remote, with team members across many time zones, supported by twice-a-year in-person camps. Dylan's tip is to treat communication tools like Slack and Discord as your virtual office and to keep conversations flowing so remote work feels less isolated."
 ---
 The team behind Appwrite is spread across the globe and works together daily in different time zones. We’re proud of the remote and open-source culture the team has built so far. In Appwrite Decoded, we introduce the people behind the code and celebrate them.
 

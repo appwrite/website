@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: tutorial
 featured: false
+faqs:
+  - question: "Why is screenshot automation harder than it looks?"
+    answer: "Modern pages render differently based on device size, locale, auth state, async data, and feature flags. The same URL can produce wildly different output depending on when and where it is rendered, and headless browsers are timing-sensitive. The hard part is not capturing an image, it is getting a reproducible image."
+  - question: "When does a managed screenshot API beat running my own headless browsers?"
+    answer: "When you generate screenshots frequently, need consistent output across environments, support multiple regions or locales, or run captures in CI or scheduled jobs. Owning the browser fleet means absorbing breakage from browser updates, scaling concurrency, and debugging flaky CI failures. A managed API offloads all of that."
+  - question: "What does the Appwrite Screenshots API do?"
+    answer: "It renders webpages to images on Appwrite's infrastructure and returns the result. You call the endpoint with a URL and rendering options (viewport, format, quality), and Appwrite handles the browser, the queueing, and the scaling. You can store the resulting image in [Appwrite Storage](/docs/products/storage) for reuse."
+  - question: "Can I capture full-page screenshots, not just the visible viewport?"
+    answer: "Yes. Most screenshot APIs (Appwrite included) let you choose between a viewport-sized capture and a full-page capture that scrolls the page to render everything. Full-page is useful for visual regression testing and archival, viewport is enough for link previews."
+  - question: "How do I keep screenshots from being regenerated on every request?"
+    answer: "Cache them. Store generated screenshots in object storage, keep a mapping from URL (or URL plus options) to file ID in a database, and serve the stored file on cache hits. Add a TTL so screenshots refresh when the underlying page changes meaningfully, but do not pay the rendering cost on every read."
+  - question: "What about pages behind auth or with dynamic content?"
+    answer: "For auth-protected pages, you typically need to inject cookies or run the capture from a service that can sign in. For dynamic content, configure the capture to wait for a specific selector or for `DOMContentLoaded` plus a small idle window before snapping the image, so async content has rendered."
 ---
 
 Automating screenshots sounds simple. Render a webpage. Capture an image. Done.

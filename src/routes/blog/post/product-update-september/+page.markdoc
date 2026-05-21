@@ -7,6 +7,17 @@ cover: /images/blog/product-update-september/cover.avif
 timeToRead: 5
 author: dennis-ivy
 category: product
+faqs:
+  - question: "What roles are available in the Appwrite Console?"
+    answer: "In addition to the owner role, you can assign Developer, Editor, Analyst, and Billing roles to team members on the Pro and Scale plans. Each role limits what a member can see and change inside the Console, so you can grant access without handing over full control."
+  - question: "What is CCPA compliance and why does it matter for Appwrite users?"
+    answer: "CCPA is a California privacy law that gives consumers rights over how their personal data is collected and used. Appwrite being CCPA compliant means the platform meets those requirements, which makes it easier for you to satisfy your own obligations to California users."
+  - question: "What landed in Appwrite 1.6 for self-hosted?"
+    answer: "Self-hosted 1.6 includes local development tooling, the new Appwrite CLI, binary executions, dynamic keys, delayed executions, the Go SDK and runtime, and session alerts. These are the same features that shipped on Cloud during Init."
+  - question: "Can I update existing collection attribute names and sizes in Appwrite?"
+    answer: "Yes. You can rename an attribute or change its size directly from the Console without recreating the attribute or running a manual migration. This makes schema iteration much less painful."
+  - question: "What was the 1.5.11 security patch about?"
+    answer: "An issue in open-runtimes/executor caused error stack traces to leak into build and execution logs. Cloud was patched and affected keys were rotated by the team, and self-hosted users should upgrade to 1.5.11 to apply the fix."
 ---
 Right after Init, we hit the ground running with a busy month. We introduced the new **Roles** feature, announced **CCPA compliance**, and kicked off the **Appwrite** **Hacktoberfest Hackathon.**
 

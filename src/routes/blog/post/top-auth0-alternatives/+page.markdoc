@@ -10,6 +10,19 @@ category: tutorial
 featured: false
 callToAction: true
 unlisted: true
+faqs:
+  - question: "Why look for an Auth0 alternative?"
+    answer: "Teams usually look for Auth0 alternatives because of rising costs as user counts scale, limited flexibility on auth flows, vendor lock-in, or a desire to combine auth with other backend services in one platform. Alternatives can offer better pricing tiers, self-hosting options, or tighter integration with the rest of your stack."
+  - question: "Is Appwrite a good Auth0 alternative?"
+    answer: "Yes, especially if you also want backend services beyond auth. [Appwrite Auth](/docs/products/auth) supports 30+ login methods including email/password, OAuth, magic URLs, phone OTP, MFA, and teams. It can be used on Appwrite Cloud or fully self-hosted, and integrates with [Databases](/docs/products/databases), [Functions](/docs/products/functions), and [Storage](/docs/products/storage)."
+  - question: "Does Appwrite Auth have a free plan?"
+    answer: "Yes. Appwrite Cloud has a free plan with up to 75,000 monthly active users. You can also self-host Appwrite for free under its open source license, which is useful if you want full data control or to run inside your own infrastructure."
+  - question: "What auth methods should I support in a modern app?"
+    answer: "At minimum, support email and password with strong password policies, plus at least one OAuth provider your users actually use. Add magic links or OTP for low-friction login, and offer MFA for sensitive accounts. The right mix depends on your audience, but covering passwordless and social login is now standard."
+  - question: "How do I migrate users away from Auth0?"
+    answer: "Most platforms support bulk user import from Auth0 exports, often preserving identifiers and password hashes where possible. You typically run the new system in parallel, migrate users in batches, and use a phased cutover. Always test password hash compatibility and OAuth provider configuration before flipping production traffic."
+  - question: "Should I self-host my auth system or use a managed service?"
+    answer: "Self-hosting gives you full data control and avoids per-user pricing, but you take on operational responsibility for uptime, security patches, and scaling. Managed services trade some control for convenience. Open source platforms like Appwrite let you switch between the two without rewriting your app."
 ---
 
 With AI tools, APIs, and open-source platforms accelerating development like never before, building full-stack applications is no longer reserved for large teams. Developers today can spin up powerful, production-ready apps in days or sometimes even hours. But with this ease and speed comes an often overlooked trade-off: security.

@@ -8,7 +8,19 @@ timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host a Next.js app for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that supports Next.js deployments with a global CDN, automatic SSL, and DDoS protection included. This is sufficient for most personal projects, side projects, and early stage products."
+  - question: "Does Appwrite Sites support Next.js SSR and ISR?"
+    answer: "Appwrite Sites supports both static Next.js builds and server rendered routes by combining the site with [Appwrite Functions](/docs/products/functions) for dynamic logic. Static generation and prerendered pages are served directly from the CDN, and API routes can be deployed as functions for full backend integration."
+  - question: "How do I deploy a Next.js project to Appwrite Sites?"
+    answer: "Connect your Git repository for automatic deploys on every push, run `appwrite deploy site` from the CLI, or upload your build folder manually in the console. The Git workflow is the most common because it builds and deploys on every commit. See [deploy from Git](/docs/products/sites/deploy-from-git) for details."
+  - question: "Can I use Appwrite as the backend for my Next.js app?"
+    answer: "Yes. Next.js apps can call [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) from both client components and server components. This lets you replace bespoke API routes with hosted Appwrite endpoints when it makes sense."
+  - question: "How does Appwrite Sites compare to Vercel for Next.js?"
+    answer: "Vercel is the original Next.js host with deep framework integration, but it can get expensive as traffic grows. Appwrite Sites offers a free tier, open source platform, and bundled backend services in one project, which can simplify your stack. Pick Appwrite if you want hosting plus backend without two separate vendors."
+  - question: "Does Appwrite Sites support custom domains and SSL for Next.js?"
+    answer: "Yes. You can attach a custom domain to any Appwrite Site and SSL certificates are issued automatically. There is no manual certificate setup."
 ---
 
 Next.js is widely adopted for building modern web applications due to its ability to handle server-side rendering (SSR), static site generation (SSG), and API routes efficiently. While deploying Next.js applications can be straightforward, finding a reliable and cost-effective hosting solution with built-in scalability and developer-friendly features can be challenging.

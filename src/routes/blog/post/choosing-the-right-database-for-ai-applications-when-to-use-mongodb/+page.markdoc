@@ -8,6 +8,19 @@ timeToRead: 5
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "When should I use MongoDB for an AI application?"
+    answer: "Use MongoDB when your data structure changes often, your data is unstructured or semi-structured (prompts, model outputs, embeddings), your write volume is high, or you need to iterate fast. The flexible document model means schema changes do not block product changes, which matters most for early-stage AI work."
+  - question: "When is a relational database better for AI workloads?"
+    answer: "Pick a relational database when your schema is stable and predictable, your queries involve complex joins across many tables, or you need strict ACID guarantees. Financial systems, compliance reporting, and structured analytics tend to land on SQL. Many production systems mix both: relational for the business layer, MongoDB for AI data."
+  - question: "Does Appwrite support MongoDB?"
+    answer: "Appwrite Databases now offers MongoDB as a database engine alongside its relational option. You get the same SDK, permissions, and realtime experience, with a document-shaped backend underneath. See [Appwrite Databases](/docs/products/databases) for details on how to choose an engine for a new database."
+  - question: "Do I need to manage MongoDB infrastructure to use it with Appwrite?"
+    answer: "No. When you select MongoDB as the engine in [Appwrite Databases](/docs/products/databases), Appwrite handles the underlying infrastructure, scaling, and backups. You interact with collections and documents through the same Appwrite SDK, so there is no separate connection string or driver to manage."
+  - question: "Can MongoDB store vector embeddings for RAG?"
+    answer: "Yes. MongoDB Atlas supports vector search with HNSW indexes, which means you can store embeddings alongside the original documents and query them with cosine or euclidean similarity. Storing vectors next to source data avoids the round-trip of a separate vector database for many retrieval-augmented generation workloads."
+  - question: "How does schema flexibility help an AI product iterate faster?"
+    answer: "Every model update or new feature tends to change what fields you want to store, for example adding a confidence score or a new evaluation metric. With a document model, new fields can be added without a migration, and old documents stay valid. That removes one of the most common bottlenecks in fast-moving AI teams."
 ---
 
 Not every AI project needs the same database. And picking the wrong one doesn't announce itself immediately, it shows up gradually, in slower iteration cycles, mounting migration overhead, and engineering time spent on database maintenance instead of actual AI work.

@@ -7,6 +7,19 @@ cover: /images/blog/function-template-whatsapp-vonage/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: integrations
+faqs:
+  - question: "What is an Appwrite Function template?"
+    answer: "Function templates are prebuilt Appwrite Functions you can install in your project with a few clicks. They cover common integrations like WhatsApp via Vonage, Discord notifications, and Stripe webhooks, so you do not have to write the boilerplate yourself. See [Appwrite Functions](/docs/products/functions) for the product overview."
+  - question: "Do I need a paid Vonage account to use this template?"
+    answer: "Not for testing. The Vonage Messages API Sandbox lets you send and receive WhatsApp messages on a test number for free. You only need a paid Vonage plan once you go to production with your own approved WhatsApp Business number."
+  - question: "How does the function receive incoming WhatsApp messages?"
+    answer: "Vonage forwards every inbound WhatsApp message to a webhook URL you configure. After deploying the function, you copy the domain from the Appwrite Function's Domains tab and paste it as the Inbound Webhook in Vonage's Messages API Sandbox. The function is then called every time a user sends a WhatsApp message."
+  - question: "How do I store WhatsApp environment variables securely?"
+    answer: "Configure the Vonage API key, secret, signature secret, and WhatsApp number as Appwrite Function environment variables. Appwrite encrypts them at rest and only injects them into the function runtime, so they never leak to the client. Never hardcode them in your function source."
+  - question: "Can I customize the auto reply behavior?"
+    answer: "Yes. The template is open source, so you can fork the generated GitHub repository and change the reply logic to call OpenAI, look up data in [Appwrite Databases](/docs/products/databases), or route messages to your support team. Push your changes and Appwrite redeploys automatically."
+  - question: "Can I use this approach for other messaging providers?"
+    answer: "Yes. The pattern of webhook in, function processes, response out works the same with Twilio, MessageBird, or any other SMS/WhatsApp provider. You only need to swap the SDK and webhook format. Appwrite also has [Messaging](/docs/products/messaging) for sending push, SMS, and email, which can complement an inbound function like this."
 ---
 
 Function templates are pre-built Appwrite Functions that can be integrated into your Appwrite project with just a few clicks. Using them, you can easily incorporate new features and integrations into your app without writing additional code or managing infrastructure.

@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is the difference between a startup incubator and an accelerator?"
+    answer: "Incubators focus on early stage founders who are still validating an idea or building an MVP, and they tend to run on flexible timelines with little or no investment. Accelerators are structured cohort programs (typically 3 to 6 months) for startups with early traction, and they usually offer seed investment in exchange for equity, ending in a demo day."
+  - question: "Do startup accelerators take equity?"
+    answer: "Most accelerators take equity, often around 6 to 7 percent, in exchange for a seed check that ranges from roughly $100k to $500k. A smaller number (such as MassChallenge) run zero-equity programs funded by grants and corporate sponsors. Always check the term sheet before applying."
+  - question: "How competitive are top accelerators like Y Combinator and Techstars?"
+    answer: "Acceptance rates at top tier programs are typically under 2 to 3 percent, with thousands of applications per batch. A clear problem statement, a working prototype, and signs of early demand (waitlist, revenue, or active users) make a stronger application than a polished deck alone."
+  - question: "Does Appwrite have a program for early stage startups?"
+    answer: "Yes. The Appwrite Startups program offers cloud credits, discounts, priority support, and access to the full Appwrite platform for eligible early stage companies. You can apply at appwrite.io/startups."
+  - question: "Should I join an accelerator before raising a seed round?"
+    answer: "If you need investor introductions, structured mentorship, or external validation, an accelerator can compress a year of learning into a few months. If you already have warm investor relationships and clear product market fit signals, the equity cost may not be worth it. Treat the decision like any other dilution event."
+  - question: "Can non US startups apply to US based accelerators?"
+    answer: "Most major US accelerators (Y Combinator, Techstars, 500 Global) actively recruit international founders, often providing visa support for the program duration. You will usually need to incorporate as a Delaware C-Corp before funding."
 ---
 
 Startups are built on bold ideas, but ideas alone aren’t enough. You need structure, speed, and support. That’s where incubators and accelerators step in. They help startups reduce guesswork, avoid early pitfalls, and get to market faster. Whether you’re validating a concept or chasing growth, these programs offer the infrastructure to move forward with confidence.

@@ -7,6 +7,19 @@ cover: /images/blog/deno-vs-bun-javascript-runtime/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "What is the difference between Deno and Bun?"
+    answer: "Deno is a secure-by-default runtime built on V8 (in Rust) with native TypeScript and a strict permission model. Bun is a performance-focused runtime built on JavaScriptCore (in Zig) with a fast package manager and bundler. Deno emphasizes security and TypeScript, Bun emphasizes raw speed."
+  - question: "Is Bun faster than Deno?"
+    answer: "For cold starts, HTTP throughput, and package installation, Bun is generally faster. But Deno is fast enough for most production workloads, and its performance is predictable under long-running conditions. If raw startup speed is critical (CLIs, edge functions), Bun wins; otherwise the gap is smaller than benchmarks suggest."
+  - question: "Should I use Deno or Bun with Appwrite?"
+    answer: "[Appwrite Functions](/docs/products/functions) supports both. Pick Deno for TypeScript-heavy work, security-sensitive code, or when you want built-in linting, formatting, and testing. Pick Bun (where supported in your runtime list) when you want the fastest startup for short-lived functions."
+  - question: "Do Deno and Bun both support npm packages?"
+    answer: "Yes. Both runtimes have npm compatibility. Deno uses npm: specifiers and improved CommonJS support in 2.0. Bun reads node_modules and is a drop-in replacement for npm in most cases. Most existing Node.js libraries work in both with minimal changes."
+  - question: "Which runtime has better TypeScript support?"
+    answer: "Deno treats TypeScript as a first-class citizen with native execution and optional type-checking via --check. Bun transpiles TypeScript fast but does not type-check natively. For strict TypeScript projects, Deno is the safer choice; for quick scripts, Bun's lightweight handling is fine."
+  - question: "Can I replace Node.js with Deno or Bun?"
+    answer: "For most server-side workloads, yes. Both runtimes implement enough of the Node.js API surface that many projects run without changes. The main caveats are native modules and obscure Node-specific APIs. Test your specific dependencies before migrating production code."
 ---
 
 JavaScript runtimes are evolving beyond Node.js, and this gives developers access to new tools designed for modern workflows, performance, and security. Two of the most talked-about options today are **Deno 2** and **Bun**.

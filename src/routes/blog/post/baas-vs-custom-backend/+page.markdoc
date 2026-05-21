@@ -7,6 +7,19 @@ timeToRead: 6
 date: 2024-06-20
 author: aditya-oberai
 category: product
+faqs:
+  - question: "What is a BaaS (Backend-as-a-Service)?"
+    answer: "A BaaS is a third-party platform that handles common backend operations like authentication, databases, file storage, push notifications, and hosting. You skip building these from scratch and focus on the app-specific logic that actually differentiates your project."
+  - question: "When should a freelancer pick a BaaS over a custom backend?"
+    answer: "Pick a BaaS when you build similar features (auth, CRUD, storage) across many client projects, when speed-to-launch matters, and when you don't want to maintain custom backend code per client. Pick custom only when client requirements truly can't be met by a BaaS feature set."
+  - question: "Does using a BaaS lock me in?"
+    answer: "It depends on the vendor. Open-source platforms like Appwrite let you self-host the same backend if you ever need to leave the managed cloud, and your SDK code keeps working. Closed BaaS providers can be harder to escape, so check portability before you commit."
+  - question: "What does Appwrite include out of the box?"
+    answer: "[Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites) hosting, all in one open-source platform. You can use Appwrite Cloud or self-host."
+  - question: "Can I integrate my own database with a BaaS?"
+    answer: "With Appwrite, yes. You can keep using Appwrite for auth, storage, and functions while connecting to an external SQL, NoSQL, vector, or graph database from inside an Appwrite Function. This avoids the all-or-nothing tradeoff some BaaS platforms force on you."
+  - question: "Is BaaS more cost-effective than building a custom backend?"
+    answer: "For most freelancers, yes. You skip the cost of server provisioning, security audits, and ongoing maintenance, and you trade it for a predictable subscription. The break-even point favors BaaS for small-to-medium projects, which is most freelance work."
 ---
 
 As a freelance developer, you juggle multiple roles – project manager, designer, coder, and even a bit of a salesperson. The job is not for the faint of heart. Add to that the need to build, scale and maintain complex backends for each client, and now your day-to-day is taken over by time-consuming, grinding tasks.

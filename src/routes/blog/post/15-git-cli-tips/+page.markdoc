@@ -9,6 +9,19 @@ author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "Is it worth learning the Git CLI if I already use a Git GUI?"
+    answer: "Yes. GUIs are fine for everyday commits, but the moment something goes wrong (merge conflicts, detached HEAD, lost commits), the CLI is where the answers live. Most online help, scripts, and CI configs assume CLI knowledge, so learning the basics pays off quickly."
+  - question: "What is the difference between git add and git commit?"
+    answer: "`git add` stages changes (tells Git which modifications to include in the next commit), while `git commit` actually records the staged snapshot to your local history. Staging gives you the chance to group related changes together and exclude work in progress. You can also stage parts of a file with `git add -p`."
+  - question: "How do I undo my last commit without losing the changes?"
+    answer: "Run `git reset --soft HEAD~1`. That moves the branch pointer back one commit but keeps all your changes staged so you can re-commit them. Use `--mixed` (the default) to unstage too, or `--hard` to discard the changes entirely (only when you are sure)."
+  - question: "What does git stash do?"
+    answer: "`git stash` saves your uncommitted changes onto a hidden stack and reverts your working directory to a clean state. You can then switch branches, pull, or rebase, and reapply your work later with `git stash pop`. It is handy when you need to quickly jump to another task without committing half-finished work."
+  - question: "How do git fetch and git pull differ?"
+    answer: "`git fetch` downloads new commits from the remote but does not change your working branch, so you can inspect them before merging. `git pull` is `git fetch` plus an immediate merge (or rebase, with `--rebase`) into your current branch. Fetch is safer when you are not sure what changed upstream."
+  - question: "Can I use Git to deploy Appwrite Functions?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) support Git integration so a push to a configured branch triggers a new deployment automatically. You connect a GitHub repo to your function, choose a branch and root directory, and every commit there builds and ships a new version."
 ---
 
 While the command line interface can seem intimidating on the surface, it's actually a very useful tool that gives you control over your code in ways that GUIs often don't. If you can get comfortable with even a few git commands, you'll find yourself being more productive.

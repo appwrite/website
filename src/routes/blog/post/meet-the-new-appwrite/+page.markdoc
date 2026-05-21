@@ -8,6 +8,17 @@ timeToRead: 5
 author: sara-kaandorp
 category: design, brand
 featured: false
+faqs:
+  - question: "What changed in the Appwrite rebrand?"
+    answer: "Appwrite refreshed its logo, color palette, website, and documentation experience. The new logo features a globe and code lines forming the letter 'a' to reflect the global open source community. The visual identity introduces warmer tones and a glass element that ties back to Appwrite's transparency and open source values."
+  - question: "Why did Appwrite rebrand?"
+    answer: "As the team and product matured, the original 2019 visual identity no longer matched the polish of the platform. The rebrand aligns the brand with the broader Appwrite experience across console, docs, and website. It also gives the community a more inclusive set of visuals to rally around."
+  - question: "Is Appwrite still open source after the rebrand?"
+    answer: "Yes, Appwrite is still fully open source and the rebrand does not affect product licensing or availability. The visual refresh applies to brand assets, the website, and the documentation experience. The codebase, contribution model, and self hosting options remain unchanged."
+  - question: "Did the rebrand change anything in the documentation?"
+    answer: "Yes, the docs were revamped alongside the website with updated design and improved content structure. New step by step tutorials were added to guide developers through project setup and feature implementation. The goal was to make documentation more useful at every stage of the developer journey."
+  - question: "Where can I find the new Appwrite brand assets?"
+    answer: "Brand assets are available through the Appwrite website footer under the brand or press section. The team also publishes guidance on logo usage, color palette, and visual elements. If you are referencing Appwrite in a project, use the latest assets for consistency."
 ---
 
 At Appwrite, we are constantly collaborating with the Appwrite community to improve Appwrite's products, services, and content. All for the sake of improving your developer experience, as well as staying true to the open-source values.

@@ -9,6 +9,17 @@ author: sara-kaandorp
 category: design
 featured: false
 callToAction: true
+faqs:
+  - question: "Why did Appwrite redesign its homepage?"
+    answer: "Appwrite has grown from a Backend-as-a-Service into an all-in-one open-source development platform that also includes hosting through [Sites](/docs/products/sites). The old homepage no longer reflected the full scope of the product, so the team redesigned it to clarify positioning and messaging."
+  - question: "How did the team measure the old homepage?"
+    answer: "They started with a qualitative survey of 50 respondents who matched the target audience but were new to Appwrite. The goal was to capture fresh first impressions rather than reactions from existing community members."
+  - question: "What did the user research uncover?"
+    answer: "People liked the clean visuals and structure, but the messaging was confusing. Some respondents thought Appwrite was a DevOps tool, others a CMS, others a Firebase clone, which validated the team's suspicion that the story was not landing."
+  - question: "What changed in the redesign?"
+    answer: "The team simplified the messaging, added visual components that summarize the offering at a glance, repositioned Appwrite as a complete platform with [Sites](/docs/products/sites), and chose testimonials with concrete metrics. They also reworked animations and microinteractions to feel less intrusive."
+  - question: "How does Appwrite design pages for different reading behaviors?"
+    answer: "The redesign supports both scanners and deep readers. There are summary components that give a fast impression of the platform, and longer sections for visitors who want to scroll through the details. This is grounded in established UX research on how people read versus scan web pages."
 ---
 
 At Appwrite, we’ve grown from a Backend-as-a-Service into an open-source, all-in-one development platform. With the introduction of our newest product, Sites, we expanded our offering beyond backend services to include hosting. This shift meant our homepage needed to do more, it had to communicate the full breadth of what Appwrite now offers.

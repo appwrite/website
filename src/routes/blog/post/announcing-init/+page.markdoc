@@ -8,6 +8,19 @@ timeToRead: 4
 author: eldad-fux
 category: init, announcement, product
 featured: false
+faqs:
+  - question: "What is Appwrite Init?"
+    answer: "Init is an Appwrite event week where new products and features are launched daily, accompanied by online sessions on Discord with community guests. It's part product showcase, part developer hangout. The first Init ran from February 26 to March 1, 2024."
+  - question: "How do I claim my Init ticket?"
+    answer: "Register on the Init page on appwrite.io. Your ticket shows your unique GitHub contribution grid, and Appwrite contributors get a special edition variant. The ticket also enters you into a raffle for limited-edition Init swag."
+  - question: "What kinds of announcements happen during Init?"
+    answer: "Each day of Init unveils a new Appwrite product or feature, ranging from new runtimes and SDKs to platform features across [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Messaging](/docs/products/messaging), and more. Online sessions then walk through how to use what was announced."
+  - question: "Where do I join the Init events?"
+    answer: "The events are hosted on the [Appwrite Discord](https://discord.gg/appwrite), with RSVP links shared in the announcement. The closing party also happens on Discord on the final day. Joining the Appwrite Discord is the easiest way to get reminders."
+  - question: "Do I need an Appwrite account to participate in Init?"
+    answer: "You don't need an Appwrite account to register a ticket or join the Discord sessions, but signing up gives you a richer ticket variant and lets you try the new features as they're announced. Sign up at appwrite.io to follow along during the week."
+  - question: "Is Init free to attend?"
+    answer: "Yes, Init is a free, open online event. All the sessions, announcements, and content are available to anyone who claims a ticket or joins the [Appwrite Discord](https://discord.gg/appwrite)."
 ---
 
 We are very excited to announce Init.

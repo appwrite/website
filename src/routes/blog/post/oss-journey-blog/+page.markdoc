@@ -7,6 +7,19 @@ cover: /images/blog/Blog-cover-oss-journey.avif
 timeToRead: 10
 author: laura-du-ry
 category: open-source
+faqs:
+  - question: "When did Appwrite become open source?"
+    answer: "Appwrite started as an open source project in 2019, with the first pull request opened in August of that year. It went public soon after with a viral Hacker News launch and has been open source ever since."
+  - question: "What is the Appwrite OSS Program?"
+    answer: "The OSS Program lets verified open source maintainers use Appwrite Pro resources free of charge. It is Appwrite's way of giving back to the community that helped the project grow."
+  - question: "How can I apply for the Appwrite OSS Program?"
+    answer: "Eligible maintainers can apply through the [Appwrite Discord](https://appwrite.io/discord) and announcement blog. The team reviews each application to make sure the project is genuinely open source and actively maintained."
+  - question: "Did Appwrite hire from the open source community?"
+    answer: "Yes. Many of Appwrite's earliest engineers, including the founding engineering team, started as open source contributors. The company still actively hires from the community today."
+  - question: "Is Appwrite still open source after launching paid plans?"
+    answer: "Yes. The core Appwrite server is open source under the BSD-3-Clause license and remains free to self-host. Appwrite Cloud and Pro are commercial offerings that fund continued development of the open source project."
+  - question: "How can I contribute to Appwrite as a developer?"
+    answer: "You can contribute code, documentation, translations, or templates through the [Appwrite GitHub organization](https://github.com/appwrite). You can also help by participating in Discord, sharing tutorials, or featuring your project on Built With Appwrite."
 ---
 
 With the release of [Appwrite Pro](https://appwrite.io/blog/post/announcing-appwrite-pro), we reached another milestone. A new development in our product offering that allows you to build with more confidence.

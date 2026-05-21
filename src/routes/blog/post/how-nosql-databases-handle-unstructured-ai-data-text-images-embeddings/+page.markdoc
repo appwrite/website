@@ -8,6 +8,19 @@ timeToRead: 5
 author: atharva
 category: product
 featured: false
+faqs:
+  - question: "Why are NoSQL databases better for AI applications than relational ones?"
+    answer: "AI workloads produce nested, variable-shape data: prompts, responses, embeddings, token counts, tool calls, and metadata that all evolve as the model and product change. Document-based NoSQL stores this as-is without schema changes, while relational databases require migrations every time the shape shifts."
+  - question: "Where should image and file binaries actually live?"
+    answer: "Store the binaries themselves in object storage (like [Appwrite Storage](/docs/products/storage) or S3) and keep the metadata, processing status, AI-generated descriptions, and references in the database. NoSQL handles the variable metadata shape cleanly while object storage handles the bulk bytes efficiently."
+  - question: "Can NoSQL databases store vector embeddings?"
+    answer: "Yes. NoSQL document databases can store embeddings alongside the metadata they need to be useful (source document, permissions, content type, timestamps). Keeping them in the same document avoids joins at retrieval time and keeps filters fast as the embedding count grows."
+  - question: "Does Appwrite support MongoDB?"
+    answer: "Yes, Appwrite's self-hosted version supports MongoDB natively. You can configure your self-hosted Appwrite instance to use MongoDB instead of the default database. See the [self-hosted MongoDB integration guide](/integrations/self-hosted-mongodb) for setup steps."
+  - question: "Do I lose anything by choosing NoSQL over a relational database?"
+    answer: "You lose strict referential integrity, traditional foreign-key joins, and some kinds of multi-table transactions. For AI pipelines this trade is usually worth it, since the data is naturally denormalized and most reads are single-document fetches. For heavily relational domains (accounting, inventory), a relational database is often the better fit."
+  - question: "What does an AI backend need beyond a database?"
+    answer: "Production AI apps also need file storage for documents and images, auth and access control for permissioned data, and functions or webhooks for asynchronous pipelines. Bundling these together (as Appwrite does) saves the work of assembling separate auth, storage, and compute services around the database."
 ---
 
 Most AI systems have a data problem that isn't about the model. It's about everything the model touches, the prompts going in, the outputs coming out, the embeddings powering retrieval, and the metadata tying it all together. None of this fits neatly into rows and columns. That's the core reason NoSQL for unstructured data is growingly becoming the standard in production AI systems.

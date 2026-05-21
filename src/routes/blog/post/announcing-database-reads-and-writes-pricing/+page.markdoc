@@ -9,6 +9,19 @@ author: eldad-fux
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "How does Appwrite count database read and write operations?"
+    answer: "Most operations are counted by the number of documents affected, not the number of API calls. Fetching a collection of 50 documents in one call counts as 50 read operations. A query that returns no documents counts as a single operation. Writes are counted per document on create, update, and delete."
+  - question: "What's included in the free database operation quota?"
+    answer: "The Free plan includes 500,000 read operations and 250,000 write operations per month. The Pro and Scale plans include 1,750,000 reads and 750,000 writes monthly. Operations beyond the included quota are billed at $0.060 per 100,000 reads and $0.10 per 100,000 writes. See the [pricing page](/pricing) for details."
+  - question: "How can I reduce my database operation usage?"
+    answer: "Filter data server-side instead of fetching large datasets and filtering on the client. Use the `limit` and `offset` parameters to paginate so you only retrieve what you need. Cache frequently accessed data in your app or CDN, and monitor usage in the [Appwrite Console](/docs/products/databases) to spot inefficient query patterns."
+  - question: "Where can I see my current database operation usage?"
+    answer: "You can review usage in your organization's usage page or in the usage section of a specific database. This shows reads and writes over time, broken down so you can identify which collections or workloads drive the most operations. Use this data to plan ahead before crossing the included quota."
+  - question: "Does the pricing apply to self-hosted Appwrite?"
+    answer: "No, the read and write operation pricing applies only to [Appwrite Cloud](/pricing). Self-hosted Appwrite has no per-operation billing because you provide the infrastructure. The same database APIs work in both, so you can develop locally on self-hosted and deploy to Cloud without code changes."
+  - question: "Why is Appwrite charging for database operations now?"
+    answer: "Database operations require significant computational resources: concurrent operations, consistency guarantees, indexing, high availability, and backups. Charging beyond the included quotas makes the platform sustainable and aligns each project's bill with its actual usage. Projects that run millions of operations are charged differently than those running thousands."
 ---
 
 Database operations are the backbone of modern applications, enabling you to store, retrieve, and manipulate data efficiently. With Appwrite Databases, you can perform powerful queries, create complex data structures, and build real-time applications that respond instantly to changes. Appwrite’s database capabilities have been designed to be both powerful and intuitive, making it easier for you to focus on building great applications rather than managing infrastructure.

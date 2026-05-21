@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What is encryption at rest and why does it matter?"
+    answer: "Encryption at rest means data is encrypted on disk when stored, so an attacker who gains access to the underlying database files still can't read the raw values. It matters for fintech, healthcare, messaging, and any app handling personal or regulated data. It's a baseline requirement for many compliance frameworks."
+  - question: "How do I encrypt a string attribute in Appwrite?"
+    answer: "Mark the string attribute as encrypted when you create it in your [Appwrite Databases](/docs/products/databases) collection. From that point, Appwrite encrypts the value before writing it to disk and decrypts it transparently when you read it. Your client code stays exactly the same."
+  - question: "What encryption algorithm does Appwrite use for encrypted attributes?"
+    answer: "Appwrite uses AES-128 in Galois/Counter Mode (GCM), an industry-standard authenticated encryption algorithm. The encryption is applied server-side before the value reaches the database, and Appwrite manages keys for you. Deployments that require FIPS-compliant environments are also supported."
+  - question: "Can I query or filter on encrypted string attributes?"
+    answer: "No, encrypted attributes can't be queried or used in filters. Encryption is intentionally one-way for queries to prevent leaking sensitive information through search patterns. If you need to look up records by a sensitive value, store a separate hashed or tokenized field for lookups."
+  - question: "Do I need to manage encryption keys myself?"
+    answer: "No, [Appwrite](/docs/advanced/security) handles key management transparently. You don't generate, store, or rotate keys yourself, which removes a common source of implementation errors. The clients see encrypted fields as regular strings."
+  - question: "Is encrypted string attribute support available on the Free plan?"
+    answer: "Encrypted string attributes are available on Appwrite Cloud's Pro and Scale plans, plus all self-hosted deployments. If you're on the Free plan, you'd need to upgrade or self-host to use this feature."
 ---
 Appwrite is secure by default. We build every single product and feature with the highest regard for security. 
 

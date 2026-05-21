@@ -8,6 +8,19 @@ timeToRead: 9
 author: matej-baco
 category: product
 featured: false
+faqs:
+  - question: "Can I use an external database with Appwrite?"
+    answer: "Yes. The pattern in this post connects to an external database (SQL, NoSQL, vector, or graph) from inside an [Appwrite Function](/docs/products/functions). Your client app talks to the function, and the function talks to the external database, which keeps credentials and connection pooling on the server."
+  - question: "When should I pick Appwrite Databases over an external database?"
+    answer: "Use [Appwrite Databases](/docs/products/databases) when you want tight integration with Appwrite Auth permissions, real time updates, and zero extra setup. Reach for an external database when you need a specialty engine (vector, graph, time series, full text search) or you already have data living elsewhere."
+  - question: "What is a vector database?"
+    answer: "A vector database stores high dimensional embeddings and supports nearest neighbor search. It's the backbone of semantic search, retrieval augmented generation, and recommendation systems where you compare items by similarity instead of exact matches."
+  - question: "What is a graph database?"
+    answer: "A graph database models data as nodes and relationships, with edges as first class citizens. It is the right choice when the questions you ask are mostly about traversals (friends of friends, fraud rings, dependency chains) rather than row by row reads."
+  - question: "How do I connect to a database from an Appwrite Function?"
+    answer: "Add the database client as a dependency in your function, read the connection details from environment variables, and open the connection once at the top of the file so it survives between executions. The function code then exposes a simple HTTP interface to your client app."
+  - question: "Is it safe to expose database connection strings to client apps?"
+    answer: "No. Connection strings and credentials should only live on the server. Use an Appwrite Function or your own backend as a proxy, and let the client only see the typed responses your API returns."
 ---
 
 # Integrate any database type into your Appwrite project

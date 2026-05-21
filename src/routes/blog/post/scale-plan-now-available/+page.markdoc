@@ -9,6 +9,17 @@ author: laura-du-ry
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is included in the Appwrite Scale plan?"
+    answer: "The Scale plan starts at $599 per organization per month and includes everything in Pro plus priority support, a private Slack channel during business hours, custom organization roles, unlimited members, custom backup policies, compliance features (BAA, SOC 2, CCPA), and 28-day log retention."
+  - question: "Who is the Scale plan designed for?"
+    answer: "It is built for agencies, startups, scale-ups, and SMBs that have outgrown what Pro covers. The common pattern is larger teams working on sensitive or business-critical projects that need priority support and tighter compliance options."
+  - question: "How is the Scale plan different from Pro?"
+    answer: "Pro is meant for individuals and small teams building scalable apps. Scale layers on team controls, compliance features, longer log retention, and a direct support channel, which matters once you have multiple developers and customer commitments to honor."
+  - question: "Can I get a BAA or SOC 2 report with the Scale plan?"
+    answer: "Yes. The Scale plan includes BAA support for HIPAA workloads, SOC 2 coverage, and CCPA-aligned controls. These compliance features are gated to Scale because they require additional contracts and audits."
+  - question: "Do Scale customers get early access to new features?"
+    answer: "Yes. Scale customers receive priority consideration on feature requests and early access to new releases, alongside priority support. Pricing details and the latest feature list live on the [Appwrite pricing page](/pricing)."
 ---
 
 Over a year ago, we launched our pricing structure and introduced the Pro plan. Today, we’re excited to unveil the Scale plan. A new offering that provides more support and flexibility. This plan is specifically tailored for teams within agencies, startups, scale-ups, and SMBs, ensuring they have the tools and resources to drive their business forward.

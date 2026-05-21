@@ -8,6 +8,19 @@ timeToRead: 5
 author: eldad-fux
 category: announcement
 featured: false
+faqs:
+  - question: "What is the Appwrite Startups program?"
+    answer: "The Appwrite Startups program gives early-stage companies an Appwrite Scale subscription, Cloud credits, priority email support, a dedicated Discord channel, and access to a program manager. It is designed to reduce infrastructure cost and risk while your team is still finding product-market fit."
+  - question: "Who qualifies for the Appwrite Startups program?"
+    answer: "Your company must have been founded within the last decade, have a working website, and have more than one team member. The application is reviewed by the Appwrite team, and you can apply from the [Startups program page](/startups)."
+  - question: "What is Appwrite Scale?"
+    answer: "Scale is the tier above Appwrite Pro on [Appwrite Cloud](https://cloud.appwrite.io). It includes higher resource limits, multi-region options, and additional support features. Startups in the program get Scale for every developer they need to add to the team."
+  - question: "How much can I save with the Cloud credits?"
+    answer: "The credit amount is determined when you are accepted into the program, based on your stage and projected usage. The credits offset Cloud usage so you can build and scale without a meaningful infrastructure bill during the early months."
+  - question: "What kind of support do program members get?"
+    answer: "Program members get premium email support, a dedicated Discord channel with access to Appwrite's engineering team, and a program manager who coordinates resources and unblocks issues. This is in addition to the public [Discord community](https://appwrite.io/discord)."
+  - question: "How do I apply to the Appwrite Startups program?"
+    answer: "Visit the [Startups program page](/startups), submit the application form with your company details, and the Appwrite team will review it. If you have questions before applying, you can [reach out](/contact-us) directly."
 ---
 At Appwrite, we want to empower developers to build the future, and startups are at the forefront of innovation and shaping this future. Therefore, we’re excited to announce the launch of the Appwrite Startups program, a new program that supports startups on their journey. We’ve designed the program to fit the needs of Founders, CTOs, and engineering teams.
 

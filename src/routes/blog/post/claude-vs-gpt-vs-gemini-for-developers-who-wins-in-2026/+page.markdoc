@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: comparisons
 featured: false
+faqs:
+  - question: "Which AI coding assistant is best for developers in 2026?"
+    answer: "There is no single winner. Claude Opus 4.7 leads on SWE-bench Verified (64.3 percent) and tends to produce the strongest UI and backend code. GPT-5.5 has the deepest integration with existing tooling and is more thorough on reasoning modes. Gemini 3.1 Pro trails on benchmarks but is competitive on long-context and multimodal tasks. Pick based on the workload, not loyalty."
+  - question: "What does SWE-bench actually measure?"
+    answer: "SWE-bench measures how well a model can autonomously fix real GitHub issues in open-source repositories, given the repo state and the issue description. It is the closest standardized benchmark to real developer work, since the task is multi-file debugging rather than trivia. The Verified subset is a curated, higher-quality slice of the full benchmark."
+  - question: "When should I pick Claude over GPT or Gemini?"
+    answer: "Pick Claude when you need careful code review, accurate documentation, or strong UI generation. It is the most expensive of the three, but it tends to read the whole context before writing code if you feed it the full picture. For Appwrite work, especially auth flows and permission logic, Claude tends to catch edge cases the others miss."
+  - question: "When should I pick GPT over Claude or Gemini?"
+    answer: "Pick GPT when you are working inside an ecosystem already wired to OpenAI (Copilot, internal company tools, existing prompts) or when you want a model that pauses to ask clarifying questions on fuzzy requirements. The tradeoff is that GPT in reasoning mode is slower and its UI code can look generic."
+  - question: "When should I pick Gemini over Claude or GPT?"
+    answer: "Pick Gemini when your task is multimodal-heavy (large images, video, mixed media) or you need very long context windows at a lower cost. It trails Claude on coding benchmarks but its multimodal handling is strong and the pricing is competitive for high-volume work."
+  - question: "Does the choice of AI assistant affect how I build with Appwrite?"
+    answer: "Not directly, all three can call the [Appwrite SDKs](/docs) and read the docs. The practical difference is in code quality: for auth, permissions, and database design, you want a model that actually reads the docs you point it at and respects the patterns Appwrite recommends. Claude tends to do this best, but a well-structured prompt closes the gap for all three."
 ---
 
 You've got three browser tabs open. One with Claude. One with GPT. One with Gemini. You paste the same prompt into all three, squint at the outputs, and pick the one that looks least wrong.
