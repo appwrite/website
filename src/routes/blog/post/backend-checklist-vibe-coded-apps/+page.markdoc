@@ -8,6 +8,7 @@ timeToRead: 9
 author: atharva
 unlisted: true
 category: best-practices
+lastUpdated: 2026-05-20
 faqs:
   - question: "What is vibe coding and why does it need a backend checklist?"
     answer: "Vibe coding is the workflow of describing a product to an AI builder like Lovable, Bolt, v0, Cursor, Claude Code, Replit, or Windsurf and letting it scaffold the UI, data layer, and integrations. The output is demo-ready, not launch-ready. A pre-launch backend review catches the predictable failure modes: open table permissions, secrets in client bundles, missing indexes, no logs, and preview URLs that were never replaced with a custom domain."
@@ -49,6 +50,7 @@ Auth is where most vibe-coded apps leak first. The UI looks finished and the sig
 - Test the password recovery flow end to end on a working inbox, not the AI builder's preview mailer.
 - If you use OAuth, register production callback URLs and remove any dev URLs from the provider config.
 - Rate limit signup, login, and password reset endpoints so nobody can brute force them.
+- Block sign-ups from free, aliased, or disposable email providers if your product depends on real business addresses. Appwrite supports this through [email policies](/docs/products/auth/email-policies).
 - Remove any test accounts your AI tool created during prototyping.
 
 # Permissions
