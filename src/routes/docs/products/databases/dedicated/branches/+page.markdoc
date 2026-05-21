@@ -691,6 +691,7 @@ jobs:
           curl -X POST \
             -H "X-Appwrite-Project: $PROJECT_ID" \
             -H "X-Appwrite-Key: $API_KEY" \
+            -H "Content-Type: application/json" \
             -d '{ "branchId": "pr-${{ github.event.number }}", "name": "PR #${{ github.event.number }}" }' \
             https://fra.cloud.appwrite.io/v1/compute/databases/$DB_ID/branches || true
 
