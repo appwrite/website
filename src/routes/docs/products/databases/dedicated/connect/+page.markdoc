@@ -58,10 +58,10 @@ mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.n
 
 # Rotate the primary password {% #rotate %}
 
-The credentials endpoint also accepts `POST` to issue a new password for the primary user. The change is applied atomically in the underlying engine and the stored credential is updated in the same call. Existing sessions remain alive until the engine's idle timeout, then have to authenticate with the new password.
+The credentials endpoint also accepts `PATCH` to issue a new password for the primary user. The change is applied atomically in the underlying engine and the stored credential is updated in the same call. Existing sessions remain alive until the engine's idle timeout, then have to authenticate with the new password.
 
 ```bash
-curl -X POST \
+curl -X PATCH \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/credentials
