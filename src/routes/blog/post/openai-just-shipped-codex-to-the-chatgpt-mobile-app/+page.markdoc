@@ -28,15 +28,11 @@ If you have been running Codex as "a chat box that writes code," the second half
 
 Five things shipped, and the boundaries between them matter.
 
-**Mobile access is now in preview on iOS and Android** through the ChatGPT app, across all plans including Free and Go. Before this release, Codex workflows were still primarily tied to desktop and IDE environments.
-
-**Remote SSH is generally available.** The desktop app auto detects hosts from your SSH config and lets you create projects and run threads inside remote machines just like you would locally. Before this, remote environment workflows existed, but they were far less integrated and not officially streamlined inside the Codex app.
-
-**Programmatic access tokens** provide scoped credentials issued directly from ChatGPT workspace settings, so Codex can be called from CI pipelines, release workflows, and internal automations without a human session.
-
-**Hooks are generally available** and can be used to scan prompts for secrets, run validators, log conversations, create memories, or customize Codex behavior for specific repositories and directories.
-
-**HIPAA-compliant local use** is supported for eligible ChatGPT Enterprise workspaces when Codex is used in local environments across the CLI, IDE, and App.
+* **Mobile access is now in preview on iOS and Android** through the ChatGPT app, across all plans including Free and Go. Before this release, Codex workflows were still primarily tied to desktop and IDE environments.
+* **Remote SSH is generally available.** The desktop app auto detects hosts from your SSH config and lets you create projects and run threads inside remote machines just like you would locally. Before this, remote environment workflows existed, but they were far less integrated and not officially streamlined inside the Codex app.
+* **Programmatic access tokens** provide scoped credentials issued directly from ChatGPT workspace settings, so Codex can be called from CI pipelines, release workflows, and internal automations without a human session.
+* **Hooks are generally available** and can be used to scan prompts for secrets, run validators, log conversations, create memories, or customize Codex behavior for specific repositories and directories.
+* **HIPAA-compliant local use** is supported for eligible ChatGPT Enterprise workspaces when Codex is used in local environments across the CLI, IDE, and App.
 
 A few practical reads:
 
