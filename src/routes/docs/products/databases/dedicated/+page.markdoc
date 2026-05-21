@@ -31,7 +31,7 @@ A database is either **shared** or **dedicated**:
 
 | Type          | Lifecycle                                | Resources                       | Use case                  |
 |---------------|------------------------------------------|---------------------------------|---------------------------|
-| **Shared**    | Scales to zero after 15 minutes idle     | 125m CPU, 128 MB RAM, 1 GB disk | Development, low traffic  |
+| **Shared**    | Scales to zero after 15 minutes idle     | 0.125 CPU, 128 MB RAM, 1 GB disk | Development, low traffic  |
 | **Dedicated** | Always-on, with optional HA replicas     | Any specification               | Production workloads      |
 
 Shared databases are included with the Pro plan and use the **Free** specification. On the next connection after a spin-down, the database cold-starts in a few seconds — the underlying storage is preserved between spin-downs, so no data is lost.
@@ -95,7 +95,7 @@ The following per-database limits are enforced by the API:
 | Limit                          | Value                                                     |
 |--------------------------------|-----------------------------------------------------------|
 | Databases per project          | 10                                                        |
-| CPU range                      | 125m – 16000m                                             |
+| CPU range                      | 0.125 – 16 vCPU                                           |
 | Memory range                   | 128 MB – 64 GB                                            |
 | Storage range                  | 1 GB – 16 TB                                              |
 | High availability replicas     | 0 – 5                                                     |
