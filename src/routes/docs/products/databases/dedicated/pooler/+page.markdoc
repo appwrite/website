@@ -693,6 +693,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 curl -X PATCH \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
   -d '{ "readWriteSplitting": false }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pooler
 ```
