@@ -6,7 +6,7 @@ description: Run managed PostgreSQL, MySQL, MariaDB, and MongoDB databases on Ap
 
 Appwrite **Dedicated databases** lets you run managed PostgreSQL, MySQL, MariaDB, and MongoDB instances on Appwrite Cloud. You pick the engine and the compute size; Appwrite provisions a real database in your project's region, with its own storage, networking, and credentials, and exposes it to your application over the public internet or your own private network.
 
-Dedicated databases are different from the [Appwrite Databases](/docs/products/databases) document store. Where the document store gives you a curated `TablesDB` API with rows, queries, and SDK helpers, dedicated databases give you the raw engine — you connect with `psql`, `mysql`, `mongosh`, or any driver of your choice and use the full feature set of the underlying database.
+Dedicated databases are different from the [Appwrite Databases](/docs/products/databases) document store. Where the document store gives you a curated `TablesDB` API with rows, queries, and SDK helpers, dedicated databases give you the raw engine, you connect with `psql`, `mysql`, `mongosh`, or any driver of your choice and use the full feature set of the underlying database.
 
 {% info title="Looking for the document store?" %}
 If you want to query data through Appwrite SDKs with rows, columns, and built-in permissions, you want [Appwrite Databases](/docs/products/databases). Dedicated databases are for teams who want a managed PostgreSQL, MySQL, MariaDB, or MongoDB engine they can talk to directly with their own ORM, migrations, and drivers.
@@ -23,7 +23,7 @@ Appwrite manages the database container, storage, backups, and networking. You b
 | MariaDB    | 11.4            | 10.11                    | 3306         |
 | MongoDB    | 8.0             | 7.0                      | 27017        |
 
-Version is selected on create and can be changed later via the upgrade endpoint. Upgrades run online — a second instance is provisioned on the new version, data is streamed over with engine-native logical replication, and traffic cuts over once replication is caught up. There are no read or write outages during the upgrade, and no manual dump-and-restore.
+Version is selected on create and can be changed later via the upgrade endpoint. Upgrades run online, a second instance is provisioned on the new version, data is streamed over with engine-native logical replication, and traffic cuts over once replication is caught up. There are no read or write outages during the upgrade, and no manual dump-and-restore.
 
 # Database types {% #types %}
 
@@ -34,13 +34,13 @@ A database is either **shared** or **dedicated**:
 | **Shared**    | Scales to zero after 15 minutes idle     | 0.125 CPU, 128 MB RAM, 1 GB disk | Development, low traffic  |
 | **Dedicated** | Always-on, with optional HA replicas     | Any specification               | Production workloads      |
 
-Shared databases are included with the Pro plan and use the **Free** specification. On the next connection after a spin-down, the database cold-starts in a few seconds — the underlying storage is preserved between spin-downs, so no data is lost.
+Shared databases are included with the Pro plan and use the **Free** specification. On the next connection after a spin-down, the database cold-starts in a few seconds, the underlying storage is preserved between spin-downs, so no data is lost.
 
 Dedicated databases are billed per hour against one of eight paid specifications and never spin down. They also unlock features that the shared specification does not have access to: high availability, point-in-time recovery, custom backup policies, storage autoscaling, IP allowlists, and connection pooling.
 
 # Regions {% #regions %}
 
-A dedicated database lives in the same region as the project that owns it — there's no per-database region selector. Dedicated databases are available in every Appwrite region:
+A dedicated database lives in the same region as the project that owns it, there's no per-database region selector. Dedicated databases are available in every Appwrite region:
 
 | Region        | Code | Endpoint                                     |
 |---------------|------|----------------------------------------------|
@@ -51,7 +51,7 @@ A dedicated database lives in the same region as the project that owns it — th
 | Sydney        | SYD  | `db-<projectId>-<dbId>.syd.appwrite.network` |
 | Toronto       | TOR  | `db-<projectId>-<dbId>.tor.appwrite.network` |
 
-Each region is independent — data does not leave the region unless you explicitly opt into the cross-region failover feature.
+Each region is independent, data does not leave the region unless you explicitly opt into the cross-region failover feature.
 
 # Feature overview {% #features %}
 
@@ -84,7 +84,7 @@ Run parameterised SQL over HTTP without opening a TCP connection. Useful from ed
 TLS by default, optional IP allowlists, and a private hostname per database.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/monitoring" title="Monitoring & insights" %}
-CPU, memory, IOPS, slow queries, and index recommendations — pushed to the Console live.
+CPU, memory, IOPS, slow queries, and index recommendations, pushed to the Console live.
 {% /cards_item %}
 {% /cards %}
 

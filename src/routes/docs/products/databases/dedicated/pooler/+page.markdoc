@@ -6,7 +6,7 @@ description: Optional per-database connection pooler that multiplexes many clien
 
 The connection pooler is an opt-in component that runs alongside your database and multiplexes a large number of client connections onto a small number of backend connections. Use it to absorb traffic spikes, smooth out connection churn from serverless runtimes, and route read-only queries to HA replicas without changing your application code.
 
-Each dedicated database can run its own pooler. Pooler resources are billed as part of the underlying specification — there's no separate pooler line item.
+Each dedicated database can run its own pooler. Pooler resources are billed as part of the underlying specification, there's no separate pooler line item.
 
 # Engine support {% #engines %}
 
@@ -15,9 +15,9 @@ Each dedicated database can run its own pooler. Pooler resources are billed as p
 | PostgreSQL | yes     | 6432  | PgBouncer-compatible wire protocol, native read/write split |
 | MySQL      | yes     | 6033  | Query-rule based routing of reads vs writes                 |
 | MariaDB    | yes     | 6033  | Same as MySQL                                               |
-| MongoDB    | —       | —     | Not applicable — use the driver's `readPreference` setting  |
+| MongoDB    |,       |,     | Not applicable, use the driver's `readPreference` setting  |
 
-The pooler exposes its own client-facing port on the database endpoint. Clients connect to the pooler port instead of the engine port — everything else is the same.
+The pooler exposes its own client-facing port on the database endpoint. Clients connect to the pooler port instead of the engine port, everything else is the same.
 
 # Pool modes {% #modes %}
 
@@ -29,7 +29,7 @@ PostgreSQL and MySQL/MariaDB pools support three modes:
 | `session`      | Held for the whole client session         | Apps that rely on `SET LOCAL`, prepared statements, advisory locks  |
 | `statement`    | Held until the statement completes        | Read-only, single-statement workloads. Highest amplification.       |
 
-If your application uses features that are tied to a single backend connection — server-side prepared statements (PostgreSQL), advisory locks, temporary tables, `SET LOCAL`, listen/notify — pick `session`. Otherwise, `transaction` is the right choice.
+If your application uses features that are tied to a single backend connection, server-side prepared statements (PostgreSQL), advisory locks, temporary tables, `SET LOCAL`, listen/notify, pick `session`. Otherwise, `transaction` is the right choice.
 
 # Enable the pooler {% #enable %}
 
@@ -100,7 +100,7 @@ When the database has HA enabled and `readWriteSplitting` is on, the pooler rout
 
 This gives you read scale on aggregations and dashboard queries while keeping write-heavy transactions on the primary, with no SDK changes.
 
-Disable read/write splitting if your workload requires every read to see the most recent write — in async replication mode there's a small lag window where a read on a replica may not yet see a just-committed write:
+Disable read/write splitting if your workload requires every read to see the most recent write, in async replication mode there's a small lag window where a read on a replica may not yet see a just-committed write:
 
 ```bash
 curl -X PATCH \
@@ -121,8 +121,8 @@ Rule of thumb:
 
 # When not to use the pooler {% #anti-patterns %}
 
-- **Long-lived listen/notify subscribers** (PostgreSQL) — these need a session-bound connection. Use `session` mode or bypass the pooler.
-- **MongoDB workloads** — MongoDB doesn't have a pooler equivalent in this catalog; rely on the driver's connection pool and `readPreference: 'secondary'` for replica reads.
-- **Single-tenant, single-process apps** — the engine's own connection handling is enough; the pooler is overhead.
+- **Long-lived listen/notify subscribers** (PostgreSQL), these need a session-bound connection. Use `session` mode or bypass the pooler.
+- **MongoDB workloads**, MongoDB doesn't have a pooler equivalent in this catalog; rely on the driver's connection pool and `readPreference: 'secondary'` for replica reads.
+- **Single-tenant, single-process apps**, the engine's own connection handling is enough; the pooler is overhead.
 
-For everything else — Lambda, Cloud Run, serverless GraphQL backends, edge runtimes that open a new connection per request — turn it on.
+For everything else, Lambda, Cloud Run, serverless GraphQL backends, edge runtimes that open a new connection per request, turn it on.

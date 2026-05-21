@@ -4,11 +4,11 @@ title: Backups & PITR
 description: Encrypted scheduled backups with up to 365 days of retention, on-demand manual backups, and point-in-time recovery to any second within the PITR window.
 ---
 
-Every dedicated database supports automated backups out of the box. Backups are AES-256 encrypted at rest, uploaded to an object store, and verifiable on demand. Point-in-time recovery (PITR) layers continuous WAL/binlog/oplog archiving on top, so you can restore to any second within the retention window — not just to a backup checkpoint.
+Every dedicated database supports automated backups out of the box. Backups are AES-256 encrypted at rest, uploaded to an object store, and verifiable on demand. Point-in-time recovery (PITR) layers continuous WAL/binlog/oplog archiving on top, so you can restore to any second within the retention window, not just to a backup checkpoint.
 
 # What gets backed up {% #scope %}
 
-A backup captures the full contents of the database: all schemas, tables/collections, indexes, extensions, and (optionally) user-defined roles. The backup is taken with the engine's native tool — `pg_dump` / `mysqldump` / `mongodump` — in a dedicated job that runs alongside (not on top of) the database, so production traffic is unaffected.
+A backup captures the full contents of the database: all schemas, tables/collections, indexes, extensions, and (optionally) user-defined roles. The backup is taken with the engine's native tool, `pg_dump` / `mysqldump` / `mongodump`, in a dedicated job that runs alongside (not on top of) the database, so production traffic is unaffected.
 
 # Schedule {% #schedule %}
 
@@ -31,7 +31,7 @@ Backup retention accepts 1–365 days. Backups older than the retention window a
 
 # Manual backups {% #manual %}
 
-To create an ad-hoc backup — before a destructive migration, for example — call the create endpoint. The response contains the backup ID; the actual dump runs asynchronously.
+To create an ad-hoc backup, before a destructive migration, for example, call the create endpoint. The response contains the backup ID; the actual dump runs asynchronously.
 
 ```bash
 curl -X POST \
@@ -50,7 +50,7 @@ Restore reverses the pipeline: the key is fetched from the secret store, the cip
 
 # Storage targets {% #storage %}
 
-By default, backups are stored on Appwrite-managed S3-compatible storage. You can also bring your own bucket — S3, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, or Azure Blob via S3 interop. Bring-your-own-bucket backups never enter Appwrite-controlled storage.
+By default, backups are stored on Appwrite-managed S3-compatible storage. You can also bring your own bucket, S3, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, or Azure Blob via S3 interop. Bring-your-own-bucket backups never enter Appwrite-controlled storage.
 
 ```bash
 curl -X PUT \
@@ -68,7 +68,7 @@ curl -X PUT \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/storage
 ```
 
-Credentials are encrypted at rest. The `endpoint` field is supported for S3-compatible providers — leave empty for AWS S3.
+Credentials are encrypted at rest. The `endpoint` field is supported for S3-compatible providers, leave empty for AWS S3.
 
 # Verify a backup {% #verify %}
 
@@ -157,7 +157,7 @@ curl -X POST \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/restorations
 ```
 
-The new database is independent — recovering does not roll back the source. Once you've validated the recovery, you can swap your application traffic to it or copy specific tables/collections back to the source with `pg_dump` / `mysqldump` / `mongodump`.
+The new database is independent, recovering does not roll back the source. Once you've validated the recovery, you can swap your application traffic to it or copy specific tables/collections back to the source with `pg_dump` / `mysqldump` / `mongodump`.
 
 # Limits {% #limits %}
 
@@ -169,4 +169,4 @@ The new database is independent — recovering does not roll back the source. On
 | Cron schedule resolution         | 1 minute          |
 | WAL/binlog/oplog flush cadence   | every 5 minutes   |
 
-Backup storage usage rolls up into the dedicated database storage line on your invoice — there's no separate backup storage line item.
+Backup storage usage rolls up into the dedicated database storage line on your invoice, there's no separate backup storage line item.

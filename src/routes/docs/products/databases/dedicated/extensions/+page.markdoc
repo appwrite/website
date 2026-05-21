@@ -4,7 +4,7 @@ title: Extensions
 description: Install and manage PostgreSQL extensions like PostGIS, pgvector, and TimescaleDB on a dedicated database. Extensions are managed through the API and are free of charge.
 ---
 
-PostgreSQL exposes a rich extension ecosystem — PostGIS for geospatial data, pgvector for embeddings, TimescaleDB for time-series, pg_stat_statements for query analytics, and many more. Dedicated PostgreSQL databases on Appwrite support managing extensions through the API; there is no separate cost.
+PostgreSQL exposes a rich extension ecosystem, PostGIS for geospatial data, pgvector for embeddings, TimescaleDB for time-series, pg_stat_statements for query analytics, and many more. Dedicated PostgreSQL databases on Appwrite support managing extensions through the API; there is no separate cost.
 
 MySQL, MariaDB, and MongoDB do not have an equivalent extension system. The extensions endpoints are available on those engines but always return an empty list.
 
@@ -60,7 +60,7 @@ curl -X DELETE \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions/pgvector
 ```
 
-`DROP EXTENSION` is run with `RESTRICT` by default — if there are dependent objects (tables, indexes, columns), the call fails. Drop the dependents first, or call `DROP EXTENSION ... CASCADE` directly through SQL to acknowledge that you understand what gets removed.
+`DROP EXTENSION` is run with `RESTRICT` by default, if there are dependent objects (tables, indexes, columns), the call fails. Drop the dependents first, or call `DROP EXTENSION ... CASCADE` directly through SQL to acknowledge that you understand what gets removed.
 
 # Available extensions {% #available %}
 
@@ -78,7 +78,7 @@ A non-exhaustive list of common extensions that are pre-packaged and installable
 | HTTP        | `pg_net`, `http`                                                                                            |
 | Misc        | `hstore`, `citext`, `tablefunc`, `intarray`, `ltree`, `cube`, `earthdistance`                              |
 
-If you need an extension that isn't on this list, [open a feature request](https://github.com/appwrite/appwrite/issues) — the catalog grows on demand. Custom or proprietary extensions require Enterprise support.
+If you need an extension that isn't on this list, [open a feature request](https://github.com/appwrite/appwrite/issues), the catalog grows on demand. Custom or proprietary extensions require Enterprise support.
 
 # Version selection {% #versions %}
 
@@ -94,4 +94,4 @@ To upgrade an extension version, drop it and reinstall it with the new version. 
 | Extension install/uninstall billing         | Free          |
 | Supported engines                           | PostgreSQL    |
 
-The 50-extension cap is generous — most production deployments install fewer than ten. Extensions that pull in a lot of shared library code (PostGIS, TimescaleDB) count the same as small ones.
+The 50-extension cap is generous, most production deployments install fewer than ten. Extensions that pull in a lot of shared library code (PostGIS, TimescaleDB) count the same as small ones.

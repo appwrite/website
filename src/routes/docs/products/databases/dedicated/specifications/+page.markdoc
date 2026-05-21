@@ -4,7 +4,7 @@ title: Specifications
 description: Eight dedicated database specifications from 1 vCPU and 1 GB to 8 vCPU and 64 GB, plus a free shared tier. Per-specification CPU, memory, included storage, included bandwidth, and connection cap.
 ---
 
-A dedicated database is provisioned against a **specification** — a fixed bundle of CPU, memory, included storage, included bandwidth, and a maximum connection cap. You pick the specification on create and can change it later by updating the database; the platform performs a blue-green resize with logical replication.
+A dedicated database is provisioned against a **specification**, a fixed bundle of CPU, memory, included storage, included bandwidth, and a maximum connection cap. You pick the specification on create and can change it later by updating the database; the platform performs a blue-green resize with logical replication.
 
 All paid specifications are dedicated, always-on databases billed by the hour. The free specification is a shared, scale-to-zero database included with the Pro plan.
 
@@ -21,7 +21,7 @@ All paid specifications are dedicated, always-on databases billed by the hour. T
 | `s-8vcpu-32gb`   | Enterprise       | 8    | 32 GB  | 5,000           | 2 TB             | 7.5 TB             | $500           |
 | `s-8vcpu-64gb`   | Enterprise Plus  | 8    | 64 GB  | 10,000          | 3 TB             | 10 TB              | $860           |
 
-vCPU counts are dedicated, not burstable. Connection caps are enforced at the engine layer — going above the cap returns a connection refusal, not a slowdown.
+vCPU counts are dedicated, not burstable. Connection caps are enforced at the engine layer, going above the cap returns a connection refusal, not a slowdown.
 
 # Free (shared) specification {% #free %}
 
@@ -67,19 +67,19 @@ The cross-region **standby** that backs the [cross-region failover](/docs/produc
 Changing the specification on an existing database is a non-destructive, online operation. There are no read or write outages during the resize.
 
 1. A second database instance is provisioned with the new CPU and memory.
-2. The schema and data are streamed from the old instance to the new one through engine-native logical replication — WAL on PostgreSQL, binlog on MySQL/MariaDB, and oplog tailing on MongoDB.
+2. The schema and data are streamed from the old instance to the new one through engine-native logical replication, WAL on PostgreSQL, binlog on MySQL/MariaDB, and oplog tailing on MongoDB.
 3. Once replication is caught up, the connection endpoint is switched to the new instance.
 4. The old instance is decommissioned.
 
-Storage can only grow, never shrink — storage volumes can be expanded but not contracted. Storage expansion happens online without restarting the database.
+Storage can only grow, never shrink, storage volumes can be expanded but not contracted. Storage expansion happens online without restarting the database.
 
 # Picking a specification {% #picking %}
 
 A few rules of thumb:
 
-- **OLTP workloads** (lots of small reads and writes) — pick a specification where the working set fits in memory. For PostgreSQL this is `shared_buffers + effective_cache_size` ≈ 75% of RAM.
-- **Analytics workloads** (large scans, aggregations) — favour the higher CPU specifications. `s-8vcpu-32gb` and `s-8vcpu-64gb` are tuned for sustained CPU usage.
-- **Storage-heavy workloads** — pick by included storage first. Going one specification up is usually cheaper than paying overage on a smaller specification.
-- **Burst patterns** — keep autoscaling on for storage and use a specification one tier below your peak; resize up during peak windows and back down after.
+- **OLTP workloads** (lots of small reads and writes), pick a specification where the working set fits in memory. For PostgreSQL this is `shared_buffers + effective_cache_size` ≈ 75% of RAM.
+- **Analytics workloads** (large scans, aggregations), favour the higher CPU specifications. `s-8vcpu-32gb` and `s-8vcpu-64gb` are tuned for sustained CPU usage.
+- **Storage-heavy workloads**, pick by included storage first. Going one specification up is usually cheaper than paying overage on a smaller specification.
+- **Burst patterns**, keep autoscaling on for storage and use a specification one tier below your peak; resize up during peak windows and back down after.
 
 The next page explains how to [connect to a dedicated database](/docs/products/databases/dedicated/connect).

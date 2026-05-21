@@ -4,7 +4,7 @@ title: SQL API
 description: Execute parameterised SQL against a dedicated database over HTTPS without opening a TCP connection. Useful from edge runtimes, serverless functions, and CI scripts.
 ---
 
-The **SQL API** is a managed HTTP endpoint that executes one parameterised SQL statement against a dedicated database and returns the result as JSON. It runs alongside the database itself, so it sees the same latency as a local connection — but you call it from anywhere a TCP database connection isn't practical (edge runtimes, serverless functions on cold starts, CI scripts, internal admin tools).
+The **SQL API** is a managed HTTP endpoint that executes one parameterised SQL statement against a dedicated database and returns the result as JSON. It runs alongside the database itself, so it sees the same latency as a local connection, but you call it from anywhere a TCP database connection isn't practical (edge runtimes, serverless functions on cold starts, CI scripts, internal admin tools).
 
 The SQL API is opt-in per database and supports all four engines.
 
@@ -39,7 +39,7 @@ The defaults above are safe to start with: `SELECT`-only, 10k rows, 10 MB payloa
 | `sqlApiMaxBytes`          | 10 MB                 | 100 MB                              | Hard payload cap; truncates beyond                     |
 | `sqlApiTimeoutSeconds`    | 30                    | 300 (5 min)                         | Server-side cancellation deadline                      |
 
-Only `SELECT`, `INSERT`, `UPDATE`, and `DELETE` are ever accepted. Schema-altering statements (`CREATE`, `DROP`, `TRUNCATE`, `ALTER`, `GRANT`, `REVOKE`) are rejected unconditionally — those must go through the dedicated provisioning APIs or a direct database connection.
+Only `SELECT`, `INSERT`, `UPDATE`, and `DELETE` are ever accepted. Schema-altering statements (`CREATE`, `DROP`, `TRUNCATE`, `ALTER`, `GRANT`, `REVOKE`) are rejected unconditionally, those must go through the dedicated provisioning APIs or a direct database connection.
 
 # Execute a statement {% #execute %}
 
@@ -77,9 +77,9 @@ If the result exceeds `sqlApiMaxRows` or `sqlApiMaxBytes`, the response sets `tr
 
 # Parameter binding {% #bindings %}
 
-Bindings are always sent through a separate field — Appwrite never interpolates them into the SQL string. Two styles are accepted:
+Bindings are always sent through a separate field, Appwrite never interpolates them into the SQL string. Two styles are accepted:
 
-**Positional** — list of values, referenced as `$1`, `$2`, … in the SQL.
+**Positional**, list of values, referenced as `$1`, `$2`, … in the SQL.
 
 ```json
 {
@@ -88,7 +88,7 @@ Bindings are always sent through a separate field — Appwrite never interpolate
 }
 ```
 
-**Named** — a `name => value` map, referenced as `:name` or `@name` depending on engine convention.
+**Named**, a `name => value` map, referenced as `:name` or `@name` depending on engine convention.
 
 ```json
 {
@@ -97,7 +97,7 @@ Bindings are always sent through a separate field — Appwrite never interpolate
 }
 ```
 
-Pick one style per request — mixing positional and named bindings in the same statement is rejected.
+Pick one style per request, mixing positional and named bindings in the same statement is rejected.
 
 # Per-database whitelist {% #whitelist %}
 
@@ -132,14 +132,14 @@ The whitelist is enforced before the request leaves Appwrite, so a disallowed st
 
 The SQL API trades raw throughput for portability. Use it when:
 
-- **Calling from an edge runtime** that can't open a long-lived TCP connection — Cloudflare Workers, Vercel Edge Functions, Deno Deploy.
+- **Calling from an edge runtime** that can't open a long-lived TCP connection, Cloudflare Workers, Vercel Edge Functions, Deno Deploy.
 - **Building an admin tool** that runs ad-hoc queries from a UI without shipping engine drivers to the browser.
-- **Writing a one-off CI script** — easier to `curl` than to install `psql` and manage credentials in CI.
+- **Writing a one-off CI script**, easier to `curl` than to install `psql` and manage credentials in CI.
 
 Don't use it when:
 
-- **Throughput matters** — TCP + a connection pool is faster end-to-end. The SQL API adds an HTTP hop.
-- **The query is transactional** — each SQL API call is its own statement. There's no `BEGIN`…`COMMIT` window across calls.
+- **Throughput matters**, TCP + a connection pool is faster end-to-end. The SQL API adds an HTTP hop.
+- **The query is transactional**, each SQL API call is its own statement. There's no `BEGIN`…`COMMIT` window across calls.
 
 # Audit {% #audit %}
 

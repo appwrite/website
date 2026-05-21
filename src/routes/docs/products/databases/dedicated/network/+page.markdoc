@@ -4,7 +4,7 @@ title: Network
 description: Per-database hostname, mandatory TLS, optional IP allowlists, and connection limits for dedicated databases.
 ---
 
-Every dedicated database gets a public hostname behind Appwrite's edge proxy. The proxy terminates TLS, applies your IP allowlist, and forwards the connection to the database engine over Appwrite's internal regional network.
+Every dedicated database gets a public hostname behind Appwrite's edge proxy. The proxy terminates TLS, applies your IP allowlist, and forwards the connection to the database engine over the Appwrite network.
 
 # Hostname {% #hostname %}
 
@@ -29,7 +29,7 @@ TLS is enabled on every dedicated database endpoint and is enforced by the edge 
 | MariaDB    | `useSSL=true` / `tls=true`    |
 | MongoDB    | `tls=true`                    |
 
-The certificate is signed by a well-known public CA — your driver does not need a custom CA bundle.
+The certificate is signed by a well-known public CA, your driver does not need a custom CA bundle.
 
 To require mutual TLS (mTLS) where the client presents a certificate signed by your CA, contact support. mTLS is configured at the edge proxy and enforced before the connection is forwarded.
 
@@ -51,7 +51,7 @@ curl -X PATCH \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
 ```
 
-The allowlist is enforced at the edge proxy. A connection from a non-allowlisted IP is dropped at TCP handshake — no banner, no error message. Up to 100 CIDR entries are accepted per database.
+The allowlist is enforced at the edge proxy. A connection from a non-allowlisted IP is dropped at TCP handshake, no banner, no error message. Up to 100 CIDR entries are accepted per database.
 
 Send an empty array to remove all entries and restore unrestricted access.
 
@@ -68,7 +68,7 @@ curl -X PATCH \
 
 When the limit is reached, new connection attempts are rejected at the proxy with a clear error rather than being queued or held open.
 
-The pooler (if enabled) is counted as a single backend connection per pooled slot, not per client — turning on the pooler is the right way to push effective client concurrency well above this limit.
+The pooler (if enabled) is counted as a single backend connection per pooled slot, not per client, turning on the pooler is the right way to push effective client concurrency well above this limit.
 
 # Connection idle timeout {% #idle-timeout %}
 
@@ -87,8 +87,8 @@ By default, a dedicated database is reachable over the public internet on the en
 
 1. **Restrict the allowlist** to your application server egress IPs only.
 2. **Rotate the primary password** through the credentials endpoint after onboarding, so the initial generated password doesn't live in CI logs or chat history forever.
-3. **Keep TLS on** — the platform enforces it at the proxy, so non-TLS clients can't connect even if they tried.
-4. **Avoid embedding credentials in client-side code.** Connect from a server-side workload — an Appwrite Function, your application backend, or a CI job — and surface results through your own API.
+3. **Keep TLS on**, the platform enforces it at the proxy, so non-TLS clients can't connect even if they tried.
+4. **Avoid embedding credentials in client-side code.** Connect from a server-side workload, an Appwrite Function, your application backend, or a CI job, and surface results through your own API.
 
 For workloads that should never be reachable from the public internet at all, contact support to discuss private endpoint options.
 
