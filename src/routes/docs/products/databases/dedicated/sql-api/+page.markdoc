@@ -12,6 +12,241 @@ The SQL API is opt-in per database and supports all four engines.
 
 The SQL API is disabled by default. Enable it through the database update endpoint:
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: ['SELECT'],
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: ['SELECT'],
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: ['SELECT'],
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    sql_api_enabled=True,
+    sql_api_allowed_statements=['SELECT'],
+    sql_api_max_rows=10000,
+    sql_api_max_bytes=10485760,
+    sql_api_timeout_seconds=30,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    sql_api_enabled: true,
+    sql_api_allowed_statements: ['SELECT'],
+    sql_api_max_rows: 10000,
+    sql_api_max_bytes: 10485760,
+    sql_api_timeout_seconds: 30,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: new List<string> { "SELECT" },
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: ['SELECT'],
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    sqlApiEnabled = true,
+    sqlApiAllowedStatements = listOf("SELECT"),
+    sqlApiMaxRows = 10000,
+    sqlApiMaxBytes = 10485760,
+    sqlApiTimeoutSeconds = 30,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    sqlApiEnabled: true,
+    sqlApiAllowedStatements: ["SELECT"],
+    sqlApiMaxRows: 10000,
+    sqlApiMaxBytes: 10485760,
+    sqlApiTimeoutSeconds: 30
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseSqlApiEnabled(true),
+        compute.WithUpdateDatabaseSqlApiAllowedStatements([]string{"SELECT"}),
+        compute.WithUpdateDatabaseSqlApiMaxRows(10000),
+        compute.WithUpdateDatabaseSqlApiMaxBytes(10485760),
+        compute.WithUpdateDatabaseSqlApiTimeoutSeconds(30),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .sql_api_enabled(true)
+        .sql_api_allowed_statements(vec!["SELECT".to_string()])
+        .sql_api_max_rows(10000)
+        .sql_api_max_bytes(10485760)
+        .sql_api_timeout_seconds(30)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X PATCH \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
@@ -26,6 +261,7 @@ curl -X PATCH \
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
 ```
+{% /multicode %}
 
 The defaults above are safe to start with: `SELECT`-only, 10k rows, 10 MB payload, 30-second timeout.
 
@@ -43,6 +279,209 @@ Only `SELECT`, `INSERT`, `UPDATE`, and `DELETE` are ever accepted. Schema-alteri
 
 # Execute a statement {% #execute %}
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const execution = await compute.createDatabaseExecution({
+    databaseId: '<DATABASE_ID>',
+    sql: 'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+    bindings: ['2026-05-01T00:00:00Z', 50],
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const execution = await compute.createDatabaseExecution({
+    databaseId: '<DATABASE_ID>',
+    sql: 'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+    bindings: ['2026-05-01T00:00:00Z', 50],
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$execution = $compute->createDatabaseExecution(
+    databaseId: '<DATABASE_ID>',
+    sql: 'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+    bindings: ['2026-05-01T00:00:00Z', 50],
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+execution = compute.create_database_execution(
+    database_id='<DATABASE_ID>',
+    sql='SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+    bindings=['2026-05-01T00:00:00Z', 50],
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+execution = compute.create_database_execution(
+    database_id: '<DATABASE_ID>',
+    sql: 'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+    bindings: ['2026-05-01T00:00:00Z', 50],
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var execution = await compute.CreateDatabaseExecution(
+    databaseId: "<DATABASE_ID>",
+    sql: "SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2",
+    bindings: new List<object> { "2026-05-01T00:00:00Z", 50 }
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final execution = await compute.createDatabaseExecution(
+    databaseId: '<DATABASE_ID>',
+    sql: 'SELECT id, email FROM users WHERE created_at > \$1 ORDER BY created_at DESC LIMIT \$2',
+    bindings: ['2026-05-01T00:00:00Z', 50],
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val execution = compute.createDatabaseExecution(
+    databaseId = "<DATABASE_ID>",
+    sql = "SELECT id, email FROM users WHERE created_at > \$1 ORDER BY created_at DESC LIMIT \$2",
+    bindings = listOf("2026-05-01T00:00:00Z", 50),
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let execution = try await compute.createDatabaseExecution(
+    databaseId: "<DATABASE_ID>",
+    sql: "SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2",
+    bindings: ["2026-05-01T00:00:00Z", 50]
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    execution, err := compute.CreateDatabaseExecution("<DATABASE_ID>",
+        compute.WithCreateDatabaseExecutionSql("SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2"),
+        compute.WithCreateDatabaseExecutionBindings([]interface{}{"2026-05-01T00:00:00Z", 50}),
+    )
+    if err != nil {
+        panic(err)
+    }
+    _ = execution
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.create_database_execution("<DATABASE_ID>")
+        .sql("SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2")
+        .bindings(serde_json::json!(["2026-05-01T00:00:00Z", 50]))
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X POST \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
@@ -54,6 +493,7 @@ curl -X POST \
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/execution
 ```
+{% /multicode %}
 
 Response:
 

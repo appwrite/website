@@ -10,6 +10,208 @@ MySQL, MariaDB, and MongoDB do not have an equivalent extension system. The exte
 
 # Install an extension {% #install %}
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseExtension({
+    databaseId: '<DATABASE_ID>',
+    name: 'pgvector',
+    version: '0.7.4',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseExtension({
+    databaseId: '<DATABASE_ID>',
+    name: 'pgvector',
+    version: '0.7.4',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->createDatabaseExtension(
+    databaseId: '<DATABASE_ID>',
+    name: 'pgvector',
+    version: '0.7.4',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.create_database_extension(
+    database_id='<DATABASE_ID>',
+    name='pgvector',
+    version='0.7.4',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.create_database_extension(
+    database_id: '<DATABASE_ID>',
+    name: 'pgvector',
+    version: '0.7.4',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.CreateDatabaseExtension(
+    databaseId: "<DATABASE_ID>",
+    name: "pgvector",
+    version: "0.7.4"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.createDatabaseExtension(
+    databaseId: '<DATABASE_ID>',
+    name: 'pgvector',
+    version: '0.7.4',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.createDatabaseExtension(
+    databaseId = "<DATABASE_ID>",
+    name = "pgvector",
+    version = "0.7.4",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.createDatabaseExtension(
+    databaseId: "<DATABASE_ID>",
+    name: "pgvector",
+    version: "0.7.4"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.CreateDatabaseExtension("<DATABASE_ID>",
+        compute.WithCreateDatabaseExtensionName("pgvector"),
+        compute.WithCreateDatabaseExtensionVersion("0.7.4"),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.create_database_extension("<DATABASE_ID>")
+        .name("pgvector")
+        .version("0.7.4")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X POST \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
@@ -21,6 +223,7 @@ curl -X POST \
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions
 ```
+{% /multicode %}
 
 The request enqueues a worker that runs `CREATE EXTENSION` inside the database. The response returns immediately with status `creating`; the extension transitions to `ready` once the install completes (typically within a few seconds for small extensions).
 
@@ -28,12 +231,183 @@ If the extension requires a non-default schema, pass the optional `schema` field
 
 # List extensions {% #list %}
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const extensions = await compute.listDatabaseExtensions({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const extensions = await compute.listDatabaseExtensions({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$extensions = $compute->listDatabaseExtensions(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+extensions = compute.list_database_extensions(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+extensions = compute.list_database_extensions(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var extensions = await compute.ListDatabaseExtensions(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final extensions = await compute.listDatabaseExtensions(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val extensions = compute.listDatabaseExtensions(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let extensions = try await compute.listDatabaseExtensions(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    extensions, err := compute.ListDatabaseExtensions("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = extensions
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let extensions = compute.list_database_extensions("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X GET \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions
 ```
+{% /multicode %}
 
 The response separates installed extensions from available extensions:
 
@@ -53,12 +427,201 @@ The response separates installed extensions from available extensions:
 
 # Remove an extension {% #remove %}
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.deleteDatabaseExtension({
+    databaseId: '<DATABASE_ID>',
+    extensionName: 'pgvector',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.deleteDatabaseExtension({
+    databaseId: '<DATABASE_ID>',
+    extensionName: 'pgvector',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->deleteDatabaseExtension(
+    databaseId: '<DATABASE_ID>',
+    extensionName: 'pgvector',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.delete_database_extension(
+    database_id='<DATABASE_ID>',
+    extension_name='pgvector',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.delete_database_extension(
+    database_id: '<DATABASE_ID>',
+    extension_name: 'pgvector',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.DeleteDatabaseExtension(
+    databaseId: "<DATABASE_ID>",
+    extensionName: "pgvector"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.deleteDatabaseExtension(
+    databaseId: '<DATABASE_ID>',
+    extensionName: 'pgvector',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.deleteDatabaseExtension(
+    databaseId = "<DATABASE_ID>",
+    extensionName = "pgvector",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.deleteDatabaseExtension(
+    databaseId: "<DATABASE_ID>",
+    extensionName: "pgvector"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.DeleteDatabaseExtension("<DATABASE_ID>", "pgvector")
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.delete_database_extension("<DATABASE_ID>", "pgvector")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X DELETE \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions/pgvector
 ```
+{% /multicode %}
 
 `DROP EXTENSION` is run with `RESTRICT` by default, if there are dependent objects (tables, indexes, columns), the call fails. Drop the dependents first, or call `DROP EXTENSION ... CASCADE` directly through SQL to acknowledge that you understand what gets removed.
 

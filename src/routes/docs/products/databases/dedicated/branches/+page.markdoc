@@ -17,19 +17,243 @@ Use cases:
 
 Creating a branch:
 
-1. **Quiesce the parent** briefly. PostgreSQL takes a `CHECKPOINT`. MySQL/MariaDB issue `FLUSH TABLES WITH READ LOCK`. MongoDB runs `db.fsyncLock()`.
+1. **Briefly pause writes on the parent.** PostgreSQL takes a `CHECKPOINT`. MySQL/MariaDB issue `FLUSH TABLES WITH READ LOCK`. MongoDB runs `db.fsyncLock()`.
 2. **Snapshot the parent's storage volume.** This is a near-instant copy-on-write operation.
-3. **Release the parent.** Total parent quiesce time is typically under a second.
+3. **Resume writes on the parent.** The parent is paused for under a second.
 4. **Provision the branch** from the snapshot, its own isolated storage volume, its own database instance.
 5. **Start the branch** on the same engine and version. Resources can be smaller than the parent.
 6. **Generate branch credentials** and return the branch endpoint.
 
 The parent and the branch share storage cost-free at the moment of branching (copy-on-write). Storage cost grows as the two databases diverge.
 
-PostgreSQL supports crash-consistent snapshots, so the quiesce step is a fast checkpoint and PostgreSQL branches recover via WAL replay on first start. MySQL/MariaDB and MongoDB require an explicit write freeze before snapshot to produce a clean image.
+PostgreSQL supports crash-consistent snapshots, so the pause is a fast checkpoint and PostgreSQL branches recover via WAL replay on first start. MySQL/MariaDB and MongoDB require an explicit write freeze before snapshot to produce a clean image.
 
 # Create a branch {% #create %}
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseBranch({
+    databaseId: '<DATABASE_ID>',
+    branchId: 'pr-1234',
+    name: 'PR 1234 preview',
+    cpu: 1000,
+    memory: 2048,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseBranch({
+    databaseId: '<DATABASE_ID>',
+    branchId: 'pr-1234',
+    name: 'PR 1234 preview',
+    cpu: 1000,
+    memory: 2048,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->createDatabaseBranch(
+    databaseId: '<DATABASE_ID>',
+    branchId: 'pr-1234',
+    name: 'PR 1234 preview',
+    cpu: 1000,
+    memory: 2048,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.create_database_branch(
+    database_id='<DATABASE_ID>',
+    branch_id='pr-1234',
+    name='PR 1234 preview',
+    cpu=1000,
+    memory=2048,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.create_database_branch(
+    database_id: '<DATABASE_ID>',
+    branch_id: 'pr-1234',
+    name: 'PR 1234 preview',
+    cpu: 1000,
+    memory: 2048,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.CreateDatabaseBranch(
+    databaseId: "<DATABASE_ID>",
+    branchId: "pr-1234",
+    name: "PR 1234 preview",
+    cpu: 1000,
+    memory: 2048
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.createDatabaseBranch(
+    databaseId: '<DATABASE_ID>',
+    branchId: 'pr-1234',
+    name: 'PR 1234 preview',
+    cpu: 1000,
+    memory: 2048,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.createDatabaseBranch(
+    databaseId = "<DATABASE_ID>",
+    branchId = "pr-1234",
+    name = "PR 1234 preview",
+    cpu = 1000,
+    memory = 2048,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.createDatabaseBranch(
+    databaseId: "<DATABASE_ID>",
+    branchId: "pr-1234",
+    name: "PR 1234 preview",
+    cpu: 1000,
+    memory: 2048
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.CreateDatabaseBranch("<DATABASE_ID>",
+        compute.WithCreateDatabaseBranchBranchId("pr-1234"),
+        compute.WithCreateDatabaseBranchName("PR 1234 preview"),
+        compute.WithCreateDatabaseBranchCpu(1000),
+        compute.WithCreateDatabaseBranchMemory(2048),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.create_database_branch("<DATABASE_ID>")
+        .branch_id("pr-1234")
+        .name("PR 1234 preview")
+        .cpu(1000)
+        .memory(2048)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X POST \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
@@ -43,6 +267,7 @@ curl -X POST \
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
 ```
+{% /multicode %}
 
 Optional fields:
 
@@ -58,34 +283,565 @@ The branch endpoint is exposed as a separate hostname:
 db-<projectId>-<dbId>-<branchId>.<region>.appwrite.network
 ```
 
-Connect to it with the engine's standard CLI, same as the parent. Credentials for the branch are retrieved through:
+Connect to it with the engine's standard CLI, same as the parent. Credentials for the branch are retrieved by listing branches and locating yours by `branchId`:
 
-```bash
-curl -X GET \
-  -H "X-Appwrite-Project: <PROJECT_ID>" \
-  -H "X-Appwrite-Key: <API_KEY>" \
-  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches/<BRANCH_ID>
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const branches = await compute.listDatabaseBranches({
+    databaseId: '<DATABASE_ID>',
+});
 ```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
 
-# List branches {% #list %}
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
 
+const compute = new Compute(client);
+
+const branches = await compute.listDatabaseBranches({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$branches = $compute->listDatabaseBranches(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+branches = compute.list_database_branches(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+branches = compute.list_database_branches(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var branches = await compute.ListDatabaseBranches(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final branches = await compute.listDatabaseBranches(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val branches = compute.listDatabaseBranches(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let branches = try await compute.listDatabaseBranches(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    branches, err := compute.ListDatabaseBranches("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = branches
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let branches = compute.list_database_branches("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X GET \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
 ```
+{% /multicode %}
+
+# List branches {% #list %}
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const branches = await compute.listDatabaseBranches({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const branches = await compute.listDatabaseBranches({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$branches = $compute->listDatabaseBranches(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+branches = compute.list_database_branches(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+branches = compute.list_database_branches(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var branches = await compute.ListDatabaseBranches(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final branches = await compute.listDatabaseBranches(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val branches = compute.listDatabaseBranches(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let branches = try await compute.listDatabaseBranches(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    branches, err := compute.ListDatabaseBranches("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = branches
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let branches = compute.list_database_branches("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
+```
+{% /multicode %}
 
 # Delete a branch {% #delete %}
 
 Deleting a branch removes the branch's database instance, its storage volume, and the underlying snapshot. There's no soft-delete, once the branch is gone, the data is gone.
 
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.deleteDatabaseBranch({
+    databaseId: '<DATABASE_ID>',
+    branchId: '<BRANCH_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.deleteDatabaseBranch({
+    databaseId: '<DATABASE_ID>',
+    branchId: '<BRANCH_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->deleteDatabaseBranch(
+    databaseId: '<DATABASE_ID>',
+    branchId: '<BRANCH_ID>',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.delete_database_branch(
+    database_id='<DATABASE_ID>',
+    branch_id='<BRANCH_ID>',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.delete_database_branch(
+    database_id: '<DATABASE_ID>',
+    branch_id: '<BRANCH_ID>',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.DeleteDatabaseBranch(
+    databaseId: "<DATABASE_ID>",
+    branchId: "<BRANCH_ID>"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.deleteDatabaseBranch(
+    databaseId: '<DATABASE_ID>',
+    branchId: '<BRANCH_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.deleteDatabaseBranch(
+    databaseId = "<DATABASE_ID>",
+    branchId = "<BRANCH_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.deleteDatabaseBranch(
+    databaseId: "<DATABASE_ID>",
+    branchId: "<BRANCH_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.DeleteDatabaseBranch("<DATABASE_ID>", "<BRANCH_ID>")
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.delete_database_branch("<DATABASE_ID>", "<BRANCH_ID>")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
 ```bash
 curl -X DELETE \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches/<BRANCH_ID>
 ```
+{% /multicode %}
 
 # Billing {% #billing %}
 

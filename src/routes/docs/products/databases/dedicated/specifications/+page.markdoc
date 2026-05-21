@@ -53,14 +53,16 @@ Storage overage is computed on the snapshot at the end of the billing period. Ba
 
 The following features are billed as a percentage of the underlying specification price, pro-rated by active days in the billing period:
 
-| Feature                     | Rate                                  | Example on a $100/mo specification |
-|-----------------------------|---------------------------------------|------------------------------------|
-| High availability replicas  | 75% of specification per replica      | $75/mo per replica                 |
-| Cross-region replicas       | 75% of specification per replica      | $75/mo per replica                 |
-| Point-in-time recovery      | 20% of specification                  | $20/mo                             |
-| PostgreSQL extensions       | Free                                  | $0                                 |
+| Feature                                | Rate                                  | Example on a $100/mo specification |
+|----------------------------------------|---------------------------------------|------------------------------------|
+| High availability replicas             | 75% of specification per replica      | $75/mo per replica                 |
+| Cross-region replicas *(coming soon)*  | 75% of specification per replica      | $75/mo per replica                 |
+| Point-in-time recovery                 | 20% of specification                  | $20/mo                             |
+| PostgreSQL extensions                  | Free                                  | $0                                 |
 
-The cross-region **standby** that backs the [cross-region failover](/docs/products/databases/dedicated/high-availability) feature is a cross-region replica configured for automatic failover, so it bills the same way as any other cross-region replica.
+{% info title="Cross-region replication is coming soon" %}
+The cross-region replica and cross-region standby that back the [cross-region failover](/docs/products/databases/dedicated/high-availability#cross-region-failover) feature are previewed here for context; they will ship in a future release. The standby is a cross-region replica configured for automatic failover and will bill the same way as any other cross-region replica.
+{% /info %}
 
 # Resize behaviour {% #resize %}
 
