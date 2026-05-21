@@ -1,0 +1,146 @@
+---
+layout: article
+title: SQL API
+description: Execute parameterised SQL against a dedicated database over HTTPS without opening a TCP connection. Useful from edge runtimes, serverless functions, and CI scripts.
+---
+
+The **SQL API** is a managed HTTP endpoint that executes one parameterised SQL statement against a dedicated database and returns the result as JSON. It runs alongside the database itself, so it sees the same latency as a local connection — but you call it from anywhere a TCP database connection isn't practical (edge runtimes, serverless functions on cold starts, CI scripts, internal admin tools).
+
+The SQL API is opt-in per database and supports all four engines.
+
+# Enable the SQL API {% #enable %}
+
+The SQL API is disabled by default. Enable it through the database update endpoint:
+
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sqlApiEnabled": true,
+    "sqlApiAllowedStatements": ["SELECT"],
+    "sqlApiMaxRows": 10000,
+    "sqlApiMaxBytes": 10485760,
+    "sqlApiTimeoutSeconds": 30
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+
+The defaults above are safe to start with: `SELECT`-only, 10k rows, 10 MB payload, 30-second timeout.
+
+# Configuration {% #config %}
+
+| Field                     | Default               | Plan ceiling                        | Purpose                                                |
+|---------------------------|-----------------------|-------------------------------------|--------------------------------------------------------|
+| `sqlApiEnabled`           | `false`               | n/a                                 | Master switch                                          |
+| `sqlApiAllowedStatements` | `["SELECT"]`          | `[SELECT, INSERT, UPDATE, DELETE]`  | Statement types accepted                               |
+| `sqlApiMaxRows`           | 10,000                | 1,000,000                           | Hard row cap; truncates beyond                         |
+| `sqlApiMaxBytes`          | 10 MB                 | 100 MB                              | Hard payload cap; truncates beyond                     |
+| `sqlApiTimeoutSeconds`    | 30                    | 300 (5 min)                         | Server-side cancellation deadline                      |
+
+Only `SELECT`, `INSERT`, `UPDATE`, and `DELETE` are ever accepted. Schema-altering statements (`CREATE`, `DROP`, `TRUNCATE`, `ALTER`, `GRANT`, `REVOKE`) are rejected unconditionally — those must go through the dedicated provisioning APIs or a direct database connection.
+
+# Execute a statement {% #execute %}
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sql": "SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2",
+    "bindings": ["2026-05-01T00:00:00Z", 50]
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/execution
+```
+
+Response:
+
+```json
+{
+  "rows": [
+    { "id": "...", "email": "..." },
+    ...
+  ],
+  "rowCount": 50,
+  "truncated": false,
+  "durationMs": 14,
+  "columns": [
+    { "name": "id", "type": "uuid" },
+    { "name": "email", "type": "text" }
+  ]
+}
+```
+
+If the result exceeds `sqlApiMaxRows` or `sqlApiMaxBytes`, the response sets `truncated: true` and includes whatever fits. If the statement exceeds `sqlApiTimeoutSeconds`, the server cancels it and returns `dedicated_database_sql_api_timeout`.
+
+# Parameter binding {% #bindings %}
+
+Bindings are always sent through a separate field — Appwrite never interpolates them into the SQL string. Two styles are accepted:
+
+**Positional** — list of values, referenced as `$1`, `$2`, … in the SQL.
+
+```json
+{
+  "sql": "SELECT * FROM events WHERE user_id = $1 AND created_at > $2",
+  "bindings": ["usr_abc", "2026-05-01"]
+}
+```
+
+**Named** — a `name => value` map, referenced as `:name` or `@name` depending on engine convention.
+
+```json
+{
+  "sql": "SELECT * FROM events WHERE user_id = :user AND created_at > :since",
+  "bindings": { "user": "usr_abc", "since": "2026-05-01" }
+}
+```
+
+Pick one style per request — mixing positional and named bindings in the same statement is rejected.
+
+# Per-database whitelist {% #whitelist %}
+
+The platform always rejects DDL and privilege statements, but you can narrow the accepted DML further per database. For example, a read-only dashboard would set:
+
+```json
+{ "sqlApiAllowedStatements": ["SELECT"] }
+```
+
+…and a writer-only ingestion endpoint:
+
+```json
+{ "sqlApiAllowedStatements": ["INSERT"] }
+```
+
+The whitelist is enforced before the request leaves Appwrite, so a disallowed statement never touches the database.
+
+# Errors {% #errors %}
+
+| Code                                                | When                                                  |
+|-----------------------------------------------------|-------------------------------------------------------|
+| `dedicated_database_sql_api_disabled`               | API not enabled on the database                       |
+| `dedicated_database_sql_api_statement_not_allowed`  | Statement type not in the per-DB whitelist            |
+| `dedicated_database_sql_api_parse_failed`           | SQL did not parse                                     |
+| `dedicated_database_sql_api_multiple_statements`    | Submission contained more than one statement          |
+| `dedicated_database_sql_api_result_too_large`       | Rows or bytes exceed the limit (returned as 200 with `truncated: true` if soft-truncating, 400 if rejecting outright) |
+| `dedicated_database_sql_api_timeout`                | Statement exceeded `sqlApiTimeoutSeconds`             |
+| `dedicated_database_sql_api_binding_invalid`        | Binding count, name, or type mismatch                 |
+| `dedicated_database_sql_api_sidecar_unavailable`    | Per-database SQL API runtime is not ready             |
+
+# When to use the SQL API {% #use-cases %}
+
+The SQL API trades raw throughput for portability. Use it when:
+
+- **Calling from an edge runtime** that can't open a long-lived TCP connection — Cloudflare Workers, Vercel Edge Functions, Deno Deploy.
+- **Building an admin tool** that runs ad-hoc queries from a UI without shipping engine drivers to the browser.
+- **Writing a one-off CI script** — easier to `curl` than to install `psql` and manage credentials in CI.
+
+Don't use it when:
+
+- **Throughput matters** — TCP + a connection pool is faster end-to-end. The SQL API adds an HTTP hop.
+- **The query is transactional** — each SQL API call is its own statement. There's no `BEGIN`…`COMMIT` window across calls.
+
+# Audit {% #audit %}
+
+Every SQL API call produces an audit event of type `dedicatedDatabase.createExecution`, persisted with the user ID, project ID, database ID, statement keyword, duration, and result size. The full SQL text is **not** stored by default, but the statement type and binding count are. Enable verbose audit logging on the database settings if you need the full text in your audit log.

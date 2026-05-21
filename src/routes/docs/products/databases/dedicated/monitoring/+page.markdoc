@@ -1,0 +1,139 @@
+---
+layout: article
+title: Monitoring & insights
+description: Live CPU, memory, IOPS, and connection metrics, slow query logging, query plan explanations, and automatic index recommendations for dedicated databases.
+---
+
+Every dedicated database collects its own resource telemetry, slow-query logs, and index analysis. The Appwrite Console renders the data in the Database view; the same data is available through the API so you can pipe it into your existing observability stack.
+
+# Live metrics {% #metrics %}
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/metrics?period=24h"
+```
+
+`period` accepts `1h`, `24h`, `7d`, or `30d`.
+
+The response includes:
+
+| Field                | Unit          | Notes                                              |
+|----------------------|---------------|----------------------------------------------------|
+| `cpuPercent`         | %             | CPU utilisation over the period                    |
+| `memoryPercent`      | %             | RSS as % of the specification's memory budget      |
+| `memoryUsedBytes`    | bytes         | Resident memory                                    |
+| `storageUsedBytes`   | bytes         | Engine on-disk size (data + indexes)               |
+| `connectionsActive`  | count         | Currently active backend connections               |
+| `connectionsMax`     | count         | Specification's connection cap                     |
+| `iopsRead`           | operations/s  | Disk read IOPS                                     |
+| `iopsWrite`          | operations/s  | Disk write IOPS                                    |
+| `qps`                | queries/s     | Queries per second (across all sessions)           |
+
+Metrics are sampled inside the database environment from OS-level resource counters and engine-native stats. Samples are pushed to the edge every 60 seconds and aggregated for the API.
+
+# Usage time series {% #usage %}
+
+For longer-range plots — invoice line items, capacity planning, anomaly detection — call the usage endpoint:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/usage?range=30d"
+```
+
+`range` accepts `24h`, `7d`, `30d`, or `90d`. The response is a series of bucketed `(timestamp, value)` pairs for each metric.
+
+# Slow queries {% #slow-queries %}
+
+Each engine logs queries that run longer than the configured threshold to the slow-query log. The threshold defaults to 200 ms and is tunable via `metricsSlowQueryLogThresholdMs`. List slow queries through:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/slow-queries
+```
+
+The response includes the query text, average duration, call count, user, and the matching database. The Appwrite Console deduplicates by query shape so you see the worst offenders first.
+
+# Query plan explanation {% #explanation %}
+
+To inspect the planner's choice for a specific query without running it against your production database, post the query to the explanation endpoint:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "SELECT * FROM users WHERE email = $1",
+    "analyze": false
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/explanation
+```
+
+| Engine     | Underlying command                                            |
+|------------|---------------------------------------------------------------|
+| PostgreSQL | `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ...` when `analyze`  |
+| MySQL      | `EXPLAIN FORMAT=JSON ...`                                     |
+| MariaDB    | `EXPLAIN FORMAT=JSON ...`                                     |
+| MongoDB    | `db.collection.find(...).explain("executionStats")`           |
+
+With `analyze: false`, the planner returns its estimated plan without touching the table. With `analyze: true`, the query is executed and you get actual timings, buffer usage, and row counts. The response includes both a parsed structured plan and the raw planner output.
+
+# Insights {% #insights %}
+
+In addition to metrics and slow queries, the platform runs a periodic index-analysis pass against each database (every ~24 hours, jittered) and submits the results as **insights**. Insights surface:
+
+- **Missing indexes** — tables with sequential scans on large row counts
+- **Unused indexes** — indexes that have not been read since the last reset
+- **Tuning recommendations** — engine config parameters that look out of range for the current specification
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/insights?period=24h"
+```
+
+`period` accepts `1h`, `24h`, or `7d`.
+
+Insights are recommendations, not auto-applied changes. The Console suggests the corresponding `CREATE INDEX` or `DROP INDEX` statement; you apply it (or not) through your normal migration process.
+
+# Audit logs {% #audit %}
+
+Database-level admin actions — credential rotation, IP allowlist changes, backup triggers, failover requests — are recorded in the standard project activity log:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/logs"
+```
+
+The response includes the actor, the action, the source IP, and the previous/next state for fields that changed.
+
+# Webhooks & realtime {% #events %}
+
+Every database lifecycle transition emits an event that fans out through Appwrite's standard event system. Subscribe with webhooks, realtime channels, or function triggers to react in your own systems:
+
+| Event                                          | When                                          |
+|------------------------------------------------|-----------------------------------------------|
+| `databases.<id>.create`                        | Provisioning completed                        |
+| `databases.<id>.update`                        | Any update applied (resize, HA, backups, etc.)|
+| `databases.<id>.delete`                        | Database removed                              |
+| `databases.<id>.backups.<bId>.create`          | A backup completed (scheduled or manual)      |
+| `databases.<id>.restore`                       | A restore (full or PITR) completed            |
+
+Lifecycle events emitted by the edge — `spindown`, `storage.autoscaled`, `failover.completed` — also fan out through this same channel.
+
+# What's not exposed {% #out-of-band %}
+
+A few things deliberately stay inside the database environment and are not surfaced through the API:
+
+- **Engine error logs** beyond what's in slow-query and audit feeds. For deeper engine logs, ship your own logging extension (`pgaudit`, `log_min_duration_statement`, MongoDB profiler).
+- **OS-level metrics** beyond CPU/memory/IOPS. For per-process inspection, use the engine's own introspection (`pg_stat_activity`, `SHOW PROCESSLIST`, `db.currentOp()`).
+- **Backup file contents** — the platform never exposes raw dump bytes through the API, only metadata.

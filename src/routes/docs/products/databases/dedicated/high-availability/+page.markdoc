@@ -1,0 +1,119 @@
+---
+layout: article
+title: High availability
+description: Run up to five replicas of a dedicated database with synchronous, semi-synchronous, or asynchronous replication and automatic failover on primary failure.
+---
+
+High availability adds replicas to a dedicated database and enables automatic failover when the primary becomes unhealthy. With HA on, a primary outage is recovered in seconds by promoting the most up-to-date replica, without manual intervention.
+
+HA is opt-in per database and requires a paid specification — the free shared specification does not support replication.
+
+# How it works {% #how %}
+
+When you enable HA, Appwrite scales the underlying database to the configured replica count and turns on engine-native replication:
+
+| Engine     | Replication mechanism                                                                 |
+|------------|---------------------------------------------------------------------------------------|
+| PostgreSQL | Streaming replication over WAL                                                        |
+| MySQL      | Semi-synchronous binlog replication                                                   |
+| MariaDB    | Semi-synchronous binlog replication                                                   |
+| MongoDB    | Replica-set oplog tailing with Raft-based primary election                            |
+
+Replicas are placed on different physical hosts from the primary, so a single host failure does not take down both the primary and a replica.
+
+# Sync modes {% #sync-modes %}
+
+PostgreSQL and MySQL/MariaDB expose three durability modes. MongoDB uses its own write-concern model and is not configurable through this setting.
+
+| Mode         | Commit acknowledged when…                            | Durability     | Write latency       |
+|--------------|------------------------------------------------------|----------------|---------------------|
+| `async`      | The primary persists the write to local WAL/binlog   | Low            | Lowest (default)    |
+| `sync`       | At least one replica acknowledges the write          | High           | +network round-trip |
+| `quorum`     | A majority of replicas acknowledge the write         | Highest        | +network round-trip |
+
+A safe default for production is `sync` with two replicas — a single replica failure does not block writes, and you still cannot lose a committed write to a primary-only crash.
+
+# Enable HA {% #enable %}
+
+Set `highAvailability`, `highAvailabilityReplicaCount`, and `highAvailabilitySyncMode` on the database. You can do this on create, or by updating the database later:
+
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "highAvailability": true,
+    "highAvailabilityReplicaCount": 2,
+    "highAvailabilitySyncMode": "sync"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+
+`highAvailabilityReplicaCount` accepts 0–5. The primary is not counted — a value of 2 gives you one primary plus two replicas.
+
+Switching HA on or off is asynchronous: the platform queues a worker that provisions the new replicas, waits for them to come up, then runs an initial base sync. Watch the status with:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/ha
+```
+
+The response contains per-replica state and current replication lag in seconds.
+
+# Automatic failover {% #failover %}
+
+Appwrite continuously watches the health of the primary. When the primary stays unhealthy across two consecutive 3-second health checks, the platform:
+
+1. Takes a 15-second distributed lock so only one controller acts.
+2. Queries all replicas for their replication lag.
+3. Selects the replica with the lowest lag as the failover target.
+4. Promotes the target in place: `pg_ctl promote` (PostgreSQL), `STOP REPLICA; SET GLOBAL read_only=0;` (MySQL/MariaDB), or `rs.stepDown()` on the old primary followed by re-election (MongoDB).
+5. Runs a write-verification probe on the new primary.
+6. Drains live connections from the old primary so clients reconnect to the new one.
+
+A `failover.completed` event is emitted on the database, fanning out to webhooks, realtime subscriptions, and functions. There is a 60-second cooldown between failovers on the same database to prevent thrashing during infrastructure events.
+
+# Manual failover {% #manual-failover %}
+
+To trigger a failover yourself — for maintenance, testing, or a controlled swap — call the failover endpoint:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "targetReplicaId": "<replica-id>" }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/ha/failovers
+```
+
+Omit `targetReplicaId` to let the platform pick the lowest-lag replica.
+
+# Read your writes {% #read-your-writes %}
+
+In `async` mode, a read that lands on a replica immediately after a write to the primary may not see the write yet. The application strategies:
+
+- **Always read from the primary** — the safest default. The pooler routes all queries to the primary if read/write splitting is off.
+- **Use read replicas, with primary-affinity for writes** — turn on the [connection pooler with read/write split](/docs/products/databases/dedicated/pooler). The pooler pins transactions and writes to the primary and routes ambient `SELECT`s to replicas.
+- **Use a stronger sync mode** — in `sync` or `quorum`, any reader on an in-sync replica sees the write as soon as `COMMIT` returns.
+
+# Cross-region failover {% #cross-region-failover %}
+
+Beyond same-region HA, you can also configure a cross-region warm standby. The standby lives in another region and continuously replicates from the primary. On a planned or unplanned region-level failure you promote the standby and your DNS hostname starts resolving to the standby region.
+
+Cross-region replicas and standbys are billed as feature add-ons — see the [specifications page](/docs/products/databases/dedicated/specifications#add-ons) for the pricing.
+
+# Limits {% #limits %}
+
+| Limit                                          | Value |
+|------------------------------------------------|-------|
+| Maximum replicas per database                  | 5     |
+| Replica count change (online)                  | yes   |
+| Sync mode change without recreating replicas   | yes   |
+| Failover cooldown after auto-promote           | 60 s  |
+| Health-check timeout per attempt               | 3 s   |
+| Consecutive failed health checks before failover | 2     |
+
+Replicas are billed at 50% of the underlying specification price per replica. Cross-region replicas are billed at 75% per replica.

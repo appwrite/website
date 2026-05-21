@@ -1,0 +1,97 @@
+---
+layout: article
+title: Extensions
+description: Install and manage PostgreSQL extensions like PostGIS, pgvector, and TimescaleDB on a dedicated database. Extensions are managed through the API and are free of charge.
+---
+
+PostgreSQL exposes a rich extension ecosystem — PostGIS for geospatial data, pgvector for embeddings, TimescaleDB for time-series, pg_stat_statements for query analytics, and many more. Dedicated PostgreSQL databases on Appwrite support managing extensions through the API; there is no separate cost.
+
+MySQL, MariaDB, and MongoDB do not have an equivalent extension system. The extensions endpoints are available on those engines but always return an empty list.
+
+# Install an extension {% #install %}
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "pgvector",
+    "version": "0.7.4"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions
+```
+
+The request enqueues a worker that runs `CREATE EXTENSION` inside the database. The response returns immediately with status `creating`; the extension transitions to `ready` once the install completes (typically within a few seconds for small extensions).
+
+If the extension requires a non-default schema, pass the optional `schema` field. If it's a contrib extension shipped with PostgreSQL it's available out of the box; if it's a community extension, the platform installs the system package first.
+
+# List extensions {% #list %}
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions
+```
+
+The response separates installed extensions from available extensions:
+
+```json
+{
+  "installed": [
+    { "name": "pg_stat_statements", "version": "1.10", "schema": "public", "status": "ready" },
+    { "name": "pgvector", "version": "0.7.4", "schema": "public", "status": "ready" }
+  ],
+  "available": [
+    { "name": "postgis", "defaultVersion": "3.4", "category": "geospatial" },
+    { "name": "timescaledb", "defaultVersion": "2.15", "category": "timeseries" },
+    { "name": "pg_trgm", "defaultVersion": "1.6", "category": "text-search" }
+  ]
+}
+```
+
+# Remove an extension {% #remove %}
+
+```bash
+curl -X DELETE \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/extensions/pgvector
+```
+
+`DROP EXTENSION` is run with `RESTRICT` by default — if there are dependent objects (tables, indexes, columns), the call fails. Drop the dependents first, or call `DROP EXTENSION ... CASCADE` directly through SQL to acknowledge that you understand what gets removed.
+
+# Available extensions {% #available %}
+
+A non-exhaustive list of common extensions that are pre-packaged and installable through the API:
+
+| Category    | Extensions                                                                                                  |
+|-------------|-------------------------------------------------------------------------------------------------------------|
+| Geospatial  | `postgis`, `postgis_raster`, `postgis_topology`, `pgrouting`                                                |
+| Vectors     | `pgvector`, `pg_embedding`                                                                                  |
+| Time-series | `timescaledb`                                                                                               |
+| Analytics   | `pg_stat_statements`, `auto_explain`, `pg_buffercache`                                                      |
+| Text search | `pg_trgm`, `unaccent`, `fuzzystrmatch`                                                                      |
+| Crypto      | `pgcrypto`, `uuid-ossp`                                                                                     |
+| FDWs        | `postgres_fdw`, `mysql_fdw`, `oracle_fdw`                                                                   |
+| HTTP        | `pg_net`, `http`                                                                                            |
+| Misc        | `hstore`, `citext`, `tablefunc`, `intarray`, `ltree`, `cube`, `earthdistance`                              |
+
+If you need an extension that isn't on this list, [open a feature request](https://github.com/appwrite/appwrite/issues) — the catalog grows on demand. Custom or proprietary extensions require Enterprise support.
+
+# Version selection {% #versions %}
+
+Each extension has a list of versions tied to the PostgreSQL major version of the database. Newer PostgreSQL versions support newer extension versions; downgrading the engine version can require downgrading extensions first. Use the `version` field on the install request to pin to a specific version, or omit it to install the default version for the engine.
+
+To upgrade an extension version, drop it and reinstall it with the new version. The drop is rejected if there are dependent objects, which is the safe default for extensions that change schema (PostGIS, TimescaleDB).
+
+# Limits {% #limits %}
+
+| Limit                                       | Value         |
+|---------------------------------------------|---------------|
+| Maximum extensions per database             | 50            |
+| Extension install/uninstall billing         | Free          |
+| Supported engines                           | PostgreSQL    |
+
+The 50-extension cap is generous — most production deployments install fewer than ten. Extensions that pull in a lot of shared library code (PostGIS, TimescaleDB) count the same as small ones.

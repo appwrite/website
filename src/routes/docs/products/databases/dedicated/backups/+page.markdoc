@@ -1,0 +1,172 @@
+---
+layout: article
+title: Backups & PITR
+description: Encrypted scheduled backups with up to 365 days of retention, on-demand manual backups, and point-in-time recovery to any second within the PITR window.
+---
+
+Every dedicated database supports automated backups out of the box. Backups are AES-256 encrypted at rest, uploaded to an object store, and verifiable on demand. Point-in-time recovery (PITR) layers continuous WAL/binlog/oplog archiving on top, so you can restore to any second within the retention window — not just to a backup checkpoint.
+
+# What gets backed up {% #scope %}
+
+A backup captures the full contents of the database: all schemas, tables/collections, indexes, extensions, and (optionally) user-defined roles. The backup is taken with the engine's native tool — `pg_dump` / `mysqldump` / `mongodump` — in a dedicated job that runs alongside (not on top of) the database, so production traffic is unaffected.
+
+# Schedule {% #schedule %}
+
+Scheduled backups run from a cron expression you configure on the database. The default is `0 3 * * *` (daily at 03:00 UTC), jittered to spread load across the platform.
+
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "backupEnabled": true,
+    "backupCron": "0 3 * * *",
+    "backupRetentionDays": 14
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+
+Backup retention accepts 1–365 days. Backups older than the retention window are deleted automatically once a day.
+
+# Manual backups {% #manual %}
+
+To create an ad-hoc backup — before a destructive migration, for example — call the create endpoint. The response contains the backup ID; the actual dump runs asynchronously.
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups
+```
+
+Manual backups respect the same retention setting as scheduled ones. Pass `retentionDays` in the request body to override the default.
+
+# Encryption {% #encryption %}
+
+Backups are encrypted before they leave the database. A unique 32-byte AES-256 key is generated for the database on first backup and stored in Appwrite's encrypted secret store, scoped to the database. The dump is piped through `openssl enc -aes-256-cbc -pbkdf2` and uploaded to the configured storage target.
+
+Restore reverses the pipeline: the key is fetched from the secret store, the ciphertext is decrypted, and the engine restore tool consumes the plaintext stream. The key never leaves Appwrite-controlled infrastructure.
+
+# Storage targets {% #storage %}
+
+By default, backups are stored on Appwrite-managed S3-compatible storage. You can also bring your own bucket — S3, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, or Azure Blob via S3 interop. Bring-your-own-bucket backups never enter Appwrite-controlled storage.
+
+```bash
+curl -X PUT \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "s3",
+    "bucket": "my-db-backups",
+    "region": "eu-central-1",
+    "prefix": "appwrite/",
+    "accessKey": "<KEY>",
+    "secretKey": "<SECRET>"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/storage
+```
+
+Credentials are encrypted at rest. The `endpoint` field is supported for S3-compatible providers — leave empty for AWS S3.
+
+# Verify a backup {% #verify %}
+
+A backup that has never been verified is a hope, not a backup. Appwrite exposes a verification endpoint that downloads the backup, decrypts it, and runs an engine-native sanity check (`pg_restore --list`, `mysql --execute "..."`, `mongorestore --dryRun`) in an isolated environment, then tears the temporary resources down.
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/<BACKUP_ID>/verifications
+```
+
+The result is recorded on the backup document under `verifiedAt`. You can query the backup later to see verification history.
+
+# Restore from a backup {% #restore %}
+
+Restoring from a backup creates a new dedicated database, applies the dump, and waits for the engine to come up. The original database is untouched.
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "backup",
+    "backupId": "<BACKUP_ID>"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/restorations
+```
+
+The new database is provisioned with the same specification as the source unless you also pass overrides for `cpu`, `memory`, and `storage`.
+
+# Point-in-time recovery {% #pitr %}
+
+PITR layers continuous transaction-log archiving on top of scheduled backups. With PITR enabled, the database keeps shipping WAL segments (PostgreSQL), binlog files (MySQL/MariaDB), or oplog entries (MongoDB) to object storage every five minutes. To restore, the platform replays the most recent base backup plus the WAL up to the target timestamp.
+
+Enable PITR on create or update:
+
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "backupPitr": true, "pitrRetentionDays": 7 }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+
+`pitrRetentionDays` accepts 1–35 days. PITR is billed as a feature add-on at 20% of the underlying specification price.
+
+# Recovery windows {% #windows %}
+
+Each database with PITR enabled exposes its current recovery window. Use this to confirm the earliest and latest timestamps you can restore to before initiating a recovery:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pitr
+```
+
+Response:
+
+```json
+{
+  "earliestRecoveryPoint": "2026-05-14T00:00:00Z",
+  "latestRecoveryPoint": "2026-05-21T13:34:12Z",
+  "windows": [
+    { "from": "2026-05-14T00:00:00Z", "to": "2026-05-21T13:34:12Z" }
+  ]
+}
+```
+
+# Restore to a point in time {% #pitr-restore %}
+
+A PITR restore takes a target timestamp inside the active window and produces a new database that represents the state of the source at that exact moment:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "pitr",
+    "targetTime": "2026-05-21T13:30:00Z"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/restorations
+```
+
+The new database is independent — recovering does not roll back the source. Once you've validated the recovery, you can swap your application traffic to it or copy specific tables/collections back to the source with `pg_dump` / `mysqldump` / `mongodump`.
+
+# Limits {% #limits %}
+
+| Limit                            | Value             |
+|----------------------------------|-------------------|
+| Backup retention                 | 1 – 365 days      |
+| PITR retention                   | 1 – 35 days       |
+| Manual + scheduled backups       | Unlimited (subject to storage)  |
+| Cron schedule resolution         | 1 minute          |
+| WAL/binlog/oplog flush cadence   | every 5 minutes   |
+
+Backup storage usage rolls up into the dedicated database storage line on your invoice — there's no separate backup storage line item.

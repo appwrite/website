@@ -1,0 +1,183 @@
+---
+layout: article
+title: Connect
+description: Connect to a dedicated database with psql, mysql, mongosh, or any standard driver. Retrieve credentials from the API, manage additional users, and rotate the primary password.
+---
+
+A dedicated database exposes a real engine endpoint over TLS. You connect to it the same way you would connect to any PostgreSQL, MySQL, MariaDB, or MongoDB server: with the engine's standard CLI or any ORM/driver in any language.
+
+# Get the connection details {% #credentials %}
+
+The connection details for a dedicated database are exposed through the [credentials endpoint](/docs/references/cloud/server-rest/compute#getDatabaseCredentials):
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/credentials
+```
+
+Response:
+
+```json
+{
+  "host": "db-<projectId>-<dbId>.<region>.appwrite.network",
+  "port": 5432,
+  "username": "appwrite",
+  "password": "<32-char-hex>",
+  "database": "appwrite",
+  "engine": "postgres",
+  "ssl": true,
+  "connectionString": "postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:5432/appwrite?sslmode=require"
+}
+```
+
+The default database name and username on every engine are both `appwrite`. The primary password is generated on provision and stored encrypted in the platform database; you can rotate it from the API at any time without provisioning a new database.
+
+# Connect from a shell {% #shells %}
+
+PostgreSQL:
+
+```bash
+psql "$(curl -s ... credentials | jq -r .connectionString)"
+# or directly:
+psql -h db-<projectId>-<dbId>.<region>.appwrite.network -p 5432 -U appwrite -d appwrite
+```
+
+MySQL / MariaDB:
+
+```bash
+mysql -h db-<projectId>-<dbId>.<region>.appwrite.network -P 3306 -u appwrite -p appwrite
+```
+
+MongoDB:
+
+```bash
+mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:27017/appwrite?tls=true"
+```
+
+# Rotate the primary password {% #rotate %}
+
+The credentials endpoint also accepts `POST` to issue a new password for the primary user. The change is applied atomically in the underlying engine and the stored credential is updated in the same call. Existing sessions remain alive until the engine's idle timeout, then have to authenticate with the new password.
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/credentials
+```
+
+# Additional connection users {% #connections %}
+
+The primary `appwrite` user has full ownership of the default database. For applications that need narrower roles — a read-only reporting user, a write-only ingestion user, a per-tenant user — you can create additional connections from the API:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "analytics_ro",
+    "database": "appwrite",
+    "role": "readonly"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/connections
+```
+
+The response contains the generated password for the new user. Appwrite stores it encrypted; if you lose it, delete the connection and create a new one.
+
+Available roles:
+
+| Role         | PostgreSQL / MySQL / MariaDB                          | MongoDB                       |
+|--------------|-------------------------------------------------------|-------------------------------|
+| `readonly`   | `SELECT` on all tables in the schema                  | `read` on the database        |
+| `readwrite`  | `SELECT`, `INSERT`, `UPDATE`, `DELETE` (no schema DDL)| `readWrite` on the database   |
+
+`readwrite` is the default. List, get, and delete connections through the same endpoints. The primary `appwrite` user cannot be deleted.
+
+# TLS {% #tls %}
+
+All dedicated database endpoints terminate TLS at the edge proxy and forward to the engine over Appwrite's internal regional network. Connection strings always include `sslmode=require` (PostgreSQL), `useSSL=true` (MySQL/MariaDB), or `tls=true` (MongoDB) by default — your driver should not need any extra configuration.
+
+To require mTLS, see the [network page](/docs/products/databases/dedicated/network).
+
+# Cold-start (shared databases) {% #cold-start %}
+
+If your database is on the **Free** specification, it spins down to zero compute after 15 minutes of inactivity. The next connection is intercepted by the edge proxy, which sends a start command to the platform and waits for the database to become ready before forwarding the handshake.
+
+The cold-start adds a few seconds to the first query after an idle period. Subsequent queries see no extra latency. The underlying storage is preserved across spin-downs, so no data is lost.
+
+# Connecting from an application {% #drivers %}
+
+There's nothing Appwrite-specific about the driver setup. A few example snippets:
+
+{% multicode %}
+```nodejs
+import { Client } from 'pg';
+
+const client = new Client({
+    host: 'db-<projectId>-<dbId>.<region>.appwrite.network',
+    port: 5432,
+    user: 'appwrite',
+    password: process.env.DB_PASSWORD,
+    database: 'appwrite',
+    ssl: { rejectUnauthorized: true },
+});
+
+await client.connect();
+const { rows } = await client.query('SELECT now()');
+console.log(rows);
+```
+```python
+import psycopg
+import os
+
+with psycopg.connect(
+    host='db-<projectId>-<dbId>.<region>.appwrite.network',
+    port=5432,
+    user='appwrite',
+    password=os.environ['DB_PASSWORD'],
+    dbname='appwrite',
+    sslmode='require',
+) as conn:
+    with conn.cursor() as cur:
+        cur.execute('SELECT now()')
+        print(cur.fetchone())
+```
+```php
+<?php
+
+$pdo = new PDO(
+    'pgsql:host=db-<projectId>-<dbId>.<region>.appwrite.network;port=5432;dbname=appwrite;sslmode=require',
+    'appwrite',
+    getenv('DB_PASSWORD'),
+);
+
+$rows = $pdo->query('SELECT now()')->fetchAll();
+print_r($rows);
+```
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/jackc/pgx/v5"
+)
+
+func main() {
+    conn, _ := pgx.Connect(context.Background(),
+        fmt.Sprintf("postgres://appwrite:%s@db-<projectId>-<dbId>.<region>.appwrite.network:5432/appwrite?sslmode=require",
+            os.Getenv("DB_PASSWORD")))
+    defer conn.Close(context.Background())
+
+    var now string
+    conn.QueryRow(context.Background(), "SELECT now()").Scan(&now)
+    fmt.Println(now)
+}
+```
+{% /multicode %}
+
+Once you can run a query, you can use any tool that talks the engine's wire protocol: pgAdmin, DataGrip, MySQL Workbench, MongoDB Compass, your ORM of choice, your migration tool of choice, your read-replica failover library of choice. Appwrite gets out of the way.

@@ -1,0 +1,128 @@
+---
+layout: article
+title: Branches
+description: Spin up an ephemeral, isolated copy of a dedicated database in seconds from a storage snapshot. Use branches for previews, migrations, and testing.
+---
+
+A **branch** is a short-lived, isolated copy of a dedicated database. It has its own credentials, its own endpoint, and starts from a point-in-time snapshot of the parent's storage volume. Branches are not replicas — once created, they diverge from the parent and never sync back.
+
+Use cases:
+
+- **Preview environments** — one branch per pull request, destroyed when the PR closes
+- **Test migrations** — apply a destructive `ALTER` against the branch first, observe behaviour, then run it against the source
+- **Reproduce a bug** — branch off the most recent PITR window, attach a debugger, throw it away when done
+- **Try an analytical query** — heavy `EXPLAIN ANALYZE` work against a branch can't slow down the primary
+
+# How it works {% #how %}
+
+Creating a branch:
+
+1. **Quiesce the parent** briefly. PostgreSQL takes a `CHECKPOINT`. MySQL/MariaDB issue `FLUSH TABLES WITH READ LOCK`. MongoDB runs `db.fsyncLock()`.
+2. **Snapshot the parent's storage volume.** This is a near-instant copy-on-write operation.
+3. **Release the parent.** Total parent quiesce time is typically under a second.
+4. **Provision the branch** from the snapshot — its own isolated storage volume, its own database instance.
+5. **Start the branch** on the same engine and version. Resources can be smaller than the parent.
+6. **Generate branch credentials** and return the branch endpoint.
+
+The parent and the branch share storage cost-free at the moment of branching (copy-on-write). Storage cost grows as the two databases diverge.
+
+PostgreSQL supports crash-consistent snapshots, so the quiesce step is a fast checkpoint and PostgreSQL branches recover via WAL replay on first start. MySQL/MariaDB and MongoDB require an explicit write freeze before snapshot to produce a clean image.
+
+# Create a branch {% #create %}
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "branchId": "pr-1234",
+    "name": "PR 1234 preview",
+    "cpu": 1000,
+    "memory": 2048
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
+```
+
+Optional fields:
+
+| Field      | Default                 | Purpose                                                 |
+|------------|-------------------------|---------------------------------------------------------|
+| `cpu`      | parent's CPU            | Branch can be smaller (or larger) than the parent       |
+| `memory`   | parent's memory         | Same                                                    |
+| `storage`  | parent's storage        | Branches inherit storage from the snapshot              |
+
+The branch endpoint is exposed as a separate hostname:
+
+```
+db-<projectId>-<dbId>-<branchId>.<region>.appwrite.network
+```
+
+Connect to it with the engine's standard CLI, same as the parent. Credentials for the branch are retrieved through:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches/<BRANCH_ID>
+```
+
+# List branches {% #list %}
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
+```
+
+# Delete a branch {% #delete %}
+
+Deleting a branch removes the branch's database instance, its storage volume, and the underlying snapshot. There's no soft-delete — once the branch is gone, the data is gone.
+
+```bash
+curl -X DELETE \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches/<BRANCH_ID>
+```
+
+# Billing {% #billing %}
+
+A branch is billed like a standalone dedicated database against its own specification (CPU, memory, storage). The snapshot itself is free at the moment of branching; storage cost accumulates as the branch's data diverges from the parent.
+
+There is no separate "branch" line item — branches roll into your regular dedicated database storage and compute totals.
+
+# Use case: per-PR preview database {% #ci-example %}
+
+A CI pipeline that branches on every pull request and tears down on merge or close:
+
+```yaml
+# .github/workflows/preview.yml
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create or update preview branch
+        if: github.event.action != 'closed'
+        run: |
+          curl -X POST \
+            -H "X-Appwrite-Project: $PROJECT_ID" \
+            -H "X-Appwrite-Key: $API_KEY" \
+            -d '{ "branchId": "pr-${{ github.event.number }}", "name": "PR #${{ github.event.number }}" }' \
+            https://fra.cloud.appwrite.io/v1/compute/databases/$DB_ID/branches || true
+
+      - name: Tear down preview branch on close
+        if: github.event.action == 'closed'
+        run: |
+          curl -X DELETE \
+            -H "X-Appwrite-Project: $PROJECT_ID" \
+            -H "X-Appwrite-Key: $API_KEY" \
+            https://fra.cloud.appwrite.io/v1/compute/databases/$DB_ID/branches/pr-${{ github.event.number }}
+```
+
+The `|| true` on `POST` makes the workflow idempotent — if the branch already exists, the call is a no-op.

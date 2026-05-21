@@ -1,0 +1,84 @@
+---
+layout: article
+title: Specifications
+description: Eight dedicated database specifications from 1 vCPU and 1 GB to 8 vCPU and 64 GB, plus a free shared tier. Per-specification CPU, memory, included storage, included bandwidth, and connection cap.
+---
+
+A dedicated database is provisioned against a **specification** — a fixed bundle of CPU, memory, included storage, included bandwidth, and a maximum connection cap. You pick the specification on create and can change it later by updating the database; the platform performs a blue-green resize with logical replication.
+
+All paid specifications are dedicated, always-on databases billed by the hour. The free specification is a shared, scale-to-zero database included with the Pro plan.
+
+# Paid specifications {% #paid %}
+
+| Specification    | Name             | vCPU | Memory | Max connections | Included storage | Included bandwidth | Price (USD/mo) |
+|------------------|------------------|------|--------|-----------------|------------------|--------------------|----------------|
+| `s-1vcpu-1gb`    | Starter          | 1    | 1 GB   | 100             | 10 GB            | 50 GB              | $15            |
+| `s-2vcpu-2gb`    | Standard         | 2    | 2 GB   | 200             | 25 GB            | 200 GB             | $25            |
+| `s-2vcpu-4gb`    | Standard Plus    | 2    | 4 GB   | 500             | 50 GB            | 400 GB             | $60            |
+| `s-4vcpu-8gb`    | Professional     | 4    | 8 GB   | 1,000           | 200 GB           | 1 TB               | $100           |
+| `s-4vcpu-16gb`   | Business         | 4    | 16 GB  | 2,000           | 500 GB           | 2 TB               | $190           |
+| `s-4vcpu-32gb`   | Business Plus    | 4    | 32 GB  | 4,000           | 1 TB             | 5 TB               | $370           |
+| `s-8vcpu-32gb`   | Enterprise       | 8    | 32 GB  | 5,000           | 2 TB             | 7.5 TB             | $500           |
+| `s-8vcpu-64gb`   | Enterprise Plus  | 8    | 64 GB  | 10,000          | 3 TB             | 10 TB              | $860           |
+
+vCPU counts are dedicated, not burstable. Connection caps are enforced at the engine layer — going above the cap returns a connection refusal, not a slowdown.
+
+# Free (shared) specification {% #free %}
+
+The free specification is shared compute with strict resource caps. Idle databases scale to zero and the underlying disk is preserved between spin-downs, so you only ever pay for the storage you keep, never for the database container itself.
+
+| Resource         | Limit       |
+|------------------|-------------|
+| CPU              | 125 mCPU    |
+| Memory           | 128 MB      |
+| Storage          | 1 GB        |
+| Max connections  | 10          |
+| Query timeout    | 15 seconds  |
+| Idle timeout     | 15 minutes  |
+
+Free databases are included with the Pro plan and do not count toward storage or bandwidth overage.
+
+# Overage rates {% #overage %}
+
+When usage exceeds the included allowance for a specification, overage is billed at the following rates:
+
+| Resource  | Rate            |
+|-----------|-----------------|
+| Storage   | $0.125 / GB / month |
+| Bandwidth | $0.08  / GB / month |
+
+Storage overage is computed on the snapshot at the end of the billing period. Bandwidth overage sums inbound and outbound traffic across the billing period.
+
+# Feature add-ons {% #add-ons %}
+
+The following features are billed as a percentage of the underlying specification price, pro-rated by active days in the billing period:
+
+| Feature                     | Rate                            | Example on a $100/mo specification |
+|-----------------------------|---------------------------------|------------------------------------|
+| High availability replicas  | 50% of specification per replica | $50/mo per replica                |
+| Cross-region replicas       | 75% of specification per replica | $75/mo per replica                |
+| Cross-region standby        | 50% of specification             | $50/mo                            |
+| Point-in-time recovery      | 20% of specification             | $20/mo                            |
+| PostgreSQL extensions       | Free                             | $0                                |
+
+# Resize behaviour {% #resize %}
+
+Changing the specification on an existing database is a non-destructive, online operation. There are no read or write outages during the resize.
+
+1. A second database instance is provisioned with the new CPU and memory.
+2. The schema and data are streamed from the old instance to the new one through engine-native logical replication — WAL on PostgreSQL, binlog on MySQL/MariaDB, and oplog tailing on MongoDB.
+3. Once replication is caught up, the connection endpoint is switched to the new instance.
+4. The old instance is decommissioned.
+
+Storage can only grow, never shrink — storage volumes can be expanded but not contracted. Storage expansion happens online without restarting the database.
+
+# Picking a specification {% #picking %}
+
+A few rules of thumb:
+
+- **OLTP workloads** (lots of small reads and writes) — pick a specification where the working set fits in memory. For PostgreSQL this is `shared_buffers + effective_cache_size` ≈ 75% of RAM.
+- **Analytics workloads** (large scans, aggregations) — favour the higher CPU specifications. `s-8vcpu-32gb` and `s-8vcpu-64gb` are tuned for sustained CPU usage.
+- **Storage-heavy workloads** — pick by included storage first. Going one specification up is usually cheaper than paying overage on a smaller specification.
+- **Burst patterns** — keep autoscaling on for storage and use a specification one tier below your peak; resize up during peak windows and back down after.
+
+The next page explains how to [connect to a dedicated database](/docs/products/databases/dedicated/connect).

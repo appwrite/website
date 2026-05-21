@@ -1,0 +1,127 @@
+---
+layout: post
+title: "Announcing Dedicated databases: managed PostgreSQL, MySQL, MariaDB, and MongoDB on Appwrite"
+description: Run production database engines on Appwrite Cloud. PostgreSQL, MySQL, MariaDB, and MongoDB with high availability, point-in-time recovery, branching, extensions, and a connection pooler — billed by the hour from $15/mo.
+date: 2026-05-21
+cover: /images/blog/announcing-dedicated-databases/cover.avif
+timeToRead: 8
+author: jake-barnby
+category: announcement
+featured: true
+callToAction: true
+faqs:
+  - question: "How is this different from Appwrite Databases?"
+    answer: "Appwrite Databases is the document store — a curated TablesDB API with rows, columns, queries, and permissions, accessible through the Appwrite SDKs. Dedicated databases are real PostgreSQL, MySQL, MariaDB, or MongoDB engines that you connect to with their native drivers. The two products are independent — many teams will use both. Use the document store for app data that benefits from Appwrite's permission model; use a dedicated database when you need raw SQL, extensions like PostGIS or pgvector, or compatibility with an existing tool."
+  - question: "Which plans include dedicated databases?"
+    answer: "The Pro plan and higher. A payment method must be attached to the team. The Free specification (shared, scale-to-zero) is included with Pro at no extra cost; paid specifications are billed by the hour against the per-specification monthly price."
+  - question: "What engines and versions are supported?"
+    answer: "PostgreSQL 17 and 18 (default 18), MySQL 8.0 and 8.4 (default 8.4), MariaDB 10.11 and 11.4 (default 11.4), and MongoDB 7.0 and 8.0 (default 8.0). Version upgrades and resize operations are online — data streams to a new instance via engine-native logical replication and traffic cuts over once replication is caught up, with no read or write outages."
+  - question: "Can I bring my own backup storage bucket?"
+    answer: "Yes. The backup storage endpoint accepts S3-compatible credentials — AWS S3, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, Azure Blob via S3 interop. Backups go directly to your bucket and never enter Appwrite-managed storage. Credentials are encrypted at rest."
+  - question: "How does failover work?"
+    answer: "Appwrite continuously watches the primary. After two consecutive failed health checks (3-second timeout each), the platform promotes the replica with the lowest replication lag and emits a `failover.completed` event. A 60-second cooldown prevents flapping. You can also trigger a manual failover through the API, optionally targeting a specific replica."
+  - question: "Is read/write splitting automatic?"
+    answer: "When HA is enabled and the connection pooler is on, read/write splitting is on by default. The pooler inspects each query and routes writes plus transactions to the primary, ambient SELECTs to replicas. Turn it off if your workload requires every read to see the just-committed write."
+  - question: "Which region does my dedicated database live in?"
+    answer: "A dedicated database lives in the same region as the project that owns it — there's no per-database region selector. That means it sits next to your Functions, Sites, and Storage on the regional private network with no extra configuration."
+  - question: "How is billing pro-rated?"
+    answer: "Specification cost is pro-rated by the number of active days in the billing period — a database created mid-month is billed only from its creation timestamp to the end of the period, and a deleted database is billed only up to the deletion timestamp. Add-ons (HA, PITR, cross-region) follow the same pro-ration. Storage and bandwidth overage are computed against the included allowance for the specification."
+---
+
+Today we're announcing **Dedicated databases** on Appwrite Cloud. You can now run managed PostgreSQL, MySQL, MariaDB, and MongoDB engines next to your existing Appwrite Functions, Sites, and Storage, with the same per-region deployment, the same single payment relationship, and the same Console.
+
+Dedicated databases are a separate product from [Appwrite Databases](/docs/products/databases) — our document store with rows, columns, queries, and built-in permissions. The two products solve different problems and many teams will use both. Use the document store when you want app data managed through the Appwrite SDKs and the platform's permission model. Use a dedicated database when you need raw SQL, the PostgreSQL extension ecosystem, your existing ORM, or wire-compatibility with another tool.
+
+# What's in the box
+
+Each dedicated database is a real database engine running on its own dedicated compute, with its own storage, its own credentials, and its own public hostname. The engine is yours; Appwrite manages everything around it.
+
+**Four engines:**
+
+- **PostgreSQL 17 / 18**, with the standard contrib extensions plus a curated catalog of community extensions — PostGIS, pgvector, TimescaleDB, pg_stat_statements, pg_trgm, and more.
+- **MySQL 8.0 / 8.4**, with semi-synchronous replication and connection pooling.
+- **MariaDB 10.11 / 11.4**, with the same replication and pooling story as MySQL.
+- **MongoDB 7.0 / 8.0**, with replica-set high availability via Raft.
+
+**Eight paid specifications** from `s-1vcpu-1gb` at $15/month to `s-8vcpu-64gb` at $860/month, plus a free shared specification included with the Pro plan. Specifications are dedicated CPU, not burstable; they're 10–20% below the equivalent tier on Supabase, RDS, and PlanetScale at the same memory level. Every paid specification gets dedicated compute that never spins down, with included storage (10 GB to 3 TB) and included bandwidth (50 GB to 10 TB) baked into the monthly price.
+
+**Six regions** available today — Frankfurt, New York, San Francisco, Singapore, Sydney, Toronto — with Amsterdam, London, and Bangalore in the rollout queue. A dedicated database lives in the same region as the project that owns it, so it sits next to your Functions, Sites, and Storage on the regional private network with no extra configuration.
+
+# Production from day one
+
+The features that you'd normally bolt on after the fact — HA, PITR, branching, pooling — are all part of the product.
+
+## High availability
+
+Enable HA with one update call and the platform provisions the replicas, places them on different physical hosts from the primary, and turns on engine-native replication: WAL streaming for PostgreSQL, semi-synchronous binlog for MySQL/MariaDB, and Raft oplog tailing for MongoDB. Sync mode is `async`, `sync`, or `quorum` (PostgreSQL/MySQL) so you pick the durability/latency point that fits your workload.
+
+When the primary stays unhealthy across two 3-second probes, Appwrite takes a 15-second distributed lock, selects the lowest-lag replica, promotes it in place (no restart for SQL engines), runs a write-verification probe, drains connections from the old primary, and emits a `failover.completed` event to your webhooks, realtime channels, and functions. There's a 60-second cooldown so transient infrastructure events don't cause failover flapping.
+
+Up to five replicas per database. Replicas are billed at 50% of the underlying specification per replica.
+
+## Backups and point-in-time recovery
+
+Every database supports scheduled backups with cron syntax, retention from one to 365 days, and on-demand verification — Appwrite re-downloads the backup, decrypts it in an isolated environment, and runs a sanity check (`pg_restore --list`, `mongorestore --dryRun`, …) to confirm it would actually restore. A backup that's never been verified is a hope, not a backup.
+
+Backups are AES-256 encrypted before they leave the database. The encryption key is unique per database and stored in Appwrite's encrypted secret store scoped to the database, so the cloud storage provider only ever sees ciphertext. You can use Appwrite-managed storage or bring your own S3-compatible bucket — AWS, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, Azure Blob via S3 interop.
+
+For workloads that can't afford to lose the last hour of writes between scheduled backups, **point-in-time recovery** layers continuous WAL/binlog/oplog archiving on top. Enable PITR (20% of the specification price) and you can restore to any second within the PITR window (up to 35 days). The restore produces a new database; the source is untouched, so you can validate the recovery before swapping traffic to it.
+
+## Branching
+
+A **branch** is a near-instant ephemeral copy of a dedicated database, created from a storage snapshot of the parent. The parent is briefly quiesced (`CHECKPOINT` on PostgreSQL, `FLUSH TABLES WITH READ LOCK` on MySQL, `db.fsyncLock()` on MongoDB — under a second in practice), the snapshot is taken, the parent resumes, and the branch comes up with its own credentials and its own hostname.
+
+Branches are the right answer to "I want to test this migration without a maintenance window" or "I want a preview database per pull request" or "I want to throw a heavy `EXPLAIN ANALYZE` at production data without touching production". The parent and the branch share storage cost-free at the moment of branching (copy-on-write); cost accumulates only as the two databases diverge.
+
+Branches are billed like a standalone dedicated database against their own specification, so a small branch sitting next to a large parent is cheap.
+
+## Connection pooler
+
+Each dedicated database can run its own pooler — PostgreSQL on port 6432, MySQL/MariaDB on port 6033. The pooler is enabled by default on provision and is configurable per database — pool mode (`transaction` / `session` / `statement`), max client connections, default backend pool size.
+
+When HA is enabled, the pooler also handles **read/write splitting**: a query parser inspects each statement, pins transactions and writes to the primary, and routes ambient `SELECT`s to replicas. The application driver sees a single hostname and port; everything else is transparent. No SDK changes.
+
+MongoDB doesn't have a pooler equivalent in this catalog — its driver does connection management client-side, and `readPreference: 'secondary'` does the read routing.
+
+## SQL API
+
+For environments where opening a TCP connection isn't practical — Cloudflare Workers, Vercel Edge Functions, Deno Deploy, ad-hoc admin scripts — every dedicated database can also expose a **managed SQL API** over HTTPS. POST a parameterised statement with bindings, get back a JSON result. Schema-altering statements (`DROP`, `ALTER`, `GRANT`, …) are rejected unconditionally; DML statement types are gated by a per-database whitelist. Hard caps on rows, bytes, and execution time prevent runaway queries from taking down the engine.
+
+The SQL API is opt-in per database and disabled by default.
+
+# How connection works
+
+Each database gets a hostname of the form `db-<projectId>-<databaseId>.<region>.appwrite.network`. Resolve it with any DNS resolver, connect with `psql`, `mysql`, `mongosh`, or any driver in any language. TLS is enforced — `sslmode=require`, `useSSL=true`, `tls=true` — and the certificate is signed by a public CA, so no custom bundle is required.
+
+Behind the hostname sits Appwrite's edge proxy. It parses the engine's startup packet (PostgreSQL `StartupMessage`, MySQL handshake, MongoDB `OP_MSG hello`) to identify the database, applies your IP allowlist, and forwards the connection to the engine. For shared (free) databases, the proxy also detects the cold-start case: if the database has scaled to zero, the proxy triggers a start, waits for readiness, and forwards the handshake. The underlying storage is preserved across spin-downs, so no data is lost.
+
+# Pricing without surprises
+
+Three lines on the invoice cover the bulk of the cost:
+
+- **Specification cost** — pro-rated by active days in the billing period. A database created mid-month bills only from its creation timestamp.
+- **Storage overage** — $0.125 per GB per month above the included allowance for the specification.
+- **Bandwidth overage** — $0.08 per GB per month above the included allowance.
+
+Feature add-ons (HA replicas, cross-region replicas, cross-region standby, PITR) are billed as a percentage of the underlying specification price, pro-rated the same way. PostgreSQL extensions are free.
+
+# Get started
+
+Dedicated databases are available now on Appwrite Cloud for all Pro plan teams. The fastest path:
+
+1. Open your project in the Appwrite Console.
+2. Open the **Databases** section in the sidebar.
+3. Click **Create database** and choose the **Dedicated** type.
+4. Pick an engine, version, and specification — the database is provisioned in your project's region.
+5. Connect with `psql`, `mysql`, or `mongosh`.
+
+For the programmatic flow, the [Connect documentation](/docs/products/databases/dedicated/connect) shows credential retrieval and connection examples in Node, Python, PHP, and Go. The [Specifications page](/docs/products/databases/dedicated/specifications) has the full price list and resource limits.
+
+# Resources
+
+- [Dedicated databases documentation](/docs/products/databases/dedicated)
+- [Specifications and pricing](/docs/products/databases/dedicated/specifications)
+- [High availability](/docs/products/databases/dedicated/high-availability)
+- [Backups and PITR](/docs/products/databases/dedicated/backups)
+- [Branches](/docs/products/databases/dedicated/branches)
+- [Join the Appwrite Discord community](https://appwrite.io/discord)
