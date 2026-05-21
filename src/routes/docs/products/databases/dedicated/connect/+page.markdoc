@@ -112,7 +112,7 @@ The cold-start adds a few seconds to the first query after an idle period. Subse
 There's nothing Appwrite-specific about the driver setup. A few example snippets:
 
 {% multicode %}
-```nodejs
+```server-nodejs
 import { Client } from 'pg';
 
 const client = new Client({
@@ -128,7 +128,7 @@ await client.connect();
 const { rows } = await client.query('SELECT now()');
 console.log(rows);
 ```
-```python
+```server-python
 import psycopg
 import os
 
@@ -144,7 +144,7 @@ with psycopg.connect(
         cur.execute('SELECT now()')
         print(cur.fetchone())
 ```
-```php
+```server-php
 <?php
 
 $pdo = new PDO(
@@ -156,7 +156,7 @@ $pdo = new PDO(
 $rows = $pdo->query('SELECT now()')->fetchAll();
 print_r($rows);
 ```
-```go
+```server-go
 package main
 
 import (
