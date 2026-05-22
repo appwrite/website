@@ -1788,6 +1788,8 @@ val presence = presences.upsert(
 
 Server SDKs need an API key with the `presences.read` scope to list or read presences, and `presences.write` to upsert or delete them. Client sessions can always update their own presence without an extra scope.
 
+If you do not pass a `permissions` array when upserting a presence, Appwrite defaults to giving read access only to the user who created it, so no other client can subscribe to it. To share a presence more broadly, you must set permissions explicitly.
+
 # Use cases {% #use-cases %}
 
 The Presence API is a good fit any time you need to render "who is here right now" rather than "what has been written to storage":
