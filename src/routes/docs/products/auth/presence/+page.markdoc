@@ -108,7 +108,77 @@ There is no fixed heartbeat interval enforced by the server, so pick whichever c
 
 # Show other users' presence {% #show-other-users-presence %}
 
-Subscribe to the global `presences` channel (or a specific presence) to drive an "online now" indicator, a list of viewers on a page, or a typing dot in a chat. The subscription only emits records the current user has permission to read, so your access rules from sign in carry over without any extra work.
+List the presences the current user can read to paint the initial "online now" view, a list of viewers on a page, or a typing dot in a chat. The list call honors the same [permissions](/docs/advanced/platform/permissions) you set on each record, so each client only sees the statuses it is allowed to render.
+
+{% multicode %}
+```client-web
+import { Client, Presences } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const presences = new Presences(client);
+
+const result = await presences.list();
+
+const onlineUsers = new Map(
+    result.presences.map(presence => [presence.userId, presence])
+);
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final presences = Presences(client);
+
+final result = await presences.list();
+
+final onlineUsers = {
+    for (final presence in result.presences) presence.userId: presence
+};
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let presences = Presences(client)
+
+let result = try await presences.list()
+
+var onlineUsers: [String: Any] = [:]
+for presence in result.presences {
+    onlineUsers[presence.userId] = presence
+}
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Presences
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val presences = Presences(client)
+
+val result = presences.list()
+
+val onlineUsers = result.presences
+    .associateBy { it.userId }
+    .toMutableMap()
+```
+{% /multicode %}
+
+Then subscribe to the global `presences` channel to keep that snapshot live. Apply the same patch to the same `onlineUsers` map on every event, add or replace on upsert, remove on delete.
 
 {% multicode %}
 ```client-web
@@ -119,8 +189,6 @@ const client = new Client()
     .setProject('<PROJECT_ID>');
 
 const realtime = new Realtime(client);
-
-const onlineUsers = new Map();
 
 await realtime.subscribe(Channel.presences(), response => {
     const presence = response.payload;
@@ -143,8 +211,6 @@ final realtime = Realtime(client);
 
 final subscription = realtime.subscribe([Channel.presences()]);
 
-final onlineUsers = <String, dynamic>{};
-
 subscription.stream.listen((response) {
     final presence = response.payload;
     if (response.events.contains('presences.*.delete')) {
@@ -163,8 +229,6 @@ let client = Client()
     .setProject("<PROJECT_ID>")
 
 let realtime = Realtime(client)
-
-var onlineUsers: [String: Any] = [:]
 
 let subscription = realtime.subscribe(channels: [Channel.presences()]) { response in
     guard let payload = response.payload as? [String: Any],
@@ -188,8 +252,6 @@ val client = Client(context)
     .setProject("<PROJECT_ID>")
 
 val realtime = Realtime(client)
-
-val onlineUsers = mutableMapOf<String, Any?>()
 
 realtime.subscribe(Channel.presences()) { response ->
     val payload = response.payload as? Map<String, Any?> ?: return@subscribe
