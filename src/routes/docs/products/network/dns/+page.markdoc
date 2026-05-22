@@ -50,7 +50,7 @@ Appwrite DNS supports various DNS record types to meet your domain configuration
 | TXT | Stores text information (often used for verification) |
 | NS | Specifies the nameservers for the domain |
 | SRV | Specifies services available for a domain (used for Voice over IP, instant messaging, etc.) |
-| CAA | Specifies which certificate authorities (CAs) are authorized to issue certificates for a domain |
+| [CAA](/docs/products/network/caa-records) | Specifies which certificate authorities (CAs) are authorized to issue certificates for a domain |
 | HTTPS | Provides configuration for HTTPS connections |
 | ALIAS | Similar to CNAME but can be used at the zone apex |
 
@@ -80,14 +80,18 @@ Depending on your DNS provider, this feature may be provided through **CNAME rec
 
 To use this method:
 
-1. In the Appwrite Console, add your apex domain and copy the provided CNAME and CAA records
+1. In the Appwrite Console, add your apex domain and copy the provided CNAME and [CAA](/docs/products/network/caa-records) records
 2. In your DNS provider's settings, create an ALIAS, ANAME, or CNAME record at the apex (depending on what your provider supports)
 3. Point the record to the Appwrite hostname provided in the console
-4. Add the CAA record at the apex level in your DNS provider's settings
+4. Add the [CAA record](/docs/products/network/caa-records) at the apex level in your DNS provider's settings, alongside any CAA records you already have
 5. Wait for DNS propagation (may take up to 48 hours)
 6. Return to Appwrite Console to verify the domain
 
 This method allows you to maintain control over your remaining DNS configuration while still using your apex domain with Appwrite.
+
+{% info title="Existing CAA records?" %}
+If your apex already has CAA records for other certificate authorities, do not replace them. CAA records are additive. Add Appwrite's record next to your existing ones to keep every authorized CA. See [Setting multiple CAA records](/docs/products/network/caa-records#multiple).
+{% /info %}
 
 # Adding records in Appwrite {% #adding-records %}
 
