@@ -113,7 +113,7 @@ val presence = presences.upsert(
 ```
 {% /multicode %}
 
-`userId` is filled in automatically from the session on client SDKs. On server SDKs (API key, JWT, Admin), pass `userId` explicitly. `presenceId` and `status` are both required; `permissions`, `expiresAt`, and `metadata` are optional, so the smallest possible call is just `{ presenceId, status }` on a fresh ID.
+`userId` is filled in automatically from the session on client SDKs. On server SDKs (API key, JWT, Admin), pass `userId` explicitly. `presenceId` and `status` are both required; `permissions`, `expiresAt`, and `metadata` are optional, so the smallest possible call is just `{ presenceId, status }` on a fresh ID. Persist the returned `$id` (in local storage, a state store, or wherever your session lives) and reuse it on every subsequent `upsert` call so each user keeps a single record across heartbeats and route changes.
 
 # Subscribing to presence updates
 

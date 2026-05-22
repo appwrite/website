@@ -31,6 +31,74 @@ This gives you two ways to keep a presence alive, and you pick whichever fits yo
 - **Heartbeat.** Upsert on focus, route change, or a periodic timer to push `expiresAt` forward. Best when presence should persist briefly across short disconnects (a quick network blip, a tab switch) or when you write presence from server code that has no live socket.
 - **While connected.** Call `realtime.upsertPresence(...)` over an open Realtime connection and the record is automatically deleted when that connection closes. Best for "online while the tab is open" UIs where you do not want to manage a heartbeat yourself.
 
+The `realtime.upsertPresence(...)` call mirrors the REST `presences.upsert(...)` signature, but the record's lifetime is tied to the WebSocket rather than to `expiresAt`:
+
+{% multicode %}
+```client-web
+import { Client, Realtime, ID } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+const realtime = new Realtime(client);
+
+await realtime.upsertPresence({
+    presenceId: ID.unique(),
+    status: 'online'
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+final client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>');
+
+final realtime = Realtime(client);
+
+await realtime.upsertPresence(
+    presenceId: ID.unique(),
+    status: 'online',
+);
+```
+
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+let realtime = Realtime(client)
+
+try await realtime.upsertPresence(
+    presenceId: ID.unique(),
+    status: "online"
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Realtime
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+
+val realtime = Realtime(client)
+
+realtime.upsertPresence(
+    presenceId = ID.unique(),
+    status = "online"
+)
+```
+{% /multicode %}
+
+The SDK remembers the latest payload and re-sends it after a reconnect, so a brief network drop will not flip the user offline. There is no heartbeat to manage. The record disappears automatically the moment the WebSocket closes for good (tab close, sign out, sustained network loss).
+
 # Upsert a presence {% #upsert-a-presence %}
 
 `upsert` creates a presence or updates the existing record with the same `presenceId`. Call it on every page navigation, focus change, or heartbeat without worrying about duplicates. From a client session, `userId` is inferred from the signed-in user; from a server SDK with an API key, pass `userId` explicitly. Server SDKs need an [API key](/docs/advanced/platform/api-keys) with the `presences.write` scope.
@@ -340,10 +408,6 @@ A few notes on the parameters:
 - `metadata` is an arbitrary JSON object. Use it to carry any context that subscribers should see together with the status.
 - `expiresAt` is optional. Without it, Appwrite applies a default TTL (see [Expiry and cleanup](#expiry-and-cleanup) below).
 - `permissions` controls who can read or modify the presence record, the same way it works on rows and files. Without permissions, only the owner and project keys can see it.
-
-{% info title="Upsert is keyed by userId" %}
-A user can have at most one active presence at a time. `upsert` looks up an existing record by `userId` first and updates it in place if one is found, so the `presenceId` you pass is only used as the new record's `$id` on the very first create. For `get`, `update`, and `delete`, the actual `$id` returned by upsert is still the addressing key.
-{% /info %}
 
 # Get a presence {% #get-a-presence %}
 
