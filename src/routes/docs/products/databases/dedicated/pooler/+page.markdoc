@@ -15,19 +15,18 @@ Each dedicated database can run its own pooler. Pooler resources are billed as p
 | PostgreSQL | yes     | 6432  | PgBouncer-compatible wire protocol, native read/write split |
 | MySQL      | yes     | 6033  | Query-rule based routing of reads vs writes                 |
 | MariaDB    | yes     | 6033  | Same as MySQL                                               |
-| MongoDB    |,       |,     | Not applicable, use the driver's `readPreference` setting  |
+| MongoDB    | no      | -     | Not applicable, use the driver's `readPreference` setting  |
 
 The pooler exposes its own client-facing port on the database endpoint. Clients connect to the pooler port instead of the engine port, everything else is the same.
 
 # Pool modes {% #modes %}
 
-PostgreSQL and MySQL/MariaDB pools support three modes:
+PostgreSQL and MySQL/MariaDB pools support two modes:
 
 | Mode           | Backend connection lifetime               | Best for                                                            |
 |----------------|-------------------------------------------|---------------------------------------------------------------------|
 | `transaction`  | Held until `COMMIT` / `ROLLBACK`          | Most workloads. The default. Massive client→backend amplification.  |
 | `session`      | Held for the whole client session         | Apps that rely on `SET LOCAL`, prepared statements, advisory locks  |
-| `statement`    | Held until the statement completes        | Read-only, single-statement workloads. Highest amplification.       |
 
 If your application uses features that are tied to a single backend connection, server-side prepared statements (PostgreSQL), advisory locks, temporary tables, `SET LOCAL`, listen/notify, pick `session`. Otherwise, `transaction` is the right choice.
 

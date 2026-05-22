@@ -4,9 +4,43 @@ title: Monitoring & insights
 description: Live CPU, memory, IOPS, and connection metrics, slow query logging, query plan explanations, and automatic index recommendations for dedicated databases.
 ---
 
-Every dedicated database collects its own resource telemetry, slow-query logs, and index analysis. The Appwrite Console renders the data in the Database view; the same data is available through the API so you can pipe it into your existing observability stack.
+Every dedicated database collects its own resource telemetry, slow-query logs, and index analysis. The Appwrite Console renders charts from the platform usage API. Platform activity is available through the activity events API, and lower-level engine diagnostics stay on database-specific surfaces.
 
-# Live metrics {% #metrics %}
+# Usage time series {% #usage %}
+
+For Console charts, longer-range capacity planning, anomaly detection, and billing-adjacent views, use the platform usage endpoints. Gauge queries support `metric` and `time` filters. Dedicated database gauges scope the database inside the metric name, such as `dedicatedDatabases.<DATABASE_INTERNAL_ID>.cpu`.
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  --get \
+  --data-urlencode 'queries[]=equal("metric", ["dedicatedDatabases.<DATABASE_INTERNAL_ID>.cpu"])' \
+  --data-urlencode 'queries[]=greaterThanEqual("time", ["2026-05-01T00:00:00.000Z"])' \
+  https://<REGION>.cloud.appwrite.io/v1/usage/gauges
+```
+
+Gauge metrics include `storage`, `connections`, `cpu`, `memory`, `qps`, `iopsRead`, and `iopsWrite`. Counter metrics include `compute`, `inbound`, `outbound`, and `coldStarts`.
+
+Use `/v1/usage/events` when you need discrete usage events, such as storage autoscaling, failover, or lifecycle transitions:
+
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  --get \
+  --data-urlencode 'queries[]=equal("resource", ["dedicatedDatabases"])' \
+  --data-urlencode 'queries[]=equal("resourceId", ["<DATABASE_ID>"])' \
+  --data-urlencode 'queries[]=equal("metric", ["dedicatedDatabases.<DATABASE_INTERNAL_ID>.coldStarts"])' \
+  --data-urlencode 'queries[]=greaterThanEqual("time", ["2026-05-01T00:00:00.000Z"])' \
+  https://<REGION>.cloud.appwrite.io/v1/usage/events
+```
+
+Console charts should be built from these usage streams. For a per-database rollup in SDKs, the dedicated `getDatabaseUsage` endpoint remains available.
+
+# Live operational snapshot {% #metrics %}
+
+Use the dedicated metrics endpoint only when you need a short, live operational snapshot for the database view or for direct troubleshooting.
 
 {% multicode %}
 ```server-nodejs
@@ -225,212 +259,6 @@ The response includes:
 | `qps`                | queries/s     | Queries per second (across all sessions)           |
 
 Metrics are sampled inside the database environment from OS-level resource counters and engine-native stats. Samples are pushed to the edge every 60 seconds and aggregated for the API.
-
-# Usage time series {% #usage %}
-
-For longer-range plots, invoice line items, capacity planning, anomaly detection, call the usage endpoint:
-
-{% multicode %}
-```server-nodejs
-import { Client, Compute } from 'node-appwrite';
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
-
-const compute = new Compute(client);
-
-const usage = await compute.getDatabaseUsage({
-    databaseId: '<DATABASE_ID>',
-    range: '30d',
-});
-```
-```server-deno
-import { Client, Compute } from "npm:node-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
-
-const compute = new Compute(client);
-
-const usage = await compute.getDatabaseUsage({
-    databaseId: '<DATABASE_ID>',
-    range: '30d',
-});
-```
-```server-php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Compute;
-
-$client = new Client();
-
-$client
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    ->setProject('<PROJECT_ID>')
-    ->setKey('<YOUR_API_KEY>');
-
-$compute = new Compute($client);
-
-$usage = $compute->getDatabaseUsage(
-    databaseId: '<DATABASE_ID>',
-    range: '30d',
-);
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.compute import Compute
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
-client.set_project('<PROJECT_ID>')
-client.set_key('<YOUR_API_KEY>')
-
-compute = Compute(client)
-
-usage = compute.get_database_usage(
-    database_id='<DATABASE_ID>',
-    range='30d',
-)
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .set_project('<PROJECT_ID>')
-    .set_key('<YOUR_API_KEY>')
-
-compute = Compute.new(client)
-
-usage = compute.get_database_usage(
-    database_id: '<DATABASE_ID>',
-    range: '30d',
-)
-```
-```server-dotnet
-using Appwrite;
-using Appwrite.Services;
-
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
-    .SetProject("<PROJECT_ID>")
-    .SetKey("<YOUR_API_KEY>");
-
-Compute compute = new Compute(client);
-
-var usage = await compute.GetDatabaseUsage(
-    databaseId: "<DATABASE_ID>",
-    range: "30d"
-);
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
-
-Compute compute = Compute(client);
-
-final usage = await compute.getDatabaseUsage(
-    databaseId: '<DATABASE_ID>',
-    range: '30d',
-);
-```
-```server-kotlin
-import io.appwrite.Client
-import io.appwrite.services.Compute
-
-val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>")
-
-val compute = Compute(client)
-
-val usage = compute.getDatabaseUsage(
-    databaseId = "<DATABASE_ID>",
-    range = "30d",
-)
-```
-```server-swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>")
-
-let compute = Compute(client)
-
-let usage = try await compute.getDatabaseUsage(
-    databaseId: "<DATABASE_ID>",
-    range: "30d"
-)
-```
-```server-go
-package main
-
-import (
-    "github.com/appwrite/sdk-for-go/appwrite"
-)
-
-func main() {
-    client := appwrite.NewClient(
-        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
-        appwrite.WithProject("<PROJECT_ID>"),
-        appwrite.WithKey("<YOUR_API_KEY>"),
-    )
-
-    compute := appwrite.NewCompute(client)
-
-    usage, err := compute.GetDatabaseUsage("<DATABASE_ID>",
-        compute.WithGetDatabaseUsageRange("30d"),
-    )
-    if err != nil {
-        panic(err)
-    }
-    _ = usage
-}
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::compute::Compute;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new()
-        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
-        .set_project("<PROJECT_ID>")
-        .set_key("<YOUR_API_KEY>");
-
-    let compute = Compute::new(&client);
-
-    let usage = compute.get_database_usage("<DATABASE_ID>")
-        .range("30d")
-        .send()
-        .await?;
-
-    Ok(())
-}
-```
-```bash
-curl -X GET \
-  -H "X-Appwrite-Project: <PROJECT_ID>" \
-  -H "X-Appwrite-Key: <API_KEY>" \
-  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/usage?range=30d"
-```
-{% /multicode %}
-
-`range` accepts `24h`, `7d`, `30d`, or `90d`. The response is a series of bucketed `(timestamp, value)` pairs for each metric.
 
 # Slow queries {% #slow-queries %}
 
@@ -1059,187 +887,28 @@ Insights are recommendations, not auto-applied changes. The Console suggests the
 
 # Audit logs {% #audit %}
 
-Database-level admin actions, credential rotation, IP allowlist changes, backup triggers, failover requests, are recorded in the standard project activity log:
+Platform-level admin activity, such as credential rotation, IP allowlist changes, backup triggers, and failover requests, is available through the standard activity events API:
 
-{% multicode %}
-```server-nodejs
-import { Client, Compute } from 'node-appwrite';
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
-
-const compute = new Compute(client);
-
-const logs = await compute.listDatabaseLogs({
-    databaseId: '<DATABASE_ID>',
-});
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  --get \
+  --data-urlencode 'queries[]=equal("resourceType", ["dedicatedDatabase"])' \
+  --data-urlencode 'queries[]=equal("resourceId", ["<DATABASE_ID>"])' \
+  https://<REGION>.cloud.appwrite.io/v1/activities/events
 ```
-```server-deno
-import { Client, Compute } from "npm:node-appwrite";
 
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
+These activity events describe Appwrite platform actions. Engine audit logs remain on the dedicated database logs endpoint:
 
-const compute = new Compute(client);
-
-const logs = await compute.listDatabaseLogs({
-    databaseId: '<DATABASE_ID>',
-});
-```
-```server-php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Compute;
-
-$client = new Client();
-
-$client
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    ->setProject('<PROJECT_ID>')
-    ->setKey('<YOUR_API_KEY>');
-
-$compute = new Compute($client);
-
-$logs = $compute->listDatabaseLogs(databaseId: '<DATABASE_ID>');
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.compute import Compute
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
-client.set_project('<PROJECT_ID>')
-client.set_key('<YOUR_API_KEY>')
-
-compute = Compute(client)
-
-logs = compute.list_database_logs(database_id='<DATABASE_ID>')
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .set_project('<PROJECT_ID>')
-    .set_key('<YOUR_API_KEY>')
-
-compute = Compute.new(client)
-
-logs = compute.list_database_logs(database_id: '<DATABASE_ID>')
-```
-```server-dotnet
-using Appwrite;
-using Appwrite.Services;
-
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
-    .SetProject("<PROJECT_ID>")
-    .SetKey("<YOUR_API_KEY>");
-
-Compute compute = new Compute(client);
-
-var logs = await compute.ListDatabaseLogs(databaseId: "<DATABASE_ID>");
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
-    .setKey('<YOUR_API_KEY>');
-
-Compute compute = Compute(client);
-
-final logs = await compute.listDatabaseLogs(
-    databaseId: '<DATABASE_ID>',
-);
-```
-```server-kotlin
-import io.appwrite.Client
-import io.appwrite.services.Compute
-
-val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>")
-
-val compute = Compute(client)
-
-val logs = compute.listDatabaseLogs(
-    databaseId = "<DATABASE_ID>",
-)
-```
-```server-swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>")
-
-let compute = Compute(client)
-
-let logs = try await compute.listDatabaseLogs(
-    databaseId: "<DATABASE_ID>"
-)
-```
-```server-go
-package main
-
-import (
-    "github.com/appwrite/sdk-for-go/appwrite"
-)
-
-func main() {
-    client := appwrite.NewClient(
-        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
-        appwrite.WithProject("<PROJECT_ID>"),
-        appwrite.WithKey("<YOUR_API_KEY>"),
-    )
-
-    compute := appwrite.NewCompute(client)
-
-    logs, err := compute.ListDatabaseLogs("<DATABASE_ID>")
-    if err != nil {
-        panic(err)
-    }
-    _ = logs
-}
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::compute::Compute;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new()
-        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
-        .set_project("<PROJECT_ID>")
-        .set_key("<YOUR_API_KEY>");
-
-    let compute = Compute::new(&client);
-
-    let logs = compute.list_database_logs("<DATABASE_ID>").await?;
-
-    Ok(())
-}
-```
 ```bash
 curl -X GET \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "X-Appwrite-Key: <API_KEY>" \
   "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/logs"
 ```
-{% /multicode %}
 
-The response includes the actor, the action, the source IP, and the previous/next state for fields that changed.
+Activity events are not a replacement for engine audit logs, engine error logs, or slow-query logs. Engine and slow logs remain lower-level database surfaces exposed through the engine's own logging and profiling tools, plus the dedicated slow-query view documented above.
 
 # Webhooks & realtime {% #events %}
 

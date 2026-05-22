@@ -4,12 +4,12 @@ title: Dedicated databases
 description: Run managed PostgreSQL, MySQL, MariaDB, and MongoDB databases on Appwrite. Production-ready compute, storage, backups, high availability, and global regions, billed by the hour.
 ---
 
-Appwrite **Dedicated databases** lets you run managed PostgreSQL, MySQL, MariaDB, and MongoDB instances on Appwrite Cloud. You pick the engine and the compute size; Appwrite provisions a real database in your project's region, with its own storage, networking, and credentials, and exposes it to your application over the public internet or your own private network.
+Appwrite **Dedicated databases** lets you run managed PostgreSQL, MySQL, MariaDB, and MongoDB instances on Appwrite Cloud. You pick the engine and compute size; Appwrite provisions a raw database engine in your project's region, with its own storage, networking, and credentials, and exposes it to your application over the public internet or your own private network.
 
-Dedicated databases are different from the [Appwrite Databases](/docs/products/databases) document store. Where the document store gives you a curated `TablesDB` API with rows, queries, and SDK helpers, dedicated databases give you the raw engine, you connect with `psql`, `mysql`, `mongosh`, or any driver of your choice and use the full feature set of the underlying database.
+Dedicated databases are different from Appwrite's serverless/shared data products: TablesDB for tables and rows, DocumentsDB for document workflows, and VectorsDB for embeddings and semantic search. Those products are accessed through Appwrite SDKs and platform APIs. Dedicated databases give you the raw engine; you connect with `psql`, `mysql`, `mongosh`, or any driver of your choice and use the feature set of the underlying database.
 
-{% info title="Looking for the document store?" %}
-If you want to query data through Appwrite SDKs with rows, columns, and built-in permissions, you want [Appwrite Databases](/docs/products/databases). Dedicated databases are for teams who want a managed PostgreSQL, MySQL, MariaDB, or MongoDB engine they can talk to directly with their own ORM, migrations, and drivers.
+{% info title="Looking for serverless Appwrite data APIs?" %}
+If you want Appwrite SDKs, platform permissions, and serverless/shared scaling for app data, start with [Appwrite Databases](/docs/products/databases). Dedicated databases are for teams who want a managed PostgreSQL, MySQL, MariaDB, or MongoDB engine they can talk to directly with their own ORM, migrations, and drivers.
 {% /info %}
 
 # Supported engines {% #engines %}
@@ -31,12 +31,12 @@ A database is either **shared** or **dedicated**:
 
 | Type          | Lifecycle                                | Resources                       | Use case                  |
 |---------------|------------------------------------------|---------------------------------|---------------------------|
-| **Shared**    | Scales to zero after 15 minutes idle     | 0.125 CPU, 128 MB RAM, 1 GB disk | Development, low traffic  |
-| **Dedicated** | Always-on, with optional HA replicas     | Any specification               | Production workloads      |
+| **Shared**    | Scales to zero after 15 minutes idle     | 0.125 CPU, 128 MB RAM, 1 GB disk | Development, previews, low traffic |
+| **Dedicated** | Always-on, with optional HA replicas     | Any paid specification          | Production workloads      |
 
-Shared databases are included with the Pro plan and use the **Free** specification. On the next connection after a spin-down, the database cold-starts in a few seconds, the underlying storage is preserved between spin-downs, so no data is lost.
+Shared databases use the **Free** specification included with the Pro plan. They are not always-on dedicated compute: the engine runs on shared capacity, scales to zero after an idle period, and cold-starts on the next connection. The underlying storage is preserved between spin-downs, so no data is lost.
 
-Dedicated databases are billed per hour against one of eight paid specifications and never spin down. They also unlock features that the shared specification does not have access to: high availability, point-in-time recovery, custom backup policies, storage autoscaling, IP allowlists, and connection pooling.
+Paid dedicated databases are billed per hour against one of eight paid specifications and never spin down. They also unlock features that the shared specification does not have access to: high availability, point-in-time recovery, configurable backup schedules, storage autoscaling, IP allowlists, and connection pooling.
 
 # Regions {% #regions %}
 
@@ -57,7 +57,7 @@ Each region is independent, data does not leave the region unless you explicitly
 
 {% cards %}
 {% cards_item href="/docs/products/databases/dedicated/specifications" title="Specifications" %}
-Eight paid specifications from $15 to $860 per month, plus a free shared tier on Pro.
+Eight paid specifications from $13 to $699 per month, plus a free shared specification on Pro.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
 Connect with `psql`, `mysql`, `mongosh`, or any driver. Credentials are rotatable from the API.
@@ -103,7 +103,7 @@ The following per-database limits are enforced by the API:
 | Backup retention               | 1 – 365 days                                              |
 | Point-in-time recovery window  | 1 – 35 days                                               |
 | Database extensions installed  | 50 (PostgreSQL only)                                      |
-| Max simultaneous connections   | 10,000 (caps to specification quota at runtime)           |
+| Max simultaneous connections   | 10,000 platform cap, lower on smaller specifications      |
 | Idle timeout (shared only)     | 5 – 60 minutes                                            |
 
 # Billing & plan requirements {% #plans %}

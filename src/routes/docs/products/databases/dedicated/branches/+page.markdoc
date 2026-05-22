@@ -6,6 +6,10 @@ description: Spin up an ephemeral, isolated copy of a dedicated database in seco
 
 A **branch** is a short-lived, isolated copy of a dedicated database. It has its own credentials, its own endpoint, and starts from a point-in-time snapshot of the parent's storage volume. Branches are not replicas, once created, they diverge from the parent and never sync back.
 
+{% info title="Branches do not merge back" %}
+There is no branch merge operation. Use a branch to validate a migration, data repair, or application change, then intentionally cut application traffic over to the validated database or copy the data you want back with engine-native tools. Appwrite does not reconcile two diverged database histories for you.
+{% /info %}
+
 Use cases:
 
 - **Preview environments**, one branch per pull request, destroyed when the PR closes

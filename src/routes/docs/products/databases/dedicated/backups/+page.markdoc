@@ -6,13 +6,48 @@ description: Encrypted scheduled backups with up to 365 days of retention, on-de
 
 Every dedicated database supports automated backups out of the box. Backups are AES-256 encrypted at rest, uploaded to an object store, and verifiable on demand. Point-in-time recovery (PITR) layers continuous WAL/binlog/oplog archiving on top, so you can restore to any second within the retention window, not just to a backup checkpoint.
 
+# Backup policy {% #policy %}
+
+Backup settings are modeled as policies. A database can have multiple policies, so you can keep short-lived hourly backups, longer-lived daily backups, and monthly checkpoints without forcing every schedule into one retention window.
+
+| Field | Purpose |
+|-------|---------|
+| `enabled` | Turns the policy schedule on or off |
+| `schedule` | Cron expression for the policy |
+| `retention` | Number of days backups created by the policy are retained |
+| `resourceId` | Database the policy applies to |
+| `resourceType` | `dedicatedDatabases` |
+| `type` | Backup type, `full` or `incremental` |
+
+The Console can present presets such as hourly, daily, weekly, or monthly, plus a custom cron flow. Internally these policies reuse the same project-level backup policy model and scheduler as Appwrite project backups, so scheduled runs and plan limits stay consistent.
+
+Create a policy through the dedicated database backup policy endpoint:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "policyId": "unique()",
+    "name": "Hourly backups",
+    "schedule": "0 * * * *",
+    "retention": 3,
+    "type": "full",
+    "enabled": true
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/policies
+```
+
+Point-in-time recovery is database-level configuration. Use `backupPitr` and `pitrRetentionDays` on the database when PITR should be enabled alongside scheduled policies.
+
 # What gets backed up {% #scope %}
 
 A backup captures the full contents of the database: all schemas, tables/collections, indexes, extensions, and (optionally) user-defined roles. The backup is taken with the engine's native tool, `pg_dump` / `mysqldump` / `mongodump`, in a dedicated job that runs alongside (not on top of) the database, so production traffic is unaffected.
 
-# Schedule {% #schedule %}
+# Schedules {% #schedule %}
 
-Scheduled backups run from a cron expression you configure on the database. The default is `0 3 * * *` (daily at 03:00 UTC), jittered to spread load across the platform.
+Each policy has its own cron expression and retention window. The default database cron is `0 3 * * *` (daily at 03:00 UTC), jittered to spread load across the platform. The examples below configure the database-level backup defaults used for compatibility and PITR.
 
 {% multicode %}
 ```server-nodejs
@@ -425,7 +460,7 @@ curl -X POST \
 ```
 {% /multicode %}
 
-Manual backups respect the same retention setting as scheduled ones. Pass `retentionDays` in the request body to override the default.
+Manual backups use the database's default backup retention. Scheduled backups use the retention window on the policy that created them.
 
 # Encryption {% #encryption %}
 

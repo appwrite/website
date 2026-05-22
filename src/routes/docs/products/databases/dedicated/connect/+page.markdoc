@@ -6,7 +6,19 @@ description: Connect to a dedicated database with psql, mysql, mongosh, or any s
 
 A dedicated database exposes a real engine endpoint over TLS. You connect to it the same way you would connect to any PostgreSQL, MySQL, MariaDB, or MongoDB server: with the engine's standard CLI or any ORM/driver in any language.
 
-# Get the connection details {% #credentials %}
+# Get connection details in Console {% #console %}
+
+The fastest way to connect is through the Appwrite Console:
+
+1. Open your project in the Appwrite Console.
+2. Open **Databases** and select your dedicated database.
+3. Open the **Connect** or **Credentials** view.
+4. Copy the connection string for your engine.
+5. Paste it into `psql`, `mysql`, `mongosh`, your ORM, or your database client.
+
+Use the API or SDK flow below when you need to fetch credentials from automation, rotate credentials from a script, or inject the connection string into your deployment pipeline.
+
+# Get credentials with the API {% #credentials %}
 
 The connection details for a dedicated database are exposed through the [credentials endpoint](/docs/references/cloud/server-rest/compute#getDatabaseCredentials). Call it from any server SDK with an API key that has the `databases.read` scope.
 

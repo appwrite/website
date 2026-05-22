@@ -1,27 +1,47 @@
 ---
 layout: article
 title: Specifications
-description: Eight dedicated database specifications from 1 vCPU and 1 GB to 8 vCPU and 64 GB, plus a free shared tier. Per-specification CPU, memory, included storage, included bandwidth, and connection cap.
+description: Eight dedicated database specifications from 1 vCPU and 1 GB to 8 vCPU and 64 GB, plus a free shared tier. Per-specification CPU, memory, included storage, included bandwidth, connection limits, and pricing.
 ---
 
-A dedicated database is provisioned against a **specification**, a fixed bundle of CPU, memory, included storage, included bandwidth, and a maximum connection cap. You pick the specification on create and can change it later by updating the database; the platform performs a blue-green resize with logical replication.
+A dedicated database is provisioned against a **specification**, a fixed bundle of CPU, memory, included storage, included bandwidth, and a connection limit. You pick the specification on create and can change it later by updating the database; the platform performs a blue-green resize with logical replication.
 
 All paid specifications are dedicated, always-on databases billed by the hour. The free specification is a shared, scale-to-zero database included with the Pro plan.
 
 # Paid specifications {% #paid %}
 
-| Specification    | Name             | vCPU | Memory | Max connections | Included storage | Included bandwidth | Price (USD/mo) |
-|------------------|------------------|------|--------|-----------------|------------------|--------------------|----------------|
-| `s-1vcpu-1gb`    | Starter          | 1    | 1 GB   | 100             | 10 GB            | 50 GB              | $15            |
-| `s-2vcpu-2gb`    | Standard         | 2    | 2 GB   | 200             | 25 GB            | 200 GB             | $25            |
-| `s-2vcpu-4gb`    | Standard Plus    | 2    | 4 GB   | 500             | 50 GB            | 400 GB             | $60            |
-| `s-4vcpu-8gb`    | Professional     | 4    | 8 GB   | 1,000           | 200 GB           | 1 TB               | $100           |
-| `s-4vcpu-16gb`   | Business         | 4    | 16 GB  | 2,000           | 500 GB           | 2 TB               | $190           |
-| `s-4vcpu-32gb`   | Business Plus    | 4    | 32 GB  | 4,000           | 1 TB             | 5 TB               | $370           |
-| `s-8vcpu-32gb`   | Enterprise       | 8    | 32 GB  | 5,000           | 2 TB             | 7.5 TB             | $500           |
-| `s-8vcpu-64gb`   | Enterprise Plus  | 8    | 64 GB  | 10,000          | 3 TB             | 10 TB              | $860           |
+| Specification    | Name             | vCPU | Memory | Included storage | Included bandwidth | Price (USD/mo) |
+|------------------|------------------|------|--------|------------------|--------------------|----------------|
+| `s-1vcpu-1gb`    | Starter          | 1    | 1 GB   | 10 GB            | 50 GB              | $13            |
+| `s-2vcpu-2gb`    | Standard         | 2    | 2 GB   | 25 GB            | 200 GB             | $23            |
+| `s-2vcpu-4gb`    | Standard Plus    | 2    | 4 GB   | 50 GB            | 400 GB             | $49            |
+| `s-4vcpu-8gb`    | Professional     | 4    | 8 GB   | 200 GB           | 1 TB               | $85            |
+| `s-4vcpu-16gb`   | Business         | 4    | 16 GB  | 500 GB           | 2 TB               | $160           |
+| `s-4vcpu-32gb`   | Business Plus    | 4    | 32 GB  | 1 TB             | 5 TB               | $299           |
+| `s-8vcpu-32gb`   | Enterprise       | 8    | 32 GB  | 2 TB             | 7.5 TB             | $425           |
+| `s-8vcpu-64gb`   | Enterprise Plus  | 8    | 64 GB  | 3 TB             | 10 TB              | $699           |
 
-vCPU counts are dedicated, not burstable. Connection caps are enforced at the engine layer, going above the cap returns a connection refusal, not a slowdown.
+vCPU counts are dedicated, not burstable. Paid specifications are always-on and billed by the hour against the monthly price.
+
+# Connection limits {% #connections %}
+
+Connection caps are enforced at the engine layer. Going above the cap returns a connection refusal, not a slowdown.
+
+| Specification    | Max connections |
+|------------------|-----------------|
+| Free shared      | 10              |
+| `s-1vcpu-1gb`    | 100             |
+| `s-2vcpu-2gb`    | 200             |
+| `s-2vcpu-4gb`    | 500             |
+| `s-4vcpu-8gb`    | 1,000           |
+| `s-4vcpu-16gb`   | 2,000           |
+| `s-4vcpu-32gb`   | 4,000           |
+| `s-8vcpu-32gb`   | 5,000           |
+| `s-8vcpu-64gb`   | 10,000          |
+
+{% arrow_link href="/contact-us/enterprise" %}
+Contact sales for custom connection limits
+{% /arrow_link %}
 
 # Free (shared) specification {% #free %}
 
@@ -53,11 +73,11 @@ Storage overage is computed on the snapshot at the end of the billing period. Ba
 
 The following features are billed as a percentage of the underlying specification price, pro-rated by active days in the billing period:
 
-| Feature                                | Rate                                  | Example on a $100/mo specification |
+| Feature                                | Rate                                  | Example on an $85/mo specification |
 |----------------------------------------|---------------------------------------|------------------------------------|
-| High availability replicas             | 75% of specification per replica      | $75/mo per replica                 |
-| Cross-region replicas *(coming soon)*  | 75% of specification per replica      | $75/mo per replica                 |
-| Point-in-time recovery                 | 20% of specification                  | $20/mo                             |
+| High availability replicas             | 50% of specification per replica      | $42.50/mo per replica              |
+| Cross-region replicas *(coming soon)*  | 75% of specification per replica      | $63.75/mo per replica              |
+| Point-in-time recovery                 | 20% of specification                  | $17/mo                             |
 | PostgreSQL extensions                  | Free                                  | $0                                 |
 
 {% info title="Cross-region replication is coming soon" %}

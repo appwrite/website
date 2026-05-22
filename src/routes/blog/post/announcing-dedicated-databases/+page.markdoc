@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Dedicated databases: managed PostgreSQL, MySQL, MariaDB, and MongoDB on Appwrite"
-description: Run production database engines on Appwrite Cloud. PostgreSQL, MySQL, MariaDB, and MongoDB with high availability, point-in-time recovery, branching, extensions, and a connection pooler, billed by the hour from $15/mo.
+description: Run production database engines on Appwrite Cloud. PostgreSQL, MySQL, MariaDB, and MongoDB with high availability, point-in-time recovery, branching, extensions, and a connection pooler, billed by the hour from $13/mo.
 date: 2026-05-21
 cover: /images/blog/announcing-dedicated-databases/cover.avif
 timeToRead: 8
@@ -11,7 +11,7 @@ featured: true
 callToAction: true
 faqs:
   - question: "How is this different from Appwrite Databases?"
-    answer: "Appwrite Databases is the document store, a curated TablesDB API with rows, columns, queries, and permissions, accessible through the Appwrite SDKs. Dedicated databases are real PostgreSQL, MySQL, MariaDB, or MongoDB engines that you connect to with their native drivers. The two products are independent, many teams will use both. Use the document store for app data that benefits from Appwrite's permission model; use a dedicated database when you need raw SQL, extensions like PostGIS or pgvector, or compatibility with an existing tool."
+    answer: "Appwrite Databases is the serverless TablesDB API with rows, columns, queries, and permissions, accessible through the Appwrite SDKs. Dedicated databases are raw PostgreSQL, MySQL, MariaDB, or MongoDB engines that you connect to with their native drivers. The products are independent, many teams will use both. Use TablesDB for app data that benefits from Appwrite's permission model; use a dedicated database when you need raw SQL, extensions like PostGIS or pgvector, or compatibility with an existing tool."
   - question: "Which plans include dedicated databases?"
     answer: "The Pro plan and higher. A payment method must be attached to the team. The Free specification (shared, scale-to-zero) is included with Pro at no extra cost; paid specifications are billed by the hour against the per-specification monthly price."
   - question: "What engines and versions are supported?"
@@ -30,11 +30,11 @@ faqs:
 
 Today we're announcing **Dedicated databases** on Appwrite Cloud. You can now run managed PostgreSQL, MySQL, MariaDB, and MongoDB engines next to your existing Appwrite Functions, Sites, and Storage, with the same per-region deployment, the same single payment relationship, and the same Console.
 
-Dedicated databases are a separate product from [Appwrite Databases](/docs/products/databases), our document store with rows, columns, queries, and built-in permissions. The two products solve different problems and many teams will use both. Use the document store when you want app data managed through the Appwrite SDKs and the platform's permission model. Use a dedicated database when you need raw SQL, the PostgreSQL extension ecosystem, your existing ORM, or wire-compatibility with another tool.
+Dedicated databases are a separate product from Appwrite's serverless data APIs, including [TablesDB](/docs/products/databases), DocumentsDB, and VectorsDB. Those products give you SDK-first APIs, platform permissions, and shared/serverless scaling. Dedicated databases give you raw engines for SQL, the PostgreSQL extension ecosystem, your existing ORM, or wire-compatibility with another tool.
 
 # What's in the box
 
-Each dedicated database is a real database engine running on its own dedicated compute, with its own storage, its own credentials, and its own public hostname. The engine is yours; Appwrite manages everything around it.
+Each paid dedicated database is a real database engine running on its own dedicated compute, with its own storage, its own credentials, and its own public hostname. The free specification uses shared compute that scales to zero. In both cases, Appwrite manages the surrounding platform.
 
 **Four engines:**
 
@@ -43,7 +43,7 @@ Each dedicated database is a real database engine running on its own dedicated c
 - **MariaDB 10.11 / 11.4**, with the same replication and pooling story as MySQL.
 - **MongoDB 7.0 / 8.0**, with replica-set high availability via Raft.
 
-**Eight paid specifications** from `s-1vcpu-1gb` at $15/month to `s-8vcpu-64gb` at $860/month, plus a free shared specification included with the Pro plan. Specifications are dedicated CPU, not burstable; they're 10–20% below the equivalent tier on Supabase, RDS, and PlanetScale at the same memory level. Every paid specification gets dedicated compute that never spins down, with included storage (10 GB to 3 TB) and included bandwidth (50 GB to 10 TB) baked into the monthly price.
+**Eight paid specifications** from `s-1vcpu-1gb` at $13/month to `s-8vcpu-64gb` at $699/month, plus a free shared, scale-to-zero specification included with the Pro plan. Every paid specification gets dedicated CPU that never spins down, with included storage (10 GB to 3 TB) and included bandwidth (50 GB to 10 TB) baked into the monthly price.
 
 **Six regions** available today, Frankfurt, New York, San Francisco, Singapore, Sydney, Toronto, with Amsterdam, London, and Bangalore in the rollout queue. A dedicated database lives in the same region as the project that owns it, so it sits next to your Functions, Sites, and Storage on the regional private network with no extra configuration.
 
@@ -57,7 +57,7 @@ Enable HA with one update call and the platform provisions the replicas, places 
 
 When the primary stays unhealthy across two 3-second probes, Appwrite takes a 15-second distributed lock, selects the lowest-lag replica, promotes it in place (no restart for SQL engines), runs a write-verification probe, drains connections from the old primary, and emits a `failover.completed` event to your webhooks, realtime channels, and functions. There's a 60-second cooldown so transient infrastructure events don't cause failover flapping.
 
-Up to five replicas per database. Replicas are billed at 75% of the underlying specification per replica.
+Up to five replicas per database. Regional HA replicas are billed at 50% of the underlying specification per replica.
 
 ## Backups and point-in-time recovery
 
@@ -77,7 +77,7 @@ Branches are billed like a standalone dedicated database against their own speci
 
 ## Connection pooler
 
-Each dedicated database can run its own pooler, PostgreSQL on port 6432, MySQL/MariaDB on port 6033. The pooler is enabled by default on provision and is configurable per database, pool mode (`transaction` / `session` / `statement`), max client connections, default backend pool size.
+Each dedicated database can run its own pooler, PostgreSQL on port 6432, MySQL/MariaDB on port 6033. The pooler is enabled by default on provision and is configurable per database, pool mode (`transaction` / `session`), max client connections, default backend pool size.
 
 When HA is enabled, the pooler also handles **read/write splitting**: a query parser inspects each statement, pins transactions and writes to the primary, and routes ambient `SELECT`s to replicas. The application driver sees a single hostname and port; everything else is transparent. No SDK changes.
 

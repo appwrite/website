@@ -690,4 +690,4 @@ Cross-region replicas and standbys are billed as feature add-ons, see the [speci
 | Health-check timeout per attempt               | 3 s   |
 | Consecutive failed health checks before failover | 2     |
 
-Replicas are billed at 75% of the underlying specification price per replica. Cross-region replicas are billed at 75% per replica.
+Regional HA replicas are billed at 50% of the underlying specification price per replica. Cross-region replicas are billed at 75% per replica.
