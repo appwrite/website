@@ -14,7 +14,7 @@ Once a user is signed in, upsert their presence on the events that should mark t
 
 {% multicode %}
 ```client-web
-import { Client, Presences, ID } from "appwrite";
+import { Client, Presences, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -25,7 +25,10 @@ const presences = new Presences(client);
 const presence = await presences.upsert({
     presenceId: ID.unique(),
     status: 'online',
-    metadata: { page: '/dashboard' }
+    metadata: { page: '/dashboard' },
+    permissions: [
+        Permission.read(Role.users())
+    ]
 });
 ```
 
@@ -42,6 +45,9 @@ final presence = await presences.upsert(
     presenceId: ID.unique(),
     status: 'online',
     metadata: { 'page': '/dashboard' },
+    permissions: [
+        Permission.read(Role.users()),
+    ],
 );
 ```
 
@@ -57,13 +63,18 @@ let presences = Presences(client)
 let presence = try await presences.upsert(
     presenceId: ID.unique(),
     status: "online",
-    metadata: ["page": "/dashboard"]
+    metadata: ["page": "/dashboard"],
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
+import io.appwrite.Permission
+import io.appwrite.Role
 import io.appwrite.services.Presences
 
 val client = Client(context)
@@ -75,7 +86,10 @@ val presences = Presences(client)
 val presence = presences.upsert(
     presenceId = ID.unique(),
     status = "online",
-    metadata = mapOf("page" to "/dashboard")
+    metadata = mapOf("page" to "/dashboard"),
+    permissions = listOf(
+        Permission.read(Role.users())
+    )
 )
 ```
 {% /multicode %}
@@ -96,7 +110,10 @@ async function setStatus(status, metadata = {}) {
     await presences.upsert({
         presenceId,
         status,
-        metadata
+        metadata,
+        permissions: [
+            Permission.read(Role.users())
+        ]
     });
 }
 

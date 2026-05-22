@@ -35,7 +35,7 @@ The `realtime.upsertPresence(...)` call mirrors the REST `presences.upsert(...)`
 
 {% multicode %}
 ```client-web
-import { Client, Realtime, ID } from "appwrite";
+import { Client, Realtime, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -45,7 +45,10 @@ const realtime = new Realtime(client);
 
 await realtime.upsertPresence({
     presenceId: ID.unique(),
-    status: 'online'
+    status: 'online',
+    permissions: [
+        Permission.read(Role.users())
+    ]
 });
 ```
 
@@ -61,6 +64,9 @@ final realtime = Realtime(client);
 await realtime.upsertPresence(
     presenceId: ID.unique(),
     status: 'online',
+    permissions: [
+        Permission.read(Role.users()),
+    ],
 );
 ```
 
@@ -75,13 +81,18 @@ let realtime = Realtime(client)
 
 try await realtime.upsertPresence(
     presenceId: ID.unique(),
-    status: "online"
+    status: "online",
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
+import io.appwrite.Permission
+import io.appwrite.Role
 import io.appwrite.services.Realtime
 
 val client = Client(context)
@@ -92,7 +103,10 @@ val realtime = Realtime(client)
 
 realtime.upsertPresence(
     presenceId = ID.unique(),
-    status = "online"
+    status = "online",
+    permissions = listOf(
+        Permission.read(Role.users())
+    )
 )
 ```
 {% /multicode %}
@@ -105,7 +119,7 @@ The SDK remembers the latest payload and re-sends it after a reconnect, so a bri
 
 {% multicode %}
 ```client-web
-import { Client, Presences, ID } from "appwrite";
+import { Client, Presences, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -116,7 +130,10 @@ const presences = new Presences(client);
 const presence = await presences.upsert({
     presenceId: ID.unique(),
     status: 'online',
-    metadata: { page: '/dashboard' }
+    metadata: { page: '/dashboard' },
+    permissions: [
+        Permission.read(Role.users())
+    ]
 });
 ```
 
@@ -133,6 +150,9 @@ final presence = await presences.upsert(
     presenceId: ID.unique(),
     status: 'online',
     metadata: { 'page': '/dashboard' },
+    permissions: [
+        Permission.read(Role.users()),
+    ],
 );
 ```
 
@@ -148,13 +168,18 @@ let presences = Presences(client)
 let presence = try await presences.upsert(
     presenceId: ID.unique(),
     status: "online",
-    metadata: ["page": "/dashboard"]
+    metadata: ["page": "/dashboard"],
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
+import io.appwrite.Permission
+import io.appwrite.Role
 import io.appwrite.services.Presences
 
 val client = Client(context)
@@ -166,12 +191,16 @@ val presences = Presences(client)
 val presence = presences.upsert(
     presenceId = ID.unique(),
     status = "online",
-    metadata = mapOf("page" to "/dashboard")
+    metadata = mapOf("page" to "/dashboard"),
+    permissions = listOf(
+        Permission.read(Role.users())
+    )
 )
 ```
 
 ```server-nodejs
 const sdk = require('node-appwrite');
+const { Permission, Role } = sdk;
 
 const client = new sdk.Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -183,13 +212,18 @@ const presences = new sdk.Presences(client);
 const presence = await presences.upsert({
     presenceId: '<PRESENCE_ID>',
     userId: '<USER_ID>',
-    status: 'online'
+    status: 'online',
+    permissions: [
+        Permission.read(Role.users())
+    ]
 });
 ```
 
 ```server-python
 from appwrite.client import Client
 from appwrite.services.presences import Presences
+from appwrite.permission import Permission
+from appwrite.role import Role
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -201,7 +235,10 @@ presences = Presences(client)
 presence = presences.upsert(
     presence_id = '<PRESENCE_ID>',
     user_id = '<USER_ID>',
-    status = 'online'
+    status = 'online',
+    permissions = [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
@@ -209,6 +246,8 @@ presence = presences.upsert(
 <?php
 
 use Appwrite\Client;
+use Appwrite\Permission;
+use Appwrite\Role;
 use Appwrite\Services\Presences;
 
 $client = (new Client())
@@ -221,7 +260,10 @@ $presences = new Presences($client);
 $presence = $presences->upsert(
     presenceId: '<PRESENCE_ID>',
     userId: '<USER_ID>',
-    status: 'online'
+    status: 'online',
+    permissions: [
+        Permission::read(Role::users())
+    ]
 );
 ```
 
@@ -240,7 +282,10 @@ presences = Presences.new(client)
 presence = presences.upsert(
     presence_id: '<PRESENCE_ID>',
     user_id: '<USER_ID>',
-    status: 'online'
+    status: 'online',
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
@@ -258,11 +303,16 @@ Presence presence = await presences.upsert(
     presenceId: '<PRESENCE_ID>',
     userId: '<USER_ID>',
     status: 'online',
+    permissions: [
+        Permission.read(Role.users()),
+    ],
 );
 ```
 
 ```server-kotlin
 import io.appwrite.Client
+import io.appwrite.Permission
+import io.appwrite.Role
 import io.appwrite.services.Presences
 
 val client = Client()
@@ -275,12 +325,17 @@ val presences = Presences(client)
 val presence = presences.upsert(
     presenceId = "<PRESENCE_ID>",
     userId = "<USER_ID>",
-    status = "online"
+    status = "online",
+    permissions = listOf(
+        Permission.read(Role.users())
+    )
 )
 ```
 
 ```server-java
 import io.appwrite.Client;
+import io.appwrite.Permission;
+import io.appwrite.Role;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Presences;
 
@@ -295,6 +350,9 @@ presences.upsert(
     "<PRESENCE_ID>", // presenceId
     "<USER_ID>",     // userId
     "online",        // status
+    null,            // metadata (optional)
+    null,            // expiresAt (optional)
+    List.of(Permission.read(Role.users())), // permissions (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
@@ -318,7 +376,10 @@ let presences = Presences(client)
 let presence = try await presences.upsert(
     presenceId: "<PRESENCE_ID>",
     userId: "<USER_ID>",
-    status: "online"
+    status: "online",
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
@@ -337,7 +398,10 @@ Presences presences = new Presences(client);
 Presence presence = await presences.Upsert(
     presenceId: "<PRESENCE_ID>",
     userId: "<USER_ID>",
-    status: "online"
+    status: "online",
+    permissions: new List<string> {
+        Permission.Read(Role.Users())
+    }
 );
 ```
 
@@ -363,6 +427,7 @@ func main() {
         "<PRESENCE_ID>",
         "<USER_ID>",
         "online",
+        presences.WithUpsertPermissions([]string{`read("users")`}),
     )
     if err != nil {
         panic(err)
@@ -373,6 +438,8 @@ func main() {
 
 ```server-rust
 use appwrite::Client;
+use appwrite::permission::Permission;
+use appwrite::role::Role;
 use appwrite::services::Presences;
 
 #[tokio::main]
@@ -390,7 +457,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "online",
         None,
         None,
-        None,
+        Some(vec![Permission::read(Role::users())]),
     ).await?;
 
     println!("{:?}", presence);
@@ -1627,7 +1694,7 @@ You can pass an explicit `expiresAt` up to **30 days in the future**. If you omi
 
 {% multicode %}
 ```client-web
-import { Client, Presences, ID } from "appwrite";
+import { Client, Presences, ID, Permission, Role } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -1638,7 +1705,10 @@ const presences = new Presences(client);
 const presence = await presences.upsert({
     presenceId: ID.unique(),
     status: 'online',
-    expiresAt: new Date(Date.now() + 5 * 60 * 1000).toISOString()
+    expiresAt: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
+    permissions: [
+        Permission.read(Role.users())
+    ]
 });
 ```
 
@@ -1655,6 +1725,9 @@ final presence = await presences.upsert(
     presenceId: ID.unique(),
     status: 'online',
     expiresAt: DateTime.now().add(Duration(minutes: 5)).toIso8601String(),
+    permissions: [
+        Permission.read(Role.users()),
+    ],
 );
 ```
 
@@ -1671,13 +1744,18 @@ let formatter = ISO8601DateFormatter()
 let presence = try await presences.upsert(
     presenceId: ID.unique(),
     status: "online",
-    expiresAt: formatter.string(from: Date().addingTimeInterval(300))
+    expiresAt: formatter.string(from: Date().addingTimeInterval(300)),
+    permissions: [
+        Permission.read(Role.users())
+    ]
 )
 ```
 
 ```client-android-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
+import io.appwrite.Permission
+import io.appwrite.Role
 import io.appwrite.services.Presences
 import java.time.Instant
 import java.time.temporal.ChronoUnit
@@ -1691,7 +1769,10 @@ val presences = Presences(client)
 val presence = presences.upsert(
     presenceId = ID.unique(),
     status = "online",
-    expiresAt = Instant.now().plus(5, ChronoUnit.MINUTES).toString()
+    expiresAt = Instant.now().plus(5, ChronoUnit.MINUTES).toString(),
+    permissions = listOf(
+        Permission.read(Role.users())
+    )
 )
 ```
 {% /multicode %}
