@@ -876,7 +876,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let presences = Presences::new(&client);
 
     let result = presences.list(
-        Some(vec![Query::equal("status", vec!["online".into()])]),
+        Some(vec![Query::equal("status", vec!["online".to_string()]).to_string()]),
         None,
         None,
     ).await?;
