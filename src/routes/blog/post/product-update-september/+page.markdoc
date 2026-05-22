@@ -3,13 +3,14 @@ layout: post
 title: "September product update: New Roles | Hackathon | CCPA | 1.6 for self-hosted"
 description: "A recap of everything new at Appwrite in September."
 date: 2024-09-30
+lastUpdated: 2026-05-22
 cover: /images/blog/product-update-september/cover.avif
 timeToRead: 5
 author: dennis-ivy
 category: product
 faqs:
   - question: "What roles are available in the Appwrite Console?"
-    answer: "In addition to the owner role, you can assign Developer, Editor, Analyst, and Billing roles to team members on the Pro and Scale plans. Each role limits what a member can see and change inside the Console, so you can grant access without handing over full control."
+    answer: "In addition to the owner role, you can assign Developer, Editor, Analyst, and Billing roles to team members on the Pro and Enterprise plans. Each role limits what a member can see and change inside the Console, so you can grant access without handing over full control."
   - question: "What is CCPA compliance and why does it matter for Appwrite users?"
     answer: "CCPA is a California privacy law that gives consumers rights over how their personal data is collected and used. Appwrite being CCPA compliant means the platform meets those requirements, which makes it easier for you to satisfy your own obligations to California users."
   - question: "What landed in Appwrite 1.6 for self-hosted?"
@@ -26,7 +27,7 @@ Let’s dive into it!
 ![New roles announcement](/images/blog/product-update-september/3.avif)
 # New roles
 
-We’ve introduced Roles, a feature designed to bring granular permissions to the Appwrite Console, available for both the Pro and Scale plans.
+We’ve introduced Roles, a feature designed to bring granular permissions to the Appwrite Console, available for both the Pro and Enterprise plans.
 Alongside the existing owner role, you can now assign these new roles to your team members:
 
 - Developer

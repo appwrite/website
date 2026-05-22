@@ -3,6 +3,7 @@ layout: post
 title: "Product update January 2025: Partners program, Scale plan and more"
 description: Get a full recap of products, features and programs we released in January.
 date: 2025-02-06
+lastUpdated: 2026-05-22
 cover: /images/blog/product-update-jan-2025/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
@@ -12,8 +13,8 @@ callToAction: true
 faqs:
   - question: "What is the Appwrite Partners program?"
     answer: "The Appwrite Partners program is for agencies, dev studios, system integrators, and freelancers who build solutions on Appwrite for clients. Partners get co-marketing opportunities, engineering support, training, and a listing in the partner catalog."
-  - question: "Who is the Appwrite Scale plan for?"
-    answer: "The Scale plan is built for agencies, startups, scale-ups, and SMBs that need priority support, higher resource limits, and advanced compliance. It sits between Pro and Enterprise on the [pricing page](/pricing)."
+  - question: "Who is the Appwrite Enterprise plan for?"
+    answer: "The Enterprise plan is built for organizations that need priority support, higher resource limits, advanced compliance (BAA, SOC-2, HIPAA), SSO, custom backup policies, and bring-your-own-cloud. See the [pricing page](/pricing) for the current breakdown."
   - question: "What new compute options are available for Functions?"
     answer: "Appwrite Cloud now offers premium compute tiers with up to 4 CPU cores and 4 GB of memory per function. You can pick the spec per function, so you only pay for the heavier resources where you need them."
   - question: "What changed in push notifications?"

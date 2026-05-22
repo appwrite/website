@@ -3,6 +3,7 @@ layout: post
 title: "Storage previews vs SSR image optimization: when to use which"
 description: More frameworks are adding server-side image manipulation. Learn when to use service-based image transformations like Appwrite Storage previews versus SSR functions for image optimization.
 date: 2025-11-06
+lastUpdated: 2026-05-22
 cover: /images/blog/storage-previews-vs-ssr-image-optimization/cover.avif
 timeToRead: 8
 author: ebenezer-don
@@ -125,7 +126,7 @@ Let's look at the key differences between these approaches:
 
 ## Cost considerations
 
-**Service-based** has predictable costs. Appwrite's [pricing](/pricing) includes 100 origin images per month on Pro and Scale plans, with additional images at $5 per 1,000. You pay for unique images, not transformations. So one image with 20 different variations only counts as one origin image.
+**Service-based** has predictable costs. Appwrite's [pricing](/pricing) includes 100 origin images per month on the Pro plan (Enterprise has custom limits), with additional images at $5 per 1,000. You pay for unique images, not transformations. So one image with 20 different variations only counts as one origin image.
 
 **SSR functions** cost depends on your infrastructure. You pay for compute time, bandwidth, and storage. Low traffic might mean minimal costs, but high traffic requires more server capacity. The actual cost varies based on your cloud provider and configuration.
 

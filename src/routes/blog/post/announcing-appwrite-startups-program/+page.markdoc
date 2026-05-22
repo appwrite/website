@@ -3,6 +3,7 @@ layout: post
 title: Announcing Appwrite’s Startups program
 description: A new program that caters to the needs of startups and their Founders, CTOs, and engineering teams.
 date: 2024-04-24
+lastUpdated: 2026-05-22
 cover: /images/blog/startups.avif
 timeToRead: 5
 author: eldad-fux
@@ -10,11 +11,9 @@ category: announcement
 featured: false
 faqs:
   - question: "What is the Appwrite Startups program?"
-    answer: "The Appwrite Startups program gives early-stage companies an Appwrite Scale subscription, Cloud credits, priority email support, a dedicated Discord channel, and access to a program manager. It is designed to reduce infrastructure cost and risk while your team is still finding product-market fit."
+    answer: "The Appwrite Startups program gives early-stage companies cloud credits, priority email support, a dedicated Discord channel, and access to a program manager on top of [Appwrite Cloud](https://cloud.appwrite.io). It is designed to reduce infrastructure cost and risk while your team is still finding product-market fit."
   - question: "Who qualifies for the Appwrite Startups program?"
     answer: "Your company must have been founded within the last decade, have a working website, and have more than one team member. The application is reviewed by the Appwrite team, and you can apply from the [Startups program page](/startups)."
-  - question: "What is Appwrite Scale?"
-    answer: "Scale is the tier above Appwrite Pro on [Appwrite Cloud](https://cloud.appwrite.io). It includes higher resource limits, multi-region options, and additional support features. Startups in the program get Scale for every developer they need to add to the team."
   - question: "How much can I save with the Cloud credits?"
     answer: "The credit amount is determined when you are accepted into the program, based on your stage and projected usage. The credits offset Cloud usage so you can build and scale without a meaningful infrastructure bill during the early months."
   - question: "What kind of support do program members get?"
@@ -37,10 +36,6 @@ Startups need to move fast, be flexible, be ready to scale, and rely on solid fo
 With it, we aim to fulfill the need for price flexibility, day-to-day support, expertise, and dedicated resources. We’ve been working with startups, talking to founders and founding engineering teams, and working together to build a program that sets young companies up for success.
 
 # The benefits
-
-## Appwrite Scale
-
-All program participants will receive an Appwrite Scale subscription, with all the features of Scale enabled for any number of developers the team needs.
 
 ## Cloud credits
 

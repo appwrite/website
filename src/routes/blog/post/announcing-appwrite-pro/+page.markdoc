@@ -3,6 +3,7 @@ layout: post
 title: "Announcing: Appwrite Pro"
 description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence.
 date: 2023-12-20
+lastUpdated: 2026-05-22
 cover: /images/blog/announcing-appwrite-pro/header.avif
 timeToRead: 5
 author: christy-jacob
@@ -20,7 +21,7 @@ faqs:
   - question: "Can I switch back to the Free plan after going Pro?"
     answer: "You can downgrade an organization to the Free plan, but if your usage exceeds Free limits, additional projects may be paused or services may be throttled until you reduce usage. Review your dashboard before downgrading so you know which projects will be affected."
   - question: "What kind of support comes with Appwrite Pro?"
-    answer: "Pro includes premium email support handled by Appwrite's team, on top of the community support available on [Discord](https://appwrite.io/discord). Higher-tier plans (Scale and Enterprise) add features like dedicated Slack channels and SLAs; see the [pricing page](https://appwrite.io/pricing) for the current breakdown."
+    answer: "Pro includes premium email support handled by Appwrite's team, on top of the community support available on [Discord](https://appwrite.io/discord). The Enterprise plan adds features like dedicated Slack channels and SLAs; see the [pricing page](https://appwrite.io/pricing) for the current breakdown."
 ---
 
 After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud, Appwrite Pro. A new product offering that allows you to build with more confidence.

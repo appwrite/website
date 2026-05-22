@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Encrypted string attribute support: Built-in encryption for sensitive fields"
 description: Easily encrypt sensitive string fields at rest, with no manual encryption logic.
 date: 2025-07-10
+lastUpdated: 2026-05-22
 cover: /images/blog/announcing-encrypted-string-attributes/cover.avif
 timeToRead: 5
 author: jake-barnby
@@ -20,7 +21,7 @@ faqs:
   - question: "Do I need to manage encryption keys myself?"
     answer: "No, [Appwrite](/docs/advanced/security) handles key management transparently. You don't generate, store, or rotate keys yourself, which removes a common source of implementation errors. The clients see encrypted fields as regular strings."
   - question: "Is encrypted string attribute support available on the Free plan?"
-    answer: "Encrypted string attributes are available on Appwrite Cloud's Pro and Scale plans, plus all self-hosted deployments. If you're on the Free plan, you'd need to upgrade or self-host to use this feature."
+    answer: "Encrypted string attributes are available on Appwrite Cloud's Pro and Enterprise plans, plus all self-hosted deployments. If you're on the Free plan, you'd need to upgrade or self-host to use this feature."
 ---
 Appwrite is secure by default. We build every single product and feature with the highest regard for security. 
 
@@ -49,7 +50,7 @@ Key features entail:
 
 Appwrite delivers comprehensive, secure, easy-to-use encryption that is seamlessly integrated into your workflow. When a string attribute is marked as encrypted, Appwrite applies AES-128 encryption in Galois/Counter Mode (GCM) before writing it to the database.
 
-This new feature is available on Appwrite Cloud Pro and Scale plan, and self-hosted. Encrypted string attribute support significantly enhances your application's security posture, making Appwrite a trusted choice for handling sensitive data.
+This new feature is available on Appwrite Cloud Pro and Enterprise plans, and self-hosted. Encrypted string attribute support significantly enhances your application's security posture, making Appwrite a trusted choice for handling sensitive data.
 
 # More resources
 

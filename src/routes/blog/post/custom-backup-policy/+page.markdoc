@@ -3,6 +3,7 @@ layout: post
 title: Custom backup policies for compliance and security
 description: Learn why regular backups are no longer enough for data security.
 date: 2024-10-16
+lastUpdated: 2026-05-22
 cover: /images/blog/custom-backup-policy/cover.avif
 timeToRead: 5
 author: aditya-oberai
@@ -15,7 +16,7 @@ faqs:
   - question: "What is the difference between RTO and RPO?"
     answer: "RTO (Recovery Time Objective) is how quickly you need to restore service after an incident. RPO (Recovery Point Objective) is how much data you can afford to lose, measured in time since the last backup. Mission-critical systems usually have low values for both; less critical systems can tolerate higher numbers."
   - question: "How do I set up a custom backup policy in Appwrite?"
-    answer: "On Appwrite Pro and Scale plans, [Appwrite Databases](/docs/products/databases) includes backup policies you can configure per database. You can pick a schedule (daily, weekly, monthly), set retention periods, and define execution times. See the database backups documentation for the full configuration options."
+    answer: "On the Appwrite Enterprise plan, [Appwrite Databases](/docs/products/databases) includes custom backup policies you can configure per database. You can pick a schedule (daily, weekly, monthly), set retention periods, and define execution times. The Pro plan includes a daily backup with 7-day retention. See the database backups documentation for the full configuration options."
   - question: "What is the difference between full, incremental, and differential backups?"
     answer: "A full backup copies all data every time. An incremental backup copies only the changes since the last backup of any kind. A differential backup copies changes since the last full backup. Incremental and differential backups save storage but make restore slightly more complex because multiple backup files are needed."
   - question: "Should backup data be encrypted?"
@@ -108,7 +109,7 @@ A **custom backup policy** is a smart investment.
 
 By tailoring your backup approach to your business needs, you're not just safeguarding your data; you're optimizing resources, ensuring compliance, and future-proofing your business.
 
-Appwrite Database Backups allows you to customize your backup policy down to pre-defined schedules (e.g., daily, weekly, monthly), retention periods and even precise execution times on Pro and Scale plans. Learn more about Database Backups:
+Appwrite Database Backups allows you to customize your backup policy down to pre-defined schedules (e.g., daily, weekly, monthly), retention periods and even precise execution times on the Enterprise plan. Learn more about Database Backups:
 - [Appwrite Database Backups](https://appwrite.io/blog/post/introducing-database-backups)
 - [Database Backups docs](https://appwrite.io/docs/products/databases/backups)
 - [Should I encrypt my backups?](https://appwrite.io/blog/post/backup-encryption)

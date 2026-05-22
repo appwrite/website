@@ -3,6 +3,7 @@ layout: post
 title: Introducing Database Backups
 description: A new feature that will help ensure your database's safety and security.
 date: 2024-10-15
+lastUpdated: 2026-05-22
 cover: /images/blog/introducing-database-backups/cover.avif
 timeToRead: 3
 author: jake-barnby
@@ -12,7 +13,7 @@ faqs:
   - question: "What are Appwrite Database Backups?"
     answer: "Database Backups capture point in time copies of your project's databases without taking the service offline. They are encrypted, stored in a separate region from your production data, and can be triggered manually or on a schedule. See [Appwrite Databases](/docs/products/databases) for setup."
   - question: "Are backups available on the Free plan?"
-    answer: "Database Backups are available on all paid Cloud plans. The Pro plan includes a daily backup retained for 7 days, while Scale and Enterprise plans support custom schedules and retention windows."
+    answer: "Database Backups are available on all paid Cloud plans. The Pro plan includes a daily backup retained for 7 days, while the Enterprise plan supports custom schedules and retention windows."
   - question: "Do backups cause downtime?"
     answer: "No. Appwrite uses hot backups, which run in the background while your application keeps serving traffic. There is no interruption to reads, writes, or realtime subscriptions during the backup window."
   - question: "Where are backup files stored?"
@@ -53,9 +54,9 @@ Backups are stored in a geographically separate location, isolated from our prim
 
 You can enable automated backup policies to run in the background. This will ensure you have a daily backup that is stored for 7 days as part of the Pro plan. For added flexibility, manual backups can be initiated at any time. This is particularly useful for pre-deployment snapshots or in cases where immediate backup and restoration are required, giving you complete control over your data integrity with minimal downtime.
 
-## Scale and Enterprise plan
+## Enterprise plan
 
-We offer more customization for the [Scale and Enterprise plans](https://appwrite.io/pricing) using backup policies that offer granular control over your backup strategy, allowing you to:
+We offer more customization for the [Enterprise plan](https://appwrite.io/pricing) using backup policies that offer granular control over your backup strategy, allowing you to:
 
 - Schedule backups at custom intervals or predefined schedules (e.g., daily, weekly, monthly) to match your operational requirements.
 - Set retention periods, ensuring backups are kept as long as necessary without accumulating unnecessary storage.

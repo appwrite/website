@@ -3,6 +3,7 @@ layout: post
 title: Announcing Database Reads and Writes pricing
 description: To ensure Appwrite Cloud's sustainability, we are introducing pricing for database read and write operations, effective April 10th, 2025.
 date: 2025-03-13
+lastUpdated: 2026-05-22
 cover: /images/blog/announcing-database-reads-and-writes-pricing/cover.avif
 timeToRead: 6
 author: eldad-fux
@@ -13,7 +14,7 @@ faqs:
   - question: "How does Appwrite count database read and write operations?"
     answer: "Most operations are counted by the number of documents affected, not the number of API calls. Fetching a collection of 50 documents in one call counts as 50 read operations. A query that returns no documents counts as a single operation. Writes are counted per document on create, update, and delete."
   - question: "What's included in the free database operation quota?"
-    answer: "The Free plan includes 500,000 read operations and 250,000 write operations per month. The Pro and Scale plans include 1,750,000 reads and 750,000 writes monthly. Operations beyond the included quota are billed at $0.060 per 100,000 reads and $0.10 per 100,000 writes. See the [pricing page](/pricing) for details."
+    answer: "The Free plan includes 500,000 read operations and 250,000 write operations per month. The Pro plan includes 1,750,000 reads and 750,000 writes monthly, and Enterprise has custom limits. Operations beyond the included quota are billed at $0.060 per 100,000 reads and $0.10 per 100,000 writes. See the [pricing page](/pricing) for details."
   - question: "How can I reduce my database operation usage?"
     answer: "Filter data server-side instead of fetching large datasets and filtering on the client. Use the `limit` and `offset` parameters to paginate so you only retrieve what you need. Cache frequently accessed data in your app or CDN, and monitor usage in the [Appwrite Console](/docs/products/databases) to spot inefficient query patterns."
   - question: "Where can I see my current database operation usage?"
@@ -39,7 +40,7 @@ As Appwrite continues to scale, we need to ensure our platform remains sustainab
 We will begin charging for database read and write operations beyond the included quotas in each plan. All plans will continue to include a generous allocation of operations at no additional charge:
 
 - **Free Plan**: 500,000 read operations and 250,000 write operations per month.
-- **Pro and Scale Plans**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes.
+- **Pro Plan**: 1,750,000 read operations and 750,000 write operations per month, with additional operations available at $0.060 per 100,000 reads and $0.10 per 100,000 writes. The Enterprise plan offers custom limits.
 - **Enterprise Plan**: Custom pricing.
 
 This change will help support the infrastructure required to maintain high-performance database services and enable us to continue enhancing the platform.
