@@ -16,7 +16,7 @@ A presence has two sides that are always in sync.
 
 **It is durable.** When you write a presence, it sticks around until it expires or you delete it. That means you can `list()` presences at any time to see who is online right now, including from a server-side function, without having to keep a Realtime connection open.
 
-**It is live.** Every change to a presence fires an event on the `presences` and `presences.<PRESENCE_ID>` [Realtime](/docs/apis/realtime) channels. Subscribers get `create`, `upsert`, `update`, and `delete` events in milliseconds, over the same Realtime connection they are already using for rows and files.
+**It is live.** Every change to a presence fires an event on the `presences` and `presences.<PRESENCE_ID>` [Realtime](/docs/apis/realtime) channels. Subscribers get `upsert` and `delete` events in milliseconds, over the same Realtime connection they are already using for rows and files.
 
 A typical "online dot" loop looks like this:
 
@@ -29,7 +29,7 @@ A typical "online dot" loop looks like this:
 This gives you two ways to keep a presence alive, and you pick whichever fits your UI:
 
 - **Heartbeat.** Upsert on focus, route change, or a periodic timer to push `expiresAt` forward. Best when presence should persist briefly across short disconnects (a quick network blip, a tab switch) or when you write presence from server code that has no live socket.
-- **While connected.** If you keep a Realtime connection open, presence written over that connection is cleaned up automatically when the connection closes. Best for "online while the tab is open" UIs where you do not want to manage a heartbeat yourself.
+- **While connected.** Call `realtime.upsertPresence(...)` over an open Realtime connection and the record is automatically deleted when that connection closes. Best for "online while the tab is open" UIs where you do not want to manage a heartbeat yourself.
 
 # Upsert a presence {% #upsert-a-presence %}
 
@@ -1462,7 +1462,7 @@ const realtime = new Realtime(client);
 const subscription = await realtime.subscribe(Channel.presences(), response => {
     if (response.events.includes('presences.*.delete')) {
         console.log('Presence expired or removed', response.payload);
-    } else if (response.events.includes('presences.*.upsert') || response.events.includes('presences.*.update')) {
+    } else if (response.events.includes('presences.*.upsert')) {
         console.log('Presence created or updated', response.payload);
     }
 });
@@ -1480,11 +1480,10 @@ final realtime = Realtime(client);
 final subscription = realtime.subscribe([Channel.presences()]);
 
 subscription.stream.listen((response) {
-    if (response.events.contains('presences.update')) {
-        print('Presence updated: ${response.payload}');
-    }
-    if (response.events.contains('presences.delete')) {
+    if (response.events.contains('presences.*.delete')) {
         print('Presence expired or removed: ${response.payload}');
+    } else if (response.events.contains('presences.*.upsert')) {
+        print('Presence created or updated: ${response.payload}');
     }
 });
 ```
@@ -1499,11 +1498,10 @@ let client = Client()
 let realtime = Realtime(client)
 
 let subscription = realtime.subscribe(channels: [Channel.presences()]) { response in
-    if (response.events?.contains("presences.update") == true) {
-        print("Presence updated: \(String(describing: response.payload))")
-    }
-    if (response.events?.contains("presences.delete") == true) {
+    if (response.events?.contains("presences.*.delete") == true) {
         print("Presence expired or removed: \(String(describing: response.payload))")
+    } else if (response.events?.contains("presences.*.upsert") == true) {
+        print("Presence created or updated: \(String(describing: response.payload))")
     }
 }
 ```
@@ -1520,11 +1518,10 @@ val client = Client(context)
 val realtime = Realtime(client)
 
 val subscription = realtime.subscribe(Channel.presences()) {
-    if (it.events.contains("presences.update")) {
-        println("Presence updated: ${it.payload}")
-    }
-    if (it.events.contains("presences.delete")) {
+    if (it.events.contains("presences.*.delete")) {
         println("Presence expired or removed: ${it.payload}")
+    } else if (it.events.contains("presences.*.upsert")) {
+        println("Presence created or updated: ${it.payload}")
     }
 }
 ```
@@ -1532,10 +1529,10 @@ val subscription = realtime.subscribe(Channel.presences()) {
 
 The `events` array follows the same pattern as every other Appwrite resource:
 
-- `presences.*.create` and `presences.<PRESENCE_ID>.create` for new records.
 - `presences.*.upsert` and `presences.<PRESENCE_ID>.upsert` for the unified create-or-update path that fires on every `upsert()` call.
-- `presences.*.update` and `presences.<PRESENCE_ID>.update` for status, metadata, or expiry changes.
 - `presences.*.delete` and `presences.<PRESENCE_ID>.delete` for records that were deleted explicitly or expired automatically.
+
+`update()` is a REST-only operation and does not emit a Realtime event. If you need subscribers to see a status or metadata change live, use `upsert()` instead.
 
 This gives you a clean signal for "user just came online", "user changed status", and "user went offline", without writing any custom socket logic.
 
@@ -1548,14 +1545,14 @@ This gives you a clean signal for "user just came online", "user changed status"
 ---
 * `presences`
 * `Channel.presences()`
-* Any create, upsert, update, or delete event on any presence the subscriber can read.
+* Any upsert or delete event on any presence the subscriber can read.
 ---
 * `presences.<ID>`
 * `Channel.presence('<PRESENCE_ID>')`
-* Any create, upsert, update, or delete event on a specific presence record.
+* Any upsert or delete event on a specific presence record.
 {% /table %}
 
-You can also append `.create()`, `.upsert()`, `.update()`, or `.delete()` to `Channel.presence('<PRESENCE_ID>')` to narrow the stream to a single event type, identical to how channel filters work on every other resource.
+You can also append `.upsert()` or `.delete()` to `Channel.presence('<PRESENCE_ID>')` to narrow the stream to a single event type, identical to how channel filters work on every other resource.
 
 # Expiry and cleanup {% #expiry-and-cleanup %}
 

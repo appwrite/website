@@ -36,7 +36,7 @@ Presence is a first-class Appwrite resource for short-lived user statuses, with 
 
 - **Upsert-first writes** so you can call the same method on every focus, route change, or heartbeat without worrying about duplicates.
 - **Automatic expiry** controlled by an `expiresAt` timestamp (up to 30 days). Stale records disappear on their own, no cleanup cron required.
-- **Dedicated Realtime channels** (`presences` and `presences.<ID>`) that emit `create`, `upsert`, `update`, and `delete` events for every record a subscriber has permission to read.
+- **Dedicated Realtime channels** (`presences` and `presences.<ID>`) that emit `upsert` and `delete` events for every record a subscriber has permission to read.
 - **Free-form status and metadata** so a presence can mean "online", "typing in #general", or "viewing document `abc123`", whichever vocabulary fits your app.
 - **Permission-aware subscriptions** that reuse `Role.users()`, `Role.team()`, and `Role.user()`, so collaboration features only leak status to the right people.
 - **A `Presences` service in every SDK**, with the matching scopes (`presences.read`, `presences.write`) on the server side.

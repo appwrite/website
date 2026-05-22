@@ -93,7 +93,7 @@ Most apps update presence on a few specific signals:
 
 ```client-web
 async function setStatus(status, metadata = {}) {
-    await presences.update({
+    await presences.upsert({
         presenceId,
         status,
         metadata
