@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Presence API: Track who is online, typing, and active in realtime"
 description: A new Appwrite API for short-lived user statuses, with built-in Realtime channels, automatic expiry, and permission-aware subscriptions.
-date: 2026-05-20
+date: 2026-05-22
 cover: /images/blog/announcing-presence-api/cover.png
 timeToRead: 5
 author: aditya-oberai
