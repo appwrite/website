@@ -212,11 +212,11 @@ A list of all channels available you can subscribe to. When using `Channel` help
 ---
 * `presences`
 * `Channel.presences()`
-* Any upsert or delete event on any [presence](/docs/apis/realtime/presence) the subscriber can read.
+* Any upsert, update, or delete event on any [presence](/docs/apis/realtime/presence) the subscriber can read.
 ---
 * `presences.<ID>`
 * `Channel.presence('<PRESENCE_ID>')`
-* Any upsert or delete event on a given presence record.
+* Any upsert, update, or delete event on a given presence record.
 
 {% /table %}
 

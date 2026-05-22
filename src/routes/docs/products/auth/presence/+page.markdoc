@@ -178,7 +178,7 @@ val onlineUsers = result.presences
 ```
 {% /multicode %}
 
-Then subscribe to the global `presences` channel to keep that snapshot live. Apply the same patch to the same `onlineUsers` map on every event, add or replace on upsert, remove on delete.
+Then subscribe to the global `presences` channel to keep that snapshot live. Apply the same patch to the same `onlineUsers` map on every event, add or replace on upsert or update, remove on delete.
 
 {% multicode %}
 ```client-web
