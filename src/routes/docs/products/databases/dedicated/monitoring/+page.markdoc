@@ -20,7 +20,7 @@ curl -X GET \
   https://<REGION>.cloud.appwrite.io/v1/usage/gauges
 ```
 
-Gauge metrics include `storage`, `connections`, `cpu`, `memory`, `qps`, `iopsRead`, and `iopsWrite`. Counter metrics include `compute`, `inbound`, `outbound`, and `coldStarts`.
+Gauge metrics include `storage`, `connections`, `cpu`, `memory`, `qps`, `iopsRead`, and `iopsWrite`. Gauge rows also include `resourceType` and `resourceId` when they are ingested through the dedicated database metrics pipeline. Counter metrics include `compute`, `inbound`, `outbound`, and `coldStarts`.
 
 Use `/v1/usage/events` when you need discrete usage events, such as storage autoscaling, failover, or lifecycle transitions:
 
@@ -36,7 +36,7 @@ curl -X GET \
   https://<REGION>.cloud.appwrite.io/v1/usage/events
 ```
 
-Console charts should be built from these usage streams. For a per-database rollup in SDKs, the dedicated `getDatabaseUsage` endpoint remains available.
+Console charts and per-database rollups should be built from these usage streams.
 
 # Live operational snapshot {% #metrics %}
 
@@ -899,16 +899,7 @@ curl -X GET \
   https://<REGION>.cloud.appwrite.io/v1/activities/events
 ```
 
-These activity events describe Appwrite platform actions. Engine audit logs remain on the dedicated database logs endpoint:
-
-```bash
-curl -X GET \
-  -H "X-Appwrite-Project: <PROJECT_ID>" \
-  -H "X-Appwrite-Key: <API_KEY>" \
-  "https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/logs"
-```
-
-Activity events are not a replacement for engine audit logs, engine error logs, or slow-query logs. Engine and slow logs remain lower-level database surfaces exposed through the engine's own logging and profiling tools, plus the dedicated slow-query view documented above.
+These activity events describe Appwrite platform actions. Activity events are not a replacement for engine audit logs, engine error logs, or slow-query logs. Engine logs remain lower-level database surfaces exposed through the engine's own logging and profiling tools, plus the dedicated slow-query view documented above.
 
 # Webhooks & realtime {% #events %}
 
