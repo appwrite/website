@@ -7,6 +7,19 @@ cover: /images/blog/track-document-order-with-sequence/cover.avif
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "What is the $sequence attribute in Appwrite?"
+    answer: "$sequence is a system attribute that Appwrite assigns to every document on creation. It is a unique, auto-incrementing integer scoped to the collection, so the first document gets 1, the second gets 2, and so on. It is read only and cannot be modified or reused."
+  - question: "Why not just use a timestamp to order documents?"
+    answer: "Timestamps can collide when documents are created within the same millisecond, which leads to unstable sort order. $sequence is monotonically increasing and unique, so it gives you a deterministic order even under high concurrency."
+  - question: "Can I sort and paginate by $sequence in Appwrite?"
+    answer: "Yes. $sequence works with the standard Query API, so you can use Query.orderAsc('$sequence') or Query.orderDesc('$sequence') and combine it with cursor pagination. See the [Appwrite Databases docs](/docs/products/databases) for the full query reference."
+  - question: "Do I have to create $sequence manually?"
+    answer: "No. Appwrite assigns it automatically when the document is created, alongside other system attributes like $id and $createdAt. You should not define a sequence attribute yourself in your collection schema."
+  - question: "Is $sequence safe to expose in URLs or UI?"
+    answer: "Yes for things like ticket numbers, order numbers, or invoice numbers where a predictable counter is the desired behavior. Avoid using it where you need unguessable IDs (for example, share links), because the value is enumerable. Use $id for those cases."
+  - question: "Does $sequence reset if I delete documents?"
+    answer: "No. The counter is monotonic and does not reuse values, so deleting document 42 does not free up the sequence number 42. The next inserted document still gets the next unused integer."
 ---
 
 Some systems need to reflect the order in which actions happen. A ticketing system, for example, should assign "Ticket #41" before "Ticket #42". But in a user interface, it often makes sense to display the latest tickets first, so "Ticket #42" may appear above #41.

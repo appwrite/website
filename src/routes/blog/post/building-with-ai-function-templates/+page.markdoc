@@ -7,6 +7,19 @@ cover: /images/blog/building-with-ai-function-templates/function-templates.avif
 timeToRead: 7
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "What are Appwrite AI Function templates?"
+    answer: "They are pre-built Appwrite Functions that cover common AI tasks like image classification, object detection, text generation, summarization, and translation. You can clone a template from the Appwrite Console, plug in your API keys for providers like OpenAI or Hugging Face, and have a working endpoint in minutes. See [Appwrite Functions](/docs/products/functions) for how templates are deployed."
+  - question: "Which AI providers do the templates integrate with?"
+    answer: "The initial set of templates covers Hugging Face Inference, OpenAI, and Perplexity, with more added over time. Each template is just code, so you can swap in any provider you want. The template's job is to give you a working starting point that handles auth, request shape, and error handling."
+  - question: "What is the difference between image classification and object detection?"
+    answer: "Image classification assigns a single label, or a short set of labels, to a whole image, for example tagging a photo as a cat or a dog. Object detection finds multiple items inside an image and gives you bounding boxes for each one, so you can locate them. Detection is heavier but useful for inventory, surveillance, and self-driving style use cases."
+  - question: "Do I need to manage my own AI infrastructure to use these templates?"
+    answer: "No. The templates call hosted inference APIs, so you do not need to provision GPUs or run your own model servers. Appwrite handles function execution and scaling for you. If you later want to host your own models, you can swap the template's API call for a self-hosted endpoint."
+  - question: "How do I secure my AI provider API keys in an Appwrite Function?"
+    answer: "Store them as environment variables on the function, not in source code. Appwrite encrypts these values and injects them at runtime, so the keys never leave the server. Never ship them in client-side code or commit them to a public repo. See [Appwrite Functions](/docs/products/functions) for environment variable setup."
+  - question: "Can I use AI Function templates for production workloads?"
+    answer: "Yes, with the same caveats as any third-party AI service: watch your provider rate limits, add retries for transient failures, and consider caching responses where the input is repeatable. The templates are starting points, not full production systems, so plan to add logging and observability before you ship to real users."
 ---
 
 It’s an exciting time for software development, as many new concepts and techniques pop up every day, giving us endless possibilities to build new and shiny things. But this sea of opportunity can be hard to navigate and keep up with. AI, for instance, is a field that is rapidly evolving and is influencing not only the products we can build but also the way we develop them. However, building AI-powered applications can be complicated. Appwrite’s new AI Function templates make it easier to build AI powered applications. 

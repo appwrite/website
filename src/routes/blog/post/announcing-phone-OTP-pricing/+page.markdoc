@@ -9,6 +9,19 @@ author: eldad-fux
 category: product, announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "How much does phone OTP login cost on Appwrite Cloud?"
+    answer: "Phone OTP rates vary by destination country because SMS costs differ widely across telecom providers. The full breakdown by region is published on the [Appwrite rates page](/docs/advanced/platform/phone-otp#rates). Pricing is per delivered message, so usage scales linearly with the number of OTP attempts you send."
+  - question: "Where can I see my phone OTP usage in Appwrite?"
+    answer: "Open your organization or project usage page in the Appwrite Console to see SMS usage broken down by month and destination. This helps you forecast spend before the billing cycle and identify any unexpected spikes in OTP volume."
+  - question: "How does phone OTP login work?"
+    answer: "When a user requests login, the server generates a short, time-limited code and sends it to the user's phone via SMS. The user enters that code in your app to prove possession of the phone number, and the server validates it before issuing a session. The code typically expires within a few minutes."
+  - question: "How can I reduce SMS OTP costs?"
+    answer: "Combine SMS OTP with other authentication factors so you only fall back to SMS when necessary. Options include email OTP, magic URLs, OAuth providers, passkeys, or [TOTP-based 2FA](/docs/products/auth). You can also enforce rate limits and CAPTCHA on the OTP endpoint to discourage abuse that drives up costs."
+  - question: "What authentication methods does Appwrite Auth support besides SMS OTP?"
+    answer: "Appwrite Auth supports email and password, magic URLs, email OTP, phone OTP, anonymous sessions, JWT, OAuth across 30+ providers, and TOTP-based two-factor authentication. See [Appwrite Auth](/docs/products/auth) for the full list and integration guides."
+  - question: "Is phone OTP login secure?"
+    answer: "SMS-based OTPs are stronger than passwords alone because they require possession of the user's phone, but they are not immune to SIM swapping or interception attacks. For sensitive accounts, pair SMS OTP with a second factor such as TOTP or use TOTP as the primary method instead."
 ---
 
 One-time password (OTP) logins with SMS provide a secure and convenient way for users to authenticate themselves, ensuring that only authorized individuals can access accounts. By sending a temporary, time-sensitive code via SMS, phone OTP logins offer a strong layer of security, helping prevent unauthorized access and protecting user data. This service has become a crucial part of many applications, and we've worked hard to make it as easy and scalable as possible.

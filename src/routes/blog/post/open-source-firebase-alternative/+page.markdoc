@@ -8,6 +8,19 @@ timeToRead: 7
 author: aditya-oberai
 category: product
 callToAction: true
+faqs:
+  - question: "Is Appwrite a true open source alternative to Firebase?"
+    answer: "Yes. Appwrite is fully open source under the BSD-3-Clause license and the source code is on GitHub. Firebase is a proprietary Google product, so the main difference is that you can self-host Appwrite, audit it, and avoid vendor lock-in."
+  - question: "What database does Appwrite use under the hood?"
+    answer: "Appwrite uses MariaDB with an abstraction layer that lets you define schema, indexes, and relationships through APIs and the console. You do not need SQL knowledge to use it, though the underlying engine is relational rather than document oriented like Firestore."
+  - question: "Can Appwrite replace Firebase Authentication?"
+    answer: "Yes. [Appwrite Authentication](/docs/products/auth) supports email/password, OAuth (30+ providers), magic links, OTP, phone, anonymous, JWT, and custom tokens. It also adds extras like password history, password dictionary, session limits, and personal data checks."
+  - question: "What languages do Appwrite Functions support?"
+    answer: "Appwrite [Functions](/docs/products/functions) supports over 10 runtimes including Node.js, Python, PHP, Ruby, Dart, Bun, Deno, Kotlin, Swift, Java, and Go. Firebase Cloud Functions is limited to JavaScript, TypeScript, and Python."
+  - question: "Does Appwrite offer real-time updates like Firebase?"
+    answer: "Yes. Appwrite includes a Realtime API across Databases, Storage, Functions, and Authentication, so your client can subscribe to changes over a WebSocket connection. The pattern is similar to Firestore listeners."
+  - question: "Can I self-host Appwrite for free?"
+    answer: "Yes. You can self-host Appwrite on your own infrastructure with Docker for free, with no usage limits. Appwrite Cloud also offers a free tier if you prefer a managed option."
 ---
 
 Updated on October 6, 2025

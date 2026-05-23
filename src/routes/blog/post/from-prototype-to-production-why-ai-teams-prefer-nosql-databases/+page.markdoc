@@ -8,6 +8,19 @@ timeToRead: 5
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "Why do AI teams prefer NoSQL databases over relational ones?"
+    answer: "AI data structures change constantly as models, prompts, and pipelines evolve. NoSQL document stores let teams add new fields and store nested data without schema migrations, which keeps iteration fast. Relational databases can handle JSON columns, but they were not designed for the level of schema churn that AI products generate."
+  - question: "Is NoSQL faster than SQL for AI workloads?"
+    answer: "NoSQL is not inherently faster, but it is better suited to the patterns AI workloads create: high write throughput, semi-structured logs, and horizontal scaling. For relational, transactional data, well tuned SQL is often faster. The right answer is usually both, used for different layers of the stack."
+  - question: "When should I still use a relational database in an AI system?"
+    answer: "Use SQL for billing, payments, audit logs, compliance reporting, and any data that is strictly relational and transactional. ACID guarantees, mature tooling, and predictable query performance still make relational databases the right tool for those layers. Most production AI systems run SQL and NoSQL together."
+  - question: "Can I use MongoDB with Appwrite?"
+    answer: "Yes. Appwrite's self hosted, open source version supports MongoDB as a database backend. During installation you can choose MongoDB and Appwrite will configure and manage it automatically, with no changes to the API or SDKs you already use."
+  - question: "What kinds of AI data fit document databases best?"
+    answer: "Prompts and responses, tool call traces, model outputs, embeddings metadata, user feedback, and observability logs all fit document storage well. They are nested, variable in shape, and frequently change as the product evolves, which is exactly what document databases optimize for."
+  - question: "How do NoSQL databases handle horizontal scaling?"
+    answer: "Most NoSQL systems shard data across multiple nodes so writes and reads can scale out as load grows. This avoids the hard limits of vertically scaled relational databases, where you eventually run out of CPU, memory, or IO on a single machine. For AI workloads with spiky traffic and high write volume, horizontal scaling is the difference between scaling smoothly and rewriting your infrastructure."
 ---
 
 AI prototypes move fast. A working demo usually needs just three things: a model, a basic UI, and somewhere to store data. At that stage, teams care about speed more than structure, they ship quickly, iterate constantly, and change direction without warning. Almost any database will hold up fine.

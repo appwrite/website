@@ -9,6 +9,19 @@ author: aditya-oberai
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "How do I deploy a Next.js app to Appwrite Sites?"
+    answer: "Create a project in Appwrite Cloud, open the Sites page, click Create site, and choose Clone a template. Search for the Next.js starter, connect your GitHub repository if you want continuous deployment, and click Deploy. See the [Appwrite Sites docs](/docs/products/sites) for additional deployment options."
+  - question: "What does the Appwrite Next.js starter template include?"
+    answer: "The starter ships with a clean single page UI, an integration with the Appwrite SDK, and preset deployment settings tuned for SSR on Appwrite Sites. It is intended as a baseline you can extend for your own app. You get a working deployment in minutes without writing configuration files."
+  - question: "Can I deploy Appwrite Sites from the CLI?"
+    answer: "Yes, run appwrite init sites to scaffold a new site interactively, picking Next.js as the framework. Then run appwrite push sites to deploy. The [CLI deploy docs](/docs/products/sites/quick-start/nextjs) explain the available flags and configuration options."
+  - question: "What frameworks have Appwrite Sites starter templates?"
+    answer: "Appwrite Sites offers starter templates for Next.js, React, Vue, Nuxt, Angular, SvelteKit, and Flutter. You can browse and clone any of them from the templates section in the Sites Console. New templates are added over time, so check the listing for the latest options."
+  - question: "Do I need to self host Appwrite to use Sites?"
+    answer: "No, [Appwrite Sites](/docs/products/sites) is available on Appwrite Cloud. You can also self host Appwrite 1.7 or later if you prefer to run the entire platform yourself. Both options support the same site deployment workflow."
+  - question: "How do I connect a custom domain to my Appwrite Site?"
+    answer: "From the deployed site dashboard, open the Domains tab and add your domain. Appwrite gives you DNS records to point your domain to the platform. Once DNS propagates, your site serves traffic on the custom domain alongside the default Appwrite subdomain."
 ---
 
 Building web applications requires both front-end expertise and back-end infrastructure. Appwrite Sites simplifies this process by providing a platform for deploying, hosting, and scaling web applications.

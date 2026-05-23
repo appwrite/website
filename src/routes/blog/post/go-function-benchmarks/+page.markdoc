@@ -7,6 +7,19 @@ cover: /images/blog/go-function-benchmarks/cover.avif
 timeToRead: 8
 author: matej-baco
 category: product
+faqs:
+  - question: "Does Appwrite Functions support Go?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) added a Go runtime, so you can write serverless functions in Go alongside Node.js, Python, PHP, Ruby, Dart, and other supported languages. The runtime is built on Open Runtimes, the same open source project that powers all Appwrite Functions runtimes."
+  - question: "How does the Go runtime perform compared to other Appwrite Function runtimes?"
+    answer: "In the benchmarks here, Go is among the fastest runtimes for both cold start and concurrent CPU heavy workloads, thanks to compiled binaries and goroutines. Interpreted runtimes (Python, Node.js, PHP) trade some raw performance for ecosystem and rapid iteration. Pick Go for compute heavy or latency sensitive functions."
+  - question: "What is Open Runtimes?"
+    answer: "[Open Runtimes](https://github.com/open-runtimes/open-runtimes) is an open source project from Appwrite that defines a standard way to run serverless functions across many languages. Appwrite Functions uses Open Runtimes under the hood, but you can use Open Runtimes independently in your own infrastructure."
+  - question: "When should I use Go for a function instead of Node.js or Python?"
+    answer: "Use Go when cold start time, CPU performance, or memory efficiency matter, such as image processing, parsing large payloads, or running concurrent jobs. Use Node.js or Python when you need quick iteration, rich ecosystems, or are calling APIs where the runtime speed barely matters. Most apps mix both."
+  - question: "How were these benchmarks structured?"
+    answer: "Three function types were tested: a Hello World endpoint for cold start and minimal overhead, a recursive Fibonacci function for CPU and concurrency, and a Scraper function with multiple dependencies for build time and warm performance. Each function was implemented in several Open Runtimes languages and run under identical conditions to isolate runtime behavior."
+  - question: "Can I deploy the benchmark functions to my own Appwrite project?"
+    answer: "Yes. The function code shown in this post runs on Appwrite Functions without modification. You can copy the Go handler into a function, deploy it via the [Appwrite CLI](/docs/tooling/command-line) or Git, and run your own benchmarks against your project."
 ---
 
 It is undeniable that Go has grown to become one of the most popular programming languages among developers worldwide. Recently, during Init, we announced the [new Golang (or Go) runtime](https://appwrite.io/blog/post/announcing-go-support) for Appwrite Functions. However, it is one thing for us to claim that our Go functions runtime is performant, it is a whole other thing for us to justify the same. To do so, we planned a benchmark to test the performance of our Go runtime in comparison with other Appwrite Functions runtimes.

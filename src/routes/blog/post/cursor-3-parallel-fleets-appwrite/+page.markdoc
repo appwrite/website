@@ -8,6 +8,19 @@ timeToRead: 7
 author: eldad-fux
 category: integrations
 featured: false
+faqs:
+  - question: "What is new in Cursor 3?"
+    answer: "Cursor 3 replaces the classic VS Code layout with an agent-first workspace. It adds parallel agents across repositories, long-running cloud agents that work on a remote VM, a marketplace for skills and MCP servers, and an integrated browser with a style editor for live UI editing."
+  - question: "How do I use Appwrite with Cursor 3?"
+    answer: "Install the Appwrite plugin from the Cursor Marketplace. It bundles Appwrite Skills (Markdown files that teach agents how to use the Appwrite SDKs) and MCP servers. Agents will discover and load the skills only when needed, which reduces token use and avoids hallucinated SDK methods."
+  - question: "What are Cursor cloud agents?"
+    answer: "Cloud agents are tasks you offload to a remote VM by prepending a prompt with &. They plan, execute, and test over longer horizons without local resources. When they finish, you get logs, recordings, and a live preview to review before merging changes."
+  - question: "What are Appwrite Skills?"
+    answer: "Appwrite Skills are open-source Markdown files that give AI agents language-specific knowledge of the Appwrite SDKs. They help agents generate accurate code for [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Functions](/docs/products/functions), and other products without making up methods."
+  - question: "Can I run multiple Cursor agents in parallel?"
+    answer: "Yes. The new Agents Window lets you run multiple agents across different repositories at the same time. For example, one agent can refactor [Appwrite Functions](/docs/products/functions) in a backend repo while another builds UI in a frontend repo, in parallel."
+  - question: "Does Cursor 3 work with Appwrite Realtime?"
+    answer: "Yes. The integrated browser and component tree make it easy to debug live state changes. When an agent updates subscription listeners, you can watch the UI react in real time without leaving the editor."
 ---
 
 If you have been following the AI code editor space, you know that the "autocomplete" era is officially behind us. This week, the team at Cursor dropped **Cursor 3**, and it is not just a minor version bump - it is a complete reimagining of the IDE. For Appwrite developers, who are already used to "building like a team of hundreds" by offloading backend complexity, Cursor 3 is the perfect companion. It moves the needle from "AI that helps you write code" to "AI that helps you manage a fleet of developers." Here is everything you need to know about Cursor 3 and how it integrates with your Appwrite workflow.

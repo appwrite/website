@@ -3,13 +3,25 @@ layout: post
 title: The Appwrite Scale plan is now publicly available
 description: After months of beta testing we are ready to release the Scale plan to everyone.
 date: 2025-01-23
+lastUpdated: 2026-05-22
 cover: /images/blog/scale-plan.avif
 timeToRead: 4
 author: laura-du-ry
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "Is the Appwrite Scale plan still available?"
+    answer: "No. The Scale plan is no longer offered as a separate tier. The features it covered (priority support, advanced compliance, custom organization roles, custom backup policies, longer log retention) are now part of the Enterprise plan. See the current [pricing page](/pricing) for the latest plan structure."
+  - question: "Where did the Scale plan features go?"
+    answer: "Everything that was unique to Scale moved into the Enterprise plan, including BAA, SOC-2, custom backup policies, 28-day log retention (Enterprise extends to 90 days), SSO, custom organization roles, and a dedicated success manager. Contact [sales](/contact-us/enterprise) if you need any of these."
+  - question: "I was on the Scale plan. What happens to my organization?"
+    answer: "Existing Scale customers are handled directly by the Appwrite team. If you have not been contacted about a transition, reach out to billing@appwrite.io and the team will walk you through your options on the current plan structure."
 ---
+
+{% info title="Scale plan has been deprecated" %}
+The Scale plan is no longer offered as a separate tier. Its features (priority support, advanced compliance, custom organization roles, custom backup policies, longer log retention) are now part of the [Enterprise plan](/pricing).
+{% /info %}
 
 Over a year ago, we launched our pricing structure and introduced the Pro plan. Today, we’re excited to unveil the Scale plan. A new offering that provides more support and flexibility. This plan is specifically tailored for teams within agencies, startups, scale-ups, and SMBs, ensuring they have the tools and resources to drive their business forward.
 

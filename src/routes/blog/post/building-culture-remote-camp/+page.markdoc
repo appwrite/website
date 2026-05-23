@@ -7,6 +7,17 @@ cover: /images/blog/camp-5-barcelona/cover.avif
 timeToRead: 5
 author: snezhanna
 category: culture
+faqs:
+  - question: "What is a company Camp at Appwrite?"
+    answer: "A Camp is a week-long, in-person meet-up where the fully remote Appwrite team travels to a single location to work, plan, and bond. Camps mix focused work sessions with social activities like food tours, workshops, and a Bug'athon. They happen at a roughly cadence that the operations team plans well in advance."
+  - question: "How does Appwrite build culture as a remote-first company?"
+    answer: "Appwrite leans on async-first communication, transparent updates across teams, and shared Discord channels for cross-team collaboration. Camps fill in the in-person gap by giving everyone time together to build relationships and align on goals. The combination keeps the team connected without forcing real-time work across time zones."
+  - question: "How often do remote companies need in-person meetups?"
+    answer: "There is no single right number. Most remote-first companies land somewhere between one and three gatherings per year, depending on team size and budget. The aim is to invest enough in-person time to build trust and unblock big-picture work, while keeping day-to-day async habits intact."
+  - question: "What kinds of activities work best at a company retreat?"
+    answer: "A mix tends to land best: short, intense work sessions that move the roadmap forward, team-lead or leadership panels, a creative or competitive event like a hackathon or bugathon, and unstructured social time. Avoid back-to-back work blocks. The relationships built outside the conference room are usually what people remember."
+  - question: "How does Appwrite handle async-first communication day to day?"
+    answer: "Teams default to written updates in Discord and project tools rather than relying on synchronous meetings. Team dailies, regular company-wide updates, and explicit cc'ing keep relevant people informed without dragging everyone into calls. Meetings happen when async cannot resolve a decision, not as the first instinct."
 ---
 As a fully remote company, we know that crafting a strong company culture takes a bit more effort since we don’t get to gather in person as often as traditional teams do. To bridge that gap, our amazing operations team organizes Camps: week-long events where our team travels to a location to work, collaborate and have fun.
 

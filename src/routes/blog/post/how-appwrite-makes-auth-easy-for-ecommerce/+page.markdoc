@@ -9,6 +9,19 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What sign-in methods does Appwrite support for an e-commerce store?"
+    answer: "[Appwrite Auth](/docs/products/auth) supports email/password, anonymous login (useful for guest checkout), OAuth providers like Google, Apple, GitHub, and Discord, and Magic URL passwordless sign-in. You can combine them so users pick whichever flow suits them."
+  - question: "How does anonymous login work for guest checkout?"
+    answer: "Anonymous login creates a temporary session without requiring email or password. The user can browse, add items to the cart, and complete checkout. You can later convert that anonymous session into a permanent account by attaching credentials, so their order history follows them after sign-up."
+  - question: "Does Appwrite support two-factor authentication?"
+    answer: "Yes. Appwrite has built-in support for TOTP-based multi-factor authentication compatible with apps like Google Authenticator and 1Password. See the [MFA docs](/docs/products/auth/mfa) for setup. No extra backend work is required to enable it."
+  - question: "How can I reduce checkout friction with authentication?"
+    answer: "Magic URL sign-in sends the user a one-time login link by email so they skip passwords entirely. Anonymous sessions let users start checkout without signing up first. OAuth (Google, Apple) lets returning customers log in with one tap. Combining these typically lifts conversion versus password-only flows."
+  - question: "Is Appwrite Auth GDPR and privacy compliant?"
+    answer: "Appwrite Cloud is GDPR compliant, with encrypted credential storage and fine-grained permissions for user data. You're still responsible for your overall data handling, retention policies, and consent flows, but the authentication layer itself is built with privacy regulations in mind."
+  - question: "Which SDKs can I use to integrate Appwrite Auth?"
+    answer: "Appwrite ships official client SDKs for Web, Flutter, iOS (Swift), Android (Kotlin), and React Native, plus server SDKs for Node.js, Python, Dart, PHP, Ruby, .NET, and Go. The auth API is identical across SDKs, so you can use the same flow on web and mobile."
 ---
 
 Building an e-commerce platform today is more than just creating a catalog and checkout flow. Security, user experience, and scalability are critical, and authentication sits right at the heart of it all. Whether you're launching a small boutique or scaling a global marketplace, handling authentication correctly can make or break your app.

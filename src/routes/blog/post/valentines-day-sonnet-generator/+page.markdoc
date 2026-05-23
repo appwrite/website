@@ -7,6 +7,19 @@ cover: /images/blog/valentines-day-sonnet-generator/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: functions
+faqs:
+  - question: "What does this Appwrite Function do?"
+    answer: "It accepts a name from the frontend, sends a prompt to OpenAI's GPT-4 API asking for a Shakespearean style sonnet about that person, and returns the generated sonnet. The function is deployed from the Prompt ChatGPT [Appwrite Functions](/docs/products/functions) template."
+  - question: "Why use Appwrite Functions for an OpenAI call instead of calling OpenAI from the browser?"
+    answer: "Calling OpenAI directly from the browser leaks your API key. Wrapping the call in an Appwrite Function keeps the key in a server side environment variable, lets you add rate limits and validation, and gives you a single endpoint for any client to hit."
+  - question: "Which environment variables do I need to set?"
+    answer: "Set OPENAI_API_KEY to a valid OpenAI API key with access to GPT-4. The function reads this from the function's environment variables, so it never reaches the client."
+  - question: "Do I need a paid OpenAI account to use GPT-4?"
+    answer: "Yes. GPT-4 access requires at least OpenAI Usage tier 1, which means a payment method on file and some prior usage on lower tier models. Free trial accounts cannot call GPT-4 directly."
+  - question: "Can I swap GPT-4 for another model?"
+    answer: "Yes. Edit the model parameter in the function's request to OpenAI to use any model your account has access to (for example, GPT-4o or GPT-4o-mini). You can also point the request at a different provider entirely as long as you change the SDK call accordingly."
+  - question: "How do I deploy the static frontend?"
+    answer: "The Prompt ChatGPT template ships the frontend in the static folder, which is served by the function itself. Alternatively, deploy the HTML separately on [Appwrite Sites](/docs/products/sites) and call the function as an API."
 ---
 
 This year to make Valentine’s Day a little more special for all you lovebirds, you might remember that we worked on a fun little project. This project allowed a number of you to create romantic sonnets for your loved ones. Did you know, however, that this project was powered by a Node.js Appwrite Function and OpenAI’s GPT-4 API?

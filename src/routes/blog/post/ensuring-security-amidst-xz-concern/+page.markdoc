@@ -8,6 +8,19 @@ timeToRead: 7
 author: jake-barnby
 category: security
 featured: false
+faqs:
+  - question: "What was the XZ Utils backdoor?"
+    answer: "In early 2024, a malicious backdoor was found in XZ Utils versions 5.6.0 and 5.6.1, a compression tool shipped with many Linux distributions. The backdoor could be used to compromise encrypted SSH sessions on systems running affected beta and test versions of distros like Red Hat and Debian, putting any server using SSH at risk."
+  - question: "Is Appwrite affected by the XZ Utils backdoor?"
+    answer: "No, Appwrite's services are not affected. The vulnerable versions of XZ Utils shipped only in beta and test versions of certain Linux distributions, and Appwrite does not use those. Appwrite Cloud infrastructure has also been audited and locked down to confirm there is no exposure."
+  - question: "What should I do if I self-host Appwrite on a Linux server?"
+    answer: "Check whether your operating system has XZ Utils versions 5.6.0 or 5.6.1 installed. If so, downgrade to a safe version or remove the tool. Then audit your system logs for unusual activity, tighten firewall rules to limit inbound and outbound traffic, and apply security patches from your OS vendor as soon as they ship."
+  - question: "Do Appwrite Cloud users need to do anything?"
+    answer: "No actions are required from Appwrite Cloud users. The Appwrite team verified that no containers in the cloud environment carried the affected XZ Utils versions, and SSH access to the infrastructure was further restricted to reduce attack surface."
+  - question: "How can I keep my self-hosted Appwrite instance secure in general?"
+    answer: "Keep your host OS patched, apply Appwrite updates promptly, restrict SSH access with key-based auth and firewalls, rotate API keys, enable monitoring on your servers, and audit who has access to the project Console. The same hardening practices that protect any production server apply to a self-hosted Appwrite instance."
+  - question: "Where can I report security concerns to Appwrite?"
+    answer: "Reach out via the [contact page](/contact-us) or the [Appwrite Discord](/discord) for security questions. For responsible disclosure of suspected vulnerabilities, follow the security policy published in the Appwrite GitHub repository so the team can triage and respond appropriately."
 ---
 
 In the light of recent unsettling revelations regarding a backdoor discovered in the widely-used XZ Utils,

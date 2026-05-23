@@ -7,6 +7,19 @@ cover: /images/blog/oauth-openid.avif
 timeToRead: 6
 author: aditya-oberai
 category: authentication, security
+faqs:
+  - question: "What is the difference between OAuth and OpenID Connect?"
+    answer: "OAuth 2.0 is an authorization framework that lets an app access resources on another service on behalf of a user. OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0 that adds authentication, returning an ID token with verified user information. Use OAuth when you need access to APIs, and OIDC when you need to know who the user is."
+  - question: "Why should I use PKCE with OAuth?"
+    answer: "PKCE (Proof Key for Code Exchange) protects the authorization code flow from interception attacks, especially in mobile and single page apps that cannot safely store a client secret. It is now considered a best practice for any OAuth client, including confidential ones."
+  - question: "What is an ID token in OpenID Connect?"
+    answer: "An ID token is a signed JWT that contains claims about the authenticated user, such as their subject ID, email, and the issuer. Your app validates the signature and claims to confirm the user's identity instead of making a separate API call."
+  - question: "Does Appwrite support OAuth and OpenID Connect?"
+    answer: "Yes. [Appwrite Authentication](/docs/products/auth) supports over 30 OAuth 2.0 providers out of the box, plus a generic OIDC adapter for any standards compliant identity provider. You configure the client ID, secret, and endpoints, then trigger the flow with a few SDK calls."
+  - question: "How do I add a custom OpenID Connect provider to Appwrite?"
+    answer: "Use the generic OIDC adapter in Appwrite Authentication. You provide the client ID, client secret, well known endpoint, authorization endpoint, token endpoint, and user info endpoint, and Appwrite handles the redirects and token exchange for you."
+  - question: "Is OAuth secure enough for production apps?"
+    answer: "Yes, when implemented correctly. Always use HTTPS, validate redirect URIs, use the state parameter to prevent CSRF, use PKCE for public clients, validate ID tokens, and request the minimum scopes you need. Skipping these steps is what makes OAuth implementations insecure."
 ---
 
 When it comes to web security, **OAuth** and **OpenID Connect (OIDC)** have revolutionized how we manage and secure user authentication and authorization. OAuth, primarily a protocol for authorization, enables third-party access to user data without exposing their credentials. On the other hand, OIDC, built on top of OAuth 2.0, extends this protocol by adding user authentication. These technologies provide a secure, efficient way for users to log in and share information across different services without compromising their privacy or security.

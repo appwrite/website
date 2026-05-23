@@ -7,6 +7,19 @@ cover: /images/blog/flutter-vs-react-native/cover.avif
 timeToRead: 8
 author: ebenezer-don
 category: product
+faqs:
+  - question: "Is Flutter or React Native better for performance?"
+    answer: "Flutter typically has the edge because it compiles to native ARM code and renders through its own Skia engine, avoiding the JavaScript bridge that React Native traditionally relied on. React Native's new architecture with JSI and Fabric closes much of the gap, but Flutter still wins on consistent frame rates for animation-heavy UIs. For most CRUD apps, the difference is negligible."
+  - question: "Which framework has a larger developer ecosystem?"
+    answer: "React Native has a larger ecosystem because it builds on JavaScript and React, which are already dominant in web development. Flutter's ecosystem is smaller but growing fast, with strong first-party support from Google and a curated package registry at pub.dev."
+  - question: "Should I pick Flutter or React Native if I already know JavaScript?"
+    answer: "React Native is the obvious choice if your team already writes JavaScript or React, since you can reuse most of your existing skills and tooling. Flutter requires learning Dart, which is straightforward but adds onboarding time. Pick Flutter only if performance or UI consistency outweighs the language switching cost."
+  - question: "Can I use Appwrite as a backend for both Flutter and React Native?"
+    answer: "Yes. Appwrite provides official SDKs for both Flutter and React Native, so you can use the same [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) APIs regardless of which framework you choose. This is useful if you want to prototype in one framework and switch later, or run both in parallel."
+  - question: "Do Flutter and React Native support the same native platform features?"
+    answer: "Both frameworks support core platform features like camera, geolocation, push notifications, and Bluetooth through plugins. React Native sometimes has earlier community packages for niche APIs, while Flutter's plugin ecosystem is more centralized and consistent in quality. For deep native integration, both let you write platform channels or bridge code."
+  - question: "Which framework is easier to maintain over time?"
+    answer: "Flutter tends to be more predictable to maintain because the UI and behavior are controlled by the framework rather than the underlying platform. React Native apps can break across OS updates if you rely on third party native modules. Both require regular dependency updates, so neither is maintenance free."
 ---
 
 Choosing between **Flutter** and **React Native** for mobile app development is more than just comparing features. Each framework comes with its own strengths, limitations, and unique use cases, making the decision impactful in several ways. This choice affects:

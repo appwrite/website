@@ -7,6 +7,19 @@ cover: /images/blog/remix-3-whats-changing-and-why-it-matters/cover.avif
 timeToRead: 8
 author: ebenezer-don
 category: news
+faqs:
+  - question: "Does Remix 3 still use React?"
+    answer: "No. Remix 3 drops React entirely and ships its own component model built on web standards. You still write JSX, but there is no virtual DOM and updates are explicit instead of triggered by hooks like `useState`."
+  - question: "What runtimes will Remix 3 support?"
+    answer: "Remix 3 runs on the Fetch API using standard `Request` and `Response` objects, so it works on Node, Deno, Bun, and any other runtime that implements Fetch. There are no runtime-specific adapters required."
+  - question: "What are Frames in Remix 3?"
+    answer: "Frames are sections of a page that can refresh independently with a server-rendered HTML fragment. They give you partial updates without JSON APIs or client-side state libraries, similar to the model used by HTMX."
+  - question: "Are loaders and actions still part of Remix 3?"
+    answer: "Yes. Routes still export handlers for each HTTP method, with `GET` for loading data and `POST`, `PUT`, or `DELETE` for mutations. The framework re-runs the relevant loaders after a mutation so the UI stays in sync."
+  - question: "When can I use Remix 3 in production?"
+    answer: "The first stable release is targeted for early 2026. Previews shown at Remix Jam 2025 are usable for experiments, but the API is still moving and not recommended for production until the official release."
+  - question: "How is Remix 3 different from Next.js?"
+    answer: "Remix 3 is intentionally smaller and closer to web standards, with no React, no virtual DOM, and no build-time magic. Next.js leans into React Server Components and an opinionated build pipeline, while Remix 3 favors composable primitives that work on any JavaScript runtime."
 ---
 
 For a while, it seemed like Remix had reached a natural end. By late 2024, almost everything that made Remix unique, its loaders, actions, and nested routing, had been merged into React Router 7. The framework's creators, Ryan Florence and Michael Jackson, even joked that Remix 2 had become "React Router, the Framework." Many developers assumed Remix would fade away.

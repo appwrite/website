@@ -7,6 +7,19 @@ cover: /images/blog/personal-chatbot-gpt-4o/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "Why use Appwrite Functions for a GPT-4o chatbot?"
+    answer: "[Appwrite Functions](/docs/products/functions) runs your server side code without you managing infrastructure, and it lets you store secrets like the OpenAI API key as environment variables. You also get a built-in HTTP endpoint and static asset support, which is enough to host the chatbot UI and the API in one place."
+  - question: "Where do I store my OpenAI API key?"
+    answer: "Add it as an environment variable on the function (for example `OPENAI_API_KEY`). Never put it in client side code or check it into Git. Appwrite passes environment variables to your function at runtime."
+  - question: "Can I use a different OpenAI model with this setup?"
+    answer: "Yes. The code calls the OpenAI Chat Completions API, so you can swap the model name to `gpt-4o-mini`, `gpt-4.1`, or any other supported model. Token limits and pricing differ across models, so adjust `OPENAI_MAX_TOKENS` accordingly."
+  - question: "How do I limit who can call the chatbot function?"
+    answer: "Set the function execute permission to a specific user role or team in the Appwrite console. You can also require authentication and read the user from `req.headers['x-appwrite-user-id']` to limit usage per account."
+  - question: "Can the function serve the HTML UI as well?"
+    answer: "Yes. Place static files in a `static` folder at the root of your function and they are served alongside the function's main endpoint. The tutorial uses this to host the chat UI from the same function that calls OpenAI."
+  - question: "What runtime should I pick for an OpenAI chatbot?"
+    answer: "Node.js is the easiest choice because the official `openai` package has the most up to date features. Python is also supported. Both work with the same Functions setup, so pick whichever stack you are most comfortable with."
 ---
 
 Recently, at the OpenAI Spring Update, OpenAI CTO Mira Murati announced the launch of their new flagship model,&nbsp;**GPT-4o**. GPT-4o happens to be OpenAI's fastest and most affordable model so far, which led us to wonder if we could use it to build our very own chatbot.

@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: ai
 featured: false
+faqs:
+  - question: "Why does giving AI more context produce better code suggestions?"
+    answer: "Models are only as good as the information they can see. Pasting one file gives the model a keyhole view of your project, while letting a harness like Claude Code or Cursor navigate the full repo lets it follow imports, spot conventions, and reason about real architecture. The same model produces dramatically better results with the right context."
+  - question: "How do I use AI to debug a CSS or UI issue?"
+    answer: "Screenshot the bug, attach the relevant component code, and ask the AI what is wrong. Multimodal models catch alignment issues, accessibility contrast problems, missing focus states, and hidden overflow that are tedious to describe in words. Annotate the screenshot with a red circle around the area for even better results."
+  - question: "How can I get more useful code reviews from AI?"
+    answer: "Default AI reviews are too polite. Tell the model to roleplay a cynical principal engineer and find every way the PR could fail in production, be exploited, or cause a Saturday outage. Ask it to rank findings by likelihood and assume bad-faith inputs. The change in output quality is immediate."
+  - question: "What is schema-first development with AI?"
+    answer: "Instead of building API routes, types, and forms incrementally, you describe the domain to the AI, generate the data schema first, and then derive types, validation, seed data, and tests from that schema. With [Appwrite Databases](/docs/products/databases), you also skip the migrations and permissions setup, letting you go from schema to running app in minutes."
+  - question: "How do I set up AI-powered error triage with Appwrite?"
+    answer: "Create an [Appwrite Function](/docs/products/functions) that receives error payloads (stack trace, user action, recent state), calls an LLM to cluster and summarize the error, then posts to Slack or your issue tracker. The function can be triggered on each error event, so you get a human-readable diagnosis within minutes instead of hours."
+  - question: "Will AI replace developers?"
+    answer: "Not in any short timeframe. AI shifts what developers spend time on (more architecture and review, less boilerplate), but you still need humans to define what to build, judge quality, and own production systems. The developers who get the biggest leverage from AI are the ones who learn to use it deliberately rather than as a smarter search bar."
 ---
 
 If you've been using AI the way most developers use it, pasting an error into a chat window, skimming the half-useful answer, and going back to Stack Overflow when it doesn't pan out, you're using maybe five percent of what's actually available to you. The developers who've quietly moved up to a different speed tier aren't running on some secret model you don't have access to. They've just collected a handful of specific, non-obvious techniques that turn AI from a slightly smarter search bar into an actual extension of how they work.

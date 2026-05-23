@@ -10,6 +10,19 @@ category: tutorial
 featured: false
 callToAction: true
 unlisted: true
+faqs:
+  - question: "What is a vector database?"
+    answer: "A vector database stores data as numerical vectors (embeddings) and supports similarity search across them. Instead of exact matches, it finds items with the closest meaning using metrics like cosine similarity or Euclidean distance, which is the foundation of RAG and semantic search."
+  - question: "When should I use a vector database instead of a traditional database?"
+    answer: "Use a vector database when you need similarity search, recommendations, or semantic retrieval over unstructured data like text, images, or audio. Traditional databases are still better for exact lookups, joins, and transactional workloads. Many teams use both together."
+  - question: "What are common vector database indexing techniques?"
+    answer: "The most common indexing techniques are Hierarchical Navigable Small World (HNSW), Inverted File (IVF), and Product Quantization (PQ). They enable efficient approximate nearest neighbour search across millions or billions of vectors, trading off some accuracy for speed and memory."
+  - question: "Which vector databases are popular in 2026?"
+    answer: "Popular options include Pinecone, Weaviate, Milvus, Qdrant, Chroma, and MongoDB Atlas with native vector search. PostgreSQL with `pgvector` and Elasticsearch are also common when teams want to extend an existing system rather than adopt a new one."
+  - question: "What is retrieval augmented generation (RAG)?"
+    answer: "RAG is a pattern where an LLM retrieves relevant context from a vector database before generating an answer. This gives the model up to date or domain-specific information without retraining it. Most modern AI assistants and chatbots use some form of RAG."
+  - question: "How does Appwrite fit into an AI app that uses vector search?"
+    answer: "You can use [Appwrite Functions](/docs/products/functions) to generate embeddings and orchestrate calls to your vector database, and store related app data, files, and users in [Appwrite Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Auth](/docs/products/auth). This keeps your app logic close to your backend while a dedicated vector database handles similarity search."
 ---
 Search has changed. Traditional databases work great when you’re querying exact matches or running structured lookups. But when you start dealing with embeddings, similarity search, or AI-generated data, those systems quickly hit their limits. That’s where **Vector Databases** come in.
 

@@ -8,6 +8,19 @@ timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
+faqs:
+  - question: "Can I develop Appwrite Functions locally without deploying first?"
+    answer: "Yes. The Appwrite CLI supports local development for functions, so you can write, run, and debug them on your machine before deploying. This avoids the slow cycle of pushing to the cloud just to see if a small change works. See [Appwrite Functions](/docs/products/functions) for the product overview."
+  - question: "What do I need installed to run Appwrite Functions locally?"
+    answer: "You need the latest Appwrite CLI and Docker. The CLI uses Docker to run the function in the same runtime that Appwrite Cloud uses, so behavior matches production. Without Docker the `appwrite run function` command will not work."
+  - question: "How do I install the Appwrite CLI?"
+    answer: "Run `npm install -g appwrite-cli@latest`. After installation, log in with `appwrite login` and verify with `appwrite whoami`. You only need to do this once per machine."
+  - question: "Which runtimes does the Appwrite CLI support for local development?"
+    answer: "The CLI supports Node.js, Python, PHP, Ruby, Dart, and others. When you run `appwrite init functions`, the CLI prompts you to choose a runtime from the list of supported options. Local execution mirrors the same Docker images used in production."
+  - question: "How do I deploy a function after testing it locally?"
+    answer: "Run `appwrite push functions` from your project directory to push the function to your Appwrite project. The CLI reads your `appwrite.config.json` to know which function to deploy and where to send it. You can also use Git based deploys if your function lives in a connected repository."
+  - question: "Can I use environment variables when developing functions locally?"
+    answer: "Yes. The CLI reads variables from your `appwrite.config.json` and any `.env` files you configure, then injects them when the function runs. This lets you use the same variable names locally as in production without code changes."
 ---
 What if you could develop serverless functions quickly and effectively without the need for constant cloud deployment? If you've been stuck waiting for deployments or struggling with limited offline capabilities, there's good news. The new Appwrite CLI provides a seamless local development experience for serverless functions, enabling you to develop, test, and iterate rapidly on your functions directly from your local machine.
 

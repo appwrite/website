@@ -7,6 +7,19 @@ cover: /images/blog/introducing-appwrite-react-native-sdk/cover.avif
 timeToRead: 4
 author: vincent-ge
 category: product, announcement
+faqs:
+  - question: "Why does Appwrite have a separate React Native SDK?"
+    answer: "React Native needs access to device APIs like the camera, file system, and storage. The dedicated SDK uses Expo modules under the hood so features like file uploads and OAuth work correctly on iOS and Android, which the Web SDK can't do."
+  - question: "Can I use Expo with the Appwrite React Native SDK?"
+    answer: "Yes. The SDK is designed to be installed with `npx expo install` and works in both Expo managed and bare React Native projects. You also need the `react-native-url-polyfill` peer dependency."
+  - question: "Does the React Native SDK support all Appwrite services?"
+    answer: "Yes. You can call [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Messaging](/docs/products/messaging) from React Native, including push notifications on mobile devices."
+  - question: "How do I set up an Appwrite project for a React Native app?"
+    answer: "Create an Appwrite project, then add an Android platform with your app's package name and an Apple platform with your bundle identifier. Call setPlatform with that identifier on the client so requests are accepted."
+  - question: "Is Appwrite a good Firebase alternative for React Native?"
+    answer: "Yes. Appwrite covers the same core feature set (auth, database, storage, push, realtime) and is open source, so you can self host it if you want full control of your data. The React Native SDK gives you the same API surface as Firebase's modules."
+  - question: "What does open beta mean for this SDK?"
+    answer: "Open beta means the SDK is feature complete and safe to use in real projects, but the API may still get small adjustments based on community feedback. Pin the SDK version in your project and watch the release notes for breaking changes."
 ---
 
 If you’re a mobile developer who doesn’t (want to) use Flutter, we have great news for you. Appwrite now has a React Native SDK in open beta. This will allow more mobile developers to benefit from Appwrite, giving everything you need to build your mobile applications backend, without the hassle of building it yourself.

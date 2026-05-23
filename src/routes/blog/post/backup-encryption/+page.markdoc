@@ -7,6 +7,19 @@ timeToRead: 5
 date: 2024-10-15
 author: aditya-oberai
 category: product, security
+faqs:
+  - question: "Should I encrypt my database backups?"
+    answer: "Yes. Backups often contain the same sensitive data as your live database, so an unencrypted backup is just as dangerous if it leaks. Encryption also helps you meet GDPR, HIPAA, and similar compliance requirements."
+  - question: "Does Appwrite encrypt backups automatically?"
+    answer: "Yes. [Appwrite Databases](/docs/products/databases) encrypts every backup in transit and at rest by default. It uses a 2048-bit RSA key pair plus a 128-bit AES key per session, with the AES key destroyed after each backup completes."
+  - question: "What's the difference between encryption at rest and in transit?"
+    answer: "Encryption at rest protects data while it's stored on disk. Encryption in transit protects it while it moves between systems (for example, during a backup upload). You want both, since a gap in either layer can expose your data."
+  - question: "What encryption algorithm is best for backups?"
+    answer: "AES-256 is the practical default for backup data because it's fast and strong. RSA is typically used to encrypt the AES key itself rather than the bulk data, since RSA is slower for large payloads."
+  - question: "Do I need a separate KMS if I use Appwrite?"
+    answer: "Not for backups. Appwrite handles key generation, storage, and rotation for backup encryption internally. If you encrypt application-level data on top of that, you can still pair Appwrite with AWS KMS, Google Cloud KMS, or Azure Key Vault."
+  - question: "Does Appwrite take backups without downtime?"
+    answer: "Yes. Appwrite supports hot backups, so backups run without interrupting your application. You can also configure retention policies based on how critical the data is."
 ---
 Data security is more important than ever, and if you manage databases, one key question you may ask is: *Should I encrypt my backups?* The answer is a clear yes. Let’s break down why encrypting your backups is essential, especially for database backups, and how Appwrite helps by automatically encrypting them.
 

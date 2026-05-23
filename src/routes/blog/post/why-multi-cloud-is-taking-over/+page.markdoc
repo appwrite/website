@@ -8,6 +8,19 @@ timeToRead: 4
 author: aditya-oberai
 category: product
 callToAction: true
+faqs:
+  - question: "What is multi-cloud?"
+    answer: "Multi-cloud means running workloads across more than one cloud provider (such as AWS, Google Cloud, and Azure) instead of standardizing on a single vendor. Different services or regions can live on different providers, chosen based on cost, performance, compliance, or availability."
+  - question: "How is multi-cloud different from hybrid cloud?"
+    answer: "Hybrid cloud combines on-premises infrastructure with at least one public cloud. Multi-cloud refers specifically to using multiple public cloud providers. A setup can be both at the same time if it mixes on-prem with several public clouds."
+  - question: "What are the main risks of going multi-cloud?"
+    answer: "The biggest tradeoffs are operational complexity, higher tooling cost, a wider attack surface, and data transfer fees between providers. Teams typically need stronger automation, centralized identity, and consistent observability to keep a multi-cloud setup from outpacing what the team can manage."
+  - question: "How does Appwrite use a multi-cloud approach?"
+    answer: "The Appwrite Network is multi-cloud and vendor-agnostic by design, distributing services across providers and regions to keep latency low and avoid lock-in. That lets users deploy their Appwrite project close to their end users without being tied to a single underlying cloud."
+  - question: "Does multi-cloud help with data sovereignty?"
+    answer: "Yes. Because you can place workloads with providers and regions that meet specific regulatory requirements (GDPR in Europe, residency rules in India or the Middle East), multi-cloud makes it easier to keep data where the law says it has to live without abandoning a global footprint."
+  - question: "Is multi-cloud only for large companies?"
+    answer: "No. Smaller teams increasingly use multi-cloud to avoid lock-in, take advantage of free tiers across providers, or run their app close to a specific user base. Managed platforms like Appwrite reduce the operational overhead that used to make multi-cloud impractical for small teams."
 ---
 
 Choosing the right cloud provider can be challenging, which is why more businesses are turning to **multi-cloud,** using services from multiple cloud providers instead of relying on just one.

@@ -9,6 +9,19 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is the difference between a startup incubator and an accelerator?"
+    answer: "Incubators are built for idea-stage founders and provide flexible mentorship to help shape a working MVP and find product-market fit. Accelerators are fixed term, cohort based programs for startups with traction. They compress the path to scale and fundraising into 3 to 4 months."
+  - question: "Which are the top startup accelerators in Singapore?"
+    answer: "Notable programs include BLOCK71 (NUS Enterprise), Antler Singapore, SGInnovate, Enterprise Singapore's Startup SG Accelerator, Tribe Accelerator, SPH Plug and Play, and ICE71. They cover deep tech, blockchain, cybersecurity, media tech, and generalist tech."
+  - question: "Does the Singapore government support startups?"
+    answer: "Yes. Enterprise Singapore's Startup SG Accelerator funds and supports partner incubators and accelerators across strategic sectors. Founders can also access government-linked programs through agencies like SGInnovate, especially for deep tech and frontier science startups."
+  - question: "What sectors are strongest in Singapore's startup scene?"
+    answer: "Singapore has strong activity in fintech, deep tech, cybersecurity, blockchain or Web3, AI, and sustainability. Many accelerators focus on a vertical, so picking one aligned with your sector usually leads to better mentors, pilots, and follow-on investors."
+  - question: "How can Appwrite help my Singapore-based startup?"
+    answer: "The [Appwrite Startups program](https://appwrite.io/startups) gives qualifying teams cloud credits, discounts, priority support, and an all-in-one backend platform with auth, databases, storage, functions, messaging, and hosting. Combined with an accelerator, it helps small teams ship faster without rebuilding infrastructure."
+  - question: "Do Singapore accelerators take equity?"
+    answer: "Most equity-taking accelerators in Singapore follow the 5 to 10 percent range in exchange for seed funding, similar to global programs. Government-linked schemes often provide grants without equity, but they may require specific milestones, local registration, or co-funding from approved partners."
 ---
 
 Startups operate under extreme pressure, limited time, limited resources, and no margin for error. In this environment, execution speed and access to the right support can define outcomes. That’s why many founders turn to incubators and accelerators not just for help, but for leverage.
