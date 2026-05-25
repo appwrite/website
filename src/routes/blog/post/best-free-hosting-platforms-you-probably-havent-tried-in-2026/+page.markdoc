@@ -228,7 +228,7 @@ Zeabur deploys apps from Git or templates with one click. It handles databases, 
 | --------------------- | -------------------- | --------------------- | ------------------------ |
 | Cloudflare Pages      | Static + edge        | Unlimited bandwidth   | Edge first apps          |
 | GitHub Pages          | Static               | 100 GB bandwidth      | Docs and portfolios      |
-| Deno Deploy           | Edge functions       | 100k requests/day     | TypeScript APIs          |
+| Deno Deploy           | Edge functions       | 1M requests/month     | TypeScript APIs          |
 | Koyeb                 | Container PaaS       | One free service      | Full stack side projects |
 | Northflank            | Container PaaS       | Hobby tier            | Microservices            |
 | Azure Static Web Apps | Static + functions   | 100 GB bandwidth      | Azure teams              |
