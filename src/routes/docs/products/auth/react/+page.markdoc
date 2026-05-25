@@ -288,7 +288,7 @@ const admin = createAdminClient({
   apiKey: process.env.APPWRITE_API_KEY!,
 });
 
-const users = await admin.account; // node-appwrite Account instance
+const users = await admin.account.list();
 ```
 
 Never import any `@appwrite.io/react/server/*` module from client code: the entrypoints are marked `server-only` and will throw if bundled into the browser.

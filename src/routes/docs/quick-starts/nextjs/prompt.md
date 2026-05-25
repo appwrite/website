@@ -41,13 +41,13 @@ APPWRITE_API_KEY=<API_KEY>
 - Create `app/api/appwrite/[...appwrite]/route.ts` so the library's sign-in, sign-up, sign-out, and OAuth callback endpoints are reachable:
 
 ```ts
-import { createAppwriteHandlers } from "@appwrite.io/react/handlers/next";
+import { createAppwriteHandlers } from '@appwrite.io/react/handlers/next';
 
 export const { GET, POST } = createAppwriteHandlers({
-  endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
-  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
-  apiKey: process.env.APPWRITE_API_KEY!,
-  basePath: "/api/appwrite",
+    endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
+    projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
+    apiKey: process.env.APPWRITE_API_KEY!,
+    basePath: '/api/appwrite'
 });
 ```
 
@@ -56,53 +56,51 @@ export const { GET, POST } = createAppwriteHandlers({
 - Create `app/providers.tsx`:
 
 ```tsx
-"use client";
+'use client';
 
-import { AppwriteProvider } from "@appwrite.io/react";
+import { AppwriteProvider } from '@appwrite.io/react';
 
 export function Providers({
-  session,
-  children,
+    session,
+    children
 }: {
-  session?: string | null;
-  children: React.ReactNode;
+    session?: string | null;
+    children: React.ReactNode;
 }) {
-  return (
-    <AppwriteProvider
-      endpoint={process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!}
-      projectId={process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!}
-      ssr={{ session, basePath: "/api/appwrite" }}
-    >
-      {children}
-    </AppwriteProvider>
-  );
+    return (
+        <AppwriteProvider
+            endpoint={process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!}
+            projectId={process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!}
+            ssr={{ session, basePath: '/api/appwrite' }}
+        >
+            {children}
+        </AppwriteProvider>
+    );
 }
 ```
 
 - Replace `app/layout.tsx` to read the session cookie server-side and pass it into the provider:
 
 ```tsx
-import { createNextServerHelpers } from "@appwrite.io/react/server/next";
-import { Providers } from "./providers";
+import { createNextServerHelpers } from '@appwrite.io/react/server/next';
+import { Providers } from './providers';
 
 const appwrite = {
-  endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
-  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
+    endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
+    projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const helpers = createNextServerHelpers(appwrite);
-  const session = await helpers.readSessionCookie();
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+    const helpers = createNextServerHelpers(appwrite);
+    const session = await helpers.readSessionCookie();
 
-  return (
-    <html lang="en">
-      <body>
-        <Providers session={session}>{children}</Providers>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <Providers session={session}>{children}</Providers>
+            </body>
+        </html>
+    );
 }
 ```
 
@@ -111,80 +109,85 @@ export default async function RootLayout({
 - If this is a fresh project you just created, replace `app/page.tsx` to read the user server-side and render the auth panel. If you are working in an existing project, create a new route (e.g. `app/auth/page.tsx`) instead of overriding the default route.
 
 ```tsx
-import { createNextServerHelpers } from "@appwrite.io/react/server/next";
-import { AuthPanel } from "./auth-panel";
+import { createNextServerHelpers } from '@appwrite.io/react/server/next';
+import { AuthPanel } from './auth-panel';
 
 const appwrite = {
-  endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
-  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
+    endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
+    projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!
 };
 
 export default async function Page() {
-  const helpers = createNextServerHelpers(appwrite);
-  const user = await helpers.getLoggedInUser();
+    const helpers = createNextServerHelpers(appwrite);
+    const user = await helpers.getLoggedInUser();
 
-  return (
-    <main>
-      <p>SSR user: {user?.email ?? "signed out"}</p>
-      <AuthPanel />
-    </main>
-  );
+    return (
+        <main>
+            <p>SSR user: {user?.email ?? 'signed out'}</p>
+            <AuthPanel />
+        </main>
+    );
 }
 ```
 
 - Create `app/auth-panel.tsx` for the client-side hook usage:
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useAuth } from "@appwrite.io/react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useAuth } from '@appwrite.io/react';
+import { useRouter } from 'next/navigation';
 
 export function AuthPanel() {
-  const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+    const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
+    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
-  if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p>Loading...</p>;
 
-  if (user) {
+    if (user) {
+        return (
+            <button onClick={() => signOut.signOut({ onSuccess: () => router.refresh() })}>
+                Sign out
+            </button>
+        );
+    }
+
     return (
-      <button onClick={() => signOut.signOut({ onSuccess: () => router.refresh() })}>
-        Sign out
-      </button>
+        <div>
+            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+                onClick={() =>
+                    signUp.emailPassword({
+                        email,
+                        password,
+                        name,
+                        onSuccess: () => router.refresh()
+                    })
+                }
+            >
+                Sign up
+            </button>
+            <button
+                onClick={() =>
+                    signIn.emailPassword({ email, password, onSuccess: () => router.refresh() })
+                }
+            >
+                Sign in
+            </button>
+            {error && <p>{error.message}</p>}
+        </div>
     );
-  }
-
-  return (
-    <div>
-      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={() =>
-          signUp.emailPassword({ email, password, name, onSuccess: () => router.refresh() })
-        }
-      >
-        Sign up
-      </button>
-      <button
-        onClick={() =>
-          signIn.emailPassword({ email, password, onSuccess: () => router.refresh() })
-        }
-      >
-        Sign in
-      </button>
-      {error && <p>{error.message}</p>}
-    </div>
-  );
 }
 ```
 

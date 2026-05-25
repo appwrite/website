@@ -62,7 +62,10 @@ With the provider in place, every component can pull the current user, sign-in, 
 // App.tsx
 import { useAuth } from "@appwrite.io/react";
 
-const { user, signIn, signOut } = useAuth();
+function App() {
+  const { user, signIn, signOut } = useAuth();
+  // render auth UI
+}
 ```
 
 That is the entire client setup. The library handles the service file, the initial account fetching on mount, and the auth context that you would otherwise write by hand. The full walkthrough lives in the [Vite React quickstart](/docs/quick-starts/react).

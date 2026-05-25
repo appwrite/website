@@ -206,6 +206,10 @@ function AuthPanel() {
 
 After every auth mutation, `router.invalidate()` re-runs the loader so the SSR user reflects the new session cookie.
 
+{% info title="Multi-route apps" %}
+In a multi-route TanStack Start app, move `AppwriteProvider` (and the auth loader) into `src/routes/__root.tsx` so the TanStack Query cache and auth state persist across navigations. Mounting the provider in a single route works for this quickstart, but resets the cache every time the route changes.
+{% /info %}
+
 {% /section %}
 
 {% section #step-8 step=8 title="Run your app" %}

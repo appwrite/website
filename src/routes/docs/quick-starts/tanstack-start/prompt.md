@@ -40,18 +40,18 @@ APPWRITE_API_KEY=<API_KEY>
 - Create `src/routes/api/appwrite/$.ts`:
 
 ```ts
-import { createFileRoute } from "@tanstack/react-router";
-import { createAppwriteHandlers } from "@appwrite.io/react/handlers/tanstack";
+import { createFileRoute } from '@tanstack/react-router';
+import { createAppwriteHandlers } from '@appwrite.io/react/handlers/tanstack';
 
-export const Route = createFileRoute("/api/appwrite/$")({
-  server: {
-    handlers: createAppwriteHandlers({
-      endpoint: import.meta.env.VITE_APPWRITE_ENDPOINT,
-      projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
-      apiKey: process.env.APPWRITE_API_KEY!,
-      basePath: "/api/appwrite",
-    }),
-  },
+export const Route = createFileRoute('/api/appwrite/$')({
+    server: {
+        handlers: createAppwriteHandlers({
+            endpoint: import.meta.env.VITE_APPWRITE_ENDPOINT,
+            projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
+            apiKey: process.env.APPWRITE_API_KEY!,
+            basePath: '/api/appwrite'
+        })
+    }
 });
 ```
 
@@ -61,89 +61,94 @@ export const Route = createFileRoute("/api/appwrite/$")({
 - The route reads SSR auth state via a server function and passes the session into `AppwriteProvider`:
 
 ```tsx
-import { useState } from "react";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
-import { AppwriteProvider, useAuth } from "@appwrite.io/react";
-import { createTanStackServerHelpers } from "@appwrite.io/react/server/tanstack";
+import { useState } from 'react';
+import { createFileRoute, useRouter } from '@tanstack/react-router';
+import { createServerFn } from '@tanstack/react-start';
+import { AppwriteProvider, useAuth } from '@appwrite.io/react';
+import { createTanStackServerHelpers } from '@appwrite.io/react/server/tanstack';
 
-const getAuthSnapshot = createServerFn({ method: "GET" }).handler(async () => {
-  const helpers = createTanStackServerHelpers({
-    endpoint: import.meta.env.VITE_APPWRITE_ENDPOINT,
-    projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID,
-  });
-  return {
-    session: helpers.readSessionCookie() ?? null,
-    user: await helpers.getLoggedInUser(),
-  };
+const getAuthSnapshot = createServerFn({ method: 'GET' }).handler(async () => {
+    const helpers = createTanStackServerHelpers({
+        endpoint: import.meta.env.VITE_APPWRITE_ENDPOINT,
+        projectId: import.meta.env.VITE_APPWRITE_PROJECT_ID
+    });
+    return {
+        session: helpers.readSessionCookie() ?? null,
+        user: await helpers.getLoggedInUser()
+    };
 });
 
-export const Route = createFileRoute("/")({
-  loader: () => getAuthSnapshot(),
-  component: Page,
+export const Route = createFileRoute('/')({
+    loader: () => getAuthSnapshot(),
+    component: Page
 });
 
 function Page() {
-  const { session, user } = Route.useLoaderData();
+    const { session, user } = Route.useLoaderData();
 
-  return (
-    <AppwriteProvider
-      endpoint={import.meta.env.VITE_APPWRITE_ENDPOINT}
-      projectId={import.meta.env.VITE_APPWRITE_PROJECT_ID}
-      ssr={{ session, basePath: "/api/appwrite" }}
-    >
-      <main>
-        <p>SSR user: {user?.email ?? "signed out"}</p>
-        <AuthPanel />
-      </main>
-    </AppwriteProvider>
-  );
+    return (
+        <AppwriteProvider
+            endpoint={import.meta.env.VITE_APPWRITE_ENDPOINT}
+            projectId={import.meta.env.VITE_APPWRITE_PROJECT_ID}
+            ssr={{ session, basePath: '/api/appwrite' }}
+        >
+            <main>
+                <p>SSR user: {user?.email ?? 'signed out'}</p>
+                <AuthPanel />
+            </main>
+        </AppwriteProvider>
+    );
 }
 
 function AuthPanel() {
-  const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+    const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
+    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
-  if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p>Loading...</p>;
 
-  if (user) {
+    if (user) {
+        return (
+            <button onClick={() => signOut.signOut({ onSuccess: () => router.invalidate() })}>
+                Sign out
+            </button>
+        );
+    }
+
     return (
-      <button onClick={() => signOut.signOut({ onSuccess: () => router.invalidate() })}>
-        Sign out
-      </button>
+        <div>
+            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+                onClick={() =>
+                    signUp.emailPassword({
+                        email,
+                        password,
+                        name,
+                        onSuccess: () => router.invalidate()
+                    })
+                }
+            >
+                Sign up
+            </button>
+            <button
+                onClick={() =>
+                    signIn.emailPassword({ email, password, onSuccess: () => router.invalidate() })
+                }
+            >
+                Sign in
+            </button>
+            {error && <p>{error.message}</p>}
+        </div>
     );
-  }
-
-  return (
-    <div>
-      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={() =>
-          signUp.emailPassword({ email, password, name, onSuccess: () => router.invalidate() })
-        }
-      >
-        Sign up
-      </button>
-      <button
-        onClick={() =>
-          signIn.emailPassword({ email, password, onSuccess: () => router.invalidate() })
-        }
-      >
-        Sign in
-      </button>
-      {error && <p>{error.message}</p>}
-    </div>
-  );
 }
 ```
 

@@ -35,21 +35,21 @@ VITE_APPWRITE_PROJECT_ID=<PROJECT_ID>
 - Replace `src/main.tsx` (or `.jsx`) so the entire app is wrapped with `AppwriteProvider`:
 
 ```tsx
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { AppwriteProvider } from "@appwrite.io/react";
-import App from "./App";
-import "./index.css";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { AppwriteProvider } from '@appwrite.io/react';
+import App from './App';
+import './index.css';
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <AppwriteProvider
-      endpoint={import.meta.env.VITE_APPWRITE_ENDPOINT}
-      projectId={import.meta.env.VITE_APPWRITE_PROJECT_ID}
-    >
-      <App />
-    </AppwriteProvider>
-  </StrictMode>,
+createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+        <AppwriteProvider
+            endpoint={import.meta.env.VITE_APPWRITE_ENDPOINT}
+            projectId={import.meta.env.VITE_APPWRITE_PROJECT_ID}
+        >
+            <App />
+        </AppwriteProvider>
+    </StrictMode>
 );
 ```
 
@@ -64,41 +64,41 @@ createRoot(document.getElementById("root")!).render(
 - Use the `useAuth` hook from `@appwrite.io/react`:
 
 ```tsx
-import { useState } from "react";
-import { useAuth } from "@appwrite.io/react";
+import { useState } from 'react';
+import { useAuth } from '@appwrite.io/react';
 
 export default function App() {
-  const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+    const { user, isLoading, signIn, signUp, signOut, error } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
-  if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p>Loading...</p>;
 
-  if (user) {
+    if (user) {
+        return (
+            <main>
+                <p>Welcome, {user.name || user.email}</p>
+                <button onClick={() => signOut.signOut()}>Sign out</button>
+            </main>
+        );
+    }
+
     return (
-      <main>
-        <p>Welcome, {user.name || user.email}</p>
-        <button onClick={() => signOut.signOut()}>Sign out</button>
-      </main>
+        <main>
+            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={() => signUp.emailPassword({ email, password, name })}>Sign up</button>
+            <button onClick={() => signIn.emailPassword({ email, password })}>Sign in</button>
+            {error && <p>{error.message}</p>}
+        </main>
     );
-  }
-
-  return (
-    <main>
-      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={() => signUp.emailPassword({ email, password, name })}>Sign up</button>
-      <button onClick={() => signIn.emailPassword({ email, password })}>Sign in</button>
-      {error && <p>{error.message}</p>}
-    </main>
-  );
 }
 ```
 
