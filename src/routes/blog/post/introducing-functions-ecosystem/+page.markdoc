@@ -8,6 +8,19 @@ timeToRead: 5
 author: luke-silver
 category: product, announcement
 featured: false
+faqs:
+  - question: "What is a cold start in Appwrite Functions?"
+    answer: "A cold start is the extra latency you see the first time a function runs (or after it has been idle), because the runtime has to provision a container and load your code. Subsequent invocations reuse the warm runtime, so they respond much faster."
+  - question: "What are dynamic API keys in Appwrite Functions?"
+    answer: "Dynamic API keys are short lived keys that Appwrite generates for each function execution and passes through the `x-appwrite-key` header. You no longer need to create, rotate, and store long lived API keys for server side function code. See [Appwrite Functions](/docs/products/functions)."
+  - question: "How do I schedule a function to run later?"
+    answer: "Pass a `scheduledAt` value (an ISO timestamp) when calling createExecution. Appwrite queues the execution and runs it at that time, which is convenient for invoice runs, reminders, and other time delayed work."
+  - question: "Can Appwrite Functions call other Appwrite services?"
+    answer: "Yes. Inside a function, you can construct a Server SDK client using the auto provided endpoint, project ID, and dynamic API key, then call any Appwrite service the function has permission to use."
+  - question: "Are old Appwrite Functions automatically faster after this release?"
+    answer: "Yes. Cold start improvements apply to all functions regardless of when they were created, with no code or configuration changes required."
+  - question: "When should I use Functions instead of my own backend?"
+    answer: "Functions are great when you want event driven logic, scheduled jobs, or an API endpoint without operating servers. Pick a dedicated backend when you need long lived processes, large dependency sets, or workloads that exceed function execution limits."
 ---
 We're excited to bring you major improvements to Appwrite Functions, making them more versatile and powerful than ever before.
 

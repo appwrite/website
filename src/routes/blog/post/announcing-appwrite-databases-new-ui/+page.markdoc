@@ -8,6 +8,19 @@ timeToRead: 5
 author: darshan-pandya
 category: announcement
 featured: false
+faqs:
+  - question: "What is TablesDB in Appwrite?"
+    answer: "TablesDB is the updated naming and API layer for [Appwrite Databases](/docs/products/databases). It maps the familiar relational vocabulary (tables, rows, columns) onto Appwrite's existing data model. The storage engine itself has not changed, only the terminology and the new method names exposed in the SDKs and Console."
+  - question: "Do I have to migrate my code to the new TablesDB API?"
+    answer: "No. The old document-based methods like `createDocument` and `listDocuments` continue to work and are fully backwards compatible. They are marked as deprecated and will receive security patches but not new features, so we recommend the TablesDB methods for new projects."
+  - question: "What is the mapping between the old and new Database terms?"
+    answer: "Collections become tables, attributes become columns, and documents become rows. Methods follow the same pattern: `createCollection` becomes `createTable`, `createDocument` becomes `createRow`, `listDocuments` becomes `listRows`, and so on. The underlying behavior of each call is unchanged."
+  - question: "Does the new TablesDB UI replace the existing Databases section in the Console?"
+    answer: "Yes. The Databases section in the Appwrite Console has been redesigned around the TablesDB UI, with browsing, editing, and managing data built around tables, rows, and columns. Existing projects automatically open in the new UI without any migration step."
+  - question: "Can I still use Appwrite Databases as a document store?"
+    answer: "Yes. The rename is purely a terminology and API change, not a switch to a strict relational engine. You can still store flexible row data, use the same query operators, and apply per-row permissions. The relational vocabulary is meant to make the model easier to reason about for developers used to SQL."
+  - question: "Where can I learn the new TablesDB methods in detail?"
+    answer: "The [Databases documentation](/docs/products/databases) covers every TablesDB method with examples for each server and client SDK. The deprecated document methods remain documented for reference, but new tutorials and references default to the TablesDB naming."
 ---
 As Appwrite has grown, so has the diversity of developers building with it, from document-based systems to others deeply familiar with relational data structures. To make the platform more intuitive and consistent for everyone, we’re evolving how Appwrite Databases is presented and managed. This update also adds the ability to generate dummy data for faster prototyping, and we’re actively working on features like AI-powered suggestions to help you design your structure even faster.
 

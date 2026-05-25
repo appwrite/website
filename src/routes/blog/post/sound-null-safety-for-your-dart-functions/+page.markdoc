@@ -8,6 +8,19 @@ timeToRead: 12
 author: vincent-ge
 category: product
 featured: false
+faqs:
+  - question: "What is sound null safety in Dart?"
+    answer: "Sound null safety means the compiler tracks whether a value can be null, and forces you to handle the null case at compile time. A type like `String` cannot hold null, while `String?` explicitly can. This catches an entire class of runtime null errors before your code ships."
+  - question: "Why does null safety matter for Appwrite Functions?"
+    answer: "Functions sit at the boundary between your code and external input (user-submitted JSON, third-party API responses, webhook payloads). You do not control the shape of that data, so null safety surfaces missing or malformed fields as compile-time errors instead of mysterious runtime crashes inside [Appwrite Functions](/docs/products/functions)."
+  - question: "How do I model a JSON payload that may have missing fields?"
+    answer: "Mark every field that is not guaranteed to be present as nullable in your Dart model (`String?` instead of `String`), and write `fromJson` factories that explicitly check for null before reading nested objects. The compiler will then refuse to let you ignore the missing case downstream."
+  - question: "Should I use `!` to bypass null checks?"
+    answer: "Only when you are certain the value cannot be null at that point, for example right after an explicit null check or for a value the runtime guarantees. Reaching for `!` to silence the analyzer defeats the purpose of null safety and replaces a compile-time error with a runtime one."
+  - question: "Which Dart runtimes does Appwrite support?"
+    answer: "[Appwrite Functions](/docs/products/functions) supports Dart 3.x runtimes (and newer). Sound null safety is enabled by default in Dart 3, so any function you write or migrate today benefits from it without extra configuration."
+  - question: "How do I handle null gracefully in user-facing errors?"
+    answer: "Validate the incoming payload at the top of your function, and return a structured error (with status code and message) if required fields are missing. The caller gets actionable feedback instead of a generic 500, and your business logic only runs with data shapes it knows how to handle."
 ---
 
 Dart 3 runtimes are now available on Appwrite Cloud. Among the many cool features introduced in Dart 3, sound null safety stands out as an important change for Appwrite Functions.

@@ -8,7 +8,19 @@ timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host a Nuxt app for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that supports Nuxt with a global CDN, automatic SSL, and DDoS protection. The free plan covers most personal sites, marketing pages, and small SaaS dashboards."
+  - question: "Does Appwrite Sites support Nuxt SSR and SSG?"
+    answer: "Yes. Appwrite Sites serves prerendered Nuxt pages from the CDN and supports SSR routes via [Appwrite Functions](/docs/products/functions) for dynamic content. You can mix and match within the same project depending on which routes need real time data."
+  - question: "How do I deploy a Nuxt project to Appwrite Sites?"
+    answer: "You can connect your Git repository for auto deploys, run `appwrite deploy site` from the CLI, or upload your build output manually in the console. Git based deploys are recommended so every push builds and ships automatically. See [deploy from Git](/docs/products/sites/deploy-from-git) for setup."
+  - question: "Can I use Appwrite as the backend for a Nuxt app?"
+    answer: "Yes. Nuxt server routes and client components can both call [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), and [Storage](/docs/products/storage) through the official SDK. This lets you replace custom backend code with managed Appwrite endpoints where it makes sense."
+  - question: "Does Appwrite Sites support custom domains for Nuxt?"
+    answer: "Yes. You can attach a custom domain to any Appwrite Site and SSL is provisioned automatically. No manual certificate management is required."
+  - question: "How does Appwrite Sites compare to Netlify or Vercel for Nuxt?"
+    answer: "All three offer Git based deploys, CDN backed hosting, and free tiers for Nuxt. Appwrite Sites is open source and bundles backend services like Auth, Databases, and Functions in the same project, so you do not need a separate backend provider. Pick Appwrite if you want hosting and backend under one platform."
 ---
 
 Nuxt.js is a powerful framework built on Vue.js that simplifies the development of modern web applications with features like server-side rendering (SSR), static site generation (SSG), and API integrations. While deploying Nuxt applications can be straightforward, selecting the right hosting provider that balances cost, performance, and ease of use can be challenging.

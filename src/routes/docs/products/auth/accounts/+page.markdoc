@@ -19,6 +19,8 @@ You can signup and login a user with an account create through
 [OAuth 2](/docs/products/auth/oauth2)
 authentication.
 
+To control which email addresses can sign up, enable [email policies](/docs/products/auth/email-policies) to block free, aliased, or disposable email providers.
+
 # Permissions {% #permissions %}
 
 You can grant permissions to all users using the `Role.users(<STATUS>)` role or

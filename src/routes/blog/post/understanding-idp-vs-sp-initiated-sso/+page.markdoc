@@ -9,6 +9,19 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is the difference between IdP-initiated and SP-initiated SSO?"
+    answer: "IdP-initiated SSO starts at the identity provider portal (the user picks an app from a dashboard), while SP-initiated SSO starts at the service the user is trying to use, which then redirects them to the IdP to authenticate. The end result is the same logged in session, but the trigger and redirect flow are different."
+  - question: "Which SSO flow is more secure?"
+    answer: "SP-initiated SSO is generally considered safer because the request originates from the service, so it is harder for attackers to forge an unsolicited login assertion. IdP-initiated flows are more vulnerable to certain assertion injection attacks and are increasingly discouraged for new integrations."
+  - question: "Can the same application support both SSO flows?"
+    answer: "Yes. Many SaaS apps support both. Employees log in through the IdP dashboard (IdP-initiated), while external users hit the app directly and get redirected to authenticate (SP-initiated). The two flows can share the same backend session logic."
+  - question: "Does Appwrite support SSO?"
+    answer: "Yes. [Appwrite Auth](/docs/products/auth) supports SSO and federated identity through OAuth2 providers and protocols like SAML and OIDC on supported plans. Check the auth docs for the current list of supported providers and flows."
+  - question: "When should I prefer IdP-initiated SSO?"
+    answer: "IdP-initiated flows fit corporate portals, education hubs, or any environment where users start their day at a dashboard and pick from a list of internal apps. They also help when the IdP is the canonical source of truth and you want to keep app discovery centralised."
+  - question: "What is a SAML assertion?"
+    answer: "A SAML assertion is a signed XML message issued by the IdP that asserts who the user is and what permissions they have. The service provider verifies the signature, reads the user attributes, and creates a local session. It is the SAML equivalent of a JWT in OAuth2 flows."
 ---
 
 Managing authentication across multiple applications is a growing challenge for developers, especially with users expecting more convenience and security. Single Sign-On (SSO) offers a practical solution to that problem, allowing users to access multiple services with one login. Although the experience is almost always seamless for users, developers have multiple options for implementing SSO in their applications.

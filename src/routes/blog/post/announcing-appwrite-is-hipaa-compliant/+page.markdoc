@@ -7,6 +7,19 @@ cover: /images/blog/hipaa.avif
 timeToRead: 4
 author: may-ender
 category: security
+faqs:
+  - question: "What is HIPAA and which apps need to consider it?"
+    answer: "The Health Insurance Portability and Accountability Act is a US law that governs how Protected Health Information (PHI) is stored, transmitted, and accessed. Any application that handles PHI for US patients (telehealth, EHRs, health tracking with identifiable data, insurance tools) typically falls under HIPAA's rules."
+  - question: "What does Appwrite Cloud being HIPAA compliant mean for me?"
+    answer: "Appwrite Cloud has the technical and organizational safeguards in place (encryption, access controls, audit logging, backups, MFA on internal access) to act as a HIPAA-compliant backend. You can build healthcare apps on Appwrite without having to run that infrastructure yourself."
+  - question: "Do I still have to make my own app HIPAA compliant?"
+    answer: "Yes. Appwrite covers the platform layer, but you remain responsible for how your application collects, displays, and shares PHI. That includes things like configuring permissions correctly, restricting who can read sensitive collections, training your staff, and obtaining consent where required."
+  - question: "Can I get a Business Associate Agreement (BAA) with Appwrite?"
+    answer: "BAAs are required for any service that processes PHI on your behalf. If you are building a HIPAA-regulated app on Appwrite Cloud, contact Appwrite via the [contact form](/contact-us) to discuss a BAA before going live with PHI."
+  - question: "Is self-hosted Appwrite HIPAA compliant?"
+    answer: "Self-hosted Appwrite gives you the same security primitives as Cloud, but compliance depends entirely on how you operate the host environment, network, and backups. The HIPAA compliance announcement applies to Appwrite Cloud."
+  - question: "What other compliance standards does Appwrite meet?"
+    answer: "Appwrite is also [GDPR](/blog/post/announcing-appwrite-is-gdpr-compliant), [CCPA](/blog/post/announcing-appwrite-is-ccpa-compliant), and [SOC 2 Type 1](/blog/post/appwrite-is-now-soc-2-type-1-compliant) compliant. The [Appwrite security documentation](/docs/advanced/security) is the best place to see the full list."
 ---
 
 We’re happy to announce that Appwrite fully complies with the Health Insurance Portability and Accountability Act (HIPAA), allowing developers who handle sensitive health data to trust Appwrite as their backend.

@@ -8,6 +8,19 @@ timeToRead: 5
 author: dennis-ivy
 category: product, announcement
 featured: false
+faqs:
+  - question: "What does the contains query do?"
+    answer: "`Query.contains` matches a substring inside a string attribute or an element inside an array attribute. It complements `startsWith` and `endsWith` and is the right choice when you don't know where in the value the match will appear. See [Appwrite Databases](/docs/products/databases)."
+  - question: "How does the OR operator work in Appwrite queries?"
+    answer: "Pass two or more queries inside `Query.or([...])` and any document that satisfies at least one of them is returned. You can nest it with other queries to build expressions like 'category equals X AND (name contains Y OR rating greater than 4)'."
+  - question: "Can I combine contains and OR in the same request?"
+    answer: "Yes. Both operators are regular query expressions, so you can pass several of them in the same queries array, or nest `Query.contains` calls inside a `Query.or` block."
+  - question: "Does contains do a full text search?"
+    answer: "No. Contains is a substring match, not a tokenized full text search. If you need ranking, stemming, or fuzzy matching, pair Appwrite Databases with a dedicated search engine like Meilisearch or Typesense."
+  - question: "When did these operators ship?"
+    answer: "Both `contains` and `or` shipped as part of the Appwrite 1.5 release on Appwrite Cloud and self hosted Appwrite in March 2024. They are available across every SDK."
+  - question: "Are there performance implications when using contains?"
+    answer: "Substring matches can't always use an index, so very large collections will be slower than equality queries. Where possible, narrow the result set first with indexed attributes (equality, ranges) and then apply contains to filter further."
 ---
 
 We've added two new query methods, `or` and `contains`, to Appwrite Databases. By adding array element matches, partial text matches, as well as logical OR queries, we allow for more flexibility in managing your data.

@@ -1,6 +1,62 @@
 import { error } from '@sveltejs/kit';
 import { OpenAPIV3 } from 'openapi-types';
-import { Platform, type ServiceValue, type Version } from '$lib/utils/references';
+import { Platform, VALID_PLATFORMS, versions, type ServiceValue } from '$lib/utils/references';
+import { existsSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Spec data location. In environments where `@appwrite.io/specs` is installed
+// (local dev, Docker prod with `bun install --production`), resolve via Node
+// module resolution. In environments where only the build artifact ships
+// (Appwrite Sites runtime), fall back to `_specs_data/` copied next to the
+// server bundle by `scripts/build.js`.
+function locateSpecsRoot(): string {
+    try {
+        const fromNodeModules = dirname(
+            createRequire(import.meta.url).resolve('@appwrite.io/specs/package.json')
+        );
+        if (existsSync(join(fromNodeModules, 'specs'))) {
+            return fromNodeModules;
+        }
+    } catch {
+        // package not installed at runtime; fall through to bundled data
+    }
+
+    const here = dirname(fileURLToPath(import.meta.url));
+    const candidates = [
+        resolve(here, '../../_specs_data'),
+        resolve(here, '../_specs_data'),
+        resolve(process.cwd(), '_specs_data')
+    ];
+    for (const candidate of candidates) {
+        if (existsSync(join(candidate, 'specs'))) {
+            return candidate;
+        }
+    }
+    throw new Error('Unable to locate @appwrite.io/specs data');
+}
+
+const specsRoot = locateSpecsRoot();
+
+// URL segments reach this module from SvelteKit route params, so anything
+// interpolated into a filesystem path needs an explicit allowlist check.
+const VALID_VERSIONS = new Set<string>(versions as readonly string[]);
+
+function assertValidVersion(version: string): void {
+    if (!VALID_VERSIONS.has(version)) {
+        throw error(404, `Unknown spec version ${version}`);
+    }
+}
+
+function assertValidPlatform(platform: string): void {
+    if (!VALID_PLATFORMS.has(platform as Platform)) {
+        throw error(404, `Unknown platform ${platform}`);
+    }
+}
+
+const apiCache = new Map<string, OpenAPIV3.Document>();
 
 export type SDKMethod = {
     'rate-limit': number;
@@ -90,62 +146,15 @@ export const ModelType = {
 type ModelTypeType = keyof typeof ModelType;
 type ModelTypeValue = (typeof ModelType)[ModelTypeType];
 
-type ExampleVersion = Exclude<Version, 'cloud'>;
-type ExampleLoaders = Record<string, () => Promise<unknown>>;
-
-const examplesByVersion: Record<ExampleVersion, ExampleLoaders> = {
-    '0.15.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/0.15.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.0.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.0.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.1.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.1.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.2.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.2.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.3.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.3.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.4.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.4.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.5.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.5.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.6.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.6.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.7.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.7.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.8.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.8.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    }),
-    '1.9.x': import.meta.glob('/node_modules/@appwrite.io/specs/examples/1.9.x/**/*.md', {
-        query: '?raw',
-        import: 'default'
-    })
-};
-
-function getExamples(version: string) {
-    if (!(version in examplesByVersion)) {
-        return undefined;
+async function loadExample(relativePath: string): Promise<string | null> {
+    try {
+        return await readFile(join(specsRoot, relativePath), 'utf8');
+    } catch (e) {
+        if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
+            return null;
+        }
+        throw e;
     }
-
-    return examplesByVersion[version as ExampleVersion];
 }
 
 function stripMarkdownCodeFence(content: string): string {
@@ -396,23 +405,36 @@ export function getSchema(id: string, api: OpenAPIV3.Document): OpenAPIV3.Schema
     error(404, { message: `Not found` });
 }
 
-const specs = import.meta.glob('/node_modules/@appwrite.io/specs/specs/*/open-api3*.json', {
-    exhaustive: true
-});
-
 export async function getApi(version: string, platform: string): Promise<OpenAPIV3.Document> {
+    // Only `version` reaches the filesystem path here; `platform` is collapsed to
+    // a fixed `mode` literal (server/client/console). Platform validation lives
+    // in `getService`, where the raw value is interpolated into the example path.
+    assertValidVersion(version);
+
+    const cacheKey = `${version}|${platform}`;
+    const cached = apiCache.get(cacheKey);
+    if (cached) {
+        return cached;
+    }
+
     const isClient = platform.startsWith('client-');
     const mode = platform.startsWith('server-') ? 'server' : isClient ? 'client' : 'console';
     const filename = `open-api3-${version}-${mode}.json`;
+    const specPath = join(specsRoot, 'specs', version, filename);
 
-    const loader = Object.entries(specs).find(([key]) => key.endsWith(`/${filename}`))?.[1];
-
-    if (!loader) {
-        throw error(404, `Missing OpenAPI spec loader for ${filename}`);
+    let raw: string;
+    try {
+        raw = await readFile(specPath, 'utf8');
+    } catch (e) {
+        if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
+            throw error(404, `Missing OpenAPI spec ${filename}`);
+        }
+        throw e;
     }
 
-    const loaded = (await loader()) as OpenAPIV3.Document | { default: OpenAPIV3.Document };
-    return ('default' in loaded ? loaded.default : loaded) as OpenAPIV3.Document;
+    const parsed = JSON.parse(raw) as OpenAPIV3.Document;
+    apiCache.set(cacheKey, parsed);
+    return parsed;
 }
 
 const descriptions = import.meta.glob('./descriptions/*.md', {
@@ -441,6 +463,10 @@ export async function getService(
     };
     methods: SDKMethod[];
 }> {
+    // `platform` is interpolated into example paths below, so validate against
+    // the public allowlist before any filesystem access.
+    assertValidPlatform(platform);
+
     /**
      * Exceptions for Android SDK.
      */
@@ -460,13 +486,7 @@ export async function getService(
         methods: []
     };
 
-    const examples = getExamples(version);
-
-    if (!examples) {
-        return data;
-    }
-
-    for (const { method, value, url } of iterateAllMethods(api, service)) {
+    const prepared = Array.from(iterateAllMethods(api, service)).map(({ method, value, url }) => {
         const operation = value as AppwriteOperationObject;
         const parameters = getParameters(operation);
         const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
@@ -507,22 +527,28 @@ export async function getService(
             }
         );
 
-        const path = isAndroid
-            ? `/node_modules/@appwrite.io/specs/examples/${version}/${
+        const examplePath = isAndroid
+            ? `examples/${version}/${
                   isAndroidServer ? 'server-kotlin' : 'client-android'
               }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `/node_modules/@appwrite.io/specs/examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
+            : `examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
 
-        if (!(path in examples)) {
+        return { method, value: operation, url, parameters, responses, examplePath };
+    });
+
+    const demos = await Promise.all(prepared.map((p) => loadExample(p.examplePath)));
+
+    for (let i = 0; i < prepared.length; i++) {
+        const demo = demos[i];
+        if (demo === null) {
             continue;
         }
-
-        const demo = (await examples[path]()) as unknown as string;
+        const { method, value: operation, url, parameters, responses } = prepared[i];
 
         data.methods.push({
             id: operation['x-appwrite'].method,
             group: operation['x-appwrite'].group,
-            demo: typeof demo === 'string' ? stripMarkdownCodeFence(demo) : '',
+            demo: stripMarkdownCodeFence(demo),
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],

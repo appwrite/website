@@ -7,6 +7,19 @@ cover: /images/blog/build-delivery-store-locator-spatial-columns/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
+faqs:
+  - question: "What are spatial columns in Appwrite?"
+    answer: "Spatial columns let you store and query real-world geographic data (points, lines, polygons) directly in [Appwrite Databases](/docs/products/databases). They handle the geometric math behind queries like distance, so you don't have to calculate distances between lat/lon pairs in your app code."
+  - question: "What column type do I use for storing locations?"
+    answer: "Use the Point column type for single coordinates (like a store address). It accepts a tuple of [longitude, latitude] when you create or update rows. There are also Line and Polygon types for routes and regions."
+  - question: "How do I find rows within a certain distance?"
+    answer: "Use Query.distanceLessThan with the column name, your reference coordinates, and a distance value. Pass true as the fourth argument to interpret the distance as meters. Appwrite returns only the rows whose point falls within that radius."
+  - question: "Do I need authentication to use spatial columns?"
+    answer: "No, spatial columns are just another column type and work with the same permission system as the rest of [Appwrite Databases](/docs/products/databases). The tutorial skips auth for simplicity, but in production you'd enforce permissions per role or per user."
+  - question: "How fast is a spatial distance query in Appwrite?"
+    answer: "Spatial queries can use spatial indexes on Point columns for fast lookups, which means you don't need to scan every row to find nearby matches. Performance scales well with proper indexing, similar to how regular indexes speed up text or numeric queries."
+  - question: "Can I sort by distance with spatial columns?"
+    answer: "The distance query returns matching rows, and you can compute exact distances client-side from the returned coordinates to sort them. For more advanced use cases like nearest-neighbor sorting on the server, check the Appwrite query reference for the latest supported operators."
 ---
 
 We just launched spatial columns for Appwrite databases which allows you to perform queries on real, spatial data like locations, areas, and routes. This unlocks a lot of possibilities where you can tap into real-world geo data and query the information you need. This saves you from performing your own calculations on longitudes and latitudes and instead relying on Appwrite's database to query the data you need.

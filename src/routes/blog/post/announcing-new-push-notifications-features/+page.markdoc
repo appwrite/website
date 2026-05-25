@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: product
 callToAction: true
+faqs:
+  - question: "How do I send push notifications with Appwrite?"
+    answer: "Use [Appwrite Messaging](/docs/products/messaging) with the `createPush` endpoint, targeting users, topics, or specific device tokens. Appwrite handles the underlying delivery through APNs for Apple devices and FCM for Android devices, so you only need to configure providers once."
+  - question: "What is a silent push notification on iOS?"
+    answer: "A silent or background push is a notification with `content-available` set to true and no visible alert. iOS wakes the app in the background to process the payload, which is useful for data syncs and content prefetching. Apple limits these to roughly 2 to 3 per hour to preserve battery."
+  - question: "What are iOS critical alerts?"
+    answer: "Critical alerts are notifications that can break through Do Not Disturb and silent mode. They require a special entitlement from Apple and are intended for safety, health, or security use cases like medical alerts, security warnings, or emergency notifications."
+  - question: "What is the difference between normal and high priority push notifications?"
+    answer: "Normal priority notifications can be delayed or grouped by the operating system to save battery, which is good for non-urgent updates. High priority notifications are delivered immediately and should be reserved for time-sensitive content like chat messages or alerts."
+  - question: "Do I need separate code for iOS and Android push notifications in Appwrite?"
+    answer: "No. Appwrite Messaging exposes a single API that maps onto APNs for Apple and FCM for Android. You set parameters once and Appwrite forwards them to the appropriate provider, so you only need to handle platform-specific concerns when a feature only exists on one platform."
+  - question: "Can I clear the app icon badge count from Appwrite?"
+    answer: "Yes. Set the `badge` field on the push payload to the desired count, or pass `0` to clear an existing badge. This works with iOS devices and is delivered through the standard `createPush` and `updatePush` endpoints."
 ---
 
 We're excited to introduce new additions to Appwrite Messaging that give you greater control over how you send and handle push notifications in your app.

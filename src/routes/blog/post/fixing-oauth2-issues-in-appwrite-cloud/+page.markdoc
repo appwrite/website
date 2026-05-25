@@ -7,6 +7,19 @@ cover: /images/blog/fixing-oauth2-issues-in-appwrite-cloud/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "Why does my OAuth2 login in Appwrite work in some browsers but not others?"
+    answer: "It is a third-party cookie issue. When your app domain differs from Appwrite's domain, the browser treats Appwrite's session cookie as third-party. Browsers like Brave and Safari block these by default, and Chrome is moving in the same direction. The OAuth redirect succeeds, but the session cookie never gets stored."
+  - question: "How do I fix the OAuth2 session issue with Appwrite?"
+    answer: "Switch from `createOAuth2Session` to `createOAuth2Token`. The token-based flow returns a `userId` and `secret` after the provider consent screen, and you exchange them for a session with `createSession`. The browser never has to accept a cross-origin cookie, so the flow works everywhere."
+  - question: "What is the difference between createOAuth2Session and createOAuth2Token?"
+    answer: "`createOAuth2Session` relies on Appwrite setting a session cookie on its own domain, which fails when third-party cookies are blocked. `createOAuth2Token` returns a one-time `userId` and `secret` that your app exchanges for a session on your own domain. The token approach is more compatible with modern browsers and follows current OAuth2 best practices."
+  - question: "Can I use a custom domain instead of switching auth flows?"
+    answer: "Yes. If you configure a custom domain for [Appwrite Auth](/docs/products/auth) so the session cookie and your app share the same root domain, the browser no longer treats it as third-party. The token-based flow is usually simpler, but custom domains are a valid option, especially if you want a unified domain across your stack."
+  - question: "Do I need to change my OAuth provider settings?"
+    answer: "Update the callback URL in your provider (Google, GitHub, etc.) to match the new redirect target. Beyond that, the OAuth provider config does not change. The shift from session-based to token-based auth happens entirely between your app and Appwrite."
+  - question: "Is the token-based OAuth flow secure?"
+    answer: "Yes. It follows OAuth2 best practices: the secret is single-use, short-lived, and exchanged for a session immediately. Because the flow does not rely on third-party cookies, it actually has fewer cross-site security pitfalls than the older session-based flow."
 ---
 
 # Fixing OAuth2 authentication issues in Appwrite

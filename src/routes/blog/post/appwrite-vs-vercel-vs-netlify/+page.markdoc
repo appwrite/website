@@ -8,6 +8,19 @@ timeToRead: 7
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "Is Appwrite a replacement for Vercel and Netlify?"
+    answer: "It can be. [Appwrite Sites](/docs/products/sites) handles frontend hosting with Git deploys, edge distribution, and custom domains, similar to Vercel and Netlify. Where Appwrite differs is that it also includes auth, databases, storage, functions, and messaging in the same platform."
+  - question: "Should I use Appwrite alongside Vercel or Netlify?"
+    answer: "Yes, that's a common setup. Keep your frontend on Vercel or Netlify for their ecosystem benefits (Next.js optimizations, edge functions) and use Appwrite as the backend for auth, data, storage, and serverless logic. The SDKs work the same regardless of where the frontend lives."
+  - question: "Do Vercel and Netlify include a database?"
+    answer: "Not natively. Vercel retired its first-party database in 2025 and points users to Marketplace integrations like Neon, Upstash, or Supabase. Netlify DB is in beta and powered by Neon. With Appwrite, [Databases](/docs/products/databases) are first-class and included by default."
+  - question: "What's missing from Vercel and Netlify compared to Appwrite?"
+    answer: "Production-ready databases, full authentication with MFA and phone OTP, file storage with per-user permissions and antivirus scanning, push/email/SMS messaging, and native real-time subscriptions. You can assemble these via third-party services on Vercel/Netlify, but Appwrite ships them out of the box."
+  - question: "Can I self-host Appwrite?"
+    answer: "Yes. Appwrite is fully open source and runs on any Docker-compatible infrastructure. Vercel and Netlify are cloud-only managed services."
+  - question: "Which is better for static sites, Appwrite Sites or Netlify?"
+    answer: "Both serve static sites from a global edge network with Git-based deploys and preview URLs. Pick Appwrite Sites if you also need backend services in the same project. Pick Netlify or Vercel if you only need hosting and you're heavily invested in their specific ecosystems."
 ---
 
 If you ask a developer what Vercel and Netlify do, you'll get a clear answer: they host frontend applications. Fast deployments, CDN-delivered static assets, serverless functions for edge logic. They're excellent at what they do. But they're not full-stack platforms, and treating them as the foundation of your entire stack creates architectural gaps that show up later as bugs, security incidents, or features that are much harder to build than they should have been.

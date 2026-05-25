@@ -3,12 +3,26 @@ layout: post
 title: "Product update January 2025: Partners program, Scale plan and more"
 description: Get a full recap of products, features and programs we released in January.
 date: 2025-02-06
+lastUpdated: 2026-05-22
 cover: /images/blog/product-update-jan-2025/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Partners program?"
+    answer: "The Appwrite Partners program is for agencies, dev studios, system integrators, and freelancers who build solutions on Appwrite for clients. Partners get co-marketing opportunities, engineering support, training, and a listing in the partner catalog."
+  - question: "Who is the Appwrite Enterprise plan for?"
+    answer: "The Enterprise plan is built for organizations that need priority support, higher resource limits, advanced compliance (BAA, SOC-2, HIPAA), SSO, custom backup policies, and bring-your-own-cloud. See the [pricing page](/pricing) for the current breakdown."
+  - question: "What new compute options are available for Functions?"
+    answer: "Appwrite Cloud now offers premium compute tiers with up to 4 CPU cores and 4 GB of memory per function. You can pick the spec per function, so you only pay for the heavier resources where you need them."
+  - question: "What changed in push notifications?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) added new delivery options, including silent background updates and critical alerts that bypass Do Not Disturb. This gives you more control over how time sensitive your notifications are."
+  - question: "Which new function runtimes were added in January 2025?"
+    answer: "Appwrite Functions added PHP 8.3, Ruby 3.3, and Python 3.12. The team also resolved GitHub identity conflicts that were affecting deployments from connected repositories."
+  - question: "How do I apply to be an Appwrite partner?"
+    answer: "Visit the [partners page](/partners) and submit an application with information about your agency or freelance practice. The Appwrite team reviews each application and follows up with next steps if you qualify."
 ---
 
 

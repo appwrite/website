@@ -8,6 +8,17 @@ timeToRead: 4
 author: jake-barnby
 category: security
 featured: false
+faqs:
+  - question: "What is SOC 2 Type 1 compliance?"
+    answer: "SOC 2 Type 1 is a certification, set by the AICPA, that evaluates how an organization's security controls are designed at a specific point in time. It covers five trust service principles: security, availability, processing integrity, confidentiality, and privacy."
+  - question: "What does Appwrite's SOC 2 Type 1 compliance mean for users?"
+    answer: "It means an independent auditor reviewed Appwrite's security controls and confirmed they are designed to meet SOC 2 standards. For teams building on Appwrite, that adds another layer of assurance around how user data is handled in the platform."
+  - question: "What other security standards does Appwrite follow?"
+    answer: "In addition to SOC 2 Type 1, Appwrite conforms with [GDPR](/docs/advanced/security/gdpr), [HIPAA](/docs/advanced/security/hipaa), and [PCI](/docs/advanced/security/pci) requirements. You can find the full overview in the security documentation."
+  - question: "What is the difference between SOC 2 Type 1 and Type 2?"
+    answer: "Type 1 reviews how controls are designed at a specific point in time. Type 2 goes further by evaluating how those controls operate over a longer period, typically several months. Type 1 is often the first step on the way to a Type 2 attestation."
+  - question: "How does Appwrite protect user data?"
+    answer: "Appwrite encrypts data in transit and at rest, runs backup and disaster recovery routines, uses access control and privilege management for internal systems, runs an incident response process, and vets third-party vendors before granting them access to data."
 ---
 We remain dedicated to maintaining the highest information security standards for all industries.
 Although we go beyond just meeting the requirements, Appwrite still commits to conform to the most stringent security standards

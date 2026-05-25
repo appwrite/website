@@ -9,6 +9,19 @@ author: aditya-oberai
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is React Admin?"
+    answer: "React Admin is an open-source framework for building B2B applications and internal tools on top of REST or GraphQL APIs. It ships with Material-UI components like data grids, forms, filters, and authentication built around enterprise admin patterns."
+  - question: "What does the CRM dashboard template include out of the box?"
+    answer: "The template provides customer management, order tracking, products, invoices, reviews, segments, and a dashboard overview, all powered by [Appwrite TablesDB](/docs/products/databases). A seeding script creates the database, tables, and a demo user on first deploy so you can log in immediately."
+  - question: "Why is the API key in the template safe to use?"
+    answer: "The `APPWRITE_API_KEY` is only used at build time to run the seed script that creates the database, tables, and demo user. Because the site is a static Vite build, the key is not bundled into the deployed assets and never reaches the browser."
+  - question: "Can I deploy this template against a self-hosted Appwrite instance?"
+    answer: "Yes. Point `VITE_APPWRITE_ENDPOINT` at your self-hosted Appwrite API endpoint and supply the matching project ID and API key. The rest of the deployment process on [Appwrite Sites](/docs/products/sites) stays the same."
+  - question: "How do I add a custom domain to a site deployed on [Appwrite Sites](/docs/products/sites)?"
+    answer: "Open the site in the Appwrite Console, go to Settings, Domains, and add your domain. Appwrite issues an SSL certificate automatically once the DNS records are pointed at the site."
+  - question: "Are the demo credentials safe to use in production?"
+    answer: "No. The seeded `john.doe@marmelab.com` account is meant for demoing the dashboard. Before going live, delete the demo user and create real accounts with strong passwords through [Appwrite Auth](/docs/products/auth)."
 ---
 
 Admin dashboards are at the heart of most business applications. Whether you're managing customers, tracking orders, or reviewing invoices, having a well-structured internal tool can make or break your team's productivity. However, building one from scratch, with data grids, filters, forms, and CRUD operations, takes significant time and effort.

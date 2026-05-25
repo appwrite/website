@@ -9,6 +9,19 @@ author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is SSR and when should I use it instead of static rendering?"
+    answer: "Server-Side Rendering generates pages on the server at request time, so each user gets dynamic content based on their session, location, or live data. Use it when pages depend on per-request state (auth, personalization, real-time data) or need SEO-friendly dynamic content. For pages that don't change between users, static generation is faster and cheaper."
+  - question: "Does [Appwrite Sites](/docs/products/sites) support SSR?"
+    answer: "Yes. Appwrite Sites supports SSR alongside Client-Side Rendering and Static Site Generation. It runs your app on a Node.js server runtime where SSR is needed, and you configure the build settings to match your framework."
+  - question: "I'm migrating from Vercel. What do I need to change?"
+    answer: "Most frameworks ship Vercel-specific adapters that won't run on Appwrite's Node.js runtime. For SvelteKit, switch from `@sveltejs/adapter-vercel` to `@sveltejs/adapter-node`. For Next.js, remove the `output` field from `next.config.js` so Next.js uses its default behavior. Nuxt usually works without changes."
+  - question: "What output directory should I use for Next.js on Appwrite Sites?"
+    answer: "Keep the output directory as `./.next`, which is the default Next.js build location. Do not set the `output` field in `next.config.js`, since that's a Vercel-specific setting and interferes with how Appwrite handles the build."
+  - question: "Can I import environment variables from an existing .env file?"
+    answer: "Yes. In the deployment configuration page, you can define environment variables manually or import them from an existing .env file. These are made available at both build time and runtime depending on framework conventions."
+  - question: "Does Appwrite Sites auto-deploy on every Git push?"
+    answer: "Yes. Once you connect a GitHub repository and pick a production branch, Appwrite pulls new commits, rebuilds, and deploys automatically. You can enable silent mode if you don't want it to add comments on GitHub PRs."
 ---
 
 When you're building a modern web app, how you serve your content matters. Some pages need to be pre-rendered ahead of time for speed. Others need to be generated dynamically on the server for personalization or real-time data. This process is called Server-Side Rendering (SSR), and Appwrite Sites supports SSR, just like it supports Client-Side Rendering (CSR) and Static Site Generation (SSG).

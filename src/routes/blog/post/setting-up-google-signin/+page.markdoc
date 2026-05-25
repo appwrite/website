@@ -7,6 +7,19 @@ cover: /images/blog/setting-up-google-signin/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
+faqs:
+  - question: "What do I need from Google Cloud Console to enable Sign in with Google?"
+    answer: "You need an OAuth consent screen and an OAuth client ID and secret. The consent screen controls what users see when they sign in, and the client ID and secret identify your project to Google so it can issue tokens to your application."
+  - question: "Should I choose Internal or External audience for my OAuth app?"
+    answer: "Pick Internal if the app is limited to your Google Workspace organization, since it skips verification. Pick External if anyone outside your organization can sign in. External apps may require Google verification once you cross certain user thresholds or request sensitive scopes."
+  - question: "Which OAuth scopes do I need for basic Google sign-in?"
+    answer: "For standard sign-in flows, `.../auth/userinfo.email`, `.../auth/userinfo.profile`, and `openid` are enough. They return basic profile information without triggering Google's sensitive-scope review process. Only request additional scopes when you actually need to call Google APIs on the user's behalf."
+  - question: "How do I wire Google OAuth into Appwrite?"
+    answer: "In the Appwrite Console, go to [Auth](/docs/products/auth) settings, open the Google provider, paste in the client ID and client secret from Google Cloud Console, and save. Then copy the redirect URI Appwrite displays and add it to Authorized Redirect URIs on your Google OAuth client."
+  - question: "Can I share my OAuth client ID publicly?"
+    answer: "The client ID is treated as public and is fine to ship in client code. The client secret is not, and should only live on the server (or in Appwrite's configuration). If a secret leaks, rotate it in Google Cloud Console immediately."
+  - question: "Why is the redirect URI important in Google OAuth?"
+    answer: "Google will only redirect users back to URIs explicitly listed in your OAuth client config. If the redirect URI does not match exactly, the sign-in flow fails with an error. For Appwrite, use the redirect URI shown in the Google provider settings, not a custom URL you invent."
 ---
 
 This article will teach you how to configure **Sign in with Google** in your applications. We will focus on two key parts:

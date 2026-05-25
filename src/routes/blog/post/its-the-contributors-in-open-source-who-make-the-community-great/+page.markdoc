@@ -8,6 +8,17 @@ timeToRead: 4
 author: haimantika-mitra
 category: hackathon, contributors, open-source
 featured: false
+faqs:
+  - question: "What is Hacktoberfest and how does it work?"
+    answer: "Hacktoberfest is an annual open source celebration held every October by DigitalOcean. Participants submit pull requests to participating open source projects throughout the month, and those who complete the required number of accepted PRs earn rewards. It is a low pressure way for first time contributors to get started in open source."
+  - question: "Is Appwrite open source?"
+    answer: "Yes, Appwrite is fully open source and has been since launching in 2019. The code is available on GitHub for developers to use, fork, and contribute to. Over 700 contributors have shaped Appwrite into what it is today."
+  - question: "How can I contribute to Appwrite?"
+    answer: "You can contribute by picking up open issues on the Appwrite GitHub repositories, improving documentation, translating content, or fixing bugs. The team welcomes contributors of all experience levels, especially during events like Hacktoberfest. Start by reading the contributing guide in the main appwrite/appwrite repository."
+  - question: "Do I need to be an experienced developer to contribute to open source?"
+    answer: "No, open source projects need help across code, documentation, translations, design, and community moderation. Many maintainers actively label issues as good first issues to help newcomers ramp up. Starting small builds confidence and teaches you how real teams collaborate."
+  - question: "What kinds of contributions are valued in open source?"
+    answer: "Bug fixes, documentation improvements, translations, test coverage, and feature work are all valued. The best contributions solve real problems for users rather than chasing PR counts. Quality over quantity matters more to maintainers than the number of pull requests submitted."
 ---
 
 Open source (OSS) seems to be the buzzword in tech these days. A lot of companies claim to be it, and even more, companies seem to be the open source version of their corporate counterpart. Maybe it's true, maybe it isn't, either way, open source is here to stay. But only because of the developers who maintain it. In this post, we want to celebrate the OSS community who has built Appwrite, with a special shout-out to the contributors in our latest release and the best open source event there is, Hacktoberfest.

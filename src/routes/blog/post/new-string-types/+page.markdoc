@@ -8,6 +8,19 @@ timeToRead: 5
 author: eldad-fux
 category: announcement
 featured: false
+faqs:
+  - question: "What new string types does Appwrite Databases support?"
+    answer: "[Appwrite Databases](/docs/products/databases) now supports four explicit string column types: varchar, text, mediumtext, and longtext. Each has a defined maximum size and indexing behavior, so you can pick the right one based on how the data is used. The legacy string type is deprecated but still supported."
+  - question: "What is the difference between varchar and text columns?"
+    answer: "varchar is stored inline in the row and counts toward the 64KB row size budget, but it can be fully indexed if the size is under 768 characters. text is stored off page with just a 20 byte pointer in the row, so it doesn't consume row space, but it only supports prefix indexing. Use varchar for short queryable fields and text for longer content."
+  - question: "When should I use mediumtext or longtext?"
+    answer: "Use mediumtext for content up to about 4 million characters, like article bodies or longer notes. Use longtext for content up to about 1 billion characters, like full logs or serialized payloads. Both are stored off page and support prefix indexing only."
+  - question: "Is the old string column type still supported?"
+    answer: "Yes, the string type is deprecated but Appwrite will continue to maintain full backward support for it. Existing string columns will keep working without changes. For new columns, use the explicit varchar, text, mediumtext, or longtext types to make storage and indexing intentions clear."
+  - question: "Why did Appwrite introduce explicit string types?"
+    answer: "The single string type hid important storage details, including how large values were stored and which row width limits applied. This made it hard for developers and AI agents to make informed schema decisions. Explicit types expose those tradeoffs so the right choice is visible at design time."
+  - question: "Can I migrate existing string columns to the new types?"
+    answer: "Existing string columns continue to work, and you can add new columns using the explicit types alongside them. There is no forced migration path. If you need to switch, plan a data migration by creating new columns with the desired type and copying data over with a script."
 ---
 
 Until now, Appwrite offered a single `string` column type that abstracted away four different storage types, based on the size you specified. This meant you had no visibility into how your data was actually stored, how it could be indexed, or why certain size limits existed.

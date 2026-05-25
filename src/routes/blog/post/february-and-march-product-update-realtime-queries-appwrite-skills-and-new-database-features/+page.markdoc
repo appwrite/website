@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: product
 featured: false
+faqs:
+  - question: "What is new in Appwrite for February and March 2026?"
+    answer: "Major updates across Databases, Realtime, and AI tooling: relationship queries with dot notation, new string column types (`varchar`, `text`, `mediumtext`, `longtext`), Realtime channel helpers, Realtime queries with server-side filtering, Appwrite Skills for AI coding agents, and Appwrite Arena, an open-source benchmark for AI model performance on Appwrite."
+  - question: "How do relationship queries work in Appwrite Databases?"
+    answer: "[Appwrite Databases](/docs/products/databases) now lets you filter directly on relationship columns using dot notation, instead of fetching documents and filtering client-side. All comparison operators work across the relationship, and the underlying engine was rewritten to be 12 to 18 times faster on relationship-heavy queries. It is available on both Cloud and self-hosted."
+  - question: "What are the new string column types in Appwrite Databases?"
+    answer: "Appwrite Databases supports four string column types: `varchar`, `text`, `mediumtext`, and `longtext`. Each comes with different storage characteristics, so you can match the column type to actual data size. Existing string columns continue to work without changes."
+  - question: "What are Realtime queries in Appwrite?"
+    answer: "Realtime queries let you attach query filters when subscribing to a channel, so the server only sends events that match your conditions. You can combine filters with `Query.and()` and `Query.or()`, and subscribe to the same channel multiple times with different filters. It works across Web, Flutter, React Native, Apple, and Android SDKs."
+  - question: "What are Appwrite Skills?"
+    answer: "Appwrite Skills are open-source Markdown files that teach AI coding agents like Claude Code, Cursor, and Windsurf how to use Appwrite's SDKs and CLI accurately. Instead of pasting docs into every prompt, you point the agent at the Skills repository and it generates code that actually compiles."
+  - question: "What is Appwrite Arena?"
+    answer: "Appwrite Arena is an open-source benchmark that scores how well AI models understand Appwrite's products, SDKs, and APIs across 191 questions in 9 service categories. All results are transparent and open source. Recent runs showed GPT-4.1 leading with Skills enabled, Claude Opus 4.6 leading without, and DeepSeek and MiniMax offering strong cost-to-intelligence ratios."
 ---
 
 Welcome back to the product update. This time, we have not one, but two months to update you on. February and March were packed, we shipped improvements across Databases, Realtime, the CLI, the Console, and Sites, and introduced new tools built for the AI coding era.

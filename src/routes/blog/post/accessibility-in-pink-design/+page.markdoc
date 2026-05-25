@@ -7,6 +7,19 @@ cover: /images/blog/accessibility-in-pink-design/cover.avif
 timeToRead: 3
 author: arman
 category: accessibility, design
+faqs:
+  - question: "What is Pink Design?"
+    answer: "Pink Design is Appwrite's open-source UI library and design system, used to build the Appwrite Console and available for anyone to use in their own products. It targets WCAG AA accessibility, the recommended baseline for most products."
+  - question: "What WCAG conformance level should I aim for?"
+    answer: "WCAG AA is the standard most teams target and what regulators (like the European Accessibility Act) typically expect. AAA is stricter but harder to maintain. Aim for AA across your product, then push toward AAA for high-impact flows like signup and checkout."
+  - question: "Why use REM instead of pixels for font size?"
+    answer: "Pixels are absolute and ignore the user's browser font-size preference, which users with low vision often increase. REM is relative to the root font size, so increasing the browser default scales your whole app proportionally. It is a one-line change with a meaningful accessibility impact."
+  - question: "How do I respect a user's reduce-motion preference?"
+    answer: "Check the `prefers-reduced-motion` media query in CSS or JavaScript and skip or shorten animations when it is set. Some users get vertigo or seizures from motion, so this is not optional for accessible apps. The setting is exposed by the OS, so your app inherits it automatically once you support the query."
+  - question: "Why should I avoid relying on color alone to convey information?"
+    answer: "Around 1 in 12 men have some form of red-green color blindness, and others have low contrast vision. Use icons, labels, or shape changes alongside color so the meaning still comes through. Appwrite uses red/orange/green/blue for error, warning, success, and info, but always pairs them with text or icons."
+  - question: "Is the Appwrite Console accessible?"
+    answer: "Appwrite's Console is built on Pink Design, which targets WCAG AA, including high-contrast colors, full keyboard navigation, REM-based font sizes, and reduce-motion support. The team continues to improve coverage in line with the underlying design system."
 ---
 
 When creating products, accessibility can be an afterthought. Understandably, we want to ship our products fast and deliver value to our users. We might think that accessibility is needed for edge cases and therefore not prioritize it. It's good to be reminded that the World Health Organization (WHO) estimates that 16% of the global population has some form of disability (Dec 2022).Ignoring such a significant part of your user base simply doesn't create a good user experience.Creating accessible products is everyone's responsibility. Designers, developers, content authors, and whoever else is involved in creating products should do their part and strive towards achieving a better experience for everyone.

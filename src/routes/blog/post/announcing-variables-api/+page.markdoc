@@ -9,6 +9,17 @@ author: matej-baco
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Variables API?"
+    answer: "The Variables API is a unified set of Server SDK endpoints for managing environment variables on [Functions](/docs/products/functions), [Sites](/docs/products/sites), and the project as a whole. It exposes the same five operations (create, list, get, update, delete) across all three scopes, so you can manage configuration entirely from code."
+  - question: "Which API key scopes does the Variables API need?"
+    answer: "Function variables use functions.read and functions.write, site variables use sites.read and sites.write, and project variables use project.read and project.write. Grant only the scopes you need on each API key."
+  - question: "How are project, function, and site variables resolved at runtime?"
+    answer: "Project variables load first, then function or site variables override matching keys, and Appwrite-injected variables prefixed with APPWRITE_ take final precedence. This makes it easy to set sensible defaults at the project level and override per function or site."
+  - question: "Can I use the Variables API in CI/CD pipelines?"
+    answer: "Yes. The API is a natural fit for CI/CD, infrastructure scripts, and project templates. You can provision configuration as code, rotate secrets across environments in a single script, and bootstrap new projects with a consistent baseline of variables."
+  - question: "Why mark a variable as secret?"
+    answer: "Marking a variable as secret tells Appwrite to treat it as sensitive, hiding its value in API responses and the Console after creation. Use this for API keys, tokens, and other credentials that should not be displayed to anyone after they are set."
 ---
 
 Environment variables have always been part of Appwrite. You could set them on a function, on a site, or on the project as a whole, and your code would pick them up at build and runtime. The catch was that all of this lived inside the Appwrite Console. If you wanted to provision configuration as part of a script, rotate a secret across environments, or bootstrap a new project from a template, you had to click through the UI.

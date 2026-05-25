@@ -114,7 +114,6 @@
         "typescript-eslint": "^8.48.1",
         "vaul-svelte": "1.0.0-next.7",
         "vite": "^7.2.7",
-        "vite-plugin-dynamic-import": "^1.6.0",
         "vite-plugin-image-optimizer": "^2.0.3",
         "vite-plugin-manifest-sri": "^0.2.0",
         "vitest": "^3.2.4",

@@ -10,6 +10,19 @@ callToAction: true
 unlisted: true
 category: startup
 call_to_action: true
+faqs:
+  - question: "What is MCP in plain terms?"
+    answer: "MCP (Model Context Protocol) is an open standard for connecting AI assistants to real world tools and data sources, like databases, file systems, or APIs. Instead of building a custom integration for every tool, you implement MCP once and any compatible AI client can use it. Anthropic released MCP as an open standard in November 2024."
+  - question: "Are MCP startup ideas viable in 2026?"
+    answer: "Yes, MCP adoption is growing fast across AI tools, and many useful agent based products require access to external systems. Anything that requires an AI to act on live business data (incident response, founder assistants, dev onboarding) is a strong candidate. Smaller teams can ship MCP based products quickly because the protocol handles the wiring."
+  - question: "Does Appwrite have an MCP server?"
+    answer: "Yes, Appwrite provides an official MCP server that lets AI agents interact with your Appwrite projects. You can connect tools like Claude Desktop or Cursor and have them query databases, create resources, or run actions in your project. See the [Appwrite MCP docs](/docs/tooling/mcp) for setup instructions."
+  - question: "Do I need to be an AI expert to build an MCP product?"
+    answer: "No, you mostly need product sense and competence with APIs and backend services. The AI client (Claude, Cursor, etc.) handles the model side, while your MCP server exposes the actions and data. Most of the engineering work looks like building a typical API server, not training models."
+  - question: "What backend should I use for an MCP based startup?"
+    answer: "You need somewhere to store data, run logic, and handle auth. [Appwrite](/docs/products/databases) gives you databases, auth, storage, and functions in one platform, so you can ship faster instead of stitching services together. The [Appwrite Startups Program](https://appwrite.io/startups) offers cloud credits and support for early stage teams building on the platform."
+  - question: "What kinds of MCP startups have the highest chance of success?"
+    answer: "Vertical applications that bring AI into a specific workflow tend to do well, like incident tracing, dev onboarding, or AI changelogs that log every agent action. Generic agents face stiff competition from big platforms, so a sharp niche and access to proprietary data sources are good differentiators. Pick a workflow where the cost of the current manual process is high and visible."
 ---
 
 This has to be the best time in history to start a business. With so many advancements in AI tools and agents, it has never been this easy to build and scale your startup. The next breed of billion-dollar companies will be tiny teams backed by AI agents and workflows.

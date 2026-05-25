@@ -55,6 +55,12 @@ Personal data includes the user's name, email, and phone number.
 
 Disallowing personal data can be enabled in the Auth service's **Security** tab on the Appwrite Console.
 
+# Email policies {% #email-policies %}
+
+Email policies let you restrict which email addresses can sign up for your project. You can independently block free email providers, aliased addresses, and disposable email services to keep throwaway accounts, signup spam, and bot registrations out of your user base. Policies run at sign-up and on email updates, and existing users can still sign in even if their address would not pass the current policy.
+
+Email policies can be enabled in the Auth service's **Security** tab on the Appwrite Console, or programmatically through the Project service. Learn more in the [Email policies](/docs/products/auth/email-policies) docs.
+
 # Session alerts {% #session-alerts %}
 
 Enable email alerts for your users so that whenever a new session is created for their account, they will be alerted with details about the sign-in. This helps users quickly spot unauthorized access and take action to secure their account.

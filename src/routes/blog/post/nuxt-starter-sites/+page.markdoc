@@ -9,6 +9,19 @@ author: aditya-oberai
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Nuxt starter template for Appwrite Sites?"
+    answer: "The Nuxt starter template is a pre-configured Nuxt project that already includes the Appwrite SDK and deployment settings for [Appwrite Sites](/docs/products/sites). It gives you a working SSR Nuxt app in a few clicks, so you can focus on your features instead of wiring up boilerplate."
+  - question: "Does Appwrite Sites support SSR for Nuxt?"
+    answer: "Yes. Appwrite Sites supports both static and SSR rendering for Nuxt apps. The starter template is configured for SSR by default, but you can switch to static if your app does not need server rendering."
+  - question: "Can I deploy the Nuxt starter without using the console?"
+    answer: "Yes. You can deploy with the Appwrite CLI using `appwrite init sites` and `appwrite push sites`. The CLI is the option to use if you prefer scripted workflows or want to integrate deploys into CI/CD."
+  - question: "Do I need to connect a GitHub repository to deploy?"
+    answer: "No, connecting a Git repository is optional. You can skip it during template setup and deploy manually, or connect a repo later to get automatic deployments on every push to your production branch."
+  - question: "Can I self-host Appwrite to use Sites?"
+    answer: "Yes. Appwrite Sites is available on Appwrite Cloud and on self-hosted Appwrite 1.7 and above. Both routes give you the same template catalog and deployment workflows."
+  - question: "What other starter templates does Appwrite Sites offer?"
+    answer: "Appwrite Sites includes starter templates for Next.js, React, Vue, Nuxt, Angular, SvelteKit, and Flutter. You can browse the full list from the Create site flow inside your Appwrite project."
 ---
 
 Building web applications requires both front-end expertise and back-end infrastructure. [Appwrite Sites](/products/sites) simplifies this process by providing a platform for deploying, hosting, and scaling web applications.
