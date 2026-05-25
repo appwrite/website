@@ -101,6 +101,11 @@
                     href: `${prefix}/avatars`
                 },
                 {
+                    label: 'Presences',
+                    icon: 'icon-status-online',
+                    href: `${prefix}/presences`
+                },
+                {
                     label: 'Project',
                     icon: 'icon-cube',
                     href: `${prefix}/project`
