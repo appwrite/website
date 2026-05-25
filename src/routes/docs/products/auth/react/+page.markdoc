@@ -78,7 +78,7 @@ The library exports one combined hook and four focused mutation hooks. All hooks
 ```tsx
 import { useAuth } from "@appwrite.io/react";
 
-const { user, isLoading, error, signIn, signUp, signOut } = useAuth();
+const { user, isLoading, error, refresh, signIn, signUp, signOut } = useAuth();
 ```
 
 Returns:
@@ -88,6 +88,7 @@ Returns:
 | `user` | `Models.User \| null \| undefined` | The current user, or `null` if signed out. `undefined` while loading. |
 | `isLoading` | `boolean` | True while the initial user fetch is in flight. |
 | `error` | `Error \| null` | First error from the user query or any mutation. |
+| `refresh` | `() => Promise<User \| null>` | Refetch the current user and return the resolved value. |
 | `signIn` | `ReturnType<typeof useSignIn>` | Sign-in mutation handle. |
 | `signUp` | `ReturnType<typeof useSignUp>` | Sign-up mutation handle. |
 | `signOut` | `ReturnType<typeof useSignOut>` | Sign-out mutation handle. |
@@ -97,7 +98,7 @@ Returns:
 ```tsx
 import { useUser } from "@appwrite.io/react";
 
-const { user, isLoading, error } = useUser();
+const { user, isLoading, error, refresh } = useUser();
 ```
 
 Returns:
@@ -107,6 +108,7 @@ Returns:
 | `user` | `Models.User \| null \| undefined` | The current user, or `null` if signed out. `undefined` while loading. |
 | `isLoading` | `boolean` | True while the user is being fetched. |
 | `error` | `Error \| null` | Error from the fetch, if one occurred. |
+| `refresh` | `() => Promise<User \| null>` | Refetch the current user and return the resolved value. |
 
 ## useSignIn {% #use-sign-in %}
 
