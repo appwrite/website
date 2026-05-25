@@ -234,7 +234,7 @@ Zeabur deploys apps from Git or templates with one click. It handles databases, 
 | Azure Static Web Apps | Static + functions   | 100 GB bandwidth      | Azure teams              |
 | AWS Amplify           | Full stack           | 15 GB served          | AWS on ramp              |
 | Surge.sh              | Static               | Unlimited publishes   | Quick demos              |
-| Glitch                | Node hosting         | 1000 runtime hours    | Prototypes               |
+| Glitch                | Node hosting         | Check pricing page    | Prototypes               |
 | Val Town              | Serverless functions | Unlimited public vals | Automations              |
 | Oracle Cloud          | VMs                  | 24 GB RAM ARM         | Self hosting             |
 | PythonAnywhere        | Python PaaS          | Free subdomain        | Python devs              |
