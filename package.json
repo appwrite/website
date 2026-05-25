@@ -32,6 +32,7 @@
         "@statsig/session-replay": "^3.33.0",
         "@statsig/statsig-node-core": "^0.19.3",
         "@statsig/web-analytics": "^3.33.0",
+        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
         "h3": "^1.15.4",
         "sharp": "^0.34.5"
     },
@@ -39,7 +40,6 @@
         "@appwrite.io/console": "^0.6.4",
         "@appwrite.io/pink": "~0.26.0",
         "@appwrite.io/pink-icons": "~0.26.0",
-        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
         "@eslint/compat": "^1.4.1",
         "@eslint/js": "^9.39.1",
         "@fingerprintjs/fingerprintjs": "^4.6.2",
