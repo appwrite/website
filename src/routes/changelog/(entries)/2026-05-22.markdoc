@@ -1,11 +1,11 @@
 ---
 layout: changelog
-title: "Track who is online with the new Presence API"
+title: "Track who is online with the new Presences API"
 date: 2026-05-22
 cover: /images/blog/announcing-presence-api/cover.avif
 ---
 
-Appwrite now ships a first-class **Presence API** for short-lived user statuses like online, away, editing, or typing. Each presence is a small record attached to a user, with a `status` string, optional `metadata`, an `expiresAt` timestamp (up to 30 days), and the same [permissions](/docs/advanced/platform/permissions) model as the rest of the platform.
+Appwrite now ships a first-class **Presences API** for short-lived user statuses like online, away, editing, or typing. Each presence is a small record attached to a user, with a `status` string, optional `metadata`, an `expiresAt` timestamp (up to 30 days), and the same [permissions](/docs/advanced/platform/permissions) model as the rest of the platform.
 
 Presences broadcast every change over dedicated Realtime channels (`presences` and `presences.<ID>`) as `upsert`, `update`, and `delete` events, so an "online now" list, a typing indicator, or a "viewing this page" cue is a single `Channel.presences()` subscription away. Stale records emit `delete` events automatically when they expire, no cleanup job required.
 

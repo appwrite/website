@@ -63,8 +63,8 @@
                     href: '/docs/products/auth/identities'
                 },
                 {
-                    label: 'Presence',
-                    href: '/docs/products/auth/presence',
+                    label: 'Presences',
+                    href: '/docs/products/auth/presences',
                     new: isNewUntil('31 Aug 2026')
                 }
             ]

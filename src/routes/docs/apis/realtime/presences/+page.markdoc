@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Presence
-description: Use the Appwrite Presence API to track which users are currently active, broadcast their status, and subscribe to live presence updates over Realtime.
+title: Presences
+description: Use the Appwrite Presences API to track which users are currently active, broadcast their status, and subscribe to live presence updates over Realtime.
 ---
 
-The Appwrite **Presence API** tracks which users are currently active in your app and lets every connected client see those statuses in realtime. You can use it to render online indicators next to teammates, show who is viewing a document, broadcast a "typing" status in a chat, or surface "looking at the same page" cues during collaboration.
+The Appwrite **Presences API** tracks which users are currently active in your app and lets every connected client see those statuses in realtime. You can use it to render online indicators next to teammates, show who is viewing a document, broadcast a "typing" status in a chat, or surface "looking at the same page" cues during collaboration.
 
 A presence is a short-lived record tied to a user. Each record carries a `userId`, a `status` string (for example `online`, `away`, `editing`), an optional `metadata` JSON object for richer context (a cursor position, the document the user is viewing, the device they are on), and an `expiresAt` timestamp that controls when the record is automatically cleaned up.
 
@@ -1873,7 +1873,7 @@ If you do not pass a `permissions` array when upserting a presence, Appwrite def
 
 # Use cases {% #use-cases %}
 
-The Presence API is a good fit any time you need to render "who is here right now" rather than "what has been written to storage":
+The Presences API is a good fit any time you need to render "who is here right now" rather than "what has been written to storage":
 
 - **Online indicators** in a directory or contacts list
 - **Collaboration cursors** that show which document or section each teammate is viewing
@@ -1888,4 +1888,4 @@ For longer-lived state, like a user's profile or settings, use [account preferen
 - [Realtime overview](/docs/apis/realtime)
 - [Realtime channels reference](/docs/apis/realtime/channels)
 - [Realtime payload structure](/docs/apis/realtime/payload)
-- [Authentication: Presence](/docs/products/auth/presence)
+- [Authentication: Presences](/docs/products/auth/presences)

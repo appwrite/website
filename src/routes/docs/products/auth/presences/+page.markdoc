@@ -1,10 +1,10 @@
 ---
 layout: article
-title: Presence
-description: Track which signed-in users are active right now and broadcast their status in realtime with the Appwrite Presence API.
+title: Presences
+description: Track which signed-in users are active right now and broadcast their status in realtime with the Appwrite Presences API.
 ---
 
-Authentication tells you **who a user is**. Presence tells you **whether they are around right now**. The Appwrite **Presence API** records a live status for each signed-in user and broadcasts every change over [Realtime](/docs/apis/realtime), so your app can render online indicators, "viewing this page" cues, typing signals, and collaboration banners without writing any socket plumbing.
+Authentication tells you **who a user is**. Presences tell you **whether they are around right now**. The Appwrite **Presences API** records a live status for each signed-in user and broadcasts every change over [Realtime](/docs/apis/realtime), so your app can render online indicators, "viewing this page" cues, typing signals, and collaboration banners without writing any socket plumbing.
 
 A presence is a short-lived record attached to a user. It carries a `userId`, a `status` string, an optional `metadata` JSON object for richer context, and an `expiresAt` timestamp that controls automatic cleanup. Presences are written by either the user's own session or a server SDK, and read by any client with the right [permissions](/docs/advanced/platform/permissions).
 
@@ -405,6 +405,6 @@ If you do not pass a `permissions` array when upserting a presence, Appwrite def
 
 # Where to next {% #where-to-next %}
 
-- [Realtime: Presence](/docs/apis/realtime/presence). The full concept reference, including channel patterns, expiry behaviour, and server-side usage.
+- [Realtime: Presences](/docs/apis/realtime/presences). The full concept reference, including channel patterns, expiry behaviour, and server-side usage.
 - [Realtime channels](/docs/apis/realtime/channels). See how `presences` fits alongside `account`, `teams`, and `rows`.
 - [Permissions](/docs/advanced/platform/permissions). Refresher on how `Role.team()` and `Role.user()` work.

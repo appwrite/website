@@ -42,8 +42,8 @@
                     href: '/docs/apis/realtime/payload'
                 },
                 {
-                    label: 'Presence',
-                    href: '/docs/apis/realtime/presence',
+                    label: 'Presences',
+                    href: '/docs/apis/realtime/presences',
                     new: isNewUntil('31 Aug 2026')
                 }
             ]
