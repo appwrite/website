@@ -455,9 +455,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "<PRESENCE_ID>",
         "<USER_ID>",
         "online",
+        Some(vec![Permission::read(Role::users(None)).to_string()]),
         None,
         None,
-        Some(vec![Permission::read(Role::users())]),
     ).await?;
 
     println!("{:?}", presence);
