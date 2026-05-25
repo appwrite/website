@@ -25,6 +25,10 @@ Skills work across all major AI dev tools that support them. They are installed 
 
 # Install skills {% #install-skills %}
 
+{% info title="Automatic installation" %}
+When you run `appwrite init project`, the Appwrite CLI auto-detects your project configuration and installs relevant skills automatically. You can also install skills manually using the steps below.
+{% /info %}
+
 {% section #step-1 step=1 title="Run the install command" %}
 Run the following command in your project directory:
 
