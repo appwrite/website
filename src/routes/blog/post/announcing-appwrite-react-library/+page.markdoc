@@ -1,0 +1,133 @@
+---
+layout: post
+title: "Announcing the Appwrite React library"
+description: A small set of React hooks and SSR adapters that take the busywork out of wiring Appwrite Auth into Vite, Next.js, and TanStack Start apps.
+date: 2026-05-25
+cover: /images/blog/announcing-appwrite-react-library/cover.avif
+timeToRead: 5
+author: atharva
+category: announcement, authentication
+faqs:
+    - question: 'What is the Appwrite React library?'
+      answer: 'It is an official React package that wraps the Appwrite Web SDK with a `Provider` and hooks for auth state. It also ships SSR adapters for Next.js and TanStack Start so the same hooks work in server-rendered apps. See the [React library docs](/docs/products/auth/react).'
+    - question: 'Do I need this if I already use the Appwrite Web SDK?'
+      answer: 'No, the Web SDK alone still works. The library is for teams who want pre-built hooks, less boilerplate around session hydration, and a turnkey SSR auth flow. If your app is small or fully client-rendered, the Web SDK on its own is fine.'
+    - question: 'Which React versions are supported?'
+      answer: 'React 18 and React 19, on both client-rendered apps and SSR frameworks. Next.js 15+ and TanStack Start are supported out of the box.'
+    - question: 'How does SSR auth work under the hood?'
+      answer: 'You mount one handler route per framework. The handler creates sessions with a server API key and writes an HTTP-only cookie. On the server, helpers read the cookie and return the user; on the client, the same cookie hydrates the Web SDK so hooks return the user without an extra round trip.'
+    - question: 'Does the library cover more than authentication?'
+      answer: 'Not yet. The first release focuses on the auth surface (sign-up, sign-in, sign-out, OAuth, current user). Database and storage hooks are on the roadmap.'
+    - question: 'Where do I start?'
+      answer: 'Pick the framework you are using: [Vite React](/docs/quick-starts/react), [Next.js](/docs/quick-starts/nextjs), or [TanStack Start](/docs/quick-starts/tanstack-start). Each quickstart walks through install, configuration, and a working sign-up flow.'
+---
+
+Every React developer who has wired Appwrite into a project knows the drill. You install the Web SDK, write a small `appwrite.ts` file with a `Client` and an `Account`, and then build the same `useUser` hook and sign-in form you have built for every other project. For client-only apps that is fine, but the moment SSR enters the picture (`cookies()` in Next.js, server functions in TanStack Start) you also start hand-rolling session cookies, server helpers, and the `setSession` plumbing that hydrates the client from the request.
+
+Today, we are releasing the [Appwrite React library](/docs/products/auth/react), an official package that gives you that whole layer out of the box.
+
+# The provider and hooks
+
+The library exposes a single `AppwriteProvider` and five auth hooks:
+
+- `useAuth` for the combined user, sign-in, sign-up, and sign-out surface
+- `useUser` for the current authenticated user
+- `useSignIn` for email/password and OAuth sign-in
+- `useSignUp` for account creation
+- `useSignOut` for ending the current session
+
+It is built on top of the existing [Appwrite Web SDK](/docs/sdks) and uses TanStack Query underneath, so cached user state stays in sync across components automatically.
+
+What makes it different from a hand-rolled `useUser` is what happens on the server. The library ships dedicated entrypoints for Next.js App Router and TanStack Start that handle the cookie, hydration, and admin-client wiring for you, so the hooks behave the same in a Vite SPA as they do in a server-rendered page.
+
+# Client-side setup
+
+For a Vite app, setup is two imports. Wrap the tree with the provider, then call `useAuth` wherever you need it.
+
+```tsx
+// main.tsx
+import { AppwriteProvider } from "@appwrite.io/react";
+
+<AppwriteProvider
+  endpoint={import.meta.env.VITE_APPWRITE_ENDPOINT}
+  projectId={import.meta.env.VITE_APPWRITE_PROJECT_ID}
+>
+  <App />
+</AppwriteProvider>;
+```
+
+With the provider in place, every component can pull the current user, sign-in, sign-up, and sign-out methods from a single hook.
+
+```tsx
+// App.tsx
+import { useAuth } from "@appwrite.io/react";
+
+const { user, signIn, signOut } = useAuth();
+```
+
+That is the entire client setup. The library handles the service file, the initial account fetching on mount, and the auth context that you would otherwise write by hand. The full walkthrough lives in the [Vite React quickstart](/docs/quick-starts/react).
+
+# Server-side rendering
+
+For server-rendered React, the package adds three pieces:
+
+- A handler route that processes sign-in, sign-up, sign-out, and OAuth callback requests on your server.
+- Server helpers that resolve the current user, session, or session-scoped client from the request cookie.
+- An SSR mode on the provider that hydrates the client with the server-side session, so the first paint already knows the user.
+
+Concretely, in a Next.js layout, you read the cookie server-side, pass the value through the provider, and the client hooks pick it up.
+
+```tsx
+// app/layout.tsx
+const helpers = createNextServerHelpers(appwrite);
+const session = await helpers.readSessionCookie();
+
+return <Providers session={session}>{children}</Providers>;
+```
+
+The same helpers can be called inside any server component to fetch the user before the page is sent to the browser.
+
+```tsx
+// app/page.tsx
+const user = await helpers.getLoggedInUser();
+```
+
+The same flow on TanStack Start runs through `createServerFn` and `Route.useLoaderData()`. The hooks themselves do not change.
+
+# Session client
+
+For per-request operations on behalf of the signed-in user, the framework helpers expose `createSessionClient`. It returns a `node-appwrite` client already authenticated with the request cookie, so server components and loaders can act as the user without re-implementing session handling.
+
+```ts
+const helpers = createNextServerHelpers(appwrite);
+const session = await helpers.createSessionClient();
+
+if (session) {
+  const user = await session.account.get();
+}
+```
+
+# Admin client
+
+Server entrypoints also expose `createAdminClient`, which returns a `node-appwrite` client authenticated with your project API key. It is the same client you would write yourself, just with the environment wiring done for you, so the rest of your server code keeps using the official Node SDK.
+
+```ts
+const admin = createAdminClient({
+  ...appwrite,
+  apiKey: process.env.APPWRITE_API_KEY!,
+});
+
+const users = await admin.account.list();
+```
+
+# Where to start
+
+Three quickstarts ship alongside the library:
+
+- [Vite React](/docs/quick-starts/react) for client-rendered apps
+- [Next.js App Router](/docs/quick-starts/nextjs) for server-rendered React on Next.js
+- [TanStack Start](/docs/quick-starts/tanstack-start) for server-rendered React on TanStack Start
+
+Each one ends with a working sign-up, sign-in, and sign-out flow. From there, the [React library docs](/docs/products/auth/react) cover the hooks, the server helpers, OAuth, and the handler configuration in depth.
+
+We would love to hear what you build with it. Drop into the [Appwrite Discord](https://appwrite.io/discord) and tell us how the SSR story feels in your framework of choice.
