@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Best free hosting platforms you probably haven't tried in 2026"
-description: Explore 15 overlooked free hosting platforms in 2026, compare what each free tier offers, and learn when Appwrite is the better path for building, hosting, and scaling full stack apps without stitching services together.
+description: Explore 14 overlooked free hosting platforms in 2026, compare what each free tier offers, and learn when Appwrite is the better path for building, hosting, and scaling full stack apps without stitching services together.
 date: 2026-05-25
 cover: /images/blog/best-free-hosting-platforms-you-probably-havent-tried-in-2026/cover.avif
 timeToRead: 5
@@ -11,32 +11,32 @@ featured: false
 unlisted: true
 faqs:
   - question: What are the best free hosting platforms in 2026?
-    answer: Cloudflare Pages, GitHub Pages, Deno Deploy, Koyeb, Northflank, Azure Static Web Apps, AWS Amplify, Surge.sh, Glitch, Val Town, Oracle Cloud, PythonAnywhere, GitLab Pages, Sevalla, and Zeabur are strong options depending on your project type.
+    answer: Cloudflare Pages, GitHub Pages, Deno Deploy, Koyeb, Northflank, Azure Static Web Apps, AWS Amplify, Surge.sh, Val Town, Oracle Cloud, PythonAnywhere, GitLab Pages, Sevalla, and Zeabur are strong options depending on your project type.
   - question: Which free hosting platform is best for static websites?
     answer: GitHub Pages, GitLab Pages, Surge.sh, and Cloudflare Pages are best for static sites, docs, portfolios, and quick landing pages.
   - question: Can I host a backend for free?
-    answer: Yes. Deno Deploy and Val Town work well for lightweight functions, while Koyeb, Northflank, and Zeabur are better for backend apps that need containers or long running services.
-  - question: What is the best free hosting platform for full stack apps?
-    answer: Koyeb, Northflank, Zeabur, AWS Amplify, and Azure Static Web Apps are better suited for full stack apps because they support backend logic, services, or cloud integrations.
+    answer: Yes. Deno Deploy and Val Town work well for lightweight functions, while Koyeb, Northflank, and Zeabur are better for backend apps that need containers or long-running services.
+  - question: What is the best free hosting platform for full-stack apps?
+    answer: Koyeb, Northflank, Zeabur, AWS Amplify, and Azure Static Web Apps are better suited for full-stack apps because they support backend logic, services, or cloud integrations.
 ---
-Free hosting has changed a lot since the early days of shared servers and FTP uploads. Today, developers expect a free tier to come with global delivery, push to deploy workflows, HTTPS by default, and enough headroom to ship something real before the upgrade prompt appears.
+Free hosting has changed a lot since the early days of shared servers and FTP uploads. Today, developers expect a free tier to come with global delivery, push-to-deploy workflows, HTTPS by default, and enough headroom to ship something real before the upgrade prompt appears.
 
 The platforms that dominate the conversation, like Vercel, Netlify, Firebase, Render, and Railway, do all of this well. We've compared them in detail in our guide to the [best free hosting platforms in 2026](https://appwrite.io/blog/post/free-hosting-platform). But they are not the only options, and in many cases they are not the right ones either.
 
-A long list of free hosting platforms quietly serves a large share of the indie web. Some have been running for over a decade. Some launched in the last two years and are already winning over developers who are tired of free tiers that disappear the moment a project gains traction. Most of them never make it into the average roundup, which is exactly why they deserve a closer look.
+A long list of free hosting platforms quietly serves different corners of the indie web. Some have been running for over a decade. Some launched more recently and are already winning over developers who are tired of free tiers that disappear the moment a project gains traction. Most of them do not get the same attention as the mainstream picks, which is exactly why they deserve a closer look.
 
-In this guide, we'll walk through 15 free hosting platforms that most developers haven't tried yet. We'll cover what each one is built for, what the free tier actually includes, and where it falls short. By the end, you'll have a clearer picture of which platform fits your next project, whether that's a static site, an edge function, a container workload, or a self hosted setup.
+In this guide, we'll walk through 14 free hosting platforms beyond the usual Vercel and Netlify recommendations. We'll cover what each one is built for, what the free tier actually includes, and where it falls short. By the end, you'll have a clearer picture of which platform fits your next project, whether that's a static site, an edge function, a container workload, or a self-hosted setup.
 
 A quick note before we start. Free tiers shift constantly. Limits get tightened. "Always free" plans get quietly renamed to "hobby." Everything below was accurate at the time of writing, but if you're reading this months from now, check the current pricing before committing.
 
 # Why look past the mainstream free hosting platforms
 
-The big three of Vercel, Netlify, and Cloudflare cover the common case well. If you're deploying a Next.js app or a static Jamstack site, they're hard to beat.
+The most common picks, like Vercel, Netlify, Firebase, Render, Railway, and Cloudflare Pages, cover many use cases well. If you're deploying a Next.js app or a static Jamstack site, they're hard to beat.
 
 But "common case" is the operative phrase. The platforms below earn a look when:
 
 * You want edge compute on the same network as your static site without juggling providers.
-* Your app needs a real backend process, not a 10 second serverless function.
+* Your app needs a real backend process, not a 10-second serverless function.
 * You're tired of free tiers that ghost you the moment traffic spikes.
 * You want infrastructure freedom without the AWS console nightmare.
 
@@ -46,13 +46,13 @@ If any of those sounds like your last side project, keep reading.
 
 Cloudflare's answer to Vercel, running on the same edge network that already serves a chunk of the internet.
 
-Pages handles static sites with Git push deploys. Pair it with Cloudflare Workers and you get serverless functions, KV storage, D1 SQL, and R2 object storage on the same free plan. It's the closest any platform has come to "the whole stack" on a free tier.
+Pages handles static sites with Git push deploys. Pair it with Cloudflare Workers and you get serverless functions, KV storage, D1 SQL, and R2 object storage on the same platform. It is one of the closest free-tier setups to a full edge stack, especially when paired with Workers, KV, D1, and R2.
 
 **Free tier:** 500 builds per month. Unlimited bandwidth. Unlimited requests on Pages itself.
 
-**Best for:** Edge first apps. Static sites that need light backend logic. Anyone looking for more predictable bandwidth and edge hosting limits.
+**Best for:** Edge-first apps. Static sites that need light backend logic. Anyone looking for more predictable bandwidth and edge hosting limits.
 
-**Watch out for:** Workers have a 10 ms CPU limit on the free plan. Long running compute gets throttled or rejected. If your handler does anything heavy, you'll feel it.
+**Watch out for:** Workers have CPU and request limits on the free plan. Long-running compute does not fit well. If your handler does anything heavy, you'll feel it.
 
 # 2. GitHub Pages
 
@@ -62,21 +62,21 @@ GitHub Pages hosts static sites straight from a branch. Push your code, your sit
 
 **Free tier:** 1 GB storage, 100 GB bandwidth per month, soft limit of 10 builds per hour.
 
-**Best for:** Documentation sites, portfolios, project landing pages, open source READMEs that grew into proper sites.
+**Best for:** Documentation sites, portfolios, project landing pages, open-source READMEs that grew into proper sites.
 
-**Watch out for:** No server side anything. If your project needs an API or auth, you're pairing this with another service.
+**Watch out for:** No server-side anything. If your project needs an API or auth, you're pairing this with another service.
 
 # 3. Deno Deploy
 
 The deployment platform built by the team behind Deno, optimized for TypeScript and edge functions.
 
-Code runs in V8 isolates at the edge across 35 plus regions. Cold starts are measured in milliseconds. Standard web APIs work out of the box, which means you write fetch handlers instead of cloud specific function signatures.
+Code runs in V8 isolates at the edge across 35 plus regions. Cold starts are measured in milliseconds. Standard web APIs work out of the box, which means you write fetch handlers instead of cloud-specific function signatures.
 
 **Free tier:** 1 million requests per month, 100 GB egress, and 15 CPU hours.
 
-**Best for:** TypeScript heavy APIs, lightweight web services, anyone who wants to avoid Node and its node\_modules folder.
+**Best for:** TypeScript-heavy APIs, lightweight web services, anyone who wants to avoid Node and its node_modules folder.
 
-**Watch out for:** No traditional file system. No long lived connections. It's serverless, properly, which means certain patterns just don't fit.
+**Watch out for:** No traditional file system. No long-lived connections. It's serverless, properly, which means certain patterns just don't fit.
 
 # 4. Koyeb
 
@@ -86,7 +86,7 @@ Koyeb handles deploys from Git or container registries. It autoscales globally, 
 
 **Free tier:** One free web service with 512 MB RAM, 0.1 vCPU, 2 GB SSD, plus one free PostgreSQL database with limited active time and storage.
 
-**Best for:** Small full stack apps that need a real backend. Side projects you want to share without setting up Docker on a VPS.
+**Best for:** Small full-stack apps that need a real backend. Side projects you want to share without setting up Docker on a VPS.
 
 **Watch out for:** Cold starts when your app wakes from sleep. Fine for demos, less fine for anything with users expecting instant response.
 
@@ -116,13 +116,13 @@ Static Web Apps gives you static hosting plus serverless functions in one deploy
 
 # 7. AWS Amplify
 
-Amazon's full stack platform, and one of the more usable on ramps into AWS for devs who don't want to learn CloudFormation first.
+Amazon's full-stack platform, and one of the more usable on-ramps into AWS for devs who don't want to learn CloudFormation first.
 
 Amplify Hosting handles static and SSR deployments with a global CDN. Pair it with Amplify Studio and you get auth, GraphQL, storage, and analytics in one toolkit.
 
 **Free tier:** 1000 build minutes, 15 GB served per month, 5 GB stored. AWS free tier limits apply to attached services.
 
-**Best for:** Devs who know they'll end up on AWS eventually and want the on ramp.
+**Best for:** Devs who know they'll end up on AWS eventually and want the on-ramp.
 
 **Watch out for:** "Free" turns into "billed" the moment you cross any limit. AWS does not warn you gently. Set billing alerts on day one.
 
@@ -130,7 +130,7 @@ Amplify Hosting handles static and SSR deployments with a global CDN. Pair it wi
 
 A free static hosting service that's been around since 2015 and quietly never died.
 
-Surge does one thing. You type `surge` in your terminal and your site is live. No config. No dashboard. No build pipeline. Custom domains and SSL are included on the free plan.
+Surge does one thing. You type `surge` in your terminal and your site is live. No config. No dashboard. No build pipeline. Custom domains are included, and basic SSL is available, though custom SSL for custom domains requires a paid plan.
 
 **Free tier:** Unlimited publishing, unlimited custom domains, basic SSL.
 
@@ -138,47 +138,35 @@ Surge does one thing. You type `surge` in your terminal and your site is live. N
 
 **Watch out for:** No build step. You push the compiled output, not the source. If you need a build pipeline, this isn't it.
 
-# 9. Glitch
-
-The browser based coding platform that still runs your project after you close the tab.
-
-Glitch is part editor, part hosting, part collaboration tool. You write Node apps in the browser and they're live the moment you save. The community remix culture makes it a great place for tutorials and demos.
-
-**Free tier:** Free projects are available, but runtime and sleep limits can change. Check the current Glitch pricing page before using it for anything long running.
-
-**Best for:** Teaching, prototyping, sharing working code with non technical collaborators.
-
-**Watch out for:** The sleep behavior. Glitch is not for production. It's for showing your work.
-
-# 10. Val Town
+# 9. Val Town
 
 A platform for writing and running short serverless functions, entirely in the browser.
 
 Vals are JavaScript functions you can write, save, and call as APIs. Cron jobs work. HTTP endpoints work. Webhooks work. It's the closest thing to a personal serverless playground.
 
-**Free tier:** Unlimited public vals, a smaller allotment of private vals, daily compute allowance.
+**Free tier:** Unlimited public vals, 100,000 runs per day, 3 days log retention, and 15-minute cron intervals.
 
 **Best for:** Quick automations. API endpoints you need in five minutes. The "I just want to glue these two services together" kind of project.
 
 **Watch out for:** Not a place to host a real app. Treat it like a smarter cron service.
 
-# 11. Oracle Cloud Always Free
+# 10. Oracle Cloud Always Free
 
-The most generous always free tier from a major cloud provider, and one of the least talked about.
+The most generous always-free tier from a major cloud provider, and one of the least talked about.
 
-Oracle gives you two ARM compute instances with up to 24 GB RAM total, 200 GB block storage, a load balancer, and a managed database. Always free means always free, not "free for 12 months then we bill you."
+Oracle gives you Arm-based Ampere A1 compute with up to 24 GB memory total, usable as one VM or split across multiple VMs, plus 200 GB block volume storage and Always Free database options. Always Free means always free, not "free for 12 months then we bill you."
 
-**Free tier:** See above. The ARM allocation alone is more than most paid VPS plans.
+**Free tier:** See above. The Arm allocation alone is more than most paid VPS plans.
 
-**Best for:** Self hosted projects. Personal infrastructure. Apps you want to control end to end.
+**Best for:** Self-hosted projects. Personal infrastructure. Apps you want to control end to end.
 
 **Watch out for:** You're managing a VM. There's no platform layer. You install your own runtime, your own SSL, your own everything. Onboarding has been known to be its own adventure.
 
-# 12. PythonAnywhere
+# 11. PythonAnywhere
 
-A Python specific hosting platform that's been running long enough to remember Python 2.
+A Python-specific hosting platform that's been running long enough to remember Python 2.
 
-PythonAnywhere gives you a hosted Python environment with web apps, scheduled tasks, and a browser based shell. It's the easiest way to put a Django or Flask app online if you've never touched a server.
+PythonAnywhere gives you a hosted Python environment with web apps, scheduled tasks, and a browser-based shell. It's the easiest way to put a Django or Flask app online if you've never touched a server.
 
 **Free tier:** One web app at yourname.pythonanywhere.com, limited storage, daily CPU allowance.
 
@@ -186,7 +174,7 @@ PythonAnywhere gives you a hosted Python environment with web apps, scheduled ta
 
 **Watch out for:** No custom domain on the free tier. You're stuck with the subdomain until you upgrade.
 
-# 13. GitLab Pages
+# 12. GitLab Pages
 
 GitHub Pages but with more flexibility, less hype, and the same price.
 
@@ -198,25 +186,25 @@ GitLab Pages serves static sites from any GitLab repo. The big difference is bui
 
 **Watch out for:** Smaller community. Fewer tutorials. You'll be debugging from the docs more than from Stack Overflow.
 
-# 14. Sevalla
+# 13. Sevalla
 
-Application hosting from the team behind Kinsta, aimed at full stack apps.
+Application hosting from the team behind Kinsta, aimed at full-stack apps.
 
-Sevalla supports static sites, applications, and managed databases. Sevalla offers application hosting for small projects, but check its current pricing page for the latest free or trial availability. The pitch is the same managed reliability Kinsta built its reputation on, applied to dynamic apps.
+Sevalla supports static sites, applications, and managed databases. The pitch is the same managed reliability Kinsta built its reputation on, applied to dynamic apps. Because free and trial availability can change, check Sevalla's current pricing page before choosing it for a long-running project.
 
-**Free tier:** Limited compute and bandwidth, suitable for hobby projects and demos.
+**Free tier:** Check Sevalla's current pricing page for the latest free, trial, or hobby-tier availability.
 
-**Best for:** Devs who liked Heroku before it died and want the same feel with modern pricing.
+**Best for:** Devs who liked Heroku before it died and want the same managed feel with modern pricing.
 
 **Watch out for:** Newer platform. Less feature surface than the older container PaaS options today.
 
-# 15. Zeabur
+# 14. Zeabur
 
-A modern PaaS in the same category as Railway, with a free tier that's actually usable.
+A modern PaaS in the same category as Railway, with a free plan for trying small projects before moving to a paid tier.
 
 Zeabur deploys apps from Git or templates with one click. It handles databases, custom domains, environment variables, and team collaboration. The UI is clean and the templates cover most common stacks.
 
-**Free tier:** Developer plan with limited compute, suitable for hobby projects.
+**Free tier:** Free Plan with limited project capacity. The Dev Plan is paid after a free trial.
 
 **Best for:** Anyone who wants Railway's UX without Railway's pricing model.
 
@@ -226,21 +214,20 @@ Zeabur deploys apps from Git or templates with one click. It handles databases, 
 
 | Platform              | Type                 | Free tier highlight   | Best for                 |
 | --------------------- | -------------------- | --------------------- | ------------------------ |
-| Cloudflare Pages      | Static + edge        | Unlimited bandwidth   | Edge first apps          |
+| Cloudflare Pages      | Static + edge        | Unlimited bandwidth   | Edge-first apps          |
 | GitHub Pages          | Static               | 100 GB bandwidth      | Docs and portfolios      |
 | Deno Deploy           | Edge functions       | 1M requests/month     | TypeScript APIs          |
-| Koyeb                 | Container PaaS       | One free service      | Full stack side projects |
-| Northflank            | Container PaaS       | Hobby tier            | Microservices            |
+| Koyeb                 | Container PaaS       | One free service      | Full-stack side projects |
+| Northflank            | Container PaaS       | Sandbox plan          | Microservices            |
 | Azure Static Web Apps | Static + functions   | 100 GB bandwidth      | Azure teams              |
-| AWS Amplify           | Full stack           | 15 GB served          | AWS on ramp              |
+| AWS Amplify           | Full-stack           | 15 GB served          | AWS on-ramp              |
 | Surge.sh              | Static               | Unlimited publishes   | Quick demos              |
-| Glitch                | Node hosting         | Check pricing page    | Prototypes               |
 | Val Town              | Serverless functions | Unlimited public vals | Automations              |
-| Oracle Cloud          | VMs                  | 24 GB RAM ARM         | Self hosting             |
+| Oracle Cloud          | VMs                  | 24 GB RAM Arm         | Self-hosting             |
 | PythonAnywhere        | Python PaaS          | Free subdomain        | Python devs              |
 | GitLab Pages          | Static               | 400 CI minutes        | GitLab users             |
-| Sevalla               | App hosting          | Hobby tier            | Managed apps             |
-| Zeabur                | Container PaaS       | Developer plan        | Railway alternative      |
+| Sevalla               | App hosting          | Check current pricing | Managed apps             |
+| Zeabur                | Container PaaS       | Free Plan             | Railway alternative      |
 
 # How to pick one for your next project
 
@@ -248,13 +235,13 @@ Pick by what your project actually needs, not by what's trending on dev Twitter 
 
 If you're shipping a static site with no backend, GitHub Pages, GitLab Pages, or Surge will have you live in minutes. Cloudflare Pages is the upgrade path when you need edge compute later.
 
-If you need serverless functions without a heavy framework, Deno Deploy and Val Town are the lightest options. Azure Static Web Apps if you want functions tied to a static frontend.
+If you need serverless functions without a heavy framework, Deno Deploy and Val Town are the lightest options. Azure Static Web Apps is a strong fit if you want functions tied to a static frontend.
 
 If you need a real backend process that runs continuously, look at Koyeb, Northflank, or Zeabur. Sevalla is in the same category if you want a managed feel.
 
-If you want full infrastructure control, Oracle Cloud Always Free is the only major provider giving you proper VMs at zero cost. You're trading convenience for control.
+If you want full infrastructure control, Oracle Cloud Always Free is one of the strongest free options from a major provider for proper VMs. You're trading convenience for control.
 
-If you're building a Python app, PythonAnywhere stays the lowest friction option even in 2026.
+If you're building a Python app, PythonAnywhere stays one of the lowest-friction options in 2026.
 
 # When to move beyond free hosting
 
@@ -265,11 +252,11 @@ Free tiers are starting lines, not finish lines. You'll outgrow them when:
 * You need a real database, not a sleeping one.
 * You want SLAs, support, and someone to email when things break.
 
-Most of the platforms above have paid tiers that scale from there. A few don't, and that's where moving to a full stack platform makes sense.
+Most of the platforms above have paid tiers that scale from there. A few don't, and that's where moving to a full-stack platform makes sense.
 
 # Conclusion
 
-The mainstream free hosting platforms get all the airtime, but the ones above are where a large share of working developers actually ship. Some are old, some are new, all of them earn the storage they take up in your bookmarks bar.
+The mainstream free hosting platforms get most of the airtime, but the options above are still worth knowing. Some are old, some are new, and each one gives developers a different way to get projects online without starting on a paid plan.
 
 A pattern shows up if you stitch the picks together. Most of them solve one slice of the stack. Static hosting on one. Edge compute on another. A container runner. A Python sandbox. You end up combining three or four free tiers to ship one real product, and that works until it doesn't. The day one provider sunsets a free plan, raises pricing, or hits a hard limit, the whole setup wobbles.
 
@@ -279,9 +266,9 @@ Appwrite is the backend platform developers choose when stitching free tiers tog
 
 One platform covers what most projects need end to end. [Appwrite Sites](https://appwrite.io/products/sites) handles frontend deployment with Git push deploys, custom domains, automatic SSL, and a global CDN. The same project gives you authentication, databases, storage, serverless functions, messaging, and realtime, with SDKs that feel native in whatever framework you already use.
 
-Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self hosted instance in minutes, and have a real full stack project running before the coffee gets cold.
+Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and have a real full-stack project running before the coffee gets cold.
 
-## Resources
+# Resources
 
 * [Appwrite documentation](https://appwrite.io/docs)
 * [Appwrite Sites quick start](https://appwrite.io/docs/products/sites)
