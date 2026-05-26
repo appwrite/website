@@ -17,14 +17,23 @@ faqs:
   - question: "What does Dart 3.12 bring to Appwrite Functions?"
     answer: "Dart 3.12 stabilises macros for static metaprogramming, adds `pub workspaces` for cleaner monorepos, and continues the language ergonomics work from Dart 3 (records, patterns, switch expressions, sound null safety). For Functions, that means less boilerplate around request and response models and easier sharing of code with your Flutter app."
   - question: "Why pick Flutter 3.44 as a build runtime for Sites?"
-    answer: "Flutter 3.44 makes WebAssembly the recommended build for production Flutter Web, with a more mature Skwasm renderer, smaller bundles, and better web semantics for accessibility and SEO. Combined with the Appwrite global CDN, your Flutter Web site loads faster and feels closer to a native app in the browser."
+    answer: "Flutter 3.44 makes WebAssembly the recommended build for production Flutter Web, with a more mature Skwasm renderer, smaller bundles, and better web semantics for accessibility and SEO. Combined with the Appwrite Network, your Flutter Web site loads faster and feels closer to a native app in the browser."
   - question: "How do I change the runtime for an existing Function or Site?"
     answer: "For Functions, open the function in the Appwrite Console and pick **Dart 3.12** in the runtime dropdown. For Sites, open the site, go to **Site settings**, then **Runtime settings**, and pick **Flutter 3.44**. The change takes effect on the next deployment; your currently active deployment continues to serve traffic until you redeploy."
   - question: "Can I share code between my Flutter app and my Appwrite Function?"
     answer: "Yes. Because both run Dart, you can keep models, validation, and shared logic in one package and consume it from both your Flutter client and your Appwrite Function. Dart 3.12's `pub workspaces` make this especially clean when everything lives in one repository."
+  - question: "Where do I host my Dart backend?"
+    answer: "Deploy it as an [Appwrite Function](/docs/products/functions) with the Dart 3.12 runtime. You get AOT-compiled cold starts in the millisecond range, autoscaling, and direct access to Appwrite's databases, auth, storage, and messaging from the same project."
+  - question: "Where do I deploy my Flutter Web app?"
+    answer: "Deploy it on [Appwrite Sites](/docs/products/sites) with the Flutter 3.44 build runtime. Appwrite runs `flutter pub get` and `flutter build web --release` on every deployment and serves the output through the Appwrite Network."
 ---
 
-Today, we are happy to announce two new runtimes for Dart developers on Appwrite: **Dart 3.12 as a Functions runtime** and **Flutter 3.44 as a build runtime for Appwrite Sites**. Together, they let you write your mobile app, your web app, and your backend in the same language, ship them from the same repository, and run them on the same platform.
+Today, we are happy to announce two new runtimes for Dart developers on Appwrite:
+
+- **Dart 3.12** as a Functions runtime.
+- **Flutter 3.44** as a build runtime for Appwrite Sites.
+
+Together, they let you write your mobile app, your web app, and your backend in the same language, ship them from the same repository, and run them on the same platform.
 
 # Dart 3.12 for Appwrite Functions
 
@@ -41,7 +50,7 @@ Dart 3.12 is selectable in the runtime dropdown when you create or update a Func
 Appwrite Sites already supports Flutter Web as a first-class framework. Flutter 3.44 raises the ceiling for what a Flutter Web deployment can deliver on Sites.
 
 - **WebAssembly is the default.** Flutter Web compiled to Wasm produces faster, smoother UIs than the legacy JS output, especially on animation-heavy screens. With Flutter 3.44, the Wasm pipeline is mature enough to be the recommended build for production sites.
-- **Smaller, faster initial loads.** Tree shaking, font subsetting, and improvements in the Skwasm renderer cut down what the browser has to download before the first frame paints. On a Sites deployment served through the Appwrite CDN, which compounds: smaller artifacts and globally cached delivery.
+- **Smaller, faster initial loads.** Tree shaking, font subsetting, and improvements in the Skwasm renderer cut down what the browser has to download before the first frame paints. On a Sites deployment served through the Appwrite Network, which compounds: smaller artifacts and globally cached delivery.
 - **Better web semantics and accessibility.** The web semantics tree is more accurate and more performant in 3.44. Screen readers, keyboard navigation, and search engines see your Flutter app more like a real HTML document.
 - **Hot reload, even on the web.** Iteration on the web build feels closer to mobile development now, which makes Flutter Web a more pleasant target to actually maintain, not just deploy.
 
