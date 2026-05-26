@@ -9,15 +9,27 @@ author: damodar-lohani
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What changed for Dart and Flutter on Appwrite?"
+    answer: "[Appwrite Functions](/docs/products/functions) now offers Dart 3.12 in the runtime dropdown, and [Appwrite Sites](/docs/products/sites) now offers Flutter 3.44 as a build runtime for Flutter Web projects. Both are available on Appwrite Cloud today."
+  - question: "Do I need to change my code to move to Dart 3.12 or Flutter 3.44?"
+    answer: "No. The runtime selector only changes which Dart or Flutter version Appwrite uses to build and run your project. Your `pubspec.yaml`, dependencies, and source code stay the same. Pick the new version, redeploy, and the next build uses it."
+  - question: "What does Dart 3.12 bring to Appwrite Functions?"
+    answer: "Dart 3.12 stabilises macros for static metaprogramming, adds `pub workspaces` for cleaner monorepos, and continues the language ergonomics work from Dart 3 (records, patterns, switch expressions, sound null safety). For Functions, that means less boilerplate around request and response models and easier sharing of code with your Flutter app."
+  - question: "Why pick Flutter 3.44 as a build runtime for Sites?"
+    answer: "Flutter 3.44 makes WebAssembly the recommended build for production Flutter Web, with a more mature Skwasm renderer, smaller bundles, and better web semantics for accessibility and SEO. Combined with the Appwrite global CDN, your Flutter Web site loads faster and feels closer to a native app in the browser."
+  - question: "How do I change the runtime for an existing Function or Site?"
+    answer: "For Functions, open the function in the Appwrite Console and pick **Dart 3.12** in the runtime dropdown. For Sites, open the site, go to **Site settings**, then **Runtime settings**, and pick **Flutter 3.44**. The change takes effect on the next deployment; your currently active deployment continues to serve traffic until you redeploy."
+  - question: "Can I share code between my Flutter app and my Appwrite Function?"
+    answer: "Yes. Because both run Dart, you can keep models, validation, and shared logic in one package and consume it from both your Flutter client and your Appwrite Function. Dart 3.12's `pub workspaces` make this especially clean when everything lives in one repository."
 ---
 
 Today, we are happy to announce two new runtimes for Dart developers on Appwrite: **Dart 3.12 as a Functions runtime** and **Flutter 3.44 as a build runtime for Appwrite Sites**. Together, they let you write your mobile app, your web app, and your backend in the same language, ship them from the same repository, and run them on the same platform.
 
 # Dart 3.12 for Appwrite Functions
 
-Dart has been one of the fastest runtimes on Appwrite Functions since day one. As a compiled language with ahead-of-time (AOT) native binaries, Dart functions wake up in milliseconds and stay snappy under load. Dart 3.12 builds on that foundation.
+Dart has been one of the fastest runtimes on Appwrite Functions since day one. Because Dart compiles to ahead-of-time (AOT) native binaries on deploy, there is no interpreter to spin up and no JIT to warm at request time, which is why Dart functions wake up in milliseconds and stay snappy under load. That fast-start property comes from Dart being AOT-compiled in general, not from any specific point release. What Dart 3.12 adds is on the language and tooling side.
 
-- **Faster cold starts.** Continued AOT improvements in the 3.x line keep tightening the cold-start budget that matters most for serverless workloads. If your function is invoked from a user-facing flow, the latency you see between “first request” and “first byte out” is shorter.
 - **Macros are stable.** Static metaprogramming with macros lets libraries generate serialization, data classes, and adapters at compile time, with no extra build step. For Functions, that means less boilerplate around request and response models and fewer runtime errors.
 - **Pub workspaces for monorepos.** If your Appwrite Function lives next to your Flutter app in the same repo, `pub workspaces` lets them share dependencies cleanly and resolve once for the whole workspace. Less drift between your client and your backend.
 - **Sound null safety, records, patterns, switch expressions.** The features that made Dart 3.x feel like a modern language are all here, and they pay off especially well in functions that integrate with third-party APIs or untrusted input.
@@ -61,4 +73,4 @@ Existing deployments keep running on whichever runtime version they were last de
 - [Functions runtimes](/docs/products/functions/runtimes)
 - [Deploy a Flutter Web app to Appwrite Sites](/docs/products/sites/quick-start/flutter)
 - [Appwrite Cloud](https://cloud.appwrite.io)
-- [Join the Appwrite Community on Discord](/discord)
+- [Join the Appwrite Community on Discord](https://appwrite.io/discord)
