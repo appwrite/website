@@ -10,6 +10,19 @@ category: tutorial
 featured: false
 callToAction: true
 unlisted: true
+faqs:
+  - question: "What is vibe coding?"
+    answer: "Vibe coding is a style of programming where developers rely on AI models to generate and debug code. You describe what you want in plain English and the AI scaffolds the implementation, while you focus on guiding the system, validating outputs, and refining the result through iteration."
+  - question: "What features should I look for in a vibe coding tool?"
+    answer: "Look for natural language input, AI-generated code, iterative refinement, code explanation, bug detection, and support for the [Model Context Protocol](/docs/tooling/mcp). A clean, fast user interface and integration with your existing editor or IDE also make a big difference day to day."
+  - question: "Does vibe coding replace traditional programming skills?"
+    answer: "No. AI assistants speed up scaffolding and repetitive work, but you still need to understand architecture, debugging, and trade-offs. Developers who treat AI as a collaborator and review its output carefully tend to ship better code than those who copy and paste blindly."
+  - question: "What is the Model Context Protocol (MCP) and why does it matter?"
+    answer: "MCP is an open standard that lets editors and AI tools talk to external services through a common interface. Tools that support MCP can pull richer project context and even drive backends like Appwrite directly, which leads to smarter suggestions across files and sessions."
+  - question: "Can vibe coding tools work with backend platforms like Appwrite?"
+    answer: "Yes. Appwrite has an [MCP server](/docs/tooling/mcp) that lets AI editors create projects, configure [Auth](/docs/products/auth), set up [Databases](/docs/products/databases), and manage [Functions](/docs/products/functions) using natural language. You can pair a vibe coding editor with Appwrite to spin up a full stack quickly."
+  - question: "How much time can AI coding tools actually save?"
+    answer: "Surveys like JetBrains' Developer Ecosystem report typically show 1 to 2 hours saved per week as a common answer, but the real value depends on your workload. Repetitive tasks, boilerplate, and simple refactors are where AI gives the biggest immediate wins."
 ---
 Imagine coding with an AI partner that suggests improvements in real-time. This is the future with vibe coding. AI pair programmers are becoming indispensable in modern development environments.
 

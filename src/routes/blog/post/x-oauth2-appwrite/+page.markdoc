@@ -8,6 +8,19 @@ timeToRead: 5
 author: aditya-oberai
 category: announcement, tutorial
 featured: false
+faqs:
+  - question: "How do I add X (Twitter) login to my Appwrite app?"
+    answer: "Register an app in the X Developer Console, copy the Client ID and Client Secret, then open your Appwrite project, go to Auth, Settings, OAuth2 Providers, and enable X with those credentials. Paste Appwrite's redirect URI back into your X app's callback settings and save. See [Appwrite Auth](/docs/products/auth) for the full flow."
+  - question: "Does Appwrite use PKCE for X OAuth?"
+    answer: "Yes. The X adapter uses OAuth 2.0 with PKCE (Proof Key for Code Exchange), which X's API v2 requires. PKCE adds protection against authorization code interception, particularly for mobile and single-page apps."
+  - question: "Can I call the X API on behalf of a user after they sign in?"
+    answer: "Yes. Appwrite stores the access token and refresh token from the OAuth flow, and you can retrieve them via the Account API to call X endpoints (such as reading the user's profile or posts) on their behalf, scoped to the permissions you requested."
+  - question: "What scopes should I request from X?"
+    answer: "Start with Read at a minimum, which gives you basic profile and timeline access. Only request elevated permissions like Write (posting) or Direct Message access if your product actually uses them, since extra scopes increase the friction of the consent screen and the risk surface if a token leaks."
+  - question: "Do I need to write any backend code for X OAuth in Appwrite?"
+    answer: "No. Appwrite handles the redirect, code exchange, token storage, and session creation. From the frontend you call a single SDK method to get the authorization URL, then create the session on the callback page using the userId and secret in the query string."
+  - question: "What other OAuth providers does Appwrite support?"
+    answer: "Appwrite Auth supports a wide list of OAuth2 providers including Google, GitHub, Apple, Facebook, Microsoft, Discord, and many more, all configured the same way from the Appwrite Console. See [Appwrite Auth](/docs/products/auth) for the full list and setup steps."
 ---
 
 We're excited to announce that Appwrite Auth now includes an X OAuth adapter. You can now let users sign in with their X account using Appwrite's built-in OAuth2 support, with no custom backend code required.

@@ -9,6 +9,19 @@ author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Network?"
+    answer: "The Appwrite Network is a globally distributed set of cloud regions and edge locations. It lets you choose where your project's data lives so you can reduce latency for your users and meet data residency requirements."
+  - question: "Which cloud regions are available?"
+    answer: "As of April 2025, you can create projects in Frankfurt (FRA), New York City (NYC), and Sydney (SYD), with more regions rolling out. Each region operates independently, and you choose the region when creating a project."
+  - question: "What does the FlutterFlow auth kit do?"
+    answer: "The kit is a pre-built FlutterFlow library that wires up Appwrite Authentication so you do not have to build login, signup, and session handling from scratch. You drop it into your FlutterFlow app and configure it with your Appwrite project details."
+  - question: "What is the RxDB integration?"
+    answer: "RxDB is a local-first JavaScript database, and the integration adds a replication plugin that syncs data between RxDB and [Appwrite Databases](/docs/products/databases). Your app keeps working offline and syncs in the background when connectivity returns."
+  - question: "How do I migrate an existing project to a new region?"
+    answer: "Use Appwrite Cloud migrations to move a project to another region. The migration tool copies your data, schema, and settings to the new region so you can switch without rewriting your app."
+  - question: "Will more regions come to the Appwrite Network?"
+    answer: "Yes. Frankfurt, New York, and Sydney are the first launches, and the roadmap includes additional regions. Check the [Appwrite Network announcement](/blog/post/the-appwrite-network) and changelog for the latest list."
 ---
 Welcome back to the April product update. Last month, we dropped some big updates:
 

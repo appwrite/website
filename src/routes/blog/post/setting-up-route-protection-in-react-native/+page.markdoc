@@ -9,6 +9,19 @@ author: nishant-jain
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "How do I structure protected and public routes in Expo Router?"
+    answer: "Group protected routes inside a folder like `(app)` and keep public routes (sign-in, sign-up) outside it. The route group gets its own `_layout.tsx` that performs the auth check and redirects to the sign-in screen if there is no active session, so the protection lives in one place instead of every screen."
+  - question: "Where should the auth check live?"
+    answer: "Inside the protected group's `_layout.tsx`. Read the session from your auth context and either render the `Slot` (when authenticated) or `Redirect` to the sign-in screen (when not). This runs before any child route mounts, so unauthenticated users never see protected content."
+  - question: "How do I share auth state across screens in React Native?"
+    answer: "Use React Context. Create an `AuthProvider` that exposes user, session, `signIn`, and `signOut`, wrap your root layout with it, and consume the context via a `useAuth` hook from any screen. This keeps the session in one source of truth and avoids prop drilling."
+  - question: "How do I handle the loading state while restoring a session?"
+    answer: "Track a `loading` flag in your auth provider that is true until you have finished checking for an existing session on app start. Render a splash or loader while loading is true so users do not see a flicker between public and protected routes during cold start."
+  - question: "How does Appwrite fit into this flow?"
+    answer: "[Appwrite Auth](/docs/products/auth) manages users and sessions on the backend. Your React Native app calls Appwrite to create or restore a session, and you set that session in your auth context. The route protection logic stays the same, only the `signIn`, `signOut`, and session-restore methods talk to Appwrite."
+  - question: "What happens to deep links when a user is not authenticated?"
+    answer: "Because the route group's layout intercepts any unauthenticated access and redirects to sign-in, deep links into protected routes will also bounce to the sign-in screen. To send users back to the original deep link after login, capture the intended path before redirecting and navigate to it once a session is established."
 ---
 
 In this guide, we'll walk through implementing protected routes in React Native using a simplified authentication approach with hardcoded values. The implementation uses a straightforward application structure that's easy to follow along with. 

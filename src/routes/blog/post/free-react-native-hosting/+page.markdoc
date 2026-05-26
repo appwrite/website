@@ -8,7 +8,19 @@ timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host a React Native for Web app for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that supports React Native for Web builds with a global CDN, automatic SSL, and DDoS protection included. The free plan is enough for most personal projects and early stage apps."
+  - question: "What is React Native for Web?"
+    answer: "React Native for Web is a library that maps React Native components like View, Text, and ScrollView to standard DOM elements. This lets you reuse the same component code across iOS, Android, and the web instead of maintaining a separate web codebase."
+  - question: "How do I deploy a React Native for Web build to Appwrite Sites?"
+    answer: "Run your web build (typically via Expo's `expo export:web` or a custom webpack config) to produce static files, then deploy via Git integration, the Appwrite CLI, or by uploading the build folder manually. See [deploy from Git](/docs/products/sites/deploy-from-git) for the recommended Git workflow."
+  - question: "Can I share an Appwrite backend across my mobile and web React Native apps?"
+    answer: "Yes. The Appwrite React Native and web SDKs target the same project, so you can use one set of [Auth](/docs/products/auth), [Databases](/docs/products/databases), and [Storage](/docs/products/storage) resources across all platforms. Just register a web platform in your Appwrite project alongside your mobile platforms."
+  - question: "Does Appwrite Sites support custom domains for React Native for Web?"
+    answer: "Yes. You can attach a custom domain to any Appwrite Site and SSL certificates are issued automatically. No manual configuration is required to enable HTTPS."
+  - question: "How does React Native for Web compare to writing a separate React app?"
+    answer: "React Native for Web gives you code reuse across mobile and web, which is useful for teams that want one codebase. A standalone React app is usually leaner and more optimized for browsers, with access to the full DOM and web APIs. Pick React Native for Web only if mobile parity is a real requirement, otherwise plain React is simpler."
 ---
 
 React Native for Web enables developers to build cross-platform applications using a single codebase, allowing React Native apps to run seamlessly on web browsers. While this provides a powerful way to extend mobile applications to the web, finding a hosting solution that is cost-effective, scalable, and optimized for React Native for Web can be challenging.

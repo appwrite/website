@@ -7,6 +7,19 @@ cover: /images/blog/the-evolution-of-team-appwrite/hiring-cover.avif
 timeToRead: 9
 author: laura-du-ry
 category: open-source
+faqs:
+  - question: "How does Appwrite hire people from its open source community?"
+    answer: "Many Appwriters first joined the community by contributing code, content, support, or SDK work, and were later hired after consistently delivering quality contributions. The pattern is simple: people noticed their work, the team got to know them, and a role opened up. None of them did it to get hired."
+  - question: "Do I have to contribute code to get noticed by an open source company?"
+    answer: "No. Contributions can be code, content, tutorials, community support, design, or speaking. Several Appwrite team members were noticed for non-code work like YouTube tutorials, Discord support, and design portfolios. Quality and consistency matter more than the medium."
+  - question: "What does the Appwrite team look for in candidates?"
+    answer: "Appwrite looks for consistent quality, eagerness to learn, openness to feedback, and willingness to support others. The team also values a healthy work life balance and discourages overworking. Standing out is about depth, not volume."
+  - question: "How can I start contributing to Appwrite?"
+    answer: "Join the [Appwrite Discord](/discord), pick up issues from the public GitHub repositories, or write content and tutorials about Appwrite. You can also contribute to related projects like Utopia-PHP and the official SDKs. Helping other community members is just as valuable."
+  - question: "Is contributing to open source a realistic path into a tech job?"
+    answer: "Yes. Many engineers, content creators, and developer advocates land roles through open source visibility. It gives hiring teams real evidence of your skills, work style, and how you collaborate, which is hard to convey in a CV."
+  - question: "Does Appwrite hire only engineers from the community?"
+    answer: "No. Appwrite hires across engineering, design, marketing, growth, and developer relations. Non-technical hires also come through the community or through visible portfolios and public work."
 ---
 
 2024 has begun, and as it goes with a new year, many people search for a new job. Statistically speaking, January is the most popular month of the year for new job seekers. Reasons vary from New Year's resolutions and increased hiring activity to bonus payouts. At Appwrite, we notice this, too. That said, throughout the year the team gets numerous hiring requests in their DMs, so many we cannot respond to most, let alone do we have vacancies for all these people. So, in response, we decided to write this blog. We will give you insights into how many current team members joined Appwrite after helping out in the community and contributing. But please note they never did this with the intention of getting hired. This was just the outcome of their actions.

@@ -8,6 +8,19 @@ timeToRead: 8
 author: matej-baco
 category: tutorial
 callToAction: true
+faqs:
+  - question: "What's the difference between offset and cursor pagination?"
+    answer: "Offset pagination uses a limit and offset (skip N rows), which is simple but gets slower as offsets grow. Cursor pagination uses a reference row's ID to fetch the next page, which performs consistently regardless of how deep into the data you are."
+  - question: "Which is better, offset or cursor pagination?"
+    answer: "Cursor pagination is faster and more reliable for large or frequently-changing datasets because it avoids scanning skipped rows and doesn't break when rows are inserted or deleted mid-pagination. Offset pagination is simpler and fine for small datasets or admin tools where page numbers are useful."
+  - question: "Why does offset pagination get slow?"
+    answer: "Databases implement OFFSET by walking through rows to skip them, so OFFSET 100000 still touches 100,000 rows internally. Cursor pagination uses an indexed WHERE clause, which skips directly to the right position. The difference shows up dramatically at scale."
+  - question: "Does Appwrite support cursor pagination?"
+    answer: "Yes. [Appwrite Databases](/docs/products/databases) supports both offset and cursor pagination out of the box via Query.cursorAfter and Query.cursorBefore. Appwrite handles the indexing and complexity so you can use cursors without writing the bookkeeping yourself."
+  - question: "When should I add database indexes for pagination?"
+    answer: "Add indexes on any column you sort by or use as a cursor. Without an index, cursor pagination still needs to scan rows to find matches. With Appwrite, you can create indexes directly from the console or via the SDK."
+  - question: "Can I show total counts with cursor pagination?"
+    answer: "Counting total rows efficiently is its own challenge regardless of pagination strategy. For large tables, an exact count requires a full scan. Cursor pagination typically ships with Previous/Next buttons rather than page numbers, which sidesteps the count problem entirely."
 ---
 
 The Database is one of the cornerstones of every application. It's where you store everything your app needs to remember, compute later, or display to other users online. It's all smooth sailing until your database grows and your application starts lagging because it's trying to fetch and render 1,000 posts simultaneously. As a smart engineer, you quickly patch this with a `Show more` button. However, a few weeks later, you encounter a `Timeout` error. Turning to Stack Overflow, you find that copying and pasting solutions is no longer helping. With no other options, you start debugging and discover that the database returns over 50,000 posts each time a user opens your app. What do you do now?

@@ -8,6 +8,19 @@ timeToRead: 9
 author: ebenezer-don
 category: tutorial
 featured: false
+faqs:
+  - question: "When should I pick SQL over NoSQL?"
+    answer: "Pick SQL when your data has a stable schema, requires strong consistency, or relies on transactions across multiple tables. Financial software, ERPs, CRMs, and any system where every transaction must be valid before the next one starts are textbook SQL workloads."
+  - question: "When does NoSQL make more sense?"
+    answer: "When your data shapes change frequently, when you need to scale horizontally on commodity hardware, or when availability matters more than strict, real-time consistency. Social feeds, IoT pipelines, content stores, and analytics-style workloads with high write volume tend to fit NoSQL well."
+  - question: "Does Appwrite use SQL or NoSQL under the hood?"
+    answer: "Both are supported, depending on how you self-host. Appwrite originally shipped with MariaDB (SQL), and since 1.9 you can also choose MongoDB (NoSQL) as the underlying database. Your application code talks to [Appwrite Databases](/docs/products/databases) the same way regardless of the storage engine."
+  - question: "What are ACID and BASE in plain terms?"
+    answer: "ACID (Atomicity, Consistency, Isolation, Durability) is the strict transactional contract most SQL databases offer: every transaction either fully completes or fully rolls back. BASE (Basically Available, Soft state, Eventually consistent) is the looser contract many distributed NoSQL systems offer: data eventually agrees across nodes, but readers may see slightly stale values in the meantime."
+  - question: "Can I use both SQL and NoSQL in the same app?"
+    answer: "Yes, and many teams do. A common pattern is SQL for transactional core data (accounts, payments, orders) and NoSQL for high-volume, flexible-shape data (events, logs, embeddings, content). The cost is operational: two systems to back up, monitor, and reason about."
+  - question: "How does scaling differ between SQL and NoSQL?"
+    answer: "SQL typically scales vertically (bigger machine) with read replicas for read scaling, and sharding is doable but more involved. NoSQL systems are built around horizontal scaling out of the box, with partitioning and replication usually baked in. For predictable, modest growth either works. For unpredictable spikes and very large datasets, NoSQL is often cheaper to scale."
 ---
 
 

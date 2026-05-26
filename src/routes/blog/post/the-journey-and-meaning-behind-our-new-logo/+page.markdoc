@@ -7,6 +7,19 @@ cover: /images/blog/the-journey-and-meaning-behind-our-new-logo/cover.avif
 timeToRead: 5
 author: jade-baudchon
 category:  design
+faqs:
+  - question: "Why did Appwrite redesign its logo?"
+    answer: "The original logo featured the HTML symbol, which no longer represented the many languages Appwrite supports. It also had scaling issues at small sizes, and user research showed the meaning was unclear. The redesign aligns the brand with Appwrite's broader vision and platform reach."
+  - question: "What does the new Appwrite logo represent?"
+    answer: "The new logo's lines converge to form a globe, representing Appwrite's interconnected global developer community. The lines also evoke lines of code coming together to build something meaningful. The overall shape resembles a lowercase 'a' for Appwrite."
+  - question: "How was the new Appwrite logo designed?"
+    answer: "The design team started with sketches, vectorized concepts, then ran multiple internal feedback rounds. Early drafts leaned on generic coding symbols, but the team eventually focused on what makes Appwrite unique: its global community and the essence of code coming together."
+  - question: "What was the story behind Appwrite's original logo?"
+    answer: "The first logo was designed by founder and CEO Eldad Fux. Its rounded elements echoed a gaming controller and the HTML symbol, matching the early slogan 'Let's make coding fun again'. The vibrant pink color came from a dress worn by Eldad's partner."
+  - question: "How does the new logo influence Appwrite's overall brand?"
+    answer: "The new mark drives the rest of Appwrite's visual identity, including the website, promotional materials, and documentation. The line-based motif from the logo also appears in imagery and illustrations across the brand."
+  - question: "Does a logo redesign change Appwrite the product?"
+    answer: "No. The product, APIs, and developer experience continue to evolve on their own roadmap. The logo redesign reflects how the company has grown and what it stands for, but it does not change how Appwrite Cloud, the SDKs, or the open source project behave."
 ---
 
 

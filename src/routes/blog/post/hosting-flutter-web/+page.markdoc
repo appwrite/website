@@ -8,6 +8,19 @@ timeToRead: 5
 author: steven
 category: product, init
 featured: false
+faqs:
+  - question: "Can I deploy a Flutter web app on [Appwrite Sites](/docs/products/sites)?"
+    answer: "Yes. Appwrite Sites natively supports Flutter web as a framework. It auto-detects Flutter projects, applies sensible defaults for the install and build commands, and serves the static output from `./build/web`. No manual platform-specific configuration is required."
+  - question: "What are the default build settings for a Flutter web site on Appwrite?"
+    answer: "Leave the install command empty, set the build command to `flutter build web`, and use `./build/web` as the output directory. Connect your GitHub repo and Appwrite handles the rest, including redeploys on every push."
+  - question: "Why deploy a Flutter web app instead of an Android or iOS app?"
+    answer: "Web deployment skips the store approval process, the \\$25 Android and \\$99/year Apple developer accounts, and platform-specific review delays. Users can access the app from any browser on any device the moment you push, and you keep the same Dart codebase."
+  - question: "Can I use Flutter web for auth callbacks and email verification pages?"
+    answer: "Yes, and this is a common pattern even when your primary app is mobile. You can build the email verification, password reset, or payment confirmation pages as a small Flutter web app and host them on Sites, keeping everything in one Dart codebase instead of stitching together separate HTML pages."
+  - question: "Does Flutter web hosting work on self-hosted Appwrite?"
+    answer: "Yes. Sites for Flutter works on both Appwrite Cloud and self-hosted Appwrite. The same auto-detection, GitHub integration, and build pipeline are available regardless of where Appwrite is running."
+  - question: "How does Flutter web compare to mobile Flutter for performance?"
+    answer: "Flutter web ships a larger initial bundle than a native mobile app because it includes the rendering engine, so first-load times can be slower on poor connections. Once loaded, runtime performance is usually fine for most apps. If first-load matters (marketing sites, etc.), a native web framework may still be a better fit."
 ---
 
 Appwrite has long been a powerful backend platform for Flutter developers building mobile applications. Today, we’re bringing that same seamless experience to the web. With full support for Flutter in [Appwrite Sites](/products/sites), you can now deploy Flutter web apps directly from your Appwrite project. No extra configuration, no added complexity.

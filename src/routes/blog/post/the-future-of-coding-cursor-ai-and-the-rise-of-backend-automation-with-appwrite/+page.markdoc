@@ -8,6 +8,19 @@ timeToRead: 6
 author: tessa
 category: integrations
 featured: false
+faqs:
+  - question: "What is Cursor?"
+    answer: "Cursor is an AI-powered code editor that integrates AI directly into the coding experience, so developers can describe what they want instead of typing every line. It supports prompts that scaffold full features and lets you iterate on code with the assistant in the same window."
+  - question: "What is the Model Context Protocol (MCP)?"
+    answer: "MCP is an open standard that lets editors, agents, and developer tools communicate securely with external services. It removes the need to write custom connectors or manage tokens manually, so AI assistants can talk directly to platforms like Appwrite."
+  - question: "How does the Appwrite MCP server work with Cursor?"
+    answer: "The Appwrite MCP server lets Cursor interact with your Appwrite project using natural language. You can create projects, add database collections, configure storage, and scaffold functions by describing what you need. The MCP layer handles the API communication."
+  - question: "What can I do with Appwrite MCP through an AI editor?"
+    answer: "You can create and modify backend resources by talking to your editor, including spinning up [Databases](/docs/products/databases) collections, configuring [Auth](/docs/products/auth), uploading files to [Storage](/docs/products/storage), and deploying [Functions](/docs/products/functions). It is faster than clicking through dashboards or writing boilerplate code."
+  - question: "Do I still need to write code if I use Cursor and Appwrite MCP?"
+    answer: "Yes. The AI accelerates scaffolding and configuration, but you still review, refine, and direct the work. Treat the combination as a fast pair programmer and infrastructure assistant, not a replacement for understanding your codebase."
+  - question: "Is the Appwrite MCP server secure to use with AI tools?"
+    answer: "The MCP server uses your Appwrite API keys and respects existing project permissions. You should treat the keys like any other credential, scope them to the minimum permissions needed, and review what the AI proposes before applying changes to production projects."
 ---
 
 The way we build software is evolving quickly. AI-driven tools like Cursor are changing how developers write code, while backend platforms like Appwrite are changing how infrastructure is managed. Together, they are shaping a new era of development focused on automation, speed, and intelligence.

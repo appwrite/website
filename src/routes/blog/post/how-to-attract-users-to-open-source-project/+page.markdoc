@@ -7,6 +7,19 @@ timeToRead: 7
 date: 2024-07-05
 author: aditya-oberai
 category: open-source
+faqs:
+  - question: "How do I get the first contributors to my open-source project?"
+    answer: "Solve a real problem you faced yourself, then publish clear documentation and a getting-started guide. Most early contributors find projects through Hacker News, Reddit, or word of mouth, so a viral launch moment helps. After that, focus on responding fast to issues and PRs so initial contributors stick around."
+  - question: "Why is documentation so important for open-source growth?"
+    answer: "Developers test new tools for roughly 3 seconds before deciding whether to look for help. If your docs do not get them to a working setup quickly, they bounce. Documentation is also the first thing potential contributors read to decide whether your project is worth their time."
+  - question: "How does Appwrite engage its open-source community?"
+    answer: "Appwrite runs a public Discord server with dedicated support channels staffed by maintainers and community Heroes. The team hosts regular Office Hours, ships swag to top contributors, and participates in events like Hacktoberfest. Recognition and consistent responsiveness do most of the work."
+  - question: "Do I need a budget for swag to reward contributors?"
+    answer: "No. Public shoutouts on social media, contributor highlights in release notes, and Discord roles all signal appreciation without costing anything. Swag is nice when you can afford it, but it's the recognition itself that matters most to contributors."
+  - question: "How do I tell my project's story without sounding like marketing?"
+    answer: "Write in your own voice and talk about the actual problem you're solving, the trade-offs you made, and what you learned. Developers respond to honesty about what your tool does and doesn't do. Avoid superlatives and feature lists, lead with concrete use cases instead."
+  - question: "Should I publish a code of conduct and contribution guidelines?"
+    answer: "Yes. A code of conduct sets community expectations and signals safety for new contributors. Contribution guidelines reduce review friction by telling people how to format PRs, write commit messages, and run tests. Both are table stakes for any serious open-source project."
 ---
 
 The open-source community is a remarkable space. In this unique corner of the Internet, developers come together to collaborate, help out, and build solutions without expecting anything in return. This generosity makes it an excellent environment for developers trying to build the next big thing with limited resources.

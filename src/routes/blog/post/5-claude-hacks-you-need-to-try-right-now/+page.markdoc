@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: ai
 featured: false
+faqs:
+  - question: "What is the difference between a Claude prompt and a brief?"
+    answer: "A prompt is usually a single question or instruction (e.g., \"Write a launch email\"). A brief gives Claude the surrounding context: audience, tone, format, examples of bad output to avoid, and constraints. Briefs consistently outperform prompts because Claude is good at steering away from things you name explicitly."
+  - question: "When should I use Claude Projects?"
+    answer: "Use Claude Projects whenever you find yourself pasting the same context (codebase, style guide, product docs, brand voice) into multiple chats. The project description acts as persistent context for every conversation inside it, so set it up like you would onboard a new hire."
+  - question: "Can Claude help me think through a problem instead of answering it directly?"
+    answer: "Yes. Ask Claude to interview you with the five most important questions about the problem, then answer them yourself before asking Claude to synthesize the result. This surfaces constraints and assumptions you had not named and is especially useful for fuzzy decisions like architecture or product specs."
+  - question: "What are Claude Artifacts useful for?"
+    answer: "Artifacts let you generate small interactive tools (regex testers, diff viewers, CSV converters, timezone calculators) in seconds without searching for or installing third-party apps. The real value is fast iteration: \"add dark mode\" or \"remember my last five inputs\" tweaks the tool to your workflow with one sentence."
+  - question: "Does Claude work with screenshots?"
+    answer: "Yes, Claude is multimodal. For UI bugs, design comparisons, error panels, or anything visual, screenshot first and describe later. Annotate the image (a red circle around the issue) for even better results. It saves a round trip compared to trying to explain a visual problem in words."
+  - question: "How do I integrate Claude into an Appwrite-backed app?"
+    answer: "Use [Appwrite Functions](/docs/products/functions) to call Anthropic's Claude API from your backend, keeping the API key server-side. You can also use the [Appwrite plugin for Claude Code](/blog/post/announcing-appwrite-claude-code-plugin) to give Claude direct access to your Appwrite project while coding."
 ---
 
 You can spot someone who's good at Claude within about ten seconds of watching them work. They barely type. They skip the elaborate prompts, the over-explaining, the second-guessing. Just five specific moves that almost nobody teaches.

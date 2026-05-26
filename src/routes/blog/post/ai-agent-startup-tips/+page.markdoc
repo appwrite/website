@@ -10,6 +10,19 @@ callToAction: true
 unlisted: true
 category: startup
 call_to_action: true
+faqs:
+  - question: "What is an AI agent?"
+    answer: "An AI agent is a program built around an LLM that can plan, decide, and execute actions to achieve a goal, rather than just generating content from a single prompt. It typically has memory, access to tools (APIs, databases), and the ability to loop until the task is done."
+  - question: "What is a good first AI agent use case for a startup?"
+    answer: "Pick a repetitive, well-defined workflow where the cost of an occasional mistake is low: support triage, code review, lead enrichment, document classification, or report generation. Avoid open-ended use cases (\"replace my analyst\") in v1, since those are where reliability problems compound."
+  - question: "How do I host the backend for an AI agent?"
+    answer: "Most agents need three things: a database for memory and state, file storage for inputs and outputs, and serverless functions for executing tools. [Appwrite](/docs/products/databases) provides all three under one API, so you do not stitch together three vendors. For the LLM itself, call Anthropic, OpenAI, or another provider from a function."
+  - question: "How do AI agents handle feedback and self-correction?"
+    answer: "Through feedback loops: the agent generates a step, executes it, evaluates the result (against tests, validators, or another LLM call), and decides whether to retry, adjust, or move on. For coding agents, automated tests are the gold standard signal. For other domains, you often need custom evaluators."
+  - question: "What metrics should I track for an AI agent product?"
+    answer: "Track task success rate, average steps per task, latency, cost per task, and human-intervention rate. Add domain-specific metrics (test pass rate for coding agents, escalation rate for support agents). Without these, you cannot tell if a model upgrade or prompt change made things better or worse."
+  - question: "Are there resources for startups building AI agents on Appwrite?"
+    answer: "Yes. The [Appwrite Startups program](https://appwrite.io/startups) offers cloud credits, priority support, and partner perks for early-stage startups. Combined with [Appwrite Functions](/docs/products/functions) for running agent steps and Databases for state, it covers most of the backend needs for an AI agent product."
 ---
 
 With AI advancing at a rapid pace, 2025 is shaping up to be the year of AI agents. We're moving beyond basic chatbots and entering a new era where AI can autonomously solve complex tasks. So, in the near future, fully autonomous AI agents can scope out a project and complete it with all the necessary tools they need and with no help from human partners.

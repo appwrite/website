@@ -55,12 +55,22 @@
                     href: '/docs/products/auth/security'
                 },
                 {
+                    label: 'Email policies',
+                    href: '/docs/products/auth/email-policies',
+                    new: isNewUntil('30 June 2026')
+                },
+                {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
                 },
                 {
                     label: 'Identities',
                     href: '/docs/products/auth/identities'
+                },
+                {
+                    label: 'Presences',
+                    href: '/docs/products/auth/presences',
+                    new: isNewUntil('31 Aug 2026')
                 }
             ]
         },

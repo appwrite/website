@@ -8,6 +8,19 @@ timeToRead: 5
 author: matej-baco
 category: init, announcement, product
 featured: false
+faqs:
+  - question: "How do I run an Appwrite Function locally?"
+    answer: "Install the [Appwrite CLI](/docs/tooling/command-line), authenticate with `appwrite login`, link your project with `appwrite init project`, and pull or create a function. Then run `appwrite run function` and pick the function to launch. It listens on `http://localhost:3000` by default."
+  - question: "What does local development need installed?"
+    answer: "You need the latest Appwrite CLI and Docker installed. The CLI uses Docker to replicate the production runtime exactly, which means bugs you see locally also reproduce in production. The CLI prompts you to install Docker if it isn't already available."
+  - question: "How does hot reload work for local functions?"
+    answer: "While `appwrite run function` is running, the CLI watches your function's folder and performs a hot swap when source files change, usually in under a second. If you change package manager files like `package.json`, the CLI triggers a rebuild automatically. Disable this with `--no-reload` if you prefer manual restarts."
+  - question: "Can I impersonate a user when testing locally?"
+    answer: "Yes, pass `--user-id=\"<USER_ID>\"` to `appwrite run function` and the CLI injects the same `x-appwrite-user-id` and `x-appwrite-user-jwt` headers your function gets in production. This lets you test user-scoped permissions and JWT flows without touching your code. See the [Appwrite Functions docs](/docs/products/functions) for context details."
+  - question: "How do I use local Appwrite Functions in CI/CD?"
+    answer: "Install the Appwrite CLI in your pipeline, then run the same `appwrite run function` command with `--function-id` and `&` to background it. Once the function is listening on its port, your tests can hit it like any HTTP endpoint. This gives you integration tests that run inside the real function runtime."
+  - question: "Should I pull production variables into a local function?"
+    answer: "You can with `--with-variables`, but be careful since this pulls real production secrets. Prefer a local `.env` file with development-only values for most testing, and only pull production variables when you specifically need to reproduce a production-only bug."
 ---
 We are excited to announce a new addition to Appwrite Functions that makes function development faster and more enjoyable. With local development, the entire flow, including coding, testing, and debugging, becomes fast and reliable.
 

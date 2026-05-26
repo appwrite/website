@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What is the `$sequence` field on Appwrite documents?"
+    answer: "`$sequence` is a numeric field that Appwrite automatically assigns to each document at insertion time. It starts at one for the first row in a collection and increases by one with every new insert, giving you a strictly ascending, indexed identifier without writing any counter logic."
+  - question: "How is `$sequence` different from `$id`?"
+    answer: "`$id` is a string identifier that is either generated as a unique slug (`ID.unique()`) or set by the caller. `$sequence` is a numeric, monotonically increasing counter managed by Appwrite. Use `$id` for lookups and references and `$sequence` when you need ordering or numeric IDs like invoice numbers."
+  - question: "How do I sort documents by insertion order?"
+    answer: "Query the collection with `Query.orderAsc('$sequence')` (or `orderDesc` for newest-first). The field is fully indexed, so sorting and pagination by `$sequence` perform efficiently even on large collections. The full reference lives in the [order documentation](/docs/products/databases/order#sequence-ordering)."
+  - question: "Can I modify the `$sequence` value?"
+    answer: "No. `$sequence` is read-only by design. That guarantees the values are consistent, monotonically increasing, and tamper-resistant, which is what makes it suitable for audit logs, invoice numbers, and other use cases that require stable ordering."
+  - question: "When should I use timestamps instead of `$sequence`?"
+    answer: "Use `$createdAt` when you need wall-clock ordering and are comfortable with millisecond resolution. Use `$sequence` when you need a strict numeric identifier or guaranteed insertion order, since two documents created in the same millisecond will have distinct sequence numbers but identical timestamps."
+  - question: "Is auto-increment available on self-hosted Appwrite?"
+    answer: "Yes. Auto-increment support is available on both Appwrite Cloud and self-hosted installations of the supported version. Existing collections automatically expose `$sequence` for newly inserted documents going forward."
 ---
 
 Managing ordered data can often be complex and error-prone, especially when it requires manual counters or timestamp-based sorting, which can introduce inconsistencies and unpredictability.

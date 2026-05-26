@@ -8,6 +8,19 @@ timeToRead: 10
 author: ebenezer-don
 category: tutorial
 featured: false
+faqs:
+  - question: "Why would I move an Appwrite Cloud project to a different region?"
+    answer: "The two main reasons are latency and data residency. Hosting your project closer to your users reduces round-trip time, which makes APIs and realtime feel snappier. Data residency comes up when local laws require user data to stay in a specific jurisdiction, for example in the EU or India."
+  - question: "Can I change the region of an existing Appwrite Cloud project directly?"
+    answer: "No, there is currently no in-place region switch. The supported path is to create a new project in the target region and use Appwrite's built-in migration tool to move data and resources from the source project to the destination. This guide walks through the full process."
+  - question: "What does the Appwrite migration tool transfer?"
+    answer: "The migration tool moves your databases, collections and documents, storage files, functions, teams, users, and project settings to the destination project. Custom domain bindings and platform integrations usually need to be reconfigured manually after the migration. See the [Appwrite Network](/docs/products/network) docs for region-specific details."
+  - question: "Will there be downtime when I migrate regions?"
+    answer: "There is no forced downtime during the data transfer itself, since both projects can run side by side. The downtime, if any, happens during the cutover when you point clients to the new endpoint. Plan for a maintenance window to update environment variables and DNS, and to verify the data in the new region."
+  - question: "What happens to API keys and OAuth credentials after migration?"
+    answer: "You typically need to recreate API keys in the destination project because they are tied to a project ID. OAuth providers (Google, GitHub, Discord) also need to be reconfigured with new redirect URIs in their respective dashboards. Plan for this configuration work as part of the cutover, not after."
+  - question: "Can I keep both regions running side by side after migration?"
+    answer: "Yes, until you delete the source project both are live. Some teams keep the old project around for a few weeks as a read-only fallback, then delete it once the new region has proven stable. That is a safer pattern than deleting immediately."
 ---
 
 With the launch of the **Appwrite Network**, Appwrite Cloud now gives you the ability to choose where your project is hosted. This means that you can bring your backend closer to your users, reducing latency, improving responsiveness, and aligning with local data residency laws if needed.

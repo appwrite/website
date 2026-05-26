@@ -8,6 +8,19 @@ timeToRead: 7
 author: matej-baco
 category: init, announcement
 featured: false
+faqs:
+  - question: "Which Go version does Appwrite Functions support?"
+    answer: "[Appwrite Functions](/docs/products/functions) ships with the `go-1.23` runtime. You can self-host with this runtime by adding it to the `_APP_FUNCTIONS_RUNTIMES` environment variable, or use it directly on Appwrite Cloud. Your `go.mod` file pins the version, which you should not change."
+  - question: "Why is Go a good fit for serverless functions?"
+    answer: "Go compiles to machine code, so cold starts are fast (Appwrite benchmarks showed up to 3x faster cold starts versus interpreted runtimes) and base execution time is under 1 millisecond. Memory usage is also low, around 5x less than typical interpreted runtimes, which keeps function costs predictable under load."
+  - question: "How do I get started writing a Go function on Appwrite?"
+    answer: "Install the [Appwrite CLI](/docs/tooling/command-line) and run `appwrite init function`, then pick the Go runtime. The CLI scaffolds a `go.mod` and `main.go` with a `Main(Context openruntimes.Context)` handler. Deploy with `appwrite deploy function` and your function is live."
+  - question: "Does Appwrite have a Go SDK?"
+    answer: "Yes, Appwrite ships an official Go SDK at `github.com/appwrite/sdk-for-go`. You can use it from inside an [Appwrite Function](/docs/products/functions) or from any external Go service. The SDK exposes the same APIs as other Appwrite SDKs."
+  - question: "How do I read JSON from a request in a Go function?"
+    answer: "Use `Context.Req.BodyJson(&request)` to decode the request body into a Go struct, where `request` is your typed struct. To send JSON back, use `Context.Res.Json(value)` and optionally `Context.Res.WithStatusCode(code)` for the HTTP status. Types come from the `github.com/open-runtimes/types-for-go` package."
+  - question: "Is Go better than Node.js or Python for backend functions?"
+    answer: "Go's strengths are raw performance, low memory, and predictable concurrency through goroutines, which makes it a strong choice for CPU-bound or high-throughput workloads. Node.js and Python often win on developer velocity and ecosystem breadth. Pick by use case: Go for performance-sensitive paths, Node or Python for fast iteration and richer libraries."
 ---
 
 Compiled programming languages are well known for outperforming interpreted ones thanks to a compilation step. Today, Appwrite welcomes a new runtime for writing simple and performant functions, [Go](https://go.dev/).

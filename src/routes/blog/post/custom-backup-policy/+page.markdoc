@@ -3,10 +3,24 @@ layout: post
 title: Custom backup policies for compliance and security
 description: Learn why regular backups are no longer enough for data security.
 date: 2024-10-16
+lastUpdated: 2026-05-22
 cover: /images/blog/custom-backup-policy/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, security
+faqs:
+  - question: "What is a custom backup policy?"
+    answer: "A custom backup policy lets you define how often each piece of data is backed up, how long it is retained, where it is stored, and how it is secured. Instead of one rigid schedule for everything, you tailor the policy to the importance of each dataset so critical data is backed up frequently and less important data is backed up sparingly."
+  - question: "Why is a 7-day backup retention not enough?"
+    answer: "Many regulations (HIPAA, GDPR, SOX) require months or years of data retention. A 7-day window does not give you enough history to recover from delayed-detection incidents (like ransomware that sits dormant) or to meet legal obligations. Custom retention periods let you keep what you actually need."
+  - question: "What is the difference between RTO and RPO?"
+    answer: "RTO (Recovery Time Objective) is how quickly you need to restore service after an incident. RPO (Recovery Point Objective) is how much data you can afford to lose, measured in time since the last backup. Mission-critical systems usually have low values for both; less critical systems can tolerate higher numbers."
+  - question: "How do I set up a custom backup policy in Appwrite?"
+    answer: "On the Appwrite Enterprise plan, [Appwrite Databases](/docs/products/databases) includes custom backup policies you can configure per database. You can pick a schedule (daily, weekly, monthly), set retention periods, and define execution times. The Pro plan includes a daily backup with 7-day retention. See the database backups documentation for the full configuration options."
+  - question: "What is the difference between full, incremental, and differential backups?"
+    answer: "A full backup copies all data every time. An incremental backup copies only the changes since the last backup of any kind. A differential backup copies changes since the last full backup. Incremental and differential backups save storage but make restore slightly more complex because multiple backup files are needed."
+  - question: "Should backup data be encrypted?"
+    answer: "Yes. Always encrypt backups both at rest and in transit. Backups often contain a complete copy of your most sensitive data, so a leaked backup is just as dangerous as a leaked production database. Combine encryption with strict access controls and (where required) geographic storage rules."
 ---
 If you're still relying on standard backups with just a 7-day retention, your company's data could be at risk. Today, data security is non-negotiable, regardless of your industry or business size. Losing it can lead to massive financial, legal and reputational setbacks.
 
@@ -95,7 +109,7 @@ A **custom backup policy** is a smart investment.
 
 By tailoring your backup approach to your business needs, you're not just safeguarding your data; you're optimizing resources, ensuring compliance, and future-proofing your business.
 
-Appwrite Database Backups allows you to customize your backup policy down to pre-defined schedules (e.g., daily, weekly, monthly), retention periods and even precise execution times on Pro and Scale plans. Learn more about Database Backups:
+Appwrite Database Backups allows you to customize your backup policy down to pre-defined schedules (e.g., daily, weekly, monthly), retention periods and even precise execution times on the Enterprise plan. Learn more about Database Backups:
 - [Appwrite Database Backups](https://appwrite.io/blog/post/introducing-database-backups)
 - [Database Backups docs](https://appwrite.io/docs/products/databases/backups)
 - [Should I encrypt my backups?](https://appwrite.io/blog/post/backup-encryption)

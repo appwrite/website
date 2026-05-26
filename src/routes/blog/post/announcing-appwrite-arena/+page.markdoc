@@ -9,6 +9,19 @@ author: matej-baco
 category: announcement
 featured: true
 callToAction: true
+faqs:
+  - question: "What is Appwrite Arena?"
+    answer: "Appwrite Arena is an open-source benchmark that measures how well large language models understand Appwrite. It tests models on 191 questions across 9 service categories (Auth, Databases, Functions, Storage, Sites, Messaging, Realtime, CLI, and Foundation), using both multiple-choice and open-ended scoring."
+  - question: "How is Arena different from generic LLM coding benchmarks?"
+    answer: "Generic benchmarks measure broad coding ability. Arena measures Appwrite-specific knowledge: SDK method names, API patterns, service configuration, and correct usage. A model can ace HumanEval and still hallucinate Appwrite API calls, which is why a dedicated benchmark matters when you build on Appwrite."
+  - question: "What are Skills and how do they affect benchmark scores?"
+    answer: "[Appwrite Skills](/docs/tooling/skills) are Markdown files containing up-to-date SDK and API context that AI agents can load on demand. Arena tests models both with and without Skills, so you can see how much each model improves with the right context. Some models gain dramatically, others barely move."
+  - question: "Which model currently scores best on Arena?"
+    answer: "Results shift as new models ship and we rerun the benchmark. At launch, GPT-5.4 led with Skills enabled and Claude Opus 4.6 led without Skills. Check [arena.appwrite.io](https://arena.appwrite.io) for the current leaderboard, since the rankings change with every new model release."
+  - question: "Can I contribute to Arena?"
+    answer: "Yes. Arena is fully open source on [GitHub](https://github.com/appwrite/arena). You can open PRs to add new questions, improve scoring rubrics, fix bugs, or include new models. Reference answers and scoring methodology are all in the repo."
+  - question: "How can Arena help me pick an AI model for my Appwrite project?"
+    answer: "Use it to compare cost, latency, and Appwrite accuracy side by side. A top-tier model might be the obvious pick on raw scores, but Arena also surfaces models that are 50% cheaper and only a few points behind, which is often the better real-world trade-off."
 ---
 
 AI coding agents are everywhere. They write your functions, scaffold your database schemas, and wire up authentication flows. But here's the question nobody was answering: **which AI model actually knows Appwrite best?**

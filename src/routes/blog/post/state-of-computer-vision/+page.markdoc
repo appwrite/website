@@ -8,6 +8,19 @@ timeToRead: 15
 author: bradley-schofield
 category: product
 featured: false
+faqs:
+  - question: "What is computer vision?"
+    answer: "Computer vision is a field of artificial intelligence focused on giving machines the ability to understand and process visual data from images, videos, point clouds, X-rays, and other sources. The goal is to extract meaningful information from visual inputs so it can be used for downstream tasks like classification, detection, or segmentation."
+  - question: "What are convolutions and kernels in computer vision?"
+    answer: "Convolutions are the fundamental operation behind most computer vision algorithms. A kernel is a small grid of numbers that slides across an image, multiplying values and summing them to produce a new feature map. Different kernels detect different features, like edges, blurs, or sharpening effects."
+  - question: "What is a CNN and why does it matter for computer vision?"
+    answer: "A Convolutional Neural Network (CNN) is a type of neural network that uses convolutions to extract features from images automatically. CNNs power most modern image classification and object detection systems, including breakthroughs like LeNet-5 and AlexNet."
+  - question: "What are the main applications of computer vision today?"
+    answer: "Computer vision is used in medical imaging to detect tumors and diseases, in agriculture to identify weeds, in manufacturing for quality control, and in consumer apps for filters, face unlock, and AR experiences. The industry is projected to be worth over $50 billion by 2030."
+  - question: "How can I build computer vision features into an Appwrite app?"
+    answer: "You can run computer vision models inside [Appwrite Functions](/docs/products/functions) and store inputs and outputs in [Appwrite Storage](/docs/products/storage) and [Appwrite Databases](/docs/products/databases). This lets you trigger image classification or object detection workflows on uploads without managing your own backend."
+  - question: "What is the difference between image classification and object detection?"
+    answer: "Image classification assigns a single label to an entire image, like tagging a photo as a cat or dog. Object detection goes further by locating and labelling multiple objects within the image, drawing bounding boxes around each one. Detection is harder because it needs both classification and localization."
 ---
 
 # Introduction

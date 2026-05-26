@@ -9,6 +9,19 @@ author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "Should I pick a SQL or NoSQL database for my next project?"
+    answer: "Pick SQL if your data is highly relational, your structure is stable, and you need ACID guarantees for things like payments or analytics. Pick a document database if you need schema flexibility, hierarchical data, horizontal scale, or you are iterating quickly alongside AI agents that emit JSON natively."
+  - question: "Why are document databases a better fit for AI-driven workflows?"
+    answer: "LLMs emit JSON natively, and document databases store JSON natively, so there is no translation layer between what an agent generates and what gets persisted. Schema flexibility also lets agents add fields without forcing a migration, which keeps the build loop fast during early experimentation."
+  - question: "What is the difference between SQL and a document database?"
+    answer: "SQL databases store data in tables with strict rows and columns enforced by a schema, with strong support for JOINs and ACID transactions. Document databases store data as JSON documents with flexible structure, designed for horizontal scaling and rapid iteration. The trade-off is rigor versus flexibility."
+  - question: "What kind of database does Appwrite use?"
+    answer: "[Appwrite Databases](/docs/products/databases) is a document database that stores data in collections of JSON-like documents. It pairs the flexibility of the document model with built-in permissions, queries, and realtime updates, which fits the rapid iteration style of modern app and AI development."
+  - question: "Can document databases handle relationships between data?"
+    answer: "Yes. Document databases support references between documents, and Appwrite Databases adds first-class relationship attributes so you can model one-to-many and many-to-many links. For very deep multi-table JOINs across normalized data, a relational database is still a stronger fit, but most apps do not need that."
+  - question: "Are document databases suitable for production-scale applications?"
+    answer: "Yes, document databases like Appwrite Databases and MongoDB are designed for high-volume workloads and horizontal scaling. They power content platforms, social apps, IoT data, and many AI products at scale. The question is usually about query shape and consistency needs, not raw scale."
 ---
 
 If you're building an application in 2026, the choice of database is one of the most critical technical decisions you'll make. The debate typically centers on two primary options: **SQL (Relational)** and **NoSQL (Document)**.

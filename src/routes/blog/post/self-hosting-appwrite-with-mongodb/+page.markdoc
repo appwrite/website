@@ -7,6 +7,19 @@ cover: /images/blog/self-hosting-appwrite-with-mongodb/cover.avif
 timeToRead: 6
 author: atharva
 category: tutorial
+faqs:
+  - question: "Which Appwrite version is needed to run MongoDB as the backend?"
+    answer: "Appwrite 1.9.0 introduced MongoDB as a supported database backend for self-hosted installs. Earlier versions only support MariaDB, so you need to either install fresh on 1.9 or later, or migrate an existing instance through the upgrade path before switching backends."
+  - question: "Can I switch from MariaDB to MongoDB after installation?"
+    answer: "No. The database choice is permanent for a given Appwrite instance. If you have an existing MariaDB-backed install and want to move to MongoDB, you need to set up a new instance with MongoDB selected and migrate the data over."
+  - question: "What are the system requirements for self-hosting Appwrite with MongoDB?"
+    answer: "Appwrite recommends at least 2 CPU cores, 4GB of RAM, and 2GB of swap. You also need Docker installed, and port 20080 open during installation for the web-based setup wizard (you can close it once setup completes)."
+  - question: "Does Appwrite manage the MongoDB instance for me?"
+    answer: "Yes. When you pick MongoDB during install, Appwrite stands up its own MongoDB instance configured as a replica set with Appwrite's schema. You do not connect Appwrite to an existing MongoDB cluster, and there is nothing to tune manually for the database to work with Appwrite."
+  - question: "Do I lose the secret API key shown during installation?"
+    answer: "Yes, in the sense that you cannot retrieve it from the Console later. That key encrypts sensitive data on the server, so copy it to a password manager or secrets vault during install. Losing it means you cannot decrypt encrypted data on the instance."
+  - question: "Does choosing MongoDB change how my application code talks to Appwrite?"
+    answer: "No. The API surface, SDK methods, and behaviors are the same regardless of the underlying database. Only the storage engine changes, so existing apps, [Functions](/docs/products/functions), and [Sites](/docs/products/sites) work without modification."
 ---
 
 Appwrite is built on self-hosting, but until now, MariaDB was the only database option. With Appwrite 1.9.0, you can now choose MongoDB as your database backend. This is a big deal if you prefer a document-based database or already have MongoDB expertise on your team.

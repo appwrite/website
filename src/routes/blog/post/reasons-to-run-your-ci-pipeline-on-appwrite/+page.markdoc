@@ -9,6 +9,17 @@ author: eldad-fux
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "Can I really run my CI pipeline on [Appwrite Functions](/docs/products/functions)?"
+    answer: "Yes. If you already run workloads on Functions or [Appwrite Sites](/docs/products/sites), you can use the same runtime for build, test, and validation steps. That gives you parity between CI and production without maintaining a separate runner."
+  - question: "What does production parity actually mean for CI?"
+    answer: "It means the environment your tests run in matches the environment your code runs in once deployed. Same runtime, same dependencies, same constraints. That removes the \"works in CI, fails in prod\" class of bugs."
+  - question: "How does Appwrite's pricing compare to GitHub Actions for CI?"
+    answer: "Appwrite charges $0.06 per GB-hour, while GitHub's standard Linux runner works out to roughly $0.068 per GB-hour at its fixed 7 GB allocation. The Pro plan also includes 1,000 GB-hours of compute, so many teams stay within that envelope without overage fees."
+  - question: "Will I lose pull request visibility if I move CI off GitHub Actions?"
+    answer: "No. Appwrite's GitHub integration surfaces build and test status, logs, and check results directly on pull requests. You still get the dashboard you expect, just sourced from the same platform that runs your app."
+  - question: "Does running CI on Appwrite scale to larger test suites?"
+    answer: "Yes. You can increase CPU and memory on Functions and run builds in parallel, which means light projects pay only for what they use while bigger suites can scale up without hitting third-party runner limits."
 ---
 Modern applications rely heavily on CI pipelines. They’re the backbone of your delivery flow, the place where builds happen, tests run, and deployments get the final green light. But for many teams, CI still lives outside the hosting and runtime platform. That means juggling multiple services, maintaining extra integrations, and paying for compute twice.
 

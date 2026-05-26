@@ -9,6 +9,19 @@ author: eldad-fux
 category: init
 featured: false
 callToAction: true
+faqs:
+  - question: "What is Appwrite Init?"
+    answer: "Init is Appwrite's week long launch event where new products and features are announced every day. It's the main moment each year for major Appwrite releases and community activity."
+  - question: "When did the May 2025 Init event take place?"
+    answer: "Init May 2025 ran from 19 to 23 May 2025, with announcements landing on each day of the week. The kickoff coincided with the Product Hunt launch on 19 May."
+  - question: "How can I follow new Appwrite launches?"
+    answer: "Grab a ticket on the Init page, follow Appwrite on social media, and join the Appwrite Discord server. Each day of Init has a livestream on the Appwrite YouTube channel covering the day's release."
+  - question: "Do I need to attend Init events to get access to new features?"
+    answer: "No. Anything announced during Init is rolled out to Appwrite Cloud and Appwrite Self Hosted on the same schedule shared during the event. The livestreams and blog posts cover the same content for anyone who joins later."
+  - question: "What kind of swag does Appwrite give away during Init?"
+    answer: "Each Init has a limited edition design with stickers, apparel, and other items. Tickets enter you into the giveaway, and winners are announced through Discord and email during the event."
+  - question: "Where do previous Init announcements live?"
+    answer: "Every Init release has a recap blog post on the Appwrite blog. Search for posts tagged with the init category to find the launches from previous events."
 ---
 
 We are about to blow your socks off with what comes next for Appwrite.

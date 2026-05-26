@@ -7,6 +7,19 @@ cover: /images/blog/password-hashing-algorithms.avif
 timeToRead: 7
 author: aditya-oberai
 category: security
+faqs:
+  - question: "What is the difference between hashing and encryption?"
+    answer: "Hashing is a one way function that turns input into a fixed size output you cannot reverse. Encryption is two way: you can decrypt the data back to its original form with the right key. Passwords should always be hashed, never encrypted."
+  - question: "Which password hashing algorithm should I use today?"
+    answer: "Argon2id is the current recommendation for new applications. Bcrypt and scrypt are still acceptable if Argon2 is not available. Avoid plain SHA-256 or MD5 since they are far too fast for password use."
+  - question: "Why is a salt important when hashing passwords?"
+    answer: "A salt is a random value added to each password before hashing, so two users with the same password get different hashes. This blocks rainbow table attacks and forces attackers to crack every hash individually."
+  - question: "What hashing algorithm does Appwrite use?"
+    answer: "[Appwrite Authentication](/docs/products/auth) uses Argon2id by default when a user signs up from a client app. If you create a user from a server SDK with a pre hashed password, Appwrite accepts Argon2, Bcrypt, MD5, Scrypt, and a few other formats so you can migrate existing users."
+  - question: "Can I migrate users from another auth system to Appwrite?"
+    answer: "Yes. The server side Users API lets you import users with their existing password hashes if they use a supported algorithm. Your users keep their existing passwords and rehash on next login if needed."
+  - question: "What is memory hardness in a password hash?"
+    answer: "Memory hardness means the algorithm requires a lot of RAM to compute, not just CPU time. This makes it expensive to attack with GPUs or ASICs in parallel. Argon2 and scrypt are memory hard, while bcrypt and PBKDF2 are not."
 ---
 
 In today's digital world, keeping sensitive information like passwords secure is extremely important. Password hashing algorithms are essential for protecting user credentials and ensuring authentication systems are reliable.

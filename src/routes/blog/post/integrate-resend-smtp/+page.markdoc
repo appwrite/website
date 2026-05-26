@@ -8,6 +8,19 @@ timeToRead: 4
 author: aditya-oberai
 category: integrations
 callToAction: true
+faqs:
+  - question: "What is Resend?"
+    answer: "Resend is an email API provider built for developers, with a clean REST API, custom domain support, and SDKs for popular languages. It also exposes SMTP credentials, which makes it easy to plug into existing email tooling."
+  - question: "How does Appwrite Messaging integrate with Resend?"
+    answer: "Appwrite Messaging supports a generic SMTP provider, which you point at Resend's SMTP host using your Resend API key as the password. After that, [Appwrite Messaging](/docs/products/messaging) handles delivery, scheduling, and per user targeting on top of Resend."
+  - question: "What SMTP settings should I use for Resend?"
+    answer: "Use smtp.resend.com on port 587 with the username 'resend' and your Resend API key as the password. Enable TLS, and set the sender email to an address on a domain you have verified in Resend."
+  - question: "Do I need to verify a domain before sending email?"
+    answer: "Yes. Resend requires you to verify a domain by adding DKIM and SPF DNS records. DMARC is optional but recommended for deliverability. Without verification, your emails will be rejected by most inbox providers."
+  - question: "Can I use Resend for transactional and marketing emails?"
+    answer: "Resend supports both, but you should split them by domain or subdomain so that promotional sends don't damage the reputation of transactional traffic. Configure separate SMTP providers in Appwrite if you want to keep the topics isolated."
+  - question: "What other SMTP providers does Appwrite Messaging work with?"
+    answer: "The SMTP provider is generic, so any host that exposes SMTP credentials works. Common options include Mailgun, SendGrid, Postmark, Amazon SES, and your own self hosted Postfix or Exim server."
 ---
 
 Pretty much every app we develop or consume requires a medium of communication with its users, whether that is to send notifications and reminders, execute marketing campaigns and newsletters, or share security-related information like one-time passwords. Such messages are often sent by apps via email. Lately, we have noticed that **Resend** has become one of the most popular email API providers among the developer community.

@@ -8,6 +8,19 @@ timeToRead: 9
 author: christy-jacob
 category: Tutorial
 callToAction: true
+faqs:
+  - question: "What is cloud latency and why does it matter?"
+    answer: "Cloud latency is the time it takes for data to travel between a user's device and the cloud server, plus the server's response time. High latency causes slow page loads, video buffering, and poor real-time experiences. Lower latency directly affects conversion, engagement, and search rankings."
+  - question: "How does a CDN reduce latency?"
+    answer: "A Content Delivery Network caches your static content on edge servers distributed globally. When a user requests a file, they receive it from the nearest edge instead of your origin server, shortening the network round trip. CDNs are most effective for media-heavy sites and global audiences."
+  - question: "Why does choosing a cloud region matter?"
+    answer: "Physical distance still bounds latency. Hosting your backend in a region close to your users cuts round-trip time meaningfully (often 50 to 200ms for transcontinental hops). The [Appwrite Network](/docs/products/network) offers multiple regions so you can deploy close to your user base."
+  - question: "What regions does the Appwrite Network support?"
+    answer: "The Appwrite Network has expanded beyond the original Frankfurt region to include New York and Sydney, with more regions on the roadmap. See the [Appwrite Network docs](/docs/products/network) for the current list and details on how to pick a region for your project."
+  - question: "How much does latency actually affect user behavior?"
+    answer: "Studies show that nearly half of users abandon a page that takes more than 3 seconds to load. In e-commerce, every additional second of delay measurably drops conversion. Search engines like Google also factor page load times into rankings, so latency affects acquisition as well as retention."
+  - question: "Besides CDNs and region choice, what else reduces latency?"
+    answer: "Cache aggressively at every layer (browser, edge, application, database), batch and deduplicate requests, use HTTP/2 or HTTP/3, optimize asset sizes (compression, image formats), and avoid unnecessary round trips. Backend optimizations like indexing slow queries and using connection pooling also matter once network latency is minimized."
 ---
 
 Whether users are streaming a video, loading a webpage, or interacting with an app, they expect things to work fast. One key factor that affects the speed of cloud services is *cloud latency*: the delay between a user's request and the cloud's response. But why does this matter, and how can reducing latency make your apps and services faster and more efficient?

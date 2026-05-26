@@ -9,6 +9,17 @@ author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Transactions API in [Appwrite Databases](/docs/products/databases)?"
+    answer: "The Transactions API lets you stage multiple database operations across one or more tables and commit them as one atomic action. If any step fails, Appwrite rolls every change back automatically, which keeps data consistent for things like transfers or multi-step writes."
+  - question: "How many sites can I deploy on the free plan now?"
+    answer: "The earlier one-site limit on the free plan was removed in October 2025. You can now deploy unlimited sites per project on [Appwrite Sites](/docs/products/sites) without upgrading."
+  - question: "What is included in Appwrite 1.8 for self-hosted?"
+    answer: "Appwrite 1.8 brings the new Databases experience, the latest Databases features, and migration improvements to self-hosted instances. Anyone running their own Appwrite gets parity with the features that previously landed on Cloud."
+  - question: "Which new cloud regions did Appwrite add?"
+    answer: "Singapore (SGP) and Toronto (TOR) joined the existing [Appwrite Cloud regions](/docs/products/network/regions). You can create new projects in either region or migrate an existing project to one of them."
+  - question: "Does [Appwrite Sites](/docs/products/sites) support TanStack Start and Next.js 16?"
+    answer: "Yes. TanStack Start runs with full SSR on Appwrite Sites with no extra configuration, and Next.js 16 is fully supported for production deployments. Both are available without changes to your build setup."
 ---
 Welcome back to the October product update. This month, we released the most requested Database feature, along with Appwrite 1.8x support for Self-hosted. Best of all, you can now spin up unlimited Sites on the free plan.
 

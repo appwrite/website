@@ -7,6 +7,17 @@ timeToRead: 10
 date: 2024-03-21
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Khushboo Verma?"
+    answer: "Khushboo is a software engineer at Appwrite. She earned a computer science engineering degree from one of the largest all-women's universities in Asia and worked at Microsoft on the Azure storage team before joining Appwrite."
+  - question: "What does Khushboo work on at Appwrite?"
+    answer: "She works as a software engineer building Appwrite's product, with a strong interest in cloud computing and developer-facing infrastructure. The post focuses more on her career and community work than on a single product area, so the surface keeps changing as Appwrite grows."
+  - question: "How did Khushboo get into software engineering?"
+    answer: "Through community. She led workshops on her university campus, joined programs like Microsoft Student Ambassador, GitHub Campus Experts, and Google Machine Learning, and interned at Microsoft and Adobe before her first full-time role."
+  - question: "Why is community important to her?"
+    answer: "She credits community for much of her career and sees it as her responsibility to give back. She actively pushes for diversity and inclusion in tech, especially supporting women in software engineering."
+  - question: "How did Khushboo discover Appwrite?"
+    answer: "Through a podcast she hosted called Tech Interviews Simplified. She invited a Developer Advocate from Appwrite onto the show, and the conversations that followed eventually led to a full-time role on the engineering team."
 ---
 
 The team behind Appwrite is situated worldwide and works together daily from different time zones. We’re proud of the remote and open source culture the team has built so far. In Appwrite Decoded, we introduce the people behind the code and celebrate them.

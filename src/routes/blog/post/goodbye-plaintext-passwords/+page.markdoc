@@ -7,6 +7,19 @@ cover: /images/blog/goodbye-plaintext-passwords/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: security
+faqs:
+  - question: "Why is storing passwords in plaintext dangerous?"
+    answer: "If anyone gains access to your database, they immediately have every user's password. Because most people reuse passwords across services, a single plaintext leak compromises accounts on other sites too. Plaintext storage also violates GDPR, PCI DSS, HIPAA, and most modern security frameworks, exposing your company to fines and lawsuits."
+  - question: "What is password hashing and how is it different from encryption?"
+    answer: "Hashing is a one way transformation that converts a password to a fixed length string that cannot be reversed back to the original. Encryption is two way, meaning anyone with the key can decrypt the value. Passwords should always be hashed, never encrypted, because your system never needs the original password back, only a way to verify a login attempt matches."
+  - question: "Which password hashing algorithm should I use?"
+    answer: "Use a modern memory hard algorithm like Argon2id, bcrypt, or scrypt. Avoid MD5, SHA-1, and plain SHA-256 since they are too fast and trivial to brute force on modern GPUs. Argon2id is the current recommendation from OWASP and is what Appwrite Authentication uses by default."
+  - question: "What is passwordless authentication?"
+    answer: "Passwordless authentication verifies users without a stored password, typically through magic links, one time codes, biometrics, or hardware tokens. It eliminates entire classes of attacks (phishing, credential stuffing, password reuse) and usually improves user experience. The trade off is dependency on email, SMS, or device security for the auth factor."
+  - question: "How does Appwrite handle password security?"
+    answer: "[Appwrite Authentication](/docs/products/auth) hashes passwords with Argon2id by default, supports passwordless flows like magic URLs and OTPs, integrates 30+ OAuth providers, and offers two factor authentication. You never store plaintext passwords yourself, and Appwrite's permissions system prevents accidental data exposure even if your client code has bugs."
+  - question: "What should I do if I am currently storing passwords in plaintext?"
+    answer: "Stop new plaintext storage immediately, then migrate existing passwords on next login by hashing each one as users sign in. Force a password reset for accounts that have not logged in within a reasonable window. Disclose the situation if any plaintext data was exposed publicly, since GDPR and similar laws require breach notifications."
 ---
 
 Recently, we came across a report by [BleepingComputer](https://www.bleepingcomputer.com/news/security/misconfigured-firebase-instances-leaked-19-million-plaintext-passwords/), which shared how misconfigured Firebase projects led to the leakage of 19 million plaintext passwords on the public internet. This was primarily caused by missing or incorrectly configured security rules on Firebase instances that consequently permitted read access to databases, resulting in a massive data leak that exposed:

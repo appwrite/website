@@ -8,6 +8,19 @@ timeToRead: 6
 author: aditya-oberai
 category: engineering, tutorial
 featured: false
+faqs:
+  - question: "What are the four main types of SQL data queries?"
+    answer: "SELECT (retrieve data), INSERT (add new rows), UPDATE (modify existing rows), and DELETE (remove rows). Together they cover the standard CRUD operations against a relational database, and almost every higher level ORM or query builder maps to these four operations under the hood."
+  - question: "What is the difference between AND and OR in a query?"
+    answer: "AND requires every condition to be true for a row to match, so it narrows the result set. OR matches if any condition is true, so it widens the result set. You can nest both inside the same query to express more specific logic."
+  - question: "How do I query data in Appwrite without writing SQL?"
+    answer: "Use the Appwrite Query builder in your SDK of choice. It exposes helpers like Query.equal, Query.greaterThan, Query.or, and Query.and that compile to the same filter, sort, and pagination semantics across all SDKs. See the [Appwrite Databases docs](/docs/products/databases) for the full operator list."
+  - question: "Does Appwrite support OR, AND, and CONTAINS queries?"
+    answer: "Yes. Appwrite supports OR (any condition matches), AND (all conditions match), and CONTAINS (filter by values inside an array column). You can nest these to build the same expressions you would write as a WHERE clause in SQL."
+  - question: "How do I prevent SQL injection?"
+    answer: "Never concatenate user input directly into a query string. Use parameterized queries, prepared statements, or an ORM that escapes inputs automatically. If you use a managed database like Appwrite, the SDK and Query API handle escaping for you, so injection is not a concern at the API layer."
+  - question: "Should I use raw SQL or an ORM in a new project?"
+    answer: "Use an ORM or managed database API by default. You get type safety, escaping, and migrations for free, and you avoid common bugs around joins and pagination. Drop down to raw SQL only for queries that are too complex or performance critical to express through the abstraction."
 ---
 
 For any developer working with databases in any capacity, knowledge of queries is fundamental. These queries, executed through languages like SQL (Structured Query Language), are the backbone of database interaction, allowing you to retrieve, update, insert, or delete data. In this blog, we'll delve into the different types of data queries, shedding light on their functions and best practices.

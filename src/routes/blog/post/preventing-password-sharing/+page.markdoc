@@ -7,6 +7,19 @@ cover: /images/blog/preventing-password-sharing.avif
 timeToRead: 6
 author: aditya-oberai
 category: security
+faqs:
+  - question: "Why is password sharing a security problem?"
+    answer: "Shared passwords break individual accountability, expand the attack surface, and make it nearly impossible to investigate incidents. If a password leaks from one user, every account using it is compromised at once."
+  - question: "What is the difference between MFA and passwordless authentication?"
+    answer: "MFA adds a second factor on top of a password, such as a TOTP code or SMS. Passwordless removes the password entirely and relies on factors like passkeys or magic links. Both reduce the value of a leaked or shared password, but passwordless is the stronger long term direction."
+  - question: "Does Appwrite support multi-factor authentication?"
+    answer: "Yes. [Appwrite Authentication](/docs/products/auth) supports TOTP, email, and SMS as second factors. You can enable it for users and require it on sensitive operations from your app code."
+  - question: "How can I detect shared accounts in my app?"
+    answer: "Watch for concurrent sessions from different IP ranges, sudden geographic jumps, or many devices on a single account. Behavioral analytics tools can flag these patterns. Appwrite also lets you cap sessions per user with [session limits](/docs/products/auth)."
+  - question: "Can session limits stop password sharing?"
+    answer: "They make it harder. By capping how many active sessions a user can have at once, you force someone sharing credentials to log others out, which surfaces the behavior. Combine session limits with MFA and device tracking for stronger protection."
+  - question: "Should I make users change their password if I suspect sharing?"
+    answer: "Forcing a reset removes the shared credential from circulation, but it does not solve the root cause. Combine the reset with MFA enrollment, a clear acceptable use reminder, and a review of access policies so the behavior does not start again."
 ---
 
 Over the last few years, password sharing has emerged as a notable challenge for developers and companies, intertwining concerns of security, privacy, and revenue. Although seemingly benign, this practice has significant implications, especially for platforms with seat-based pricing models. Netflix made waves in 2023 with its [ban on account sharing](https://www.techradar.com/news/netflix-password-sharing), spotlighting the potential revenue loss businesses face when users circumvent subscription models designed to reflect actual usage. Beyond financial repercussions, the critical importance of addressing password sharing simply cannot go unaddressed today.

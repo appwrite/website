@@ -9,6 +9,19 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is the difference between a startup incubator and an accelerator?"
+    answer: "Incubators support idea-stage founders with flexible timelines, light mentorship, and product validation. Accelerators are time-boxed cohort programs (usually 3 to 6 months) that take startups with traction and help them scale, fundraise, and pitch. Accelerators typically provide seed funding in exchange for equity, while incubators may not."
+  - question: "What are the top startup accelerators in Australia?"
+    answer: "Well-known programs include Startmate, Muru-D, Melbourne Accelerator Program, Antler, Slingshot, H2 Ventures, SproutX, and Founder Institute. Each has a different focus, from generalist tech to fintech, agtech, and corporate innovation."
+  - question: "Does an Australian startup accelerator take equity?"
+    answer: "Most accelerators take 5 to 10 percent equity in exchange for seed funding and program access. Incubators often take less or no equity, especially if they are university-backed. Always review the standard offer letter and any pro-rata clauses before joining."
+  - question: "When should I apply to an accelerator?"
+    answer: "Apply once you have a working product, early users or revenue, and a clear thesis you want to test. If you are still validating the problem and exploring ideas, an incubator or a pre-accelerator program is usually a better fit."
+  - question: "How does Appwrite support startups?"
+    answer: "The [Appwrite Startups program](https://appwrite.io/startups) offers cloud credits, discounts, priority support, and access to a managed all-in-one developer platform. This helps early stage teams ship faster with auth, databases, storage, functions, messaging, and hosting in one place."
+  - question: "Do I need to be in a major city to join an Australian accelerator?"
+    answer: "Many accelerators have hybrid or remote formats, but some still require regular in-person attendance in Sydney or Melbourne. Check the program format before applying, especially if you cannot relocate. International programs like Antler and Founder Institute often offer multiple regional cohorts."
 ---
 Australia has quietly grown into one of the most exciting regions for startup activity, fueled by strong government support, world-class universities, and a maturing investor ecosystem. From fintech hubs in Sydney to deep tech innovators in Melbourne, the country is producing global startups with increasing consistency. But behind many of these success stories lies a foundational catalyst: incubators and accelerators.
 

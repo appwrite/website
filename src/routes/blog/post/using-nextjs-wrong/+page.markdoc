@@ -8,6 +8,19 @@ timeToRead: 8
 author: atharva
 category: tutorial
 featured: false
+faqs:
+  - question: "When should I use Next.js instead of plain React with Vite?"
+    answer: "Use Next.js when you need server side rendering, static generation, or server components for SEO, fast initial loads, or smaller client bundles. For internal dashboards and admin tools behind a login, plain React with Vite is usually simpler and lighter."
+  - question: "What is the difference between server and client components?"
+    answer: "Server components run on the server, can access databases and secrets directly, and only send HTML to the browser. Client components ship JavaScript that hydrates and runs in the browser. You add the 'use client' directive at the top of a file to opt into a client component."
+  - question: "Why is fetching data in useEffect a bad pattern in Next.js?"
+    answer: "Fetching in useEffect means the page renders empty first, then JavaScript loads, then the request fires, then the UI updates. Users see a loading spinner instead of content. Server components fetch on the server before the page is sent, so the user gets HTML with real data immediately."
+  - question: "Which Appwrite SDK do I use in a server component?"
+    answer: "Use the Node SDK (node-appwrite) in server components and the Web SDK (appwrite) in client components. Server components typically authenticate with an [Appwrite](/docs/products/auth) API key, while client components use the user's session."
+  - question: "Can I mix server and client components in the same route?"
+    answer: "Yes. The recommended pattern is to start every component as a server component and only mark the smaller interactive subtrees as client components. You can pass serialisable props from server components down into client components, but not the other way around."
+  - question: "Will server side rendering slow down my pages?"
+    answer: "On the contrary, SSR usually improves perceived performance because the user sees content immediately instead of a spinner. The trade off is that your server does more work per request, so cache aggressively (with revalidate or ISR) for high traffic pages."
 ---
 
 Next.js has become the default choice for new React projects. But here's the problem: most developers treat it like React with a fancy router. They spin up a Next.js app, slap `'use client'` on every component, fetch data in `useEffect`, and wonder why when they face problems.
