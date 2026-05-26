@@ -152,14 +152,14 @@
         >
             {#if layoutAside}
                 <HeroBanner
-                    title="New: Presences API"
+                    title="Announcing the Presences API"
                     href="/blog/post/announcing-presences-api"
                     icon="presences"
                 />
             {:else}
                 <div class="flex w-full justify-center">
                     <HeroBanner
-                        title="New: Presences API"
+                        title="Announcing the Presences API"
                         href="/blog/post/announcing-presences-api"
                         icon="presences"
                     />
