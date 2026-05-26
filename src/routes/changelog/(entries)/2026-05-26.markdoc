@@ -1,0 +1,14 @@
+---
+layout: changelog
+title: "Dart 3.12 lands on Functions and Flutter 3.44 on Sites"
+date: 2026-05-26
+cover: /images/blog/announcing-dart-flutter-runtimes/cover.avif
+---
+
+Appwrite Functions now supports **Dart 3.12**, and Appwrite Sites now supports **Flutter 3.44** as a build runtime.
+
+Pick Dart 3.12 in the runtime dropdown when creating or updating a Function, or pick Flutter 3.44 under your Site’s **Runtime settings**. The change applies on the next deployment, your active deployment is not affected until you redeploy.
+
+{% arrow_link href="/blog/post/announcing-dart-flutter-runtimes" %}
+Read the announcement
+{% /arrow_link %}
