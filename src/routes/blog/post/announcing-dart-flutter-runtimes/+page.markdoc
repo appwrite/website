@@ -41,7 +41,7 @@ Dart 3.12 is selectable in the runtime dropdown when you create or update a Func
 Appwrite Sites already supports Flutter Web as a first-class framework. Flutter 3.44 raises the ceiling for what a Flutter Web deployment can deliver on Sites.
 
 - **WebAssembly is the default.** Flutter Web compiled to Wasm produces faster, smoother UIs than the legacy JS output, especially on animation-heavy screens. With Flutter 3.44, the Wasm pipeline is mature enough to be the recommended build for production sites.
-- **Smaller, faster initial loads.** Tree shaking, font subsetting, and improvements in the Skwasm renderer cut down what the browser has to download before the first frame paints. On a Sites deployment served through the Appwrite CDN, that compounds: smaller artifacts and globally cached delivery.
+- **Smaller, faster initial loads.** Tree shaking, font subsetting, and improvements in the Skwasm renderer cut down what the browser has to download before the first frame paints. On a Sites deployment served through the Appwrite CDN, which compounds: smaller artifacts and globally cached delivery.
 - **Better web semantics and accessibility.** The web semantics tree is more accurate and more performant in 3.44. Screen readers, keyboard navigation, and search engines see your Flutter app more like a real HTML document.
 - **Hot reload, even on the web.** Iteration on the web build feels closer to mobile development now, which makes Flutter Web a more pleasant target to actually maintain, not just deploy.
 
@@ -65,7 +65,7 @@ Dart 3.12 and Flutter 3.44 runtimes are **available on Appwrite Cloud today**.
 - Pick **Dart 3.12** in the runtime dropdown when creating or updating an Appwrite Function.
 - Pick **Flutter 3.44** in the build runtime selector under your Site’s **Runtime settings**, then redeploy.
 
-Existing deployments keep running on whichever runtime version they were last deployed with. The change applies on the next deployment.
+Existing deployments keep running on whichever runtime version they were last deployed with. The change applies to the next deployment.
 
 # More resources
 
