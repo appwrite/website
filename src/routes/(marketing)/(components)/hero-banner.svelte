@@ -5,7 +5,7 @@
     type Props = {
         title: string;
         href: string;
-        icon?: Extract<IconType, 'mongo' | 'sparkle'> | 'claude';
+        icon?: Extract<IconType, 'mongo' | 'sparkle'> | 'claude' | 'presences';
         class?: string;
     };
 
@@ -27,6 +27,8 @@
                 class="claude-icon-badge-img"
             />
         </span>
+    {:else if icon === 'presences'}
+        <span class="icon-status-online presences-icon-glyph shrink-0" aria-hidden="true"></span>
     {:else}
         <Icon name="sparkle" class="shrink-0" aria-hidden="true" />
     {/if}
@@ -62,5 +64,11 @@
         display: block;
         width: 0.875rem;
         height: 0.875rem;
+    }
+
+    .presences-icon-glyph {
+        color: #fd366e;
+        font-size: 1rem;
+        line-height: 1;
     }
 </style>

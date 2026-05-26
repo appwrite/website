@@ -152,16 +152,16 @@
         >
             {#if layoutAside}
                 <HeroBanner
-                    title="New: Appwrite plugin for Claude Code"
-                    href="/blog/post/announcing-appwrite-claude-code-plugin"
-                    icon="claude"
+                    title="New: Presences API"
+                    href="/blog/post/announcing-presences-api"
+                    icon="presences"
                 />
             {:else}
                 <div class="flex w-full justify-center">
                     <HeroBanner
-                        title="New: Appwrite plugin for Claude Code"
-                        href="/blog/post/announcing-appwrite-claude-code-plugin"
-                        icon="claude"
+                        title="New: Presences API"
+                        href="/blog/post/announcing-presences-api"
+                        icon="presences"
                     />
                 </div>
             {/if}
