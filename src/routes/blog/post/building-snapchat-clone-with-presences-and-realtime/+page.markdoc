@@ -71,7 +71,13 @@ Create an **API key** with these scopes:
 - `files.write`
 - `presences.write`
 
-Save the secret as `APPWRITE_API_KEY` for local development and as a Site environment variable for deployment. This key stays on the server and is used by server functions for cross-user writes, file uploads, and session-cookie creation.
+Save the secret as `APPWRITE_API_KEY` in three places:
+
+- Your local `.env` file for development
+- The Appwrite Site environment variables for SSR/admin server functions
+- The `serve-snap` Function environment variables for protected snap delivery
+
+Do not store this key in `appwrite.config.json`. It stays on the server and is used for cross-user writes, file uploads, session-cookie creation, and protected snap delivery.
 
 # Create the database
 
@@ -130,7 +136,7 @@ For AppChat that means a presence record looks like:
   $id: '<userId>',          // we upsert with presenceId == userId
   userId: '<userId>',
   status: 'online',
-  expiresAt: '2026-05-27T08:57:37.787+00:00',
+  expiresAt: '2026-05-26T08:58:37.787+00:00',
   metadata: {
     lat: -33.8688,
     lng: 151.2093,
@@ -140,7 +146,7 @@ For AppChat that means a presence record looks like:
 }
 ```
 
-Two things matter here. The metadata object is yours to shape, so the lat, lng, name, and avatar URL all travel inside the same row. And the expiry is server-side, so the client keeps re-stamping the row every few seconds and the server handles the rest.
+Two things matter here. The metadata object is yours to shape, so the lat, lng, name, and avatar URL all travel inside the same record. And the expiry is server-side, so the client keeps re-stamping the record on a heartbeat and the server clears stale pins shortly after the heartbeat stops.
 
 The write side is one call. In AppChat the heartbeat runs through a TanStack Start server function so the admin client can set the right permissions, since a brand-new presence created by a user does not automatically grant `update(user:<id>)` and `delete(user:<id>)` to that user:
 
@@ -154,14 +160,15 @@ export const upsertPresenceServer = createServerFn({ method: 'POST' })
         const user = await account.get();
         const { client: adminClient } = createAdminClient();
         const presences = new Presences(adminClient);
+        const friendIds = await listFriendIdsForPresence(user.$id);
         await presences.upsert({
             presenceId: user.$id,
             userId: user.$id,
             status: 'online',
             metadata: data.metadata,
-            expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+            expiresAt: new Date(Date.now() + 60 * 1000).toISOString(),
             permissions: [
-                Permission.read(Role.users()),
+                ...[user.$id, ...friendIds].map((id) => Permission.read(Role.user(id))),
                 Permission.update(Role.user(user.$id)),
                 Permission.delete(Role.user(user.$id))
             ]
@@ -177,7 +184,7 @@ On the client, the map keeps the presence stream friend-scoped:
 - Treat the current user's presence record as locally authoritative after a pin move
 - Merge initial presence data and realtime updates only for other users
 
-That filtering matters because presence records are readable by authenticated users, while the Snapchat-style map should only show accepted friends.
+That filtering mirrors the server permissions: each presence record is readable by the current user and accepted friends, while the map still keeps its own friend-ID filter as a UI guard.
 
 ![Alice's pin on the globe, expanded inline to reveal her name](/images/blog/building-snapchat-clone-with-presences-and-realtime/map-alice-hover.avif)
 
@@ -261,7 +268,11 @@ export default async ({ req, res, error }) => {
 
     const endpoint = process.env.APPWRITE_FUNCTION_API_ENDPOINT;
     const projectId = process.env.APPWRITE_FUNCTION_PROJECT_ID;
-    const apiKey = req.headers['x-appwrite-key'];
+    const apiKey = process.env.APPWRITE_API_KEY;
+    if (!apiKey) {
+        error('APPWRITE_API_KEY env var is not set');
+        return res.json({ message: 'internal error' }, 500);
+    }
 
     const callerClient = new Client().setEndpoint(endpoint).setProject(projectId).setJWT(jwt);
     let snap;
@@ -285,10 +296,17 @@ export default async ({ req, res, error }) => {
 
     const adminClient = new Client().setEndpoint(endpoint).setProject(projectId).setKey(apiKey);
     const adminStorage = new Storage(adminClient);
-    const [file, bytes] = await Promise.all([
-        adminStorage.getFile({ bucketId: 'snaps', fileId: snap.fileId }),
-        adminStorage.getFileView({ bucketId: 'snaps', fileId: snap.fileId })
-    ]);
+    let file;
+    let bytes;
+    try {
+        [file, bytes] = await Promise.all([
+            adminStorage.getFile({ bucketId: 'snaps', fileId: snap.fileId }),
+            adminStorage.getFileView({ bucketId: 'snaps', fileId: snap.fileId })
+        ]);
+    } catch (e) {
+        error(e.message);
+        return res.json({ message: 'internal error' }, 500);
+    }
 
     return res.json({ contentType: file.mimeType, base64: Buffer.from(bytes).toString('base64') }, 200);
 };
@@ -296,7 +314,7 @@ export default async ({ req, res, error }) => {
 
 A few details that are easy to miss the first time:
 
-- The function declares `scopes: ['files.read']` in `appwrite.config.json`. Without that scope the admin client cannot read the bucket.
+- `APPWRITE_API_KEY` must be set as a Function environment variable. Do not read the API key from request headers; direct function URLs will not reliably receive one.
 - The function is called from a server function via `Functions.createExecution` with `method: ExecutionMethod.GET` and `xpath: '/snap/<id>?token=<jwt>'`. That keeps snap reads aligned with the SSR session instead of relying on browser-only auth state.
 - The response is a base64 payload because the function returns JSON. The client builds a `data:` URL and renders it directly. There is no signed URL handed out, and the recipient has no Storage permission for a direct read.
 
