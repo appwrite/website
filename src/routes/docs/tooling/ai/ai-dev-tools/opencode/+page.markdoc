@@ -85,7 +85,7 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
     "appwrite-docs": {
       "type": "remote",
       "enabled": true,
-      "url": "<https://mcp-for-docs.appwrite.io>"
+      "url": "https://mcp-for-docs.appwrite.io"
     }
   }
 }

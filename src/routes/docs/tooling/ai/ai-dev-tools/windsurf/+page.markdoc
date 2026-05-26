@@ -87,7 +87,7 @@ Update the `mcp_config.json` file to include the docs server:
 {
   "mcpServers": {
     "appwrite-docs": {
-      "serverUrl": "<https://mcp-for-docs.appwrite.io>"
+      "serverUrl": "https://mcp-for-docs.appwrite.io"
     }
   }
 }

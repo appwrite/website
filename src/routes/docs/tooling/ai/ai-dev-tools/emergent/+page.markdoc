@@ -53,7 +53,7 @@ To connect Appwrite MCP servers to Emergent:
       "command": "npx",
       "args": [
         "mcp-remote",
-        "<https://mcp-for-docs.appwrite.io>"
+        "https://mcp-for-docs.appwrite.io"
       ]
     }
   }
