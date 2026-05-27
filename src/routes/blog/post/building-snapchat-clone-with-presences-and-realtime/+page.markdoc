@@ -9,9 +9,9 @@ author: atharva
 category: tutorial
 faqs:
   - question: "What does the Appwrite Presences API store?"
-    answer: "Each presence is a single row keyed by your user ID with a status, an expiry, free-form metadata, and standard permissions. You upsert it, the server expires it after the time you set, and the row is broadcast on the realtime `presences` channel so other authenticated users see it the moment it lands."
+    answer: "Each presence is a single row keyed by your user ID, with a status, an expiry, free-form metadata, and standard permissions. You upsert it, the server expires it after the time you set, and the row is broadcast on the realtime `presences` channel so other authenticated users see it the moment it lands."
   - question: "How does AppChat make snaps expire after 24 hours without scheduled jobs?"
-    answer: "The 24-hour gate is enforced at read time. The `serve-snap` Appwrite Function compares the snap row's `$createdAt` against `now`, and refuses to return the file bytes once the difference crosses 24 hours. Cleanup of expired rows and files can be handled by a separate scheduled function if you want long-term hygiene, but reads stop working immediately."
+    answer: "The 24-hour gate is enforced at read time. The `serve-snap` Appwrite Function compares the snap row's `$createdAt` against `now` and refuses to return the file bytes once the snap is older than 24 hours. Cleanup of expired rows and files can be handled by a separate scheduled function if you want long-term hygiene, but reads stop working immediately."
   - question: "Can the recipient open the file in Appwrite Storage directly?"
     answer: "Not as the recipient. The bucket uses file-level security, and each uploaded file grants Storage read access only to the sender. The snap row is readable by sender and recipient and contains the file ID, but recipient Storage reads are denied. The function is the recipient's delivery path because it checks the row permission, verifies the execution user is the recipient, and enforces the 24-hour age before returning bytes."
   - question: "Why route snap delivery through an Appwrite Function instead of a Storage URL?"
@@ -22,18 +22,16 @@ faqs:
     answer: "The heartbeat reads the latest pin from a React ref, and the map page treats its own presence record as locally authoritative. That lets the initial presence list and inbound realtime echoes merge cleanly while the user's pin update stays responsive."
 ---
 
-Social apps feel simple when the realtime layer disappears into the experience. A friend opens the app, their pin moves on the map, a photo arrives, and the notification shows up without anyone thinking about polling, stale rows, or file permissions. That kind of product surface looks playful, but it depends on a few backend guarantees working together: live user state, realtime fan-out, relationship-aware permissions, and media that expires on time.
+The best social apps feel alive without asking the user to think about why. A friend opens the app and their pin moves. A photo lands in your inbox the moment they send it. A snap is there when you need it, then disappears when its time is up.
 
-AppChat uses those same ideas in a small Snapchat-style demo. Friends can see each other on a globe, send photos, and open snaps that expire 24 hours after the sender hits send. Those behaviors map directly onto Appwrite primitives, which means the rest of the build is mostly UI.
+That is the feel AppChat is going for: a small Snapchat-style demo where friends can see each other on a globe, send photos, and open snaps that expire 24 hours after the sender hits send.
 
-In this tutorial, you will build **AppChat**, a small Snapchat clone with [TanStack Start](https://tanstack.com/start) and Appwrite. Friends drop pins on a globe via the **Presences API**, send each other photos through an **Appwrite Function** that enforces a 24-hour expiry, and get notified the moment a snap arrives via **Realtime channel helpers**. The friend graph lives in **TablesDB** and the photo bytes live in **Storage**.
+In this tutorial, you will build **AppChat** with [TanStack Start](https://tanstack.com/start) and Appwrite. Under the hood, friends drop pins on a globe via the **Presences API**, send photos through an **Appwrite Function** that enforces a 24-hour expiry, and get notified the moment a snap arrives via **Realtime channel helpers**. The friend graph lives in **TablesDB** and the photo bytes live in **Storage**.
 
 You can try the deployed demo at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network).
 
 {% info title="Source code" %}
 The full source code lives in [`appwrite-community/appchat`](https://github.com/appwrite-community/appchat). The repository is the companion app for this post, including the Appwrite config, TanStack Start site, function, and demo seed script.
-
-You can try the deployed app at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network).
 {% /info %}
 
 # Prerequisites
@@ -44,7 +42,7 @@ You can try the deployed app at [appchat-demo.appwrite.network](https://appchat-
 
 # What you will build
 
-AppChat has three pages: a globe, a friends tab, and a snap inbox. Every signed-in user owns one presence record that says where they are, one row per friendship they have accepted, and one row per snap they have sent or received in the last 24 hours.
+AppChat has three pages: a globe, a friends tab, and a snap inbox. Every signed-in user owns one presence record that says where they are, one row for each accepted friendship, and one row for each snap they have sent or received in the last 24 hours.
 
 The pieces fit together like this:
 
@@ -52,7 +50,7 @@ The pieces fit together like this:
 - **The friend graph** lives in two TablesDB tables, `friendRequests` and `friendships`
 - **Snap metadata** is a row in the `snaps` table, permissioned to the sender and the recipient
 - **Snap bytes** sit in a file-secured Storage bucket. The server uploads sender-readable files, and recipients receive bytes through the delivery function
-- **Snap delivery** is an HTTP-mode Appwrite Function that uses JWT delegation to enforce the 24-hour gate
+- **Snap delivery** is an Appwrite Function that uses JWT delegation to enforce the 24-hour gate
 - **Notifications** ride on Realtime channel helpers subscribed to TablesDB rows
 
 Everything is configured in a single [`appwrite.config.json`](/docs/products/sites/deploy-from-cli) so that one config ships the database schema, bucket, function, and site together.
@@ -133,9 +131,9 @@ Go to **Storage** and create a bucket called **snaps** (ID: `snaps`). Enable fil
 
 # Live locations with Presences
 
-The [Presences API](/docs/products/auth/presences) is the smallest one to explain. There is exactly one presence record per user, keyed by the user ID. Each record carries a status, an expiry, and a free-form metadata object. When the expiry passes, the record is gone. When the user updates it, every other authenticated client subscribed to the `presences` channel sees the new payload in realtime.
+The [Presences API](/docs/products/auth/presences) is the simplest piece to explain. There is exactly one presence record per user, keyed by the user ID. Each record carries a status, an expiry, and a free-form metadata object. When the expiry passes, the record is gone. When the user updates it, every other authenticated client subscribed to the `presences` channel sees the new payload in realtime.
 
-For AppChat that means a presence record looks like:
+For AppChat, that means a presence record looks like this:
 
 ```ts
 {
@@ -152,9 +150,9 @@ For AppChat that means a presence record looks like:
 }
 ```
 
-Two things matter here. The metadata object is yours to shape, so the lat, lng, name, and avatar URL all travel inside the same record. And the expiry is server-side, so the client keeps re-stamping the record on a heartbeat and the server clears stale pins shortly after the heartbeat stops.
+Two things matter here. The metadata object is yours to shape, so the lat, lng, name, and avatar URL all travel inside the same record. The expiry is server-side, so the client keeps re-stamping the record on a heartbeat and the server clears stale pins shortly after the heartbeat stops.
 
-The write side is one call. In AppChat, the heartbeat runs through a TanStack Start server function, so the admin client can set the right permissions, since a brand-new presence created by a user does not automatically grant `update(user:<id>)` and `delete(user:<id>)` to that user:
+The write side is one call. In AppChat, the heartbeat runs through a TanStack Start server function, so the admin client can set the right permissions. A brand-new presence created by a user does not automatically grant `update(user:<id>)` and `delete(user:<id>)` to that user:
 
 ```ts
 import { Permission, Role, Presences } from 'node-appwrite';
@@ -202,7 +200,7 @@ Snaps need three properties at once:
 - They expire after 24 hours regardless of whether the recipient opened them
 - Recipient file reads pass through a code path you control
 
-The way to do this in Appwrite is to put controlled server code on both sides of the file. The TanStack Start server function receives the selected image from the browser, uploads it with a sender-only read permission, and stores the file ID on a snap row that is permissioned to the sender and recipient. The Appwrite Function checks both the row permission and the row age before returning bytes.
+The way to do this in Appwrite is to put controlled server code on both sides of the file. The TanStack Start server function receives the selected image from the browser, uploads it with sender-only read permission, and stores the file ID on a snap row that is permissioned to the sender and recipient. The Appwrite Function checks both the row permission and the row age before returning bytes.
 
 The browser wrapper converts the file into a server-function payload:
 
@@ -352,7 +350,7 @@ export function subscribeToMySnaps(userId: string, onNew: (snap: Snap) => void) 
 }
 ```
 
-`Channel.tablesdb(db).table(t).row().create()` resolves to the create event on every row in that table. The payload arrives already permission-filtered, so the recipient only sees the rows they are allowed to read. The app layout dispatches a browser event for route-specific highlights and shows the toast itself, while the check on `userId === recipientId` remains a defensive client-side filter.
+`Channel.tablesdb(db).table(t).row().create()` resolves to the create event for every row in that table. The payload arrives already permission-filtered, so the recipient only sees the rows they are allowed to read. The app layout dispatches a browser event for route-specific highlights and shows the toast itself, while the check on `userId === recipientId` remains a defensive client-side filter.
 
 The presence channel is even simpler. It is one channel for the whole app, and each event carries a single presence record in its payload. That makes it easy to dedupe by `$id` on the client.
 
@@ -364,7 +362,7 @@ Opening a snap invokes the Appwrite Function with the browser session, gets the 
 
 The friend graph fits in two tables. `friendRequests` is a row per invite with `fromUserId`, `toUserId`, and a required `status` string. `friendships` is the canonical relation, with a sorted pair `(userA, userB)` and a unique index to make duplicate detection cheap. Display names are resolved from Auth users when the server prepares the friends UI.
 
-The whole flow runs through TanStack Start server functions because the client SDK cannot grant permissions on rows that belong to a different user. The accept handler in particular touches both tables in one server roundtrip:
+The whole flow runs through TanStack Start server functions because the client SDK cannot grant permissions on rows that belong to a different user. The accept handler, in particular, touches both tables in one server roundtrip:
 
 ```ts
 await tablesDB.updateRow({
@@ -422,7 +420,7 @@ For this Snapchat clone, the whole graph is two relation tables and four operati
 
 # Next steps
 
-You now have a working Snapchat clone with live locations, ephemeral snaps, and realtime notifications, on a stack that is one Appwrite project plus one TanStack Start app. The same patterns extend to anything where you need a presence layer plus permissioned ephemeral media: live-event apps, location-aware social tools, time-limited file shares.
+You now have a working Snapchat clone with live locations, ephemeral snaps, and realtime notifications, on a stack that is one Appwrite project plus one TanStack Start app. The same patterns extend to anything where you need a presence layer plus permissioned ephemeral media: live-event apps, location-aware social tools, or time-limited file shares.
 
 Try the deployed demo at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network), or clone the full source code from [appwrite-community/appchat](https://github.com/appwrite-community/appchat), swap in your project credentials, run `appwrite push`, and start building on top.
 
