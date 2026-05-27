@@ -28,6 +28,8 @@ In this tutorial, you will build **AppChat**, a small Snapchat clone with [TanSt
 
 {% info title="Source code" %}
 The full source code lives in [`appwrite-community/appchat`](https://github.com/appwrite-community/appchat). The repository is the companion app for this post, including the Appwrite config, TanStack Start site, function, and demo seed script.
+
+You can try the deployed app at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network).
 {% /info %}
 
 # Prerequisites
