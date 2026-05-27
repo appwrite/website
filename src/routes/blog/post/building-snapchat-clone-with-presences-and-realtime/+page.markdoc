@@ -22,9 +22,13 @@ faqs:
     answer: "The heartbeat reads the latest pin from a React ref, and the map page treats its own presence record as locally authoritative. That lets the initial presence list and inbound realtime echoes merge cleanly while the user's pin update stays responsive."
 ---
 
-Strip Snapchat down and you are left with two things working in tandem: knowing where your friends are right now, and sending each other photos that expire 24 hours after the sender hits send. Both map onto Appwrite primitives directly, which means the rest of the build is mostly UI.
+Social apps feel simple when the realtime layer disappears into the experience. A friend opens the app, their pin moves on the map, a photo arrives, and the notification shows up without anyone thinking about polling, stale rows, or file permissions. That kind of product surface looks playful, but it depends on a few backend guarantees working together: live user state, realtime fan-out, relationship-aware permissions, and media that expires on time.
+
+AppChat uses those same ideas in a small Snapchat-style demo. Friends can see each other on a globe, send photos, and open snaps that expire 24 hours after the sender hits send. Those behaviors map directly onto Appwrite primitives, which means the rest of the build is mostly UI.
 
 In this tutorial, you will build **AppChat**, a small Snapchat clone with [TanStack Start](https://tanstack.com/start) and Appwrite. Friends drop pins on a globe via the **Presences API**, send each other photos through an **Appwrite Function** that enforces a 24-hour expiry, and get notified the moment a snap arrives via **Realtime channel helpers**. The friend graph lives in **TablesDB** and the photo bytes live in **Storage**.
+
+You can try the deployed demo at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network).
 
 {% info title="Source code" %}
 The full source code lives in [`appwrite-community/appchat`](https://github.com/appwrite-community/appchat). The repository is the companion app for this post, including the Appwrite config, TanStack Start site, function, and demo seed script.
@@ -150,7 +154,7 @@ For AppChat that means a presence record looks like:
 
 Two things matter here. The metadata object is yours to shape, so the lat, lng, name, and avatar URL all travel inside the same record. And the expiry is server-side, so the client keeps re-stamping the record on a heartbeat and the server clears stale pins shortly after the heartbeat stops.
 
-The write side is one call. In AppChat the heartbeat runs through a TanStack Start server function so the admin client can set the right permissions, since a brand-new presence created by a user does not automatically grant `update(user:<id>)` and `delete(user:<id>)` to that user:
+The write side is one call. In AppChat, the heartbeat runs through a TanStack Start server function, so the admin client can set the right permissions, since a brand-new presence created by a user does not automatically grant `update(user:<id>)` and `delete(user:<id>)` to that user:
 
 ```ts
 import { Permission, Role, Presences } from 'node-appwrite';
@@ -420,7 +424,7 @@ For this Snapchat clone, the whole graph is two relation tables and four operati
 
 You now have a working Snapchat clone with live locations, ephemeral snaps, and realtime notifications, on a stack that is one Appwrite project plus one TanStack Start app. The same patterns extend to anything where you need a presence layer plus permissioned ephemeral media: live-event apps, location-aware social tools, time-limited file shares.
 
-The full source code is in [appwrite-community/appchat](https://github.com/appwrite-community/appchat). Clone it, swap in your project credentials, run `appwrite push`, and start building on top.
+Try the deployed demo at [appchat-demo.appwrite.network](https://appchat-demo.appwrite.network), or clone the full source code from [appwrite-community/appchat](https://github.com/appwrite-community/appchat), swap in your project credentials, run `appwrite push`, and start building on top.
 
 To go deeper into the features used in this tutorial:
 
