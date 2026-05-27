@@ -2,7 +2,7 @@
 layout: post
 title: "Build a Snapchat clone with Presences and Realtime"
 description: Build a Snapchat-style app with Appwrite's Presences API and Realtime, using TanStack Start, TablesDB, Functions, and Storage. Friends drop pins on a globe and send each other photos that expire in 24 hours.
-date: 2026-05-26
+date: 2026-05-27
 cover: /images/blog/building-snapchat-clone-with-presences-and-realtime/cover.avif
 timeToRead: 12
 author: atharva
