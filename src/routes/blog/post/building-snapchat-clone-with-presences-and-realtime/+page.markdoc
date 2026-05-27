@@ -13,13 +13,13 @@ faqs:
   - question: "How does AppChat make snaps expire after 24 hours without scheduled jobs?"
     answer: "The 24-hour gate is enforced at read time. The `serve-snap` Appwrite Function compares the snap row's `$createdAt` against `now`, and refuses to return the file bytes once the difference crosses 24 hours. Cleanup of expired rows and files can be handled by a separate scheduled function if you want long-term hygiene, but reads stop working immediately."
   - question: "Can the recipient open the file in Appwrite Storage directly?"
-    answer: "Not as the recipient. The bucket uses file-level security, and each uploaded file grants Storage read access only to the sender. The snap row is readable by sender and recipient and contains the file ID, but recipient Storage reads are denied. The function is the recipient's delivery path because it checks the row permission and 24-hour age before reading the file as an admin."
+    answer: "Not as the recipient. The bucket uses file-level security, and each uploaded file grants Storage read access only to the sender. The snap row is readable by sender and recipient and contains the file ID, but recipient Storage reads are denied. The function is the recipient's delivery path because it checks the row permission, verifies the execution user is the recipient, and enforces the 24-hour age before returning bytes."
   - question: "Why route snap delivery through an Appwrite Function instead of a Storage URL?"
-    answer: "Two reasons. First, you need a gate that checks both the recipient permission and the 24-hour age in one place. Second, the function uses `setJWT(jwt)` to act as the caller for the permission check, then switches to the admin key for the file read. That gives you delegated authorization without exposing the bucket."
+    answer: "Two reasons. First, you need a gate that checks both the recipient permission and the 24-hour age in one place. Second, Appwrite injects the execution user's JWT into the function, so the function can read the snap row as the caller, verify the caller is the recipient, and then use its scoped execution key to fetch the sender-restricted file."
   - question: "Do I need separate Appwrite projects for the site and the function?"
     answer: "No. AppChat ships both from one `appwrite.config.json`. The site is a `tanstack-start` Site with an SSR adapter, and the function is a Node-22 function with a `files.read` scope. A single `appwrite push` updates both."
   - question: "How does the heartbeat avoid race conditions on the user's own pin?"
-    answer: "The heartbeat reads the latest pin from a React ref instead of restarting the interval on every state change. The map page also treats its own presence record as locally authoritative, so the initial presence list and inbound realtime echoes never overwrite the optimistic update the user performed."
+    answer: "The heartbeat reads the latest pin from a React ref, and the map page treats its own presence record as locally authoritative. That lets the initial presence list and inbound realtime echoes merge cleanly while the user's pin update stays responsive."
 ---
 
 Strip Snapchat down and you are left with two things working in tandem: knowing where your friends are right now, and sending each other photos that expire 24 hours after the sender hits send. Both map onto Appwrite primitives directly, which means the rest of the build is mostly UI.
@@ -239,7 +239,6 @@ const row = await adminTables.createRow({
     permissions: [
         Permission.read(Role.user(me.$id)),
         Permission.read(Role.user(data.recipientId)),
-        Permission.update(Role.user(data.recipientId)),
         Permission.delete(Role.user(me.$id))
     ]
 });
@@ -248,15 +247,16 @@ const row = await adminTables.createRow({
 The delivery function is the interesting bit:
 
 - It takes a snap ID in the URL
-- It reads a JWT from `x-appwrite-user-jwt` or a `token` query param
-- The app calls it from a TanStack Start server function, creates a JWT from the current SSR session, and passes that token in the function URL
-- The function uses the JWT to read the snap row as the caller, so Appwrite performs the row permission check
+- The browser calls it with `Functions.createExecution`, using the user's active Appwrite session
+- Appwrite injects `x-appwrite-user-jwt` and `x-appwrite-user-id` into the function request
+- The function uses the injected JWT to read the snap row as the caller, so Appwrite performs the row permission check
+- It also verifies that the execution user ID matches `snap.recipientId`
 - If the caller is outside the row permissions, the row read returns 401 and the function refuses
 - If the row is older than 24 hours, the function returns 410
-- Otherwise it switches to the admin key to fetch the file bytes
+- Otherwise it uses the scoped execution key to fetch the file bytes
 
 ```js
-import { Client, TablesDB, Storage, AppwriteException } from 'node-appwrite';
+import { Client, TablesDB, Storage } from 'node-appwrite';
 
 const SNAP_TTL_MS = 24 * 60 * 60 * 1000;
 
@@ -265,18 +265,22 @@ export default async ({ req, res, error }) => {
     if (!match || req.method !== 'GET') return res.json({ message: 'not found' }, 404);
 
     const snapId = match[1];
-    const jwt = req.headers['x-appwrite-user-jwt'] || req.query?.token;
+    const jwt = req.headers['x-appwrite-user-jwt'];
     if (!jwt) return res.json({ message: 'unauthorized' }, 401);
 
     const endpoint = process.env.APPWRITE_FUNCTION_API_ENDPOINT;
     const projectId = process.env.APPWRITE_FUNCTION_PROJECT_ID;
-    const apiKey = process.env.APPWRITE_API_KEY;
+    const executionKey = req.headers['x-appwrite-key'];
+    const apiKey = executionKey?.startsWith('ephemeral_') ? executionKey : process.env.APPWRITE_API_KEY;
     if (!apiKey) {
         error('APPWRITE_API_KEY env var is not set');
         return res.json({ message: 'internal error' }, 500);
     }
 
     const callerClient = new Client().setEndpoint(endpoint).setProject(projectId).setJWT(jwt);
+    const callerId = process.env.APPWRITE_FUNCTION_USER_ID || req.headers['x-appwrite-user-id'];
+    if (!callerId) return res.json({ message: 'unauthorized' }, 401);
+
     let snap;
     try {
         snap = await new TablesDB(callerClient).getRow({
@@ -285,12 +289,14 @@ export default async ({ req, res, error }) => {
             rowId: snapId
         });
     } catch (e) {
-        if (e instanceof AppwriteException && (e.code === 401 || e.code === 404)) {
+        if (e.code === 401 || e.code === 404) {
             return res.json({ message: 'unauthorized' }, 401);
         }
         error(e.message);
         return res.json({ message: 'internal error' }, 500);
     }
+
+    if (snap.recipientId !== callerId) return res.json({ message: 'unauthorized' }, 401);
 
     if (Date.now() - new Date(snap.$createdAt).getTime() > SNAP_TTL_MS) {
         return res.json({ message: 'snap expired' }, 410);
@@ -316,9 +322,9 @@ export default async ({ req, res, error }) => {
 
 A few details that are easy to miss the first time:
 
-- `APPWRITE_API_KEY` must be set as a Function environment variable. Do not read the API key from request headers; direct function URLs will not reliably receive one.
-- The function is called from a server function via `Functions.createExecution` with `method: ExecutionMethod.GET` and `xpath: '/snap/<id>?token=<jwt>'`. That keeps snap reads aligned with the SSR session instead of relying on browser-only auth state.
-- The response is a base64 payload because the function returns JSON. The client builds a `data:` URL and renders it directly. There is no signed URL handed out, and the recipient has no Storage permission for a direct read.
+- `serve-snap` declares the `files.read` scope, which lets the function fetch the protected file after the recipient check passes.
+- The function returns JSON with the file MIME type and base64 bytes. The viewer turns that into a `data:` URL and renders the snap directly.
+- After the image loads, a TanStack Start server function verifies the current user is the recipient and stamps `viewedAt`, so the inbox can show whether the snap is new or already opened.
 
 The combined effect is that the recipient cannot reach the file by any path except this function, unauthorized callers are rejected by the row permission check, and the function refuses everyone once 24 hours have passed.
 
@@ -346,7 +352,7 @@ export function subscribeToMySnaps(userId: string, onNew: (snap: Snap) => void) 
 
 The presence channel is even simpler. It is one channel for the whole app, and each event carries a single presence record in its payload. That makes it easy to dedupe by `$id` on the client.
 
-Opening a snap calls a server function, which creates the caller JWT, invokes the Appwrite Function, gets the base64 payload back, and returns a `data:` URL to the viewer. The viewer is also where the `viewedAt` column gets stamped, so the inbox can distinguish new snaps from ones the recipient has already opened.
+Opening a snap invokes the Appwrite Function with the browser session, gets the base64 payload back, and returns a `data:` URL to the viewer. After the bytes load, a TanStack Start server function verifies the current user is the recipient and stamps the `viewedAt` column with an admin client, so the inbox can distinguish new snaps from ones the recipient has already opened.
 
 ![The snap viewer rendering bytes returned by the function](/images/blog/building-snapchat-clone-with-presences-and-realtime/app-snap-viewer.avif)
 
@@ -404,9 +410,9 @@ For this Snapchat clone, the whole graph is two relation tables and four operati
 
 # Key takeaways
 
-- **Presences** gives you a live, server-expiring per-user state object for free. Once you have that, anything that wants to ask "who is online and where are they right now" stops needing a custom heartbeat table.
-- **Functions in HTTP mode** are the right tool whenever the security model is "the SDK permission check is correct but I also want a side condition." Twenty-four-hour expiry, signed previews, rate limiting, transcoding gates, all of them fit the same shape.
-- **JWT delegation** lets a function act as the caller for permission checks, then escalate to the admin key for privileged work like reading sender-restricted files.
+- **Presences** gives you a live, server-expiring per-user state object. Once you have that, anything that wants to ask "who is online and where are they right now" stops needing a custom heartbeat table.
+- **Functions** are the right tool whenever the security model is "the SDK permission check is correct but I also want a side condition." Twenty-four-hour expiry, signed previews, rate limiting, transcoding gates, all of them fit the same shape.
+- **JWT delegation** lets a function act as the caller for row permission checks, while the function's scoped execution key handles the protected file read.
 - **Realtime channel helpers** give you type inference on the payload and make the intent of the subscription obvious at the call site.
 - **A single `appwrite.config.json`** for schema, bucket, function, and site means you stop thinking of the backend and the frontend as disconnected deployments. They version together, ship together, and roll back together.
 
