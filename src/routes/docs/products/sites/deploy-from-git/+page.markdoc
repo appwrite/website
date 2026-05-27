@@ -38,6 +38,28 @@ When you push a commit to a branch other than the production branch, a new deplo
 
 If you need to update your Git configuration, navigate to **Sites** > your site > **Settings** > **Git repository**.
 
+## Build triggers {% #build-triggers %}
+
+Build triggers control which Git changes create automatic deployments. You can configure branch filters and path filters with glob patterns.
+
+**Branch filters** match branch names. Add patterns to limit automatic deployments to specific branches.
+
+```txt
+main
+staging
+preview/**
+```
+
+**Path filters** match files changed in a commit or pull request. Leave this field empty to create deployments for all file changes, or add patterns to deploy only when specific files change.
+
+```txt
+apps/web/**
+packages/ui/**
+!docs/**
+```
+
+Use `!` before a pattern to exclude matching branches or paths.
+
 ## Install command
 
 The install command of your site allow you to install your site’s dependencies. You can specify custom install scripts such as ones that let you configure your `npm` command with options or use an alternative package manager such as `pnpm` or `yarn`.
