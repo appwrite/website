@@ -5,7 +5,7 @@ description: Git deployment triggers let you control which branches and file cha
 date: 2026-05-27
 cover: /images/blog/announcing-git-deployment-triggers/cover.avif
 timeToRead: 4
-author: matej-baco
+author: harsh-mahajan
 category: announcement
 featured: false
 callToAction: true
@@ -42,13 +42,11 @@ Git deployment triggers let you control which branches and file changes create a
 
 **Branch filters** match branch names. Add patterns to limit automatic deployments to specific branches.
 
-```text
-main
-staging
-preview/**
-```
-
-With these filters, Appwrite creates automatic deployments for pushes to `main`, pushes to `staging`, and pushes to branches nested under `preview/`, such as `preview/new-checkout`.
+| Pattern | Matches | Example use |
+| --- | --- | --- |
+| `main` | The `main` branch | Deploy from your production branch |
+| `staging` | The `staging` branch | Deploy from a staging branch |
+| `preview/**` | Branches nested under `preview/` | Deploy from branches like `preview/new-checkout` |
 
 Branch filters work alongside your production branch setting. The production branch still controls which deployment becomes active for the Function or Site. Matching non-production branches can still create deployments for preview and testing workflows.
 
@@ -56,13 +54,11 @@ Branch filters work alongside your production branch setting. The production bra
 
 **Path filters** match files changed in a commit or pull request. Leave this field empty to create deployments for all file changes, or add patterns to deploy only when specific files change.
 
-```text
-apps/web/**
-packages/ui/**
-!docs/**
-```
-
-With these filters, Appwrite creates a deployment when changes touch files under `apps/web/` or `packages/ui/`. The `!docs/**` pattern excludes documentation changes, so updating files under `docs/` does not start a deployment for that Site.
+| Pattern | Matches | Example use |
+| --- | --- | --- |
+| `apps/web/**` | Files nested under `apps/web/` | Deploy a Site when its app files change |
+| `packages/ui/**` | Files nested under `packages/ui/` | Deploy when shared UI components change |
+| `!docs/**` | Excludes files nested under `docs/` | Skip docs-only changes |
 
 Path filters are especially useful in monorepos. If one repository contains a web app, background Functions, shared packages, and docs, each Appwrite resource can listen only to the files it actually needs.
 
