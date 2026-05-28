@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Git deployment triggers for Appwrite Functions and Sites"
 description: Git deployment triggers let you control which branches and file changes create automatic deployments for Appwrite Functions and Sites.
-date: 2026-05-27
+date: 2026-05-28
 cover: /images/blog/announcing-git-deployment-triggers/cover.avif
 timeToRead: 4
 author: harsh-mahajan
