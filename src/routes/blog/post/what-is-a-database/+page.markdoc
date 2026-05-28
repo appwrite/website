@@ -1,0 +1,193 @@
+---
+layout: post
+title: "What is a database? Types, examples, and how to pick one"
+description: Learn what a database is, the parts that make it work, the types of databases used in modern apps, popular examples, and how to choose the right one for your project.
+date: 2026-05-28
+cover: /images/blog/what-is-a-database/cover.avif
+timeToRead: 9
+author: atharva
+category: product
+featured: false
+unlisted: true
+callToAction: true
+faqs:
+  - question: "What is a database in simple words?"
+    answer: "A database is an organized place where an application stores information so it can be searched, updated, and shared later. Think of it as a digital filing system designed for fast lookups instead of paper folders and drawers."
+  - question: "What are the main types of databases?"
+    answer: "The most common types developers work with are relational databases like PostgreSQL and MySQL, document databases like MongoDB and Appwrite TablesDB, key-value stores like Redis and DynamoDB, and vector databases used for AI and semantic search. Each type is optimized for a different shape of data and a different query pattern."
+  - question: "What is the difference between a database and a spreadsheet?"
+    answer: "A spreadsheet is a single file optimized for one person to view and edit data manually. A database is a service that supports many users and apps reading and writing the same data at once, enforces structure, runs efficient queries on millions of rows, and protects data with permissions and transactions."
+  - question: "What is the difference between SQL and NoSQL databases?"
+    answer: "SQL databases store data in strict tables with predefined columns and use SQL to query them. NoSQL databases relax that structure: documents can have different fields, key-value stores hold one value per key, and so on. SQL is a strong default when relationships matter. NoSQL is a strong default when the shape of your data changes often or you need to scale writes horizontally."
+  - question: "Which database should I use for my app?"
+    answer: "Start from your data shape and your query patterns. If your data has clear relationships and you need joins, pick a relational database. If you store flexible JSON-like records, pick a document database. If you need millisecond lookups by a single key, pick a key-value store. If you are building an AI feature that searches by meaning, add a vector database. If you want one managed service that handles auth, storage, and a database together, Appwrite Databases gives you a TablesDB API on top of a managed engine."
+  - question: "Do I need to know SQL to use a database?"
+    answer: "Not always. SQL is still the most widely used query language, and learning the basics is worth the time. But many modern databases, including Appwrite TablesDB, expose a higher-level query API in your SDK of choice, so you can read and write rows without writing raw SQL strings."
+---
+
+Every app you have ever built has the same question hiding underneath it: where does the data live, and how do you get it back. A todo app needs somewhere to remember the todos. A chat app needs somewhere to keep the messages. A booking app needs somewhere to track who reserved what and when. That somewhere is a database.
+
+This post is a working developer's guide to what a database is, the parts that make one tick, the types you will run into in modern app development, popular examples, and a short framework for picking one for your next project.
+
+# What is a database?
+
+A database is an organized collection of data stored so that an application can find, update, and reuse it later. It is not just the files on disk. It is the structure that data is stored in, plus the software that reads and writes that structure on your behalf.
+
+When developers say "database" in casual conversation, they often mean two things at once: the data itself, and the database management system (DBMS) that serves it. The DBMS is the program that listens for queries, enforces structure, manages concurrent access, and writes durably to disk. PostgreSQL is a DBMS. MongoDB is a DBMS. Redis is a DBMS. Your tables and rows are the data the DBMS happens to be managing.
+
+A useful mental model: a database is to your data what a file system is to your files. You could in theory stuff everything into a single text file. The reason you do not is that you want indexed lookups, concurrent writes, permissions, transactions, and a query language. A database gives you all of those out of the box.
+
+# How a database is different from a spreadsheet
+
+A spreadsheet looks tempting at first. It has rows. It has columns. You can sort and filter. For a hundred rows that one person edits manually, a spreadsheet is fine.
+
+A database starts to matter when any of the following becomes true:
+
+- **Many users read and write the same data at once.** A spreadsheet open in two browser tabs is already a race condition. A database handles thousands of concurrent connections with built-in locking and transactions.
+- **Your data has to be queried, not just scrolled.** Finding the 50 most recent active users out of 2 million rows is trivial with a database. It is impossible in a spreadsheet.
+- **Structure has to be enforced.** A spreadsheet lets anyone type "abc" into a price column. A database rejects it before it lands.
+- **Multiple apps need the same source of truth.** Your web client, your mobile client, and your background jobs can all hit the same database. They cannot all edit one spreadsheet.
+- **Data has to survive a crash.** Databases write to disk in a way that recovers cleanly. Spreadsheets do not.
+
+If you find yourself building a workaround for any of those in a spreadsheet, you are building a database. Pick the right tool earlier.
+
+# The parts of a database
+
+Most modern databases share the same handful of building blocks, even if the names differ between SQL and NoSQL.
+
+## Tables
+
+A table is a collection of records of the same shape. A `users` table holds users. A `posts` table holds posts. In a document database the same concept is sometimes called a collection. In Appwrite Databases it is called a table.
+
+## Rows
+
+A row is a single record inside a table. One user, one post, one order. Each row is identified by a unique ID so other parts of the database can reference it.
+
+## Columns
+
+A column is one piece of information on every row. The `users` table might have `email`, `name`, and `createdAt` columns. Columns have a type (text, integer, boolean, datetime, and so on) so the database can store them efficiently and reject bad data.
+
+## Schema
+
+The schema is the agreed shape of your tables: which tables exist, which columns each one has, and what type each column is. Some databases enforce the schema strictly. Others let it drift between rows. Either way, having a schema in mind is what separates a database from a pile of JSON files.
+
+## Queries
+
+A query is how you ask the database for data. SQL is the most well-known query language, but every modern SDK wraps queries in a friendlier shape. In an Appwrite client you write `Query.equal('status', ['published'])`. In a Mongo client you write `{ status: 'published' }`. Both compile down to the same idea: filter the rows that match this condition.
+
+## Indexes
+
+An index is a separate sorted structure the database maintains on a column so it can find matching rows without scanning the whole table. Indexes are the difference between a query that returns in 5 milliseconds and one that returns in 5 seconds. We have a separate post on [how indexes work and when to use them](/blog/post/what-is-a-database-index) if you want to go deeper.
+
+## The DBMS
+
+The DBMS is the running program that ties everything together. It accepts connections, parses queries, plans how to execute them, manages caches and locks, writes data to disk, and replicates it to backups. You usually do not think about it directly. You just point your SDK at a connection string.
+
+# Types of databases you will run into
+
+There is no single "type" of database. Different shapes of data and different query patterns call for different engines.
+
+## Relational databases (SQL)
+
+Relational databases store data in tables with strict columns, and use SQL to query them. They are built around the idea that records reference each other: a `posts` table references the `users` table through a `userId` column. You can then ask the database to join the two and return posts with their author in one query.
+
+Relational databases are the right default when your data has clear relationships, when you need transactional guarantees (an order and its line items must save together or not at all), and when consistency matters more than write throughput. PostgreSQL, MySQL, and SQLite are the most common picks.
+
+## Document databases (NoSQL)
+
+A document database stores records as flexible JSON-like documents instead of strict rows. Two documents in the same collection can have different fields. This is useful when the shape of your data changes often, when you are still figuring out your schema, or when nested data is more natural than joining several tables together.
+
+MongoDB is the best-known example. Appwrite Databases offers a document model through its TablesDB API, where you define tables with typed columns but each row stores structured data your app sends as a single object. You get a managed service, a query API in every SDK, permissions per row, and a console for browsing data, without standing up a database server yourself.
+
+For a deeper comparison, see [SQL vs NoSQL: choosing the right database for your project](/blog/post/sql-vs-nosql).
+
+## Key-value stores
+
+A key-value store is the simplest shape: a giant dictionary keyed by a string, returning a value. There is no schema, no query language, no joins. What you get instead is raw speed and predictable performance at scale.
+
+Redis is the canonical in-memory key-value store, often used as a cache or a session store sitting in front of a primary database. DynamoDB is a managed key-value and document store from AWS. Both pay for their simplicity with limitations: if you need to ask "all users created last week", a key-value store is the wrong tool, because it has no concept of querying by anything other than the key.
+
+## Vector databases
+
+Vector databases store data as numerical vectors (embeddings) instead of rows or documents. They are designed for one thing: finding records similar to a query by meaning rather than by exact match. That is what powers semantic search, retrieval-augmented generation in AI apps, and recommendation systems based on embeddings from a model.
+
+Pinecone, Weaviate, and Qdrant are well-known specialists. Many general-purpose databases now ship vector support as a column type too. For most apps you only need a vector database when you are building an AI feature that searches by similarity. If you want to compare options for that case, see [the top vector databases to use for AI applications](/blog/post/top-6-vector-databases-2025).
+
+# Popular databases developers pick
+
+A short tour of the databases you are most likely to see in a production stack today:
+
+| Database | Type | Common use |
+| --- | --- | --- |
+| PostgreSQL | Relational | The strong default for new apps; rich SQL, JSON support, extensions |
+| MySQL | Relational | Long-running web apps, many CMS platforms |
+| SQLite | Relational, embedded | Local-first apps, mobile, testing |
+| MongoDB | Document | Flexible schemas, content-heavy apps |
+| Redis | Key-value, in-memory | Caching, rate limits, queues, sessions |
+| DynamoDB | Key-value and document | High-scale serverless apps on AWS |
+| Appwrite TablesDB | Managed document with strong typing | Apps that want auth, storage, functions, and a database in one platform |
+
+If you have an existing app and are picking between two options here, the most useful question is rarely "which is best", it is "which one removes the most work for my team this quarter". A managed option like Appwrite Databases tends to win on that question for small teams, because the database, auth, storage, and functions all live behind one SDK and one console.
+
+# How to pick a database for your app
+
+A practical decision in three questions:
+
+1. **What shape is your data?** If you have clear entities that reference each other, lean relational. If you have flexible records that look like JSON in your code, lean document. If you only need value-by-key, lean key-value. If you need similarity search, add a vector database alongside your primary one.
+2. **What are your query patterns?** Read-heavy apps with complex filters benefit from a relational or document database with good indexes. Write-heavy ingest pipelines often pair a primary database with a key-value cache. Search-heavy apps may add a dedicated search index.
+3. **Who is going to run it?** A self-hosted PostgreSQL gives you maximum control and maximum operational work. A managed database removes the patching, backups, scaling, and on-call. For most product teams, picking managed is the right call until you have a specific reason to self-host.
+
+That is the whole framework. Almost every "which database should I use" debate online ignores question three, then gets surprised when the answer changes once the ops bill arrives.
+
+# Get started with Appwrite Databases
+
+If you want a database that comes with auth, storage, functions, and realtime in one platform, [Appwrite Databases](/docs/products/databases) is built for that. Tables are defined with typed columns. Rows are written and read through a query API in every official SDK. Indexes, permissions, and relationships are first-class.
+
+A minimal example using the Node.js SDK:
+
+```js
+import { Client, TablesDB, ID, Query } from "node-appwrite";
+
+const client = new Client()
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+  .setKey("<API_KEY>");
+
+const tablesDB = new TablesDB(client);
+
+// Insert a row
+await tablesDB.createRow({
+  databaseId: "<DATABASE_ID>",
+  tableId: "posts",
+  rowId: ID.unique(),
+  data: {
+    title: "What is a database?",
+    status: "published",
+    authorId: "atharva",
+  },
+});
+
+// Read recent published posts
+const recent = await tablesDB.listRows({
+  databaseId: "<DATABASE_ID>",
+  tableId: "posts",
+  queries: [
+    Query.equal("status", ["published"]),
+    Query.orderDesc("$createdAt"),
+    Query.limit(10),
+  ],
+});
+```
+
+That is the same shape across every Appwrite SDK: Web, Flutter, Apple, Android, Go, Python, .NET, and more.
+
+# Wrapping up
+
+A database is the part of your app that remembers things, lets many users share that memory safely, and lets you ask questions of it later. The right type depends on your data shape, your query patterns, and how much operational work you want to take on. Relational, document, key-value, and vector databases each solve a different problem, and most production stacks end up using more than one.
+
+When you are ready to put a database behind your next project, [start a free Appwrite project](https://cloud.appwrite.io) and try TablesDB. If you want to keep reading first:
+
+- [SQL vs NoSQL: choosing the right database for your project](/blog/post/sql-vs-nosql)
+- [Appwrite Indexes: how to speed up your database queries](/blog/post/appwrite-indexes)
+- [The top 6 vector databases to use for AI applications in 2026](/blog/post/top-6-vector-databases-2025)
+- [Appwrite Databases documentation](/docs/products/databases)
