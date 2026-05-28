@@ -89,13 +89,17 @@ Vibe coding is not a phase. It is a permanent shift in how code gets written, an
 
 # Start vibe coding with Appwrite
 
-Vibe coding only works when your backend works with you. Appwrite gives you auth, databases, storage, functions, real time, and messaging in one platform that AI assistants speak fluently. Clean SDKs, predictable APIs, and documentation that models can read without getting lost.
+Vibe coding only works when your backend works with you. Appwrite gives you auth, databases, storage, functions, real-time, and messaging in one platform that AI assistants speak fluently. Clean SDKs, predictable APIs, and documentation that models can read without getting lost.
 
-Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self hosted instance in minutes, and let your next idea ship at the speed your AI can actually keep up with.
+And if you are already coding with Claude or Codex, the [Appwrite plugin for Claude Code](https://appwrite.io/integrations) and the [Appwrite plugin for Codex](https://appwrite.io/blog/post/announcing-appwrite-codex-plugin) drop our MCP servers and SDK skills straight into your editor, so your assistant can talk to Appwrite directly instead of guessing at it.
+
+Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and let your next idea ship at the speed your AI can actually keep up with.
 
 # Resources
 
 * [Appwrite documentation](https://appwrite.io/docs)
+* [Appwrite AI products](https://appwrite.io/docs/products/ai)
+* [Appwrite integrations](https://appwrite.io/integrations)
 * [Appwrite quick start guides](https://appwrite.io/docs/quick-starts)
 * [Appwrite on GitHub](https://github.com/appwrite/appwrite)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
