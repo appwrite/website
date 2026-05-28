@@ -53,11 +53,11 @@ The combined effect is a development loop that runs faster end to end. Not 10x i
 
 The tools developers reach for have settled into a small number of categories. The list below covers what shows up most in real workflows:
 
-* **Coding assistants.** Claude Code and Cursor are two of the most visible tools in this category. Both let you describe changes in plain English and apply them across a codebase. GitHub Copilot stays strong for in editor autocomplete. The difference between "assistant" and "agent" matters here. Assistants help you write. Agents go off and do.
+* **Coding assistants and agents.** Claude Code, Cursor, and Codex are the three most visible names in this category. Claude Code and Cursor lean toward the assistant side, where you describe changes and apply them across a codebase. Codex leans toward the agent side, where you hand off a task and come back to a pull request. GitHub Copilot stays strong for in editor autocomplete. The difference between "assistant" and "agent" matters here. Assistants help you write. Agents go off and do.
 * **App generators.** v0, Bolt, Lovable, and Replit Agent take a higher level prompt and return a working app. They are excellent for the first 80 percent of a project. The last 20 percent still belongs to a human in a real editor.
-* **Design to code.** Tools like v0 and Magic Patterns close the gap between Figma and a working frontend. The output is usually React or Vue with sensible defaults.
-* **Backend and database.** This is the layer most vibe coding tools cannot fully generate, because the choices here have consequences that compound. Appwrite, Supabase, and Firebase are the platforms developers pair with their AI generated frontends.
-* **Deployment.** Vercel, Netlify, Cloudflare Pages, and Appwrite Sites handle the deploy on push side of the loop. The shorter your deploy time, the more iterations you get in a day.
+* **Design to code.** Claude Design, Figma Make, v0, and Magic Patterns close the gap between a design and a working frontend. The output is usually React or Vue with sensible defaults, ready to drop into your project.
+* **Backend and database.** This is the layer most vibe coding tools cannot fully generate, because the choices here have consequences that compound. Appwrite gives you auth, databases, storage, functions, messaging, and realtime in a single platform that your AI assistant can target directly, so the parts of your app that need to survive contact with real users are not the parts you are generating from scratch.
+* **Deployment.** Appwrite Sites, Vercel, Netlify, and Cloudflare Pages handle the deploy on push side of the loop. The shorter your deploy time, the more iterations you get in a day. Appwrite Sites is the natural pick if your backend is already on Appwrite, since the whole stack lives in one project.
 
 The pattern across all of these is that AI handles the parts where the answer is a known shape, and human chosen services handle the parts where the answer needs to survive contact with real users.
 
@@ -77,7 +77,7 @@ Vibe coding pays off most in the work that used to be repetitive but consequenti
 The honest part of the conversation that most posts skip:
 
 * **Complex backend logic.** Multi step workflows, distributed transactions, anything where state matters across services. AI generated code in this category looks right and behaves wrong, which is the dangerous failure mode.
-* **Security boundaries.** Authentication flows, permission systems, anything that decides who can see what. AI can scaffold these and often does it well, but treating the output as production ready without review is how serious bugs reach users.
+* **Security boundaries.** Authentication flows, permission systems, anything that decides who can see what. Modern models can scaffold these well, but the part that breaks is usually integration with the rest of your app, not the auth code itself. Treating the output as production ready without review is how serious bugs reach users.
 * **Performance work.** The kind of optimization that requires reading a flame graph and noticing something subtle. AI can suggest fixes once you've identified the bottleneck. Finding the bottleneck is still a human job.
 * **Maintenance of code you did not write.** Vibe coding is excellent at writing new code. It is less excellent at understanding code it wrote three weeks ago and forgot. This is the bill that comes due on month two of a vibe coded project.
 * **Anything that requires saying no.** AI assistants will happily generate the feature you asked for even if it is the wrong feature. The judgment about what to build is still on you.
@@ -88,7 +88,7 @@ The takeaway is not that vibe coding stops working past a certain point. The tak
 
 The single biggest predictor of whether a vibe coded project survives past the prototype stage is what the developer chooses for the parts they do not generate.
 
-Authentication is a good example. You can ask an AI to generate a login system. It will produce something that works in the happy path and fails in interesting ways at the edges. Session management, password reset flows, OAuth integrations, multi factor auth, account recovery. Each one is a known problem with known solutions, and reinventing them costs you weeks you do not have.
+Authentication is the example most developers run into first. Modern models can produce a perfectly reasonable login system in isolation. The problem is rarely the auth code itself. The problem is that without planning, the generated auth ends up disconnected from the rest of your app. Session handling lives in one place, password reset flows in another, OAuth integrations get bolted on later, and account recovery never gets wired in at all. None of those pieces are hard to build. They are hard to build *consistently* across an app that is being generated in slices.
 
 The same logic applies to databases, file storage, real time sync, push notifications, email delivery, and serverless functions. These are solved problems. Generating your own version of each from scratch is the surest way to lose the speed advantage that vibe coding gave you in the first place.
 
@@ -104,6 +104,7 @@ A short checklist for developers picking up the workflow now:
 * **Use real infrastructure for real concerns.** Generate UI, glue code, and feature logic. Pick a backend platform for auth, database, storage, and functions.
 * **Keep the deploy loop short.** Push to deploy on every change. The faster you see the consequences of a change, the faster you catch the ones the AI got wrong.
 * **Track what you ship, not what you generate.** Lines of generated code is a vanity metric. Working features delivered is the one that matters.
+* **Product planning.** Vibe coding will happily build the feature you describe. It will not tell you whether that feature is the right one, whether it fits your users, or whether it belongs in this release. The judgment of what to build and why still sits with the human.
 
 # Conclusion
 
