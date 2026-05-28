@@ -96,15 +96,15 @@ const recent = await tablesDB.listRows({
   tableId: "posts",
   queries: [
     Query.equal("status", ["published"]),
-    Query.orderDesc("createdAt"),
+    Query.orderDesc("publishedAt"),
     Query.limit(10),
   ],
 });
 ```
 
-Without an index on `status` and `createdAt`, the database has to read every row, check whether `status` equals `'published'`, sort the matches by `createdAt`, then return the first ten. On a million rows that is going to feel slow.
+Without an index on `status` and `publishedAt`, the database has to read every row, check whether `status` equals `'published'`, sort the matches by `publishedAt`, then return the first ten. On a million rows that is going to feel slow.
 
-Add a composite index on `(status, createdAt)` (descending), and the database can walk directly to the published rows in `createdAt` order and stop after ten. The same query goes from seconds to milliseconds, with no change to the application code.
+Add a composite index on `(status, publishedAt)` (descending), and the database can walk directly to the published rows in `publishedAt` order and stop after ten. The same query goes from seconds to milliseconds, with no change to the application code.
 
 That is the whole pitch of indexes in one example. The query did not change. The work the database had to do did.
 
@@ -149,7 +149,7 @@ The mechanics differ, but the mental model is the same. You declare which column
 
 [Appwrite Databases](/docs/products/databases) supports key, unique, full-text, and spatial indexes through the TablesDB API. You can create them from the Console under the Indexes tab on any table, or programmatically through any official SDK.
 
-Creating a composite index on `(status, createdAt)` for the worked example above:
+Creating a composite index on `(status, publishedAt)` for the worked example above:
 
 ```js
 import { Client, TablesDB } from "node-appwrite";
@@ -164,9 +164,9 @@ const tablesDB = new TablesDB(client);
 await tablesDB.createIndex({
   databaseId: "<DATABASE_ID>",
   tableId: "posts",
-  key: "status_createdAt",
+  key: "status_publishedAt",
   type: "key",
-  attributes: ["status", "createdAt"],
+  attributes: ["status", "publishedAt"],
   orders: ["ASC", "DESC"],
 });
 ```
