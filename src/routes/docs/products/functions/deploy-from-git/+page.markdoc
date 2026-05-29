@@ -58,7 +58,9 @@ packages/shared/**
 !docs/**
 ```
 
-Use `!` before a pattern to exclude matching branches or paths.
+Use these formats to write glob patterns.
+
+{% partial file="git-glob-patterns.md" /%}
 
 ## Entry point {% #entry-point %}
 The entry point is the code file contains the exported function that will be executed when the function is called.

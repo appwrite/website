@@ -58,7 +58,9 @@ packages/ui/**
 !docs/**
 ```
 
-Use `!` before a pattern to exclude matching branches or paths.
+Use these formats to write glob patterns.
+
+{% partial file="git-glob-patterns.md" /%}
 
 ## Install command
 
