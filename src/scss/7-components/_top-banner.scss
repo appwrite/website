@@ -1,5 +1,29 @@
 @use '../abstract' as *;
 
+.init-promo-banner {
+  --init-banner-height: #{pxToRem(56)};
+
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1001;
+  background-color: hsl(var(--p-body-bg-color));
+  color: inherit;
+  text-decoration: none;
+
+  & ~ .#{$p}-main-header,
+  & ~ .#{$p}-mobile-header {
+    inset-block-start: var(--init-banner-height);
+  }
+
+  &__inner {
+    background-color: hsl(var(--p-body-bg-color));
+  }
+
+  &__cta {
+    color: hsl(var(--web-color-primary));
+  }
+}
+
 .#{$p}-top-banner {
   display:flex; justify-content:center;
   padding-block:pxToRem(5); padding-inline:pxToRem(12);

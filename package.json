@@ -27,12 +27,13 @@
         "benchmark:http": "k6 run scripts/benchmark-k6.js"
     },
     "dependencies": {
+        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
         "@sentry/sveltekit": "^10.28.0",
         "@statsig/js-client": "^3.33.0",
         "@statsig/session-replay": "^3.33.0",
         "@statsig/statsig-node-core": "^0.19.3",
         "@statsig/web-analytics": "^3.33.0",
-        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
+        "animejs": "^4.4.1",
         "h3": "^1.15.4",
         "sharp": "^0.34.5"
     },

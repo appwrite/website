@@ -40,6 +40,7 @@
 
 <script lang="ts">
     import { Search, IsLoggedIn } from '$lib/components';
+    import InitPromoBanner from '$lib/components/InitPromoBanner.svelte';
     import { isMac } from '$lib/utils/platform';
     import { getContext, setContext } from 'svelte';
     import { SOCIAL_STATS } from '$lib/constants';
@@ -95,6 +96,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div class="relative" data-variant={$layoutState.currentVariant}>
+    <InitPromoBanner />
     <section class="web-mobile-header is-transparent flex! lg:hidden!">
         <div class="web-mobile-header-start">
             <a href="/" aria-label="homepage">

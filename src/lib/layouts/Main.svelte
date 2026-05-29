@@ -9,6 +9,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { MobileNav, IsLoggedIn } from '$lib/components';
+    import InitPromoBanner from '$lib/components/InitPromoBanner.svelte';
     import { BANNER_KEY, SOCIAL_STATS } from '$lib/constants';
     import { isVisible } from '$lib/utils/isVisible';
     import { createScrollInfo } from '$lib/utils/scroll';
@@ -63,7 +64,8 @@
                 left: 0,
                 right: window.innerWidth
             });
-        const h = isMobile || 'bannerHidden' in document.body.dataset ? 32 : 64;
+        const bannerOffset = document.querySelector('.init-promo-banner') ? 56 : 0;
+        const h = (isMobile ? 32 : 64) + bannerOffset;
 
         return isVisible(element, {
             top: h,
@@ -180,6 +182,7 @@
 </script>
 
 <div class="relative contents h-full">
+    <InitPromoBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
