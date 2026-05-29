@@ -47,7 +47,7 @@ With those filters in mind, here is the list.
 
 Claude Code is Anthropic's agentic coding tool that started in the terminal and now works across the terminal, IDE, desktop app, and browser. The terminal sounds intimidating, but the experience is closer to texting a senior engineer than writing shell commands. It reads your repo, makes changes, runs tests, and explains what it did in plain English.
 
-Best for: beginners who want to learn the command line through guided practice rather than dry tutorials.
+Best for: beginners who want UI to be the major focus of their projects and prefer workflows like subagents to handle many tasks at once. 
 
 ## 2. Codex
 
