@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing Git deployment triggers for Appwrite Functions and Sites"
 description: Git deployment triggers let you control which branches and file changes create automatic deployments for Appwrite Functions and Sites.
-date: 2026-05-28
+date: 2026-05-29
 cover: /images/blog/announcing-git-deployment-triggers/cover.avif
 timeToRead: 4
 author: harsh-mahajan
@@ -35,7 +35,7 @@ Git deployment triggers let you control which branches and file changes create a
 - **Control over automatic deployments:** Choose the branch pushes and file changes that should start a build.
 - **Cleaner preview workflows:** Create deployments from the branches your team uses for previews, staging, testing, or release candidates.
 - **Better monorepo support:** Deploy a Function or Site only when files in the relevant folders change.
-- **Simple glob patterns:** Use familiar patterns like `main`, `preview/**`, `apps/web/**`, and `!docs/**`.
+- **Simple glob patterns:** Use familiar patterns like `main`, `preview/**`, `apps/web/**`, and `!docs/**`. See the [build trigger docs](/docs/products/sites/deploy-from-git#build-triggers) for supported glob pattern formats.
 - **Support for Functions and Sites:** Configure the same behavior across both Appwrite compute products.
 
 # Branch filters
