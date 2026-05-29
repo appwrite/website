@@ -85,7 +85,7 @@ The honest part of the conversation that most posts skip:
 
 The takeaway is not that vibe coding stops working past a certain point. The takeaway is that the parts of the stack where the cost of being wrong is high are exactly the parts where you should reach for battle tested infrastructure rather than generated code.
 
-# The infrastructure question
+# Why your backend choice matters
 
 The single biggest predictor of whether a vibe coded project survives past the prototype stage is what the developer chooses for the parts they do not generate.
 
