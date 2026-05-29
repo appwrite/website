@@ -53,7 +53,7 @@ Best for: beginners who want UI to be the major focus of their projects and pref
 
 Codex is OpenAI's coding agent, available as a CLI and as a hosted cloud agent you can point at a GitHub repo. The cloud version is especially approachable since there is nothing to install, you just connect a repo and start chatting. It is a strong pick if you already live inside the ChatGPT ecosystem.
 
-Best for: beginners who already use ChatGPT and want a coding agent in the same workflow.
+Best for: beginners who want a less flashy but highly capable harness. The code output of OpenAI models is considered to be one of the highest quality. However, Codex is not very good at making stunning UIs.
 
 ## 3. OpenCode
 
