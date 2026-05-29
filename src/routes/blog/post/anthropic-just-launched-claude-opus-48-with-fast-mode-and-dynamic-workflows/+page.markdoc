@@ -91,7 +91,7 @@ For most workloads the regular tier is the default, since high effort on Opus 4.
 
 Claude Opus 4.8 is built for work that breaks a stateless request and response model. Claude Code's dynamic workflows point toward more complex agentic systems, including tasks that can be planned, delegated across subagents, and verified before completion.
 
-If you want your Claude Code agent to stand up that backend without manually wiring MCP infrastructure, the [Appwrite plugin for Claude Code](https://appwrite.io/blog/post/announcing-appwrite-claude-code-plugin) bundles the Appwrite API MCP server, the Appwrite Docs MCP server, and SDK specific agent skills into a single install, so the agent can create users, databases, storage, and functions against your Appwrite project on its own. Check out the [Claude Code integration guide](https://appwrite.io/docs/tooling/ai/ai-dev-tools/claude-code) and the [Appwrite MCP server docs](https://appwrite.io/docs/tooling/ai/mcp-servers) to get started, or [join us on Discord](https://appwrite.io/discord).
+If you want your Claude Code agent to stand up that backend without manually wiring MCP infrastructure, the [Appwrite plugin for Claude Code](/blog/post/announcing-appwrite-claude-code-plugin) bundles the Appwrite API MCP server, the Appwrite Docs MCP server, and SDK specific agent skills into a single install, so the agent can create users, databases, storage, and functions against your Appwrite project on its own. Check out the [Claude Code integration guide](/docs/tooling/ai/ai-dev-tools/claude-code) and the [Appwrite MCP server docs](/docs/tooling/ai/mcp-servers) to get started, or [join us on Discord](https://appwrite.io/discord).
 
 # Build agentic apps on Appwrite
 
@@ -101,8 +101,8 @@ We post weekly roundups of [product announcements, AI updates, and developer ins
 
 # Resources
 
-* [Appwrite MCP server docs](https://appwrite.io/docs/tooling/ai/mcp-servers)
+* [Appwrite MCP server docs](/docs/tooling/ai/mcp-servers)
 * [Start building on Appwrite Cloud](https://cloud.appwrite.io/)
-* [Appwrite AI products](https://appwrite.io/docs/products/)
-* [Appwrite integrations](https://appwrite.io/integrations)
+* [Appwrite AI products](/docs/products/)
+* [Appwrite integrations](/integrations)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
