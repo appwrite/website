@@ -19,7 +19,7 @@ faqs:
     answer: "MiniMax M3 offers the strongest cost-to-score ratio. It scores 95.7% with skills at $0.49 per run and 91.0% without skills at $0.09 per run. DeepSeek V4 Flash is similarly inexpensive at $0.37 with skills, scoring 96.1%."
 ---
 
-[Appwrite Arena](https://arena.appwrite.io) measures how well AI models understand Appwrite. The June update adds four new frontier models, taking the board from **11** to **15** models, and one of them takes first place on the without-skills leaderboard.
+[Appwrite Arena](https://arena.appwrite.io) is an open-source benchmark that measures how well AI models understand Appwrite. It scores each model on 191 questions spanning every Appwrite service, run twice: once with the relevant [Appwrite Skill](/docs/tooling/ai/skills) loaded into context, and once on the model's training knowledge alone. The gap between those two runs is what tells you how well a model already knows the platform. The June update adds four new frontier models, taking the board from **11** to **15**, and one of them, Claude Opus 4.8, takes first place on the without-skills leaderboard.
 
 # Claude Opus 4.8 leads the without-skills leaderboard
 
