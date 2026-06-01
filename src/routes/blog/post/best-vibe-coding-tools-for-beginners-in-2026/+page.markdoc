@@ -59,7 +59,7 @@ Best for: beginners who want a less flashy but highly capable harness. The code 
 
 OpenCode is an open source terminal based AI coding agent that works with any LLM provider you bring, whether that is Anthropic, OpenAI, or a local model. The flexibility is the point, you are not locked into one vendor, and you can swap models on the same project.
 
-Best for: beginners who value open source and want flexibility in model choice.
+Best for: beginners who want to try out different models in a single open-source harness.
 
 ## 4. Bolt.new
 
