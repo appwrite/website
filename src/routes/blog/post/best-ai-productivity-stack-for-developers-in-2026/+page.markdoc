@@ -33,15 +33,15 @@ Linear's model maps onto how engineers actually think. Projects hold the big pic
 
 # Cursor
 
-This is the slot many developers expect to keep changing. For a lot of teams, it often stays surprisingly stable. Cursor sits in a sweet spot. Close enough to VS Code that every extension still works. Inline completion that is actually fast. An agent panel that is good enough for the small jobs. A codebase index that makes larger repositories easier to search, understand, and work through.
+This is the slot many developers expect to keep changing. For a lot of teams, it often stays surprisingly stable. Cursor sits in a sweet spot. Close enough to VS Code that every extension still works. Inline completion that is actually fast. An agent that holds its own on real, multi-step changes, not just the small jobs. A codebase index that makes larger repositories easier to search, understand, and work through.
 
-The interesting part is that the heavy lifting does not happen here. That goes to Claude, two slots down. What Cursor handles is the work that actually fills the hours. Reading code. Scanning diffs. Running one test to confirm a hunch. Jumping to a definition four files away. Demos do not show off the boring jobs. The boring jobs are the day.
+What also matters is that Cursor is not locked to one model. It runs Claude, GPT, and other frontier models in agent mode, so the editor and the model underneath it are your choice, not a fixed pairing. The rest is the work that actually fills the hours. Reading code. Scanning diffs. Running one test to confirm a hunch. Jumping to a definition four files away. Demos do not show off the boring jobs. The boring jobs are the day.
 
 # Claude
 
 This is where deeper, context-heavy work fits best. Anything that needs more thought than autocomplete and more context than a quick chat can carry goes here. The refactor that touches six files and one assumption you forgot you made. The RFC that has been sitting half-written for a week. The production stack trace at midnight, three log files attached, asking what the hell just happened. The diff that needs a second pair of eyes before it goes up.
 
-The mental model is closer to working with a technical reviewer than an autocomplete that guesses the next line. Drop in the relevant files, ask the real question, and the output is often strong enough to become a useful first pass instead of a blank page. Projects keep the recurring context loaded across sessions, so the codebase, the design doc, and the style guide do not get re-pasted every Tuesday. Artifacts catch the output that is worth keeping, the snippet or the doc or the plan, instead of letting it scroll away in chat.
+There are really two surfaces here, and they do different jobs. Claude Code is the agentic one. It lives in the terminal or your editor, reads the repo directly, and works through the multi-file change or the midnight stack trace in the actual codebase instead of a chat window. The Claude app is for everything around that. Drop the relevant files in, ask the real question, and the output is often strong enough to become a useful first pass instead of a blank page. Projects keep the recurring context loaded across sessions, so the codebase, the design doc, and the style guide do not get re-pasted every Tuesday. Artifacts catch the output worth keeping, the snippet or the doc or the plan, instead of letting it scroll away in chat.
 
 It is also not strictly a coding tool. Drafting a postmortem. Cleaning up release copy. Turning a tangled customer report into something a triage queue can actually act on. It is one of the most flexible pieces of the stack, especially for work that moves between code, writing, planning, and review.
 
@@ -51,7 +51,7 @@ Not every problem belongs in an IDE. Pricing decisions. Hiring conversations. Th
 
 ChatGPT is the slot for that conversation. Voice mode on a fifteen-minute walk turns a tangled problem into something worth writing down by the time the walk is over. When memory is enabled, ChatGPT can carry recurring context across sessions, so the same situation does not always need to be re-explained from scratch. Image generation handles the moments where a quick sketch is faster than three paragraphs of description.
 
-The mistake worth avoiding is letting it bleed into the code workflow. Claude works well for file-heavy tasks where long context and structured outputs matter. Cursor is for the editor. ChatGPT belongs upstream of both, in the messy thinking that happens before any code gets written, and in the reflective work that happens after it ships.
+The mistake worth avoiding is letting it bleed into the code workflow. That is what the coding tools are for: Cursor in the editor, Claude on the file-heavy tasks, and OpenAI's Codex if you live in the GPT ecosystem, a capable coding agent in its own right that some developers prefer for writing code. ChatGPT itself belongs upstream of all of them, in the messy thinking that happens before any code gets written, and in the reflective work that happens after it ships.
 
 # Perplexity
 
