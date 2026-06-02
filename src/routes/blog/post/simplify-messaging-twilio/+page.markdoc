@@ -98,12 +98,14 @@ client
 ;
 
 const promise = await messaging.updateTwilioProvider(
-  '<PROVIDER_ID>',                         // providerId
-  '<NAME>',                                // name (optional)
-  false,                                   // enabled (optional)
-  '<ACCOUNT_SID>',                         // accountSid (optional)
-  '<AUTH_TOKEN>',                          // authToken (optional)
-  '<FROM>'                                 // from (optional)
+  {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    accountSid: '<ACCOUNT_SID>',
+    authToken: '<AUTH_TOKEN>',
+    from: '<FROM>'
+}                                 // from (optional)
 );
 ```
 

@@ -146,7 +146,9 @@ export const loginWithGoogle = async () => {
 
 export const logoutUser = async () => {
   try {
-    await account.deleteSession('current')
+    await account.deleteSession({
+        sessionId: 'current'
+    })
   } catch (error) {
     console.error(error)
   }

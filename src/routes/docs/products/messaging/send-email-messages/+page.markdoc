@@ -52,12 +52,14 @@ const client = new sdk.Client()
 const users = new sdk.Users(client);
 
 const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
+    {
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Email,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+}                         // name (optional)
 );
 ```
 ```deno
@@ -71,12 +73,14 @@ const client = new sdk.Client()
 const users = new sdk.Users(client);
 
 const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
+    {
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Email,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+}                         // name (optional)
 );
 ```
 ```php
@@ -320,8 +324,10 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '<TOPIC_ID>',                            // topicId
-        '<NAME>'                                 // name
+        {
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+}                                 // name
     );
 ```
 ```deno
@@ -339,8 +345,10 @@ client
 ;
 
 const topic = await messaging.createTopic(
-        '<TOPIC_ID>',                            // topicId
-        '<NAME>'                                 // name
+        {
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+}                                 // name
     );
 ```
 ```php
@@ -555,18 +563,20 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '<MESSAGE_ID>',                          // messageId
-        '<SUBJECT>',                             // subject
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        [],                                      // cc (optional)
-        [],                                      // bcc (optional)
-        [],                                      // attachments (optional)
-        false,                                   // draft (optional)
-        false,                                   // html (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    attachments: [],
+    draft: false,
+    html: false,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```deno
@@ -584,18 +594,20 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '<MESSAGE_ID>',                          // messageId
-        '<SUBJECT>',                             // subject
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        [],                                      // cc (optional)
-        [],                                      // bcc (optional)
-        [],                                      // attachments (optional)
-        false,                                   // draft (optional)
-        false,                                   // html (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    attachments: [],
+    draft: false,
+    html: false,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```php
@@ -891,17 +903,19 @@ client
 ;
 
 const message = await messaging.createEmail(
-        '<MESSAGE_ID>',            // messageId
-        '<SUBJECT>',               // subject
-        '<CONTENT>',               // content
-        [],                        // topics (optional)
-        [],                        // users (optional)
-        [],                        // targets (optional)
-        [],                        // cc (optional)
-        [],                        // bcc (optional)
-        false,                     // draft (optional)
-        false,                     // html (optional)
-        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
+    {
+        messageId: '<MESSAGE_ID>',
+        subject: '<SUBJECT>',
+        content: '<CONTENT>',
+        topics: [],
+        users: [],
+        targets: [],
+        cc: [],
+        bcc: [],
+        draft: false,
+        html: false,
+        scheduledAt: '2025-02-13T22:01:00+0000'
+    }
     );
 ```
 ```deno
@@ -918,19 +932,19 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message - await messaging.createEmail(
-        '<MESSAGE_ID>',            // messageId
-        '<SUBJECT>',               // subject
-        '<CONTENT>',               // content
-        [],                        // topics (optional)
-        [],                        // users (optional)
-        [],                        // targets (optional)
-        [],                        // cc (optional)
-        [],                        // bcc (optional)
-        false,                     // draft (optional)
-        false,                     // html (optional)
-        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    draft: false,
+    html: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+});
 ```
 ```php
 <?php

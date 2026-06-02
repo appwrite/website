@@ -31,26 +31,26 @@ To implement the RxDB integration, there are several steps you must complete:
 
 ## Step 1: Configure Appwrite project
 
-For this step, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/register) or [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already. Head over to the Appwrite console, go to the **Settings** page, and copy your project ID and API endpoint for further usage. Next, go to the **Databases** page from the left sidebar, create a new database with the ID `mydb`, and then a collection with the ID `humans` (save both IDs for further usage).
+For this step, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/register) or [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already. Head over to the Appwrite console, go to the **Settings** page, and copy your project ID and API endpoint for further usage. Next, go to the **Databases** page from the left sidebar, create a new database with the ID `mydb`, and then a table with the ID `humans` (save both IDs for further usage).
 
-Click on the **Attributes** tab and add the following attributes (schema used for demo purposes):
+Click on the **Columns** tab and add the following columns (schema used for demo purposes):
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
-| `name` | String | 100 | Yes |
+| `name` | Text | 100 | Yes |
 | `age` | Integer |  | Yes |
-| `homeAddress` | String | 2000 | Yes |
+| `homeAddress` | Text | 2000 | Yes |
 | `deleted` | Boolean |  | Yes |
 
-> **Note:** The `deleted` attribute is necessary to add because RxDB only soft deletes to prevent data loss in offline scenarios (no hard deletion of data occurs).
+> **Note:** The `deleted` column is necessary to add because RxDB only soft deletes to prevent data loss in offline scenarios (no hard deletion of data occurs).
 
-Then, head to the **Settings** tab of your collection, scroll down to the **Permissions** section, and the following:
+Then, head to the **Settings** tab of your table, scroll down to the **Permissions** section, and the following:
 
 | Role | Create | Read | Update | Delete |
 | --- | --- | --- | --- | --- |
 | Any | Yes | Yes | Yes | Yes |
 
-> **Note:** While RxDB does not allow you to manually configure permissions for each document, if your app uses Appwrite Auth and document-level permissions are enabled for your collection, the Appwrite SDK will automatically assign read and write permissions to the logged-in user for each document created.
+> **Note:** While RxDB does not allow you to manually configure permissions for each row, if your app uses Appwrite Auth and row-level permissions are enabled for your table, the Appwrite SDK will automatically assign read and write permissions to the logged-in user for each row created.
 
 ## Step 2: Install Appwrite Web SDK and RxDB library
 
@@ -66,7 +66,7 @@ In your app’s `.env` file, add the following:
 APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
 APPWRITE_PROJECT_ID=your-project-id
 APPWRITE_DATABASE_ID=your-database-id
-APPWRITE_COLLECTION_ID=your-collection-id
+APPWRITE_TABLE_ID=your-table-id
 ```
 
 Then, import all necessary libraries in your code:
@@ -134,7 +134,7 @@ await db.addCollections({
 const collection = db.humans;
 ```
 
-> **Note:** Please ensure that the names of your RxDB database and collection match the IDs of your Appwrite database and collection.
+> **Note:** Please ensure that the names of your RxDB database and collection match the IDs of your Appwrite database and table.
 > 
 
 ## Step 5: Start replication
@@ -146,7 +146,7 @@ const replicationState = replicateAppwrite({
     replicationIdentifier: 'my-appwrite-replication',
     client,
     databaseId: process.env.APPWRITE_DATABASE_ID,
-    collectionId: process.env.APPWRITE_COLLECTION_ID,
+    collectionId: process.env.APPWRITE_TABLE_ID,
     deletedField: 'deleted', // Field that represents deletion in Appwrite
     collection,
     pull: {

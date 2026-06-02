@@ -222,7 +222,7 @@ def main(context):
         return context.res.json({"ok": False, "error": err.message}, 400)
 
     file_id = body["$id"]
-    file_bytes = storage.get_file_download(bucketId, file_id)
+    file_bytes = storage.get_file_download(bucket_id=bucketId, file_id=file_id)
     
     # Preprocess the image
     img = preprocess_image(file_bytes)

@@ -756,13 +756,15 @@ client
 ;
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>', // functionId
-        '<BODY>', // body (optional)
-        true, // Scheduled executions need to be async
-        '<PATH>', // path (optional)
-        ExecutionMethod.GET, // method (optional)
-        {}, // headers (optional)
-        '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
+        {
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',
+    async: true,
+    xpath: '<PATH>',
+    method: ExecutionMethod.GET,
+    headers: {},
+    scheduledAt: '2020-10-15T06:38:00.000+00:00'
+} // Schedule execution (optional)
     );
 
 promise.then(function (response) {
@@ -784,13 +786,15 @@ client
 ;
 
 const promise = functions.createExecution(
-        '<FUNCTION_ID>', // functionId
-        '<BODY>', // body (optional)
-        true, // Scheduled executions need to be async
-        '<PATH>', // path (optional)
-        ExecutionMethod.GET, // method (optional)
-        {}, // headers (optional)
-        '2020-10-15T06:38:00.000+00:00' // Schedule execution (optional)
+        {
+    functionId: '<FUNCTION_ID>',
+    body: '<BODY>',
+    async: true,
+    xpath: '<PATH>',
+    method: ExecutionMethod.GET,
+    headers: {},
+    scheduledAt: '2020-10-15T06:38:00.000+00:00'
+} // Schedule execution (optional)
     );
 
 promise.then(function (response) {

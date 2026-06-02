@@ -143,9 +143,11 @@ export function AppwriteProvider(props: { children: React.ReactNode }) {
       const redirectUri = Linking.createURL(redirectPath);
 
       const response = await account.createOAuth2Token(
-        OAuthProvider.Google,
-        redirectUri,
-        redirectUri
+        {
+          provider: OAuthProvider.Google,
+          success: redirectUri,
+          failure: redirectUri
+      }
       );
 
       if (!response) {
@@ -164,7 +166,10 @@ export function AppwriteProvider(props: { children: React.ReactNode }) {
         const secret = url.searchParams.get("secret");
         const userId = url.searchParams.get("userId");
 
-        await account.createSession(userId!, secret!);
+        await account.createSession({
+            userId: userId!,
+            secret: secret!
+        });
         const user = await account.get();
 
         if (Platform.OS === "ios") {
@@ -179,7 +184,9 @@ export function AppwriteProvider(props: { children: React.ReactNode }) {
   }
 
   async function logout() {
-    await account.deleteSession("current");
+    await account.deleteSession({
+        sessionId: "current"
+    });
     setUser(null);
   }
 

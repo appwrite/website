@@ -56,7 +56,7 @@ When ready, commit the transaction. Appwrite validates all staged operations (pe
     
 You can explicitly abort a transaction or let it expire. Idle transactions are automatically cleaned up after a configurable timeout, anywhere between 1 minute and 1 hour, with a default of 5 minutes, to avoid resource leaks or incomplete workflows.
 
-This flow isolates your changes until you're confident they’re valid, giving you a safe way to manage complex, interdependent writes, especially useful in scenarios like user provisioning, multi-collection updates, or third-party sync operations.
+This flow isolates your changes until you're confident they’re valid, giving you a safe way to manage complex, interdependent writes, especially useful in scenarios like user provisioning, multi-table updates, or third-party sync operations.
 
 # Example
 

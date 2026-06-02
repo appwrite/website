@@ -221,11 +221,11 @@ appwrite tables-db [COMMAND] [OPTIONS]
 * `create-relationship-column [options]`
 * Create relationship column. [Learn more about relationship columns](https://appwrite.io/docs/databases-relationships#relationship-columns).
 ---
-* `create-string-column [options]`
-* Create a string column.
+* `create-text-column [options]`
+* Create a text column.
 ---
-* `update-string-column [options]`
-* Update a string column. Changing the 'default' value will not update already existing rows.
+* `update-text-column [options]`
+* Update a text column. Changing the 'default' value will not update already existing rows.
 ---
 * `create-url-column [options]`          
 * Create a URL column.
