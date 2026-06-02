@@ -66,6 +66,10 @@
                     href: '/docs/tooling/ai/agents/vscode'
                 },
                 {
+                    label: 'Zed',
+                    href: '/docs/tooling/ai/agents/zed'
+                },
+                {
                     label: 'OpenCode',
                     href: '/docs/tooling/ai/agents/opencode'
                 },
