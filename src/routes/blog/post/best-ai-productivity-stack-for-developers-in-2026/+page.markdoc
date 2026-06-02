@@ -79,7 +79,7 @@ If the tools keep changing every other week and the output is flat, that is not 
 
 There is one part of the stack the five tools above will not cover. The moment an AI-built prototype meets a real user.
 
-Appwrite is the backend platform that fills that gap. Auth, databases, storage, functions, messaging, and realtime, all available through a single SDK that your AI assistant already understands. Prompts like "add Google login," "store the user's avatar," or "send a welcome email" translate directly into Appwrite SDK calls, with no infrastructure setup required.
+Appwrite is the backend platform that fills that gap. Auth, databases, storage, functions, website hosting, messaging, and realtime, all available through a single SDK that your AI assistant already understands. Prompts like "add Google login," "store the user's avatar," or "send a welcome email" translate directly into Appwrite SDK calls, with no infrastructure setup required.
 
 It goes a step further if you are coding with Claude or Codex. The [Appwrite plugin for Claude Code](https://appwrite.io/integrations) and the [Appwrite plugin for Codex](https://appwrite.io/blog/post/announcing-appwrite-codex-plugin) drop our MCP servers and SDK skills straight into your editor, so your assistant queries the real Appwrite API and reads the real docs instead of guessing at them. That means fewer outdated SDK patterns, fewer guessed endpoints, and a better chance that the first implementation is closer to working code.
 
