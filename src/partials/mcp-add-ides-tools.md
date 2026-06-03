@@ -21,6 +21,9 @@ You can add the MCP server to various AI tools and code editors:
 {% cards_item href="/docs/tooling/ai/agents/vscode" title="VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
 {% /cards_item %}
 
+{% cards_item href="/docs/tooling/ai/agents/zed" title="Zed" image="/images/docs/mcp/logos/zed.svg" %}
+{% /cards_item %}
+
 {% cards_item href="/docs/tooling/ai/agents/opencode" title="OpenCode" image="/images/docs/mcp/logos/opencode.svg" %}
 {% /cards_item %}
 
@@ -49,6 +52,9 @@ You can add the MCP server to various AI tools and code editors:
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agents/vscode" title="VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/agents/zed" title="Zed" image="/images/docs/mcp/logos/dark/zed.svg" %}
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agents/opencode" title="OpenCode" image="/images/docs/mcp/logos/dark/opencode.svg" %}
