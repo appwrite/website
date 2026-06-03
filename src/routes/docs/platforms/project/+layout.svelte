@@ -13,7 +13,7 @@
             items: [
                 {
                     label: 'Overview',
-                    href: '/docs/products/project'
+                    href: '/docs/platforms/project'
                 }
             ]
         },
@@ -22,39 +22,39 @@
             items: [
                 {
                     label: 'Auth methods',
-                    href: '/docs/products/project/auth-methods'
+                    href: '/docs/platforms/project/auth-methods'
                 },
                 {
                     label: 'OAuth providers',
-                    href: '/docs/products/project/oauth'
+                    href: '/docs/platforms/project/oauth'
                 },
                 {
                     label: 'API keys',
-                    href: '/docs/products/project/api-keys'
+                    href: '/docs/platforms/project/api-keys'
                 },
                 {
                     label: 'Platforms',
-                    href: '/docs/products/project/platforms'
+                    href: '/docs/platforms/project/platforms'
                 },
                 {
                     label: 'Protocols',
-                    href: '/docs/products/project/protocols'
+                    href: '/docs/platforms/project/protocols'
                 },
                 {
                     label: 'Services',
-                    href: '/docs/products/project/services'
+                    href: '/docs/platforms/project/services'
                 },
                 {
                     label: 'Policies',
-                    href: '/docs/products/project/policies'
+                    href: '/docs/platforms/project/policies'
                 },
                 {
                     label: 'Mock phones',
-                    href: '/docs/products/project/mock-phones'
+                    href: '/docs/platforms/project/mock-phones'
                 },
                 {
                     label: 'Environment variables',
-                    href: '/docs/products/project/environment-variables'
+                    href: '/docs/platforms/project/environment-variables'
                 }
             ]
         }

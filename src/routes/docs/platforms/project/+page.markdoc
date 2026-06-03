@@ -10,25 +10,25 @@ An Appwrite **Project** is the top-level container for all the resources your ap
 # Concepts {% #concepts %}
 
 {% cards %}
-{% cards_item href="/docs/products/project/auth-methods" title="Auth methods" %}
+{% cards_item href="/docs/platforms/project/auth-methods" title="Auth methods" %}
 Enable or disable authentication methods on your project.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/api-keys" title="API keys" %}
+{% cards_item href="/docs/platforms/project/api-keys" title="API keys" %}
 Create and manage API keys used by Server SDKs.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/platforms" title="Platforms" %}
+{% cards_item href="/docs/platforms/project/platforms" title="Platforms" %}
 Register the apps and origins that are allowed to call your project.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/protocols" title="Protocols" %}
+{% cards_item href="/docs/platforms/project/protocols" title="Protocols" %}
 Toggle the API protocols clients can use to reach your project.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/services" title="Services" %}
+{% cards_item href="/docs/platforms/project/services" title="Services" %}
 Turn individual Appwrite services on or off for your project.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/policies" title="Policies" %}
+{% cards_item href="/docs/platforms/project/policies" title="Policies" %}
 Configure project-wide policies that apply across resources.
 {% /cards_item %}
-{% cards_item href="/docs/products/project/mock-phones" title="Mock phones" %}
+{% cards_item href="/docs/platforms/project/mock-phones" title="Mock phones" %}
 Register fictional phone numbers and OTPs to test phone authentication.
 {% /cards_item %}
 {% /cards %}

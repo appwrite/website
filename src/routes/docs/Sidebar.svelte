@@ -90,10 +90,15 @@
                     icon: 'icon-globe-alt',
                     isParent: true,
                     new: isNewUntil('19 Jul 2025')
-                },
+                }
+            ]
+        },
+        {
+            label: 'Platforms',
+            items: [
                 {
                     label: 'Project',
-                    href: '/docs/products/project',
+                    href: '/docs/platforms/project',
                     icon: 'icon-briefcase',
                     isParent: true
                 }
