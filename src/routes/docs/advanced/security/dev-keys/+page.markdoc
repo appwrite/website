@@ -4,6 +4,10 @@ title: Dev keys
 description: Bypass Appwrite rate limits and CORS errors in your development environment with Appwrite Dev keys.
 ---
 
+{% info title="Deprecation notice" %}
+Dev keys are going to be deprecated soon. We recommend planning your migration away from dev keys ahead of time.
+{% /info %}
+
 Dev keys are secrets used by Appwrite [Client SDKs](/docs/sdks#client) to avoid abuse limits in testing. They are meant to be used specifically in development environments, where they hold several developer experience-related benefits:
 
 - Appwrite rate limits and CORS errors are bypassed
@@ -17,7 +21,7 @@ Dev keys should never be used in production environments, only in development en
 
 # Dev keys vs API keys {% #dev-keys-vs-api-keys %}
 
-Dev keys and [API keys](/docs/advanced/platform/api-keys) are not the same and cannot be used interchangeably.
+Dev keys and [API keys](/docs/advanced/security/api-keys) are not the same and cannot be used interchangeably.
 
 Dev keys are specifically designed to help you avoid abuse limits and CORS errors in test environments, making them ideal for development and testing workflows. API keys, on the other hand, permit usage of Appwrite services in production environments with fine-grained scope control.
 

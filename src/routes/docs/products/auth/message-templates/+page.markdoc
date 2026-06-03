@@ -62,7 +62,7 @@ Variables can be used in email templates to dynamically construct unique emails 
 | `{{user}}`                                                                                                                            | The name of the user receiving the email. This variable is not available in the Magic URL template, as there might not be a user yet. |
 | `{{redirect}}`                                                                                                                        | The URL for the user to complete the email template's action.                                                                         |
 
-## Email template syntax {% #email-template-examples %}
+## Email template examples {% #email-template-examples %}
 
 Here's an example of using these variables in a template.
 

@@ -38,6 +38,10 @@
                     href: '/docs/products/auth/teams'
                 },
                 {
+                    label: 'Roles',
+                    href: '/docs/products/auth/roles'
+                },
+                {
                     label: 'Impersonation',
                     href: '/docs/products/auth/impersonation',
                     new: isNewUntil('31 May 2026')
@@ -58,6 +62,10 @@
                     label: 'Email policies',
                     href: '/docs/products/auth/email-policies',
                     new: isNewUntil('30 June 2026')
+                },
+                {
+                    label: 'Message templates',
+                    href: '/docs/products/auth/message-templates'
                 },
                 {
                     label: 'Tokens',

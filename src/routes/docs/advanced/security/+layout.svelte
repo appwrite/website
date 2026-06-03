@@ -82,6 +82,36 @@
                     href: '/docs/advanced/security/abuse-protection'
                 }
             ]
+        },
+        {
+            label: 'Access control',
+            items: [
+                {
+                    label: 'Permissions',
+                    href: '/docs/advanced/security/permissions'
+                },
+                {
+                    label: 'Rate limits',
+                    href: '/docs/advanced/security/rate-limits'
+                },
+                {
+                    label: 'API keys',
+                    href: '/docs/advanced/security/api-keys'
+                },
+                {
+                    label: 'Dev keys',
+                    href: '/docs/advanced/security/dev-keys'
+                }
+            ]
+        },
+        {
+            label: 'Configuration',
+            items: [
+                {
+                    label: 'Environment variables',
+                    href: '/docs/advanced/security/environment-variables'
+                }
+            ]
         }
     ];
 </script>

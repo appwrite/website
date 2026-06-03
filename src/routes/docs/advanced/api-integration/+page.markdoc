@@ -1,0 +1,43 @@
+---
+layout: article
+title: API integration
+description: Integrate Appwrite with your apps using events and webhooks, and learn how Appwrite's APIs report response codes and errors.
+---
+
+Appwrite is designed to integrate with both your frontend and backend apps. Learn how to react to platform events, keep external systems in sync with webhooks, and handle the response codes and errors returned by Appwrite's APIs.
+
+# Events and webhooks {% #events-and-webhooks %}
+
+React to events that occur across your Appwrite project and notify external systems.
+
+{% cards %}
+{% cards_item href="/docs/advanced/api-integration/events" title="Events" %}
+Appwrite allows you to react to events that occur on the platform.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/api-integration/webhooks" title="Webhooks" %}
+Use webhooks to update backend integrations about Appwrite events.
+{% /cards_item %}
+{% /cards %}
+
+# Error reference {% #error-reference %}
+
+Understand how Appwrite's APIs report success and failure, and how to handle errors gracefully.
+
+{% cards %}
+{% cards_item href="/docs/advanced/api-integration/response-codes" title="Response codes" %}
+Learn about response codes and errors returned by Appwrite APIs.
+{% /cards_item %}
+
+{% cards_item href="/docs/advanced/api-integration/error-handling" title="Error handling" %}
+Best practices for handling Appwrite errors in your applications.
+{% /cards_item %}
+{% /cards %}
+
+# Policies {% #policies %}
+
+{% cards %}
+{% cards_item href="/docs/advanced/api-integration/release-policy" title="Release policy" %}
+Understand how Appwrite releases and versions its platforms and APIs.
+{% /cards_item %}
+{% /cards %}

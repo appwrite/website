@@ -152,7 +152,8 @@
                 {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
-                    icon: 'web-icon-command'
+                    icon: 'web-icon-command',
+                    isParent: true
                 },
                 {
                     label: 'The Appwriter',
@@ -165,15 +166,21 @@
             label: 'Advanced',
             items: [
                 {
-                    label: 'Platform',
-                    href: '/docs/advanced/platform',
-                    icon: 'web-icon-platform',
+                    label: 'Billing',
+                    href: '/docs/advanced/billing',
+                    icon: 'icon-credit-card',
                     isParent: true
                 },
                 {
                     label: 'Network',
                     href: '/docs/products/network',
                     icon: 'icon-share',
+                    isParent: true
+                },
+                {
+                    label: 'API Integration',
+                    href: '/docs/advanced/api-integration',
+                    icon: 'icon-switch-horizontal',
                     isParent: true
                 },
                 {
