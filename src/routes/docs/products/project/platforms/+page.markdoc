@@ -11,10 +11,10 @@ Platforms can be added from the Appwrite Console, or programmatically through an
 # Manage from the Console {% #manage-console %}
 
 {% only_dark %}
-![Project platforms in the Appwrite Console](/images/docs/project/dark/platforms.png)
+![Project platforms in the Appwrite Console](/images/docs/project/dark/platforms.avif)
 {% /only_dark %}
 {% only_light %}
-![Project platforms in the Appwrite Console](/images/docs/project/platforms.png)
+![Project platforms in the Appwrite Console](/images/docs/project/platforms.avif)
 {% /only_light %}
 
 To add a platform manually:

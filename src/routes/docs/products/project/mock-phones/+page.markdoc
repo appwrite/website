@@ -11,10 +11,10 @@ Each project stores its mock phones on the project document. Numbers must be in 
 # Add from the Console {% #toggle-console %}
 
 {% only_dark %}
-![Mock phone numbers settings in the Appwrite Console](/images/docs/project/dark/mock-phones.png)
+![Mock phone numbers settings in the Appwrite Console](/images/docs/project/dark/mock-phones.avif)
 {% /only_dark %}
 {% only_light %}
-![Mock phone numbers settings in the Appwrite Console](/images/docs/project/mock-phones.png)
+![Mock phone numbers settings in the Appwrite Console](/images/docs/project/mock-phones.avif)
 {% /only_light %}
 
 To add a mock phone manually:

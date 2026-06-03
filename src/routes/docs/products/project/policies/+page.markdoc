@@ -11,10 +11,10 @@ Policies can be configured from the Appwrite Console, or programmatically throug
 # Manage from the Console {% #manage-console %}
 
 {% only_dark %}
-![Project policies in the Appwrite Console](/images/docs/project/dark/policies.png)
+![Project policies in the Appwrite Console](/images/docs/project/dark/policies.avif)
 {% /only_dark %}
 {% only_light %}
-![Project policies in the Appwrite Console](/images/docs/project/policies.png)
+![Project policies in the Appwrite Console](/images/docs/project/policies.avif)
 {% /only_light %}
 
 To configure policies manually:

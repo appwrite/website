@@ -11,10 +11,10 @@ Services can be toggled from the Appwrite Console, or programmatically through a
 # Manage from the Console {% #manage-console %}
 
 {% only_dark %}
-![Project services in the Appwrite Console](/images/docs/project/dark/services.png)
+![Project services in the Appwrite Console](/images/docs/project/dark/services.avif)
 {% /only_dark %}
 {% only_light %}
-![Project services in the Appwrite Console](/images/docs/project/services.png)
+![Project services in the Appwrite Console](/images/docs/project/services.avif)
 {% /only_light %}
 
 To toggle a service manually:

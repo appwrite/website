@@ -11,10 +11,10 @@ When a method is disabled, the matching account endpoints reject requests for th
 # Toggle from the Console {% #toggle-console %}
 
 {% only_dark %}
-![Auth methods settings in the Appwrite Console](/images/docs/project/dark/auth-methods.png)
+![Auth methods settings in the Appwrite Console](/images/docs/project/dark/auth-methods.avif)
 {% /only_dark %}
 {% only_light %}
-![Auth methods settings in the Appwrite Console](/images/docs/project/auth-methods.png)
+![Auth methods settings in the Appwrite Console](/images/docs/project/auth-methods.avif)
 {% /only_light %}
 
 To toggle auth methods manually:
