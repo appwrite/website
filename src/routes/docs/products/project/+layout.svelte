@@ -51,6 +51,10 @@
                 {
                     label: 'Mock phones',
                     href: '/docs/products/project/mock-phones'
+                },
+                {
+                    label: 'Environment variables',
+                    href: '/docs/products/project/environment-variables'
                 }
             ]
         }

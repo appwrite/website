@@ -4,6 +4,10 @@
         "redirect": "/docs/products/project/api-keys"
     },
     {
+        "link": "/docs/advanced/platform/environment-variables",
+        "redirect": "/docs/products/project/environment-variables"
+    },
+    {
         "link": "/docs/getting-started-for-web",
         "redirect": "/docs/quick-starts"
     },
