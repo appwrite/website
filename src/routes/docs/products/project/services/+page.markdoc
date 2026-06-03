@@ -55,7 +55,7 @@ The API key used for this call needs the `project.write` scope.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, ServiceId } from 'node-appwrite';
+import { Client, Project, ProjectServiceId } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -65,12 +65,12 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.updateService({
-    serviceId: ServiceId.Account,
+    serviceId: ProjectServiceId.Account,
     enabled: false
 });
 ```
 ```server-deno
-import { Client, Project, ServiceId } from "npm:node-appwrite";
+import { Client, Project, ProjectServiceId } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -80,7 +80,7 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.updateService({
-    serviceId: ServiceId.Account,
+    serviceId: ProjectServiceId.Account,
     enabled: false
 });
 ```
@@ -88,7 +88,7 @@ const result = await project.updateService({
 <?php
 
 use Appwrite\Client;
-use Appwrite\Enums\ServiceId;
+use Appwrite\Enums\ProjectServiceId;
 use Appwrite\Services\Project;
 
 $client = new Client();
@@ -101,13 +101,13 @@ $client
 $project = new Project($client);
 
 $result = $project->updateService(
-    serviceId: ServiceId::ACCOUNT(),
+    serviceId: ProjectServiceId::ACCOUNT(),
     enabled: false
 );
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.enums import ServiceId
+from appwrite.enums import ProjectServiceId
 from appwrite.services.project import Project
 
 client = Client()
@@ -118,7 +118,7 @@ client.set_key('<YOUR_API_KEY>')
 project = Project(client)
 
 result = project.update_service(
-    service_id = ServiceId.ACCOUNT,
+    service_id = ProjectServiceId.ACCOUNT,
     enabled = False
 )
 ```
@@ -136,7 +136,7 @@ client = Client.new
 project = Project.new(client)
 
 response = project.update_service(
-    service_id: ServiceId::ACCOUNT,
+    service_id: ProjectServiceId::ACCOUNT,
     enabled: false
 )
 ```
@@ -153,7 +153,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 var result = await project.UpdateService(
-    serviceId: ServiceId.Account,
+    serviceId: ProjectServiceId.Account,
     enabled: false
 );
 ```
@@ -169,13 +169,13 @@ Client client = Client()
 Project project = Project(client);
 
 final result = await project.updateService(
-    serviceId: enums.ServiceId.account,
+    serviceId: enums.ProjectServiceId.account,
     enabled: false,
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
-import io.appwrite.enums.ServiceId
+import io.appwrite.enums.ProjectServiceId
 import io.appwrite.services.Project
 
 val client = Client()
@@ -186,14 +186,14 @@ val client = Client()
 val project = Project(client)
 
 val response = project.updateService(
-    serviceId = ServiceId.ACCOUNT,
+    serviceId = ProjectServiceId.ACCOUNT,
     enabled = false
 )
 ```
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.enums.ServiceId;
+import io.appwrite.enums.ProjectServiceId;
 import io.appwrite.services.Project;
 
 Client client = new Client()
@@ -204,7 +204,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 project.updateService(
-    ServiceId.ACCOUNT, // serviceId
+    ProjectServiceId.ACCOUNT, // serviceId
     false, // enabled
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -261,7 +261,7 @@ func main() {
 ```
 ```server-rust
 use appwrite::Client;
-use appwrite::enums::ServiceId;
+use appwrite::enums::ProjectServiceId;
 use appwrite::services::project::Project;
 
 #[tokio::main]
@@ -274,7 +274,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let project = Project::new(&client);
 
     let result = project.update_service(
-        ServiceId::Account,
+        ProjectServiceId::Account,
         false,
     ).await?;
 

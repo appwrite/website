@@ -1091,10 +1091,8 @@ appwrite project delete-mock-phone --number +15555550100
 ```
 {% /multicode %}
 
-# Errors {% #errors %}
+# Benefits {% #benefits %}
 
-| Code | Type | Description |
-| --- | --- | --- |
-| 404 | `mock_number_not_found` | No mock phone exists for the supplied number. |
-| 409 | `mock_number_already_exists` | A mock phone with the same number is already registered. |
-| 400 | `mock_number_limit_exceeded` | The project has reached the maximum number of mock phones. |
+- **No SMS costs in test flows.** Exercise phone authentication in CI, demo accounts, and app store review submissions without sending real SMS or paying provider fees.
+- **Stable credentials for automation.** Registered numbers and codes don't expire or rotate, so end-to-end tests stay deterministic across runs.
+- **Repeatable provisioning.** Script the mock phone set a project should expose and apply it from CI when spinning up a new environment.

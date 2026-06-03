@@ -44,7 +44,7 @@ The API key used for this call needs the `project.write` scope.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, ProtocolId } from 'node-appwrite';
+import { Client, Project, ProjectProtocolId } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -54,12 +54,12 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.updateProtocol({
-    protocolId: ProtocolId.Rest,
+    protocolId: ProjectProtocolId.Rest,
     enabled: false
 });
 ```
 ```server-deno
-import { Client, Project, ProtocolId } from "npm:node-appwrite";
+import { Client, Project, ProjectProtocolId } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -69,7 +69,7 @@ const client = new Client()
 const project = new Project(client);
 
 const result = await project.updateProtocol({
-    protocolId: ProtocolId.Rest,
+    protocolId: ProjectProtocolId.Rest,
     enabled: false
 });
 ```
@@ -77,7 +77,7 @@ const result = await project.updateProtocol({
 <?php
 
 use Appwrite\Client;
-use Appwrite\Enums\ProtocolId;
+use Appwrite\Enums\ProjectProtocolId;
 use Appwrite\Services\Project;
 
 $client = new Client();
@@ -90,13 +90,13 @@ $client
 $project = new Project($client);
 
 $result = $project->updateProtocol(
-    protocolId: ProtocolId::REST(),
+    protocolId: ProjectProtocolId::REST(),
     enabled: false
 );
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.enums import ProtocolId
+from appwrite.enums import ProjectProtocolId
 from appwrite.services.project import Project
 
 client = Client()
@@ -107,7 +107,7 @@ client.set_key('<YOUR_API_KEY>')
 project = Project(client)
 
 result = project.update_protocol(
-    protocol_id = ProtocolId.REST,
+    protocol_id = ProjectProtocolId.REST,
     enabled = False
 )
 ```
@@ -125,7 +125,7 @@ client = Client.new
 project = Project.new(client)
 
 response = project.update_protocol(
-    protocol_id: ProtocolId::REST,
+    protocol_id: ProjectProtocolId::REST,
     enabled: false
 )
 ```
@@ -142,7 +142,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 var result = await project.UpdateProtocol(
-    protocolId: ProtocolId.Rest,
+    protocolId: ProjectProtocolId.Rest,
     enabled: false
 );
 ```
@@ -158,13 +158,13 @@ Client client = Client()
 Project project = Project(client);
 
 final result = await project.updateProtocol(
-    protocolId: enums.ProtocolId.rest,
+    protocolId: enums.ProjectProtocolId.rest,
     enabled: false,
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
-import io.appwrite.enums.ProtocolId
+import io.appwrite.enums.ProjectProtocolId
 import io.appwrite.services.Project
 
 val client = Client()
@@ -175,14 +175,14 @@ val client = Client()
 val project = Project(client)
 
 val response = project.updateProtocol(
-    protocolId = ProtocolId.REST,
+    protocolId = ProjectProtocolId.REST,
     enabled = false
 )
 ```
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.enums.ProtocolId;
+import io.appwrite.enums.ProjectProtocolId;
 import io.appwrite.services.Project;
 
 Client client = new Client()
@@ -193,7 +193,7 @@ Client client = new Client()
 Project project = new Project(client);
 
 project.updateProtocol(
-    ProtocolId.REST, // protocolId
+    ProjectProtocolId.REST, // protocolId
     false, // enabled
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -250,7 +250,7 @@ func main() {
 ```
 ```server-rust
 use appwrite::Client;
-use appwrite::enums::ProtocolId;
+use appwrite::enums::ProjectProtocolId;
 use appwrite::services::project::Project;
 
 #[tokio::main]
@@ -263,7 +263,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let project = Project::new(&client);
 
     let result = project.update_protocol(
-        ProtocolId::Rest,
+        ProjectProtocolId::Rest,
         false,
     ).await?;
 

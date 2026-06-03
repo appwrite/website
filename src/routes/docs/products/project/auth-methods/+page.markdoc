@@ -42,7 +42,7 @@ The `methodId` parameter accepts one of the following values:
 
 # Enable or disable a method {% #update-auth-method %}
 
-Use the Project service `updateAuthMethod` endpoint with a method ID and the `enabled` flag.
+Use the Project service `updateProjectAuthMethodId` endpoint with a method ID and the `enabled` flag.
 
 {% info title="Required scope" %}
 The API key used for these calls needs the `project.write` scope.
@@ -50,7 +50,7 @@ The API key used for these calls needs the `project.write` scope.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, AuthMethod } from 'node-appwrite';
+import { Client, Project, ProjectAuthMethodId } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -59,13 +59,13 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateAuthMethod({
-    methodId: AuthMethod.EmailPassword,
+const result = await project.updateProjectAuthMethodId({
+    methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 });
 ```
 ```server-deno
-import { Client, Project, AuthMethod } from "npm:node-appwrite";
+import { Client, Project, ProjectAuthMethodId } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -74,8 +74,8 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateAuthMethod({
-    methodId: AuthMethod.EmailPassword,
+const result = await project.updateProjectAuthMethodId({
+    methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 });
 ```
@@ -84,7 +84,7 @@ const result = await project.updateAuthMethod({
 
 use Appwrite\Client;
 use Appwrite\Services\Project;
-use Appwrite\Enums\AuthMethod;
+use Appwrite\Enums\ProjectAuthMethodId;
 
 $client = new Client();
 
@@ -95,15 +95,15 @@ $client
 
 $project = new Project($client);
 
-$result = $project->updateAuthMethod(
-    methodId: AuthMethod::EMAILPASSWORD(),
+$result = $project->updateProjectAuthMethodId(
+    methodId: ProjectAuthMethodId::EMAILPASSWORD(),
     enabled: false
 );
 ```
 ```server-python
 from appwrite.client import Client
 from appwrite.services.project import Project
-from appwrite.enums import AuthMethod
+from appwrite.enums import ProjectAuthMethodId
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -113,7 +113,7 @@ client.set_key('<YOUR_API_KEY>')
 project = Project(client)
 
 result = project.update_auth_method(
-    method_id = AuthMethod.EMAIL_PASSWORD,
+    method_id = ProjectAuthMethodId.EMAIL_PASSWORD,
     enabled = False
 )
 ```
@@ -131,7 +131,7 @@ client = Client.new
 project = Project.new(client)
 
 response = project.update_auth_method(
-    method_id: AuthMethod::EMAIL_PASSWORD,
+    method_id: ProjectAuthMethodId::EMAIL_PASSWORD,
     enabled: false
 )
 ```
@@ -147,8 +147,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-var result = await project.UpdateAuthMethod(
-    methodId: AuthMethod.EmailPassword,
+var result = await project.UpdateProjectAuthMethodId(
+    methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 );
 ```
@@ -163,15 +163,15 @@ Client client = Client()
 
 Project project = Project(client);
 
-final result = await project.updateAuthMethod(
-    methodId: enums.AuthMethod.emailPassword,
+final result = await project.updateProjectAuthMethodId(
+    methodId: enums.ProjectAuthMethodId.emailPassword,
     enabled: false,
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
 import io.appwrite.services.Project
-import io.appwrite.enums.AuthMethod
+import io.appwrite.enums.ProjectAuthMethodId
 
 val client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -180,8 +180,8 @@ val client = Client()
 
 val project = Project(client)
 
-val result = project.updateAuthMethod(
-    methodId = AuthMethod.EMAIL_PASSWORD,
+val result = project.updateProjectAuthMethodId(
+    methodId = ProjectAuthMethodId.EMAIL_PASSWORD,
     enabled = false
 )
 ```
@@ -189,7 +189,7 @@ val result = project.updateAuthMethod(
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Project;
-import io.appwrite.enums.AuthMethod;
+import io.appwrite.enums.ProjectAuthMethodId;
 
 Client client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -198,8 +198,8 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-project.updateAuthMethod(
-    AuthMethod.EMAIL_PASSWORD, // methodId
+project.updateProjectAuthMethodId(
+    ProjectAuthMethodId.EMAIL_PASSWORD, // methodId
     false, // enabled
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -221,7 +221,7 @@ let client = Client()
 
 let project = Project(client)
 
-let result = try await project.updateAuthMethod(
+let result = try await project.updateProjectAuthMethodId(
     methodId: .emailPassword,
     enabled: false
 )
@@ -242,7 +242,7 @@ func main() {
     )
 
     project := appwrite.NewProject(client)
-    result, err := project.UpdateAuthMethod(
+    result, err := project.UpdateProjectAuthMethodId(
         "email-password",
         false,
     )
@@ -257,7 +257,7 @@ func main() {
 ```server-rust
 use appwrite::Client;
 use appwrite::services::project::Project;
-use appwrite::enums::AuthMethod;
+use appwrite::enums::ProjectAuthMethodId;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -269,7 +269,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let project = Project::new(&client);
 
     let result = project.update_auth_method(
-        AuthMethod::EmailPassword,
+        ProjectAuthMethodId::EmailPassword,
         false,
     ).await?;
 
