@@ -3,12 +3,25 @@ layout: post
 title: Build a fullstack Notes app with Cursor, Appwrite, and TanStack Start
 description: Learn how to build a modern fullstack notes application using Cursor AI, Appwrite for backend, and TanStack Start for the frontend.
 date: 2025-11-05
-cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.png
+cover: /images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cover.avif
 timeToRead: 15
 author: tessa
 category: tutorial
 featured: false
 draft: false
+faqs:
+  - question: "What is MCP (Model Context Protocol)?"
+    answer: "MCP is a protocol that lets AI tools securely connect to APIs and data sources. With the Appwrite MCP server, Cursor (or any MCP-compatible agent) can read and modify your Appwrite project, including creating tables, querying data, and managing users."
+  - question: "How does Cursor connect to Appwrite?"
+    answer: "Install the Appwrite MCP server in Cursor under Tools, then provide your Appwrite endpoint, project ID, and API key. Once configured, Cursor can call Appwrite APIs from inside your editor session as if it were any other tool."
+  - question: "What is TanStack Start?"
+    answer: "TanStack Start is a full-stack React framework built on TanStack Router and Vinxi. It supports server functions, file-based routing, and SSR out of the box, making it a solid choice for building fullstack apps with type-safe data flow."
+  - question: "Can I build a full app without writing code by hand?"
+    answer: "With Cursor connected to Appwrite via MCP, you can generate most of the boilerplate (database schema, auth flows, CRUD endpoints) by prompting the agent. You'll still want to read and review what gets produced, especially for permissions and validation."
+  - question: "What scopes do I need on my Appwrite API key for Cursor?"
+    answer: "For the notes app, you need tables.read, tables.write, users.read, and users.write at minimum. Start with the narrowest set of scopes needed and add more if your prompts require them. Avoid granting all scopes in production."
+  - question: "How do I connect [Appwrite Auth](/docs/products/auth) to a TanStack Start app?"
+    answer: "Use the Appwrite Web SDK on the client and create sessions via the Account API. For SSR scenarios, pass the session cookie or JWT to the server function so Appwrite knows who's making the request. The tutorial walks through this end-to-end."
 ---
 
 Developers are entering a new era where AI can *understand context and build with you*.  
@@ -54,7 +67,7 @@ Go to **Project → Overview**, hover over **Project ID**, and copy it.
 ## 3. Add the MCP Server in Cursor
 In Cursor → **Tools → Installed MCP Servers → Add Custom MCP**:
 
-![Cursor MCP Settings](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cursor-mcp-settings.PNG)
+![Cursor MCP Settings](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/cursor-mcp-settings.avif)
 
 You can specify specific routes instead of choosing --all, such as --tables, --users, --functions since having too many may degrade performance in Cursor.
 
@@ -88,7 +101,7 @@ Click **Install**, then verify it appears in your MCP list.
 
 > **Preview:** Here's what we'll build by the end of this tutorial.
 
-![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.PNG)
+![TanStack Notes App](/images/blog/build-fullstack-notes-app-cursor-appwrite-tanstack-start/tanstacknotesapp.avif)
 
 ---
 
@@ -116,7 +129,7 @@ Choose: Start (SSR), TypeScript
 npm i
 ```
 
-> 💡 Cursor may prompt: `npm install --save-dev tsx` — that's expected for SSR dev mode.
+> 💡 Cursor may prompt: `npm install --save-dev tsx`; that's expected for SSR dev mode.
 
 ---
 
@@ -324,7 +337,7 @@ npm run preview
 | Issue | Fix |
 |---|---|
 | `/` shows TanStack docs page | Delete demo/docs routes and create `/`, `/login`, `/signup`, `/notes` manually. |
-| `focus-visible-ring` or `ring-opacity-*` errors | Tailwind v4 removed those utilities — use color/alpha rings instead. |
+| `focus-visible-ring` or `ring-opacity-*` errors | Tailwind v4 removed those utilities; use color/alpha rings instead. |
 | Missing `.env` file | Create `.env.local` using values from Appwrite MCP. |
 | 401/403 errors | Verify API key scopes + table permissions. |
 | "Creation of a session is prohibited when a session is active." | Use session-safe login flow. Delete all sessions first, retry once if needed, and remove auto-login logic from `/login`. |

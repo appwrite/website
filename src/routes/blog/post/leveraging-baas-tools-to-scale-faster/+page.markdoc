@@ -3,11 +3,24 @@ layout: post
 title: Leveraging backend as a service tools to scale faster
 description: Discover what thousands of developers already know, and learn how a BaaS platform can benefit you. 
 date: 2023-09-27
-cover: /images/blog/baas.png
+cover: /images/blog/baas.avif
 timeToRead: 6
 author: dennis-ivy
 category: product
 featured: false
+faqs:
+  - question: "What is a Backend as a Service (BaaS)?"
+    answer: "A Backend as a Service is a third party platform that handles backend infrastructure like databases, authentication, file storage, and APIs. Developers connect to these services through SDKs or REST APIs instead of building and operating servers themselves. This shortens time to market and removes much of the backend boilerplate from each new project."
+  - question: "When should you use a BaaS instead of a custom backend?"
+    answer: "Use a BaaS when your app needs common backend features (auth, storage, databases, realtime) but those features are not your differentiator. It also makes sense for prototypes, MVPs, and teams without dedicated backend engineers. If you have specialized infrastructure needs, you can still use a BaaS for the common parts and run custom services alongside."
+  - question: "How does Appwrite compare to Firebase?"
+    answer: "Appwrite is open source and self hostable, while Firebase is a managed Google product. Appwrite gives you full control over your data and avoids vendor lock-in, since you can move your deployment anywhere. Both offer auth, databases, storage, and functions, but Appwrite's pricing scales more predictably for larger workloads."
+  - question: "Can I avoid vendor lock-in with a BaaS?"
+    answer: "Yes, but only if the BaaS is open source or built on portable standards. Appwrite is open source, so you can self host on your own infrastructure if your needs change. Closed source platforms like Firebase make migration significantly harder once your data and code depend on proprietary APIs."
+  - question: "Do real companies use BaaS platforms in production?"
+    answer: "Yes, organizations including Twitch, Instacart, Square, Trustpilot, and Zendesk have used BaaS platforms in production. They typically adopt specific services like authentication or realtime messaging rather than the entire stack. The approach scales well when the BaaS provider has a strong track record of reliability."
+  - question: "What features does a typical BaaS provide?"
+    answer: "Most BaaS platforms provide databases, authentication, file storage, serverless functions, and realtime APIs. Appwrite covers all of these through products like [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Messaging](/docs/products/messaging). You can adopt them individually or as a complete stack."
 ---
 
 There are many tools that developers use every day to abstract away complexity, but many are seriously underutilizing the benefits of "Backend As A Service" tools for developing the entire backend of an app, or at least the key components.
@@ -17,6 +30,8 @@ The idea of trusting such a vital part of the development process to a 3rd party
 Many of the features we require in most apps are necessary but don't represent the core product. This includes authentication, security, file storage and database management. Do you really need to reinvent the wheel and build this from scratch every time?
 
 We believe in most cases there is an easier way, which is where the idea of "Backend As A Service" can help.
+
+If you want a scannable comparison across major vendors before picking tools, read [backend as a service (BaaS)](/blog/post/backend-as-a-service).
 
 # What is a Backend as a Service (BaaS)
 

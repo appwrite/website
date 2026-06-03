@@ -1,0 +1,12 @@
+/** Cookie + localStorage key — must match server `+page.server.ts` for consistent experiment assignment. */
+export const STATSIG_STABLE_ID_KEY = 'statsig_stable_id';
+
+/** Browser SDK key (public). Server uses it for `getClientInitializeResponse` / client bootstrap. */
+export const STATSIG_CLIENT_SDK_KEY = 'client-TRp4ODQ3Yfsha0XwmRayqwb7WW0ujUbiGrNlB0pfhTH';
+
+export const DEFAULT_HERO_SUBTITLE =
+    'Appwrite is an open-source alternative to Firebase and Supabase, offering Auth, Databases, Storage, Functions, Messaging, Realtime, and web hosting - all in one platform, optimized for building with AI agents.';
+
+export const DEFAULT_HERO_TITLE = 'Build like a team of hundreds';
+
+export const DEFAULT_HERO_CTA = 'Start project';

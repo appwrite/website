@@ -6,16 +6,28 @@
     import type { DayProps } from './day.svelte';
     import { untrack } from 'svelte';
 
-    type $$Props = Pick<DayProps, 'illustration' | 'release' | 'index' | 'title'>;
+    type $$Props = Pick<
+        DayProps,
+        'illustration' | 'illustrationWidth' | 'illustrationHeight' | 'release' | 'index' | 'title'
+    >;
 
     interface Props {
         illustration?: $$Props['illustration'];
+        illustrationWidth?: $$Props['illustrationWidth'];
+        illustrationHeight?: $$Props['illustrationHeight'];
         release: $$Props['release'];
         index: $$Props['index'];
         title: $$Props['title'];
     }
 
-    const { illustration = '', release, index, title }: Props = $props();
+    const {
+        illustration = '',
+        illustrationWidth = 1,
+        illustrationHeight = 1,
+        release,
+        index,
+        title
+    }: Props = $props();
 
     const { days, hours, minutes, seconds, hasReleased } = untrack(() => createCountdown(release));
 </script>
@@ -34,7 +46,14 @@
         >
             <div class="relative flex h-full w-full flex-col items-center justify-center">
                 {#if hasReleased}
-                    <img src={illustration} alt="Logo" class="size-32" />
+                    <img
+                        src={illustration}
+                        width={illustrationWidth}
+                        height={illustrationHeight}
+                        alt="Logo"
+                        class="size-32"
+                        decoding="async"
+                    />
                 {/if}
 
                 {#if !hasReleased}

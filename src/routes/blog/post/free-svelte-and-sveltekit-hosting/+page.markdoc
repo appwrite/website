@@ -3,12 +3,24 @@ layout: post
 title: Free Svelte and SvelteKit hosting with Appwrite Sites - Deploy and scale effortlessly
 description: Learn how to deploy your Svelte and SvelteKit app for free with Appwrite Sites.
 date: 2025-05-20
-cover: /images/blog/free-svelte-and-sveltekit-hosting/cover.png
+cover: /images/blog/free-svelte-and-sveltekit-hosting/cover.avif
 timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host a Svelte or SvelteKit app for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that supports both Svelte and SvelteKit deployments with a global CDN, automatic SSL, and DDoS protection. The free plan covers most personal sites and early stage apps."
+  - question: "Does Appwrite Sites support SvelteKit SSR and SSG?"
+    answer: "Yes. Static SvelteKit builds are served directly from the CDN, and SSR routes can be handled by [Appwrite Functions](/docs/products/functions). You can mix prerendered and server rendered routes within the same project."
+  - question: "What is the difference between Svelte and SvelteKit?"
+    answer: "Svelte is the underlying component framework that compiles your code to vanilla JavaScript. SvelteKit is the full application framework built on top of Svelte, with file based routing, server endpoints, and build adapters. Most production apps use SvelteKit, while plain Svelte is suited to widgets or embedded components."
+  - question: "How do I deploy a SvelteKit project to Appwrite Sites?"
+    answer: "Connect your Git repository for automatic deploys on every push, run `appwrite deploy site` from the CLI, or upload your build folder manually. The Git workflow is the simplest because it builds and ships on every commit. See [deploy from Git](/docs/products/sites/deploy-from-git) for setup."
+  - question: "Can I use Appwrite as a backend for SvelteKit?"
+    answer: "Yes. SvelteKit load functions, server endpoints, and client components can all call [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) through the official SDK. This is a common pattern for full stack SvelteKit apps."
+  - question: "Does Appwrite Sites support custom domains for SvelteKit?"
+    answer: "Yes. You can attach a custom domain to any Appwrite Site and SSL is provisioned automatically. No manual certificate management is required."
 ---
 
 Svelte and SvelteKit have gained traction among developers due to their efficient compilation, minimal runtime overhead, and built-in support for server-side rendering (SSR) and static site generation (SSG). While deploying Svelte applications is straightforward, choosing a hosting solution that balances affordability, scalability, and developer-friendly features can be a challenge.

@@ -3,12 +3,25 @@ layout: post
 title: Empowering Shopify merchants with real-time store monitoring using StoreAlert
 description: Learn how Devkind improved store monitoring for merchants while reducing development time, lowering server costs, and enhancing app performance using Appwrite Cloud.
 date: 2025-02-20
-cover: /images/blog/customer-story-storealert/cover.png
+cover: /images/blog/customer-story-storealert/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: customer-stories
 featured: false
 callToAction: true
+faqs:
+  - question: "What is StoreAlert?"
+    answer: "StoreAlert is a Shopify app built by Devkind that gives merchants real-time notifications and a complete event history for product, order, inventory, and price changes. It is live on the Shopify App Store and supports email, SMS, and push channels, with smart hourly digests to prevent notification overload."
+  - question: "How does StoreAlert use Appwrite?"
+    answer: "StoreAlert uses [Appwrite Functions](/docs/products/functions) for Shopify OAuth verification, event sync, and forwarding alerts to Gadget.dev. [Appwrite Databases](/docs/products/databases) store access tokens and event logs. CRON-scheduled functions handle recurring tasks like polling for new events and refreshing tokens."
+  - question: "Why did Devkind pick Appwrite over Firebase or Supabase?"
+    answer: "Appwrite's pricing model and the limits on Functions and Database operations fit their workload better than Firebase or Supabase. The combination of managed Functions, Databases, and Auth in one platform let them ship without stitching together separate services."
+  - question: "Can Appwrite be used as a Shopify app backend?"
+    answer: "Yes. Use [Appwrite Functions](/docs/products/functions) to handle Shopify OAuth, webhook ingestion, and API polling. Store access tokens and event data in [Appwrite Databases](/docs/products/databases). Schedule recurring polling with CRON triggers on Functions to fetch new events from the Shopify API."
+  - question: "How can I store Shopify access tokens securely?"
+    answer: "Store them in [Appwrite Databases](/docs/products/databases) with permissions set so only the relevant user (and your server-side functions via API key) can read them. Never expose access tokens to the client. Refresh tokens on a CRON schedule using [Appwrite Functions](/docs/products/functions)."
+  - question: "How much faster can I ship a SaaS using a BaaS like Appwrite?"
+    answer: "Devkind reported a 60% reduction in development time and 40% lower server costs after picking Appwrite for StoreAlert. The biggest wins come from skipping auth, database, storage, and scheduled-task infrastructure that you would otherwise have to build and operate yourself."
 ---
 
 In 2023, a client of [Devkind](https://www.devkind.com.au/), a software development and marketing agency from Melbourne, Australia, faced a major setback with several products disappearing from their Shopify store without any trace of when or how it happened. Without an event log, tracking the issue was impossible. This incident highlighted a glaring gap in e-commerce store management: the lack of real-time visibility into key store events.
@@ -40,9 +53,9 @@ Recognizing this gap, Devkind set out to develop a solution designed to give mer
 - **Comprehensive event tracking:** Logs and monitors every store activity, from product launches to blog updates, providing a complete event history for easy reference and tracking.
 - **Customizable notification flows:** Allows merchants to tailor notifications through multiple channels, including email, SMS, and push notifications, ensuring updates arrive in the most convenient way.
 - **Efficient inventory and catalog management:** Streamlines tracking for stores managing thousands of products, ensuring stock levels are up-to-date and reducing the risk of overselling or stockouts.
-- **Seamless Shopify integration:** Connects directly to Shopify, enabling real-time notifications with a quick and simple installation—no complicated setup required.
+- **Seamless Shopify integration:** Connects directly to Shopify, enabling real-time notifications with a quick and simple installation; no complicated setup required.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 ## **How Devkind used Appwrite to develop StoreAlert**
 
@@ -77,7 +90,7 @@ As per the feedback from the Devkind, Appwrite helped
 - **Improve response time by 30%**, ensuring better performance and user experience
 - **10x easier data scaling**, preparing StoreAlert for future growth
 
-> "A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most—empowering merchants with real-time insights and control over their store operations."  
+> "A special thanks to Appwrite for shouldering the heavy lifting behind StoreAlert, providing robust features and seamless functionality that allow us to focus on what matters most: empowering merchants with real-time insights and control over their store operations."  
 > ⠀  
 > Hassan Ahmed, Full Stack Developer at Devkind
  

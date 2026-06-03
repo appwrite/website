@@ -3,12 +3,23 @@ layout: post
 title: So you want to apply to Appwrite? Here’s what you need to know
 description: How you can showcase your skills and personality to stand out from the crowd in Appwrite's hiring process.
 date: 2025-04-28
-cover: /images/blog/apply-appwrite-how/cover.png
+cover: /images/blog/apply-appwrite-how/cover.avif
 timeToRead: 5
 author: emma
 category: culture
 featured: false
 callToAction: true
+faqs:
+  - question: "Where can I see open roles at Appwrite?"
+    answer: "All current openings are listed at appwrite.careers. The list is kept up to date with engineering, design, DevRel, marketing, and operations roles as they open."
+  - question: "Is it okay to use AI tools when writing my application?"
+    answer: "Yes, but use AI as a co-pilot, not a ghostwriter. The team reads a lot of applications and copy-pasted AI answers are easy to spot. Your application should start with you, end with you, and reflect how you actually think."
+  - question: "Do I need a computer science degree to work at Appwrite?"
+    answer: "No. Appwrite hires career-switchers, self-taught developers, and traditionally trained engineers. What matters is what you have built, how you think, and whether you align with the team's values."
+  - question: "What should I include in my application beyond a resume?"
+    answer: "Share links to anything that shows your work and your thinking. GitHub repos, side projects, websites, portfolios, blog posts, talks, and community contributions are all useful signals on top of your resume."
+  - question: "How can I get familiar with Appwrite before applying?"
+    answer: "Read the [documentation](/docs), try building something with the platform, and join the [Discord community](/discord). You can also browse the open-source codebase on GitHub to understand how the team works in the open."
 ---
 
 At Appwrite, we’re building more than open-source backend tools, we’re building a people-first, innovation-driven company that thrives on collaboration, creativity, and community. Every job application we receive is a potential new chapter in our story, and we want to give you the best chance of joining the team.

@@ -3,12 +3,23 @@ layout: post
 title: "Announcing the Webhooks API: Manage webhooks programmatically with Server SDKs"
 description: Webhooks are no longer console-only. Create, update, and delete webhooks using the Appwrite Server SDKs and API keys with the new webhooks.read and webhooks.write scopes.
 date: 2026-04-22
-cover: /images/blog/announcing-webhooks-api/cover.png
+cover: /images/blog/announcing-webhooks-api/cover.avif
 timeToRead: 4
 author: matej-baco
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Webhooks API?"
+    answer: "The Webhooks API is a programmable interface for managing Appwrite webhooks through Server SDKs and API keys. Instead of clicking through the Console, you can create, list, update, and delete webhooks from code, the same way you already manage databases, [Functions](/docs/products/functions), and storage buckets."
+  - question: "Which API key scopes do I need for the Webhooks API?"
+    answer: "You need webhooks.read for listing and retrieving webhooks, and webhooks.write for creating, updating, and deleting them. Create or update an API key under Overview > Integration > API keys with the scopes you need."
+  - question: "Why store the webhook secret immediately on creation?"
+    answer: "The secret field is only returned in the response of the create call, never again. Save it to your secret manager or environment variables right away so you can verify webhook signatures when events are delivered to your endpoint."
+  - question: "When should I use the Webhooks API instead of the Console?"
+    answer: "Use it whenever webhook configuration is part of a workflow that should be reproducible. Common cases include CI/CD pipelines that register webhooks during environment setup, multi-tenant platforms that provision per-customer webhooks, and migration scripts that replicate webhooks across environments."
+  - question: "How do webhooks differ from Appwrite Functions?"
+    answer: "Webhooks deliver event payloads to an HTTP endpoint you control, so the logic runs in your own infrastructure. [Functions](/docs/products/functions) run inside Appwrite and can be triggered by the same events, which is useful when you do not want to host a separate server."
 ---
 
 Webhooks have always been a core part of how developers integrate Appwrite into their workflows. Subscribe to an event, receive an HTTP POST, and let your server handle the rest. Until now, managing those webhooks meant logging into the Appwrite Console and configuring them by hand.

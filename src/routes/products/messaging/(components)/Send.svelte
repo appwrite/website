@@ -1,16 +1,35 @@
 <script lang="ts">
     import Step from './Step.svelte';
-    import AndroidSvg from '../(assets)/android.svg';
-    import IphoneSvg from '../(assets)/iphone.svg';
+
+    const IPHONE_SRC = '/images/products/messaging/iphone.avif';
+    const IPHONE_W = 409;
+    const IPHONE_H = 843;
+    const ANDROID_SRC = '/images/products/messaging/android.avif';
+    const ANDROID_W = 358;
+    const ANDROID_H = 716;
 </script>
 
 <Step title="Step 4: Send" hideLine>
     <div class="wrapper">
-        <img src={IphoneSvg} alt="" class="phone" />
+        <img
+            src={IPHONE_SRC}
+            width={IPHONE_W}
+            height={IPHONE_H}
+            alt=""
+            class="phone"
+            decoding="async"
+        />
         <div class="img-overlay"></div>
 
         <div class="android">
-            <img src={AndroidSvg} alt="" class="android" />
+            <img
+                src={ANDROID_SRC}
+                width={ANDROID_W}
+                height={ANDROID_H}
+                alt=""
+                class="android"
+                decoding="async"
+            />
             <h3 class="text-title font-aeonik-pro text-primary">
                 Communicate across multiple channels
             </h3>

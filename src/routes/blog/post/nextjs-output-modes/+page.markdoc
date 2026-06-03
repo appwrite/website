@@ -1,13 +1,26 @@
 ---
 layout: post
-title: Next.js output modes — Standalone vs Default build
+title: "Next.js output modes: Standalone vs Default build"
 description: Learn about different output modes in Next.js and find out which of them would be the best for you.
 date: 2025-12-12
-cover: /images/blog/nextjs-output-modes/cover.png
+cover: /images/blog/nextjs-output-modes/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
 featured: false
+faqs:
+  - question: "What are Next.js output modes?"
+    answer: "Next.js output modes control how your app is bundled and served. The main options are default (relies on node_modules and .next at runtime), standalone (bundles only required files into a self contained output), and export (produces a static site). Each mode has different tradeoffs around size, performance, and compatibility."
+  - question: "What is Next.js standalone mode?"
+    answer: "Standalone mode produces a self contained build under .next/standalone that includes only the dependencies your app actually uses. It does not require node_modules at runtime, which makes deployments smaller and cold starts faster. You opt in by setting output: 'standalone' in next.config.js."
+  - question: "When should I use standalone mode over default?"
+    answer: "Use standalone mode when build size and cold start time matter, which is most production deployments. It is especially useful when shipping containers or running on platforms that bill by deployment size. Stick with default mode if you rely on dynamic imports or monorepo patterns that the tracer cannot resolve."
+  - question: "Does Appwrite Sites support Next.js standalone mode?"
+    answer: "Yes, [Appwrite Sites](/docs/products/sites) fully supports Next.js standalone mode. Add output: 'standalone' to next.config.js and deploy as usual. Appwrite Sites detects the standalone build automatically, no extra configuration required."
+  - question: "What is the difference between standalone and export modes?"
+    answer: "Standalone mode produces a self contained server bundle that still runs Node.js at runtime, so SSR, API routes, and middleware all work. Export mode produces purely static HTML and assets with no server logic, suitable for sites without dynamic features. Pick standalone for full Next.js capabilities and export for fully static sites."
+  - question: "Why is standalone mode not the Next.js default?"
+    answer: "Standalone relies on static analysis to trace which files are needed, so dynamic imports, monorepo packages, or unusual runtime patterns can break the build. These edge cases mean Vercel and the Next.js team keep default mode as the safest option. Try standalone first and fall back to default if you hit a tracing issue."
 ---
 
 Next.js is a very popular React framework. People choose it because it blends in with the server very well, using both client-side and server-side capabilities to provide a better user experience. Next.js is packed with cutting-edge React features like RSC. However, such features also bring complexity when deploying your app.
@@ -81,7 +94,7 @@ The result was clear: standalone mode consistently showed lower build sizes. Int
 
 # Which is the best for me?
 
-Standalone mode seems to be the clear winner based on the results. That would make you think—why is it not the default? Because it's not the most reliable. There are some very unclear cases where your standalone build would break or cause problems in production:
+Standalone mode seems to be the clear winner based on the results. That would make you think: why is it not the default? Because it's not the most reliable. There are some very unclear cases where your standalone build would break or cause problems in production:
 
 - If you use monorepos and import packages from it, you might need to configure Next.js to be able to trace those packages.
 - If you dynamically import packages in your app, standalone mode cannot help you here, as only the code that is used and can be traced is bundled.

@@ -3,12 +3,26 @@ layout: post
 title: Announcing image transformation pricing
 description: To keep Appwrite Cloud sustainable, we are introducing pricing for image transformations.
 date: 2025-03-03
-cover: /images/blog/announcing-image-transformations-pricing/cover.png
+lastUpdated: 2026-05-22
+cover: /images/blog/announcing-image-transformations-pricing/cover.avif
 timeToRead: 4
 author: eldad-fux
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is an origin image in Appwrite?"
+    answer: "An origin image is the original, unmodified image file stored in [Appwrite Storage](/docs/products/storage). It's the source for any transformation (resize, crop, quality change, filter). Each origin image supports unlimited transformations, and you're only billed once per origin image regardless of how many variants you generate."
+  - question: "How are image transformations priced on Appwrite Cloud?"
+    answer: "The Pro plan includes 100 origin images per month at no extra charge, and Enterprise has custom limits. Beyond the quota, additional origin images cost $5 per 1,000 images. There's no per-transformation fee, so applying 200 transformations across 50 origin images counts as 50 origin images, not 200. See the [pricing page](/pricing) for details."
+  - question: "How do I transform an image with Appwrite?"
+    answer: "Upload the image to [Appwrite Storage](/docs/products/storage), then use the `getFilePreview` endpoint with parameters like width, height, quality, opacity, border, and format. The transformed image is returned by the preview endpoint. Cache the result on the client or CDN to avoid regenerating the same variant repeatedly."
+  - question: "Does counting unique origin images mean variants are free?"
+    answer: "Generating multiple variants from the same source image doesn't add to the origin image count, so resizing a single image into thumbnail, mobile, and desktop sizes still counts as one origin image. This makes the pricing predictable when you serve responsive images at multiple breakpoints."
+  - question: "Is image transformation pricing applied to self-hosted Appwrite?"
+    answer: "No, the pricing applies only to [Appwrite Cloud](/pricing) on Pro and Enterprise plans. Self-hosted Appwrite has no usage charges because you run the infrastructure. The same `getFilePreview` API works the same way in both."
+  - question: "How can I keep image transformation costs predictable?"
+    answer: "Cache transformed images on a CDN or your client so the same variant isn't regenerated on every request. Use consistent image dimensions across breakpoints so you don't accidentally bloat the number of unique origin images. Monitor usage from your organization's usage page to spot unexpected spikes early."
 ---
 
 Image transformations are essential for modern applications, allowing developers to dynamically resize, crop, and modify images to suit different devices and use cases. With features like width and height adjustment, quality control, and various filters including opacity and border modifications, image transformations help deliver the perfect image for every situation while optimizing performance and user experience. This service has become a fundamental part of many applications, and we've worked hard to make it powerful yet simple to implement.
@@ -25,13 +39,13 @@ As Appwrite continues to grow, we need to ensure that our platform remains susta
 
 ## What will change
 
-We will begin charging for origin images used in transformations. To use this functionality, you will need to be on the Pro or Scale plan. Both plans will include 100 origin images per month at no additional charge. Beyond this allocation, additional origin images will be available at $5 per 1,000 images.
+We will begin charging for origin images used in transformations. To use this functionality, you will need to be on the Pro or Enterprise plan. The Pro plan includes 100 origin images per month at no additional charge, with additional origin images at $5 per 1,000 images. Enterprise has custom limits.
 
 This change will help support the computational resources required for this valuable service and enable us to continue enhancing our platform.
 
 Please refer to our [Pricing Page](/pricing) for detailed pricing information, including origin image costs and included quotas for different plans.
 
-![console image](/images/blog/announcing-image-transformations-pricing/usage-component.png)
+![console image](/images/blog/announcing-image-transformations-pricing/usage-component.avif)
 
 # How it works
 

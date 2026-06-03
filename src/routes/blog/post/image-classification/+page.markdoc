@@ -3,10 +3,23 @@ layout: post
 title: A technical deep dive into image classification
 description: Learn all about image classification and how to integrate it into your Appwrite project using TensorFlow
 date: 2024-08-06
-cover: /images/blog/image-classification.png
+cover: /images/blog/image-classification.avif
 timeToRead: 9
 author: bradley-schofield
 category: product
+faqs:
+  - question: "What is image classification?"
+    answer: "Image classification is a computer vision task where a model takes an image and assigns it one or more labels describing what's in it. Use cases include moderating user uploads, categorizing product photos, organizing media libraries, and tagging content for search. It's distinct from object detection, which also locates objects within the image."
+  - question: "Which architectures lead image classification benchmarks today?"
+    answer: "Vision Transformers (ViT, Swin Transformer) currently top most major benchmarks including ImageNet, CIFAR-10, and STL-10. Convolutional Neural Networks (CNNs) like EfficientNet still hold their ground on datasets with many classes (CIFAR-100) and remain more data-efficient than transformers."
+  - question: "What datasets should I train on?"
+    answer: "ImageNet is the standard for general-purpose classification with 14 million labeled images across thousands of categories. CIFAR-10 and CIFAR-100 are smaller (60K images at 32x32) and useful for fast iteration. MNIST handles handwritten digits. For domain-specific apps, you'll usually need to collect or fine-tune on your own labeled data."
+  - question: "How do I deploy an image classification model with Appwrite?"
+    answer: "Train your model with TensorFlow or PyTorch on your own machine, export it, and ship the inference code as an [Appwrite Function](/docs/products/functions). The function receives the image (from [Appwrite Storage](/docs/products/storage) or as an upload), runs inference, and returns the prediction. Functions support Python out of the box."
+  - question: "Should I use a pre-trained model or train from scratch?"
+    answer: "For most apps, fine-tune a pre-trained model. Models like ResNet, EfficientNet, or a ViT pretrained on ImageNet already have strong visual features baked in, and fine-tuning on a few hundred to few thousand domain images often outperforms training from scratch and takes a fraction of the compute."
+  - question: "How does a CNN actually classify an image?"
+    answer: "A CNN runs the image through a stack of convolutional layers that detect progressively higher-level features (edges, textures, then object parts), pooling layers that downsample, and finally fully connected layers that map the extracted features to class probabilities. Training adjusts the filter weights via backpropagation to minimize classification error."
 ---
 
 Image classification is an exciting field of computer vision that tries to understand and label images in their entirety. It has many applications: you can integrate it into your app to automatically categorize photos, filter inappropriate content from social media feeds, or even organize your online store's product catalog.

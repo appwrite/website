@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite for hackathons: Build fast, ship faster"
 description: Learn how Appwrite helps hackathon teams go from idea to working prototype in hours, not days.
 date: 2026-03-30
-cover: /images/blog/appwrite-for-hackathons-build-fast-ship-faster/cover.png
+cover: /images/blog/appwrite-for-hackathons-build-fast-ship-faster/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: hackathon
 featured: false
+faqs:
+  - question: "Why use Appwrite during a hackathon?"
+    answer: "Most hackathons give teams 24 to 72 hours to ship a working prototype. Appwrite removes the time you would otherwise spend on [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) so you can focus on the actual idea instead of plumbing."
+  - question: "What does Appwrite provide out of the box?"
+    answer: "Appwrite bundles [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), realtime APIs, [Messaging](/docs/products/messaging), [Functions](/docs/products/functions), and web hosting with [Sites](/docs/products/sites) into a single platform. You get a consistent SDK across web, mobile, and server, plus permissions and access control baked in."
+  - question: "Is Appwrite free for hackathons?"
+    answer: "Yes. Appwrite has a generous free tier on Cloud, and the entire platform is open source so you can also self-host at no cost. That makes it a safe pick for the typical hackathon budget of zero."
+  - question: "Can I deploy my hackathon project on Appwrite?"
+    answer: "Yes. [Sites](/docs/products/sites) lets you deploy your frontend, including static and server-rendered apps, from the same project that hosts your backend. You can ship a live, shareable URL directly from the Console before the hackathon ends."
+  - question: "Which languages and frameworks can I use with Appwrite?"
+    answer: "Appwrite ships SDKs for web frameworks like React, Vue, Svelte, and Next.js, mobile frameworks like Flutter and React Native, plus Apple and Android. On the server side, [Functions](/docs/products/functions) supports 13 languages across 30+ runtimes, so you can pick whatever your team is fastest in."
+  - question: "How can I add realtime features to my project quickly?"
+    answer: "Use Appwrite's realtime API, which is built on WebSockets. You can subscribe to changes in [Databases](/docs/products/databases) and other services with a few lines of SDK code, which is enough to power live updates, collaborative editing, or in-app notifications during your demo."
 ---
 
 Hackathons move quickly. Most events give teams **24 to 72 hours** to turn an idea into a working prototype. In that limited time, every hour matters. Many hackathons, such as those organized by Major League Hacking, take place over a weekend or a week each year, attracting hackers from around the world to create and share innovative ideas. The teams that succeed are not necessarily the ones with the most complex architecture. They are the ones that can **build quickly, iterate fast, and deliver a working product.**

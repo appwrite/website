@@ -3,10 +3,23 @@ layout: post
 title: Messaging explained
 description: Learn about Appwrite Messaging and how it works under the hood
 date: 2024-07-08
-cover: /images/blog/messaging-explained/cover.png
+cover: /images/blog/messaging-explained/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product
+faqs:
+  - question: "What is Appwrite Messaging?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) is an open source product that sends push notifications, emails, and SMS from your Appwrite project through one unified API. It connects with third party providers like Vonage, Twilio, and Mailgun to handle the actual delivery. You get one consistent interface across channels without managing each provider's SDK separately."
+  - question: "What is the difference between topics and targets in Appwrite Messaging?"
+    answer: "Targets are individual delivery destinations such as a specific email address, phone number, or device. Topics group many targets together so you can broadcast to all subscribers in one call. Use targets for one off transactional messages and topics for newsletters, announcements, or any broadcast pattern."
+  - question: "Which providers does Appwrite Messaging support?"
+    answer: "Appwrite Messaging integrates with Twilio and Vonage for SMS, Mailgun and others for email, and FCM and APNs for push notifications. The full list of supported providers is in the [Messaging documentation](/docs/products/messaging). You can also configure multiple providers per channel and pick which one to use per message."
+  - question: "Can I schedule messages with Appwrite Messaging?"
+    answer: "Yes, when you create a message you can include a scheduled at timestamp. An internal scheduler checks for due messages every minute and queues them for delivery. This works for emails, SMS, and push notifications across topics and direct targets."
+  - question: "How does Appwrite send messages under the hood?"
+    answer: "When you call the API, Appwrite validates the input, creates a message document, and creates a schedule document for delivery timing. A worker picks up due messages, resolves topic targets, selects the right provider for each target, and dispatches the message. Failures are logged so you can debug delivery issues from the Console."
+  - question: "What are common use cases for Appwrite Messaging?"
+    answer: "Common use cases include transactional notifications (payment receipts, password resets), marketing campaigns through topics, real time alerts to drive engagement, and custom security flows like OTP delivery. Combining Messaging with [Appwrite Functions](/docs/products/functions) lets you trigger messages from app events without managing extra infrastructure."
 ---
 
 Recently, Appwrite launched its newest product, [Appwrite Messaging](https://appwrite.io/products/messaging), an open-source messaging solution that allows you to send push notifications, emails, and SMS directly to your users. In this blog, we will discuss all the fundamental features of the Messaging product and how a message is actually sent through the internal service.
@@ -32,7 +45,7 @@ Let’s now discuss the three core Messaging concepts: **topics**, **targets**, 
 
 In Appwrite Messaging, you can use topics to deliver messages to groups of users at once. Topics should have a clear meaning or goal. For example, a topic can represent a group of customers that receive common announcements or product updates.
 
-![Topics](/images/blog/messaging-explained/topics.png)
+![Topics](/images/blog/messaging-explained/topics.avif)
 
 ## Targets
 
@@ -40,7 +53,7 @@ Targets are different ways a user can be reached. For example, a user might have
 
 You can send a message directly to a set of targets or add them as subscribers to a topic. For example, if you want to send a payment reminder to a user manually, you could choose to send it just to a specific target. If you want to send out your monthly newsletter, you could have a topic many targets can subscribe to and then send the message to the topic instead.
 
-![Targets](/images/blog/messaging-explained/targets.png)
+![Targets](/images/blog/messaging-explained/targets.avif)
 
 ## Messages
 
@@ -50,7 +63,7 @@ Messages contain information that is sent to a user from the application. A mess
 - Emails
 - SMS
 
-![Messages](/images/blog/messaging-explained/preview.png)
+![Messages](/images/blog/messaging-explained/preview.avif)
 
 Here’s an example of how you would programmatically send an SMS to a topic using the Appwrite Node.js SDK.
 

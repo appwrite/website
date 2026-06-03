@@ -3,11 +3,24 @@ layout: post
 title: Appwrite joins the OpenJS Foundation
 description: Appwrite is dedicated to supporting the open source community, and our new partnership with the OpenJS Foundation reinforces this commitment.
 date: 2024-09-24
-cover: /images/blog/openjs.png
+cover: /images/blog/openjs.avif
 timeToRead: 4
 author: laura-du-ry
 category: announcement, open-source
 featured: false
+faqs:
+  - question: "What is the OpenJS Foundation?"
+    answer: "The OpenJS Foundation is a vendor-neutral organization hosted under the Linux Foundation that supports key open source JavaScript projects, including Node.js, Electron, and jQuery. It provides legal, infrastructure, marketing, and governance support to keep these projects sustainable and community-driven."
+  - question: "Why did Appwrite join the OpenJS Foundation?"
+    answer: "Appwrite is built on open source principles and JavaScript is core to many of its SDKs and runtimes. Joining as a Silver Member lets Appwrite contribute back to the projects it depends on and stay close to the JavaScript ecosystem's standards and direction."
+  - question: "Is Appwrite an open source project?"
+    answer: "Yes. Appwrite is licensed under the BSD-3-Clause license and the source code is available on [GitHub](https://github.com/appwrite/appwrite). You can self-host the entire stack, contribute changes, or fork the project."
+  - question: "What is the Appwrite OSS Program?"
+    answer: "The Appwrite OSS Program offers a free Pro subscription on Appwrite Cloud to qualifying open source maintainers. It is designed to reduce the financial burden of running infrastructure for nonprofit or pre-revenue open source projects. You can apply through the OSS program page on the website."
+  - question: "How can I contribute to Appwrite?"
+    answer: "Open an issue or pull request on the [Appwrite GitHub repository](https://github.com/appwrite/appwrite), or contribute to any of the SDKs and tooling repositories under the Appwrite organization. Discussions and feature ideas are welcome on Discord and GitHub Discussions."
+  - question: "Why does vendor-neutral governance matter for open source projects?"
+    answer: "Vendor-neutral governance means no single company can unilaterally control a project's direction. This protects users from sudden licensing changes or strategy shifts and lets the wider community shape priorities, which is especially important for foundational tools many businesses rely on."
 ---
 
 We’re excited to share that Appwrite is now an official Silver Member of the OpenJS Foundation. By joining forces with the OpenJS Foundation, we’re doubling down on our promise to give back to the open source community.

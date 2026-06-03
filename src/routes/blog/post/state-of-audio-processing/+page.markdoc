@@ -3,11 +3,24 @@ layout: post
 title: State of audio processing
 description: An overview of the latest developments in audio processing with AI and their impact on various industries.
 date: 2024-03-27
-cover: /images/blog/state-of-audio-processing/cover.png
+cover: /images/blog/state-of-audio-processing/cover.avif
 timeToRead: 15
 author: luke-silver
 category: product
 featured: false
+faqs:
+  - question: "What is audio processing in AI?"
+    answer: "It is the set of techniques for interpreting and manipulating audio signals with algorithms. That covers speech recognition, text-to-speech, music generation, sound separation, noise reduction, and audio classification. Modern audio processing relies heavily on deep neural networks trained on large audio datasets."
+  - question: "What are Fourier transforms used for in audio processing?"
+    answer: "A Fourier transform breaks a time-domain audio signal into its constituent frequencies. That is how you isolate instruments in a mix, filter out specific noise bands, build spectrograms for visualization, and feed structured input to models that work better in the frequency domain than on raw waveforms."
+  - question: "Why did deep learning change audio processing so dramatically?"
+    answer: "Earlier methods like hidden Markov models required substantial manual feature engineering and struggled with complex speech patterns. Deep models, especially CNNs and RNNs (and later transformers), learn features directly from raw or near-raw audio, which is why speech recognition and audio generation jumped in quality starting in the mid-2010s."
+  - question: "What is WaveNet and why does it matter?"
+    answer: "WaveNet, introduced by DeepMind in 2016, was one of the first models to generate raw audio waveforms with quality close to human speech. It demonstrated that neural networks could produce lifelike speech and music end-to-end, and it set the foundation for most modern text-to-speech and audio synthesis systems."
+  - question: "Can I run audio processing pipelines on Appwrite?"
+    answer: "You can host audio inference or processing logic in [Appwrite Functions](/docs/products/functions) and store input and output audio files in [Appwrite Storage](/docs/products/storage). Heavy model inference usually lives on a GPU service you call from a function, but the orchestration (uploads, queueing, persistence, auth) fits cleanly inside Appwrite."
+  - question: "What audio formats should I use for ML pipelines?"
+    answer: "WAV for training and processing because it is lossless and easy to parse. MP3 or AAC for storage and delivery to end users because they are dramatically smaller. Most ML libraries can decode common formats directly, but consistency in sample rate (16kHz for speech, 44.1kHz or 48kHz for music) matters more than the container format."
 ---
 
 Audio processing is a rapidly advancing field within artificial intelligence where algorithms are designed to interpret and manipulate audio signals. From the early days of basic sound synthesis to today's voice assistants and automatic music generation, AI in audio processing has undergone significant development. Let's explore the history of this field and the key concepts and innovations that have shaped it.
@@ -61,7 +74,7 @@ plt.show()
 
 This code makes a simple sound wave, applies a Fourier transform to it, and plots the amount of each frequency present in the sound.
 
-![Fourier transform plot](/images/blog/state-of-audio-processing/fourier.png)
+![Fourier transform plot](/images/blog/state-of-audio-processing/fourier.avif)
 
 ## Deep neural networks
 

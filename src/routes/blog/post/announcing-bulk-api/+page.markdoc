@@ -3,11 +3,24 @@ layout: post
 title: "Announcing Bulk API: Handle heavy data workloads with ease"
 description: Perform multiple database operations in a single API call. Enjoy faster writes and better performance for heavy server-side workloads.
 date: 2025-07-03
-cover: /images/blog/announcing-bulk-api/cover.png
+cover: /images/blog/announcing-bulk-api/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What is the Appwrite Bulk API?"
+    answer: "The Bulk API lets you create, update, upsert, or delete many documents in a single request using `createDocuments`, `updateDocuments`, `upsertDocuments`, and `deleteDocuments`. It is much faster than sending one request per document and reduces network overhead for batch workloads."
+  - question: "Why is the Bulk API restricted to server-side SDKs?"
+    answer: "Bulk operations typically involve high-volume data changes that should be authorized by trusted code, not by end users. Restricting the API to server SDKs (which use API keys) prevents clients from issuing mass writes or deletes against your project."
+  - question: "When should I use the Bulk API instead of single-document calls?"
+    answer: "Reach for the Bulk API any time you are processing data in batches: importing CSV files, syncing from another database, applying changes from a scheduled job, or cleaning up stale records. For interactive UI writes (one document at a time), the regular methods are usually clearer."
+  - question: "How does Appwrite handle partial failures in a bulk request?"
+    answer: "Bulk operations are transactional at the document level, so individual document validations (such as permissions or schema mismatches) are reported alongside successes. Check the response to see which documents were processed and which failed, then retry only the failures."
+  - question: "Are there limits on how many documents I can send in one bulk call?"
+    answer: "Yes. There is a maximum batch size per request that depends on payload size and the underlying database engine. The [bulk operations documentation](/docs/products/databases/bulk-operations) lists the current limits and recommended batch sizes for large imports."
+  - question: "Does Bulk API work with self-hosted Appwrite?"
+    answer: "Yes. Bulk API is available on both Appwrite Cloud and self-hosted installations that run the supporting version. You call the same methods from your server SDK regardless of where Appwrite is hosted."
 ---
 
 We're excited to introduce another Appwrite Databases feature, **Bulk API**. Explicitly designed to handle heavy write workloads, Bulk API dramatically improves performance by allowing multiple database operations in a single API call.

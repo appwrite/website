@@ -3,12 +3,25 @@ layout: post
 title: "How Appwrite handles OAuth: Google, GitHub, and beyond"
 description: Learn how the createOAuth2Token flow works in Appwrite, how to configure providers, retrieve user profile data, and handle access token refresh for 30+ providers.
 date: 2026-03-25
-cover: /images/blog/appwrite-oauth/cover.png
+cover: /images/blog/appwrite-oauth/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: product, tutorial, security
 featured: false
 unlisted: true
+faqs:
+  - question: "How does the createOAuth2Token flow work in Appwrite?"
+    answer: "Your app calls account.createOAuth2Token to get an authorization URL, redirects the user there, and the provider sends them back to Appwrite with an authorization code. Appwrite exchanges the code for tokens and redirects back to your success URL with userId and secret query parameters, which you exchange via account.createSession to finalize the session."
+  - question: "How many OAuth providers does Appwrite support?"
+    answer: "Appwrite supports over 30 OAuth2 providers, including Google, GitHub, Microsoft, Apple, Discord, Slack, Spotify, Twitter/X, and LinkedIn. Each provider is enabled in the Appwrite Console under Auth settings by entering the App ID and App Secret from the OAuth app you registered with that provider."
+  - question: "What is the difference between createOAuth2Token and createOAuth2Session?"
+    answer: "createOAuth2Token returns an authorization URL and lets your app create the session explicitly via createSession, which gives you control over cookies and token storage and works well for SSR and mobile. createOAuth2Session creates the session directly inside the OAuth flow, with provider info embedded in the session response."
+  - question: "How do I access the OAuth provider's access token after login?"
+    answer: "With createOAuth2Token, provider details live on the user's identity rather than the session. Use account.listIdentities to retrieve identity records, then read identity.providerAccessToken to call the provider's API. You can also see identity.provider, identity.providerUid, identity.providerEmail, and identity.providerAccessTokenExpiry."
+  - question: "How do I refresh an expired OAuth access token?"
+    answer: "Check identity.providerAccessTokenExpiry, and when it is close to expiring, call account.updateSession with sessionId set to current. Appwrite uses the stored refresh token to get a new access token from the provider, while the Appwrite session itself remains valid. Note that not all providers issue refresh tokens."
+  - question: "Does Appwrite OAuth work for mobile apps?"
+    answer: "Yes. createOAuth2Token is the right choice for mobile because there is no browser URL to redirect to. You open the authorization URL in a browser session (such as expo-web-browser on React Native), catch the redirect back to your app via a deep link, and call createSession with the userId and secret from the URL."
 ---
 
 OAuth login is table stakes for most apps. Users expect to sign in with Google, GitHub, or another provider they already trust. But wiring up OAuth yourself means managing authorization codes, token exchanges, refresh flows, and session state. Get any of it wrong and you've either broken logins or created a security hole.

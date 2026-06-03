@@ -3,11 +3,22 @@ layout: post
 title: 'Introducing user impersonation for Appwrite Auth'
 description: Trusted operators can now act as another user in Appwrite Auth to debug issues, validate permissions, and support customers without sharing credentials.
 date: 2026-03-30
-cover: /images/blog/announcing-user-impersonation/cover.png
+cover: /images/blog/announcing-user-impersonation/cover.avif
 timeToRead: 4
 author: eldad-fux
 category: announcement, product
 featured: false
+faqs:
+  - question: "What is user impersonation in Appwrite Auth?"
+    answer: "User impersonation lets a trusted operator sign in as themselves and then act as another user, with that user's permissions and access level. It is built into [Appwrite Auth](/docs/products/auth) so support, QA, and operations teams can reproduce issues without sharing credentials."
+  - question: "How do I mark a user as an impersonator?"
+    answer: "Open Auth > Users in the Console and toggle the impersonator flag on that user, or call the dedicated endpoint from any Server SDK. Once flagged, the operator gains an automatic users.read scope so they can browse the project user list."
+  - question: "How do I set the impersonation target in my client code?"
+    answer: "After the operator signs in, call one of the new client setters (by user ID, email, or phone) on the Appwrite client. From that point on, requests are evaluated as the target user, and responses include an impersonatorUserId so you know impersonation is active."
+  - question: "Is user impersonation safe to use in production?"
+    answer: "Yes, when limited to a small set of trusted operators. Impersonation is opt-in per user, requires the operator to authenticate as themselves first, and surfaces the impersonatorUserId on responses so you can log and audit every impersonated request."
+  - question: "When should I use impersonation instead of admin APIs?"
+    answer: "Use impersonation when you need to see exactly what the user sees, for example debugging permissions, team access, or label-based rules. Use server-side admin APIs when you only need to read or modify data and do not care about replicating the user's view."
 ---
 
 Debugging user-specific issues is one of the hardest parts of building authentication-heavy apps.

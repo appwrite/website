@@ -6,18 +6,18 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/phone-auth-twilio/cover.png
+cover: /images/integrations/phone-auth-twilio/cover.avif
 category: auth
 product: 
-    avatar: '/images/integrations/avatars/twilio.png'
+    avatar: '/images/integrations/avatars/twilio.avif'
     vendor: Twilio
     description: 'Twilio is a cloud communications platform that provides programmable communication tools using web APIs and SDKs.'
 platform: 
     - 'Self-hosted'
 images: 
-    - /images/integrations/phone-auth-twilio/cover.png
-    - /images/integrations/phone-auth-twilio/twilio-console.png
-    - /images/integrations/phone-auth-twilio/user.png
+    - /images/integrations/phone-auth-twilio/cover.avif
+    - /images/integrations/phone-auth-twilio/twilio-console.avif
+    - /images/integrations/phone-auth-twilio/user.avif
 ---
 
 Twilio is a cloud communications platform that provides programmable communication tools for making and receiving phone calls, sending and receiving text messages, and performing other communication functions using web APIs and SDKs.
@@ -36,7 +36,7 @@ To implement the Twilio provider for phone authentication, there are several ste
 
 First, you must [sign up for a Twilio account](https://www.twilio.com/try-twilio), upgrade your account (in case you want to message numbers other than your own), and purchase a phone number with the SMS capability.
 
-![Twilio console](/images/integrations/phone-auth-twilio/twilio-console.png)
+![Twilio console](/images/integrations/phone-auth-twilio/twilio-console.avif)
 
 Ensure you save the following information for later use:
 
@@ -68,7 +68,7 @@ docker compose exec appwrite vars
 
 To test the provider, you must [implement the phone (SMS) authentication flow](https://appwrite.io/docs/products/auth/phone-sms) in a web or mobile app. On successful login, you should see a user on the **Auth** page of your Appwrite project with their phone number visible as the identifier.
 
-![User](/images/integrations/phone-auth-twilio/user.png)
+![User](/images/integrations/phone-auth-twilio/user.avif)
 
 # Read more about Twilio and Appwrite Auth
 

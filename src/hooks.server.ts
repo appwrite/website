@@ -2,6 +2,7 @@ import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import redirects from './redirects.json';
 import { sequence } from '@sveltejs/kit/hooks';
+import { cacheControlForPath } from '../server/cache-static.js';
 import { getMarkdownContent, processMarkdownWithPartials } from '$lib/server/markdown';
 import { type GithubUser } from '$routes/(init)/init/(utils)/auth';
 import { createInitSessionClient } from '$routes/(init)/init/(utils)/appwrite';
@@ -86,12 +87,8 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'blob:',
             "'unsafe-inline'",
             "'unsafe-eval'",
-            'https://*.posthog.com',
             'https://*.plausible.io',
-            'https://*.reo.dev',
             'https://plausible.io',
-            'https://js.zi-scripts.com',
-            'https://ws.zoominfo.com',
             'https://*.cookieyes.com',
             'https://cdn-cookieyes.com'
         ]),
@@ -109,17 +106,27 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://*.appwrite.io',
             'https://*.appwrite.org',
             'https://*.appwrite.network',
-            'https://*.posthog.com',
+            'https://status.appwrite.online',
             'https://*.sentry.io',
             'https://*.plausible.io',
             'https://plausible.io',
-            'https://*.reo.dev',
-            'https://js.zi-scripts.com',
-            'https://aorta.clickagy.com',
-            'https://hemsync.clickagy.com',
-            'https://ws.zoominfo.com ',
             'https://*.cookieyes.com',
-            'https://cdn-cookieyes.com'
+            'https://cdn-cookieyes.com',
+            // Statsig JS client + session replay + web analytics
+            // https://docs.statsig.com/client/jsClientSDK#content-security-policy
+            'https://api.statsig.com',
+            'https://*.statsig.com',
+            'https://featuregates.org',
+            'https://statsigapi.net',
+            'https://*.statsigapi.net',
+            'https://events.statsigapi.net',
+            'https://api.statsigcdn.com',
+            'https://*.statsigcdn.com',
+            'https://featureassets.org',
+            'https://assetsconfigcdn.org',
+            'https://prodregistryv2.org',
+            'https://cloudflare-dns.com',
+            'https://beyondwickedmapping.org'
         ]),
         'frame-src': join([
             "'self'",
@@ -127,7 +134,6 @@ const securityheaders: Handle = async ({ event, resolve }) => {
             'https://status.appwrite.online',
             'https://www.youtube-nocookie.com',
             'https://player.vimeo.com',
-            'https://hemsync.clickagy.com',
             'https://cdn-cookieyes.com'
         ])
     };
@@ -255,6 +261,26 @@ const seoOptimization: Handle = async ({ event, resolve }) => {
     return response;
 };
 
+/**
+ * SSR / Kit responses. Files under `build/client` are served by sirv before Kit;
+ * those get headers in `server/main.js`. Skip if something already set Cache-Control.
+ */
+const staticAssetCache: Handle = async ({ event, resolve }) => {
+    const response = await resolve(event);
+    if (response.headers.has('Cache-Control')) {
+        return response;
+    }
+    const s = response.status;
+    if (s !== 200 && s !== 206 && s !== 304) {
+        return response;
+    }
+    const directive = cacheControlForPath(event.url.pathname);
+    if (directive) {
+        response.headers.set('Cache-Control', directive);
+    }
+    return response;
+};
+
 export const handle = sequence(
     Sentry.sentryHandle(),
     markdownHandler,
@@ -262,6 +288,7 @@ export const handle = sequence(
     wwwRedirecter,
     securityheaders,
     initSession,
-    seoOptimization
+    seoOptimization,
+    staticAssetCache
 );
 export const handleError = Sentry.handleErrorWithSentry();

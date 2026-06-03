@@ -3,10 +3,23 @@ layout: post
 title: "Predicting your developer destiny: how I built the AI Crystal Ball"
 description: How I used Appwrite, OpenAI, GitHub, and SvelteKit to develop an AI prank app.
 date: 2024-05-10
-cover: /images/blog/ai-crystal-ball/cover.png
+cover: /images/blog/ai-crystal-ball/cover.avif
 timeToRead: 9
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "How does the AI Crystal Ball app work?"
+    answer: "It signs the user in with GitHub OAuth via [Appwrite Auth](/docs/products/auth), fetches their public GitHub data (followers, repos, top languages), sends that context to GPT-4 with a prompt asking for a developer destiny, and stores the result in Appwrite Databases so it can be shared via a public link."
+  - question: "What permissions does the GitHub OAuth app need?"
+    answer: "The Crystal Ball only needs the user's public profile data, so default GitHub OAuth scopes are enough. There is no need to request `repo` or other write scopes. Always ask for the minimum scope your feature requires to keep the consent screen clean and reduce security risk."
+  - question: "Can I use a different LLM provider instead of OpenAI?"
+    answer: "Yes. The OpenAI call is just an HTTP request from an Appwrite Function, so you can swap in Anthropic's Claude, Google Gemini, or any other provider by changing the SDK and prompt. The Appwrite side (auth, database, storage) does not change."
+  - question: "How do I prevent abuse of an OpenAI API key on the frontend?"
+    answer: "Never call OpenAI directly from the client. Instead, expose your own endpoint via an [Appwrite Function](/docs/products/functions) that holds the API key server-side, validates the authenticated user, and applies rate limits. The client only ever talks to your function, not to OpenAI."
+  - question: "How do permissions work for the shareable destiny link?"
+    answer: "The `destiny` collection in the post grants `read` permission to `Any` and `create` permission to `Users`, so any anonymous visitor can read a destiny by document ID but only logged-in users can create new ones. This is the standard Appwrite permission pattern for share links."
+  - question: "Can I build this entirely without writing my own backend?"
+    answer: "Largely yes. [Appwrite Functions](/docs/products/functions) hosts the OpenAI call, [Appwrite Databases](/docs/products/databases) stores the data, and [Appwrite Auth](/docs/products/auth) handles GitHub OAuth. The only piece you write is the SvelteKit frontend and the single function that talks to GPT-4."
 ---
 
 Have you ever wondered what you would be doing as a developer 5 years from now? I, for sure, have, which is why recently I developed an AI Crystal Ball to use information from my GitHub account and predict what my destiny as a developer would look like. This project picked up a lot more attention than anticipated as well as a number of requests asking how this project was developed.
@@ -28,7 +41,7 @@ Since we are using GPT-4 to generate developer destinies, we will need an OpenAI
 
 To create an OpenAI API key, we must first create an account on the [OpenAI platform](https://platform.openai.com/). Once the account is set up and a project is created, we can visit their [API keys](https://platform.openai.com/account/api-keys) page and create an API key. Ensure you copy and save this key in a safe place, as the OpenAI platform will not let you view the key after it is created.
 
-![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.png)
+![OpenAI API Keys](/images/blog/ai-crystal-ball/openai.avif)
 
 > Note: To use the GPT-4 API, your account must be upgraded to the Usage tier 1. To learn more, visit their [Usage tiers documentation](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-one).
 >
@@ -39,7 +52,7 @@ To generate personalized developer destinies, we are using information such as a
 
 To create a GitHub OAuth application, we must visit the [Settings page](https://github.com/settings/profile) on GitHub and click on the [Developer Settings](https://github.com/settings/profile) tab. From here, we can register an OAuth app. While registering the app, you can add any temporary URL, such as `https://temporary-endpoint/`, in the **Authorization callback URL** field (we will update this in the next step). Ensure you save your Client ID and Client Secret when you visit this page, as we will need them in the next step.
 
-![GitHub OAuth](/images/blog/ai-crystal-ball/github.png)
+![GitHub OAuth](/images/blog/ai-crystal-ball/github.avif)
 
 ## Appwrite
 
@@ -55,7 +68,7 @@ The only prerequisite here was creating an [Appwrite Cloud account](https://clo
 
 To implement GitHub OAuth, we must visit the **Auth** page on the Appwrite project, go to the **Settings** tab, click on **GitHub** from the list of OAuth adapters, and paste the Client ID and Secret we saved from the GitHub OAuth app. Ensure that copy the **redirect URI** and paste it into your GitHub OAuth app in the **Authorization callback URL** field.
 
-![Appwrite OAuth for GitHub](/images/blog/ai-crystal-ball/oauth.png)
+![Appwrite OAuth for GitHub](/images/blog/ai-crystal-ball/oauth.avif)
 
 ## Appwrite Database
 

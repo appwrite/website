@@ -3,10 +3,23 @@ layout: post
 title: How Appwrite streamlines database operations using hooks
 description: Learn how Appwrite implemented hook functions to develop custom filters in the Databases services.
 date: 2025-01-18
-cover: /images/blog/hooks-appwrite-databases/cover.png
+cover: /images/blog/hooks-appwrite-databases/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "What is a hook in software engineering?"
+    answer: "A hook is a point in an application's execution where developers can inject custom code without modifying the core. Hooks let you intercept and transform data, trigger side effects, or extend behavior at well-defined moments like before a database write or after authentication."
+  - question: "How does Appwrite use hooks in its Databases service?"
+    answer: "Appwrite's Databases service uses hooks as custom filters in the Utopia PHP Databases library. Each filter has a name, an encode function (run on writes), and a decode function (run on reads). This is how Appwrite handles password hashing, encryption of secrets, and DateTime conversions transparently."
+  - question: "What's the difference between an encode and decode filter?"
+    answer: "An encode function runs when data is written to the database, transforming the value before storage (for example, encrypting it). A decode function runs when data is read, reversing the transformation so callers see the original shape (for example, decrypting it). Together they let storage and application representations differ cleanly."
+  - question: "Where should I add a hook in my own application?"
+    answer: "Pick hook points that correspond to clear lifecycle events: pre-write validation, post-read transformation, pre-request authentication, post-response logging. Avoid spreading hooks across arbitrary call sites, since that makes the execution order hard to reason about and easy to break later."
+  - question: "Are hooks the same thing as middleware?"
+    answer: "They overlap but are not identical. Middleware typically wraps an entire request/response cycle, while hooks fire at specific named points inside a library or framework. Middleware is one common implementation of hooks for the HTTP layer, but hooks exist at many other layers including database, ORM, and UI rendering."
+  - question: "Does [Appwrite Functions](/docs/products/functions) let me hook into database events?"
+    answer: "Yes. You can configure an Appwrite Function to run on database events like document creation, updates, or deletes. This gives you an event-driven hook outside the database layer, useful for sending notifications, syncing third-party services, or running async business logic after a write."
 ---
 
 Software engineering is complex, especially when you aim to build robust applications. For example, you may want to handle type conversions and clean your data before storing it in your database, add external loggers and observability tools, or add additional user authentication factors for specific functionalities. At some point, the need for extensibility will inevitably arise in your software.

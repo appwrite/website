@@ -3,11 +3,24 @@ layout: post
 title: "Benchmarking TTL list caching: a 100,000-request look at Appwrite at scale"
 description: We ran 100,000 listRows calls per phase against a 10,000-row table, with and without TTL caching, to measure the latency gains. The results were more decisive than we expected.
 date: 2026-04-21
-cover: /images/blog/ttl-cache-performance-benchmark/cover.png
+cover: /images/blog/ttl-cache-performance-benchmark/cover.avif
 timeToRead: 8
 author: atharva
 category: performance
 featured: false
+faqs:
+  - question: "What is TTL caching in Appwrite Databases?"
+    answer: "TTL (time to live) caching lets you cache the result of a listRows call for a fixed number of seconds. You pass a ttl parameter to the existing listRows call, and Appwrite serves identical repeat requests from memory until the TTL expires. The underlying query, endpoint, and SDK do not change. See the [Appwrite Databases docs](/docs/products/databases) for details."
+  - question: "How much faster are cached reads in the benchmark?"
+    answer: "Across 100,000 sequential listRows calls against a 10,000 row table, the cached phase served requests dramatically faster than the uncached phase, with the largest gains at the tail of the latency distribution (P95 and P99). The full breakdown and an interactive visualisation are at ttl-benchmark.appwrite.network."
+  - question: "When should I avoid using TTL caching?"
+    answer: "Avoid TTL caching for queries where staleness is unacceptable, for example, displaying a user's account balance or current cart contents. It works best for read heavy, slow changing data such as product listings, category pages, leaderboards, or content feeds."
+  - question: "How is the cache invalidated?"
+    answer: "Invalidation is purely time based. Once the TTL window expires, the next request repopulates the cache from the database. There is no write triggered invalidation, so pick a TTL that matches how stale the data can safely be."
+  - question: "Does caching change the response shape or query syntax?"
+    answer: "No. The only difference is the ttl parameter on listRows. Your query, filters, sort, pagination, and the returned row structure stay identical, which makes it safe to roll out behind a feature flag."
+  - question: "Where is the benchmark source code?"
+    answer: "The full benchmark, including the seed script, query definitions, and run harness, is open source at github.com/appwrite-community/ttl-benchmark. You can reproduce the numbers on your own Appwrite instance."
 ---
 
 Last week we [introduced TTL-based list caching](/blog/post/announcing-list-cache-ttl) for Appwrite Databases. The announcement covered what the feature does and how to use it. This post is the follow-up: we put the cache under sustained load, measured it, and then broke the numbers down so you can decide whether the feature is worth wiring into your own read paths.
@@ -148,7 +161,7 @@ After both phases finish, the script writes a markdown report to `results/` with
 
 Here is the final output from the benchmark, run against a locally hosted Appwrite instance with the TTL feature enabled:
 
-![Benchmark output in the terminal](/images/blog/ttl-cache-performance-benchmark/benchmark-output.png)
+![Benchmark output in the terminal](/images/blog/ttl-cache-performance-benchmark/benchmark-output.avif)
 
 And the same data in a table, for readers who prefer it that way:
 

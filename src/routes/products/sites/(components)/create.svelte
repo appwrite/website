@@ -1,7 +1,11 @@
 <script lang="ts">
     import { write } from '$lib/animations';
     import { inView } from 'motion';
-    import Dashboard from '../(assets)/dashboards/create-dashboard.svg';
+
+    /** Intrinsic size of dashboard raster (matches asset); container uses `aspect-video` for layout. */
+    const DASHBOARD_SRC = '/images/products/sites/create-dashboard.avif';
+    const DASHBOARD_WIDTH = 1176;
+    const DASHBOARD_HEIGHT = 727;
 
     let eyebrow = $state('');
     let container: HTMLElement;
@@ -34,9 +38,13 @@
             class="border-smooth flex aspect-video w-full flex-col rounded-t-3xl border bg-gradient-to-br from-white/10 via-white/5 to-white/10 mask-b-from-0% mask-b-to-85% px-2 pt-2 backdrop-blur-xl"
         >
             <img
-                src={Dashboard}
+                src={DASHBOARD_SRC}
+                width={DASHBOARD_WIDTH}
+                height={DASHBOARD_HEIGHT}
                 alt="Create a site dashboard"
                 class="h-full w-full rounded-t-2xl object-cover object-[center_top]"
+                decoding="async"
+                fetchpriority="low"
             />
         </div>
 

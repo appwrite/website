@@ -3,12 +3,25 @@ layout: post
 title: Best practices for handling screenshots in your app
 description: Learn how to efficiently capture, store, and serve webpage screenshots without wasting resources or slowing down your app.
 date: 2026-01-30
-cover: /images/blog/screenshots-best-practices/cover.png
+cover: /images/blog/screenshots-best-practices/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "Why should I store screenshots instead of generating them on demand?"
+    answer: "Generating a screenshot per request is slow and expensive. You hit API rate limits, response times spike under load, and users wait on loading spinners. Persisting screenshots once and serving them from object storage turns later requests into a fast file lookup instead of a fresh render."
+  - question: "How do I capture and store a screenshot with Appwrite?"
+    answer: "Use the Avatars service to render the screenshot, fetch the result, then upload it to [Appwrite Storage](/docs/products/storage) with `storage.createFile`. Store the resulting file ID in a database row alongside the source URL so subsequent requests can look it up instead of regenerating."
+  - question: "How do I know if a screenshot for a URL already exists?"
+    answer: "Maintain a table that maps URLs to file IDs in [Appwrite Databases](/docs/products/databases). Before generating a new screenshot, query the table by URL. If a row exists, serve the stored file; otherwise capture, store, and insert a new row."
+  - question: "How do I refresh screenshots when the underlying page changes?"
+    answer: "Add a TTL or `updatedAt` field to the row and treat any screenshot older than that threshold as stale. You can refresh lazily on read (regenerate on access after expiry) or proactively on a schedule, depending on how fresh the previews need to be."
+  - question: "What format and size should I use for stored screenshots?"
+    answer: "WebP at quality 80 to 85 is a strong default for link previews and thumbnails because it is significantly smaller than PNG with negligible quality loss. Pick viewport dimensions that match where the image will be used (1200 by 630 for Open Graph cards, smaller for thumbnails) so you are not paying to render and store oversized images."
+  - question: "How do I avoid duplicate work when many users request the same URL at once?"
+    answer: "Treat the URL as a deduplication key. Before kicking off generation, do an existence check against your tracking table. For concurrent first-time requests, an in-memory lock or a database constraint on the URL field prevents two workers from rendering the same page in parallel."
 ---
 
 Screenshots are everywhere in modern applications. Link previews in chat apps, visual documentation in developer tools, thumbnail galleries in dashboards, and compliance archives in enterprise software. What seems like a simple feature, "show me what this page looks like", can quickly become a performance bottleneck and maintenance headache if not handled properly.

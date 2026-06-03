@@ -3,10 +3,23 @@ layout: post
 title: "Claude Design: Anthropic's new canvas for designers, PMs, and developers"
 description: "Anthropic just launched Claude Design, a new Labs product for creating polished designs, prototypes, and decks by talking to Claude. Here's what it does and why it matters for developers."
 date: 2026-04-18
-cover: /images/blog/claude-design/cover.png
+cover: /images/blog/claude-design/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: ai
+faqs:
+  - question: "What is Claude Design?"
+    answer: "Claude Design is a new Anthropic Labs product that turns Claude into a visual collaborator. You describe what you want in plain English, Claude builds a first pass on a canvas, and you refine through chat, inline comments, or sliders. It is aimed at designers, PMs, founders, marketers, and developers who want to go from idea to working prototype without specialist tooling."
+  - question: "Which model powers Claude Design?"
+    answer: "Claude Design runs on Claude Opus 4.7, which Anthropic released the day before Claude Design itself. The model brings better vision (images up to 2,576 pixels on the long edge), explicit design taste, better long-context coherence, and stronger instruction following. The product genuinely could not have shipped on Opus 4.6."
+  - question: "What can I export from Claude Design?"
+    answer: "You can export to internal URLs, folder exports, Canva, PDF, PPTX, or standalone HTML files. The output is not static mockups, it includes live, interactive, code-powered artifacts that can use voice, video, shaders, and 3D. That makes it easier to hand off to engineering or share with stakeholders."
+  - question: "How does Claude Design hand off to Claude Code?"
+    answer: "Once you have a design you like, you can export the code-powered artifact or pass it through to Claude Code to keep building. Because both products run on Opus 4.7 and share understanding of your design system, the handoff is smoother than copying assets between disconnected tools. The detailed flow is covered in the post."
+  - question: "Who is Claude Design available to?"
+    answer: "At launch, Claude Design is rolling out in research preview to Pro, Max, Team, and Enterprise subscribers. Anthropic typically expands access as the preview matures, so the audience usually broadens over time."
+  - question: "Can Claude Design help me build an Appwrite-powered app?"
+    answer: "It can absolutely help with the design and prototype, including landing pages, dashboards, and onboarding flows you can later wire up to [Appwrite Auth](/docs/products/auth) and [Appwrite Databases](/docs/products/databases). The handoff to Claude Code is where the actual integration code is added once the design is settled."
 ---
 
 On April 17, 2026, Anthropic launched **Claude Design**, a new Anthropic Labs product that turns Claude into a collaborator for visual work. Not a chatbot you ask to describe a design. An actual canvas where you and Claude build designs, prototypes, slides, and one-pagers together.

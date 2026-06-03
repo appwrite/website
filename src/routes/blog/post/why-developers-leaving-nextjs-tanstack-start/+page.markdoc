@@ -3,12 +3,25 @@ layout: post
 title: Why developers are leaving Next.js for TanStack Start, and loving it
 description: The React world is full of opinions, and every few years a new framework changes how we think about building apps. Next.js has been the default choice for a long time, but recently, more developers have been moving toward TanStack Start.
 date: 2025-10-24
-cover: /images/blog/why-developers-leaving-nextjs-tanstack-start/cover.png
+cover: /images/blog/why-developers-leaving-nextjs-tanstack-start/cover.avif
 timeToRead: 8
 author: tessa
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is TanStack Start?"
+    answer: "TanStack Start is a full-stack React framework built on TanStack Router and powered by Vite. It offers type-safe routing, server functions, SSR, and flexible deployment, and it is built by the same team behind TanStack Query and TanStack Router."
+  - question: "Why are developers moving from Next.js to TanStack Start?"
+    answer: "The common reasons are less framework magic, clearer mental models, and freedom from a single hosting platform. Developers say TanStack Start feels closer to plain React, the type-safe routing surfaces bugs early, and it deploys cleanly to Netlify, Cloudflare, Vercel, or a Node server."
+  - question: "Is TanStack Start production-ready?"
+    answer: "Teams are already using it in production for dashboards, real-time apps, and company websites. It is younger than Next.js so the ecosystem is smaller, but the core APIs are stable and the underlying libraries (Router, Query) have been battle-tested for years."
+  - question: "Does TanStack Start replace Next.js?"
+    answer: "Not for everyone. Next.js is still a strong choice if you want App Router conventions, deep Vercel integration, or its built-in image and font optimization. TanStack Start is the better pick when you want explicit control, fewer abstractions, and the flexibility to host anywhere."
+  - question: "Can I use Appwrite with TanStack Start?"
+    answer: "Yes. Appwrite works with any JavaScript framework via its web SDK, and you can call its APIs from TanStack Start server functions or directly from the client. Use [Appwrite Auth](/docs/products/auth) for user sessions and [Appwrite Databases](/docs/products/databases) for data, and host the frontend wherever your TanStack Start deployment lives."
+  - question: "Do I need to learn TanStack Query and Router before TanStack Start?"
+    answer: "It helps but is not strictly required. Start ships with Router built in and Query integrates naturally, so you will pick them up as you build. Existing knowledge from either library transfers directly."
 ---
 
 The React world is full of opinions, and every few years a new framework changes how we think about building apps. Next.js has been the default choice for a long time. It offered a clear path to production and made React easier to manage. But recently, more developers have been moving toward **TanStack Start**, a newer full-stack framework built by the same team behind TanStack Query and TanStack Router.
@@ -29,7 +42,7 @@ TanStack didn't appear out of nowhere. It grew from the success of **TanStack Qu
 
 That same idea of **simplicity without shortcuts** is what's driving interest in TanStack Start. Developers already trust the TanStack team because their tools consistently solve real problems without hiding what's going on behind the scenes.
 
-As one developer put it, *"They did for routing and server logic what they already did for state management — made it simple, predictable, and type-safe."*
+As one developer put it, *"They did for routing and server logic what they already did for state management: made it simple, predictable, and type-safe."*
 
 # What TanStack Start actually is
 
@@ -58,7 +71,7 @@ Developers in the community consistently mention a few themes:
     
 3. **A smoother developer experience.**
     
-    Type-safe routes, integrated server functions, and predictable data fetching make debugging faster. One Reddit user said, *"When I first tried it, I thought I was missing something because it was so easy — it just worked."*
+    Type-safe routes, integrated server functions, and predictable data fetching make debugging faster. One Reddit user said, *"When I first tried it, I thought I was missing something because it was so easy; it just worked."*
     
 4. **Flexible hosting and tooling.**
     

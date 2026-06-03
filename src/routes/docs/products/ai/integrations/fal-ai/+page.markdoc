@@ -19,11 +19,11 @@ This tutorial will guide you through the process of setting up the fal.ai API to
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -213,5 +213,5 @@ Additional models can be found in the [fal.ai model catalogue](https://fal.ai/mo
 {% section #step-7 step=7 title="Test the function" %}
 Now that the function is deployed, test it by visiting the function URL in a browser. The UI created earlier will be visible. To test it, write a prompt and click the submit button, after a brief the completion should appear below the input.
 
-![Testing the function](/images/docs/ai/integrations/fal-ai/demo.png)
+![Testing the function](/images/docs/ai/integrations/fal-ai/demo.avif)
 {% /section %}

@@ -23,6 +23,8 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
     (v) => v !== 'cloud'
 );
 
+export const latestVersion = allVersions[0];
+
 export const Service = {
     Account: 'account',
     Avatars: 'avatars',
@@ -32,6 +34,7 @@ export const Service = {
     Messaging: 'messaging',
     Health: 'health',
     Locale: 'locale',
+    Presences: 'presences',
     Storage: 'storage',
     Teams: 'teams',
     Users: 'users',
@@ -158,6 +161,7 @@ export const serviceMap: Record<ServiceValue, string> = {
     [Service.Messaging]: 'Messaging',
     [Service.Health]: 'Health',
     [Service.Locale]: 'Locale',
+    [Service.Presences]: 'Presences',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',

@@ -3,12 +3,25 @@ layout: post
 title: What exactly is MCP, and why is it trending?
 description: Appwrite introduces its own Model Context Protocol (MCP). Learn what it is and why it's becoming a popular solution for AI assistants to interact with real-world tools, and how to install Appwrite's new MCP server.
 date: 2025-03-13
-cover: /images/blog/what-is-mcp/cover.png
+cover: /images/blog/what-is-mcp/cover.avif
 timeToRead: 7
 author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What does MCP (Model Context Protocol) actually do?"
+    answer: "MCP is a standard that lets AI assistants connect to external tools, databases, APIs, and files through a uniform interface. Instead of writing custom integrations for every service, an AI client speaks MCP and the MCP server handles the actual data access. It turns a model that can only reason into one that can fetch real data and trigger actions."
+  - question: "Who created MCP and when was it released?"
+    answer: "MCP was developed by Anthropic and released as an open standard in November 2024. It is now adopted by a growing set of AI clients and tool providers, including IDE assistants, desktop clients, and backend platforms."
+  - question: "How is MCP different from a regular REST API?"
+    answer: "A REST API is one specific contract for one specific service. MCP is a protocol layer above that: it defines how AI clients discover tools, list their capabilities, and call them in a consistent way. The MCP server still talks to the underlying APIs, but the AI only has to learn MCP once instead of every API."
+  - question: "Does Appwrite have its own MCP server?"
+    answer: "Yes. Appwrite ships an official MCP server that exposes its APIs (auth, databases, storage, functions, messaging) to MCP-compatible clients like Claude Desktop and Cursor. You can install it locally and let your AI assistant manage your Appwrite project directly. See [Appwrite Functions](/docs/products/functions) and the wider product docs for what it can drive."
+  - question: "Is MCP secure to use with production data?"
+    answer: "MCP itself is just the protocol. Security depends on how the server is configured. Most MCP servers today run locally over stdio so the AI client never gets raw credentials, and remote servers should be deployed behind auth and scoped permissions. Treat any MCP server like a privileged backend service and limit what it is allowed to read or write."
+  - question: "Do I need to know MCP internals to use it?"
+    answer: "No. As a developer using an AI assistant, you typically install an MCP server, point your client at it, and start asking questions. You only need to understand the protocol if you are building a new MCP server or debugging tool calls."
 ---
 
 Updated on October 6, 2025
@@ -198,7 +211,7 @@ Next, edit your config file and add this:
 
 Next, opening Claude Desktop should show you a tool icon in the chat input field with a list of the available MCP tools.
 
-![Claude Desktop MCP tool icon](/images/blog/what-is-mcp/claude-mcp-tools.png)
+![Claude Desktop MCP tool icon](/images/blog/what-is-mcp/claude-mcp-tools.avif)
 
 If you get an error that the Appwrite MCP server failed to start, it might be that your computer hasn't recognized the `uvx` command yet. In that case, you can replace the `uvx` string in your config object's `command` property with the direct path to your uv installation. Here's an example for MacOS:
 
@@ -208,7 +221,7 @@ If you get an error that the Appwrite MCP server failed to start, it might be th
 
 With the MCP server successfully started on Claude Desktop, you should now be able to ask Claude to retrieve data or perform an action on your Appwrite project.
 
-![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.png)
+![Claude Desktop MCP chat](/images/blog/what-is-mcp/claude-mcp-chat.avif)
 
 You can also set up the Appwrite MCP server with other AI tools like Cursor and WindSurf. For more examples and specific setup instructions, check out the [MCP documentation](https://appwrite.io/docs/tooling/mcp?doFollow=true).
 

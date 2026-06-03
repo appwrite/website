@@ -7,7 +7,7 @@
 <script lang="ts">
     let { data, children } = $props();
 
-    $effect(() => {
+    $effect.pre(() => {
         rawContent.set(data.rawContent);
     });
 </script>

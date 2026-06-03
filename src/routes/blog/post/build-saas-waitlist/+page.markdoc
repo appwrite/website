@@ -3,11 +3,24 @@ layout: post
 title: Build a SaaS waitlist landing page with Appwrite
 description: Learn how to ship a production-ready waitlist page with Vite, React, and Appwrite, including unique email validation and clean error handling.
 date: 2026-04-23
-cover: /images/blog/build-saas-waitlist/cover.png
+cover: /images/blog/build-saas-waitlist/cover.avif
 timeToRead: 10
 author: atharva
 category: tutorial, product
 featured: false
+faqs:
+  - question: "Why use Appwrite for a SaaS waitlist instead of a form service?"
+    answer: "Form services work for capturing emails, but they make it hard to query or export your data later, and they often add their branding. With [Appwrite Databases](/docs/products/databases), you own the data, can query it with filters and indexes, and can wire it into the rest of your stack as the product grows."
+  - question: "How do you prevent duplicate emails in an Appwrite waitlist?"
+    answer: "Create a unique index on the email column in your Entries table. When someone tries to sign up with an existing email, the insert fails with a 409 error. The frontend catches that and shows a friendly \"you're already on the list\" message instead of a generic server error."
+  - question: "Do I need a server to run a waitlist on Appwrite?"
+    answer: "No. The browser can talk to Appwrite directly using the client SDK, so you only need a static React or Vite app. There is no API key to ship, no Node server to maintain, and permissions on the table control who can write. This is the same pattern most simple Appwrite frontends use."
+  - question: "How do I make the email field validate without writing a regex?"
+    answer: "Use Appwrite's built-in email column type when you create the table. Appwrite validates the format on write, so the database rejects malformed emails before they hit your data. You still want client-side validation for UX, but the server-side check is the source of truth."
+  - question: "What permissions should I set on the waitlist table?"
+    answer: "Allow Any to create documents so unauthenticated visitors can sign up, but do not give read access to Any. Reading the list should be restricted to a specific team or admin role so emails are not publicly enumerable. See [Appwrite Databases](/docs/products/databases) for how role-based permissions work."
+  - question: "How would I send a confirmation email after someone joins the waitlist?"
+    answer: "Trigger an [Appwrite Function](/docs/products/functions) on the document.create event for the Entries table. The function receives the new entry and sends a confirmation through your email provider or through [Appwrite Messaging](/docs/products/messaging). This keeps the frontend simple while adding async behavior."
 ---
 
 Every SaaS launch starts the same way. A landing page, a form, and a quiet hope that the right people leave an email. The shape of that form is simple, but the backend around it has to do a handful of unglamorous jobs well: accept writes from the browser, reject duplicate emails, store entries safely, and stay out of your way.
@@ -24,7 +37,7 @@ In this tutorial, you will build exactly that: a polished waitlist landing page 
 
 Start by creating a new project in the Appwrite Console. Head to the Console, click **Create project**, name it **SaaS Waitlist**, pick a region, and open it. On the overview page, copy the **Project ID** and **API endpoint**. You will need both in a moment.
 
-![SaaS Waitlist project overview in the Appwrite Console](/images/blog/build-saas-waitlist/project-overview.png)
+![SaaS Waitlist project overview in the Appwrite Console](/images/blog/build-saas-waitlist/project-overview.avif)
 
 ## Register a web platform
 
@@ -41,7 +54,7 @@ Navigate to **Databases** and create a new database called **Waitlist** (ID: `wa
 
 `varchar` is the right pick for a short, bounded string like a name. The `email` type validates the format on write, so you do not need to hand-roll a regex on the server. Both columns are required so that the frontend cannot accidentally submit a half-filled row.
 
-![Entries table columns in the Appwrite Console](/images/blog/build-saas-waitlist/table-columns.png)
+![Entries table columns in the Appwrite Console](/images/blog/build-saas-waitlist/table-columns.avif)
 
 ## Prevent duplicate emails with a unique index
 
@@ -64,7 +77,7 @@ Open the table's **Settings** tab and configure permissions there:
 - Check only **Create**. Leave **Read**, **Update**, and **Delete** unchecked.
 - Keep **Row security** off.
 
-![Permissions panel with Any role granted Create only](/images/blog/build-saas-waitlist/table-permissions.png)
+![Permissions panel with Any role granted Create only](/images/blog/build-saas-waitlist/table-permissions.avif)
 
 This is the minimum viable permission set for a public waitlist:
 
@@ -256,15 +269,15 @@ pnpm dev
 
 The landing page renders immediately.
 
-![The Stratum waitlist landing page](/images/blog/build-saas-waitlist/waitlist-initial.png)
+![The Stratum waitlist landing page](/images/blog/build-saas-waitlist/waitlist-initial.avif)
 
 Fill in a name and email, submit, and the form is replaced with a confirmation. Behind the scenes, the helper fired a single `createRow` request to the Appwrite endpoint, which returned a row object with `$id`, `$createdAt`, and the values you sent.
 
-![Confirmation state after a successful submission](/images/blog/build-saas-waitlist/waitlist-success.png)
+![Confirmation state after a successful submission](/images/blog/build-saas-waitlist/waitlist-success.avif)
 
 Open the **Entries** table in the Appwrite Console and the row is there, timestamped and ready.
 
-![The new waitlist entry in the Appwrite Console](/images/blog/build-saas-waitlist/table-rows.png)
+![The new waitlist entry in the Appwrite Console](/images/blog/build-saas-waitlist/table-rows.avif)
 
 Submit the same email again and the helper catches the 409 from the unique index, the UI shifts to the "already on file" confirmation, and no second row is created. Submit a malformed email and the client validator blocks the request before it ever leaves the browser.
 

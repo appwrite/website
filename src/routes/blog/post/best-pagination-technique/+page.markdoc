@@ -3,11 +3,24 @@ layout: post
 title: "Best database pagination technique"
 description: "Learn how to fix database-related performance problems using offset and cursor pagination."
 date: 2024-08-05
-cover: /images/blog/best-pagination-technique/cover.png
+cover: /images/blog/best-pagination-technique/cover.avif
 timeToRead: 8
 author: matej-baco
 category: tutorial
 callToAction: true
+faqs:
+  - question: "What's the difference between offset and cursor pagination?"
+    answer: "Offset pagination uses a limit and offset (skip N rows), which is simple but gets slower as offsets grow. Cursor pagination uses a reference row's ID to fetch the next page, which performs consistently regardless of how deep into the data you are."
+  - question: "Which is better, offset or cursor pagination?"
+    answer: "Cursor pagination is faster and more reliable for large or frequently-changing datasets because it avoids scanning skipped rows and doesn't break when rows are inserted or deleted mid-pagination. Offset pagination is simpler and fine for small datasets or admin tools where page numbers are useful."
+  - question: "Why does offset pagination get slow?"
+    answer: "Databases implement OFFSET by walking through rows to skip them, so OFFSET 100000 still touches 100,000 rows internally. Cursor pagination uses an indexed WHERE clause, which skips directly to the right position. The difference shows up dramatically at scale."
+  - question: "Does Appwrite support cursor pagination?"
+    answer: "Yes. [Appwrite Databases](/docs/products/databases) supports both offset and cursor pagination out of the box via Query.cursorAfter and Query.cursorBefore. Appwrite handles the indexing and complexity so you can use cursors without writing the bookkeeping yourself."
+  - question: "When should I add database indexes for pagination?"
+    answer: "Add indexes on any column you sort by or use as a cursor. Without an index, cursor pagination still needs to scan rows to find matches. With Appwrite, you can create indexes directly from the console or via the SDK."
+  - question: "Can I show total counts with cursor pagination?"
+    answer: "Counting total rows efficiently is its own challenge regardless of pagination strategy. For large tables, an exact count requires a full scan. Cursor pagination typically ships with Previous/Next buttons rather than page numbers, which sidesteps the count problem entirely."
 ---
 
 The Database is one of the cornerstones of every application. It's where you store everything your app needs to remember, compute later, or display to other users online. It's all smooth sailing until your database grows and your application starts lagging because it's trying to fetch and render 1,000 posts simultaneously. As a smart engineer, you quickly patch this with a `Show more` button. However, a few weeks later, you encounter a `Timeout` error. Turning to Stack Overflow, you find that copying and pasting solutions is no longer helping. With no other options, you start debugging and discover that the database returns over 50,000 posts each time a user opens your app. What do you do now?
@@ -242,7 +255,7 @@ Within a minute, all benchmarks finished, providing me with the average response
 | 80% offset | 424.63 |
 | 90% offset | 482.71 |
 
-![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph.png)
+![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph.avif)
 As you can see, offset 0 was pretty fast, responding in less than 4ms. The first jump was to offset 100k, and the change was drastic, increasing response times to 52ms. With each increase in the offset, the duration went up, resulting in almost 500ms to get ten documents after an offset of 900k documents. That is crazy!
 
 Now let's update our script to use cursor pagination. We will update our script to use a cursor instead of offset and update our bash script to provide a cursor (document ID) instead of an offset number.
@@ -308,7 +321,7 @@ After running the script, you could already tell that there was a performance bo
 | 80% offset | 424.63 | 5.60 |
 | 90% offset | 482.71 | 5.05 |
 
-![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph2.png)
+![Cursor pagination benchmark](/images/blog/best-pagination-technique/graph2.avif)
 
 As you can see, cursor pagination is highly efficient. The graph shows that cursor pagination maintains consistent performance regardless of the offset size, with each query performing as well as the first or last one. Loading the last page of a large list repeatedly can significantly impact performance.
 

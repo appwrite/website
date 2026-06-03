@@ -2,7 +2,7 @@
 layout: post
 title: "The shift from SaaS to Vertical AI: What startup founders need to know"
 description: Learn how vertical AI agents are revolutionizing industries and why now is the best time to build a vertical AI startup.
-cover: /images/blog/the-shift-from-SaaS-to-Vertical-AI-what-startup-founders-need-to-know/cover-image.png
+cover: /images/blog/the-shift-from-SaaS-to-Vertical-AI-what-startup-founders-need-to-know/cover-image.avif
 date: 2025-05-24
 timeToRead: 5
 author: veeresh-mulge
@@ -10,7 +10,17 @@ callToAction: true
 unlisted: true
 category: startup
 call_to_action: true
-
+faqs:
+  - question: "What is a vertical AI agent?"
+    answer: "A vertical AI agent is an AI system built to automate one specific business function end to end, like payroll, QA testing, or customer support. Unlike general-purpose chat models, it owns the workflow rather than acting as a tool a human still drives."
+  - question: "How does vertical AI differ from horizontal AI?"
+    answer: "Horizontal AI is generalist and works across industries and tasks, like a chat assistant. Vertical AI is specialist and goes deep into one domain, replacing software and labor inside that workflow instead of helping a human do it faster."
+  - question: "Why is now a good time to start a vertical AI startup?"
+    answer: "LLMs are mature enough to ground real workflows, businesses are actively replacing manual processes with agents, and most verticals do not yet have a dominant AI-native provider. That combination opens an early-mover window in many industries."
+  - question: "Will vertical AI replace SaaS entirely?"
+    answer: "Probably not in every category, but it will absorb a lot of the work that SaaS tools delegate back to humans. Expect SaaS and vertical AI agents to coexist, with agents handling whole workflows and traditional SaaS continuing to provide systems of record."
+  - question: "What infrastructure does a vertical AI startup need on day one?"
+    answer: "You typically need auth, a database, secure file storage, and a way to run background jobs that call models and integrate with external systems. A platform like [Appwrite](/) provides those primitives so you can focus on the agent logic instead of glue."
 ---
 B2B enterprise SaaS is about to undergo a major shift. While SaaS revolutionized how software is built and distributed, allowing businesses to streamline operations with cloud-based tools, it had one major problem: it’s still built on a one-size-fits-all approach, with general-purpose solutions that require constant customization and integration. This led to complexity and inefficiency, as businesses needed multiple tools and human resources to make everything work.
 

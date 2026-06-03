@@ -2,7 +2,7 @@
     import Grid from './grid-system/grid.svelte';
     import Cell from './grid-system/cell.svelte';
     import { inView } from 'motion';
-    import Placeholder from '../(assets)/placeholder.png';
+    import Placeholder from '../(assets)/placeholder.avif';
 
     let animate: boolean = false;
 
@@ -18,21 +18,21 @@
             name: 'Hassan Ahmed',
             title: 'Full Stack Developer',
             company: 'DevKind',
-            avatar: '/images/testimonials/hassan.png',
+            avatar: '/images/testimonials/hassan.avif',
             url: '/blog/post/customer-story-storealert'
         },
         {
             blurb: 'With its robust feature set and open-source nature, Appwrite is the perfect choice for developers who want to build secure and scalable applications without breaking the bank.',
             name: 'Souvik Sarkar',
             title: '@Jeet_2003',
-            avatar: '/images/testimonials/souvik-sarkar.png'
+            avatar: '/images/testimonials/souvik-sarkar.avif'
         },
         {
             blurb: 'We really loved working with Appwrite for launching our bootstrapped "Open Mind" App. It was saving us a lot of money in comparison to Firebase since the amount of users grew quite fast and we needed a quick switch.',
             name: 'David Forster',
             title: 'MD',
             company: 'Open Mind',
-            avatar: '/images/testimonials/david-forster.png',
+            avatar: '/images/testimonials/david-forster.avif',
             url: '/blog/post/customer-stories-open-mind'
         }
     ];

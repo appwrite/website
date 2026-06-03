@@ -3,11 +3,24 @@ layout: post
 title: Defying the laws of web animations
 description: Web animations can be scary, and come with a lot of obstacles. But what if we could bend the rules to our will?
 date: 2023-10-18
-cover: /images/blog/defying-the-laws-of-web-animations/cover.png
+cover: /images/blog/defying-the-laws-of-web-animations/cover.avif
 timeToRead: 10
 author: thomas-g-lopes
 category: tutorial
 callToAction: true
+faqs:
+  - question: "How do you trigger animations based on scroll position?"
+    answer: "Track how far the user has scrolled through a container (using getBoundingClientRect plus window.innerHeight), convert that to a percentage, and activate sections when the percentage crosses defined thresholds. For 5 equal sections, the triggers sit at 0%, 20%, 40%, 60%, and 80%."
+  - question: "What is the difference between scroll-triggered and scroll-progressed animations?"
+    answer: "Scroll-triggered animations start when a section enters the viewport and then play on their own timeline. Scroll-progressed (or scroll-linked) animations are tied directly to scroll position, so they advance and reverse as the user scrolls up and down. Both have valid use cases."
+  - question: "How do you keep an animation pinned to the center while scrolling?"
+    answer: "Wrap your animation in a tall container so there is room to scroll. Use position: sticky (or fixed) on the animation element so it stays centered while the outer container scrolls past it. Use the scroll percentage of the outer container to drive the animation state."
+  - question: "What is a Svelte action and why use one for scroll handling?"
+    answer: "A Svelte action is a function that runs when a DOM element is mounted and can attach listeners or behavior to it. Using an action for scroll handling keeps the logic reusable: any component can opt into the scroll events by adding use:scroll to its element."
+  - question: "How do I dispatch custom DOM events from a Svelte action?"
+    answer: "Inside the action, call node.dispatchEvent(new CustomEvent('event-name', { detail })). Consumers then listen with on:event-name. This is how the article dispatches web-scroll and web-resize events with scroll info in the detail payload."
+  - question: "Why split scroll math into a reusable helper instead of per-component code?"
+    answer: "Because scroll percentage logic is identical across multiple animated sections, a single helper avoids duplicating bounding-rect math. It also makes it easy to swap implementations later (for example, switching to the Intersection Observer or Scroll Timeline API) without changing every consumer."
 ---
 
 If you're a frontend developer, you know that one of the scariest tasks you can receive is coding a complex web animation. If you're not a frontend developer, I bet that sounds even harder.
@@ -45,7 +58,7 @@ Scroll-based animations are quite common. There are two types. Animations that s
 We have 5 sections in our animation, as showcased in our video (we technically have 2 more, one for the beginning and one for the end), and they're pretty similar. They are all in a really tall container, so that we have ample space to scroll through, but the animations
 themselves always stick to the center of the screen.
 
-![Excali viewport](/images/blog/defying-the-laws-of-web-animations/excali_viewport.png)
+![Excali viewport](/images/blog/defying-the-laws-of-web-animations/excali_viewport.avif)
 
 I've split said container into 5 **equal** parts, each part representing a section. All the sections are always sticking to the center of the screen as I said, but, once the top of the viewport passes a section trigger, the respective section is active, and all the other sections are de-activated. (In the sketch above, the active section is the 2nd one, but if the user scrolls down _just_ a bit, the 3rd section will be active.)
 

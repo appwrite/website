@@ -1,3 +1,12 @@
 domain:
   - stage.appwrite.io
   - www.stage.appwrite.io
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 500Mi
+  limits:
+    memory: 500Mi
+
+nodeOptions: "--max-old-space-size=384"

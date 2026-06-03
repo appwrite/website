@@ -3,11 +3,25 @@ layout: post
 title: "Announcing: Appwrite Pro"
 description: We’re happy to introduce Appwrite Pro. After announcing our pricing plans for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud. A new product offering that allows you to build with more confidence.
 date: 2023-12-20
-cover: /images/blog/announcing-appwrite-pro/header.png
+lastUpdated: 2026-05-22
+cover: /images/blog/announcing-appwrite-pro/header.avif
 timeToRead: 5
 author: christy-jacob
 category: announcement
 featured: false
+faqs:
+  - question: "What is Appwrite Pro?"
+    answer: "Appwrite Pro is the paid plan for Appwrite Cloud that gives you higher resource limits, premium support, and add-ons compared to the Free plan. It is billed per member per month and is designed for projects that have moved past prototyping and need room to scale."
+  - question: "What is the difference between Appwrite Free and Pro?"
+    answer: "Free includes 5GB of bandwidth, 2GB of storage, 750K function executions, 75K monthly active users, community support, and limits on Databases, Buckets, and Functions per project. Pro raises bandwidth to 300GB, storage to 150GB, executions to 3.5M, MAUs to 200K, adds email support, removable Appwrite branding, and unlimited Databases, Buckets, and Functions per project."
+  - question: "How is Appwrite Pro billed?"
+    answer: "Pro is priced per member per month, with overage based on the resources you actually use. The [pricing page](https://appwrite.io/pricing) lists current rates and the add-on prices for things like extra storage, bandwidth, executions, and MAUs."
+  - question: "Do my existing projects still work after upgrading to Pro?"
+    answer: "Yes. Upgrading an organization to Pro lifts the limits across the projects in it. The actual data, configuration, API keys, and SDK code do not change. You just get more headroom and access to features like custom SMTP, removable branding, and add-on resources."
+  - question: "Can I switch back to the Free plan after going Pro?"
+    answer: "You can downgrade an organization to the Free plan, but if your usage exceeds Free limits, additional projects may be paused or services may be throttled until you reduce usage. Review your dashboard before downgrading so you know which projects will be affected."
+  - question: "What kind of support comes with Appwrite Pro?"
+    answer: "Pro includes premium email support handled by Appwrite's team, on top of the community support available on [Discord](https://appwrite.io/discord). The Enterprise plan adds features like dedicated Slack channels and SLAs; see the [pricing page](https://appwrite.io/pricing) for the current breakdown."
 ---
 
 After [announcing our pricing plans](https://appwrite.io/blog/post/announcing-pricing) for Appwrite Cloud in August, we have reached another milestone as we roll out billing and welcome our newest addition to Appwrite Cloud, Appwrite Pro. A new product offering that allows you to build with more confidence.
@@ -82,7 +96,7 @@ For a production product, you need more control of your brand, as well as the fl
 
 For the last few years, we have had help from the community and dedicated moderators to help us support you using Appwrite. Now, with the launch of Appwrite Pro, we add premium support. This is an email support service on top of our  Discord community, where we will have a dedicated team to provide technical support. We understand that this is an important addition for you to have when building with Appwrite. We want to ensure you can build with confidence.
 
-![Appwrite Pro](/images/blog/announcing-appwrite-pro/pro.png)
+![Appwrite Pro](/images/blog/announcing-appwrite-pro/pro.avif)
 
 # Growth in beta with early adopters
 
@@ -92,7 +106,7 @@ Appwrite Cloud has seen immense growth since we entered public beta. It has been
 
 Beta developers are fundamental to the success of Appwrite Cloud today, and we are grateful for the support we have received. To give back and say thank you, we will provide each early adopter of Appwrite Cloud with credits for Appwrite Pro for the first two months.
 
-![Appwrite Pro early adopters $30 Credits](/images/blog/announcing-appwrite-pro/credits.png)
+![Appwrite Pro early adopters $30 Credits](/images/blog/announcing-appwrite-pro/credits.avif)
 
 ## Existing organizations and projects
 

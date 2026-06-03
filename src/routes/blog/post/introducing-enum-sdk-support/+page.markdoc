@@ -3,11 +3,24 @@ layout: post
 title: "Introducing Enum SDK support: enhanced DX across SDKs"
 description: A new feature that will reduce friction and improve your experience.
 date: 2024-02-28
-cover: /images/blog/enum-announcement.png
+cover: /images/blog/enum-announcement.avif
 timeToRead: 4
 author: jake-barnby
 category: product, announcement
 featured: false
+faqs:
+  - question: "What are enums in the Appwrite SDKs?"
+    answer: "Enums are named constants that the Appwrite SDKs expose for parameters with a fixed set of valid values, like OAuth providers, runtimes, and image formats. Instead of typing the raw string, you reference a typed value such as OAuthProvider.Apple."
+  - question: "Why use enums instead of strings?"
+    answer: "Enums give you autocomplete in your editor, compile time errors when you pass an invalid value, and self documenting code. They eliminate a class of typos that the old string based parameters used to hide."
+  - question: "Which SDKs got enum support?"
+    answer: "Enum support landed across all client and server SDKs as part of Appwrite 1.5. That includes Web, React Native, Flutter, Android, Apple, Node.js, Python, PHP, Ruby, Deno, Dart, .NET, Kotlin, Swift, and Go."
+  - question: "Do I have to migrate my existing code to use enums?"
+    answer: "No. The string values still work, so existing code keeps running. Enums are a quality of life improvement you can adopt gradually, starting with the parameters where you have hit typos in the past."
+  - question: "Will using enums break older Appwrite servers?"
+    answer: "No. Enums are a client side convenience that resolve to the same strings the API has always accepted. A 1.5 SDK still sends the same wire format to an Appwrite instance that understands those values."
+  - question: "Where can I see the full list of supported enums?"
+    answer: "Each SDK reference lists the enums it exposes. The SDKs page in the [Appwrite docs](/docs) has the per language references, and the changelog for each SDK release calls out new enum additions."
 ---
 We are excited to announce a significant enhancement to the development experience across all Appwrite client and server-side SDKs, Enums SDK Support.
 

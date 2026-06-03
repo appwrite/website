@@ -9,10 +9,10 @@ In Appwrite, data is stored as a table of rows.
 Create a new database and table in the [Appwrite Console](https://cloud.appwrite.io/) to store the ideas.
 
 {% only_dark %}
-![Create table screen](/images/docs/tutorials/dark/idea-tracker-table.png)
+![Create table screen](/images/docs/tutorials/dark/idea-tracker-table.avif)
 {% /only_dark %}
 {% only_light %}
-![Create table screen](/images/docs/tutorials/idea-tracker-table.png)
+![Create table screen](/images/docs/tutorials/idea-tracker-table.avif)
 {% /only_light %}
 
 Create a new table with the following columns:
@@ -25,10 +25,10 @@ Create a new table with the following columns:
 Change the table's permissions in the settings to give access.
 
 {% only_dark %}
-![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.avif)
 {% /only_dark %}
 {% only_light %}
-![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.avif)
 {% /only_light %}
 
 Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.

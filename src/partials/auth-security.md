@@ -6,12 +6,12 @@ Appwrite handles the persistence of the session in a consistent way across SDKs.
 Only keep user sessions active as long as needed and maintain exactly **one** instance of the Client SDK in your app to avoid conflicting session data.
 {% /info %}
 
-|                                                                                                                   {% width=70 %}                                                                                                                    | Framework {% width=120 %} |                                            Storage method                                            |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------: | :--------------------------------------------------------------------------------------------------: |
-| {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %} |            Web            | Uses a secure session cookie and falls back to local storage when a session cookie is not available. |
-|    {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_light %}    |          Flutter          |     Uses a session cookie stored in Application Documents through the **path_provider** package.     |
-|      {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}      |           Apple           |                          Uses a session cookie stored in **UserDefaults**.                           |
-|    {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}    |          Android          |                        Uses a session cookie stored in **SharedPreferences**.                        |
+|                                                                                                                      {% width=70 %}                                                                                                                       | Framework {% width=120 %} |                                            Storage method                                            |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------: | :--------------------------------------------------------------------------------------------------: |
+| {% only_dark %}{% icon_image src="/images/platforms/dark/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/light/javascript.svg" alt="Javascript logo" size="m" /%}{% /only_light %} |            Web            | Uses a secure session cookie and falls back to local storage when a session cookie is not available. |
+|    {% only_dark %}{% icon_image src="/images/platforms/dark/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/light/flutter.svg" alt="Javascript logo" size="m" /%}{% /only_light %}    |          Flutter          |     Uses a session cookie stored in Application Documents through the **path_provider** package.     |
+|      {% only_dark %}{% icon_image src="/images/platforms/dark/apple.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/light/apple.svg" alt="Javascript logo" size="m" /%}{% /only_light %}      |           Apple           |                          Uses a session cookie stored in **UserDefaults**.                           |
+|    {% only_dark %}{% icon_image src="/images/platforms/dark/android.svg" alt="Javascript logo" size="m" /%}{% /only_dark %}{% only_light %}{% icon_image src="/images/platforms/light/android.svg" alt="Javascript logo" size="m" /%}{% /only_light %}    |          Android          |                        Uses a session cookie stored in **SharedPreferences**.                        |
 
 # Session limits {% #session-limits %}
 
@@ -55,6 +55,12 @@ Personal data includes the user's name, email, and phone number.
 
 Disallowing personal data can be enabled in the Auth service's **Security** tab on the Appwrite Console.
 
+# Email policies {% #email-policies %}
+
+Email policies let you restrict which email addresses can sign up for your project. You can independently block free email providers, aliased addresses, and disposable email services to keep throwaway accounts, signup spam, and bot registrations out of your user base. Policies run at sign-up and on email updates, and existing users can still sign in even if their address would not pass the current policy.
+
+Email policies can be enabled in the Auth service's **Security** tab on the Appwrite Console, or programmatically through the Project service. Learn more in the [Email policies](/docs/products/auth/email-policies) docs.
+
 # Session alerts {% #session-alerts %}
 
 Enable email alerts for your users so that whenever a new session is created for their account, they will be alerted with details about the sign-in. This helps users quickly spot unauthorized access and take action to secure their account.
@@ -63,9 +69,9 @@ Enable email alerts for your users so that whenever a new session is created for
 
 Session alerts are intentionally skipped in a few situations to avoid redundant or confusing emails:
 
-- **First session after sign-up** — the very first sign-in a user makes after creating their account does not trigger an alert. A brand-new account doesn't yet hold anything worthy of protection, so alerting at this stage adds no real security value. It also prevents a double-email situation in flows where your project may already be sending a welcome or verification email.
-- **[Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), and [OAuth2](/docs/products/auth/oauth2) sign-ins** — these authentication methods already verify the user's access to the sign-in channel (their inbox or identity provider), so no additional alert is needed.
-- **No email address on file** — users who have not set an email address on their account will not receive alerts.
+- **First session after sign-up**: the very first sign-in a user makes after creating their account does not trigger an alert. A brand-new account doesn't yet hold anything worthy of protection, so alerting at this stage adds no real security value. It also prevents a double-email situation in flows where your project may already be sending a welcome or verification email.
+- **[Magic URL](/docs/products/auth/magic-url), [Email OTP](/docs/products/auth/email-otp), and [OAuth2](/docs/products/auth/oauth2) sign-ins**: these authentication methods already verify the user's access to the sign-in channel (their inbox or identity provider), so no additional alert is needed.
+- **No email address on file**: users who have not set an email address on their account will not receive alerts.
 
 To toggle session alerts, navigate to **Auth** > **Security** > **Session alerts**.
 

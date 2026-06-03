@@ -3,10 +3,23 @@ layout: post
 title: Client vs Server Components in React
 description: Learn how to choose between client and server components in React.
 date: 2025-09-10
-cover: /images/blog/client-vs-server-components-react/cover.png
+cover: /images/blog/client-vs-server-components-react/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
+faqs:
+  - question: "What is the difference between client and server components in React?"
+    answer: "Client components run on the user's browser using JavaScript and can use hooks like `useState`, `useEffect`, and browser APIs. Server components run on the server, return HTML, and have no client-side JavaScript by default. Server components are great for data fetching and SEO; client components are needed wherever you have interactivity."
+  - question: "When should I use server components?"
+    answer: "Use server components for pages that fetch data, render markdown or static content, or need to be indexed by search engines. They reduce the JavaScript shipped to the browser, which speeds up the first load. Anything that needs `useState`, event handlers, or browser APIs should be a client component instead."
+  - question: "Do I need to use server components if I'm using React?"
+    answer: "No. Server components only exist in frameworks that support React Server Components (RSC), like Next.js App Router or React Router with the new server features. If your framework does not support RSC, every component is implicitly a client component and you do not need to mark them."
+  - question: "How does `\"use client\"` work?"
+    answer: "The `\"use client\"` directive at the top of a file tells the bundler that the file should run in the browser, not on the server. All components and imports inside that file become client-side. You only need it in RSC-enabled frameworks; everywhere else it has no effect."
+  - question: "Can server components call Appwrite?"
+    answer: "Yes. From a server component you can use the [Appwrite](/docs) server SDK with an API key to fetch data securely. Since the component runs on the server, the API key never reaches the browser. For user-scoped queries, pass the user session cookie to the SDK so permissions are respected."
+  - question: "How do server components affect SEO?"
+    answer: "Server components are SEO-friendly out of the box because the server returns fully rendered HTML, including metadata, so crawlers see the content immediately. Pure client-side React apps require the bundle to load before metadata is set, which can hurt indexing. If SEO matters, server components or SSR are the right default."
 ---
 
 The world of React is evolving. It started as a library that compiles into browser-readable JS and has evolved into full-fledged frameworks built around it that also run on the server. Things that you need to know before using React have also changed.

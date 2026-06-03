@@ -3,17 +3,30 @@ layout: post
 title: 10 new Git commands you should start using today
 description: Learn these Git commands to make your workflow smoother, faster, and flexible.
 date: 2024-12-12
-cover: /images/blog/10-git-commands-you-should-start-using/cover.png
+cover: /images/blog/10-git-commands-you-should-start-using/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the difference between git switch and git checkout?"
+    answer: "`git switch` is a newer command focused only on branch operations (switching and creating branches), while `git checkout` is older and overloaded with branch switching, file restoration, and commit checkout. Use `git switch` for branches and `git restore` for files. It removes a whole class of accidental mistakes."
+  - question: "When should I use git restore instead of git reset?"
+    answer: "Use `git restore` when you want to discard changes to specific files in the working directory or unstage them, without touching your branch state. Use `git reset` when you actually need to move HEAD or rewrite history. `git restore` is safer because it cannot accidentally move your branch pointer."
+  - question: "What does git maintenance do?"
+    answer: "`git maintenance` schedules background tasks like garbage collection, repacking, and commit-graph updates that keep large repos fast. Running `git maintenance start` enables it for the current repo so you do not need to remember to run `git gc` manually. It is especially useful on long-lived monorepos."
+  - question: "Should I use git sparse-checkout on a monorepo?"
+    answer: "Yes, if you only work on a subset of the repo, sparse-checkout drastically reduces the files on disk and the time `git status` takes. Run `git sparse-checkout init` and then `set` the paths you care about. Combine it with partial clone (`--filter=blob:none`) for even bigger gains."
+  - question: "Do I still need GitHub if I use Git locally?"
+    answer: "Git itself is local and works without any remote, but you need a hosting service like GitHub, GitLab, or Bitbucket to collaborate with others or back up history off your machine. Many teams pair Git with a code host plus CI provider, and some self-host their own remotes for privacy."
+  - question: "How can I automate workflows triggered by Git events?"
+    answer: "Git itself supports hooks (pre-commit, post-receive, etc.), but for cloud workflows you typically use webhooks from your Git host. With Appwrite, you can deploy [Appwrite Functions](/docs/products/functions) that run on a Git push by connecting a repo. The function redeploys automatically on every commit to the configured branch."
 ---
 
 If you've worked with Git long enough, you've probably hit some common frustrations like operations getting slower as repositories grow, accidentally overwriting changes when switching branches, or struggling with massive monorepos.
 
-Thankfully, just like every other tool, Git is constantly evolving and adding new features to make our lives easier. While some of these commands aren't particularly recent, they remain lesser-known gems that can significantly improve your workflow. If you're already familiar with some of the core tips and tricks—like those covered in [15 Git command line tips every developer should know](https://appwrite.io/blog/post/15-git-cli-tips?dofollow=true), this article will introduce you to ten additional commands that can take your Git skills to the next level.
+Thankfully, just like every other tool, Git is constantly evolving and adding new features to make our lives easier. While some of these commands aren't particularly recent, they remain lesser-known gems that can significantly improve your workflow. If you're already familiar with some of the core tips and tricks (like those covered in [15 Git command line tips every developer should know](https://appwrite.io/blog/post/15-git-cli-tips?dofollow=true)), this article will introduce you to ten additional commands that can take your Git skills to the next level.
 
 # 1. git switch - A safer way to change branches
 

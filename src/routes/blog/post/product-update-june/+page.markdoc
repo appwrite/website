@@ -3,16 +3,27 @@ layout: post
 title: "June product update: Public roadmap | The Appwriter | Messaging"
 description: "Check out everything new that happened in June, including public roadmap, the Appwriter release and the new Messaging page."
 date: 2024-07-04
-cover: /images/blog/product-update-june/product-update-june-2024.png
+cover: /images/blog/product-update-june/product-update-june-2024.avif
 timeToRead: 5
 author: dennis-ivy
 category: product
+faqs:
+  - question: "Why did Appwrite publish a public roadmap?"
+    answer: "The public roadmap on GitHub gives the community visibility into what is being built, when it is planned, and how to influence priorities. It is meant to align expectations and make it easier to report bugs and request features."
+  - question: "What does Appwrite Messaging do?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) lets you send email, SMS, and push notifications to your users from a single API. You configure providers once and target users, topics, or segments without writing a separate notification service."
+  - question: "What is the Appwriter?"
+    answer: "The Appwriter is a custom mechanical keyboard built by the Appwrite team for the community. It is sold through the Appwrite store as a community product, separate from the platform itself."
+  - question: "How do I contribute or request features through the public roadmap?"
+    answer: "Open an issue on the relevant Appwrite GitHub repository with a clear description and steps to reproduce, then upvote or comment on existing issues to help the team prioritize. The roadmap pulls from these issues directly."
+  - question: "Is Appwrite still open source after launching Cloud?"
+    answer: "Yes. Appwrite remains open source, and major features ship to the self-hosted edition. The Cloud offering is a managed deployment of the same platform you can run yourself."
 ---
 It’s the first week of a new month, which means it’s time to reflect on all the wonderful things that happened in June. Read on to learn more about our public roadmap, Appwriters out in the wild, and dev tools to boost your productivity.
 
 # Public roadmap
 
-![Appwrite's public roadmap](/images/blog/product-update-june/public-roadmap.png)
+![Appwrite's public roadmap](/images/blog/product-update-june/public-roadmap.avif)
 
 This month, we launched the new public roadmap on GitHub. It is part of our commitment to transparency with the Appwrite community. It enables:
 
@@ -28,7 +39,7 @@ The roadmap is designed to help us increase collaboration among the core team, c
 
 Appwrite community members have started to receive their Appwriters, and the reviews are in! People love it. 
 
-![Appwriter testimonials](/images/blog/product-update-june/appwriter-testimonials.png)
+![Appwriter testimonials](/images/blog/product-update-june/appwriter-testimonials.avif)
 
 We’re very proud of the overwhelmingly positive feedback from the community. Our team has worked tirelessly for the past six months to ensure that every detail, from the packaging to every key press, is perfect. 
 
@@ -38,7 +49,7 @@ Does this mean we’re also a hardware company now?
 
 # Appwrite Messaging
 
-![Messaging page](/images/blog/product-update-june/messaging-page.png)
+![Messaging page](/images/blog/product-update-june/messaging-page.avif)
 
 Appwrite’s newest product Messaging now has its own product page (the first of its kind!). Messaging allows you to set up email, SMS and push notifications to your users from a single API. 
 

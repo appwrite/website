@@ -27,17 +27,15 @@
         showDashboard={config.showDashboard}
         ctaLabel={config.ctaLabel}
         ctaHref={config.ctaHref}
+        heroLayout={config.heroLayout ?? 0}
     />
 
     {#if config.showPlatforms}
-        <Platforms headline="Designed for the tools you work with" />
+        <Platforms />
     {/if}
 
     {#if config.showLogoList}
-        <LogoList
-            class="border-smooth border-b"
-            title="Loved by developers from the world's leading organizations"
-        />
+        <LogoList class="border-smooth border-b" title="Trusted by developer teams worldwide" />
     {/if}
 
     {#if config.showBento}
@@ -48,7 +46,7 @@
         <Pullquote
             name="Phil McCluskey"
             title="App Manager, Majik Kids"
-            avatar="/images/testimonials/phil.jpg"
+            avatar="/images/testimonials/phil-avatar.avif"
         >
             <span class="text-secondary">Just like a Swiss Army Knife</span> you can choose and use the
             tools that you need with Appwrite.</Pullquote
@@ -74,7 +72,7 @@
                         name: 'Ryan OConnor',
                         title: 'Founder',
                         company: 'K-Collect',
-                        image: '/images/testimonials/ryan-oconner-testimonial.png'
+                        image: '/images/testimonials/ryan-oconner-testimonial.avif'
                     }}
                 >
                     The switch to using Appwrite brought

@@ -3,12 +3,25 @@ layout: post
 title: Simplifying social media management with automation and AI with StoreAlert and Appwrite
 description: Discover how Appwrite Cloud seamlessly powers Socialaize's growth, handling 200K to 600K daily function executions and delivering enterprise-grade infrastructure while creating annual savings of up to 300% on backend costs.
 date: 2025-08-22
-cover: /images/blog/customer-story-socialaize/cover.png
+cover: /images/blog/customer-story-socialaize/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: customer-stories
 featured: false
 callToAction: true
+faqs:
+  - question: "What is Socialaize?"
+    answer: "Socialaize is an all-in-one social media command center built by Black Leaf Digital. It connects to 9+ platforms (Threads, BlueSky, Instagram, LinkedIn, TikTok, YouTube, Mastodon, Facebook, Pinterest), offers AI content generation, automated cross-posting workflows, scheduling, analytics, and (soon) a unified social inbox."
+  - question: "How does Socialaize use Appwrite?"
+    answer: "Socialaize uses a dedicated [Appwrite Function](/docs/products/functions) per social network to isolate API logic, [Appwrite Databases](/docs/products/databases) as the central data store, [Appwrite Auth](/docs/products/auth) (with teams) for user OAuth and permissions, and [Appwrite Storage](/docs/products/storage) for the media library with permission-aware buckets per team."
+  - question: "How does Appwrite handle 600,000 daily function executions?"
+    answer: "Appwrite Cloud autoscales [Functions](/docs/products/functions) horizontally based on load. Socialaize runs 200,000 to 600,000 function executions per day for cron syncs, AI generation, permissions, payments, and analytics, with Appwrite handling the scaling so they do not have to manage infrastructure."
+  - question: "Why did Socialaize migrate from self-hosted Appwrite to Appwrite Cloud?"
+    answer: "Self-hosting worked initially but became unsustainable as usage grew. Migrating to Appwrite Cloud offloaded scaling, monitoring, and ops to Appwrite. The founder estimates Appwrite costs are around 300% less per year than alternative vendors for the same workload."
+  - question: "Can Appwrite Functions schedule recurring tasks?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) supports cron schedules. Socialaize uses a sync-manager cron function that polls each social platform on a schedule and writes new content into [Appwrite Databases](/docs/products/databases) for processing."
+  - question: "Can multiple users share access to the same data in Appwrite?"
+    answer: "Yes. [Appwrite Teams](/docs/products/auth) let you group users and assign permissions to a team rather than individual users. Socialaize uses Teams so multiple users can share OAuth connections to the same social accounts, with the permission system enforced by Appwrite at the document and storage level."
 ---
 
 

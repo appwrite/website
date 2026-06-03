@@ -3,12 +3,25 @@ layout: post
 title: "Product update December 2024: Highlights of the year"
 description: Get a full recap of products, features and programs we released in 2024.
 date: 2025-01-09
-cover: /images/blog/product-update-december-2024/cover-image.png
+cover: /images/blog/product-update-december-2024/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What was the biggest product launch from Appwrite in 2024?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) was the year's flagship launch. It added push notifications, SMS, and email in one product, making Appwrite the only open source BaaS with a built-in messaging service."
+  - question: "What multi-factor authentication methods does Appwrite support?"
+    answer: "Appwrite supports TOTP, email, and SMS as second factors. You can enable MFA per user and require it for sensitive operations. The Appwrite Console itself supports MFA so your team can secure their admin access."
+  - question: "Which runtimes were added or updated in 2024?"
+    answer: "Appwrite Functions added or updated support for Bun 1.0.29, Node 22, Ruby 3.3, Deno 2.0, PHP 8.3, Python 3.12, Kotlin 1.9, Java 18, Swift 5.9, and Dart 3.3. Go was also added as a brand new runtime during Init."
+  - question: "What is the Integrations Catalog?"
+    answer: "The Integrations Catalog is a curated directory of services that connect with Appwrite, including Stripe, OpenAI, HuggingFace, GitHub, and many more. It is the easiest place to discover plug and play templates for common backend needs."
+  - question: "What are Roles in Appwrite?"
+    answer: "Roles let you manage team access with predefined permission sets like Owner, Developer, Editor, Analyst, and Billing. They make it easier for larger teams to collaborate on the same Appwrite project without giving everyone full access."
+  - question: "How do database backups work in Appwrite?"
+    answer: "Appwrite Cloud takes hot, encrypted backups of your databases without downtime. You can restore from a backup, which is helpful for recovering from accidental deletions or testing schema changes."
 ---
 
 2024 has come to an end, and we want to thank all of you for making it an amazing year for Appwrite! We have seen hundreds of thousands of you join the platform, and even more projects are being ignited every day. In this product update, we take a moment to look back at everything we’ve released to make building with Appwrite accessible and enjoyable for all of you. 
@@ -22,7 +35,7 @@ From launching the highly requested features to launching new programs, here is 
 - 28 integrations
 - 2 programs
 
-![Products & features](/images/blog/product-update-december-2024/products-features.png)
+![Products & features](/images/blog/product-update-december-2024/products-features.avif)
 
 # Products and features highlights 2024
 
@@ -62,7 +75,7 @@ In September, we launched the much-requested [Roles](https://appwrite.io/blog/po
 
 Custom roles are on the way, giving you even more control. Stay tuned.
 
-![Integrations catalog](/images/blog/product-update-december-2024/integrations.png)
+![Integrations catalog](/images/blog/product-update-december-2024/integrations.avif)
 
 # Integrations catalog
 
@@ -70,7 +83,7 @@ We launched the Integrations Catalog with a ton of popular integrations like Str
 
 We will continue to update the catalog with more integrations. You can also apply to become a [Technology partner](https://appwrite.io/integrations/technology-partner) and get your integration listed in the catalog. Check out the catalog [here](https://appwrite.io/integrations).
 
-![Runtimes](/images/blog/product-update-december-2024/runtimes-sdk.png)
+![Runtimes](/images/blog/product-update-december-2024/runtimes-sdk.avif)
 
 # Runtimes
 
@@ -100,7 +113,7 @@ Making Appwrite language agnostic is a high priority. So this year, we worked di
 - [New SDK versions released for Web, Flutter, and Android](https://appwrite.io/changelog/entry/2024-04-25-2)
 - [New SDK versions released](https://appwrite.io/changelog/entry/2024-02-15)
 
-![Programs](/images/blog/product-update-december-2024/programs.png)
+![Programs](/images/blog/product-update-december-2024/programs.avif)
 
 # Programs
 
@@ -118,7 +131,7 @@ In 2024, we also launched Appwrite Education Program for students in partnership
 
 We already have thousands of students building cool projects and learning along the way. What’s holding you back? [Join the program](https://appwrite.io/education) and start building today!
 
-![Community recognitions](/images/blog/product-update-december-2024/community-recognitions.png)
+![Community recognitions](/images/blog/product-update-december-2024/community-recognitions.avif)
 
 # Community recognitions
 

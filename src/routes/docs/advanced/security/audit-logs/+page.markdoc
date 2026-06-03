@@ -16,11 +16,11 @@ You can access audit logs for different products under the **Activity** tab wher
 Logs are available for tables, rows, and individual users.
 
 {% only_dark %}
-![Project settings screen](/images/docs/advanced/security/dark/activity.png)
+![Project settings screen](/images/docs/advanced/security/dark/activity.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Project settings screen](/images/docs/advanced/security/activity.png)
+![Project settings screen](/images/docs/advanced/security/activity.avif)
 {% /only_light %}
 
 # Format {% #format %}

@@ -3,11 +3,24 @@ layout: post
 title: Introducing support for server-side rendering
 description: Server-side rendering (SSR) is now fully supported with Appwrite allowing more flexibility to build how you want.
 date: 2024-02-27
-cover: /images/blog/ssr-announcement.png
+cover: /images/blog/ssr-announcement.avif
 timeToRead: 7
 author: dennis-ivy
 category: product, announcement
 featured: false
+faqs:
+  - question: "What is server side rendering (SSR)?"
+    answer: "SSR is rendering pages on the server and sending HTML to the browser, rather than letting the client fetch data and assemble the page. Frameworks like Next.js, Nuxt, SvelteKit, Astro, and Remix all support SSR for better SEO, faster first paint, and easier protection of private routes."
+  - question: "How does Appwrite support SSR authentication?"
+    answer: "The server SDK methods that create a session (createEmailPasswordSession, createAnonymousSession, createSession) now return a `secret`. You store that secret in a server side cookie and reuse it with `client.setSession(secret)` on subsequent requests. See [Appwrite Auth](/docs/products/auth)."
+  - question: "What's the difference between an admin client and a session client?"
+    answer: "An admin client uses an API key and bypasses rate limits, used for server side admin tasks. A session client uses an end user's session secret and acts on behalf of that user. You construct both from the same `node-appwrite` SDK, just with different credentials."
+  - question: "Should I instantiate a new Appwrite client for every request?"
+    answer: "Yes. Reusing a single client across requests can leak the previous user's session into a different user's request. Create a fresh client per request inside your route handler or middleware to keep them isolated."
+  - question: "Which SDK do I use on the server?"
+    answer: "Use a Server SDK, for example `node-appwrite` in Node.js based frameworks. Avoid installing the client SDK alongside it in the same project to prevent mixing client only and server only methods."
+  - question: "How do I protect API routes with SSR?"
+    answer: "Read the session cookie inside your route, call `client.setSession(cookie)`, then use `account.get()` to verify the user. If it throws, redirect to login. This pattern works across Next.js route handlers, SvelteKit endpoints, and Nuxt server routes."
 ---
 
 We're excited to introduce support for server-side rendering (SSR) authentication patterns. This change enhances the developer experience when building with popular frameworks that provide SSR as an option, such as Next.js, SvelteKit, Nuxt, Astro, Remix, and more.

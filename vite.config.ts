@@ -1,12 +1,16 @@
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
-import dynamicImport from 'vite-plugin-dynamic-import';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import manifestSRI from 'vite-plugin-manifest-sri';
 import { defineConfig } from 'vitest/config';
 // import { sentrySvelteKit } from '@sentry/sveltekit';
 
 export default defineConfig({
+    // Native N-API binary; must not be bundled by Vite SSR.
+    // https://docs.statsig.com/server-core/node-core
+    ssr: {
+        external: ['@statsig/statsig-node-core']
+    },
     plugins: [
         // sentrySvelteKit({
         //     sourceMapsUploadOptions: {
@@ -16,16 +20,9 @@ export default defineConfig({
         // }),
         enhancedImages(),
         sveltekit(),
-        dynamicImport({
-            filter(id) {
-                if (id.includes('/node_modules/@appwrite.io/specs/examples')) {
-                    return true;
-                }
-            }
-        }),
         ViteImageOptimizer({
-            include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
-            exclude: ['**/*.avif', '**/*.webp'],
+            include: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.avif'],
+            exclude: ['**/*.webp'],
             cache: true,
             cacheLocation: '.cache'
         }),

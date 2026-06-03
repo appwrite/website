@@ -17,43 +17,43 @@
             name: 'Auth',
             href: '/products/auth',
             description: 'Secure login with multi-factor auth.',
-            icon: '/images/icons/illustrated/dark/auth.png'
+            icon: '/images/icons/illustrated/dark/auth.avif'
         },
         {
             name: 'Databases',
             href: '/docs/products/databases',
             description: 'Scalable and robust databases.',
-            icon: '/images/icons/illustrated/dark/databases.png'
+            icon: '/images/icons/illustrated/dark/databases.avif'
         },
         {
             name: 'Storage',
             href: '/products/storage',
             description: 'Advanced compression and encryption.',
-            icon: '/images/icons/illustrated/dark/storage.png'
+            icon: '/images/icons/illustrated/dark/storage.avif'
         },
         {
             name: 'Functions',
             href: '/products/functions',
             description: 'Deploy & scale serverless functions.',
-            icon: '/images/icons/illustrated/dark/functions.png'
+            icon: '/images/icons/illustrated/dark/functions.avif'
         },
         {
             name: 'Messaging',
             href: '/products/messaging',
             description: 'Set up a full-functioning messaging service.',
-            icon: '/images/icons/illustrated/dark/messaging.png'
+            icon: '/images/icons/illustrated/dark/messaging.avif'
         },
         {
             name: 'Realtime',
             href: '/docs/apis/realtime',
             description: 'Subscribe and react to any event.',
-            icon: '/images/icons/illustrated/dark/realtime.png'
+            icon: '/images/icons/illustrated/dark/realtime.avif'
         },
         {
             name: 'Sites',
             href: '/products/sites',
             description: 'The open-source Vercel alternative.',
-            icon: '/images/icons/illustrated/dark/sites.png'
+            icon: '/images/icons/illustrated/dark/sites.avif'
         }
     ];
 
@@ -98,6 +98,7 @@
             'text-accent': $open
         }
     )}
+    aria-haspopup="menu"
     use:melt={$trigger}
 >
     {label}
@@ -191,8 +192,10 @@
                         class="my-4 flex flex-1 flex-col gap-3 outline-none xl:flex-row"
                     >
                         <img
-                            src="/images/blog/customer-story-storealert/cover.png"
+                            src="/images/blog/customer-story-storealert/cover-menu.avif"
                             alt="Case study cover"
+                            width="320"
+                            height="180"
                             class="min-h-10 w-full shrink-0 rounded-xl object-cover md:aspect-[3/1] xl:max-w-30"
                         />
                         <p class="w-full text-pretty">

@@ -26,7 +26,7 @@ export const DEFAULT_CTA_POINTS: [string, string, string, string] = [
 const DEVELOPERS_CLOUD_CTA: BlogCtaConfig = {
     heading: 'Build fast, scale faster',
     description: 'Backend infrastructure and web hosting built for developers who ship.',
-    label: 'Start building for free',
+    label: 'Start building',
     href: getAppwriteDashboardUrl(),
     event: 'blog-cta-cloud-btn-click',
     points: DEFAULT_CTA_POINTS
@@ -44,9 +44,9 @@ const STARTUPS_CTA: BlogCtaConfig = {
 const AUTH_CTA: BlogCtaConfig = {
     heading: 'Customer identity without the hassle',
     description: 'Add secure authentication in minutes, not weeks.',
-    label: 'Request a demo',
-    href: 'https://appwrite.io/contact-us/enterprise',
-    event: 'blog-cta-auth-demo-btn-click',
+    label: 'Get started',
+    href: getAppwriteDashboardUrl(),
+    event: 'blog-cta-auth-get-started-btn-click',
     points: [
         'Built-in security and compliance',
         'Multiple login methods',

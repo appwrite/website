@@ -3,10 +3,21 @@ layout: post
 title: Appwrite Messaging is free for six months
 description: We're happy to share our plans for Messaging for the next six months.
 date: 2024-05-08
-cover: /images/blog/messaging-pricing.png
+cover: /images/blog/messaging-pricing.avif
 timeToRead: 5
 author: eldad-fux
 category: Product
+faqs:
+  - question: "Why is Appwrite Messaging free for six months?"
+    answer: "Messaging was still in beta when this announcement went out. The team wanted real usage data and feedback from the community before setting a final price, so they made it free for six months while collecting that input."
+  - question: "What channels does Appwrite Messaging support?"
+    answer: "[Messaging](/docs/products/messaging) covers SMS, email, and push notifications through a single unified API. You can plug in providers like Twilio, Sendgrid, Mailgun, Vonage, APNS, and Firebase Cloud Messaging."
+  - question: "What is the Appwrite Value Framework?"
+    answer: "It is a set of pricing principles the team uses across the platform. The framework prioritizes accessibility, fair limits on usage rather than functionality, consistent features across tiers (except for clearly enterprise-only ones), and pricing that scales with the developer's success."
+  - question: "Can I send scheduled messages with Appwrite?"
+    answer: "Yes. You can schedule messages by passing a scheduledAt timestamp when creating an SMS, email, or push notification. This is helpful for newsletters, reminders, and any campaign that should fire at a specific time."
+  - question: "Can I add my own messaging provider?"
+    answer: "Appwrite is open source and welcomes pull requests for new providers and features. If a provider you need is missing, you can open an issue on GitHub or contribute the integration yourself by following the patterns of existing providers."
 ---
 When we [introduced Messaging](https://appwrite.io/blog/post/announcing-appwrite-messaging) during [Init](https://appwrite.io/init), we were overwhelmed by the excitement within the Appwrite community. Now we can also announce that Messaging will be free for the next six months.
 
@@ -42,7 +53,7 @@ We will add more providers and invite you to contribute with your own pull reque
 
 ## A complete backend for your projects
 
-![Tweet about Messaging](/images/blog/tweet-hitesh.png)
+![Tweet about Messaging](/images/blog/tweet-hitesh.avif)
 
 We’re excited to bring Messaging to Cloud and to offer the service for free for the next six months while in open beta. Adding Messaging makes Appwrite an even more complete backend for your projects, and we look forward to adding more functionality soon.
 

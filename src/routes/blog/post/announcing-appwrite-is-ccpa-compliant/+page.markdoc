@@ -3,10 +3,23 @@ layout: post
 title: "Appwrite is now CCPA compliant: Build privacy-first applications with confidence"
 description: Appwrite complies with the standards of the California Consumer Privacy Act.
 date: 2024-09-19
-cover: /images/blog/ccpa.png
+cover: /images/blog/ccpa.avif
 timeToRead: 6
 author: jake-barnby
 category: security
+faqs:
+  - question: "What is the CCPA?"
+    answer: "The California Consumer Privacy Act is a state law that gives California residents specific rights over their personal data, including the right to know what is collected, to delete it, to opt out of its sale, and to limit how sensitive information is used. It applies to businesses that meet revenue or data-volume thresholds, even if they are not based in California."
+  - question: "What does Appwrite being CCPA compliant mean for my project?"
+    answer: "Appwrite Cloud handles its side of the data processing in line with CCPA requirements, which lets you build apps for California residents without having to negotiate your own infrastructure compliance. You are still responsible for how your own application handles user data, requests, and disclosures."
+  - question: "How is CCPA different from GDPR?"
+    answer: "GDPR is a broader EU regulation that applies to all personal data of people in the EU, with stricter consent and data-minimization rules. CCPA is California-specific and centers on transparency, opt-outs, and the sale of personal information. Many companies satisfy both because the overlapping requirements (deletion, access, security) are similar."
+  - question: "Can I get a Data Processing Agreement (DPA) with Appwrite?"
+    answer: "Yes. Appwrite's DPA, which references both CCPA and GDPR, is available to sign from your organization settings in the Appwrite Console. You can also execute DPAs with vendors that Appwrite uses, since the same standards flow through to the providers behind Appwrite Cloud."
+  - question: "Is self-hosted Appwrite CCPA compliant by default?"
+    answer: "Self-hosted Appwrite gives you the same technical building blocks (encryption, access controls, retention configuration) used in Appwrite Cloud, but compliance for a self-hosted deployment depends entirely on how you operate the infrastructure around it. The CCPA compliance announcement applies specifically to Appwrite Cloud."
+  - question: "Where can I read more about Appwrite's security and compliance posture?"
+    answer: "Start with the [Appwrite security documentation](/docs/advanced/security) for an overview, then read the related blog posts on [GDPR compliance](/blog/post/announcing-appwrite-is-gdpr-compliant), [HIPAA compliance](/blog/post/announcing-appwrite-is-hipaa-compliant), and [SOC 2 Type 1](/blog/post/appwrite-is-now-soc-2-type-1-compliant)."
 ---
 
 At Appwrite, we're committed to helping you build secure, privacy-focused applications that meet the highest data protection standards. Now, Appwrite is **fully CCPA-compliant**, providing secure and reliable data management.

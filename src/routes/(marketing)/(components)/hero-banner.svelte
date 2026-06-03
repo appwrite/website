@@ -5,7 +5,7 @@
     type Props = {
         title: string;
         href: string;
-        icon?: Extract<IconType, 'mongo' | 'sparkle'>;
+        icon?: Extract<IconType, 'mongo' | 'sparkle'> | 'claude' | 'presences';
         class?: string;
     };
 
@@ -17,6 +17,18 @@
         <span class="mongo-icon-badge shrink-0" aria-hidden="true">
             <Icon name="mongo" style="width: 0.75rem; height: 1.125rem; color: #00ED64;" />
         </span>
+    {:else if icon === 'claude'}
+        <span class="claude-icon-badge shrink-0" aria-hidden="true">
+            <img
+                src="/images/docs/mcp/logos/dark/claude.svg"
+                alt=""
+                width="14"
+                height="14"
+                class="claude-icon-badge-img"
+            />
+        </span>
+    {:else if icon === 'presences'}
+        <span class="icon-status-online presences-icon-glyph shrink-0" aria-hidden="true"></span>
     {:else}
         <Icon name="sparkle" class="shrink-0" aria-hidden="true" />
     {/if}
@@ -35,5 +47,28 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .claude-icon-badge {
+        width: 1.375rem;
+        height: 1.375rem;
+        padding: 0.125rem;
+        border-radius: 9999px;
+        background-color: hsl(20 45% 12%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .claude-icon-badge-img {
+        display: block;
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+
+    .presences-icon-glyph {
+        color: #fd366e;
+        font-size: 1rem;
+        line-height: 1;
     }
 </style>

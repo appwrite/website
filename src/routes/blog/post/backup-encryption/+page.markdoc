@@ -2,11 +2,24 @@
 layout: post
 title: "Should I encrypt my backups?"
 description: In this blog, we’ll explore the most popular methods for backup encryption and why encrypting is important.
-cover: /images/blog/backup-encryption/cover.png
+cover: /images/blog/backup-encryption/cover.avif
 timeToRead: 5
 date: 2024-10-15
 author: aditya-oberai
 category: product, security
+faqs:
+  - question: "Should I encrypt my database backups?"
+    answer: "Yes. Backups often contain the same sensitive data as your live database, so an unencrypted backup is just as dangerous if it leaks. Encryption also helps you meet GDPR, HIPAA, and similar compliance requirements."
+  - question: "Does Appwrite encrypt backups automatically?"
+    answer: "Yes. [Appwrite Databases](/docs/products/databases) encrypts every backup in transit and at rest by default. It uses a 2048-bit RSA key pair plus a 128-bit AES key per session, with the AES key destroyed after each backup completes."
+  - question: "What's the difference between encryption at rest and in transit?"
+    answer: "Encryption at rest protects data while it's stored on disk. Encryption in transit protects it while it moves between systems (for example, during a backup upload). You want both, since a gap in either layer can expose your data."
+  - question: "What encryption algorithm is best for backups?"
+    answer: "AES-256 is the practical default for backup data because it's fast and strong. RSA is typically used to encrypt the AES key itself rather than the bulk data, since RSA is slower for large payloads."
+  - question: "Do I need a separate KMS if I use Appwrite?"
+    answer: "Not for backups. Appwrite handles key generation, storage, and rotation for backup encryption internally. If you encrypt application-level data on top of that, you can still pair Appwrite with AWS KMS, Google Cloud KMS, or Azure Key Vault."
+  - question: "Does Appwrite take backups without downtime?"
+    answer: "Yes. Appwrite supports hot backups, so backups run without interrupting your application. You can also configure retention policies based on how critical the data is."
 ---
 Data security is more important than ever, and if you manage databases, one key question you may ask is: *Should I encrypt my backups?* The answer is a clear yes. Let’s break down why encrypting your backups is essential, especially for database backups, and how Appwrite helps by automatically encrypting them.
 
@@ -16,7 +29,7 @@ Backup encryption is the process of turning your data into an unreadable format 
 
 # Why encrypting your database backups is important
 
-Databases often contain sensitive information — like customer data, financial records, and other private details — making them valuable targets for cyberattacks. Here’s why encrypting your database backups is important:
+Databases often contain sensitive information, like customer data, financial records, and other private details, making them valuable targets for cyberattacks. Here’s why encrypting your database backups is important:
 
 1. **Protection from data breaches**: If someone gains access to your backup, encryption ensures they can’t read or misuse the data.
 2. **Compliance with regulations**: Many industries have laws and regulations that require encryption of sensitive data, including backups. Examples include the GDPR for data protection in Europe and HIPAA for health data in the U.S.
@@ -28,7 +41,7 @@ Databases often contain sensitive information — like customer data, financial 
 There are several methods to encrypt backups, each offering different levels of security:
 
 - **Symmetric encryption**: Uses the same key for both encryption and decryption. It’s fast but requires secure key management because if the key is lost or stolen, you could lose access to the data.
-- **Asymmetric encryption**: Uses two keys — one for encryption and another for decryption. It’s more secure but slower, especially with large amounts of data.
+- **Asymmetric encryption**: Uses two keys, one for encryption and another for decryption. It’s more secure but slower, especially with large amounts of data.
 - **Encryption at rest**: Protects data while it’s stored and not being actively used.
 - **Encryption in transit**: Ensures data is safe while it’s being moved from one location to another, like during backup or restoration.
 
@@ -37,7 +50,7 @@ There are several methods to encrypt backups, each offering different levels of 
 When it comes to securing your backups, encryption is a vital tool. Several encryption techniques are commonly used to protect data, each offering varying levels of security and performance. Here are some of the most popular backup encryption techniques:
 
 1. **AES (Advanced Encryption Standard)**: AES is one of the most widely used encryption standards today, especially AES-256, which provides a strong balance between security and performance. It uses a symmetric key algorithm, meaning the same key is used for both encryption and decryption. AES is commonly used in backup systems because it is both secure and efficient for large datasets, such as database backups.
-2. **RSA (Rivest-Shamir-Adleman)**: RSA is an asymmetric encryption technique that uses a pair of keys—a public key for encryption and a private key for decryption. RSA is known for its security strength but is slower than AES, making it less suitable for encrypting large backups. However, it is often used to secure the transmission of smaller, sensitive data like encryption keys.
+2. **RSA (Rivest-Shamir-Adleman)**: RSA is an asymmetric encryption technique that uses a pair of keys: a public key for encryption and a private key for decryption. RSA is known for its security strength but is slower than AES, making it less suitable for encrypting large backups. However, it is often used to secure the transmission of smaller, sensitive data like encryption keys.
 
 For large database backups, AES-256 is generally the best choice due to its robust security and efficiency, but the right encryption technique may vary depending on your specific needs.
 

@@ -3,11 +3,24 @@ layout: post
 title: "Introducing Realtime queries: Server-side event filtering for subscriptions"
 description: Pass SDK queries when subscribing to realtime channels to automatically filter events server-side, so your callbacks only receive the updates you care about.
 date: 2026-02-16
-cover: /images/blog/announcing-realtime-queries/cover.png
+cover: /images/blog/announcing-realtime-queries/cover.avif
 timeToRead: 4
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What are Realtime queries in Appwrite?"
+    answer: "Realtime queries let you pass standard Appwrite SDK queries when subscribing to a channel. Events are filtered server-side based on those queries, so your callback only fires when the payload matches. This eliminates manual filtering inside subscription handlers."
+  - question: "Which query operators work with Appwrite Realtime?"
+    answer: "Realtime supports a focused subset of operators: comparison (`equal`, `notEqual`, `greaterThan`, `greaterThanEqual`, `lessThan`, `lessThanEqual`), null checks (`isNull`, `isNotNull`), and logical composition (`and`, `or`). These cover the most common patterns for filtering live updates."
+  - question: "Why filter realtime events on the server instead of the client?"
+    answer: "Server-side filtering reduces bandwidth and CPU on the client because unmatched events never cross the network. It also keeps your subscription logic declarative, so you reason about what should trigger a callback in one place rather than scattering `if` checks across handlers."
+  - question: "Do Realtime queries replace Channel helpers?"
+    answer: "No. Channel helpers describe which resources to subscribe to, while Realtime queries describe which payloads to deliver. They are complementary: use channel helpers to scope the subscription to a table or row pattern, then add queries to filter the matching events."
+  - question: "Are Realtime queries available on all Appwrite client SDKs?"
+    answer: "Yes. Realtime queries are supported on the Web, Flutter, Apple, and Android client SDKs. The API uses the same `Query` helper class you already use for database operations, so there is no new query syntax to learn."
+  - question: "How do I subscribe to all changes for a specific user in a table?"
+    answer: "Subscribe to the table's row channel and pass a query that filters by user, for example `Query.equal('userId', [currentUserId])`. The server only emits events on that subscription when the payload matches, so you get a focused stream without writing filter code in your callback."
 ---
 
 If you've built realtime features with Appwrite, you've likely written filtering logic inside your subscription callbacks: checking payload fields, comparing values, and discarding events you don't need. While this works, it adds boilerplate to your client code and means you're still receiving and processing every event on the channel, even the ones you'll throw away.

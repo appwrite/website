@@ -3,10 +3,23 @@ layout: post
 title: Lynx by ByteDance vs React Native
 description: Lynx is a new cross-platform UI framework from ByteDance. Let's explore what it offers and how it compares to React Native.
 date: 2025-03-06
-cover: /images/blog/bytedance-lynx-vs-react-native/cover.png
+cover: /images/blog/bytedance-lynx-vs-react-native/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "What is Lynx by ByteDance?"
+    answer: "Lynx is an open-source cross-platform UI framework from ByteDance, the company behind TikTok. It targets Android, iOS, and the web from a single codebase using React-like components and CSS. ByteDance already uses Lynx internally to power parts of TikTok, so it has been battle-tested at scale before being released to the public."
+  - question: "How is Lynx different from React Native?"
+    answer: "Lynx ships with a custom JavaScript engine (PrimJS), a dual-thread architecture that splits UI rendering from logic, and a custom rendering engine that adapts to each platform. React Native, by contrast, runs JavaScript on a single thread and maps to native components through a bridge or the new JSI. The result is that Lynx aims for smoother UI under heavy load, while React Native leans on the native look-and-feel of each platform."
+  - question: "Should I switch from React Native to Lynx today?"
+    answer: "Probably not yet. Lynx is new, the ecosystem is small, and most libraries you use with React Native do not exist for Lynx. If you are starting a greenfield project and want to evaluate it, Lynx is interesting, but for production apps with deadlines, React Native still has the larger community and more SDKs, including the [Appwrite React Native SDK](/docs/quick-starts)."
+  - question: "What is dual-thread architecture and why does it matter?"
+    answer: "Dual-thread architecture means UI work and business logic run on separate JavaScript threads, so heavy data fetching or calculations cannot block the animation thread. This is why Lynx claims smoother interactions in apps with intense computation. React Native is moving in a similar direction with its new architecture, but Lynx was built around this idea from day one."
+  - question: "Does Lynx work with backend services like Appwrite?"
+    answer: "You can use any HTTP-based API from Lynx, including Appwrite, by calling the REST endpoints directly. Appwrite does not have an official Lynx SDK yet, but the REST API is documented and works the same way as it does from any web client. The React Native SDK is the closest reference if you want a parallel example."
+  - question: "Is Lynx production-ready?"
+    answer: "It is in production at ByteDance scale, which is meaningful, but it is early days outside of that. Documentation, tooling, and third-party libraries are still catching up. Treat it like a serious bet for an experimental project, not a default replacement for React Native in 2026."
 ---
 
 ByteDance, the company behind TikTok, recently released a new cross-platform UI framework called [Lynx](https://lynxjs.org/blog/lynx-unlock-native-for-more.html). It allows developers to build applications for Android, iOS, and the web using familiar web technologies (React and CSS). Lynx is still new, but ByteDance has successfully used it internally across several of its apps, including TikTok.

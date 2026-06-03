@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite 1.5: celebrating the contributors"
 description: Appreciating the contributors from our community who help shape Appwrite as it is today.
 date: 2024-03-06
-cover: /images/blog/celebrating-1.5-contributors.png
+cover: /images/blog/celebrating-1.5-contributors.avif
 timeToRead: 5
 author: aditya-oberai
 category: open-source
 featured: false
+faqs:
+  - question: "What was new in Appwrite 1.5?"
+    answer: "Appwrite 1.5 introduced [Appwrite Messaging](/docs/products/messaging), Two-Factor Authentication, Server-Side Rendering support in the SDKs, Enums for cleaner SDK usage, and new Bun and Dart function runtimes on Appwrite Cloud. It was a community-driven release with contributions from more than 20 external developers."
+  - question: "How do I start contributing to Appwrite as an open-source developer?"
+    answer: "The Appwrite GitHub organization has labeled issues for first-time contributors, and the contributing guides cover local setup for the server, console, and SDK generators. Joining the Appwrite Discord helps too, since most of the technical discussion happens there. Pick a small issue first to learn the review process before tackling a feature."
+  - question: "What is the Appwrite SDK Generator?"
+    answer: "It is the internal tool that produces all of Appwrite's official SDKs (JavaScript, Python, Dart, Flutter, Swift, and others) from a shared specification. Contributors who add a new server feature usually update the spec, then regenerate the SDKs. This is how a single change can ripple out into every supported language at once."
+  - question: "Are contributions to Appwrite limited to code?"
+    answer: "No. Documentation, tutorials, examples, translations, bug reports, and design feedback are all useful contributions. Many people enter the community through docs or examples before they make a code change. The [Appwrite docs](/docs) repo accepts the same kind of pull requests as the main server repo."
+  - question: "What is the Appwrite Heroes program?"
+    answer: "Appwrite Heroes is a recognition program for the most active community contributors. Heroes get early access to releases, branded swag, and a direct line to the core team. The first batch was selected during the 1.5 cycle, and the program has continued to grow with each major release."
+  - question: "How does Appwrite handle contributor reviews?"
+    answer: "Pull requests typically get reviews from one or more core engineers and any maintainer with relevant context. Reviews focus on architecture fit, security, and consistency with existing APIs. The team works async, so feedback can take a day or two, but contributors are kept in the loop the whole way through."
 ---
 
 For those of you who have been following Appwrite, you might have noticed how much we value open source and the community that keeps it going. Appwrite has been a part of that community since 2019. However, the team has been contributing to open source long before Appwrite became an entity. If one thing in life is certain, it is that Appwrite is open-source.

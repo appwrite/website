@@ -1,13 +1,26 @@
 ---
 layout: post
 title: February 2024 - Incident Report
-cover: /images/blog/privacy.png
+cover: /images/blog/privacy.avif
 description: In this post, we detail the incidents encountered in February 2024, including high memory usage, database restarts, repeated gateway timeouts, and executor crashes. We share our analysis, user impact, and the resolution steps taken to mitigate these issues, reinforcing our commitment to transparency and continuous improvement.
 date: 2024-03-15
 timeToRead: 3
 author: christy-jacob
 category: cloud
 featured: false
+faqs:
+  - question: "What is an incident report?"
+    answer: "An incident report is a public write up of an outage or degradation, what caused it, who was affected, and how it was resolved. Mature cloud platforms publish them to keep customers informed and to document the lessons learned."
+  - question: "Why does Appwrite publish monthly incident reports?"
+    answer: "Transparency builds trust with developers who run production workloads on Appwrite Cloud. Sharing incidents, root causes, and mitigations gives customers the information they need to plan around any disruptions and to evaluate Appwrite's reliability over time."
+  - question: "How can I check the current status of Appwrite Cloud?"
+    answer: "Real time uptime and active incidents are published on the Appwrite status page. Each incident is updated as engineers investigate, mitigate, and resolve it."
+  - question: "What is a gateway timeout and why does it happen?"
+    answer: "A gateway timeout means a request reached the load balancer but the upstream service did not respond in time. It is usually caused by routing issues, an overloaded service, or a slow database query, not by the load balancer itself."
+  - question: "How does Appwrite reduce the chance of similar incidents?"
+    answer: "Each incident is followed by a postmortem that produces concrete action items, for example reverting a problematic config change, tightening alerts, or hardening deployment automation. Those items are tracked through to completion."
+  - question: "Does Appwrite Cloud offer a Service Level Agreement (SLA)?"
+    answer: "Appwrite Cloud offers SLAs on paid plans. The Cloud pricing page lists the current uptime commitments and how credits are handled if those targets are missed."
 ---
 
 As Appwrite Cloud continues to grow and scale, it is inevitable that we face challenges and obstacles that test the resilience of our systems and our team's ability to respond swiftly. February 2024 was no exception, as we encountered a series of incidents that put our protocols to the test. While these moments are opportunities for growth, they also remind us of the importance of transparency and communication with our community. This blog post aims to provide a detailed overview of the incidents we experienced throughout the month, including the causes, our responses, and the lessons learned. Our commitment to continuous improvement drives us to share these insights openly, reinforcing our dedication to reliability and trust.

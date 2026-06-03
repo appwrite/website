@@ -18,11 +18,11 @@ This example uses the "facebook/musicgen-large" from Hugging Face to convert tex
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -88,11 +88,11 @@ export default AppwriteService;
 In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
-![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+![Create bucket on console](/images/docs/storage/dark/create-bucket.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create bucket on console](/images/docs/storage/create-bucket.png)
+![Create bucket on console](/images/docs/storage/create-bucket.avif)
 {% /only_light %}
 
 Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.

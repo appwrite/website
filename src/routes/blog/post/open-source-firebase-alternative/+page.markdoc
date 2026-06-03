@@ -3,11 +3,24 @@ layout: post
 title: "Appwrite vs Firebase: An open source alternative for Firebase"
 description: Get a comprehensive comparison between Appwrite and Firebase to decide what platform to use for your project's backend. And learn how Appwrite's open source nature allows you total control of your project's data.
 date: 2024-02-03
-cover: /images/blog/open-source-firebase-alternative/cover.png
+cover: /images/blog/open-source-firebase-alternative/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: product
 callToAction: true
+faqs:
+  - question: "Is Appwrite a true open source alternative to Firebase?"
+    answer: "Yes. Appwrite is fully open source under the BSD-3-Clause license and the source code is on GitHub. Firebase is a proprietary Google product, so the main difference is that you can self-host Appwrite, audit it, and avoid vendor lock-in."
+  - question: "What database does Appwrite use under the hood?"
+    answer: "Appwrite uses MariaDB with an abstraction layer that lets you define schema, indexes, and relationships through APIs and the console. You do not need SQL knowledge to use it, though the underlying engine is relational rather than document oriented like Firestore."
+  - question: "Can Appwrite replace Firebase Authentication?"
+    answer: "Yes. [Appwrite Authentication](/docs/products/auth) supports email/password, OAuth (30+ providers), magic links, OTP, phone, anonymous, JWT, and custom tokens. It also adds extras like password history, password dictionary, session limits, and personal data checks."
+  - question: "What languages do Appwrite Functions support?"
+    answer: "Appwrite [Functions](/docs/products/functions) supports over 10 runtimes including Node.js, Python, PHP, Ruby, Dart, Bun, Deno, Kotlin, Swift, Java, and Go. Firebase Cloud Functions is limited to JavaScript, TypeScript, and Python."
+  - question: "Does Appwrite offer real-time updates like Firebase?"
+    answer: "Yes. Appwrite includes a Realtime API across Databases, Storage, Functions, and Authentication, so your client can subscribe to changes over a WebSocket connection. The pattern is similar to Firestore listeners."
+  - question: "Can I self-host Appwrite for free?"
+    answer: "Yes. You can self-host Appwrite on your own infrastructure with Docker for free, with no usage limits. Appwrite Cloud also offers a free tier if you prefer a managed option."
 ---
 
 Updated on October 6, 2025
@@ -15,6 +28,8 @@ Updated on October 6, 2025
 If you are looking to build a mobile app, website, tool, or any other application that needs a backend, then you also know the daunting tasks that await. This is probably what brought you to this blog in the first place: looking for a solution to take care of your backend. BaaS provides pre-built backend infrastructure and services to simplify app development, handling server-side tasks like data storage, user management, APIs, server maintenance, security, database management, and more. Two of these services are Firebase and Appwrite.
 
 Appwrite and Firebase are both solid options to choose as the Backend-as-a-Service (BaaS) for your app. However, their feature sets can vary substantially. In this article, we will give you a rundown of Appwrite and Firebase to understand how each provider will fit your specific needs.
+
+For a multi-vendor snapshot of **BaaS platforms** (open source, self-hosting, pricing shape, lock-in), see [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
 
 # Appwrite - Open-source backend platform
 
@@ -76,7 +91,7 @@ Storage allows you to manage files in your project. It can store images, videos,
 - Appwrite Storage offers a dedicated API for [image transformations](/docs/products/storage/images), including functionalities such as manipulating resolution, image reformatting, caching, and compression.
 - Appwrite Storage offers file encryption for increased security as well as gzip and zstd compression for network transfer optimization.
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 ## Functions
 
@@ -147,7 +162,7 @@ Both Appwrite and Firebase are powerful platforms that simplify backend developm
 
 Firebase offers a mature, battle-tested ecosystem that’s deeply integrated with Google Cloud. It’s a good choice for teams looking for a managed, ready-to-use solution that scales seamlessly with minimal setup.
 
-Appwrite, meanwhile, brings the benefits of open source to modern development. It provides a unified platform where you can manage authentication, databases, storage, messaging, and even hosting—all in one place. You can self-host Appwrite for full control or use Appwrite Cloud for a managed experience. This flexibility, combined with transparent pricing and a growing developer community, makes Appwrite a strong alternative for teams that want ownership and customization.
+Appwrite, meanwhile, brings the benefits of open source to modern development. It provides a unified platform where you can manage authentication, databases, storage, messaging, and even hosting, all in one place. You can self-host Appwrite for full control or use Appwrite Cloud for a managed experience. This flexibility, combined with transparent pricing and a growing developer community, makes Appwrite a strong alternative for teams that want ownership and customization.
 
 Ultimately, the right choice depends on your priorities. If you want a managed, plug-and-play ecosystem with deep Google Cloud integrations, Firebase fits the bill. If you value openness, flexibility, and an all-in-one development experience that you can run anywhere, Appwrite is built for you.
 

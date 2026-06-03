@@ -3,11 +3,24 @@ layout: post
 title: "Introducing the Python machine learning runtime"
 description: A new runtime optimized for machine learning workloads, now available in Appwrite Cloud.
 date: 2024-05-21
-cover: /images/blog/introducing-python-machine-learning-runtime/cover.png
+cover: /images/blog/introducing-python-machine-learning-runtime/cover.avif
 timeToRead: 5
 author: luke-silver
 category: product, announcement
 featured: false
+faqs:
+  - question: "What is the Python ML runtime in Appwrite Functions?"
+    answer: "Python ML is a dedicated function runtime built on a Debian based image (instead of Alpine) so that machine learning libraries like NumPy, PyTorch, TensorFlow, and scikit learn can install correctly. Select it as `Python (ML) 3.11` when creating a function. See [Appwrite Functions](/docs/products/functions)."
+  - question: "Why not just install ML libraries in the regular Python runtime?"
+    answer: "The standard Python runtime is based on Alpine Linux, which keeps the image small but lacks the glibc and build toolchain that wheels for libraries like NumPy and TensorFlow expect. Python ML uses a different base image so those installations actually work."
+  - question: "Does the Python ML runtime support GPU acceleration?"
+    answer: "Not yet. The runtime is CPU only during beta. If your model needs a GPU, run training on a GPU host and use Python ML for inference of smaller models or for preprocessing pipelines."
+  - question: "What libraries should I install for AI workloads?"
+    answer: "Common picks include TensorFlow, PyTorch, scikit learn, Keras, and NLTK. Add them to your function's requirements.txt and Appwrite will install them at build time. For inference, lightweight options like ONNX Runtime or scikit learn pipelines work best within function execution limits."
+  - question: "Can I run an LLM inside a Python ML function?"
+    answer: "You can run small models locally, but large language models are usually too big to load into a CPU function within memory and time limits. The common pattern is to call a hosted inference API (OpenAI, Hugging Face Inference, Together) from the function and just orchestrate the call."
+  - question: "How do I keep Python ML cold starts manageable?"
+    answer: "Move heavy initialization (loading models, downloading weights) outside the handler so it runs once per warm container instead of on every request. Cache models in the function's filesystem when possible to avoid downloading them again."
 ---
 
 # Introducing Python ML
@@ -29,7 +42,7 @@ We decided to build a new runtime image to overcome this limitation and at the s
 ## Getting started
 
 1. Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
-    ![Create Function](/images/blog/introducing-python-machine-learning-runtime/create-function.png)
+    ![Create Function](/images/blog/introducing-python-machine-learning-runtime/create-function.avif)
 2. To get started with the new runtime, navigate to your Appwrite console and select `Python (ML) 3.11` when creating a new function. 
 3. Follow the step-by-step wizard and create the function.
 
@@ -105,7 +118,7 @@ Synchronous executions have a global timeout limit of 30s on Appwrite Cloud. The
 
 If you see `FUNCTION_SYCHRONOUS_TIMEOUT` errors when executing your function, navigate to your **Function settings** and try increasing your timeout period to a larger number such 50 seconds or more.
 
-![Settings timeout](/images/blog/introducing-python-machine-learning-runtime/settings-timeout.png)
+![Settings timeout](/images/blog/introducing-python-machine-learning-runtime/settings-timeout.avif)
 
 ## Training vs inference
 

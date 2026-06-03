@@ -3,10 +3,23 @@ layout: post
 title: Improving user security in your web apps with email OTP auth
 description: Understand how email OTP authentication works and how you can implement it in a SvelteKit application.
 date: 2024-04-05
-cover: /images/blog/email-otp-auth-sveltekit/cover.png
+cover: /images/blog/email-otp-auth-sveltekit/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: authentication
+faqs:
+  - question: "What is email OTP authentication?"
+    answer: "Email OTP authentication lets users sign in with a 6-digit one-time code sent to their email instead of a password. It is a passwordless flow that pairs well with magic URLs and other modern auth methods, and it is part of [Appwrite Auth](/docs/products/auth)."
+  - question: "How is email OTP different from magic URL login?"
+    answer: "Magic URL sends a clickable link to the inbox, while email OTP sends a numeric code the user enters in the app. OTPs are better when users may not be signed into their email on the same device, when you want to avoid redirect flows, or when deep linking on mobile is awkward. The trade-off is more typing and a shorter expiry window."
+  - question: "How do I implement email OTP in a SvelteKit app with Appwrite?"
+    answer: "Use the Appwrite Web SDK in your SvelteKit app, call `createEmailToken` with a user ID and email to send the code, then call `createSession` with the user ID and the entered code to log the user in. The full flow uses two screens: one for the email and one for the OTP."
+  - question: "Do I need Appwrite Cloud or can I self-host for email OTP?"
+    answer: "Both work. On [Appwrite Cloud](https://cloud.appwrite.io) the feature is ready out of the box. On a self-hosted instance, configure SMTP credentials in your `.env` file so Appwrite can actually deliver the code, then restart with `docker compose up -d`."
+  - question: "Is email OTP secure enough for production apps?"
+    answer: "Email OTP is more secure than passwords for most users because it removes password reuse and weak passwords from the equation. The trade-off is dependency on email delivery and inbox security. For higher-assurance use cases, pair email OTP with multi-factor authentication using TOTP."
+  - question: "What other passwordless options does Appwrite support?"
+    answer: "Appwrite Auth supports email OTP, phone OTP via SMS, magic URLs, OAuth providers, passkeys, and anonymous sessions. You can combine them with MFA factors like TOTP or email codes for a layered auth strategy. See the [Appwrite Auth docs](/docs/products/auth) for the full list."
 ---
 
 To discover a balance between security and user convenience, one growing trend we have seen recently is the implementation of passwordless authentication. Today, both small and large companies are transitioning to using passwordless authentication methods over traditional password-based ones, such as Expensify (whose transition was also covered in a Forbes [article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023). Appwrite has always maintained support for both types of authentication, featuring phone-based OTPs (one-time passwords) and magic URLs in our list of authentication methods.

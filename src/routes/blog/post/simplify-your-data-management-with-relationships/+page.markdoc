@@ -3,10 +3,23 @@ layout: post
 title: Simplify your data management with relationships
 description: Learn how to simplify your collection management and save time and effort with database relationships.
 date: 2024-01-05
-cover: /images/blog/simplify-your-data-management-with-relationships/cover.png
+cover: /images/blog/simplify-your-data-management-with-relationships/cover.avif
 timeToRead: 6
 author: jake-barnby
 category: accessibility
+faqs:
+  - question: "What relationship types does Appwrite Databases support?"
+    answer: "Four: one-to-one, one-to-many, many-to-one, and many-to-many. You pick the type when creating the relationship attribute, and Appwrite enforces the cardinality so you do not have to model it manually with join tables or ID arrays."
+  - question: "When should I use a one-way vs two-way relationship?"
+    answer: "Use a one-way relationship when only one side needs to know about the other (for example, a movie that lists its reviews but reviews do not need to expose the movie). Use two-way when both sides need to traverse the link in queries. Two-way costs slightly more storage and write overhead, so do not enable it by default."
+  - question: "Does Appwrite support relationships across [Databases](/docs/products/databases) products?"
+    answer: "Relationships are defined within a single Appwrite database between tables in that database. You cannot create a relationship attribute that points to a row in a different database, so model related entities in the same database."
+  - question: "What are the deletion behaviors for related rows?"
+    answer: "Appwrite lets you choose how related rows behave when a parent is deleted: restrict (block the delete), cascade (delete the children), or set null (clear the relationship). Pick based on your data model. Cascade is convenient but irreversible, restrict is safer when child data has independent value."
+  - question: "Should I model everything with relationships or denormalize?"
+    answer: "Use relationships when the related data has its own lifecycle, is shared across parents, or is too large to embed. Denormalize (duplicate small, rarely-changing fields onto the parent) when you mainly need a label or a couple of attributes in a list view and want to avoid the extra lookup. Both patterns coexist comfortably in Appwrite."
+  - question: "Do relationships replace the need to write joins?"
+    answer: "For most reads, yes. Appwrite resolves related rows in the response when you query the parent, so you do not need to perform a separate fetch and merge in your code. For complex aggregations or filters across multiple relationships, you may still want to break the work into multiple queries."
 ---
 
 Managing collections of data is an essential task for any application, but it can quickly become complex when you need to keep track of the relationships between different collections. For instance, if you have two collections of data, such as movies and reviews, you may need to retrieve all the reviews associated with a particular movie. However, writing complex code to retrieve this data and merge it together manually can be time-consuming and prone to errors.
@@ -17,25 +30,25 @@ That's where one of Appwrite’s newest features comes in. Database relationship
 
 ## One to One
 
-![one to one](/images/blog/simplify-your-data-management-with-relationships/one-to-one.png)
+![one to one](/images/blog/simplify-your-data-management-with-relationships/one-to-one.avif)
 
 A one-to-one relationship means that each record in one collection is associated with only one record in another collection. For example, if you have a collection of users and a collection of profiles, each user can have only one profile, and each profile can belong to only one user.
 
 ## One to Many
 
-![one to many](/images/blog/simplify-your-data-management-with-relationships/one-to-many.png)
+![one to many](/images/blog/simplify-your-data-management-with-relationships/one-to-many.avif)
 
 A one-to-many relationship is when each record in one collection can be associated with multiple records in another collection. For instance, if you have a collection of artists and a collection of albums, each artist can have many albums released, but each album can only be released by one artist.
 
 ## Many To One
 
-![many to one](/images/blog/simplify-your-data-management-with-relationships/many-to-one.png)
+![many to one](/images/blog/simplify-your-data-management-with-relationships/many-to-one.avif)
 
 In contrast, many-to-one relationships are when multiple records in one collection can be associated with a single record in another collection. Inversely to the previous example, if you have a collection of albums and a collection of artists, many albums can be released by a single artist. While this may seem the same as a one-to-many relationship, it differs once you take the direction into account. A many-to-one relationship that is one-way can be used to represent a relationship that is only seen on the many side.
 
 ## Many to Many
 
-![many to many](/images/blog/simplify-your-data-management-with-relationships/many-to-many.png)
+![many to many](/images/blog/simplify-your-data-management-with-relationships/many-to-many.avif)
 
 Finally, many-to-many relationships describe a scenario where multiple records in one collection can be associated with multiple records in another collection. For example, if you have a collection of books and a collection of authors, each book can have multiple authors, and each author can write multiple books.
 

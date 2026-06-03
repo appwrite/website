@@ -68,11 +68,11 @@ Each execution can have one of the follow status.
 When you click on an execution, you will be taken to an execution detail screen.
 
 {% only_dark %}
-![Execution details screen](/images/docs/functions/execution/dark/execute-function.png)
+![Execution details screen](/images/docs/functions/execution/dark/execute-function.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Execution details screen](/images/docs/functions/execution/execute-function.png)
+![Execution details screen](/images/docs/functions/execution/execute-function.avif)
 {% /only_light %}
 
 You can find both request and response details.

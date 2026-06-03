@@ -1,27 +1,114 @@
 <script lang="ts">
+    import { browser, building } from '$app/environment';
+    import { page } from '$app/state';
     import { PUBLIC_APPWRITE_DASHBOARD } from '$env/static/public';
+    import { onMount } from 'svelte';
     import { trackEvent } from '$lib/actions/analytics';
+    import {
+        DEFAULT_HERO_CTA,
+        DEFAULT_HERO_SUBTITLE,
+        DEFAULT_HERO_TITLE
+    } from '$lib/statsig/constants';
+    import { initStatsig, whenStatsigReady } from '$lib/statsig/client';
+    import { readMarketingHeroExperimentsForExposure } from '$lib/statsig/experiments/marketing-hero-client';
+    import {
+        hasHeroExperimentQueryOverrides,
+        resolveHeroQueryOverrides
+    } from '$lib/statsig/hero-query-overrides';
+    import type { HeroLayoutVariant } from '$lib/statsig/hero-layout';
+    import { ENV } from '$lib/system';
     import GradientText from '$lib/components/fancy/gradient-text.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Dashboard from '$routes/(marketing)/(components)/dashboard.svelte';
+    import HeroDashboardMockup from '$routes/(marketing)/(components)/hero-dashboard-mockup.svelte';
 
     const {
-        title = 'Build like a team of hundreds',
-        subtitle = 'Appwrite is an open-source, all-in-one development platform. Use built-in backend infrastructure and web hosting, all from a single place.',
+        title = DEFAULT_HERO_TITLE,
+        subtitle = DEFAULT_HERO_SUBTITLE,
         showDashboard = true,
-        ctaLabel = 'Start building for free',
-        ctaHref = PUBLIC_APPWRITE_DASHBOARD
+        ctaLabel = DEFAULT_HERO_CTA,
+        ctaHref = PUBLIC_APPWRITE_DASHBOARD,
+        heroLayout = 0
     } = $props<{
         title?: string;
         subtitle?: string;
         showDashboard?: boolean;
         ctaLabel?: string;
         ctaHref?: string;
+        heroLayout?: HeroLayoutVariant;
     }>();
+
+    /** Same client hydration path as marketing `hero.svelte` (Statsig + query overrides). */
+    let clientHeroLayout = $state<HeroLayoutVariant | undefined>(undefined);
+    let clientHeroTitle = $state<string | undefined>(undefined);
+    let clientHeroSubtitle = $state<string | undefined>(undefined);
+    let clientHeroCta = $state<string | undefined>(undefined);
+
+    const resolved = $derived(
+        resolveHeroQueryOverrides(building ? new URLSearchParams() : page.url.searchParams, {
+            heroLayout: clientHeroLayout ?? heroLayout,
+            heroSubtitle: clientHeroSubtitle ?? subtitle,
+            heroTitle: clientHeroTitle ?? title,
+            heroCta: clientHeroCta ?? ctaLabel
+        })
+    );
+
+    onMount(() => {
+        if (!browser || ENV.TEST) return;
+        if (hasHeroExperimentQueryOverrides(page.url.searchParams)) return;
+
+        const data = page.data as {
+            statsigBootstrap?: string | null;
+            statsigStableUserId?: string | null;
+            statsigUserAgent?: string | null;
+        };
+        void initStatsig(
+            data.statsigBootstrap ?? null,
+            data.statsigStableUserId ?? null,
+            data.statsigUserAgent ?? null
+        );
+
+        void whenStatsigReady().then((client) => {
+            if (!client) return;
+
+            const {
+                heroTitle: nextTitle,
+                heroSubtitle: nextSubtitle,
+                heroLayout: nextLayout,
+                heroCta: nextCta
+            } = readMarketingHeroExperimentsForExposure(client, {
+                heroTitle: title,
+                heroSubtitle: subtitle,
+                heroLayout,
+                heroCta: ctaLabel
+            });
+            if (nextTitle !== title) {
+                clientHeroTitle = nextTitle;
+            }
+            if (nextSubtitle !== subtitle) {
+                clientHeroSubtitle = nextSubtitle;
+            }
+            if (nextLayout !== heroLayout) {
+                clientHeroLayout = nextLayout;
+            }
+            if (nextCta !== ctaLabel) {
+                clientHeroCta = nextCta;
+            }
+        });
+    });
+
+    const layoutAside = $derived(resolved.heroLayout === 0);
+    const layoutBottomTwoLineTitle = $derived(resolved.heroLayout === 1);
 </script>
 
-<div class="relative flex max-w-screen items-center overflow-hidden py-12 md:py-0 lg:min-h-[700px]">
+<div
+    class={cn(
+        'relative flex max-w-screen items-center',
+        layoutAside
+            ? 'overflow-hidden py-10 md:py-0 lg:min-h-[680px]'
+            : 'overflow-hidden overflow-y-clip pt-10 pb-6 md:pt-14 md:pb-8 lg:min-h-[560px] lg:pt-16'
+    )}
+>
     <div
         class={cn(
             'animate-lighting absolute top-0 left-0 -z-10 h-screen w-[200vw] -translate-x-[25%] translate-y-8 rotate-25 overflow-hidden blur-3xl md:w-full',
@@ -31,34 +118,93 @@
     ></div>
 
     <div
-        class="relative container mx-auto grid h-full grid-cols-1 place-items-center gap-24 md:grid-cols-2"
+        class={cn(
+            'relative container mx-auto h-full',
+            layoutAside
+                ? 'grid grid-cols-1 place-items-center gap-16 md:grid-cols-2'
+                : 'flex w-full flex-col items-center gap-10 md:gap-14 lg:gap-16'
+        )}
     >
         <div
-            class="animate-blur-in flex flex-col gap-4 [animation-delay:150ms] [animation-duration:1000ms] md:ml-12 lg:ml-0"
+            class={cn(
+                'animate-blur-in flex flex-col [animation-delay:150ms] [animation-duration:1000ms]',
+                layoutAside
+                    ? 'gap-4 md:ml-12 lg:ml-0'
+                    : 'w-full max-w-6xl items-center gap-3 px-4 text-center sm:px-0'
+            )}
         >
-            <GradientText class="animate-fade-in">
-                <h1 class="font-aeonik-pro text-headline text-pretty">
-                    {title}<span class="text-accent">_</span>
-                </h1>
-            </GradientText>
+            {#if layoutAside || layoutBottomTwoLineTitle}
+                <GradientText
+                    class={cn(
+                        'animate-fade-in my-2 md:my-3',
+                        layoutBottomTwoLineTitle &&
+                            'mx-auto block w-full max-w-full px-1 text-center sm:px-0 md:max-w-4xl'
+                    )}
+                >
+                    <h1
+                        class={cn(
+                            'font-aeonik-pro text-balance text-pretty',
+                            layoutBottomTwoLineTitle
+                                ? 'text-title sm:text-headline md:text-title lg:text-headline'
+                                : 'text-headline'
+                        )}
+                    >
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {:else}
+                <GradientText
+                    class={cn(
+                        'animate-fade-in my-2 w-full max-w-full self-stretch text-center md:my-3',
+                        'lg:flex lg:min-w-0 lg:justify-center lg:overflow-x-auto lg:[-webkit-overflow-scrolling:touch] lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden'
+                    )}
+                >
+                    <h1
+                        class="font-aeonik-pro text-title sm:text-headline md:text-title lg:text-headline max-w-full px-1 text-balance text-pretty lg:max-w-none lg:shrink-0 lg:px-0 lg:whitespace-nowrap"
+                    >
+                        {resolved.heroTitle}<span class="text-accent">_</span>
+                    </h1>
+                </GradientText>
+            {/if}
 
-            <p class="text-description text-secondary font-medium">
-                {subtitle}
+            <p
+                class={cn(
+                    'text-description text-secondary mt-2 font-medium md:mt-3',
+                    !layoutAside && 'max-w-2xl text-center text-pretty'
+                )}
+                style:min-height={layoutAside
+                    ? 'calc(4.25 * var(--text-description--line-height, 1.5rem))'
+                    : 'calc(3.25 * var(--text-description--line-height, 1.5rem))'}
+            >
+                {resolved.heroSubtitle}
             </p>
 
-            <div class="mt-4 flex flex-col gap-2 lg:flex-row">
+            <div
+                class={cn(
+                    'flex flex-col gap-2',
+                    layoutAside
+                        ? 'mt-4 lg:flex-row'
+                        : 'mt-3 w-full max-w-xs items-stretch sm:max-w-none sm:flex-row sm:justify-center'
+                )}
+            >
                 <Button
                     href={ctaHref}
-                    class="w-full! lg:w-fit!"
+                    class={layoutAside ? 'w-full! lg:w-fit!' : 'w-full! sm:w-fit!'}
                     onclick={() => {
                         trackEvent(`main-get_started_btn_hero-click`);
-                    }}>{ctaLabel}</Button
+                    }}>{resolved.heroCta}</Button
                 >
             </div>
         </div>
 
         {#if showDashboard}
-            <Dashboard />
+            {#if layoutAside}
+                <HeroDashboardMockup />
+            {:else}
+                <div class="flex w-full justify-center">
+                    <HeroDashboardMockup placement="below" />
+                </div>
+            {/if}
         {/if}
     </div>
 </div>

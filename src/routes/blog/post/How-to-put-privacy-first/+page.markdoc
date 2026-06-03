@@ -3,10 +3,23 @@ layout: post
 title: How to create a privacy-first growth strategy
 description: Appwrite is working towards a completely privacy-friendly and open-source growth stack. We are committed to putting developers first and building a company that values your personal data. We want to treat you as we want to be treated by any vendors we use.
 date: 2024-01-12
-cover: /images/blog/privacy.png
+cover: /images/blog/privacy.avif
 timeToRead: 9
 author: laura-du-ry
 category: security
+faqs:
+  - question: "What is the difference between pixels, tags, and cookies?"
+    answer: "Tags are snippets of code (often managed via Google Tag Manager) that fire actions like analytics events. Pixels are tiny transparent images embedded in a page that report visit data back to a vendor. Cookies are key/value pairs the browser stores, used either by the site (first-party) or by third parties for cross-site tracking."
+  - question: "Which marketing trackers did Appwrite remove?"
+    answer: "Appwrite removed the HubSpot tag, Google Tag Manager, Twitter Pixel, Facebook Pixel, Google Ads Pixel, and Google Analytics Pixel from its website and Cloud Console. Only strictly necessary cookies and a privacy-friendly product analytics option remain, both opt-in via the consent banner."
+  - question: "Can a growth team still measure success without ad pixels?"
+    answer: "Yes. UTM links, privacy-friendly analytics like Plausible, first-party data (signups, account activity), content performance metrics (page views, time on page), and search visibility data all provide enough signal to run growth. You lose cross-site retargeting and granular ad attribution, but most decisions don't require those."
+  - question: "What privacy-friendly analytics tools does Appwrite use?"
+    answer: "Appwrite uses Plausible for website and Cloud Console analytics. Plausible is open source and does not use cookies or collect personal data, which keeps the analytics under the consent threshold in most jurisdictions while still surfacing the metrics growth teams care about."
+  - question: "Why does removing trackers also improve site performance and security?"
+    answer: "Third-party scripts add network requests, JavaScript execution, and external connections to your pages. Removing them cuts load time (Akamai found a 2-second delay can increase bounce by 103%) and reduces the attack surface, since each third-party script is code you don't fully control running on your domain."
+  - question: "Is Appwrite GDPR compliant?"
+    answer: "Yes. Appwrite Cloud is GDPR compliant. Removing marketing pixels and switching to first-party, privacy-friendly tooling is part of how Appwrite maintains that posture, alongside encrypted credential storage and clear data handling commitments."
 ---
 
 With our recent announcement of GDPR compliance, we took a big step in becoming a privacy-first organization. But we didn’t want to stop here. We wanted to take it further than just ticking the privacy boxes. We wanted to act as a party that values your personal data, so we needed to take action and move to privacy-friendly analytics. This led to removing most of the tags, pixels, and cookies on our website and the Appwrite Console. In this blog, we dive deeper into what we removed, how this affected our growth strategy, and, most of all, what we, as a community, gained from this decision.
@@ -19,7 +32,7 @@ With our recent announcement of GDPR compliance, we took a big step in becoming 
 - **Pixels** are small, transparent images that are embedded in a website. When you visit a website with a pixel, your browser sends information about your visit to the company that owns the pixel. This information can include the user's IP address, browser type, and the URL of the page you’re visiting. It is a beneficial tool to retarget website visitors with banner or social ads.
 - **Cookies** have two different types: first-party, which are set by the website you’ve visited mainly to improve your experience on that website, and third-party, which are set by different websites, such as Google Analytics. Third-party cookies are often used to track you across platforms, mostly meant for advertising purposes.
 
-![Appwrite is GDPR compliant](/images/blog/gdpr.png)
+![Appwrite is GDPR compliant](/images/blog/gdpr.avif)
 
 ## So, what did we remove?
 

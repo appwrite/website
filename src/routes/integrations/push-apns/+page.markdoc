@@ -6,19 +6,19 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/push-apns/cover.png
+cover: /images/integrations/push-apns/cover.avif
 category: messaging
 product: 
-    avatar: '/images/integrations/avatars/apple.png'
+    avatar: '/images/integrations/avatars/apple.avif'
     vendor: Apple
     description: 'Apple Push Notification Service is an Apple platform that enables developers to send notifications to iOS devices, macOS computers, and other Apple devices.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/push-apns/cover.png
-    - /images/integrations/push-apns/apple-developer-program.png
-    - /images/integrations/push-apns/provider.png
+    - /images/integrations/push-apns/cover.avif
+    - /images/integrations/push-apns/apple-developer-program.avif
+    - /images/integrations/push-apns/provider.avif
 ---
 
 Apple Push Notification Service (APNs) is an Apple platform that enables developers to send notifications to iOS devices, macOS computers, and other Apple devices. It allows app developers to send remote notifications, alerting users to new content, messages, updates, and app-specific information.
@@ -35,7 +35,7 @@ To implement the APNs provider in Appwrite Messaging, there are several steps yo
 
 First, [sign up for the Apple Developer program](https://developer.apple.com/programs).
 
-![Apple developer program](/images/integrations/push-apns/apple-developer-program.png)
+![Apple developer program](/images/integrations/push-apns/apple-developer-program.avif)
 
 Before you configure any other details, you must create an **App ID** for our app. To do that, go to XCode and open the `ios` folder in your source code. Navigate to the **Signing & Capabilities** tab, click the **+ Capability** button, search for `Push Notifications`, and double-click the result to add it. Then, modify the **Bundle Identifier** to a unique string by prefixing it with any letters of your choice and then change the **Team** to your Apple Developer team. This will automatically create an **App ID** for your app.
 
@@ -54,7 +54,7 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Enter the **team ID**, **bundle ID**, **authentication key ID**, and **authentication key (.p8 file)** that you saved from your Apple Developer account. In case your app is signed with a development provisioning profile, enable **Sandbox** mode.
 
-![Apple provider](/images/integrations/push-apns/provider.png)
+![Apple provider](/images/integrations/push-apns/provider.avif)
 
 ## Step 3: Test the provider
 

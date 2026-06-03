@@ -5,6 +5,8 @@ description: Configure the Appwrite SDKs and take the necessary steps to start u
 ---
 Follow these steps before you begin using the Appwrite SDKs or accessing Appwrite through the REST and GraphQL API.
 
+If you are choosing Appwrite among [BaaS platforms](/blog/post/backend-as-a-service) or mapping [backend infrastructure](/blog/post/best-backend-as-a-service-platforms) options first, skim that guide, then return here to wire SDKs.
+
 {% section #select-the-right-API step=1 title="Select the right API" %}
 Appwrite has two types of APIs for different use cases, select one or both depending on your use case.
 
@@ -25,10 +27,10 @@ Head to the [Appwrite Console](https://cloud.appwrite.io/console).
 If this is your first time using Appwrite, create an account and create your first project.
 
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+![Create project screen](/images/docs/quick-starts/dark/create-project.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/quick-starts/create-project.png)
+![Create project screen](/images/docs/quick-starts/create-project.avif)
 {% /only_light %}
 
 Then, configure your project depending on use case.
@@ -41,10 +43,10 @@ This means, a different platform for each web app hosted under a different domai
 and a different platform for each mobile or native app that use a different package ID.
 
 {% only_dark %}
-![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+![Add a platform](/images/docs/quick-starts/dark/add-platform.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a platform](/images/docs/quick-starts/add-platform.png)
+![Add a platform](/images/docs/quick-starts/add-platform.avif)
 {% /only_light %}
 
 You can skip optional steps.
@@ -53,10 +55,10 @@ You can skip optional steps.
 {% tabsitem #server title="Server" %}
 Under **Integrate with your server**, add an **API Key**.
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/quick-starts/integrate-server.png)
+![Create project screen](/images/docs/quick-starts/integrate-server.avif)
 {% /only_light %}
 
 Enable the scopes for the Appwrite products you plan to use for your app.
@@ -66,10 +68,10 @@ It's a good idea to only grant scopes that you need, and edit the API keys as yo
 {% tabsitem #ssr title="SSR" %}
 Under **Integrate with your server**, add an **API Key** with the following scopes.
 {% only_dark %}
-![Create project screen](/images/docs/quick-starts/dark/integrate-server.png)
+![Create project screen](/images/docs/quick-starts/dark/integrate-server.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/quick-starts/integrate-server.png)
+![Create project screen](/images/docs/quick-starts/integrate-server.avif)
 {% /only_light %}
 
 | Category  {% width=120 %} | Required scopes       | Purpose |

@@ -3,11 +3,24 @@ layout: post
 title: Enhancing type safety in software development with enums
 description: Explore the fundamentals of enums, their practical advantages, and their impact on code maintenance and readability.
 date: 2024-02-28
-cover: /images/blog/enhancing-type-safety.png
+cover: /images/blog/enhancing-type-safety.avif
 timeToRead: 7
 author: aditya-oberai
 category: engineering
 featured: false
+faqs:
+  - question: "What is an enum in programming?"
+    answer: "An enum, short for enumeration, is a data type that lets a variable hold one of a predefined set of named constants. Instead of using raw strings or numbers like `\"active\"` or `1`, you reference a named value like `Status.ACTIVE`. The grouping makes intent clear and the constraint catches bad values at compile time."
+  - question: "How do enums improve type safety?"
+    answer: "Enums limit a variable or parameter to a fixed set of valid values, so the compiler or runtime can reject anything outside that set. That eliminates a large class of bugs caused by typos, magic numbers, or mismatched string literals, and makes refactors safer because adding or removing values is a centralized change."
+  - question: "When should I use enums versus string constants?"
+    answer: "Use enums when you have a small, stable set of related values like statuses, roles, or modes. Use plain strings when values are user-generated, frequently changing, or unbounded. Picking the wrong tool either creates noise (an enum with hundreds of values) or pushes runtime errors deeper into the system (untyped strings)."
+  - question: "Do all programming languages support enums?"
+    answer: "Most modern languages do, including TypeScript, Java, Swift, Kotlin, C#, Rust, and Dart. Implementation details vary. Some are backed by integers, others by strings, and some support associated values or methods. JavaScript itself does not have native enums, which is one reason TypeScript adds them."
+  - question: "How does Appwrite use enums in its SDKs?"
+    answer: "Appwrite SDKs use enums in place of magic literals, for example `OAuthProvider.Google` instead of the string `\"google\"`. This makes calls to APIs like [Appwrite Auth](/docs/products/auth) safer because invalid values fail to compile rather than at runtime, and editors can autocomplete the available options."
+  - question: "What are the common pitfalls when using enums?"
+    answer: "Overusing them for dynamic values (anything that should live in a database), polluting the global namespace, breaking backward compatibility by renaming or removing values, and forgetting to keep enums in sync with external systems like APIs or columns in a database. Treat enums as part of your API contract once they ship."
 ---
 
 We, as software developers, constantly tackle the challenge of writing robust and maintainable code. As we make ensuring type safety a goal in this process, enums stand out as a significant contributor. This blog delves into enums, exploring their fundamentals, practical advantages, and their impact on code maintenance and readability.

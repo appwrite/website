@@ -3,11 +3,24 @@ layout: post
 title: Build an offline-first journal app with RxDB and Appwrite
 description: Learn how you can use RxDB to setup data replication and enable offline synchronization with Appwrite Databases in a JavaScript app.
 date: 2025-04-17
-cover: /images/blog/offline-first-journal/cover.png
+cover: /images/blog/offline-first-journal/cover.avif
 timeToRead: 14
 author: aditya-oberai
 category: integrations
 callToAction: true
+faqs:
+  - question: "What is RxDB and why use it with Appwrite?"
+    answer: "RxDB is a local-first, reactive NoSQL database for JavaScript apps. Pairing it with [Appwrite Databases](/docs/products/databases) gives you local storage with automatic two way sync, so your app keeps working offline and pushes changes to the server when connectivity returns."
+  - question: "Does RxDB officially support Appwrite?"
+    answer: "Yes. RxDB ships a replication plugin specifically for Appwrite Databases. It handles the push and pull replication loop, so you only need to configure the database, collection, and a few schema fields."
+  - question: "Why does the entries collection need a `deleted` boolean field?"
+    answer: "RxDB does not hard delete records. It uses soft deletes via a `deleted` flag so the deletion can replicate to other clients without losing data in offline scenarios. Without this field, sync will not work correctly."
+  - question: "Can I use a framework other than SvelteKit for this pattern?"
+    answer: "Yes. RxDB runs in any JavaScript environment, including React, Vue, Angular, React Native, and Electron. The replication plugin for Appwrite is framework agnostic, so the same sync logic carries over."
+  - question: "How does real-time sync work between clients?"
+    answer: "RxDB watches local changes and pushes them to Appwrite. Appwrite's [Realtime API](/docs/products/databases) then broadcasts those updates, and RxDB pulls them down on other clients. The result is near instant sync across devices when they are online."
+  - question: "What storage engine should I pick for the browser?"
+    answer: "IndexedDB is the default choice for browsers and PWAs because it is persistent and supports the data sizes a journal app would need. RxDB also supports SQLite and filesystem storage for mobile and desktop targets."
 ---
 
 Ever found yourself staring at a loading spinner in a no-network zone, wishing your app could just work offline? Whether you're building a journal, a field notes app, or anything in between, offline data synchronization is no longer a luxury but a necessity. There is some good news, though. If you’re building with JavaScript, Appwrite Databases now features a direct integration with RxDB, making it easier than ever to build real-world apps that stay in sync online and offline.
@@ -32,7 +45,7 @@ RxDB has recently introduced a plugin that allows developers to replicate data t
 
 To understand how to build an offline-first application with RxDB and Appwrite, let’s build a journal app. Our app will be a simplified version of the [demo app](https://offline-journal.vercel.app/) shown below.
 
-![Demo app](/images/blog/offline-first-journal/demo.png)
+![Demo app](/images/blog/offline-first-journal/demo.avif)
 
 Our tech stack for this app will be:
 

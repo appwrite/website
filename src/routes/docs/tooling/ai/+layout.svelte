@@ -50,32 +50,32 @@
             label: 'IDEs',
             items: [
                 {
-                    label: 'VS Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/vscode'
-                },
-                {
-                    label: 'Cursor',
-                    href: '/docs/tooling/ai/ai-dev-tools/cursor'
-                },
-                {
-                    label: 'Windsurf',
-                    href: '/docs/tooling/ai/ai-dev-tools/windsurf'
-                },
-                {
-                    label: 'OpenCode',
-                    href: '/docs/tooling/ai/ai-dev-tools/opencode'
-                },
-                {
-                    label: 'Google Antigravity',
-                    href: '/docs/tooling/ai/ai-dev-tools/antigravity'
-                },
-                {
                     label: 'Claude Code',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-code'
+                    href: '/docs/tooling/ai/agents/claude-code'
                 },
                 {
                     label: 'Codex',
-                    href: '/docs/tooling/ai/ai-dev-tools/codex'
+                    href: '/docs/tooling/ai/agents/codex'
+                },
+                {
+                    label: 'Cursor',
+                    href: '/docs/tooling/ai/agents/cursor'
+                },
+                {
+                    label: 'VS Code',
+                    href: '/docs/tooling/ai/agents/vscode'
+                },
+                {
+                    label: 'Zed',
+                    href: '/docs/tooling/ai/agents/zed'
+                },
+                {
+                    label: 'OpenCode',
+                    href: '/docs/tooling/ai/agents/opencode'
+                },
+                {
+                    label: 'Google Antigravity',
+                    href: '/docs/tooling/ai/agents/antigravity'
                 }
             ]
         },
@@ -84,23 +84,23 @@
             items: [
                 {
                     label: 'Claude Desktop',
-                    href: '/docs/tooling/ai/ai-dev-tools/claude-desktop'
+                    href: '/docs/tooling/ai/vibe-coding/claude-desktop'
                 },
                 {
                     label: 'Lovable',
-                    href: '/docs/tooling/ai/ai-dev-tools/lovable'
+                    href: '/docs/tooling/ai/vibe-coding/lovable'
                 },
                 {
                     label: 'Emergent',
-                    href: '/docs/tooling/ai/ai-dev-tools/emergent'
+                    href: '/docs/tooling/ai/vibe-coding/emergent'
                 },
                 {
                     label: 'Bolt',
-                    href: '/docs/tooling/ai/ai-dev-tools/bolt'
+                    href: '/docs/tooling/ai/vibe-coding/bolt'
                 },
                 {
                     label: 'Zenflow',
-                    href: '/docs/tooling/ai/ai-dev-tools/zenflow'
+                    href: '/docs/tooling/ai/vibe-coding/zenflow'
                 }
             ]
         },

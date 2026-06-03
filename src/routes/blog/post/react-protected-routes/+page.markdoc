@@ -3,11 +3,22 @@ layout: post
 title: Setting up protected routes in React
 description: Learn how to set up protected routes in React in this easy tutorial.
 date: 2024-10-02
-cover: /images/blog/react-protected-routes/cover.png
+cover: /images/blog/react-protected-routes/cover.avif
 timeToRead: 4
 author: dennis-ivy
 category: tutorial
 featured: false
+faqs:
+  - question: "What is a protected route in React?"
+    answer: "A protected route is a route that only renders if the user passes an authentication check. If the check fails, the user is redirected to a login or public page instead of seeing the protected content."
+  - question: "Why use a wrapper component for protected routes instead of a custom hook?"
+    answer: "A wrapper component sits inside the route tree and can use `<Outlet />` to render nested protected routes, which keeps the routing config flat and declarative. You only write the auth check once and apply it to as many routes as you want."
+  - question: "What is the difference between `Outlet` and `Navigate` from React Router?"
+    answer: "`Outlet` renders whichever child route matches the current URL inside a parent route, which is how nested routes work. `Navigate` performs a client-side redirect to a different path during render, which is what you use to send unauthenticated users to `/login`."
+  - question: "How can I plug Appwrite Auth into a React protected route?"
+    answer: "Call [`account.get()`](/docs/products/auth) inside the wrapper component, store the result in state, and render `<Outlet />` if it succeeds or `<Navigate to=\"/login\" />` if it throws. Wrap the call in a loading state to avoid a flash of redirect while the request is in flight."
+  - question: "Should I check authentication on the client only?"
+    answer: "No. Client-side protected routes are about UX, not security. Always enforce permissions on the backend, either through [Appwrite document permissions](/docs/products/databases) or your own server logic, since anyone can bypass a client-only check."
 ---
 In this tutorial, we will explore a straightforward method for implementing protected routes in a React application. The aim is to ensure that users can only access certain pages, such as home and profile, after passing an authentication check. If a user is not authenticated, they will be redirected to the login page.
 

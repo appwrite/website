@@ -3,11 +3,24 @@ layout: post
 title: "Announcing inversion queries: Exclusion rules made simple"
 description: Adding five new NOT operators to let you exclude what you don’t need while keeping queries efficient.
 date: 2025-09-04
-cover: /images/blog/announcing-inversion-queries/cover.png
+cover: /images/blog/announcing-inversion-queries/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What are inversion queries in Appwrite?"
+    answer: "Inversion queries are a set of `NOT` operators that let you filter by exclusion directly in [Appwrite Databases](/docs/products/databases) queries. Instead of fetching a broad result set and filtering on the client, you describe everything except the rows you want to skip. This keeps payloads small and logic on the server."
+  - question: "Which NOT operators does Appwrite support?"
+    answer: "Appwrite supports `notContains`, `notSearch`, `notBetween`, `notStartsWith`, and `notEndsWith`. Each mirrors its positive counterpart, so if you already use `contains` or `startsWith`, the inverted version slots in cleanly. You can combine them with other [query operators](/docs/products/databases/queries) for precise control."
+  - question: "Do inversion queries use the same indexes as positive queries?"
+    answer: "Yes, `NOT` operators use the same indexes as their positive counterparts. Be aware that `NOT` conditions can be less selective: an index helps narrow the rows considered, but excluding values doesn't always reduce the candidate set as much as including them. Profile heavy queries and pair NOT with selective positive filters where possible."
+  - question: "When should I use a NOT query instead of filtering on the client?"
+    answer: "Use a NOT query whenever the excluded set is a small fraction of the total rows or when the result would otherwise be large. That includes moderation pipelines, AB testing exclusions, search filters that hide categories, and compliance rules that skip flagged records. Server-side exclusion always beats fetching everything and filtering twice."
+  - question: "Can I combine multiple NOT operators in one query?"
+    answer: "Yes, you can compose multiple `not*` operators with other filters in the same query. For example, you might exclude records that contain banned keywords AND don't start with a test prefix AND aren't in a restricted date range. [Appwrite](/docs/products/databases) applies them together at query time."
+  - question: "Are inversion queries available on self-hosted Appwrite?"
+    answer: "Yes, inversion queries are available on both Appwrite Cloud and self-hosted deployments. If you're on a recent self-hosted version, the new `NOT` operators are exposed through your client SDKs just like the existing query operators."
 ---
 When you need to exclude certain records, the usual approach is to fetch a broad set of rows, sometimes even the entire collection, and then filter them in your application code. 
 

@@ -3,10 +3,23 @@ layout: post
 title: Make open source healthier by being a better contributor
 description: How you can improve community health of an open-source project through healthy contribution practices.
 date: 2023-10-23
-cover: /images/blog/make-open-source-healthier.png
+cover: /images/blog/make-open-source-healthier.avif
 timeToRead: 5
 author: aditya-oberai
 category: open-source
+faqs:
+  - question: "What does community health mean in open source?"
+    answer: "Community health refers to how welcoming, sustainable, and effective an open source project's community is. It covers active participation, inclusive behavior, clear communication, transparent decisions, strong leadership, a code of conduct, good documentation, and recognition of contributors. Healthy communities tend to retain contributors and produce better software."
+  - question: "Should I wait to be assigned an issue before starting work?"
+    answer: "Yes, most projects expect contributors to comment on an issue and wait for assignment before opening a pull request. This prevents duplicate work and lets maintainers coordinate priorities. Skipping this step often leads to wasted effort when someone else is already working on the same thing."
+  - question: "How long should I wait before asking for an issue to be reassigned?"
+    answer: "Wait at least a few days, ideally a week, before asking maintainers to reassign an issue. Most open source contributors work on projects outside of full time jobs and personal commitments. A little patience keeps the community welcoming for everyone involved."
+  - question: "What makes a good first contribution?"
+    answer: "Good first contributions are small, objectively useful, and easy to review. Fixing typos in docs, adding missing tests, or closing a clearly scoped bug are good options. Avoid sweeping refactors or stylistic rewrites on your first PR, since those are subjective and harder for maintainers to evaluate."
+  - question: "How can I contribute to Appwrite specifically?"
+    answer: "Browse the appwrite/appwrite GitHub repository for issues labeled good first issue, read the contributing guide, and join the Appwrite Discord to ask questions. Contributions can be code, documentation, translations, or community support. The team is active in reviewing PRs and welcomes contributors of any experience level."
+  - question: "Why does quality matter more than quantity in open source?"
+    answer: "Maintainers spend time reviewing every PR, so low quality submissions add maintenance debt without adding value. A small number of well crafted contributions teaches you the project's standards and earns trust over time. This usually leads to deeper involvement and recognition within the community."
 ---
 
 For the last few years, every single time Hacktoberfest comes, one challenge that has constantly been discussed is how to make open source healthier for everyone. This isn’t to say that open source is an unhealthy space; rather, it has a much larger positive impact than most people can imagine. However, Hacktoberfest sees the entry of a flurry of new contributors trying their hands at getting in their first Pull Requests. This period is a particularly impressionable phase for new contributors to open source, and gaining a better understanding of how contributors should participate in a healthy manner only makes for a better, more welcoming community. Therefore, in this blog, we will explore what community health means in the context of open-source communities and the role contributors play in making it better.

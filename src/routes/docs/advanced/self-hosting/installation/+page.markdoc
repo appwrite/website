@@ -76,10 +76,10 @@ The setup wizard walks you through four steps to configure your Appwrite instanc
 Configure your Appwrite instance's basic settings.
 
 {% only_dark %}
-![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/dark/wizard-setup.avif)
 {% /only_dark %}
 {% only_light %}
-![Setup your app](/images/docs/advanced/self-hosting/installation/wizard-setup.png)
+![Setup your app](/images/docs/advanced/self-hosting/installation/wizard-setup.avif)
 {% /only_light %}
 
 - **Hostname** - The domain or IP address where your Appwrite instance will be accessible.
@@ -91,10 +91,10 @@ Configure your Appwrite instance's basic settings.
 A secret API key is automatically generated for your instance. This key is used to encrypt sensitive data.
 
 {% only_dark %}
-![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/dark/wizard-secure.avif)
 {% /only_dark %}
 {% only_light %}
-![Secure your app](/images/docs/advanced/self-hosting/installation/wizard-secure.png)
+![Secure your app](/images/docs/advanced/self-hosting/installation/wizard-secure.avif)
 {% /only_light %}
 
 {% info title="Save your key" %}
@@ -108,10 +108,10 @@ You can use the **Copy** button to copy the key or **Regenerate** to create a ne
 Set up the email and password for your Appwrite account. You'll use these credentials to sign in to the Appwrite Console after installation.
 
 {% only_dark %}
-![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/dark/wizard-account.avif)
 {% /only_dark %}
 {% only_light %}
-![Create your account](/images/docs/advanced/self-hosting/installation/wizard-account.png)
+![Create your account](/images/docs/advanced/self-hosting/installation/wizard-account.avif)
 {% /only_light %}
 
 ## Step 4: Review your setup {% #wizard-review %}
@@ -119,10 +119,10 @@ Set up the email and password for your Appwrite account. You'll use these creden
 Review all your configuration settings. If anything looks wrong, use the **Back** button to make changes. When you're ready, click **Install** to begin the installation.
 
 {% only_dark %}
-![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/dark/wizard-review.avif)
 {% /only_dark %}
 {% only_light %}
-![Review your setup](/images/docs/advanced/self-hosting/installation/wizard-review.png)
+![Review your setup](/images/docs/advanced/self-hosting/installation/wizard-review.avif)
 {% /only_light %}
 
 # Manual installation {% #manual-installation %}
@@ -153,6 +153,170 @@ After installation completes:
 {% info title="Startup time" %}
 On non-Linux hosts, the server might take a few minutes to start after installation completes. This is normal behavior.
 {% /info %}
+
+## SDK version compatibility {% #sdk-version-compatibility %}
+
+The tables below map each released self-hosted Appwrite version to the SDK versions that were current at the time of that release. Use this to pin your SDK to a version known to work with your server. The latest stable self-hosted Appwrite release is 1.9.0.
+
+### Client SDKs {% #client-compatibility %}
+
+{% table %}
+* Appwrite {% width=120 %}
+* Web
+* Flutter
+* React Native
+* Apple
+* Android
+---
+* 1.7.0
+* 18.0.0
+* 16.0.0
+* 0.9.0
+* 10.0.0
+* 8.0.0
+---
+* 1.7.1 to 1.7.3
+* 18.0.0
+* 16.0.0
+* 0.9.0
+* 10.0.0
+* 8.0.0
+---
+* 1.7.4
+* 18.1.1
+* 17.0.0
+* 0.10.0
+* 10.0.0
+* 8.0.0
+---
+* 1.7.5
+* 18.1.1
+* 17.0.0
+* 0.10.0
+* 10.0.0
+* 8.0.0
+---
+* 1.8.0
+* 21.4.0
+* 20.3.0
+* 0.18.0
+* 13.3.0
+* 11.3.0
+---
+* 1.8.1
+* 23.0.0
+* 22.0.0
+* 0.25.0
+* 15.0.0
+* 13.0.0
+---
+* 1.9.0
+* 24.1.1
+* 23.0.0
+* 0.27.1
+* 16.0.0
+* 14.1.0
+{% /table %}
+
+### Server SDKs {% #server-compatibility %}
+
+{% table %}
+* Appwrite {% width=120 %}
+* Node.js
+* Python
+* PHP
+* Dart
+* Ruby
+* .NET
+* Go
+* Swift
+* Kotlin
+* CLI
+---
+* 1.7.0
+* 17.0.0
+* 11.0.0
+* 15.0.0
+* 16.0.0
+* 16.0.0
+* 0.13.0
+* v0.7.0
+* 10.0.0
+* 9.0.0
+* 6.2.3
+---
+* 1.7.1 to 1.7.3
+* 17.0.0
+* 11.0.0
+* 15.0.0
+* 16.0.0
+* 16.0.0
+* 0.13.0
+* v0.7.0
+* 10.0.0
+* 9.0.0
+* 6.2.3
+---
+* 1.7.4
+* 17.1.0
+* 11.0.0
+* 15.0.0
+* 16.1.0
+* 16.0.0
+* 0.13.0
+* v0.7.0
+* 10.0.0
+* 9.0.0
+* 8.0.0
+---
+* 1.7.5
+* 17.1.0
+* 11.0.0
+* 15.0.0
+* 16.1.0
+* 16.0.0
+* 0.13.0
+* v0.7.0
+* 10.0.0
+* 9.0.0
+* 8.0.0
+---
+* 1.8.0
+* 20.2.1
+* 13.4.1
+* 17.5.0
+* 19.3.0
+* 19.3.0
+* 0.22.0
+* v0.13.1
+* 13.2.2
+* 12.3.0
+* 12.0.1
+---
+* 1.8.1
+* 22.1.3
+* 16.0.0
+* 20.2.1
+* 21.3.0
+* 21.1.0
+* 1.0.0
+* v1.0.0
+* 15.2.0
+* 14.1.0
+* 15.0.0
+---
+* 1.9.0
+* 23.1.0
+* 17.0.0
+* 21.0.0
+* 22.0.0
+* 22.0.0
+* 2.0.0
+* v2.0.0
+* 16.0.0
+* 15.0.0
+* 17.4.0
+{% /table %}
 
 # Managing your installation {% #managing-installation %}
 

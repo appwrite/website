@@ -3,16 +3,29 @@ layout: post
 title: "Budget caps: How to stop unexpected cloud bills before they happen"
 description: Learn how to set budget caps in your Appwrite console to avoid unexpected cloud bills.
 date: 2025-01-23
-cover: /images/blog/budget-caps-stop-unexpected-cloud-bills/cover.png
+cover: /images/blog/budget-caps-stop-unexpected-cloud-bills/cover.avif
 timeToRead: 3
 author: ebenezer-don
 category: tutorial
 featured: false
+faqs:
+  - question: "What is a budget cap?"
+    answer: "A budget cap is a hard spending limit on your cloud account. Unlike a billing alert that just sends an email, a cap stops new charges once you hit your limit. This protects you from surprise bills when something goes wrong overnight."
+  - question: "How do I set a budget cap in Appwrite?"
+    answer: "Open the Billing tab in your Appwrite Cloud console, click View estimated usage to see your typical consumption, then enable the budget cap toggle and pick a monthly limit. You can also configure alerts at 25%, 50%, 75%, and 100% of your cap."
+  - question: "Does Firebase have hard budget caps?"
+    answer: "No. Firebase offers budget alerts, which send notifications when you hit thresholds, but they don't stop charges. That's why stories like the $70k Firebase bill keep happening: by the time someone sees the alert, the damage is already done."
+  - question: "What happens when I hit my Appwrite budget cap?"
+    answer: "New paid usage stops until you explicitly raise the cap or move to a higher plan. Your project's existing data stays intact, but billable resources stop accruing new charges. This is the safety net you want for unexpected traffic spikes or bugs."
+  - question: "How do I handle a legitimate traffic spike with a budget cap in place?"
+    answer: "The percentage-based alerts give you a heads-up before you hit the cap, so you can review your metrics and raise the cap if the growth is legitimate. If the spike looks abnormal, the cap protects you while you investigate the cause."
+  - question: "Are budget caps available on all Appwrite plans?"
+    answer: "Yes. Budget caps are available across Appwrite Cloud plans. Check the [Appwrite docs](/docs/advanced/platform/billing) for the latest configuration steps and limits per plan."
 ---
 
 You might have come across the recent post about a Firebase user who got hit with a $70k bill. This has caused another round of debates about cloud billing practices and who's responsible when things go wrong. These stories keep happening because most cloud providers only offer alerts, not hard stops.
 
-![Firebase bill post](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image1-post.png)
+![Firebase bill post](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image1-post.avif)
 
 In Appwrite, we believe you should have real control over your cloud spending. And this is why we took a different approach. In this article, we'll learn how Appwrite Cloud prevents this kind of situation, and why budget caps matter when it comes to cloud billing.
 
@@ -40,17 +53,17 @@ We built budget caps into Appwrite because we believe you should have real contr
 
 In your Appwrite console, you can set a budget cap for an organization by opening the **Billing** tab.
 
-![Billing tab in Appwrite console](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image2-billing-tab.png)
+![Billing tab in Appwrite console](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image2-billing-tab.avif)
 
 Before setting any caps, you can click on **View estimated usage** to get a clear picture of your typical consumption patterns. This helps you set a cap that makes sense for your app.
 
-![Usage statistics](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image3-usage.png)
+![Usage statistics](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image3-usage.avif)
 
 ## 2. Setting your cap
 
 Once you know your usage patterns, go back to the **Billing** tab and scroll down to the **budget cap** section, then toggle the **Enable budget cap** switch. Here you can set your monthly budget limit. With your budget cap set, once you hit the limit, no more charges can go through until you explicitly allow them.
 
-![Budget cap settings](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image4-budget-cap.png)
+![Budget cap settings](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image4-budget-cap.avif)
 
 ## 3. Layered protection with alerts
 
@@ -61,7 +74,7 @@ While the hard cap is your ultimate protection, we also give you graduated alert
 - 75% of your budget
 - 100% of your budget
 
-![Billing alerts settings](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image5-billing-alerts.png)
+![Billing alerts settings](/images/blog/budget-caps-stop-unexpected-cloud-bills/Image5-billing-alerts.avif)
 
 These percentage-based alerts help you track spending patterns and catch unusual activity early. If you notice you're hitting 50% faster than usual, you can investigate before it becomes a problem.
 

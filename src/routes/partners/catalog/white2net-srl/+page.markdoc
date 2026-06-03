@@ -6,12 +6,12 @@ date: 2025-09-09
 featured: false
 partnerLevel: Silver
 isNew: true
-cover: /images/partners/covers/white2net.png
+cover: /images/partners/covers/white2net.avif
 category: agency
 website: https://www.white2net.com/
 email: mailto:gregoire@white2net.com
 product: 
-    avatar: '/images/partners/avatars/white2net.png'
+    avatar: '/images/partners/avatars/white2net.avif'
     vendor: White2net SRL
     description: Belgium-based telecom and cloud services provider specializing in OpenStack, Kubernetes, and managed cloud hosting
 technologies: 
@@ -33,4 +33,4 @@ White2Net SRL is a Belgium-based telecom and cloud infrastructure company specia
 
 # Services
 
-White2Net offers a broad range of services, including cloud services based on OpenStack and Kubernetes, managed cloud hosting, and telecom solutions. Their mission is to provide enterprises and operators with the most reliable, secure, and scalable infrastructure — combining cutting-edge technology with proactive support and long-term partnerships.
+White2Net offers a broad range of services, including cloud services based on OpenStack and Kubernetes, managed cloud hosting, and telecom solutions. Their mission is to provide enterprises and operators with the most reliable, secure, and scalable infrastructure, combining cutting-edge technology with proactive support and long-term partnerships.

@@ -2,12 +2,25 @@
 layout: post
 title: Behind the pull request - tales from the open source world
 description: Celebrating the largest open source event, Hacktoberfest, with inspiring stories from contributors.
-cover: /images/blog/Behind_the_pull_request_Stories_from_contributors.png
+cover: /images/blog/Behind_the_pull_request_Stories_from_contributors.avif
 timeToRead: 4
 date: 2023-10-30
 author: haimantika-mitra
 category: hackathon, contributors, open-source
 featured: false
+faqs:
+  - question: "What is Hacktoberfest?"
+    answer: "Hacktoberfest is an annual open-source event in October where contributors submit pull requests to participating repositories. It's run by DigitalOcean and partners, and exists to encourage new and experienced developers to contribute to open-source projects."
+  - question: "How can a beginner start contributing to open source?"
+    answer: "Pick one or two projects that match your interests, read their CONTRIBUTING guidelines, and start with issues labelled good-first-issue or beginner-friendly. Documentation fixes and small bug fixes are perfectly valid first contributions."
+  - question: "How can I contribute to Appwrite during Hacktoberfest?"
+    answer: "Browse Appwrite's GitHub organization for issues tagged hacktoberfest, pick one that interests you, comment to claim it, and submit a pull request. The Appwrite Discord is a good place to ask for guidance if you get stuck."
+  - question: "Do my pull requests have to be code-only?"
+    answer: "No. Documentation, examples, tests, and translations are all valuable contributions. Maintainers often prioritize docs and example improvements because they help every future user of the project."
+  - question: "What is Appwrite?"
+    answer: "Appwrite is an open-source backend platform that gives developers ready-made APIs for auth, databases, storage, functions, and messaging. The core is on GitHub and welcomes community contributions across all major repos."
+  - question: "Why participate in Hacktoberfest beyond getting swag?"
+    answer: "You get real experience working with maintainers, reading unfamiliar codebases, and going through code review. Those skills carry directly into day-job work, and the connections you make in open-source communities can lead to mentorship and opportunities."
 ---
 
 In the world of software development, October is more than just a month; it's a season of collaboration, innovation, and celebration. 

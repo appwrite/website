@@ -5,11 +5,11 @@
 <script lang="ts">
     import { funnel } from 'remeda';
 
-    import DevKeys from '../../(assets)/stickers/devkeys.webp';
-    import Sites from '../../(assets)/stickers/sites.webp';
-    import Flutter from '../../(assets)/stickers/flutter.webp';
-    import Formats from '../../(assets)/stickers/formats.webp';
-    import Tokens from '../../(assets)/stickers/tokens.webp';
+    import DevKeys from '../../(assets)/stickers/devkeys.avif';
+    import Sites from '../../(assets)/stickers/sites.avif';
+    import Flutter from '../../(assets)/stickers/flutter.avif';
+    import Formats from '../../(assets)/stickers/formats.avif';
+    import Tokens from '../../(assets)/stickers/tokens.avif';
     import Window from '../../(components)/window.svelte';
 
     import { enhance } from '$app/forms';

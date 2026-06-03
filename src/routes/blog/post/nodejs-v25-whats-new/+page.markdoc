@@ -3,11 +3,24 @@ layout: post
 title: "What's new in Node.js v25.2: Web Storage, V8 14.1, permissions and more"
 description: Node.js v25.2.1 brings V8 14.1, experimental Web Storage, network permissions with --allow-net, and performance optimizations. Learn about the key features and what they mean for your applications.
 date: 2025-11-25
-cover: /images/blog/nodejs-v25-whats-new/cover.png
+cover: /images/blog/nodejs-v25-whats-new/cover.avif
 timeToRead: 9
 author: ebenezer-don
 category: news
 featured: false
+faqs:
+  - question: "What is new in Node.js v25?"
+    answer: "Node.js v25 ships with the V8 14.1 engine, experimental Web Storage API support, a --allow-net flag for network permissions, and ongoing performance improvements. JSON.stringify is more than twice as fast in JetStream2 benchmarks. The release is non LTS, so use it for testing rather than production critical systems."
+  - question: "Is Node.js v25 an LTS release?"
+    answer: "No, v25 is an odd numbered release and does not receive long term support. It acts as a testing ground for features that may stabilize in future LTS versions like v26. Stick with the latest LTS for production unless you specifically need a v25 feature."
+  - question: "What is the --allow-net flag in Node.js?"
+    answer: "The --allow-net flag is part of the Node.js permission model and lets you restrict which hosts your application can reach over the network. Combined with --permission, you can require explicit allowlists for network access. It is similar in spirit to Deno's permission system."
+  - question: "Does Node.js v25 really have localStorage?"
+    answer: "Yes, Node.js v25 exposes the experimental Web Storage API, including localStorage and sessionStorage. This makes it easier to share utility code between browser and server in frameworks like Next.js. The API is still experimental and stricter behavior is planned for v26.0.0."
+  - question: "What broke in Node.js v25.2.0?"
+    answer: "v25.2.0 started throwing SecurityError when accessing localStorage without a configured storage path, which broke Jest, Vite, and other ecosystem tools. v25.2.1 reverted the change and pushed the stricter behavior to v26.0.0. Upgrade past v25.2.0 to avoid the regression."
+  - question: "Does Appwrite Functions support Node.js v25?"
+    answer: "Appwrite Functions tracks Node.js runtimes for [Functions](/docs/products/functions). Node.js LTS versions are the typical recommendation for production workloads. Check the [Functions runtime docs](/docs/products/functions) for the current list of supported Node.js versions."
 ---
 
 Node.js v25.2.1, the current release as of November 17, 2025, represents the latest evolution in the v25 series. This release brings performance improvements, security features, and web standards alignment, though it also demonstrates how the Node.js team handles breaking changes.

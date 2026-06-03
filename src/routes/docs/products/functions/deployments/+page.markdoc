@@ -60,3 +60,58 @@ Users subscribed to the Appwrite Pro plan or above receive certain special benef
 - Longer [build timeouts](/docs/advanced/platform/compute#build-timeouts) (45 minutes vs 15 minutes on Free; Enterprise is custom)
 - Customizable [build and runtime specifications](/docs/advanced/platform/compute) for CPU and memory on each function
 {% /info %}
+
+# Deployment retention {% #deployment-retention %}
+Deployment retention controls how long Appwrite keeps non-active function deployments. The active deployment is always kept. When a non-active deployment is older than the configured retention period, Appwrite automatically deletes it during maintenance. Set the value to `0` to keep non-active deployments forever.
+
+To configure deployment retention from the Appwrite Console:
+
+1. Navigate to **Functions**.
+2. Open the function you want to configure.
+3. Go to **Settings** > **Deployment retention**.
+4. Turn on **Keep deployments forever**, or turn it off and choose how long to keep non-active deployments.
+5. Click **Update**.
+
+{% only_dark %}
+![Function deployment retention settings](/images/docs/functions/dark/deployment-retention.avif)
+{% /only_dark %}
+{% only_light %}
+![Function deployment retention settings](/images/docs/functions/deployment-retention.avif)
+{% /only_light %}
+
+The Console provides common presets from `1 Week` to `10 Years`. When using the API or a Server SDK, set `deploymentRetention` to the number of days to keep non-active deployments. The value must be between `0` and `36500`, where `0` means unlimited retention.
+
+When updating a function with a Server SDK, pass the existing settings you do not intend to change and update only `deploymentRetention`.
+
+{% multicode %}
+
+```server-nodejs
+const func = await functions.get({
+    functionId: '<FUNCTION_ID>'
+});
+
+await functions.update({
+    functionId: func.$id,
+    name: func.name,
+    runtime: func.runtime,
+    execute: func.execute ?? undefined,
+    events: func.events ?? undefined,
+    schedule: func.schedule ?? undefined,
+    timeout: func.timeout ?? undefined,
+    enabled: func.enabled ?? undefined,
+    logging: func.logging ?? undefined,
+    entrypoint: func.entrypoint ?? undefined,
+    commands: func.commands ?? undefined,
+    scopes: func.scopes ?? undefined,
+    installationId: func.installationId ?? undefined,
+    providerRepositoryId: func.providerRepositoryId ?? undefined,
+    providerBranch: func.providerBranch ?? undefined,
+    providerSilentMode: func.providerSilentMode ?? undefined,
+    providerRootDirectory: func.providerRootDirectory ?? undefined,
+    buildSpecification: func.buildSpecification ?? undefined,
+    runtimeSpecification: func.runtimeSpecification ?? undefined,
+    deploymentRetention: 90
+});
+```
+
+{% /multicode %}

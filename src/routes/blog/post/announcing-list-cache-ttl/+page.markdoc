@@ -3,12 +3,25 @@ layout: post
 title: "Announcing list response caching: Instant reads with TTL-based caching"
 description: Cache list query responses in memory with a single parameter. Set a TTL, skip the database round-trip on repeated reads, and purge on demand when freshness matters.
 date: 2026-04-17
-cover: /images/blog/announcing-list-cache-ttl/cover.png
+cover: /images/blog/announcing-list-cache-ttl/cover.avif
 timeToRead: 4
 author: jake-barnby
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "How do I cache a list query response in Appwrite?"
+    answer: "Pass a `ttl` parameter (in seconds) to your `listRows` call. The first request runs normally and stores the response in an in-memory cache. Every subsequent identical request returns the cached response until the TTL expires. See the [Appwrite Databases docs](/docs/products/databases) for full SDK examples."
+  - question: "What counts as an identical request for caching purposes?"
+    answer: "Cache lookups key on the database, table, queries, and other request parameters together. Two requests must match on all of those to hit the same cache entry. Changing a query, limit, offset, or auth context produces a different key and triggers a fresh database fetch."
+  - question: "When should I use TTL-based caching versus building my own cache?"
+    answer: "Use the built-in TTL cache for read-heavy endpoints where the data changes infrequently (leaderboards, product listings, dashboards, reference tables). Build your own cache only when you need richer invalidation, multi-region replication, or coordination across services that [Appwrite](/docs/products/databases) doesn't cover."
+  - question: "How long should I set the TTL?"
+    answer: "Pick a TTL that matches how stale the data can be. A dashboard showing aggregated stats might tolerate 60 seconds, while a product catalog could comfortably cache for several minutes. Shorter TTLs cut staleness but reduce cache hit rate, so test against your traffic to find the right balance."
+  - question: "Does the cache invalidate automatically when data changes?"
+    answer: "No, TTL-based caching is time-based, not invalidation-based. The cached response stays in memory until the TTL expires regardless of writes to the underlying rows. If you need fresher data right after a known write, use a shorter TTL or skip the `ttl` parameter for that read."
+  - question: "Is the cache shared across regions or per-instance?"
+    answer: "The cache is in-memory on Appwrite's serving layer, so behavior may vary by region and instance. For high cache hit rates, ensure your clients consistently send the same query parameters and target the same region. Treat TTL caching as a best-effort acceleration, not a strict shared cache."
 ---
 
 Read-heavy workloads hit the same queries over and over. Leaderboards, product listings, dashboard feeds, and reference tables all follow the same pattern: the data changes infrequently, but the reads never stop. Every request still runs a full database query, even when the result hasn't changed since the last call.

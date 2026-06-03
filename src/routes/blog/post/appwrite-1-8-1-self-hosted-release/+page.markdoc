@@ -2,13 +2,24 @@
 layout: post
 title: Announcing Appwrite 1.8.1 for self-hosted deployments
 description: Appwrite 1.8.1 brings improved stability, modern web framework support, enhanced database operators, and more to self-hosted deployments.
-cover: /images/blog/appwrite-1-8-1-self-hosted-release/cover.png
+cover: /images/blog/appwrite-1-8-1-self-hosted-release/cover.avif
 date: 2025-12-31
 timeToRead: 7
 author: steven
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is in Appwrite 1.8.1 for self-hosted deployments?"
+    answer: "1.8.1 is a focused stability and compatibility release on top of 1.8.0. It adds TanStack Start and Next.js standalone support for [Sites](/docs/products/sites), updates the default Flutter runtime to 3.35, introduces bucket-level image transformation controls, ships a Resend email integration, and brings database operators along with reliability fixes."
+  - question: "What are database operators in Appwrite?"
+    answer: "Database operators let you describe an inline update (increment, append, replace, adjust) instead of sending a new value. Appwrite applies the change atomically inside [Databases](/docs/products/databases), so you avoid the usual read-modify-write cycle and the race conditions that come with it."
+  - question: "Does Appwrite 1.8.1 support Next.js standalone output?"
+    answer: "Yes. [Sites](/docs/products/sites) can now deploy Next.js apps using standalone output, which produces smaller container images, faster startup, and tighter control over dependencies. This is especially useful for self-hosted environments where build size matters."
+  - question: "Can I disable image transformations on a specific bucket?"
+    answer: "Yes. Bucket-level controls in [Storage](/docs/products/storage) let you turn image transformations on or off per bucket. This is useful when you want a bucket to serve only original files or when you want to avoid unexpected transformation costs."
+  - question: "How do I upgrade from 1.8.0 to 1.8.1?"
+    answer: "Follow the standard self-hosted upgrade flow: back up your data, pull the 1.8.1 image, and run the upgrade. Because 1.8.1 is a patch release on top of 1.8.0, the upgrade is smaller in scope than a major version bump, but you should still test on staging first."
 ---
 
 Appwrite 1.8.1 delivers a focused set of improvements and fixes that further stabilize and extend Appwrite 1.8.0 on the self-hosted offering.

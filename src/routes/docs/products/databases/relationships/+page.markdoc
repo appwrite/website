@@ -9,10 +9,6 @@ Relationships describe how rows in different tables are associated, so that rela
 
 These types of association between entities can be modeled in Appwrite using relationships.
 
-{% info title="Experimental feature" %}
-Appwrite Relationships is an experimental feature. The API and behavior are subject to change in future versions.
-{% /info %}
-
 # Relationship columns {% #relationship-columns %}
 
 Relationships are represented in a table using **relationship columns**.
@@ -96,16 +92,16 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-tablesDB.createRelationshipColumn(
-    'marvel',     // Database ID
-    'movies',     // Table ID
-    'reviews',    // Related table ID
-    'oneToMany',  // Relationship type
-    true,         // Is two-way
-    'reviews',    // Column key
-    'movie',      // Two-way column key
-    'cascade'     // On delete action
-);
+tablesDB.createRelationshipColumn({
+    databaseId: 'marvel',           // Database ID
+    tableId: 'movies',              // Table ID
+    relatedTableId: 'reviews',      // Related table ID
+    type: 'oneToMany',              // Relationship type
+    twoWay: true,                   // Is two-way
+    key: 'reviews',                 // Column key
+    twoWayKey: 'movie',             // Two-way column key
+    onDelete: 'cascade'             // On delete action
+});
 ```
 
 
@@ -417,6 +413,8 @@ const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
     .setProject('<PROJECT_ID>');               // Your project ID
 
+const tablesDB = new TablesDB(client);
+
 await tablesDB.createRow({
     databaseId: 'marvel',
     tableId: 'movies',
@@ -427,9 +425,9 @@ await tablesDB.createRow({
         reviews: [
             '<REVIEW_ID_1>',
             '<REVIEW_ID_2>'
-});
+        ]
     }
-)
+});
 ```
 
 ```dart
@@ -610,11 +608,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.updateRow(
-    'marvel',
-    'movies',
-    'spiderman',
-    {
+await tablesDB.updateRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: 'spiderman',
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
@@ -622,7 +620,7 @@ await tablesDB.updateRow(
             'review5'
         ]
     }
-);
+});
 ```
 
 ```dart
@@ -729,11 +727,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.deleteRow(
-    'marvel',
-    'movies',
-    'spiderman'
-);
+await tablesDB.deleteRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: 'spiderman'
+});
 ```
 
 ```dart
@@ -804,11 +802,11 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-await tablesDB.createRow(
-    'marvel',
-    'movies',
-    ID.unique(),
-    {
+await tablesDB.createRow({
+    databaseId: 'marvel',
+    tableId: 'movies',
+    rowId: ID.unique(),
+    data: {
         title: 'Spiderman',
         year: 2002,
         reviews: [
@@ -821,7 +819,7 @@ await tablesDB.createRow(
             },
         ]
     }
-);
+});
 ```
 ```dart
 import 'package:appwrite/appwrite.dart';

@@ -3,11 +3,24 @@ layout: post
 title: "Swift 101: how to build a library with Swift Package Manager"
 description: Learn how to build a library with Swift Package Manager.
 date: 2024-08-02
-cover: /images/blog/swift-101/cover.png
+cover: /images/blog/swift-101/cover.avif
 timeToRead: 6
 author: jake-barnby
 category: engineering, tutorial
 featured: false
+faqs:
+  - question: "What is Swift Package Manager?"
+    answer: "Swift Package Manager (SwiftPM) is Swift's official tool for managing dependencies, building libraries, and producing executables. Starting with Swift 5 and Xcode 11, it works across the entire Apple ecosystem, not just server-side Swift."
+  - question: "What is the difference between a Swift module and a Swift package?"
+    answer: "A module is a single namespace of Swift code with its own visibility rules. A package is a collection of source files and a `Package.swift` manifest that can contain one or more targets (which become modules) and produce libraries or executables."
+  - question: "How do I create a Swift library with SwiftPM?"
+    answer: "Run `swift package init --type=library` inside an empty directory. SwiftPM scaffolds a `Sources` directory, a `Tests` directory, and a `Package.swift` manifest. You can then run `swift build` to compile the library and `swift test` to run its tests."
+  - question: "What does a Package.swift manifest contain?"
+    answer: "The `Package.swift` manifest declares your package's name, the products it produces (libraries or executables), the dependencies it pulls in, and the targets it builds. Each target maps to a module of source files and can depend on other targets or external products."
+  - question: "Can I distribute a Swift package to other developers?"
+    answer: "Yes. Push your package to a public Git repository and other developers can add it as a dependency by pointing to the repo URL and a version tag. SwiftPM will resolve, fetch, and build it automatically when they run `swift build` or open the project in Xcode."
+  - question: "Does Appwrite have a Swift SDK?"
+    answer: "Yes. Appwrite ships an official Swift SDK distributed through Swift Package Manager, so you can add it to iOS, macOS, or server Swift projects. You can use it with [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and other products."
 ---
 
 The Swift Package Manager, or SwiftPM, has been part of Swift since version 3.0. Initially, it was just for server-side or command-line Swift projects. However, starting with Swift 5 and Xcode 11, SwiftPM now works across the entire Apple ecosystem for building apps. This is great because packages let you organize your code into reusable, logical groups that you can easily share between projects or even with the world.

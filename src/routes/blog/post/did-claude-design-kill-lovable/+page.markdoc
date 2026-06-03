@@ -3,10 +3,23 @@ layout: post
 title: "Did Claude Design just kill Lovable?"
 description: "Anthropic dropped a design tool that turns prompts into code-powered prototypes and hands them straight to Claude Code. Is this the end for Lovable, or are we comparing apples and oranges?"
 date: 2026-04-18
-cover: /images/blog/did-claude-design-kill-lovable/cover.png
+cover: /images/blog/did-claude-design-kill-lovable/cover.avif
 timeToRead: 8
 author: aditya-oberai
 category: ai
+faqs:
+  - question: "What is Claude Design?"
+    answer: "Claude Design is Anthropic's visual canvas built on Claude Opus 4.7. You describe what you want and Claude drafts code-powered prototypes you can refine through chat, inline comments, direct edits, or sliders. Outputs can be handed straight to Claude Code for implementation."
+  - question: "Does Claude Design replace Lovable?"
+    answer: "Not today. Lovable produces deployed full-stack apps with built-in hosting, auth, and a backend, while Claude Design stops at the handoff to Claude Code. For non-technical founders, Lovable is still the faster path to a live URL. For developers already using Claude Code, the Claude Design plus Claude Code loop is tighter."
+  - question: "What is vibe coding?"
+    answer: "Vibe coding means building software by describing intent to a model instead of writing the code yourself. The term went mainstream in 2025 and now describes the default workflow for tools like Lovable, Bolt, v0, Replit Agent, and Claude Code. The whole category optimizes for iteration speed with natural language."
+  - question: "Why does being the model provider matter for AI coding tools?"
+    answer: "Wrappers around third-party models pay retail API prices, get new capabilities on someone else's schedule, and cannot tune the model itself. Providers like Anthropic ship Claude Design on day-one access to new models, can afford richer outputs, and tune the model with the product in mind. That gap widens with every model release."
+  - question: "How do I use Claude Design with a real backend like Appwrite?"
+    answer: "Claude Design generates the frontend, hands the bundle to Claude Code, and Claude Code can wire up backend services through MCP integrations. Pointing it at Appwrite for [auth](/docs/products/auth), [databases](/docs/products/databases), [storage](/docs/products/storage), and [functions](/docs/products/functions) gives you a production backend behind the generated UI."
+  - question: "Is Claude Design available now?"
+    answer: "Yes, in research preview for Pro, Max, Team, and Enterprise Claude plans. If you already pay for Claude, you already have access. It runs on Claude Opus 4.7 and ships exports to URLs, folders, Canva, PDF, PPTX, or standalone HTML."
 ---
 
 On April 17, 2026, Anthropic shipped **Claude Design**: a visual canvas built on Claude Opus 4.7 that turns prompts into code-powered prototypes and hands them straight to Claude Code.
@@ -123,6 +136,7 @@ A few practical reads:
 - **If you are a non-developer building an MVP this weekend:** Lovable is still probably the faster path to a working URL. Come back to Claude Design when you need more design control or when you are ready to bring in a developer.
 - **If you are a design or product team:** Claude Design changes the cost of producing polished visual work inside a product org. A PM can now prototype a feature well enough to ship it, which is new.
 - **If you are watching the AI-native tooling space:** Pay attention to the handoff interfaces between tools. Claude Design packaging a bundle for Claude Code is the first example of what this pattern looks like when both ends are the same model. More of this is coming.
+- **If you are comparing stacks before you standardize:** [Best vibe coding tools in 2026: comparison and tradeoffs](/blog/post/comparing-vibe-coding-tools) covers Cursor, Windsurf, Claude Code, Copilot, Bolt, Lovable, and how they differ outside the Claude-only lane.
 
 # Build the rest with Claude Code and Appwrite
 

@@ -32,27 +32,34 @@ export const createScrollInfo = () => {
         scrollInfo.set({ direction: 'down', top: initialTop, deltaDirChange: 0 });
         lastDirChange = initialTop;
 
+        let scrollRaf = 0;
         const handleScroll = () => {
-            scrollInfo.update((p) => {
-                const top = window.scrollY;
-                const direction = top > p.top ? 'down' : 'up';
-                if (p.direction !== direction) {
-                    lastDirChange = top;
-                }
-                const deltaDirChange = Math.abs(top - lastDirChange);
+            if (scrollRaf) return;
+            scrollRaf = requestAnimationFrame(() => {
+                scrollRaf = 0;
+                scrollInfo.update((p) => {
+                    const top = window.scrollY;
+                    const direction = top > p.top ? 'down' : 'up';
+                    if (p.direction !== direction) {
+                        lastDirChange = top;
+                    }
+                    const deltaDirChange = Math.abs(top - lastDirChange);
 
-                return {
-                    direction,
-                    top,
-                    deltaDirChange
-                };
+                    return {
+                        direction,
+                        top,
+                        deltaDirChange
+                    };
+                });
             });
         };
 
-        window.addEventListener('scroll', handleScroll);
+        const scrollOpts: AddEventListenerOptions = { passive: true };
+        window.addEventListener('scroll', handleScroll, scrollOpts);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll, scrollOpts);
+            if (scrollRaf) cancelAnimationFrame(scrollRaf);
         };
     });
 

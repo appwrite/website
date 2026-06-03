@@ -3,11 +3,24 @@ layout: post
 title: "Mock numbers for phone sign-in: Use cases and best practices"
 description: Dive deeper into use cases, best practices and examples of mock numbers in action.
 date: 2024-08-23
-cover: /images/blog/mock-numbers-use-cases/cover.png
+cover: /images/blog/mock-numbers-use-cases/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
+faqs:
+  - question: "What are mock phone numbers in Appwrite?"
+    answer: "Mock phone numbers are predefined phone and verification code pairs you configure in your project to simulate phone authentication. When you use a mock number in a phone sign in flow, Appwrite accepts the matching mock code instead of sending a real SMS. This makes testing phone auth fast and free."
+  - question: "Why use mock numbers instead of real SMS in testing?"
+    answer: "Real SMS costs money per message and can be delayed by carrier networks, which slows development and QA. Mock numbers remove cost and delay so you can iterate on auth flows quickly. They also let app store reviewers test phone sign in without sharing personal numbers."
+  - question: "How do I set up mock phone numbers in Appwrite?"
+    answer: "In the Appwrite Console, go to your project, then Auth, then Security, and scroll to Mock phone numbers. Click Generate number to create a mock phone and verification code, then Update to save. You can add multiple mock numbers or edit existing ones from the same screen. See [Appwrite Auth docs](/docs/products/auth) for more details."
+  - question: "Are mock numbers safe to use in production?"
+    answer: "Mock numbers are intended for development and testing, not for production traffic. They live in your project configuration and bypass real SMS delivery, which is fine for testing but inappropriate for real users. Disable or rotate mock numbers when moving to production so they cannot be misused."
+  - question: "Can mock numbers help with App Store review?"
+    answer: "Yes, App Store and Play Store reviewers often need to test authentication flows that include phone sign in. Providing mock credentials in your review notes lets them complete sign in without using their own phone numbers. This avoids review delays caused by unreachable phone verification."
+  - question: "Do mock numbers work with all phone auth flows?"
+    answer: "Yes, mock numbers integrate with the standard Appwrite phone auth flow using createPhoneToken followed by createSession. You pass the mock number and matching mock verification code as you would with a real number. This means your client side code does not need any special handling for tests."
 ---
 If you've ever struggled with testing phone sign-in flows without incurring the cost of real SMS messages or waiting for delivery delays, you'll appreciate the convenience of mock numbers. In Appwrite, mock numbers are predefined phone numbers and verification codes that you can use to simulate phone sign-in scenarios during development and testing.
 
@@ -45,7 +58,7 @@ Log in to your Appwrite account and select the project you want to configure. En
 1. **Navigate to `Project > Auth > Security` :** Scroll to the **Mock phone numbers** section
 2. **Generate Mock Number**: Click the **generate number** button. This will generate a mock phone number and verification code that you can use to test user authentication.
 
-    ![Mock-numbers-Appwrite](/images/blog/mock-numbers-use-cases/1.png)
+    ![Mock-numbers-Appwrite](/images/blog/mock-numbers-use-cases/1.avif)
 
     You can regenerate the number and verification code by clicking the icon beside the input field or you can edit it directly. To generate another mock phone number and verification code, click the **Add number** button.
 

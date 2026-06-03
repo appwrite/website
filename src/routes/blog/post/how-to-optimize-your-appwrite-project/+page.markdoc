@@ -3,11 +3,22 @@ layout: post
 title: How to optimize your Appwrite project for cost and performance
 description: Learn how to optimize your Appwrite project, manage resource usage, costs, and ensure smooth performance as yout application scales.
 date: 2024-09-20
-cover: /images/blog/how-to-optimize-your-appwrite-project/cover.png
+cover: /images/blog/how-to-optimize-your-appwrite-project/cover.avif
 timeToRead: 12
 author: ebenezer-don
 category: product
 featured: false
+faqs:
+  - question: "How can I reduce API request usage in Appwrite?"
+    answer: "Use smart querying with listDocuments() and filters instead of multiple requests. Combine queries, enable pagination, and use the Realtime API for live updates instead of polling. This reduces server load and speeds up responses."
+  - question: "What's the best way to cache data in an Appwrite app?"
+    answer: "Cache frequently accessed or static data using localStorage or IndexedDB on the client, and use Redis for server-side caching. Set expiry rules to prevent stale data and limit unnecessary API calls."
+  - question: "How do I optimize file storage and image performance?"
+    answer: "Enable bucket compression (gzip or zstd) and serve images using the Preview API for resizing or converting to formats like WebP. For global apps, add a CDN to deliver files faster and reduce server strain."
+  - question: "Can Appwrite automatically scale my project?"
+    answer: "Yes. Appwrite Cloud handles automatic scaling for traffic spikes and workload increases. For self-hosted setups, you can scale manually using Docker containers to distribute services across multiple servers."
+  - question: "How can I prevent hitting resource or budget limits?"
+    answer: "Set usage alerts and budget controls in the Appwrite Cloud Console. You can define spending caps and get notified before reaching limits, helping you manage resources proactively and avoid unexpected overages."
 ---
 
 Updated on October 6, 2025
@@ -213,7 +224,7 @@ You can also enable budget alerts to monitor your spending and prevent unexpecte
 
 To configure budget alerts, start by navigating to the **Appwrite Cloud Console**, then go to the **Organisation** section and select **Billing**. Here, you'll find options to manage your budget. You can set a **budget cap** to define a hard limit on your spending, and in the **Budget Alerts** section, you can enable notifications that trigger when your spending reaches a certain threshold. This ensures you are alerted before exceeding your desired budget.
 
-![Budget controls in Appwrite Cloud Console](/images/blog/how-to-optimize-your-appwrite-project/budget-controls.png)
+![Budget controls in Appwrite Cloud Console](/images/blog/how-to-optimize-your-appwrite-project/budget-controls.avif)
 
 # 6. Monitoring and scaling your Appwrite project
 
@@ -233,7 +244,7 @@ Appwrite provides built-in monitoring to help track API usage, database operatio
 
 You can monitor your Appwrite project's performance via the dashboard, which gives insights into your API request count, database operations, and storage usage. This data helps you manage your plan limits more effectively and optimize your app to avoid unexpected scaling needs.
 
-![Monitoring resource usage in Appwrite dashboard](/images/blog/how-to-optimize-your-appwrite-project/resource-monitoring.png)
+![Monitoring resource usage in Appwrite dashboard](/images/blog/how-to-optimize-your-appwrite-project/resource-monitoring.avif)
 
 ## Horizontal scaling
 
@@ -245,29 +256,7 @@ Horizontal scaling ensures that the load is distributed evenly across multiple i
 
 Optimizing your Appwrite project ensures you not only provide a better experience to your users but also prevent unnecessary resource overuse. By applying the techniques discussed in this guide, you can keep your project running smoothly while staying within your plan limits.
 
-These optimizations aren't just about cost savings—they are about making your app more scalable, efficient, and reliable as it grows. Rather than waiting until you hit plan limits, taking a proactive approach builds trust and ensures your users always experience the best possible performance, even as your app scales.
-
-# Frequently asked questions (FAQs)
-
-**1. How can I reduce API request usage in Appwrite?**
-
-Use smart querying with `listDocuments()` and filters instead of multiple requests. Combine queries, enable pagination, and use the Realtime API for live updates instead of polling. This reduces server load and speeds up responses.
-
-**2. What’s the best way to cache data in an Appwrite app?**
-
-Cache frequently accessed or static data using localStorage or IndexedDB on the client, and use Redis for server-side caching. Set expiry rules to prevent stale data and limit unnecessary API calls.
-
-**3. How do I optimize file storage and image performance?**
-
-Enable bucket compression (gzip or zstd) and serve images using the Preview API for resizing or converting to formats like WebP. For global apps, add a CDN to deliver files faster and reduce server strain.
-
-**4. Can Appwrite automatically scale my project?**
-
-Yes. Appwrite Cloud handles automatic scaling for traffic spikes and workload increases. For self-hosted setups, you can scale manually using Docker containers to distribute services across multiple servers.
-
-**5. How can I prevent hitting resource or budget limits?**
-
-Set usage alerts and budget controls in the Appwrite Cloud Console. You can define spending caps and get notified before reaching limits, helping you manage resources proactively and avoid unexpected overages.
+These optimizations aren't just about cost savings; they are about making your app more scalable, efficient, and reliable as it grows. Rather than waiting until you hit plan limits, taking a proactive approach builds trust and ensures your users always experience the best possible performance, even as your app scales.
 
 # Further reading and resources:
 

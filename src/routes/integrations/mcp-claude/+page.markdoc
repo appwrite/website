@@ -6,20 +6,20 @@ date: 2025-07-01
 featured: false
 isPartner: true
 isNew: true
-cover: /images/integrations/mcp-claude/cover.png
+cover: /images/integrations/mcp-claude/cover.avif
 category: mcp
 product: 
-    avatar: '/images/integrations/avatars/claude.png'
+    avatar: '/images/integrations/avatars/claude.avif'
     vendor: Anthropic
     description: 'Claude Desktop is a native AI assistant app by Anthropic that brings the Claude large language model to your devices.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/mcp-claude/cover.png
-    - /images/integrations/mcp-claude/appwrite-api-key.png
-    - /images/docs/mcp/claude-desktop/claude-mcp-tools.png
-    - /images/docs/mcp/claude-desktop/claude-list-users.png
+    - /images/integrations/mcp-claude/cover.avif
+    - /images/integrations/mcp-claude/appwrite-api-key.avif
+    - /images/docs/mcp/claude-desktop/claude-mcp-tools.avif
+    - /images/docs/mcp/claude-desktop/claude-list-users.avif
 ---
 
 Claude Desktop is a standalone application by Anthropic that allows users to interact with the Claude large language model directly from their Mac or Windows desktops. Designed for convenience and speed, it offers a distraction-free chat experience, supports multiple conversations, and runs natively for faster performance and system integration. Whether you're brainstorming, coding, summarizing documents, or automating workflows, Claude Desktop makes it easy to harness AI assistance without relying on a browser.
@@ -40,7 +40,7 @@ First, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/
 
 Select your project (or create a new one), and head to the **Overview** page from the left sidebar. Under the **Integrations** section, click on the **API Keys** tab, and then click on **Create API Key**. Select the scopes for whichever Appwrite services you want to work with, set the duration, and create the API key. You must then copy it for future usage.
 
-![Create API Key](/images/integrations/mcp-claude/appwrite-api-key.png)
+![Create API Key](/images/integrations/mcp-claude/appwrite-api-key.avif)
 
 Then, head to the **Settings** page from the left sidebar, and copy the **Project ID** and **API Endpoint** for future usage.
 
@@ -76,7 +76,7 @@ This configuration will set up the MCP server to connect to your Appwrite projec
 
 Once you have updated and saved the `claude_desktop_config.json` file, restart Claude Desktop and click on the MCP tools button (at the bottom right section of the prompt input) to view the available MCP tools.
 
-![Claude MCP Tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.png)
+![Claude MCP Tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.avif)
 
 {% info title="Claude Code" %}
 If you are using the Claude Code CLI, you can use the following command in your terminal to configure the MCP server in the exact same manner:
@@ -90,7 +90,7 @@ claude mcp add-json appwrite '{"command":"uvx","args":["mcp-server-appwrite"],"e
 
 Finally, you can test the integration by asking Claude Desktop to list all the users in your Appwrite project.
 
-![Claude Desktop](/images/docs/mcp/claude-desktop/claude-list-users.png)
+![Claude Desktop](/images/docs/mcp/claude-desktop/claude-list-users.avif)
 
 # Read more about MCP with Claude Desktop
 

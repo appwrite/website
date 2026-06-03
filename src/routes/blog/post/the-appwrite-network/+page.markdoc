@@ -3,19 +3,32 @@ layout: post
 title: "Announcing the Appwrite Network: Appwrite’s vision for a global cloud infrastructure"
 description: Announcing more regions for Cloud, and many more to come with the introduction of the Appwrite Network.
 date: 2025-04-16
-cover: /images/blog/the-appwrite-network/network-cover-image.png
+cover: /images/blog/the-appwrite-network/network-cover-image.avif
 timeToRead: 05
 author: christy-jacob
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Network?"
+    answer: "The [Appwrite Network](/docs/products/network) is a global network of cloud regions, edge locations, and Points of Presence (PoPs) that powers Appwrite Cloud. It improves availability, reduces latency, and helps with compliance for local data regulations."
+  - question: "Which regions does Appwrite Cloud support?"
+    answer: "At launch, the Appwrite Network is operational in Frankfurt (FRA), Sydney (SYD), New York City (NYC), Singapore (SGP), and Toronto (TOR). More regions like San Francisco, Bangalore, Amsterdam, and London are planned. Pro users can pick from available regions when creating a project."
+  - question: "What is the difference between a region, an edge, and a PoP?"
+    answer: "Regions host your core data and services like Auth, Databases, Functions, Messaging, and Storage. Edges run lightweight compute close to your users using geo-routing. PoPs are CDN locations that cache and deliver content. Together, they bring data, compute, and delivery closer to end users."
+  - question: "Does Appwrite Cloud include a CDN and DDoS protection?"
+    answer: "Yes. All Appwrite Cloud projects are served through a built-in global CDN with strategically placed PoPs, plus integrated DDoS protection that combines traffic analysis, rate limiting, and filtering. This applies to all plans without extra configuration."
+  - question: "Can I control where my project's data is stored?"
+    answer: "Yes. When you create a project, you can choose the region where your data lives. The data stays in that region for compliance, while edges and the CDN make it accessible to users worldwide with low latency."
+  - question: "Does Appwrite offer a Web Application Firewall?"
+    answer: "Yes. The [WAF](/docs/products/network/waf) is available to enterprise customers and inspects HTTP and HTTPS traffic at OSI Layer 7. It blocks common attacks like SQL injection, XSS, and CSRF, and includes customizable rulesets managed through a dedicated success manager."
 ---
 
 We are happy to announce the launch of the Appwrite Network, a network of cloud regions and edge locations (edges) to improve Appwrite Cloud availability, performance, and compliance with local regulations. This will provide Appwrite developers and teams with the best tools and infrastructure to build, deploy, and scale your applications. This brings us closer to the Appwrite mission of making software development more accessible and enjoyable for all developers.
 
 Starting today, all Pro users have access to three regions of choice, including our two new regions in **New York City** ('NYC'), and **Sydney** ('SYD') that are joining our first region in **Frankfurt** ('FRA'). In the next few weeks, this will be available to all Cloud users, with more regions to come.
 
-![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.png)
+![Overview of all the regions](/images/blog/the-appwrite-network/cloud-regions.avif)
 
 # The plan
 
@@ -63,7 +76,7 @@ Building a fully fledged network from scratch is not a decision we take lightly.
 
 # Regions vs Edges vs PoPs
 
-![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges-pops.png)
+![Regions vs Edges vs PoPs](/images/blog/the-appwrite-network/regions-edges-pops.avif)
 
 In Appwrite, Regions are where all your core data and services live. This includes your databases, auth, functions, messaging, and storage. Regions are the source of truth, handling heavy workloads and ensuring your application runs reliably while keeping your data compliant with local regulations.
 

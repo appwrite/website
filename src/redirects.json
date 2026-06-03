@@ -786,31 +786,31 @@
     },
     {
         "link": "/docs/tooling/mcp/cursor",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/cursor"
+        "redirect": "/docs/tooling/ai/agents/cursor"
     },
     {
         "link": "/docs/tooling/mcp/vscode",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/vscode"
+        "redirect": "/docs/tooling/ai/agents/vscode"
     },
     {
         "link": "/docs/tooling/mcp/windsurf",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/windsurf"
+        "redirect": "/docs/tooling/ai/agents/windsurf"
     },
     {
         "link": "/docs/tooling/mcp/opencode",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/opencode"
+        "redirect": "/docs/tooling/ai/agents/opencode"
     },
     {
         "link": "/docs/tooling/mcp/antigravity",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/antigravity"
+        "redirect": "/docs/tooling/ai/agents/antigravity"
     },
     {
         "link": "/docs/tooling/mcp/claude-code",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-code"
+        "redirect": "/docs/tooling/ai/agents/claude-code"
     },
     {
         "link": "/docs/tooling/mcp/claude-desktop",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/claude-desktop"
+        "redirect": "/docs/tooling/ai/vibe-coding/claude-desktop"
     },
     {
         "link": "/docs/tooling/mcp/api",
@@ -834,11 +834,59 @@
     },
     {
         "link": "/docs/tooling/mcp/zenflow",
-        "redirect": "/docs/tooling/ai/ai-dev-tools/zenflow"
+        "redirect": "/docs/tooling/ai/vibe-coding/zenflow"
     },
     {
         "link": "/docs/tooling/ai/ai-dev-tools",
         "redirect": "/docs/tooling/ai/"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/claude-code",
+        "redirect": "/docs/tooling/ai/agents/claude-code"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/codex",
+        "redirect": "/docs/tooling/ai/agents/codex"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/cursor",
+        "redirect": "/docs/tooling/ai/agents/cursor"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/vscode",
+        "redirect": "/docs/tooling/ai/agents/vscode"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/opencode",
+        "redirect": "/docs/tooling/ai/agents/opencode"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/antigravity",
+        "redirect": "/docs/tooling/ai/agents/antigravity"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/windsurf",
+        "redirect": "/docs/tooling/ai/agents/windsurf"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/claude-desktop",
+        "redirect": "/docs/tooling/ai/vibe-coding/claude-desktop"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/lovable",
+        "redirect": "/docs/tooling/ai/vibe-coding/lovable"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/emergent",
+        "redirect": "/docs/tooling/ai/vibe-coding/emergent"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/bolt",
+        "redirect": "/docs/tooling/ai/vibe-coding/bolt"
+    },
+    {
+        "link": "/docs/tooling/ai/ai-dev-tools/zenflow",
+        "redirect": "/docs/tooling/ai/vibe-coding/zenflow"
     },
     {
         "link": "/install/compose",
@@ -847,5 +895,29 @@
     {
         "link": "/install/env",
         "redirect": "/docs/advanced/self-hosting/installation#manual-installation"
+    },
+    {
+        "link": "/the-appwrite-network",
+        "redirect": "/docs/products/network"
+    },
+    {
+        "link": "/blog/post/backend-as-a-service-baas",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/baas-backend-as-a-service-explained-when-should-you-use-it",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-baas-in-2025",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/blog/post/choosing-the-right-backend",
+        "redirect": "/blog/post/backend-as-a-service"
+    },
+    {
+        "link": "/heroes",
+        "redirect": "/"
     }
 ]

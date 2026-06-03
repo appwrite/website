@@ -75,7 +75,7 @@
         <div class="flex items-center gap-2">
             <img
                 loading="lazy"
-                src="/images/icons/illustrated/dark/auth.png"
+                src="/images/icons/illustrated/dark/auth.avif"
                 alt="Auth icon"
                 class="size-7"
             />
@@ -98,13 +98,15 @@
                     <div class="flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
                             <label
-                                for="email"
+                                for="bento-auth-demo-email"
                                 class="leading-micro text-secondary text-[0.625rem] tracking-tighter"
                                 >Email</label
                             >
                             <input
+                                id="bento-auth-demo-email"
                                 type="text"
                                 name="email"
+                                autocomplete="off"
                                 class="border-smooth text-eyebrow w-full rounded-lg border bg-[#19191C] px-3 py-2 tracking-tighter text-white"
                                 value="walter@acme.dev"
                                 disabled
@@ -112,13 +114,15 @@
                         </div>
                         <div class="flex flex-col gap-1">
                             <label
-                                for="password"
+                                for="bento-auth-demo-password"
                                 class="leading-micro text-secondary text-[0.625rem] tracking-tighter"
                                 >Create Password</label
                             >
                             <input
+                                id="bento-auth-demo-password"
                                 type="text"
                                 name="password"
+                                autocomplete="off"
                                 class={cn(
                                     'text-eyebrow! w-full rounded-lg border border-white/24 bg-[#19191C] px-3 py-2 tracking-tighter text-white'
                                 )}

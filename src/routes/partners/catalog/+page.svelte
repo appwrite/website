@@ -24,7 +24,7 @@
     const title = 'Partners' + TITLE_SUFFIX;
     const description =
         'Find the right Appwrite Partner for your projects. From freelance specialists to multifaceted agencies, there is an Appwrite expert for you.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/website.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/website.avif';
 
     // search functionality
     let fuseOptions = {

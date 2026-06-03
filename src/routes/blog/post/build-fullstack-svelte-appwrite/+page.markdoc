@@ -3,10 +3,23 @@ layout: post
 title: Building a full-stack app with Svelte and Appwrite
 description: Learn how to build full-stack apps with Svelte and Appwrite by building an expense tracker.
 date: 2025-01-31
-cover: /images/blog/build-fullstack-svelte-appwrite/cover.png
+cover: /images/blog/build-fullstack-svelte-appwrite/cover.avif
 timeToRead: 15
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "Does Appwrite work with SvelteKit?"
+    answer: "Yes. Appwrite has a JavaScript Web SDK that works seamlessly with SvelteKit on both client and server. You can use it from +page.svelte files, +page.server.js load functions, or SvelteKit form actions. SSR sessions work through cookies."
+  - question: "How do I authenticate users in a SvelteKit app with Appwrite?"
+    answer: "Use [Appwrite Auth](/docs/products/auth) via the Account API on the client to handle email/password, OAuth, or magic URL flows. For SSR, store the session in a cookie and use a server-side Appwrite client (with the session set) inside +page.server.js to fetch user-scoped data."
+  - question: "Can I use Appwrite with TypeScript in Svelte?"
+    answer: "Yes. The Appwrite Web SDK ships with full TypeScript types. The tutorial uses JavaScript for simplicity, but you can swap in TypeScript by picking that option in sv create and importing types directly from the appwrite package."
+  - question: "How do I enforce that users only see their own data?"
+    answer: "Enable Document Security on your collection and set per-document permissions when creating rows. Use the user's ID as the read/write permission so other users can't access their data. [Appwrite Databases](/docs/products/databases) handles the permission checks automatically."
+  - question: "What's the difference between collection-level and document-level permissions?"
+    answer: "Collection-level permissions apply to all documents in the collection. Document-level (Document Security) lets each row carry its own permissions, which is what you want for multi-tenant data like a personal expense tracker. Enable Document Security to use it."
+  - question: "Do I need to host Svelte and Appwrite separately?"
+    answer: "Not necessarily. You can deploy the SvelteKit frontend on [Appwrite Sites](/docs/products/sites) and use the same project for backend services, keeping everything under one console. Or you can deploy SvelteKit elsewhere (Netlify, Vercel) and point at Appwrite for the backend."
 ---
 
 Managing personal finances is a common need, and building an expense tracker is an excellent way to learn full-stack development with Svelte. In this tutorial, we'll create a web application that helps users track their spending.
@@ -93,7 +106,7 @@ To ensure that users can only access their own expenses, Open the collection's *
 
 Next, enable **Document Security** to allow users to access their documents. We'll ensure this by giving users the **Read** permission when creating documents in our code.
 
-![permissions-document-security](/images/blog/build-fullstack-svelte-appwrite/permissions-document-security.png)
+![permissions-document-security](/images/blog/build-fullstack-svelte-appwrite/permissions-document-security.avif)
 
 ## Project structure
 
@@ -936,7 +949,7 @@ pnpm dev
 
 Visit the displayed URL in your browser, and you should see a fully functional expense tracking application that looks like this:
 
-![Expense app final look](/images/blog/build-fullstack-svelte-appwrite/expense-app-final-look.png)
+![Expense app final look](/images/blog/build-fullstack-svelte-appwrite/expense-app-final-look.avif)
 
 ## Next steps
 

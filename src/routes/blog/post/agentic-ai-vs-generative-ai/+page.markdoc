@@ -2,13 +2,26 @@
 layout: post
 title: "Agentic AI vs Generative AI: A complete overview."
 description: Explore Agentic AI vs Generative AI with clear examples and key differences. Learn how Agentic AI goes beyond Gen AI to act, plan, and decide.
-cover: /images/blog/agentic-ai-vs-generative-ai/cover.png
+cover: /images/blog/agentic-ai-vs-generative-ai/cover.avif
 timeToRead: 10
 date: 2025-10-23
 author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What is the core difference between generative AI and agentic AI?"
+    answer: "Generative AI predicts and produces content (text, images, code) in response to a prompt and then stops. Agentic AI uses a generative model as a reasoning engine, but adds memory, tools, planning, and feedback loops so it can pursue a goal across multiple steps without explicit prompting at each one."
+  - question: "Is agentic AI just generative AI in a loop?"
+    answer: "Partly, but not just any loop. Agentic systems combine an LLM with explicit memory, tools (APIs, browsers, databases), a planner that decomposes goals into steps, and an evaluator that decides whether to continue, adjust, or stop. Without those scaffolds, looping an LLM degenerates into noise."
+  - question: "What role does MCP play in agentic AI?"
+    answer: "[Model Context Protocol](/blog/post/what-is-mcp) (MCP) is a standard that lets agents connect to external tools, APIs, and data sources in a consistent way. Without MCP, every tool needs a custom integration. With it, an agent can use the same wire protocol to talk to GitHub, Appwrite, Stripe, and your internal services."
+  - question: "How do I expose an Appwrite project to an AI agent?"
+    answer: "Use the [Appwrite MCP server](/docs/tooling/mcp/api). It exposes Appwrite Auth, Databases, Storage, and Functions as tools an MCP-compatible agent can call. The agent can then create users, query collections, upload files, or trigger functions as part of its plan."
+  - question: "Do I need agentic AI for my product, or is generative AI enough?"
+    answer: "If your use case is summarization, content drafting, or chat, generative AI is usually enough. Reach for agentic systems when your task requires multiple steps, calling external systems, or adapting based on intermediate results, e.g., a research assistant, a code-writing agent, or an ops automation tool."
+  - question: "Are agentic AI systems reliable enough for production?"
+    answer: "They are improving fast but still need guardrails. For production, scope the agent's tools narrowly, require human approval for high-impact actions, log every step for audit, and run evaluations against known scenarios. Agentic systems running with full access and no guardrails are not yet production-ready for most teams."
 ---
 Let's be honest, the term AI has become overloaded. These days, no keynote or launch event goes by without someone mentioning it.
 
@@ -34,10 +47,10 @@ Once it generates something, it stops there.
 
 You've already used dozens of generative AI examples without realizing it:
 
-- **ChatGPT** — Generates text, explanations, and code based on natural language input.
-- **Midjourney / Stable Diffusion** — Create images from textual descriptions.
-- **Suno / Udio** — Produce songs from a few descriptive sentences.
-- **Runway / Pika** — Generate short videos and visual effects.
+- **ChatGPT**: Generates text, explanations, and code based on natural language input.
+- **Midjourney / Stable Diffusion**: Create images from textual descriptions.
+- **Suno / Udio**: Produce songs from a few descriptive sentences.
+- **Runway / Pika**: Generate short videos and visual effects.
 
 They generate, but they don't decide what to do next. That's still up to you.
 
@@ -69,10 +82,10 @@ Agentic AI systems combine language models with reasoning, memory, and the abili
 
 Technically, *Agentic AI* builds on top of *Generative AI*. It uses the same LLM backbone for reasoning and communication, but wraps it with additional layers:
 
-- **Memory** — to retain context beyond a single conversation.
-- **Tools** — to interact with external systems (APIs, browsers, databases, environments).
-- **Planning & goal-setting** — to decompose objectives into actionable steps.
-- **Feedback loops** — to evaluate results and adjust strategy.
+- **Memory**, to retain context beyond a single conversation.
+- **Tools**, to interact with external systems (APIs, browsers, databases, environments).
+- **Planning & goal-setting**, to decompose objectives into actionable steps.
+- **Feedback loops**, to evaluate results and adjust strategy.
 
 Recent advancements like the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) have helped agentic systems bridge the gap between reasoning and real-world action. MCP provides a standardized way for AI models to connect with tools, APIs, and data sources, enabling them to move beyond static outputs and perform dynamic, goal-driven operations.
 
@@ -82,11 +95,11 @@ For example, with [Appwrite's MCP Server](/docs/tooling/mcp), developers can exp
 
 Let's look at real *agentic AI examples* in the wild:
 
-- **AutoGPT** — One of the first frameworks to chain multiple GPT calls with goals, planning, and execution.
-- **Devin (by Cognition Labs)** — Who doesn't remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
-- **ChatGPT with Browse + Code Interpreter** — Not just responding, but searching the web, running code, and retrieving data.
-- **Cursor** — An AI-powered code editor that acts as an autonomous development partner, capable of understanding projects, writing code, fixing bugs, and iterating in real time through contextual awareness.
-- **ReAct / LangChain / OpenDevin frameworks** — Agentic architectures that integrate reasoning, reflection, and memory loops.
+- **AutoGPT**: One of the first frameworks to chain multiple GPT calls with goals, planning, and execution.
+- **Devin (by Cognition Labs)**: Who doesn't remember Devin? The first "AI software engineer" capable of autonomously writing, debugging, and shipping code.
+- **ChatGPT with Browse + Code Interpreter**: Not just responding, but searching the web, running code, and retrieving data.
+- **Cursor**: An AI-powered code editor that acts as an autonomous development partner, capable of understanding projects, writing code, fixing bugs, and iterating in real time through contextual awareness.
+- **ReAct / LangChain / OpenDevin frameworks**: Agentic architectures that integrate reasoning, reflection, and memory loops.
 
 Notice the difference? These systems don't stop at output. They can plan, execute, evaluate results, and adjust strategy based on the outcomes.
 

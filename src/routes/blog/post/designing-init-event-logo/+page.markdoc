@@ -3,11 +3,24 @@ layout: post
 title: "Designing Init: Event logo and theme"
 description: "How the Appwrite Visual Design team crafted Init 2.0"
 date: 2024-08-23
-cover: /images/blog/designing-init/cover.png
+cover: /images/blog/designing-init/cover.avif
 timeToRead: 5
 author: jesse-winton
 category: design
 featured: false
+faqs:
+  - question: "What is Appwrite Init?"
+    answer: "[Init](/init) is Appwrite's online launch event where the team announces new products, features, and updates across the platform. It runs across multiple days, with talks, demos, and a customizable event ticket that attendees can share on social media."
+  - question: "How does Appwrite approach event branding for Init?"
+    answer: "The visual design team starts with an empty FigJam board, gathers references, debates direction, and iterates on logos and animations together. For Init 2.0 the team landed on line art because it felt dynamic and matched the performance themes of the new feature set."
+  - question: "How was the Init 2.0 logo animation built in the browser?"
+    answer: "The animation uses SVG paths with CSS `stroke-dasharray` and `stroke-dashoffset`. Each letter path is rendered three times with staggered `animation-delay` values to create the impression of multiple strokes traveling along the same shape. No JavaScript animation library is needed."
+  - question: "Why use CSS instead of an animation library for SVG strokes?"
+    answer: "CSS animations on SVG strokes are lightweight, run on the GPU where possible, and avoid pulling in a full animation runtime for a simple line draw effect. The team initially explored gradient tracing approaches with JavaScript but found the CSS-only version both simpler and more performant."
+  - question: "Why is the marketing site built in SvelteKit?"
+    answer: "SvelteKit gives Appwrite a single framework for both static marketing pages and interactive components, with strong support for transitions and animations out of the box. The Init animation principles translate to any component-based framework, so the approach is not Svelte-specific."
+  - question: "Can I reuse the SVG stroke animation pattern on my own site?"
+    answer: "Yes. Store letter or shape paths in an array, render each one a few times with staggered `animation-delay`, and animate `stroke-dasharray` with CSS keyframes. The same approach works in React, Vue, Svelte, or vanilla JavaScript with no extra libraries."
 ---
 
 After the success of our first [Init](https://appwrite.io/init) event in Spring of 2024, we knew there would be more coming soon, and that, visually, we had set ourselves a high bar. Even though Init is a fully online, virtual event, Appwrite’s visual design team created something tangible and interactive with the fully customizable, and shareable [Init event tickets](https://appwrite.io/init/tickets). In early July, knowing that our next event was just around the corner, we gathered again and began to brainstorm the visual design style that we wanted to bring to Init 2.0.
@@ -16,11 +29,11 @@ After the success of our first [Init](https://appwrite.io/init) event in Spring 
 
 As a team, we always begin these design sprints with an empty FigJam board, where we can add notes, add screenshots that might give us inspiration, and have discussions about the things we like and dislike. Since this was our second time ideating for Init, we were able to apply many learnings from previous processes, which made this (and subsequent phases) feel more streamlined.
 
-![FigJam inspiration](/images/blog/designing-init/figjam-1.png)
+![FigJam inspiration](/images/blog/designing-init/figjam-1.avif)
 
 With the new feature set in mind, we needed to make sure that every piece of the design language was communicating the ways these new features would boost developer productivity, remove friction, and enhance performance. As we all gathered inspiration, we ultimately started to come together on the concept of line art; it felt dynamic and had a sense of organic movement that was in line with the key themes of performance that we wanted to focus on.
 
-![FigJam inspiration](/images/blog/designing-init/figjam-2.png)
+![FigJam inspiration](/images/blog/designing-init/figjam-2.avif)
 
 Once the team agreed on our visual style, we began to iterate on concepts.
 
@@ -28,7 +41,7 @@ Once the team agreed on our visual style, we began to iterate on concepts.
 
 We had a few iterations of the event logo before settling on our final version. In situations like this, there can be a lot of value in iterating in code; it’s easy to preview, you can start to get a feel for the real world implementation, and once the team finds something that works the job is halfway done.
 
-![Sara's pass](/images/blog/designing-init/saras-pass.png)
+![Sara's pass](/images/blog/designing-init/saras-pass.avif)
 
 {% video src="/images/blog/designing-init/first-browser-pass.mov" /%}
 
@@ -236,11 +249,11 @@ Of course, the Init lockup was not the only component of design work needed for 
 
 We worked together with Appwrite engineers to understand how each new feature launched could be illustrated using the dynamic line art concept we developed. This resulted in a set of key illustrations we used across different channels such as campaign announcements on social media, website illustrations, blog covers, and animations.
 
-![Day 0](/images/blog/designing-init/day0.png)
-![Day 1](/images/blog/designing-init/day1.png)
-![Day 2](/images/blog/designing-init/day2.png)
-![Day 3](/images/blog/designing-init/day3.png)
-![Day 4](/images/blog/designing-init/day4.png)
+![Day 0](/images/blog/designing-init/day0.avif)
+![Day 1](/images/blog/designing-init/day1.avif)
+![Day 2](/images/blog/designing-init/day2.avif)
+![Day 3](/images/blog/designing-init/day3.avif)
+![Day 4](/images/blog/designing-init/day4.avif)
 
 This helped expand the concept we began developing with the Init lockup and made the whole event’s identity feel more expressive, diverse, and complete.
 

@@ -3,12 +3,23 @@ layout: post
 title: Tooling checklist for HIPAA-Ready applications
 description: A practical tooling checklist for teams building HIPAA-ready healthcare apps, covering authentication, access control, encryption, monitoring, and secure infrastructure.
 date: 2026-03-11
-cover: /images/blog/tooling-checklist-for-hipaa-ready-applications/cover.png
+cover: /images/blog/tooling-checklist-for-hipaa-ready-applications/cover.avif
 timeToRead: 5
 author: aishwari
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "What does it mean for an application to be HIPAA-ready?"
+    answer: "HIPAA-ready means the application implements the administrative, physical, and technical safeguards required to protect PHI and ePHI. From a developer perspective, this includes strong authentication, role-based access, encryption in transit and at rest, audit logging, monitoring, and tested backups. It is the result of how the system is designed and operated over time, not a single feature or certification."
+  - question: "Which technical safeguards should be in place before an app touches PHI?"
+    answer: "At minimum, you need reliable authentication, role-based and resource-level access control, a database layer that enforces permissions, secure file storage with private-by-default buckets, encryption everywhere (TLS, encrypted volumes, encrypted backups), and audit logs that capture access events. Monitoring, alerting, and tested disaster recovery round out the baseline."
+  - question: "Why are audit logs so important for HIPAA compliance?"
+    answer: "Audit logs let you reconstruct who accessed which record, what changed, when it happened, and whether access was allowed or denied. Beyond meeting HIPAA requirements, they shorten incident response time and provide the evidence regulators expect during a review. Logs should cover authentication events, data access, admin actions, and permission changes."
+  - question: "Do I need a Business Associate Agreement (BAA) with my backend vendor?"
+    answer: "If a vendor stores, processes, or transmits PHI on your behalf, HIPAA requires a signed BAA. This applies to most cloud providers, databases, storage services, and email or messaging tools in your stack. Choosing tooling whose vendor will sign a BAA up front avoids being blocked late in the project."
+  - question: "How does Appwrite help teams build HIPAA-ready applications?"
+    answer: "Appwrite provides authentication, databases, storage, and serverless functions with permissions enforced at the resource level, encryption at rest and in transit, and event logging. Self-hosting lets PHI stay inside your own controlled infrastructure, and the Appwrite HIPAA documentation outlines the configuration and operational practices needed to build healthcare applications on the platform."
 ---
 
 Building healthcare software is different from building most web apps. You're not just shipping features, you're earning trust. And if your application handles protected health information (PHI), HIPAA expectations shape your architecture from the start, especially around access control, auditability, encryption, and operational discipline.
@@ -116,7 +127,7 @@ If your app allows uploads, storage must be part of your HIPAA-ready checklist, 
 
 ## 5) Encryption everywhere: In transit and at rest (HIPAA security rule)
 
-Encryption isn't just a security best practice, it's foundational for protecting PHI. Data security is a critical component of HIPAA compliance, and the HIPAA Security Rule specifically sets guidelines for implementing technical safeguards—such as encryption—to protect electronic PHI (ePHI). HIPAA security safeguards, including administrative, physical, and technical measures, are essential for ensuring the confidentiality and integrity of sensitive healthcare data.
+Encryption isn't just a security best practice, it's foundational for protecting PHI. Data security is a critical component of HIPAA compliance, and the HIPAA Security Rule specifically sets guidelines for implementing technical safeguards (such as encryption) to protect electronic PHI (ePHI). HIPAA security safeguards, including administrative, physical, and technical measures, are essential for ensuring the confidentiality and integrity of sensitive healthcare data.
 
 At a minimum, your tooling and infrastructure should support:
 

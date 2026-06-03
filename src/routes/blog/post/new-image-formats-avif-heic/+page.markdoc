@@ -3,11 +3,24 @@ layout: post
 title: "Announcing HEIC and AVIF support: modern image formats now in Appwrite"
 description:
 date: 2025-05-22
-cover: /images/blog/new-image-formats.png
+cover: /images/blog/new-image-formats.avif
 timeToRead: 6
 author: damodar-lohani
 category: product, announcement
 featured: false
+faqs:
+  - question: "What is HEIC and why does it matter?"
+    answer: "HEIC is Apple's default image format on iOS, designed to deliver high quality images at significantly smaller file sizes than JPEG. It is widely used in iPhone photo libraries and apps that need to handle native iOS image capture. Supporting HEIC means images stay smaller without losing quality on Apple devices."
+  - question: "What is AVIF and how does it compare to other formats?"
+    answer: "AVIF is a modern open image format with excellent compression ratios, often producing files smaller than WebP at similar quality. It is supported by modern browsers like Chrome, Firefox, and Safari (recent versions). For media heavy sites, switching to AVIF can cut bandwidth and improve load times noticeably."
+  - question: "How do I use HEIC or AVIF with Appwrite Storage?"
+    answer: "Call the image preview endpoint with the output parameter set to ImageFormat.Heic or ImageFormat.Avif using the [Appwrite SDK](/docs/sdks). The source image can be in any supported format, Appwrite converts on the fly. See the [image transformation docs](/docs/products/storage/images) for the full parameter list."
+  - question: "Do I need to upload images in HEIC or AVIF to serve them in those formats?"
+    answer: "No, you can upload images in any common format and request the preview in HEIC or AVIF at serve time. Appwrite handles the conversion as part of the [Storage](/docs/products/storage) preview pipeline. This means you keep one source file per image and deliver the right format per client."
+  - question: "Is HEIC or AVIF support available on self hosted Appwrite?"
+    answer: "Yes, HEIC and AVIF output formats are available on both Appwrite Cloud and self hosted installations. Update to a version that includes the feature and you can request previews in either format. No additional external services are required."
+  - question: "When should I use AVIF over WebP or JPEG?"
+    answer: "Use AVIF when you need the smallest file sizes and your audience uses modern browsers and devices. WebP remains a safe middle ground for broader compatibility, and JPEG still serves legacy clients. For mixed audiences, request AVIF with a JPEG fallback by detecting client support."
 ---
 
 We’re excited to share we have added support for two new image formats in Appwrite Storage: **HEIC** and **AVIF.** This will give you more tools to manage, manipulate, and serve images the way you need.

@@ -3,11 +3,24 @@ layout: post
 title: Why you need to try the new Bun function runtime
 description: Why Bun's features are perfect for building Appwrite Functions.
 date: 2024-03-01
-cover: /images/blog/why-you-need-to-try-the-new-bun-runtime/cover.png
+cover: /images/blog/why-you-need-to-try-the-new-bun-runtime/cover.avif
 timeToRead: 15
 author: vincent-ge
 category: product
 featured: false
+faqs:
+  - question: "What is Bun and how is it different from Node.js?"
+    answer: "Bun is a JavaScript runtime, package manager, bundler, and test runner in a single binary. It runs JavaScript and TypeScript natively, implements many web standards (fetch, FormData, WebSocket), and is built around speed. Node.js is a runtime only, with separate tools for the rest of the stack."
+  - question: "Why use Bun as an Appwrite Function runtime?"
+    answer: "Bun cuts deploy and build time significantly because it installs dependencies and runs TypeScript without a separate transpile step. For Appwrite Functions, that means faster iteration loops when you deploy and test code multiple times an hour. See [Appwrite Functions](/docs/products/functions) for the full runtime list."
+  - question: "Does Bun support all npm packages?"
+    answer: "Most popular npm packages work with Bun, especially anything that targets standard JavaScript. Some native modules and Node-specific APIs may still have edge cases, so test critical dependencies before committing to Bun for a production workload."
+  - question: "Do I need to rewrite my Node.js code to run on Bun?"
+    answer: "Usually not. Bun aims for Node.js compatibility for most common APIs, so existing handlers, fetch calls, and TypeScript code often run unchanged. Edge cases tend to involve native bindings or very specific Node internals."
+  - question: "Can I write Appwrite Functions in TypeScript with Bun?"
+    answer: "Yes. Bun runs TypeScript natively, so you do not need a separate tsc step or a populated dist folder. You can deploy your .ts source directly to an Appwrite Function and Bun handles the rest."
+  - question: "Is Bun production-ready?"
+    answer: "Bun reached 1.0 in late 2023 and is now used in production by teams running APIs, scripts, and serverless functions. As with any newer runtime, validate your specific dependencies and workload patterns, but the core runtime has been stable for long enough to trust for most use cases."
 ---
 
 When Bun announced their 1.0 release, marking Bun stable and production-ready, we excitedly began working on a Bun runtime for [Appwrite Functions](/docs/products/functions).
@@ -71,11 +84,11 @@ Again, in the context of an Appwrite Function, the build time you can save is pr
 
 **Bun** build time
 
-![Bun build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/bun-buildtime.png)
+![Bun build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/bun-buildtime.avif)
 
 **Typescript** build time
 
-![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/ts-buildtime.png)
+![Typescript build time](/images/blog/why-you-need-to-try-the-new-bun-runtime/ts-buildtime.avif)
 
 # Implements standard Web APIs
 

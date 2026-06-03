@@ -15,10 +15,10 @@ The recommended way to manage your Appwrite Sites deployments is to use a versio
 You can only use Git deployment for Appwrite Sites connected to Git. [Create a new site with GitHub](/docs/products/sites/quick-start) or connect your existing site to a GitHub repository in your site’s **Settings** > **Git repository** > **Connect Git**.
 
 {% only_dark %}
-![Git repository](/images/docs/sites/dark/git-repo.png)
+![Git repository](/images/docs/sites/dark/git-repo.avif)
 {% /only_dark %}
 {% only_light %}
-![Git repository](/images/docs/sites/git-repo.png)
+![Git repository](/images/docs/sites/git-repo.avif)
 {% /only_light %}
 
 1. Using Git, checkout to the branch you configured as the production branch when creating the Appwrite Site.
@@ -37,6 +37,30 @@ When you push a commit to a branch other than the production branch, a new deplo
 # Git configuration
 
 If you need to update your Git configuration, navigate to **Sites** > your site > **Settings** > **Git repository**.
+
+## Build triggers {% #build-triggers %}
+
+Build triggers control which Git changes create automatic deployments. You can configure branch filters and path filters with glob patterns.
+
+**Branch filters** match branch names. Add patterns to limit automatic deployments to specific branches.
+
+```txt
+main
+staging
+preview/**
+```
+
+**Path filters** match files changed in a commit or pull request. Leave this field empty to create deployments for all file changes, or add patterns to deploy only when specific files change.
+
+```txt
+apps/web/**
+packages/ui/**
+!docs/**
+```
+
+Use these formats to write glob patterns.
+
+{% partial file="git-glob-patterns.md" /%}
 
 ## Install command
 

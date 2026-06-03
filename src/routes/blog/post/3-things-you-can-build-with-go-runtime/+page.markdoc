@@ -3,11 +3,24 @@ layout: post
 title: "3 things you can build with the Go runtime"
 description: Explore a few use cases of how to leverage Go's speed in your app.
 date: 2024-08-22
-cover: /images/blog/building-with-go-cover.png
+cover: /images/blog/building-with-go-cover.avif
 timeToRead: 8
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "Which Go version does the Appwrite Functions runtime support?"
+    answer: "Appwrite ships a Go runtime starting from version 1.6, with `go-1.23` available as a runtime identifier. You enable it by adding `go-1.23` to your `_APP_FUNCTIONS_RUNTIMES` environment variable when self-hosting, or simply selecting it from the dropdown on Appwrite Cloud."
+  - question: "What kinds of things can I build with the Go runtime?"
+    answer: "Anything you would build with a serverless function: REST APIs, webhook handlers, scheduled jobs, AI integrations, and event-driven workflows that react to user signups, database writes, or file uploads. Go is particularly good when you need low cold-start latency or high requests-per-second per memory unit."
+  - question: "How does the Go runtime compare to Node.js or Python in Appwrite Functions?"
+    answer: "In Appwrite's internal benchmarks, the Go runtime had up to 3x faster cold starts and roughly 5x lower memory usage than several interpreted runtimes including Node.js, Deno, Ruby, and Python. Build times can be slower because Go is compiled, but the runtime performance gains usually pay off for production workloads."
+  - question: "Can I trigger Go Appwrite Functions from events?"
+    answer: "Yes. Like every Appwrite Function, a Go function can be triggered by HTTP requests, CRON schedules, or events emitted by Appwrite products (user creation, document changes, file uploads, etc.). The event payload is delivered to your handler so you can route on it."
+  - question: "How do I deploy a Go Appwrite Function via CI/CD?"
+    answer: "Connect your GitHub repository to your function in the Appwrite console and pick a branch. Every push to that branch triggers a new build and deployment automatically. You can also deploy from the Appwrite CLI by running `appwrite push functions` from your local project."
+  - question: "Can I develop Appwrite Go functions locally before deploying?"
+    answer: "Yes, the Appwrite CLI supports [local development](/blog/post/announcing-local-development) for Functions, including the Go runtime. There is also a published Go module with the types you need for the runtime context, so your editor gets full autocomplete and you can iterate without redeploying."
 ---
 In the last few years, Golang (or Go) has grown to become one of the most popular programming languages for developers building cloud-native applications. With Appwrite 1.6, we have introduced a new runtime to let developers build Appwrite Functions with Go.
 

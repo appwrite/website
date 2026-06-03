@@ -6,7 +6,7 @@
     export let entry: PageData['entries'][0];
 </script>
 
-<div class="grid gap-5">
+<div class="changelog-entry grid min-w-0 gap-5">
     <time class="text-eyebrow px-4 uppercase sm:px-0" datetime={entry.date}
         >{formatDate(entry.date)}</time
     >
@@ -16,7 +16,7 @@
         </a>
     {/if}
 
-    <div class="prose prose-large px-4 sm:px-0">
+    <div class="entry-content prose prose-large min-w-0 px-4 sm:px-0">
         <h2 class="text-title not-prose font-aeonik-pro text-primary mb-8">
             <a href={entry.href} onclick={() => trackEvent(`changelog-entry-click`)}>
                 {entry.title}
@@ -25,3 +25,23 @@
         <slot />
     </div>
 </div>
+
+<style lang="scss">
+    .changelog-entry,
+    .entry-content {
+        min-width: 0;
+    }
+
+    .entry-content {
+        overflow-x: clip;
+    }
+
+    .entry-content :global(article > :is(ul, ol):not(:where(.not-prose, .not-prose *))) {
+        padding-left: calc(var(--spacing) * 3);
+        margin-block: calc(var(--spacing) * 8);
+    }
+
+    .entry-content :global(article > ul:not(:where(.not-prose, .not-prose *))) {
+        list-style-type: disc;
+    }
+</style>

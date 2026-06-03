@@ -3,12 +3,25 @@ layout: post
 title: "Announcing Full Schema Creation: Provision complete tables in one atomic call"
 description: Create a table, all its columns, and indexes synchronously, ready to use instantly, with no background jobs.
 date: 2025-12-30
-cover: /images/blog/full-schema.png
+cover: /images/blog/full-schema.avif
 timeToRead: 5
 author: aditya-oberai
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is Full Schema Creation in Appwrite?"
+    answer: "Full Schema Creation lets you define a table, its columns, and its indexes in a single synchronous API request. When the call returns, the table is ready for reads and writes immediately. If anything fails validation, nothing is created, so you never end up with a half-built schema."
+  - question: "How was schema creation different before this feature?"
+    answer: "Previously you had to create the table, then create each column, wait for async column jobs to finish, then create indexes, then wait again. That step-wise flow introduced delays, race conditions in automation scripts, and brittle CI/CD setups. Full Schema Creation collapses all of that into one atomic call."
+  - question: "Is Full Schema Creation atomic?"
+    answer: "Yes, the entire operation is atomic. If a column type is invalid, an index conflicts, or a relationship reference is broken, [Appwrite Databases](/docs/products/databases) rolls everything back and reports the error. You can retry safely without cleaning up partial state."
+  - question: "Why does this matter for CI/CD?"
+    answer: "Test environments and preview deployments often spin up fresh databases and need them ready in seconds. Full Schema Creation removes async waits and the orchestration code that polls for column readiness, which makes schema bootstrapping deterministic. Your pipelines run faster with fewer flaky retries."
+  - question: "Can I include relationships and indexes in the same call?"
+    answer: "Yes, you define columns (including types, defaults, enums, and relationships) and indexes in the same request. [Appwrite](/docs/products/databases) validates the entire schema together before applying it, which catches inconsistencies up front rather than after partial creation."
+  - question: "What happens if validation fails?"
+    answer: "If any part of the schema fails (an invalid column, conflicting index, broken relationship), the entire operation is rolled back and you get an error describing what went wrong. You won't end up with a partially created table that needs manual cleanup."
 ---
 
 When you’re spinning up a new feature, environment, or test pipeline, schema creation shouldn’t be the slowest or most fragile step in your workflow. Yet traditionally, creating a usable table meant orchestrating multiple calls, waiting on async jobs, and hoping nothing failed halfway through.
@@ -118,7 +131,7 @@ If this sounds familiar, that’s because similar ideas exist elsewhere:
 - Prisma or Drizzle migrations
 - Hasura metadata applies
 
-What’s different is bringing this experience directly into a BaaS environment—where schema creation has historically been UI-driven or step-wise and async.
+What’s different is bringing this experience directly into a BaaS environment, where schema creation has historically been UI-driven or step-wise and async.
 
 # Get started
 

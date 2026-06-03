@@ -6,3 +6,12 @@ imagePullPolicy: IfNotPresent
 minReplicas: 2
 maxReplicas: 3
 maxUnavailable: 1
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1Gi
+  limits:
+    memory: 1Gi
+
+nodeOptions: "--max-old-space-size=768"

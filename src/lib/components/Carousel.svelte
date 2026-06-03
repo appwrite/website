@@ -6,17 +6,44 @@
     interface Props {
         size?: 'default' | 'medium' | 'big';
         gap?: number;
+        /** Toolbar row with header + arrows: `top` (default) or `bottom` of the slides. */
+        navPosition?: 'top' | 'bottom';
+        /** Toolbar row (header snippet + arrows). Defaults differ for top vs bottom placement. */
+        toolbarClass?: string;
         header?: Snippet;
         children: Snippet;
     }
 
-    const { size = 'default', gap = 32, header, children }: Props = $props();
+    const {
+        size = 'default',
+        gap = 32,
+        navPosition = 'top',
+        toolbarClass,
+        header,
+        children
+    }: Props = $props();
+
+    const toolbarRowClass = $derived(
+        toolbarClass ??
+            (navPosition === 'bottom'
+                ? 'mt-4 flex flex-wrap items-center w-full min-w-0'
+                : 'mt-2 flex flex-wrap items-center w-full min-w-0')
+    );
     let scroll = 0;
+
+    function firstSlideWidth(): number {
+        const slide = carousel?.querySelector(':scope > li');
+        return slide instanceof HTMLElement ? slide.clientWidth : 0;
+    }
 
     function calculateScrollAmount(prev = false) {
         const direction = prev ? -1 : 1;
-        const carouselSize = carousel?.clientWidth;
-        const childSize = (carousel.childNodes[0] as HTMLUListElement)?.clientWidth + gap;
+        const carouselSize = carousel?.clientWidth ?? 0;
+        const slideW = firstSlideWidth();
+        if (!carouselSize || !slideW) {
+            return 0;
+        }
+        const childSize = slideW + gap;
 
         scroll = scroll || carouselSize;
 
@@ -50,33 +77,40 @@
 </script>
 
 <div>
-    <div class="mt-2 flex flex-wrap items-center">
-        {#if header}
-            {@render header()}
-        {/if}
-        <div class="nav ml-auto flex items-end gap-3">
-            <button
-                class="web-icon-button cursor-pointer"
-                aria-label="Move carousel backward"
-                disabled={isStart}
-                onclick={prev}
-            >
-                <span class="web-icon-arrow-left" aria-hidden="true"></span>
-            </button>
-            <button
-                class="web-icon-button cursor-pointer"
-                aria-label="Move carousel forward"
-                disabled
-                onclick={next}
-            >
-                <span class="web-icon-arrow-right" aria-hidden="true"></span>
-            </button>
+    {#snippet toolbar()}
+        <div class={toolbarRowClass}>
+            {#if header}
+                {@render header()}
+            {/if}
+            <div class="nav ml-auto flex shrink-0 items-center gap-3">
+                <button
+                    class="web-icon-button cursor-pointer"
+                    aria-label="Move carousel backward"
+                    disabled={isStart}
+                    onclick={prev}
+                >
+                    <span class="web-icon-arrow-left" aria-hidden="true"></span>
+                </button>
+                <button
+                    class="web-icon-button cursor-pointer"
+                    aria-label="Move carousel forward"
+                    disabled={isEnd}
+                    onclick={next}
+                >
+                    <span class="web-icon-arrow-right" aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
-    </div>
+    {/snippet}
+
+    {#if navPosition === 'top'}
+        {@render toolbar()}
+    {/if}
 
     <div class="carousel-wrapper" data-state={isStart ? 'start' : isEnd ? 'end' : 'middle'}>
         <ul
-            class="web-grid-articles carousel mt-8"
+            class="web-grid-articles carousel"
+            class:mt-8={navPosition === 'top'}
             class:is-medium={size === 'medium'}
             class:is-big={size === 'big'}
             style:gap="{gap}px"
@@ -86,6 +120,10 @@
             {@render children()}
         </ul>
     </div>
+
+    {#if navPosition === 'bottom'}
+        {@render toolbar()}
+    {/if}
 </div>
 
 <style lang="scss">

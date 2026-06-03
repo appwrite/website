@@ -3,12 +3,25 @@ layout: post
 title: "Understanding OAuth2: The backbone of modern authorization"
 description: A quick guide to OAuth2, its flows, and when to use each one.
 date: 2025-06-12
-cover: /images/blog/understand-oauth2/cover.png
+cover: /images/blog/understand-oauth2/cover.avif
 timeToRead: 06
 author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is OAuth2 in simple terms?"
+    answer: "OAuth2 is an authorization standard that lets a user grant an app limited access to their data on another service without handing over their password. Instead, the app receives a scoped access token that it uses to call the resource server on the user's behalf."
+  - question: "What is the difference between OAuth2 and OpenID Connect?"
+    answer: "OAuth2 handles authorization (what an app is allowed to do), while OpenID Connect (OIDC) is a thin layer on top of OAuth2 that adds authentication (who the user is) via an ID token. If you need to log a user in, you generally want OIDC, not raw OAuth2."
+  - question: "Which OAuth2 flow should I use?"
+    answer: "Use the Authorization Code flow with PKCE for SPAs and mobile apps, the Authorization Code flow for traditional server side web apps, and the Client Credentials flow for machine to machine API calls. Avoid the Implicit and Resource Owner Password flows in new code, they are now considered legacy."
+  - question: "Does Appwrite support OAuth2 login?"
+    answer: "Yes. [Appwrite Auth](/docs/products/auth) supports OAuth2 sign-in with major providers (Google, GitHub, Apple, and many others) out of the box. You configure the provider in the console and call the OAuth2 method in your SDK to start the flow."
+  - question: "What is PKCE and when do I need it?"
+    answer: "PKCE (Proof Key for Code Exchange) is an extension to the Authorization Code flow that prevents intercepted authorization codes from being exchanged by an attacker. You need it for any public client, including SPAs and mobile apps, where you cannot safely store a client secret."
+  - question: "What is the difference between an access token and a refresh token?"
+    answer: "An access token is short lived and used to call the resource server. A refresh token is longer lived and used only to get a new access token when the old one expires. Treat refresh tokens like credentials and store them securely server side whenever possible."
 ---
 
 Modern applications rarely operate in isolation. Whether it's logging in with Google or sharing data with a third-party service, users demand interoperability and security. That’s where OAuth2 steps in: a powerful protocol designed to delegate access without compromising user credentials.
@@ -68,7 +81,7 @@ OAuth2 offers different "flows" to accommodate various scenarios. Here's a break
 
 - Web apps with secure backend servers.
 
-{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Request a demo" url="https://appwrite.io/contact-us/enterprise" /%}
+{% call_to_action title="Customer identity without the hassle" description="Add secure authentication for your users in just a couple of minutes." point1="Multiple OAuth providers" point2="Built-in security" point3="Custom roles and permissions" point4="Integrates with your favourite SDK" cta="Get started" url="https://cloud.appwrite.io/" /%}
 
 
 ## 2. Authorization code flow with PKCE (Proof Key for Code Exchange)

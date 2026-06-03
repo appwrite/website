@@ -2,11 +2,22 @@
 layout: post
 title: "Appwrite Decoded: Dylan Graham"
 description: In this blog, we hear from our finance and operations lead, Dylan Graham.
-cover: /images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-blog-cover.png
+cover: /images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-blog-cover.avif
 timeToRead: 8
 date: 2024-06-04
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Dylan Graham at Appwrite?"
+    answer: "Dylan is the operations and finance lead at Appwrite. He moved from a background in safety operations and other non-tech fields into ops at Appwrite, where he runs internal logistics, finance, and the planning behind the team's offsites."
+  - question: "What does an operations lead do at a remote-first company?"
+    answer: "Operations covers the non-product side of the business: legal paperwork, contracts, travel, team offsites, swag, and the small workflows that keep a distributed team running. Dylan's role focuses on making those processes simpler so the rest of the team can focus on product work."
+  - question: "What are Appwrite Camps?"
+    answer: "Camps are Appwrite's twice-a-year team gatherings, where the globally distributed team meets in person to plan, ship work together, and spend time as a team. Camp 3.0 in New York is one Dylan calls out as a personal favorite in the post."
+  - question: "What is the work culture like at Appwrite?"
+    answer: "Dylan describes it as laid-back but focused: collaboration, inspiration, and fun. The team works hard and ships fast, while still making space for personal time and supporting each other when the workload spikes."
+  - question: "How does Appwrite support remote work?"
+    answer: "Appwrite is fully remote, with team members across many time zones, supported by twice-a-year in-person camps. Dylan's tip is to treat communication tools like Slack and Discord as your virtual office and to keep conversations flowing so remote work feels less isolated."
 ---
 The team behind Appwrite is spread across the globe and works together daily in different time zones. We’re proud of the remote and open-source culture the team has built so far. In Appwrite Decoded, we introduce the people behind the code and celebrate them.
 
@@ -26,7 +37,7 @@ Despite his unfamiliarity with the tech environment, Appwrite's mission quickly 
 
 Dylan’s favorite aspect of his job is the unity and excitement of Appwrite camps, with Camp 3.0 in New York holding a special place in his heart. Despite the bureaucratic hurdles of bringing together a global team, the satisfaction of a successful camp is unmatched.
 
-![Appwrite team at Camp 3.0](/images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-camp3.png)
+![Appwrite team at Camp 3.0](/images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-camp3.avif)
 
 > "Organizing and planning these gatherings is what I thrive on.”
 >
@@ -91,7 +102,7 @@ Dylan’s pro tip for remote work? Treat communication tools as your virtual off
 
 > "It makes everything feel more connected and a lot less isolated."
 >
-![Appwrite team at Camp 3.0 in New York](/images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-camp3.png)
+![Appwrite team at Camp 3.0 in New York](/images/blog/appwrite-decoded-dylan/appwrite-decoded-dylan-camp3.avif)
 
 His ascent to operations leader was unexpected but embraced. Initially stepping in as a temporary fix, it wasn't long before the opportunity to lead became permanent, thanks to Eldad's vote of confidence.
 

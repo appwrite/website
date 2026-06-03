@@ -3,11 +3,24 @@ layout: post
 title: SSR vs CSR with Next.js
 description: Learn the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js.
 date: 2024-02-27
-cover: /images/blog/ssr-vs-csr/cover.png
+cover: /images/blog/ssr-vs-csr/cover.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
 featured: false
+faqs:
+  - question: "What is the difference between SSR and CSR in Next.js?"
+    answer: "SSR (server-side rendering) generates HTML on the server for every request, so the browser receives a fully rendered page. CSR (client-side rendering) sends a minimal HTML shell and uses JavaScript in the browser to fetch data and build the UI. Next.js supports both."
+  - question: "How does Appwrite handle authentication in SSR Next.js apps?"
+    answer: "For SSR, you use the Appwrite Node.js SDK with two clients: an admin client (configured with an API key) to create sessions, and a session client (configured with the user's session secret) to make authenticated requests. The session secret is stored in a server-side cookie. See [Appwrite Auth](/docs/products/auth)."
+  - question: "Why can't I use the Appwrite web SDK for SSR auth?"
+    answer: "The web SDK manages sessions automatically in the browser, so the session secret is never exposed to your server code. For SSR, you need access to that secret to set a cookie and authenticate requests on the server. Use the Node.js SDK and set the session manually with client.setSession."
+  - question: "What scopes does my Appwrite API key need for SSR auth?"
+    answer: "At a minimum, the admin client needs the sessions.write scope to create sessions for users. Add additional scopes (users.read, databases.read, etc.) based on what your server actions need to do on behalf of users or as an admin."
+  - question: "Should I use SSR or CSR for my Next.js app?"
+    answer: "Use SSR when you need SEO, fresh content per request, or personalized server-rendered pages. Use CSR for highly interactive apps behind a login wall where SEO does not matter. Many Next.js apps mix both: SSR for public pages and CSR for authenticated dashboards."
+  - question: "Where should I store the Appwrite session secret in an SSR app?"
+    answer: "Store the session secret in an httpOnly, secure cookie set from your server. Never expose it to client-side JavaScript. Read it back from the cookie on each request and pass it to your session client via client.setSession."
 ---
 
 With modern web development frameworks, the age-old debate around server-side rendering (SSR) and client-side rendering (CSR), which rendering method is more effective, has returned to the general tech community. Since Appwrite aims to enable all developers, regardless of their preferences, in this debate, we decided to research and extend our support for both paradigms. This article will explore the differences between SSR and CSR and how Appwrite Authentication can be leveraged with both in Next.js.

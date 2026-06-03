@@ -3,12 +3,25 @@ layout: post
 title: "Building with Appwrite Sites templates"
 description: To make it easier, and a lot faster to build a website, we have added templates. From e-commerce stores, to documentation, you can get started with a couple of clicks.
 date: 2025-05-19
-cover: /images/blog/sites-templates/templates-cover.png
+cover: /images/blog/sites-templates/templates-cover.avif
 timeToRead: 9
 author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is Appwrite Sites?"
+    answer: "Appwrite Sites is a hosting product that deploys static and server-rendered websites directly from your Appwrite Console. It supports popular frameworks like Next.js, Svelte, Astro, and others, and handles version control, environment configuration, and global delivery. See [Appwrite Sites](/docs/products/sites) for the full feature list."
+  - question: "How do Appwrite Sites templates work?"
+    answer: "Templates are pre-built projects for common use cases like ecommerce, blogs, documentation, portfolios, and starters. You pick one in the Console, give it a site name and ID, and Appwrite clones the repo and deploys it. From there it behaves like any other site you connect to Appwrite, with full Git integration."
+  - question: "Can I connect my own GitHub repository to Appwrite Sites?"
+    answer: "Yes. Instead of cloning a template, you can choose Connect a repository when creating a site and link your GitHub account. Pushes to the connected branch trigger new deployments automatically. This works the same way as template-based sites once the repo is connected."
+  - question: "What frameworks does Appwrite Sites support?"
+    answer: "Appwrite Sites supports a growing list of frameworks including Next.js, SvelteKit, Astro, Nuxt, and other popular Node-based stacks. Each framework has its own build settings that Appwrite detects, but you can override them in the site configuration. Check [Appwrite Sites](/docs/products/sites) for the current list."
+  - question: "Do I need a separate hosting provider if I use Appwrite Sites?"
+    answer: "No. Appwrite Sites deploys to Appwrite's edge network, so your site is served globally without an external host. You can still use a custom domain by pointing DNS records at Appwrite, which keeps your branding intact."
+  - question: "How do environment variables work for Appwrite Sites?"
+    answer: "Each site has its own environment variables defined in the Console, separate from your project's Functions and other resources. Build-time variables are injected during deployment, and runtime variables are available to server-rendered routes. This is also the right place to put any third-party API keys your site depends on."
 ---
 
 Your web application only provides value when it is live and accessible to users. Appwrite Sites simplifies deployment, allowing you to launch modern, production-ready websites directly from your Appwrite console. With built-in templates, you can quickly deploy complete websites that include integrated version control, environment configuration, and secure global delivery, all without complicated setup or infrastructure.
@@ -21,11 +34,11 @@ After signing into your Appwrite console, look at the sidebar on the left. Under
 
 Clicking it opens the Sites page. Here, you will see the **Sites** tab selected by default. Click **Create site** to start the deployment process.
 
-![Sites Concole](/images/blog/sites-templates/sites-templates1.png)
+![Sites Concole](/images/blog/sites-templates/sites-templates1.avif)
 
 At this point, Appwrite offers two options: **Clone a template** or **Connect a repository**. For this guide, we will focus on cloning a template, which lets you quickly set up a site based on a pre-built project.
 
-![Clone or connect Git](/images/blog/sites-templates/sites-templates2.png)
+![Clone or connect Git](/images/blog/sites-templates/sites-templates2.avif)
 
 # Choosing a template
 
@@ -44,7 +57,7 @@ Templates can also be sorted by use case. The available categories include:
 
 You can also use the search bar above the list to find a template by name. For this walkthrough, we'll use the **Store template** under the Ecommerce category, so if you don't see it right away, you can search for it.
 
-![Search templates](/images/blog/sites-templates/sites-templates3.png)
+![Search templates](/images/blog/sites-templates/sites-templates3.avif)
 
 Clicking the template will open a new page where you can configure your new site.
 
@@ -54,7 +67,7 @@ Once you have selected the template, you will be prompted to enter basic details
 
 You will need to provide a **Site name** and a **Site ID**. The Site ID becomes part of your site's URL, so it should be lowercase and use hyphens if necessary.
 
-![set details](/images/blog/sites-templates/sites-templates4.png)
+![set details](/images/blog/sites-templates/sites-templates4.avif)
 
 At this stage, you can choose whether to connect your repository now or later.
 
@@ -89,7 +102,7 @@ You can edit these values if needed, and you can add more environment variables 
 
 Additionally, you can define the domain for your site, using the Appwrite Sites domain.
 
-![Configure](/images/blog/sites-templates/sites-templates5.png)
+![Configure](/images/blog/sites-templates/sites-templates5.avif)
 
 After reviewing your configuration, click **Deploy**.
 
@@ -100,7 +113,7 @@ Once you initiate the deployment, you will be taken to a progress page where you
 The logs will show you the different stages of the build process.
 Depending on the size of your template and the dependencies involved, this process can take anywhere from a few seconds to a few minutes.
 
-![Deploy](/images/blog/sites-templates/sites-templates6.png)
+![Deploy](/images/blog/sites-templates/sites-templates6.avif)
 
 When deployment is complete, Appwrite will display a success screen showing:
 
@@ -110,7 +123,7 @@ When deployment is complete, Appwrite will display a success screen showing:
 - Global CDN status (should show **Connected**)
 - DDoS protection status (should show **Connected**)
 
-![Build](/images/blog/sites-templates/sites-templates7.png)
+![Build](/images/blog/sites-templates/sites-templates7.avif)
 
 You will also see a **Visit site** button that you can click to view your newly deployed website.
 

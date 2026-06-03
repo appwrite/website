@@ -3,11 +3,24 @@ layout: post
 title: "Announcing Atomic numeric operations: Safe, server-side increments and decrements"
 description: Safely update numeric fields like counters, stock levels, or credits without fetching or rewriting the document.
 date: 2025-08-04
-cover: /images/blog/announcing-atomic-numeric-operations/cover.png
+cover: /images/blog/announcing-atomic-numeric-operations/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What are atomic numeric operations in Appwrite?"
+    answer: "Atomic numeric operations let you increment or decrement a numeric field on a document directly on the server using `incrementDocumentAttribute` and `decrementDocumentAttribute`. Each delta is applied in a single write under concurrency control, so concurrent updates do not overwrite each other."
+  - question: "Why are atomic increments safer than read-modify-write?"
+    answer: "With a read-modify-write loop, two clients can read the same value, both add 1, and both write back the same new value. One increment is lost. Atomic operations send only the delta to the server, where the database applies the change in one locked step, eliminating the race condition."
+  - question: "Where would I use atomic numeric operations?"
+    answer: "Anywhere you mutate a number that multiple clients can touch at once: likes and follower counts, API quotas, stock levels, game scores, retry counters, and rate limits. The feature is especially valuable in real-time and high-concurrency scenarios."
+  - question: "Can I set min and max bounds on the value?"
+    answer: "Yes. Each operation accepts optional `min` and `max` constraints. If the resulting value would fall outside the bounds, the update is rejected instead of silently clamping. This is useful for rules like \"stock cannot go below zero\" or \"credits cannot exceed a cap\"."
+  - question: "Do atomic operations respect document permissions?"
+    answer: "Yes. The same [Appwrite permissions](/docs/products/databases) that gate `updateDocument` apply to increments and decrements. If a user is not allowed to write to the document, the atomic operation also fails. No special role is added by using the new method."
+  - question: "Are atomic operations available on both Cloud and self-hosted Appwrite?"
+    answer: "Yes. Atomic numeric operations work the same on Appwrite Cloud and self-hosted installations. You can call them from any [Appwrite SDK](/docs/sdks) that has been updated to expose the new methods."
 ---
 
 In high-concurrency systems like social apps, games, and usage-tracked services, even updating a single number such as a like, retry count, or quota, can lead to consistency issues. When multiple clients try to update the same value simultaneously, it’s easy to end up with conflicting writes, lost updates, or inaccurate data. 
@@ -33,11 +46,11 @@ Whether you're tracking a counter, enforcing quotas, or updating state in real t
 
 Use it for:
 
-- **Social features** — likes, followers, reactions
-- **Usage metering** — API credits, storage consumption, billing units
-- **Games** — player scores, lives, retry counters
-- **E-commerce** — stock levels, inventory counts, cart items
-- **Workflows and infrastructure** — rate limits, retries, processing attempts
+- **Social features**: likes, followers, reactions
+- **Usage metering**: API credits, storage consumption, billing units
+- **Games**: player scores, lives, retry counters
+- **E-commerce**: stock levels, inventory counts, cart items
+- **Workflows and infrastructure**: rate limits, retries, processing attempts
 
 # Performing an atomic operation
 

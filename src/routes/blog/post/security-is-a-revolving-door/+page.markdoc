@@ -3,10 +3,23 @@ layout: post
 title: "Security is a revolving door, and here's how Appwrite keeps you safe"
 description: A look at what recent security incidents teach us about modern app development, and how Appwrite's built-in security features help protect the apps you build and the users who rely on them.
 date: 2026-04-24
-cover: /images/blog/security-is-a-revolving-door/cover.png
+cover: /images/blog/security-is-a-revolving-door/cover.avif
 timeToRead: 10
 author: aditya-oberai
 category: security
+faqs:
+  - question: "Why does Appwrite hash passwords with Argon2?"
+    answer: "Argon2 won the Password Hashing Competition and is the current industry recommendation for credential storage. It is memory-hard, which means attackers cannot just throw cheap GPU cycles at cracking hashes at scale. Passwords are salted automatically, and legacy hashes are transparently upgraded to Argon2 on the next successful sign-in."
+  - question: "What protects Appwrite from credential-stuffing and brute-force attacks?"
+    answer: "Authentication endpoints are rate limited out of the box, with state communicated via standard `X-RateLimit-*` headers. Repeated failed logins are throttled and eventually blocked without any configuration on your part, and you can layer [MFA](/docs/products/auth) on top so a leaked password alone is not enough to take over an account."
+  - question: "What is encrypted at rest in Appwrite?"
+    answer: "Sensitive platform data including webhook secrets, API keys, and user sessions is encrypted server-side. You can also enable field-level encryption on specific database columns and storage buckets using AES-128 in GCM mode, so you can encrypt only the data that needs it instead of paying the cost on everything."
+  - question: "How should I store secrets for Functions and Sites?"
+    answer: "Use environment variables and mark sensitive ones (API keys, signing keys, connection strings) as secret. Once a variable is marked secret it is hidden from both the Console and the API, and the action cannot be reversed, so the value cannot leak through the dashboard or programmatic access."
+  - question: "What does Appwrite's permissions system actually control?"
+    answer: "[Permissions](/docs/products/databases) are defined at the table, row, storage bucket, and individual file level, and cover read, create, update, delete, and write. Roles can target any visitor, guests, all authenticated users, specific users, teams, or team roles, so you can model fine-grained access without writing custom authorization checks on every endpoint."
+  - question: "How can I be notified when a new session is created on a user's account?"
+    answer: "Appwrite ships session alerts that email users when a new session is created for their account. Combined with configurable session limits (default 10 active sessions per user) and explicit logout invalidation, this gives users early signal if something looks off and prevents stale sessions from piling up."
 ---
 
 Earlier this month, Vercel [disclosed a security incident](https://vercel.com/kb/bulletin/vercel-april-2026-security-incident) that affected a subset of its customers. An attacker compromised a third-party AI tool used internally at Vercel, which was then used to take over an employee's account and pivot through internal systems. The result: environment variables marked as non-sensitive (ones that decrypt to plaintext) for a number of customers were exposed, potentially including API keys, database credentials, and signing keys.

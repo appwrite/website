@@ -3,11 +3,24 @@ layout: post
 title: "Scaling AI workloads: Why MongoDB works well for high-velocity data"
 description: Learn why MongoDB is a strong fit for scaling AI workloads, covering high-velocity data ingestion, horizontal scaling, flexible schemas, and how Appwrite makes it faster to build on top.
 date: 2026-04-02
-cover: /images/blog/scaling-ai-workloads-why-mongodb-works-well-for-high-velocity-data/cover.png
+cover: /images/blog/scaling-ai-workloads-why-mongodb-works-well-for-high-velocity-data/cover.avif
 timeToRead: 4
 author: atharva
 category: product
 featured: false
+faqs:
+  - question: "Why is MongoDB a good fit for AI workloads?"
+    answer: "MongoDB handles the patterns AI systems actually depend on, namely high write throughput, horizontal sharding, flexible documents, and high availability. AI applications continuously write events, predictions, and feedback signals with shapes that change as models evolve, and MongoDB stores that data without requiring rigid schemas or downtime for migrations."
+  - question: "How does MongoDB handle schema changes in production?"
+    answer: "MongoDB lets you add new fields to documents without touching existing records, and different versions of the same data structure can coexist in a single collection. There is no migration, table lock, or backfill required for most schema evolution, which is useful when models or pipelines are updated frequently."
+  - question: "Can I self-host Appwrite with MongoDB as the database?"
+    answer: "Yes. Appwrite 1.9 and later supports MongoDB as the underlying database backend for self-hosted instances. Appwrite manages the MongoDB instance automatically as a replica set, and the API and SDK behavior stay identical regardless of which database you pick. See the [self-hosted MongoDB integration](/integrations/self-hosted-mongodb) for details."
+  - question: "Does using MongoDB with Appwrite change how I write application code?"
+    answer: "No. Appwrite exposes the same APIs and SDKs whether the underlying storage is MariaDB or MongoDB. The database choice is a deployment-time decision that affects scalability and operational properties, not your application code."
+  - question: "When should I scale horizontally instead of scaling up a single machine?"
+    answer: "Vertical scaling works until a single machine hits its ceiling on CPU, RAM, or storage, and costs rise sharply as you push that limit. For AI workloads with continuously growing data and unpredictable traffic, horizontal scaling (sharding across multiple nodes) is more practical because capacity grows incrementally and a single node failure stops being a single point of failure."
+  - question: "How does MongoDB stay available during node failures?"
+    answer: "MongoDB uses replica sets, which maintain multiple copies of data across nodes with automatic failover if the primary node goes down. For production AI features like fraud detection or personalization, this means an individual node failure or maintenance event does not translate into a user-visible outage."
 ---
 
 AI applications don't fail because the model is slow. They fail because everything around the model can't keep up.

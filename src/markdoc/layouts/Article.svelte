@@ -23,6 +23,7 @@
     import { DOCS_TITLE_SUFFIX, OVERVIEW_TITLE_SUFFIX } from '$routes/titles';
     import { getContext, setContext } from 'svelte';
     import { page } from '$app/state';
+    import { seedHeadingsFromMarkdocRaw } from '$lib/utils/docs-toc-seed';
 
     export let title: string;
     export let description: string;
@@ -32,7 +33,8 @@
     export let date: string | undefined = undefined;
     export let prompt: string | undefined = undefined;
 
-    setContext<LayoutContext>('headings', writable({}));
+    const rawContent = (page.data as { rawContent?: string | null }).rawContent ?? null;
+    setContext<LayoutContext>('headings', writable(seedHeadingsFromMarkdocRaw(rawContent)));
     setContext('prompt_path', prompt);
 
     const headings = getContext<LayoutContext>('headings');

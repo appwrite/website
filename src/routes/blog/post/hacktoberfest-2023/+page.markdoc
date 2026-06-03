@@ -3,10 +3,23 @@ layout: post
 title: Celebrate Open Source with Appwrite and Hacktoberfest 2023!
 description: We're excited to announce our participation in Hacktoberfest 2023! Join Appwrite in celebrating and supporting open-source development this October.
 date: 2023-10-01
-cover: /images/blog/hacktoberfest-2023.png
+cover: /images/blog/hacktoberfest-2023.avif
 timeToRead: 3
 author: eldad-fux
 category: hackathon
+faqs:
+  - question: "How do I find Appwrite Hacktoberfest issues to work on?"
+    answer: "Check the Appwrite repository on GitHub and filter for issues labeled `hacktoberfest`. New issues are added throughout October. If you can't find one that fits, you can open your own issue with a proposed contribution and ask a maintainer to add the label."
+  - question: "What counts as a quality contribution during Hacktoberfest?"
+    answer: "Hacktoberfest emphasizes quality over quantity. Spam PRs, typo fixes with no context, and low-effort changes are usually rejected. Aim for substantive fixes, feature work, documentation improvements, or tests that solve a real problem in the codebase."
+  - question: "How long does Appwrite take to review Hacktoberfest PRs?"
+    answer: "Appwrite confirms PRs within 7 days. If accepted, the PR is labeled `hacktoberfest-accepted`. You're expected to follow up on your assigned issue within 3 days so maintainers know you're still working on it."
+  - question: "What swag did Appwrite offer for Hacktoberfest 2023?"
+    answer: "Contributors earned an Appwrite hoodie and stickers for one accepted and merged PR. DigitalOcean also offered a Digital Swag Bag for contributing 4 or more PRs across any participating Hacktoberfest project."
+  - question: "Can I contribute to Appwrite outside of Hacktoberfest?"
+    answer: "Yes. The Appwrite repos have open issues year-round, and the team welcomes PRs at any time. Join the [Appwrite Discord](https://appwrite.io/discord) to get help from maintainers, find issues, or pitch your own ideas."
+  - question: "What is Hacktoberfest and who runs it?"
+    answer: "Hacktoberfest is an annual open-source celebration run by DigitalOcean throughout October. Contributors submit pull requests to participating projects and earn rewards from sponsoring companies. 2023 marked the 10th anniversary of the event."
 ---
 
 Hacktoberfest is back, celebrating a decade of open source! Appwrite is proud to support open-source developers for the fifth consecutive year of [Hacktoberfest 2023](https://hacktoberfest.com), partnered with DigitalOcean. Here is how you can get involved and grab some cool Appwrite swag!
@@ -35,7 +48,7 @@ Hacktoberfest is back, celebrating a decade of open source! Appwrite is proud to
 - Earn an Appwrite hoodie and stickers for contributing only one accepted and merged PR!
 - Earn a Digital Swag Bag from DigitalOcean for contributing 4 PRs+ from any open-source project participating in Hacktoberfest. We have a surprise gift inside this swag bag waiting for you
 
-![Hacktoberfest swag](/images/blog/hacktoberfest2023-swag.png)
+![Hacktoberfest swag](/images/blog/hacktoberfest2023-swag.avif)
 
 ## How Appwrite Supports Developers
 

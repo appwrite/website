@@ -1,3 +1,5 @@
+import { DEFAULT_HERO_CTA } from '$lib/statsig/constants';
+import { heroCtaIfShortStartBuilding } from '$lib/statsig/hero-query-overrides';
 import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
 import { DEFAULT_CTA_POINTS, resolveBlogCta, type BlogCtaConfig } from '$lib/utils/blog-cta';
 
@@ -39,6 +41,8 @@ export interface PrepareBlogCtaOptions {
     category: string;
     slug: string;
     rawContent?: string | null;
+    /** Homepage `best_cta` value when set (e.g. marketing `/` load); syncs legacy "Start building" labels. */
+    heroExperimentCta?: string | null;
 }
 
 export interface BlogCtaState {
@@ -80,8 +84,10 @@ export const prepareBlogCtaState = ({
     announcement,
     category,
     slug,
-    rawContent
+    rawContent,
+    heroExperimentCta
 }: PrepareBlogCtaOptions): BlogCtaState => {
+    const heroCta = heroExperimentCta ?? DEFAULT_HERO_CTA;
     const manualOverride = typeof callToAction === 'object' && callToAction !== null;
     const shouldAutoGenerate = !manualOverride && (callToAction ?? true) && !announcement;
     const targetHeadingIndex = getMidCtaTargetIndex(rawContent ?? null);
@@ -113,7 +119,9 @@ export const prepareBlogCtaState = ({
                       point2: cta.points[1],
                       point3: cta.points[2],
                       point4: cta.points[3],
-                      cta: cta.label,
+                      cta: manualOverride
+                          ? cta.label
+                          : heroCtaIfShortStartBuilding(cta.label, heroCta),
                       url: cta.href,
                       event: cta.event
                   } satisfies InlineCtaProps
@@ -124,7 +132,9 @@ export const prepareBlogCtaState = ({
         manualOverride && cta
             ? {
                   heading: cta.heading,
-                  label: cta.label,
+                  label: manualOverride
+                      ? cta.label
+                      : heroCtaIfShortStartBuilding(cta.label, heroCta),
                   href: cta.href,
                   description: cta.description,
                   event: cta.event

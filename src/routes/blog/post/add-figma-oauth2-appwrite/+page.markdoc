@@ -3,11 +3,24 @@ layout: post
 title: How to add Figma OAuth2 login to your app with Appwrite
 description: Learn how to set up Figma OAuth2 login to your app with Appwrite.
 date: 2025-05-07
-cover: /images/blog/add-figma-oauth2-appwrite/cover.png
+cover: /images/blog/add-figma-oauth2-appwrite/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
 featured: false
+faqs:
+  - question: "Does Appwrite support OAuth2 login with Figma out of the box?"
+    answer: "Yes. Figma is one of the OAuth2 providers built into [Appwrite Auth](/docs/products/auth/oauth2). You register an OAuth app on the Figma developer portal, paste the Client ID and Secret into the Appwrite console, copy the redirect URL back to Figma, and the integration is done."
+  - question: "Do I need server-side code to use Figma OAuth2 with Appwrite?"
+    answer: "No. Appwrite's SDKs handle the OAuth2 redirect, code exchange, and session creation. You call `account.createOAuth2Session({ provider: OAuthProvider.Figma, success, failure })` from your client, and the user lands back in your app with an active Appwrite session."
+  - question: "How do I call the Figma API after a user logs in?"
+    answer: "Appwrite stores the OAuth access token and refresh token alongside the user's session. You can retrieve them via the SDK and use the access token to call Figma's REST API on behalf of the user. Appwrite can also refresh expired access tokens for you using the stored refresh token."
+  - question: "What scopes should I request from Figma?"
+    answer: "Request only the scopes your app actually uses. For reading files, `files:read` is enough. Asking for more permissions than you need slows down the consent screen and risks rejection during Figma's app review for sensitive scopes."
+  - question: "Can I combine Figma OAuth2 with other auth methods?"
+    answer: "Yes. A single Appwrite user can have multiple identities linked, so a user who signed up with email/password can later add Figma OAuth2, or vice versa. This is useful when you want Figma as an optional connection rather than a primary login method."
+  - question: "What other OAuth2 providers does Appwrite support?"
+    answer: "Appwrite supports over 30 OAuth2 providers out of the box, including Google, GitHub, Apple, Microsoft, Discord, Slack, Spotify, and more. The full list is in the [OAuth2 docs](/docs/products/auth/oauth2). The setup steps are the same for each: create an app on the provider, paste the credentials into Appwrite, and you are done."
 ---
 
 Figma's API opens up some interesting doors, such as automating workflows, syncing design tokens, and bringing live design previews into your app. But before you can do any of that, your users need to connect their Figma account. If you're using Appwrite for authentication, this process is simpler than you might expect. In this guide, we'll walk through everything you need to do to support Figma OAuth2 login inside your Appwrite project.
@@ -38,11 +51,11 @@ You'll be asked to fill in a few details:
 - **Website** - A link to your app or landing page.
 - **Logo** - Optional, but it helps users recognize your app in the consent screen.
 
-![Figma Create App](/images/blog/add-figma-oauth2-appwrite/figma-create-app.png)
+![Figma Create App](/images/blog/add-figma-oauth2-appwrite/figma-create-app.avif)
 
 Once you save the app, Figma will show your **Client ID** and **Client Secret**. These are the credentials you'll need to complete the setup in Appwrite.
 
-![Figma Client ID and Secret](/images/blog/add-figma-oauth2-appwrite/figma-client-info.png)
+![Figma Client ID and Secret](/images/blog/add-figma-oauth2-appwrite/figma-client-info.avif)
 
 Take a moment to copy both values. The **Client Secret** is shown only once, so make sure to save it somewhere you can reference later.
 
@@ -70,7 +83,7 @@ Copy the Redirect URI and return to your Figma app configuration. Under **OAuth 
 
 Once that's done, head back to Appwrite, paste in your **Client ID** and **Client Secret**, enable the toggle, and click **Update**.
 
-![Appwrite Figma Provider](/images/blog/add-figma-oauth2-appwrite/appwrite-figma-oauth-screen.png)
+![Appwrite Figma Provider](/images/blog/add-figma-oauth2-appwrite/appwrite-figma-oauth-screen.avif)
 
 At this point, Figma is connected to your Appwrite backend.
 

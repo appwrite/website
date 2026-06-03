@@ -3,10 +3,23 @@ layout: post
 title: 12 developer tools to supercharge your Appwrite project
 description: Boost your developer experience with Appwrite using these awesome tools.
 date: 2024-06-17
-cover: /images/blog/developer-tools-appwrite/cover.png
+cover: /images/blog/developer-tools-appwrite/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: open-source
+faqs:
+  - question: "What developer tools does Appwrite provide out of the box?"
+    answer: "Appwrite ships with the [Appwrite CLI](/docs/tooling/command-line/installation) for managing projects from the terminal, the SDK Generator for creating SDKs in many languages, and the Appwrite Playgrounds with example projects in 15+ languages and frameworks. Together they cover most workflows from local setup to deployment."
+  - question: "Where can I find community-built libraries for Appwrite?"
+    answer: "The [Awesome Appwrite](https://github.com/appwrite/awesome-appwrite) GitHub repository is a curated list of community libraries, tools, and projects. You can also explore [Built with Appwrite](https://builtwith.appwrite.io/) to see real applications and the tools they use."
+  - question: "Can I generate TypeScript types from my Appwrite collections?"
+    answer: "Yes. Community tools like `fetch-appwrite-types` read your [Appwrite Databases](/docs/products/databases) schema and emit TypeScript definitions, so your client code stays in sync with your collections. This cuts down on runtime mistakes and gives you autocomplete on document fields."
+  - question: "How do I manage Appwrite database schema changes across environments?"
+    answer: "Community tools like Appwrite Utils (Node.js CLI) and AppwriteMigrator (.NET CLI) let you treat your schema as code and sync it between local, staging, and production projects. For most teams this is more reliable than recreating collections by hand in the Console."
+  - question: "Can I deploy a SvelteKit app as an Appwrite Function?"
+    answer: "Yes, with the community-built `adapter-appwrite` you can build a SvelteKit app and ship it as an [Appwrite Function](/docs/products/functions). For full sites with SSR, [Appwrite Sites](/docs/products/sites) is usually the better fit, but the adapter is handy for embedding SvelteKit logic inside a function."
+  - question: "Is there an Express-like framework for Appwrite Functions?"
+    answer: "Yes, AppExpress is a community library inspired by Express.js that adds routing and middleware on top of Appwrite Functions. It keeps the function lightweight while giving you familiar patterns for HTTP routing, middleware chaining, and caching."
 ---
 
 Any developer-focused product is only as good as the ecosystem of developer tools surrounding it. Fortunately, over the years, we have seen several outstanding tools developed by our community, as well as a few we have developed in-house to make development with Appwrite far more productive.

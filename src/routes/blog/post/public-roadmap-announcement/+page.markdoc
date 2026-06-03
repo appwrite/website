@@ -3,10 +3,21 @@ layout: post
 title: Announcing Appwrite's public roadmap
 description: We just released our product roadmap to increase transparency and foster better collaboration.
 date: 2024-06-19
-cover: /images/blog/public-roadmap-announcement/cover.png
+cover: /images/blog/public-roadmap-announcement/cover.avif
 timeToRead: 5
 author: eldad-fux
 category: open-source, announcement
+faqs:
+  - question: "Where can I find the Appwrite public roadmap?"
+    answer: "The roadmap lives on GitHub at github.com/orgs/appwrite/projects. Each release has its own project board with issues and pull requests tagged for the version they are targeting."
+  - question: "How do I request a feature or report a bug for Appwrite?"
+    answer: "Open an issue on the relevant Appwrite repository with reproduction steps for bugs or a clear motivation for feature requests. Upvoting and commenting on existing issues also helps the team prioritize."
+  - question: "What goes on the roadmap and what stays internal?"
+    answer: "The public roadmap covers short-term and mid-term work that is already scoped. Longer-term initiatives that are still in RFC or planning may not appear yet, since the team avoids committing to dates it cannot hold."
+  - question: "What is the framework behind Appwrite's roadmap decisions?"
+    answer: "The team prioritizes work across four pillars: friction, reliability, growth, and revenue. These give a consistent way to weigh community feedback against long-term platform health."
+  - question: "Why should developers care about a vendor having a public roadmap?"
+    answer: "A public roadmap tells you whether features you depend on are being maintained, what is coming next, and when to expect it. It is easier to plan a production project around a vendor that ships predictably and listens to issues."
 ---
 
 We are excited to announce the launch of Appwrite’s public roadmap on GitHub. The new roadmap is part of our commitment to the Appwrite community and our core values of transparency and collaboration. It was one of the most highly requested features by the Appwrite community and will serve as a tool for increased collaboration among the core team, contributors, maintainers, and Appwrite developers.
@@ -44,7 +55,7 @@ While the new roadmap offers much more flexibility and visibility into our short
 # The roadmap framework
 To ensure our focus is always on the right areas, we have developed an internal framework to guide our roadmap decisions. This framework is based on the significance of our focus areas, allowing us to set clear priorities, measure progress, understand the impact, maintain balance, and foster collaboration within the team and the Appwrite community.
 
-![Roadmap framework](/images/blog/public-roadmap-announcement/framework.png)
+![Roadmap framework](/images/blog/public-roadmap-announcement/framework.avif)
 
 By concentrating on specific aspects, we ensure our team stays aligned and works towards common goals that reflect our mission while continually improving the overall developer experience. Our roadmap framework revolves around four main pillars:
 

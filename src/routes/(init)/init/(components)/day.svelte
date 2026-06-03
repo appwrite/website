@@ -1,6 +1,8 @@
 <script lang="ts" module>
     export type DayProps = {
         illustration: string;
+        illustrationWidth: number;
+        illustrationHeight: number;
         release: Date;
         title: string;
         description: string;
@@ -37,6 +39,8 @@
     const {
         release,
         illustration,
+        illustrationWidth,
+        illustrationHeight,
         content = [],
         announcementVideo = undefined,
         links = [],
@@ -103,8 +107,11 @@
                     >
                         <img
                             src={illustration}
+                            width={illustrationWidth}
+                            height={illustrationHeight}
                             alt="key illustration"
                             class="-mb-10 size-[320px] md:size-[500px]"
+                            decoding="async"
                         />
                     </div>
                 </div>

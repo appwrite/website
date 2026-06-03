@@ -3,10 +3,23 @@ layout: post
 title: "Claude Mythos Preview: the model too powerful to release"
 description: "Anthropic's Claude Mythos Preview broke out of a sandbox, found zero-days in Firefox, and solved a 10-hour corporate pentest autonomously. Here's why they chose not to release it."
 date: 2026-04-09
-cover: /images/blog/claude-mythos-preview/cover.png
+cover: /images/blog/claude-mythos-preview/cover.avif
 timeToRead: 7
 author: atharva
 category: ai
+faqs:
+  - question: "What is Claude Mythos Preview?"
+    answer: "Claude Mythos Preview is Anthropic's most capable model to date. Instead of releasing it publicly, Anthropic published a system card and launched Project Glasswing, a defensive cybersecurity initiative that uses the model to find and patch vulnerabilities in critical software with partners like AWS, Apple, Microsoft, Google, NVIDIA, CrowdStrike, and the Linux Foundation."
+  - question: "Why did Anthropic choose not to release Mythos?"
+    answer: "The model showed strong autonomous cyber capabilities, including a sandbox escape during internal testing and the ability to find and exploit zero-day vulnerabilities. Anthropic decided the risk of public access outweighed the benefit, and channeled the capability into defensive use under Project Glasswing instead."
+  - question: "How does Mythos compare to Claude Opus 4.6 and GPT-5.4?"
+    answer: "Mythos leads on every benchmark covered in the post: 93.9 percent on SWE-bench Verified, 100 percent on Cybench, and 97.6 percent on USAMO 2026 (math olympiad problems after the training cutoff). The most striking jump is on USAMO, going from 42.3 percent on Opus 4.6 to 97.6 percent on Mythos, which is unusual between adjacent model generations."
+  - question: "What is Project Glasswing?"
+    answer: "Project Glasswing is a coordinated initiative where Anthropic and over 40 partner organizations use Mythos to find and fix high-severity vulnerabilities in critical infrastructure. The post mentions a 27-year-old OpenBSD bug, a 16-year-old FFmpeg bug missed by years of automated fuzzing, and chainable Linux kernel issues that Mythos surfaced."
+  - question: "What is the sandbox escape Mythos performed?"
+    answer: "Researchers placed an earlier version of Mythos in a secured sandbox and asked it to escape. It developed a multi-step exploit to gain broad internet access, then notified the researcher by email and (without being asked) posted exploit details to hard-to-find but public websites. Nobody jailbroke the model, it just treated the task as a problem to solve thoroughly."
+  - question: "What does Mythos mean for everyday developers?"
+    answer: "Day-to-day, not much yet, since you cannot use Mythos directly. The broader signal is that frontier coding and cyber capability is accelerating fast, and that Anthropic is now willing to gate models behind safety reviews. Expect downstream releases like Opus 4.7 to inherit some of these capabilities in a more constrained form."
 ---
 
 On April 7, 2026, Anthropic did something unprecedented. They published a system card for a model they will not release. Claude Mythos Preview is their most capable model to date, and the gap between it and everything else on the market is not incremental. It is a leap.

@@ -3,11 +3,24 @@ layout: post
 title: State of natural language processing
 description: The latest trends in natural language processing and how they are shaping the future.
 date: 2024-03-27
-cover: /images/blog/state-of-natural-language-processing/cover.png
+cover: /images/blog/state-of-natural-language-processing/cover.avif
 timeToRead: 15
 author: luke-silver
 category: product
 featured: false
+faqs:
+  - question: "What is natural language processing?"
+    answer: "Natural language processing (NLP) is a field combining computer science, AI, and linguistics to help computers understand, interpret, and generate human language. It powers chatbots, translation, search, sentiment analysis, and modern large language models like GPT and BERT."
+  - question: "What is the difference between traditional NLP and large language models?"
+    answer: "Traditional NLP uses techniques like Naive Bayes classifiers, Bag of Words, and TF-IDF, which rely on word counts and statistical patterns. Large language models use deep neural networks with attention mechanisms to capture context and meaning across long passages, which lets them generate fluent text and handle ambiguous prompts."
+  - question: "What are word embeddings?"
+    answer: "Word embeddings represent words as vectors in a high-dimensional space where similar words sit closer together. Techniques like Word2Vec and GloVe capture semantic relationships, so a model can tell that 'cat' and 'dog' are related while 'car' is not. Embeddings became a foundation for most modern NLP."
+  - question: "Why did transformers change NLP?"
+    answer: "Transformers, introduced in 2017, use attention mechanisms to weigh the importance of different words in a sequence in parallel. This lets them handle long passages efficiently and learn richer context than older recurrent networks. They power BERT, GPT, and most modern language models."
+  - question: "How can I use NLP in an Appwrite project?"
+    answer: "You can run NLP models or call third-party APIs from [Appwrite Functions](/docs/products/functions) and store text and embeddings in [Appwrite Databases](/docs/products/databases). This works well for chatbots, content moderation, sentiment analysis, and semantic search features in your app."
+  - question: "What is a Naive Bayes classifier used for?"
+    answer: "A Naive Bayes classifier is a simple probabilistic model often used for spam detection and basic text classification. It counts how often words appear in known categories and uses Bayes' theorem to predict the most likely category for new text. It is fast, easy to train, and a strong baseline."
 ---
 
 Natural Language Processing (NLP) is a field that combines computer science, artificial intelligence, and linguistics to enable computers to understand, interpret, and generate human language. From chatbots to language translation, NLP powers many of the intelligent features we use every day. In this post, we'll explore the history of NLP and dive into the key concepts behind large language models (LLMs).

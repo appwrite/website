@@ -3,14 +3,27 @@ layout: post
 title: Migrate Firebase projects to Appwrite
 description: Migrate your Firebase projects to Appwrite Cloud in just one click.
 date: 2023-11-06
-cover: /images/blog/migrate-firebase-projects-to-appwrite/migrate-firebase-projects-to-appwrite.png
+cover: /images/blog/migrate-firebase-projects-to-appwrite/migrate-firebase-projects-to-appwrite.avif
 timeToRead: 10
 author: vincent-ge
 category: migration
+faqs:
+  - question: "How do I migrate from Firebase to Appwrite?"
+    answer: "Use Appwrite Migrations from the Console. Create a new project, open the Migrations tab in Project Settings, select Firebase as the source, paste your Firebase Admin SDK service account JSON, choose which resources to import, and start the migration. The process runs in the background and handles users and files automatically."
+  - question: "What gets migrated automatically from Firebase to Appwrite?"
+    answer: "Appwrite Migrations automatically moves user accounts and files from Firebase. Documents and cloud functions need extra work because their data models and runtimes differ. Nested documents need to be transformed into Appwrite relationships, usually with a small migration script."
+  - question: "Do I need to rewrite my Firebase Cloud Functions?"
+    answer: "Yes, [Appwrite Functions](/docs/products/functions) use different syntax, runtimes, and deployment methods, so most Firebase Cloud Functions need partial rewrites. The pattern is similar to standard HTTP controllers, so the lift is manageable. Appwrite supports more runtimes and flexible execution triggers than Firebase."
+  - question: "How does Appwrite handle nested data compared to Firebase?"
+    answer: "Firebase stores nested documents directly, while Appwrite uses [database relationships](/docs/products/databases) (one to one, one to many, many to many) to model linked data. You typically restructure nested Firebase data into separate Appwrite collections connected by relationships. This makes querying more predictable and easier to optimize."
+  - question: "Is Appwrite Migrations free?"
+    answer: "Yes, the Migrations tool is included with every Appwrite project and there is no extra fee for running migrations. You pay for the storage and usage of the resulting resources just like any other project. Self hosted Appwrite users get the same Migrations functionality at no cost."
+  - question: "What do I do after the migration finishes?"
+    answer: "Register your existing web, mobile, or native apps as platforms in the Appwrite Console using the [quick starts](/docs/quick-starts). Then migrate any nested data with a Server SDK and database relationships, and rewrite Firebase Cloud Functions as [Appwrite Functions](/docs/products/functions). Finally, test all flows end to end before pointing production traffic at the new project."
 ---
-If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options, we can give you a jump start with Appwrite Migrations.
+If you’re ready to move from Firebase to Appwrite, or you just want to explore your BaaS options (see [backend as a service (BaaS)](/blog/post/backend-as-a-service)), we can give you a jump start with Appwrite Migrations.
 
-![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.png)
+![Appwrite Console Migrations page](/images/blog/migrate-firebase-projects-to-appwrite/migrations-overview.avif)
 
 Moving is frustrating. Packing, unpacking, renting a truck, wondering if your bed fits through the door. Moving data between cloud platforms feels much the same, so we built Migrations to help lighten the load. Migrations will help you move users, data, and files out of Firebase and into your Appwrite project.
 
@@ -26,7 +39,7 @@ Just like moving houses, not every piece of old furniture will suit your new hou
 
 To help you with your move, Appwrite Migrations will require keys to your old home to access your project’s users, files, and data. This means Appwrite will need your Firebase service account’s API key.
 
-![Firebase key management screen.](/images/blog/migrate-firebase-projects-to-appwrite/firebase-key.png)
+![Firebase key management screen.](/images/blog/migrate-firebase-projects-to-appwrite/firebase-key.avif)
 
 The quickest way to get a key is to use your **Firebase Admin SDK** service account and key, found under **Project settings > Service accounts > Generate private key**.
 

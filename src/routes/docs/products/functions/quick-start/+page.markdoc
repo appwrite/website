@@ -10,10 +10,10 @@ You can create and execute your first Appwrite Function in minutes.
 Before deploying your function with Git, create a new function attached to your Git repository.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/quick-start/dark/create-function.png)
+![Create function screen](/images/docs/functions/quick-start/dark/create-function.avif)
 {% /only_dark %}
 {% only_light %}
-![Create function screen](/images/docs/functions/quick-start/create-function.png)
+![Create function screen](/images/docs/functions/quick-start/create-function.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -31,10 +31,10 @@ You can execute your Appwrite Function through [many different triggers](/docs/p
 The easiest way to execute your first function is to use the Appwrite Console.
 
 {% only_dark %}
-![Execution-screen](/images/docs/functions/quick-start/dark/function-execution.png)
+![Execution-screen](/images/docs/functions/quick-start/dark/function-execution.avif)
 {% /only_dark %}
 {% only_light %}
-![Execution-screen](/images/docs/functions/quick-start/function-execution.png)
+![Execution-screen](/images/docs/functions/quick-start/function-execution.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.

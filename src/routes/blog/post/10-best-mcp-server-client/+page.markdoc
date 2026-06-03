@@ -2,12 +2,25 @@
 layout: post
 title: "10 awesome MCP servers and clients for developers"
 description: Explore awesome MCP servers, top MCP clients, and tools every developer should know.
-cover: /images/blog/10-best-mcp-server-client/cover.png
+cover: /images/blog/10-best-mcp-server-client/cover.avif
 date: 2025-10-14
 timeToRead: 10
 author: veeresh-mulge
 unlisted: true
 category: product
+faqs:
+  - question: "What is the Model Context Protocol (MCP)?"
+    answer: "MCP is an open protocol that gives AI assistants a shared language for connecting to external tools, APIs, and data sources. Instead of building one-off integrations for every service, you expose capabilities through an MCP server and any compatible client (like Cursor, Claude Desktop, or VS Code) can use them. Read more in the [what is MCP](/blog/post/what-is-mcp) post."
+  - question: "What is the difference between an MCP server and an MCP client?"
+    answer: "An MCP server exposes capabilities (tools, resources, data sources) for AI to consume, while an MCP client is the interface the user interacts with, such as an IDE or chat app. The client connects to one or more servers and routes the AI's tool calls to them. You almost always pick the client first, then attach the servers you need."
+  - question: "How do I use the Appwrite MCP server?"
+    answer: "The [Appwrite MCP server](/docs/tooling/mcp/api) exposes your Appwrite project to AI clients so they can create users, manage databases, upload files, and trigger Functions through prompts. You install it in your MCP-compatible client (Cursor, Claude Desktop, VS Code) and authenticate with an API key scoped to the actions you want the AI to perform."
+  - question: "Are MCP servers safe to use with production projects?"
+    answer: "MCP servers are as safe as the credentials you give them. Use API keys with the minimum scopes needed, prefer staging or dev projects for exploratory work, and audit what tools each server exposes before connecting it. For Appwrite, scope keys to specific products (databases, functions, etc.) instead of using a full-access key."
+  - question: "Can I build my own MCP server?"
+    answer: "Yes. The MCP spec is open and there are SDKs in TypeScript, Python, and other languages. You can wrap any internal API, database, or service so your AI tools can call it. The Appwrite, GitHub, and Stripe MCP servers are all good reference implementations to study."
+  - question: "Do I need a separate MCP server for every tool I use?"
+    answer: "Yes, each external service typically ships its own MCP server, but a single MCP client can connect to many servers at once. So your IDE can talk to Appwrite, GitHub, Sentry, and Stripe simultaneously through one assistant, with each server handling its own domain."
 ---
 Imagine opening your IDE and asking, “Why did my last deployment fail?” and your assistant instantly pulls details from Vercel, checks Sentry for recent errors, and reviews your last commit on GitHub, all without you leaving your editor.
 

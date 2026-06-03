@@ -18,11 +18,11 @@ This example uses the `openai/whisper-large-v3` from Hugging Face to perform spe
 Head to the [Appwrite Console](https://cloud.appwrite.io/console) then click on **Functions** in the left sidebar and then click on the **Create Function** button.
 
 {% only_dark %}
-![Create function screen](/images/docs/functions/dark/template.png)
+![Create function screen](/images/docs/functions/dark/template.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create function screen](/images/docs/functions/template.png)
+![Create function screen](/images/docs/functions/template.avif)
 {% /only_light %}
 
 1. In the Appwrite Console's sidebar, click **Functions**.
@@ -98,11 +98,11 @@ This `getFile` method retrieves a file from Appwrite Storage.
 In order for this function to work, create a new bucket in the Appwrite Storage. You can do this by navigating to the Appwrite Console and clicking on **Storage** in the left sidebar, then clicking on the **Create Bucket** button.
 
 {% only_dark %}
-![Create bucket on console](/images/docs/storage/dark/create-bucket.png)
+![Create bucket on console](/images/docs/storage/dark/create-bucket.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Create bucket on console](/images/docs/storage/create-bucket.png)
+![Create bucket on console](/images/docs/storage/create-bucket.avif)
 {% /only_light %}
 
 Use the default configuration for the bucket. Make sure to note down the bucket ID so you can add it as an environment variable later.
@@ -177,10 +177,10 @@ Navigate to the Appwrite Console and click on **Storage** in the left sidebar, t
 After a few seconds, you should see an execution appear in the function's execution logs and the classification result should be saved to the Appwrite Database.
 
 {% only_dark %}
-![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/dark/result.png)
+![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/dark/result.avif)
 {% /only_dark %}
 
 {% only_light %}
-![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/result.png)
+![Speech recognition test](/images/docs/ai/tutorials/speech-recognition/result.avif)
 {% /only_light %}
 {% /section %}

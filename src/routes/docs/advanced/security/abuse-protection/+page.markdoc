@@ -18,6 +18,13 @@ abuse like [denial of service attacks](https://en.wikipedia.org/wiki/Denial-of-s
 Learn more about rate limits
 {% /arrow_link %}
 
+# Email policies {% #email-policies %}
+Email policies let you block sign-ups and email updates from free, aliased, or disposable email providers. This helps keep throwaway accounts, signup spam, and bot registrations out of your project before they reach your authentication and rate-limit layers. Policies run at sign-up time and on email updates, and do not affect existing sessions.
+
+{% arrow_link href="/docs/products/auth/email-policies" %}
+Learn more about email policies
+{% /arrow_link %}
+
 # Cross-origin resource sharing (CORS) {% #CORS %}
 Appwrite limits who can make requests to Appwrite's APIs by default.
 This means that unless your app's domain is added to Appwrite as a platform, requests are rejected.
@@ -28,10 +35,10 @@ will not be accepted.
 You can add new platforms by navigating to **Overview** > **Platforms** > **Add platform**.
 
 {% only_dark %}
-![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+![Add a platform](/images/docs/quick-starts/dark/add-platform.avif)
 {% /only_dark %}
 {% only_light %}
-![Add a platform](/images/docs/quick-starts/add-platform.png)
+![Add a platform](/images/docs/quick-starts/add-platform.avif)
 {% /only_light %}
 
 {% arrow_link href="/blog/post/cors-error" %}

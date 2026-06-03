@@ -16,10 +16,10 @@ In this tutorial, you will build admin panel app with Appwrite and [Refine](http
 
 
 {% only_dark %}
-![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-dark.png)
+![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-dark.avif)
 {% /only_dark %}
 {% only_light %}
-![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-light.png)
+![Create project screen](/images/docs/tutorials/refine/refine-admin-panel-light.avif)
 {% /only_light %}
 
 ## Concepts {% #concepts %}

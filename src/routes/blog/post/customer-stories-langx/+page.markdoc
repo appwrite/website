@@ -3,10 +3,23 @@ layout: post
 title: Building the future of language learning for over 5000 users worldwide with LangX
 description: Learn how LangX used Appwrite to develop an open-source language exchange platform similar to Tandem and support thousands of learners all around the world.
 date: 2024-05-23
-cover: /images/blog/case-study-langx/cover.png
+cover: /images/blog/case-study-langx/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: customer-stories
+faqs:
+  - question: "What is LangX?"
+    answer: "LangX is an open-source language exchange platform similar to Tandem. It pairs users who want to learn a language with native speakers who can teach it, with one-on-one chat using text, images, and audio. It has over 5000 registered users and is built with Ionic Angular and Appwrite."
+  - question: "How does LangX use Appwrite?"
+    answer: "LangX uses [Appwrite Databases](/docs/products/databases) for users, chat rooms, languages, messages, and reports, [Appwrite Realtime](/docs/products/databases) for synchronous chat and online status, [Appwrite Storage](/docs/products/storage) for images and audio, and [Appwrite Functions](/docs/products/functions) for streaks and push notifications."
+  - question: "Why did LangX choose Appwrite over Supabase?"
+    answer: "The LangX founder evaluated both. He preferred Appwrite's user experience, but the deciding factor was the active community. He posted a challenge on Appwrite's Discord and got a resolution within 24 hours, which gave him confidence that he would not be stuck on his own."
+  - question: "Can I build a real-time chat app with Appwrite?"
+    answer: "Yes. [Appwrite Realtime](/docs/products/databases) lets you subscribe to database events and broadcast changes to connected clients. Combined with [Appwrite Storage](/docs/products/storage) for media and [Appwrite Functions](/docs/products/functions) for notifications, you have the building blocks for a full chat app."
+  - question: "What is the benefit of using Appwrite for a cross-platform app?"
+    answer: "Appwrite ships SDKs for web, mobile (Flutter, React Native, iOS, Android), and server runtimes with consistent APIs. A team using Ionic Angular (like LangX) gets the same Appwrite API in their hybrid app that a web team would, so business logic stays portable."
+  - question: "Does Appwrite support push notifications?"
+    answer: "Yes. [Appwrite Messaging](/docs/products/messaging) supports push notifications, SMS, and email. LangX initially used Appwrite Functions to forward notifications to Firebase Cloud Messaging and plans to migrate to Appwrite Messaging for first-class delivery."
 ---
 
 Born in Istanbul, Turkey, Xue never needed to prioritize learning English as a language until he pursued further education at Boğaziçi University, where his Mechanical Engineering coursework was delivered in English. After graduating and working as an IT manager at a multinational import-export company, Xue moved to Canada and founded his own tech consulting firm. By now, he had started exploring various language exchange platforms such as Tandem as a learner; however, he soon realized there was no perfect platform for his needs. 
@@ -29,7 +42,7 @@ Around this simple philosophy, the LangX team has developed various features to 
 - **Profile insights** to let users get a better understanding of their learning habits and progress
 - **Badges** that are given for specific achievements and can be featured on the user’s profile
 
-{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building for free" url="https://cloud.appwrite.io/" /%}
+{% call_to_action title="All-in-one development platform" description="Use built-in backend infrastructure and web hosting, all from a single place." point1="Start for free"  point2="Open source" point3="Support for over 13 SDKs" point4="Managed cloud solution" cta="Start building" url="https://cloud.appwrite.io/" /%}
 
 # Building the solution
 

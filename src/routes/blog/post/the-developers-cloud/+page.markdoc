@@ -3,11 +3,24 @@ layout: post
 title: "Introducing the developers' cloud"
 description: This is an open letter to the Appwrite community about the future ahead. Appwrite is no longer just a backend platform; we are building towards the most complete cloud development platform to date. 
 date: 2025-11-14
-cover: /images/blog/the-developers-cloud/dev-cloud-cover.png
+cover: /images/blog/the-developers-cloud/dev-cloud-cover.avif
 timeToRead: 7
 author: eldad-fux
 category: announcement
 featured: true
+faqs:
+  - question: "What is the developers' cloud?"
+    answer: "The developers' cloud is Appwrite's vision for a single platform that supports the full product lifecycle: imagine, build, deploy, observe, and protect. It sits between a traditional BaaS, which stops at the API layer, and hyperscalers, which expect teams to build every piece themselves."
+  - question: "Is Appwrite still a backend platform?"
+    answer: "Yes, the backend services are still core to Appwrite. [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Functions](/docs/products/functions), [Messaging](/docs/products/messaging), and [Storage](/docs/products/storage) remain the foundation. The platform now extends beyond build to include deploy, with [Appwrite Sites](/docs/products/sites), and more stages over time."
+  - question: "What is Appwrite Sites?"
+    answer: "[Appwrite Sites](/docs/products/sites) lets you deploy and host web applications directly inside Appwrite. It is the first major step beyond the build stage, so you can take a project live and scale it with the same developer experience as the rest of Appwrite."
+  - question: "How is Appwrite approaching AI?"
+    answer: "Appwrite treats AI as a tool that should make developers more productive, not replace the craft. Work is underway on a built-in vector store, smoother integration between Appwrite Functions and AI models, and patterns for agent-driven apps using Functions and Realtime."
+  - question: "What is the difference between Appwrite and a hyperscaler like AWS or GCP?"
+    answer: "Hyperscalers offer enormous raw power but expect you to assemble every piece yourself. Appwrite gives you the same capabilities at a higher level of abstraction with a coherent developer experience, so you do not need to integrate dozens of services to ship a product."
+  - question: "What does observe and protect mean in Appwrite's roadmap?"
+    answer: "Observe covers monitoring and understanding how your app behaves in production. Protect covers operating with confidence and keeping your data and users safe. These stages will expand the platform beyond build and deploy, giving developers more visibility and control at scale."
 ---
 
 Technology continues to reshape the world, and developers remain at the center of that transformation. Their creativity and problem-solving are what turn ideas into products that matter. From the beginning, Appwrite was built to serve that creativity. Our mission has always been clear: to make software development accessible, developer-centric, and flexible by building with and for the open-source community.
@@ -40,7 +53,7 @@ We think about this journey as a continuous chain:
 
 **Protect** - operate with confidence, keep your data and users safe
 
-![The cloud journey](/images/blog/the-developers-cloud/graph1.png)
+![The cloud journey](/images/blog/the-developers-cloud/graph1.avif)
 
 Our goal is to bring these stages together into one seamless flow. The result is a platform that reduces cognitive overhead, minimizes integration work, and lets developers focus on shipping.
 
@@ -96,7 +109,7 @@ You'll also see us continue to explore new layers of flexibility, especially in 
 
 This isn't a single release. It's a long-term evolution guided by the same mission that has always defined Appwrite: empowering developers to create, innovate, and succeed at scale with a platform that grows as they do.
 
-![The cloud journey](/images/blog/the-developers-cloud/graph2.png)
+![The cloud journey](/images/blog/the-developers-cloud/graph2.avif)
 
 As these pieces come together, Appwrite becomes not just where you build, but where your product lives and scales. One platform. Consistent experience. Full lifecycle.
 

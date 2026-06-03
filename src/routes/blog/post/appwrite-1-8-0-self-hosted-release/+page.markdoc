@@ -2,11 +2,24 @@
 layout: post
 title: "Appwrite 1.8.0: The most powerful self-hosted release yet"
 description: Appwrite 1.8.0 brings powerful database features, new runtimes, and key performance updates to make your self-hosted setup faster, safer, and more scalable.
-cover: /images/blog/appwrite-1-8-0-self-hosted-release/cover.png
+cover: /images/blog/appwrite-1-8-0-self-hosted-release/cover.avif
 date: 2025-10-31
 timeToRead: 5
 author: steven
 category: announcement
+faqs:
+  - question: "What is new in Appwrite 1.8.0 for self-hosted users?"
+    answer: "Appwrite 1.8.0 introduces TablesDB, a Transactions API, spatial columns, CSV import, a Bulk API, Database Upsert, auto-increment support, opt-in relationship loading, and new time-based and inversion queries for [Databases](/docs/products/databases). It also adds new runtimes and performance improvements across the self-hosted stack."
+  - question: "What is TablesDB in Appwrite?"
+    answer: "TablesDB is a relational-style API on top of Appwrite [Databases](/docs/products/databases). It introduces tables, columns, and rows alongside the existing collections and documents model, with endpoints like createTable, createColumn, and createRow for developers who prefer a structured schema."
+  - question: "How do Appwrite database transactions work?"
+    answer: "You stage multiple operations across one or more tables and only commit them when you are ready. If every step succeeds, Appwrite commits atomically. If anything fails (permissions, conflicts, validation), Appwrite rolls back the entire transaction so your data stays consistent."
+  - question: "Can I use Appwrite to store and query geographic data?"
+    answer: "Yes. The new spatial columns API lets you store points, lines, and polygons in [Databases](/docs/products/databases), index them efficiently, and run geo queries to check how shapes interact. This unlocks maps, logistics, mobility, and location-aware use cases without a separate geo database."
+  - question: "How do I upgrade my self-hosted Appwrite instance to 1.8.0?"
+    answer: "Follow the upgrade steps in the self-hosting documentation, which cover backing up your data, pulling the new image, and running the migration. Always test the upgrade on a staging environment first because 1.8.0 includes significant database changes."
+  - question: "What is Database Upsert and when should I use it?"
+    answer: "Upsert creates a row if it does not exist and updates it if it does, in a single API call. Use it when you want to avoid writing your own check-then-write logic and handling 404 responses just to decide between insert and update."
 ---
 After weeks of testing and multiple release candidates, **Appwrite 1.8.0** for self-hosted environments is now available.
 
@@ -142,7 +155,7 @@ Appwrite 1.8.0 also introduces **support for web extensions**, allowing them to 
 
 ## Improved email delivery
 
-Appwrite's SMTP system now uses **BCC-only emails**, improving privacy and deliverability — especially for large user bases or bulk notifications.
+Appwrite's SMTP system now uses **BCC-only emails**, improving privacy and deliverability, especially for large user bases or bulk notifications.
 
 ## Core optimizations
 

@@ -30,14 +30,16 @@ spec:
           image: "ghcr.io/appwrite/website:{{ .Values.version }}"
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           resources:
-            requests:
-              cpu: 400m
-              memory: 512Mi
-            limits:
-              memory: 512Mi
+            {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: NODE_OPTIONS
-              value: "--max-old-space-size=400"
+              value: {{ .Values.nodeOptions | quote }}
+            - name: STATSIG_SERVER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: website-secrets
+                  key: STATSIG_SERVER_SECRET
+                  optional: true
           ports:
             - containerPort: 3000
           startupProbe:

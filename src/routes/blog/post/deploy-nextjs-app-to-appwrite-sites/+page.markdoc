@@ -3,13 +3,26 @@ layout: post
 title: Deploy a Next.js app to Appwrite Sites
 description: Learn how to deploy a Next.js app to Appwrite Sites.
 date: 2025-08-28
-cover: /images/blog/deploy-nextjs-app-to-appwrite-sites/cover.png
+cover: /images/blog/deploy-nextjs-app-to-appwrite-sites/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
+faqs:
+  - question: "Does Appwrite Sites support Next.js SSR and React Server Components?"
+    answer: "Yes, [Appwrite Sites](/docs/products/sites) supports the full Next.js feature set, including SSR and React Server Components, not just static export. You can deploy Next.js apps the same way you would on any modern host, with build settings detected automatically."
+  - question: "What build and output settings does Next.js use on Appwrite Sites?"
+    answer: "The default install command is `npm install`, the build command is `npm run build`, and the output directory is `./.next`. Sites detects these automatically for most Next.js projects, so you only need to change them if you use a custom setup like pnpm, Yarn, or a non-default output folder."
+  - question: "How do I deploy a Next.js app from a monorepo?"
+    answer: "Appwrite Sites might not auto-detect the app, so you need to set the root directory manually to the folder containing your Next.js config. For a Turborepo project that might be `./apps/web`. Once the root is set, the rest of the build settings work as normal."
+  - question: "How do environment variables work in Next.js on Appwrite Sites?"
+    answer: "Add environment variables in the Environment variables section when creating or editing the site. Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser, so keep secrets in unprefixed variables that only run server-side."
+  - question: "What if my Next.js build fails when I try to deploy?"
+    answer: "Appwrite Sites builds your app the same way `npm run build` does locally, so a failing local build will fail on deploy too. Run `npm run build` on your machine first, fix any errors, then push the changes. Build logs are streamed live in the Appwrite Console so you can debug in place."
+  - question: "Can I use a custom domain with my Next.js site?"
+    answer: "Yes. Start with the free Appwrite Network subdomain to verify everything works, then add a custom domain from the site settings. Walk through the steps in the [custom domains guide](/blog/post/custom-domains-with-sites)."
 ---
 
-You just built your Next.js app with all the killer features you wanted. Now you want to put it out for the world to see. But you’re confused — “how do I do that?”. If you’re that person, this article is for you.
+You just built your Next.js app with all the killer features you wanted. Now you want to put it out for the world to see. But you’re confused: “how do I do that?”. If you’re that person, this article is for you.
 
 In this article, you will learn how to deploy your Next.js app completely free of cost. We will use Appwrite Sites to achieve that.
 
@@ -43,13 +56,13 @@ Now, let’s link your GitHub repository to Appwrite Sites.
 
 Now, you should be able to see the most recent GitHub repositories based on activity.
 
-![Connecting your GitHub repository to Appwrite Sites](/images/blog/deploy-nextjs-app-to-appwrite-sites/connect-repo.png)
+![Connecting your GitHub repository to Appwrite Sites](/images/blog/deploy-nextjs-app-to-appwrite-sites/connect-repo.avif)
 
 Click **Connect** against the desired GitHub repository. The Next.js logo should be the icon of any valid Next.js app.
 
 Once you connect your GitHub repository, you will be presented with options for deployment.
 
-![Configuring your Site on Appwrite](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-config.png)
+![Configuring your Site on Appwrite](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-config.avif)
 
 Fill in the details as desired. Although there are some things you must know before moving forward.
 
@@ -70,7 +83,7 @@ Now, hit the **Deploy** button, and the deployment process will begin. You can s
 
 # Next steps
 
-![Deployment successful screen](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-deployed.png)
+![Deployment successful screen](/images/blog/deploy-nextjs-app-to-appwrite-sites/site-deployed.avif)
 
 Once your Next.js application is deployed, you can view it on the provided domains on the deployment success splash screen or in the Sites section of the Appwrite console.
 

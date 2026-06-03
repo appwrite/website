@@ -3,10 +3,23 @@ layout: post
 title: "Social media authentication: convenience vs privacy"
 description: Let's discuss the pros and cons of social media authentication and the delicate balance of convenience and privacy surrounding it.
 date: 2024-03-18
-cover: /images/blog/social-media-auth/cover.png
+cover: /images/blog/social-media-auth/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: security
+faqs:
+  - question: "Is social media authentication safe to use?"
+    answer: "It is generally safer than weak user-chosen passwords because providers like Google and Apple invest heavily in account security. The trade-off is centralization: if a user's social account is compromised, every linked service is at risk, and an outage at the provider can lock users out of your app. Treat it as one option among several, not the only auth path."
+  - question: "What user data does social login actually expose to my app?"
+    answer: "It depends on the scopes you request. Most flows return basic profile information (name, email, profile picture, provider user ID). Anything beyond that (friends list, calendars, contacts) requires extra scopes and typically explicit user consent. Request the minimum you need and avoid sensitive scopes unless they are core to the product."
+  - question: "Should I offer social login alongside email and password?"
+    answer: "Yes, in most cases. Social login drops sign-up friction and boosts conversion, but some users do not want to link their social account to your product, and you also need a non-social path for account recovery if a provider has an outage. Offer both, and let users link or unlink providers from their account settings."
+  - question: "Which providers does [Appwrite Auth](/docs/products/auth) support?"
+    answer: "Appwrite supports a long list of OAuth2 providers including Google, GitHub, Apple, Microsoft, Facebook, GitLab, Discord, and more. You configure each provider in the Console with its client ID and secret, and Appwrite handles the redirect, token exchange, and session creation."
+  - question: "What happens if a user signs in with a social provider that then changes its policy?"
+    answer: "If the provider stops returning a verified email, requires new consent, or shuts down, users could lose access to their accounts on your app. Mitigate this by storing the user's email (when available) and offering an alternate path like magic links or password recovery so users are not stranded if a single provider breaks."
+  - question: "What alternatives should I consider to social login?"
+    answer: "Magic links, email or SMS OTPs, passkeys (WebAuthn), and traditional email and password each have different trade-offs around friction, security, and recoverability. For privacy-sensitive products, magic links or passkeys often work better than social login because they do not require trusting a third-party provider with the user's identity."
 ---
 
 Social media authentication has become an integral part of our digital lives, offering a streamlined way to access various online services. We may not even realize it at times; however, logging in with Facebook, X, Linkedin, and other such providers are common authentication methods we come across in most major applications today. There are challenges to using social media providers as authentication methods, though. A [massive Facebook incident in 2021](https://abcnews.go.com/International/facebook-outage-highlights-risks-overdependence-single-tech-giant/story?id=80413709) rendered over a billion people helpless as they lost access to a major part of the internet. Such dependence on major social media providers for essential internet activity can have major drawbacks, too. Therefore, in this blog, let us discuss the pros and cons of social media authentication and the delicate balance of convenience and privacy surrounding it.

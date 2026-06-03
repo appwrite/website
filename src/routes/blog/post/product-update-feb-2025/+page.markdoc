@@ -3,17 +3,30 @@ layout: post
 title: "Product update February 2025: Appwrite 1.6.1, usage metrics improvements."
 description: Get a full recap of products, features and programs we released in February.
 date: 2025-03-06
-cover: /images/blog/product-update-feb-2025/cover-image.png
+cover: /images/blog/product-update-feb-2025/cover-image.avif
 timeToRead: 10
 author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What is included in Appwrite 1.6.1?"
+    answer: "Appwrite 1.6.1 ships improved webp compatibility, additional function runtime versions like Node 22, Dart 3.5, and Bun 1.1, and a real-time heartbeat to keep WebSocket connections alive. It is a stability and performance focused release."
+  - question: "What changed in the usage metrics system?"
+    answer: "Usage metrics now include OPTIONS requests and 4XX responses, which were previously omitted. You get a clearer view of all traffic hitting your project, which makes it easier to spot errors and optimize performance."
+  - question: "How do I upgrade my self-hosted Appwrite to 1.6.1?"
+    answer: "Run the standard self-hosting upgrade flow with Docker Compose, pulling the new image tag and restarting the stack. The Appwrite [self-hosting docs](/docs/advanced/self-hosting) walk through the exact commands and any required migrations."
+  - question: "Where can I see resource usage for my project?"
+    answer: "Open your project in the Appwrite Console and go to Usage. You will see request counts, response codes, bandwidth, storage, and function execution metrics for your selected time range."
+  - question: "What is the real-time heartbeat?"
+    answer: "The heartbeat is a periodic ping that keeps long lived Realtime connections open through proxies and load balancers that would otherwise drop idle WebSockets. It reduces dropped connections without any client code changes."
+  - question: "How do I check the latest Appwrite changes?"
+    answer: "The [Appwrite changelog](/changelog) lists every release with the products and features it touches. It is the best place to find concrete details on bug fixes, version bumps, and new APIs."
 ---
 
 Welcome back to the February product update. From shipping Appwrite 1.6.1 to upgrading our usage metrics system, we have some interesting things to share with you. Let’s dive in!
 
-![The Appwrite 1.6.1](/images/blog/product-update-feb-2025/new-version.png)
+![The Appwrite 1.6.1](/images/blog/product-update-feb-2025/new-version.avif)
 
 # Appwrite 1.6.1 is now available
 
@@ -37,7 +50,7 @@ So now you can have a clearer traffic overview, making it easy to track requests
 
 [Learn more](https://appwrite.io/docs/advanced/platform/pro#check-resource-usage)
 
-![Community recognitions](/images/blog/product-update-feb-2025/community.png)
+![Community recognitions](/images/blog/product-update-feb-2025/community.avif)
 
 # Community recognitions
 

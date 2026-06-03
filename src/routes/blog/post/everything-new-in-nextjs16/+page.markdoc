@@ -3,10 +3,23 @@ layout: post
 title: "Everything new in Next.js 16"
 description: Next.js 16 is now available, bringing Cache Components, Turbopack, and refined caching, now fully supported on Appwrite Sites.
 date: 2025-10-30
-cover: /images/blog/everything-new-in-nextjs16/cover.png
+cover: /images/blog/everything-new-in-nextjs16/cover.avif
 timeToRead: 5
 author: matej-baco
 category: tutorial
+faqs:
+  - question: "What is new in Next.js 16?"
+    answer: "Next.js 16 ships Cache Components for explicit caching, Turbopack as the default bundler, a renamed `proxy.ts` (previously `middleware.ts`), better build and dev logs, stable React Compiler support, smarter routing and prefetching, refined caching APIs, React 19.2, and the new Next.js DevTools MCP. The release focuses on fundamentals over big rewrites."
+  - question: "Does Appwrite Sites support Next.js 16?"
+    answer: "Yes, Next.js 16 is fully supported on [Appwrite Sites](/docs/products/sites) from day one. You can build, test, and host Next.js 16 projects with SSR, RSC, and the new Cache Components without extra configuration."
+  - question: "What are Cache Components in Next.js 16?"
+    answer: "Cache Components introduce an explicit caching model that replaces the framework's implicit guesses about what to cache. You decide which parts of your render tree are cached and when to revalidate them. Combined with Partial Pre-rendering, this makes static and dynamic boundaries predictable inside the same page."
+  - question: "Why is middleware now called proxy in Next.js 16?"
+    answer: "Middleware in Next.js was never really middleware in the Express sense. It runs at the edge and blocks the initial response, so heavy network calls inside it can stall page loads. The rename to `proxy.ts` clarifies the intent: lightweight request handling like redirects, header rewrites, and auth cookie checks, not arbitrary business logic."
+  - question: "Should I switch to Turbopack now?"
+    answer: "Yes, especially for new projects. Turbopack is now the default bundler in Next.js 16, with 2 to 5 times faster builds and up to 10 times faster Fast Refresh. Filesystem caching is still in beta but already cuts startup times significantly on large projects. For existing apps, test the migration before flipping the switch in production."
+  - question: "What are the new system requirements for Next.js 16?"
+    answer: "Next.js 16 requires Node.js 20.9 or higher, TypeScript 5.1 or higher, and modern browsers. AMP support and the `next lint` command are removed, so projects depending on those need to migrate before upgrading."
 ---
 Next.js 16 is here, and it brings one of the most polished releases the framework has seen in a while. Instead of chasing big rewrites, this version focuses on the fundamentals, faster builds, predictable caching, smarter routing, and better developer visibility.
 

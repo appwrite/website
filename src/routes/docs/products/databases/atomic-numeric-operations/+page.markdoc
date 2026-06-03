@@ -6,6 +6,8 @@ description: Safely increment and decrement numeric fields without race conditio
 
 Atomic numeric operations allow you to safely increase or decrease numeric fields without fetching the full row. This eliminates race conditions and reduces bandwidth usage when updating any numeric values that need to be modified atomically, such as counters, scores, balances, and other fast-moving numeric data.
 
+These operations work with `integer`, `bigint`, and `float` columns. Use `bigint` columns when your counters or accumulators may exceed the 32-bit integer range.
+
 # How atomic operations work {% #how-atomic-operations-work %}
 
 Instead of the traditional read-modify-write pattern, atomic numeric operations use dedicated methods to modify values directly on the server. The server applies the change atomically under concurrency control and returns the new value.

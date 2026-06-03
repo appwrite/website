@@ -3,17 +3,30 @@ layout: post
 title: Building a chat app with Appwrite and Google Gemini
 description: Learn how to build a chat application using Appwrite and the Google Gemini API.
 date: 2024-09-27
-cover: /images/blog/build-a-chat-app-with-appwrite-and-gemini/cover.png
+cover: /images/blog/build-a-chat-app-with-appwrite-and-gemini/cover.avif
 timeToRead: 15
 author: ebenezer-don
 category: tutorial
 featured: false
 lastUpdated: 2025-10-14
+faqs:
+  - question: "Can I use Appwrite with other AI models besides Gemini?"
+    answer: "Yes. The same setup works with any AI model that exposes an HTTP API, like OpenAI, Claude, or Mistral. Just swap the Gemini endpoint in your function. Appwrite handles the function runtime, environment variables, and authentication exactly the same way."
+  - question: "How do I make sure my AI app doesn't expose the API key?"
+    answer: "Never call the AI model directly from the frontend. Keep your key in Appwrite Functions or environment variables so only your serverless function communicates with the model. Your frontend should only talk to Appwrite, just like in this Gemini chat example."
+  - question: "Can I store chat messages securely in Appwrite?"
+    answer: "Absolutely. You can use Appwrite Databases to store chat logs with proper permissions. For instance, only the logged-in user can read their messages, while the backend can write AI responses. It's ideal for personal chat history or analytics."
+  - question: "How do I scale AI chat apps built on Appwrite?"
+    answer: "Appwrite Functions scale automatically in Appwrite Cloud, so you can handle higher traffic without infrastructure work. You can also self-host Appwrite and scale Docker containers horizontally."
+  - question: "Is it possible to run Appwrite Functions without an internet connection?"
+    answer: "Yes. When developing locally. You can run functions offline to test your app logic using mock data or cached responses. Just note that external APIs like Gemini won't respond without an internet connection."
+  - question: "How do I add authentication to my AI chat app?"
+    answer: "You can use Appwrite Authentication (email/password, OAuth, or anonymous sessions). This ensures only registered users can access the chat and lets you link chat data to user IDs for secure, personalized experiences."
 ---
 
 If you're looking to build a chat app that doesn't just handle basic messages but actually understands and responds intelligently, you found the right tutorial! In this guide, we'll learn how to create a chat application using Appwrite's local function development and the Google Gemini API to generate AI responses.
 
-Appwrite takes care of the backend so you can focus on the functionality, while Google's Gemini provides the AI that will give your app the ability to respond to user messages in real-time. By the end, you'll have a working chat app that does more than just send and receive messages — but interacts with users in a way that feels almost human.
+Appwrite takes care of the backend so you can focus on the functionality, while Google's Gemini provides the AI that will give your app the ability to respond to user messages in real-time. By the end, you'll have a working chat app that does more than just send and receive messages, but interacts with users in a way that feels almost human.
 
 ![Gif of the chat app in action](/images/blog/build-a-chat-app-with-appwrite-and-gemini/chat-gemini-demo.gif)
 
@@ -225,16 +238,16 @@ Follow these steps to generate an API key:
 1. Visit [Google AI Studio](https://aistudio.google.com/).
 2. Click **"Get API Key"** in the top-left corner.
 
-![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/build-a-chat-app-with-appwrite-and-gemini/google-ai-studio-dashboard.png)
+![Screenshot of the Google AI Studio dashboard with the "Get API Key" button highlighted](/images/blog/build-a-chat-app-with-appwrite-and-gemini/google-ai-studio-dashboard.avif)
 
 3. On the API key page, click **"Create API Key"**.
 
-![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.png)
+![*Screenshot of the API key creation page*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-creation-page.avif)
 
 4. Choose your project (or create a new one), then click **"Create API Key"**.
-5. Copy the API key and save it securely—you'll need it in the next step.
+5. Copy the API key and save it securely; you'll need it in the next step.
 
-![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.png)
+![*Screenshot of the API key generated*](/images/blog/build-a-chat-app-with-appwrite-and-gemini/api-key-generated.avif)
 
 
  ## Step 3.2: Store the API key in an environment file
@@ -531,7 +544,7 @@ This will return a prompt asking you to select the function(s) you want to deplo
 
 You can now navigate to your [Appwrite cloud console](https://cloud.appwrite.io/console) > Projects (select your project) > Functions to see the deployed function. Click on the function to view its details, including the function URL.
 
-![Screenshot of the function details in the Appwrite console](/images/blog/build-a-chat-app-with-appwrite-and-gemini/appwrite-function-details.png)
+![Screenshot of the function details in the Appwrite console](/images/blog/build-a-chat-app-with-appwrite-and-gemini/appwrite-function-details.avif)
 
 With the function deployed, you now have a live chat application built with Appwrite and Google Gemini API. Users can interact with the AI chatbot in real-time, and you can continue to enhance the app with more features, customizations, and integrations.
 
@@ -544,32 +557,6 @@ Appwrite's local function development is a powerful tool for building and testin
 If you have any questions or feedback, feel free to reach out to the Appwrite community on [Discord](https://appwrite.io/discord) or send me a message on [LinkedIn](https://www.linkedin.com/in/ebenezerdon/).
 
 You can view the complete codebase for our Gemini + Appwrite chat app on [GitHub](https://github.com/appwrite-community/chat-gemini-appwrite).
-
-# Frequently asked questions (FAQs)
-
-**1. Can I use Appwrite with other AI models besides Gemini?**
-
-Yes. The same setup works with any AI model that exposes an HTTP API, like OpenAI, Claude, or Mistral. Just swap the Gemini endpoint in your function. Appwrite handles the function runtime, environment variables, and authentication exactly the same way.
-
-**2. How do I make sure my AI app doesn’t expose the API key?**
-
-Never call the AI model directly from the frontend. Keep your key in Appwrite Functions or environment variables so only your serverless function communicates with the model. Your frontend should only talk to Appwrite, just like in this Gemini chat example.
-
-**3. Can I store chat messages securely in Appwrite?**
-
-Absolutely. You can use Appwrite Databases to store chat logs with proper permissions. For instance, only the logged-in user can read their messages, while the backend can write AI responses. It’s ideal for personal chat history or analytics.
-
-**4. How do I scale AI chat apps built on Appwrite?**
-
-Appwrite Functions scale automatically in Appwrite Cloud, so you can handle higher traffic without infrastructure work. You can also self-host Appwrite and scale Docker containers horizontally.
-
-**5. Is it possible to run Appwrite Functions without an internet connection?**
-
-Yes. When developing locally. You can run functions offline to test your app logic using mock data or cached responses. Just note that external APIs like Gemini won’t respond without an internet connection.
-
-**6. How do I add authentication to my AI chat app?**
-
-You can use Appwrite Authentication (email/password, OAuth, or anonymous sessions). This ensures only registered users can access the chat and lets you link chat data to user IDs for secure, personalized experiences.
 
 # Further reading:
 

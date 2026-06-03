@@ -3,11 +3,24 @@ layout: post
 title: "Announcing Appwrite's new Integrations Catalog"
 description: We are beyond excited to announce the launch of our brand-new Appwrite Integrations Catalog. 
 date: 2024-07-29
-cover: /images/blog/integrations-catalog.png
+cover: /images/blog/integrations-catalog.avif
 timeToRead: 12
 author: aditya-oberai
 category: integrations, announcement
 featured: false
+faqs:
+  - question: "What is the Appwrite Integrations Catalog?"
+    answer: "The [Integrations Catalog](https://appwrite.io/integrations) is a directory of all the third-party providers that plug into Appwrite, organized by category like Authentication, Messaging, Storage, Payments, and AI. Each entry links to setup docs so you can wire the integration into your project without hunting through the wider documentation."
+  - question: "Do integrations work with both Appwrite Cloud and self-hosted?"
+    answer: "Most integrations work in both environments, but a few (for example, S3 as a storage adapter) are most useful in self-hosted deployments. Each integration's documentation page calls out where it applies and what configuration it needs."
+  - question: "Which messaging providers can I use with Appwrite Messaging?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) supports providers including Twilio, MSG91, Telesign, Textmagic, and Vonage for SMS, Mailgun, SendGrid, and SMTP for email, and APNs and FCM for push notifications. You configure providers in the Console and then send messages through the unified Messaging API."
+  - question: "How does the GitHub integration with Appwrite Functions work?"
+    answer: "The GitHub integration connects an Appwrite project to a GitHub repository so that pushes to a branch automatically deploy your [Function](/docs/products/functions). It also powers function templates: you can pick a template, and Appwrite forks the source repo into your GitHub account before deploying."
+  - question: "Can I use Stripe or Lemon Squeezy for subscriptions with Appwrite?"
+    answer: "Yes. Stripe and Lemon Squeezy both have step-by-step integration guides that use [Appwrite Functions](/docs/products/functions) to handle webhooks and a Database collection to store subscription state. Functions sit between your client and the payment provider, so you do not have to run a separate backend."
+  - question: "How are OAuth2 providers added to a project?"
+    answer: "OAuth2 providers are configured per project in the Appwrite Console under [Auth](/docs/products/auth). You add your client ID and secret from the provider (Google, GitHub, Discord, and so on), enable the provider, and then call `createOAuth2Session` from a client SDK to start the login flow."
 ---
 
 Our new Integrations Catalog is designed to empower you by providing a seamless way to integrate your favorite tools, libraries, and services with Appwrite, making your development process even more efficient and enjoyable.
@@ -74,7 +87,7 @@ Monitor your application's performance by tracing errors across your Appwrite in
 
 - Hugging Face and Generative AI
 
-Enhance your app with AI through Appwrite's integrations. Build [with our AI function templates](https://appwrite.io/blog/post/building-with-ai-function-templates) from popular tools like Hugging Face, OpenAI, Perplexity, and more. Imagine creating [your very own AI chatbot](https://appwrite.io/blog/post/personal-chatbot-gpt-4o) with OpenAI’s GPT-4o — it's easier than you think!
+Enhance your app with AI through Appwrite's integrations. Build [with our AI function templates](https://appwrite.io/blog/post/building-with-ai-function-templates) from popular tools like Hugging Face, OpenAI, Perplexity, and more. Imagine creating [your very own AI chatbot](https://appwrite.io/blog/post/personal-chatbot-gpt-4o) with OpenAI’s GPT-4o; it's easier than you think!
 
 ## Payments
 

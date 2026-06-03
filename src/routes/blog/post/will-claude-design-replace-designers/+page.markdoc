@@ -3,11 +3,24 @@ layout: post
 title: Will Claude Design replace designers?
 description: "Claude Design is changing how teams design products. Here's a look at what it replaces, what it doesn't, and what designers get back."
 date: 2026-04-22
-cover: /images/blog/will-claude-design-replace-designers/cover.png
+cover: /images/blog/will-claude-design-replace-designers/cover.avif
 timeToRead: 5
 author: aishwari
 category: ai
 featured: false
+faqs:
+  - question: "Will Claude Design replace designers?"
+    answer: "Not in the broad sense. AI design tools speed up visual production, exploration, and format conversion, but they do not handle user research, stakeholder dynamics, accessibility judgment, or the decisions about what not to build. Those parts of design remain firmly human, and they are usually where the most senior design work lives."
+  - question: "What is Claude Design good at today?"
+    answer: "It shortens the gap between idea and first draft, generates many design variations quickly, takes on repetitive production work like resizing and component variants, and bridges formats from wireframe to mockup to code. That tends to compress the early and middle stages of a design project."
+  - question: "What does Claude Design still struggle with?"
+    answer: "Anything that depends on context outside the prompt: understanding specific users, interpreting business constraints, navigating team politics, and making ethical or accessibility tradeoffs. It also struggles with the judgment calls that come from sitting with a problem for weeks."
+  - question: "How does this change what designers actually do day-to-day?"
+    answer: "Mechanical work shrinks, and time shifts toward strategy, discovery, and tight collaboration with engineering. Many designers report shipping more, exploring more directions, and treating individual artifacts as less precious because variations are cheap to produce."
+  - question: "If design gets faster, where does the bottleneck move?"
+    answer: "Downstream. When design is no longer the slow part, the friction moves to backend work like authentication, databases, file storage, and serverless functions. Tools that tighten that loop (such as the [Appwrite Claude Code plugin](/blog/post/announcing-appwrite-claude-code-plugin)) become the next place to save time."
+  - question: "Should junior designers be worried about AI?"
+    answer: "Worried is the wrong frame, but ignoring the shift is risky. The work that used to fill an early-career portfolio (resizing, variants, polishing) is exactly what AI is now good at. Junior designers who lean into research, collaboration, and judgment-heavy work tend to find a stronger career path than those who anchor on production output alone."
 ---
 
 It's the question showing up in design Slack channels, Twitter threads, and conference hallways everywhere. Every time a new AI tool enters the design space, someone asks it out loud. With Claude Design now in the conversation, it's being asked more often than ever.

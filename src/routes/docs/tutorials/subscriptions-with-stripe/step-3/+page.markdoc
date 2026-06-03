@@ -12,10 +12,10 @@ Once inside your project overview, switch to the **Functions** page from the lef
 
 
 {% only_dark %}
-![Project settings screen](/images/docs/tutorials/subscriptions-with-stripe/dark/templates-stripe-subscription.png)
+![Project settings screen](/images/docs/tutorials/subscriptions-with-stripe/dark/templates-stripe-subscription.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/tutorials/subscriptions-with-stripe/templates-stripe-subscription.png)
+![Project settings screen](/images/docs/tutorials/subscriptions-with-stripe/templates-stripe-subscription.avif)
 {% /only_light %}
 
 ## Create a new function {% #create-function %}

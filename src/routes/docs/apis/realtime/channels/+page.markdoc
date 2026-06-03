@@ -75,9 +75,9 @@ let docSubscription = realtime.subscribe(
 ```
 
 ```client-android-kotlin
+import io.appwrite.Channel
 import io.appwrite.Client
 import io.appwrite.services.Realtime
-import io.appwrite.extensions.Channel
 
 val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -209,6 +209,14 @@ A list of all channels available you can subscribe to. When using `Channel` help
 * `functions.<ID>`
 * `Channel.function('<FUNCTION_ID>')`
 * Any execution event to a given function
+---
+* `presences`
+* `Channel.presences()`
+* Any upsert, update, or delete event on any [presence](/docs/apis/realtime/presences) the subscriber can read.
+---
+* `presences.<ID>`
+* `Channel.presence('<PRESENCE_ID>')`
+* Any upsert, update, or delete event on a given presence record.
 
 {% /table %}
 

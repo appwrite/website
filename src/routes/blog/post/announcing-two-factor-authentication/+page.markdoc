@@ -3,11 +3,24 @@ layout: post
 title: "Announcing 2FA: Enhance your application's security."
 description: Improve your application's security by adding an additional layer of protection.
 date: 2024-02-27
-cover: /images/blog/announcing-2fa.png
+cover: /images/blog/announcing-2fa.avif
 timeToRead: 6
 author: eldad-fux
 category: product, announcement
 featured: false
+faqs:
+  - question: "How do I enable two-factor authentication in Appwrite?"
+    answer: "Call `account.updateMFA({ enabled: true })` from the client SDK on an authenticated user. The user then needs at least two registered factors (for example email plus TOTP) before MFA is enforced on login. See [Appwrite Auth](/docs/products/auth) for the full flow."
+  - question: "Which 2FA methods does Appwrite support?"
+    answer: "Appwrite Auth supports three second-factor methods: TOTP via authenticator apps like Google Authenticator or Authy, one-time codes sent via email, and one-time codes sent via SMS. You can combine them or let users register multiple factors on the same account."
+  - question: "What is TOTP and how is it different from SMS OTP?"
+    answer: "TOTP (Time-based One-Time Password) generates a short-lived 6-digit code from a shared secret on the user's device, with no network round trip. SMS OTP delivers a code over the cell network, which adds latency and cost and is vulnerable to SIM swapping. TOTP is generally preferred for security and reliability."
+  - question: "What is the user_more_factors_required error in Appwrite?"
+    answer: "`user_more_factors_required` is the error Appwrite returns when a user has logged in with their primary factor but still needs to complete a second factor. Your app should catch this error and redirect the user to the second-factor challenge page instead of treating it as a failure."
+  - question: "Can I use 2FA with OAuth and email/password in the same app?"
+    answer: "Yes. Appwrite 2FA layers on top of any primary authentication method, so users who sign in with email and password, magic URL, OAuth, or phone OTP can all be required to complete a second factor. The MFA flow is the same regardless of the initial login method."
+  - question: "Why should I add 2FA to my application?"
+    answer: "Two-factor authentication significantly reduces the risk of account takeover from credential stuffing or leaked passwords because an attacker also needs the user's second factor. It also helps meet compliance requirements in regulated industries and signals to users that you take their security seriously."
 ---
 
 At Appwrite, our mission is to eliminate technical barriers. A key part of this mission is making your applications more secure. With Appwrite 1.5, we’re excited to announce that we are adding support for Two-Factor Authentication (2FA) to Appwrite Authentication, providing an extra layer of security for your end users' accounts.

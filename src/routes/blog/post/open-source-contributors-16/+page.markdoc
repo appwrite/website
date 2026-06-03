@@ -3,18 +3,31 @@ layout: post
 title: "Celebrating the open source contributors for Appwrite 1.6"
 description: With this release, we’d like to highlight and celebrate our open source contributors that made Appwrite what it is today.
 date: 2024-08-23
-cover: /images/blog/contributors-16/cover.png
+cover: /images/blog/contributors-16/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: open-source
 featured: false
+faqs:
+  - question: "What major changes shipped in Appwrite 1.6?"
+    answer: "Appwrite 1.6 focused on the Functions ecosystem with local development, a rewritten CLI, support for Go as a runtime, and a long list of community contributed fixes across the console, server, SDKs, and templates."
+  - question: "How can I contribute to Appwrite?"
+    answer: "You can open issues, send pull requests, join GitHub Discussions, share feedback in the Appwrite [Discord](https://appwrite.io/discord), or contribute templates and translations. Every Appwrite repository on GitHub has a contributing guide that explains the setup and conventions."
+  - question: "Does Appwrite hire from its open source community?"
+    answer: "Yes. Many of Appwrite's engineers, including some of the founding team, started as open source contributors. Active contributors are often the first people considered when new roles open up."
+  - question: "Where do I find the list of repositories I can contribute to?"
+    answer: "Most projects live under the [appwrite GitHub organization](https://github.com/appwrite), including the server, console, SDKs, templates, and SDK generator. Look for issues labeled `good first issue` or `help wanted` if you are new."
+  - question: "Do contributions to templates and SDKs count?"
+    answer: "Yes. Templates, SDK generator changes, documentation, translations, and bug fixes are all valuable. Many contributors in this release worked on templates and the SDK generator rather than the core server."
+  - question: "Why does Appwrite stay open source as it grows?"
+    answer: "Open source is part of how Appwrite was built and how it ships. Keeping the core open means developers can self-host, audit the code, contribute back, and avoid lock-in, which the team treats as a core promise to the community."
 ---
 
 This week, we announced the brand new 1.6 version, which features major updates to the Functions ecosystem, including local development, an updated CLI, support for Go, and more. And, just like every major release before that, Appwrite 1.6 is a testament to the power of open-source collaboration. With over 40 developers contributing, we've been able to push for a faster, better, smoother product for everyone in the community.
 
 We're incredibly grateful for the dedication and hard work of our community. Every contribution, big or small, has made a significant impact. 
 
-Therefore, we’d like to conclude Init by celebrating the people who made 1.6 possible — our open-source contributors. Thank you for helping us build a better Appwrite.
+Therefore, we’d like to conclude Init by celebrating the people who made 1.6 possible: our open-source contributors. Thank you for helping us build a better Appwrite.
 
 # Thanks to all the contributors
 

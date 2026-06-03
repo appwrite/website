@@ -11,10 +11,10 @@ Appwrite provides a variety of Site Templates to help you jump-start your web ap
 You can find all available templates by navigating to the Appwrite Console under your project > **Sites** > **Templates**.
 
 {% only_dark %}
-![Site templates](/images/docs/sites/dark/site-templates.png)
+![Site templates](/images/docs/sites/dark/site-templates.avif)
 {% /only_dark %}
 {% only_light %}
-![Site templates](/images/docs/sites/site-templates.png)
+![Site templates](/images/docs/sites/site-templates.avif)
 {% /only_light %}
 
 You can filter sites by searching, filter by use case, or filter by framework. Click **Create site** to create a site from a template.

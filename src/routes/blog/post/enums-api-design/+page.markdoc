@@ -3,11 +3,24 @@ layout: post
 title: Effective use of enums in API design
 description: Learn how enums enable effective and robust communication between different software.
 date: 2024-02-28
-cover: /images/blog/enums-api-design.png
+cover: /images/blog/enums-api-design.avif
 timeToRead: 6
 author: aditya-oberai
 category: engineering
 featured: false
+faqs:
+  - question: "Why use enums in API design?"
+    answer: "Enums constrain a field to a known set of values, which makes APIs easier to consume, harder to misuse, and self-documenting. They also reduce runtime errors because invalid values are caught at the SDK or schema layer rather than failing deep inside business logic."
+  - question: "Should I use string enums or numeric enums in REST APIs?"
+    answer: "Prefer string enums in REST APIs. They show up readable in JSON, are easier to log and debug, and survive API versioning better than numbers (which lose meaning the moment the mapping changes). Numeric enums make more sense in tight binary protocols where every byte counts."
+  - question: "How do I handle backward compatibility when changing an enum?"
+    answer: "Treat enums as part of your API contract. Add new values freely, but never rename or remove existing ones in a published API. If a value really needs to go, deprecate it first and use API versioning to clean up later. Clients written against the old value should keep working without changes."
+  - question: "What are common pitfalls of using enums in APIs?"
+    answer: "Overusing them for dynamic data, breaking compatibility by renaming values, picking inconsistent naming conventions, missing them in documentation, and failing to surface clear errors when invalid values are sent. Each one creates friction for the developers consuming your API."
+  - question: "How does Appwrite use enums in its SDKs?"
+    answer: "Appwrite SDKs replaced magic literals with enums, so things like OAuth providers are referenced as `OAuthProvider.Google` instead of the raw string `\"google\"`. This gives editors autocomplete, catches typos at compile time, and keeps SDK code stable across [Appwrite Auth](/docs/products/auth) updates."
+  - question: "Are enums supported by API documentation tools like OpenAPI?"
+    answer: "Yes. OpenAPI, Swagger, and most schema-driven documentation tools support enums natively. Listing acceptable values in the schema means consumers can generate clients with strong typing and see all valid options in the rendered docs without extra work."
 ---
 
 Any developer who has ever had to design APIs will validate that clear and error-free communication is paramount to ensure the APIs are usable. One key tool that assists this process is enums. This article delves into the purpose and significance of enums in API design, illustrating how they enable effective and robust communication between different software.

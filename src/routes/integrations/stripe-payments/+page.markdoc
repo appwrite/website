@@ -6,25 +6,25 @@ date: 2024-07-30
 featured: false
 isPartner: true
 isNew: false
-cover: /images/integrations/stripe-payments/cover.png
+cover: /images/integrations/stripe-payments/cover.avif
 category: payments
 product: 
-    avatar: '/images/integrations/avatars/stripe.png'
+    avatar: '/images/integrations/avatars/stripe.avif'
     vendor: Stripe
     description: 'Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently.'
 platform: 
     - 'Self-hosted'
     - 'Cloud'
 images: 
-    - /images/integrations/stripe-payments/cover.png
-    - /images/integrations/stripe-payments/dashboard.png
-    - /images/integrations/stripe-payments/api-keys.png
-    - /images/integrations/stripe-payments/webhooks.png
-    - /images/integrations/stripe-payments/template.png
-    - /images/integrations/stripe-payments/variables.png
-    - /images/integrations/stripe-payments/web-platform.png
-    - /images/integrations/stripe-payments/demo.png
-    - /images/integrations/stripe-payments/database.png
+    - /images/integrations/stripe-payments/cover.avif
+    - /images/integrations/stripe-payments/dashboard.avif
+    - /images/integrations/stripe-payments/api-keys.avif
+    - /images/integrations/stripe-payments/webhooks.avif
+    - /images/integrations/stripe-payments/template.avif
+    - /images/integrations/stripe-payments/variables.avif
+    - /images/integrations/stripe-payments/web-platform.avif
+    - /images/integrations/stripe-payments/demo.avif
+    - /images/integrations/stripe-payments/database.avif
 ---
 
 Stripe is an online payment processing platform that allows businesses to accept online payments securely and efficiently. Stripe supports a variety of payment methods, including credit cards, debit cards, and digital wallets, and offers additional services such as billing, invoicing, and fraud prevention.
@@ -43,15 +43,15 @@ To implement the Stripe payments integration, there are several steps you must c
 
 First, [sign up for Stripe](https://stripe.com/) and open the dashboard in test mode.
 
-![Stripe dashboard](/images/integrations/stripe-payments/dashboard.png)
+![Stripe dashboard](/images/integrations/stripe-payments/dashboard.avif)
 
 Head to the **Developers** page from the navbar and click on the **API keys** tab. Save the **Secret key** for further usage.
 
-![Stripe API keys](/images/integrations/stripe-payments/api-keys.png)
+![Stripe API keys](/images/integrations/stripe-payments/api-keys.avif)
 
 Then, go to the **Webhooks** tab, select the event `checkout.session.completed`, and add a temporary endpoint `https://temporary-endpoint` (we will replace this with our final endpoint later). Save the **webhook signing secret** for later usage.
 
-![Stripe webhooks](/images/integrations/stripe-payments/webhooks.png)
+![Stripe webhooks](/images/integrations/stripe-payments/webhooks.avif)
 
 ## Step 2: Create the Appwrite Function
 
@@ -59,11 +59,11 @@ For this step, you must [create an account on Appwrite Cloud](https://cloud.appw
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Payments with Stripe** function template.
 
-![Function template](/images/integrations/stripe-payments/template.png)
+![Function template](/images/integrations/stripe-payments/template.avif)
 
 During the setup process, click the checkbox to generate an Appwrite API key on completion and add the **Stripe secret key** and **webhook secret** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
 
-![Env variables](/images/integrations/stripe-payments/variables.png)
+![Env variables](/images/integrations/stripe-payments/variables.avif)
 
 Then, create a new repository with the default branch and root directory settings. You can edit this repository later to update the function logic. Once the function is deployed, go to the **Settings** tab on the **Function** page, scroll down to your **Build settings**, and update the commands to the following (and then redeploy the function):
 
@@ -82,15 +82,15 @@ https://DEPLOYED_FUNCTION_DOMAIN/webhook
 
 Once all the steps are complete, it is time to test the function! First, copy the function URL, go to the **Appwrite project dashboard**, and add it to the **Platforms** section as a web app. This will register your function URL as an authorized hostname to interact with Appwrite (to prevent CORS).
 
-![Add web platform](/images/integrations/stripe-payments/web-platform.png)
+![Add web platform](/images/integrations/stripe-payments/web-platform.avif)
 
 Then, open it in your browser to test the function and access the pre-built interactive UI. You can anonymously log in through this UI and create a payment order using [Stripe’s test card number](https://docs.stripe.com/testing#cards). As soon as this process is completed, the function UI will show you the completed order. 
 
-![Demo](/images/integrations/stripe-payments/demo.png)
+![Demo](/images/integrations/stripe-payments/demo.avif)
 
 You can visit the **Databases** page in your Appwrite project, enter the `orders` database and the `orders` collection within that, and find your orders.
 
-![Appwrite database](/images/integrations/stripe-payments/database.png)
+![Appwrite database](/images/integrations/stripe-payments/database.avif)
 
 # Read more about Stripe Payments and Appwrite Functions
 

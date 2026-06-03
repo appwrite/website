@@ -3,10 +3,23 @@ layout: post
 title: Share your resume using Appwrite Functions
 description: How you can create a resume using HTML and use a Bun Appwrite Function to share it with the world. 
 date: 2024-03-07
-cover: /images/blog/bun-function-resume/cover.png
+cover: /images/blog/bun-function-resume/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "Can Appwrite Functions return HTML instead of JSON?"
+    answer: "Yes. Appwrite Functions can return any text-based content type including HTML, plain text, CSV, and XML. You set the `Content-Type` header on the response and Appwrite serves it as-is, which is what lets a function host a full HTML page like a resume."
+  - question: "How are Appwrite Functions accessed as REST endpoints?"
+    answer: "Every function can be reached over HTTP, with support for `GET`, `POST`, `PUT`, `DELETE`, and other common methods on any path. You can route based on path and method inside the function code, which means a single function can act as a small web service. See [Appwrite Functions](/docs/products/functions) for details."
+  - question: "Why use Bun instead of Node.js for a function like this?"
+    answer: "Bun has faster cold starts and faster install times, which keeps function execution snappy. It also supports TypeScript natively, so a small function like an HTML resume does not need a build step. Both Bun and Node.js are first-class runtimes in [Appwrite Functions](/docs/products/functions)."
+  - question: "How do I include static files inside an Appwrite Function?"
+    answer: "Put them in a `static` folder at the root of your function and read them at runtime using the standard file APIs in your runtime. Bun lets you do `Bun.file('static/resume.html').text()` to load the file, which then gets returned in the response body."
+  - question: "Is hosting a resume on an Appwrite Function cheaper than a regular website?"
+    answer: "It depends on traffic. For low-traffic personal sites, the Appwrite free tier and the per-execution pricing usually come out to almost nothing. For high-traffic sites, regular static hosting or [Appwrite Sites](/docs/products/sites) is probably a better fit because there is no per-request execution cost."
+  - question: "Can I add a custom domain to an Appwrite Function?"
+    answer: "Yes. Appwrite supports custom domains for functions, so you can map something like `resume.example.com` directly to your function. Once DNS is configured and the domain is verified, hits to that domain are routed through your function and the HTML is served."
 ---
 
 One of the coolest things about Appwrite Functions is that you can now consume them as REST APIs. This means you can send HTTP requests to any path, using common HTTP methods such as `GET` and `POST` to any path on the function and get a response in JSON or any other text-based formats (such as plain text, HTML, and CSV). This has opened up a lot of potential use-cases, one of which is how you can host and share your online resume through an Appwrite Function when applying for a new job. 
@@ -17,7 +30,7 @@ Therefore, in this blog, we will leverage one of Appwrite’s newest functions r
 
 To create the Appwrite Function, you must go to [Appwrite Cloud](https://cloud.appwrite.io) and create a new project. Once a new project is created, you must visit the **Functions** page. Once you click on the **Create a new function** button, you will discover a number of starter templates, of which you must select **Bun**. Once you have created a starter function with Bun and connected your GitHub account, we are ready to begin developing our resume function.
 
-![Appwrite Cloud Functions page](/images/blog/bun-function-resume/appwrite.png)
+![Appwrite Cloud Functions page](/images/blog/bun-function-resume/appwrite.avif)
 
 # Building the Appwrite Function
 
@@ -191,7 +204,7 @@ At this point, our project directory structure should look as follows:
 
 Once you’ve completed all the aforementioned steps, you can push the code to our GitHub repository, at which point Appwrite Cloud will automatically deploy the changes to your function.
 
-![Function deployment](/images/blog/bun-function-resume/deployment.png)
+![Function deployment](/images/blog/bun-function-resume/deployment.avif)
 
 You can then go ahead and test your function by opening the function domain in your browser. 
 

@@ -3,11 +3,24 @@ layout: post
 title: "Announcing time helper queries: Cleaner, more expressive time-based queries"
 description: Handle time-based filtering directly in your queries using new helpers for created and updated timestamps.
 date: 2025-09-02
-cover: /images/blog/announcing-time-helper-queries/cover.png
+cover: /images/blog/announcing-time-helper-queries/cover.avif
 timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What are time helper queries in Appwrite Databases?"
+    answer: "Time helper queries are dedicated operators (`createdBefore`, `createdAfter`, `updatedBefore`, `updatedAfter`) that filter rows by their `$createdAt` and `$updatedAt` timestamps. They replace verbose range comparisons against system attributes with a more direct, intent-revealing syntax."
+  - question: "How do I filter Appwrite documents by date?"
+    answer: "Use the time helper queries with an ISO-8601 date string, for example `Query.createdAfter(new Date('2024-01-01').toISOString())`. You can combine multiple helpers in the same query to express a range, such as everything created in a specific month or updated after a given backup."
+  - question: "What is ISO-8601 date format?"
+    answer: "ISO-8601 is the international standard for representing dates and times, for example `2024-10-05T14:48:00Z`. The `Z` suffix denotes UTC. Appwrite expects timestamps in ISO-8601 because it is unambiguous and sorts correctly as a string, which makes it ideal for queries and APIs."
+  - question: "What is the difference between createdBefore and updatedBefore?"
+    answer: "`createdBefore` filters by when the row was first inserted, while `updatedBefore` filters by when it was last modified. Use `createdBefore` for archival or retention policies based on initial entry, and `updatedBefore` to find data that has been stale or untouched since a given point."
+  - question: "Can I combine time helper queries with other filters?"
+    answer: "Yes. Time helpers compose with any other query operator, so you can express conditions like `status = published AND createdAfter = 2024-01-01`. This makes them well-suited for feeds, dashboards, and incremental sync jobs that need both temporal and field-level filtering."
+  - question: "Are time helper queries available on self-hosted Appwrite?"
+    answer: "Yes. Time helper queries are available on both Appwrite Cloud and self-hosted installations. Make sure your server and [Appwrite Databases](/docs/products/databases) SDK are recent enough to include the new operators."
 ---
 If you’ve ever built a feed, a dashboard, or an audit report, you know how often you need to slice data by time. “Show me posts from last week,” “Export everything updated after the last backup,” or “Delete anything created before a certain retention window.”
 

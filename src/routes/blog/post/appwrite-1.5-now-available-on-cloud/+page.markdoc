@@ -3,11 +3,22 @@ layout: post
 title: Appwrite 1.5 is now available on Cloud
 description: This release was highly anticipated by the community, and we're very happy to finally share the great news.
 date: 2024-04-29
-cover: /images/blog/appwrite-1.5-now-available-on-cloud/cloud15.png
+cover: /images/blog/appwrite-1.5-now-available-on-cloud/cloud15.avif
 timeToRead: 8
 author: eldad-fux
 category: product, announcement
 featured: false
+faqs:
+  - question: "What was new in Appwrite 1.5 on Cloud?"
+    answer: "Appwrite 1.5 on Cloud brought the products announced at Init to the managed platform, including [Messaging](/docs/products/messaging) for SMS, email, and push notifications, support for many new OAuth providers in [Auth](/docs/products/auth), and product improvements across [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions)."
+  - question: "What does Appwrite Messaging support?"
+    answer: "[Messaging](/docs/products/messaging) lets you send SMS, email, and push notifications through a single API. It integrates with providers like Twilio, APNS, Firebase Cloud Messaging, Vonage, Sendgrid, and Mailgun, so you can pick the providers that match your existing stack."
+  - question: "Can I send push notifications to iOS and Android with Appwrite?"
+    answer: "Yes. Push delivery is routed through Apple Push Notification service for iOS and Firebase Cloud Messaging for Android. You configure each provider in the Console, then call the messaging API from a Server SDK to send notifications to your users."
+  - question: "Do I need to self-host Appwrite to use new features?"
+    answer: "No. Once a release lands on Appwrite Cloud, new products and features are available to Cloud projects without any work on your end. Self-hosting remains an option if you want to run Appwrite on your own infrastructure."
+  - question: "What is the difference between Appwrite Cloud and self-hosted Appwrite?"
+    answer: "Appwrite Cloud is the managed platform run by the Appwrite team, with built-in scaling, monitoring, and updates. Self-hosted Appwrite is the same open-source product that you run on your own servers, where you control versions, infrastructure, and operations."
 ---
 
 After announcing many new products and features during [Init](/init) as part of the 1.5 release, we saw great excitement within the community to get started with the newly presented Appwrite 1.5. Although already available on self-hosted, the new Appwrite products and features were yet to be released to Cloud. Today, we are excited to say the wait is finally over as we announce the release of Appwrite 1.5 to the Cloud.

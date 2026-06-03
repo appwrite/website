@@ -1,3 +1,7 @@
+<script lang="ts" module>
+    let nextNoiseFilterId = 1;
+</script>
+
 <script lang="ts">
     import type { SvelteHTMLElements } from 'svelte/elements';
     import { cn } from '$lib/utils/cn';
@@ -19,6 +23,7 @@
     }: Props = $props();
 
     const baseFrequency = $derived(grainSize! / 1);
+    const filterId = `web-noise-filter-${nextNoiseFilterId++}`;
 </script>
 
 <svg
@@ -30,7 +35,7 @@
     style:filter={invert ? 'invert(1)' : 'none'}
     {...rest}
 >
-    <filter id="noise">
+    <filter id={filterId}>
         <feTurbulence
             type="fractalNoise"
             {baseFrequency}
@@ -49,5 +54,5 @@
             <feFuncB type="table" tableValues="0 1" />
         </feComponentTransfer>
     </filter>
-    <rect width="100%" height="100%" filter="url(#noise)" />
+    <rect width="100%" height="100%" filter={`url(#${filterId})`} />
 </svg>

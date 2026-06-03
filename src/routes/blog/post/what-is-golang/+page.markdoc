@@ -3,11 +3,24 @@ layout: post
 title: "Why should you use Golang in your app?"
 description: What is Golang and why should you try it out?
 date: 2024-08-22
-cover: /images/blog/why-use-go-cover.png
+cover: /images/blog/why-use-go-cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "What is Go (Golang)?"
+    answer: "Go is a statically typed, compiled programming language created at Google in 2009. It is designed for simplicity, fast compilation, and concurrency. It is widely used for backend services, CLI tools, cloud infrastructure, and high performance systems."
+  - question: "What are goroutines and why are they useful?"
+    answer: "Goroutines are lightweight functions that run concurrently. They start at around 2 KB of stack and are multiplexed onto OS threads by the Go runtime, so you can spin up thousands of them without exhausting memory. Combined with channels, they make concurrent code much easier to write than thread pools."
+  - question: "What is Go best suited for?"
+    answer: "Backend services, microservices, cloud and DevOps tooling, networked daemons, and CPU heavy workloads like data transformation. It is less suited to native GUI apps or projects that depend on a deep ecosystem of third party scientific libraries."
+  - question: "Can I use Go with Appwrite?"
+    answer: "Yes. Appwrite ships a Go SDK and a Go runtime for [Appwrite Functions](/docs/products/functions), so you can write your function code in Go and call any Appwrite service (databases, auth, storage, messaging) from it."
+  - question: "How does Go compare to Node.js or Python for backend work?"
+    answer: "Go is typically faster at CPU bound work and uses far less memory per concurrent request than Node.js or Python. The trade off is a smaller third party ecosystem and more boilerplate around error handling. For high throughput services or CLIs, Go usually wins."
+  - question: "Is Go hard to learn?"
+    answer: "Go is one of the easier compiled languages to pick up. The spec is small, the standard library is rich enough that you rarely need extra dependencies, and the tooling (formatter, test runner, build system) is built in. Most developers are productive in a week or two."
 ---
 Appwrite has just announced support for Go SDK and Function runtime in version 1.6. The Go programming language (also known as Golang) is popular for its concurrency model, speed, and simple URL-based dependency management. 
 

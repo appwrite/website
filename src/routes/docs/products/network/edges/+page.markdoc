@@ -7,10 +7,10 @@ description: Learn about Appwrite edges, where lightweight compute tasks like ca
 Appwrite edges are strategically distributed locations designed to process requests closer to your users. These edge nodes handle latency-sensitive operations, such as caching, routing, and quick computations, to deliver faster, more efficient interactions while reducing the load on your application's core infrastructure.
 
 {% only_dark %}
-![Edges map](/images/docs/network/dark/edges-map.png)
+![Edges map](/images/docs/network/dark/edges-map.avif)
 {% /only_dark %}
 {% only_light %}
-![Edges map](/images/docs/network/edges-map.png)
+![Edges map](/images/docs/network/edges-map.avif)
 {% /only_light %}
 
 {% info title="We're expanding!" %}

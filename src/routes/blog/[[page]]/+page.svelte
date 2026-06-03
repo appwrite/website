@@ -44,6 +44,10 @@
 
     let selectedCategory = $state(page.url.searchParams.get('category') ?? 'Latest');
 
+    $effect(() => {
+        selectedCategory = page.url.searchParams.get('category') ?? 'Latest';
+    });
+
     const handleSearch = async () => {
         const searchQuery = query.toLowerCase();
 
@@ -132,7 +136,7 @@
     const title = 'Blog' + TITLE_SUFFIX;
     const description =
         'Stay updated with the latest product news, insights, and tutorials from the Appwrite team. Our blog covers everything for hassle-free backend development.';
-    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.png';
+    const ogImage = DEFAULT_HOST + '/images/open-graph/blog.avif';
 </script>
 
 <svelte:head>
@@ -445,7 +449,7 @@
                                 </span>
                             {/if}
 
-                            {#each currentPageRange as page (page)}
+                            {#each currentPageRange as page, index (`${page}-${index}`)}
                                 {#if page === -1}
                                     <span class="pagination-ellipsis">...</span>
                                 {:else}

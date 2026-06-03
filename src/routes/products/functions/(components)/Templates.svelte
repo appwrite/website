@@ -2,16 +2,16 @@
     import Tooltip from '$lib/components/Tooltip.svelte';
     import { Button } from '$lib/components/ui';
     import { cn } from '$lib/utils/cn';
-    import Templates from '../(assets)/templates.png';
+    import Templates from '../(assets)/templates.avif';
 
     const icons = {
-        node: '/images/platforms/nodejs.svg',
-        php: '/images/platforms/php.svg',
-        ruby: '/images/platforms/ruby.svg',
-        python: '/images/platforms/python.svg',
-        dart: '/images/platforms/dart.svg',
-        bun: '/images/platforms/bun.svg',
-        go: '/images/platforms/go.svg'
+        node: '/images/platforms/dark/node.svg',
+        php: '/images/platforms/dark/php.svg',
+        ruby: '/images/platforms/dark/ruby.svg',
+        python: '/images/platforms/dark/python.svg',
+        dart: '/images/platforms/dark/dart.svg',
+        bun: '/images/platforms/dark/bun.svg',
+        go: '/images/platforms/dark/go.svg'
     } as const;
 
     const templates = [

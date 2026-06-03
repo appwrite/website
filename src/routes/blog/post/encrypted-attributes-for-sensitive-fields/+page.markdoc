@@ -3,10 +3,23 @@ layout: post
 title: Secure sensitive database fields with encrypted string attributes
 description: Learn how to use encrypted string attributes to protect sensitive data in your Appwrite database.
 date: 2025-07-10
-cover: /images/blog/encrypted-attributes-for-sensitive-fields/cover.png
+cover: /images/blog/encrypted-attributes-for-sensitive-fields/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "What are encrypted string attributes in Appwrite?"
+    answer: "Encrypted string attributes are a field type in [Appwrite Databases](/docs/products/databases) that store values encrypted at rest using AES-128 in Galois/Counter Mode (GCM). The data is decrypted transparently when read by authorized clients, so application code does not need any special encryption logic."
+  - question: "How do I create an encrypted attribute in Appwrite?"
+    answer: "In the Appwrite Console, open a collection, go to the Attributes tab, click Create attribute, pick String, and enable the Encrypted checkbox. Encrypted string attributes must have a minimum size of 150 characters. The feature is available on Pro plans and higher."
+  - question: "Can I query or filter on encrypted attributes?"
+    answer: "No. Encrypted attributes cannot be filtered, searched, or sorted because Appwrite never sees the plaintext index. If you later need to query a field, you have to delete and recreate it as unencrypted. A common pattern is to store a queryable label alongside a separate encrypted field for sensitive content."
+  - question: "Is this end-to-end encryption?"
+    answer: "No. Encrypted attributes protect data at rest from infrastructure-level access, but project owners and team members with database access can still read the plaintext through the Console. For zero-knowledge use cases like secure messaging, you still need client-side encryption where the server never sees the unencrypted data."
+  - question: "When should I use encrypted attributes?"
+    answer: "Use them for sensitive values that you store but rarely query: government IDs, full legal names, birth dates, admin notes, internal moderation logs, IP addresses, complaint text, and free-form user input. Pair them with role-based access controls to limit who can read the plaintext."
+  - question: "Does encryption alone make my app GDPR or HIPAA compliant?"
+    answer: "No. Encryption at rest is often a foundational requirement under GDPR, HIPAA, and similar frameworks, but compliance also depends on access controls, audit logging, data retention policies, and breach procedures. Encrypted attributes make it easier to meet the storage requirement without restructuring your app."
 ---
 
 Modern applications often rely on personal, identifying, or internal data to function. Whether it is a user's name, a support message, or a private note added by an administrator, certain fields carry weight beyond their technical type.
@@ -30,18 +43,18 @@ To create an encrypted attribute:
 3. Choose a collection and open the **Attributes** tab
 4. Click **Create attribute**, then select **String**
 
-    ![create attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/create-attribute-modal.png)
+    ![create attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/create-attribute-modal.avif)
 
 5. In the attribute creation modal, enable the **Encrypted** checkbox
 
-    ![string attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/string-attribute-modal.png)
+    ![string attribute modal](/images/blog/encrypted-attributes-for-sensitive-fields/string-attribute-modal.avif)
 
 
 You may also configure standard settings, such as size limits, default values, whether the field is required, or whether it supports arrays. Note that encrypted string attributes require a **minimum size of 150 characters**.
 
 Once created, the attribute will appear in your schema with a lock icon indicating that its contents are encrypted at rest.
 
-![encrypted attribute screen](/images/blog/encrypted-attributes-for-sensitive-fields/encrypted-attribute-screen.png)
+![encrypted attribute screen](/images/blog/encrypted-attributes-for-sensitive-fields/encrypted-attribute-screen.avif)
 
 Note that the encrypted string attribute feature is available only on **Pro plans and higher**.
 

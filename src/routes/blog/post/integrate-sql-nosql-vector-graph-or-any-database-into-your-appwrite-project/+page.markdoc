@@ -3,11 +3,24 @@ layout: post
 title: "Integrate SQL, NoSQL, Vector, Graph, or any database into your Appwrite project"
 description: With databases it's always "it depends", but we got the answers.
 date: 2024-05-24
-cover: /images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/cover.png
+cover: /images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/cover.avif
 timeToRead: 9
 author: matej-baco
 category: product
 featured: false
+faqs:
+  - question: "Can I use an external database with Appwrite?"
+    answer: "Yes. The pattern in this post connects to an external database (SQL, NoSQL, vector, or graph) from inside an [Appwrite Function](/docs/products/functions). Your client app talks to the function, and the function talks to the external database, which keeps credentials and connection pooling on the server."
+  - question: "When should I pick Appwrite Databases over an external database?"
+    answer: "Use [Appwrite Databases](/docs/products/databases) when you want tight integration with Appwrite Auth permissions, real time updates, and zero extra setup. Reach for an external database when you need a specialty engine (vector, graph, time series, full text search) or you already have data living elsewhere."
+  - question: "What is a vector database?"
+    answer: "A vector database stores high dimensional embeddings and supports nearest neighbor search. It's the backbone of semantic search, retrieval augmented generation, and recommendation systems where you compare items by similarity instead of exact matches."
+  - question: "What is a graph database?"
+    answer: "A graph database models data as nodes and relationships, with edges as first class citizens. It is the right choice when the questions you ask are mostly about traversals (friends of friends, fraud rings, dependency chains) rather than row by row reads."
+  - question: "How do I connect to a database from an Appwrite Function?"
+    answer: "Add the database client as a dependency in your function, read the connection details from environment variables, and open the connection once at the top of the file so it survives between executions. The function code then exposes a simple HTTP interface to your client app."
+  - question: "Is it safe to expose database connection strings to client apps?"
+    answer: "No. Connection strings and credentials should only live on the server. Use an Appwrite Function or your own backend as a proxy, and let the client only see the typed responses your API returns."
 ---
 
 # Integrate any database type into your Appwrite project
@@ -84,7 +97,7 @@ return res.json(warehouses);
 
 You can find an entire example in our [query Neon Postgres](https://github.com/appwrite/templates/tree/main/node/query-neon-postgres) function template, which is also available on your Appwrite Console in the Functions Marketplace.
 
-![Neon Postgres Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neon.png)
+![Neon Postgres Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neon.avif)
 
 ## MongoDB Atlas
 
@@ -141,7 +154,7 @@ export default async ({ req, res, log, error }) => {
 
 A better-structured example can be found in the [query Mongo Atlas](https://github.com/appwrite/templates/tree/main/node/query-mongo-atlas) function template and also on your Appwrite Console.
 
-![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.png)
+![MongoDB Atlas Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/mongodb.avif)
 
 ## Redis
 
@@ -200,7 +213,7 @@ return res.json(warehouses);
 
 A working example can be found in our [query Redis Labs](https://github.com/appwrite/templates/tree/main/node/query-redis-labs) function template or in your Appwrite Console.
 
-![Redis Labs Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/redis.png)
+![Redis Labs Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/redis.avif)
 
 ## Neo4j AuraDB
 
@@ -273,7 +286,7 @@ return res.json(graph);
 
 You can look at the entire example put together in the [query Neo4j AuraDB](https://github.com/appwrite/templates/tree/main/node/query-neo4j-auradb) template or in your Functions Marketplace in Appwrite Console.
 
-![Neon4j AuraDB Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neo4j.png)
+![Neon4j AuraDB Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/neo4j.avif)
 
 ## Upstash Vector
 
@@ -329,7 +342,7 @@ return res.json(embedding);
 
 If needed for your use-case, you can disable automatic embedding generation from Upstash, and use any AI model of your choice. You can use the [query Upstash Vector](https://github.com/appwrite/templates/tree/main/node/query-upstash-vector) Appwrite Function template as a reference for your implementation. Additionally, you can find this example in Appwrite Console when setting up a new function.
 
-![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.png)
+![Upstash Vector Console](/images/blog/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project/vector.avif)
 
 ## **Next steps**
 

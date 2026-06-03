@@ -3,10 +3,23 @@ layout: post
 title: "Error: User (role: guests) missing scope (account) - What it means and how to fix it"
 description: Understanding and resolving a common authentication error in Appwrite.
 date: 2025-03-07
-cover: /images/blog/user-role-guests-missing-scope-account/cover.png
+cover: /images/blog/user-role-guests-missing-scope-account/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: debugging
+faqs:
+  - question: "What does User (role: guests) missing scope (account) mean?"
+    answer: "It means the request hit Appwrite without an authenticated session, so the caller is treated as a guest. The endpoint you called requires an account scope, which only logged in users have. You need to create or restore a session before making the call."
+  - question: "Why do I get this error right after calling account.get()?"
+    answer: "Usually because there is no active session in the current SDK client. Either the user has not logged in yet, the session cookie was not sent, or you are calling account.get on a fresh server side client that has not been authenticated for this request."
+  - question: "How do I fix this in OAuth2 web apps with cross domain cookies?"
+    answer: "Either allow third party cookies in the browser during local development, configure a [custom domain](/docs/advanced/platform/custom-domains) so cookies become first party, or switch to OAuth2 token based auth with createOAuth2Token which falls back to local storage."
+  - question: "How do I handle this on the server side in SSR frameworks?"
+    answer: "Server side sessions are not persisted automatically. Create the session, capture the secret returned by Appwrite, store it in your own session store or cookie, and attach it to subsequent server side clients. See the [Appwrite Auth](/docs/products/auth) docs for the SSR pattern."
+  - question: "Is it ever safe to ignore this error?"
+    answer: "Yes. On app startup it is the simplest way to detect that no user is logged in. Catch the exception from account.get and redirect to your login screen. The error is only a real problem when you expected an authenticated session to exist."
+  - question: "Can I prevent the error by checking for a session first?"
+    answer: "There is no separate is logged in endpoint. The idiomatic pattern is to call account.get inside a try/catch, treat the missing scope error as no session, and treat a successful response as a logged in user."
 ---
 
 If you've been working with Appwrite, you've likely encountered the error message **"Error: User (role: guests) missing scope (account)"** at some point. This error is one of the most common questions we see from developers, especially those new to Appwrite. In this post, we'll break down what this error means and walk through the various scenarios where it might appear, along with their solutions.
