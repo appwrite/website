@@ -25,6 +25,10 @@
                     href: '/docs/products/project/auth-methods'
                 },
                 {
+                    label: 'OAuth providers',
+                    href: '/docs/products/project/oauth'
+                },
+                {
                     label: 'API keys',
                     href: '/docs/products/project/api-keys'
                 },
