@@ -7,6 +7,19 @@ cover: /images/blog/react-nativecross.avif
 timeToRead: 9
 author: damodar-lohani
 category: tutorial
+faqs:
+  - question: "When should I choose React Native over native iOS and Android?"
+    answer: "Pick React Native when you want one codebase across iOS, Android, and sometimes web, and your team already knows JavaScript or React. Stay native when you need cutting-edge platform APIs, intensive graphics, or fine-grained control over memory and background tasks. For most CRUD-style and content apps, React Native is the pragmatic choice."
+  - question: "Does React Native have a backend SDK from Appwrite?"
+    answer: "Yes. Appwrite ships an official React Native SDK that covers authentication, databases, storage, functions, and realtime. You can find setup steps under the [Appwrite quick starts](/docs/quick-starts) and connect it to either Appwrite Cloud or a self-hosted instance."
+  - question: "How does React Native compare to Flutter?"
+    answer: "React Native uses JavaScript and maps your UI to native components, so the result looks and feels native on each platform. Flutter uses Dart and draws its own widgets with a custom rendering engine, which gives more pixel-level control. The right pick usually comes down to your team's existing language skills and how much you value native look-and-feel."
+  - question: "Can I share code between React Native and a React web app?"
+    answer: "You can share business logic, data layers, hooks, and SDK calls. UI components usually need a thin abstraction because the primitives differ (`View` and `Text` on native, `div` and `span` on web). Tools like React Native for Web help when you want closer code sharing across all three platforms."
+  - question: "What is the learning curve for React Native if I know React?"
+    answer: "Short, in most cases. The component model, hooks, and state management work the same way. The new pieces are native components, navigation libraries, and platform tooling like Xcode and Android Studio for builds. Most React developers can ship a working app within a few weeks."
+  - question: "Does Appwrite work with both Expo and bare React Native projects?"
+    answer: "Yes. The React Native SDK works in both environments, and you can wire it into Expo apps without ejecting in most cases. See the [Appwrite Authentication](/docs/products/auth) docs for examples of how login flows and sessions are handled on mobile."
 ---
 
 Android, iOS, macOS, Linux, Windows, and the Web. Different platforms with different codebases. As a developer, you might have faced the challenge of building one application for multiple platforms. Considering the challenge of mastering all of the skills to build an application that performs well cross-platform, it’s no wonder we have seen the rise of cross platform frameworks such as React Native and Flutter. These frameworks allow you to create applications that run smoothly on multiple operating systems from a single codebase. This saves time, reduces costs, and reaches a larger user base.

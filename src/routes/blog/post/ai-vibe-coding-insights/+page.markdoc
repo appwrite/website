@@ -7,6 +7,19 @@ cover: /images/blog/ai-vibe-coding-insights/cover.avif
 timeToRead: 10
 author: laura-du-ry
 category: tutorial
+faqs:
+  - question: "What is vibe coding?"
+    answer: "Vibe coding is a term coined by Andrej Karpathy for building apps by describing intent to AI tools and letting them write most of the code, rather than writing it line by line yourself. It is fast for prototyping but pairs best with a backend like Appwrite that handles the bits you would not want an LLM to reinvent (auth, data, storage)."
+  - question: "Which AI coding tools do developers use most?"
+    answer: "Survey responses from the Appwrite community show ChatGPT, GitHub Copilot, Claude, and Cursor as the most-used tools, with Warp AI CLI gaining traction in the terminal. Most developers combine two or three of these depending on the task: in-editor completions, longer reasoning, and quick one-off questions."
+  - question: "How can I use AI to build with Appwrite?"
+    answer: "Use the [Appwrite MCP server](/docs/tooling/mcp/api) to give AI assistants direct access to your project. They can create collections, manage users, deploy functions, and run queries through natural language. The [Appwrite plugin for Claude Code](/blog/post/announcing-appwrite-claude-code-plugin) bundles this together for Claude users."
+  - question: "Should I worry about security when vibe coding?"
+    answer: "Yes. Vibe-coded apps often skip auth, permissions, and rate limiting because the AI does not bring them up by default. Read the [backend checklist for vibe-coded apps](/blog/post/backend-checklist-vibe-coded-apps) before you ship, and keep API keys server-side in an [Appwrite Function](/docs/products/functions) rather than the browser."
+  - question: "Is vibe coding suitable for production apps?"
+    answer: "It is fine for prototypes and internal tools. For production, treat the AI-generated code like any other: review it, add tests, lock down permissions, and own the architecture decisions yourself. The leverage comes from speeding up the build, not skipping the engineering discipline."
+  - question: "Who is most likely to use vibe coding tools?"
+    answer: "Survey data shows early-career developers (1 to 3 years of experience) are the most active users of both AI assistants and vibe coding tools. Senior developers are more selective but still curious; the gap usually closes as tool reliability improves and trust builds up."
 ---
 
 The way developers write code is changing fast. What used to be a carefully structured process is now often about describing what you want and letting AI handle the details. 

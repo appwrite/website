@@ -8,6 +8,19 @@ timeToRead: 5
 author: christy-jacob
 category: integrations, announcement
 featured: false
+faqs:
+  - question: "Which AI providers does Appwrite integrate with?"
+    answer: "Appwrite has tutorials and function templates for OpenAI, Hugging Face, Pinecone, ElevenLabs, Perplexity, Replicate, fal.ai, LangChain, Together AI, and Anyscale. New integrations are added regularly, and the full list lives in the [Appwrite AI documentation](/docs/products/ai)."
+  - question: "What are AI Function templates?"
+    answer: "AI Function templates are pre-built [Appwrite Functions](/docs/products/functions) that wire a third-party AI provider into your project. You pick a template in the Console (for example, **Prompt ChatGPT** or **Hugging Face inference**), deploy it, and the function exposes an endpoint your client can call. No infrastructure setup is required."
+  - question: "How do I add an OpenAI integration to my Appwrite app?"
+    answer: "Use the OpenAI function template from the Console, supply your OpenAI API key as an environment variable, and deploy. Your client SDK can then call the function to run completions, chat, embeddings, or other OpenAI APIs without exposing the key to end users."
+  - question: "Can I use Appwrite for vector search?"
+    answer: "Appwrite integrates with external vector databases like Pinecone and Upstash Vector through Function templates and tutorials. You typically store metadata in [Appwrite Databases](/docs/products/databases) and embeddings in the vector store, then call both from a server-side Function during queries."
+  - question: "What is a knowledge base in the context of AI apps?"
+    answer: "In retrieval-augmented generation (RAG), a knowledge base is the collection of source documents and their embeddings that a model uses to ground its answers. With Appwrite, you can store source content in [Storage](/docs/products/storage) or Databases, generate embeddings inside a Function, and query a vector index at runtime."
+  - question: "Where can I see real-world AI apps built on Appwrite?"
+    answer: "Visit [builtwith.appwrite.io](https://apwr.dev/yAtAG8j) to browse community-submitted projects, and check the [Appwrite blog](/blog) for tutorials such as personal chatbots, audio processing pipelines, and computer vision integrations using the available providers."
 ---
 The AI hype is real and will be around for many years to come. In 2021 alone, AI startups worldwide raised nearly $50 billion in venture capital across approximately 1,500 deals, reflecting a significant increase from previous years. So it's no surprise that many of you are looking to build AI powered applications. But that's easier said than done, as building AI powered applications can be tricky. We don't want it to be. That's why we're happy to share multiple AI related announcements designed to enhance the Appwrite experience and adapt to new possibilities for devs building with Appwrite.
 

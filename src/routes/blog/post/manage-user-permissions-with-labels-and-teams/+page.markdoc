@@ -8,6 +8,19 @@ timeToRead: 8
 author: dennis-ivy
 category: tutorial
 featured: false
+faqs:
+  - question: "What is the difference between Teams and Labels in Appwrite?"
+    answer: "Teams group users together for shared access and support roles within the group, so you can assign permissions to specific roles like admin or moderator. Labels are custom tags attached to individual users and act as a lightweight way to grant permissions based on user attributes. Teams are best for collaborative spaces, while Labels suit per user access like paywalled content."
+  - question: "Can I create and modify Labels from the client SDK?"
+    answer: "No, Labels can only be created or modified from the Appwrite Console or a Server SDK. Teams, on the other hand, can be created and modified from both Client and Server SDKs. This is a deliberate restriction to prevent users from granting themselves additional permissions from the client."
+  - question: "How do permissions work with Teams in Appwrite?"
+    answer: "You assign permissions to a Team (or specific roles within a Team) on any resource like a document, file, or function. Every user added to that Team inherits those permissions automatically. If a user has a role inside the Team, they also inherit any permissions granted to that role. Learn more in the [Appwrite Auth docs](/docs/products/auth)."
+  - question: "When should I use a Label instead of a Team?"
+    answer: "Use a Label when you need to flag individual users with an attribute that controls access, like a subscription tier or paid course access. Removing the Label revokes access without removing the user from any group. Labels are ideal for per user gating, while Teams shine when multiple users collaborate on shared resources."
+  - question: "Can a user belong to multiple Teams and have multiple Labels?"
+    answer: "Yes, a user can be a member of many Teams (with different roles in each) and can carry multiple Labels at the same time. Appwrite combines permissions from all their Teams, roles, and Labels when checking access on a resource. This lets you compose access rules without writing custom permission logic."
+  - question: "How do I assign Team or Label permissions on a document or file?"
+    answer: "In the Appwrite Console, open the resource's settings and add a permission row, then choose a Team or Label as the role. You can also do this from any [Appwrite SDK](/docs/sdks) by setting the permissions array when creating or updating the resource. Use role helpers like Role.team(id) or Role.label(name) for clarity."
 ---
 
 

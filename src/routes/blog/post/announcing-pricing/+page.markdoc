@@ -3,10 +3,24 @@ layout: post
 title: Announcing Cloud pricing plans
 description: Appwrite Cloud pricing are now available.
 date: 2023-08-08
+lastUpdated: 2026-05-22
 cover: /images/blog/cloud-pricing.avif
 timeToRead: 5
 author: laura-du-ry
 category: announcement
+faqs:
+  - question: "What pricing plans does Appwrite Cloud offer?"
+    answer: "Appwrite Cloud offers a Free plan for side projects, a Pro plan for production apps priced per project, and an Enterprise plan for larger organizations that need higher limits, advanced security, and premium support. See the current [pricing page](/pricing) for up-to-date numbers."
+  - question: "Why does Appwrite charge per project instead of per organization member?"
+    answer: "Per-seat pricing limits collaboration and pushes teams to share accounts. Charging per project ties cost to where Appwrite delivers value (Databases, Auth, Storage, Functions, and so on), with unlimited members on every paid project. See the [pricing update](/blog/post/appwrite-pricing-update) for the full reasoning."
+  - question: "Is Appwrite still free to use?"
+    answer: "Yes. The Free plan covers side projects and prototyping, and self-hosted Appwrite is free and open source under the BSD-3-Clause license. Paid plans are intended for production workloads that exceed Free plan limits."
+  - question: "Does Appwrite offer a free plan for open source maintainers?"
+    answer: "Yes. The [Appwrite OSS Program](/blog/post/announcing-the-appwrite-oss-program) gives qualifying open source maintainers free access to Appwrite Pro. Projects need to meet criteria such as an OSI-approved license, active development, and a minimum number of stars and contributions."
+  - question: "Can I self-host Appwrite for free?"
+    answer: "Yes. Appwrite is open source and you can self-host the entire platform at no licensing cost. You only pay for the infrastructure you run it on. The self-hosted version includes the same core features as Appwrite Cloud."
+  - question: "How does Appwrite compare to Firebase pricing?"
+    answer: "Both platforms offer a free tier and pay-as-you-grow plans. Appwrite differentiates itself with per-project pricing on Pro, transparent rate cards, and the option to self-host at no licensing cost. Compare actual usage against [Appwrite's pricing](/pricing) and Firebase's calculator to see which fits your workload."
 ---
 
 An important day has come for Appwrite, where we finally announce the pricing for Appwrite Cloud. Many of you mentioned that in order to continue building with Appwrite Cloud it is important to know what the potential costs are. So due to the high number of requests and to provide clarity we decided to share our pricing models before they're live. Please note that Appwrite Cloud continues to be free untill billing is enabled towards the end of 2024.

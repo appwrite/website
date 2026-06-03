@@ -7,6 +7,19 @@ cover: /images/blog/ai-crystal-ball/cover.avif
 timeToRead: 9
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "How does the AI Crystal Ball app work?"
+    answer: "It signs the user in with GitHub OAuth via [Appwrite Auth](/docs/products/auth), fetches their public GitHub data (followers, repos, top languages), sends that context to GPT-4 with a prompt asking for a developer destiny, and stores the result in Appwrite Databases so it can be shared via a public link."
+  - question: "What permissions does the GitHub OAuth app need?"
+    answer: "The Crystal Ball only needs the user's public profile data, so default GitHub OAuth scopes are enough. There is no need to request `repo` or other write scopes. Always ask for the minimum scope your feature requires to keep the consent screen clean and reduce security risk."
+  - question: "Can I use a different LLM provider instead of OpenAI?"
+    answer: "Yes. The OpenAI call is just an HTTP request from an Appwrite Function, so you can swap in Anthropic's Claude, Google Gemini, or any other provider by changing the SDK and prompt. The Appwrite side (auth, database, storage) does not change."
+  - question: "How do I prevent abuse of an OpenAI API key on the frontend?"
+    answer: "Never call OpenAI directly from the client. Instead, expose your own endpoint via an [Appwrite Function](/docs/products/functions) that holds the API key server-side, validates the authenticated user, and applies rate limits. The client only ever talks to your function, not to OpenAI."
+  - question: "How do permissions work for the shareable destiny link?"
+    answer: "The `destiny` collection in the post grants `read` permission to `Any` and `create` permission to `Users`, so any anonymous visitor can read a destiny by document ID but only logged-in users can create new ones. This is the standard Appwrite permission pattern for share links."
+  - question: "Can I build this entirely without writing my own backend?"
+    answer: "Largely yes. [Appwrite Functions](/docs/products/functions) hosts the OpenAI call, [Appwrite Databases](/docs/products/databases) stores the data, and [Appwrite Auth](/docs/products/auth) handles GitHub OAuth. The only piece you write is the SvelteKit frontend and the single function that talks to GPT-4."
 ---
 
 Have you ever wondered what you would be doing as a developer 5 years from now? I, for sure, have, which is why recently I developed an AI Crystal Ball to use information from my GitHub account and predict what my destiny as a developer would look like. This project picked up a lot more attention than anticipated as well as a number of requests asking how this project was developed.

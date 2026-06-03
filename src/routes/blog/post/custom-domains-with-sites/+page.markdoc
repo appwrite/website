@@ -7,6 +7,19 @@ cover: /images/blog/custom-domains-with-sites/cover.avif
 timeToRead: 5
 author: dennis-ivy
 category: tutorial
+faqs:
+  - question: "How do I add a custom domain to Appwrite Sites?"
+    answer: "Open your site in the Appwrite Console, go to the Domains tab, and click Add domain. Enter your domain (for example example.com), then add the NS records Appwrite shows you (ns1.appwrite.zone and ns2.appwrite.zone) at your domain registrar. See [Appwrite Sites](/docs/products/sites)."
+  - question: "What is an NS record?"
+    answer: "An NS (Name Server) record tells the internet which servers are authoritative for a domain's DNS. By pointing your domain's NS records to Appwrite, you delegate DNS management to Appwrite, which lets Appwrite issue SSL certificates and route traffic to your deployed site."
+  - question: "How long does domain verification take in Appwrite Sites?"
+    answer: "DNS propagation usually takes a few minutes, but it can take a few hours in rare cases. After updating your NS records at your registrar, go back to the Appwrite Console and click Retry on the domain. If it does not verify immediately, wait a few minutes and try again."
+  - question: "Can I point a custom domain to a specific branch of my site?"
+    answer: "Yes. When you add a domain to a site connected to GitHub, you can point it to a specific branch. If you just want the latest production version, choose Active Deployment so the domain always serves whatever is currently live."
+  - question: "Why does my site still show the old page after verification?"
+    answer: "Browsers and intermediate DNS resolvers cache DNS responses, so even after Appwrite reports the domain as verified, you may temporarily see the old page. Clear your browser cache, try in an incognito window, or test from a different device or network to confirm."
+  - question: "Does Appwrite Sites issue SSL certificates automatically?"
+    answer: "Yes. Once your domain is verified, Appwrite Sites automatically provisions and renews SSL certificates so your site is served over HTTPS. You do not need to manage certificates manually."
 ---
 
 Appwrite Sites, the open-source Vercel alternative, is now available to all organizations. Of course, with hosting comes the next step of connecting custom domains. In this article, we’ll walk you through the steps to do just that.

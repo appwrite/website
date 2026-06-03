@@ -7,6 +7,19 @@ cover: /images/blog/the-subtle-art-of-hackathon ideation/cover.avif
 timeToRead: 4
 author: aditya-oberai
 category: hackathon
+faqs:
+  - question: "What is a hackathon?"
+    answer: "A hackathon is a development marathon where teams build innovative products or solutions within a limited timeframe. It pushes participants to combine creativity, problem-solving, and technical skills, usually around an externally provided or self-chosen problem."
+  - question: "Why is ideation important in a hackathon?"
+    answer: "A hackathon is fundamentally about solving a real problem, not just writing the best code. If the early ideation step is weak, the rest of the project, including design, build, and pitch, suffer too. A strong idea sets up everything that follows."
+  - question: "How do I come up with a good hackathon idea?"
+    answer: "Pick a problem you personally relate to, understand how widely it affects others, evaluate multiple possible solutions, and then choose the one that can sustain itself without depending on systems you do not have access to. Emotional connection and scale together drive winning ideas."
+  - question: "How long should I spend on ideation in a hackathon?"
+    answer: "There is no universal number, but treat ideation as critical work, not overhead. Spending a few focused hours up front to test the problem, scale, and solution will save you from rewrites and pivots later in the hackathon when time is most precious."
+  - question: "Can I use Appwrite for a hackathon project?"
+    answer: "Yes. Appwrite is a popular choice for hackathons because [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) are ready out of the box, so you can focus on your unique feature instead of plumbing. The free Appwrite Cloud tier is enough for most hackathon projects."
+  - question: "How do I know if my hackathon idea is too ambitious?"
+    answer: "Look at the time you have and the smallest demoable version of your idea. If you cannot describe a working core feature you could ship in the hackathon window, the scope is too big. Trim until you can demo something real at the end."
 ---
 
 Hackathons have been an immense part of my journey as a developer and a student, providing me with some of the best growth opportunities I could have hoped for. Participating in hackathons was immensely rewarding for me in terms of learning, work output, networking as well as the occasional prizes.

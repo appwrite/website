@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: product
 featured: false
+faqs:
+  - question: "What's new in Appwrite 1.9.0?"
+    answer: "Appwrite 1.9.0 adds MongoDB as a supported database option for self-hosted deployments, better handling of large integers, new string column types, configurable caching, and improved database observability. Real-time, auth, and infrastructure all got updates too."
+  - question: "Can I now use MongoDB with Appwrite?"
+    answer: "Yes, on self-hosted Appwrite starting with version 1.9.0. You can run Appwrite directly on your existing MongoDB infrastructure while keeping the same SDKs and APIs. Backups, monitoring, and scaling tools you've built around MongoDB carry over."
+  - question: "How does the new message-based Realtime work?"
+    answer: "Realtime now uses a single persistent WebSocket with a message-based protocol. You can manage multiple subscriptions on one connection, update them without reconnecting, and avoid URL length limits. This makes [Realtime](/docs/products/databases) more predictable for production workloads."
+  - question: "What is the Webhooks API for?"
+    answer: "It lets you create, update, and delete webhooks programmatically from any Appwrite Server SDK. You can also configure signing secrets in code, which is useful for CI/CD pipelines and multi-tenant systems where webhooks are provisioned dynamically."
+  - question: "Is the Appwrite Terraform provider production-ready?"
+    answer: "The provider supports databases, storage, functions, auth, messaging, and more via HCL. It works with both Appwrite Cloud and self-hosted setups, so you can apply infrastructure changes consistently across environments."
+  - question: "What does the Appwrite plugin for Claude Code do?"
+    answer: "It gives Claude Code first-class awareness of Appwrite APIs, so the agent can scaffold and modify Appwrite-backed apps without you pasting docs into the prompt. There's a matching plugin for Cursor and an updated MCP Server (2.0) for other MCP-compatible tools."
 ---
 
 Welcome back to the product update. April was packed with major releases across Appwrite. From our official MongoDB partnership and Appwrite 1.9.0 to new infrastructure APIs, Realtime improvements, performance upgrades, and deeper AI integrations, we shipped updates focused on helping you build faster, scale more reliably, and integrate Appwrite more deeply into your workflows.

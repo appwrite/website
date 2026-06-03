@@ -5,10 +5,23 @@ description: We're introducing Imagine, a platform that uses AI to translate ide
 date: 2025-12-16
 cover: /images/blog/introducing-imagine/cover.avif
 timeToRead: 5
-author: 
+author:
   - eldad-fux
   - ariel-weinberger
 category: announcement
+faqs:
+  - question: "What is Imagine?"
+    answer: "Imagine is an AI powered platform from the Appwrite team that turns natural language prompts into real, production ready applications backed by Appwrite Cloud. Unlike disposable prototype tools, the output is a full project with database schemas, auth, storage, and deployable code."
+  - question: "How is Imagine different from other AI app builders?"
+    answer: "Imagine is built and operated by the team behind Appwrite, so it has a first party understanding of Appwrite's data model, permissions, and runtime. Instead of generating throwaway code, it provisions real Appwrite Cloud resources you can extend manually as the product evolves."
+  - question: "What can I build with Imagine today?"
+    answer: "You can build internal tools, dashboards, web applications, and marketing sites. Mobile applications aren't supported yet, but the team is actively working on adding that."
+  - question: "What backend services does Imagine wire up automatically?"
+    answer: "Every Imagine project ships with [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), realtime subscriptions, and [Sites](/docs/products/sites) hosting. You don't have to provision any of it separately."
+  - question: "Can I edit the code Imagine generates?"
+    answer: "Yes. There is a built in code editor, and all output is transparent and readable. You can inspect, modify, and take full ownership of the project as it grows beyond what the AI builder produces."
+  - question: "What frontend stack does Imagine use?"
+    answer: "Imagine uses [TanStack Start](https://tanstack.com/) for the frontend. The patterns it chooses (typed routing, explicit data fetching) make the generated code easier to read and extend for both humans and AI agents."
 ---
 
 When we started Appwrite, our mission was clear: reduce the operational and infrastructural burden of building software so developers could focus on what actually matters - product, logic, and user experience. We set out to remove unnecessary complexity, give teams real control over their backend, and make production-grade infrastructure accessible without forcing developers to fight it. That principle has guided every major decision we have made.

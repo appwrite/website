@@ -7,6 +7,19 @@ cover: /images/blog/receipt-scan.avif
 timeToRead: 15
 author: vincent-ge
 category: tutorial
+faqs:
+  - question: "What does the Hugging Face Donut Receipts model return?"
+    answer: "The model returns extracted receipt fields wrapped in XML-like tags, including store name, address, phone, date, time, subtotal, tax, total, tips, and discount. You parse the response with regex (or a small parser) to pull each tagged value into a structured object you can store or return to your client."
+  - question: "Why run receipt scanning inside Appwrite Functions instead of from the client?"
+    answer: "Running the scan inside [Appwrite Functions](/docs/products/functions) keeps your Hugging Face API key off the client and gives you a single server-side endpoint that handles the upload, the model call, and post-processing. It also makes it easy to chain follow-up actions (storing the receipt, updating a database row) in the same execution."
+  - question: "How do I store the receipt image so the function can process it?"
+    answer: "Upload the image to [Appwrite Storage](/docs/products/storage) from the client, then pass the file ID to the function. The function reads the file using the server SDK, forwards the bytes to the Hugging Face model, and writes the parsed result to a database row tied to the user."
+  - question: "How do I keep my Hugging Face API key secret in an Appwrite Function?"
+    answer: "Set the key as an environment variable on the function and mark it as a secret in the Appwrite Console. The function reads it at runtime via `process.env` or the equivalent in your runtime, and the value is never exposed in the dashboard or API once it is marked secret."
+  - question: "Can I use a different OCR or receipt extraction model?"
+    answer: "Yes. The same Function structure works with any HTTP-accessible model or OCR service (other Hugging Face models, Google Document AI, AWS Textract, an OpenAI vision model). Swap the API URL, headers, and response parser, and keep the upload and storage flow the same."
+  - question: "How can I make receipt entry feel low-friction for users?"
+    answer: "Default to image upload over a form, parse what you can with OCR, and only ask the user to confirm or correct the extracted fields. Pre-filling totals, dates, and merchant names removes most of the typing that causes users to abandon receipt-tracking apps."
 ---
 I downloaded a personal finance app a few weeks ago to help me track my expenses.
 I uninstalled that app about five minutes later.

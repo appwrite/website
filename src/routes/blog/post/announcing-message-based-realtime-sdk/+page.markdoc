@@ -8,6 +8,19 @@ timeToRead: 9
 author: eldad-fux
 category: announcement
 featured: false
+faqs:
+  - question: "How does Appwrite Realtime work in the new message-based model?"
+    answer: "Appwrite Realtime keeps one persistent WebSocket per client and applies subscription changes as messages over that connection. Channels, queries, and updates are sent as messages instead of being encoded in the WebSocket URL. This avoids URL length limits and lets you scale up listeners and filters without reconnecting."
+  - question: "Why did Appwrite move subscriptions off the WebSocket URL?"
+    answer: "Encoding subscriptions in the URL hit URL length limits enforced by browsers, servers, and proxies, especially after [Realtime queries](/blog/post/announcing-realtime-queries) made query payloads larger. Moving subscriptions to messages over the established socket removes that ceiling and avoids reconnects whenever you tweak what you listen to."
+  - question: "Does my existing Realtime code need to change?"
+    answer: "If you use the [Appwrite client SDKs](/docs/products/databases), most code keeps working because the SDK handles the new protocol under the hood. The new APIs expose `unsubscribe()`, `update()`, and `disconnect()` for cleaner lifecycle control. Check the SDK release notes for any breaking changes specific to your platform."
+  - question: "Can I subscribe to multiple channels on a single connection?"
+    answer: "Yes, you create one `Realtime` instance from a `Client` and call `subscribe` for each channel you want, all on the same WebSocket. Each subscription has its own callback. This keeps connection count low even when you listen to many channels."
+  - question: "How do I unsubscribe or update a subscription?"
+    answer: "Each `subscribe` call returns a subscription handle with `unsubscribe()` to stop a single listener, and `update()` to change channels or filters without reconnecting. Use `disconnect()` on the `Realtime` instance to tear down the entire WebSocket. This gives clear, predictable lifecycle control."
+  - question: "What kinds of events can I listen to via Realtime?"
+    answer: "[Appwrite Realtime](/docs/products/databases) emits events for database changes, storage uploads and updates, account events, function executions, and team or membership changes. You subscribe by channel (for example, `files` or `account`) and receive events as messages on your callback as they happen."
 ---
 
 Realtime features are where users feel your app is “alive”: collaborative edits, live dashboards, and instant feedback when data changes. That experience depends on how predictable your subscription lifecycle is. If every tweak to what you listen for forces a full reconnect, you pay in latency, battery, and mental overhead.

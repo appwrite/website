@@ -7,6 +7,17 @@ timeToRead: 4
 date: 2024-01-03
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Sara Kaandorp?"
+    answer: "Sara is Appwrite's Design Lead. She leads a small in-house design team that shapes both Appwrite's visual brand and the UX/UI of the product, bringing experience as a UX designer across diverse industries."
+  - question: "What does a Design Lead do at Appwrite?"
+    answer: "Sara oversees both visual identity and product design, deliberately keeping the two close so the brand and the Console feel like one cohesive experience. She also focuses on team growth, matching people to projects that play to their strengths."
+  - question: "What design milestones is Sara proud of?"
+    answer: "She points to leading Appwrite's rebrand from inception to completion, and the redesign of the Appwrite Console. Both projects were delivered by a young, in-house design team and shaped how Appwrite looks and feels today."
+  - question: "What is it like to design for developers?"
+    answer: "Sara describes developers as critical and honest. That feedback can be tough, but it has pushed the design team to raise the bar continuously. When something lands well with developers, they say so, which she finds genuinely rewarding."
+  - question: "What is Sara's advice for designers starting out?"
+    answer: "Never overestimate your skills, keep an open attitude to learning, and dig into the why behind design decisions. She also recommends working on side projects, because hands-on practice accelerates learning more than anything else."
 ---
 
 At Appwrite, we value our people, the hard work they do, and the culture they create. Appwrite Decoded is an opportunity to get to know the Appwrite team just a little bit better and for us to celebrate the person behind the work.

@@ -8,6 +8,19 @@ timeToRead: 12
 author: atharva
 category: tutorial, product
 featured: false
+faqs:
+  - question: "What is user impersonation in Appwrite?"
+    answer: "User impersonation lets a designated user (typically a support agent or admin) make requests on behalf of another user without knowing their credentials. The impersonator's actions are scoped to that user's permissions and recorded in audit logs."
+  - question: "How do I enable impersonation for a user in Appwrite?"
+    answer: "Open the user in the Appwrite Console under Auth, scroll to the User impersonation section, and toggle it on. Appwrite then grants that user the users.read scope so they can list other users and switch into their context through the [Appwrite Auth](/docs/products/auth) APIs."
+  - question: "Is impersonation safe to use in production?"
+    answer: "Yes, when scoped carefully. Limit the impersonator role to a small group of trusted staff, rely on row level permissions to prevent privilege escalation, and review the audit log regularly. Treat the ability to impersonate the same way you would treat database admin access."
+  - question: "Does impersonation bypass row level security?"
+    answer: "No. The impersonated session inherits the target user's permissions, so the row level rules still apply. If the original user cannot see a row, the impersonator cannot either."
+  - question: "Will the impersonated user know I am acting as them?"
+    answer: "Appwrite logs impersonation actions in the project audit log, but it does not send the user a notification by default. If you need that, add a server side hook or [Appwrite Function](/docs/products/functions) that sends an email or alert whenever an impersonation session is created."
+  - question: "What if I do not want any of my staff to be able to impersonate users?"
+    answer: "Do nothing. Impersonation is off by default and only available to users you explicitly enable it for. The capability is opt in per user, not a global account setting."
 ---
 
 User impersonation lets a trusted operator act as another user without sharing credentials. It is useful when your support team needs to debug a user-specific issue, verify what someone sees with their permissions, or manage data on their behalf.

@@ -7,6 +7,17 @@ cover: /images/blog/rest-vs-graphql-websockets/cover.avif
 timeToRead: 5
 author: eldad-fux
 category: product
+faqs:
+  - question: "When should I choose REST over GraphQL?"
+    answer: "Pick REST when your app maps cleanly to resources and CRUD operations, when you want maximum tooling and caching support, or when consumers expect predictable URLs and HTTP semantics. It is also the safer default for IoT, mobile, and public APIs."
+  - question: "When should I use GraphQL instead?"
+    answer: "Use GraphQL when clients need to fetch deeply nested data, when different clients want different shapes of the same resource, or when you want to reduce over-fetching across a complex schema. The cost is a more involved server and caching story than REST."
+  - question: "What is a WebSocket and when do I need one?"
+    answer: "A WebSocket is a long-lived, bi-directional connection over a single TCP socket. Use it when you need real-time updates pushed from the server, like chat, live feeds, multiplayer games, or collaborative editing, where polling REST is too slow."
+  - question: "Which protocols does Appwrite support?"
+    answer: "Appwrite uses REST as its primary API for SDK and HTTP communication, exposes a [GraphQL endpoint](/docs/apis/graphql) for clients that prefer it, and ships a WebSocket-based [Realtime API](/docs/apis/realtime) for live data. You can mix and match across the same project."
+  - question: "Can I use REST and WebSockets in the same application?"
+    answer: "Yes, and it is a common pattern. REST handles CRUD and request-response work, while WebSockets handle live updates on top of the same data. Appwrite is built around this combination, so the client SDKs expose both."
 ---
 
 In software development, APIs are the lifeblood of communication between various components of an application. They set the rules for data exchange, ensuring smooth interaction between systems.

@@ -9,6 +9,19 @@ author: aditya-oberai
 category: product
 unlisted: true
 callToAction: true
+faqs:
+  - question: "What is the main difference between Appwrite and Supabase?"
+    answer: "Both are Backend-as-a-Service platforms, but Supabase is built directly on Postgres and exposes SQL to developers, while Appwrite provides a higher-level abstraction over [Databases](/docs/products/databases), [Auth](/docs/products/auth), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) through unified APIs and SDKs. Appwrite also ships in-house [Functions](/docs/products/functions) runtimes for 10+ languages, where Supabase officially supports only TypeScript."
+  - question: "Can I self-host both Appwrite and Supabase?"
+    answer: "Yes, both are open source and can be self-hosted. Appwrite is distributed as a Docker-based stack you can run on your own infrastructure, and Supabase provides a similar self-hosting option. Both also offer managed cloud platforms if you do not want to operate the stack yourself."
+  - question: "Which platform is better for mobile apps?"
+    answer: "Appwrite ships official SDKs for Flutter, Apple, Android, and React Native, with built-in support for OAuth, magic links, and push notifications via [Messaging](/docs/products/messaging). Supabase has community and official mobile SDKs but tends to focus more heavily on web. The right choice depends on your target platforms and how much you value first-party SDK coverage."
+  - question: "Do Appwrite and Supabase both support realtime?"
+    answer: "Yes, both support realtime subscriptions. Appwrite exposes realtime over WebSockets for database events, account events, and more across [Databases](/docs/products/databases) and other services. Supabase exposes realtime through Postgres logical replication, which means you subscribe directly to row-level changes in your tables."
+  - question: "How do pricing models compare between Appwrite and Supabase?"
+    answer: "Both offer generous free tiers and usage-based paid plans. Appwrite includes image manipulation and previews on the free tier, while Supabase reserves those for paid tiers. Compare the actual usage limits for [Databases](/docs/products/databases), [Storage](/docs/products/storage), and bandwidth against your expected workload before deciding."
+  - question: "Can I migrate from Supabase to Appwrite?"
+    answer: "Yes. Appwrite supports CSV imports and migration APIs that let you move data from another platform into Appwrite [Databases](/docs/products/databases). Auth and storage will require additional scripting because the user models and storage paths differ between the two platforms."
 ---
 
 Updated on October 6, 2025

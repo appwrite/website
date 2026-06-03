@@ -8,6 +8,19 @@ timeToRead: 10
 author: thomas-g-lopes
 category: tutorial
 callToAction: true
+faqs:
+  - question: "How do you trigger animations based on scroll position?"
+    answer: "Track how far the user has scrolled through a container (using getBoundingClientRect plus window.innerHeight), convert that to a percentage, and activate sections when the percentage crosses defined thresholds. For 5 equal sections, the triggers sit at 0%, 20%, 40%, 60%, and 80%."
+  - question: "What is the difference between scroll-triggered and scroll-progressed animations?"
+    answer: "Scroll-triggered animations start when a section enters the viewport and then play on their own timeline. Scroll-progressed (or scroll-linked) animations are tied directly to scroll position, so they advance and reverse as the user scrolls up and down. Both have valid use cases."
+  - question: "How do you keep an animation pinned to the center while scrolling?"
+    answer: "Wrap your animation in a tall container so there is room to scroll. Use position: sticky (or fixed) on the animation element so it stays centered while the outer container scrolls past it. Use the scroll percentage of the outer container to drive the animation state."
+  - question: "What is a Svelte action and why use one for scroll handling?"
+    answer: "A Svelte action is a function that runs when a DOM element is mounted and can attach listeners or behavior to it. Using an action for scroll handling keeps the logic reusable: any component can opt into the scroll events by adding use:scroll to its element."
+  - question: "How do I dispatch custom DOM events from a Svelte action?"
+    answer: "Inside the action, call node.dispatchEvent(new CustomEvent('event-name', { detail })). Consumers then listen with on:event-name. This is how the article dispatches web-scroll and web-resize events with scroll info in the detail payload."
+  - question: "Why split scroll math into a reusable helper instead of per-component code?"
+    answer: "Because scroll percentage logic is identical across multiple animated sections, a single helper avoids duplicating bounding-rect math. It also makes it easy to swap implementations later (for example, switching to the Intersection Observer or Scroll Timeline API) without changing every consumer."
 ---
 
 If you're a frontend developer, you know that one of the scariest tasks you can receive is coding a complex web animation. If you're not a frontend developer, I bet that sounds even harder.

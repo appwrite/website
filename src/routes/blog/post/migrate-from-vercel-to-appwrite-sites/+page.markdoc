@@ -9,6 +9,19 @@ author: eldad-fux
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "How do I migrate from Vercel to Appwrite Sites?"
+    answer: "Point your project at [Appwrite Sites](/docs/products/sites) and push to Git, the workflow stays the same. You do not need to refactor your application, change build commands, or rewire CI. Most teams go live within a day, and the [Vercel migration guide](/docs/products/sites/migrations/vercel) walks through the steps."
+  - question: "Does Appwrite Sites support Next.js fully?"
+    answer: "Yes, Appwrite Sites runs on containers rather than constrained serverless runtimes, so Next.js works without workarounds. Static rendering, SSR, middleware, and API routes all behave as designed. You do not need open next patches or custom build steps to make a Next.js app run."
+  - question: "How does Appwrite Sites compare to Vercel on cost?"
+    answer: "Appwrite Sites includes 2TB of bandwidth in the base plan and offers volume discounts for teams migrating from Vercel. The pricing model is designed to be predictable as traffic grows, so you avoid surprise bandwidth overages. Larger workloads typically end up cheaper on Appwrite Sites than on Vercel."
+  - question: "Does Appwrite Sites use a CDN?"
+    answer: "Yes, Appwrite Sites is backed by a [multi-CDN](/docs/products/network/cdn) network that combines several top tier CDN providers into one global edge layer. Requests are routed through the fastest available path for each user. This gives you low latency and high availability without configuring CDN infrastructure yourself."
+  - question: "Can I self host Appwrite Sites?"
+    answer: "Yes, Appwrite is fully open source and you can [self host](/docs/advanced/self-hosting) the entire platform, including Sites. This gives you the option to move workloads on-prem or to your own cloud if requirements change. The same product runs whether you use Appwrite Cloud or self host."
+  - question: "What does the rest of Appwrite Cloud add beyond Sites?"
+    answer: "On top of Sites for hosting, you get [Functions](/docs/products/functions) for backend logic, [Databases](/docs/products/databases) for data, [Storage](/docs/products/storage) for files, [Auth](/docs/products/auth) for users, and [Messaging](/docs/products/messaging) for notifications. They are integrated, so you can build full stack apps in one place. This removes the need to stitch together several third party services."
 ---
 If you’ve been hosting on Vercel, you’ve probably grown used to a deployment workflow that feels effortless. Git push, automatic builds, instant previews, and a global network behind you. Migrating away from that level of convenience can feel like a step backwards, but with Appwrite Sites, it’s the exact opposite. You get the same smooth developer experience, with more power, more flexibility, and a better cost structure behind it.
 

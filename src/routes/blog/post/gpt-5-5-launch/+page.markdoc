@@ -8,6 +8,19 @@ timeToRead: 8
 author: atharva
 category: ai
 featured: false
+faqs:
+  - question: "When did OpenAI release GPT-5.5?"
+    answer: "OpenAI released GPT-5.5 on April 23, 2026. It ships in two variants, gpt-5.5 (the base model) and gpt-5.5-pro (a higher-accuracy variant that uses parallel test-time compute)."
+  - question: "How does GPT-5.5 pricing compare to GPT-5.4 and Claude Opus 4.7?"
+    answer: "GPT-5.5 is priced at 2x GPT-5.4 on both input and output (\\$5/M input, \\$30/M output). GPT-5.5 Pro is roughly 7x the output cost of Claude Opus 4.7. Input pricing matches Opus 4.7, but output is \\$5/M more expensive."
+  - question: "What context window does GPT-5.5 support?"
+    answer: "In Codex, GPT-5.5 ships with a 400K context window. In the API, both gpt-5.5 and gpt-5.5-pro run with a 1M context window. OpenAI also introduced a Fast mode in Codex that generates tokens 1.5x faster for 2.5x the cost."
+  - question: "Where does GPT-5.5 outperform Claude Opus 4.7?"
+    answer: "Per OpenAI's own benchmarks, GPT-5.5 leads on Terminal-Bench 2.0 (by 13.3 points), FrontierMath Tier 4 (35.4% vs 22.9%), and Tau2-Bench Telecom. Claude Opus 4.7 still leads on SWE-Bench Pro (64.3% vs 58.6%) and Humanity's Last Exam without tools."
+  - question: "Should I switch my production app from GPT-5.4 to GPT-5.5?"
+    answer: "It depends on workload. OpenAI claims GPT-5.5 uses fewer tokens to complete the same Codex tasks at matched per-token latency, which can offset some of the 2x price increase. For SWE-Bench Pro style work, Claude Opus 4.7 remains stronger and cheaper on output."
+  - question: "Are the published GPT-5.5 benchmarks independently verified?"
+    answer: "No. The numbers in the launch post are self-reported by OpenAI using their own methodology. Treat them as the vendor's own claims until third parties like Artificial Analysis or independent labs publish their own evaluations."
 ---
 
 OpenAI released [GPT-5.5](https://openai.com/index/introducing-gpt-5-5/) on April 23, 2026. The company is pitching it as "a new class of intelligence for real work", with the biggest gains in agentic coding, computer use, knowledge work, and early scientific research.

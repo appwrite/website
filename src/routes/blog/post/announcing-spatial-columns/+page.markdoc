@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What are spatial columns in Appwrite Databases?"
+    answer: "Spatial columns are first-class geographic data types: `point` for single locations, `line` for paths and routes, and `polygon` for regions and boundaries. They let you store geometry directly in [Appwrite Databases](/docs/products/databases) without serializing coordinates into strings or arrays."
+  - question: "Which spatial query operators does Appwrite support?"
+    answer: "Appwrite ships 12 geo operators: `crosses`, `notCrosses`, `distanceEqual`, `distanceNotEqual`, `distanceGreaterThan`, `distanceLessThan`, `intersects`, `notIntersects`, `overlaps`, `notOverlaps`, `touches`, and `notTouches`. These cover the common spatial predicates needed for geofencing, routing, and proximity search."
+  - question: "What is a spatial index and why do I need one?"
+    answer: "A spatial index is a data structure designed to accelerate geometric queries like point-in-polygon or nearest-neighbor lookups. Without one, spatial queries scan every row and slow down as data grows. Appwrite supports a `spatial` index type that you should add to any column you query geographically."
+  - question: "How do I find all points within a given distance of a location?"
+    answer: "Use the `distanceLessThan` operator with the target point and a radius in meters. For example, a query that returns all bus stops within 200 meters of a user's location. Pair the query with a spatial index on the column for fast lookups even at scale."
+  - question: "What is the difference between point, line, and polygon data?"
+    answer: "A point is a single coordinate (latitude and longitude). A line is an ordered sequence of points forming a path, useful for routes and bike trails. A polygon is a closed region defined by a sequence of points, used for delivery zones, service areas, and compliance regions."
+  - question: "Are spatial columns available on self-hosted Appwrite?"
+    answer: "Spatial columns are available on Appwrite Cloud and arrive on self-hosted in the next release. Once you are on a supported version, define the column, add a spatial index, and start running geo queries directly from your SDK."
 ---
 Working with geographic data has always been tricky. If you’ve ever tried building “find nearby” or geofencing features, you’ve probably ended up storing coordinates as generic arrays or strings and then writing custom logic in your app to filter, compare, and compute relationships between locations. 
 

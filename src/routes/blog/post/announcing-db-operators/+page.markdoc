@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What problem do DB operators solve?"
+    answer: "Updating a single field traditionally meant reading the entire row, modifying it locally, and writing it back. That pattern is slow, wastes bandwidth, and creates lost-update races when multiple clients write to the same row. DB operators apply the change directly at the storage layer in one atomic step."
+  - question: "Which operators are available in Appwrite?"
+    answer: "[Appwrite](/docs/products/databases) ships operators across numeric (increment, decrement, multiply, divide, modulo, power), array (arrayAppend, arrayPrepend, arrayInsert, arrayRemove, arrayUnique, arrayIntersect, arrayDiff, arrayFilter), string (stringConcat, stringReplace), date (dateAddDays, dateSubDays, dateSetNow), and boolean (toggle) types. Each runs atomically on the server."
+  - question: "Are DB operators safe under high concurrency?"
+    answer: "Yes, every operator runs atomically at the storage layer, so concurrent updates can't overwrite each other or lose changes. This is critical for counters, leaderboards, usage tracking, or any workload where multiple clients touch the same row. There's no read-modify-write window that another writer can slip into."
+  - question: "Can I apply multiple operators in a single update?"
+    answer: "Yes, you can compose multiple operators across different fields in one atomic call. For example, increment a counter, append a tag, and refresh a timestamp in the same request. They can also be staged inside an [Appwrite transaction](/docs/products/databases) alongside other database actions."
+  - question: "How are DB operators different from a regular update?"
+    answer: "A regular update replaces field values with the ones you send, which usually requires reading the row first. Operators describe the action (increment by 1, append `\"c\"`, toggle), so you never need to know or transmit the current value. The result is smaller payloads, fewer round trips, and no race conditions."
+  - question: "What use cases benefit most from DB operators?"
+    answer: "Counters and usage tracking, tag and array management, expiry or renewal timestamps, feature flag toggles, and any high-concurrency write path where a read-modify-write loop would race. They're particularly useful for collaborative apps, real-time leaderboards, and IoT or analytics ingestion."
 ---
 If you've ever needed to update a single field in a row: increment a counter, add a tag, or adjust an expiry date, you probably had to read the full row, make the change locally, and then write the entire row back.
 

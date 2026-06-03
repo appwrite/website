@@ -8,6 +8,19 @@ timeToRead: 4
 author: atharva
 category: announcement
 featured: false
+faqs:
+  - question: "What is the Appwrite plugin for Cursor?"
+    answer: "It is a single install on the Cursor Marketplace that bundles 10 [Appwrite Skills](/docs/tooling/ai/skills), the Appwrite API and Docs MCP servers, and CLI commands for deploying Functions and Sites. Once added, Cursor's agents have everything they need to generate accurate Appwrite code and interact with your project without separate configuration."
+  - question: "Do I still need to configure MCP servers manually after installing the plugin?"
+    answer: "No. The plugin includes both the Appwrite API MCP server and the Appwrite Docs MCP server out of the box, so you do not have to edit JSON config files. Sign in on the Cursor Marketplace, click **Add to Cursor**, and the servers are wired up automatically."
+  - question: "Which Appwrite SDKs do the bundled skills cover?"
+    answer: "The plugin ships skills for the Appwrite CLI and the TypeScript, Dart, .NET, Go, Kotlin, PHP, Python, Ruby, and Swift SDKs. Cursor's agents load the right skill based on the language you are working in, so you get correct method signatures without specifying one explicitly."
+  - question: "What is the difference between Appwrite Skills and the Cursor plugin?"
+    answer: "[Skills](/docs/tooling/ai/skills) are language-specific Markdown files that teach AI agents how to write Appwrite code, and they work with any compatible agent. The Cursor plugin is a Cursor-specific bundle that ships those skills plus MCP servers and deployment commands so you do not have to install each piece separately."
+  - question: "Can I use the Appwrite plugin with self-hosted Appwrite?"
+    answer: "Yes. The MCP servers in the plugin accept a custom endpoint, so you can point them at a self-hosted Appwrite instance instead of Appwrite Cloud. You will need an API key from your self-hosted project for the API MCP server to authenticate."
+  - question: "How do MCP servers differ from agent skills?"
+    answer: "MCP servers give the agent runtime access to your Appwrite project so it can create users, query databases, or read docs on demand. Skills give the agent static, curated knowledge about how to write Appwrite code correctly. The plugin includes both because agents need accurate context for code generation and live access for project operations."
 ---
 
 Earlier this year, we launched [Appwrite Skills](/docs/tooling/ai/skills), open-source Markdown files that give AI agents deep, language-specific knowledge of Appwrite SDKs. Skills solved a real problem: agents were generating Appwrite code that looked right but used the wrong method signatures, outdated patterns, or missing parameters. With skills installed, agents generate correct, idiomatic Appwrite code without needing documentation pasted into every prompt.

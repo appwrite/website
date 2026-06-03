@@ -8,6 +8,19 @@ timeToRead: 6
 author: dennis-ivy
 category: product
 featured: false
+faqs:
+  - question: "What is new in Appwrite 1.5?"
+    answer: "Appwrite 1.5 introduced [Appwrite Messaging](/docs/products/messaging) for SMS, email, and push notifications, improved server-side rendering (SSR) authentication patterns, two-factor authentication (2FA) with TOTP and OTP factors, new database query operators (`contains` and `or`), Enum SDK support, and refreshed function runtimes."
+  - question: "What does the new SSR auth support do?"
+    answer: "Before 1.5, Appwrite was optimized for client-side rendering. With 1.5, you can generate and access sessions server-side, set session cookies from your server, and authorize future requests using those cookies. This unlocks patterns for Next.js, SvelteKit, Nuxt, and similar frameworks where most data fetching happens on the server."
+  - question: "How do I enable two-factor authentication in Appwrite 1.5?"
+    answer: "Use [Appwrite Auth](/docs/products/auth) to create a multi-factor challenge with `createMFAChallenge`, choosing a factor like email, phone, or TOTP. Submit the user's one-time code to `updateMFAChallenge` to complete the challenge. The flow lets you layer 2FA on top of any existing login method."
+  - question: "What are the contains and or query operators?"
+    answer: "The `contains` operator does partial text matches on string attributes or element matches inside array attributes. The `or` operator lets you combine queries with logical OR, instead of only AND. Together they unlock searches like \"name contains ivy OR age greater than 30\" in a single call to [Appwrite Databases](/docs/products/databases)."
+  - question: "Does Appwrite Messaging support push notifications?"
+    answer: "Yes. [Appwrite Messaging](/docs/products/messaging) supports SMS, email, and push notifications through a unified API. Providers include Twilio, Vonage, SendGrid, Mailgun, APNs, and Firebase Cloud Messaging, so you can configure delivery channels without writing separate integrations for each."
+  - question: "What is Init at Appwrite?"
+    answer: "Init is Appwrite's release event where the team unveils new products and features over several days. Appwrite 1.5 was announced during one such Init, with each day dedicated to a different launch: Messaging, SSR, 2FA, and the new database operators."
 ---
 
 Appwrite just finished its release announcements for version 1.5 with a week of celebration called Init_, so here's the TLDR on all the announcements we made last week.

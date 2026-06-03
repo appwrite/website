@@ -7,6 +7,19 @@ cover: /images/blog/google-oauth-expo/cover.avif
 timeToRead: 7
 author: atharva
 category: tutorial
+faqs:
+  - question: "Why do I need a bundle ID and package name for Google OAuth in Expo?"
+    answer: "Google OAuth uses the bundle ID (iOS) and package name (Android) to verify the deep link back to your app after the user authenticates. Without them, Google cannot route the callback to your native app, so the sign-in flow fails after the browser step. You also need to register these IDs as platforms inside your Appwrite project."
+  - question: "Does this work in Expo Go or do I need a development build?"
+    answer: "Expo Go uses its own bundle ID, so OAuth redirects from Google will not return to your app in production mode. For testing native deep links and OAuth flows reliably, use a development build or a production build with your real bundle ID configured."
+  - question: "Which Appwrite SDK should I use for Expo apps?"
+    answer: "Use the `react-native-appwrite` SDK rather than the web SDK. It handles native session storage, deep linking, and platform-specific concerns that the web SDK does not. Install it with `npm install react-native-appwrite`."
+  - question: "How do I configure Google OAuth in the Appwrite Console?"
+    answer: "Enable the Google provider under [Appwrite Auth](/docs/products/auth) and paste in the OAuth client ID and secret from your Google Cloud Console project. You also need to add Android and iOS platforms in your Appwrite project with the matching package names. The OAuth callback URL from Appwrite must be added to your Google OAuth client."
+  - question: "What does the AppwriteProvider pattern give me over calling the SDK directly?"
+    answer: "Wrapping the SDK in a React Context provider lets every screen read the current session, trigger login or logout, and react to auth changes without duplicating client setup. It centralizes session checks so route guards and conditional UI stay consistent across the app."
+  - question: "Why use Expo Router instead of plain React Navigation?"
+    answer: "Expo Router uses file-based routing similar to Next.js, which makes deep linking and OAuth callbacks simpler to wire up. Each route maps to a URL, so the redirect from Google lands directly on a screen you control without manually configuring navigators."
 ---
 
 In this article, you will learn how to implement Google authentication in your React Native apps that use Expo Router. We will go through the following steps in the article.

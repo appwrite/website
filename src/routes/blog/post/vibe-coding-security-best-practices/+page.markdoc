@@ -9,6 +9,19 @@ author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is vibe coding?"
+    answer: "Vibe coding is the practice of building software by guiding an AI assistant in natural language rather than typing every line yourself. You describe the feature, review what the AI produces, and iterate. It can be faster, but it pushes responsibility for code quality and security onto the human reviewer."
+  - question: "Is AI generated code secure by default?"
+    answer: "No. AI models generate plausible code based on training patterns, not verified secure code. They routinely produce insecure authentication, missing input validation, hardcoded secrets, and outdated crypto. Treat every AI suggestion as untrusted input and review it before shipping."
+  - question: "What is the single most impactful thing I can do to secure vibe coded apps?"
+    answer: "Stop writing your own authentication. Use a managed auth service like [Appwrite Auth](/docs/products/auth), Auth0, or Clerk so password hashing, session handling, MFA, and rate limiting are not your responsibility. Most production breaches start with bespoke auth that an LLM helped draft."
+  - question: "How do I store secrets safely when using AI tools?"
+    answer: "Never commit secrets to source code. Use environment variables, a secrets manager, or your platform's secret store, and add the relevant files to gitignore. If you suspect a secret was pushed to a repo, rotate it immediately, removing the commit alone is not enough."
+  - question: "Should I let AI write database queries?"
+    answer: "Only if you read every line. AI models still generate string concatenated SQL that is vulnerable to injection. Prefer parameterized queries, an ORM, or a managed data API like [Appwrite Databases](/docs/products/databases) that does the escaping for you."
+  - question: "Do I still need code review and tests if AI wrote the code?"
+    answer: "Yes, more than ever. AI generated code looks confident even when it is wrong. Pair it with unit tests, integration tests, type checks, linters, and a human reviewer for security sensitive changes. The faster you generate, the more you need to verify."
 ---
 
 Vibe coding is changing the way developers build software. Instead of manually writing every function, many developers are beginning to rely on AI-assisted tools to generate code based on natural language instructions. This approach can significantly speed up development and allow teams to create applications faster. But... the convenience of vibe coding comes with significant security risks.

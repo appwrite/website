@@ -8,6 +8,19 @@ timeToRead: 3
 author: ebenezer-don
 category: product
 featured: false
+faqs:
+  - question: "Why do I get a CORS error when calling my Appwrite Function from the browser?"
+    answer: "By default, your function returns the response without the CORS headers the browser expects. The browser blocks the response unless `Access-Control-Allow-Origin` (and related headers) match the origin making the request. The fix is to add these headers to the function's response directly."
+  - question: "Why doesn't `res.setHeader()` work in Appwrite Functions?"
+    answer: "Appwrite Functions use a different response model than Express. Headers must be passed as the third argument to response methods like `res.send()` or `res.json()` instead of being set on a mutable response object. Calling `res.setHeader()` will not attach the header to the outgoing response."
+  - question: "How do I handle CORS preflight requests in [Appwrite Functions](/docs/products/functions)?"
+    answer: "Check if `req.method === 'OPTIONS'` at the top of your function and return an empty response with the allowed origin, methods, and headers. Browsers send this preflight before any non-simple cross-origin request to verify it's allowed."
+  - question: "Is it safe to use `Access-Control-Allow-Origin: *` in production?"
+    answer: "No. The wildcard lets any origin call your function, which exposes it to abuse and CSRF-style attacks. Use it only during local development, and pin the header to your specific domain(s) before deploying."
+  - question: "Which CORS headers do I need to set besides `Access-Control-Allow-Origin`?"
+    answer: "For preflight requests, also set `Access-Control-Allow-Methods` (the HTTP verbs you accept) and `Access-Control-Allow-Headers` (custom headers like `Content-Type` or `Authorization` that your client sends). For the actual response, `Access-Control-Allow-Origin` is usually enough."
+  - question: "Do I need CORS headers if I call my function from the Appwrite SDK?"
+    answer: "If you call the function through the Appwrite client SDK using `functions.createExecution()`, the request goes through the Appwrite API, which handles CORS for you. CORS only becomes an issue when the browser fetches the function URL directly across origins."
 ---
 
 Cross-Origin Resource Sharing (CORS) is a security feature that allows web applications to interact securely with resources from different origins and denies unwanted communication. You might be reading this because your browser has blocked access to your Appwrite serverless function. This guide will help you "unblock" that access.

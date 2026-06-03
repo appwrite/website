@@ -8,6 +8,19 @@ date: 2026-04-27
 author: aditya-oberai
 category: product
 lastUpdated: 2026-04-27
+faqs:
+  - question: "What is a BaaS (Backend-as-a-Service)?"
+    answer: "A BaaS is a managed platform that handles common backend concerns like auth, databases, file storage, functions, and messaging. You skip writing and maintaining the boilerplate and focus on the parts of your app that are actually unique."
+  - question: "Which BaaS platforms are worth evaluating in 2026?"
+    answer: "Appwrite, Firebase, Supabase, and AWS Amplify cover the realistic shortlist. Each has a different center of gravity: Appwrite for open-source self-hosting with broad APIs, Firebase for tight Google ecosystem, Supabase for Postgres-first apps, and Amplify if you're already deep in AWS."
+  - question: "Which BaaS platforms are open source?"
+    answer: "Appwrite (BSD 3-Clause) and Supabase (Apache 2.0) are open source and self-hostable. Firebase and AWS Amplify are proprietary and managed-only. If avoiding lock-in matters, the open-source options give you an exit path."
+  - question: "Is Appwrite a good alternative to Firebase?"
+    answer: "Yes. Appwrite covers the same surface area as Firebase (auth, database, storage, functions, messaging) and adds [Appwrite Sites](/docs/products/sites) for hosting. The key difference is that Appwrite is open source, so you can self-host and own your data."
+  - question: "How should I choose a BaaS for a new project?"
+    answer: "Decide whether self-hosting or owning the source matters, whether you need Postgres specifically, and whether you're committed to a specific cloud provider. Then prototype auth, one CRUD path, and one background job on your top two finalists before locking in."
+  - question: "Can I migrate between BaaS platforms later?"
+    answer: "It's much easier if you start with an open-source BaaS that gives you portable data paths. Appwrite and Supabase let you export schemas and users cleanly. Firebase and Amplify lock you to Google or AWS, so migrations away from them tend to be heavier projects."
 ---
 
 If you are evaluating **BaaS platforms** for a new product or a migration, you want a short list that maps to real engineering constraints: data model, self-hosting, pricing shape, and **lock-in**, not feature marketing.

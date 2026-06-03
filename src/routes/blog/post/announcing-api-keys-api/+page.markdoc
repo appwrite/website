@@ -9,6 +9,19 @@ author: matej-baco
 category: announcement
 featured: false
 callToAction: true
+faqs:
+  - question: "What is the Appwrite Keys API?"
+    answer: "It is a set of endpoints on the `Project` service that lets you create, list, update, and delete API keys programmatically from any Appwrite server SDK. Previously, API keys could only be managed through the Appwrite Console, which made automation and multi-tenant key provisioning awkward."
+  - question: "What scopes do I need to manage API keys?"
+    answer: "Two new scopes: `keys.read` for listing and retrieving keys, and `keys.write` for creating, updating, and deleting keys. These are sensitive: a key with `keys.write` can mint another key with any scope, effectively giving full access to the project. Only assign them in trusted environments and never use them client-side."
+  - question: "What workflows does the Keys API unlock?"
+    answer: "Common patterns include CI/CD pipelines provisioning keys per deployment environment, multi-tenant platforms creating isolated keys per customer, automated team onboarding, and zero-downtime key rotation (create the new key, swap credentials, delete the old one). All of this is now scriptable."
+  - question: "Can I set an expiration date on a key?"
+    answer: "Yes. Pass an ISO 8601 timestamp in the `expire` field when calling `project.createKey`. Once that time passes, the key stops working automatically. Setting expirations on every key is a good default for short-lived credentials in CI and customer-facing tenants."
+  - question: "Where can I find the list of available scopes?"
+    answer: "The full scope list is in the [API key scopes documentation](/docs/advanced/platform/api-keys#scopes). The server SDKs also ship a `Scopes` enum so you can reference them by constant (e.g., `Scopes.DatabasesRead`) instead of typing strings."
+  - question: "How is the Keys API different from session-based auth?"
+    answer: "Sessions identify end users of your app via [Appwrite Auth](/docs/products/auth), while API keys identify trusted backend services that act on behalf of the project. The Keys API itself uses an existing API key with `keys.write` scope to create new keys, so it is strictly a server-to-server flow."
 ---
 
 Managing API keys has always required navigating to the Appwrite Console, selecting scopes, and manually creating each key. For a single project, that works. For teams managing multiple environments, onboarding new services, or provisioning keys as part of automated pipelines, it becomes a bottleneck.

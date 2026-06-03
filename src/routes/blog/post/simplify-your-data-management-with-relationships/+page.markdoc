@@ -7,6 +7,19 @@ cover: /images/blog/simplify-your-data-management-with-relationships/cover.avif
 timeToRead: 6
 author: jake-barnby
 category: accessibility
+faqs:
+  - question: "What relationship types does Appwrite Databases support?"
+    answer: "Four: one-to-one, one-to-many, many-to-one, and many-to-many. You pick the type when creating the relationship attribute, and Appwrite enforces the cardinality so you do not have to model it manually with join tables or ID arrays."
+  - question: "When should I use a one-way vs two-way relationship?"
+    answer: "Use a one-way relationship when only one side needs to know about the other (for example, a movie that lists its reviews but reviews do not need to expose the movie). Use two-way when both sides need to traverse the link in queries. Two-way costs slightly more storage and write overhead, so do not enable it by default."
+  - question: "Does Appwrite support relationships across [Databases](/docs/products/databases) products?"
+    answer: "Relationships are defined within a single Appwrite database between tables in that database. You cannot create a relationship attribute that points to a row in a different database, so model related entities in the same database."
+  - question: "What are the deletion behaviors for related rows?"
+    answer: "Appwrite lets you choose how related rows behave when a parent is deleted: restrict (block the delete), cascade (delete the children), or set null (clear the relationship). Pick based on your data model. Cascade is convenient but irreversible, restrict is safer when child data has independent value."
+  - question: "Should I model everything with relationships or denormalize?"
+    answer: "Use relationships when the related data has its own lifecycle, is shared across parents, or is too large to embed. Denormalize (duplicate small, rarely-changing fields onto the parent) when you mainly need a label or a couple of attributes in a list view and want to avoid the extra lookup. Both patterns coexist comfortably in Appwrite."
+  - question: "Do relationships replace the need to write joins?"
+    answer: "For most reads, yes. Appwrite resolves related rows in the response when you query the parent, so you do not need to perform a separate fetch and merge in your code. For complex aggregations or filters across multiple relationships, you may still want to break the work into multiple queries."
 ---
 
 Managing collections of data is an essential task for any application, but it can quickly become complex when you need to keep track of the relationships between different collections. For instance, if you have two collections of data, such as movies and reviews, you may need to retrieve all the reviews associated with a particular movie. However, writing complex code to retrieve this data and merge it together manually can be time-consuming and prone to errors.

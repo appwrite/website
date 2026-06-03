@@ -7,6 +7,17 @@ timeToRead: 12
 date: 2024-04-22
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Dennis Ivy?"
+    answer: "Dennis Ivy is a self-taught developer, YouTube creator, and Developer Advocate at Appwrite. He built a digital marketing and web development agency before moving into DevRel, and now focuses on teaching developers through tutorials, content, and community work."
+  - question: "What does a Developer Advocate do at Appwrite?"
+    answer: "A Developer Advocate sits between the product team and the community. At Appwrite, that means writing content, recording tutorials, surfacing user feedback to engineering, and helping developers get unstuck on the [Discord server](/discord)."
+  - question: "Why did Dennis Ivy join Appwrite?"
+    answer: "Dennis was looking for work that excited him, not just a paycheck. He saw Appwrite's open-source product and community focus and felt it was the right place to do meaningful work, especially around community-first DevRel and education."
+  - question: "Why was Dennis initially skeptical of Backend-as-a-Service?"
+    answer: "As a backend engineer, he worried that a BaaS would constrain him or replace skills he had spent years building. Working with Appwrite changed his mind by showing how a BaaS can speed up product work without taking control away from developers who still want to go deep on the backend."
+  - question: "How does Dennis approach creating developer content?"
+    answer: "He treats himself as both user and advocate, so he can spot gaps in tutorials, docs, and product flows. His goal is content that actually helps developers ship, not content that just markets a feature."
 ---
 
 The team behind Appwrite is situated worldwide and works together daily from different time zones. We’re proud of the remote and open source culture the team has built so far. In Appwrite Decoded, we introduce the people behind the code and celebrate them.

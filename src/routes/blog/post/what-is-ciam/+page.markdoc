@@ -9,6 +9,19 @@ author: laura-du-ry
 callToAction: true
 unlisted: true
 category: product
+faqs:
+  - question: "What is CIAM?"
+    answer: "CIAM stands for Customer Identity and Access Management. It is the set of tools and processes that let a business register, authenticate, authorize, and manage external users (customers, partners, citizens) at scale, while staying compliant with privacy regulations."
+  - question: "How is CIAM different from traditional IAM?"
+    answer: "Traditional IAM is built for internal employees and focuses on operational efficiency and tight access policies. CIAM is built for external customers and prioritises self service registration, social and passwordless logins, smooth user experience, and handling millions of users instead of thousands."
+  - question: "What features should a CIAM solution include?"
+    answer: "At minimum: self service signup and login (with social, MFA, and SSO options), profile and preference management, consent and privacy tooling for GDPR or CCPA, strong authentication features like passwordless or biometrics, and scalability to support millions of accounts. [Appwrite Auth](/docs/products/auth) covers most of these out of the box."
+  - question: "Does Appwrite work as a CIAM platform?"
+    answer: "Yes. [Appwrite Auth](/docs/products/auth) provides registration, login, social and OAuth2 providers, MFA, session management, and built in security features that map directly to CIAM requirements. For larger deployments you can pair it with custom roles and team permissions."
+  - question: "Why does CIAM matter for compliance?"
+    answer: "Regulations like GDPR, CCPA, and HIPAA require you to capture consent, control where personal data is stored, and let users access or delete their data. A CIAM platform centralises that logic so you do not have to bolt it onto every app. The fines for getting this wrong are significant."
+  - question: "When do I outgrow building auth myself and need a CIAM platform?"
+    answer: "If you find yourself building MFA, social login, password resets, session revocation, audit logging, and consent flows by hand, you are already past the point where a CIAM platform pays for itself. Most teams hit this around their first real B2C launch."
 ---
 
 Balancing security and user experience has always been a challenge for digital businesses. Too much friction, and users abandon. Too little, and security is compromised. Customer Identity and Access Management (CIAM) bridges this gap, offering a secure, seamless way to authenticate, authorize, and personalize user journeys at scale.

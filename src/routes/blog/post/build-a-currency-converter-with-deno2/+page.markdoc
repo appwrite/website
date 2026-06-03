@@ -7,6 +7,19 @@ cover: /images/blog/build-a-currency-converter-with-deno2/cover.avif
 timeToRead: 12
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "What is Deno 2 and why use it for APIs?"
+    answer: "Deno 2 is a TypeScript-first JavaScript runtime built by the original Node.js creator. It has built-in TypeScript support, a permissions model, native standard library, and now ships with broad Node.js compatibility. For APIs, it eliminates a lot of tooling overhead you'd otherwise have in Node."
+  - question: "Does Appwrite Functions support Deno?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) supports Deno as a first-class runtime. You can pick Deno from the runtime dropdown when creating a function or via the CLI, and it ships with the same routing, environment variables, and deployment options as other runtimes."
+  - question: "How do I deploy a Deno function to Appwrite?"
+    answer: "Use the Appwrite CLI: run appwrite init project, then appwrite init function and pick Deno. Develop locally with appwrite run function, and push to the cloud with appwrite push function. You can also deploy via the Appwrite Console by connecting a GitHub repo."
+  - question: "Can I use Node.js packages in a Deno function?"
+    answer: "Yes. Deno 2 supports importing npm packages directly via the npm: specifier. The tutorial uses Zod (an npm package) for validation, which works exactly the same way in Deno as it does in Node."
+  - question: "How do I store API keys for an Appwrite Function?"
+    answer: "Use environment variables. Add them in the Appwrite console under your function's Settings tab, or via the CLI. They're injected into the function's runtime at execution time, so you avoid committing secrets to your code."
+  - question: "Can I trigger an Appwrite Function via HTTP?"
+    answer: "Yes. Every Appwrite Function has an HTTP execution endpoint by default. You can also trigger functions on a schedule (cron) or in response to database, auth, or storage events. The currency converter in this post uses HTTP triggers."
 ---
 
 When building APIs, one of the most useful things you can create is a currency converter. Whether you're working on an application that handles pricing in different currencies or something more personal like tracking expenses across borders, having a reliable currency converter is a great tool. Today, we'll walk through building one using **Deno 2** and **Appwrite**.

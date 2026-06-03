@@ -9,6 +9,19 @@ author: ebenezer-don
 category: product,init
 featured: false
 callToAction: true
+faqs:
+  - question: "How is Appwrite Sites different from Netlify?"
+    answer: "[Appwrite Sites](/docs/products/sites) hosts your frontend inside the same project as your database, auth, storage, and functions. Netlify is a great hosting platform but it leaves you to bring your own backend, which means more wiring between services. Sites cuts that wiring out."
+  - question: "Does Appwrite Sites support server side rendering?"
+    answer: "Yes. Sites runs SSR apps in containers with runtime access to environment variables and the Appwrite SDKs. It supports Next.js, Nuxt, SvelteKit, Angular, Astro, and Remix in SSR mode."
+  - question: "Can I deploy without Git?"
+    answer: "Yes. Sites supports drag and drop deploys and `.tar.gz` uploads from the console, plus the Appwrite CLI for scripted deploys. Netlify also supports CLI deploys but does not have a drag and drop option in the UI."
+  - question: "Does Appwrite Sites generate preview URLs for branches?"
+    answer: "Yes. Every commit, branch, and pull request gets its own unique preview URL when you connect a Git repository. Rollbacks are one click from the deployments page."
+  - question: "What about custom domains and TLS?"
+    answer: "You can attach custom domains to your site and Appwrite provisions TLS certificates automatically. The flow is similar to Netlify, with DNS records you add at your registrar."
+  - question: "Can I use Appwrite Sites if I am already on Appwrite Cloud?"
+    answer: "Yes. Sites is part of Appwrite Cloud and shows up alongside Databases, Functions, Storage, and Auth in your project. There is nothing extra to install or connect."
 ---
 
 Deploying frontend applications has gotten easier over the past decade, but also more complex behind the scenes. Most apps today need more than just HTML, CSS, and a CDN. They need authentication, secure APIs, environment configs, storage access, and sometimes server-side rendering.

@@ -35,4 +35,13 @@
     .entry-content {
         overflow-x: clip;
     }
+
+    .entry-content :global(article > :is(ul, ol):not(:where(.not-prose, .not-prose *))) {
+        padding-left: calc(var(--spacing) * 3);
+        margin-block: calc(var(--spacing) * 8);
+    }
+
+    .entry-content :global(article > ul:not(:where(.not-prose, .not-prose *))) {
+        list-style-type: disc;
+    }
 </style>

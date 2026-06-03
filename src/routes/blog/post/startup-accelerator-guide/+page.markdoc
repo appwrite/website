@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: startup
+faqs:
+  - question: "What is a startup accelerator?"
+    answer: "An accelerator is a time-bound, cohort-based program (typically 3 to 6 months) that gives early-stage startups funding, mentorship, training, and investor access in exchange for equity, usually 5 to 10 percent. The goal is to compress years of learning into a few focused months and end with a Demo Day pitch to investors."
+  - question: "How is an accelerator different from an incubator?"
+    answer: "Accelerators expect an MVP, early traction, and a full-time founding team, run on fixed timelines, take equity, and push toward fundraising. Incubators support earlier-stage founders (sometimes pre-product), run open-ended programs, may or may not take equity, and focus on validation rather than scaling."
+  - question: "How much equity do accelerators typically take?"
+    answer: "Most well-known accelerators take between 5 and 10 percent of the company in exchange for a seed check and program access. Y Combinator's standard deal is $500K for 7 percent. Equity terms vary, so read the deal carefully against the actual value of the network and capital being offered."
+  - question: "Do I need to be in the same city as the accelerator?"
+    answer: "Increasingly no. Many programs (including YC) offer remote or hybrid cohorts, and a number of accelerators (Antler, Techstars regional programs) run in specific cities globally. In-person time still helps with networking, but it is rarely a hard requirement anymore."
+  - question: "When is the right time to apply to an accelerator?"
+    answer: "When you have a working product, some early signal (users, revenue, retention, or strong founder-market fit), and a full-time team ready to commit. Applying too early can lead to wasted equity if you do not get enough value from the program. Applying too late and you are giving away dilution for capital you could raise on your own terms."
+  - question: "Can I use Appwrite's Startups program alongside an accelerator?"
+    answer: "Yes. The [Appwrite Startups program](/startups) provides cloud credits, priority support, and discounts for early-stage companies, which is complementary to accelerator funding. Accelerators give you capital and mentorship, Appwrite gives you the backend infrastructure to build and scale your product faster."
 ---
 
 Whether you're a solo founder, part of a small team, or just starting to turn an idea into a business, you've probably heard the word "accelerator" tossed around. Accelerators have become a key part of the modern startup ecosystem. They exist to give startups a short, intense burst of support, usually over a few months, aimed at accelerating their journey from early traction to steady growth.

@@ -8,6 +8,17 @@ timeToRead: 7
 author: dennis-ivy
 category: product
 featured: false
+faqs:
+  - question: "What new queries shipped in September 2025?"
+    answer: "Time helper queries (`createdBefore`, `createdAfter`, `updatedBefore`, `updatedAfter`) make time-based filtering a one-liner, and inversion queries (`notSearch`, `notContains`, `notBetween`, `notStartsWith`, `notEndsWith`) let you exclude matches directly. Together they remove most of the workarounds people used to write client side."
+  - question: "What does the Appwrite Docs MCP server do?"
+    answer: "It exposes the [Appwrite documentation](/docs) to AI assistants through the Model Context Protocol. Assistants can search the docs, fetch specific guides, and generate code snippets using the current APIs so suggestions stay accurate."
+  - question: "What are spatial columns in [Appwrite Databases](/docs/products/databases)?"
+    answer: "Spatial columns add native support for points, lines, and polygons, along with spatial indexes and twelve new operators. You can store and query geo data without bolting on a separate database."
+  - question: "Does [Appwrite Sites](/docs/products/sites) support Turbopack?"
+    answer: "Yes. Next.js apps built with Turbopack deploy on Appwrite Sites without modification, with faster builds and consistent behavior between local and production. There is no separate configuration to enable it."
+  - question: "How much faster are function cold starts in Frankfurt?"
+    answer: "Function cold starts in the Frankfurt (FRA) region are about 58% faster after the September performance work, with more consistent start times across executions. Static sites also moved to edge proxies, so they skip the runtime entirely."
 ---
 Welcome back to the September Product Update. This month, we have some serious Database upgrades with a new set of queries and features. Also, get ready for one more exciting hackathon news.
 

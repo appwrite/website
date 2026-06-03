@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: startup
 featured: false
+faqs:
+  - question: "Why do most side projects never launch?"
+    answer: "Most side projects fail because of lost momentum, not bad ideas. By the time you finish setting up auth, databases, APIs, file uploads, and deployment, the energy that sparked the idea is gone. The longer the gap between idea and a working version, the harder it is to stay motivated."
+  - question: "What should be in an MVP for a side project?"
+    answer: "One core feature, one clear user, and one problem solved. For a habit tracker, that might be sign up, add a habit, and mark it complete. Skip dashboards, analytics, billing, and notifications until real users tell you they need them."
+  - question: "How can Appwrite speed up side project development?"
+    answer: "Appwrite gives you the backend pieces most side projects need out of the box, including [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites) for hosting. You can have a working backend in minutes instead of spending days on infrastructure."
+  - question: "How long does it take to launch a side project with Appwrite?"
+    answer: "A realistic timeline is around three days. Day one for project setup, auth, and database collections. Day two for the core feature. Day three for a basic UI, deployment, and sharing with a small group of users. The point is to learn fast, not ship perfect."
+  - question: "When should I launch my side project?"
+    answer: "Launch as soon as the core feature works and a real user can do something meaningful with it. If your project feels polished and complete before launch, you probably waited too long. Real users will reshape your roadmap in ways you cannot predict from the inside."
+  - question: "Should I worry about scale on day one of a side project?"
+    answer: "No. Designing for millions of users before you have a single one is a common mistake. Use a backend like Appwrite that can scale when you need it, but focus your time on shipping the smallest useful version. You can refine architecture once users actually exist."
 ---
 
 Every developer has at least one idea sitting in the back of their mind. A tool to solve a small daily annoyance. A weekend SaaS experiment. Something you've been meaning to build "when things calm down." You tell yourself you'll start it soon, next weekend, maybe, or once the current project wraps up.

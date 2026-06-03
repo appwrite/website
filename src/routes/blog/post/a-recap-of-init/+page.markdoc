@@ -8,6 +8,19 @@ timeToRead: 12
 author: laura-du-ry
 category: init
 featured: false
+faqs:
+  - question: "What is Appwrite Init?"
+    answer: "Init is Appwrite's launch week event where the team ships new products and features daily, hosts community Discord sessions, and gives away swag. Think of it as a focused, week-long product showcase paired with community programming."
+  - question: "What did Appwrite announce during this Init?"
+    answer: "Headline launches included [Messaging](/docs/products/messaging) (push notifications, email, and SMS), improved server-side rendering support, and other product updates rolled out across the week. Each announcement came with a video, blog post, and Discord deep-dive."
+  - question: "What is Appwrite Messaging?"
+    answer: "Messaging is Appwrite's built-in service for sending push notifications, transactional emails, and SMS to your users. It supports topics, subscriber management, and integrations with providers like Twilio. See [Appwrite Messaging](/docs/products/messaging) for the full reference."
+  - question: "Does Appwrite support server-side rendering?"
+    answer: "Yes. Appwrite supports SSR across major frameworks (Next.js, SvelteKit, Nuxt, and others), with cookie-based sessions and SDK methods that work cleanly in server contexts. The improvements shipped during Init made SSR auth flows simpler to wire up."
+  - question: "Will there be another Appwrite Init?"
+    answer: "Yes. Init is recurring, with new product launches scheduled for future events. Watch the Appwrite blog and Discord for announcements of the next one."
+  - question: "How can I participate in the Appwrite community?"
+    answer: "Join the [Appwrite Discord](https://appwrite.io/discord) to attend community sessions, ask questions, and get early looks at new features. You can also follow Appwrite on social media and contribute on GitHub if you want to help build the platform."
 ---
 
 Init has come to an end, and we’re happy how all of you showed up and made it an amazing week filled with product announcements, events, content, celebrations, a release, and most of all, community fun!

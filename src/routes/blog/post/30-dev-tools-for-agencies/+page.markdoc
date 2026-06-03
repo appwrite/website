@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What tools should a small dev agency invest in first?"
+    answer: "Start with a code editor (VS Code or Cursor), a version control host (GitHub or GitLab), a project management tool (Linear or Notion), and a backend platform that covers auth, database, and storage so you do not glue together three vendors. [Appwrite](/docs/products/auth) fills the backend slot for most agency projects."
+  - question: "Should agencies build a custom backend or use a backend-as-a-service?"
+    answer: "For most client work, a BaaS like Appwrite saves weeks of plumbing on every project. You get auth, databases, storage, functions, and messaging out of the box, and you can self-host or use Appwrite Cloud depending on the client's compliance needs. Reserve custom backends for cases where you have genuinely unique architectural requirements."
+  - question: "How do dev tools affect project margins?"
+    answer: "Tooling choices compound: the right editor, BaaS, and CI setup can shave days off each project, which directly improves agency margins. Standardizing the stack across projects also reduces onboarding time for new developers, which is one of the biggest hidden costs in agency work."
+  - question: "What is the difference between an IDE and a code editor?"
+    answer: "An IDE (like IntelliJ or Visual Studio) bundles compilers, debuggers, refactoring tools, and project templates for a specific language stack. A code editor (like VS Code or Sublime) is more lightweight and gets those features through extensions. Editors are now powerful enough for most workflows, which is why VS Code dominates."
+  - question: "How can agencies handle multiple client projects without context switching?"
+    answer: "Use project-isolated environments: separate Appwrite projects per client, named workspaces in your editor, and dedicated channels in your chat tool. Tools like Linear and Notion help keep each client's roadmap distinct. The more isolation you build into your tooling, the less mental overhead per switch."
+  - question: "Which tools help with collaboration on remote teams?"
+    answer: "Real-time collaboration tools (Slack, Discord, Loom for async video), real-time editors (Zed, VS Code Live Share), and shared infrastructure (GitHub, Appwrite Cloud) are the core. For design and product, Figma and Notion cover most needs. Pick one of each category and standardize so the team is not constantly relearning tools."
 ---
 
 The way software is built today is drastically different from even five years ago. Teams are more distributed. Deadlines are tighter. And expectations, be it from clients, product leads, or users, are higher than ever. Whether you're running a fast-paced development agency, juggling multiple client projects, or leading an internal team building and maintaining a product, the tools you use directly impact your delivery speed, code quality, and team effectiveness. 
