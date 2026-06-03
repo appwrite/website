@@ -55,6 +55,10 @@
                 {
                     label: 'Environment variables',
                     href: '/docs/platforms/project/environment-variables'
+                },
+                {
+                    label: 'Email templates',
+                    href: '/docs/platforms/project/email-templates'
                 }
             ]
         }
