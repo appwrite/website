@@ -42,6 +42,464 @@ To configure policies manually:
 The API key used for these calls needs `policies.read` to list or fetch policies, and `policies.write` to update them.
 {% /info %}
 
+# List policies {% #list-policies %}
+
+List all policies configured for the project along with their current state.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.listPolicies({
+    queries: [],
+    total: false
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.listPolicies({
+    queries: [],
+    total: false
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->listPolicies(
+    queries: [],
+    total: false
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.list_policies(
+    queries = [],
+    total = False
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.list_policies(
+    queries: [],
+    total: false
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.ListPolicies(
+    queries: new List<string>(),
+    total: false
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.listPolicies(
+    queries: [],
+    total: false,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.listPolicies(
+    queries = listOf(),
+    total = false
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.listPolicies(
+    List.of(), // queries
+    false, // total
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.listPolicies(
+    queries: [],
+    total: false
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/project"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.ListPolicies(
+        project.WithListPoliciesQueries([]interface{}{}),
+        project.WithListPoliciesTotal(false),
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.list_policies(
+        Some(vec![]),
+        Some(false),
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project list-policies \
+    --limit 25
+```
+{% /multicode %}
+
+# Get a policy {% #get-policy %}
+
+Fetch a single policy by its ID. The response fields depend on the policy type, matching the [Available policies](#available-policies) table above.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project, ProjectPolicyId } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.getPolicy({
+    policyId: ProjectPolicyId.Passworddictionary
+});
+```
+```server-deno
+import { Client, Project, ProjectPolicyId } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.getPolicy({
+    policyId: ProjectPolicyId.Passworddictionary
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Enums\ProjectPolicyId;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->getPolicy(
+    policyId: ProjectPolicyId::PASSWORDDICTIONARY()
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.enums import ProjectPolicyId
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.get_policy(
+    policy_id = ProjectPolicyId.PASSWORD_DICTIONARY
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+include Appwrite::Enums
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.get_policy(
+    policy_id: ProjectPolicyId::PASSWORD_DICTIONARY
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.GetPolicy(
+    policyId: ProjectPolicyId.PasswordDictionary
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart' as enums;
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.getPolicy(
+    policyId: enums.ProjectPolicyId.passwordDictionary,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.enums.ProjectPolicyId
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.getPolicy(
+    policyId = ProjectPolicyId.PASSWORD_DICTIONARY
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.enums.ProjectPolicyId;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.getPolicy(
+    ProjectPolicyId.PASSWORD_DICTIONARY, // policyId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.getPolicy(
+    policyId: .passwordDictionary
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.GetPolicy(
+        "password-dictionary",
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::enums::ProjectPolicyId;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.get_policy(
+        ProjectPolicyId::PasswordDictionary,
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project get-policy \
+    --policy-id password-dictionary
+```
+{% /multicode %}
+
 # Update password dictionary policy {% #update-password-dictionary-policy %}
 
 When enabled, new passwords are checked against a dictionary of common passwords and rejected if they match.
