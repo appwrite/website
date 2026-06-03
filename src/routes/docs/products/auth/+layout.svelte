@@ -38,10 +38,6 @@
                     href: '/docs/products/auth/teams'
                 },
                 {
-                    label: 'Roles',
-                    href: '/docs/products/auth/roles'
-                },
-                {
                     label: 'Impersonation',
                     href: '/docs/products/auth/impersonation',
                     new: isNewUntil('31 May 2026')

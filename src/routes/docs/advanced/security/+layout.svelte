@@ -91,6 +91,10 @@
                     href: '/docs/advanced/security/permissions'
                 },
                 {
+                    label: 'Roles',
+                    href: '/docs/advanced/security/roles'
+                },
+                {
                     label: 'Rate limits',
                     href: '/docs/advanced/security/rate-limits'
                 },

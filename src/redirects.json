@@ -970,7 +970,7 @@
     },
     {
         "link": "/docs/advanced/platform/roles",
-        "redirect": "/docs/products/auth/roles"
+        "redirect": "/docs/advanced/security/roles"
     },
     {
         "link": "/docs/advanced/platform/message-templates",

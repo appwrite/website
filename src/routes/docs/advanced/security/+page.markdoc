@@ -101,6 +101,10 @@ access control and prevent abuse.
 Control which users can access which resources.
 {% /cards_item %}
 
+{% cards_item href="/docs/advanced/security/roles" title="Roles" %}
+Learn about Console organization member roles and the access each one grants.
+{% /cards_item %}
+
 {% cards_item href="/docs/advanced/security/rate-limits" title="Rate limits" %}
 Appwrite has rate limits on some endpoints to prevent abuse.
 {% /cards_item %}
