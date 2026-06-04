@@ -126,7 +126,10 @@ Sign up for [Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hoste
 
 ## Resources
 
-* [Appwrite documentation](https://appwrite.io/docs)
-* [Appwrite quick start guides](https://appwrite.io/docs/quick-starts)
+* [Appwrite documentation](/docs)
+* [Appwrite AI products](/docs/products/ai)
+* [Appwrite integrations](/integrations)
+* [Appwrite MCP servers](/docs/tooling/ai/mcp-servers)
+* [Appwrite quick start guides](/docs/quick-starts)
 * [Appwrite on GitHub](https://github.com/appwrite/appwrite)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
