@@ -255,7 +255,7 @@ Both return an object with:
 | `getLoggedInUser()` | `Models.User \| null` | The current user, fetched via the cookie. Returns `null` on 401. |
 | `getSession()` | `Models.Session \| null` | The current session row. |
 | `createSessionClient()` | `NodeSessionServer \| null` | A `node-appwrite` client authenticated as the cookie's user, or `null` if no cookie. |
-| `createAdminClient()` | `AdminServer` | A `node-appwrite` admin client authenticated with the API key passed to the helper. Throws if `apiKey` is not configured. |
+| `createAdminClient()` | `AdminServer` | A `node-appwrite` admin client authenticated with the API key passed to the helper. Only available when `apiKey` is set in the helper config. |
 
 ## Session client {% #session-client %}
 
