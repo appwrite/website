@@ -1,60 +1,38 @@
 ---
 layout: article
-title: Project
-description: Configure your Appwrite project, including auth methods, platforms, protocols, services, and policies.
-back: /docs
+title: Labels
+description: Assign customizable labels to your Appwrite project to categorize and filter projects within an organization.
 ---
 
-An Appwrite **Project** is the top-level container for all the resources your app uses, from users and databases to storage buckets and functions. The settings on a project control which authentication methods are available, which client platforms can connect, which protocols and services are exposed, and which policies apply to the resources inside it.
+Labels are short alphanumeric tags you assign to a project. Use them to categorize your projects and filter them within an organization, for example by environment (`production`, `staging`), team, or region.
 
-# Concepts {% #concepts %}
+# Manage in the Console {% #console %}
 
-{% cards %}
-{% cards_item href="/docs/platforms/project/auth-methods" title="Auth methods" %}
-Enable or disable authentication methods on your project.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/oauth" title="OAuth providers" %}
-Configure OAuth2 sign-in providers like Google, GitHub, and Apple.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/api-keys" title="API keys" %}
-Create and manage API keys used by Server SDKs.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/platforms" title="Platforms" %}
-Register the apps and origins that are allowed to call your project.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/protocols" title="Protocols" %}
-Toggle the API protocols clients can use to reach your project.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/services" title="Services" %}
-Turn individual Appwrite services on or off for your project.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/policies" title="Policies" %}
-Configure project-wide policies that apply across resources.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/mock-phones" title="Mock phones" %}
-Register fictional phone numbers and OTPs to test phone authentication.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/environment-variables" title="Environment variables" %}
-Share constants and secrets across your functions and sites.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/smtp" title="SMTP" %}
-Send emails from your own custom SMTP server.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/email-templates" title="Email templates" %}
-Customize the account management emails Appwrite sends to your users.
-{% /cards_item %}
-{% cards_item href="/docs/platforms/project/labels" title="Labels" %}
-Tag projects with customizable labels to organize and filter them.
-{% /cards_item %}
-{% /cards %}
+{% only_dark %}
+![Project labels in the Appwrite Console](/images/docs/project/dark/labels.avif)
+{% /only_dark %}
+{% only_light %}
+![Project labels in the Appwrite Console](/images/docs/project/labels.avif)
+{% /only_light %}
 
-# Retrieve your project {% #get-project %}
+To manage labels from the Appwrite Console:
 
-Fetch your project's current configuration in a single call, including its name, region, labels, and the settings managed on the pages above. Use a [Server SDK](/docs/sdks#server).
+1. Navigate to your project.
+2. Open the **Settings** section. The **Labels** card is on the **Overview** tab.
+3. In the **Labels** field, type a label and press Enter, or select one of the suggested labels. Labels may contain only alphanumeric characters.
+4. Click **Update** to save your changes.
+
+# Manage with a Server SDK {% #server-sdks %}
+
+You can also manage project labels programmatically using a [Server SDK](/docs/sdks#server).
 
 {% info title="Required scope" %}
-The API key used for this call needs the `project.read` scope.
+The API key used for this call needs the `project.write` scope.
 {% /info %}
+
+## Update labels {% #update-labels %}
+
+The `labels` array replaces the project's existing labels, so include every label you want to keep in each call. A project can have up to 1000 labels, each up to 36 alphanumeric characters long.
 
 {% multicode %}
 ```server-nodejs
@@ -67,7 +45,9 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.get();
+const result = await project.updateLabels({
+    labels: ['production', 'eu']
+});
 ```
 ```server-deno
 import { Client, Project } from "npm:node-appwrite";
@@ -79,7 +59,9 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.get();
+const result = await project.updateLabels({
+    labels: ['production', 'eu']
+});
 ```
 ```server-php
 <?php
@@ -94,7 +76,9 @@ $client = (new Client())
 
 $project = new Project($client);
 
-$result = $project->get();
+$result = $project->updateLabels(
+    labels: ['production', 'eu']
+);
 ```
 ```server-python
 from appwrite.client import Client
@@ -108,7 +92,9 @@ client.set_key('<YOUR_API_KEY>') # Your API key
 
 project = Project(client)
 
-result: ProjectModel = project.get()
+result: ProjectModel = project.update_labels(
+    labels = ['production', 'eu']
+)
 
 print(result.model_dump())
 ```
@@ -124,7 +110,9 @@ client = Client.new
 
 project = Project.new(client)
 
-result = project.get
+result = project.update_labels(
+    labels: ['production', 'eu']
+)
 ```
 ```server-dotnet
 using Appwrite;
@@ -138,7 +126,9 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-Project result = await project.Get();
+Project result = await project.UpdateLabels(
+    labels: new List<string> { "production", "eu" }
+);
 ```
 ```server-dart
 import 'package:dart_appwrite/dart_appwrite.dart';
@@ -150,7 +140,9 @@ Client client = Client()
 
 Project project = Project(client);
 
-Project result = await project.get();
+Project result = await project.updateLabels(
+    labels: ['production', 'eu'],
+);
 ```
 ```server-kotlin
 import io.appwrite.Client
@@ -164,7 +156,9 @@ val client = Client()
 
 val project = Project(client)
 
-val response = project.get()
+val response = project.updateLabels(
+    labels = listOf("production", "eu")
+)
 ```
 ```server-java
 import io.appwrite.Client;
@@ -178,14 +172,17 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-project.get(new CoroutineCallback<>((result, error) -> {
-    if (error != null) {
-        error.printStackTrace();
-        return;
-    }
+project.updateLabels(
+    List.of("production", "eu"), // labels
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
 
-    System.out.println(result);
-}));
+        System.out.println(result);
+    })
+);
 ```
 ```server-swift
 import Appwrite
@@ -197,7 +194,9 @@ let client = Client()
 
 let project = Project(client)
 
-let result = try await project.get()
+let result = try await project.updateLabels(
+    labels: ["production", "eu"]
+)
 ```
 ```server-go
 package main
@@ -215,7 +214,9 @@ func main() {
     )
 
     project := appwrite.NewProject(client)
-    result, err := project.Get()
+    result, err := project.UpdateLabels(
+        []interface{}{"production", "eu"},
+    )
 
     if err != nil {
         panic(err)
@@ -237,11 +238,33 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let project = Project::new(&client);
 
-    let result = project.get().await?;
+    let result = project.update_labels(
+        vec!["production", "eu"]
+    ).await?;
 
     let _ = result;
 
     Ok(())
 }
 ```
+```bash
+appwrite project update-labels \
+    --labels production \
+    --labels eu
+```
 {% /multicode %}
+
+{% info title="Reading labels" %}
+Labels have no dedicated read endpoint. Call `get` to fetch the project and read its `labels` field.
+
+```server-nodejs
+const result = await project.get();
+console.log(result.labels); // ['production', 'eu']
+```
+{% /info %}
+
+# Benefits {% #benefits %}
+
+- **Organize at scale.** Group related projects with shared tags such as environment, team, or region, so large organizations stay navigable.
+- **Faster filtering.** Find the projects you need by filtering an organization on its labels instead of scanning the full list.
+- **Repeatable provisioning.** Apply a consistent labeling scheme across projects from a script, keeping your organization tidy without manual Console work.

@@ -63,6 +63,10 @@
                 {
                     label: 'Email templates',
                     href: '/docs/platforms/project/email-templates'
+                },
+                {
+                    label: 'Labels',
+                    href: '/docs/platforms/project/labels'
                 }
             ]
         }
