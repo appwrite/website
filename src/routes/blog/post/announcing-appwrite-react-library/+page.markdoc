@@ -112,15 +112,17 @@ if (session) {
 
 # Admin client
 
-Server entrypoints also expose `createAdminClient`, which returns a `node-appwrite` client authenticated with your project API key. It is the same client you would write yourself, just with the environment wiring done for you, so the rest of your server code keeps using the official Node SDK.
+For privileged operations, pass an `apiKey` into the framework helper and call `createAdminClient()` on it. The returned object exposes every `node-appwrite` service (`users`, `databases`, `storage`, `teams`, `functions`, and so on), so the rest of your server code keeps using the official Node SDK.
 
 ```ts
-const admin = createAdminClient({
-  ...appwrite,
+const helpers = createNextServerHelpers({
+  endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
+  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
   apiKey: process.env.APPWRITE_API_KEY!,
 });
 
-const users = await admin.account.list();
+const admin = helpers.createAdminClient();
+const users = await admin.users.list();
 ```
 
 # Where to start

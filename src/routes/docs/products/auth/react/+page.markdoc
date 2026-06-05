@@ -254,7 +254,8 @@ Both return an object with:
 | `readSessionCookie()` | `string \| undefined` (sync on TanStack, async on Next.js) | The session secret. Pass it into `AppwriteProvider`'s `ssr.session` prop. |
 | `getLoggedInUser()` | `Models.User \| null` | The current user, fetched via the cookie. Returns `null` on 401. |
 | `getSession()` | `Models.Session \| null` | The current session row. |
-| `createSessionClient()` | `{ client, account } \| null` | A `node-appwrite` client authenticated as the cookie's user, or `null` if no cookie. |
+| `createSessionClient()` | `NodeSessionServer \| null` | A `node-appwrite` client authenticated as the cookie's user, or `null` if no cookie. |
+| `createAdminClient()` | `AdminServer` | A `node-appwrite` admin client authenticated with the API key passed to the helper. Throws if `apiKey` is not configured. |
 
 ## Session client {% #session-client %}
 
@@ -277,10 +278,25 @@ if (session) {
 
 ## Admin client {% #admin-client %}
 
-For privileged operations (creating users, listing sessions, managing teams) import `createAdminClient` from the framework-specific server entrypoint. It returns a `node-appwrite` client authenticated with your API key.
+For privileged operations (creating users, listing sessions, managing teams) call `createAdminClient` on the framework helper. Pass `apiKey` in the helper config to enable it, then call the method anywhere on the server. The returned object exposes every `node-appwrite` service: `account`, `users`, `databases`, `storage`, `teams`, `functions`, `messaging`, `tablesDB`, and more.
 
 ```ts
-import { createAdminClient } from "@appwrite.io/react/server/next";
+import { createNextServerHelpers } from "@appwrite.io/react/server/next";
+
+const helpers = createNextServerHelpers({
+  endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
+  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!,
+  apiKey: process.env.APPWRITE_API_KEY!,
+});
+
+const admin = helpers.createAdminClient();
+const users = await admin.users.list();
+```
+
+If you would rather not pass the API key into the helper, the library also exports a standalone `createAdminClient` from `@appwrite.io/react/server` that takes the key directly.
+
+```ts
+import { createAdminClient } from "@appwrite.io/react/server";
 
 const admin = createAdminClient({
   endpoint: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!,
@@ -288,7 +304,7 @@ const admin = createAdminClient({
   apiKey: process.env.APPWRITE_API_KEY!,
 });
 
-const users = await admin.account.list();
+const users = await admin.users.list();
 ```
 
 Never import any `@appwrite.io/react/server/*` module from client code: the entrypoints are marked `server-only` and will throw if bundled into the browser.
