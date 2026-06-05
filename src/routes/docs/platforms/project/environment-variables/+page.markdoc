@@ -52,7 +52,11 @@ You can create and manage project variables from the Appwrite Console. The Conso
 
 # Manage with a Server SDK {% #server-sdks %}
 
-You can also manage project variables programmatically using a [Server SDK](/docs/sdks#server). Each call requires an [API key](/docs/advanced/platform/api-keys) with the `project.write` scope to create, update, or delete variables, or the `project.read` scope to list and read them.
+You can also manage project variables programmatically using a [Server SDK](/docs/sdks#server).
+
+{% info title="Required scopes" %}
+The API key used for these calls needs `project.read` to list or fetch variables, and `project.write` to create, update, or delete them.
+{% /info %}
 
 ## Create a variable {% #create-variable %}
 

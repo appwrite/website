@@ -57,6 +57,10 @@
                     href: '/docs/platforms/project/environment-variables'
                 },
                 {
+                    label: 'SMTP',
+                    href: '/docs/platforms/project/smtp'
+                },
+                {
                     label: 'Email templates',
                     href: '/docs/platforms/project/email-templates'
                 }

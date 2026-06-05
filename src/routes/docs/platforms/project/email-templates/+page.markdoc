@@ -29,7 +29,11 @@ To edit email templates from the Appwrite Console:
 
 # Manage with a Server SDK {% #server-sdks %}
 
-You can also manage email templates programmatically using a [Server SDK](/docs/sdks#server). Each call requires an [API key](/docs/platforms/project/api-keys) with the `templates.read` scope to list and read templates, or the `templates.write` scope to update them.
+You can also manage email templates programmatically using a [Server SDK](/docs/sdks#server).
+
+{% info title="Required scopes" %}
+The API key used for these calls needs `templates.read` to list or fetch templates, and `templates.write` to update them.
+{% /info %}
 
 ## List email templates {% #list-email-templates %}
 

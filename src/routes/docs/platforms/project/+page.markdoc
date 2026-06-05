@@ -13,6 +13,9 @@ An Appwrite **Project** is the top-level container for all the resources your ap
 {% cards_item href="/docs/platforms/project/auth-methods" title="Auth methods" %}
 Enable or disable authentication methods on your project.
 {% /cards_item %}
+{% cards_item href="/docs/platforms/project/oauth" title="OAuth providers" %}
+Configure OAuth2 sign-in providers like Google, GitHub, and Apple.
+{% /cards_item %}
 {% cards_item href="/docs/platforms/project/api-keys" title="API keys" %}
 Create and manage API keys used by Server SDKs.
 {% /cards_item %}
@@ -30,5 +33,14 @@ Configure project-wide policies that apply across resources.
 {% /cards_item %}
 {% cards_item href="/docs/platforms/project/mock-phones" title="Mock phones" %}
 Register fictional phone numbers and OTPs to test phone authentication.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/environment-variables" title="Environment variables" %}
+Share constants and secrets across your functions and sites.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/smtp" title="SMTP" %}
+Send emails from your own custom SMTP server.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/email-templates" title="Email templates" %}
+Customize the account management emails Appwrite sends to your users.
 {% /cards_item %}
 {% /cards %}
