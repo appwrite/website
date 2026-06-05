@@ -209,7 +209,7 @@ import { useAppwrite } from "@appwrite.io/react";
 const { client, account, tablesDB, storage, teams, ssr } = useAppwrite();
 ```
 
-Returns the underlying provider context with every Appwrite Web SDK service instance bound to the configured client. Use it when you need direct access to a service the higher-level hooks do not wrap (databases, storage, messaging, realtime, and so on).
+Returns the underlying provider context with every Appwrite Web SDK service instance bound to the configured client. Use it when you need direct access to a service the higher-level hooks do not wrap (`tablesDB`, `storage`, `messaging`, `realtime`, and so on).
 
 Returns:
 
@@ -278,7 +278,7 @@ if (session) {
 
 ## Admin client {% #admin-client %}
 
-For privileged operations (creating users, listing sessions, managing teams) call `createAdminClient` on the framework helper. Pass `apiKey` in the helper config to enable it, then call the method anywhere on the server. The returned object exposes every `node-appwrite` service: `account`, `users`, `databases`, `storage`, `teams`, `functions`, `messaging`, `tablesDB`, and more.
+For privileged operations (creating users, listing sessions, managing teams) call `createAdminClient` on the framework helper. Pass `apiKey` in the helper config to enable it, then call the method anywhere on the server. The returned object exposes every `node-appwrite` service: `account`, `users`, `tablesDB`, `storage`, `teams`, `functions`, `messaging`, and more.
 
 ```ts
 import { createNextServerHelpers } from "@appwrite.io/react/server/next";

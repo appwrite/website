@@ -112,7 +112,7 @@ if (session) {
 
 # Admin client
 
-For privileged operations, pass an `apiKey` into the framework helper and call `createAdminClient()` on it. The returned object exposes every `node-appwrite` service (`users`, `databases`, `storage`, `teams`, `functions`, and so on), so the rest of your server code keeps using the official Node SDK.
+For privileged operations, pass an `apiKey` into the framework helper and call `createAdminClient()` on it. The returned object exposes every `node-appwrite` service (`users`, `tablesDB`, `storage`, `teams`, `functions`, and so on), so the rest of your server code keeps using the official Node SDK.
 
 ```ts
 const helpers = createNextServerHelpers({
