@@ -53,7 +53,7 @@ Here are some examples of how you might map Appwrite error types to user-friendl
 
 # Complete list of error types
 
-Appwrite provides a comprehensive list of error types organized by category. For a complete reference, see the [Response codes](/docs/advanced/api-integration/response-codes#error-types) documentation.
+Appwrite provides a comprehensive list of error types organized by category. For a complete reference, see the [Response codes](/docs/apis/response-codes#error-types) documentation.
 
 # Recommended practices
 

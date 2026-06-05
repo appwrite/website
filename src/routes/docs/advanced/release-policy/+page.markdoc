@@ -79,7 +79,7 @@ Self-hosted versions of Appwrite will receive continued support for the latest m
 
 If you need **extended support** for older versions of Appwrite, [contact us](/contact-us) for more information.
 
-# SDK versioning {% #sdk-verversioningsions %}
+# SDK versioning {% #sdk-versioning %}
 
 For our different SDKs, we follow the Semantic Versioning (semver) protocol to assign versions to our releases. This means that we assign version numbers using a three-part system: major, minor, and patch. The major version changes when we make significant changes to our API or product, which may require significant changes to developers' code. The minor version changes when we add new features or functionality that do not significantly impact developers' systems. Finally, the patch version changes when we make bug fixes or minor improvements.
 

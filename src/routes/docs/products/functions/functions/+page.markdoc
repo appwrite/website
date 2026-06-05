@@ -139,7 +139,7 @@ If this is left empty, no user can execute your function.
 Server SDKs, scheduled executions, and event function triggers don't require permissions to execute a function.
 
 ## Events{% #events %}
-Functions can be triggered by [platform events](/docs/advanced/api-integration/events) which reflect changes 
+Functions can be triggered by [platform events](/docs/apis/events) which reflect changes 
 that occur in your Appwrite project.
 You can configure events triggers by navigating to your function > **Settings** > **Events**.
 

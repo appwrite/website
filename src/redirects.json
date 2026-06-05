@@ -209,7 +209,7 @@
     },
     {
         "link": "/docs/events",
-        "redirect": "/docs/advanced/api-integration/events"
+        "redirect": "/docs/apis/events"
     },
     {
         "link": "/docs/queries",
@@ -221,7 +221,7 @@
     },
     {
         "link": "/docs/webhooks",
-        "redirect": "/docs/advanced/api-integration/webhooks"
+        "redirect": "/docs/apis/webhooks"
     },
     {
         "link": "/docs/custom-domains",
@@ -233,7 +233,7 @@
     },
     {
         "link": "/docs/response-codes",
-        "redirect": "/docs/advanced/api-integration/response-codes"
+        "redirect": "/docs/apis/response-codes"
     },
     {
         "link": "/docs/rate-limits",
@@ -934,7 +934,7 @@
     },
     {
         "link": "/docs/advanced/platform/scale",
-        "redirect": "/docs/advanced/billing/scale"
+        "redirect": "/docs/advanced/billing/pro"
     },
     {
         "link": "/docs/advanced/platform/enterprise",
@@ -982,23 +982,23 @@
     },
     {
         "link": "/docs/advanced/platform/events",
-        "redirect": "/docs/advanced/api-integration/events"
+        "redirect": "/docs/apis/events"
     },
     {
         "link": "/docs/advanced/platform/webhooks",
-        "redirect": "/docs/advanced/api-integration/webhooks"
+        "redirect": "/docs/apis/webhooks"
     },
     {
         "link": "/docs/advanced/platform/response-codes",
-        "redirect": "/docs/advanced/api-integration/response-codes"
+        "redirect": "/docs/apis/response-codes"
     },
     {
         "link": "/docs/advanced/platform/error-handling",
-        "redirect": "/docs/advanced/api-integration/error-handling"
+        "redirect": "/docs/apis/error-handling"
     },
     {
         "link": "/docs/advanced/platform/release-policy",
-        "redirect": "/docs/advanced/api-integration/release-policy"
+        "redirect": "/docs/advanced/release-policy"
     },
     {
         "link": "/docs/advanced/platform/permissions",
@@ -1038,6 +1038,6 @@
     },
     {
         "link": "/docs/advanced/integration",
-        "redirect": "/docs/advanced/api-integration"
+        "redirect": "/docs/apis/rest"
     }
 ]

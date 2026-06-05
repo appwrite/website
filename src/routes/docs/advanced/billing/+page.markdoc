@@ -4,27 +4,29 @@ title: Billing
 description: Understand Appwrite's plans, add-ons, service level agreements, and billing policies.
 ---
 
-Learn which plan best suits your organization, explore optional add-ons, and understand Appwrite's service level agreements and billing policies.
+Learn how to manage billing for your organization, find the plan that best suits your needs, explore optional add-ons, and understand Appwrite's service level agreements and billing policies.
+
+# Manage billing {% #manage-billing %}
+
+Configure your organization's plan, payment methods, and spending controls.
+
+{% cards %}
+{% cards_item href="/docs/advanced/billing/payments" title="Manage billing" %}
+Manage your plan, billing periods, payment methods, budget caps, and invoices.
+{% /cards_item %}
+{% /cards %}
 
 # Plans {% #plans %}
 
-Learn which plan best suits your organization and how to manage billing.
+Learn which plan best suits your organization.
 
 {% cards %}
-{% cards_item href="/docs/advanced/billing/payments" title="Billing" %}
-Learn to manage your billing information.
-{% /cards_item %}
-
 {% cards_item href="/docs/advanced/billing/free" title="Free" %}
 Learn about Appwrite Free plan. Free plan for hobby projects and learners.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/billing/pro" title="Pro" %}
 Learn about Appwrite Pro, for growing organizations that need to scale.
-{% /cards_item %}
-
-{% cards_item href="/docs/advanced/billing/scale" title="Scale" %}
-Learn about Appwrite Scale, for teams and agencies scaling their applications.
 {% /cards_item %}
 
 {% cards_item href="/docs/advanced/billing/enterprise" title="Enterprise" %}

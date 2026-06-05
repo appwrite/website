@@ -14,6 +14,10 @@
                 {
                     label: 'Overview',
                     href: '/docs/advanced/billing'
+                },
+                {
+                    label: 'Manage billing',
+                    href: '/docs/advanced/billing/payments'
                 }
             ]
         },
@@ -21,20 +25,12 @@
             label: 'Plans',
             items: [
                 {
-                    label: 'Billing',
-                    href: '/docs/advanced/billing/payments'
-                },
-                {
                     label: 'Free',
                     href: '/docs/advanced/billing/free'
                 },
                 {
                     label: 'Pro',
                     href: '/docs/advanced/billing/pro'
-                },
-                {
-                    label: 'Scale',
-                    href: '/docs/advanced/billing/scale'
                 },
                 {
                     label: 'Enterprise',

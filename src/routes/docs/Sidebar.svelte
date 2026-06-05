@@ -111,12 +111,6 @@
             label: 'APIS',
             items: [
                 {
-                    label: 'Realtime',
-                    href: '/docs/apis/realtime',
-                    icon: 'icon-clock',
-                    isParent: true
-                },
-                {
                     label: 'REST',
                     href: '/docs/apis/rest',
                     icon: 'web-icon-rest'
@@ -125,6 +119,18 @@
                     label: 'GraphQL',
                     href: '/docs/apis/graphql',
                     icon: 'icon-graphql'
+                },
+                {
+                    label: 'Realtime',
+                    href: '/docs/apis/realtime',
+                    icon: 'icon-clock',
+                    isParent: true
+                },
+                {
+                    label: 'Events & Errors',
+                    href: '/docs/apis/events',
+                    icon: 'icon-switch-horizontal',
+                    isParent: true
                 }
             ]
         },
@@ -178,12 +184,6 @@
                     isParent: true
                 },
                 {
-                    label: 'API Integration',
-                    href: '/docs/advanced/api-integration',
-                    icon: 'icon-switch-horizontal',
-                    isParent: true
-                },
-                {
                     label: 'Migrations',
                     href: '/docs/advanced/migrations',
                     icon: 'icon-refresh',
@@ -200,6 +200,11 @@
                     href: '/docs/advanced/self-hosting',
                     icon: 'icon-server',
                     isParent: true
+                },
+                {
+                    label: 'Release policy',
+                    href: '/docs/advanced/release-policy',
+                    icon: 'icon-tag'
                 }
             ]
         }
