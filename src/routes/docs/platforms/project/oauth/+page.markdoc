@@ -6,7 +6,7 @@ description: Configure OAuth2 sign-in providers for your project from the Consol
 
 OAuth2 providers let your users sign in with accounts they already have, such as GitHub, Google, or Apple. Each provider stores a client ID and client secret at the project level, and can be enabled or disabled independently.
 
-You can configure providers from the Appwrite Console or programmatically with a [Server SDK](/docs/sdks#server). Each provider has its own update method (`updateOAuth2Github`, `updateOAuth2Google`, and so on), the read methods `listOAuth2Providers` and `getOAuth2Provider` cover all of them.
+You can configure providers from the Appwrite Console or programmatically with a [Server SDK](/docs/sdks#server). Each provider has its own update method (`updateOAuth2GitHub`, `updateOAuth2Google`, and so on), the read methods `listOAuth2Providers` and `getOAuth2Provider` cover all of them.
 
 # Configure from the Console {% #configure-console %}
 
@@ -48,7 +48,7 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateOAuth2Github({
+const result = await project.updateOAuth2GitHub({
     clientId: '<CLIENT_ID>',
     clientSecret: '<CLIENT_SECRET>',
     enabled: true
@@ -64,7 +64,7 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateOAuth2Github({
+const result = await project.updateOAuth2GitHub({
     clientId: '<CLIENT_ID>',
     clientSecret: '<CLIENT_SECRET>',
     enabled: true

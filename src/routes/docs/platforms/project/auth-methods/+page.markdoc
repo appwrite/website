@@ -42,7 +42,7 @@ The `methodId` parameter accepts one of the following values:
 
 # Enable or disable a method {% #update-auth-method %}
 
-Use the Project service `updateProjectAuthMethodId` endpoint with a method ID and the `enabled` flag.
+Use the Project service `updateAuthMethod` endpoint with a method ID and the `enabled` flag.
 
 {% info title="Required scope" %}
 The API key used for these calls needs the `project.write` scope.
@@ -59,8 +59,8 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateProjectAuthMethodId({
-    methodId: ProjectAuthMethodId.EmailPassword,
+const result = await project.updateAuthMethod({
+    methodId: ProjectAuthMethodId.Emailpassword,
     enabled: false
 });
 ```
@@ -74,8 +74,8 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.updateProjectAuthMethodId({
-    methodId: ProjectAuthMethodId.EmailPassword,
+const result = await project.updateAuthMethod({
+    methodId: ProjectAuthMethodId.Emailpassword,
     enabled: false
 });
 ```
@@ -95,7 +95,7 @@ $client
 
 $project = new Project($client);
 
-$result = $project->updateProjectAuthMethodId(
+$result = $project->updateAuthMethod(
     methodId: ProjectAuthMethodId::EMAILPASSWORD(),
     enabled: false
 );
@@ -147,7 +147,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-var result = await project.UpdateProjectAuthMethodId(
+var result = await project.UpdateAuthMethod(
     methodId: ProjectAuthMethodId.EmailPassword,
     enabled: false
 );
@@ -163,7 +163,7 @@ Client client = Client()
 
 Project project = Project(client);
 
-final result = await project.updateProjectAuthMethodId(
+final result = await project.updateAuthMethod(
     methodId: enums.ProjectAuthMethodId.emailPassword,
     enabled: false,
 );
@@ -180,7 +180,7 @@ val client = Client()
 
 val project = Project(client)
 
-val result = project.updateProjectAuthMethodId(
+val result = project.updateAuthMethod(
     methodId = ProjectAuthMethodId.EMAIL_PASSWORD,
     enabled = false
 )
@@ -198,7 +198,7 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-project.updateProjectAuthMethodId(
+project.updateAuthMethod(
     ProjectAuthMethodId.EMAIL_PASSWORD, // methodId
     false, // enabled
     new CoroutineCallback<>((result, error) -> {
@@ -221,7 +221,7 @@ let client = Client()
 
 let project = Project(client)
 
-let result = try await project.updateProjectAuthMethodId(
+let result = try await project.updateAuthMethod(
     methodId: .emailPassword,
     enabled: false
 )
@@ -242,7 +242,7 @@ func main() {
     )
 
     project := appwrite.NewProject(client)
-    result, err := project.UpdateProjectAuthMethodId(
+    result, err := project.UpdateAuthMethod(
         "email-password",
         false,
     )
