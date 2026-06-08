@@ -468,9 +468,9 @@ Default settings:
 Same hostname, different port:
 
 ```bash
-psql -h db-<projectId>-<dbId>.<region>.appwrite.network -p 6432 -U appwrite -d appwrite
+psql -h db-<projectId>-<dbId>.<region>.appwrite.center -p 6432 -U appwrite -d appwrite
 
-mysql -h db-<projectId>-<dbId>.<region>.appwrite.network -P 6033 -u appwrite -p appwrite
+mysql -h db-<projectId>-<dbId>.<region>.appwrite.center -P 6033 -u appwrite -p appwrite
 ```
 
 The pooler accepts the same TLS, authentication, and parameter syntax as the engine. Your application driver doesn't know it's talking to a pooler.

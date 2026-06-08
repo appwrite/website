@@ -46,12 +46,12 @@ A dedicated database lives in the same region as the project that owns it, there
 
 | Region        | Code | Endpoint                                     |
 |---------------|------|----------------------------------------------|
-| Frankfurt     | FRA  | `db-<projectId>-<dbId>.fra.appwrite.network` |
-| New York      | NYC  | `db-<projectId>-<dbId>.nyc.appwrite.network` |
-| San Francisco | SFO  | `db-<projectId>-<dbId>.sfo.appwrite.network` |
-| Singapore     | SGP  | `db-<projectId>-<dbId>.sgp.appwrite.network` |
-| Sydney        | SYD  | `db-<projectId>-<dbId>.syd.appwrite.network` |
-| Toronto       | TOR  | `db-<projectId>-<dbId>.tor.appwrite.network` |
+| Frankfurt     | FRA  | `db-<projectId>-<dbId>.fra.appwrite.center` |
+| New York      | NYC  | `db-<projectId>-<dbId>.nyc.appwrite.center` |
+| San Francisco | SFO  | `db-<projectId>-<dbId>.sfo.appwrite.center` |
+| Singapore     | SGP  | `db-<projectId>-<dbId>.sgp.appwrite.center` |
+| Sydney        | SYD  | `db-<projectId>-<dbId>.syd.appwrite.center` |
+| Toronto       | TOR  | `db-<projectId>-<dbId>.tor.appwrite.center` |
 
 Each region is independent, data does not leave the region unless you explicitly opt into the cross-region failover feature.
 

@@ -11,12 +11,12 @@ Every dedicated database gets a public hostname behind Appwrite's edge proxy. Th
 On provision, a database hostname is generated in the form:
 
 ```
-db-<projectId>-<databaseId>.<region>.appwrite.network
+db-<projectId>-<databaseId>.<region>.appwrite.center
 ```
 
-Example: `db-proj456-abc123.fra.appwrite.network`.
+Example: `db-proj456-abc123.fra.appwrite.center`.
 
-The hostname is stable for the lifetime of the database. It resolves to the regional edge proxy via a wildcard `*.appwrite.network` DNS record, so you do not need to manage DNS yourself.
+The hostname is stable for the lifetime of the database. It resolves to the regional edge proxy via a wildcard `*.appwrite.center` DNS record, so you do not need to manage DNS yourself.
 
 # TLS {% #tls %}
 

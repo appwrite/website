@@ -91,7 +91,7 @@ The SQL API is opt-in per database and disabled by default.
 
 # How connection works
 
-Each database gets a hostname of the form `db-<projectId>-<databaseId>.<region>.appwrite.network`. Resolve it with any DNS resolver, connect with `psql`, `mysql`, `mongosh`, or any driver in any language. TLS is enforced, `sslmode=require`, `useSSL=true`, `tls=true`, and the certificate is signed by a public CA, so no custom bundle is required.
+Each database gets a hostname of the form `db-<projectId>-<databaseId>.<region>.appwrite.center`. Resolve it with any DNS resolver, connect with `psql`, `mysql`, `mongosh`, or any driver in any language. TLS is enforced, `sslmode=require`, `useSSL=true`, `tls=true`, and the certificate is signed by a public CA, so no custom bundle is required.
 
 Behind the hostname sits Appwrite's edge proxy. It parses the engine's startup packet (PostgreSQL `StartupMessage`, MySQL handshake, MongoDB `OP_MSG hello`) to identify the database, applies your IP allowlist, and forwards the connection to the engine. For shared (free) databases, the proxy also detects the cold-start case: if the database has scaled to zero, the proxy triggers a start, waits for readiness, and forwards the handshake. The underlying storage is preserved across spin-downs, so no data is lost.
 

@@ -204,14 +204,14 @@ Response:
 
 ```json
 {
-  "host": "db-<projectId>-<dbId>.<region>.appwrite.network",
+  "host": "db-<projectId>-<dbId>.<region>.appwrite.center",
   "port": 5432,
   "username": "appwrite",
   "password": "<32-char-hex>",
   "database": "appwrite",
   "engine": "postgres",
   "ssl": true,
-  "connectionString": "postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:5432/appwrite?sslmode=require"
+  "connectionString": "postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
 }
 ```
 
@@ -224,19 +224,19 @@ PostgreSQL:
 ```bash
 psql "$(curl -s ... credentials | jq -r .connectionString)"
 # or directly:
-psql -h db-<projectId>-<dbId>.<region>.appwrite.network -p 5432 -U appwrite -d appwrite
+psql -h db-<projectId>-<dbId>.<region>.appwrite.center -p 5432 -U appwrite -d appwrite
 ```
 
 MySQL / MariaDB:
 
 ```bash
-mysql -h db-<projectId>-<dbId>.<region>.appwrite.network -P 3306 -u appwrite -p appwrite
+mysql -h db-<projectId>-<dbId>.<region>.appwrite.center -P 3306 -u appwrite -p appwrite
 ```
 
 MongoDB:
 
 ```bash
-mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:27017/appwrite?authSource=admin&directConnection=true&retryWrites=true"
+mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:27017/appwrite?authSource=admin&directConnection=true&retryWrites=true"
 ```
 
 # Rotate the primary password {% #rotate %}
@@ -472,7 +472,7 @@ There's nothing Appwrite-specific about the driver setup. A few example snippets
 import { Client } from 'pg';
 
 const client = new Client({
-    host: 'db-<projectId>-<dbId>.<region>.appwrite.network',
+    host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
     port: 5432,
     user: 'appwrite',
     password: process.env.DB_PASSWORD,
@@ -489,7 +489,7 @@ import psycopg
 import os
 
 with psycopg.connect(
-    host='db-<projectId>-<dbId>.<region>.appwrite.network',
+    host='db-<projectId>-<dbId>.<region>.appwrite.center',
     port=5432,
     user='appwrite',
     password=os.environ['DB_PASSWORD'],
@@ -504,7 +504,7 @@ with psycopg.connect(
 <?php
 
 $pdo = new PDO(
-    'pgsql:host=db-<projectId>-<dbId>.<region>.appwrite.network;port=5432;dbname=appwrite;sslmode=require',
+    'pgsql:host=db-<projectId>-<dbId>.<region>.appwrite.center;port=5432;dbname=appwrite;sslmode=require',
     'appwrite',
     getenv('DB_PASSWORD'),
 );
@@ -525,7 +525,7 @@ import (
 
 func main() {
     conn, _ := pgx.Connect(context.Background(),
-        fmt.Sprintf("postgres://appwrite:%s@db-<projectId>-<dbId>.<region>.appwrite.network:5432/appwrite?sslmode=require",
+        fmt.Sprintf("postgres://appwrite:%s@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require",
             os.Getenv("DB_PASSWORD")))
     defer conn.Close(context.Background())
 
