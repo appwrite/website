@@ -236,7 +236,7 @@ mysql -h db-<projectId>-<dbId>.<region>.appwrite.network -P 3306 -u appwrite -p 
 MongoDB:
 
 ```bash
-mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:27017/appwrite?tls=true"
+mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.network:27017/appwrite?authSource=admin&directConnection=true&retryWrites=true"
 ```
 
 # Rotate the primary password {% #rotate %}
@@ -451,7 +451,9 @@ Available roles:
 
 # TLS {% #tls %}
 
-All dedicated database endpoints terminate TLS at the edge proxy and forward to the engine over the Appwrite network. Connection strings always include `sslmode=require` (PostgreSQL), `useSSL=true` (MySQL/MariaDB), or `tls=true` (MongoDB) by default, so your driver should not need any extra configuration.
+The edge proxy terminates TLS and forwards to the engine over the Appwrite network. The `connectionString` from the credentials endpoint already carries the right SSL settings, `sslmode=require` for PostgreSQL and `ssl=true` for MySQL and MariaDB, so your driver should not need any extra configuration. MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires a TLS connection, using the provided connection string handles this for you.
+
+Proxy TLS termination currently covers PostgreSQL, MySQL, and MariaDB. MongoDB connections are not yet TLS-terminated at the proxy and return `ssl=false`.
 
 To require mTLS, see the [network page](/docs/products/databases/dedicated/network).
 

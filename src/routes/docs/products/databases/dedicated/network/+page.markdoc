@@ -20,14 +20,16 @@ The hostname is stable for the lifetime of the database. It resolves to the regi
 
 # TLS {% #tls %}
 
-TLS is enabled on every dedicated database endpoint and is enforced by the edge proxy. Connection strings always include the engine's TLS flag:
+TLS is terminated at the edge proxy. Prefer the `connectionString` returned by the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials), which already carries the correct SSL parameters for your engine, over hand-building one:
 
-| Engine     | Driver flag                   |
-|------------|-------------------------------|
-| PostgreSQL | `sslmode=require`             |
-| MySQL      | `useSSL=true` / `tls=true`    |
-| MariaDB    | `useSSL=true` / `tls=true`    |
-| MongoDB    | `tls=true`                    |
+| Engine     | Connection string parameter                                                          |
+|------------|--------------------------------------------------------------------------------------|
+| PostgreSQL | `sslmode=require`                                                                     |
+| MySQL      | `ssl=true`                                                                            |
+| MariaDB    | `ssl=true`                                                                            |
+| MongoDB    | `ssl=true`, alongside `authSource=admin`, `directConnection=true`, and `retryWrites=true` |
+
+Proxy TLS termination currently covers PostgreSQL, MySQL, and MariaDB. MongoDB connections are not yet TLS-terminated at the proxy and return `ssl=false`.
 
 The certificate is signed by a well-known public CA, your driver does not need a custom CA bundle.
 

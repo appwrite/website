@@ -25,6 +25,8 @@ Appwrite manages the database container, storage, backups, and networking. You b
 
 Version is selected on create and can be changed later via the upgrade endpoint. Upgrades run online, a second instance is provisioned on the new version, data is streamed over with engine-native logical replication, and traffic cuts over once replication is caught up. There are no read or write outages during the upgrade, and no manual dump-and-restore.
 
+A new database starts in a `provisioning` state and becomes `ready` within a few minutes. Large specifications or high-availability configurations take longer to schedule and can take up to roughly 20 minutes in the worst case; poll the database status or watch the Console until it reports `ready`.
+
 # Database types {% #types %}
 
 A database is either **shared** or **dedicated**:
