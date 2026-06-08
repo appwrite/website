@@ -6,16 +6,12 @@ description: Learn how to use Claude Code with Appwrite through the Appwrite plu
 
 {% section #install-plugin step=1 title="Install the Appwrite plugin" %}
 
-The fastest way to get started with Appwrite in Claude Code is to install the **Appwrite plugin** from the Appwrite marketplace. The plugin includes agent skills for the CLI and all major SDKs and sets up MCP servers for both the Appwrite API and documentation, giving Claude Code everything it needs to work with your Appwrite projects.
+The fastest way to get started with Appwrite in Claude Code is to install the [**Appwrite plugin**](https://claude.com/plugins/appwrite) from the official marketplace. The plugin includes agent skills for the CLI and all major SDKs and sets up MCP servers for both the Appwrite API and documentation, giving Claude Code everything it needs to work with your Appwrite projects.
 
-To install the plugin, run the following commands in your terminal:
+To install the plugin, run the following command in your terminal:
 
 ```bash
-# Add the marketplace
-claude plugins marketplace add appwrite/claude-plugin
-
-# Install the plugin
-claude plugins install appwrite@appwrite
+claude plugin install appwrite
 
 ```
 
