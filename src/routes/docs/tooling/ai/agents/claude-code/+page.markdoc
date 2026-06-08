@@ -12,7 +12,6 @@ To install the plugin, run the following command in your terminal:
 
 ```bash
 claude plugin install appwrite
-
 ```
 
 Once installed, run Claude Code and configure the plugin:
