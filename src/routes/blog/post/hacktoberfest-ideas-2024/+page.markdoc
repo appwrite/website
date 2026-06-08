@@ -7,6 +7,19 @@ cover: /images/blog/get-inspired-for-hackathon/cover.avif
 timeToRead: 4
 author: snezhanna
 category: hackathon
+faqs:
+  - question: "How should I pick a hackathon project idea?"
+    answer: "Start with a problem you personally relate to so motivation stays high. Research how many other people face the same issue to gauge impact. Brainstorm multiple solutions before committing to one, and pick something self-sustaining that does not depend on fragile external resources."
+  - question: "What Appwrite features are most useful in a Hacktoberfest project?"
+    answer: "The example projects in this post used [Appwrite Auth](/docs/products/auth) for OAuth, [Appwrite Databases](/docs/products/databases) for storing app data, [Appwrite Functions](/docs/products/functions) (including the Go runtime) for backend logic, and [Appwrite Messaging](/docs/products/messaging) for emails. Mix and match based on what your project actually needs."
+  - question: "Do I need to build something Appwrite-specific to participate?"
+    answer: "No. Hacktoberfest itself accepts contributions to any participating open-source repo. Appwrite hackathons typically reward projects built with Appwrite, but the wider Hacktoberfest program is framework agnostic."
+  - question: "How do I scope a project so I can actually finish it?"
+    answer: "Cut scope aggressively. Pick one core feature that demonstrates the idea, build that to a working state, and only add extras if you have time. Most hackathon projects fail because the team tried to ship five features instead of one polished one."
+  - question: "Should I work solo or in a team for a hackathon?"
+    answer: "Teams move faster but coordination overhead is real. Solo lets you make decisions instantly but limits scope. If you team up, divide work along clean boundaries (frontend, backend, design) so people are not blocked on each other."
+  - question: "What kind of projects perform well in Appwrite hackathons?"
+    answer: "Projects that solve a concrete problem and use Appwrite features meaningfully tend to do well. The Terrazone, MailMemo, and Cord examples each address a specific remote-work pain point and use Appwrite for the parts where it actually saves time."
 ---
 Appwrite has just announced our very own **Hacktoberfest 2024 Hackathon**, and if we know the open source community, you're probably buzzing with ideas! Hacktoberfest is the perfect chance to collaborate, build, and showcase your creativity, whether you’re an experienced developer or just getting started. But with so many possibilities, where do you start?
 

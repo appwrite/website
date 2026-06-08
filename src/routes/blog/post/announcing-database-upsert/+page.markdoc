@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What is an upsert?"
+    answer: "Upsert is a database operation that creates a document if it doesn't exist and updates it if it does. It removes the need to check for existence yourself or branch between create and update calls. The server handles both paths atomically in a single request."
+  - question: "How do I use upsert in Appwrite?"
+    answer: "Call `upsertDocument` on the [Appwrite Databases](/docs/products/databases) SDK with a database ID, collection ID, document ID, and the data you want to write. If the document with that ID exists, it's updated, otherwise it's created. This works the same across Cloud and self-hosted."
+  - question: "When should I use upsert instead of create or update?"
+    answer: "Use upsert when you don't know (or don't care) whether the document already exists, like syncing data from a mobile client, processing a background job, or ingesting events from IoT devices. It removes a round trip and a class of race conditions caused by checking existence before writing."
+  - question: "Is upsert atomic in Appwrite?"
+    answer: "Yes, [Appwrite's](/docs/products/databases) upsert is fully atomic: the existence check and the write happen in the same operation on the server. That means two clients calling upsert on the same document ID can't both succeed in creating it, avoiding the classic check-then-write race condition."
+  - question: "Is upsert idempotent?"
+    answer: "Calling upsert with the same document ID and payload produces the same final state regardless of how many times the request runs. That makes retries safe, which is useful for unreliable networks, background workers, or anywhere you want at-least-once delivery semantics without duplicate data."
+  - question: "Can I upsert in bulk?"
+    answer: "Single-document upsert is available via `upsertDocument`. For larger workloads, look at [Appwrite's Bulk API](/docs/products/databases) and CSV imports, which let you write many documents in one operation. Pick the approach that matches the size and shape of your data."
 ---
 
 Working with databases often involves small but repetitive decisions like checking if a document exists, choosing between creating or updating, handling errors that come from guessing wrong. These steps are not difficult on their own, but over time they add complexity to your code and friction to your workflow.

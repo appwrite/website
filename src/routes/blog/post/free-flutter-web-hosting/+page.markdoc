@@ -8,7 +8,19 @@ timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host a Flutter Web app for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that supports Flutter Web deployments along with a global CDN, automatic SSL, and DDoS protection. The free plan covers most personal and early stage Flutter Web projects."
+  - question: "How do I deploy a Flutter Web build to Appwrite Sites?"
+    answer: "Run `flutter build web` to produce a build folder, then deploy through Git, the Appwrite CLI with `appwrite deploy site`, or by uploading the build directory manually. Git based deploys give you automatic builds on every push. See [deploy from Git](/docs/products/sites/deploy-from-git) for setup."
+  - question: "Does Appwrite Sites support Flutter Web's CanvasKit renderer?"
+    answer: "Yes. Appwrite Sites serves the static HTML, CSS, JavaScript, and WASM assets that Flutter Web produces, including the CanvasKit renderer. You can also choose the HTML renderer at build time, since the hosting platform does not constrain the renderer choice."
+  - question: "Can I use Appwrite as a backend for both my Flutter mobile app and Flutter Web app?"
+    answer: "Yes. The Appwrite Flutter SDK works across mobile and web targets, so the same [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) code runs on both. You only need to register a web platform in your Appwrite project alongside your mobile platforms."
+  - question: "Does Appwrite Sites support custom domains for Flutter Web?"
+    answer: "Yes. You can attach a custom domain to any Appwrite Site and SSL is configured automatically. There is no extra setup needed to enable HTTPS."
+  - question: "How does Appwrite Sites compare to Firebase Hosting for Flutter Web?"
+    answer: "Both offer free hosting, CDN delivery, and SSL for Flutter Web. Appwrite Sites is open source and not tied to Google, which matters if you want to avoid vendor lock in. Appwrite also bundles backend products in the same project, similar to Firebase but without the proprietary platform."
 ---
 
 Flutter for Web allows developers to build rich, interactive web applications using the same Dart codebase as their mobile apps. However, finding a hosting platform that supports Flutter's web-optimized build while providing a cost-effective, scalable, and developer-friendly solution can be a challenge.

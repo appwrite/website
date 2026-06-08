@@ -9,6 +9,19 @@ author: dennis-ivy
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "What is a CORS error?"
+    answer: "CORS (Cross-Origin Resource Sharing) is a browser mechanism that controls which origins can access a server. A CORS error occurs when the server you are sending a request to has not added your frontend's origin to its list of allowed origins. The browser blocks the request to prevent untrusted sites from reading data from your backend."
+  - question: "How do I fix a CORS error in Appwrite?"
+    answer: "Open the Appwrite Console, go to your project's Overview tab, and add a platform with the hostname your app is running on (for example, localhost in development or your production domain). Make sure the hostname matches exactly, with no protocol or port. See [Appwrite platforms](/docs/products/auth) and the Console for setup."
+  - question: "Why am I still getting a CORS error after adding my hostname?"
+    answer: "Common causes are typos in the hostname, leaving localhost set after deploying to production, an incorrect project ID in your client SDK initialization, or using the wrong regional endpoint for your project. A 4xx response from any of these will cause the browser to surface it as a CORS error."
+  - question: "Do I need a different Appwrite endpoint for each region?"
+    answer: "Yes. Your project lives in one region (for example NYC, FRA, or SYD), and you must use the matching regional endpoint such as nyc.cloud.appwrite.io. Using a different region's endpoint will return a 'not accessible in this region' response that the browser reports as a CORS error."
+  - question: "Can I use a wildcard origin to bypass CORS in Appwrite?"
+    answer: "Appwrite supports wildcard platforms, but it is not recommended for production. A wildcard means any website can make requests to your project, which defeats the purpose of CORS. Add each origin you actually use as a separate platform instead."
+  - question: "Why does the CORS error not show me the real server response?"
+    answer: "CORS is enforced by the browser before your JavaScript can read the response. So even if the server returned a useful error message (like 'project ID invalid'), the browser strips it out. Check the Network tab in your browser's devtools to see the raw status code and response body."
 ---
 
 I want to address an issue I've seen popping up on Stack Overflow and the Appwrite Discord server and address some of the reasons you may be getting this error, then walk you through some of the steps you can take to try and resolve it as well.

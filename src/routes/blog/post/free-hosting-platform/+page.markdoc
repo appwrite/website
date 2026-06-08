@@ -3,6 +3,7 @@ layout: post
 title: "Best free hosting platforms in 2026"
 description: "These are the best free hosting platforms for developers to deploy their frontend in 2026."
 date: 2025-09-04
+lastUpdated: 2026-05-22
 cover: /images/blog/free-hosting-2025.avif
 timeToRead: 6
 author: laura-du-ry
@@ -195,7 +196,7 @@ When comparing free hosting platforms, look beyond just “is it free.” Critic
 
 | Platform           | Free Tier Limits                | Best For           | Custom Domains | Backend/API Support | Upgrade Path      |
 | ------------------ | ------------------------------- | ------------------ | -------------- | ------------------- | ----------------- |
-| **Appwrite**       | Generous full stack hosting     | Full-stack apps    | Yes            | Yes                 | Scale plan        |
+| **Appwrite**       | Generous full stack hosting     | Full-stack apps    | Yes            | Yes                 | Pro & Enterprise  |
 | **Vercel**         | 125 GB bandwidth/month          | React/Next.js      | Yes            | Limited (functions) | Pro & Enterprise  |
 | **Netlify**        | 125k requests, 100 GB bandwidth | Jamstack sites     | Yes            | Functions           | Business tier     |
 | **Firebase**       | 1 GB storage, 10 GB transfer    | SPAs/PWAs          | Yes            | Yes                 | Blaze plan        |

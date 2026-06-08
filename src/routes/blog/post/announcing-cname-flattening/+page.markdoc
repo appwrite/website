@@ -8,6 +8,19 @@ timeToRead: 4
 author: matej-baco
 category: announcement
 featured: false
+faqs:
+  - question: "What is CNAME flattening?"
+    answer: "CNAME flattening lets you point your root domain (like example.com) to a hostname, which standard DNS rules normally prohibit. Your DNS provider resolves the target internally and returns the corresponding IP addresses to the client. Different providers call it by different names: Cloudflare uses CNAME flattening, Route 53 uses ALIAS records, and others support ANAME records."
+  - question: "Do I still need to change nameservers to use a custom domain on Appwrite Sites?"
+    answer: "No, you no longer need to migrate nameservers. With CNAME flattening support, you can keep your existing DNS provider and just add a CNAME, ALIAS, or ANAME record pointing to Appwrite. Once DNS propagates, your site is live with SSL configured automatically."
+  - question: "Why can't I use a regular CNAME record at the root domain?"
+    answer: "DNS standards prohibit CNAME records at the apex (root) domain because they conflict with other required records like SOA and NS. CNAME flattening (or ALIAS/ANAME records) works around this by resolving the target server-side and returning IP addresses instead of a CNAME response. This keeps your DNS RFC-compliant while letting the root domain follow a hostname."
+  - question: "Should I proxy the Cloudflare record through Cloudflare or use DNS only?"
+    answer: "Set the record to DNS only (grey cloud, not the orange proxy) so traffic reaches Appwrite's CDN directly. If you proxy through Cloudflare, you bypass Appwrite's built-in SSL, caching, and edge security, and may run into SSL or routing issues."
+  - question: "How long does DNS propagation take when connecting a domain?"
+    answer: "Propagation can take anywhere from a few minutes to a few hours depending on your DNS provider and TTL settings. You can check propagation status with tools like dig or online DNS checkers. Once propagation completes, verify the domain in the Appwrite Console to activate SSL."
+  - question: "Can I connect a custom domain to other Appwrite products besides Sites?"
+    answer: "Yes, [Appwrite](/docs/products/network/dns) supports custom domains across the platform, including for your project's API endpoint. The setup process and DNS records vary by product, so check the relevant docs for the specific service you're connecting."
 ---
 
 If you've connected a custom domain to Appwrite Sites, you know the process required changing your nameservers to Appwrite. For developers already managing DNS through Cloudflare or similar providers, that meant moving email routing, DNS-layer protections, and every other record off their existing provider just to connect a single site.

@@ -13,6 +13,7 @@ Skills work across all major AI dev tools that support them. They are installed 
 - Cursor
 - Google Antigravity
 - OpenCode
+- Zed
 - *and more...*
 
 # Benefits {% #benefits %}
@@ -24,6 +25,10 @@ Skills work across all major AI dev tools that support them. They are installed 
 - **Works with any compatible agent**: Skills are not locked to a single tool. Install once and use across any AI agent that supports them.
 
 # Install skills {% #install-skills %}
+
+{% info title="Automatic installation" %}
+When you run `appwrite init project`, the Appwrite CLI auto-detects your project configuration and installs relevant skills automatically. You can also install skills manually using the steps below.
+{% /info %}
 
 {% section #step-1 step=1 title="Run the install command" %}
 Run the following command in your project directory:

@@ -8,6 +8,19 @@ timeToRead: 4
 author: aditya-oberai
 category: security
 featured: false
+faqs:
+  - question: "Does my startup need to be GDPR compliant if I am not based in the EU?"
+    answer: "Yes, GDPR applies to any organization that processes personal data of EU residents, regardless of where the company is based. If you have a single EU user signing up to your app, you are within scope. Fines can be the larger of EUR 20 million or 4% of global annual turnover."
+  - question: "What counts as personal data under GDPR?"
+    answer: "Any data that can directly or indirectly identify a person: names, emails, phone numbers, IP addresses, device identifiers, location data, and behavioral data tied to a user. Pseudonymized data is still personal data if it can be re-identified. Truly anonymous data falls outside GDPR."
+  - question: "How does Appwrite help with GDPR compliance?"
+    answer: "Appwrite hashes passwords with Argon2, encrypts data in transit over TLS, supports MFA on [Appwrite Auth](/docs/products/auth), and lets you delete user accounts (and their data) on request. Appwrite Cloud also offers EU regions so personal data of EU users can stay within the EU, simplifying data transfer compliance."
+  - question: "What is the right to be forgotten and how do I implement it?"
+    answer: "Users have the right to request deletion of their personal data. In Appwrite, you can delete a user via the Users API, which removes their identity record. You still need to delete documents, files, and other user-tied records in your collections and buckets, which you can do in an [Appwrite Function](/docs/products/functions) triggered by the user deletion event."
+  - question: "Do I need a Data Processing Agreement (DPA) with my backend provider?"
+    answer: "Yes. If your backend provider processes personal data on your behalf, GDPR requires a DPA. Appwrite Cloud customers can request a DPA covering Appwrite's role as a data processor. Self-hosted Appwrite means you are processor and controller for your own data."
+  - question: "How quickly must I report a data breach under GDPR?"
+    answer: "You must notify the relevant supervisory authority within 72 hours of becoming aware of a breach that risks user rights. If the breach is high-risk, you also need to inform affected users directly, in clear language. Have a written incident response plan ready before you ever need one."
 ---
 As your startup scales and collects more user data, especially if your audience includes users from the European Union, you need to ensure your application complies with GDPR ([General Data Protection Regulation](https://gdpr-info.eu/issues/personal-data/)). Not just because non-compliance could result in hefty fines, but because respecting user privacy builds long-term trust, which is important for sustainable growth.
 

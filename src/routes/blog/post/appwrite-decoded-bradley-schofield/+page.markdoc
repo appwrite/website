@@ -7,6 +7,17 @@ timeToRead: 4
 date: 2024-02-08
 author: laura-du-ry
 category: culture
+faqs:
+  - question: "Who is Bradley Schofield at Appwrite?"
+    answer: "Bradley is one of the longest-standing members of the Appwrite team. He joined after contributing integrations and quick-start projects to Appwrite and has since worked across [Functions](/docs/products/functions) and migrations, with a focus on backend development and data."
+  - question: "How did Bradley join Appwrite?"
+    answer: "Bradley started a computer science degree, then moved to an apprenticeship for more hands-on work. After a string of open-source contributions to Appwrite, the team's CEO Eldad reached out about joining full time, and he has been at Appwrite ever since."
+  - question: "What does Bradley work on day to day?"
+    answer: "He focuses on [Functions](/docs/products/functions) and migrations, adds new runtimes (including compiled languages), and explores broader topics like machine learning. He researches feature ideas and turns the promising ones into product work the team can ship."
+  - question: "What does Bradley say about remote work?"
+    answer: "He likes the flexibility of being able to work from anywhere and the freedom that gives him to travel without disrupting his work. He also warns about social isolation and the risk of staring at a screen all day, and suggests staying active and protecting time for the people in your life."
+  - question: "How can I contribute to Appwrite?"
+    answer: "Bradley's advice is to just start. Pick something on the open-source roadmap, jump into the [Discord community](/discord), or open a pull request on the [Appwrite GitHub organization](https://github.com/appwrite). You do not need to wait for an invitation to participate."
 ---
 
 The team behind Appwrite is situated worldwide and works together daily in different time zones. We’re proud of the remote and open-source culture the team has built so far. In Appwrite Decoded, we introduce the people behind the code and celebrate them.

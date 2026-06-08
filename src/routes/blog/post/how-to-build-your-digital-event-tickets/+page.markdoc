@@ -7,6 +7,20 @@ cover: /images/blog/tickets-cover.avif
 timeToRead: 12
 author: laura-du-ry
 category: init
+faqs:
+  - question: "How did Appwrite build the Init tickets?"
+    answer: "Appwrite used GitHub OAuth (through [Appwrite Auth](/docs/products/auth)) to connect users' accounts, then scraped the GitHub contributions graph server-side using `node-html-parser`. The team converted the HTML grid into a matrix of contribution levels and rendered that as the side panel of each ticket."
+  - question: "Why scrape GitHub's contribution graph instead of using the API?"
+    answer: "The GitHub GraphQL API returns the raw contribution counts but not the level (0 to 4) shown on the profile graph. GitHub does not expose the algorithm that maps counts to levels, so the team fetched the rendered HTML and parsed it to match the public chart exactly."
+  - question: "What framework is the Appwrite site built with?"
+    answer: "The Appwrite website (including the Init ticket flow) is built with SvelteKit. SvelteKit gives the team full-stack control, so they can run server-side HTML scraping in the same project as the client-side ticket UI without a separate backend."
+  - question: "How do I add GitHub OAuth to my own app with Appwrite?"
+    answer: "Create a GitHub OAuth app in your GitHub developer settings, then add the client ID and secret to the GitHub provider in [Appwrite Auth](/docs/products/auth). Use `account.createOAuth2Session('github', success, failure)` from the client SDK to start the flow. The OAuth callback URL must match the one Appwrite gives you."
+  - question: "Where do the ticket designs come from?"
+    answer: "The Appwrite team was inspired by physical event badges from GitHub Universe 2023, which featured a contributions grid on the side. They adapted that into three ticket variants: a default Init celebration ticket, a pink Appwrite developer ticket, and a platinum ticket for Appwrite contributors."
+  - question: "Can I build similar collectible cards for my own product launch?"
+    answer: "Yes, the pattern is straightforward: an OAuth login to identify the user, a server-side fetch to pull personalized data, and a renderer (SVG, Canvas, or styled HTML) that produces a unique card per user. The hardest part is usually the design, not the engineering."
+---
 ---
 
 Do you remember the Appwrite [Cloud cards](https://dev.to/appwrite/how-we-implemented-the-card-animation-in-appwrite-cloud-public-beta-4npb)? They were an absolute hit and filled our entire timeline for days. For Init, we wanted to create a new card, or better yet, a ticket to celebrate in style. So, we created three types of tickets that are unique to you with the help of your GitHub contributions and the tribe customization.

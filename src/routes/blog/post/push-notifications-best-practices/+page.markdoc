@@ -8,6 +8,17 @@ timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "What is the difference between a push notification and an in-app notification?"
+    answer: "A push notification is delivered by the operating system and appears even when the app is closed, using services like FCM or APNS. An in-app notification only shows while the user has the app open and is handled by your application code directly."
+  - question: "How many push notifications per week is too many?"
+    answer: "Research from Helplama showed that 2 to 5 push notifications per week already pushes 43% of users to disable notifications, and 6 to 10 per week leads to 30% uninstalling the app. Aim for fewer, well-timed, high-value sends rather than frequent broadcasts."
+  - question: "How does Appwrite Messaging send push notifications?"
+    answer: "[Appwrite Messaging](/docs/products/messaging) ships with adapters for Firebase Cloud Messaging (FCM) and Apple Push Notification Service (APNS). You configure the provider once, then send pushes to users, topics, or targets through a single API."
+  - question: "When should I use a silent push notification?"
+    answer: "Silent pushes wake the app in the background to refresh data or sync state without showing anything to the user. They are best for keeping content up to date or triggering background work, not for messages the user should see."
+  - question: "What is the best way to ask users for push notification permission?"
+    answer: "Ask in context, right after the user takes an action that benefits from notifications, instead of on first launch. Explain the value in one sentence, and always provide an in-app way to opt back in or out later."
 ---
 
 Push notifications are messages that appear on a mobile device or computer from an app or website. They serve various purposes, such as alerts, promotions, reminders, and more.

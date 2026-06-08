@@ -8,6 +8,19 @@ date: 2025-11-01
 author: tessa
 category: open-source
 featured: false
+faqs:
+  - question: "How do I start contributing to open source as a student?"
+    answer: "Pick a project you already use, read the contributing guide, and start with documentation fixes or small bugs labeled good first issue. Avoid trying to ship a feature on day one. The goal of your first contribution is learning the workflow (forking, branching, opening a PR, responding to review), not writing perfect code."
+  - question: "Do open source contributions really help when applying for jobs?"
+    answer: "Yes, but quality matters more than quantity. One thoughtful PR with clear context and good review interaction tells a hiring manager more than fifty trivial typo fixes. Recruiters and engineers also use your GitHub as a public record of how you work, so curate it like a portfolio."
+  - question: "What is Hacktoberfest and is it worth joining?"
+    answer: "Hacktoberfest is an annual month long event in October where developers contribute to open source projects. It is worth joining as a beginner because it lowers the social barrier to opening your first PR, with many projects offering mentorship and beginner friendly issues. The key is to keep contributing after October."
+  - question: "How do I find open source projects to contribute to?"
+    answer: "Search GitHub for the good first issue or help wanted labels in projects you use, or browse maintained lists like the Appwrite issues page. The best projects for beginners have clear contributing guides, active maintainers, and recent commits. Avoid abandoned repos."
+  - question: "Can I contribute to Appwrite as a beginner?"
+    answer: "Yes. [Appwrite](https://github.com/appwrite/appwrite) is open source on GitHub, with regular good first issues across its core platform, SDKs, and docs. You can also contribute to [Appwrite Functions templates](https://github.com/appwrite/templates), which is a friendlier entry point if you are new to large codebases."
+  - question: "Is AI generated code acceptable in open source contributions?"
+    answer: "Most projects accept AI assisted code as long as you understand what it does, follow the contribution guidelines, and disclose AI use when the project asks for it. The risk is submitting code you cannot explain in review, which damages your reputation more than slow contributions would. Use AI to learn faster, not to skip learning."
 ---
 
 You might still be a student, still learning, or still wondering where you belong in tech.  

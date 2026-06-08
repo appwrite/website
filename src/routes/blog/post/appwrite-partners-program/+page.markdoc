@@ -9,6 +9,19 @@ author: laura-du-ry
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "Who is the Appwrite Partners program for?"
+    answer: "The program is built for agencies, development studios, system integrators, and freelancers who build software for clients using Appwrite. If your business depends on shipping client projects faster with a reliable backend, you're the target audience."
+  - question: "What benefits do Appwrite Partners get?"
+    answer: "Partners get early access to new features, co-marketing opportunities, premium email support, a dedicated Discord channel, and in-depth training. You also get the chance to influence the Appwrite roadmap based on real client work."
+  - question: "Does it cost anything to join the Appwrite Partners program?"
+    answer: "The application process itself is free. Visit the official partners landing page to apply and learn about any tier-specific requirements that apply to your business."
+  - question: "Can freelancers join, or is it only for agencies?"
+    answer: "Freelancers are explicitly welcome alongside agencies, development studios, and system integrators. The tiered structure is designed to grow with you as your client base expands."
+  - question: "What is Appwrite and why use it for client projects?"
+    answer: "Appwrite is an open-source backend platform that provides ready-to-use APIs for [authentication](/docs/products/auth), [databases](/docs/products/databases), [storage](/docs/products/storage), and [functions](/docs/products/functions). Agencies use it to skip building backend boilerplate so they can ship more client projects in less time."
+  - question: "How do I apply to become an Appwrite Partner?"
+    answer: "Head to appwrite.io/partners to read the full program details and submit your application. The Appwrite team reviews applications and follows up with next steps."
 ---
 
 We’re excited to introduce the **Appwrite Partners program**, a new initiative to help agencies, development studios, system integrators, and freelancers deliver exceptional solutions, scale faster, and achieve long-term success. By partnering with Appwrite, you gain access to cutting-edge tools, expert support, and a team of innovators on a mission to make software accessible and enjoyable for all creators.

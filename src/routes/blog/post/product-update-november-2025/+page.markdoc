@@ -9,6 +9,19 @@ author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What are DB operators in Appwrite?"
+    answer: "DB operators are inline, atomic instructions you can send inside an update or upsert call, like incrementing a counter or appending to an array. They run server side, so you avoid race conditions and skip the read-then-write pattern that normally requires fetching the row first."
+  - question: "What do Database AI suggestions do?"
+    answer: "When you create a new table in [Appwrite Databases](/docs/products/databases), the Console can suggest columns and indexes based on the table name. You can accept, edit, or skip the suggestions, which is faster than designing the schema from scratch."
+  - question: "How does skipping total counts speed up list queries?"
+    answer: "List endpoints normally compute the total number of matching rows alongside the page. Passing `total=false` tells Appwrite to skip that count, which removes an extra database operation and returns the page faster, especially on large tables."
+  - question: "What is Next.js standalone mode and why does it matter on [Appwrite Sites](/docs/products/sites)?"
+    answer: "Standalone mode produces a slimmer Next.js build that only includes the files needed to run in production. Deploying in standalone mode on Appwrite Sites reduces artifact size and improves cold starts compared to shipping the full project."
+  - question: "Why would I disable image transformations on a bucket?"
+    answer: "If a bucket only stores raw assets or files that should never be resized or re-encoded, turning transformations off prevents accidental processing and the associated cost. It is a defensive setting for buckets that do not need the feature."
+  - question: "Where can I read the Appwrite open letter on the developers' cloud?"
+    answer: "The letter is published on the [Appwrite blog](/blog/post/the-developers-cloud) under the title \"the developers' cloud.\" It explains how Appwrite is evolving from a backend platform into a full cloud that covers build, deploy, observe, and protect."
 ---
 Welcome back to the November product update. This month is different. If you caught our Open Letter, you already know where we're heading: Appwrite is no longer just a backend. With Appwrite Sites, we're taking a real step toward the most complete cloud platform to date.
 

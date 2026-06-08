@@ -7,6 +7,19 @@ cover: /images/blog/improve-ux-passwordless-auth/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: authentication
+faqs:
+  - question: "What is passwordless authentication?"
+    answer: "Passwordless authentication verifies a user without asking them to type a password. Common methods include passkeys, magic links sent over email, and one time passcodes delivered by email or SMS."
+  - question: "Is passwordless authentication actually more secure than passwords?"
+    answer: "Yes, in most cases. Passwords get reused, phished, and leaked in breaches, while passkeys and one time codes do not have a long lived secret a user can spill. The remaining attack surface shifts to the delivery channel (email, SMS) or the device itself."
+  - question: "Which passwordless methods does Appwrite support?"
+    answer: "Appwrite supports magic URLs, email OTPs, and phone (SMS) authentication out of the box. They are all available through [Appwrite Auth](/docs/products/auth) and can be combined with OAuth providers in the same project."
+  - question: "Should I still offer email and password if I use passwordless?"
+    answer: "Not necessarily. Many products go fully passwordless to reduce support load from password resets. If your users are not all on modern devices, keeping a fallback (like email OTPs) avoids leaving anyone locked out."
+  - question: "How do magic links work behind the scenes?"
+    answer: "The server generates a one time token, embeds it in a URL, and emails it to the user. When the user clicks the link, the token is verified and a session is created. Tokens are single use and expire quickly to limit replay attacks."
+  - question: "Are passkeys the same as magic links?"
+    answer: "No. Passkeys are cryptographic credentials stored on a device and verified with biometrics or a PIN. Magic links rely on email delivery and a one time URL. Passkeys are stronger against phishing but require browser and device support."
 ---
 
 Today, as concerns about security and user convenience only grow with digital activity, traditional password-based authentication systems are becoming a relic of the past. In recent times, we have seen a rise in passwordless systems, which are increasingly seeing adoption in both small and big companies alike, such as Expensify (whose transition was also covered in a [Forbes article](https://www.forbes.com/sites/quickerbettertech/2023/05/29/on-technology-expensify-forces-passwordless-on-its-users-and-good-for-them/?sh=397a7b017cac) in 2023. A [survey from Enterprise Strategy Group](https://research.esg-global.com/reportaction/SecuringTheIdentityPerimeterReport/Toc), a division of TechTarget, in 2022 also revealed that:

@@ -7,6 +7,19 @@ cover: /images/blog/claude-code-tips-tricks/cover.avif
 timeToRead: 5
 author: atharva
 category: tutorial
+faqs:
+  - question: "What is Claude Code?"
+    answer: "Claude Code is Anthropic's official CLI for using Claude as a coding assistant directly in your terminal. It can read and edit files, run commands, and orchestrate multi-step tasks across a codebase. It works with either the Anthropic API (priced per token) or a Claude Max plan (fixed monthly usage)."
+  - question: "How do I keep Claude Code from wandering off-task?"
+    answer: "Add explicit instructions in your prompt or `CLAUDE.md` telling the model to only do what was asked and to avoid touching unrelated files. Concrete rules work better than soft hints. Periodically remind the model in long sessions, since instructions tend to drift as context fills up."
+  - question: "What are Claude Code hooks?"
+    answer: "Hooks are commands that Claude Code runs automatically at certain events: before a tool call, after a response, when a notification fires, and more. They are configured in `settings.json` and let you do things like play a sound when a task finishes, run a formatter after edits, or block dangerous commands."
+  - question: "Should I use the Anthropic API or a Claude Max plan?"
+    answer: "Use the API if your usage is bursty or you want metered billing. Use a Max plan if you code with Claude every day and want predictable cost. Heavy users tend to come out ahead on Max, but only if you actually use the included quota."
+  - question: "How do I make Claude Code respond more concisely?"
+    answer: "Tell it explicitly: ask for short answers, no summaries unless requested, and no acknowledgements like \"sure, I'll help with that.\" The model is verbose by default. Repeating the rule near the top of a long conversation keeps it consistent as context grows."
+  - question: "Can Claude Code work on large codebases?"
+    answer: "Yes. Claude 4.5 Sonnet and newer models support up to a 1M token context window, which is enough to load a non-trivial codebase or a long history of edits. For very large repos, structure matters: a clear `CLAUDE.md`, focused subdirectories, and good search tooling let the model find what it needs without rereading everything."
 ---
 
 Anthropic's Claude models have always been regarded as the models that are decent at coding. A lot of developers like to use Claude as their “intern” or “junior developer” when writing code. However, Claude models are expensive, especially Claude Opus 4. Anthropic hasn't changed their pricing of their models for a long time and this has resulted in competitor models that are just as good (or some may claim even better) than Claude.

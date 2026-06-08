@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: startup
+faqs:
+  - question: "What is a startup incubator?"
+    answer: "An incubator is an organization that supports very early-stage startups (often pre-product or pre-revenue) by providing mentorship, office space or resources, networking, and structured programming. The goal is to help founders move from a concept to a validated, structured business, not to push for immediate scale."
+  - question: "How is an incubator different from an accelerator?"
+    answer: "Incubators are open-ended, accept earlier-stage founders, and focus on validation and foundational work. Accelerators are time-bound cohorts that expect an MVP and existing traction, take equity, and push toward fundraising at a Demo Day. Pick incubator if you are still figuring out what to build, accelerator if you are ready to scale what you have."
+  - question: "Do incubators take equity?"
+    answer: "It varies. Some incubators (especially university-affiliated or government-backed programs) take no equity and may even offer stipends or office space free. Others take small equity stakes in exchange for resources. Read the terms carefully and compare against what you actually need at your stage."
+  - question: "When should I join an incubator?"
+    answer: "When you have a concept or early prototype but no clear product-market fit yet, and you would benefit from structured mentorship, network access, or shared infrastructure. If you already have paying customers and a tight team, an accelerator is usually a better fit."
+  - question: "What should I look for in an incubator?"
+    answer: "Strong mentor quality and accessibility, a relevant alumni network, alignment with your industry or geography, and clear deliverables. Be wary of vague promises (\"access to investors,\" \"world-class mentorship\") without concrete proof. Talk to alumni before committing time or equity."
+  - question: "How does Appwrite support early-stage startups?"
+    answer: "The [Appwrite Startups program](/startups) offers cloud credits, priority support, and discounts so early-stage teams can build a production backend (auth, databases, storage, functions) without paying full price. It pairs well with incubator support, the incubator gives you mentorship and structure, Appwrite gives you the infrastructure to ship."
 ---
 
 Building a tech startup is hard, especially for first-time founders. You're expected to move fast, ship a great product, find early users, and raise money. All at once, with limited resources and almost no room for error.

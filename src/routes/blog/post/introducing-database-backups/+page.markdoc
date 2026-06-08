@@ -3,11 +3,25 @@ layout: post
 title: Introducing Database Backups
 description: A new feature that will help ensure your database's safety and security.
 date: 2024-10-15
+lastUpdated: 2026-05-22
 cover: /images/blog/introducing-database-backups/cover.avif
 timeToRead: 3
 author: jake-barnby
 category: product, announcement
 featured: false
+faqs:
+  - question: "What are Appwrite Database Backups?"
+    answer: "Database Backups capture point in time copies of your project's databases without taking the service offline. They are encrypted, stored in a separate region from your production data, and can be triggered manually or on a schedule. See [Appwrite Databases](/docs/products/databases) for setup."
+  - question: "Are backups available on the Free plan?"
+    answer: "Database Backups are available on all paid Cloud plans. The Pro plan includes a daily backup retained for 7 days, while the Enterprise plan supports custom schedules and retention windows."
+  - question: "Do backups cause downtime?"
+    answer: "No. Appwrite uses hot backups, which run in the background while your application keeps serving traffic. There is no interruption to reads, writes, or realtime subscriptions during the backup window."
+  - question: "Where are backup files stored?"
+    answer: "Backups are written to a geographically separate location from the primary data center. The remote destination is what makes them useful for disaster recovery, since a regional incident doesn't take both your data and its backup down at the same time."
+  - question: "Can I trigger a manual backup before a risky deployment?"
+    answer: "Yes. Manual backups can be started any time from the Appwrite Console alongside any policy schedules you have configured. Pre deployment snapshots are one of the most common reasons developers reach for manual backups."
+  - question: "How do I restore from a backup?"
+    answer: "Restores are initiated from the Appwrite Console on the backup you want to use. Restoring writes the backup data back into your project's database; check the Database Backups docs for the current options around in place restores versus restoring to a new database."
 ---
 
 Database integrity is critical for any data heavy application. That's why we're happy to introduce Database Backups on Appwrite, a feature designed to give you full control over the safety and recoverability of your data without any downtime. This is also a crucial milestone for Appwrite Cloud to get closer to the much anticipated GA release.
@@ -40,9 +54,9 @@ Backups are stored in a geographically separate location, isolated from our prim
 
 You can enable automated backup policies to run in the background. This will ensure you have a daily backup that is stored for 7 days as part of the Pro plan. For added flexibility, manual backups can be initiated at any time. This is particularly useful for pre-deployment snapshots or in cases where immediate backup and restoration are required, giving you complete control over your data integrity with minimal downtime.
 
-## Scale and Enterprise plan
+## Enterprise plan
 
-We offer more customization for the [Scale and Enterprise plans](https://appwrite.io/pricing) using backup policies that offer granular control over your backup strategy, allowing you to:
+We offer more customization for the [Enterprise plan](https://appwrite.io/pricing) using backup policies that offer granular control over your backup strategy, allowing you to:
 
 - Schedule backups at custom intervals or predefined schedules (e.g., daily, weekly, monthly) to match your operational requirements.
 - Set retention periods, ensuring backups are kept as long as necessary without accumulating unnecessary storage.

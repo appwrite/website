@@ -8,6 +8,19 @@ timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
+faqs:
+  - question: "Can I use the Appwrite CLI in a CI/CD pipeline?"
+    answer: "Yes, the CLI is built to run non-interactively in pipelines. Flags like `--force` skip confirmation prompts and `--all` pushes or pulls entire resource sets in one go. Combined with environment variables for project ID and API key, you can drive deployments from GitHub Actions, GitLab CI, or any other runner."
+  - question: "What does the `--force` flag do in the Appwrite CLI?"
+    answer: "It pre-answers any confirmation prompt with yes, so commands like `appwrite push collections` run end-to-end without waiting for input. This is required for CI runs because there is no terminal to type into. Use it on commands you have already validated locally."
+  - question: "What is the difference between `appwrite push` and `appwrite pull`?"
+    answer: "`push` sends your local resource definitions, like collections and functions, to the Appwrite server, while `pull` does the reverse and downloads the current state into local files. A typical workflow pulls in development to grab manual console changes, edits locally, then pushes to staging or production through CI."
+  - question: "How do I authenticate the Appwrite CLI in CI?"
+    answer: "Set the `APPWRITE_ENDPOINT`, `APPWRITE_PROJECT_ID`, and `APPWRITE_API_KEY` environment variables, then run `appwrite login --endpoint` or use the project-scoped commands directly. Store the API key as a secret in your CI provider, never in the repo. See [Appwrite Functions](/docs/products/functions) for how API keys interact with function deployments."
+  - question: "Can I deploy Appwrite Functions from a Git workflow?"
+    answer: "Yes. You can either use the Git integration that ships with Appwrite Functions, which auto-deploys on push to a configured branch, or you can use the CLI's `appwrite deploy function` in your own workflow. Both work, the right pick depends on whether you want Appwrite to drive the pipeline or your own CI."
+  - question: "How should I structure environments for staging and production?"
+    answer: "Keep separate Appwrite projects per environment so credentials and data are fully isolated. Use the same set of collection and function definitions checked into your repo, and let CI run `appwrite push` against the right project based on branch. This avoids accidental writes against production from a feature branch."
 ---
 The Appwrite CLI has undergone significant updates to enhance support for Continuous Integration and Continuous Deployment (CI/CD) pipelines. These changes make it easier to automate deployment processes and ensure robust, non-interactive actions. In this article, we’ll explore the new additions, the benefits of these enhancements for CI/CD pipelines, and best practices for using the Appwrite CLI in your workflows.
 

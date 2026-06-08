@@ -7,6 +7,19 @@ cover: /images/blog/everyone-can-do-devrel-but-should-they/cover.avif
 timeToRead: 5
 author: aditya-oberai
 category: devrel
+faqs:
+  - question: "What does Developer Relations (DevRel) actually do?"
+    answer: "DevRel is the bridge between a product and the developers who build on it. The job spans technical work like writing code and demos, content like blogs and videos, and community work like running events, supporting users, and feeding insights back to product and engineering teams."
+  - question: "What skills do you need for a DevRel role?"
+    answer: "DevRel sits at the intersection of code, content, and community. You do not need to be a master of all three on day one, but you need real experience in each. Hands-on engineering grounds your empathy for users, content skills let you communicate at scale, and community work teaches you how to plan, listen, and measure impact."
+  - question: "Is DevRel a good entry point into tech?"
+    answer: "Not really. It is often pitched as an easier path than software engineering, but the bar for DevRel is high because you need to write code well enough to teach it, ship content people actually want to read, and contribute to business outcomes. Most successful DevRel folks come in with a few years of engineering, content, or community experience already."
+  - question: "How is DevRel different from marketing or developer marketing?"
+    answer: "DevRel is closer to the product than marketing usually is. DevRel teams ship technical content, contribute to docs and SDKs, run office hours, support developers in communities, and influence the product roadmap based on what they hear. Marketing focuses on positioning, demand, and brand. The work overlaps, but the skill mix and incentives differ."
+  - question: "How can I tell if DevRel is the right career for me?"
+    answer: "Spend time in each of the three areas (code, content, community) before committing. Contribute to an open-source project, run a community event, write tutorials. If you enjoy all three and can point to impact in each, you have the foundation. If you only love one, pursue that single craft instead. It is usually a more sustainable path."
+  - question: "What does a DevRel role at Appwrite look like?"
+    answer: "At [Appwrite](/), DevRel work spans developer advocacy, content production, community management, product feedback, and contributions back to the product. The team builds with Appwrite, ships sample apps, writes for the blog and docs, and runs initiatives like office hours and the [Discord community](/discord)."
 ---
 
 One thing that I can say, having spent five years in communities and over two years as a Developer Advocate at Appwrite, is that Developer Relations (or DevRel) isn’t just a job but a philosophy. DevRel is something we can do by helping developers in our communities, sharing knowledge through our content, or writing code and building projects. That being said, should everyone be rushing towards a job in Developer Relations? Recently, I have observed a bubble developing around this space. I want to take this blog as an opportunity to share my opinion on whether everyone should chase DevRel as a career.

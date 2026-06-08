@@ -7,6 +7,19 @@ cover: /images/blog/building-apps-with-bun-and-appwrite/bun-cover.avif
 timeToRead: 9
 author: aditya-oberai
 category: tutorial
+faqs:
+  - question: "What is Bun and how is it different from Node.js?"
+    answer: "Bun is an all-in-one JavaScript runtime and toolkit that includes a bundler, test runner, and Node.js-compatible package manager. It is written in Zig and aims to be significantly faster than Node.js for installing packages, running scripts, and serving HTTP traffic. Bun is also Node.js-compatible for most APIs, so existing projects can often migrate without major changes."
+  - question: "Can I use Bun with Appwrite Functions?"
+    answer: "Yes. Appwrite Functions supports Bun as a first-class runtime, so you can deploy Bun code and have it executed on demand or on a schedule. See [Appwrite Functions](/docs/products/functions) for runtime options and deployment details."
+  - question: "Does Bun support TypeScript out of the box?"
+    answer: "Yes. Bun has native TypeScript support, which means you can run `.ts` and `.tsx` files directly without a separate build step. It also handles `.js`, `.cjs`, `.mjs`, and `.jsx` files, which makes it easy to mix and match across an existing project."
+  - question: "Why is Bun's package manager faster than npm?"
+    answer: "Bun skips a few network checks that npm performs by default, caches aggressively, and uses optimizations like labeled pointer lists to reduce overhead. The `@latest` tag is effectively ignored on install, which avoids an extra round trip. Many teams adopt Bun only for `bun install` while keeping Node.js as their runtime."
+  - question: "How do I connect a Bun app to Appwrite?"
+    answer: "Install the Appwrite Node.js SDK with `bun add node-appwrite`, then initialize the client with your endpoint, project ID, and an API key. From there, you can call any Appwrite service the same way you would in Node.js. The [Appwrite Functions](/docs/products/functions) docs cover server SDK usage in detail."
+  - question: "Should I switch all my projects from Node.js to Bun?"
+    answer: "Not necessarily. Bun is production-ready since 1.0, but some Node.js libraries still hit edge cases under Bun. A safe path is to start with greenfield projects or scripts, validate the performance gains, then migrate larger services once you trust the runtime in your environment."
 ---
 
 If you are a developer, your definition of `bun` must have recently changed. From what we knew to be a round piece of bread, it is now a new runtime in JavaScript, and as Bun claims, it is faster than the rest! In this article, we will find out what Bun really is, how it compares with Node.js and Deno, and how you can build apps with Bun and Appwrite.

@@ -8,7 +8,19 @@ timeToRead: 6
 author: eldad-fux
 category: tutorial
 unlisted: true
-
+faqs:
+  - question: "Can I host an Astro site for free on Appwrite Sites?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) has a free tier that covers Astro deployments including a global CDN, automatic SSL, and DDoS protection. This is enough for most blogs, marketing sites, and documentation projects."
+  - question: "Does Appwrite Sites support Astro's hybrid rendering?"
+    answer: "Yes. Appwrite Sites supports both static Astro builds and hybrid rendering, where dynamic routes can be handled by [Appwrite Functions](/docs/products/functions). You can use island architecture for partial hydration without changing how you deploy."
+  - question: "How do I deploy an Astro project to Appwrite Sites?"
+    answer: "Connect your Git repository for automatic deploys on every push, use `appwrite deploy site` from the CLI, or upload your `dist` folder manually in the console. Git based deploys are the recommended workflow for most teams. See [deploy from Git](/docs/products/sites/deploy-from-git) for details."
+  - question: "Can I use Appwrite as a backend for an Astro app?"
+    answer: "Yes. Astro pages can call [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), and [Storage](/docs/products/storage) directly through the web SDK, or you can wrap them in API routes. This is a common pattern for adding logins, content management, or file uploads to an Astro site."
+  - question: "Does Appwrite Sites support custom domains for Astro?"
+    answer: "Yes. You can attach your own domain to any Appwrite Site, and SSL certificates are provisioned automatically. There is no manual certificate management required."
+  - question: "How does Appwrite Sites compare to Netlify or Vercel for Astro?"
+    answer: "Netlify, Vercel, and Appwrite Sites all offer Git based deploys, free tiers, and CDN backed hosting for Astro. Appwrite Sites is open source and includes backend products in the same platform, so you do not need to integrate a separate auth or database provider. Pick Appwrite if you want hosting and backend under one roof."
 ---
 
 Astro has emerged as a powerful framework for building ultra-fast, content-driven websites by leveraging its hybrid rendering approach and optimized build process. While deploying Astro applications is straightforward, finding a hosting platform that balances cost, scalability, and developer-friendly features can be challenging.

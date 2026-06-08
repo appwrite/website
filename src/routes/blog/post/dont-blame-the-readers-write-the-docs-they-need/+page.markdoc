@@ -7,6 +7,19 @@ cover: /images/blog/dont-blame-the-readers-write-the-docs-they-need/cover.avif
 timeToRead: 10
 author: vincent-ge
 category: design, brand
+faqs:
+  - question: "Why did Appwrite redesign its documentation?"
+    answer: "The old docs were minimal and worked well for early open-source adopters, but newer learners needed more guidance and Appwrite's surface area kept growing. The team rebuilt the docs around the full developer journey: discover, evaluate, learn, build, scale, while keeping the original quick-start brevity for experienced developers."
+  - question: "What feedback drove the documentation changes?"
+    answer: "Input came from the State of Appwrite survey, the [Discord community](/discord), GitHub issues on the docs repo, Office Hours, developer interviews, and UX research sessions. The team also took notes at events like DevRelCon and Refactor DX to evaluate the design against current industry practice."
+  - question: "How are the new Appwrite docs structured?"
+    answer: "Each product section starts with a one-page quick start for veterans, followed by deeper conceptual docs, step-by-step tutorials, and reference material further down the navigation. The structure mirrors a typical developer journey from first read to scaling in production."
+  - question: "What tools power the Appwrite docs?"
+    answer: "The docs are written in an extended Markdown flavor powered by Markdoc and SvelteKit (via [svelte-markdoc-preprocess](https://github.com/TorstenDittmann/svelte-markdoc-preprocess)). Custom syntax like the multi-code selector is implemented as Markdoc tags, which keeps contributions easy while supporting rich features."
+  - question: "How can the community contribute to Appwrite's documentation?"
+    answer: "Docs are open source on the [Appwrite docs repo](https://github.com/appwrite/docs), written in extended Markdown. You can open issues, suggest changes, or submit pull requests. Markdown lowers the contribution bar so domain experts and product users can edit content without learning a custom DSL."
+  - question: "What makes good developer documentation?"
+    answer: "Good docs cover the entire developer journey rather than just API reference: helping readers discover, evaluate, learn, build, and scale with the product. They balance brevity for experts with step-by-step tutorials for newcomers, support fast search, and treat the docs themselves as a product that responds to feedback."
 ---
 
 You’ve seen this exact conversation in support threads if you're active in any developer community.

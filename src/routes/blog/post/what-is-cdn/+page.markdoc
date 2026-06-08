@@ -9,6 +9,19 @@ author: veeresh-mulge
 callToAction: true
 unlisted: true
 category: tutorial
+faqs:
+  - question: "What is a CDN in plain terms?"
+    answer: "A content delivery network is a fleet of servers placed in cities around the world that cache copies of your content close to your users. When someone visits your site, they connect to the nearest edge server instead of the origin, which means lower latency and less load on your origin."
+  - question: "What is the difference between a CDN and a web host?"
+    answer: "A web host runs your origin server, where your app and data actually live. A CDN sits in front of that origin and serves cached copies of static (and sometimes dynamic) responses from many global locations. You almost always want both."
+  - question: "Does Appwrite include a CDN?"
+    answer: "Yes. Every site you deploy on [Appwrite Sites](/docs/products/sites) is served through Appwrite's global CDN with 120+ points of presence, free TLS, and automatic edge caching. There is no separate CDN to set up. See the [Appwrite Network docs](/docs/products/network) for details."
+  - question: "Can a CDN cache API responses, not just static files?"
+    answer: "Yes. Modern CDNs (including the Appwrite CDN) cache API responses based on URL, headers, and cache control directives. This is most useful for read heavy endpoints with shared responses, such as product listings or public content feeds."
+  - question: "Will a CDN improve security as well as speed?"
+    answer: "Usually yes. CDNs sit in front of your origin and absorb traffic spikes and DDoS attacks, terminate TLS at the edge, and often include a web application firewall. They are part of a layered defense, not a replacement for application level security."
+  - question: "How is cached content kept up to date?"
+    answer: "Each cached object has a time to live (TTL). When it expires, the next request triggers a fresh fetch from the origin. You can also force invalidation explicitly when you push new content, so users do not have to wait for the TTL to expire."
 ---
 Ever clicked on a website and been surprised at how quickly, or painfully slowly, it loads? That speed isn't just about how powerful the server is; it's about where the server is. If your app lives in New York but your users are in Tokyo, every request must cross an ocean before seeing anything. Not ideal.
 

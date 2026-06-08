@@ -7,6 +7,19 @@ cover: /images/blog/building-init-giveaway-app/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: open-source
+faqs:
+  - question: "What does the Init giveaway app actually do?"
+    answer: "It lets users log in with Discord, registers them for a daily giveaway, and then randomly picks a winner using a roulette-style spinning wheel. Registrations are stored in Appwrite Databases and the wheel updates in realtime as new entries come in. It was built to make Init week giveaways feel like a live event, not a spreadsheet drawing."
+  - question: "How does Appwrite handle Discord OAuth?"
+    answer: "Appwrite Auth ships with a Discord OAuth adapter, so you configure the client ID and secret from the Discord Developer Portal, add the redirect URI, and call the SDK to start the login flow. The user is redirected back with a valid session that you can use across [Appwrite Auth](/docs/products/auth) and [Appwrite Databases](/docs/products/databases)."
+  - question: "How do I prevent duplicate giveaway entries in Appwrite?"
+    answer: "Create a unique index on the field that should not repeat, for example a Discord username or email. Once the index is in place, a second insert with the same value will fail with a 409, which you can catch in the UI and show as a friendly message. This is how the Init app stops one user from entering twice in a day."
+  - question: "How does the realtime wheel update work?"
+    answer: "The frontend subscribes to the Appwrite Databases realtime channel for the giveaway collection. When a new document is created, the SDK fires an event and the wheel re-renders with the new entry. There is no polling involved, the connection is held open by Appwrite. See [Appwrite Databases](/docs/products/databases) for details on realtime."
+  - question: "Can I build my own giveaway or raffle app on Appwrite?"
+    answer: "Yes. You only need a collection for entries, an OAuth provider for sign-in, and a frontend to pick winners. The whole thing fits inside a small SvelteKit, Next.js, or React app and can run on Appwrite Cloud's free tier for small events."
+  - question: "Is the source code for the Init giveaway app available?"
+    answer: "Appwrite has shared similar community apps as open source in the past. Check the Appwrite GitHub organization and the Init recap posts for repository links. Treat the article as a blueprint you can recreate in any stack that has an Appwrite SDK."
 ---
 
 Last week, we saw the culmination of a whole new initiative, the celebration of everything new with Appwrite and the community, called [Init](https://appwrite.io/init). From February 26th to March 1st, we celebrated a new product and/or feature every day and shared educational content around the same. Alongside, we hosted online events each day in the Appwrite Discord server with creators and friends of Appwrite to learn about the new releases, ask questions, and, most of all, geek out together.

@@ -8,6 +8,19 @@ timeToRead: 7
 author: aditya-oberai
 category: product
 unlisted: true
+faqs:
+  - question: "Is Appwrite Messaging a drop-in replacement for FCM?"
+    answer: "Not quite. [Appwrite Messaging](/docs/products/messaging) covers push, email, and SMS in one product, but on Android it still relies on FCM under the hood for the actual push delivery. Where it differs is that you keep control of your data, scheduling, targeting, and message content."
+  - question: "What channels does Appwrite Messaging support?"
+    answer: "Appwrite Messaging supports push notifications for iOS and Android, email, and SMS. You can connect providers like Sendgrid, Mailgun, Twilio, or Vonage for the underlying delivery."
+  - question: "Does Appwrite support topic-based messaging?"
+    answer: "Yes. You can create topics, subscribe users to them, and broadcast messages to a topic instead of managing individual recipient lists. This mirrors the topic pattern from FCM."
+  - question: "Is Appwrite Messaging compliant with privacy regulations?"
+    answer: "Yes. Appwrite is GDPR, CCPA, and HIPAA compliant, and Messaging benefits from the same security posture as the rest of the platform. Self-hosting gives you even more control if you have strict data residency requirements."
+  - question: "Can I schedule messages in advance?"
+    answer: "Yes. You can draft, preview, and schedule messages from the Appwrite console or via the API. This is useful for product launches, reminders, and timezone-aware campaigns."
+  - question: "Do I have to migrate off FCM right now?"
+    answer: "FCM legacy HTTP and XMPP APIs were deprecated in June 2024 and turned off in mid 2024. If you still use the legacy API you need to migrate to FCM HTTP v1 or switch to a platform like Appwrite Messaging that handles the v1 API for you."
 ---
 With Firebase Cloud Messaging (FCM) officially deprecated in June 2024, developers are now faced with a crucial decision: migrate to FCM’s newer API or explore open-source alternatives.
 

@@ -7,6 +7,19 @@ cover: /images/blog/case-study-myshoefitter.avif
 timeToRead: 5
 author: aditya-oberai
 category: customer-stories
+faqs:
+  - question: "What is mySHOEFITTER?"
+    answer: "mySHOEFITTER is an AI tool that determines a person's shoe size from a photo of their foot placed on an A4 sheet. It captures foot length and width with millimeter precision, returning the correct size in under a minute. The technology was developed with the Fraunhofer Institute and used by over 12,000 customers."
+  - question: "How does mySHOEFITTER use Appwrite?"
+    answer: "mySHOEFITTER uses [Appwrite Auth](/docs/products/auth) for anonymous user accounts (which helps with GDPR compliance), [Appwrite Storage](/docs/products/storage) for foot images, [Appwrite Functions](/docs/products/functions) to call their AI and compute shoe size, and [Appwrite Databases](/docs/products/databases) for results."
+  - question: "Why does mySHOEFITTER use anonymous Appwrite accounts?"
+    answer: "Anonymous accounts let users start using the app without signing up, which keeps the experience frictionless and helps with GDPR compliance (no personal data is collected by default). Appwrite Auth supports creating anonymous sessions that can be upgraded to full accounts later if needed."
+  - question: "Can I use Appwrite with an AI or ML pipeline?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) can call any external API, including custom ML model endpoints. Store inputs in [Appwrite Storage](/docs/products/storage), trigger a Function on upload, send the data to your model, and write the results back to [Appwrite Databases](/docs/products/databases)."
+  - question: "Why did mySHOEFITTER choose Appwrite over Directus or Strapi?"
+    answer: "Directus and Strapi worked well out of the box but were not easy to extend without instability. Appwrite Cloud gave the team a managed BaaS that they did not have to host themselves, plus Functions to extend the platform with custom logic for AI integration."
+  - question: "What kind of return rate reduction is possible with size-fitting tools?"
+    answer: "Over 30% of online shoe orders are returned, and about 75% of those returns are caused by wrong size selection. mySHOEFITTER reported a 98.8% success rate (correct sizes) in a Bayerische Landesbank pilot, meaning the right-size selection problem can be largely eliminated with accurate measurement."
 ---
 
 > “Appwrite has been a tremendous asset in implementing our IT infrastructure. Not only is the software an absolute game-changer, but the team is always there when you need them. The integrated user authentication and the ease of creating data structures have undoubtedly saved us several weeks' worth of time. For me, Appwrite is the perfect backend solution. All you have to do is sign up, and your backend is ready to go. I have never seen such an innovative and easy-to-understand backend solution before!” \

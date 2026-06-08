@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "What is the Appwrite Transactions API?"
+    answer: "The Transactions API lets you stage multiple create, update, or delete operations across one or more tables and commit them atomically. If any operation fails validation at commit time, none are written and Appwrite rolls everything back, so you avoid partial writes and inconsistent state."
+  - question: "What is an ACID transaction?"
+    answer: "ACID stands for Atomicity, Consistency, Isolation, and Durability. Atomicity means all operations succeed or none do. Consistency means the database moves from one valid state to another. Isolation means concurrent transactions do not see each other's intermediate state. Durability means committed data persists even after failures."
+  - question: "How do I use transactions in Appwrite Databases?"
+    answer: "Call `createTransaction()` to get a transaction id, then use that id when calling `create`, `update`, or `delete` operations to stage them. When you are ready, commit the transaction in a single atomic write. You can also abort or let it expire if you change your mind."
+  - question: "What happens if I never commit a transaction?"
+    answer: "Each transaction has a configurable time-to-live, between 1 minute and 1 hour, with a default of 5 minutes. If you do not commit or abort within that window, Appwrite automatically discards the staged operations to avoid resource leaks."
+  - question: "Can a transaction span multiple databases or tables?"
+    answer: "Yes. A single transaction can include operations across different tables and even different databases in your project. This is useful for workflows like order processing that need to update inventory in one table, create an order in another, and adjust user credits in a third."
+  - question: "When should I use the Transactions API?"
+    answer: "Reach for transactions any time a workflow requires multiple writes to succeed together or roll back together. Common cases include checkout flows, user provisioning, multi-table data syncs, and migrations. See the [Appwrite Databases documentation](/docs/products/databases) for full API details."
 ---
 When dealing with multi-step workflows, like order processing or data syncs, it's not enough for some of your writes to succeed. You need every operation in the sequence to succeed together, or not happen at all. Anything less leads to incomplete states, corrupted records, and systems that are harder to reason about. 
 

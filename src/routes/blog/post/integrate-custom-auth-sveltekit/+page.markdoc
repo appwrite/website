@@ -8,6 +8,19 @@ timeToRead: 6
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "What is custom token authentication in Appwrite?"
+    answer: "Custom token authentication lets you use a Server SDK to generate a short lived token that the client SDK can exchange for a session. This way, you can code your own login flow (or wrap an external provider) while still issuing real Appwrite sessions. See [Appwrite Auth](/docs/products/auth) for details."
+  - question: "When should I use custom tokens instead of built in providers?"
+    answer: "Use custom tokens when you need to integrate a system Appwrite doesn't ship a first party provider for, like an internal SSO, a legacy database of users, or a specialized provider. For standard email, OAuth, or OTP flows the built in providers are simpler."
+  - question: "Can I run the token generation inside an Appwrite Function?"
+    answer: "Yes. [Appwrite Functions](/docs/products/functions) can host your custom auth logic and call the Server SDK to create the token. The client then exchanges that token for a session, which keeps your API key out of the browser."
+  - question: "How long is a custom auth token valid for?"
+    answer: "Custom tokens are short lived and intended to be exchanged for a session immediately after they are issued. Once exchanged, the session follows your project's normal session lifetime."
+  - question: "Why does this tutorial use SvelteKit?"
+    answer: "SvelteKit has built in server routes, so you can run the privileged token generation server side without spinning up a separate backend. The same pattern works in Next.js, Nuxt, Remix, or any framework with server side code."
+  - question: "Is custom token auth secure if I expose my API key to the client?"
+    answer: "Your API key must never reach the client. Token generation runs on a server (a SvelteKit endpoint, an Appwrite Function, or your own backend), and only the resulting token secret is returned to the browser to exchange for a session."
 ---
 
 Whether we contribute to any existing software or build new one, user authentication is a fundamental feature our users need. Between email-password authentication, magic URLs, phone and email OTPs, and 30+ OAuth providers, Appwrite offers a variety of 1st-party offerings for your apps. However, every now and then, you will need an authentication solution beyond this list. Fortunately, Appwrite now offers a solution that allows developers to integrate any external authentication method with their Appwrite project.

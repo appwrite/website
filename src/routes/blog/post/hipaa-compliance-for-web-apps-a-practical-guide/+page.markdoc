@@ -9,6 +9,19 @@ author: aishwari
 category: security
 featured: false
 unlisted: true
+faqs:
+  - question: "What is PHI and when does HIPAA apply to my app?"
+    answer: "PHI (Protected Health Information) is individually identifiable health information about a person's health status, care, or payment for care. HIPAA applies when your organization is a covered entity or a business associate handling PHI in that context. Not every health-adjacent app falls under HIPAA, the legal relationship and how data is handled matter."
+  - question: "What are the three core HIPAA rules developers need to understand?"
+    answer: "The Security Rule covers technical, administrative, and physical safeguards for electronic PHI. The Privacy Rule governs how PHI may be used and disclosed. The Breach Notification Rule defines when and how you must report breaches to affected individuals, HHS, and sometimes the media."
+  - question: "Do I need a Business Associate Agreement (BAA) with my cloud or backend provider?"
+    answer: "Yes, if that provider stores, processes, or transmits PHI on your behalf, you need a signed BAA before sending any PHI through their systems. Without a BAA in place, using the vendor for PHI is itself a violation, even if their infrastructure is technically capable of meeting HIPAA requirements."
+  - question: "Is encryption alone enough for HIPAA compliance?"
+    answer: "No. Encryption (in transit and at rest) is a baseline expectation, but compliance also requires access controls, audit logging, least-privilege role assignments, key management, breach response procedures, and signed BAAs with any vendors that touch PHI. Encryption only addresses confidentiality, not the full Security Rule."
+  - question: "How does the principle of least privilege apply to HIPAA web apps?"
+    answer: "Each user and service should only have access to the minimum PHI required for their role. Enforce permissions at the backend (not just the UI), scope access to specific records or actions, and audit access regularly. Frontend-only access controls are trivially bypassed and do not satisfy HIPAA expectations."
+  - question: "How does Appwrite help with HIPAA-aligned architectures?"
+    answer: "[Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), and [Storage](/docs/products/storage) centralize authentication, permissions, and audit-friendly logging at the backend, which reduces the ad-hoc security code where mistakes typically happen. HIPAA compliance still requires organizational processes, BAAs, and risk analysis on top of any platform."
 ---
 
 Modern healthcare software moves fast. Patient portals, telehealth platforms, clinical dashboards, and AI-powered tools are now built with the same technologies used across the broader web. But when an application handles protected health information (PHI), speed alone is not enough. Trust, safety, and responsibility become part of the product itself.

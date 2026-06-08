@@ -9,6 +9,19 @@ author: ebenezer-don
 category: product,init
 featured: true
 callToAction: true
+faqs:
+  - question: "What is the difference between CSR, SSG, and SSR?"
+    answer: "CSR (client-side rendering) builds the page in the browser after the initial load. SSG (static site generation) builds pages at build time and serves them as static files. SSR (server-side rendering) builds pages on the server on every request. The main differences are when HTML is generated and where the work happens."
+  - question: "Which rendering strategy is best for SEO?"
+    answer: "SSG and SSR are both strong for SEO because they send fully formed HTML to crawlers. CSR is the weakest for SEO, since search engines may not reliably execute the JavaScript needed to see your content. If SEO matters, prefer SSG for static content and SSR for dynamic content."
+  - question: "When should I use SSG instead of SSR?"
+    answer: "Use SSG when content does not change per request and updates infrequently, like blogs, documentation, or marketing pages. Use SSR when content is personalized, depends on the current user, or needs to be fresh on every visit, like dashboards or product listings with live inventory."
+  - question: "Can I mix CSR, SSG, and SSR in the same app?"
+    answer: "Yes. Modern frameworks like Next.js, Nuxt, and SvelteKit let you pick a rendering strategy per page or per route. A typical setup uses SSG for marketing pages, SSR for product pages, and CSR for authenticated dashboards."
+  - question: "How does Appwrite work with different rendering strategies?"
+    answer: "Appwrite supports all three. Use the [web SDK](/docs/sdks) for CSR apps. For SSR, use a server SDK with session cookies so you can authenticate users on the server. [Appwrite Auth](/docs/products/auth) supports both client-side sessions and server-side session secrets."
+  - question: "Is SSR slower than CSR?"
+    answer: "SSR has a higher initial server cost because the server renders HTML for every request. But the time to first meaningful paint is usually faster than CSR because the browser does not have to download and run JavaScript before seeing content. Caching and edge rendering close most of the gap."
 ---
 
 In modern web development, especially when using frameworks like React, Next.js, Vue, or Svelte, you'll come across terms like **CSR**, **SSG**, and **SSR**. These terms represent the fundamental decisions about how and when the content on your web page is generated and delivered to the user.

@@ -8,6 +8,19 @@ timeToRead: 5
 author: jake-barnby
 category: announcement
 featured: false
+faqs:
+  - question: "How do I export data from an Appwrite database to CSV?"
+    answer: "Open the table you want to export in the [Appwrite Console](/docs/products/databases), apply any filters or queries, choose which columns to include, and start the export. Appwrite runs the export in the background and emails you a short-lived download link when the file is ready. You no longer need the SDK or REST API for this."
+  - question: "Can I export only filtered rows instead of the entire table?"
+    answer: "Yes, CSV exports respect the filters and search parameters you've applied to the table view. This lets you export targeted slices of data without writing custom scripts. You can also choose specific columns to keep the output lean."
+  - question: "What customization options are available for CSV exports?"
+    answer: "You can pick columns, apply queries, set a custom delimiter, include or skip the header row, and get notified by email when the export completes. Related documents are exported as IDs by default to keep the data structured. This makes the same export usable for engineering, analytics, or non-technical teammates."
+  - question: "Are CSV exports available on self-hosted Appwrite?"
+    answer: "CSV exports launched first on Appwrite Cloud and will be coming to self-hosted in a later release. If you self-host, watch the Appwrite changelog and upgrade once the feature lands in a stable version."
+  - question: "How does Appwrite handle large CSV exports without timing out?"
+    answer: "Appwrite runs CSV exports asynchronously as background tasks, so you can continue working while large datasets are processed. When the export is ready, you get an email with a short-lived download link. This avoids the timeout and pagination problems you'd hit doing it manually through the API."
+  - question: "What's the difference between CSV exports and database backups?"
+    answer: "CSV exports give you a portable, human-readable file you can hand to other tools or teammates, while database backups produce a complete snapshot meant for restoring your project. Use CSV exports for analytics, reports, or migrations to external systems. Use backups for disaster recovery or point-in-time restores."
 ---
 Data flows through every system you build, for reporting, analysis, or integrations. Getting it out cleanly and consistently should be just as simple as storing it.
 

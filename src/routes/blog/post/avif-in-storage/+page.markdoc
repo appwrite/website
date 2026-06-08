@@ -8,6 +8,19 @@ timeToRead: 6
 author: ebenezer-don
 category: tutorial
 featured: false
+faqs:
+  - question: "What is AVIF and why use it?"
+    answer: "AVIF is an image format built on the AV1 video codec. It typically achieves 50% or smaller file sizes than JPEG at equivalent visual quality, supports transparency and animations, and works in HDR. Smaller images mean faster page loads and lower bandwidth bills."
+  - question: "Does Appwrite Storage support AVIF?"
+    answer: "Yes. You can upload AVIF files directly to [Appwrite Storage](/docs/products/storage), and you can also convert other formats to AVIF on the fly via getFilePreview by setting the output format to ImageFormat.Avif."
+  - question: "Can Appwrite convert my JPEGs and PNGs to AVIF automatically?"
+    answer: "Yes. Use getFilePreview with output set to AVIF to convert any uploaded image on demand. You can tune the quality parameter (0 to 100) and crop with the ImageGravity options."
+  - question: "How do I handle browsers that don't support AVIF?"
+    answer: "Serve AVIF via the HTML picture element with WebP and JPEG fallbacks, and let the browser pick the first supported source. Appwrite's getFilePreview can deliver each format from the same source file, so you don't store multiple copies."
+  - question: "Is AVIF supported in all modern browsers?"
+    answer: "Chrome, Edge, Firefox, and Safari all support AVIF in current versions. Older browsers may need a fallback (WebP or JPEG), which is straightforward with the picture element."
+  - question: "Will AVIF reduce my Appwrite Storage bandwidth costs?"
+    answer: "Likely yes, since AVIF files are typically much smaller than JPEG or PNG for the same image quality. Less data shipped to clients means lower egress and faster load times, though exact savings depend on your image types and quality settings."
 ---
 
 Every web developer knows the struggle with image optimization. You want your images to look good, but large file sizes slow down your sites and hurt the user experience. JPEG and WebP have been popular choices for image compression, but they have limitations when it comes to achieving high compression without sacrificing image quality. AVIF offers a solution to this problem.

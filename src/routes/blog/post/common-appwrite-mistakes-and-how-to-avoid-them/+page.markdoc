@@ -8,6 +8,19 @@ timeToRead: 5
 author: aishwari
 category: product
 featured: false
+faqs:
+  - question: "What is the most common mistake developers make with Appwrite permissions?"
+    answer: "Treating permissions as something to clean up after the app is built. Appwrite's permission model is explicit by design, so nothing is exposed unless you say so. Design the permission model before connecting the frontend, use role-based permissions, and always test with at least two separate accounts before launch."
+  - question: "Why should I never put Appwrite API keys in the frontend?"
+    answer: "Server API keys grant elevated privileges and bypass document permissions. If they appear in client-side code, anyone who opens DevTools has full access to your backend. If something only works with a server key, move that logic into an [Appwrite Function](/docs/products/functions) and call the function from the client instead."
+  - question: "When should I add indexes in Appwrite Databases?"
+    answer: "Before launch, not after queries slow down. Add an index for every field you filter or sort by, and use compound indexes when a query combines multiple conditions, for example filtering by status and ordering by `$createdAt`. Treat indexes as part of your schema in [Appwrite Databases](/docs/products/databases), not as an optimization to defer."
+  - question: "Should business logic live in the frontend or in Appwrite Functions?"
+    answer: "Anything sensitive, like payments, role assignments, or external API calls with secrets, belongs in [Appwrite Functions](/docs/products/functions). The frontend should only handle UI and lightly validate input. A determined user can change anything that runs in their browser, so trust the server, not the client."
+  - question: "What happens if I do not handle 409 conflict errors on Appwrite writes?"
+    answer: "Users will see generic error pages instead of useful messages. The most common cause of a 409 is a unique index rejecting a duplicate write, for example two signups with the same email. Catch the error in the frontend and show a clear message, like \"already on the list,\" rather than letting the failure bubble up unhandled."
+  - question: "How can I avoid running into Appwrite rate limits?"
+    answer: "Batch requests where possible, paginate large reads with the Query API, and cache stable data on the client. For functions, make sure you are not invoking them in tight loops without backoff. Most rate limit issues come from accidental N+1 patterns, not from the platform being restrictive."
 ---
 
 Appwrite is built to help you move fast. Auth, databases, storage, functions, realtime, all in one place, no glue code required.

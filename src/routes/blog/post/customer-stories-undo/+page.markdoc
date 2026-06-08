@@ -7,6 +7,19 @@ cover: /images/blog/case-study-undo/cover.avif
 timeToRead: 6
 author: aditya-oberai
 category: customer-stories
+faqs:
+  - question: "What is UNDO?"
+    answer: "UNDO is a low barrier-to-entry asset management platform for circular businesses (rental, resale, recycling models). It offers digital product passports via QR codes, asset tracking through lifecycle stages, and integrations with Odoo, WordPress, Shopify, SAP, and WooCommerce. It supports 5 customers with over 9000 tracked articles."
+  - question: "How does UNDO use Appwrite?"
+    answer: "UNDO uses [Appwrite Auth](/docs/products/auth) with Google OAuth for users, multiple [Appwrite Databases](/docs/products/databases) for data separation, [Appwrite Storage](/docs/products/storage) for QR code photos, [Appwrite Functions](/docs/products/functions) for scan analysis, Realtime for live scan updates, and [Appwrite Messaging](/docs/products/messaging) for anomaly alerts."
+  - question: "Can Appwrite be self-hosted on customer premises?"
+    answer: "Yes. UNDO self-hosts Appwrite on each customer's on-prem compute, which is required by their compliance policies. Appwrite is open source and runs in Docker, which makes it straightforward to deploy inside a customer's own infrastructure or air-gapped environment."
+  - question: "How long does it take to build an MVP with Appwrite?"
+    answer: "UNDO's solo developer shipped their MVP in 2 to 3 months. Because Appwrite handles auth, databases, storage, functions, realtime, and messaging out of the box, a small team can focus on product logic instead of building backend infrastructure from scratch."
+  - question: "What is a digital product passport?"
+    answer: "A digital product passport is a record that captures a product's materials, manufacturing process, care instructions, and recycling information, often accessed via a QR code on the item. EU regulations like Extended Producer Responsibility (EPR) are pushing companies to provide them for transparency."
+  - question: "Can Appwrite handle QR-code based asset tracking?"
+    answer: "Yes. Store QR codes (or their decoded payloads) in [Appwrite Databases](/docs/products/databases), upload scanned images to [Appwrite Storage](/docs/products/storage), and use [Appwrite Functions](/docs/products/functions) to update asset status on each scan. [Appwrite Realtime](/docs/products/databases) can push live updates to dashboards."
 ---
 
 Over the past decade, Jonas Janssen has seen the circular economy grow in Belgium, resulting in sustainable business models that focus on rental, resale, and recycling for consumer companies. At his previous job as a CTO, he interacted with several customers, often sustainability-focused small and medium-sized businesses (SMBs). However, many of these companies mentioned the lack of software solutions for managing logistics and supply chains in circular businesses. Major solutions providers like Microsoft and SAP would build software with extensive feature sets and large prices that these companies neither needed nor could afford. Simply put, there was no software solution in the market for circular businesses with a low barrier of entry and reasonable pricing.

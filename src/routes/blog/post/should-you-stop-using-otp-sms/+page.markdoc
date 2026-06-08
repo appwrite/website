@@ -8,6 +8,19 @@ timeToRead: 7
 author: aditya-oberai
 category: product
 featured: false
+faqs:
+  - question: "Should I stop using SMS OTPs in my app?"
+    answer: "If you can move users to a stronger second factor (TOTP via an authenticator app, passkeys, or push approval), do it. SMS is vulnerable to SIM-swapping, SS7 interception, and social engineering, and per-message costs scale poorly. SMS OTP is still acceptable as a fallback or for low-risk flows, but it should not be your only second factor for sensitive actions."
+  - question: "What is SIM swapping and why does it break SMS OTP?"
+    answer: "SIM swapping is when an attacker convinces a mobile carrier to port a victim's phone number to a SIM the attacker controls. Once they own the number, every SMS OTP (including 2FA codes and account recovery codes) goes straight to them. It is a social engineering attack against the carrier, not the user, which is why the user has no way to prevent it directly."
+  - question: "Are TOTP authenticator apps actually more secure than SMS?"
+    answer: "Yes. TOTP codes are generated locally on the device from a shared secret, so they never travel over the cellular network and cannot be intercepted via SS7 or stolen via SIM-swap. They are still phishable, so passkeys or WebAuthn are stronger again, but TOTP is a meaningful upgrade over SMS with minimal user friction."
+  - question: "What passwordless options does Appwrite support?"
+    answer: "[Appwrite Auth](/docs/products/auth) supports magic URLs, email OTP, and phone (SMS) OTP, plus OAuth providers and TOTP-based MFA. You can mix them, for example email OTP for primary auth and TOTP as the second factor, so SMS does not have to be in the critical path."
+  - question: "Why is SMS OTP expensive at scale?"
+    answer: "Carrier delivery fees vary by destination country and can spike for international traffic, premium routes, or fraud-attempt floods. Some attackers exploit this with toll-fraud schemes that trigger huge volumes of OTP sends to numbers they control, and your bill absorbs the cost regardless of whether real users completed the flow."
+  - question: "When does SMS OTP still make sense?"
+    answer: "When your user base does not reliably have email, authenticator apps, or smartphones capable of passkeys, SMS OTP remains the lowest-friction option. It is also a reasonable fallback for account recovery if it is combined with additional verification, not used as the only signal."
 ---
 
 > Should you stop using SMS OTPs for authentication now?

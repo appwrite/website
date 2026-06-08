@@ -7,6 +7,19 @@ cover: /images/blog/tanstack-start-support-in-appwrite-sites/cover.avif
 timeToRead: 5
 author: matej-baco
 category: announcement
+faqs:
+  - question: "What is TanStack Start?"
+    answer: "TanStack Start is a full stack React framework from the team behind TanStack Query and TanStack Router. It focuses on type safety, explicit routing, and server-side rendering, powered by Vite for fast builds. It also supports SolidJS as an alternative renderer."
+  - question: "Does Appwrite Sites support TanStack Start with full SSR?"
+    answer: "Yes. [Appwrite Sites](/docs/products/sites) now supports TanStack Start with full server-side rendering. You can build and deploy TanStack Start apps to Appwrite Cloud with zero configuration, instead of forcing them into a static deployment."
+  - question: "How do I deploy a TanStack Start app to Appwrite Sites?"
+    answer: "Push your TanStack Start project to Git, create a new site in your Appwrite project, and connect the repository. Appwrite detects the framework and applies the right build and runtime settings. The [TanStack Start quick start](/docs/products/sites/quick-start/tanstack-start) walks through the full flow."
+  - question: "How is TanStack Start different from Next.js?"
+    answer: "Next.js wraps a lot of features into conventions and platform-specific optimizations, especially on Vercel. TanStack Start takes the opposite approach with explicit routing, transparent data loading, and an architecture that runs the same everywhere. Both support SSR, but TanStack Start aims for simplicity and portability."
+  - question: "Can I use TanStack Start with Solid on Appwrite Sites?"
+    answer: "Yes. TanStack Start supports Solid in addition to React, and Appwrite Sites' SSR support for TanStack Start extends to Solid apps. This makes it the first SSR-friendly path for Solid on Appwrite."
+  - question: "What Appwrite services can I use from a TanStack Start app?"
+    answer: "You can use [Appwrite Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Messaging](/docs/products/messaging) from server and client code in your TanStack Start app. The web SDK works in client routes, and you can call Appwrite from server functions for SSR data loading."
 ---
 The React world has a new favourite, and developers can’t stop talking about it. [TanStack Start](https://tanstack.com/start/latest) is quickly becoming the go-to framework for teams that want simplicity, type safety, control, and performance without the overhead. Built by the same team behind TanStack Query(React Query) and TanStack Router, it’s redefining how React apps are built and shipped: lighter, faster, and closer to how you want to code.
 

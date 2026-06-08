@@ -9,6 +9,19 @@ author: matej-baco
 category: product,init
 featured: false
 callToAction: true
+faqs:
+  - question: "What is Appwrite Sites?"
+    answer: "[Appwrite Sites](/docs/products/sites) is a hosting product that lets you deploy static sites and server-rendered web apps directly from your Appwrite project. It supports static hosting, SSR, Git-based deployments, preview URLs per pull request, a global CDN, and the [Appwrite Network](/docs/products/network) for low-latency delivery."
+  - question: "Which frameworks does Appwrite Sites support?"
+    answer: "Sites supports static output from any toolchain and SSR for frameworks including Next.js, Nuxt, SvelteKit, Astro, Remix, Vue.js, React, Angular, Flutter web, and vanilla JavaScript. Quick start guides exist for the most common ones in the [Sites documentation](/docs/products/sites)."
+  - question: "How do I deploy a site from a GitHub repository?"
+    answer: "Open the **Sites** section of the Appwrite Console, click **Create site**, and connect your GitHub repository. Pick the framework, confirm the install and build commands, add any environment variables, and Appwrite will build and deploy on every push. Pull requests automatically get [preview deployments](/docs/products/sites/deploy-from-git)."
+  - question: "Is Appwrite Sites really open source?"
+    answer: "Yes. Sites ships as part of the open source Appwrite Server, so you can self-host it alongside the rest of Appwrite. The [Appwrite repository](https://github.com/appwrite/appwrite) contains the code, and the [self-hosting documentation](/docs/advanced/self-hosting) covers running the full platform yourself."
+  - question: "Can I use a custom domain with Appwrite Sites?"
+    answer: "Yes. You can attach a custom domain and manage DNS through [Appwrite DNS](/docs/products/network/dns) using the `appwrite.zone` nameservers, or point your existing DNS provider at Appwrite. The Console walks you through DNS records and SSL is provisioned automatically."
+  - question: "How does Appwrite Sites compare to Vercel or Netlify?"
+    answer: "Sites covers the same core use cases (Git-based deploys, previews, SSR, CDN), but it lives inside the same platform as your backend, so [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), and [Functions](/docs/products/functions) work without extra services. It is also fully self-hostable, unlike Vercel and Netlify."
 ---
 
 You love using Appwrite to power your backend, but when it's time to actually *ship* your website, you're bouncing between tools, platforms, and extra accounts. That ends today.

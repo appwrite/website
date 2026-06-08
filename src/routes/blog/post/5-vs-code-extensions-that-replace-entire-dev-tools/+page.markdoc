@@ -9,6 +9,19 @@ author: ebenezer-don
 category: tutorial
 featured: false
 callToAction: true
+faqs:
+  - question: "Is Thunder Client a full replacement for Postman?"
+    answer: "For day-to-day API development and testing, yes. Thunder Client covers collections, environment variables, Git sync, and CI/CD integration without leaving VS Code. Postman still wins for advanced features like API monitoring and mock servers, so pick based on what your workflow actually needs."
+  - question: "Are these VS Code extensions safe to use with proprietary code?"
+    answer: "It depends on each extension's data handling. AI extensions like BlackBox AI may send code snippets to remote servers; check the privacy policy and configure local-only modes when available. Extensions like GitDoc, Dendron, and Time Master are local and do not transmit your code, but always verify before installing on company projects."
+  - question: "Will too many VS Code extensions slow down the editor?"
+    answer: "Yes, each extension consumes memory and can contribute to startup time. VS Code has a built-in profiler (`Help > Show Running Extensions`) that shows which ones cost you the most. Disable per-workspace what you do not need, and uninstall extensions you no longer use."
+  - question: "Is there a VS Code extension for Appwrite?"
+    answer: "You can connect VS Code to Appwrite via the [Appwrite CLI](/docs/tooling/command-line) for deploying and managing functions, or through the [Appwrite MCP server](/docs/tooling/mcp/api) if you use an MCP-compatible AI assistant inside the editor. Both let you operate on your Appwrite project without leaving VS Code."
+  - question: "What does GitDoc actually do differently from a normal Git workflow?"
+    answer: "GitDoc auto-commits on save, similar to Google Docs version history. By default it only commits when your code is error-free, so you do not preserve broken states. It is most useful for docs, notes, or solo feature work where you want a fine-grained timeline without crafting commit messages."
+  - question: "Are these extensions worth using if I already have paid tools?"
+    answer: "If you genuinely use the advanced features of the paid tools (Postman monitoring, Notion collaboration), keep them. The extensions earn their place when you mostly used the basic features and want to cut context switches, subscriptions, or memory usage. Try the free versions for a week before deciding."
 ---
 
 Look at your system tray and count the development tools running. It adds up fast; each tool consumes memory, requires updates, and competes for your attention.

@@ -7,6 +7,19 @@ cover: /images/blog/implement-sign-in-with-github/cover.avif
 timeToRead: 10
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "How does GitHub OAuth work with Appwrite?"
+    answer: "You register an OAuth app on GitHub, paste the client ID and secret into the GitHub provider in [Appwrite Auth](/docs/products/auth), and call the OAuth2 session endpoint from your client. Appwrite handles the token exchange and creates a session for the user."
+  - question: "What callback URL should I use for GitHub OAuth?"
+    answer: "Use the callback URL that Appwrite generates when you enable the GitHub provider, not a URL from your own app. Appwrite handles the token exchange and then redirects the user back to a success URL that you specify."
+  - question: "Can I access the user's GitHub profile data after login?"
+    answer: "Yes. Once the session is created, you can call account.get() to read the user's identity. To access GitHub APIs directly, request the provider access token via the account identities endpoint."
+  - question: "Do I need a backend to implement Sign in with GitHub?"
+    answer: "No. The flow described in the post uses only the client SDK, since Appwrite handles the OAuth exchange server side on your behalf. You only need a backend if you want to call GitHub APIs from a trusted environment."
+  - question: "How do I add more OAuth providers later?"
+    answer: "Each provider is a separate entry in the Auth settings of your Appwrite project. The client side flow is identical, so you can wire up Google, Apple, or Discord with only minimal changes to your code."
+  - question: "What scopes does Appwrite request from GitHub by default?"
+    answer: "By default, Appwrite requests the user's basic profile and email. You can pass additional scopes (for example, repo or read:org) when initiating the OAuth2 session if your app needs broader access."
 ---
 
 If you're building an app that developers will use, adding GitHub login makes things easier for your users. In this tutorial, you'll learn how to create a GitHub login system using Vanilla JavaScript and Appwrite. By the end, your users will be able to log in with their GitHub accounts, see personalized details, and log out.

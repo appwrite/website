@@ -7,6 +7,19 @@ cover: /images/blog/image-transformation-with-appwrite-storage/cover.avif
 timeToRead: 6
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "How does Appwrite transform images on the fly?"
+    answer: "Appwrite uses the Storage preview endpoint to apply transformations dynamically when retrieving an image. The original file stays untouched, and Appwrite generates and caches the modified version on demand. See [Appwrite Storage](/docs/products/storage) for the full list of supported parameters."
+  - question: "What image transformations does Appwrite support?"
+    answer: "Appwrite supports resizing, cropping, compression, format conversion, borders, rounded corners, opacity changes, rotation, and background colors. You can also chain multiple transformations in a single request to the preview endpoint."
+  - question: "Which output formats can I convert images to?"
+    answer: "Appwrite Storage previews can output JPG, PNG, WebP, AVIF, and GIF. WebP and AVIF give the best compression for the web and are typically the right default for new projects."
+  - question: "Does Appwrite cache transformed images?"
+    answer: "Yes, transformed images are cached automatically. Repeat requests for the same transformation are served from cache, so you don't pay the processing cost on every page load."
+  - question: "Should I store pre-resized images or transform on the fly?"
+    answer: "Transforming on the fly avoids maintaining multiple file variants and keeps your storage layer simple. Pre-resizing only makes sense if you have a fixed set of dimensions and want to skip the first request's processing latency."
+  - question: "What is the difference between image transformation and a media CDN?"
+    answer: "Image transformation handles resizing, cropping, and format conversion at request time. A media CDN handles global delivery and caching. Appwrite Storage previews give you both since the responses are cached and served from Appwrite's network."
 ---
 
 Images are a core part of any modern web or mobile application. Whether you're displaying user avatars, product thumbnails, or full-screen backgrounds, images need to be optimized for performance, aesthetics, and consistency. Loading large, uncompressed images can slow down your app, and mismatched styles can break your UI. This is why dynamic image transformation should be a part of your app.

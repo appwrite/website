@@ -7,6 +7,19 @@ cover: /images/blog/typescript-7-faster-with-go/cover.avif
 timeToRead: 5
 author: ebenezer-don
 category: tutorial
+faqs:
+  - question: "Is TypeScript itself being rewritten in Go?"
+    answer: "No. The TypeScript language, syntax, and type system are unchanged. Only the compiler (tsc) is being ported to Go under the internal name Project Corsa. TypeScript code you write today will still compile the same way."
+  - question: "How much faster is the Go based TypeScript compiler?"
+    answer: "Early Microsoft benchmarks show roughly a 10x improvement. Compiling the VS Code codebase (about 1.5 million lines) reportedly dropped from around 78 seconds to about 7.5 seconds. Similar speedups were measured for Playwright and TypeORM, but these are early stage numbers and real world results will vary."
+  - question: "Why did Microsoft choose Go over Rust or C++?"
+    answer: "Microsoft cited Go's structural similarity to the existing TypeScript codebase, which makes porting easier, plus Go's garbage collection (acceptable for a non latency sensitive compiler) and its ergonomics for traversing ASTs and graphs. Rust would have required more rewriting and stricter memory management."
+  - question: "When will TypeScript 7 ship?"
+    answer: "Microsoft has not committed to a firm date. The roadmap targets a preview release with basic type checking in mid 2025 and a feature complete version later in 2025. TypeScript 7.0 will ship once the Go compiler reaches feature parity."
+  - question: "Will my existing build tools and IDE plugins keep working?"
+    answer: "Microsoft has committed to running the JavaScript and Go based compilers in parallel during the transition. Most tools that use the public TypeScript APIs should continue to work, but anything that relies on internal compiler internals may need updates."
+  - question: "Should I wait for TypeScript 7 to start a new project?"
+    answer: "No. TypeScript 6.x will keep receiving updates and remain supported. Start now on the stable compiler, and switch to the Go based one when it stabilizes. The migration is meant to be drop in for typical projects."
 ---
 
 Over the past decade, TypeScript has earned the trust of developers building large-scale JavaScript applications. It offers the safety net of a type system, reliable tooling, and codebases that are *arguably* easier to maintain. Yet, if you ask developers working with large projects, they'll likely express one common frustration: the TypeScript compiler can feel painfully slow.

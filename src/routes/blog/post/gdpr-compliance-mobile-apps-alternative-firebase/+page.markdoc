@@ -8,6 +8,19 @@ timeToRead: 5
 author: aditya-oberai
 category: security
 featured: false
+faqs:
+  - question: "Does GDPR apply to my mobile app if I am not based in the EU?"
+    answer: "Yes, if your app processes personal data from anyone in the EU. GDPR applies based on where the user is, not where your company is registered. Even a small US based indie app with European users falls under the regulation."
+  - question: "What counts as personal data under GDPR?"
+    answer: "Any data that can identify a natural person directly or indirectly. This includes obvious identifiers like names and emails, but also things like IP addresses, device IDs, location data, and even pseudonymous user IDs when combined with other data. Treat anything that could be tied back to a person as personal data."
+  - question: "What is the difference between a data controller and a data processor?"
+    answer: "The data controller decides why and how personal data is processed (usually you, the app owner). The data processor handles data on the controller's behalf (your BaaS, analytics, or hosting provider). Both must comply with GDPR, but the controller carries the heavier responsibility."
+  - question: "How does Appwrite help with GDPR compliance?"
+    answer: "Appwrite acts as a data processor when you use it as your backend, and Appwrite Cloud's EU region keeps data within the EU. Features like granular permissions, account deletion via [Appwrite Auth](/docs/products/auth), and per document access control help you implement user data rights like access and erasure without writing custom infrastructure."
+  - question: "What are the penalties for GDPR non-compliance?"
+    answer: "Fines can reach up to €20 million or 4% of global annual revenue, whichever is higher. Beyond fines, you face reputation damage, mandatory breach disclosures, and potential lawsuits from affected users. The financial risk alone justifies taking compliance seriously from day one."
+  - question: "Do I need a privacy policy if my app does not sell user data?"
+    answer: "Yes. GDPR requires a clear privacy policy whenever you collect personal data, even if you only use it internally for the app's core features. The policy must explain what data you collect, why, how long you keep it, and how users can exercise their rights. App stores also require a privacy policy for any app that collects user data."
 ---
 If you're developing a mobile app for European users or collecting any data from EU residents, the General Data Protection Regulation (GDPR) is something you need to understand and follow closely. 
 

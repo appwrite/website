@@ -3,12 +3,26 @@ layout: post
 title: "August product update: Cloud GA, new TablesDB UI & Sites Hackathon"
 description: Get a full recap of products, features and programs we released in the month of August.
 date: 2025-09-03
+lastUpdated: 2026-05-22
 cover: /images/blog/product-update-august-2025/cover.avif
 timeToRead: 6
 author: dennis-ivy
 category: product
 featured: false
 callToAction: true
+faqs:
+  - question: "What does Appwrite Cloud GA mean for existing users?"
+    answer: "GA means the beta tag is gone and Appwrite Cloud is now a generally available product backed by formal availability and support commitments. Nothing changes for existing projects, but you get the assurance that the platform is production stable."
+  - question: "What is TablesDB?"
+    answer: "TablesDB is a new API layer for [Appwrite Databases](/docs/products/databases) that uses relational terminology: tables, rows, and columns instead of collections, documents, and attributes. It also ships with a spreadsheet style console UI for inline editing and bulk actions."
+  - question: "Do I need to migrate from the document API to TablesDB?"
+    answer: "No. The document based methods continue to work and remain backwards compatible. They are deprecated for major upgrades, but they still receive security patches. New projects should adopt TablesDB to access future improvements."
+  - question: "Where is the new San Francisco cloud region available?"
+    answer: "San Francisco (SFO) is available on all Free, Pro, and Enterprise plans. You can create new projects there or migrate existing projects using Appwrite Cloud migrations."
+  - question: "What are atomic numeric operations?"
+    answer: "Atomic numeric operations let you increment or decrement a column directly on the server, without reading the value first. This is useful for counters, inventory, and any state where two clients might update the same field at once."
+  - question: "What was the Appwrite Sites Hackathon?"
+    answer: "The Appwrite Sites Hackathon ran in August 2025 and invited the community to build and ship sites using [Appwrite Sites](/docs/products/sites). Participants competed for prizes including the Appwriter Keyboard."
 ---
 
 Welcome back to the August Product Update. This month, we’ve got some significant updates, from Appwrite Cloud, which is now generally available, and a brand new look for Appwrite Databases. On top of it, Appwrite’s very first Sites Hackathon is also now live.
@@ -48,7 +62,7 @@ You have until **September 12** to showcase your creativity and compete for grea
 
 ![New Cloud region](/images/blog/product-update-august-2025/new-region.avif)
 
-We’re happy to share that the new cloud region, San Francisco (SFO), is now available on all Free, Pro, Scale, and Enterprise plans.
+We’re happy to share that the new cloud region, San Francisco (SFO), is now available on all Free, Pro, and Enterprise plans.
 
 You can create a new project or migrate your existing project to the SFO region.
 
