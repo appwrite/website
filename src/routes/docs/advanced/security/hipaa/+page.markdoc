@@ -24,6 +24,16 @@ requiring authentication and authorization through multi-factor authentication (
 
 Appwrite safeguards personal information to the same extent it protects its own, complying with relevant privacy laws and regulations in the jurisdictions where its services are offered.
 
+## Business Associate Agreement (BAA)
+
+A Business Associate Agreement (BAA) is a HIPAA-required contract between you (the covered entity) and Appwrite (the business associate) that governs how protected health information (PHI) is handled. You need a BAA in place before storing or processing PHI on Appwrite Cloud.
+
+You can enable a BAA yourself from the Appwrite Console. Open your **Organization settings**, find the **BAA** section, and select **Enable BAA**. The BAA is a paid add-on that costs $350 per month, prorated for your current billing cycle, and applies to your entire organization.
+
+The add-on is available on eligible paid plans. If your current plan does not support it, the Console prompts you to upgrade first. You can disable the BAA at any time, and it stays active until the end of your current billing cycle.
+
+For the full terms, see the [Business Associate Agreement](/baa).
+
 ## Data retention
 
 Appwrite gives you full control over your data lifecycle. By default, Appwrite stores user and project data until you explicitly delete it. There's no automatic purging or TTL unless you configure it that way in your application logic or functions.

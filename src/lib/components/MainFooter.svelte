@@ -63,6 +63,11 @@
                         onclick={() => trackEvent(`footer-cookies-click`)}>Cookies</a
                     >
                 </li>
+                <li>
+                    <a class="web-link" href="/baa" onclick={() => trackEvent(`footer-baa-click`)}
+                        >BAA</a
+                    >
+                </li>
             </ul>
         </div>
     </footer>

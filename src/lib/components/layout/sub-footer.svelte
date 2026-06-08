@@ -39,6 +39,7 @@
             <li><a class="web-link" href="/terms">Terms</a></li>
             <li><a class="web-link" href="/privacy">Privacy</a></li>
             <li><a class="web-link" href="/cookies">Cookies</a></li>
+            <li><a class="web-link" href="/baa">BAA</a></li>
         </ul>
     </div>
 </footer>
