@@ -27,7 +27,7 @@ TLS is terminated at the edge proxy. Prefer the `connectionString` returned by t
 | PostgreSQL | `sslmode=require`                                                                     |
 | MySQL      | `ssl=true`                                                                            |
 | MariaDB    | `ssl=true`                                                                            |
-| MongoDB    | `ssl=true`, alongside `authSource=admin`, `directConnection=true`, and `retryWrites=true` |
+| MongoDB    | `ssl=false`, alongside `authSource=admin`, `directConnection=true`, and `retryWrites=true` |
 
 Proxy TLS termination currently covers PostgreSQL, MySQL, and MariaDB. MongoDB connections are not yet TLS-terminated at the proxy and return `ssl=false`.
 
