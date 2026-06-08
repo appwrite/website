@@ -27,11 +27,9 @@ TLS is terminated at the edge proxy. Prefer the `connectionString` returned by t
 | PostgreSQL | `sslmode=require`                                                                     |
 | MySQL      | `ssl=true`                                                                            |
 | MariaDB    | `ssl=true`                                                                            |
-| MongoDB    | `ssl=false`, alongside `authSource=admin`, `directConnection=true`, and `retryWrites=true` |
+| MongoDB    | `tls=true`, alongside `authSource=admin`, `directConnection=true`, and `retryWrites=true` |
 
-Proxy TLS termination currently covers PostgreSQL, MySQL, and MariaDB. MongoDB connections are not yet TLS-terminated at the proxy and return `ssl=false`.
-
-The certificate is signed by a well-known public CA, your driver does not need a custom CA bundle.
+Proxy TLS termination covers all four engines: PostgreSQL, MySQL, MariaDB, and MongoDB. The certificate is signed by a well-known public CA, your driver does not need a custom CA bundle.
 
 To require mutual TLS (mTLS) where the client presents a certificate signed by your CA, contact support. mTLS is configured at the edge proxy and enforced before the connection is forwarded.
 
