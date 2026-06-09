@@ -5,7 +5,7 @@ date: 2026-05-21
 cover: /images/blog/announcing-dedicated-databases/cover.avif
 ---
 
-Appwrite Cloud now supports [**Dedicated databases**](/docs/products/databases/dedicated), managed PostgreSQL, MySQL, MariaDB, and MongoDB engines running next to your existing Functions, Sites, and Storage. Pick an engine (Postgres 17/18, MySQL 8.0/8.4, MariaDB 10.11/11.4, MongoDB 7.0/8.0), pick a region (Frankfurt, New York, San Francisco, Singapore, Sydney, Toronto), pick a specification from `s-1vcpu-1gb` at $13/mo to `s-8vcpu-64gb` at $699/mo, and connect with `psql`, `mysql`, `mongosh`, or any standard driver.
+Appwrite Cloud now supports [**Dedicated databases**](/docs/products/databases/dedicated), managed PostgreSQL, MySQL, MariaDB, and MongoDB engines running next to your existing Functions, Sites, and Storage. Pick an engine (Postgres 17/18, MySQL 8.0/8.4, MariaDB 10.11/11.4, MongoDB 7.0/8.0) and a specification from `s-1vcpu-1gb` at $13/mo to `s-8vcpu-64gb` at $699/mo, and connect with `psql`, `mysql`, `mongosh`, or any standard driver. Each database runs in its project's region, available today in Frankfurt, New York, San Francisco, Singapore, Sydney, and Toronto.
 
 High availability, point-in-time recovery, branching, PostgreSQL extensions, connection pooling with read/write split, and a managed SQL API over HTTPS are all available out of the box. Paid specifications are billed by the hour and pro-rated by active days; the Pro plan includes a free shared specification that scales to zero at no extra cost.
 

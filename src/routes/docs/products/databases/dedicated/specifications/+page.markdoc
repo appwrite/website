@@ -54,7 +54,7 @@ The free specification is shared compute with strict resource caps. Idle databas
 | Storage          | 1 GB        |
 | Max connections  | 10          |
 | Query timeout    | 15 seconds  |
-| Idle timeout     | 15 minutes  |
+| Idle timeout     | 15 minutes (default, configurable 5–60) |
 
 Free databases are included with the Pro plan and do not count toward storage or bandwidth overage.
 
@@ -103,5 +103,7 @@ A few rules of thumb:
 - **Analytics workloads** (large scans, aggregations), favour the higher CPU specifications. `s-8vcpu-32gb` and `s-8vcpu-64gb` are tuned for sustained CPU usage.
 - **Storage-heavy workloads**, pick by included storage first. Going one specification up is usually cheaper than paying overage on a smaller specification.
 - **Burst patterns**, keep autoscaling on for storage and use a specification one tier below your peak; resize up during peak windows and back down after.
+
+Storage autoscaling is off by default. Enable it with the `storageAutoscaling` field when you create or update a dedicated database; the volume then expands automatically once usage crosses `storageAutoscalingThresholdPercent` (85% by default), up to `storageAutoscalingMaxGb`. Storage only ever grows, so autoscaling never shrinks the volume.
 
 The next page explains how to [connect to a dedicated database](/docs/products/databases/dedicated/connect).

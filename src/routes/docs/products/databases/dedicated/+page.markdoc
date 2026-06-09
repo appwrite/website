@@ -97,7 +97,7 @@ The following per-database limits are enforced by the API:
 | Limit                          | Value                                                     |
 |--------------------------------|-----------------------------------------------------------|
 | Databases per project          | 10                                                        |
-| CPU range                      | 0.125 – 16 vCPU                                           |
+| CPU range                      | 0.125 – 8 vCPU                                            |
 | Memory range                   | 128 MB – 64 GB                                            |
 | Storage range                  | 1 GB – 16 TB                                              |
 | High availability replicas     | 0 – 5                                                     |
@@ -106,7 +106,7 @@ The following per-database limits are enforced by the API:
 | Point-in-time recovery window  | 1 – 35 days                                               |
 | Database extensions installed  | 50 (PostgreSQL only)                                      |
 | Max simultaneous connections   | 10,000 platform cap, lower on smaller specifications      |
-| Idle timeout (shared only)     | 5 – 60 minutes                                            |
+| Idle timeout (shared only)     | 5 – 60 minutes (15 by default)                            |
 
 # Billing & plan requirements {% #plans %}
 

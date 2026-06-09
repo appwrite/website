@@ -6,7 +6,7 @@ description: Execute parameterised SQL against a dedicated database over HTTPS w
 
 The **SQL API** is a managed HTTP endpoint that executes one parameterised SQL statement against a dedicated database and returns the result as JSON. It runs alongside the database itself, so it sees the same latency as a local connection, but you call it from anywhere a TCP database connection isn't practical (edge runtimes, serverless functions on cold starts, CI scripts, internal admin tools).
 
-The SQL API is opt-in per database and supports all four engines.
+The SQL API is opt-in per database. Because it executes SQL, it is available on the SQL engines, PostgreSQL, MySQL, and MariaDB. MongoDB speaks its own query language (MQL) rather than SQL, so the SQL API does not apply to MongoDB databases, connect to those with a MongoDB driver or `mongosh` instead.
 
 # Enable the SQL API {% #enable %}
 
@@ -563,7 +563,7 @@ The whitelist is enforced before the request leaves Appwrite, so a disallowed st
 | `dedicated_database_sql_api_statement_not_allowed`  | Statement type not in the per-DB whitelist            |
 | `dedicated_database_sql_api_parse_failed`           | SQL did not parse                                     |
 | `dedicated_database_sql_api_multiple_statements`    | Submission contained more than one statement          |
-| `dedicated_database_sql_api_result_too_large`       | Rows or bytes exceed the limit (returned as 200 with `truncated: true` if soft-truncating, 400 if rejecting outright) |
+| `dedicated_database_sql_api_result_too_large`       | The result exceeds `sqlApiMaxRows` or `sqlApiMaxBytes`. Returned as `200` with `truncated: true` and the rows that fit, the API soft-truncates rather than failing the request. |
 | `dedicated_database_sql_api_timeout`                | Statement exceeded `sqlApiTimeoutSeconds`             |
 | `dedicated_database_sql_api_binding_invalid`        | Binding count, name, or type mismatch                 |
 | `dedicated_database_sql_api_sidecar_unavailable`    | Per-database SQL API runtime is not ready             |
