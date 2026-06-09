@@ -35,7 +35,7 @@
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="text-sub-body mt-4 font-medium">
+    <div class="text-sub-body mt-4 font-medium message-content">
         <SvelteMarkdown
             source={message.message}
             renderers={{
@@ -45,12 +45,35 @@
             }}
         />
     </div>
+    {#if message.attachments?.length}
+        <div class="attachments">
+            {#each message.attachments as src, i}
+                <a href="https://discord.com/channels/564160730845151244/{message.threadId}/{message.$id}" target="_blank" rel="noopener noreferrer">
+                    <img
+                        {src}
+                        alt="attachment"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+                    />
+                    <span class="attachment-fallback" style="display:none;">
+                        <span class="web-icon-image" aria-hidden="true"></span>
+                        Attachment
+                    </span>
+                </a>
+            {/each}
+        </div>
+    {/if}
     <slot />
 </div>
 
 <style lang="scss">
     .web-card {
         overflow: hidden;
+    }
+
+    .message-content {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        min-width: 0;
     }
 
     .header {
@@ -63,6 +86,45 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    .attachments {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-block-start: 0.75rem;
+
+        img {
+            max-width: 100%;
+            max-height: 20rem;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+    }
+
+    .attachment-fallback {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .attachment-link {
+        margin-block-start: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .author-img {

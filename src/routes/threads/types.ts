@@ -16,6 +16,7 @@ export interface DiscordMessage extends Pick<Models.Document, '$id'> {
     role?: string;
     /* `UTC` timestamp */
     timestamp: string;
+    attachments?: string[];
 }
 
 export interface DiscordThread extends Models.Document {
