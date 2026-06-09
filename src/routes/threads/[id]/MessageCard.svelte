@@ -71,32 +71,6 @@
         gap: 0.5rem;
     }
 
-    .attachments {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-block-start: 0.75rem;
-
-        img {
-            max-width: 100%;
-            max-height: 20rem;
-            border-radius: 0.5rem;
-            object-fit: contain;
-        }
-    }
-
-    .attachment-fallback {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        font-size: 0.875rem;
-        opacity: 0.7;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
     .author-img {
         --p-size: 1.5rem; // 24px
 
