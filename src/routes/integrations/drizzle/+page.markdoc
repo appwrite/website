@@ -6,16 +6,16 @@ date: 2026-06-09
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/drizzle/cover.webp
+cover: /images/integrations/drizzle/cover.avif
 category: databases
 product:
-    avatar: '/images/integrations/avatars/drizzle.webp'
+    avatar: '/images/integrations/avatars/drizzle.avif'
     vendor: Drizzle
     description: 'Drizzle ORM is a lightweight, type-safe TypeScript ORM with an SQL-like query builder and the Drizzle Kit migration toolkit, popular on serverless and edge runtimes.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/drizzle/cover.webp
+    - /images/integrations/drizzle/cover.avif
 ---
 
 [Drizzle ORM](https://orm.drizzle.team/) is a lightweight, type-safe TypeScript ORM. An Appwrite [dedicated database](/docs/products/databases/dedicated) is a standard SQL engine, so Drizzle connects with its normal PostgreSQL (`node-postgres`, `postgres.js`) or MySQL (`mysql2`) drivers.

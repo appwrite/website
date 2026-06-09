@@ -6,16 +6,16 @@ date: 2026-06-09
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/prisma/cover.webp
+cover: /images/integrations/prisma/cover.avif
 category: databases
 product:
-    avatar: '/images/integrations/avatars/prisma.webp'
+    avatar: '/images/integrations/avatars/prisma.avif'
     vendor: Prisma
     description: 'Prisma is a next-generation ORM for Node.js and TypeScript with a type-safe query builder, schema-driven migrations, and a large ecosystem.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/prisma/cover.webp
+    - /images/integrations/prisma/cover.avif
 ---
 
 [Prisma](https://www.prisma.io/) is a type-safe ORM for Node.js and TypeScript. An Appwrite [dedicated database](/docs/products/databases/dedicated) is a standard PostgreSQL, MySQL, or MariaDB engine, so Prisma connects to it with no Appwrite-specific configuration.

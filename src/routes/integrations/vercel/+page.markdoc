@@ -6,16 +6,16 @@ date: 2026-06-09
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/vercel/cover.webp
+cover: /images/integrations/vercel/cover.avif
 category: deployments
 product:
-    avatar: '/images/integrations/avatars/vercel.webp'
+    avatar: '/images/integrations/avatars/vercel.avif'
     vendor: Vercel
     description: 'Vercel is a platform for deploying and hosting frontend applications and serverless functions, with Preview Deployments and a global edge network.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/vercel/cover.webp
+    - /images/integrations/vercel/cover.avif
 ---
 
 [Vercel](https://vercel.com/) hosts frontend apps and serverless functions. An Appwrite [dedicated database](/docs/products/databases/dedicated) gives them a managed PostgreSQL or MySQL backend reachable over the public internet.

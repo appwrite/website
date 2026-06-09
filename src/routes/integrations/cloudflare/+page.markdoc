@@ -6,16 +6,16 @@ date: 2026-06-09
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/cloudflare/cover.webp
+cover: /images/integrations/cloudflare/cover.avif
 category: deployments
 product:
-    avatar: '/images/integrations/avatars/cloudflare.webp'
+    avatar: '/images/integrations/avatars/cloudflare.avif'
     vendor: Cloudflare
     description: 'Cloudflare runs a global edge network with Workers, Pages, and Hyperdrive — serverless compute and database connection acceleration at the edge.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/cloudflare/cover.webp
+    - /images/integrations/cloudflare/cover.avif
 ---
 
 [Cloudflare](https://www.cloudflare.com/) runs Workers and Pages on a global edge network. An Appwrite [dedicated database](/docs/products/databases/dedicated) is reachable from both, two ways depending on whether your Worker holds a TCP connection.

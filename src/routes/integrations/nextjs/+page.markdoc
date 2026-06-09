@@ -6,16 +6,16 @@ date: 2026-06-09
 featured: false
 isPartner: false
 isNew: true
-cover: /images/integrations/nextjs/cover.webp
+cover: /images/integrations/nextjs/cover.avif
 category: deployments
 product:
-    avatar: '/images/integrations/avatars/nextjs.webp'
+    avatar: '/images/integrations/avatars/nextjs.avif'
     vendor: Vercel
     description: 'Next.js is the React framework for the web, with server-side rendering, Route Handlers, Server Actions, and both Node.js and Edge runtimes.'
 platform:
     - 'Cloud'
 images:
-    - /images/integrations/nextjs/cover.webp
+    - /images/integrations/nextjs/cover.avif
 ---
 
 [Next.js](https://nextjs.org/) is the React framework for the web. An Appwrite [dedicated database](/docs/products/databases/dedicated) backs your Next.js app with managed PostgreSQL or MySQL, accessed from server code with your ORM or driver of choice.
