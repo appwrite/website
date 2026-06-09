@@ -1,0 +1,186 @@
+---
+layout: article
+title: Rails
+description: Use Ruby on Rails and ActiveRecord with an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database. Configure database.yml, run migrations against the direct endpoint, and size the ActiveRecord pool.
+---
+
+A dedicated database is a standard engine, so [Ruby on Rails](https://rubyonrails.org/) works against it through ActiveRecord with no Appwrite-specific configuration. You point `config/database.yml` at the connection details from the [Connect](/docs/products/databases/dedicated/connect) page and use ActiveRecord, migrations, and the rest of the toolchain exactly as you would against any self-hosted PostgreSQL, MySQL, or MariaDB server.
+
+This guide uses PostgreSQL. To use MySQL or MariaDB, change the `adapter` and the matching driver gem, everything else is the same.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Install the database driver {% #driver %}
+
+ActiveRecord talks to PostgreSQL through the `pg` gem. Add it to your `Gemfile` and install:
+
+```ruby
+# Gemfile
+gem 'pg'
+```
+
+```bash
+bundle install
+```
+
+For MySQL or MariaDB, use `gem 'mysql2'` instead. The `pg` gem builds against `libpq`, so the PostgreSQL client headers must be available at install time.
+
+# Set the connection string {% #connection-string %}
+
+Copy the connection string from the Console **Connect** view, or fetch it from the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials). Keep it in an environment variable, never commit it:
+
+```env
+DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+```
+
+The `sslmode=require` parameter is already part of the string Appwrite returns. The edge proxy terminates TLS for every dedicated database, so no extra certificate configuration is needed for `require`. For full certificate verification (`verify-full`) or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
+
+# Configure database.yml {% #database-yml %}
+
+Rails reads `DATABASE_URL` automatically. The simplest configuration points the `url` at the environment variable and lets ActiveRecord parse the host, port, database, and credentials out of it:
+
+```yaml
+# config/database.yml
+production:
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+```
+
+If you'd rather set the fields explicitly, the discrete keys map one-to-one to the values from the [Connect](/docs/products/databases/dedicated/connect#credentials) response. Use ERB to read each value from the environment so no secret lands in source control:
+
+```yaml
+# config/database.yml
+production:
+  adapter: postgresql
+  host: <%= ENV["DB_HOST"] %>       # db-<projectId>-<dbId>.<region>.appwrite.center
+  port: <%= ENV.fetch("DB_PORT", 5432) %>
+  database: <%= ENV.fetch("DB_NAME", "appwrite") %>
+  username: <%= ENV.fetch("DB_USER", "appwrite") %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  sslmode: require
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+```
+
+When both `DATABASE_URL` and explicit keys are present, Rails merges them. `sslmode` and `pool` can still be set in `database.yml`, so a `url`-based config can carry `sslmode=require` in the string and override `pool` in the YAML.
+
+# Size the connection pool {% #pool %}
+
+ActiveRecord manages a per-process connection pool. The `pool:` value caps how many backend connections a single Rails process holds, and it defaults to `5`. It must be large enough for every thread that checks out a connection, your Puma worker threads plus any background job threads in the same process.
+
+```yaml
+production:
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+```
+
+Tying `pool` to `RAILS_MAX_THREADS` keeps it aligned with Puma's thread count. Each Puma **worker** is a separate process with its own pool, so the backend connection count is roughly `pool × workers × server instances`. Keep that product within your specification's `maxConnections`, see [specifications](/docs/products/databases/dedicated/specifications).
+
+# Run migrations {% #migrate %}
+
+Generate and apply migrations the usual way:
+
+```bash
+bin/rails db:migrate
+```
+
+Migrations issue DDL and need a real session-level connection, so run them against the **direct** engine endpoint (port `5432`), not the transaction-mode pooler. Point `DATABASE_URL` (or a dedicated `DATABASE_URL` for the migration step) at the engine port when you run `db:migrate`. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL.
+
+# Use ActiveRecord {% #activerecord %}
+
+Once `database.yml` is configured, models work with no further setup. Define a migration and model, then query through ActiveRecord:
+
+```ruby
+# db/migrate/20240101000000_create_users.rb
+class CreateUsers < ActiveRecord::Migration[7.1]
+  def change
+    create_table :users do |t|
+      t.string :email, null: false
+      t.timestamps
+    end
+    add_index :users, :email, unique: true
+  end
+end
+```
+
+```ruby
+# app/models/user.rb
+class User < ApplicationRecord
+  validates :email, presence: true, uniqueness: true
+end
+```
+
+```ruby
+User.create!(email: 'ada@example.com')
+
+recent = User.order(created_at: :desc).limit(10)
+```
+
+ActiveRecord opens connections lazily and reuses them from the pool, so a long-running Puma server keeps a small, stable set of backend connections rather than opening one per request.
+
+# Pooling for a long-running server {% #pooling %}
+
+A Rails app under Puma is a long-running process: it holds an ActiveRecord pool for its lifetime. That pairs naturally with the **direct** engine endpoint (port `5432`), sized so `pool × workers` stays within your connection budget. This is the recommended setup for a persistent server.
+
+If you instead route through the [connection pooler](/docs/products/databases/dedicated/pooler) to absorb spikes or many app instances, prefer **session mode**, which keeps a backend connection for the whole client session and behaves like a direct connection to ActiveRecord. The pooler defaults to **transaction mode**, which hands out a different backend connection per transaction. ActiveRecord uses server-side prepared statements by default, and those are tied to one backend connection, so on the transaction-mode pooler you must disable them:
+
+```yaml
+production:
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>       # pooler host, port 6432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  prepared_statements: false
+```
+
+See the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the mode trade-offs. Whichever runtime endpoint you choose, always run `bin/rails db:migrate` against the direct endpoint.
+
+# Use a branch for previews and CI {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own hostname and connection string. They're ideal for running migrations against throwaway data in a pull-request preview or an integration-test job:
+
+1. Create a branch from the API and read its `connectionString`.
+2. Export it as `DATABASE_URL` for the job.
+3. Run `bin/rails db:migrate` and your test suite against the branch.
+4. Delete the branch when the job finishes.
+
+A branch has no pooler and exposes the engine port directly, so it's exactly the kind of session-level endpoint migrations want. Because a branch starts from a storage snapshot, the schema and data match the source database at branch time, so migrations run against realistic data without touching production.
+
+# Using MySQL or MariaDB {% #mysql %}
+
+Set the `adapter` to `mysql2`, add `gem 'mysql2'` to your `Gemfile`, and use the MySQL connection details from the [Connect](/docs/products/databases/dedicated/connect) page (engine port `3306`, pooler port `6033`). The same `mysql2` adapter drives both MySQL and MariaDB.
+
+```yaml
+production:
+  adapter: mysql2
+  host: <%= ENV["DB_HOST"] %>
+  port: <%= ENV.fetch("DB_PORT", 3306) %>
+  database: <%= ENV.fetch("DB_NAME", "appwrite") %>
+  username: <%= ENV.fetch("DB_USER", "appwrite") %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  sslmode: required
+```
+
+MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS; the connection details Appwrite returns already enable it, so no extra flags are needed.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes, ports, and read/write splitting for high-concurrency workloads.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for preview environments and CI.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, mTLS, and IP allowlists.
+{% /cards_item %}
+{% /cards %}
+
+For ActiveRecord and migration details beyond this guide, see the [Rails configuration guide](https://guides.rubyonrails.org/configuring.html).

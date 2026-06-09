@@ -188,6 +188,116 @@
             ]
         },
         {
+            label: 'Connect your stack',
+            items: [
+                {
+                    label: 'Node.js drivers',
+                    href: '/docs/products/databases/dedicated/drivers',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Prisma',
+                    href: '/docs/products/databases/dedicated/prisma',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Drizzle',
+                    href: '/docs/products/databases/dedicated/drizzle',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Auth.js',
+                    href: '/docs/products/databases/dedicated/auth-js',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Better Auth',
+                    href: '/docs/products/databases/dedicated/better-auth',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Laravel',
+                    href: '/docs/products/databases/dedicated/laravel',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Rails',
+                    href: '/docs/products/databases/dedicated/rails',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Django',
+                    href: '/docs/products/databases/dedicated/django',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'FastAPI',
+                    href: '/docs/products/databases/dedicated/fastapi',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Spring Boot',
+                    href: '/docs/products/databases/dedicated/spring-boot',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'EF Core',
+                    href: '/docs/products/databases/dedicated/ef-core',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'GORM',
+                    href: '/docs/products/databases/dedicated/gorm',
+                    new: isNewUntil('31 Aug 2026')
+                }
+            ]
+        },
+        {
+            label: 'Deploy',
+            items: [
+                {
+                    label: 'Next.js',
+                    href: '/docs/products/databases/dedicated/nextjs',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Vercel',
+                    href: '/docs/products/databases/dedicated/vercel',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Cloudflare',
+                    href: '/docs/products/databases/dedicated/cloudflare',
+                    new: isNewUntil('31 Aug 2026')
+                }
+            ]
+        },
+        {
+            label: 'Analytics & BI',
+            items: [
+                {
+                    label: 'Metabase',
+                    href: '/docs/products/databases/dedicated/metabase',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Grafana',
+                    href: '/docs/products/databases/dedicated/grafana',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Retool',
+                    href: '/docs/products/databases/dedicated/retool',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'dbt',
+                    href: '/docs/products/databases/dedicated/dbt',
+                    new: isNewUntil('31 Aug 2026')
+                }
+            ]
+        },
+        {
             label: 'References',
             items: [
                 {

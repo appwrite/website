@@ -1,0 +1,148 @@
+---
+layout: article
+title: Django
+description: Use Django's ORM with an Appwrite dedicated PostgreSQL database. Configure the DATABASES setting with sslmode, run migrations against the direct endpoint, and tune persistent connections for pooling.
+---
+
+A dedicated database is a standard PostgreSQL engine, so Django's ORM works against it with no Appwrite-specific configuration. You point the `DATABASES` setting at the credentials from the [Connect](/docs/products/databases/dedicated/connect) page and use migrations, models, and the rest of Django exactly as you would against any self-hosted PostgreSQL server.
+
+This guide uses PostgreSQL, the recommended engine for dedicated databases. Django's ORM does not support MariaDB's or MySQL's full feature set the same way, but if you run a MySQL dedicated database you can use the `django.db.backends.mysql` backend with the matching host and port from the [Connect](/docs/products/databases/dedicated/connect) page.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection details. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Install a driver {% #driver %}
+
+Django talks to PostgreSQL through a driver. The latest [psycopg 3](https://www.psycopg.org/psycopg3/) is recommended; `psycopg2` also works but is likely to be deprecated in a future Django release.
+
+```bash
+pip install "psycopg[binary]"
+```
+
+Both drivers use the same `ENGINE` value, `django.db.backends.postgresql`. Django picks whichever package is installed, so no settings change is needed to switch between them.
+
+# Configure DATABASES {% #databases %}
+
+In `settings.py`, point the `default` connection at your dedicated database and pass `sslmode` through `OPTIONS`. The edge proxy terminates TLS for every dedicated database, so `require` needs no certificate files. Read every value from the environment so credentials never land in source control:
+
+```python
+import os
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["DB_NAME"],
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_PASSWORD"],
+        "HOST": os.environ["DB_HOST"],
+        "PORT": os.environ["DB_PORT"],
+        "OPTIONS": {
+            "sslmode": "require",
+        },
+    }
+}
+```
+
+The PostgreSQL backend forwards everything in `OPTIONS` straight to the driver's connection, so `sslmode` is honoured the same way `psql` honours it in the connection string. For full certificate verification (`verify-full`) or mTLS, add `sslrootcert` (and client cert keys) here and download the CA from the [Network](/docs/products/databases/dedicated/network) page.
+
+Populate the environment from the values on the Console **Connect** view or the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials):
+
+```env
+DB_NAME=appwrite
+DB_USER=appwrite
+DB_PASSWORD=<password>
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=5432
+```
+
+Port `5432` is the **direct** engine endpoint. Keep migrations on this port, see [pooling](#pooling) below for when to add the pooler.
+
+# Run migrations {% #migrate %}
+
+Generate migrations from your models, then apply them against the direct endpoint:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+`migrate` needs a real session connection with DDL privileges. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL. Always run `migrate` against the direct port (`5432`), never the transaction-mode pooler.
+
+# Define a model {% #model %}
+
+Models map to tables in the dedicated database. Define one in an app's `models.py`:
+
+```python
+from django.db import models
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+```
+
+Run `makemigrations` and `migrate` again to create the table, then query it through the ORM:
+
+```python
+from blog.models import Article
+
+Article.objects.create(title="Hello", body="First post")
+
+recent = Article.objects.order_by("-created_at")[:10]
+```
+
+# Persistent connections and pooling {% #pooling %}
+
+By default Django opens a new connection per request (`CONN_MAX_AGE = 0`). On a long-running WSGI server (Gunicorn, uWSGI) you can reuse connections by raising it. Each worker thread keeps its own connection, so the database must allow at least as many connections as you run worker threads:
+
+```python
+DATABASES["default"]["CONN_MAX_AGE"] = 60
+DATABASES["default"]["CONN_HEALTH_CHECKS"] = True
+```
+
+`CONN_HEALTH_CHECKS` revalidates a reused connection once per request, avoiding errors after an engine restart. Don't enable persistent connections under the development server, it spawns a thread per request and gains nothing, and disable them under ASGI.
+
+{% info title="Persistent connections need a session" %}
+A worker holding a connection across requests behaves like a long-lived session. Connect it to the **direct** endpoint (`5432`) or the **session-mode** pooler, never the default **transaction-mode** pooler, which can hand each statement a different backend connection. The transaction-mode pooler is for serverless and short-lived runtimes that open and close a connection per invocation.
+{% /info %}
+
+If you front the database with the transaction-mode [connection pooler](/docs/products/databases/dedicated/pooler) anyway, point `HOST`/`PORT` at the pooler (`6432` for PostgreSQL) and set `DISABLE_SERVER_SIDE_CURSORS = True`, since server-side cursors can't survive being moved between backend connections:
+
+```python
+DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = True
+```
+
+For prepared statements, advisory locks, `LISTEN`/`NOTIFY`, or temporary tables, use **session mode** instead, see the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+
+# Use a branch for previews and CI {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own hostname and connection details. They're ideal for running migrations against throwaway data in a pull-request preview or an integration-test job:
+
+1. Create a branch from the API and read its connection details.
+2. Export them as the `DB_*` environment variables your settings read.
+3. Run `python manage.py migrate` and your test suite against the branch.
+4. Delete the branch when the job finishes.
+
+Because a branch starts from a storage snapshot, its schema and data match the source database at branch time, so migrations run against realistic data without touching production.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes, ports, and read/write splitting for serverless workloads.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for preview environments and CI.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, mTLS, and IP allowlists.
+{% /cards_item %}
+{% /cards %}

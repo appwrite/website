@@ -111,8 +111,11 @@ Object.entries(platformAliases).forEach(([key, value]) => {
     });
 });
 
-/** HashiCorp Configuration Language (Terraform); core highlight.js has no HCL grammar */
-hljs.registerAliases(['hcl', 'terraform', 'tf'], { languageName: 'ini' });
+/** HashiCorp Configuration Language (Terraform) and TOML; core highlight.js has no grammar for either, INI is the closest match */
+hljs.registerAliases(['hcl', 'terraform', 'tf', 'toml'], { languageName: 'ini' });
+
+/** Prisma schema language; core highlight.js has no Prisma grammar, GraphQL is the closest match */
+hljs.registerAliases(['prisma'], { languageName: 'graphql' });
 
 export type Language = keyof typeof languages | Platform;
 

@@ -1,0 +1,108 @@
+---
+layout: article
+title: Metabase
+description: Connect Metabase to an Appwrite dedicated PostgreSQL database for analytics. Create a scoped read-only connection user, add the database in Metabase admin over SSL, and build dashboards on a session-safe endpoint.
+---
+
+A dedicated database is a standard PostgreSQL engine, so [Metabase](https://www.metabase.com/) connects to it the same way it connects to any self-hosted PostgreSQL server. You add the database under **Admin settings**, point it at the host from the [Connect](/docs/products/databases/dedicated/connect) page, and Metabase syncs the schema and lets you build questions and dashboards on top of it.
+
+This guide uses PostgreSQL, the recommended engine for a dedicated database. Metabase also supports MySQL; the connection fields are the same, only the engine port differs (`3306` instead of `5432`).
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and an [API key](/docs/advanced/platform/api-keys) with access to it. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve its host and credentials. The default database name and primary username are both `appwrite`.
+{% /info %}
+
+# Use a read-only user {% #read-only-user %}
+
+Don't give Metabase the primary `appwrite` user. That user owns the database and can run DDL and writes, which a BI tool never needs. Instead, create a scoped **read-only** connection user and hand Metabase those credentials. The read-only role can only run `SELECT`, so a misconfigured question or a curious analyst can't mutate or drop anything, and you can revoke the reporting user without touching your application's primary credentials.
+
+# Create the read-only connection user {% #create-user %}
+
+Create a `readonly` connection from the API. This is the same endpoint described under [connection users](/docs/products/databases/dedicated/connect#connections); here we name the user for its analytics purpose:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "metabase_ro",
+    "database": "appwrite",
+    "role": "readonly"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/connections
+```
+
+The response contains the generated password for the new user:
+
+```json
+{
+  "username": "metabase_ro",
+  "password": "<generated-password>",
+  "database": "appwrite",
+  "role": "readonly"
+}
+```
+
+Appwrite stores the password encrypted and won't show it again, so copy it now. If you lose it, delete the connection and create a new one. The `readonly` role grants `SELECT` on every table in the schema and intentionally cannot run schema changes, so Metabase can read your data but never alter it.
+
+# Add the database in Metabase {% #add-database %}
+
+In Metabase, open **Admin settings → Databases → Add a database** and choose **PostgreSQL**. Fill in the connection form with the values from the [Connect](/docs/products/databases/dedicated/connect) page and the read-only user you just created:
+
+| Field | Value |
+|-------|-------|
+| Host | `db-<projectId>-<dbId>.<region>.appwrite.center` |
+| Port | `5432` |
+| Database name | `appwrite` |
+| Username | `metabase_ro` |
+| Password | the generated password from the API response |
+
+Enable **Use a secure connection (SSL)**. Every dedicated database requires TLS, terminated at the edge proxy, so the connection must be encrypted. Enabling SSL here is equivalent to `sslmode=require`. For full certificate verification, supply the CA certificate from the [Network](/docs/products/databases/dedicated/network) page in Metabase's SSL options and set the SSL mode to `verify-full`. See [TLS](/docs/products/databases/dedicated/connect#tls) for the available modes.
+
+{% info title="Pick the right endpoint" %}
+A BI tool holds long-lived sessions and can use server-side cursors to stream large result sets. Connect to the **direct** engine endpoint (port `5432`) or, if you pool, the **session-mode** pooler. Don't point Metabase at the **transaction-mode** pooler (the default): it doesn't keep a backend connection across statements, which breaks cursors and prepared statements. See [Pool modes](/docs/products/databases/dedicated/pooler#modes).
+{% /info %}
+
+Click **Save**, and Metabase verifies the connection and begins its first sync.
+
+# Build a question or dashboard {% #build %}
+
+Once the first sync finishes, your tables appear in the data picker. To build your first chart:
+
+1. Click **+ New → Question** and pick your dedicated database as the data source.
+2. Choose a table, then add summaries (counts, sums, averages) and group by a column, for example new rows per day.
+3. Switch the visualization to a line, bar, or table view and **Save** the question.
+4. Add saved questions to a **Dashboard** to assemble a reporting view, and set filters to slice across cards.
+
+Because the connection is read-only, you can also drop into the native SQL editor for ad-hoc analysis without any risk of writing to the database. Editors that run write statements will simply be rejected by the `readonly` role.
+
+# How Metabase syncs your schema {% #sync %}
+
+After you connect, Metabase scans the database to discover tables, columns, and relationships, then keeps that metadata current on a schedule:
+
+- A lightweight **sync** of the schema (table and column names, types, keys) runs hourly by default.
+- A more intensive **scan** of field values, used to populate filter dropdowns, runs daily by default.
+
+New tables and columns you add to the database appear after the next sync. To pull them in immediately, open **Admin settings → Databases → your database** and click **Sync database schema**. You can also restrict which schemas Metabase tracks and adjust the sync and scan cadence from the same screen. Refer to the [Metabase documentation](https://www.metabase.com/docs/latest/databases/sync-scan) for the full set of sync and scan options.
+
+# Use a branch for testing {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own host. Point a second Metabase database connection at a branch when you want to validate a new dashboard against a snapshot of production data without querying the live database, then delete the branch when you're done. Create a read-only connection user on the branch the same way, so the reporting credentials stay scoped there too.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated" title="Dedicated databases" %}
+Provision a managed PostgreSQL or MySQL database and check its status.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve the host and credentials, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes and ports, and why BI tools need session or direct connections.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, and IP allowlists.
+{% /cards_item %}
+{% /cards %}

@@ -1,0 +1,139 @@
+---
+layout: article
+title: Vercel
+description: Deploy an app on Vercel against an Appwrite dedicated database, configure pooled and direct connection strings, run migrations in the build step, secure access without a static IP, and back Preview Deployments with branches.
+---
+
+A dedicated database is a standard PostgreSQL, MySQL, MariaDB, or MongoDB engine reachable over TLS, so any app deployed on [Vercel](https://vercel.com/), Next.js, SvelteKit, Nuxt, Remix, or a plain Node.js function, connects to it with a normal driver or ORM. This guide covers what's specific to Vercel: where the connection strings go, how to run migrations on deploy, why you don't allowlist IPs, and how to wire Preview Deployments to database branches.
+
+Deploying a Next.js app? Read the [Next.js](/docs/products/databases/dedicated/nextjs) guide first for where to open connections in the App Router, then return here for the Vercel specifics.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Set environment variables {% #env %}
+
+Vercel scopes environment variables to three environments, **Production**, **Preview**, and **Development**. Add two variables to your project's environment-variable settings and apply them to the environments you deploy:
+
+```env
+DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6432/appwrite?sslmode=require&pgbouncer=true"
+DIRECT_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+```
+
+- `DATABASE_URL` points at the [connection pooler](/docs/products/databases/dedicated/pooler) port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB). Vercel serverless functions are short-lived and each invocation can open its own pool, so runtime traffic must go through the pooler in **transaction mode** to avoid exhausting backend connections.
+- `DIRECT_URL` points at the engine port (`5432`) for migrations, which need a session-level connection the transaction-mode pooler can't provide.
+
+The `sslmode=require` parameter is already in the string Appwrite returns; no extra certificate configuration is needed. You can also add the variables from the CLI:
+
+```bash
+vercel env add DATABASE_URL production
+vercel env add DIRECT_URL production
+```
+
+Treat the database password as a secret. To rotate it without redeploying the database, call the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials) and update the Vercel variables with the new value.
+
+# Run migrations in the build step {% #migrations %}
+
+Vercel caches dependencies between builds, which means an ORM's `postinstall` client-generation hook may not re-run on every deploy. Generate the client and apply migrations explicitly in the **Build Command**. For Prisma:
+
+```bash
+prisma generate && prisma migrate deploy && next build
+```
+
+Or move it into a `vercel-build` script in `package.json` and point Vercel's Build Command at it:
+
+```json
+{
+  "scripts": {
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
+  }
+}
+```
+
+`prisma migrate deploy` connects over `DIRECT_URL` (the engine port) so it gets a real session connection and full DDL privileges. The primary `appwrite` user owns the default database and can run schema changes. For Drizzle, run `drizzle-kit migrate` against the direct URL in the same build step. See the [Prisma](/docs/products/databases/dedicated/prisma) and [Drizzle](/docs/products/databases/dedicated/drizzle) guides for the migration commands.
+
+# No static egress IP {% #no-static-ip %}
+
+On standard Vercel plans, serverless functions and builds send outbound traffic from a **dynamic, rotating range of IP addresses**, there is no stable static egress IP. Do not try to secure the database by allowlisting Vercel's IPs; the set changes and an allowlist would either break or have to be so wide it's meaningless.
+
+Secure the connection with **TLS and credentials** instead, which is exactly what the dedicated database is built for:
+
+- Every connection is encrypted, `sslmode=require` is already in the connection string.
+- Access is gated by the generated password, which you can [rotate](/docs/products/databases/dedicated/connect#rotate) from the API at any time.
+- For least privilege, issue a scoped [connection user](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) for the deployment instead of the primary `appwrite` user.
+
+If you require IP-based controls or `verify-full`/mTLS, those live on the [Network](/docs/products/databases/dedicated/network) page. Static egress IPs on Vercel are a separate, plan-gated Vercel networking add-on, not something the dedicated database depends on.
+
+# Edge Functions: use the SQL API {% #edge %}
+
+Vercel **Edge Functions** (and any route with `export const runtime = 'edge'`) run on a constrained runtime that **cannot open TCP database sockets**, so no engine driver works there. Query the database through the [SQL API](/docs/products/databases/dedicated/sql-api) over HTTPS instead, an opt-in endpoint that executes one parameterised statement and returns JSON. Use the Edge runtime's global `fetch`:
+
+```ts
+export const runtime = 'edge';
+
+export async function GET() {
+  const response = await fetch(
+    'https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/execution',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Appwrite-Project': process.env.APPWRITE_PROJECT_ID!,
+        'X-Appwrite-Key': process.env.APPWRITE_API_KEY!,
+      },
+      body: JSON.stringify({
+        sql: 'SELECT id, email FROM users ORDER BY created_at DESC LIMIT $1',
+        bindings: [10],
+      }),
+    },
+  );
+
+  const { rows } = await response.json();
+  return Response.json(rows);
+}
+```
+
+Add `APPWRITE_PROJECT_ID` and `APPWRITE_API_KEY` (a key with the `databases.read` scope) to your Vercel environment variables. Standard Node.js serverless functions don't need this, they connect over the pooler with a normal driver.
+
+{% arrow_link href="/docs/products/databases/dedicated/sql-api" %}
+Read the SQL API reference
+{% /arrow_link %}
+
+# Preview Deployments with branches {% #previews %}
+
+Vercel creates a **Preview Deployment** for every push to a non-production branch and every pull request. Pointing those previews at production data is risky, a destructive migration or test write would hit live records. Dedicated [branches](/docs/products/databases/dedicated/branches) solve this: each is an instant, isolated copy of the database with its own hostname and connection string, started from a storage snapshot so the schema and data match the source.
+
+A typical per-preview flow:
+
+1. Create a branch from the API and read its `connectionString`.
+2. Set `DATABASE_URL` (pooled) and `DIRECT_URL` (direct) for the **Preview** environment, or override them for a specific Git branch, using the branch's connection string. Branch-scoped variables override the shared Preview values, so you only set what differs.
+3. Run `prisma migrate deploy` (or your migrate command) against the branch in the build step.
+4. Delete the branch when the pull request is merged or closed.
+
+Because each preview gets its own branch, tests in one deployment never affect another or production.
+
+{% arrow_link href="/docs/products/databases/dedicated/branches" %}
+Create and manage branches
+{% /arrow_link %}
+
+# Deploy from an example {% #examples %}
+
+The fastest way to start is from a working example. Clone an Appwrite dedicated-database example for your framework (Next.js + Prisma, SvelteKit + Drizzle, and others), import the repository into Vercel, set `DATABASE_URL` and `DIRECT_URL` as described above, and deploy. Where an example provides a Deploy button, it forwards you to Vercel's import flow with the required environment-variable names pre-filled, you still paste in your own connection strings. Check the [Dedicated databases](/docs/products/databases/dedicated) overview for the current example repositories.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/nextjs" title="Next.js" %}
+Where to connect in the App Router and the Edge runtime caveat.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/prisma" title="Prisma" %}
+Datasource config, pooled and direct URLs, and the migration workflow.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for preview environments and CI.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/sql-api" title="SQL API" %}
+Query over HTTPS from Edge Functions without a TCP connection.
+{% /cards_item %}
+{% /cards %}
