@@ -4,7 +4,7 @@ title: Branches
 description: Spin up an ephemeral, isolated copy of a dedicated database in seconds from a storage snapshot. Use branches for previews, migrations, and testing.
 ---
 
-A **branch** is a short-lived, isolated copy of a dedicated database. It has its own credentials, its own endpoint, and starts from a point-in-time snapshot of the parent's storage volume. Branches are not replicas, once created, they diverge from the parent and never sync back.
+A **branch** is a short-lived, isolated copy of a dedicated database. It has its own endpoint and reuses the parent's credentials, because it is a snapshot copy of the parent's storage volume taken at a point in time. Branches are not replicas, once created, they diverge from the parent and never sync back.
 
 {% info title="Branches do not merge back" %}
 There is no branch merge operation. Use a branch to validate a migration, data repair, or application change, then intentionally cut application traffic over to the validated database or copy the data you want back with engine-native tools. Appwrite does not reconcile two diverged database histories for you.
@@ -25,8 +25,9 @@ Creating a branch:
 2. **Snapshot the parent's storage volume.** This is a near-instant copy-on-write operation.
 3. **Resume writes on the parent.** The parent is paused for under a second.
 4. **Provision the branch** from the snapshot, its own isolated storage volume, its own database instance.
-5. **Start the branch** on the same engine and version. Resources can be smaller than the parent.
-6. **Generate branch credentials** and return the branch endpoint.
+5. **Start the branch** on the same engine and version. Branch resources are fixed and lightweight (100–500m CPU, 256–512 MiB RAM), enough to validate a change rather than carry production load. They are not configurable.
+
+Create is asynchronous: the call returns `202 Accepted` with the parent database while the branch provisions in the background. Once the branch is ready, its endpoint and the inherited credentials are returned for each entry of the [list branches](#list) response. A branch is a snapshot copy, so it reuses the parent's credentials, the same username, password, and database users, rather than generating new ones.
 
 The parent and the branch share storage cost-free at the moment of branching (copy-on-write). Storage cost grows as the two databases diverge.
 
@@ -48,9 +49,7 @@ const compute = new Compute(client);
 await compute.createDatabaseBranch({
     databaseId: '<DATABASE_ID>',
     branchId: 'pr-1234',
-    name: 'PR 1234 preview',
-    cpu: 1000,
-    memory: 2048,
+    ttl: 86400,
 });
 ```
 ```server-deno
@@ -66,9 +65,7 @@ const compute = new Compute(client);
 await compute.createDatabaseBranch({
     databaseId: '<DATABASE_ID>',
     branchId: 'pr-1234',
-    name: 'PR 1234 preview',
-    cpu: 1000,
-    memory: 2048,
+    ttl: 86400,
 });
 ```
 ```server-php
@@ -89,9 +86,7 @@ $compute = new Compute($client);
 $compute->createDatabaseBranch(
     databaseId: '<DATABASE_ID>',
     branchId: 'pr-1234',
-    name: 'PR 1234 preview',
-    cpu: 1000,
-    memory: 2048,
+    ttl: 86400,
 );
 ```
 ```server-python
@@ -108,9 +103,7 @@ compute = Compute(client)
 compute.create_database_branch(
     database_id='<DATABASE_ID>',
     branch_id='pr-1234',
-    name='PR 1234 preview',
-    cpu=1000,
-    memory=2048,
+    ttl=86400,
 )
 ```
 ```server-ruby
@@ -128,9 +121,7 @@ compute = Compute.new(client)
 compute.create_database_branch(
     database_id: '<DATABASE_ID>',
     branch_id: 'pr-1234',
-    name: 'PR 1234 preview',
-    cpu: 1000,
-    memory: 2048,
+    ttl: 86400,
 )
 ```
 ```server-dotnet
@@ -147,9 +138,7 @@ Compute compute = new Compute(client);
 await compute.CreateDatabaseBranch(
     databaseId: "<DATABASE_ID>",
     branchId: "pr-1234",
-    name: "PR 1234 preview",
-    cpu: 1000,
-    memory: 2048
+    ttl: 86400
 );
 ```
 ```server-dart
@@ -165,9 +154,7 @@ Compute compute = Compute(client);
 await compute.createDatabaseBranch(
     databaseId: '<DATABASE_ID>',
     branchId: 'pr-1234',
-    name: 'PR 1234 preview',
-    cpu: 1000,
-    memory: 2048,
+    ttl: 86400,
 );
 ```
 ```server-kotlin
@@ -184,9 +171,7 @@ val compute = Compute(client)
 compute.createDatabaseBranch(
     databaseId = "<DATABASE_ID>",
     branchId = "pr-1234",
-    name = "PR 1234 preview",
-    cpu = 1000,
-    memory = 2048,
+    ttl = 86400,
 )
 ```
 ```server-swift
@@ -202,9 +187,7 @@ let compute = Compute(client)
 _ = try await compute.createDatabaseBranch(
     databaseId: "<DATABASE_ID>",
     branchId: "pr-1234",
-    name: "PR 1234 preview",
-    cpu: 1000,
-    memory: 2048
+    ttl: 86400
 )
 ```
 ```server-go
@@ -225,9 +208,7 @@ func main() {
 
     _, err := compute.CreateDatabaseBranch("<DATABASE_ID>",
         compute.WithCreateDatabaseBranchBranchId("pr-1234"),
-        compute.WithCreateDatabaseBranchName("PR 1234 preview"),
-        compute.WithCreateDatabaseBranchCpu(1000),
-        compute.WithCreateDatabaseBranchMemory(2048),
+        compute.WithCreateDatabaseBranchTtl(86400),
     )
     if err != nil {
         panic(err)
@@ -249,9 +230,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     compute.create_database_branch("<DATABASE_ID>")
         .branch_id("pr-1234")
-        .name("PR 1234 preview")
-        .cpu(1000)
-        .memory(2048)
+        .ttl(86400)
         .send()
         .await?;
 
@@ -265,29 +244,30 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
     "branchId": "pr-1234",
-    "name": "PR 1234 preview",
-    "cpu": 1000,
-    "memory": 2048
+    "ttl": 86400
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
 ```
 {% /multicode %}
 
+Both fields are optional. Omit `branchId` to have Appwrite generate one. The call returns `202 Accepted` with the parent database; poll [list branches](#list) for the branch's endpoint and credentials once it is ready.
+
 Optional fields:
 
-| Field      | Default                 | Purpose                                                 |
-|------------|-------------------------|---------------------------------------------------------|
-| `cpu`      | parent's CPU            | Branch can be smaller (or larger) than the parent       |
-| `memory`   | parent's memory         | Same                                                    |
-| `storage`  | parent's storage        | Branches inherit storage from the snapshot              |
+| Field      | Default                 | Purpose                                                          |
+|------------|-------------------------|------------------------------------------------------------------|
+| `branchId` | auto-generated          | Custom id (`a-z`, `A-Z`, `0-9`, `.`, `-`, `_`, max 36 chars)     |
+| `ttl`      | `86400` (24 hours)      | Lifetime in seconds before the branch expires (min 300, max 604800) |
 
 The branch endpoint is exposed as a separate hostname:
 
 ```
-db-<projectId>-<dbId>-<branchId>.<region>.appwrite.center
+db-<projectId>-<databaseId>-<branchId>.<region>.appwrite.center
 ```
 
-Connect to it with the engine's standard CLI, same as the parent. The branch endpoint and credentials are returned alongside every entry of the [list branches](#list) response, indexed by `branchId`.
+Here `<branchId>` is the dash-free 8-hex id returned by the API (for example `a1b2c3d4`), so a branch host looks like `db-myproject-mydb-a1b2c3d4.fra.appwrite.center`. The edge proxy routes this to the branch exactly like a parent database, MongoDB by SNI, PostgreSQL, MySQL, and MariaDB by the wire database name.
+
+Connect to a branch with the same engine CLI or driver as the parent. A branch reuses the parent's credentials, only the `host` and the routing `database` differ. The branch `host`, a ready-to-use `connectionString`, and the inherited credentials are returned for each entry of the [list branches](#list) response.
 
 # List branches {% #list %}
 
@@ -468,6 +448,35 @@ curl -X GET \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/branches
 ```
 {% /multicode %}
+
+Each branch entry carries both its metadata and the connection details, so you do not need a separate credentials call:
+
+```json
+{
+  "branches": [
+    {
+      "branchId": "a1b2c3d4",
+      "branchName": "pr-1234",
+      "namespace": "db-myproject-mydb-branch-a1b2c3d4",
+      "expiresAt": 1711411200,
+      "host": "db-myproject-mydb-a1b2c3d4.fra.appwrite.center",
+      "port": 5432,
+      "database": "db-myproject-mydb-a1b2c3d4",
+      "username": "appwrite",
+      "password": "<32-char-hex>",
+      "ssl": true,
+      "engine": "postgres",
+      "connectionString": "postgresql://appwrite:<password>@db-myproject-mydb-a1b2c3d4.fra.appwrite.center:5432/db-myproject-mydb-a1b2c3d4?sslmode=require"
+    }
+  ]
+}
+```
+
+`username` and `password` mirror the parent, a branch is a snapshot copy and shares the parent's database users. The `port` is the engine default (5432 for PostgreSQL, 3306 for MySQL and MariaDB, 27017 for MongoDB); branches have no pooler. Connect with the `connectionString` straight from the response:
+
+```bash
+psql "postgresql://appwrite:<password>@db-myproject-mydb-a1b2c3d4.fra.appwrite.center:5432/db-myproject-mydb-a1b2c3d4?sslmode=require"
+```
 
 # Delete a branch {% #delete %}
 
@@ -671,7 +680,7 @@ curl -X DELETE \
 
 # Billing {% #billing %}
 
-A branch is billed like a standalone dedicated database against its own specification (CPU, memory, storage). The snapshot itself is free at the moment of branching; storage cost accumulates as the branch's data diverges from the parent.
+A branch runs on fixed, lightweight compute, so its cost is dominated by storage. The snapshot itself is free at the moment of branching; storage cost accumulates as the branch's data diverges from the parent.
 
 There is no separate "branch" line item, branches roll into your regular dedicated database storage and compute totals.
 
@@ -696,7 +705,7 @@ jobs:
             -H "X-Appwrite-Project: $PROJECT_ID" \
             -H "X-Appwrite-Key: $API_KEY" \
             -H "Content-Type: application/json" \
-            -d '{ "branchId": "pr-${{ github.event.number }}", "name": "PR #${{ github.event.number }}" }' \
+            -d '{ "branchId": "pr-${{ github.event.number }}" }' \
             https://fra.cloud.appwrite.io/v1/compute/databases/$DB_ID/branches || true
 
       - name: Tear down preview branch on close
