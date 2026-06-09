@@ -364,7 +364,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/dashboard.avif"
+                                            src="/assets/visuals/dashboard.png"
                                             alt="Dashboard"
                                         />
                                         <div class="buttons visuals">
@@ -389,7 +389,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/auth.avif"
+                                            src="/assets/visuals/auth.png"
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons visuals">
@@ -414,7 +414,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/databases.avif"
+                                            src="/assets/visuals/databases.png"
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons visuals">
@@ -440,7 +440,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/storage.avif"
+                                            src="/assets/visuals/storage.png"
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons visuals">
@@ -466,7 +466,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/functions.avif"
+                                            src="/assets/visuals/functions.png"
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons visuals">
@@ -491,7 +491,7 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/messaging.avif"
+                                            src="/assets/visuals/messaging.png"
                                             alt="Appwrite Messaging"
                                         />
                                         <div class="buttons visuals">
