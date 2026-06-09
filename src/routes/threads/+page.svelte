@@ -29,15 +29,18 @@
 
     let searching = false;
     let query = $state('');
+    let searchGeneration = 0;
 
     const handleSearch = async (value: string) => {
         query = value;
         searching = true;
+        const generation = ++searchGeneration;
         const result = await getThreads({
             q: value,
             tags: selectedTags ?? [],
             allTags: true
         });
+        if (generation !== searchGeneration) return;
         threads = result.threads;
         hasMore = result.hasMore;
         nextCursor = result.nextCursor;
@@ -47,6 +50,7 @@
     const loadMore = async () => {
         if (!hasMore || loadingMore) return;
         loadingMore = true;
+        const generation = searchGeneration;
         try {
             const result = await getThreads({
                 q: query,
@@ -54,6 +58,7 @@
                 allTags: true,
                 cursor: nextCursor
             });
+            if (generation !== searchGeneration) return;
             threads = [...threads, ...result.threads];
             hasMore = result.hasMore;
             nextCursor = result.nextCursor;
