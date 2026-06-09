@@ -1,0 +1,37 @@
+---
+layout: integration
+title: Vercel
+description: Deploy apps on Vercel backed by an Appwrite dedicated database — pooled connections for serverless functions, the SQL API for Edge Functions, and branches for Preview Deployments.
+date: 2026-06-09
+featured: false
+isPartner: false
+isNew: true
+cover: /images/integrations/vercel/cover.avif
+category: deployments
+product:
+    avatar: '/images/integrations/avatars/vercel.avif'
+    vendor: Vercel
+    description: 'Vercel is a platform for deploying and hosting frontend applications and serverless functions, with Preview Deployments and a global edge network.'
+platform:
+    - 'Cloud'
+images:
+    - /images/integrations/vercel/cover.avif
+---
+
+[Vercel](https://vercel.com/) hosts frontend apps and serverless functions. An Appwrite [dedicated database](/docs/products/databases/dedicated) gives them a managed PostgreSQL or MySQL backend reachable over the public internet.
+
+# How does the integration work?
+
+Vercel serverless functions connect through the [connection pooler](/docs/products/databases/dedicated/pooler) in transaction mode, with migrations running against the direct endpoint in the build step. Edge Functions use the [SQL API](/docs/products/databases/dedicated/sql-api) over HTTPS. Because Vercel has no static egress IP, you rely on TLS and credentials rather than IP allowlisting — and [branches](/docs/products/databases/dedicated/branches) give each Preview Deployment its own database.
+
+# How to implement
+
+1. Create a dedicated database and copy its connection string ([Connect](/docs/products/databases/dedicated/connect)).
+2. Set pooled `DATABASE_URL` and direct `DIRECT_URL` as Vercel environment variables.
+3. Run migrations in the build step and connect from your functions — see the full [**Vercel guide**](/docs/products/databases/dedicated/vercel).
+
+# Read more
+
+- [Vercel with dedicated databases](/docs/products/databases/dedicated/vercel)
+- [Branches for Preview Deployments](/docs/products/databases/dedicated/branches)
+- [SQL API](/docs/products/databases/dedicated/sql-api)

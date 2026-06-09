@@ -1,0 +1,37 @@
+---
+layout: integration
+title: Drizzle ORM
+description: Use Drizzle ORM with an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database — a lightweight, type-safe SQL toolkit with Drizzle Kit migrations.
+date: 2026-06-09
+featured: false
+isPartner: false
+isNew: true
+cover: /images/integrations/drizzle/cover.avif
+category: databases
+product:
+    avatar: '/images/integrations/avatars/drizzle.avif'
+    vendor: Drizzle
+    description: 'Drizzle ORM is a lightweight, type-safe TypeScript ORM with an SQL-like query builder and the Drizzle Kit migration toolkit, popular on serverless and edge runtimes.'
+platform:
+    - 'Cloud'
+images:
+    - /images/integrations/drizzle/cover.avif
+---
+
+[Drizzle ORM](https://orm.drizzle.team/) is a lightweight, type-safe TypeScript ORM. An Appwrite [dedicated database](/docs/products/databases/dedicated) is a standard SQL engine, so Drizzle connects with its normal PostgreSQL (`node-postgres`, `postgres.js`) or MySQL (`mysql2`) drivers.
+
+# How does the integration work?
+
+You pass the connection string from your dedicated database's [Connect](/docs/products/databases/dedicated/connect) view to a Drizzle driver and run Drizzle Kit for migrations. On serverless and edge runtimes you connect through the [connection pooler](/docs/products/databases/dedicated/pooler) in transaction mode, disabling prepared statements (`prepare: false` with `postgres.js`), while migrations run against the direct endpoint.
+
+# How to implement
+
+1. Create a dedicated database and copy its connection string ([Connect](/docs/products/databases/dedicated/connect)).
+2. Choose a driver (`node-postgres`, `postgres.js`, or `mysql2`) and set your connection string.
+3. Configure `drizzle.config.ts` and run `drizzle-kit migrate` — see the full [**Drizzle guide**](/docs/products/databases/dedicated/drizzle).
+
+# Read more
+
+- [Drizzle with dedicated databases](/docs/products/databases/dedicated/drizzle)
+- [Connect to a dedicated database](/docs/products/databases/dedicated/connect)
+- [Connection pooler](/docs/products/databases/dedicated/pooler)
