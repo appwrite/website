@@ -47,16 +47,19 @@
     const loadMore = async () => {
         if (!hasMore || loadingMore) return;
         loadingMore = true;
-        const result = await getThreads({
-            q: query,
-            tags: selectedTags ?? [],
-            allTags: true,
-            cursor: nextCursor
-        });
-        threads = [...threads, ...result.threads];
-        hasMore = result.hasMore;
-        nextCursor = result.nextCursor;
-        loadingMore = false;
+        try {
+            const result = await getThreads({
+                q: query,
+                tags: selectedTags ?? [],
+                allTags: true,
+                cursor: nextCursor
+            });
+            threads = [...threads, ...result.threads];
+            hasMore = result.hasMore;
+            nextCursor = result.nextCursor;
+        } finally {
+            loadingMore = false;
+        }
     };
 
     const { debounce, reset } = createDebounce();

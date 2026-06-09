@@ -99,7 +99,7 @@ export async function getThreads({ q, tags, allTags, cursor }: GetThreadsArgs) {
 
     const threadDocs = data.documents as unknown as DiscordThread[];
     const filtered = filterThreads({ threads: threadDocs, q, tags, allTags });
-    const hasMore = data.documents.length === THREADS_PAGE_SIZE;
+    const hasMore = filtered.length === THREADS_PAGE_SIZE;
     const nextCursor = hasMore ? data.documents[data.documents.length - 1].$id : undefined;
 
     return { threads: filtered, hasMore, nextCursor, total: data.total };
