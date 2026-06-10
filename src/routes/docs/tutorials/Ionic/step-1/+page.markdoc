@@ -1,0 +1,35 @@
+---
+layout: tutorial
+title: Build an app with Ionic
+description: Learn to build a mobile app with Ionic framework and Appwrite backend.
+step: 1
+difficulty: beginner
+readtime: 10
+---
+
+**My Ionic App**: An introductory tutorial to building a mobile app with Ionic and Appwrite.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/ionic-app.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/ionic-app.png)
+{% /only_light %}
+
+# Concepts {% #concepts %}
+
+This tutorial will introduce the following concepts:
+
+1. Setting up your Ionic project
+2. Creating user interfaces with Ionic components
+3. Implementing authentication 
+4. Working with data using Appwrite as a backend
+5. Enhancing user experience with Ionic features
+
+
+# Prerequisites {% #prerequisites %}
+
+1. Basic knowledge of JavaScript and TypeScript.
+2. Have [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) installed on your computer.
+
+Now you have a template for creating a tutorial for Ionic following the same structure as the React tutorial.
