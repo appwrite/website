@@ -55,11 +55,12 @@ We will add a new hook, `useIdeas`, to handle this functionality.
 Create a new file `hooks/useIdeas.ts` and add the following code.
 
 ```ts
+"use client";
 // hooks/useIdeas.ts
 
-import { useState, useEffect } from 'react';
-import { ID, Query, Permission, type Models } from 'appwrite';
-import { tablesDB } from '../lib/appwrite';
+import {useState, useEffect} from 'react';
+import {ID, Query, Permission, type Models} from 'appwrite';
+import {tablesDB} from '@/lib/appwrite';
 
 const databaseId = process.env.NEXT_PUBLIC_DATABASE_ID!;
 const tableId = process.env.NEXT_PUBLIC_TABLE_ID!;
@@ -78,12 +79,15 @@ export function useIdeas() {
     // Fetch the 10 most recent ideas from the database
     const fetch = async (): Promise<void> => {
         try {
-            const response = await tablesDB.listRows(
-                databaseId,
-                tableId,
-                [Query.orderDesc('$createdAt'), Query.limit(queryLimit)]
-            );
-            setCurrent(response.rows as Idea[]);
+            const response = await tablesDB.listRows<Idea>({
+                databaseId: databaseId,
+                tableId: tableId,
+                queries: [
+                    Query.orderDesc('$createdAt'),
+                    Query.limit(queryLimit)
+                ],
+            });
+            setCurrent(response.rows);
         } catch (error) {
             console.error('Error fetching ideas:', error);
         } finally {
@@ -92,20 +96,23 @@ export function useIdeas() {
     };
 
     // Add new idea to the database
-    const add = async (idea: Omit<Idea, '$id' | '$createdAt' | '$updatedAt' | '$permissions'>): Promise<void> => {
+    const add = async (ideaData: Omit<Idea, keyof Models.Row>): Promise<void> => {
         try {
-            const response = await tablesDB.createRow(
-                databaseId,
-                tableId,
-                ID.unique(),
-                idea,
-                [
+            const response = await tablesDB.createRow<Idea>({
+                databaseId: databaseId,
+                tableId: tableId,
+                rowId: ID.unique(),
+                data: ideaData,
+                permissions: [
                     Permission.read('any'),
-                    Permission.update(`user:${idea.userId}`),
-                    Permission.delete(`user:${idea.userId}`)
+                    Permission.update('user:' + ideaData.userId),
+                    Permission.delete('user:' + ideaData.userId)
                 ]
-            );
-            setCurrent(prev => [response as Idea, ...prev].slice(0, queryLimit));
+            });
+            setCurrent((prev) => {
+                const newList = [response, ...prev];
+                return newList.slice(0, queryLimit);
+            });
         } catch (error) {
             console.error('Error adding idea:', error);
         }
@@ -113,7 +120,7 @@ export function useIdeas() {
 
     const remove = async (id: string): Promise<void> => {
         try {
-            await tablesDB.deleteRow(databaseId, tableId, id);
+            await tablesDB.deleteRow({databaseId: databaseId, tableId: tableId, rowId: id});
             await fetch(); // Refetch ideas to ensure we have 10 items
         } catch (error) {
             console.error('Error removing idea:', error);

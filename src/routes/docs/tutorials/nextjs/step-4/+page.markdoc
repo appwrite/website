@@ -26,13 +26,13 @@ Create a new file `hooks/useAuth.ts` and add the following code.
 // hooks/useAuth.ts
 
 import { useState, useEffect } from 'react';
-import { account } from '../lib/appwrite';
+import { account } from '@/lib/appwrite';
 import { ID } from 'appwrite';
 import type { Models } from 'appwrite';
 import { useRouter } from 'next/navigation';
 
 export function useAuth() {
-    const [current, setCurrent] = useState<Models.Session | null>(null);
+    const [current, setCurrent] = useState<Models.User<Models.Preferences> | null>(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
@@ -46,16 +46,17 @@ export function useAuth() {
     };
 
     const login = async (email: string, password: string): Promise<void> => {
-        const session = await account.createEmailPasswordSession({
+        await account.createEmailPasswordSession({
             email,
             password
         });
-        setCurrent(session);
+        const user = await account.get();
+        setCurrent(user);
         router.push('/');
     };
 
     const logout = async (): Promise<void> => {
-        await account.deleteSession('current');
+        await account.deleteSession({ sessionId: 'current' });
         setCurrent(null);
         router.push('/');
     };
@@ -97,7 +98,7 @@ We will define functions to handle form submissions and show either a signup or 
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 import AuthForm from '../../components/AuthForm';
 
 export default function LoginPage() {
