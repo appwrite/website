@@ -20,7 +20,7 @@ faqs:
   - question: What is Project Glasswing?
     answer: Project Glasswing is Anthropic’s trusted-access program for using Claude Mythos models in cyberdefense and critical infrastructure security. Anthropic says partners have used Mythos Preview to scan codebases and find high- or critical-severity security flaws.
 ---
-Claude Fable 5 is now the most capable Claude model Anthropic has made generally available. It launched alongside Claude Mythos 5, a restricted-access version for trusted cyberdefense and infrastructure partners. Claude Fable 5 is Anthropic's first Mythos-class model made broadly available, while Claude Mythos 5 is a restricted-access version for trusted cyberdefense and infrastructure partners
+Claude Fable 5 is now the most capable Claude model Anthropic has made generally available. It launched alongside Claude Mythos 5, a restricted-access version for trusted cyberdefense and infrastructure partners. Both are Mythos-class models, but Fable 5 is the first that Anthropic has made broadly available.
 
 # What is Claude Fable 5?
 
