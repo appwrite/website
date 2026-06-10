@@ -80,6 +80,10 @@
                 {
                     label: 'Deploy manually',
                     href: '/docs/products/sites/deploy-manually'
+                },
+                {
+                    label: 'One-Click Deployment',
+                    href: '/docs/products/sites/one-click-deployment'
                 }
             ]
         },
