@@ -30,7 +30,7 @@ Appwrite serves as a business associate to customers that meet the definition of
 
 For Enterprise customers subject to HIPAA and processing PHI within their applications, Appwrite will sign a BAA. To request Appwrite's BAA, please [contact us](/contact-us).
 
-For Pro customers, the BAA is a click-through agreement that is not signed. An organization owner can enable it directly from the Appwrite Console: open your organization's **Settings** tab, find the **BAA** section, select **Enable BAA**, then review the agreement and select **Accept & Enable**. The BAA is a paid add-on billed to your organization and prorated for your current billing cycle. You can review the agreement on the [Business Associate Agreement](/baa) page.
+For Pro customers, the BAA is a click-through agreement that is not signed. An organization owner can enable it directly from the Appwrite Console: open your organization's **Settings** tab, find the **BAA** section, select **Enable BAA**, then review the agreement and select **Accept & Enable**. The BAA is a paid add-on billed to your organization and prorated for your current billing cycle. You can review the agreement on the [Business Associate Agreement](/legal/baa) page.
 
 ## Data retention
 
