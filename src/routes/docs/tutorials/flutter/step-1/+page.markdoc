@@ -1,19 +1,28 @@
 ---
 layout: tutorial
-title: Coming soon
-description: Learn to build an Flutter app with no backend code using an Appwrite backend.
-framework: Flutter
-back: /docs/tutorials
-category: Mobile and native 
+title: Build an ideas tracker with Flutter
+description: Learn to build a Flutter app with no backend code using an Appwrite backend.
 step: 1
-draft: true
+difficulty: beginner
+back: /docs/tutorials
+readtime: 15
+category: Mobile and native
+framework: Flutter
 ---
 
-Improve the docs, add this guide.
+**Idea tracker**: an app to track all the side project ideas that you'll start, but probably never finish.
+In this tutorial, you will build Idea tracker with Appwrite and Flutter.
 
-We still don't have this guide in place, but we do have some great news. 
-The Appwrite docs, just like Appwrite, is completely open sourced.
-This means, anyone can help improve them and add new guides and tutorials. 
+## Concepts {% #concepts %}
+This tutorial will introduce the following concepts:
 
-If you see this page, **we're actively looking for contributions to this page**.
-Follow our contribution guidelines, open a PR to [our Website repo](https://github.com/appwrite/website), and collaborate with our core team to improve this page.
+1. Setting up your first project
+2. Authentication 
+3. Databases and tables
+4. Queries and pagination
+
+
+## Prerequisites {% #prerequisites %}
+1. Android, iOS simulators, or a physical device to run the app
+2. Have [Dart](https://dart.dev/) and [Flutter SDK](https://flutter.dev/) installed on your computer
+3. Basic knowledge of Flutter and Provider.

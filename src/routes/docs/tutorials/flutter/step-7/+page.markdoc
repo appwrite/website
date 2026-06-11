@@ -1,0 +1,162 @@
+---
+layout: tutorial
+title: Create ideas page
+description: Add database queries and pagination using Appwrite in your Flutter application.
+step: 7
+---
+
+Using `IdeasProvider` you can now display the ideas on the page and create a form to submit new ideas.
+
+If an idea is submitted by the logged-in user, remove button will be enabled to remove the idea.
+While this check uses the user ID to determine the disable/enable logic, permissions set in step 6 will be used to enforce
+that only the owner of the idea can remove it.
+
+Overwrite the contents of `lib/screens/home.dart` with the following:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/ideas_provider.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:ideas_tracker/styles.dart';
+import 'package:provider/provider.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final userProvider = context.watch<UserProvider>();
+    final ideasProvider = context.watch<IdeasProvider>();
+    final user = userProvider.current;
+
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (user != null) ...[
+                Text(
+                  "Submit Idea",
+                  style: Styles.heading,
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _titleController,
+                  decoration: Styles.input.copyWith(
+                    hintText: "Title"
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _descriptionController,
+                  decoration: Styles.input.copyWith(
+                    hintText: "Description"
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await ideasProvider.add({
+                          'userId': user.$id,
+                          'title': _titleController.text,
+                          'description': _descriptionController.text,
+                        }, user.$id);
+                        _titleController.clear();
+                        _descriptionController.clear();
+                      } catch (e) {
+                        if (!mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(e.toString())),
+                        );
+                      }
+                    },
+                    style: Styles.button,
+                    child: Text("Submit"),
+                  ),
+                ),
+              ] else ...[
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text("Please login to submit an idea."),
+                ),
+              ],
+
+              const SizedBox(height: 40),
+              Text(
+                "Latest Ideas",
+                style: Styles.heading,
+              ),
+              const SizedBox(height: 20),
+
+              ...ideasProvider.current.map((idea) {
+                final String ideaUserId = idea.data['userId'] ?? '';
+                final bool isOwner = user != null && user.$id == ideaUserId;
+
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          idea.data['title'] ?? '',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(idea.data['description'] ?? ''),
+                        
+                          const SizedBox(height: 8),
+                          ElevatedButton(
+                            onPressed: isOwner ? () async {
+                              try {
+                                await ideasProvider.remove(idea.$id);
+                              } catch (e) {
+                                if (!mounted) return;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(e.toString())),
+                                );
+                              }
+                            } : null,
+                            style: Styles.button,
+                            child: const Text(
+                              "Remove",
+                            ),
+                          ),
+                        ],
+                    ),
+                  ),
+                );
+              }).toList()
+            ],
+          ),
+        ),
+      )
+    );
+  }
+}
+```
