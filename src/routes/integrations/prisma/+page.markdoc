@@ -1,0 +1,37 @@
+---
+layout: integration
+title: Prisma
+description: Use Prisma ORM with an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database — type-safe queries, migrations, and seeding over a standard connection string.
+date: 2026-06-09
+featured: false
+isPartner: false
+isNew: true
+cover: /images/integrations/prisma/cover.avif
+category: databases
+product:
+    avatar: '/images/integrations/avatars/prisma.avif'
+    vendor: Prisma
+    description: 'Prisma is a next-generation ORM for Node.js and TypeScript with a type-safe query builder, schema-driven migrations, and a large ecosystem.'
+platform:
+    - 'Cloud'
+images:
+    - /images/integrations/prisma/cover.avif
+---
+
+[Prisma](https://www.prisma.io/) is a type-safe ORM for Node.js and TypeScript. An Appwrite [dedicated database](/docs/products/databases/dedicated) is a standard PostgreSQL, MySQL, or MariaDB engine, so Prisma connects to it with no Appwrite-specific configuration.
+
+# How does the integration work?
+
+You point Prisma's `datasource` at the connection string from your dedicated database's [Connect](/docs/products/databases/dedicated/connect) view. Prisma Migrate manages your schema, Prisma Client runs type-safe queries, and the [connection pooler](/docs/products/databases/dedicated/pooler) absorbs connection churn from serverless runtimes — you set a pooled `url` plus a `directUrl` for migrations.
+
+# How to implement
+
+1. Create a dedicated PostgreSQL or MySQL database and copy its connection string ([Connect](/docs/products/databases/dedicated/connect)).
+2. Set `DATABASE_URL` (pooled) and `DIRECT_URL` (direct) in your environment.
+3. Configure the `datasource` and run `prisma migrate` — see the full [**Prisma guide**](/docs/products/databases/dedicated/prisma).
+
+# Read more
+
+- [Prisma with dedicated databases](/docs/products/databases/dedicated/prisma)
+- [Connect to a dedicated database](/docs/products/databases/dedicated/connect)
+- [Connection pooler](/docs/products/databases/dedicated/pooler)

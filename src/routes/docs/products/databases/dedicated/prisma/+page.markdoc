@@ -1,0 +1,236 @@
+---
+layout: article
+title: Prisma
+description: Use Prisma ORM with an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database. Configure the datasource, run migrations against the direct endpoint, and pool through the connection pooler from serverless runtimes.
+---
+
+A dedicated database is a standard engine, so [Prisma ORM](https://www.prisma.io/) works against it with no Appwrite-specific configuration. You point Prisma's `datasource` at the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and use Prisma Migrate, Prisma Client, and the rest of the toolchain exactly as you would against any self-hosted PostgreSQL, MySQL, or MariaDB server.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Set the connection string {% #connection-string %}
+
+Copy the connection string from the Console **Connect** view, or fetch it from the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials). Put it in your environment, never commit it:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```env
+DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```env
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS; the connection string Appwrite returns already enables it, so no extra flags are needed.
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+Prisma's `mysql` provider drives MariaDB, keep the `mysql://` scheme.
+{% /tabsitem %}
+{% /tabs %}
+
+The TLS parameter (`sslmode=require` for PostgreSQL, `ssl=true` for MySQL and MariaDB) is already part of the string Appwrite returns. The edge proxy terminates TLS for every dedicated database, so no extra certificate configuration is needed. For full certificate verification (`verify-full`) or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
+
+# Configure the datasource {% #datasource %}
+
+In `prisma/schema.prisma`, set the provider and read the URL from the environment:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```prisma
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```prisma
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+The generator and models are engine-agnostic:
+
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+```
+
+Pull an existing schema with `npx prisma db pull`, or create the tables from your models with a migration below.
+
+# Pool connections from serverless {% #pooling %}
+
+Prisma opens a connection pool from each running instance. On serverless and edge platforms (Vercel, Netlify, Cloudflare) where every invocation is a fresh instance, that fans out into far more backend connections than the engine allows. Route runtime traffic through the [connection pooler](/docs/products/databases/dedicated/pooler) instead by connecting on the pooler port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) on the same hostname.
+
+The pooler defaults to **transaction mode**, which does not keep a backend connection across statements, so server-side prepared statements are unavailable. Point the runtime URL at the pooler port, and give Prisma a separate **direct** connection on the engine port for migrations, which need a session-level connection:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+
+Add `pgbouncer=true` to the pooled URL so Prisma skips server-side prepared statements in transaction mode:
+
+```env
+# Runtime: pooled, transaction mode, prepared statements disabled
+DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6432/appwrite?sslmode=require&pgbouncer=true"
+
+# Migrations & introspection: direct connection to the engine
+DIRECT_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+```
+
+```prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```env
+# Runtime: pooled, transaction mode
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+
+# Migrations & introspection: direct connection to the engine
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+```prisma
+datasource db {
+  provider  = "mysql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+# Runtime: pooled, transaction mode
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+
+# Migrations & introspection: direct connection to the engine
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+```prisma
+datasource db {
+  provider  = "mysql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+```
+{% /tabsitem %}
+{% /tabs %}
+
+Prisma uses `directUrl` for `migrate` and `db pull` and `url` for Prisma Client at runtime. If your application relies on prepared statements, advisory locks, `LISTEN`/`NOTIFY`, or temporary tables, switch the pooler to **session mode** instead (and drop `pgbouncer=true` on PostgreSQL), see the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+
+# Run migrations {% #migrate %}
+
+Generate and apply a migration in development:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+In CI or production, apply already-generated migrations without prompting:
+
+```bash
+npx prisma migrate deploy
+```
+
+Both commands connect over `directUrl` (the engine port), so they get a real session connection and full DDL privileges. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL.
+
+# Seed data {% #seed %}
+
+Register a seed script in `package.json`:
+
+```json
+{
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}
+```
+
+```bash
+npx prisma db seed
+```
+
+# Query with Prisma Client {% #query %}
+
+```ts
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+const user = await prisma.user.create({
+  data: { email: 'ada@example.com' }
+});
+
+const recent = await prisma.user.findMany({
+  orderBy: { createdAt: 'desc' },
+  take: 10
+});
+```
+
+On long-running servers, instantiate `PrismaClient` once and reuse it. On serverless, keep a single client per module scope so warm invocations reuse it, and rely on the pooler to absorb cold-start connection churn.
+
+# Use a branch for previews and CI {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own hostname and connection string. They're ideal for running migrations against throwaway data in a pull-request preview or an integration-test job:
+
+1. Create a branch from the API and read its `connectionString`.
+2. Export it as `DIRECT_URL` (and the pooled variant as `DATABASE_URL`).
+3. Run `prisma migrate deploy` and your test suite against the branch.
+4. Delete the branch when the job finishes.
+
+Because a branch starts from a storage snapshot, the schema and data match the source database at branch time, so migrations run against realistic data without touching production.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes, ports, and read/write splitting for serverless workloads.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for preview environments and CI.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, mTLS, and IP allowlists.
+{% /cards_item %}
+{% /cards %}

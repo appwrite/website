@@ -1,0 +1,143 @@
+---
+layout: article
+title: Retool
+description: Connect Retool to an Appwrite dedicated PostgreSQL or MySQL database to build internal and admin tools. Create a scoped connection user, add the database resource in Retool over SSL, and choose between IP allowlisting and TLS plus credentials for Retool Cloud egress.
+---
+
+A dedicated database is a standard engine, so [Retool](https://retool.com/) connects to it as a native database resource, no Appwrite-specific configuration required. You point Retool at the database hostname, authenticate with a connection user, and enable SSL. From there you build queries, tables, and forms in Retool's editor to create internal dashboards and admin panels backed directly by your dedicated database.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its connection details. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the host, port, and credentials. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Create a connection user {% #connection-user %}
+
+Don't give Retool the primary `appwrite` user, that account owns the schema and can run DDL. Instead, create a scoped [connection user](/docs/products/databases/dedicated/connect#connections) so the tool's blast radius matches what it needs to do.
+
+For a read-only dashboard, create a `readonly` user, which can only `SELECT`:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "retool_ro",
+    "database": "appwrite",
+    "role": "readonly"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/connections
+```
+
+For an admin tool that creates, updates, and deletes records, use `readwrite` instead. It grants `SELECT`, `INSERT`, `UPDATE`, and `DELETE` but, deliberately, no schema DDL:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "retool_rw",
+    "database": "appwrite",
+    "role": "readwrite"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/connections
+```
+
+The response contains the generated password for the new user. Appwrite stores it encrypted, so copy it now; if you lose it, delete the connection and create a new one.
+
+{% arrow_link href="/docs/products/databases/dedicated/connect#connections" %}
+Read more about scoped connection users
+{% /arrow_link %}
+
+# Create the database resource in Retool {% #resource %}
+
+In Retool, go to **Resources**, choose **Create new**, then select the resource type that matches your engine. Fill in the connection fields with your dedicated database details:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+Select **PostgreSQL** as the resource type.
+
+| Retool field   | Value                                                          |
+|----------------|----------------------------------------------------------------|
+| Name           | A label for the resource, for example `Appwrite production`    |
+| Host           | `db-<projectId>-<dbId>.<region>.appwrite.center`               |
+| Port           | `5432`                                                          |
+| Database name  | `appwrite`                                                      |
+| Username       | `retool_ro` or `retool_rw` from the step above                 |
+| Password       | The generated password returned when you created the user      |
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+Select **MySQL** as the resource type. A dedicated MariaDB database uses the same MySQL resource type, MariaDB speaks the MySQL wire protocol.
+
+| Retool field   | Value                                                          |
+|----------------|----------------------------------------------------------------|
+| Name           | A label for the resource, for example `Appwrite production`    |
+| Host           | `db-<projectId>-<dbId>.<region>.appwrite.center`               |
+| Port           | `3306`                                                          |
+| Database name  | `appwrite`                                                      |
+| Username       | `retool_ro` or `retool_rw` from the step above                 |
+| Password       | The generated password returned when you created the user      |
+{% /tabsitem %}
+{% /tabs %}
+
+Under the SSL options, enable **SSL/TLS**. The edge proxy terminates TLS for every dedicated database and the connection string Appwrite returns already enables TLS, so an encrypted connection works without supplying a certificate. If you want Retool to verify the server certificate, turn on **Reject unauthorized** and leave the **CA certificate** field empty, the server certificate is signed by a well-known public CA, see the [Network](/docs/products/databases/dedicated/network#tls) page.
+
+The exact field labels and SSL controls can change between Retool releases; check the [Retool docs](https://docs.retool.com/) if a field name differs. Use **Test connection** before saving to confirm the credentials and SSL settings are correct.
+
+# Choose the right endpoint {% #endpoint %}
+
+Retool keeps a long-lived pool of connections to each resource and reuses them across requests. That pattern wants a stable, session-level connection, so point Retool at one of:
+
+- The **direct** engine endpoint (port `5432` for PostgreSQL, `3306` for MySQL/MariaDB), the default used above. Simplest, and correct for most internal tools.
+- The [connection pooler](/docs/products/databases/dedicated/pooler) in **session mode** if you want to cap how many backend connections Retool consumes.
+
+Do not point Retool at the pooler's default **transaction mode**. Retool's session features, prepared statements, and transactions assume a connection that persists across statements, which transaction mode does not provide. See the [pooler modes](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+
+# Allow Retool Cloud through the network {% #network %}
+
+If your dedicated database has an [IP allowlist](/docs/products/databases/dedicated/network#allowlist) enabled on the **Network** page, inbound connections are rejected unless their source IP is on the list. Retool Cloud connects to your database from a set of regional egress IP addresses, so you have two options:
+
+- **Allowlist Retool's egress IPs.** Retool publishes the outbound IP ranges its cloud uses, and they depend on the resource's outbound region. Retrieve the current list from Retool, the addresses change over time, and add each range to your database's allowlist on the Network page. Don't hard-code IPs from this guide; get the authoritative list from [Retool's IP allowlist docs](https://docs.retool.com/).
+- **Rely on TLS plus credentials.** Leave the allowlist off (or open) and depend on the scoped connection user and the required TLS connection to protect the database. This is simpler to operate because there's no IP list to maintain, at the cost of not restricting by source network.
+
+A self-hosted Retool instance connects from your own infrastructure's IP, which you can allowlist directly.
+
+{% arrow_link href="/docs/products/databases/dedicated/network#allowlist" %}
+Configure the IP allowlist on the Network page
+{% /arrow_link %}
+
+# Build an admin tool {% #build %}
+
+Once the resource is connected, add queries in the Retool editor that run against your dedicated database. A typical CRUD admin panel uses a few queries wired to a table and a form:
+
+- A **read** query that selects rows for a Retool **Table** component, parameterized by the table's search and pagination state.
+- An **update** query that writes edited cells back, bound to the table's "save changes" event, using the `readwrite` user.
+- An **insert** query behind a **Form** component to create new records.
+- A **delete** query bound to a row action button, guarded by a confirmation modal.
+
+Reference Retool component state in queries with bound parameters (Retool's `{{ }}` syntax) rather than string-concatenating user input into the query, so the database driver sends values separately from the statement. Combined with the scoped user, that keeps an admin panel from being turned into an arbitrary-query tool.
+
+Because the `readwrite` role can't alter the schema, these tools can only read and modify data, never drop tables or change columns, which is exactly the boundary you want for an internal panel operated by non-engineers. For dashboards that only display data, wire the same Table and chart components to a resource that uses the `readonly` user, so a misconfigured query can't write.
+
+# Use a branch for staging {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own hostname and connection string. Point a second Retool resource at a branch to give your team a staging version of an admin tool that operates on realistic data without touching production. Create the branch, read its `connectionString`, configure a Retool resource against that host, and delete the branch when you're done.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, and the IP allowlist.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes and ports for tools that hold long-lived connections.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for staging and preview environments.
+{% /cards_item %}
+{% /cards %}

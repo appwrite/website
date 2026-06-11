@@ -1,0 +1,37 @@
+---
+layout: integration
+title: Cloudflare
+description: Connect Cloudflare Workers and Pages to an Appwrite dedicated database — over TCP through Hyperdrive, or over HTTPS through the SQL API.
+date: 2026-06-09
+featured: false
+isPartner: false
+isNew: true
+cover: /images/integrations/cloudflare/cover.avif
+category: deployments
+product:
+    avatar: '/images/integrations/avatars/cloudflare.avif'
+    vendor: Cloudflare
+    description: 'Cloudflare runs a global edge network with Workers, Pages, and Hyperdrive — serverless compute and database connection acceleration at the edge.'
+platform:
+    - 'Cloud'
+images:
+    - /images/integrations/cloudflare/cover.avif
+---
+
+[Cloudflare](https://www.cloudflare.com/) runs Workers and Pages on a global edge network. An Appwrite [dedicated database](/docs/products/databases/dedicated) is reachable from both, two ways depending on whether your Worker holds a TCP connection.
+
+# How does the integration work?
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/) pools and accelerates a TCP connection to your database's direct endpoint, so a Worker connects with `postgres.js`, `node-postgres`, or Drizzle through the Hyperdrive binding. Alternatively, the [SQL API](/docs/products/databases/dedicated/sql-api) runs parameterised SQL over HTTPS with nothing but `fetch` — ideal when you don't want to run Hyperdrive.
+
+# How to implement
+
+1. Create a dedicated database and copy its connection string ([Connect](/docs/products/databases/dedicated/connect)).
+2. Either create a Hyperdrive config pointing at the direct endpoint and bind it to your Worker, or enable the [SQL API](/docs/products/databases/dedicated/sql-api).
+3. Query from your Worker — see the full [**Cloudflare guide**](/docs/products/databases/dedicated/cloudflare).
+
+# Read more
+
+- [Cloudflare with dedicated databases](/docs/products/databases/dedicated/cloudflare)
+- [SQL API](/docs/products/databases/dedicated/sql-api)
+- [Connection pooler](/docs/products/databases/dedicated/pooler)

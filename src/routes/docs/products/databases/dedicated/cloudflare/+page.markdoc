@@ -1,0 +1,309 @@
+---
+layout: article
+title: Cloudflare
+description: Connect to an Appwrite dedicated database from Cloudflare Workers and Pages, either over TCP through Hyperdrive or over HTTPS through the SQL API.
+---
+
+A dedicated database is a standard engine reachable over TLS, so Cloudflare's runtime can talk to it two different ways. Pick based on whether your Worker can hold a TCP connection and how much throughput you need.
+
+- **Hyperdrive (TCP).** [Cloudflare Hyperdrive](https://developers.cloudflare.com/hyperdrive/) accelerates queries to an existing PostgreSQL or MySQL database by pooling connections at Cloudflare's edge and caching read queries. You give Hyperdrive your dedicated database's connection string, bind it to a Worker, and connect with a normal driver (`postgres.js`, `node-postgres`, `mysql2`, Drizzle). This is the highest-throughput option and the one to reach for when a real connection makes sense.
+- **SQL API (HTTPS).** The [SQL API](/docs/products/databases/dedicated/sql-api) executes one parameterised statement over HTTPS and returns JSON. It needs nothing but `fetch`, no driver, no sockets, no binding, which makes it the simplest path for occasional reads, admin endpoints, or when you would rather not run Hyperdrive at all.
+
+Both paths work identically from **Workers** and from **Pages Functions**, since Pages runs on the same Workers runtime.
+
+Hyperdrive supports PostgreSQL and MySQL; the SQL API additionally supports MariaDB. MongoDB is not reachable through either path, connect to it with a MongoDB driver instead.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Path 1: Hyperdrive over TCP {% #hyperdrive %}
+
+Hyperdrive sits between your Worker and the database. It keeps a warm pool of backend connections, so each Worker invocation gets a connection instantly instead of paying for a fresh TLS and authentication handshake on every cold start. Under the hood the driver opens an outbound TCP socket using Cloudflare's [`connect()` API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) from `cloudflare:sockets`; Hyperdrive manages that for you.
+
+## Create a Hyperdrive config {% #hyperdrive-config %}
+
+Point Hyperdrive at the **direct engine endpoint** (port `5432` for PostgreSQL, `3306` for MySQL), not the Appwrite [connection pooler](/docs/products/databases/dedicated/pooler). Hyperdrive does its own pooling, so layering it on top of the pooler would pool twice and break server-side prepared statements. Use the plain connection string from the [Connect](/docs/products/databases/dedicated/connect) page:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```bash
+npx wrangler hyperdrive create appwrite-db \
+  --connection-string="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```bash
+npx wrangler hyperdrive create appwrite-db \
+  --connection-string="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite"
+```
+
+Drop the `ssl=true` parameter from the string Appwrite returns, Hyperdrive's MySQL connection strings take no query parameters and it always connects over TLS.
+{% /tabsitem %}
+{% /tabs %}
+
+Hyperdrive connects to the origin over TLS and validates the server certificate against public roots, so no extra certificate setup is needed. The command prints a Hyperdrive **id**, you'll reference it from the binding below.
+
+## Bind Hyperdrive to your Worker {% #hyperdrive-binding %}
+
+Add the binding to `wrangler.toml` and enable Node.js compatibility, which the database drivers require:
+
+```ini
+name = "my-worker"
+main = "src/index.ts"
+compatibility_date = "2026-06-05"
+compatibility_flags = ["nodejs_compat"]
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "<your-hyperdrive-id>"
+```
+
+The binding surfaces in your Worker as `env.HYPERDRIVE`, exposing a `connectionString` you hand to any driver.
+
+## Query with postgres.js {% #hyperdrive-postgresjs %}
+
+Install `postgres` (3.4.5 or newer), then create a client per request. Because Hyperdrive owns the real pool, constructing a client is cheap, so do it inside the handler rather than at module scope:
+
+```ts
+import postgres from 'postgres';
+
+export interface Env {
+  HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const sql = postgres(env.HYPERDRIVE.connectionString, {
+      // Workers limit concurrent external connections; keep the per-isolate pool small.
+      max: 5,
+      // Skip the extra round trip to fetch array type metadata when you don't need it.
+      fetch_types: false,
+    });
+
+    const users = await sql`
+      SELECT id, email FROM users
+      WHERE created_at > ${'2026-05-01'}
+      ORDER BY created_at DESC
+      LIMIT 50
+    `;
+
+    // Flush the socket after the response is sent, without blocking it.
+    ctx.waitUntil(sql.end());
+
+    return Response.json(users);
+  },
+};
+```
+
+## Query with node-postgres {% #hyperdrive-pg %}
+
+If you prefer `pg`, the pattern is the same, pass the Hyperdrive connection string to a `Client`:
+
+```ts
+import { Client } from 'pg';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+    await client.connect();
+
+    const { rows } = await client.query(
+      'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+      ['2026-05-01', 50],
+    );
+
+    ctx.waitUntil(client.end());
+    return Response.json(rows);
+  },
+};
+```
+
+## Query with mysql2 {% #hyperdrive-mysql2 %}
+
+For MySQL, use `mysql2` (3.13.0 or newer) and open a connection per request from the binding's credential fields. Set `disableEval: true`, the Workers runtime disallows `eval()`, which mysql2 otherwise uses when parsing results:
+
+```ts
+import { createConnection } from 'mysql2/promise';
+
+export interface Env {
+  HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+      disableEval: true,
+    });
+
+    const [rows] = await connection.query(
+      'SELECT id, email FROM users WHERE created_at > ? ORDER BY created_at DESC LIMIT ?',
+      ['2026-05-01', 50],
+    );
+
+    ctx.waitUntil(connection.end());
+    return Response.json(rows);
+  },
+};
+```
+
+## Query with Drizzle {% #hyperdrive-drizzle %}
+
+Drizzle wraps the same drivers. Point the engine's adapter at the Hyperdrive binding and use the typed query builder, see the [Drizzle](/docs/products/databases/dedicated/drizzle) page for schema setup:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```ts
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import { users } from './schema';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const client = postgres(env.HYPERDRIVE.connectionString, { max: 5, fetch_types: false });
+    const db = drizzle(client);
+
+    const rows = await db.select().from(users).limit(50);
+
+    ctx.waitUntil(client.end());
+    return Response.json(rows);
+  },
+};
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```ts
+import { drizzle } from 'drizzle-orm/mysql2';
+import { createConnection } from 'mysql2/promise';
+import { users } from './schema';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+      disableEval: true,
+    });
+    const db = drizzle(connection);
+
+    const rows = await db.select().from(users).limit(50);
+
+    ctx.waitUntil(connection.end());
+    return Response.json(rows);
+  },
+};
+```
+{% /tabsitem %}
+{% /tabs %}
+
+# Path 2: SQL API over HTTPS {% #sql-api %}
+
+When you don't want to run Hyperdrive, or you only need a handful of reads, call the [SQL API](/docs/products/databases/dedicated/sql-api) with plain `fetch`. It's a managed HTTP endpoint that runs one parameterised statement and returns JSON. There's no driver, no socket, and no binding to configure, which suits edge code well.
+
+Enable the SQL API on the database first (see the [SQL API](/docs/products/databases/dedicated/sql-api#enable) page); it's opt-in and defaults to `SELECT`-only. Then `POST` to the execution endpoint from your Worker:
+
+```ts
+export interface Env {
+  APPWRITE_PROJECT_ID: string;
+  APPWRITE_API_KEY: string;
+}
+
+const REGION = 'fra'; // one of fra, nyc, sfo, sgp, syd, tor
+const DATABASE_ID = '<DATABASE_ID>';
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const response = await fetch(
+      `https://${REGION}.cloud.appwrite.io/v1/compute/databases/${DATABASE_ID}/execution`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Appwrite-Project': env.APPWRITE_PROJECT_ID,
+          'X-Appwrite-Key': env.APPWRITE_API_KEY,
+        },
+        body: JSON.stringify({
+          sql: 'SELECT id, email FROM users WHERE created_at > $1 ORDER BY created_at DESC LIMIT $2',
+          bindings: ['2026-05-01T00:00:00Z', 50],
+        }),
+      },
+    );
+
+    const result = await response.json();
+    return Response.json(result);
+  },
+};
+```
+
+Bindings travel in their own field, never interpolated into the SQL string, so the API is injection-safe by construction. The response carries the rows plus metadata:
+
+```json
+{
+  "rows": [{ "id": "...", "email": "..." }],
+  "rowCount": 50,
+  "truncated": false,
+  "durationMs": 14,
+  "columns": [
+    { "name": "id", "type": "uuid" },
+    { "name": "email", "type": "text" }
+  ]
+}
+```
+
+# Secrets {% #secrets %}
+
+Never hard-code the database password or the Appwrite API key. Store them as Wrangler secrets so they're encrypted at rest and injected into `env` at runtime:
+
+```bash
+# For the SQL API path
+npx wrangler secret put APPWRITE_API_KEY
+npx wrangler secret put APPWRITE_PROJECT_ID
+```
+
+The Hyperdrive path is even tighter: the database password lives only inside the Hyperdrive config you created with `wrangler hyperdrive create`, never in your Worker code or `wrangler.toml`. The Worker only ever sees `env.HYPERDRIVE.connectionString`.
+
+The Appwrite API key for the SQL API only needs the `databases.read` scope for `SELECT`s. Scope it down and [rotate the database password](/docs/products/databases/dedicated/connect#rotate) independently whenever you need to.
+
+# Pages {% #pages %}
+
+Cloudflare Pages runs [Pages Functions](https://developers.cloudflare.com/pages/functions/) on the same Workers runtime, so both paths apply unchanged. Declare the Hyperdrive binding and `nodejs_compat` flag in your Pages project (in the dashboard or `wrangler.toml`), then read `env.HYPERDRIVE` inside a function under `functions/`. For the SQL API, call `fetch` exactly as above and store the project ID and API key as Pages secrets.
+
+# Choosing a path {% #choosing %}
+
+| | Hyperdrive (TCP) | SQL API (HTTPS) |
+|---|---|---|
+| Throughput | Highest, pooled and cache-accelerated | Lower, one HTTP hop per statement |
+| Setup | Hyperdrive config + binding + driver | None beyond enabling the API |
+| Transactions | Full `BEGIN`…`COMMIT` support | One statement per call, no cross-call transaction |
+| Statements | Any SQL the user is allowed to run | DML only, whitelisted per database |
+| Engines | PostgreSQL, MySQL | PostgreSQL, MySQL, MariaDB |
+| Best for | Application traffic, write paths, ORMs | Simple reads, admin tools, low-traffic endpoints |
+
+Use **Hyperdrive** for your application's main query path, anything write-heavy, transactional, or driven by an ORM. Use the **SQL API** when you want a dependency-free read from the edge, an internal dashboard query, or a quick endpoint where adding Hyperdrive isn't worth it. The two aren't exclusive, it's common to serve hot read paths through Hyperdrive and keep an occasional SQL API call for one-off lookups.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/sql-api" title="SQL API" %}
+Enable the HTTP SQL endpoint, configure limits, and bind parameters.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/drizzle" title="Drizzle" %}
+Set up the Drizzle schema and migrations against a dedicated database.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes and ports, and why Hyperdrive points at the direct endpoint.
+{% /cards_item %}
+{% /cards %}

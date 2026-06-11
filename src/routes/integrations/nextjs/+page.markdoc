@@ -1,0 +1,37 @@
+---
+layout: integration
+title: Next.js
+description: Connect a Next.js app to an Appwrite dedicated database — query from Route Handlers and Server Actions over the pooler, or from the Edge runtime over the SQL API.
+date: 2026-06-09
+featured: false
+isPartner: false
+isNew: true
+cover: /images/integrations/nextjs/cover.avif
+category: deployments
+product:
+    avatar: '/images/integrations/avatars/nextjs.avif'
+    vendor: Vercel
+    description: 'Next.js is the React framework for the web, with server-side rendering, Route Handlers, Server Actions, and both Node.js and Edge runtimes.'
+platform:
+    - 'Cloud'
+images:
+    - /images/integrations/nextjs/cover.avif
+---
+
+[Next.js](https://nextjs.org/) is the React framework for the web. An Appwrite [dedicated database](/docs/products/databases/dedicated) backs your Next.js app with managed PostgreSQL or MySQL, accessed from server code with your ORM or driver of choice.
+
+# How does the integration work?
+
+On the Node.js runtime (Route Handlers, Server Actions, Server Components) you connect with Prisma, Drizzle, or a native driver through the [connection pooler](/docs/products/databases/dedicated/pooler). On the Edge runtime, where TCP sockets aren't available, you query through the [SQL API](/docs/products/databases/dedicated/sql-api) over HTTPS.
+
+# How to implement
+
+1. Create a dedicated database and copy its connection string ([Connect](/docs/products/databases/dedicated/connect)).
+2. Add a data layer with [Prisma](/docs/products/databases/dedicated/prisma) or [Drizzle](/docs/products/databases/dedicated/drizzle) and connect from server code.
+3. For Edge routes, call the [SQL API](/docs/products/databases/dedicated/sql-api) — see the full [**Next.js guide**](/docs/products/databases/dedicated/nextjs).
+
+# Read more
+
+- [Next.js with dedicated databases](/docs/products/databases/dedicated/nextjs)
+- [Deploy on Vercel](/docs/products/databases/dedicated/vercel)
+- [SQL API](/docs/products/databases/dedicated/sql-api)

@@ -1,0 +1,115 @@
+---
+layout: article
+title: Grafana
+description: Connect Grafana to an Appwrite dedicated PostgreSQL database as a data source and build dashboards. Create a read-only connection user, configure the PostgreSQL data source with TLS, and provision it from YAML.
+---
+
+An Appwrite [dedicated database](/docs/products/databases/dedicated) exposes a standard managed PostgreSQL 18 or 17 engine, so [Grafana](https://grafana.com/) connects to it through the built-in **PostgreSQL data source** with no Appwrite-specific configuration. Point the data source at your database hostname, authenticate with a scoped read-only user, and query your tables to build dashboards and alerts.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and an [API key](/docs/advanced/platform/api-keys) (or the Console) to create a connection user. The default database name and primary username are both `appwrite`. See [Connect](/docs/products/databases/dedicated/connect) to retrieve credentials.
+{% /info %}
+
+# Create a read-only user {% #read-only-user %}
+
+Dashboards should never connect as the primary `appwrite` user, which owns the database and can run DDL. Instead, create a dedicated connection user with the `readonly` role so Grafana can only run `SELECT` statements. Send a request to the [connections endpoint](/docs/products/databases/dedicated/connect#connections), replacing `<id>` with your database ID:
+
+```bash
+curl -X POST https://<region>.appwrite.center/v1/compute/databases/<id>/connections \
+  -H "X-Appwrite-Project: <projectId>" \
+  -H "X-Appwrite-Key: <apiKey>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "grafana_ro",
+    "database": "appwrite",
+    "role": "readonly"
+  }'
+```
+
+The response contains a generated password. Store it in a secret manager and use it for the Grafana data source below. The password is only returned once, so rotate the connection if it's lost. See [Connect](/docs/products/databases/dedicated/connect#connections) for the full connection-user lifecycle.
+
+# Choose an endpoint {% #endpoint %}
+
+Grafana holds its data source connections open for the lifetime of the process. Long-lived connections must use either the **direct** engine endpoint on port `5432` or a [pooler](/docs/products/databases/dedicated/pooler) running in **session mode**.
+
+Do not point Grafana at the **transaction-mode** pooler. Transaction mode hands a backend connection back to the pool after every statement, which breaks the session assumptions Grafana relies on for connection reuse and prepared statements. For a typical dashboard workload the direct endpoint is the simplest choice. See the [pooler modes](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+
+# Add the PostgreSQL data source {% #data-source %}
+
+In Grafana, open **Connections** > **Data sources** > **Add data source** and select **PostgreSQL**. Fill in the connection details using the values from your dedicated database:
+
+| Field | Value |
+| --- | --- |
+| **Host URL** | `db-<projectId>-<dbId>.<region>.appwrite.center:5432` |
+| **Database name** | `appwrite` |
+| **Username** | `grafana_ro` |
+| **Password** | the generated password from the connection user |
+| **TLS/SSL Mode** | `require` |
+| **Version** | match your engine, for example `18` or `17` |
+
+Regions are `fra`, `nyc`, `sfo`, `sgp`, `syd`, and `tor`. The edge proxy terminates TLS for every dedicated database, so **TLS/SSL Mode** `require` works with no certificate upload. For full certificate verification, set the mode to `verify-full` and leave the **TLS/SSL Root Certificate** field empty: Grafana validates against the host's system CA pool, and the proxy's certificate is signed by a public CA that pool already trusts. Provide a root certificate only if the Grafana host ships without CA certificates.
+
+Under **Connection limits**, keep the connection counts modest so Grafana doesn't exhaust the engine's connection budget. **Max open** caps total connections from this Grafana instance, **Max idle** caps pooled idle connections, and **Max lifetime** recycles connections after the given number of seconds. Select **Save & test** to verify connectivity.
+
+# Provision from YAML {% #provisioning %}
+
+Instead of configuring the data source by hand, you can [provision](https://grafana.com/docs/grafana/latest/administration/provisioning/) it declaratively. Drop a file into Grafana's `provisioning/datasources/` directory and read the password from an environment variable so it never lands in source control:
+
+```yaml
+apiVersion: 1
+
+datasources:
+  - name: Appwrite dedicated database
+    type: postgres
+    url: db-<projectId>-<dbId>.<region>.appwrite.center:5432
+    user: grafana_ro
+    jsonData:
+      database: appwrite
+      sslmode: require
+      postgresVersion: 1800
+      maxOpenConns: 5
+      maxIdleConns: 2
+      maxIdleConnsAuto: true
+      connMaxLifetime: 14400
+    secureJsonData:
+      password: ${GRAFANA_DB_PASSWORD}
+    editable: false
+```
+
+`postgresVersion` is the engine version times 100: use `1800` for PostgreSQL 18 or `1700` for PostgreSQL 17. For `verify-full`, set `sslmode: verify-full`, no `tlsCACert` entry is needed: Grafana validates against the host's system CA pool, and the proxy's certificate is signed by a public CA that pool already trusts. The `database` key lives under `jsonData` in current Grafana releases. See the [PostgreSQL data source](https://grafana.com/docs/grafana/latest/datasources/postgres/configure/) docs for every available field.
+
+# Build a panel {% #panel %}
+
+With the data source connected, create a dashboard and add a panel backed by it. Switch the query editor to code mode and write a read-only query against your tables. For example, to plot daily sign-ups from a `users` table over time:
+
+```text
+SELECT
+  date_trunc('day', created_at) AS time,
+  count(*) AS signups
+FROM users
+GROUP BY 1
+ORDER BY 1
+```
+
+Grafana maps the `time` column to the panel's time axis and `signups` to the value. Because the data source authenticates as the `readonly` user, any query that attempts to write fails at the database, which keeps a misconfigured panel from mutating production data.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated" title="Dedicated databases" %}
+Overview of dedicated database engines, versions, and regions.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes and ports. Use the direct endpoint or session mode for Grafana.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, and IP allowlists.
+{% /cards_item %}
+{% /cards %}
+
+{% arrow_link href="/docs/products/databases/dedicated/connect" %}
+Connect to a dedicated database
+{% /arrow_link %}

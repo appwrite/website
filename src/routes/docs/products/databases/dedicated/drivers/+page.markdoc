@@ -1,0 +1,225 @@
+---
+layout: article
+title: Node.js drivers
+description: Connect to an Appwrite dedicated database from Node.js with native drivers — node-postgres, postgres.js, and mysql2. Covers production pool configuration, TLS and CA verification, serverless connection management, and troubleshooting.
+---
+
+A dedicated database is a standard engine, so any native Node.js driver talks to it over TLS with no Appwrite-specific code. The [Connect](/docs/products/databases/dedicated/connect#drivers) page shows the minimal snippet to run your first query. This page picks up where that leaves off: how to configure a production connection pool, verify the server certificate, keep serverless runtimes from exhausting connections, and read the errors when something is wrong.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Connect](/docs/products/databases/dedicated/connect#credentials) to retrieve the connection string. The default database name and username are both `appwrite`. Keep the password in an environment variable, never commit it.
+{% /info %}
+
+# Raw driver, ORM, or SQL API? {% #choosing %}
+
+There are three ways to reach a dedicated database from Node.js. Pick by workload, not habit:
+
+| Approach                     | Use it when                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------|
+| **Raw driver** (this page)   | You want a connection pool you control, hot-path queries, or a thin data layer with no ORM overhead. |
+| **ORM** ([Prisma](/docs/products/databases/dedicated/prisma)) | You want migrations, a typed schema, and query building. The ORM sits on top of these same drivers. |
+| **[SQL API](/docs/products/databases/dedicated/sql-api)** | You're on an edge runtime that can't hold a TCP socket (Cloudflare Workers, Vercel Edge), or scripting a one-off query over HTTPS. |
+
+The rest of this page is about the raw-driver path on a long-running or serverless Node.js server that *can* open TCP connections.
+
+# node-postgres (pg) {% #node-postgres %}
+
+For a long-running server, create one `Pool` at startup and reuse it for every request. The pool opens connections lazily up to `max` and hands them back to your handlers. Never create a `Pool` per request.
+
+```js
+import { Pool } from 'pg';
+import process from 'node:process';
+
+const pool = new Pool({
+  host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+  port: 5432,
+  user: 'appwrite',
+  password: process.env.DB_PASSWORD,
+  database: 'appwrite',
+  ssl: { rejectUnauthorized: true },
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 5000,
+});
+
+const { rows } = await pool.query('SELECT id, email FROM users WHERE id = $1', [userId]);
+```
+
+Pool sizing is a budget, not a target. Each connection in `max`, across every running instance, counts against the database's [`networkMaxConnections`](/docs/products/databases/dedicated/network#connections) ceiling. A single app server with `max: 10` is fine; ten replicas with `max: 50` each is 500 connections and will exhaust most specifications. Size `max` to `ceiling ÷ replica count`, then put the [pooler](/docs/products/databases/dedicated/pooler) in front if you need more client concurrency than that allows.
+
+`ssl: { rejectUnauthorized: true }` validates the server certificate against Node's built-in CA store. The edge proxy presents a certificate signed by a well-known public CA, so this works without supplying your own bundle. See [SSL and CA verification](#tls) below for `verify-full` and mTLS.
+
+## Pooled port vs direct port {% #pg-ports %}
+
+The pooler defaults to **transaction mode**, which does not hold a backend connection across statements, so server-side prepared statements are unavailable. In node-postgres a query becomes a server-side prepared statement only when you pass a `name` field on the query config:
+
+```js
+// Safe on the pooler (port 6432, transaction mode): no `name`, no server-side prepared statement.
+await pool.query('SELECT * FROM events WHERE user_id = $1', [userId]);
+
+// NOT safe on the pooler in transaction mode: `name` creates a per-connection prepared statement.
+await pool.query({ name: 'fetch-events', text: 'SELECT * FROM events WHERE user_id = $1', values: [userId] });
+```
+
+Parameterised queries without a `name` are sent fresh each time and work on the pooled port. If you rely on named prepared statements, advisory locks, `LISTEN`/`NOTIFY`, or `SET LOCAL`, connect on the **engine port** (`5432`) or switch the pooler to **session mode** — see the [pooler modes](/docs/products/databases/dedicated/pooler#modes) page. Run migrations on the engine port regardless.
+
+# postgres.js {% #postgres-js %}
+
+`postgres.js` (the `postgres` package) takes its own option names. Create the client once at module scope:
+
+```js
+import postgres from 'postgres';
+import process from 'node:process';
+
+const sql = postgres({
+  host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+  port: 5432,
+  username: 'appwrite',
+  password: process.env.DB_PASSWORD,
+  database: 'appwrite',
+  ssl: 'require',
+  max: 10,
+  idle_timeout: 30,
+  connect_timeout: 10,
+});
+
+const users = await sql`SELECT id, email FROM users WHERE id = ${userId}`;
+```
+
+`ssl: 'require'` enables TLS and validates against the system CA store. If your runtime image ships without one, pass an object with a public CA bundle instead: `ssl: { ca: fs.readFileSync('./ca-bundle.crt') }` (see [below](#tls)).
+
+When you point `postgres.js` at the **pooler port** (`6432`) in transaction mode, disable prepared statements — `postgres.js` uses them by default and the library documents `prepare: false` specifically for PgBouncer transaction mode:
+
+```js
+const sql = postgres({
+  host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+  port: 6432,
+  username: 'appwrite',
+  password: process.env.DB_PASSWORD,
+  database: 'appwrite',
+  ssl: 'require',
+  prepare: false,
+  max: 5,
+});
+```
+
+Leave `prepare` at its default when you connect on the engine port or use the pooler in session mode.
+
+# mysql2 (MySQL / MariaDB) {% #mysql2 %}
+
+Use `mysql2/promise` and `createPool` for MySQL and MariaDB. The same pool serves both engines:
+
+```js
+import mysql from 'mysql2/promise';
+import process from 'node:process';
+
+const pool = mysql.createPool({
+  host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+  port: 3306,
+  user: 'appwrite',
+  password: process.env.DB_PASSWORD,
+  database: 'appwrite',
+  ssl: { rejectUnauthorized: true },
+  connectionLimit: 10,
+  waitForConnections: true,
+  queueLimit: 0,
+});
+
+const [rows] = await pool.query('SELECT id, email FROM users WHERE id = ?', [userId]);
+```
+
+`connectionLimit` is the mysql2 equivalent of pg's `max` — budget it against `networkMaxConnections` the same way. `waitForConnections: true` queues callers when the pool is saturated rather than throwing; `queueLimit: 0` leaves that queue unbounded (set a number to apply backpressure).
+
+MySQL 8 authenticates with the `caching_sha2_password` plugin, which **requires** a TLS connection. The `ssl` block above satisfies that. The pooler ports for MySQL and MariaDB are `6033`; route serverless traffic there and use `3306` for migrations.
+
+# SSL and CA verification {% #tls %}
+
+The edge proxy terminates TLS for every dedicated database, and the connection string Appwrite returns already requests it (`sslmode=require` for PostgreSQL, `ssl=true` for MySQL and MariaDB). Two levels of strictness:
+
+| Level                                        | node-postgres / mysql2                                   | postgres.js                                      |
+|----------------------------------------------|----------------------------------------------------------|--------------------------------------------------|
+| **Encrypt + verify CA**                      | `ssl: { rejectUnauthorized: true }`                      | `ssl: 'require'`                                 |
+| **Custom CA bundle** (no system trust store) | `ssl: { rejectUnauthorized: true, ca: fs.readFileSync('./ca-bundle.crt') }` | `ssl: { ca: fs.readFileSync('./ca-bundle.crt') }` |
+
+`rejectUnauthorized: true` (the default for these drivers when `ssl` is an object) verifies the proxy's certificate, chain and hostname, against the public CA bundle Node already trusts — that is full verification with no extra files. The certificate behind every database hostname is signed by a well-known public CA; there is no Appwrite-specific CA to download. The `ca` option exists for runtimes without a system trust store (distroless or scratch images): point it at a standard public CA bundle, from your base image's `ca-certificates` package or [Mozilla's bundle](https://curl.se/docs/caextract.html):
+
+```js
+import fs from 'node:fs';
+
+const ssl = {
+  rejectUnauthorized: true,
+  ca: fs.readFileSync('./ca-bundle.crt'),
+};
+```
+
+When the CA comes from an environment variable rather than a file, restore the newlines the variable strips:
+
+```js
+const ssl = {
+  rejectUnauthorized: true,
+  ca: process.env.DB_SSL_CA?.replace(/\\n/g, '\n'),
+};
+```
+
+Never ship `rejectUnauthorized: false` to production — it disables certificate validation and exposes the connection to interception. To require **mTLS** (the client also presents a certificate), see the [Network](/docs/products/databases/dedicated/network) page; you then add `key` and `cert` alongside `ca` in the same `ssl` object.
+
+# Serverless connection management {% #serverless %}
+
+On Lambda, Cloud Run, Vercel, and similar platforms, every cold start is a fresh instance with its own pool. A `max: 10` pool times 200 concurrent instances is 2,000 backend connections — far past any specification. The fix is to stop trying to pool inside the instance and let Appwrite's pooler absorb the fan-out:
+
+- **Connect on the pooler port** (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) in transaction mode.
+- **Keep the per-instance pool tiny** — `max: 1` or `2`. One invocation rarely needs more than one connection at a time.
+- **Create the client once per module scope** so warm invocations reuse it instead of reconnecting on every request.
+- **Disable per-connection prepared statements** on the pooled port: `prepare: false` for postgres.js, and avoid `name` on node-postgres query configs.
+
+```js
+import postgres from 'postgres';
+import process from 'node:process';
+
+// Module scope: reused across warm invocations.
+const sql = postgres({
+  host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+  port: 6432,
+  username: 'appwrite',
+  password: process.env.DB_PASSWORD,
+  database: 'appwrite',
+  ssl: 'require',
+  prepare: false,
+  max: 1,
+});
+
+export async function handler(event) {
+  const rows = await sql`SELECT id FROM users WHERE email = ${event.email}`;
+  return rows[0] ?? null;
+}
+```
+
+On **edge runtimes** (Cloudflare Workers, Vercel Edge, Deno Deploy) you usually can't open a raw TCP socket at all. Use the [SQL API](/docs/products/databases/dedicated/sql-api) instead — it runs one parameterised statement over HTTPS and returns JSON, with no driver and no connection to manage.
+
+# Troubleshooting {% #troubleshooting %}
+
+| Symptom                                                                 | Cause and fix                                                                                                   |
+|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| `self-signed certificate` / `unable to verify the first certificate`    | TLS is reaching the wrong endpoint, or you pinned a stale or incomplete `ca` bundle. The proxy's certificate is signed by a public CA: use `rejectUnauthorized: true` with no `ca`, and supply a current public CA bundle only when the runtime has no system trust store. Do **not** set `rejectUnauthorized: false`. |
+| `sorry, too many clients already` / connection attempts rejected at the proxy | Aggregate pool size across all instances exceeds [`networkMaxConnections`](/docs/products/databases/dedicated/network#connections). Lower `max`/`connectionLimit`, or move to the [pooler](/docs/products/databases/dedicated/pooler) port and shrink the per-instance pool to 1–2. |
+| `prepared statement "S_1" does not exist` / `unnamed prepared statement does not exist` | Server-side prepared statements on the pooler in transaction mode. Set `prepare: false` (postgres.js), drop the `name` field (node-postgres), or use the engine port / [session mode](/docs/products/databases/dedicated/pooler#modes). |
+| MySQL `ER_NOT_SUPPORTED_AUTH_MODE` / auth-plugin error                   | `caching_sha2_password` needs TLS. Add the `ssl` block (or use the connection string, which already sets `ssl=true`). Don't downgrade the auth plugin. |
+| `ETIMEDOUT` / `connection timed out` on connect                          | The database may be cold-starting (Free spec) or blocked by an [IP allowlist](/docs/products/databases/dedicated/network#allowlist). Confirm your egress IP is allowed and raise `connectionTimeoutMillis` / `connect_timeout` to absorb the cold start. |
+| Connections drop after a period of inactivity                            | The proxy closes idle connections after `networkIdleTimeoutSeconds`. Keep `idleTimeoutMillis`/`idle_timeout` below that window so the driver recycles before the proxy does, or enable keep-alive. |
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes, ports, and read/write splitting for serverless workloads.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/sql-api" title="SQL API" %}
+Run SQL over HTTPS with no TCP connection — for edge runtimes and scripts.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, mTLS, and IP allowlists.
+{% /cards_item %}
+{% /cards %}

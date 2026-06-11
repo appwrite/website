@@ -1,0 +1,212 @@
+---
+layout: article
+title: Laravel
+description: Use Laravel and Eloquent with an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database. Configure the connection, run migrations against the direct endpoint, and pool serverless traffic through the connection pooler.
+---
+
+A dedicated database is a standard engine, so [Laravel](https://laravel.com/docs) works against it with no Appwrite-specific configuration. You point a connection in `config/database.php` at the credentials from the [Connect](/docs/products/databases/dedicated/connect) page and use Eloquent, the query builder, migrations, and queues exactly as you would against any self-hosted PostgreSQL, MySQL, or MariaDB server.
+
+{% info title="Before you start" %}
+You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the credentials. The default database name and username are both `appwrite`.
+{% /info %}
+
+# Configure the connection {% #connection %}
+
+Laravel reads database credentials from `.env`. Copy the values from the Console **Connect** view, or fetch them from the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials), and set the matching connection. Never commit `.env`:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```env
+DB_CONNECTION=pgsql
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=5432
+DB_DATABASE=appwrite
+DB_USERNAME=appwrite
+DB_PASSWORD=<password>
+DB_SSLMODE=require
+```
+
+The default `config/database.php` already wires these variables into the `pgsql` connection, including SSL:
+
+```php
+'pgsql' => [
+    'driver' => 'pgsql',
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '5432'),
+    'database' => env('DB_DATABASE', 'laravel'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => env('DB_CHARSET', 'utf8'),
+    'sslmode' => env('DB_SSLMODE', 'prefer'),
+],
+```
+
+`sslmode` is a top-level key on the PostgreSQL connection (since Laravel 10, SSL settings live directly in the connection array, not under `options`). Setting `DB_SSLMODE=require` matches the `sslmode=require` that Appwrite uses, the edge proxy terminates TLS for every dedicated database, so no certificate files are needed for `require`. For full certificate verification, set `DB_SSLMODE=verify-full` and point `sslrootcert` at a trusted root store, `system` on libpq 16+, or your OS bundle such as `/etc/ssl/certs/ca-certificates.crt`, the proxy's certificate is signed by a public CA, so there is no Appwrite-specific CA to download:
+
+```php
+'sslmode' => env('DB_SSLMODE', 'prefer'),
+'sslrootcert' => env('DB_SSLROOTCERT'),
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```env
+DB_CONNECTION=mysql
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=3306
+DB_DATABASE=appwrite
+DB_USERNAME=appwrite
+DB_PASSWORD=<password>
+```
+
+MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS. The proxy terminates TLS for you, so the connection is encrypted without extra flags. To pin a CA for verification, set the `MYSQL_ATTR_SSL_CA` environment variable, which the default `mysql` connection passes to PDO through its `options` array:
+
+```env
+MYSQL_ATTR_SSL_CA=/path/to/ca.pem
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+DB_CONNECTION=mysql
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=3306
+DB_DATABASE=appwrite
+DB_USERNAME=appwrite
+DB_PASSWORD=<password>
+```
+
+Laravel's `mysql` connection drives both MySQL and MariaDB. The proxy terminates TLS for you, so the connection is encrypted without extra flags. To pin a CA for verification, set the `MYSQL_ATTR_SSL_CA` environment variable, which the default `mysql` connection passes to PDO through its `options` array:
+
+```env
+MYSQL_ATTR_SSL_CA=/path/to/ca.pem
+```
+{% /tabsitem %}
+{% /tabs %}
+
+# Run migrations {% #migrate %}
+
+Define your schema with a migration:
+
+```php
+Schema::create('posts', function (Blueprint $table) {
+    $table->id();
+    $table->string('title');
+    $table->text('body');
+    $table->timestamps();
+});
+```
+
+Apply migrations from your machine or a deploy step:
+
+```bash
+php artisan migrate
+
+# non-interactive, for CI and production deploys
+php artisan migrate --force
+```
+
+Run `migrate` against the **direct** engine port (`5432` for PostgreSQL, `3306` for MySQL/MariaDB), not the pooler. Migrations issue DDL that needs a real session-level connection, and the transaction-mode pooler can't keep state across statements. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL.
+
+# Query with Eloquent {% #query %}
+
+Once the schema is migrated, use Eloquent models and the query builder as usual:
+
+```php
+use App\Models\Post;
+
+$post = Post::create([
+    'title' => 'Hello from a dedicated database',
+    'body' => 'Stored in a managed dedicated database.',
+]);
+
+$recent = Post::query()
+    ->orderByDesc('created_at')
+    ->limit(10)
+    ->get();
+```
+
+Nothing about the dedicated database changes how Eloquent, relationships, transactions, or the query builder behave, it's a standard database server behind a TLS endpoint.
+
+# Pool connections from serverless {% #pooling %}
+
+The right endpoint depends on how your app runs.
+
+A **long-running** PHP process, traditional PHP-FPM with persistent connections, [Laravel Octane](https://laravel.com/docs/octane), or a queue worker, holds its own backend connection for its lifetime. Point these at the **direct** engine port (`5432` for PostgreSQL, `3306` for MySQL/MariaDB), or at the [connection pooler](/docs/products/databases/dedicated/pooler) in **session mode**. Don't put a long-lived process behind the transaction-mode pooler.
+
+A **serverless** or per-request deployment (Vercel, AWS Lambda, Cloud Run) opens a fresh connection on every invocation and fans out into far more backend connections than the engine allows. Route that traffic through the pooler's **transaction-mode** port instead (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) on the same hostname, and keep migrations on the direct port:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+```env
+# Runtime: pooled, transaction mode
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=6432
+
+# Migrations: run with DB_PORT=5432 against the direct engine port
+```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```env
+# Runtime: pooled, transaction mode
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=6033
+
+# Migrations: run with DB_PORT=3306 against the direct engine port
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+# Runtime: pooled, transaction mode
+DB_HOST=db-<projectId>-<dbId>.<region>.appwrite.center
+DB_PORT=6033
+
+# Migrations: run with DB_PORT=3306 against the direct engine port
+```
+{% /tabsitem %}
+{% /tabs %}
+
+The transaction-mode pooler does not keep a backend connection across statements, so server-side prepared statements, advisory locks, `LISTEN`/`NOTIFY`, and `SET LOCAL` are unavailable. If your app relies on those, use **session mode** instead, see the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+
+# Queues and Horizon {% #queues %}
+
+A queue worker is a long-running process. `php artisan queue:work` boots once and processes jobs for its whole lifetime, holding a persistent database connection the entire time, the same applies to every worker that [Laravel Horizon](https://laravel.com/docs/horizon) supervises. Treat workers like any other long-lived process:
+
+- Connect them to the **direct** engine port (`5432` for PostgreSQL, `3306` for MySQL/MariaDB) or the **session-mode** pooler, never the transaction-mode pooler.
+- Restart workers periodically with `--max-time` or `--max-jobs` so a fresh process reclaims memory and reopens its connection. Supervisor or Horizon restarts them automatically.
+
+```bash
+php artisan queue:work --max-time=3600 --max-jobs=500
+```
+
+Each worker counts as one backend connection, so size your worker pool (and Horizon's `maxProcesses`) against the connection budget of your [specification](/docs/products/databases/dedicated). Horizon itself requires Redis for the queue backend; only your application's data connection touches the dedicated database.
+
+# Use a branch for previews and CI {% #branches %}
+
+Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, isolated copies of a database with their own hostname and credentials. They're ideal for running migrations against throwaway data in a pull-request preview or an integration-test job:
+
+1. Create a branch from the API and read its connection details.
+2. Export them as the `DB_*` variables for the job.
+3. Run `php artisan migrate --force` and your test suite against the branch.
+4. Delete the branch when the job finishes.
+
+Because a branch starts from a storage snapshot, the schema and data match the source database at branch time, so migrations and tests run against realistic data without touching production.
+
+# Related {% #related %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Retrieve credentials, rotate the password, and create scoped connection users.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Pool modes, ports, and read/write splitting for serverless workloads.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Ephemeral database copies for preview environments and CI.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS modes, certificate verification, mTLS, and IP allowlists.
+{% /cards_item %}
+{% /cards %}
