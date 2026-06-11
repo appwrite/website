@@ -703,8 +703,6 @@ By default, a dedicated database is reachable over the public internet on the en
 3. **Keep TLS on**, the platform enforces it at the proxy, so non-TLS clients can't connect even if they tried.
 4. **Avoid embedding credentials in client-side code.** Connect from a server-side workload, an Appwrite Function, your application backend, or a CI job, and surface results through your own API.
 
-For workloads that should never be reachable from the public internet at all, contact support to discuss private endpoint options.
-
 # Limits {% #limits %}
 
 | Limit                              | Value                          |
