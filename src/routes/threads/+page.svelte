@@ -22,18 +22,49 @@
     let { data } = $props();
 
     let threads = $state(untrack(() => data.threads));
+    let hasMore = $state(untrack(() => data.hasMore));
+    let nextCursor = $state(untrack(() => data.nextCursor));
+    let total = $state(untrack(() => data.total));
+    let loadingMore = $state(false);
 
-    let searching = false; // Do some sick animation
+    let searching = false;
     let query = $state('');
+    let searchGeneration = 0;
 
     const handleSearch = async (value: string) => {
         query = value;
         searching = true;
-        threads = await getThreads({
+        const generation = ++searchGeneration;
+        const result = await getThreads({
             q: value,
             tags: selectedTags ?? [],
             allTags: true
         });
+        if (generation !== searchGeneration) return;
+        threads = result.threads;
+        hasMore = result.hasMore;
+        nextCursor = result.nextCursor;
+        total = result.total;
+    };
+
+    const loadMore = async () => {
+        if (!hasMore || loadingMore) return;
+        loadingMore = true;
+        const generation = searchGeneration;
+        try {
+            const result = await getThreads({
+                q: query,
+                tags: selectedTags ?? [],
+                allTags: true,
+                cursor: nextCursor
+            });
+            if (generation !== searchGeneration) return;
+            threads = [...threads, ...result.threads];
+            hasMore = result.hasMore;
+            nextCursor = result.nextCursor;
+        } finally {
+            loadingMore = false;
+        }
     };
 
     const { debounce, reset } = createDebounce();
@@ -188,7 +219,7 @@
 
                     {#if threads.length}
                         <h2 class="text-primary mt-4" aria-live="polite">
-                            Found {query.length ? threads.length : '5000+'} results.
+                            Found {total >= 1000 ? `${Math.floor(total / 1000)}000+` : total} results.
                         </h2>
                     {/if}
 
@@ -214,6 +245,14 @@
                             </div>
                         {/each}
                     </div>
+
+                    {#if hasMore}
+                        <div class="mt-4 flex justify-center">
+                            <Button onclick={loadMore} disabled={loadingMore}>
+                                {loadingMore ? 'Loading...' : 'Load more'}
+                            </Button>
+                        </div>
+                    {/if}
                 </div>
             </div>
             <div class="web-big-padding-section-level-2 web-u-margin-block-end-0">

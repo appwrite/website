@@ -35,7 +35,7 @@
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="text-sub-body mt-4 font-medium">
+    <div class="text-sub-body message-content mt-4 font-medium">
         <SvelteMarkdown
             source={message.message}
             renderers={{
@@ -51,6 +51,12 @@
 <style lang="scss">
     .web-card {
         overflow: hidden;
+    }
+
+    .message-content {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        min-width: 0;
     }
 
     .header {

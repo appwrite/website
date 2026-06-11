@@ -74,10 +74,17 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
     return res.sort((a, b) => b.rank - a.rank).map(({ data }) => data);
 }
 
-type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
+const THREADS_PAGE_SIZE = 25;
 
-export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
-    let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
+type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'> & { cursor?: string };
+
+export async function getThreads({ q, tags, allTags, cursor }: GetThreadsArgs) {
+    let query = [
+        q ? Query.search('search_meta', q) : undefined,
+        Query.orderDesc('$createdAt'),
+        Query.limit(THREADS_PAGE_SIZE),
+        cursor ? Query.cursorAfter(cursor) : undefined
+    ];
 
     tags = tags?.filter(Boolean).map((tag) => tag) ?? [];
     if (tags.length > 0) {
@@ -91,7 +98,11 @@ export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     );
 
     const threadDocs = data.documents as unknown as DiscordThread[];
-    return filterThreads({ threads: threadDocs, q, tags, allTags });
+    const filtered = filterThreads({ threads: threadDocs, q, tags, allTags });
+    const hasMore = data.documents.length === THREADS_PAGE_SIZE;
+    const nextCursor = hasMore ? data.documents[data.documents.length - 1].$id : undefined;
+
+    return { threads: filtered, hasMore, nextCursor, total: data.total };
 }
 
 export async function getThread($id: string) {
@@ -104,9 +115,8 @@ export async function getThread($id: string) {
 
 export async function getRelatedThreads(thread: DiscordThread, limit: number = 3) {
     const tags = thread.tags?.filter(Boolean) ?? [];
-    const relatedThreads = await getThreads({ q: null, tags, allTags: false });
-
-    return relatedThreads.filter(({ $id }) => $id !== thread.$id).slice(0, limit);
+    const { threads } = await getThreads({ q: null, tags, allTags: false });
+    return threads.filter(({ $id }) => $id !== thread.$id).slice(0, limit);
 }
 
 export async function getThreadMessages(threadId: string) {
