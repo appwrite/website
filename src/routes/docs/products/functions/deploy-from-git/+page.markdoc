@@ -38,6 +38,30 @@ This means, the new deployment will not handle any incoming requests until it is
 If you need to update your Git configuration, navigate to **Functions** > your function > 
 **Settings** > **Configuration** > **Git settings**. 
 
+## Build triggers {% #build-triggers %}
+
+Build triggers control which Git changes create automatic deployments. You can configure branch filters and path filters with glob patterns.
+
+**Branch filters** match branch names. Add patterns to limit automatic deployments to specific branches.
+
+```txt
+main
+staging
+preview/**
+```
+
+**Path filters** match files changed in a commit or pull request. Leave this field empty to create deployments for all file changes, or add patterns to deploy only when specific files change.
+
+```txt
+functions/api/**
+packages/shared/**
+!docs/**
+```
+
+Use these formats to write glob patterns.
+
+{% partial file="git-glob-patterns.md" /%}
+
 ## Entry point {% #entry-point %}
 The entry point is the code file contains the exported function that will be executed when the function is called.
 This entry point has a specific format that must be followed. You can find examples using a [starter template](/docs/products/functions/templates)

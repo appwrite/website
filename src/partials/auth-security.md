@@ -26,6 +26,17 @@ Appwrite uses a [permissions model](/docs/advanced/platform/permissions) coupled
 With all Appwrite services, including databases and storage, access is granted at the collection, bucket, document, or file level.
 These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
 
+# Password strength {% #password-strength %}
+
+Password strength lets you set the minimum requirements a password must meet when a user creates an account or changes their password. Enforcing these rules makes passwords harder to guess and brute-force.
+
+You can configure two kinds of requirements:
+
+- **Minimum length**: the smallest number of characters a password is allowed to have.
+- **Character requirements**: require any combination of an uppercase letter, a lowercase letter, a number, and a special character. Each requirement is an independent toggle, so you can enforce as few or as many as your app needs.
+
+Passwords that don't meet the configured requirements are rejected when a user signs up and whenever they change their password. To configure password strength, navigate to **Auth** > **Security** > **Password strength**, set the minimum length and character requirements, then click **Update**.
+
 # Password history {% #password-history %}
 
 Password history prevents users from reusing recent passwords. This protects user accounts from security risks by enforcing a new password every time it's changed.
