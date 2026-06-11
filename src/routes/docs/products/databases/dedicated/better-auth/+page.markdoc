@@ -6,8 +6,6 @@ description: Use an Appwrite dedicated database as the database for Better Auth.
 
 [Better Auth](https://www.better-auth.com/) is a framework-agnostic authentication library for TypeScript that keeps all of its state, users, sessions, accounts, and verification tokens, in a database you own. A dedicated database is a standard engine, so Better Auth works against it with no Appwrite-specific configuration: you give it the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and run the Better Auth CLI to create the schema.
 
-This guide uses PostgreSQL. To use MySQL or MariaDB, swap the connection string and driver, everything else is identical.
-
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
 {% /info %}
@@ -16,6 +14,8 @@ You'll need a dedicated database in a `ready` state and its credentials. See [De
 
 Better Auth needs two endpoints on the same database: a **pooled** one for your application runtime and a **direct** one for schema work. Copy the connection string from the Console **Connect** view, or fetch it from the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials), and put both in your environment. Never commit them.
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```env
 # Runtime: pooler port (transaction mode), absorbs serverless connection churn
 DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6432/appwrite?sslmode=require"
@@ -23,17 +23,45 @@ DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appw
 # Schema generation & migrations: direct connection to the engine
 DIRECT_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
 ```
+{% /tabsitem %}
 
-The `sslmode=require` parameter is already part of the string Appwrite returns. The edge proxy terminates TLS for every dedicated database, so no extra certificate configuration is needed. For full certificate verification or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
+{% tabsitem #mysql title="MySQL" %}
+```env
+# Runtime: pooler port (transaction mode), absorbs serverless connection churn
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+
+# Schema generation & migrations: direct connection to the engine
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS; the connection string Appwrite returns already enables it, so no extra flags are needed.
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+# Runtime: pooler port (transaction mode), absorbs serverless connection churn
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+
+# Schema generation & migrations: direct connection to the engine
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+MariaDB uses the same `mysql://` scheme and ports as MySQL.
+{% /tabsitem %}
+{% /tabs %}
+
+The TLS parameter (`sslmode=require` for PostgreSQL, `ssl=true` for MySQL and MariaDB) is already part of the string Appwrite returns. The edge proxy terminates TLS for every dedicated database, so no extra certificate configuration is needed. For full certificate verification or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
 
 The pooler runs on port `6432` for PostgreSQL (`6033` for MySQL/MariaDB) and the engine on `5432` (`3306` for MySQL/MariaDB). See [Connect](/docs/products/databases/dedicated/connect) for every port and the [connection pooler](/docs/products/databases/dedicated/pooler#modes) page for the pool modes.
 
 # Configure Better Auth {% #configure %}
 
-Better Auth accepts either a **direct database instance** (a node-postgres `Pool`, which it drives through its built-in Kysely adapter) or an **ORM adapter** (Prisma, Drizzle, Kysely). Both work against a dedicated database.
+Better Auth accepts either a **direct database instance** (a driver connection pool, which it drives through its built-in Kysely adapter) or an **ORM adapter** (Prisma, Drizzle, Kysely). Both work against a dedicated database.
 
-## With a node-postgres Pool {% #pool %}
+## With a driver pool {% #pool %}
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 Pass a `pg` `Pool` pointed at the **pooler** endpoint so runtime traffic is multiplexed. Set `ssl: { rejectUnauthorized: true }` so the driver verifies the proxy's certificate:
 
 ```ts
@@ -48,6 +76,36 @@ export const auth = betterAuth({
     emailAndPassword: { enabled: true }
 });
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+Better Auth's built-in adapter supports MySQL natively. Pass a `mysql2` pool pointed at the **pooler** endpoint so runtime traffic is multiplexed; TLS is already enabled by the `ssl=true` in the connection string, so no extra driver flags are needed:
+
+```ts
+import { betterAuth } from 'better-auth';
+import { createPool } from 'mysql2/promise';
+
+export const auth = betterAuth({
+    database: createPool(process.env.DATABASE_URL),
+    emailAndPassword: { enabled: true }
+});
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+Better Auth's MySQL path drives MariaDB the same way through the built-in Kysely adapter, pass the same `mysql2` pool:
+
+```ts
+import { betterAuth } from 'better-auth';
+import { createPool } from 'mysql2/promise';
+
+export const auth = betterAuth({
+    database: createPool(process.env.DATABASE_URL),
+    emailAndPassword: { enabled: true }
+});
+```
+{% /tabsitem %}
+{% /tabs %}
 
 This is the simplest path: Better Auth manages the schema for you and can both generate and apply migrations through the CLI below.
 
@@ -55,6 +113,8 @@ This is the simplest path: Better Auth manages the schema for you and can both g
 
 If you already use an ORM, hand Better Auth an adapter instead of a raw `Pool`. Configure the ORM's own client against the dedicated database (pooled URL for the runtime client, direct URL for migrations), then wrap it:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```ts
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
@@ -65,6 +125,36 @@ export const auth = betterAuth({
     emailAndPassword: { enabled: true }
 });
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```ts
+import { betterAuth } from 'better-auth';
+import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { db } from './db';
+
+export const auth = betterAuth({
+    database: drizzleAdapter(db, { provider: 'mysql' }),
+    emailAndPassword: { enabled: true }
+});
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```ts
+import { betterAuth } from 'better-auth';
+import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { db } from './db';
+
+export const auth = betterAuth({
+    database: drizzleAdapter(db, { provider: 'mysql' }),
+    emailAndPassword: { enabled: true }
+});
+```
+
+The adapter's `mysql` provider drives MariaDB the same way.
+{% /tabsitem %}
+{% /tabs %}
 
 Set the ORM up against the dedicated database first, then return here for the schema steps. The [Prisma](/docs/products/databases/dedicated/prisma) and [Drizzle](/docs/products/databases/dedicated/drizzle) guides cover the `datasource`/client config, the pooled-vs-direct URL split, and how transaction-mode pooling affects prepared statements.
 
@@ -72,13 +162,13 @@ Set the ORM up against the dedicated database first, then return here for the sc
 
 The [Better Auth CLI](https://www.better-auth.com/docs/concepts/cli) reads your `auth` config and creates the tables it needs. Run it with the **direct** endpoint so it gets a real session connection with DDL privileges, the pooler's transaction mode can't run schema changes reliably.
 
-Generate the schema for your setup. With a `Pool` (built-in Kysely adapter) this produces a SQL file; with an ORM adapter it produces that ORM's schema (a Prisma schema, a Drizzle `schema.ts`):
+Generate the schema for your setup. With a driver pool (built-in Kysely adapter) this produces a SQL file; with an ORM adapter it produces that ORM's schema (a Prisma schema, a Drizzle `schema.ts`):
 
 ```bash
 DATABASE_URL="$DIRECT_URL" npx @better-auth/cli@latest generate
 ```
 
-If you're using the built-in adapter (a `Pool`), apply the generated schema directly:
+If you're using the built-in adapter (a driver pool), apply the generated schema directly:
 
 ```bash
 DATABASE_URL="$DIRECT_URL" npx @better-auth/cli@latest migrate
@@ -110,9 +200,9 @@ On a long-running server, instantiate `auth` once and reuse it. On serverless, k
 
 # Pooling and prepared statements {% #pooling %}
 
-Auth workloads, sign-up, login, session lookups, are short transactions, which is exactly what the pooler's default **transaction mode** is built for. Pointing your runtime `Pool` at port `6432` lets a large number of serverless instances share a small backend pool.
+Auth workloads, sign-up, login, session lookups, are short transactions, which is exactly what the pooler's default **transaction mode** is built for. Pointing your runtime pool at the pooler port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) lets a large number of serverless instances share a small backend pool.
 
-The one constraint of transaction mode is that it does not hold a backend connection across statements, so **server-side prepared statements are unavailable**. The node-postgres `Pool` is fine with this out of the box. If you drive Better Auth through an ORM, disable prepared statements on the runtime client, with `postgres.js` set `prepare: false`; with Prisma add `pgbouncer=true` to the pooled URL. If your app genuinely needs prepared statements, advisory locks, or `LISTEN`/`NOTIFY`, switch the pooler to **session mode** instead, see the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
+The one constraint of transaction mode is that it does not hold a backend connection across statements, so **server-side prepared statements are unavailable**. On PostgreSQL, the node-postgres `Pool` is fine with this out of the box. If you drive Better Auth through an ORM, disable prepared statements on the runtime client, with `postgres.js` set `prepare: false`; with Prisma on PostgreSQL add `pgbouncer=true` to the pooled URL. If your app genuinely needs prepared statements, advisory locks, or `LISTEN`/`NOTIFY`, switch the pooler to **session mode** instead, see the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the trade-offs.
 
 # Use a branch for previews and CI {% #branches %}
 
@@ -124,10 +214,6 @@ Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, i
 4. Delete the branch when the job finishes.
 
 Because a branch starts from a storage snapshot, the schema and data match the source database at branch time, so auth flows run against realistic data without touching production.
-
-# Using MySQL or MariaDB {% #mysql %}
-
-Use the MySQL connection string from the [Connect](/docs/products/databases/dedicated/connect) page (engine port `3306`, pooler port `6033`) and a MySQL driver in place of `pg`. Better Auth's built-in adapter supports MySQL natively; MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS, and the connection string Appwrite returns already enables it, so no extra flags are needed.
 
 # Related {% #related %}
 

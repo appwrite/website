@@ -1,12 +1,10 @@
 ---
 layout: article
 title: Spring Boot
-description: Connect a Spring Boot application to an Appwrite dedicated PostgreSQL database with Spring Data JPA and Hibernate. Configure the JDBC datasource and HikariCP pool, map entities, and run Flyway or Liquibase migrations against the direct endpoint.
+description: Connect a Spring Boot application to an Appwrite dedicated PostgreSQL, MySQL, or MariaDB database with Spring Data JPA and Hibernate. Configure the JDBC datasource and HikariCP pool, map entities, and run Flyway or Liquibase migrations against the direct endpoint.
 ---
 
-A dedicated database is a standard PostgreSQL engine, so a Spring Boot application talks to it through the regular PostgreSQL JDBC driver with no Appwrite-specific configuration. You point `spring.datasource` at the JDBC URL from the [Connect](/docs/products/databases/dedicated/connect) page, size the built-in HikariCP pool, and use Spring Data JPA, Hibernate, Flyway, or Liquibase exactly as you would against any self-hosted PostgreSQL server.
-
-This guide uses PostgreSQL, the recommended engine for dedicated databases. MySQL and MariaDB work the same way with the matching JDBC driver and URL.
+A dedicated database is a standard PostgreSQL, MySQL, or MariaDB engine, so a Spring Boot application talks to it through the engine's regular JDBC driver with no Appwrite-specific configuration. You point `spring.datasource` at the JDBC URL from the [Connect](/docs/products/databases/dedicated/connect) page, size the built-in HikariCP pool, and use Spring Data JPA, Hibernate, Flyway, or Liquibase exactly as you would against any self-hosted server. Pick your engine in the tabs below; PostgreSQL is the recommended engine for dedicated databases.
 
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the host, port, and password. The default database name and username are both `appwrite`.
@@ -14,17 +12,37 @@ You'll need a dedicated database in a `ready` state and its credentials. See [De
 
 # Add the dependencies {% #dependencies %}
 
-A Spring Data JPA application against PostgreSQL needs the JPA starter and the PostgreSQL driver. HikariCP ships with `spring-boot-starter-data-jpa`, so it's already on the classpath.
+A Spring Data JPA application needs the JPA starter and the JDBC driver for your engine. HikariCP ships with `spring-boot-starter-data-jpa`, so it's already on the classpath, and Spring Boot picks the driver class from the JDBC URL, so the dependency is all the driver needs.
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```text
 org.springframework.boot:spring-boot-starter-data-jpa
 org.postgresql:postgresql
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```text
+org.springframework.boot:spring-boot-starter-data-jpa
+com.mysql:mysql-connector-j
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```text
+org.springframework.boot:spring-boot-starter-data-jpa
+org.mariadb.jdbc:mariadb-java-client
+```
+{% /tabsitem %}
+{% /tabs %}
 
 # Configure the datasource {% #datasource %}
 
-Build the JDBC URL from the host and port on the [Connect](/docs/products/databases/dedicated/connect) page. The engine port is `5432`, the database is `appwrite`, and `sslmode=require` is mandatory because the edge proxy terminates TLS for every dedicated database. Read the credentials from the environment, never commit them:
+Build the JDBC URL from the host and port on the [Connect](/docs/products/databases/dedicated/connect) page. The engine port is `5432` for PostgreSQL and `3306` for MySQL and MariaDB, the database is `appwrite`, and the TLS parameter is mandatory because the edge proxy terminates TLS for every dedicated database. Read the credentials from the environment, never commit them:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```yaml
 spring:
   datasource:
@@ -54,11 +72,81 @@ spring.datasource.hikari.minimum-idle=2
 spring.jpa.hibernate.ddl-auto=validate
 ```
 
-`sslmode=require` encrypts the connection and is enough for the default setup. For full certificate verification, set `sslmode=verify-full` together with `sslfactory=org.postgresql.ssl.DefaultJavaSSLFactory`, so pgJDBC validates against the JVM's default trust store instead of looking for `~/.postgresql/root.crt`, the proxy's certificate is signed by a public CA the JVM already trusts, so there is no Appwrite-specific CA to download. The [Network](/docs/products/databases/dedicated/network) page covers mTLS.
+`sslmode=require` encrypts the connection and is enough for the default setup. For full certificate verification, set `sslmode=verify-full` together with `sslfactory=org.postgresql.ssl.DefaultJavaSSLFactory`, so pgJDBC validates against the JVM's default trust store instead of looking for `~/.postgresql/root.crt`, the proxy's certificate is signed by a public CA the JVM already trusts, so there is no Appwrite-specific CA to download.
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=REQUIRED
+    username: appwrite
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      max-lifetime: 1200000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+```
+
+The equivalent `application.properties`:
+
+```ini
+spring.datasource.url=jdbc:mysql://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=REQUIRED
+spring.datasource.username=appwrite
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+spring.jpa.hibernate.ddl-auto=validate
+```
+
+`sslMode=REQUIRED` encrypts the connection without validating the certificate chain and is enough for the default setup. MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS, so don't drop the parameter. For full certificate verification, set `sslMode=VERIFY_IDENTITY`: Connector/J validates against the JVM's default trust store, and the proxy's certificate is signed by a public CA the JVM already trusts, so there is no Appwrite-specific CA to download.
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```yaml
+spring:
+  datasource:
+    url: jdbc:mariadb://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=trust
+    username: appwrite
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      max-lifetime: 1200000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MariaDBDialect
+```
+
+The equivalent `application.properties`:
+
+```ini
+spring.datasource.url=jdbc:mariadb://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=trust
+spring.datasource.username=appwrite
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+spring.jpa.hibernate.ddl-auto=validate
+```
+
+`sslMode=trust` encrypts the connection without validating the certificate chain and is enough for the default setup. For full certificate verification, set `sslMode=verify-full`: MariaDB Connector/J validates against the JVM's default trust store, and the proxy's certificate is signed by a public CA the JVM already trusts, so there is no Appwrite-specific CA to download.
+{% /tabsitem %}
+{% /tabs %}
+
+The [Network](/docs/products/databases/dedicated/network) page covers mTLS.
 
 # Size the HikariCP pool {% #pool %}
 
-A Spring Boot server is long-running, so it holds its HikariCP pool open for the lifetime of the process. Keep `maximum-pool-size` modest. The HikariCP guidance is that throughput peaks at a small pool, roughly `(CPU cores x 2) + 1` for the engine, not hundreds of connections. A pool that's larger than the engine can serve only queues work inside PostgreSQL and adds latency.
+A Spring Boot server is long-running, so it holds its HikariCP pool open for the lifetime of the process. Keep `maximum-pool-size` modest. The HikariCP guidance is that throughput peaks at a small pool, roughly `(CPU cores x 2) + 1` for the engine, not hundreds of connections. A pool that's larger than the engine can serve only queues work inside the engine and adds latency.
 
 Each replica of your application opens its own pool, so multiply `maximum-pool-size` by the number of instances and keep the total under the connection budget of your dedicated database [specification](/docs/products/databases/dedicated/specifications). Set `max-lifetime` a little below the engine's idle timeout so HikariCP recycles connections before the server closes them.
 
@@ -107,13 +195,33 @@ Inject the repository wherever you need it and call `save`, `findById`, `findByE
 
 Let a migration tool own the schema and set `ddl-auto: validate` so Hibernate checks the mapping against the live tables at startup but never alters them. Add the dependency for either tool and Spring Boot runs pending migrations automatically on boot.
 
-**Flyway** reads versioned scripts from `src/main/resources/db/migration` (for example `V1__init.sql`). Point Flyway at the **direct** engine endpoint (port `5432`) so migrations run on a real session connection with full DDL privileges. Setting `spring.flyway.url` gives Flyway its own datasource, independent of the runtime pool:
+**Flyway** reads versioned scripts from `src/main/resources/db/migration` (for example `V1__init.sql`). Point Flyway at the **direct** engine endpoint (`5432` for PostgreSQL, `3306` for MySQL/MariaDB) so migrations run on a real session connection with full DDL privileges. Setting `spring.flyway.url` gives Flyway its own datasource, independent of the runtime pool:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```ini
 spring.flyway.url=jdbc:postgresql://db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require
 spring.flyway.user=appwrite
 spring.flyway.password=${DB_PASSWORD}
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```ini
+spring.flyway.url=jdbc:mysql://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=REQUIRED
+spring.flyway.user=appwrite
+spring.flyway.password=${DB_PASSWORD}
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```ini
+spring.flyway.url=jdbc:mariadb://db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?sslMode=trust
+spring.flyway.user=appwrite
+spring.flyway.password=${DB_PASSWORD}
+```
+{% /tabsitem %}
+{% /tabs %}
 
 **Liquibase** is equivalent: it reads a changelog from `src/main/resources/db/changelog` and accepts its own `spring.liquibase.url`, `spring.liquibase.user`, and `spring.liquibase.password` pointing at the same direct endpoint.
 
@@ -121,9 +229,9 @@ The primary `appwrite` user owns the default database and can run schema changes
 
 # Pooling and the connection pooler {% #pooling %}
 
-HikariCP is already a connection pool, so a long-running Spring Boot server should connect to the **direct** engine endpoint (`5432`) and let HikariCP manage connections. Don't route a server's traffic through the [connection pooler](/docs/products/databases/dedicated/pooler) in `transaction` mode: stacking HikariCP on top of a transaction pooler double-pools the connections and breaks server-side prepared statements, which the PostgreSQL JDBC driver relies on.
+HikariCP is already a connection pool, so a long-running Spring Boot server should connect to the **direct** engine endpoint (`5432` for PostgreSQL, `3306` for MySQL/MariaDB) and let HikariCP manage connections. Don't route a server's traffic through the [connection pooler](/docs/products/databases/dedicated/pooler) in `transaction` mode: stacking HikariCP on top of a transaction pooler double-pools the connections and, on PostgreSQL, breaks server-side prepared statements, which the PostgreSQL JDBC driver relies on.
 
-If you do want the pooler in front of your server, use **session** mode, which keeps a backend connection for the whole client session and preserves prepared statements. Connect HikariCP on the pooler port (`6432`) and keep `maximum-pool-size` small. See the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the mode trade-offs. Always run Flyway or Liquibase against the direct endpoint regardless of how the runtime connects.
+If you do want the pooler in front of your server, use **session** mode, which keeps a backend connection for the whole client session and preserves prepared statements. Connect HikariCP on the pooler port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) and keep `maximum-pool-size` small. See the [pooler](/docs/products/databases/dedicated/pooler#modes) page for the mode trade-offs. Always run Flyway or Liquibase against the direct endpoint regardless of how the runtime connects.
 
 # Use a branch for previews and CI {% #branches %}
 

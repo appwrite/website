@@ -6,8 +6,6 @@ description: Connect a Next.js App Router application to an Appwrite dedicated d
 
 A dedicated database is a standard PostgreSQL, MySQL, MariaDB, or MongoDB engine, so a [Next.js](https://nextjs.org/) App Router application talks to it through any normal driver or ORM. There's nothing Appwrite-specific in the setup, you point your driver at the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and query from the server.
 
-This guide uses PostgreSQL. To use MySQL or MariaDB, swap the driver and use the matching connection string and ports, everything else is identical.
-
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`. Deploying to Vercel? Pair this with the [Vercel](/docs/products/databases/dedicated/vercel) guide.
 {% /info %}
@@ -28,12 +26,34 @@ The one exception is the **Edge runtime** (`export const runtime = 'edge'`), whi
 
 Put the connection string in your environment and never commit it. For local development, use `.env.local` (Next.js loads it automatically and it's git-ignored by default):
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```env
 DATABASE_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6432/appwrite?sslmode=require&pgbouncer=true"
 DIRECT_URL="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
 ```
+{% /tabsitem %}
 
-`DATABASE_URL` points at the [connection pooler](/docs/products/databases/dedicated/pooler) port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) for runtime traffic, and `DIRECT_URL` points at the engine port (`5432`) for migrations. The next section explains why. The `sslmode=require` parameter is already part of the string Appwrite returns; the edge proxy terminates TLS, so no extra certificate configuration is needed. For full verification (`verify-full`) or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
+{% tabsitem #mysql title="MySQL" %}
+```env
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires TLS; the connection string Appwrite returns already enables it, so no extra flags are needed.
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```env
+DATABASE_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:6033/appwrite?ssl=true"
+DIRECT_URL="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite?ssl=true"
+```
+
+MariaDB uses the same `mysql://` scheme and ports as MySQL.
+{% /tabsitem %}
+{% /tabs %}
+
+`DATABASE_URL` points at the [connection pooler](/docs/products/databases/dedicated/pooler) port (`6432` for PostgreSQL, `6033` for MySQL/MariaDB) for runtime traffic, and `DIRECT_URL` points at the engine port (`5432` for PostgreSQL, `3306` for MySQL/MariaDB) for migrations. The next section explains why. The TLS parameter (`sslmode=require` for PostgreSQL, `ssl=true` for MySQL and MariaDB) is already part of the string Appwrite returns; the edge proxy terminates TLS, so no extra certificate configuration is needed. For full verification (`verify-full`) or mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
 
 # Pool from serverless {% #pooling %}
 
@@ -44,6 +64,9 @@ The pooler defaults to **transaction mode**, which does not keep a backend conne
 # Use a singleton client {% #singleton %}
 
 Instantiate one client per module scope and reuse it across invocations, so warm serverless instances don't reconnect on every request. In development, Next.js hot-reload re-evaluates modules, which can leak connections, so cache the client on `globalThis`.
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 
 With [postgres.js](https://github.com/porsager/postgres) (note `prepare: false` for transaction-mode pooling):
 
@@ -61,9 +84,45 @@ export const sql =
 
 if (process.env.NODE_ENV !== 'production') globalForDb.sql = sql;
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+
+With [mysql2](https://github.com/sidorares/node-mysql2), create the pool from `mysql2/promise`. `createPool` accepts the `mysql://` connection string directly, and the `ssl=true` parameter already in it enables TLS. There's no `prepare: false` equivalent to set, `pool.query()` doesn't create server-side prepared statements (only `pool.execute()` does), so it's safe in the pooler's transaction mode:
+
+```ts
+// lib/db.ts
+import mysql from 'mysql2/promise';
+
+const globalForDb = globalThis as unknown as { pool?: ReturnType<typeof mysql.createPool> };
+
+export const pool = globalForDb.pool ?? mysql.createPool(process.env.DATABASE_URL!);
+
+if (process.env.NODE_ENV !== 'production') globalForDb.pool = pool;
+```
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+
+The same `mysql2` package drives MariaDB, the setup is identical to MySQL:
+
+```ts
+// lib/db.ts
+import mysql from 'mysql2/promise';
+
+const globalForDb = globalThis as unknown as { pool?: ReturnType<typeof mysql.createPool> };
+
+export const pool = globalForDb.pool ?? mysql.createPool(process.env.DATABASE_URL!);
+
+if (process.env.NODE_ENV !== 'production') globalForDb.pool = pool;
+```
+{% /tabsitem %}
+{% /tabs %}
 
 Query it from a Server Component or Route Handler:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```ts
 // app/users/route.ts
 import { sql } from '@/lib/db';
@@ -73,12 +132,40 @@ export async function GET() {
   return Response.json(users);
 }
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```ts
+// app/users/route.ts
+import { pool } from '@/lib/db';
+
+export async function GET() {
+  const [users] = await pool.query('SELECT id, email FROM users ORDER BY created_at DESC LIMIT 10');
+  return Response.json(users);
+}
+```
+
+`mysql2` returns a `[rows, fields]` tuple, destructure the first element. Bind parameters with `?` placeholders: `pool.query('SELECT ... WHERE id = ?', [id])`.
+{% /tabsitem %}
+
+{% tabsitem #mariadb title="MariaDB" %}
+```ts
+// app/users/route.ts
+import { pool } from '@/lib/db';
+
+export async function GET() {
+  const [users] = await pool.query('SELECT id, email FROM users ORDER BY created_at DESC LIMIT 10');
+  return Response.json(users);
+}
+```
+{% /tabsitem %}
+{% /tabs %}
 
 # Use Prisma or Drizzle {% #orm %}
 
 For a typed schema, migrations, and a query builder, reach for an ORM. Both integrate with the pooled `DATABASE_URL` plus direct `DIRECT_URL` pattern above.
 
-- **Prisma** — set `url` to the pooled endpoint with `&pgbouncer=true` and `directUrl` to the engine port, then run `prisma migrate deploy`. See the [Prisma](/docs/products/databases/dedicated/prisma) guide for the full datasource config and migration flow.
+- **Prisma** — set `url` to the pooled endpoint (plus `&pgbouncer=true` on PostgreSQL) and `directUrl` to the engine port, then run `prisma migrate deploy`. See the [Prisma](/docs/products/databases/dedicated/prisma) guide for the full datasource config and migration flow.
 - **Drizzle** — use a pooled client (`prepare: false` on postgres.js) for runtime and the direct URL for `drizzle-kit` migrations. See the [Drizzle](/docs/products/databases/dedicated/drizzle) guide.
 
 {% arrow_link href="/docs/products/databases/dedicated/prisma" %}

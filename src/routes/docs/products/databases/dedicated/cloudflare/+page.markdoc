@@ -6,12 +6,12 @@ description: Connect to an Appwrite dedicated database from Cloudflare Workers a
 
 A dedicated database is a standard engine reachable over TLS, so Cloudflare's runtime can talk to it two different ways. Pick based on whether your Worker can hold a TCP connection and how much throughput you need.
 
-- **Hyperdrive (TCP).** [Cloudflare Hyperdrive](https://developers.cloudflare.com/hyperdrive/) accelerates queries to an existing PostgreSQL or MySQL database by pooling connections at Cloudflare's edge and caching read queries. You give Hyperdrive your dedicated database's connection string, bind it to a Worker, and connect with a normal driver (`postgres.js`, `node-postgres`, Drizzle). This is the highest-throughput option and the one to reach for when a real connection makes sense.
+- **Hyperdrive (TCP).** [Cloudflare Hyperdrive](https://developers.cloudflare.com/hyperdrive/) accelerates queries to an existing PostgreSQL or MySQL database by pooling connections at Cloudflare's edge and caching read queries. You give Hyperdrive your dedicated database's connection string, bind it to a Worker, and connect with a normal driver (`postgres.js`, `node-postgres`, `mysql2`, Drizzle). This is the highest-throughput option and the one to reach for when a real connection makes sense.
 - **SQL API (HTTPS).** The [SQL API](/docs/products/databases/dedicated/sql-api) executes one parameterised statement over HTTPS and returns JSON. It needs nothing but `fetch`, no driver, no sockets, no binding, which makes it the simplest path for occasional reads, admin endpoints, or when you would rather not run Hyperdrive at all.
 
 Both paths work identically from **Workers** and from **Pages Functions**, since Pages runs on the same Workers runtime.
 
-This guide uses PostgreSQL. Hyperdrive also supports MySQL; the SQL API additionally supports MariaDB. MongoDB is not reachable through either path, connect to it with a MongoDB driver instead.
+Hyperdrive supports PostgreSQL and MySQL; the SQL API additionally supports MariaDB. MongoDB is not reachable through either path, connect to it with a MongoDB driver instead.
 
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
@@ -23,18 +23,31 @@ Hyperdrive sits between your Worker and the database. It keeps a warm pool of ba
 
 ## Create a Hyperdrive config {% #hyperdrive-config %}
 
-Point Hyperdrive at the **direct engine endpoint** on port `5432`, not the Appwrite [connection pooler](/docs/products/databases/dedicated/pooler). Hyperdrive does its own pooling, so layering it on top of PgBouncer would pool twice and break server-side prepared statements. Use the plain connection string from the [Connect](/docs/products/databases/dedicated/connect) page:
+Point Hyperdrive at the **direct engine endpoint** (port `5432` for PostgreSQL, `3306` for MySQL), not the Appwrite [connection pooler](/docs/products/databases/dedicated/pooler). Hyperdrive does its own pooling, so layering it on top of the pooler would pool twice and break server-side prepared statements. Use the plain connection string from the [Connect](/docs/products/databases/dedicated/connect) page:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```bash
 npx wrangler hyperdrive create appwrite-db \
   --connection-string="postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
 ```
+{% /tabsitem %}
 
-The `sslmode=require` parameter is already part of the string Appwrite returns; the edge proxy terminates TLS, so no extra certificate setup is needed. The command prints a Hyperdrive **id**, you'll reference it from the binding below.
+{% tabsitem #mysql title="MySQL" %}
+```bash
+npx wrangler hyperdrive create appwrite-db \
+  --connection-string="mysql://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:3306/appwrite"
+```
+
+Drop the `ssl=true` parameter from the string Appwrite returns, Hyperdrive's MySQL connection strings take no query parameters and it always connects over TLS.
+{% /tabsitem %}
+{% /tabs %}
+
+Hyperdrive connects to the origin over TLS and validates the server certificate against public roots, so no extra certificate setup is needed. The command prints a Hyperdrive **id**, you'll reference it from the binding below.
 
 ## Bind Hyperdrive to your Worker {% #hyperdrive-binding %}
 
-Add the binding to `wrangler.toml` and enable Node.js compatibility, which the PostgreSQL drivers require:
+Add the binding to `wrangler.toml` and enable Node.js compatibility, which the database drivers require:
 
 ```ini
 name = "my-worker"
@@ -107,10 +120,45 @@ export default {
 };
 ```
 
+## Query with mysql2 {% #hyperdrive-mysql2 %}
+
+For MySQL, use `mysql2` (3.13.0 or newer) and open a connection per request from the binding's credential fields. Set `disableEval: true`, the Workers runtime disallows `eval()`, which mysql2 otherwise uses when parsing results:
+
+```ts
+import { createConnection } from 'mysql2/promise';
+
+export interface Env {
+  HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+      disableEval: true,
+    });
+
+    const [rows] = await connection.query(
+      'SELECT id, email FROM users WHERE created_at > ? ORDER BY created_at DESC LIMIT ?',
+      ['2026-05-01', 50],
+    );
+
+    ctx.waitUntil(connection.end());
+    return Response.json(rows);
+  },
+};
+```
+
 ## Query with Drizzle {% #hyperdrive-drizzle %}
 
-Drizzle wraps either driver. Point its adapter at the Hyperdrive connection string and use the typed query builder, see the [Drizzle](/docs/products/databases/dedicated/drizzle) page for schema setup:
+Drizzle wraps the same drivers. Point the engine's adapter at the Hyperdrive binding and use the typed query builder, see the [Drizzle](/docs/products/databases/dedicated/drizzle) page for schema setup:
 
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
 ```ts
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
@@ -128,6 +176,35 @@ export default {
   },
 };
 ```
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+```ts
+import { drizzle } from 'drizzle-orm/mysql2';
+import { createConnection } from 'mysql2/promise';
+import { users } from './schema';
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const connection = await createConnection({
+      host: env.HYPERDRIVE.host,
+      user: env.HYPERDRIVE.user,
+      password: env.HYPERDRIVE.password,
+      database: env.HYPERDRIVE.database,
+      port: env.HYPERDRIVE.port,
+      disableEval: true,
+    });
+    const db = drizzle(connection);
+
+    const rows = await db.select().from(users).limit(50);
+
+    ctx.waitUntil(connection.end());
+    return Response.json(rows);
+  },
+};
+```
+{% /tabsitem %}
+{% /tabs %}
 
 # Path 2: SQL API over HTTPS {% #sql-api %}
 

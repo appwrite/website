@@ -6,8 +6,6 @@ description: Use FastAPI and SQLAlchemy 2.x with an Appwrite dedicated PostgreSQ
 
 A dedicated database is a standard PostgreSQL engine, so [FastAPI](https://fastapi.tiangolo.com/) with [SQLAlchemy](https://docs.sqlalchemy.org/) and an async driver works against it with no Appwrite-specific configuration. You point `create_async_engine` at the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and use the SQLAlchemy ORM, the FastAPI dependency system, and Alembic exactly as you would against any self-hosted PostgreSQL server.
 
-This guide uses PostgreSQL with the [asyncpg](https://magicstack.github.io/asyncpg/current/) driver. The same patterns apply to the async `postgresql+psycopg` dialect by changing the URL scheme.
-
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`.
 {% /info %}
@@ -28,6 +26,8 @@ DATABASE_URL="postgresql+asyncpg://appwrite:<password>@db-<projectId>-<dbId>.<re
 
 The string Appwrite returns ends with `?sslmode=require`. Drop that query parameter for asyncpg, asyncpg does not read `sslmode` from the URL. TLS is configured through `connect_args` instead, shown below.
 
+This guide uses the [asyncpg](https://magicstack.github.io/asyncpg/current/) driver; the same patterns apply to the async `postgresql+psycopg` dialect by changing the URL scheme.
+
 # Create the async engine {% #engine %}
 
 The edge proxy terminates TLS for every dedicated database, so encryption is mandatory. asyncpg's `ssl` argument accepts the libpq-style strings (`require`, `verify-ca`, `verify-full`), `True`, or an `ssl.SSLContext`. Pass it through `connect_args`:
@@ -46,7 +46,7 @@ engine = create_async_engine(
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 ```
 
-`ssl="require"` encrypts the connection without validating the certificate chain. For full verification (`verify-full`), build an `ssl.SSLContext` with `ssl.create_default_context(cafile=...)` pointed at the CA bundle from the [Network](/docs/products/databases/dedicated/network) page, and pass that context as the `ssl` value instead of the string.
+`ssl="require"` encrypts the connection without validating the certificate chain. For full verification, pass `ssl="verify-full"` instead; the server certificate is signed by a well-known public CA, so validation succeeds against the system trust store without a custom CA bundle, see the [Network](/docs/products/databases/dedicated/network) page.
 
 # Define a model {% #model %}
 

@@ -1,12 +1,10 @@
 ---
 layout: article
 title: Metabase
-description: Connect Metabase to an Appwrite dedicated PostgreSQL database for analytics. Create a scoped read-only connection user, add the database in Metabase admin over SSL, and build dashboards on a session-safe endpoint.
+description: Connect Metabase to an Appwrite dedicated PostgreSQL or MySQL database for analytics. Create a scoped read-only connection user, add the database in Metabase admin over SSL, and build dashboards on a session-safe endpoint.
 ---
 
-A dedicated database is a standard PostgreSQL engine, so [Metabase](https://www.metabase.com/) connects to it the same way it connects to any self-hosted PostgreSQL server. You add the database under **Admin settings**, point it at the host from the [Connect](/docs/products/databases/dedicated/connect) page, and Metabase syncs the schema and lets you build questions and dashboards on top of it.
-
-This guide uses PostgreSQL, the recommended engine for a dedicated database. Metabase also supports MySQL; the connection fields are the same, only the engine port differs (`3306` instead of `5432`).
+A dedicated database is a standard PostgreSQL, MySQL, or MariaDB engine, so [Metabase](https://www.metabase.com/) connects to it the same way it connects to any self-hosted database server. You add the database under **Admin settings**, point it at the host from the [Connect](/docs/products/databases/dedicated/connect) page, and Metabase syncs the schema and lets you build questions and dashboards on top of it. PostgreSQL is the recommended engine for a dedicated database.
 
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and an [API key](/docs/advanced/platform/api-keys) with access to it. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve its host and credentials. The default database name and primary username are both `appwrite`.
@@ -48,7 +46,11 @@ Appwrite stores the password encrypted and won't show it again, so copy it now. 
 
 # Add the database in Metabase {% #add-database %}
 
-In Metabase, open **Admin settings → Databases → Add a database** and choose **PostgreSQL**. Fill in the connection form with the values from the [Connect](/docs/products/databases/dedicated/connect) page and the read-only user you just created:
+In Metabase, open **Admin settings → Databases → Add a database**. Fill in the connection form with the values from the [Connect](/docs/products/databases/dedicated/connect) page and the read-only user you just created:
+
+{% tabs %}
+{% tabsitem #postgresql title="PostgreSQL" %}
+Choose **PostgreSQL** as the database type:
 
 | Field | Value |
 |-------|-------|
@@ -58,10 +60,28 @@ In Metabase, open **Admin settings → Databases → Add a database** and choose
 | Username | `metabase_ro` |
 | Password | the generated password from the API response |
 
-Enable **Use a secure connection (SSL)**. Every dedicated database requires TLS, terminated at the edge proxy, so the connection must be encrypted. Enabling SSL here is equivalent to `sslmode=require`. For full certificate verification, supply the CA certificate from the [Network](/docs/products/databases/dedicated/network) page in Metabase's SSL options and set the SSL mode to `verify-full`. See [TLS](/docs/products/databases/dedicated/connect#tls) for the available modes.
+Enable **Use a secure connection (SSL)**, equivalent to `sslmode=require`. For full certificate verification, set the SSL mode in Metabase's SSL options to `verify-full`; the server certificate is signed by a well-known public CA, so you don't need to supply a root certificate. See the [Network](/docs/products/databases/dedicated/network) page for details.
+{% /tabsitem %}
+
+{% tabsitem #mysql title="MySQL" %}
+Choose **MySQL** as the database type. A MariaDB dedicated database uses the same **MySQL** database type and identical connection fields.
+
+| Field | Value |
+|-------|-------|
+| Host | `db-<projectId>-<dbId>.<region>.appwrite.center` |
+| Port | `3306` |
+| Database name | `appwrite` |
+| Username | `metabase_ro` |
+| Password | the generated password from the API response |
+
+Enable **Use a secure connection (SSL)**, equivalent to `ssl=true` in the connection string.
+{% /tabsitem %}
+{% /tabs %}
+
+Every dedicated database requires TLS, terminated at the edge proxy, so the connection must be encrypted. See [TLS](/docs/products/databases/dedicated/connect#tls) for the available modes.
 
 {% info title="Pick the right endpoint" %}
-A BI tool holds long-lived sessions and can use server-side cursors to stream large result sets. Connect to the **direct** engine endpoint (port `5432`) or, if you pool, the **session-mode** pooler. Don't point Metabase at the **transaction-mode** pooler (the default): it doesn't keep a backend connection across statements, which breaks cursors and prepared statements. See [Pool modes](/docs/products/databases/dedicated/pooler#modes).
+A BI tool holds long-lived sessions and can use server-side cursors to stream large result sets. Connect to the **direct** engine endpoint (`5432` for PostgreSQL, `3306` for MySQL and MariaDB) or, if you pool, the **session-mode** pooler. Don't point Metabase at the **transaction-mode** pooler (the default): it doesn't keep a backend connection across statements, which breaks cursors and prepared statements. See [Pool modes](/docs/products/databases/dedicated/pooler#modes).
 {% /info %}
 
 Click **Save**, and Metabase verifies the connection and begins its first sync.
