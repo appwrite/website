@@ -17,7 +17,6 @@ env:
     REGISTRY_GITHUB: ghcr.io
     REGISTRY_DOCKERHUB: docker.io
     IMAGE_NAME: appwrite/website
-    DOCKERHUB_IMAGE_NAME: appwrite/website
     TAG: ${{ github.sha }}
 
 jobs:
@@ -48,7 +47,7 @@ jobs:
                   push: true
                   tags: |
                       ${{ env.REGISTRY_GITHUB }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
-                      ${{ env.REGISTRY_DOCKERHUB }}/${{ env.DOCKERHUB_IMAGE_NAME }}:${{ env.TAG }}
+                      ${{ env.REGISTRY_DOCKERHUB }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
                   build-args: |
                       "PUBLIC_APPWRITE_ENDPOINT=${{ vars.PUBLIC_APPWRITE_ENDPOINT }}"
                       "PUBLIC_APPWRITE_DASHBOARD=${{ vars.PUBLIC_APPWRITE_DASHBOARD }}"
@@ -87,9 +86,7 @@ jobs:
                   token: ${{ steps.app-token.outputs.token }}
 
             - name: Update image tag
-              uses: mikefarah/yq@v4
-              with:
-                  cmd: yq -i '.website.image.tag = strenv(TAG)' ${{ env.ENVIRONMENT }}/${{ env.PROJECT }}/fra1.yaml
+              run: yq -i '.website.image.tag = strenv(TAG)' ${{ env.ENVIRONMENT }}/${{ env.PROJECT }}/fra1.yaml
 
             - name: Commit and push
               run: |
