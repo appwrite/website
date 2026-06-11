@@ -154,6 +154,10 @@ It includes the Appwrite Docs MCP server and agent skills for the Appwrite CLI, 
 
 # Community Recognitions
 
+We are excited to feature Ibaraki Douji as part of our monthly Community Recognitions for May 2026. Ibaraki Douji built a full, up-to-date [Helm chart for self-hosting Appwrite on Kubernetes](https://gitlab.ibaraki.app/helm/appwrite) that deploys the entire stack, including the API, Console, Realtime, background workers, schedulers, database, Redis, and Kubernetes-native ingress with TLS. It lets you scale each component independently, run clean upgrades, and fits GitOps workflows with tools like ArgoCD and Flux. It has been running in production since Appwrite 1.7.4.
+
+If you would like to participate in next month's Community Recognitions, [join our Discord server](https://appwrite.io/discord) and showcase your project.
+
 # Engineering Resources
 
 * [3 things you can build with the Rust runtime](https://appwrite.io/blog/post/3-things-you-can-build-with-rust-runtime)
