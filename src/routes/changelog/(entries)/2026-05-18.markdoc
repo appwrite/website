@@ -1,0 +1,9 @@
+---
+layout: changelog
+title: "Updated SMS pricing"
+date: 2026-05-18
+---
+
+We've refreshed our [SMS pricing](/docs/advanced/platform/phone-otp#sms-pricing) to reflect the latest carrier rates. Per-SMS prices have changed for a number of countries.
+
+Review the updated per-country rates before your next phone OTP rollout.
