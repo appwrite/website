@@ -94,6 +94,17 @@
             ]
         },
         {
+            label: 'Platforms',
+            items: [
+                {
+                    label: 'Project',
+                    href: '/docs/platforms/project',
+                    icon: 'icon-briefcase',
+                    isParent: true
+                }
+            ]
+        },
+        {
             label: 'Utilities',
             collapsible: true,
             initiallyCollapsed: true,

@@ -1,5 +1,13 @@
 [
     {
+        "link": "/docs/advanced/platform/api-keys",
+        "redirect": "/docs/platforms/project/api-keys"
+    },
+    {
+        "link": "/docs/advanced/platform/environment-variables",
+        "redirect": "/docs/platforms/project/environment-variables"
+    },
+    {
         "link": "/docs/getting-started-for-web",
         "redirect": "/docs/quick-starts"
     },
@@ -201,7 +209,7 @@
     },
     {
         "link": "/docs/keys",
-        "redirect": "/docs/advanced/platform/api-keys"
+        "redirect": "/docs/platforms/project/api-keys"
     },
     {
         "link": "/docs/permissions",

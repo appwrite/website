@@ -60,10 +60,6 @@
                     href: '/docs/advanced/platform/rate-limits'
                 },
                 {
-                    label: 'API keys',
-                    href: '/docs/advanced/platform/api-keys'
-                },
-                {
                     label: 'Dev keys',
                     href: '/docs/advanced/platform/dev-keys'
                 }
@@ -125,11 +121,6 @@
                 {
                     label: 'Custom domains',
                     href: '/docs/advanced/platform/custom-domains'
-                },
-                {
-                    label: 'Environment variables',
-                    new: isNewUntil('30 May 2026'),
-                    href: '/docs/advanced/platform/environment-variables'
                 },
                 {
                     label: 'Message templates',
