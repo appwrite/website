@@ -111,6 +111,11 @@
             label: 'APIS',
             items: [
                 {
+                    label: 'Overview',
+                    href: '/docs/apis',
+                    icon: 'icon-view-grid'
+                },
+                {
                     label: 'REST',
                     href: '/docs/apis/rest',
                     icon: 'web-icon-rest'

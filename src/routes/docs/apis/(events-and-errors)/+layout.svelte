@@ -22,7 +22,7 @@
             ]
         },
         {
-            label: 'Errors',
+            label: 'Responses & errors',
             items: [
                 {
                     label: 'Response codes',
