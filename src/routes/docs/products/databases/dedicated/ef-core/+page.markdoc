@@ -35,10 +35,10 @@ Npgsql uses key/value connection strings rather than a URL. Store it in `appsett
 }
 ```
 
-The edge proxy terminates TLS for every dedicated database, so `SSL Mode=Require` is all you need. From Npgsql 6.0 onward, `Require` encrypts the connection without validating the server certificate, the equivalent of also setting `Trust Server Certificate=true`. For full certificate verification, set `SSL Mode=VerifyFull` and point `Root Certificate` at the CA from the [Network](/docs/products/databases/dedicated/network) page:
+The edge proxy terminates TLS for every dedicated database, so `SSL Mode=Require` is all you need. From Npgsql 6.0 onward, `Require` encrypts the connection without validating the server certificate, the equivalent of also setting `Trust Server Certificate=true`. For full certificate verification, set `SSL Mode=VerifyFull`: Npgsql validates the chain and hostname against the operating system's trusted roots, and the proxy's certificate is signed by a public CA those roots already include, so no `Root Certificate` parameter is needed:
 
 ```text
-Host=...;Port=5432;Database=appwrite;Username=appwrite;Password=<password>;SSL Mode=VerifyFull;Root Certificate=/path/to/ca.crt
+Host=...;Port=5432;Database=appwrite;Username=appwrite;Password=<password>;SSL Mode=VerifyFull
 ```
 
 # Configure the DbContext {% #dbcontext %}

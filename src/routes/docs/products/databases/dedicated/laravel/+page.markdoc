@@ -41,7 +41,7 @@ The default `config/database.php` already wires these variables into the `pgsql`
 ],
 ```
 
-`sslmode` is a top-level key on the PostgreSQL connection (since Laravel 10, SSL settings live directly in the connection array, not under `options`). Setting `DB_SSLMODE=require` matches the `sslmode=require` that Appwrite uses, the edge proxy terminates TLS for every dedicated database, so no certificate files are needed for `require`. For full certificate verification, set `DB_SSLMODE=verify-full` and add `sslrootcert` pointing at the CA from the [Network](/docs/products/databases/dedicated/network) page:
+`sslmode` is a top-level key on the PostgreSQL connection (since Laravel 10, SSL settings live directly in the connection array, not under `options`). Setting `DB_SSLMODE=require` matches the `sslmode=require` that Appwrite uses, the edge proxy terminates TLS for every dedicated database, so no certificate files are needed for `require`. For full certificate verification, set `DB_SSLMODE=verify-full` and point `sslrootcert` at a trusted root store, `system` on libpq 16+, or your OS bundle such as `/etc/ssl/certs/ca-certificates.crt`, the proxy's certificate is signed by a public CA, so there is no Appwrite-specific CA to download:
 
 ```php
 'sslmode' => env('DB_SSLMODE', 'prefer'),

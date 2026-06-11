@@ -44,7 +44,7 @@ DATABASES = {
 }
 ```
 
-The PostgreSQL backend forwards everything in `OPTIONS` straight to the driver's connection, so `sslmode` is honoured the same way `psql` honours it in the connection string. For full certificate verification (`verify-full`) or mTLS, add `sslrootcert` (and client cert keys) here and download the CA from the [Network](/docs/products/databases/dedicated/network) page.
+The PostgreSQL backend forwards everything in `OPTIONS` straight to the driver's connection, so `sslmode` is honoured the same way `psql` honours it in the connection string. For full certificate verification, set `"sslmode": "verify-full"` with `"sslrootcert"` pointing at a trusted root store, `system` on libpq 16+, or your OS bundle such as `/etc/ssl/certs/ca-certificates.crt`, the proxy's certificate is signed by a public CA, so there is no Appwrite-specific CA to download. For mTLS client certificates, see the [Network](/docs/products/databases/dedicated/network) page.
 
 Populate the environment from the values on the Console **Connect** view or the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials):
 

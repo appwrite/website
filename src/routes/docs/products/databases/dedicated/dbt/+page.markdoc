@@ -55,7 +55,7 @@ analytics:
 
 The dbt-postgres adapter uses `password` (not `pass`) and `dbname` (you may also write `database`). Read the password from an environment variable with `env_var` rather than committing it. The `schema` key is where dbt materializes models, set it to the build schema your user owns.
 
-The edge proxy terminates TLS for every dedicated database, so `sslmode: require` needs no extra certificate files. For full certificate verification, set `sslmode: verify-full` and add `sslrootcert` pointing at the CA from the [Network](/docs/products/databases/dedicated/network) page.
+The edge proxy terminates TLS for every dedicated database, so `sslmode: require` needs no extra certificate files. For full certificate verification, set `sslmode: verify-full` with `sslrootcert` pointing at a trusted root store, `system` on libpq 16+, or your OS bundle such as `/etc/ssl/certs/ca-certificates.crt`, the proxy's certificate is signed by a public CA, so there is no Appwrite-specific CA to download.
 
 # Test the connection {% #debug %}
 
@@ -120,7 +120,7 @@ Pool modes and ports. Use session mode for dbt, never transaction mode.
 Ephemeral database copies for CI and preview environments.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
-TLS modes, certificate verification, and the CA for verify-full.
+TLS modes, certificate verification, and IP allowlists.
 {% /cards_item %}
 {% /cards %}
 

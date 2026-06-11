@@ -54,7 +54,7 @@ spring.datasource.hikari.minimum-idle=2
 spring.jpa.hibernate.ddl-auto=validate
 ```
 
-`sslmode=require` encrypts the connection and is enough for the default setup. For full certificate verification, add `sslmode=verify-full` plus `sslrootcert` pointing at the CA from the [Network](/docs/products/databases/dedicated/network) page, which also covers mTLS.
+`sslmode=require` encrypts the connection and is enough for the default setup. For full certificate verification, set `sslmode=verify-full` together with `sslfactory=org.postgresql.ssl.DefaultJavaSSLFactory`, so pgJDBC validates against the JVM's default trust store instead of looking for `~/.postgresql/root.crt`, the proxy's certificate is signed by a public CA the JVM already trusts, so there is no Appwrite-specific CA to download. The [Network](/docs/products/databases/dedicated/network) page covers mTLS.
 
 # Size the HikariCP pool {% #pool %}
 

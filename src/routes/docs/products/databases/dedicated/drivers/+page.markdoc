@@ -86,7 +86,7 @@ const sql = postgres({
 const users = await sql`SELECT id, email FROM users WHERE id = ${userId}`;
 ```
 
-`ssl: 'require'` enables TLS and validates against the system CA store. For full verification, pass an object instead: `ssl: { ca: fs.readFileSync('./appwrite-ca.crt') }` (see [below](#tls)).
+`ssl: 'require'` enables TLS and validates against the system CA store. If your runtime image ships without one, pass an object with a public CA bundle instead: `ssl: { ca: fs.readFileSync('./ca-bundle.crt') }` (see [below](#tls)).
 
 When you point `postgres.js` at the **pooler port** (`6432`) in transaction mode, disable prepared statements — `postgres.js` uses them by default and the library documents `prepare: false` specifically for PgBouncer transaction mode:
 
@@ -136,19 +136,19 @@ MySQL 8 authenticates with the `caching_sha2_password` plugin, which **requires*
 
 The edge proxy terminates TLS for every dedicated database, and the connection string Appwrite returns already requests it (`sslmode=require` for PostgreSQL, `ssl=true` for MySQL and MariaDB). Two levels of strictness:
 
-| Level                       | node-postgres / mysql2                                   | postgres.js                                      |
-|-----------------------------|----------------------------------------------------------|--------------------------------------------------|
-| **Encrypt + verify CA**     | `ssl: { rejectUnauthorized: true }`                      | `ssl: 'require'`                                 |
-| **verify-full** (pin a CA)  | `ssl: { rejectUnauthorized: true, ca: fs.readFileSync('./appwrite-ca.crt') }` | `ssl: { ca: fs.readFileSync('./appwrite-ca.crt') }` |
+| Level                                        | node-postgres / mysql2                                   | postgres.js                                      |
+|----------------------------------------------|----------------------------------------------------------|--------------------------------------------------|
+| **Encrypt + verify CA**                      | `ssl: { rejectUnauthorized: true }`                      | `ssl: 'require'`                                 |
+| **Custom CA bundle** (no system trust store) | `ssl: { rejectUnauthorized: true, ca: fs.readFileSync('./ca-bundle.crt') }` | `ssl: { ca: fs.readFileSync('./ca-bundle.crt') }` |
 
-`rejectUnauthorized: true` (the default for these drivers when `ssl` is an object) verifies the proxy's certificate against the public CA bundle Node already trusts — no extra files needed. For **verify-full**, where you pin the exact CA, download the certificate from the [Network](/docs/products/databases/dedicated/network) page and point `ca` at it:
+`rejectUnauthorized: true` (the default for these drivers when `ssl` is an object) verifies the proxy's certificate, chain and hostname, against the public CA bundle Node already trusts — that is full verification with no extra files. The certificate behind every database hostname is signed by a well-known public CA; there is no Appwrite-specific CA to download. The `ca` option exists for runtimes without a system trust store (distroless or scratch images): point it at a standard public CA bundle, from your base image's `ca-certificates` package or [Mozilla's bundle](https://curl.se/docs/caextract.html):
 
 ```js
 import fs from 'node:fs';
 
 const ssl = {
   rejectUnauthorized: true,
-  ca: fs.readFileSync('./appwrite-ca.crt'),
+  ca: fs.readFileSync('./ca-bundle.crt'),
 };
 ```
 
@@ -200,7 +200,7 @@ On **edge runtimes** (Cloudflare Workers, Vercel Edge, Deno Deploy) you usually 
 
 | Symptom                                                                 | Cause and fix                                                                                                   |
 |-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| `self-signed certificate` / `unable to verify the first certificate`    | TLS is reaching the wrong endpoint, or you pinned a stale `ca`. For standard verification use `rejectUnauthorized: true` with no `ca`; for verify-full re-download the certificate from the [Network](/docs/products/databases/dedicated/network) page. Do **not** set `rejectUnauthorized: false`. |
+| `self-signed certificate` / `unable to verify the first certificate`    | TLS is reaching the wrong endpoint, or you pinned a stale or incomplete `ca` bundle. The proxy's certificate is signed by a public CA: use `rejectUnauthorized: true` with no `ca`, and supply a current public CA bundle only when the runtime has no system trust store. Do **not** set `rejectUnauthorized: false`. |
 | `sorry, too many clients already` / connection attempts rejected at the proxy | Aggregate pool size across all instances exceeds [`networkMaxConnections`](/docs/products/databases/dedicated/network#connections). Lower `max`/`connectionLimit`, or move to the [pooler](/docs/products/databases/dedicated/pooler) port and shrink the per-instance pool to 1–2. |
 | `prepared statement "S_1" does not exist` / `unnamed prepared statement does not exist` | Server-side prepared statements on the pooler in transaction mode. Set `prepare: false` (postgres.js), drop the `name` field (node-postgres), or use the engine port / [session mode](/docs/products/databases/dedicated/pooler#modes). |
 | MySQL `ER_NOT_SUPPORTED_AUTH_MODE` / auth-plugin error                   | `caching_sha2_password` needs TLS. Add the `ssl` block (or use the connection string, which already sets `ssl=true`). Don't downgrade the auth plugin. |

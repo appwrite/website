@@ -47,7 +47,7 @@ In Grafana, open **Connections** > **Data sources** > **Add data source** and se
 | **TLS/SSL Mode** | `require` |
 | **Version** | match your engine, for example `18` or `17` |
 
-Regions are `fra`, `nyc`, `sfo`, `sgp`, `syd`, and `tor`. The edge proxy terminates TLS for every dedicated database, so **TLS/SSL Mode** `require` works with no certificate upload. For full certificate verification, set the mode to `verify-full` and provide the CA certificate from the [Network](/docs/products/databases/dedicated/network) page in the **TLS/SSL Root Certificate** field.
+Regions are `fra`, `nyc`, `sfo`, `sgp`, `syd`, and `tor`. The edge proxy terminates TLS for every dedicated database, so **TLS/SSL Mode** `require` works with no certificate upload. For full certificate verification, set the mode to `verify-full` and leave the **TLS/SSL Root Certificate** field empty: Grafana validates against the host's system CA pool, and the proxy's certificate is signed by a public CA that pool already trusts. Provide a root certificate only if the Grafana host ships without CA certificates.
 
 Under **Connection limits**, keep the connection counts modest so Grafana doesn't exhaust the engine's connection budget. **Max open** caps total connections from this Grafana instance, **Max idle** caps pooled idle connections, and **Max lifetime** recycles connections after the given number of seconds. Select **Save & test** to verify connectivity.
 
@@ -76,7 +76,7 @@ datasources:
     editable: false
 ```
 
-`postgresVersion` is the engine version times 100: use `1800` for PostgreSQL 18 or `1700` for PostgreSQL 17. For `verify-full`, set `sslmode: verify-full` and add a `tlsCACert` entry under `secureJsonData` with the CA from the [Network](/docs/products/databases/dedicated/network) page. The `database` key lives under `jsonData` in current Grafana releases. See the [PostgreSQL data source](https://grafana.com/docs/grafana/latest/datasources/postgres/configure/) docs for every available field.
+`postgresVersion` is the engine version times 100: use `1800` for PostgreSQL 18 or `1700` for PostgreSQL 17. For `verify-full`, set `sslmode: verify-full`, no `tlsCACert` entry is needed: Grafana validates against the host's system CA pool, and the proxy's certificate is signed by a public CA that pool already trusts. The `database` key lives under `jsonData` in current Grafana releases. See the [PostgreSQL data source](https://grafana.com/docs/grafana/latest/datasources/postgres/configure/) docs for every available field.
 
 # Build a panel {% #panel %}
 
@@ -106,7 +106,7 @@ Retrieve credentials, rotate the password, and create scoped connection users.
 Pool modes and ports. Use the direct endpoint or session mode for Grafana.
 {% /cards_item %}
 {% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
-TLS modes, certificate verification, and the CA for verify-full.
+TLS modes, certificate verification, and IP allowlists.
 {% /cards_item %}
 {% /cards %}
 

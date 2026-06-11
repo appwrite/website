@@ -28,7 +28,7 @@ dsn := fmt.Sprintf(
 )
 ```
 
-The URL form the credentials endpoint returns works too, the driver parses either: `postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require`. For full certificate verification (`verify-full`) or mTLS, add `sslmode=verify-full` plus the CA from the [Network](/docs/products/databases/dedicated/network) page.
+The URL form the credentials endpoint returns works too, the driver parses either: `postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require`. For full certificate verification, add `sslmode=verify-full`, no CA file needed: Go's drivers validate against the system certificate pool, and the proxy's certificate is signed by a public CA. For mTLS, see the [Network](/docs/products/databases/dedicated/network) page.
 
 # Open a connection {% #open %}
 
@@ -132,7 +132,7 @@ if err != nil {
 db.SetMaxOpenConns(25)
 ```
 
-The same pooler caveat applies: in transaction mode, disable implicit prepared statements (the pgx stdlib driver exposes a simple-protocol option, and `lib/pq` can be told to skip prepares), or use [session mode](/docs/products/databases/dedicated/pooler#modes). `sslmode=require` needs no CA file; only `verify-full` pulls in `sslrootcert` and the CA from the [Network](/docs/products/databases/dedicated/network) page.
+The same pooler caveat applies: in transaction mode, disable implicit prepared statements (the pgx stdlib driver exposes a simple-protocol option, and `lib/pq` can be told to skip prepares), or use [session mode](/docs/products/databases/dedicated/pooler#modes). `sslmode=require` needs no CA file, and neither does `verify-full`: Go's drivers fall back to the system certificate pool when `sslrootcert` is unset, and the proxy's certificate is signed by a public CA that pool already trusts. Set `sslrootcert` only when the container image ships without CA certificates.
 
 # Use a branch for previews and CI {% #branches %}
 
