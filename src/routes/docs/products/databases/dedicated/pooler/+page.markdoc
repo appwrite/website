@@ -1,0 +1,716 @@
+---
+layout: article
+title: Connection pooler
+description: Optional per-database connection pooler that multiplexes many client connections onto a small backend pool. Includes pool modes and read/write splitting when HA is enabled.
+---
+
+The connection pooler is an opt-in component that runs alongside your database and multiplexes a large number of client connections onto a small number of backend connections. Use it to absorb traffic spikes, smooth out connection churn from serverless runtimes, and route read-only queries to HA replicas without changing your application code.
+
+Each dedicated database can run its own pooler. Pooler resources are billed as part of the underlying specification, there's no separate pooler line item.
+
+# Engine support {% #engines %}
+
+| Engine     | Pooler  | Port  | Notes                                                       |
+|------------|---------|-------|-------------------------------------------------------------|
+| PostgreSQL | yes     | 6432  | PgBouncer-compatible wire protocol, native read/write split |
+| MySQL      | yes     | 6033  | Query-rule based routing of reads vs writes                 |
+| MariaDB    | yes     | 6033  | Same as MySQL                                               |
+| MongoDB    | no      | -     | Not applicable, use the driver's `readPreference` setting  |
+
+The pooler exposes its own client-facing port on the database endpoint. Clients connect to the pooler port instead of the engine port, everything else is the same.
+
+# Pool modes {% #modes %}
+
+PostgreSQL and MySQL/MariaDB pools support two modes:
+
+| Mode           | Backend connection lifetime               | Best for                                                            |
+|----------------|-------------------------------------------|---------------------------------------------------------------------|
+| `transaction`  | Held until `COMMIT` / `ROLLBACK`          | Most workloads. The default. Massive client→backend amplification.  |
+| `session`      | Held for the whole client session         | Apps that rely on `SET LOCAL`, prepared statements, advisory locks  |
+
+If your application uses features that are tied to a single backend connection, server-side prepared statements (PostgreSQL), advisory locks, temporary tables, `SET LOCAL`, listen/notify, pick `session`. Otherwise, `transaction` is the right choice.
+
+# Enable the pooler {% #enable %}
+
+The pooler is enabled by default when a paid dedicated database is provisioned. To disable it or change its settings, use the pooler endpoint:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+    enabled: true,
+    poolMode: 'transaction',
+    maxClientConn: 200,
+    defaultPoolSize: 25,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+    enabled: true,
+    poolMode: 'transaction',
+    maxClientConn: 200,
+    defaultPoolSize: 25,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabasePooler(
+    databaseId: '<DATABASE_ID>',
+    enabled: true,
+    poolMode: 'transaction',
+    maxClientConn: 200,
+    defaultPoolSize: 25,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database_pooler(
+    database_id='<DATABASE_ID>',
+    enabled=True,
+    pool_mode='transaction',
+    max_client_conn=200,
+    default_pool_size=25,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database_pooler(
+    database_id: '<DATABASE_ID>',
+    enabled: true,
+    pool_mode: 'transaction',
+    max_client_conn: 200,
+    default_pool_size: 25,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabasePooler(
+    databaseId: "<DATABASE_ID>",
+    enabled: true,
+    poolMode: "transaction",
+    maxClientConn: 200,
+    defaultPoolSize: 25
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabasePooler(
+    databaseId: '<DATABASE_ID>',
+    enabled: true,
+    poolMode: 'transaction',
+    maxClientConn: 200,
+    defaultPoolSize: 25,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabasePooler(
+    databaseId = "<DATABASE_ID>",
+    enabled = true,
+    poolMode = "transaction",
+    maxClientConn = 200,
+    defaultPoolSize = 25,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabasePooler(
+    databaseId: "<DATABASE_ID>",
+    enabled: true,
+    poolMode: "transaction",
+    maxClientConn: 200,
+    defaultPoolSize: 25
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabasePooler("<DATABASE_ID>",
+        compute.WithUpdateDatabasePoolerEnabled(true),
+        compute.WithUpdateDatabasePoolerPoolMode("transaction"),
+        compute.WithUpdateDatabasePoolerMaxClientConn(200),
+        compute.WithUpdateDatabasePoolerDefaultPoolSize(25),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database_pooler("<DATABASE_ID>")
+        .enabled(true)
+        .pool_mode("transaction")
+        .max_client_conn(200)
+        .default_pool_size(25)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "enabled": true,
+    "poolMode": "transaction",
+    "maxClientConn": 200,
+    "defaultPoolSize": 25
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pooler
+```
+{% /multicode %}
+
+Or to read the current configuration:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const pooler = await compute.getDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const pooler = await compute.getDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$pooler = $compute->getDatabasePooler(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+pooler = compute.get_database_pooler(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+pooler = compute.get_database_pooler(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var pooler = await compute.GetDatabasePooler(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final pooler = await compute.getDatabasePooler(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val pooler = compute.getDatabasePooler(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let pooler = try await compute.getDatabasePooler(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    pooler, err := compute.GetDatabasePooler("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = pooler
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let pooler = compute.get_database_pooler("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pooler
+```
+{% /multicode %}
+
+Default settings:
+
+| Field                | Default                  | Notes                                                                 |
+|----------------------|--------------------------|-----------------------------------------------------------------------|
+| `enabled`            | `true` on create         | Disable to turn off the pooler entirely                               |
+| `poolMode`           | `transaction`            | Pool mode at the pooler layer                                         |
+| `maxClientConn`      | 100                      | Max simultaneous client connections to the pooler                     |
+| `defaultPoolSize`    | 25                       | Backend connections per (user, db) pair                               |
+| `readWriteSplitting` | `true` if HA is enabled  | Route ambient `SELECT`s to replicas                                   |
+
+# Connect to the pooler {% #connect %}
+
+Same hostname, different port:
+
+```bash
+psql -h db-<projectId>-<dbId>.<region>.appwrite.center -p 6432 -U appwrite -d appwrite
+
+mysql -h db-<projectId>-<dbId>.<region>.appwrite.center -P 6033 -u appwrite -p appwrite
+```
+
+The pooler accepts the same TLS, authentication, and parameter syntax as the engine. Your application driver doesn't know it's talking to a pooler.
+
+# Read/write splitting {% #read-write %}
+
+When the database has HA enabled and `readWriteSplitting` is on, the pooler routes queries based on type:
+
+**MySQL / MariaDB:**
+
+- `INSERT`, `UPDATE`, `DELETE`, DDL → primary
+- `SELECT ... FOR UPDATE` / `FOR SHARE` → primary
+- `SELECT` outside a transaction → replicas
+- Everything inside a `BEGIN`…`COMMIT` block → pinned to the primary
+
+**PostgreSQL:**
+
+- The pooler's query parser inspects each statement.
+- `INSERT`, `UPDATE`, `DELETE`, DDL, function calls → primary.
+- `SELECT` outside a transaction → replicas.
+- Anything inside a transaction → primary.
+
+This gives you read scale on aggregations and dashboard queries while keeping write-heavy transactions on the primary, with no SDK changes.
+
+Disable read/write splitting if your workload requires every read to see the most recent write, in async replication mode there's a small lag window where a read on a replica may not yet see a just-committed write:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+    readWriteSplitting: false,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabasePooler({
+    databaseId: '<DATABASE_ID>',
+    readWriteSplitting: false,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabasePooler(
+    databaseId: '<DATABASE_ID>',
+    readWriteSplitting: false,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database_pooler(
+    database_id='<DATABASE_ID>',
+    read_write_splitting=False,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database_pooler(
+    database_id: '<DATABASE_ID>',
+    read_write_splitting: false,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabasePooler(
+    databaseId: "<DATABASE_ID>",
+    readWriteSplitting: false
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabasePooler(
+    databaseId: '<DATABASE_ID>',
+    readWriteSplitting: false,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabasePooler(
+    databaseId = "<DATABASE_ID>",
+    readWriteSplitting = false,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabasePooler(
+    databaseId: "<DATABASE_ID>",
+    readWriteSplitting: false
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabasePooler("<DATABASE_ID>",
+        compute.WithUpdateDatabasePoolerReadWriteSplitting(false),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database_pooler("<DATABASE_ID>")
+        .read_write_splitting(false)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "readWriteSplitting": false }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pooler
+```
+{% /multicode %}
+
+# Sizing {% #sizing %}
+
+A pooler is most useful when client connections outnumber backend connections by at least 4–5×. For a database that handles a small, stable number of long-lived application connections, the pooler adds latency without much benefit.
+
+Rule of thumb:
+
+- **`defaultPoolSize`** ≈ `min(specification.maxConnections, 4 × CPU cores)`. Going above 4×cores rarely improves throughput on PostgreSQL.
+- **`maxClientConn`** = your peak client connection count. Serverless platforms can spike to thousands of clients; pick a generous value.
+
+# When not to use the pooler {% #anti-patterns %}
+
+- **Long-lived listen/notify subscribers** (PostgreSQL), these need a session-bound connection. Use `session` mode or bypass the pooler.
+- **MongoDB workloads**, MongoDB doesn't have a pooler equivalent in this catalog; rely on the driver's connection pool and `readPreference: 'secondary'` for replica reads.
+- **Single-tenant, single-process apps**, the engine's own connection handling is enough; the pooler is overhead.
+
+For everything else, Lambda, Cloud Run, serverless GraphQL backends, edge runtimes that open a new connection per request, turn it on.

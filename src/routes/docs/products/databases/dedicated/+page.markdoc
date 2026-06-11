@@ -1,0 +1,119 @@
+---
+layout: article
+title: Dedicated databases
+description: Run managed PostgreSQL, MySQL, MariaDB, and MongoDB databases on Appwrite. Production-ready compute, storage, backups, high availability, and global regions, billed by the hour.
+---
+
+Appwrite **Dedicated databases** lets you run managed PostgreSQL, MySQL, MariaDB, and MongoDB instances on Appwrite Cloud. You pick the engine and compute size; Appwrite provisions a raw database engine in your project's region, with its own storage, networking, and credentials, and exposes it to your application through a per-database public hostname secured with TLS.
+
+Dedicated databases are different from Appwrite's serverless/shared data products: TablesDB for tables and rows, DocumentsDB for document workflows, and VectorsDB for embeddings and semantic search. Those products are accessed through Appwrite SDKs and platform APIs. Dedicated databases give you the raw engine; you connect with `psql`, `mysql`, `mongosh`, or any driver of your choice and use the feature set of the underlying database.
+
+{% info title="Looking for serverless Appwrite data APIs?" %}
+If you want Appwrite SDKs, platform permissions, and serverless/shared scaling for app data, start with [Appwrite Databases](/docs/products/databases). Dedicated databases are for teams who want a managed PostgreSQL, MySQL, MariaDB, or MongoDB engine they can talk to directly with their own ORM, migrations, and drivers.
+{% /info %}
+
+# Supported engines {% #engines %}
+
+Appwrite manages the database container, storage, backups, and networking. You bring the application.
+
+| Engine     | Default version | Other supported versions | Default port |
+|------------|-----------------|--------------------------|--------------|
+| PostgreSQL | 18              | 17                       | 5432         |
+| MySQL      | 8.4             | 8.0                      | 3306         |
+| MariaDB    | 11.4            | 10.11                    | 3306         |
+| MongoDB    | 8.0             | 7.0                      | 27017        |
+
+Version is selected on create and can be changed later via the upgrade endpoint. Upgrades run online, a second instance is provisioned on the new version, data is streamed over with engine-native logical replication, and traffic cuts over once replication is caught up. There are no read or write outages during the upgrade, and no manual dump-and-restore.
+
+A new database starts in a `provisioning` state and becomes `ready` within a few minutes. Large specifications or high-availability configurations take longer to schedule and can take up to roughly 20 minutes in the worst case; poll the database status or watch the Console until it reports `ready`.
+
+# Database types {% #types %}
+
+A database is either **shared** or **dedicated**:
+
+| Type          | Lifecycle                                | Resources                       | Use case                  |
+|---------------|------------------------------------------|---------------------------------|---------------------------|
+| **Shared**    | Scales to zero after 15 minutes idle     | 0.125 CPU, 128 MB RAM, 1 GB disk | Development, previews, low traffic |
+| **Dedicated** | Always-on, with optional HA replicas     | Any paid specification          | Production workloads      |
+
+Shared databases use the **Free** specification included with the Pro plan. They are not always-on dedicated compute: the engine runs on shared capacity, scales to zero after an idle period, and cold-starts on the next connection. The underlying storage is preserved between spin-downs, so no data is lost.
+
+Paid dedicated databases are billed per hour against one of eight paid specifications and never spin down. They also unlock features that the shared specification does not have access to: high availability, point-in-time recovery, configurable backup schedules, storage autoscaling, IP allowlists, and connection pooling.
+
+# Regions {% #regions %}
+
+A dedicated database lives in the same region as the project that owns it, there's no per-database region selector. Dedicated databases are available in every Appwrite region:
+
+| Region        | Code | Endpoint                                     |
+|---------------|------|----------------------------------------------|
+| Frankfurt     | FRA  | `db-<projectId>-<dbId>.fra.appwrite.center` |
+| New York      | NYC  | `db-<projectId>-<dbId>.nyc.appwrite.center` |
+| San Francisco | SFO  | `db-<projectId>-<dbId>.sfo.appwrite.center` |
+| Singapore     | SGP  | `db-<projectId>-<dbId>.sgp.appwrite.center` |
+| Sydney        | SYD  | `db-<projectId>-<dbId>.syd.appwrite.center` |
+| Toronto       | TOR  | `db-<projectId>-<dbId>.tor.appwrite.center` |
+
+Each region is independent, data does not leave the region unless you explicitly opt into the cross-region failover feature.
+
+# Feature overview {% #features %}
+
+{% cards %}
+{% cards_item href="/docs/products/databases/dedicated/specifications" title="Specifications" %}
+Eight paid specifications from $13 to $699 per month, plus a free shared specification on Pro.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/connect" title="Connect" %}
+Connect with `psql`, `mysql`, `mongosh`, or any driver. Credentials are rotatable from the API.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/high-availability" title="High availability" %}
+Up to five synchronous, semi-synchronous, or asynchronous replicas with automatic failover.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/backups" title="Backups & PITR" %}
+Scheduled encrypted backups with up to 365 days of retention and 35 days of point-in-time recovery.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/branches" title="Branches" %}
+Spin up an ephemeral copy of your database in seconds from a storage snapshot.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/extensions" title="Extensions" %}
+Install PostgreSQL extensions like PostGIS, pgvector, and TimescaleDB from the API.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/pooler" title="Connection pooler" %}
+Per-database connection pooler with automatic read/write split when HA is enabled.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/sql-api" title="SQL API" %}
+Run parameterised SQL over HTTP without opening a TCP connection. Useful from edge runtimes.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/network" title="Network" %}
+TLS by default, optional IP allowlists, and a dedicated hostname per database.
+{% /cards_item %}
+{% cards_item href="/docs/products/databases/dedicated/monitoring" title="Monitoring & insights" %}
+CPU, memory, IOPS, slow queries, and index recommendations, pushed to the Console live.
+{% /cards_item %}
+{% /cards %}
+
+# Limits {% #limits %}
+
+The following per-database limits are enforced by the API:
+
+| Limit                          | Value                                                     |
+|--------------------------------|-----------------------------------------------------------|
+| Databases per project          | 10                                                        |
+| CPU range                      | 0.125 – 8 vCPU                                            |
+| Memory range                   | 128 MB – 64 GB                                            |
+| Storage range                  | 1 GB – 16 TB                                              |
+| High availability replicas     | 0 – 5                                                     |
+| IP allowlist entries           | 100                                                       |
+| Backup retention               | 1 – 365 days                                              |
+| Point-in-time recovery window  | 1 – 35 days                                               |
+| Database extensions installed  | 50 (PostgreSQL only)                                      |
+| Max simultaneous connections   | 10,000 platform cap, lower on smaller specifications      |
+| Idle timeout (shared only)     | 5 – 60 minutes (15 by default)                            |
+
+# Billing & plan requirements {% #plans %}
+
+Dedicated databases are available on the **Pro** plan and higher. A payment method must be attached to the team. Shared (free specification) databases are included with the Pro plan at no extra cost.
+
+Each dedicated database is billed by the hour against its specification price, with separate line items for storage and bandwidth overage and percentage-based add-ons for HA, cross-region replication, and point-in-time recovery. See the [specifications page](/docs/products/databases/dedicated/specifications) for the full price list.
+
+{% arrow_link href="/docs/products/databases/dedicated/specifications" %}
+View specifications and pricing
+{% /arrow_link %}

@@ -1,0 +1,1619 @@
+---
+layout: article
+title: Backups & PITR
+description: Encrypted scheduled backups with up to 365 days of retention, on-demand manual backups, and point-in-time recovery to any second within the PITR window.
+---
+
+Every dedicated database supports automated backups out of the box. Backups are AES-256 encrypted at rest, uploaded to an object store, and verifiable on demand. Point-in-time recovery (PITR) layers continuous WAL/binlog/oplog archiving on top, so you can restore to any second within the retention window, not just to a backup checkpoint.
+
+# Backup policy {% #policy %}
+
+Backup settings are modeled as policies. A database can have multiple policies, so you can keep short-lived hourly backups, longer-lived daily backups, and monthly checkpoints without forcing every schedule into one retention window.
+
+| Field | Purpose |
+|-------|---------|
+| `enabled` | Turns the policy schedule on or off |
+| `schedule` | Cron expression for the policy |
+| `retention` | Number of days backups created by the policy are retained |
+| `resourceId` | Database the policy applies to |
+| `resourceType` | `dedicatedDatabases` |
+| `type` | Backup type, `full` or `incremental` |
+
+The Console can present presets such as hourly, daily, weekly, or monthly, plus a custom cron flow. Internally these policies reuse the same project-level backup policy model and scheduler as Appwrite project backups, so scheduled runs and plan limits stay consistent.
+
+Create a policy through the dedicated database backup policy endpoint:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "policyId": "unique()",
+    "name": "Hourly backups",
+    "schedule": "0 * * * *",
+    "retention": 3,
+    "type": "full",
+    "enabled": true
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/policies
+```
+
+Point-in-time recovery is database-level configuration. Use `backupPitr` and `pitrRetentionDays` on the database when PITR should be enabled alongside scheduled policies.
+
+# What gets backed up {% #scope %}
+
+A backup captures the full contents of the database: all schemas, tables/collections, indexes, extensions, and (optionally) user-defined roles. The backup is taken with the engine's native tool, `pg_dump` / `mysqldump` / `mongodump`, in a dedicated job that runs alongside (not on top of) the database, so production traffic is unaffected.
+
+# Schedules {% #schedule %}
+
+Each policy has its own cron expression and retention window. The default database cron is `0 3 * * *` (daily at 03:00 UTC), jittered to spread load across the platform. The examples below configure the database-level backup defaults used for compatibility and PITR.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    backupEnabled: true,
+    backupCron: '0 3 * * *',
+    backupRetentionDays: 14,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    backupEnabled: true,
+    backupCron: '0 3 * * *',
+    backupRetentionDays: 14,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    backupEnabled: true,
+    backupCron: '0 3 * * *',
+    backupRetentionDays: 14,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    backup_enabled=True,
+    backup_cron='0 3 * * *',
+    backup_retention_days=14,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    backup_enabled: true,
+    backup_cron: '0 3 * * *',
+    backup_retention_days: 14,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    backupEnabled: true,
+    backupCron: "0 3 * * *",
+    backupRetentionDays: 14
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    backupEnabled: true,
+    backupCron: '0 3 * * *',
+    backupRetentionDays: 14,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    backupEnabled = true,
+    backupCron = "0 3 * * *",
+    backupRetentionDays = 14,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    backupEnabled: true,
+    backupCron: "0 3 * * *",
+    backupRetentionDays: 14
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseBackupEnabled(true),
+        compute.WithUpdateDatabaseBackupCron("0 3 * * *"),
+        compute.WithUpdateDatabaseBackupRetentionDays(14),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .backup_enabled(true)
+        .backup_cron("0 3 * * *")
+        .backup_retention_days(14)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "backupEnabled": true,
+    "backupCron": "0 3 * * *",
+    "backupRetentionDays": 14
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+{% /multicode %}
+
+Backup retention accepts 1–365 days. Backups older than the retention window are deleted automatically once a day.
+
+# Manual backups {% #manual %}
+
+To create an ad-hoc backup, before a destructive migration, for example, call the create endpoint. The response contains the backup ID; the actual dump runs asynchronously.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const backup = await compute.createDatabaseBackup({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const backup = await compute.createDatabaseBackup({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$backup = $compute->createDatabaseBackup(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+backup = compute.create_database_backup(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+backup = compute.create_database_backup(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var backup = await compute.CreateDatabaseBackup(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final backup = await compute.createDatabaseBackup(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val backup = compute.createDatabaseBackup(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let backup = try await compute.createDatabaseBackup(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    backup, err := compute.CreateDatabaseBackup("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = backup
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let backup = compute.create_database_backup("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups
+```
+{% /multicode %}
+
+Manual backups use the database's default backup retention. Scheduled backups use the retention window on the policy that created them.
+
+# Encryption {% #encryption %}
+
+Backups are encrypted before they leave the database. A unique 32-byte AES-256 key is generated for the database on first backup and stored in Appwrite's encrypted secret store, scoped to the database. The dump is piped through `openssl enc -aes-256-cbc -pbkdf2` and uploaded to the configured storage target.
+
+Restore reverses the pipeline: the key is fetched from the secret store, the ciphertext is decrypted, and the engine restore tool consumes the plaintext stream. The key never leaves Appwrite-controlled infrastructure.
+
+# Storage targets {% #storage %}
+
+By default, backups are stored on Appwrite-managed S3-compatible storage. You can also bring your own bucket, S3, Backblaze, DigitalOcean Spaces, Linode, Wasabi, GCS via S3 interop, or Azure Blob via S3 interop. Bring-your-own-bucket backups never enter Appwrite-controlled storage.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabaseBackupStorage({
+    databaseId: '<DATABASE_ID>',
+    provider: 's3',
+    bucket: 'my-db-backups',
+    region: 'eu-central-1',
+    prefix: 'appwrite/',
+    accessKey: '<KEY>',
+    secretKey: '<SECRET>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabaseBackupStorage({
+    databaseId: '<DATABASE_ID>',
+    provider: 's3',
+    bucket: 'my-db-backups',
+    region: 'eu-central-1',
+    prefix: 'appwrite/',
+    accessKey: '<KEY>',
+    secretKey: '<SECRET>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabaseBackupStorage(
+    databaseId: '<DATABASE_ID>',
+    provider: 's3',
+    bucket: 'my-db-backups',
+    region: 'eu-central-1',
+    prefix: 'appwrite/',
+    accessKey: '<KEY>',
+    secretKey: '<SECRET>',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database_backup_storage(
+    database_id='<DATABASE_ID>',
+    provider='s3',
+    bucket='my-db-backups',
+    region='eu-central-1',
+    prefix='appwrite/',
+    access_key='<KEY>',
+    secret_key='<SECRET>',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database_backup_storage(
+    database_id: '<DATABASE_ID>',
+    provider: 's3',
+    bucket: 'my-db-backups',
+    region: 'eu-central-1',
+    prefix: 'appwrite/',
+    access_key: '<KEY>',
+    secret_key: '<SECRET>',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabaseBackupStorage(
+    databaseId: "<DATABASE_ID>",
+    provider: "s3",
+    bucket: "my-db-backups",
+    region: "eu-central-1",
+    prefix: "appwrite/",
+    accessKey: "<KEY>",
+    secretKey: "<SECRET>"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabaseBackupStorage(
+    databaseId: '<DATABASE_ID>',
+    provider: 's3',
+    bucket: 'my-db-backups',
+    region: 'eu-central-1',
+    prefix: 'appwrite/',
+    accessKey: '<KEY>',
+    secretKey: '<SECRET>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabaseBackupStorage(
+    databaseId = "<DATABASE_ID>",
+    provider = "s3",
+    bucket = "my-db-backups",
+    region = "eu-central-1",
+    prefix = "appwrite/",
+    accessKey = "<KEY>",
+    secretKey = "<SECRET>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabaseBackupStorage(
+    databaseId: "<DATABASE_ID>",
+    provider: "s3",
+    bucket: "my-db-backups",
+    region: "eu-central-1",
+    prefix: "appwrite/",
+    accessKey: "<KEY>",
+    secretKey: "<SECRET>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabaseBackupStorage("<DATABASE_ID>",
+        compute.WithUpdateDatabaseBackupStorageProvider("s3"),
+        compute.WithUpdateDatabaseBackupStorageBucket("my-db-backups"),
+        compute.WithUpdateDatabaseBackupStorageRegion("eu-central-1"),
+        compute.WithUpdateDatabaseBackupStoragePrefix("appwrite/"),
+        compute.WithUpdateDatabaseBackupStorageAccessKey("<KEY>"),
+        compute.WithUpdateDatabaseBackupStorageSecretKey("<SECRET>"),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database_backup_storage("<DATABASE_ID>")
+        .provider("s3")
+        .bucket("my-db-backups")
+        .region("eu-central-1")
+        .prefix("appwrite/")
+        .access_key("<KEY>")
+        .secret_key("<SECRET>")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PUT \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "s3",
+    "bucket": "my-db-backups",
+    "region": "eu-central-1",
+    "prefix": "appwrite/",
+    "accessKey": "<KEY>",
+    "secretKey": "<SECRET>"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/storage
+```
+{% /multicode %}
+
+Credentials are encrypted at rest. The `endpoint` field is supported for S3-compatible providers, leave empty for AWS S3.
+
+# Verify a backup {% #verify %}
+
+A backup that has never been verified is a hope, not a backup. Appwrite exposes a verification endpoint that downloads the backup, decrypts it, and runs an engine-native sanity check (`pg_restore --list`, `mysql --execute "..."`, `mongorestore --dryRun`) in an isolated environment, then tears the temporary resources down.
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/backups/<BACKUP_ID>/verifications
+```
+
+The result is recorded on the backup document under `verifiedAt`. You can query the backup later to see verification history.
+
+# Restore from a backup {% #restore %}
+
+Restoring from a backup creates a new dedicated database, applies the dump, and waits for the engine to come up. The original database is untouched.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseRestoration({
+    databaseId: '<DATABASE_ID>',
+    type: 'backup',
+    backupId: '<BACKUP_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseRestoration({
+    databaseId: '<DATABASE_ID>',
+    type: 'backup',
+    backupId: '<BACKUP_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->createDatabaseRestoration(
+    databaseId: '<DATABASE_ID>',
+    type: 'backup',
+    backupId: '<BACKUP_ID>',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.create_database_restoration(
+    database_id='<DATABASE_ID>',
+    type='backup',
+    backup_id='<BACKUP_ID>',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.create_database_restoration(
+    database_id: '<DATABASE_ID>',
+    type: 'backup',
+    backup_id: '<BACKUP_ID>',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.CreateDatabaseRestoration(
+    databaseId: "<DATABASE_ID>",
+    type: "backup",
+    backupId: "<BACKUP_ID>"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.createDatabaseRestoration(
+    databaseId: '<DATABASE_ID>',
+    type: 'backup',
+    backupId: '<BACKUP_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.createDatabaseRestoration(
+    databaseId = "<DATABASE_ID>",
+    type = "backup",
+    backupId = "<BACKUP_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.createDatabaseRestoration(
+    databaseId: "<DATABASE_ID>",
+    type: "backup",
+    backupId: "<BACKUP_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.CreateDatabaseRestoration("<DATABASE_ID>",
+        compute.WithCreateDatabaseRestorationType("backup"),
+        compute.WithCreateDatabaseRestorationBackupId("<BACKUP_ID>"),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.create_database_restoration("<DATABASE_ID>")
+        .r#type("backup")
+        .backup_id("<BACKUP_ID>")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "backup",
+    "backupId": "<BACKUP_ID>"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/restorations
+```
+{% /multicode %}
+
+The new database is provisioned with the same specification as the source unless you also pass overrides for `cpu`, `memory`, and `storage`.
+
+# Point-in-time recovery {% #pitr %}
+
+PITR layers continuous transaction-log archiving on top of scheduled backups. With PITR enabled, the database keeps shipping WAL segments (PostgreSQL), binlog files (MySQL/MariaDB), or oplog entries (MongoDB) to object storage every five minutes. To restore, the platform replays the most recent base backup plus the WAL up to the target timestamp.
+
+Enable PITR on create or update:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    backupPitr: true,
+    pitrRetentionDays: 7,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    backupPitr: true,
+    pitrRetentionDays: 7,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    backupPitr: true,
+    pitrRetentionDays: 7,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    backup_pitr=True,
+    pitr_retention_days=7,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    backup_pitr: true,
+    pitr_retention_days: 7,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    backupPitr: true,
+    pitrRetentionDays: 7
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    backupPitr: true,
+    pitrRetentionDays: 7,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    backupPitr = true,
+    pitrRetentionDays = 7,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    backupPitr: true,
+    pitrRetentionDays: 7
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseBackupPitr(true),
+        compute.WithUpdateDatabasePitrRetentionDays(7),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .backup_pitr(true)
+        .pitr_retention_days(7)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "backupPitr": true, "pitrRetentionDays": 7 }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+{% /multicode %}
+
+`pitrRetentionDays` accepts 1–35 days. PITR is billed as a feature add-on at 20% of the underlying specification price.
+
+# Recovery windows {% #windows %}
+
+Each database with PITR enabled exposes its current recovery window. Use this to confirm the earliest and latest timestamps you can restore to before initiating a recovery:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const windows = await compute.getDatabasePITRWindows({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const windows = await compute.getDatabasePITRWindows({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$windows = $compute->getDatabasePITRWindows(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+windows = compute.get_database_pitr_windows(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+windows = compute.get_database_pitr_windows(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var windows = await compute.GetDatabasePITRWindows(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final windows = await compute.getDatabasePITRWindows(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val windows = compute.getDatabasePITRWindows(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let windows = try await compute.getDatabasePITRWindows(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    windows, err := compute.GetDatabasePITRWindows("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = windows
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let windows = compute.get_database_pitr_windows("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/pitr
+```
+{% /multicode %}
+
+Response:
+
+```json
+{
+  "earliestRecoveryPoint": "2026-05-14T00:00:00Z",
+  "latestRecoveryPoint": "2026-05-21T13:34:12Z",
+  "windows": [
+    { "from": "2026-05-14T00:00:00Z", "to": "2026-05-21T13:34:12Z" }
+  ]
+}
+```
+
+# Restore to a point in time {% #pitr-restore %}
+
+A PITR restore takes a target timestamp inside the active window and produces a new database that represents the state of the source at that exact moment:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseRestoration({
+    databaseId: '<DATABASE_ID>',
+    type: 'pitr',
+    targetTime: '2026-05-21T13:30:00Z',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.createDatabaseRestoration({
+    databaseId: '<DATABASE_ID>',
+    type: 'pitr',
+    targetTime: '2026-05-21T13:30:00Z',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->createDatabaseRestoration(
+    databaseId: '<DATABASE_ID>',
+    type: 'pitr',
+    targetTime: '2026-05-21T13:30:00Z',
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.create_database_restoration(
+    database_id='<DATABASE_ID>',
+    type='pitr',
+    target_time='2026-05-21T13:30:00Z',
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.create_database_restoration(
+    database_id: '<DATABASE_ID>',
+    type: 'pitr',
+    target_time: '2026-05-21T13:30:00Z',
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.CreateDatabaseRestoration(
+    databaseId: "<DATABASE_ID>",
+    type: "pitr",
+    targetTime: "2026-05-21T13:30:00Z"
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.createDatabaseRestoration(
+    databaseId: '<DATABASE_ID>',
+    type: 'pitr',
+    targetTime: '2026-05-21T13:30:00Z',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.createDatabaseRestoration(
+    databaseId = "<DATABASE_ID>",
+    type = "pitr",
+    targetTime = "2026-05-21T13:30:00Z",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.createDatabaseRestoration(
+    databaseId: "<DATABASE_ID>",
+    type: "pitr",
+    targetTime: "2026-05-21T13:30:00Z"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.CreateDatabaseRestoration("<DATABASE_ID>",
+        compute.WithCreateDatabaseRestorationType("pitr"),
+        compute.WithCreateDatabaseRestorationTargetTime("2026-05-21T13:30:00Z"),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.create_database_restoration("<DATABASE_ID>")
+        .r#type("pitr")
+        .target_time("2026-05-21T13:30:00Z")
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "pitr",
+    "targetTime": "2026-05-21T13:30:00Z"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/restorations
+```
+{% /multicode %}
+
+The new database is independent, recovering does not roll back the source. Once you've validated the recovery, you can swap your application traffic to it or copy specific tables/collections back to the source with `pg_dump` / `mysqldump` / `mongodump`.
+
+# Limits {% #limits %}
+
+| Limit                            | Value             |
+|----------------------------------|-------------------|
+| Backup retention                 | 1 – 365 days      |
+| PITR retention                   | 1 – 35 days       |
+| Manual + scheduled backups       | Unlimited (subject to storage)  |
+| Cron schedule resolution         | 1 minute          |
+| WAL/binlog/oplog flush cadence   | every 5 minutes   |
+
+Backup storage usage rolls up into the dedicated database storage line on your invoice, there's no separate backup storage line item.
