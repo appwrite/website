@@ -13,6 +13,7 @@ concurrency:
 env:
     ENVIRONMENT: staging
     PROJECT: website
+    DECLARATIVE_OWNER: appwrite-labs
     DECLARATIVE_REPOSITORY: assets-applications
     REGISTRY_GITHUB: ghcr.io
     REGISTRY_DOCKERHUB: docker.io
@@ -75,13 +76,13 @@ jobs:
               with:
                   app-id: ${{ vars.DECLARATIVE_DEPLOYMENT_GITHUB_APP_ID }}
                   private-key: ${{ secrets.DECLARATIVE_DEPLOYMENT_GITHUB_APP_PRIVATE_KEY }}
-                  owner: ${{ github.repository_owner }}
+                  owner: ${{ env.DECLARATIVE_OWNER }}
                   repositories: ${{ env.DECLARATIVE_REPOSITORY }}
 
             - name: Checkout ${{ env.DECLARATIVE_REPOSITORY }}
               uses: actions/checkout@v6
               with:
-                  repository: ${{ github.repository_owner }}/${{ env.DECLARATIVE_REPOSITORY }}
+                  repository: ${{ env.DECLARATIVE_OWNER }}/${{ env.DECLARATIVE_REPOSITORY }}
                   token: ${{ steps.app-token.outputs.token }}
 
             - name: Update image tag
