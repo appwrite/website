@@ -21,7 +21,7 @@ faqs:
 
 Every deployment on Appwrite builds inside a fresh, isolated environment. That isolation is great for reproducibility and security, but it comes with a tax: the build starts with an empty disk, with nothing carried over from previous builds, so your `pnpm install` re-downloads every package on every deployment, even if you only changed one line of code.
 
-We have now removed that tax. Appwrite's build network caches your dependencies between builds, and restoring them is fast enough that installs on a real-world Next.js app drop from 11.7 to 2.8 seconds with pnpm, and from 9.6 to 2.3 seconds with bun.
+We have now removed that tax. Appwrite's build network caches your dependencies between builds, and restoring them is fast enough that installs on a real-world Next.js app drop from **11.7s → 2.8s** with pnpm, and from **9.6s → 2.3s** with bun.
 
 Let's look at how it works under the hood.
 
