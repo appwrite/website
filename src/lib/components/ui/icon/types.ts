@@ -1,6 +1,5 @@
 export type IconType =
     | 'search'
-    | 'persons'
     | 'arrow-down'
     | 'system'
     | 'refine'
@@ -13,6 +12,7 @@ export type IconType =
     | 'github'
     | 'ticket'
     | 'sparkle'
+    | 'mongo'
     | 'divider-vertical'
     | 'nuxt'
     | 'chevron-up'

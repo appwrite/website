@@ -63,8 +63,41 @@
                     {/if}
                     {#if data.participant_count}
                         <li class="web-tag">
-                            <span class="web-icon-persons web-u-font-size-16" aria-hidden="true"
-                            ></span>
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                                style="flex-shrink:0"
+                            >
+                                <circle
+                                    cx="7.5"
+                                    cy="6"
+                                    r="3"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"
+                                />
+                                <path
+                                    d="M1 17v-1.5A4.5 4.5 0 0 1 5.5 11h4A4.5 4.5 0 0 1 14 15.5V17"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M13.5 4.2a3 3 0 0 1 0 5.6"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M16 11.5a4.5 4.5 0 0 1 3 4.2V17"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
                             <span class="text">{data.participant_count}</span>
                         </li>
                     {/if}
