@@ -55,6 +55,18 @@
                         <span class="web-icon-arrow-up"></span>
                         <span class="text">{data.vote_count}</span>
                     </li>
+                    {#if data.is_resolved}
+                        <li class="web-tag is-success">
+                            <span class="web-icon-check"></span>
+                            <span class="text">Resolved</span>
+                        </li>
+                    {/if}
+                    {#if data.participant_count}
+                        <li class="web-tag">
+                            <span class="web-icon-person"></span>
+                            <span class="text">{data.participant_count}</span>
+                        </li>
+                    {/if}
                     {#each data.tags ?? [] as tag}
                         <li class="web-tag">
                             <span class="text">{tag}</span>

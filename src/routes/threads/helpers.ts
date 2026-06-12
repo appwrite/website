@@ -5,7 +5,26 @@ import {
 } from '$env/static/public';
 import { databases } from '$lib/appwrite';
 import { Query } from '@appwrite.io/console';
-import type { DiscordMessage, DiscordThread } from './types';
+import type { DiscordAuthor, DiscordMessage, DiscordThread } from './types';
+
+const COL_AUTHORS_ID = 'authors';
+
+export async function getAuthor(discordId: string) {
+    return (await databases.getDocument(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        COL_AUTHORS_ID,
+        discordId
+    )) as unknown as DiscordAuthor;
+}
+
+export async function getAuthorThreads(authorId: string) {
+    const data = await databases.listDocuments(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        PUBLIC_APPWRITE_COL_THREADS_ID,
+        [Query.equal('author_id', authorId), Query.orderDesc('$createdAt'), Query.limit(25)]
+    );
+    return data.documents as unknown as DiscordThread[];
+}
 
 type Ranked<T> = {
     data: T;
