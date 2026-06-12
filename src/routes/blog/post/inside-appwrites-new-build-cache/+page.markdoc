@@ -23,8 +23,6 @@ Every deployment on Appwrite builds inside a fresh, isolated environment. That i
 
 We have now removed that tax. Appwrite's build network caches your dependencies between builds, and restoring them is fast enough that installs on a real-world Next.js app drop from 11.7 to 2.8 seconds with pnpm, and from 9.6 to 2.3 seconds with bun.
 
-![Dependency install times with the new build cache](/images/blog/inside-appwrites-new-build-cache/install-times.avif)
-
 Let's look at how it works under the hood.
 
 # The problem with clean builds
@@ -54,6 +52,8 @@ Instead, we pack the store into a single [SquashFS](https://docs.kernel.org/file
 - **One file means one storage request.** Restoring the cache is a single read, saving it is a single write.
 
 # The numbers
+
+![Dependency install times with the new build cache](/images/blog/inside-appwrites-new-build-cache/install-times.avif)
 
 We measured the cache with a Next.js application using 23 production dependencies, deployed through the Appwrite CLI, once with pnpm and once with bun.
 
