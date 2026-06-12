@@ -9,12 +9,19 @@
     let { data } = $props();
 
     const title = $derived(data.author.display_name + ' - Threads' + TITLE_SUFFIX);
+    const description = $derived(
+        data.author.bio ??
+            `${data.author.display_name} has posted ${data.author.thread_count} threads and ${data.author.reply_count} replies on the Appwrite Discord community.`
+    );
 </script>
 
 <svelte:head>
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta name="twitter:title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
     <link rel="canonical" href={data.canonicalUrl} />
 </svelte:head>
 
@@ -64,7 +71,12 @@
         </div>
 
         <div class="threads-section">
-            <h2 class="text-eyebrow font-aeonik-fono text-primary uppercase">Threads</h2>
+            <div class="threads-header">
+                <h2 class="text-eyebrow font-aeonik-fono text-primary uppercase">Threads</h2>
+                {#if data.total > data.threads.length}
+                    <span class="text-caption">Showing {data.threads.length} of {data.total}</span>
+                {/if}
+            </div>
             <div class="mt-4 flex flex-col gap-4">
                 {#each data.threads as thread (thread.$id)}
                     <ThreadCard {thread} query="" />
@@ -125,6 +137,12 @@
             flex-direction: column;
             gap: 0.25rem;
         }
+    }
+
+    .threads-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 
     .threads-section {

@@ -3,16 +3,19 @@ import { DEFAULT_HOST } from '$lib/utils/metadata';
 import { getAuthor, getAuthorThreads } from '../../helpers.js';
 
 export const load = async ({ params }) => {
+    let author;
     try {
-        const author = await getAuthor(params.id);
-        const threads = await getAuthorThreads(params.id);
-
-        return {
-            author,
-            threads,
-            canonicalUrl: `${DEFAULT_HOST}/threads/authors/${params.id}`
-        };
+        author = await getAuthor(params.id);
     } catch {
         error(404, 'Author not found');
     }
+
+    const { threads, total } = await getAuthorThreads(params.id);
+
+    return {
+        author,
+        threads,
+        total,
+        canonicalUrl: `${DEFAULT_HOST}/threads/authors/${params.id}`
+    };
 };

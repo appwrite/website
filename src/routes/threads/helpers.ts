@@ -1,4 +1,5 @@
 import {
+    PUBLIC_APPWRITE_COL_AUTHORS_ID,
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
     PUBLIC_APPWRITE_DB_MAIN_ID
@@ -7,12 +8,10 @@ import { databases } from '$lib/appwrite';
 import { Query } from '@appwrite.io/console';
 import type { DiscordAuthor, DiscordMessage, DiscordThread } from './types';
 
-const COL_AUTHORS_ID = 'authors';
-
 export async function getAuthor(discordId: string) {
     return (await databases.getDocument(
         PUBLIC_APPWRITE_DB_MAIN_ID,
-        COL_AUTHORS_ID,
+        PUBLIC_APPWRITE_COL_AUTHORS_ID,
         discordId
     )) as unknown as DiscordAuthor;
 }
@@ -23,7 +22,7 @@ export async function getAuthorThreads(authorId: string) {
         PUBLIC_APPWRITE_COL_THREADS_ID,
         [Query.equal('author_id', authorId), Query.orderDesc('$createdAt'), Query.limit(25)]
     );
-    return data.documents as unknown as DiscordThread[];
+    return { threads: data.documents as unknown as DiscordThread[], total: data.total };
 }
 
 type Ranked<T> = {
