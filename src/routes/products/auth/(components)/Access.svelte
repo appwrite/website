@@ -35,7 +35,7 @@
                 Create custom roles and level of access to resources such as projects, files, etc.
             </p>
             <Button
-                href="/docs/advanced/platform/permissions"
+                href="/docs/advanced/security/permissions"
                 variant="secondary"
                 event="products-auth-permissions_learn_more-click"
                 class="mt-2 !w-full md:!w-fit">Learn more</Button

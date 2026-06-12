@@ -106,7 +106,7 @@
         </div>
         <div class="">
             <a
-                href="/docs/advanced/platform/rate-limits"
+                href="/docs/advanced/security/rate-limits"
                 class="u-link text-primary"
                 onclick={() => trackEvent(`docs-rate_limits_learn_more-click`)}
             >

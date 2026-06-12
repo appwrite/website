@@ -60,6 +60,10 @@
                     new: isNewUntil('30 June 2026')
                 },
                 {
+                    label: 'Message templates',
+                    href: '/docs/products/auth/message-templates'
+                },
+                {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
                 },
