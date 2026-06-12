@@ -1,5 +1,4 @@
 import {
-    PUBLIC_APPWRITE_COL_AUTHORS_ID,
     PUBLIC_APPWRITE_COL_MESSAGES_ID,
     PUBLIC_APPWRITE_COL_THREADS_ID,
     PUBLIC_APPWRITE_DB_MAIN_ID
@@ -11,7 +10,7 @@ import type { DiscordAuthor, DiscordMessage, DiscordThread } from './types';
 export async function getAuthor(discordId: string) {
     return (await databases.getDocument(
         PUBLIC_APPWRITE_DB_MAIN_ID,
-        PUBLIC_APPWRITE_COL_AUTHORS_ID,
+        'authors',
         discordId
     )) as unknown as DiscordAuthor;
 }

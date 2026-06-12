@@ -68,4 +68,5 @@ export type IconType =
     | 'minus'
     | 'chevron-left'
     | 'light'
-    | 'mcp';
+    | 'mcp'
+    | 'mongo';
