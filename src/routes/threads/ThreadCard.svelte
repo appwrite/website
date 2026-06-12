@@ -30,6 +30,14 @@
 
         <div class="mt-4 flex min-w-0 flex-wrap justify-between gap-4">
             <ul class="flex min-w-0 flex-wrap gap-2">
+                {#if thread.is_resolved}
+                    <li class="min-w-0">
+                        <div class="web-tag is-success truncate">
+                            <span class="web-icon-check"></span>
+                            Resolved
+                        </div>
+                    </li>
+                {/if}
                 {#each thread.tags ?? [] as tag, index (tag + index)}
                     <li class="min-w-0">
                         <div class="web-tag truncate">{tag}</div>
