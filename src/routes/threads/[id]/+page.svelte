@@ -63,7 +63,7 @@
                     {/if}
                     {#if data.participant_count}
                         <li class="web-tag">
-                            <span class="web-icon-person"></span>
+                            <span class="web-icon-persons" aria-hidden="true"></span>
                             <span class="text">{data.participant_count}</span>
                         </li>
                     {/if}
