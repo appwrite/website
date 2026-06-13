@@ -133,6 +133,10 @@ Connect external storage providers like AWS S3, Backblaze, or Wasabi.
 {% cards_item href="/docs/advanced/self-hosting/configuration/functions" title="Functions Runtime" %}
 Enable serverless functions with custom runtimes and execution environments.
 {% /cards_item %}
+
+{% cards_item href="/docs/advanced/self-hosting/configuration/sites" title="Sites" %}
+Develop, deploy, and scale your web applications directly from Appwrite, alongside your backend.
+{% /cards_item %}
 {% /cards %}
 
 # Production readiness {% #production-readiness %}

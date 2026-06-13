@@ -77,3 +77,11 @@ The [Github Docs](https://docs.github.com/en/apps/creating-github-apps/about-cre
 
 1. **Site redirected you too many times**
    If you encounter the error `ERR_TOO_MANY_REDIRECTS` with the default Coolify configuration, turn off the **Strip Prefixes** option in the **Settings** page for the Appwrite console and Appwrite Realtime service. If you're using Cloudflare and the issue persists, update the SSL/TLS encryption setting to Full in the Cloudflare dashboard. From the dashboard, navigate to `Your Domain` -> `SSL/TLS` -> `Overview` and change the setting to Full.
+
+# Next steps {% #next-steps %}
+
+After successful deployment:
+
+- [Configure services](/docs/advanced/self-hosting#configuration) - Set up email, storage, and other services
+- [Production optimization](/docs/advanced/self-hosting/production) - Prepare for production workloads
+- [Updates and maintenance](/docs/advanced/self-hosting/production/updates) - Keep your instance up to date
