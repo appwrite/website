@@ -397,7 +397,7 @@ def main(context):
 
     tablesDB = TablesDB(client)
 
-    existing_votes = tablesDB.list_rows('<VOTES_TABLE_ID>', [
+    existing_votes = tablesDB.list_rows(database_id='<DATABASE_ID>', table_id='<VOTES_TABLE_ID>', queries=[
         Query.equals('userId', vote['userId']),
         Query.equals('topicId', vote['topicId'])
     ])
@@ -540,10 +540,14 @@ def main(context)
 
     tablesDB = Appwrite::TablesDB.new(client)
 
-    existing_votes = tablesDB.list_rows('<DATABASE_ID>', '<VOTES_TABLE_ID>', [
-        Appwrite::Query.equal('userId', vote['userId']),
-        Appwrite::Query.equal('topicId', vote['topicId'])
-    ])
+    existing_votes = tablesDB.list_rows(
+        database_id: '<DATABASE_ID>',
+        table_id: '<VOTES_TABLE_ID>',
+        queries: [
+            Appwrite::Query.equal('userId', vote['userId']),
+            Appwrite::Query.equal('topicId', vote['topicId'])
+        ]
+    )
 
     if existing_votes['total'] > 0
         return context.res.json({
@@ -788,7 +792,7 @@ def main(context):
         )
 
         tablesDB = TablesDB(client)
-        row = tablesDB.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
+        row = tablesDB.create_row(database_id='<DATABASE_ID>', table_id='<MESSAGES_TABLE_ID>', row_id=ID.unique(), data=message)
 
         return context.res.text("Message sent")
 
@@ -891,7 +895,7 @@ def main(context)
             .set_key(context.req.headers['x-appwrite-key'])
 
         tablesDB = Appwrite::TablesDB.new(client)
-        row = tablesDB.create_row('<DATABASE_ID>', '<MESSAGES_TABLE_ID>', ID.unique(), message)
+        row = tablesDB.create_row(database_id: '<DATABASE_ID>', table_id: '<MESSAGES_TABLE_ID>', row_id: ID.unique(), data: message)
 
         return context.res.text("Message sent")
     end

@@ -86,7 +86,7 @@ Platforms like Appwrite help teams centralize authentication and authorization l
 
 HIPAA expects organizations to follow the principle of least privilege. Users and services should only have access to the minimum data required to perform their role.
 
-Modern applications should enforce role-based access control at the backend, not just in frontend interfaces. Permissions should be scoped to specific records, collections, or actions, and enforced consistently across APIs. Implementing detailed audit trails is essential for tracking user actions, supporting least privilege, and enabling effective monitoring for suspicious activity.
+Modern applications should enforce role-based access control at the backend, not just in frontend interfaces. Permissions should be scoped to specific records, resources, or actions, and enforced consistently across APIs. Implementing detailed audit trails is essential for tracking user actions, supporting least privilege, and enabling effective monitoring for suspicious activity.
 
 This approach not only supports compliance but also improves long-term maintainability as teams and products grow. Administrative safeguards, as required by the HIPAA Security Rule, are a key component in ensuring proper access control and overall compliance.
 

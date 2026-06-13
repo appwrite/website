@@ -28,7 +28,7 @@ When you’re spinning up a new feature, environment, or test pipeline, schema c
 
 That’s exactly why we’re announcing **Full Schema Creation** for Appwrite Databases.
 
-With Full Schema Creation, you can define an entire table, its attributes and indexes, in a **single, synchronous request**. When the call returns, the table is immediately ready for reads and writes. If anything fails along the way, nothing is created. No partial schemas. No waiting. No brittle setup scripts.
+With Full Schema Creation, you can define an entire table, its columns and indexes, in a **single, synchronous request**. When the call returns, the table is immediately ready for reads and writes. If anything fails along the way, nothing is created. No partial schemas. No waiting. No brittle setup scripts.
 
 # One request. One outcome. Fully usable.
 
@@ -44,39 +44,6 @@ Previously, schema provisioning looked something like this:
 This step-wise flow introduced delays, race conditions in automation scripts, and fragile deploys, especially in CI/CD, preview environments, and migrations.
 
 With Full Schema Creation, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
-
-```js
-const table = await tablesDB.createTable({
-    databaseId: 'contacts_db',
-    tableId: 'contacts',
-    name: 'Contacts',
-    columns: [
-        {
-            key: 'email',
-            type: 'email',
-            required: true
-        },
-        {
-            key: 'name',
-            type: 'string',
-            size: 255,
-            required: true
-        },
-        {
-            key: 'is_active',
-            type: 'boolean',
-            required: true
-        },
-    ],
-    indexes: [
-        {
-            key: 'idx_email',
-            type: 'unique',
-            attributes: ['email']
-        }
-    ]
-});
-```
 
 # How it works
 

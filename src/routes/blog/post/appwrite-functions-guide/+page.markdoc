@@ -137,7 +137,10 @@ const execution = await functions.createExecution({
     async: true
 });
 // execution.status will be "waiting" or "processing"
-// poll later with functions.getExecution(functionId, execution.$id)
+// poll later with functions.getExecution({
+//     functionId,
+//     executionId: execution.$id
+// })
 ```
 
 HTTP-triggered functions always behave synchronously from the HTTP client's perspective: the connection stays open until the function returns a response or times out.

@@ -33,9 +33,11 @@ client
 ;
 
 const promise = teams.create(
-    'teachers',
-    'Teachers',
-    ['maths', 'sciences', 'arts', 'literature']
+    {
+    teamId: 'teachers',
+    name: 'Teachers',
+    roles: ['maths', 'sciences', 'arts', 'literature']
+}
 );
 
 promise.then(function (response) {
@@ -121,9 +123,11 @@ client
 ;
 
 const promise = teams.createMembership(
-    'teachers',
-    ["maths"],
-    "david@example.com"
+    {
+    teamId: 'teachers',
+    roles: ["maths"],
+    email: "david@example.com"
+}
     );
 
 promise.then(function (response) {

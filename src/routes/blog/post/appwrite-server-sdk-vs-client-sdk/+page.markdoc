@@ -64,7 +64,10 @@ const account = new Account(client);
 const tablesDB = new TablesDB(client);
 
 // Log in
-await account.createEmailPasswordSession("user@example.com", "password");
+await account.createEmailPasswordSession({
+    email: "user@example.com",
+    password: "password"
+});
 
 // Read data, scoped to what this user can access
 const docs = await tablesDB.listRows({

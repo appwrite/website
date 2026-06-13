@@ -107,7 +107,7 @@ claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite"
 claude mcp add appwrite-docs https://mcp-for-docs.appwrite.io -t http
 ```
 
-With this setup, the flow looks like: design in Claude Design, hand off to Claude Code, and let Claude Code create users, manage databases, query collections, and wire up auth against your Appwrite backend. Three tools, one conversation.
+With this setup, the flow looks like: design in Claude Design, hand off to Claude Code, and let Claude Code create users, manage databases, query tables, and wire up auth against your Appwrite backend. Three tools, one conversation.
 
 Check out our [Claude Code integration guide](/docs/tooling/ai/ai-dev-tools/claude-code) and our [Appwrite MCP server docs](/docs/tooling/mcp) to get started. If you want to get more out of Claude Code itself, our [Claude Code tips and best practices](/blog/post/claude-code-tips-tricks) is a good place to start.
 

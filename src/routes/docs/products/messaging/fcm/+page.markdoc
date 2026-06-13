@@ -139,10 +139,12 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        {}                                       // serviceAccountJSON (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    serviceAccountJSON: {}
+}                                       // serviceAccountJSON (optional)
     );
 ```
 ```deno
@@ -160,10 +162,12 @@ client
 ;
 
 const provider = await messaging.updateFCMProvider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        {}                                       // serviceAccountJSON (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    serviceAccountJSON: {}
+}                                       // serviceAccountJSON (optional)
     );
 ```
 ```php

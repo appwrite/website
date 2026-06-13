@@ -180,7 +180,7 @@ A few practical rules when working with the Query API:
 
 # Start building with Appwrite Databases
 
-The Query API covers the full range of what you need for data retrieval: precise filtering, flexible sorting, and two pagination strategies suited to different scales. The same `Query` class works across all Appwrite Database APIs.
+The Query API covers the full range of what you need for data retrieval: precise filtering, flexible sorting, and two pagination strategies suited to different scales. The same `Query` class works across Appwrite TablesDB APIs.
 
 To go further:
 

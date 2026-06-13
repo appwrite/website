@@ -82,13 +82,15 @@ client
 ;
 
 const message = await messaging.createSms(
-        '<MESSAGE_ID>',                          // messageId
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        true,                                    // draft (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: true,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```deno
@@ -106,13 +108,15 @@ client
 ;
 
 const message = await messaging.createSms(
-        '<MESSAGE_ID>',                          // messageId
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        true,                                    // draft (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: true,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```php
@@ -384,12 +388,14 @@ client
 ;
 
 const provider = await messaging.updateVonageProvider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        '<API_KEY>',                             // apiKey (optional)
-        '<API_SECRET>',                          // apiSecret (optional)
-        '<FROM>'                                 // from (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    apiKey: '<API_KEY>',
+    apiSecret: '<API_SECRET>',
+    from: '<FROM>'
+}                                 // from (optional)
     );
 ```
 ```deno
@@ -407,12 +413,14 @@ client
 ;
 
 const provider = await messaging.updateVonageProvider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        '<API_KEY>',                             // apiKey (optional)
-        '<API_SECRET>',                          // apiSecret (optional)
-        '<FROM>'                                 // from (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    apiKey: '<API_KEY>',
+    apiSecret: '<API_SECRET>',
+    from: '<FROM>'
+}                                 // from (optional)
     );
 ```
 ```php
