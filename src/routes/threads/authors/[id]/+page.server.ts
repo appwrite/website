@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { DEFAULT_HOST } from '$lib/utils/metadata';
 import { getAuthor, getAuthorThreads } from '../../helpers.js';
+import type { DiscordThread } from '../../types.js';
 
 export const load = async ({ params }) => {
     let author;
@@ -10,7 +11,7 @@ export const load = async ({ params }) => {
         error(404, 'Author not found');
     }
 
-    let threads = [];
+    let threads: DiscordThread[] = [];
     let total = 0;
     try {
         ({ threads, total } = await getAuthorThreads(params.id));
