@@ -7,6 +7,7 @@
     export let query: string;
 
     $: highlightTerms = query?.split(' ') ?? [];
+    $: isResolved = thread.is_resolved || /\[(solved|resolved|closed|fixed)\]/i.test(thread.title);
 
     function timeAgo(dateStr: string): string {
         const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
@@ -39,7 +40,7 @@
 
         <div class="mt-4 flex min-w-0 flex-wrap justify-between gap-4">
             <ul class="flex min-w-0 flex-wrap gap-2">
-                {#if thread.is_resolved}
+                {#if isResolved}
                     <li class="min-w-0">
                         <div class="web-tag is-success truncate">
                             <span class="web-icon-check"></span>

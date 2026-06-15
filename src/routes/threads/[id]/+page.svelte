@@ -13,6 +13,9 @@
     let { data } = $props();
 
     const title = $derived(data.title + ' - Threads' + TITLE_SUFFIX);
+    const isResolved = $derived(
+        data.is_resolved || /\[(solved|resolved|closed|fixed)\]/i.test(data.title)
+    );
     const description = DEFAULT_DESCRIPTION;
     const discordLink = $derived(
         `https://discord.com/channels/564160730845151244/${data.discord_id}`
@@ -55,7 +58,7 @@
                         <span class="web-icon-arrow-up"></span>
                         <span class="text">{data.vote_count}</span>
                     </li>
-                    {#if data.is_resolved}
+                    {#if isResolved}
                         <li class="web-tag is-success">
                             <span class="web-icon-check"></span>
                             <span class="text">Resolved</span>
