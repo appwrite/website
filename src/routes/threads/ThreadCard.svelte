@@ -9,15 +9,12 @@
     $: highlightTerms = query?.split(' ') ?? [];
 
     function timeAgo(dateStr: string): string {
-        const diff = Date.now() - new Date(dateStr).getTime();
-        const mins = Math.floor(diff / 60000);
-        if (mins < 60) return `${mins}m ago`;
-        const hours = Math.floor(mins / 60);
-        if (hours < 24) return `${hours}h ago`;
-        const days = Math.floor(hours / 24);
-        if (days < 30) return `${days}d ago`;
-        const months = Math.floor(days / 30);
-        return `${months}mo ago`;
+        const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+        const formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+        if (diff < 3600) return formatter.format(-Math.floor(diff / 60), 'minute');
+        if (diff < 86400) return formatter.format(-Math.floor(diff / 3600), 'hour');
+        if (diff < 2592000) return formatter.format(-Math.floor(diff / 86400), 'day');
+        return formatter.format(-Math.floor(diff / 2592000), 'month');
     }
 </script>
 
