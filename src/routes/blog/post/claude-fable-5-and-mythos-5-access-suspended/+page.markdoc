@@ -59,15 +59,13 @@ Anthropic says testing before launch showed Fable's safeguards were substantiall
 
 Anthropic was also candid about the limits. It stated plainly at launch that perfect jailbreak resistance does not currently appear possible for *any* model provider, that every safeguard in the industry is vulnerable to some non-universal jailbreaks, and that universal jailbreaks would likely be found eventually. The 30-day data-retention policy it introduced for Fable 5 was designed specifically to help detect and mitigate such attacks quickly.
 
-# Why Anthropic disagrees with the Claude Fable 5 suspension
+# How has the US government responded?
 
-Anthropic is following the legal directive and has removed access to both models for all users. At the same time, the company has been openly critical of the decision.
+The US government has not publicly disclosed the full technical basis for the directive. However, according to Anthropic, the government indicated that it had concerns about a potential narrow, non-universal jailbreak in Claude Fable 5.
 
-Its core argument is one of proportionality. Anthropic contends that the discovery of a narrow, non-universal jailbreak should not set a precedent for recalling commercial models at massive scale. It warns that if this standard were applied across the industry, it would effectively halt new model deployments for every frontier provider, since some non-universal jailbreak can be found for any model that exists today.
+Anthropic says it had been engaging with the government about the issue and working to address its concerns. The company argues that the reported technique did not show a unique capability uplift from Fable 5 and that similar results could be produced by other publicly available models.
 
-The company also notes that it has not received a disclosure of any concerning non-universal jailbreak that produced a genuinely harmful result. The potential jailbreaks disclosed to it, it says, have either yielded entirely benign responses or surfaced only minor findings that provide no Mythos-specific uplift.
-
-Anthropic restated a position it has held publicly: governments should be able to block unsafe deployments, but through a statutory process that is transparent, fair, clear, and grounded in technical facts. It argues this particular action does not meet those criteria.
+For now, the US government has not published its own detailed explanation, so the public record still mostly reflects Anthropic’s account of the directive and its objections.
 
 # When will Claude Fable 5 access be restored?
 
@@ -78,8 +76,6 @@ For now, the practical takeaway is simple:
 * **Fable 5 and Mythos 5 are unavailable** to all users until further notice.
 * **Every other Claude model continues to work normally**.
 * **Developers relying on `claude-fable-5`** should switch to another available Anthropic model until access is restored.
-
-The bottom line: Claude Fable 5 and Mythos 5 are paused for now. Anthropic says it believes the situation is a misunderstanding and is working to restore access as soon as possible. Until then, Opus 4.8 covers most of the same ground.
 
 You can read the company's full position in [Anthropic's official statement on the suspension](https://www.anthropic.com/news/fable-mythos-access).
 
