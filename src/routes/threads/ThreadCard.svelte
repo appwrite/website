@@ -42,10 +42,7 @@
             <ul class="flex min-w-0 flex-wrap gap-2">
                 {#if isResolved}
                     <li class="min-w-0">
-                        <div
-                            class="web-tag truncate"
-                            style="color: #22c55e; border-color: rgba(34,197,94,0.3)"
-                        >
+                        <div class="web-tag tag-resolved truncate">
                             <span class="web-icon-check"></span>
                             Resolved
                         </div>
@@ -78,6 +75,11 @@
     .web-card {
         padding: 1.25rem;
         overflow: hidden;
+    }
+
+    .tag-resolved {
+        color: #22c55e;
+        border-color: rgba(34, 197, 94, 0.3);
     }
 
     .thread {
