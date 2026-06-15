@@ -61,11 +61,11 @@ Anthropic was also candid about the limits. It stated plainly at launch that per
 
 # How has the US government responded?
 
-The US government has not publicly disclosed the full technical basis for the directive. However, according to Anthropic, the government indicated that it had concerns about a potential narrow, non-universal jailbreak in Claude Fable 5.
+The US government has not publicly disclosed the full technical basis for the directive. Publicly available reporting says the government acted on national security concerns after officials were shown evidence that Fable 5’s safeguards could potentially be bypassed and used to identify software vulnerabilities.
 
-Anthropic says it had been engaging with the government about the issue and working to address its concerns. The company argues that the reported technique did not show a unique capability uplift from Fable 5 and that similar results could be produced by other publicly available models.
+From the government’s perspective, the issue appears to be risk containment. Even if the reported jailbreak was narrow, officials treated the possibility of misuse seriously enough to require Anthropic to suspend access to Fable 5 and Mythos 5 for foreign nationals. Because Anthropic said it could not apply that restriction selectively, the models were disabled for all customers worldwide.
 
-For now, the US government has not published its own detailed explanation, so the public record still mostly reflects Anthropic’s account of the directive and its objections.
+For now, the government has not published a detailed technical explanation of the directive. That means the public record still relies heavily on Anthropic’s account, alongside reporting that US officials saw the action as a national security measure rather than a routine model-safety dispute.
 
 # When will Claude Fable 5 access be restored?
 
