@@ -15,7 +15,8 @@
         if (diff < 3600) return formatter.format(-Math.floor(diff / 60), 'minute');
         if (diff < 86400) return formatter.format(-Math.floor(diff / 3600), 'hour');
         if (diff < 2592000) return formatter.format(-Math.floor(diff / 86400), 'day');
-        return formatter.format(-Math.floor(diff / 2592000), 'month');
+        if (diff < 31536000) return formatter.format(-Math.floor(diff / 2592000), 'month');
+        return formatter.format(-Math.floor(diff / 31536000), 'year');
     }
 </script>
 

@@ -10,7 +10,13 @@ export const load = async ({ params }) => {
         error(404, 'Author not found');
     }
 
-    const { threads, total } = await getAuthorThreads(params.id);
+    let threads = [];
+    let total = 0;
+    try {
+        ({ threads, total } = await getAuthorThreads(params.id));
+    } catch (e) {
+        console.error('Failed to fetch author threads:', e);
+    }
 
     return {
         author,
