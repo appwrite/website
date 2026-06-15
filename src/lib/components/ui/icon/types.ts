@@ -12,7 +12,6 @@ export type IconType =
     | 'github'
     | 'ticket'
     | 'sparkle'
-    | 'mongo'
     | 'divider-vertical'
     | 'nuxt'
     | 'chevron-up'
@@ -69,4 +68,5 @@ export type IconType =
     | 'chevron-left'
     | 'light'
     | 'mcp'
-    | 'mongo';
+    | 'mongo'
+    | 'zzz-persons';
