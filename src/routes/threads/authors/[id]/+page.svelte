@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Main } from '$lib/layouts';
     import { TITLE_SUFFIX } from '$routes/titles';
+    import { createAuthorPageSchema, getInlinedScriptTag } from '$lib/utils/metadata';
     import FooterNav from '$lib/components/FooterNav.svelte';
     import MainFooter from '$lib/components/MainFooter.svelte';
     import ThreadCard from '../../ThreadCard.svelte';
@@ -13,6 +14,9 @@
         data.author.bio ??
             `${data.author.display_name} has posted ${data.author.thread_count} threads and ${data.author.reply_count} replies on the Appwrite Discord community.`
     );
+    const structuredDataJsonLd = $derived(
+        createAuthorPageSchema({ canonicalUrl: data.canonicalUrl, author: data.author })
+    );
 </script>
 
 <svelte:head>
@@ -23,6 +27,7 @@
     <meta property="og:description" content={description} />
     <meta name="twitter:description" content={description} />
     <link rel="canonical" href={data.canonicalUrl} />
+    {@html getInlinedScriptTag(structuredDataJsonLd)}
 </svelte:head>
 
 <Main>
