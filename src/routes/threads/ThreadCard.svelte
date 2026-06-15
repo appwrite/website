@@ -77,6 +77,11 @@
         overflow: hidden;
     }
 
+    :global(.web-tag.is-success) {
+        color: #22c55e;
+        border-color: rgba(34, 197, 94, 0.3);
+    }
+
     .thread {
         position: relative;
         max-width: 100%;
