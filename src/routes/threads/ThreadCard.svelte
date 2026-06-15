@@ -7,6 +7,18 @@
     export let query: string;
 
     $: highlightTerms = query?.split(' ') ?? [];
+
+    function timeAgo(dateStr: string): string {
+        const diff = Date.now() - new Date(dateStr).getTime();
+        const mins = Math.floor(diff / 60000);
+        if (mins < 60) return `${mins}m ago`;
+        const hours = Math.floor(mins / 60);
+        if (hours < 24) return `${hours}h ago`;
+        const days = Math.floor(hours / 24);
+        if (days < 30) return `${days}d ago`;
+        const months = Math.floor(days / 30);
+        return `${months}mo ago`;
+    }
 </script>
 
 {#key highlightTerms}
@@ -45,12 +57,17 @@
                 {/each}
             </ul>
 
-            <div
-                class="web-icon-button is-more-content web-u-pointer-events-none flex shrink-0 items-center"
-                aria-label="Replies"
-            >
-                <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
-                <span class="text-caption font-inter">{thread.message_count}</span>
+            <div class="flex shrink-0 items-center gap-3">
+                {#if thread.last_activity}
+                    <span class="text-caption">{timeAgo(thread.last_activity)}</span>
+                {/if}
+                <div
+                    class="web-icon-button is-more-content web-u-pointer-events-none flex items-center"
+                    aria-label="Replies"
+                >
+                    <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
+                    <span class="text-caption font-inter">{thread.message_count}</span>
+                </div>
             </div>
         </div>
     </a>
