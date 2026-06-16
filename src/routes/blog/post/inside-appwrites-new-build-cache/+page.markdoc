@@ -2,10 +2,10 @@
 layout: post
 title: "Inside Appwrite's new build cache: 4x faster dependency installs"
 description: A deep dive into how Appwrite now caches your dependencies between builds, and what it means for your deployment times.
-date: 2026-06-12
-cover: /images/blog/inside-appwrites-new-build-cache/cover.png
+date: 2026-06-16
+cover: /images/blog/inside-appwrites-new-build-cache/cover.avif
 timeToRead: 7
-author: eldad-fux
+author: torsten-dittmann
 category: engineering
 featured: false
 faqs:
@@ -33,7 +33,7 @@ For dependencies, that means the same work repeats every time. A typical product
 
 # What we built
 
-The build environment now mounts a small cache volume, and the build pipeline does three extra things:
+The build environment now mounts a cache volume, and the build pipeline does three extra things:
 
 1. **Before your install command runs**, Appwrite checks storage for a cache snapshot belonging to your site or function. If one exists, it is downloaded and unpacked into the package manager's store locations.
 2. **Your build runs unchanged.** The package manager finds its store already populated and skips the registry almost entirely.
@@ -75,6 +75,10 @@ The split between those two numbers also tells you where install time actually g
 - **bun:** about 7.3 of its 9.6 seconds were downloads, leaving 2.3 seconds of linking.
 
 The cache removes the download share entirely. The reason the remaining work is so small is that pnpm links packages out of a single [content-addressable store](https://pnpm.io/motivation) and bun uses a similar [global cache](https://bun.sh/docs/install/cache) with hardlinks, instead of unpacking an archive for every package. With the store restored from the snapshot, an install becomes a linking pass over files that are already on disk.
+
+# Part of a broader performance effort
+
+The build cache is the latest in a series of changes aimed at making deployments on Appwrite faster. We previously [cut cold start times on Appwrite Sites](/blog/post/reducing-cold-starts-appwrite-sites), so your pages respond quickly even after sitting idle, and shipped [native Turbopack support](/blog/post/turbopack-support-appwrite-sites), so Next.js applications build on their faster bundler with no change to your build command. Caching dependencies carries that same focus into the install step, which for most projects is the slowest part of a build.
 
 The build cache is live across the Appwrite network. Deploy a site or function, and from your second build onward, your installs are already faster.
 
