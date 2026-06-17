@@ -56,7 +56,7 @@ The reasoning Cursor gave was simple. The company had been moving fast on its ow
 
 * It released Composer, its first agentic coding model, less than six months earlier.
 * Composer 1.5 then scaled reinforcement learning by over 20 times.
-* Composer 2 added continued pretraining and reached frontier level performance at a fraction of the cost of other models.
+* Composer 2 & Composer 2.5 added continued pretraining and reached frontier level performance at a fraction of the cost of other models.
 * Each step up in compute translated into meaningfully more capable models.
 
 The bottleneck was compute. Cursor said it wanted to push training much further but had been limited by available infrastructure. Through the partnership, its team would leverage xAI's Colossus infrastructure to scale up the intelligence of its models.
