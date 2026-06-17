@@ -88,7 +88,7 @@ Then, open it in your browser to test the function and access the pre-built inte
 
 ![Demo](/images/integrations/stripe-payments/demo.avif)
 
-You can visit the **Databases** page in your Appwrite project, enter the `orders` database and the `orders` collection within that, and find your orders.
+You can visit the **Databases** page in your Appwrite project, enter the `orders` database and the `orders` table within that, and find your orders.
 
 ![Appwrite database](/images/integrations/stripe-payments/database.avif)
 

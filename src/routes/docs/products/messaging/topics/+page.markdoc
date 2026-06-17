@@ -59,9 +59,11 @@ client
 ;
 
 const topic = messaging.createTopic(
-        '<TOPIC_ID>',     // topicId
-        '<NAME>',         // name
-        '<ROLES>'         // permission roles for who can subscribe
+    {
+        topicId: '<TOPIC_ID>',
+        name: '<NAME>',
+        subscribe: ['<ROLE>']
+    }
     );
 
 ```
@@ -80,15 +82,10 @@ client
 ;
 
 const topic = messaging.createTopic({
-        topicId: '<TOPIC_ID>',
-        name: '<NAME>',
-        subscribe: '<ROLES>' // permission roles for who can subscribe
-    });
-const topic = messaging.createTopic(
-        '<TOPIC_ID>',     // topicId
-        '<NAME>',         // name
-        '<ROLES>'         // permission roles for who can subscribe
-    );
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>',
+    subscribe: ['<ROLE>']
+});
 ```
 ```php
 <?php
@@ -354,9 +351,11 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const subscriber = await messaging.createSubscriber(
-    '<TOPIC_ID>',         // topicId
-    '<SUBSCRIBER_ID>',    // subscriberId
-    '<TARGET_ID>'         // targetId
+    {
+    topicId: '<TOPIC_ID>',
+    subscriberId: '<SUBSCRIBER_ID>',
+    targetId: '<TARGET_ID>'
+}         // targetId
 );
 ```
 ```deno

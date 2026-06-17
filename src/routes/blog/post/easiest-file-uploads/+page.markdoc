@@ -164,7 +164,7 @@ Deleting a file is straightforward:
 await storage.deleteFile({ bucketId: 'profile-photos', fileId: fileId });
 ```
 
-For applications that need to clean up orphaned files (files whose associated database records have been deleted), Appwrite Functions can be used to trigger file deletions on database document delete events.
+For applications that need to clean up orphaned files (files whose associated database records have been deleted), Appwrite Functions can be used to trigger file deletions on database row delete events.
 
 # Implement production-ready file uploads in hours, not days
 

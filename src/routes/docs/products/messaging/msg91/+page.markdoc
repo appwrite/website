@@ -81,13 +81,15 @@ client
 ;
 
 const message = await messaging.createSms(
-        '<MESSAGE_ID>',                          // messageId
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        true,                                    // draft (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: true,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```deno
@@ -105,13 +107,15 @@ client
 ;
 
 const message = await messaging.createSms(
-        '<MESSAGE_ID>',                          // messageId
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        true,                                    // draft (optional)
-        ''                                       // scheduledAt (optional)
+        {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: true,
+    scheduledAt: ''
+}                                       // scheduledAt (optional)
     );
 ```
 ```php
@@ -384,12 +388,14 @@ client
 ;
 
 const message = await messaging.updateMsg91Provider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        '<SENDER_ID>',                           // senderId (optional)
-        '<AUTH_KEY>',                            // authKey (optional)
-        '<FROM>'                                 // from (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    templateId: '<SENDER_ID>',
+    senderId: '<AUTH_KEY>',
+    authKey: '<FROM>'
+}                                 // from (optional)
     );
 ```
 ```deno
@@ -407,12 +413,14 @@ client
 ;
 
 const message = await messaging.updateMsg91Provider(
-        '<PROVIDER_ID>',                         // providerId
-        '<NAME>',                                // name (optional)
-        false,                                   // enabled (optional)
-        '<SENDER_ID>',                           // senderId (optional)
-        '<AUTH_KEY>',                            // authKey (optional)
-        '<FROM>'                                 // from (optional)
+        {
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>',
+    enabled: false,
+    templateId: '<SENDER_ID>',
+    senderId: '<AUTH_KEY>',
+    authKey: '<FROM>'
+}                                 // from (optional)
     );
 ```
 ```php

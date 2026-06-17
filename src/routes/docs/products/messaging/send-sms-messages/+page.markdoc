@@ -61,12 +61,14 @@ const client = new sdk.Client()
 const users = new sdk.Users(client);
 
 const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Phone, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
+    {
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Phone,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+}                         // name (optional)
 );
 ```
 ```deno
@@ -80,12 +82,14 @@ const client = new sdk.Client()
 const users = new sdk.Users(client);
 
 const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Phone, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
+    {
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Phone,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+}                         // name (optional)
 );
 ```
 ```php
@@ -326,8 +330,10 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const topic = await messaging.createTopic(
-    '<TOPIC_ID>',     // topicId
-    '<NAME>'          // name
+    {
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+}          // name
 );
 ```
 ```deno
@@ -341,8 +347,10 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const topic = await messaging.createTopic(
-    '<TOPIC_ID>',     // topicId
-    '<NAME>'          // name
+    {
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+}          // name
 );
 ```
 ```php
@@ -528,13 +536,15 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const message = await messaging.createSms(
-    '<MESSAGE_ID>',    // messageId
-    '<CONTENT>',       // content
-    [],                // topics (optional)
-    [],                // users (optional)
-    [],                // targets (optional)
-    false,             // draft (optional)
-    ''                 // scheduledAt (optional)
+    {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: false,
+    scheduledAt: ''
+}                 // scheduledAt (optional)
 );
 ```
 ```deno
@@ -548,13 +558,15 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const message = await messaging.createSms(
-    '<MESSAGE_ID>',    // messageId
-    '<CONTENT>',       // content
-    [],                // topics (optional)
-    [],                // users (optional)
-    [],                // targets (optional)
-    false,             // draft (optional)
-    ''                 // scheduledAt (optional)
+    {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: false,
+    scheduledAt: ''
+}                 // scheduledAt (optional)
 );
 ```
 ```php
@@ -784,13 +796,15 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const message = await messaging.createSms(
-    '<MESSAGE_ID>',             // messageId
-    '<CONTENT>',                // content
-    [],                         // topics (optional)
-    [],                         // users (optional)
-    [],                         // targets (optional)
-    false,                      // draft (optional)
-    '2025-02-13T22:01:00+0000'  // scheduledAt (optional)
+    {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+}  // scheduledAt (optional)
 );
 ```
 ```deno
@@ -804,13 +818,15 @@ const client = new sdk.Client()
 const messaging = new sdk.Messaging(client);
 
 const message = await messaging.createSms(
-    '<MESSAGE_ID>',             // messageId
-    '<CONTENT>',                // content
-    [],                         // topics (optional)
-    [],                         // users (optional)
-    [],                         // targets (optional)
-    false,                      // draft (optional)
-    '2025-02-13T22:01:00+0000'  // scheduledAt (optional)
+    {
+    messageId: '<MESSAGE_ID>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    draft: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+}  // scheduledAt (optional)
 );
 ```
 ```php

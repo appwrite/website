@@ -53,13 +53,15 @@ const client = new Client()
 const storage = new Storage(client);
 
 const bucket = await storage.createBucket(
-  ID.unique(),       // bucketId
-  'User Uploads',    // name
-  ['any'],           // permissions (covered below)
-  true,             // fileSecurity
-  true,              // enabled
-  10000000,          // maximumFileSize (10 MB)
-  ['image/jpeg', 'image/png', 'application/pdf'] // allowedFileExtensions (MIME types or extensions, e.g. 'jpg')
+  {
+    bucketId: ID.unique(),
+    name: 'User Uploads',
+    permissions: ['any'],
+    fileSecurity: true,
+    enabled: true,
+    maximumFileSize: 10000000,
+    allowedFileExtensions: ['image/jpeg', 'image/png', 'application/pdf']
+} // allowedFileExtensions (MIME types or extensions, e.g. 'jpg')
 );
 ```
 

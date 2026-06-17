@@ -22,7 +22,7 @@ faqs:
   - question: "Are inversion queries available on self-hosted Appwrite?"
     answer: "Yes, inversion queries are available on both Appwrite Cloud and self-hosted deployments. If you're on a recent self-hosted version, the new `NOT` operators are exposed through your client SDKs just like the existing query operators."
 ---
-When you need to exclude certain records, the usual approach is to fetch a broad set of rows, sometimes even the entire collection, and then filter them in your application code. 
+When you need to exclude certain records, the usual approach is to fetch a broad set of rows, sometimes even the entire table, and then filter them in your application code.
 
 It works, but it also means you are moving more data across the network than necessary, increasing payload sizes, and adding extra logic to your client. In smaller projects this might not be noticeable, but as your datasets grow, it quickly becomes inefficient.
 

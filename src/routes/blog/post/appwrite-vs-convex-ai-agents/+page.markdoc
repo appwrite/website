@@ -37,7 +37,7 @@ Around that, Convex layers a broader platform:
 - HTTP actions for webhook endpoints and custom clients.
 - A document-style database with optional schemas, indexes, and paginated queries.
 - Realtime that is automatic as long as you read data through query functions and client libraries.
-- File Storage with upload, store, serve, and delete, referenced from database documents.
+- File Storage with upload, store, serve, and delete, referenced from database rows.
 - Scheduled Functions and Cron Jobs for durable scheduling, plus higher-level Workpool, Workflow, and Cron components for larger scale.
 - Authentication via Clerk, WorkOS AuthKit, Auth0, Custom OIDC, or the beta Convex Auth library.
 - Self-hosting under an FSL Apache 2.0 license that converts to Apache 2.0 after two years.
