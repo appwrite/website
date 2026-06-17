@@ -22,24 +22,19 @@ SpaceX has agreed to acquire Anysphere, the company behind the popular AI coding
 
 Below is a clear breakdown of what happened, why it matters, and what it could mean if you build software for a living.
 
-SpaceX is buying the maker of Cursor in an all stock transaction. The structure underneath it tells the more interesting story.
+SpaceX is buying the maker of Cursor in an all stock transaction. The structure underneath it tells the more interesting story:
 
-| Deal detail               | What it means                         |
-| ------------------------- | ------------------------------------- |
-| Buyer                     | SpaceX (xAI division)                 |
-| Target                    | Anysphere, parent of Cursor           |
-| Deal value                | $60 billion                           |
-| Deal type                 | All stock merger                      |
-| Acquiring entity          | X67, a wholly owned SpaceX subsidiary |
-| Expected close            | Third quarter of 2026                 |
-| Standard termination fee  | $10 billion                           |
-| Antitrust termination fee | $4 billion                            |
+* SpaceX, through its xAI division, is acquiring Anysphere, the parent company of Cursor.
+* The price is $60 billion, paid entirely in stock rather than cash.
+* The merger runs through X67, a wholly owned SpaceX subsidiary.
+* The companies expect the deal to close in the third quarter of 2026.
+* The agreement carries two break fees: a standard $10 billion termination fee, and a separate $4 billion fee tied specifically to antitrust.
 
 A few points stand out from the terms:
 
-* The deal is structured as a stock based merger between Anysphere and a SpaceX subsidiary called X67. That signals the cash SpaceX just raised in its IPO is not being used to fund the purchase.
-* SpaceX first set this up in April. It secured an option to either buy Cursor for $60 billion later in the year or pay $10 billion for a partnership instead. It chose to buy.
-* The $4 billion regulatory break fee suggests both sides expect antitrust scrutiny given how large SpaceX has become.
+* Because the deal is an all stock merger between Anysphere and the X67 subsidiary, the cash SpaceX just raised in its IPO is not being used to fund the purchase.
+* SpaceX set this up back in April, when it secured an option to either buy Cursor for $60 billion later in the year or pay $10 billion for a partnership instead. It chose to buy.
+* The $4 billion antitrust break fee suggests both sides expect regulatory scrutiny, a reflection of just how large SpaceX has become.
 
 # Why SpaceX wants Cursor
 
