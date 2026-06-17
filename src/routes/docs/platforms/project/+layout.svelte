@@ -69,6 +69,31 @@
                     href: '/docs/platforms/project/labels'
                 }
             ]
+        },
+        {
+            label: 'Journeys',
+            items: [
+                {
+                    label: 'Provisioning',
+                    href: '/docs/platforms/project/provisioning'
+                },
+                {
+                    label: 'Key rotation',
+                    href: '/docs/platforms/project/key-rotation'
+                },
+                {
+                    label: 'Branded emails',
+                    href: '/docs/platforms/project/branded-emails'
+                },
+                {
+                    label: 'Plan tiers',
+                    href: '/docs/platforms/project/plan-tiers'
+                },
+                {
+                    label: 'Offboarding',
+                    href: '/docs/platforms/project/offboarding'
+                }
+            ]
         }
     ];
 </script>

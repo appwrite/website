@@ -39,7 +39,7 @@ To configure policies manually:
 | `membership-privacy` | `updateMembershipPrivacyPolicy` | `userId`, `userEmail`, `userPhone`, `userName`, `userMFA` (all bool, all optional) |
 
 {% info title="Required scopes" %}
-The API key used for these calls needs `policies.read` to list or fetch policies, and `policies.write` to update them.
+The API key used for these calls needs `project.policies.read` to list or fetch policies, and `project.policies.write` to update them.
 {% /info %}
 
 # List policies {% #list-policies %}

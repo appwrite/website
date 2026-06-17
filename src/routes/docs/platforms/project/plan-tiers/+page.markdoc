@@ -1,0 +1,549 @@
+---
+layout: article
+title: Map a pricing tier to project config
+description: Translate a customer's plan into enforceable project limits and gated services with the Project API.
+---
+
+Underneath the marketing, a pricing tier is a set of limits: Free gets a small ceiling, paid plans lift it. You could enforce those limits in your own code on every request, but then your backend carries logic that Appwrite can carry for you. The Project API lets you stamp the limits straight onto the customer's project, so Appwrite turns away the over-quota sign-up or the too-long session on its own, and your code stays out of the loop.
+
+This journey configures a Free tier as the worked example:
+
+- A small user cap.
+- Tight session rules.
+- Functions held back for paid plans.
+
+When a customer upgrades, you run the same calls with the higher numbers, which is why it pays to keep one function per tier.
+
+{% info title="Required scopes" %}
+The policy calls need the `project.policies.write` scope, and the service call needs the `project.write` scope.
+{% /info %}
+
+# Cap the number of users {% #user-limit %}
+
+Free tiers almost always cap how many users a project can hold. Set up the client, then set that ceiling, and Appwrite refuses sign-ups past it until the customer upgrades or you raise the number.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateUserLimitPolicy({
+    total: 100
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateUserLimitPolicy({
+    total: 100
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateUserLimitPolicy(
+    total: 100
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_user_limit_policy(
+    total = 100
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_user_limit_policy(
+    total: 100
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateUserLimitPolicy(
+    total: 100
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateUserLimitPolicy(
+    total: 100,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.updateUserLimitPolicy(
+    total = 100
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateUserLimitPolicy(
+    100, // total
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateUserLimitPolicy(
+    total: 100
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.UpdateUserLimitPolicy(100)
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_user_limit_policy(100).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project update-user-limit-policy \
+    --total 100
+```
+```http
+PATCH /v1/project/policies/user-limit HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+X-Appwrite-Key: <YOUR_API_KEY>
+
+{
+  "total": 100
+}
+```
+{% /multicode %}
+
+On your top tier, pass `null` to lift the cap entirely.
+
+# Limit concurrent sessions {% #session-limit %}
+
+Cap how many sessions a single user can hold at once, so a shared Free login cannot quietly serve a whole office from one seat.
+
+{% multicode %}
+```server-nodejs
+const result = await project.updateSessionLimitPolicy({
+    total: 3
+});
+```
+```server-deno
+const result = await project.updateSessionLimitPolicy({
+    total: 3
+});
+```
+```server-php
+$result = $project->updateSessionLimitPolicy(
+    total: 3
+);
+```
+```server-python
+result = project.update_session_limit_policy(
+    total = 3
+)
+```
+```server-ruby
+response = project.update_session_limit_policy(
+    total: 3
+)
+```
+```server-dotnet
+var result = await project.UpdateSessionLimitPolicy(
+    total: 3
+);
+```
+```server-dart
+final result = await project.updateSessionLimitPolicy(
+    total: 3,
+);
+```
+```server-kotlin
+val response = project.updateSessionLimitPolicy(
+    total = 3
+)
+```
+```server-java
+project.updateSessionLimitPolicy(
+    3, // total
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await project.updateSessionLimitPolicy(
+    total: 3
+)
+```
+```server-go
+result, err := service.UpdateSessionLimitPolicy(3)
+
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(result)
+```
+```server-rust
+let result = project.update_session_limit_policy(3).await?;
+
+println!("{:?}", result);
+```
+```bash
+appwrite project update-session-limit-policy \
+    --total 3
+```
+```http
+PATCH /v1/project/policies/session-limit HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+X-Appwrite-Key: <YOUR_API_KEY>
+
+{
+  "total": 3
+}
+```
+{% /multicode %}
+
+# Set the session lifetime {% #session-duration %}
+
+Set how long a session stays valid before the user has to authenticate again. A shorter window on Free, a longer one as customers pay for the convenience of staying logged in. This example is seven days, in seconds.
+
+{% multicode %}
+```server-nodejs
+const result = await project.updateSessionDurationPolicy({
+    duration: 604800
+});
+```
+```server-deno
+const result = await project.updateSessionDurationPolicy({
+    duration: 604800
+});
+```
+```server-php
+$result = $project->updateSessionDurationPolicy(
+    duration: 604800
+);
+```
+```server-python
+result = project.update_session_duration_policy(
+    duration = 604800
+)
+```
+```server-ruby
+response = project.update_session_duration_policy(
+    duration: 604800
+)
+```
+```server-dotnet
+var result = await project.UpdateSessionDurationPolicy(
+    duration: 604800
+);
+```
+```server-dart
+final result = await project.updateSessionDurationPolicy(
+    duration: 604800,
+);
+```
+```server-kotlin
+val response = project.updateSessionDurationPolicy(
+    duration = 604800
+)
+```
+```server-java
+project.updateSessionDurationPolicy(
+    604800, // duration
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await project.updateSessionDurationPolicy(
+    duration: 604800
+)
+```
+```server-go
+result, err := service.UpdateSessionDurationPolicy(604800)
+
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(result)
+```
+```server-rust
+let result = project.update_session_duration_policy(604800).await?;
+
+println!("{:?}", result);
+```
+```bash
+appwrite project update-session-duration-policy \
+    --duration 604800
+```
+```http
+PATCH /v1/project/policies/session-duration HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+X-Appwrite-Key: <YOUR_API_KEY>
+
+{
+  "duration": 604800
+}
+```
+{% /multicode %}
+
+# Gate a service behind a tier {% #gate-service %}
+
+Some features belong only to customers who pay. Take Functions off the Free tier's client API and their app cannot invoke a function until they move up a plan.
+
+{% multicode %}
+```server-nodejs
+const result = await project.updateService({
+    serviceId: ProjectServiceId.Functions,
+    enabled: false
+});
+```
+```server-deno
+const result = await project.updateService({
+    serviceId: ProjectServiceId.Functions,
+    enabled: false
+});
+```
+```server-php
+$result = $project->updateService(
+    serviceId: ProjectServiceId::FUNCTIONS(),
+    enabled: false
+);
+```
+```server-python
+result = project.update_service(
+    service_id = ProjectServiceId.FUNCTIONS,
+    enabled = False
+)
+```
+```server-ruby
+response = project.update_service(
+    service_id: ProjectServiceId::FUNCTIONS,
+    enabled: false
+)
+```
+```server-dotnet
+var result = await project.UpdateService(
+    serviceId: ProjectServiceId.Functions,
+    enabled: false
+);
+```
+```server-dart
+final result = await project.updateService(
+    serviceId: enums.ProjectServiceId.functions,
+    enabled: false,
+);
+```
+```server-kotlin
+val response = project.updateService(
+    serviceId = ProjectServiceId.FUNCTIONS,
+    enabled = false
+)
+```
+```server-java
+project.updateService(
+    ProjectServiceId.FUNCTIONS, // serviceId
+    false, // enabled
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+let result = try await project.updateService(
+    serviceId: .functions,
+    enabled: false
+)
+```
+```server-go
+result, err := service.UpdateService(
+    "functions",
+    false,
+)
+
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(result)
+```
+```server-rust
+let result = project.update_service(
+    ProjectServiceId::Functions,
+    false,
+).await?;
+
+println!("{:?}", result);
+```
+```bash
+appwrite project update-service \
+    --service-id functions \
+    --enabled false
+```
+```http
+PATCH /v1/project/services/functions HTTP/1.1
+Content-Type: application/json
+X-Appwrite-Project: <PROJECT_ID>
+X-Appwrite-Key: <YOUR_API_KEY>
+
+{
+  "enabled": false
+}
+```
+{% /multicode %}
+
+{% info title="Service gating affects client access only" %}
+Disabling a service removes it from the client-facing API only. A Server SDK using an API key still reaches it, so service gating controls what a customer's app can call. Enforce billing entitlements in your own backend.
+{% /info %}
+
+# Next steps {% #next-steps %}
+
+Group these calls into one function per tier and a plan change becomes a single call against the customer's project, with Appwrite enforcing the limits from then on. From here:
+
+- [Provision a project's baseline](/docs/platforms/project/provisioning) and apply the tier as part of onboarding.
+- Read the [Policies](/docs/platforms/project/policies) reference for the other limits you can enforce.

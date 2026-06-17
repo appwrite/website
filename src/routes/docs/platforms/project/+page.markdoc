@@ -7,6 +7,12 @@ back: /docs
 
 An Appwrite **Project** is the top-level container for all the resources your app uses, from users and databases to storage buckets and functions. The settings on a project control which authentication methods are available, which client platforms can connect, which protocols and services are exposed, and which policies apply to the resources inside it.
 
+# Built for platform teams {% #platform-teams %}
+
+The Console configures one project at a time by hand. The Project API does the same configuration programmatically, which is what teams need when they operate not one project but many: a platform that gives every customer their own project, an agency running client environments, or an enterprise standardizing dozens of internal apps.
+
+Driving configuration from code is what makes a fleet of projects manageable. Provision every new project to the same baseline, enforce one security posture across all of them, send each customer branded emails from their own domain, map pricing tiers onto enforceable limits, and tear a project down cleanly when a customer leaves. The [journeys](#journeys) below walk through each of these end to end.
+
 # Concepts {% #concepts %}
 
 {% cards %}
@@ -45,6 +51,26 @@ Customize the account management emails Appwrite sends to your users.
 {% /cards_item %}
 {% cards_item href="/docs/platforms/project/labels" title="Labels" %}
 Tag projects with customizable labels to organize and filter them.
+{% /cards_item %}
+{% /cards %}
+
+# Journeys {% #journeys %}
+
+{% cards %}
+{% cards_item href="/docs/platforms/project/provisioning" title="Provisioning" %}
+Apply a standard baseline to a new customer's project from a script.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/key-rotation" title="Key rotation" %}
+Issue, audit, rotate, and revoke scoped API keys programmatically.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/branded-emails" title="Branded emails" %}
+Route a project's mail through custom SMTP and rebrand the templates.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/plan-tiers" title="Plan tiers" %}
+Turn a pricing tier into enforceable project limits and gated services.
+{% /cards_item %}
+{% cards_item href="/docs/platforms/project/offboarding" title="Offboarding" %}
+Freeze, revoke, and delete a project as one clean teardown.
 {% /cards_item %}
 {% /cards %}
 
