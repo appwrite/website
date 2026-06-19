@@ -89,7 +89,7 @@ As your project grows, you add a Compose file to manage several containers toget
 A few habits will keep your Docker setup secure, fast, and reliable as it grows.
 
 * Keep your images small by starting from a minimal base image and only installing what your application truly needs. Smaller images build faster, transfer faster, and expose less to attackers.
-* Use a `.dockerignore` file to keep unnecessary files such as local logs, build artifacts, dependencies, and secrets out of your image. This keeps builds lean and avoids leaking sensitive data..
+* Use a `.dockerignore` file to keep unnecessary files such as local logs, build artifacts, dependencies, and secrets out of your image. This keeps builds lean and avoids leaking sensitive data.
 * Run containers as a non root user wherever possible so that a compromised container has limited power on the host.
 * Pin image versions instead of relying on the latest tag, so your builds stay reproducible and an upstream change cannot silently break your environment.
 * Scan images for vulnerabilities as part of your pipeline so that known security issues are caught before they reach production.
