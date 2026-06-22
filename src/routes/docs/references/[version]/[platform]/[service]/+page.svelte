@@ -175,6 +175,10 @@
         });
     }
 
+    function formatGroup(group: string) {
+        return group.replace(/([a-z])([A-Z])/g, '$1 $2');
+    }
+
     function groupMethodsByGroup(methods: SDKMethod[]) {
         return methods.reduce<Record<string, SDKMethod[]>>((acc, method) => {
             const groupKey = method.group || '';
@@ -387,7 +391,7 @@
                             <li class="web-references-menu-group">
                                 {#if group !== ''}
                                     <h6 class="text-eyebrow text-greyscale-500 mb-2 uppercase">
-                                        {group}
+                                        {formatGroup(group)}
                                     </h6>
                                 {/if}
                                 <ul class="flex flex-col gap-2">
