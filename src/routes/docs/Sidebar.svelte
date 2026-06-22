@@ -132,10 +132,19 @@
                     isParent: true
                 },
                 {
-                    label: 'Events & Errors',
+                    label: 'Events',
                     href: '/docs/apis/events',
-                    icon: 'icon-switch-horizontal',
-                    isParent: true
+                    icon: 'icon-switch-horizontal'
+                },
+                {
+                    label: 'Webhooks',
+                    href: '/docs/apis/webhooks',
+                    icon: 'icon-bell'
+                },
+                {
+                    label: 'Response codes',
+                    href: '/docs/apis/response-codes',
+                    icon: 'icon-code'
                 }
             ]
         },

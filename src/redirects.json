@@ -994,7 +994,7 @@
     },
     {
         "link": "/docs/advanced/platform/error-handling",
-        "redirect": "/docs/apis/error-handling"
+        "redirect": "/docs/apis/response-codes#error-handling"
     },
     {
         "link": "/docs/advanced/platform/release-policy",

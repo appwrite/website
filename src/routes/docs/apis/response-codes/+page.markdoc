@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Response codes
-description: Understand Appwrite platform response codes for effective error handling. Learn how to interpret and handle response codes to enhance your application's reliability.
+description: Understand Appwrite platform response codes and error handling. Learn to interpret HTTP status codes, error types, and implement best practices for handling errors gracefully.
 ---
 
 Appwrite uses conventional HTTP response codes to indicate the success or failure of an API request.
@@ -227,3 +227,28 @@ Errors from the Appwrite GraphQL API.
 | ---- | ---- | ----------- |
 | 400  | graphql_no_query | Param "query" is not optional. |
 | 400  | graphql_too_many_queries | Too many queries. |
+
+# Error handling {% #error-handling %}
+
+The response codes and [error types](#error-types) above are the building blocks for handling errors. The practices below help you turn them into a recoverable, user-friendly experience.
+
+## Return user-friendly messages {% #user-friendly-messages %}
+
+Avoid surfacing Appwrite's raw error messages directly to your users. They're written for developers and can expose implementation details or confuse non-technical users. Instead, catch the error, inspect its `type`, and map it to a message that fits your application.
+
+The `type` field is more specific than the HTTP status code, so it lets you respond precisely: a `400` can mean many things, but `user_invalid_credentials` means exactly one. Matching on `type` also lets you treat a transient error like `general_rate_limit_exceeded` differently from a permanent one.
+
+| Error type | User-friendly message |
+|------------|----------------------|
+| `user_invalid_credentials` | "The email or password you entered is incorrect. Please try again." |
+| `user_blocked` | "Your account has been temporarily suspended. Please contact support." |
+| `general_rate_limit_exceeded` | "Please wait a moment before trying again." |
+| `storage_file_not_found` | "The file you requested is not available." |
+| `row_not_found` | "The information you're looking for could not be found." |
+
+## Recommended practices {% #recommended-practices %}
+
+- **Log the full error server-side** for debugging, while showing only the friendly message to users.
+- **Handle common scenarios explicitly** and offer clear next steps, such as "Try resetting your password."
+- **Retry transient errors** like rate limiting (`429`) or service unavailability (`503`), ideally with backoff.
+- **Keep error messaging consistent** in tone and styling across your application.
