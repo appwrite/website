@@ -50,6 +50,15 @@
                     href: '/docs/apis/response-codes'
                 }
             ]
+        },
+        {
+            label: 'Policies',
+            items: [
+                {
+                    label: 'Release policy',
+                    href: '/docs/apis/release-policy'
+                }
+            ]
         }
     ];
 </script>

@@ -199,11 +199,6 @@
                     href: '/docs/advanced/self-hosting',
                     icon: 'icon-server',
                     isParent: true
-                },
-                {
-                    label: 'Release policy',
-                    href: '/docs/advanced/release-policy',
-                    icon: 'icon-tag'
                 }
             ]
         }
