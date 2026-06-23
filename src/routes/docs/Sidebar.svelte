@@ -130,21 +130,6 @@
                     href: '/docs/apis/realtime',
                     icon: 'icon-clock',
                     isParent: true
-                },
-                {
-                    label: 'Events',
-                    href: '/docs/apis/events',
-                    icon: 'icon-switch-horizontal'
-                },
-                {
-                    label: 'Webhooks',
-                    href: '/docs/apis/webhooks',
-                    icon: 'icon-bell'
-                },
-                {
-                    label: 'Response codes',
-                    href: '/docs/apis/response-codes',
-                    icon: 'icon-code'
                 }
             ]
         },
