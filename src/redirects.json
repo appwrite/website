@@ -201,15 +201,15 @@
     },
     {
         "link": "/docs/keys",
-        "redirect": "/docs/advanced/platform/api-keys"
+        "redirect": "/docs/advanced/security/api-keys"
     },
     {
         "link": "/docs/permissions",
-        "redirect": "/docs/advanced/platform/permissions"
+        "redirect": "/docs/advanced/security/permissions"
     },
     {
         "link": "/docs/events",
-        "redirect": "/docs/advanced/platform/events"
+        "redirect": "/docs/apis/events"
     },
     {
         "link": "/docs/queries",
@@ -221,23 +221,23 @@
     },
     {
         "link": "/docs/webhooks",
-        "redirect": "/docs/advanced/platform/webhooks"
+        "redirect": "/docs/apis/webhooks"
     },
     {
         "link": "/docs/custom-domains",
-        "redirect": "/docs/advanced/platform/custom-domains"
+        "redirect": "/docs/products/network/custom-domains"
     },
     {
         "link": "/docs/email-and-sms-templates",
-        "redirect": "/docs/advanced/platform/message-templates"
+        "redirect": "/docs/products/auth/message-templates"
     },
     {
         "link": "/docs/response-codes",
-        "redirect": "/docs/advanced/platform/response-codes"
+        "redirect": "/docs/apis/response-codes"
     },
     {
         "link": "/docs/rate-limits",
-        "redirect": "/docs/advanced/platform/rate-limits"
+        "redirect": "/docs/advanced/security/rate-limits"
     },
     {
         "link": "/docs/configuration",
@@ -445,7 +445,7 @@
     },
     {
         "link": "/docs/permissions/",
-        "redirect": "/docs/advanced/platform/permissions"
+        "redirect": "/docs/advanced/security/permissions"
     },
     {
         "link": "/docs/models/bucket",
@@ -915,5 +915,129 @@
     {
         "link": "/heroes",
         "redirect": "/"
+    },
+    {
+        "link": "/docs/advanced/platform",
+        "redirect": "/docs"
+    },
+    {
+        "link": "/docs/advanced/platform/billing",
+        "redirect": "/docs/advanced/billing/payments"
+    },
+    {
+        "link": "/docs/advanced/platform/free",
+        "redirect": "/docs/advanced/billing/free"
+    },
+    {
+        "link": "/docs/advanced/platform/pro",
+        "redirect": "/docs/advanced/billing/pro"
+    },
+    {
+        "link": "/docs/advanced/platform/scale",
+        "redirect": "/docs/advanced/billing/pro"
+    },
+    {
+        "link": "/docs/advanced/platform/enterprise",
+        "redirect": "/docs/advanced/billing/enterprise"
+    },
+    {
+        "link": "/docs/advanced/platform/oss",
+        "redirect": "/docs/advanced/billing/oss"
+    },
+    {
+        "link": "/docs/advanced/platform/compute",
+        "redirect": "/docs/advanced/billing/compute"
+    },
+    {
+        "link": "/docs/advanced/platform/phone-otp",
+        "redirect": "/docs/advanced/billing/phone-otp"
+    },
+    {
+        "link": "/docs/advanced/platform/image-transformations",
+        "redirect": "/docs/advanced/billing/image-transformations"
+    },
+    {
+        "link": "/docs/advanced/platform/database-reads-and-writes",
+        "redirect": "/docs/advanced/billing/database-reads-and-writes"
+    },
+    {
+        "link": "/docs/advanced/platform/support-sla",
+        "redirect": "/docs/advanced/billing/support-sla"
+    },
+    {
+        "link": "/docs/advanced/platform/uptime-sla",
+        "redirect": "/docs/advanced/billing/uptime-sla"
+    },
+    {
+        "link": "/docs/advanced/platform/fair-use-policy",
+        "redirect": "/docs/advanced/billing/fair-use-policy"
+    },
+    {
+        "link": "/docs/advanced/platform/abuse",
+        "redirect": "/docs/advanced/billing/abuse"
+    },
+    {
+        "link": "/docs/advanced/platform/refund-policy",
+        "redirect": "/docs/advanced/billing/refund-policy"
+    },
+    {
+        "link": "/docs/advanced/platform/events",
+        "redirect": "/docs/apis/events"
+    },
+    {
+        "link": "/docs/advanced/platform/webhooks",
+        "redirect": "/docs/apis/webhooks"
+    },
+    {
+        "link": "/docs/advanced/platform/response-codes",
+        "redirect": "/docs/apis/response-codes"
+    },
+    {
+        "link": "/docs/advanced/platform/error-handling",
+        "redirect": "/docs/apis/response-codes#error-handling"
+    },
+    {
+        "link": "/docs/advanced/platform/release-policy",
+        "redirect": "/docs/advanced/release-policy"
+    },
+    {
+        "link": "/docs/advanced/platform/permissions",
+        "redirect": "/docs/advanced/security/permissions"
+    },
+    {
+        "link": "/docs/advanced/platform/rate-limits",
+        "redirect": "/docs/advanced/security/rate-limits"
+    },
+    {
+        "link": "/docs/advanced/platform/api-keys",
+        "redirect": "/docs/advanced/security/api-keys"
+    },
+    {
+        "link": "/docs/advanced/platform/dev-keys",
+        "redirect": "/docs/advanced/security/dev-keys"
+    },
+    {
+        "link": "/docs/advanced/platform/roles",
+        "redirect": "/docs/advanced/security/roles"
+    },
+    {
+        "link": "/docs/advanced/platform/message-templates",
+        "redirect": "/docs/products/auth/message-templates"
+    },
+    {
+        "link": "/docs/advanced/platform/custom-domains",
+        "redirect": "/docs/products/network/custom-domains"
+    },
+    {
+        "link": "/docs/advanced/platform/shortcuts",
+        "redirect": "/docs/tooling/command-center/shortcuts"
+    },
+    {
+        "link": "/docs/advanced/platform/environment-variables",
+        "redirect": "/docs/advanced/security/environment-variables"
+    },
+    {
+        "link": "/docs/advanced/integration",
+        "redirect": "/docs/apis/rest"
     }
 ]

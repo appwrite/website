@@ -111,10 +111,9 @@
             label: 'APIS',
             items: [
                 {
-                    label: 'Realtime',
-                    href: '/docs/apis/realtime',
-                    icon: 'icon-clock',
-                    isParent: true
+                    label: 'Overview',
+                    href: '/docs/apis',
+                    icon: 'icon-view-grid'
                 },
                 {
                     label: 'REST',
@@ -125,6 +124,27 @@
                     label: 'GraphQL',
                     href: '/docs/apis/graphql',
                     icon: 'icon-graphql'
+                },
+                {
+                    label: 'Realtime',
+                    href: '/docs/apis/realtime',
+                    icon: 'icon-clock',
+                    isParent: true
+                },
+                {
+                    label: 'Events',
+                    href: '/docs/apis/events',
+                    icon: 'icon-switch-horizontal'
+                },
+                {
+                    label: 'Webhooks',
+                    href: '/docs/apis/webhooks',
+                    icon: 'icon-bell'
+                },
+                {
+                    label: 'Response codes',
+                    href: '/docs/apis/response-codes',
+                    icon: 'icon-code'
                 }
             ]
         },
@@ -152,7 +172,8 @@
                 {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
-                    icon: 'web-icon-command'
+                    icon: 'web-icon-command',
+                    isParent: true
                 },
                 {
                     label: 'The Appwriter',
@@ -165,9 +186,9 @@
             label: 'Advanced',
             items: [
                 {
-                    label: 'Platform',
-                    href: '/docs/advanced/platform',
-                    icon: 'web-icon-platform',
+                    label: 'Billing',
+                    href: '/docs/advanced/billing',
+                    icon: 'icon-credit-card',
                     isParent: true
                 },
                 {
@@ -193,6 +214,11 @@
                     href: '/docs/advanced/self-hosting',
                     icon: 'icon-server',
                     isParent: true
+                },
+                {
+                    label: 'Release policy',
+                    href: '/docs/advanced/release-policy',
+                    icon: 'icon-tag'
                 }
             ]
         }
