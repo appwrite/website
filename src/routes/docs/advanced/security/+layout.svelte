@@ -82,6 +82,27 @@
                     href: '/docs/advanced/security/abuse-protection'
                 }
             ]
+        },
+        {
+            label: 'Access control',
+            items: [
+                {
+                    label: 'Permissions',
+                    href: '/docs/advanced/security/permissions'
+                },
+                {
+                    label: 'Roles',
+                    href: '/docs/advanced/security/roles'
+                },
+                {
+                    label: 'Rate limits',
+                    href: '/docs/advanced/security/rate-limits'
+                },
+                {
+                    label: 'Dev keys',
+                    href: '/docs/advanced/security/dev-keys'
+                }
+            ]
         }
     ];
 </script>

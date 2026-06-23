@@ -7,7 +7,7 @@ description: Customize the account management emails Appwrite sends to your user
 Appwrite sends transactional emails on your behalf for account management flows such as email verification, password recovery, and magic URL sign-in. Email templates let you customize the subject, message body, sender identity, and reply-to address of each of these emails, with a separate version for every locale you support.
 
 {% info title="Custom SMTP required to save changes" %}
-You can view the built-in default templates at any time, but saving a customization requires a custom SMTP server enabled on your project. See [Custom SMTP server](/docs/advanced/platform/message-templates#smtp) to set one up.
+You can view the built-in default templates at any time, but saving a customization requires a custom SMTP server enabled on your project. See [Custom SMTP server](/docs/products/auth/message-templates#smtp) to set one up.
 {% /info %}
 
 # Manage in the Console {% #console %}

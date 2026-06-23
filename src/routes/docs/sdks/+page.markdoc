@@ -424,7 +424,7 @@ You can discover the available enums in each SDK at the source.
 
 ## Queries and permissions {% #queries-and-permissions %}
 Appwrite has utility classes for queries and permissions. 
-You can learn more about [query utility classes](/docs/products/databases/queries) and [permissions utility classes](/docs/advanced/platform/permissions) in their own pages.
+You can learn more about [query utility classes](/docs/products/databases/queries) and [permissions utility classes](/docs/advanced/security/permissions) in their own pages.
 
 ## File I/O {% #file-io %}
 Depending on your platform, you will also need some helpers to interface with system I/O.
