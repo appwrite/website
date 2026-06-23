@@ -30,6 +30,7 @@ To configure policies manually:
 | --- | --- | --- |
 | `password-dictionary` | `updatePasswordDictionaryPolicy` | `enabled` |
 | `password-history` | `updatePasswordHistoryPolicy` | `total` (1–`APP_LIMIT_COUNT`, or `null`) |
+| `password-strength` | `updatePasswordStrengthPolicy` | `min` (8–256, default 8), `uppercase`, `lowercase`, `number`, `symbols` (all optional) |
 | `password-personal-data` | `updatePasswordPersonalDataPolicy` | `enabled` |
 | `session-alert` | `updateSessionAlertPolicy` | `enabled` |
 | `session-duration` | `updateSessionDurationPolicy` | `duration` (5–31536000 seconds) |
@@ -37,6 +38,9 @@ To configure policies manually:
 | `session-limit` | `updateSessionLimitPolicy` | `total` (1–`APP_LIMIT_COUNT`, or `null`) |
 | `user-limit` | `updateUserLimitPolicy` | `total` (1–`APP_LIMIT_COUNT`, or `null`) |
 | `membership-privacy` | `updateMembershipPrivacyPolicy` | `userId`, `userEmail`, `userPhone`, `userName`, `userMFA` (all bool, all optional) |
+| `deny-aliased-email` | `updateDenyAliasedEmailPolicy` | `enabled` |
+| `deny-disposable-email` | `updateDenyDisposableEmailPolicy` | `enabled` |
+| `deny-free-email` | `updateDenyFreeEmailPolicy` | `enabled` |
 
 {% info title="Required scopes" %}
 The API key used for these calls needs `project.policies.read` to list or fetch policies, and `project.policies.write` to update them.
@@ -925,6 +929,277 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```bash
 appwrite project update-password-history-policy \
     --total 5
+```
+{% /multicode %}
+
+# Update password strength policy {% #update-password-strength-policy %}
+
+Set the minimum password length and which character types new passwords must contain. Each field is optional, and any field you omit keeps its current value.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updatePasswordStrengthPolicy({
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updatePasswordStrengthPolicy({
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updatePasswordStrengthPolicy(
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_password_strength_policy(
+    min = 8,
+    uppercase = True,
+    lowercase = True,
+    number = True,
+    symbols = True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_password_strength_policy(
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdatePasswordStrengthPolicy(
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updatePasswordStrengthPolicy(
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.updatePasswordStrengthPolicy(
+    min = 8,
+    uppercase = true,
+    lowercase = true,
+    number = true,
+    symbols = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updatePasswordStrengthPolicy(
+    8, // min
+    true, // uppercase
+    true, // lowercase
+    true, // number
+    true, // symbols
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updatePasswordStrengthPolicy(
+    min: 8,
+    uppercase: true,
+    lowercase: true,
+    number: true,
+    symbols: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+    "github.com/appwrite/sdk-for-go/project"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.UpdatePasswordStrengthPolicy(
+        project.WithUpdatePasswordStrengthPolicyMin(8),
+        project.WithUpdatePasswordStrengthPolicyUppercase(true),
+        project.WithUpdatePasswordStrengthPolicyLowercase(true),
+        project.WithUpdatePasswordStrengthPolicyNumber(true),
+        project.WithUpdatePasswordStrengthPolicySymbols(true),
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_password_strength_policy(
+        Some(8),
+        Some(true),
+        Some(true),
+        Some(true),
+        Some(true),
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project update-password-strength-policy \
+    --min 8 \
+    --uppercase true \
+    --lowercase true \
+    --number true \
+    --symbols true
 ```
 {% /multicode %}
 
@@ -2480,6 +2755,648 @@ appwrite project update-membership-privacy-policy \
     --user-phone false \
     --user-name true \
     --user-mfa false
+```
+{% /multicode %}
+
+# Update deny aliased email policy {% #update-deny-aliased-email-policy %}
+
+When enabled, aliased emails such as subaddresses and emails with a suffix are rejected during new sign-ups and email updates.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyAliasedEmailPolicy({
+    enabled: true
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyAliasedEmailPolicy({
+    enabled: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateDenyAliasedEmailPolicy(
+    enabled: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_deny_aliased_email_policy(
+    enabled = True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_deny_aliased_email_policy(
+    enabled: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateDenyAliasedEmailPolicy(
+    enabled: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateDenyAliasedEmailPolicy(
+    enabled: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.updateDenyAliasedEmailPolicy(
+    enabled = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateDenyAliasedEmailPolicy(
+    true, // enabled
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateDenyAliasedEmailPolicy(
+    enabled: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.UpdateDenyAliasedEmailPolicy(true)
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_deny_aliased_email_policy(true).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project update-deny-aliased-email-policy \
+    --enabled true
+```
+{% /multicode %}
+
+# Update deny disposable email policy {% #update-deny-disposable-email-policy %}
+
+When enabled, disposable emails from known temporary domains are rejected during new sign-ups and email updates.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyDisposableEmailPolicy({
+    enabled: true
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyDisposableEmailPolicy({
+    enabled: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateDenyDisposableEmailPolicy(
+    enabled: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_deny_disposable_email_policy(
+    enabled = True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_deny_disposable_email_policy(
+    enabled: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateDenyDisposableEmailPolicy(
+    enabled: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateDenyDisposableEmailPolicy(
+    enabled: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.updateDenyDisposableEmailPolicy(
+    enabled = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateDenyDisposableEmailPolicy(
+    true, // enabled
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateDenyDisposableEmailPolicy(
+    enabled: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.UpdateDenyDisposableEmailPolicy(true)
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_deny_disposable_email_policy(true).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project update-deny-disposable-email-policy \
+    --enabled true
+```
+{% /multicode %}
+
+# Update deny free email policy {% #update-deny-free-email-policy %}
+
+When enabled, emails from free providers such as Gmail or Yahoo are rejected during new sign-ups and email updates.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyFreeEmailPolicy({
+    enabled: true
+});
+```
+```server-deno
+import { Client, Project } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.updateDenyFreeEmailPolicy({
+    enabled: true
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->updateDenyFreeEmailPolicy(
+    enabled: true
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.update_deny_free_email_policy(
+    enabled = True
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.update_deny_free_email_policy(
+    enabled: true
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.UpdateDenyFreeEmailPolicy(
+    enabled: true
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.updateDenyFreeEmailPolicy(
+    enabled: true,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val response = project.updateDenyFreeEmailPolicy(
+    enabled = true
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.updateDenyFreeEmailPolicy(
+    true, // enabled
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.updateDenyFreeEmailPolicy(
+    enabled: true
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := appwrite.NewProject(client)
+    result, err := service.UpdateDenyFreeEmailPolicy(true)
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.update_deny_free_email_policy(true).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+```bash
+appwrite project update-deny-free-email-policy \
+    --enabled true
 ```
 {% /multicode %}
 
