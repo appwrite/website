@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Appwrite React library"
 description: A small set of React hooks and SSR adapters that take the busywork out of wiring Appwrite Auth into Vite, Next.js, and TanStack Start apps.
-date: 2026-05-25
+date: 2026-06-24
 cover: /images/blog/announcing-appwrite-react-library/cover.avif
 timeToRead: 5
 author: atharva

@@ -34,7 +34,7 @@ Client libraries for integrating with Appwrite to build client-based application
 {% only_light %}{% icon_image src="/images/platforms/light/react.svg" alt="React logo" size="m" /%}{% /only_light %}
 * React library `0.1.0`
 * [appwrite/sdk-for-react](https://github.com/appwrite/sdk-for-react)
-*
+* `beta`
 ---
 * {% only_dark %}{% icon_image src="/images/platforms/dark/react.svg" alt="React logo" size="m" /%}{% /only_dark %}
 {% only_light %}{% icon_image src="/images/platforms/light/react.svg" alt="React logo" size="m" /%}{% /only_light %}
