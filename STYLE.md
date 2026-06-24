@@ -51,6 +51,7 @@ APIs section:
 - [Events](https://appwrite.io/docs/apis/events)
 - [Webhooks](https://appwrite.io/docs/apis/webhooks)
 - [Response codes](https://appwrite.io/docs/apis/response-codes)
+- [Release policy](https://appwrite.io/docs/apis/release-policy)
 - [Error handling](https://appwrite.io/docs/apis/error-handling)
 
 Tooling section:
@@ -65,7 +66,6 @@ Advanced section:
 - [Migrations](https://appwrite.io/docs/advanced/migrations)
 - [Self-hosting](https://appwrite.io/docs/advanced/self-hosting)
 - [Security](https://appwrite.io/docs/advanced/security)
-- [Release policy](https://appwrite.io/docs/advanced/release-policy)
 
 Here's the intended purpose and structure of each section.
 

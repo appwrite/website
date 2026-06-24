@@ -998,7 +998,11 @@
     },
     {
         "link": "/docs/advanced/platform/release-policy",
-        "redirect": "/docs/advanced/release-policy"
+        "redirect": "/docs/apis/release-policy"
+    },
+    {
+        "link": "/docs/advanced/release-policy",
+        "redirect": "/docs/apis/release-policy"
     },
     {
         "link": "/docs/advanced/platform/permissions",
