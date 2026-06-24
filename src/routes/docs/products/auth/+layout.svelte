@@ -60,12 +60,21 @@
                     new: isNewUntil('30 June 2026')
                 },
                 {
+                    label: 'Message templates',
+                    href: '/docs/products/auth/message-templates'
+                },
+                {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
                 },
                 {
                     label: 'Identities',
                     href: '/docs/products/auth/identities'
+                },
+                {
+                    label: 'Presences',
+                    href: '/docs/products/auth/presences',
+                    new: isNewUntil('31 Aug 2026')
                 }
             ]
         },
