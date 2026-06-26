@@ -116,9 +116,9 @@ CI/CD is the practice of automating the path from code to production, combining 
 
 # Start building
 
-Appwrite is open-source, self-hostable, and built for developers who want to ship fast without surrendering control. Recent releases have added [MongoDB support, Appwrite 1.9.0, realtime upgrades, and new AI tooling](https://dev.to/appwrite/april-product-update-mongodb-support-appwrite-190-realtime-upgrades-and-ai-tooling-1eg6), with [more landing every few weeks](https://dev.to/appwrite/may-product-update-presences-api-rust-runtime-7x-faster-storage-uploads-and-more-9h5). We post weekly roundups of product announcements, AI updates, and [developer insights](https://dev.to/appwrite/weekly-roundup-presences-api-git-deployment-triggers-and-ai-updates-58lj) on the [Appwrite blog](https://appwrite.io/blog) and across our developer channels, so follow along wherever you read.
+Appwrite is open-source, self-hostable, and built for developers who want to ship fast without surrendering control.  
 
-Whether you are prototyping your next idea or scaling a production app, Appwrite gives you auth, databases, storage, functions, and real-time in one place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
+Whether you are prototyping your next idea or scaling a production app, Appwrite gives you Auth, Databases, Storage, Sites, Functions, and Realtime in one open-source platform. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
 
 ## Resources
 
