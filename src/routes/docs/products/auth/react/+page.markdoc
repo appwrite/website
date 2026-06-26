@@ -125,8 +125,8 @@ const { emailPassword, oAuth, isPending, error } = useSignIn();
 | `isPending` | `boolean` | True while an email and password sign-in is in flight. |
 | `error` | `Error \| null` | Error from the last email and password sign-in attempt. |
 
-### Email and password {% #use-sign-in-email-password %}
-
+{% tabs %}
+{% tabsitem #use-sign-in-email-password title="Email and password" %}
 ```tsx
 emailPassword({ email, password, onSuccess, onError });
 ```
@@ -137,9 +137,9 @@ emailPassword({ email, password, onSuccess, onError });
 | `password` | Yes | User's password. |
 | `onSuccess` | No | Callback invoked with the signed-in user. |
 | `onError` | No | Callback invoked with the thrown error. |
+{% /tabsitem %}
 
-### OAuth {% #use-sign-in-oauth %}
-
+{% tabsitem #use-sign-in-oauth title="OAuth" %}
 ```tsx
 oAuth({ provider: OAuthProvider.Google, successUrl, failureUrl, scopes });
 ```
@@ -153,6 +153,8 @@ oAuth({ provider: OAuthProvider.Google, successUrl, failureUrl, scopes });
 | `onError` | No | Callback invoked if the request fails before redirect. |
 
 In SSR mode, the success URL is fixed to the handler callback. The final redirect after that callback is controlled by the `redirects.success` config on the handler.
+{% /tabsitem %}
+{% /tabs %}
 
 ## useSignUp {% #use-sign-up %}
 
