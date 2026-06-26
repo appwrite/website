@@ -5,7 +5,24 @@ import {
 } from '$env/static/public';
 import { databases } from '$lib/appwrite';
 import { Query } from '@appwrite.io/console';
-import type { DiscordMessage, DiscordThread } from './types';
+import type { DiscordAuthor, DiscordMessage, DiscordThread } from './types';
+
+export async function getAuthor(discordId: string) {
+    return (await databases.getDocument(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        'authors',
+        discordId
+    )) as unknown as DiscordAuthor;
+}
+
+export async function getAuthorThreads(authorId: string) {
+    const data = await databases.listDocuments(
+        PUBLIC_APPWRITE_DB_MAIN_ID,
+        PUBLIC_APPWRITE_COL_THREADS_ID,
+        [Query.equal('author_id', authorId), Query.orderDesc('$createdAt'), Query.limit(25)]
+    );
+    return { threads: data.documents as unknown as DiscordThread[], total: data.total };
+}
 
 type Ranked<T> = {
     data: T;
@@ -74,10 +91,17 @@ export function filterThreads({ q, threads: threadDocs, tags, allTags }: FilterT
     return res.sort((a, b) => b.rank - a.rank).map(({ data }) => data);
 }
 
-type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'>;
+const THREADS_PAGE_SIZE = 25;
 
-export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
-    let query = [q ? Query.search('search_meta', q) : undefined, Query.orderDesc('$createdAt')];
+type GetThreadsArgs = Omit<FilterThreadsArgs, 'threads'> & { cursor?: string };
+
+export async function getThreads({ q, tags, allTags, cursor }: GetThreadsArgs) {
+    let query = [
+        q ? Query.search('search_meta', q) : undefined,
+        Query.orderDesc('$createdAt'),
+        Query.limit(THREADS_PAGE_SIZE),
+        cursor ? Query.cursorAfter(cursor) : undefined
+    ];
 
     tags = tags?.filter(Boolean).map((tag) => tag) ?? [];
     if (tags.length > 0) {
@@ -91,7 +115,11 @@ export async function getThreads({ q, tags, allTags }: GetThreadsArgs) {
     );
 
     const threadDocs = data.documents as unknown as DiscordThread[];
-    return filterThreads({ threads: threadDocs, q, tags, allTags });
+    const filtered = filterThreads({ threads: threadDocs, q, tags, allTags });
+    const hasMore = data.documents.length === THREADS_PAGE_SIZE;
+    const nextCursor = hasMore ? data.documents[data.documents.length - 1].$id : undefined;
+
+    return { threads: filtered, hasMore, nextCursor, total: data.total };
 }
 
 export async function getThread($id: string) {
@@ -104,9 +132,8 @@ export async function getThread($id: string) {
 
 export async function getRelatedThreads(thread: DiscordThread, limit: number = 3) {
     const tags = thread.tags?.filter(Boolean) ?? [];
-    const relatedThreads = await getThreads({ q: null, tags, allTags: false });
-
-    return relatedThreads.filter(({ $id }) => $id !== thread.$id).slice(0, limit);
+    const { threads } = await getThreads({ q: null, tags, allTags: false });
+    return threads.filter(({ $id }) => $id !== thread.$id).slice(0, limit);
 }
 
 export async function getThreadMessages(threadId: string) {

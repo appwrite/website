@@ -24,6 +24,14 @@ requiring authentication and authorization through multi-factor authentication (
 
 Appwrite safeguards personal information to the same extent it protects its own, complying with relevant privacy laws and regulations in the jurisdictions where its services are offered.
 
+## Appwrite as a Business Associate
+
+Appwrite serves as a business associate to customers that meet the definition of a [covered entity](https://www.hhs.gov/hipaa/for-professionals/covered-entities/index.html) under HIPAA, such as health plans and healthcare providers. A business associate performs certain functions or services that involve the use or disclosure of PHI on behalf of a covered entity. Covered entities may be required to enter into a Business Associate Agreement (BAA) with business associates to meet their HIPAA requirements.
+
+For Enterprise customers subject to HIPAA and processing PHI within their applications, Appwrite will sign a BAA. To request Appwrite's BAA, please [contact us](/contact-us).
+
+For Pro customers, the BAA is a click-through agreement that is not signed. An organization owner can enable it directly from the Appwrite Console: open your organization's **Settings** tab, find the **BAA** section, select **Enable BAA**, then review the agreement and select **Accept & Enable**. The BAA is a paid add-on billed to your organization and prorated for your current billing cycle. You can review the agreement on the [Business Associate Agreement](/legal/baa) page.
+
 ## Data retention
 
 Appwrite gives you full control over your data lifecycle. By default, Appwrite stores user and project data until you explicitly delete it. There's no automatic purging or TTL unless you configure it that way in your application logic or functions.

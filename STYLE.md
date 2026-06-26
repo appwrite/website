@@ -48,6 +48,11 @@ APIs section:
 - [GraphQL](https://appwrite.io/docs/apis/graphql)
 - [REST](https://appwrite.io/docs/apis/rest)
 - [Realtime](https://appwrite.io/docs/apis/realtime)
+- [Events](https://appwrite.io/docs/apis/events)
+- [Webhooks](https://appwrite.io/docs/apis/webhooks)
+- [Response codes](https://appwrite.io/docs/apis/response-codes)
+- [Release policy](https://appwrite.io/docs/apis/release-policy)
+- [Error handling](https://appwrite.io/docs/apis/error-handling)
 
 Tooling section:
 
@@ -57,7 +62,7 @@ Tooling section:
 
 Advanced section:
 
-- [Platform](https://appwrite.io/docs/advanced/platform)
+- [Billing](https://appwrite.io/docs/advanced/billing)
 - [Migrations](https://appwrite.io/docs/advanced/migrations)
 - [Self-hosting](https://appwrite.io/docs/advanced/self-hosting)
 - [Security](https://appwrite.io/docs/advanced/security)
@@ -214,7 +219,7 @@ Split content such that each piece makes sense without reading dependents or exp
 - [ ] Point Cloud to new version in [src/routes/docs/references/[version]/[platform]/[service]/+page.server.ts](src/routes/docs/references/[version]/[platform]/[service]/+page.server.ts)
 - [ ] Update install command in [/workspaces/website/src/routes/docs/advanced/self-hosting/+page.markdoc](/workspaces/website/src/routes/docs/advanced/self-hosting/+page.markdoc)
 - [ ] Update events [src/partials/[product]-events.md](src/partials/)
-- [ ] Update response code [src/routes/docs/advanced/platform/response-codes/+page.markdoc](src/routes/docs/advanced/platform/response-codes/+page.markdoc)
+- [ ] Update response code [src/routes/docs/apis/response-codes/+page.markdoc](src/routes/docs/apis/response-codes/+page.markdoc)
 - [ ] Bump latest SDK versions in SDKs page, quick start, and tutorials
 - [ ] Create new sections for new products
 - [ ] Create new concept and journey pages for new features

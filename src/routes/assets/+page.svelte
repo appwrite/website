@@ -144,7 +144,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logotype/white.avif"
+                                                href="/assets/logotype/white.png"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -172,7 +172,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logotype/black.avif"
+                                                href="/assets/logotype/black.png"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -241,7 +241,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logomark/logo.avif"
+                                                href="/assets/logomark/logo.png"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -269,7 +269,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/logomark/logo.avif"
+                                                href="/assets/logomark/logo.png"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -364,13 +364,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/dashboard.avif"
+                                            src="/assets/visuals/dashboard.png"
                                             alt="Dashboard"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/dashboard.avif"
+                                                href="/assets/visuals/dashboard.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -378,7 +378,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/dashboard.avif'}
+                                                href={'/assets/visuals/dashboard.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -389,13 +389,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/auth.avif"
+                                            src="/assets/visuals/auth.png"
                                             alt="Appwrite Auth"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/auth.avif"
+                                                href="/assets/visuals/auth.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -403,7 +403,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/auth.avif'}
+                                                href={'/assets/visuals/auth.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -414,13 +414,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/databases.avif"
+                                            src="/assets/visuals/databases.png"
                                             alt="Appwrite Databases"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/databases.avif"
+                                                href="/assets/visuals/databases.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -428,7 +428,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/databases.avif'}
+                                                href={'/assets/visuals/databases.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -440,13 +440,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/storage.avif"
+                                            src="/assets/visuals/storage.png"
                                             alt="Appwrite Storage"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/storage.avif"
+                                                href="/assets/visuals/storage.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -454,7 +454,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/storage.avif'}
+                                                href={'/assets/visuals/storage.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -466,13 +466,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/functions.avif"
+                                            src="/assets/visuals/functions.png"
                                             alt="Appwrite Functions"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/functions.avif"
+                                                href="/assets/visuals/functions.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -480,7 +480,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/functions.avif'}
+                                                href={'/assets/visuals/functions.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -491,13 +491,13 @@
                                     <div class="media-wrapper">
                                         <img
                                             class="web-u-border-radius-8 web-u-media-ratio-16-9 w-full"
-                                            src="/assets/visuals/messaging.avif"
+                                            src="/assets/visuals/messaging.png"
                                             alt="Appwrite Messaging"
                                         />
                                         <div class="buttons visuals">
                                             <Button
                                                 variant="secondary"
-                                                href="/assets/visuals/messaging.avif"
+                                                href="/assets/visuals/messaging.jpg"
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
@@ -505,7 +505,7 @@
                                             </Button>
                                             <Button
                                                 variant="secondary"
-                                                href={'/assets/visuals/messaging.avif'}
+                                                href={'/assets/visuals/messaging.png'}
                                                 download
                                             >
                                                 <Icon name="download" aria-label="download" />
