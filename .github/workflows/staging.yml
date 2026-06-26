@@ -69,6 +69,9 @@ jobs:
     deploy:
         needs: build
         runs-on: ubuntu-latest
+        concurrency:
+            group: declarative-deploy-website
+            cancel-in-progress: false
         steps:
             - name: Get token for ${{ env.DECLARATIVE_REPOSITORY }}
               id: app-token
