@@ -36,7 +36,8 @@ export async function processMarkdownWithPartials(content: string): Promise<stri
 
                 const partialContent = await readFile(partialPath, 'utf-8');
                 partialsCache.set(partialFile, partialContent);
-            } catch {
+            } catch (error) {
+                console.error('An error occured while loading partial', error);
                 console.warn(`Partial not found: ${partialFile}`);
                 partialsCache.set(partialFile, '');
             }
