@@ -146,7 +146,7 @@ services:
       - appwrite
 
   appwrite:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     container_name: appwrite
     <<: *x-logging
     restart: unless-stopped
@@ -290,7 +290,7 @@ services:
   appwrite-console:
     <<: *x-logging
     container_name: appwrite-console
-    image: appwrite/console:7.8.26
+    image: appwrite/console:8.7.5
     restart: unless-stopped
     networks:
       - appwrite
@@ -310,7 +310,7 @@ services:
       - traefik.http.routers.appwrite_console_https.tls=true
 
   appwrite-realtime:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: realtime
     container_name: appwrite-realtime
     <<: *x-logging
@@ -356,7 +356,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-audits:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-audits
     <<: *x-logging
     container_name: appwrite-worker-audits
@@ -385,7 +385,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-webhooks:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-webhooks
     <<: *x-logging
     container_name: appwrite-worker-webhooks
@@ -416,7 +416,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-deletes:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-deletes
     <<: *x-logging
     container_name: appwrite-worker-deletes
@@ -482,7 +482,7 @@ services:
       - _APP_EMAIL_CERTIFICATES
 
   appwrite-worker-databases:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-databases
     <<: *x-logging
     container_name: appwrite-worker-databases
@@ -511,7 +511,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-builds:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-builds
     <<: *x-logging
     container_name: appwrite-worker-builds
@@ -554,6 +554,7 @@ services:
       - _APP_COMPUTE_CPUS
       - _APP_COMPUTE_MEMORY
       - _APP_COMPUTE_SIZE_LIMIT
+      - _APP_OPEN_RUNTIMES_NFT
       - _APP_OPTIONS_FORCE_HTTPS
       - _APP_OPTIONS_ROUTER_FORCE_HTTPS
       - _APP_DOMAIN
@@ -582,7 +583,7 @@ services:
       - _APP_DOMAIN_SITES
 
   appwrite-worker-certificates:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-certificates
     <<: *x-logging
     container_name: appwrite-worker-certificates
@@ -621,8 +622,36 @@ services:
       - _APP_DB_PASS
       - _APP_LOGGING_CONFIG
 
+  appwrite-worker-executions:
+    image: appwrite/appwrite:1.9.5
+    entrypoint: worker-executions
+    <<: *x-logging
+    container_name: appwrite-worker-executions
+    restart: unless-stopped
+    networks:
+      - appwrite
+    depends_on:
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
+    environment:
+      - _APP_ENV
+      - _APP_WORKER_PER_CORE
+      - _APP_REDIS_HOST
+      - _APP_REDIS_PORT
+      - _APP_REDIS_USER
+      - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
+      - _APP_DB_HOST
+      - _APP_DB_PORT
+      - _APP_DB_SCHEMA
+      - _APP_DB_USER
+      - _APP_DB_PASS
+      - _APP_LOGGING_CONFIG
+
   appwrite-worker-functions:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-functions
     <<: *x-logging
     container_name: appwrite-worker-functions
@@ -665,7 +694,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-mails:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-mails
     <<: *x-logging
     container_name: appwrite-worker-mails
@@ -703,7 +732,7 @@ services:
       - _APP_OPTIONS_FORCE_HTTPS
 
   appwrite-worker-messaging:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-messaging
     <<: *x-logging
     container_name: appwrite-worker-messaging
@@ -758,7 +787,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-migrations:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-migrations
     <<: *x-logging
     container_name: appwrite-worker-migrations
@@ -796,7 +825,7 @@ services:
       - _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET
 
   appwrite-task-maintenance:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: maintenance
     <<: *x-logging
     container_name: appwrite-task-maintenance
@@ -839,7 +868,7 @@ services:
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
 
   appwrite-task-stats-resources:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     container_name: appwrite-task-stats-resources
     entrypoint: stats-resources
     <<: *x-logging
@@ -871,7 +900,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-resources:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-stats-resources
     container_name: appwrite-worker-stats-resources
     <<: *x-logging
@@ -902,7 +931,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-usage:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: worker-stats-usage
     container_name: appwrite-worker-stats-usage
     <<: *x-logging
@@ -933,7 +962,7 @@ services:
       - _APP_USAGE_AGGREGATION_INTERVAL
 
   appwrite-task-scheduler-functions:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: schedule-functions
     container_name: appwrite-task-scheduler-functions
     <<: *x-logging
@@ -949,6 +978,7 @@ services:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_MIGRATION_HOST
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -961,7 +991,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-executions:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: schedule-executions
     container_name: appwrite-task-scheduler-executions
     <<: *x-logging
@@ -977,6 +1007,7 @@ services:
       - _APP_ENV
       - _APP_WORKER_PER_CORE
       - _APP_OPENSSL_KEY_V1
+      - _APP_MIGRATION_HOST
       - _APP_REDIS_HOST
       - _APP_REDIS_PORT
       - _APP_REDIS_USER
@@ -989,7 +1020,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-messages:
-    image: appwrite/appwrite:1.9.0
+    image: appwrite/appwrite:1.9.5
     entrypoint: schedule-messages
     container_name: appwrite-task-scheduler-messages
     <<: *x-logging
@@ -1026,12 +1057,12 @@ __ASSISTANT_BLOCK__
       - appwrite
 
   openruntimes-executor:
-    container_name: openruntimes-executor
+    container_name: exc1
     hostname: exc1
     <<: *x-logging
     restart: unless-stopped
     stop_signal: SIGINT
-    image: openruntimes/executor:0.7.22
+    image: openruntimes/executor:0.25.1
     networks:
       - appwrite
       - runtimes
@@ -1053,6 +1084,7 @@ __ASSISTANT_BLOCK__
       - OPR_EXECUTOR_RUNTIMES=$_APP_FUNCTIONS_RUNTIMES,$_APP_SITES_RUNTIMES
       - OPR_EXECUTOR_SECRET=$_APP_EXECUTOR_SECRET
       - OPR_EXECUTOR_RUNTIME_VERSIONS=v5
+      - OPEN_RUNTIMES_NFT=$_APP_OPEN_RUNTIMES_NFT
       - OPR_EXECUTOR_LOGGING_CONFIG=$_APP_LOGGING_CONFIG
       - OPR_EXECUTOR_STORAGE_DEVICE=$_APP_STORAGE_DEVICE
       - OPR_EXECUTOR_STORAGE_S3_ACCESS_KEY=$_APP_STORAGE_S3_ACCESS_KEY
@@ -1240,6 +1272,7 @@ _APP_EXECUTOR_RUNTIME_NETWORK=appwrite_runtimes
 _APP_FUNCTIONS_ENVS=node-16.0,php-7.4,python-3.9,ruby-3.0
 _APP_FUNCTIONS_INACTIVE_THRESHOLD=60
 _APP_COMPUTE_INACTIVE_THRESHOLD=60
+_APP_OPEN_RUNTIMES_NFT=enabled
 DOCKERHUB_PULL_USERNAME=
 DOCKERHUB_PULL_PASSWORD=
 DOCKERHUB_PULL_EMAIL=
@@ -1272,6 +1305,7 @@ _APP_GRAPHQL_INTROSPECTION=enabled
 _APP_GRAPHQL_MAX_BATCH_SIZE=10
 _APP_GRAPHQL_MAX_COMPLEXITY=250
 _APP_GRAPHQL_MAX_DEPTH=3
+_APP_MIGRATION_HOST=appwrite
 _APP_MIGRATIONS_FIREBASE_CLIENT_ID=
 _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET=
 _APP_ASSISTANT_OPENAI_API_KEY=__ASSISTANT_KEY__
