@@ -6,28 +6,27 @@ on:
     workflow_dispatch:
 
 env:
-    ENVIRONMENT: production
-    PROJECT: website
-    DECLARATIVE_OWNER: appwrite-labs
-    DECLARATIVE_REPOSITORY: assets-applications
     TAG: ${{ github.event.release.tag_name || github.sha }}
+    STACK_FILE: docker/production.yml
+    REPOSITORY: website
+    REGISTRY_USERNAME: christyjacob4
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout the repo
-              uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+              uses: actions/checkout@v4
 
             - name: Login to DockerHub
-              uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+              uses: docker/login-action@v3
               with:
                   registry: ghcr.io
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Build and push
-              uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+              uses: docker/build-push-action@v6
               with:
                   context: .
                   push: true
@@ -50,40 +49,49 @@ jobs:
                       "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
                       "SENTRY_RELEASE=${{ github.event.release.tag_name }}"
 
-    deploy:
+    deploy_kubernetes:
         if: github.event_name != 'release' || !contains(github.event.release.tag_name, '-rc')
+        strategy:
+            matrix:
+                region: [{ full: fra1, short: fra }]
         needs: build
         runs-on: ubuntu-latest
-        concurrency:
-            group: declarative-deploy-website
-            cancel-in-progress: false
         steps:
-            - name: Get token for ${{ env.DECLARATIVE_REPOSITORY }}
-              id: app-token
-              uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
+            - name: Checkout the repo
+              uses: actions/checkout@v4
+            - name: Install Kubectl
+              uses: azure/setup-kubectl@v4
+            - name: Install Helm
+              uses: azure/setup-helm@v4
+            - name: Install doctl
+              uses: digitalocean/action-doctl@v2
               with:
-                  app-id: ${{ vars.DECLARATIVE_DEPLOYMENT_GITHUB_APP_ID }}
-                  private-key: ${{ secrets.DECLARATIVE_DEPLOYMENT_GITHUB_APP_PRIVATE_KEY }}
-                  owner: ${{ env.DECLARATIVE_OWNER }}
-                  repositories: ${{ env.DECLARATIVE_REPOSITORY }}
+                  token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+            - name: Save DigitalOcean kubeconfig with short-lived credentials
+              run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 assets-${{ matrix.region.full }}-prod
 
-            - name: Checkout ${{ env.DECLARATIVE_REPOSITORY }}
-              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-              with:
-                  repository: ${{ env.DECLARATIVE_OWNER }}/${{ env.DECLARATIVE_REPOSITORY }}
-                  token: ${{ steps.app-token.outputs.token }}
-
-            - name: Update image tag
-              run: yq -i '.website.image.tag = strenv(TAG)' ${{ env.ENVIRONMENT }}/${{ env.PROJECT }}/default.yaml
-
-            - name: Commit and push
+            - name: Ensure namespaces exist
               run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add ${{ env.ENVIRONMENT }}/${{ env.PROJECT }}/default.yaml
-                  if git diff --cached --quiet; then
-                    echo "No changes to commit"
-                  else
-                    git commit -m "chore(${{ env.ENVIRONMENT }}): ${{ env.PROJECT }} image tag to ${{ env.TAG }}"
-                    git push
-                  fi
+                  kubectl create namespace website --dry-run=client -o yaml | kubectl apply -f -
+
+            - name: Create docker pull secret
+              run: |
+                  kubectl -n website create secret docker-registry ghcr \
+                    --docker-server=ghcr.io \
+                    --docker-username=${{ secrets.GHCR_USERNAME }} \
+                    --docker-password=${{ secrets.GHCR_TOKEN }} \
+                    --docker-email=ci@appwrite.io \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
+            - name: Create app secrets
+              run: |
+                  kubectl -n website create secret generic website-secrets \
+                    --from-literal=STATSIG_SERVER_SECRET='${{ secrets.STATSIG_SERVER_SECRET }}' \
+                    --dry-run=client -o yaml | kubectl apply -f -
+
+            - name: Deploy
+              run: |
+                  helm upgrade --install --namespace website website deploy/website/ \
+                    --values deploy/website/environments/production/${{ matrix.region.full }}.values.yaml \
+                    --set imagePullSecret='ghcr' \
+                    --set version=${{ env.TAG }}
