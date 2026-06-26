@@ -114,6 +114,11 @@
                     href: '/docs/products/auth/server-side-rendering'
                 },
                 {
+                    label: 'React library',
+                    href: '/docs/products/auth/react',
+                    new: isNewUntil('30 June 2026')
+                },
+                {
                     label: 'Custom token login',
                     href: '/docs/products/auth/custom-token'
                 },
