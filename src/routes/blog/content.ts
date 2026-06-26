@@ -81,6 +81,11 @@ export const posts = Object.entries(postsGlob)
         return b.date.getTime() - a.date.getTime();
     });
 
+// Posts visible to the public. Drafts are excluded everywhere except their own
+// direct URL: the /blog/post/<slug> route still renders a draft (and emits a
+// noindex meta via Post.svelte), but it never appears in any listing or feed.
+export const publishedPosts = posts.filter((post) => !post.draft);
+
 export const authors = Object.values(authorsGlob).map((authorList) => {
     const { frontmatter } = authorList as {
         frontmatter: AuthorData;
@@ -115,12 +120,14 @@ export const normalizeCategory = (str: string) => str?.replace(/\s+/g, '-').toLo
 
 export const getBlogEntries = () => {
     const filteredCategories = categories.filter((category) =>
-        posts.some((post) => normalizeCategory(post.category) === normalizeCategory(category.name))
+        publishedPosts.some(
+            (post) => normalizeCategory(post.category) === normalizeCategory(category.name)
+        )
     );
 
     return {
         authors,
         filteredCategories,
-        posts: posts.filter((post) => !post.unlisted)
+        posts: publishedPosts.filter((post) => !post.unlisted)
     };
 };

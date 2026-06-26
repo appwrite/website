@@ -1,5 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { SPECIAL_PAGES } from '../llms-config';
+import { publishedPosts } from '../blog/content';
 
 export const prerender = true;
 
@@ -9,6 +10,11 @@ const markdocAndMarkdownFiles = import.meta.glob('$routes/**/*.{markdoc,md}', {
     import: 'default',
     eager: true
 });
+
+// Published (non-draft) blog post slugs — the single source of truth for what is public.
+const PUBLISHED_BLOG_SLUGS = new Set(
+    publishedPosts.map((p) => p.href.split('/blog/post/')[1]).filter(Boolean)
+);
 
 // Strip group directories like (marketing) from a route path
 function stripRouteGroups(routePath: string): string {
@@ -146,6 +152,12 @@ export const GET: RequestHandler = ({ request }) => {
             // Skip stub pages with no useful content
             if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
                 continue;
+            }
+
+            // Skip draft blog posts: only include published ones (single source of truth)
+            if (href.startsWith('/blog/post')) {
+                const slug = href.split('/blog/post/')[1]?.replace(/\/+$/, '');
+                if (!slug || !PUBLISHED_BLOG_SLUGS.has(slug)) continue;
             }
 
             const url = new URL(href, base).toString();
