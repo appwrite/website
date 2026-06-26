@@ -2,7 +2,7 @@
 layout: post
 title: "What is a database index? Types, examples, and when to use them"
 description: "A practical guide to database indexes: what they are, how they make queries fast, the index types you will see, when to add one, and when adding more hurts performance."
-date: 2026-05-29
+date: 2026-06-26
 cover: /images/blog/what-is-a-database-index/cover.avif
 timeToRead: 9
 author: atharva
