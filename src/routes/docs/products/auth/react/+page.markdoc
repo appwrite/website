@@ -67,7 +67,7 @@ In an SSR app, pass an `ssr` prop with the session secret read from the server-s
 </AppwriteProvider>
 ```
 
-When `ssr` is set, sign-in, sign-up, and sign-out mutations route through your handler. The underlying Web SDK is hydrated with the session secret on first render so authenticated reads do not need a round trip.
+When `ssr` is set, sign-in, sign-up, and sign-out mutations route through your handler. The underlying Web SDK is hydrated with the session secret on first render, so authenticated reads do not need a round trip.
 
 # Hooks {% #hooks %}
 
@@ -75,13 +75,13 @@ The library exports one combined hook and four focused mutation hooks. All hooks
 
 ## useAuth {% #use-auth %}
 
+The primary hook for most apps. It bundles the current user, loading and error state, and handles for sign-in, sign-up, and sign-out into a single return value.
+
 ```tsx
 import { useAuth } from "@appwrite.io/react";
 
 const { user, isLoading, error, refresh, signIn, signUp, signOut } = useAuth();
 ```
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -95,13 +95,13 @@ Returns:
 
 ## useUser {% #use-user %}
 
+Read-only access to the current authenticated user. Use it in components that only need to display user state and do not trigger auth mutations.
+
 ```tsx
 import { useUser } from "@appwrite.io/react";
 
 const { user, isLoading, error, refresh } = useUser();
 ```
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -112,14 +112,11 @@ Returns:
 
 ## useSignIn {% #use-sign-in %}
 
+Email and password and OAuth sign-in, with pending and error state scoped to the email and password flow.
+
 ```tsx
 const { emailPassword, oAuth, isPending, error } = useSignIn();
-
-emailPassword({ email, password, onSuccess, onError });
-oAuth({ provider: OAuthProvider.Google, successUrl, failureUrl, scopes });
 ```
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -128,7 +125,11 @@ Returns:
 | `isPending` | `boolean` | True while an email and password sign-in is in flight. |
 | `error` | `Error \| null` | Error from the last email and password sign-in attempt. |
 
-Parameters for `emailPassword`:
+### Email and password {% #use-sign-in-email-password %}
+
+```tsx
+emailPassword({ email, password, onSuccess, onError });
+```
 
 | Parameter | Required | Description |
 | --- | --- | --- |
@@ -137,7 +138,11 @@ Parameters for `emailPassword`:
 | `onSuccess` | No | Callback invoked with the signed-in user. |
 | `onError` | No | Callback invoked with the thrown error. |
 
-Parameters for `oAuth`:
+### OAuth {% #use-sign-in-oauth %}
+
+```tsx
+oAuth({ provider: OAuthProvider.Google, successUrl, failureUrl, scopes });
+```
 
 | Parameter | Required | Description |
 | --- | --- | --- |
@@ -147,17 +152,15 @@ Parameters for `oAuth`:
 | `scopes` | No | Provider-specific OAuth scopes to request. |
 | `onError` | No | Callback invoked if the request fails before redirect. |
 
-In SSR mode the success URL is fixed to the handler callback. The final redirect after that callback is controlled by the `redirects.success` config on the handler.
+In SSR mode, the success URL is fixed to the handler callback. The final redirect after that callback is controlled by the `redirects.success` config on the handler.
 
 ## useSignUp {% #use-sign-up %}
 
+Create an account and start a session in one call. The hook also surfaces pending and error state for the in-flight request.
+
 ```tsx
 const { emailPassword, isPending, error } = useSignUp();
-
-emailPassword({ email, password, name, userId, onSuccess, onError });
 ```
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -165,7 +168,11 @@ Returns:
 | `isPending` | `boolean` | True while the sign-up is in flight. |
 | `error` | `Error \| null` | Error from the last sign-up attempt. |
 
-Parameters for `emailPassword`:
+### Email and password {% #use-sign-up-email-password %}
+
+```tsx
+emailPassword({ email, password, name, userId, onSuccess, onError });
+```
 
 | Parameter | Required | Description |
 | --- | --- | --- |
@@ -178,13 +185,11 @@ Parameters for `emailPassword`:
 
 ## useSignOut {% #use-sign-out %}
 
+End the current session, drop cached auth queries, and reset the local Web SDK client.
+
 ```tsx
 const { signOut, isPending, error } = useSignOut();
-
-signOut({ onSuccess, onError });
 ```
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -192,7 +197,11 @@ Returns:
 | `isPending` | `boolean` | True while the sign-out is in flight. |
 | `error` | `Error \| null` | Error from the last sign-out attempt. |
 
-Parameters for `signOut`:
+### Sign out {% #use-sign-out-method %}
+
+```tsx
+signOut({ onSuccess, onError });
+```
 
 | Parameter | Required | Description |
 | --- | --- | --- |
@@ -203,15 +212,13 @@ After a successful sign-out, all cached auth queries are dropped and the local W
 
 ## useAppwrite {% #use-appwrite %}
 
+Escape hatch to the underlying provider context. Use it when you need direct access to a Web SDK service the higher-level hooks do not wrap (`tablesDB`, `storage`, `messaging`, `realtime`, and so on).
+
 ```tsx
 import { useAppwrite } from "@appwrite.io/react";
 
 const { client, account, tablesDB, storage, teams, ssr } = useAppwrite();
 ```
-
-Returns the underlying provider context with every Appwrite Web SDK service instance bound to the configured client. Use it when you need direct access to a service the higher-level hooks do not wrap (`tablesDB`, `storage`, `messaging`, `realtime`, and so on).
-
-Returns:
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -259,7 +266,7 @@ Both return an object with:
 
 ## Session client {% #session-client %}
 
-For per-request operations scoped to the current user (reading their data, calling APIs on their behalf) call `createSessionClient` from the framework helper. It returns a `node-appwrite` client already authenticated with the session cookie, ready to use in server components, loaders, and server functions.
+For per-request operations scoped to the current user (reading their data, calling APIs on their behalf), call `createSessionClient` from the framework helper. It returns a `node-appwrite` client already authenticated with the session cookie, ready to use in server components, loaders, and server functions.
 
 ```ts
 import { createNextServerHelpers } from "@appwrite.io/react/server/next";
@@ -278,7 +285,7 @@ if (session) {
 
 ## Admin client {% #admin-client %}
 
-For privileged operations (creating users, listing sessions, managing teams) call `createAdminClient` on the framework helper. Pass `apiKey` in the helper config to enable it, then call the method anywhere on the server. The returned object exposes every `node-appwrite` service: `account`, `users`, `tablesDB`, `storage`, `teams`, `functions`, `messaging`, and more.
+For privileged operations (creating users, listing sessions, managing teams), call `createAdminClient` on the framework helper. Pass `apiKey` in the helper config to enable it, then call the method anywhere on the server. The returned object exposes every `node-appwrite` service: `account`, `users`, `tablesDB`, `storage`, `teams`, `functions`, `messaging`, and more.
 
 ```ts
 import { createNextServerHelpers } from "@appwrite.io/react/server/next";
@@ -313,8 +320,8 @@ Never import any `@appwrite.io/react/server/*` module from client code: the entr
 
 The SSR mutations (`sign-in`, `sign-up`, `sign-out`, `oauth/callback`, `oauth/failure`) live behind a handler route you mount once per app. The handler reads the request, talks to Appwrite with the server API key, and writes the session cookie back.
 
-## Next.js {% #handler-next %}
-
+{% tabs %}
+{% tabsitem #handler-next title="Next.js" %}
 ```ts
 // app/api/appwrite/[...appwrite]/route.ts
 import { createAppwriteHandlers } from "@appwrite.io/react/handlers/next";
@@ -326,9 +333,9 @@ export const { GET, POST } = createAppwriteHandlers({
   basePath: "/api/appwrite",
 });
 ```
+{% /tabsitem %}
 
-## TanStack Start {% #handler-tanstack %}
-
+{% tabsitem #handler-tanstack title="TanStack Start" %}
 ```ts
 // src/routes/api/appwrite/$.ts
 import { createFileRoute } from "@tanstack/react-router";
@@ -345,6 +352,8 @@ export const Route = createFileRoute("/api/appwrite/$")({
   },
 });
 ```
+{% /tabsitem %}
+{% /tabs %}
 
 ## Cookie and redirect options {% #handler-options %}
 

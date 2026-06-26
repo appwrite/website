@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing the Appwrite React library"
 description: A small set of React hooks and SSR adapters that take the busywork out of wiring Appwrite Auth into Vite, Next.js, and TanStack Start apps.
-date: 2026-06-24
+date: 2026-06-26
 cover: /images/blog/announcing-appwrite-react-library/cover.avif
 timeToRead: 5
 author: atharva
@@ -16,8 +16,16 @@ faqs:
       answer: 'React 18 and React 19, on both client-rendered apps and SSR frameworks. Next.js 15+ and TanStack Start are supported out of the box.'
     - question: 'How does SSR auth work under the hood?'
       answer: 'You mount one handler route per framework. The handler creates sessions with a server API key and writes an HTTP-only cookie. On the server, helpers read the cookie and return the user; on the client, the same cookie hydrates the Web SDK so hooks return the user without an extra round trip.'
+    - question: 'Is the library production ready?'
+      answer: 'The first release ships as `beta`. The auth surface is stable and used internally, but the public API may receive small adjustments before `1.0`. Pin the version you install and watch the [changelog](https://github.com/appwrite/sdk-for-react/releases) for breaking changes.'
     - question: 'Does the library cover more than authentication?'
       answer: 'Not yet. The first release focuses on the auth surface (sign-up, sign-in, sign-out, OAuth, current user). Database and storage hooks are on the roadmap.'
+    - question: 'Does the library work with React Native?'
+      answer: 'No. React Native apps should keep using the dedicated [Appwrite React Native SDK](/docs/sdks), which is built around the platform''s native session and storage primitives. The React library targets web React, on both client-rendered and SSR frameworks.'
+    - question: 'How do I customize cookies and OAuth redirects?'
+      answer: 'The SSR handler accepts `cookieName`, `cookieOptions`, and `redirects.success` / `redirects.failure` options. You can rename the session cookie, scope it to a parent domain, or change where users land after a successful or failed OAuth flow. See the [handler options reference](/docs/products/auth/react#handler-options).'
+    - question: 'Does it support magic URL, phone, or other authentication methods?'
+      answer: 'The current hooks cover email and password sign-in, sign-up, sign-out, and OAuth. For magic URL, phone, anonymous, or JWT flows, drop down to the Web SDK via `useAppwrite().account` and call the method directly. More dedicated hooks are planned.'
     - question: 'Where do I start?'
       answer: 'Pick the framework you are using: [Vite React](/docs/quick-starts/react), [Next.js](/docs/quick-starts/nextjs), or [TanStack Start](/docs/quick-starts/tanstack-start). Each quickstart walks through install, configuration, and a working sign-up flow.'
 ---
