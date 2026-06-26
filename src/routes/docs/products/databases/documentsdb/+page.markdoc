@@ -1,0 +1,11 @@
+---
+layout: article
+title: DocumentsDB
+description: Store schemaless documents in collections with Appwrite DocumentsDB for flexible, JSON-style application data.
+---
+
+Appwrite DocumentsDB stores schemaless documents in collections, giving you flexible, JSON-style data without a fixed schema. It shares the same permissions, indexes, queries, transactions, and realtime concepts as the rest of Appwrite Databases.
+
+{% info title="Documentation in progress" %}
+Detailed DocumentsDB guides are on the way. For now, the concepts in [TablesDB](/docs/products/databases/tablesdb) are the closest reference.
+{% /info %}

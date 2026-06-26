@@ -1,0 +1,11 @@
+---
+layout: article
+title: PostgreSQL
+description: Run a dedicated, native PostgreSQL database provisioned for your project and connect to it directly with standard PostgreSQL clients.
+---
+
+Run a dedicated, native PostgreSQL database provisioned for your project. Connect to it directly with standard PostgreSQL clients and tools, with no Appwrite abstraction layer in between. Native databases are available on dedicated infrastructure.
+
+{% info title="Documentation in progress" %}
+Detailed PostgreSQL setup and connection guides are on the way.
+{% /info %}

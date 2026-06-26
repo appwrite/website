@@ -1,0 +1,11 @@
+---
+layout: article
+title: VectorsDB
+description: Store vector embeddings and run similarity search with Appwrite VectorsDB to power semantic search, recommendations, and other AI features.
+---
+
+Appwrite VectorsDB stores vector embeddings and runs similarity search, so you can build semantic search, recommendations, and other AI features. It also exposes an endpoint to generate text embeddings, and shares the permissions, indexes, transactions, and realtime concepts used across Appwrite Databases.
+
+{% info title="Documentation in progress" %}
+Detailed VectorsDB guides are on the way. For now, the concepts in [TablesDB](/docs/products/databases/tablesdb) are the closest reference.
+{% /info %}

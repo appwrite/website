@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Databases
-description: Store and query structured data with Appwrite Databases. Databases provide performant and scalable storage for your application, business, and user data.
+title: TablesDB
+description: Store and query structured data with Appwrite TablesDB. Tables provide performant and scalable storage for your application, business, and user data.
 ---
 
 Appwrite Databases let you store and query structured data. 
@@ -14,6 +14,6 @@ Databases store data, if you need to store files like images, PDFs or videos, us
 You can organize data into databases, tables, and rows. You can also paginate, order, and query rows.
 For complex business logic, Appwrite supports relationships to help you model your data.
 
-{% arrow_link href="/docs/products/databases/quick-start" %}
+{% arrow_link href="/docs/products/databases/tablesdb/quick-start" %}
 Quick start 
 {% /arrow_link %}

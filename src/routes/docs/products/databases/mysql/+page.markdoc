@@ -1,0 +1,11 @@
+---
+layout: article
+title: MySQL
+description: Run a dedicated, native MySQL database provisioned for your project and connect to it directly with standard MySQL clients.
+---
+
+Run a dedicated, native MySQL database provisioned for your project. Connect to it directly with standard MySQL clients and tools, with no Appwrite abstraction layer in between. Native databases are available on dedicated infrastructure.
+
+{% info title="Documentation in progress" %}
+Detailed MySQL setup and connection guides are on the way.
+{% /info %}
