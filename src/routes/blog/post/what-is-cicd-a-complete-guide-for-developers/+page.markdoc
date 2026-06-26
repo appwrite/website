@@ -70,19 +70,6 @@ A **CI/CD pipeline** is the automated sequence of steps that code passes through
 
 Each stage acts as a gate: if a step fails, the pipeline stops and the team is notified, so broken code never reaches users. Many pipelines also include extra stages for security scanning, performance checks, and approvals.
 
-# Continuous delivery vs continuous deployment: What's the difference?
-
-This is the most common point of confusion in CI/CD, so it's worth being precise. Both keep your software in a constantly releasable state. The only difference is the final step to production.
-
-| Aspect                | Continuous delivery            | Continuous deployment               |
-| --------------------- | ------------------------------ | ----------------------------------- |
-| Release to production | Manual approval                | Fully automatic                     |
-| Human gate            | Yes, a person clicks deploy    | No gate                             |
-| Confidence required   | High                           | Very high                           |
-| Best for              | Regulated or cautious releases | Fast-moving teams with strong tests |
-
-Many teams start with continuous delivery to keep a human in the loop, then move to continuous deployment as their test coverage and confidence grow.
-
 # Popular CI/CD tools
 
 A range of tools automate CI/CD pipelines, and most integrate directly with your code repository:
