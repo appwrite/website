@@ -10,7 +10,7 @@ env:
     PROJECT: website
     DECLARATIVE_OWNER: appwrite-labs
     DECLARATIVE_REPOSITORY: assets-applications
-    TAG: ${{ github.event.release.tag_name }}
+    TAG: ${{ github.event.release.tag_name || github.sha }}
 
 jobs:
     build:
