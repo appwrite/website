@@ -19,7 +19,7 @@ Most notably, this release includes:
 - Parallel chunk uploads for faster Storage uploads
 - Broader migration coverage for project settings, keys, and integrations
 
-Head over to our [migration guide](https://appwrite.io/docs/advanced/self-hosting/production/updates) to learn how you can upgrade your Appwrite instance. Please run the [migrate command](https://appwrite.io/docs/advanced/self-hosting/production/updates#running-the-migration) even if upgrading from 1.9.0.
+Head over to our [migration guide](https://appwrite.io/docs/advanced/self-hosting/production/updates) to learn how you can upgrade your Appwrite instance. Please run the [migrate command](https://appwrite.io/docs/advanced/self-hosting/production/updates#running-the-migration) even if you are upgrading from 1.9.0.
 
 For the complete list of updates and fixes, check out the [release notes](https://github.com/appwrite/appwrite/releases/tag/1.9.5) on GitHub.
 
