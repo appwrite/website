@@ -3,6 +3,7 @@ layout: post
 title: Build an offline-first journal app with RxDB and Appwrite
 description: Learn how you can use RxDB to setup data replication and enable offline synchronization with Appwrite Databases in a JavaScript app.
 date: 2025-04-17
+lastUpdated: 2026-06-29
 cover: /images/blog/offline-first-journal/cover.avif
 timeToRead: 14
 author: aditya-oberai
@@ -61,8 +62,8 @@ Next, head to the **Columns** tab and add the following:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
-| `title` | Text | 100 | Yes |
-| `content` | Text | 20000 | Yes |
+| `title` | Varchar | 100 | Yes |
+| `content` | MediumText |  | Yes |
 | `createdAt` | Integer |  | Yes |
 | `updatedAt` | Integer |  | Yes |
 | `deleted` | Boolean |  | Yes |

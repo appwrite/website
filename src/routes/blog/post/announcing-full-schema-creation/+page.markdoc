@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Full Schema Creation: Provision complete tables in one atomic call"
 description: Create a table, all its columns, and indexes synchronously, ready to use instantly, with no background jobs.
 date: 2025-12-30
+lastUpdated: 2026-06-29
 cover: /images/blog/full-schema.avif
 timeToRead: 5
 author: aditya-oberai
@@ -44,6 +45,39 @@ Previously, schema provisioning looked something like this:
 This step-wise flow introduced delays, race conditions in automation scripts, and fragile deploys, especially in CI/CD, preview environments, and migrations.
 
 With Full Schema Creation, all of that collapses into a single operation. You define everything upfront, Appwrite validates it all together, and either the entire schema is created successfully, or nothing is.
+
+```js
+const table = await tablesDB.createTable({
+    databaseId: 'contacts_db',
+    tableId: 'contacts',
+    name: 'Contacts',
+    columns: [
+        {
+            key: 'email',
+            type: 'email',
+            required: true
+        },
+        {
+            key: 'name',
+            type: 'varchar',
+            size: 255,
+            required: true
+        },
+        {
+            key: 'is_active',
+            type: 'boolean',
+            required: true
+        },
+    ],
+    indexes: [
+        {
+            key: 'idx_email',
+            type: 'unique',
+            attributes: ['email']
+        }
+    ]
+});
+```
 
 # How it works
 

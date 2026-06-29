@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Bulk API: Handle heavy data workloads with ease"
 description: Perform multiple database operations in a single API call. Enjoy faster writes and better performance for heavy server-side workloads.
 date: 2025-07-03
+lastUpdated: 2026-06-29
 cover: /images/blog/announcing-bulk-api/cover.avif
 timeToRead: 5
 author: jake-barnby

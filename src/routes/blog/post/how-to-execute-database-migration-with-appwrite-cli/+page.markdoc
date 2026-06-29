@@ -3,6 +3,7 @@ layout: post
 title: How to plan and execute database migration successfully with the new Appwrite CLI
 description: Learn how to use the new Appwrite CLI to migrate your databases.
 date: 2024-08-26
+lastUpdated: 2026-06-29
 cover: /images/blog/how-to-migrate-database-with-cli/cover.avif
 timeToRead: 5
 author: ebenezer-don

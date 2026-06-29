@@ -3,6 +3,7 @@ layout: post
 title: Build an Uber clone with Geo Queries and Realtime
 description: Learn how to build a real-time ride-hailing app using Appwrite's Geo Queries and Realtime features with Next.js and Leaflet maps.
 date: 2026-04-03
+lastUpdated: 2026-06-29
 cover: /images/blog/uber-clone-nextjs-appwrite/cover.avif
 timeToRead: 15
 author: atharva

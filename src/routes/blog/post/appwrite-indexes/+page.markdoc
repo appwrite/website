@@ -3,6 +3,7 @@ layout: post
 title: "Appwrite Indexes: how to speed up your database queries"
 description: Learn what indexes are in Appwrite Databases, which types to use, when to create them, and when adding more indexes actually hurts performance.
 date: 2026-03-26
+lastUpdated: 2026-06-29
 cover: /images/blog/appwrite-indexes/cover.avif
 timeToRead: 5
 author: aditya-oberai
@@ -168,7 +169,7 @@ Indexes and the Query API work as a pair. The Query API expresses what data you 
 
 Before putting a table into production, review every query pattern you will run on it and verify the needed indexes are in place. Adding indexes retroactively on large tables takes time and temporarily affects performance during the build phase.
 
-The [Appwrite Databases queries reference](/docs/products/databases/queries) rows every `Query` method and makes it clear which ones require or benefit from specific index types. Keep it open when designing your schema.
+The [Appwrite Databases queries reference](/docs/products/databases/queries) lists every `Query` method and makes it clear which ones require or benefit from specific index types. Keep it open when designing your schema.
 
 # Build faster queries with the right indexes
 

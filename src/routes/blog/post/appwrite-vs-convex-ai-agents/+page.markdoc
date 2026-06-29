@@ -3,6 +3,7 @@ layout: post
 title: "Appwrite vs Convex for AI apps and agent workflows"
 description: "Compare Appwrite vs Convex for AI apps and agent workflows, from agent primitives to Auth, TablesDB, Realtime, Storage, Functions, and MCP."
 date: 2026-04-28
+lastUpdated: 2026-06-29
 cover: /images/blog/appwrite-vs-convex-ai-agents/cover.avif
 timeToRead: 9
 author: atharva
@@ -37,7 +38,7 @@ Around that, Convex layers a broader platform:
 - HTTP actions for webhook endpoints and custom clients.
 - A document-style database with optional schemas, indexes, and paginated queries.
 - Realtime that is automatic as long as you read data through query functions and client libraries.
-- File Storage with upload, store, serve, and delete, referenced from database rows.
+- File Storage with upload, store, serve, and delete, referenced from database documents.
 - Scheduled Functions and Cron Jobs for durable scheduling, plus higher-level Workpool, Workflow, and Cron components for larger scale.
 - Authentication via Clerk, WorkOS AuthKit, Auth0, Custom OIDC, or the beta Convex Auth library.
 - Self-hosting under an FSL Apache 2.0 license that converts to Apache 2.0 after two years.

@@ -3,6 +3,7 @@ layout: post
 title: Using $sequence to track row order in Appwrite
 description: Learn how to use Appwrite's $sequence column to track row order in your database.
 date: 2025-07-16
+lastUpdated: 2026-06-29
 cover: /images/blog/track-document-order-with-sequence/cover.avif
 timeToRead: 6
 author: ebenezer-don

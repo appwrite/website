@@ -3,6 +3,7 @@ layout: post
 title: "3 things you can build with the Go runtime"
 description: Explore a few use cases of how to leverage Go's speed in your app.
 date: 2024-08-22
+lastUpdated: 2026-06-29
 cover: /images/blog/building-with-go-cover.avif
 timeToRead: 8
 author: aditya-oberai

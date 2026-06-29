@@ -3,6 +3,7 @@ layout: post
 title: Setting up protected routes in React
 description: Learn how to set up protected routes in React in this easy tutorial.
 date: 2024-10-02
+lastUpdated: 2026-06-29
 cover: /images/blog/react-protected-routes/cover.avif
 timeToRead: 4
 author: dennis-ivy

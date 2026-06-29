@@ -37,9 +37,9 @@ Click on the **Columns** tab and add the following columns (schema used for demo
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
-| `name` | Text | 100 | Yes |
+| `name` | Varchar | 100 | Yes |
 | `age` | Integer |  | Yes |
-| `homeAddress` | Text | 2000 | Yes |
+| `homeAddress` | Text |  | Yes |
 | `deleted` | Boolean |  | Yes |
 
 > **Note:** The `deleted` column is necessary to add because RxDB only soft deletes to prevent data loss in offline scenarios (no hard deletion of data occurs).

@@ -3,7 +3,7 @@ layout: post
 title: "August product update: Cloud GA, new TablesDB UI & Sites Hackathon"
 description: Get a full recap of products, features and programs we released in the month of August.
 date: 2025-09-03
-lastUpdated: 2026-05-22
+lastUpdated: 2026-06-29
 cover: /images/blog/product-update-august-2025/cover.avif
 timeToRead: 6
 author: dennis-ivy
@@ -14,9 +14,9 @@ faqs:
   - question: "What does Appwrite Cloud GA mean for existing users?"
     answer: "GA means the beta tag is gone and Appwrite Cloud is now a generally available product backed by formal availability and support commitments. Nothing changes for existing projects, but you get the assurance that the platform is production stable."
   - question: "What is TablesDB?"
-    answer: "TablesDB is a new API layer for [Appwrite Databases](/docs/products/databases) that uses relational terminology: tables, rows, and columns. It also ships with a spreadsheet style console UI for inline editing and bulk actions."
-  - question: "Do I need to migrate existing projects to TablesDB?"
-    answer: "No. Existing projects continue to work and remain backwards compatible. New projects should adopt TablesDB to access future improvements."
+    answer: "TablesDB is a new API layer for [Appwrite Databases](/docs/products/databases) that uses relational terminology: tables, rows, and columns instead of collections, documents, and attributes. It also ships with a spreadsheet style console UI for inline editing and bulk actions."
+  - question: "Do I need to migrate from the document API to TablesDB?"
+    answer: "No. The document based methods continue to work and remain backwards compatible. They are deprecated for major upgrades, but they still receive security patches. New projects should adopt TablesDB to access future improvements."
   - question: "Where is the new San Francisco cloud region available?"
     answer: "San Francisco (SFO) is available on all Free, Pro, and Enterprise plans. You can create new projects there or migrate existing projects using Appwrite Cloud migrations."
   - question: "What are atomic numeric operations?"
@@ -77,13 +77,17 @@ Want to switch to a new region? Here are some resources to help you:
 
 Appwrite Databases now feels more relational. We’ve updated the terminology to match the relational model that developers are most familiar with.
 
-The updated wording now centers Appwrite Databases around tables, rows, and columns.
+Here’s what’s changed:
+
+- Collections are now Tables
+- Documents are now Rows
+- Attributes are now Columns
 
 To support the terminology change, we’ve added the TablesDB API.
 
 A new API layer that helps you work with relational database concepts like tables, columns, and rows, without requiring any changes to your existing apps.
 
-The older Databases methods are now deprecated and will no longer receive major upgrades. They will continue to receive security patches and essential maintenance, and we are ensuring backwards compatibility for the API, so there’s no need to migrate immediately if a specific issue arises.
+The old document-based methods are now deprecated and will no longer receive major upgrades. They will continue to receive security patches and essential maintenance, and we are ensuring backwards compatibility with those methods for the API, so there’s no need to migrate immediately if a specific issue arises.
 
 However, we recommend adopting the new TablesDB API for future projects to take advantage of ongoing improvements and new capabilities.
 

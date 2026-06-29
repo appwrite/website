@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Auto-increment support: Built-in numeric sequencing for your rows"
 description: Get reliable, sequential ordering across your tables with fast, indexed auto-increment IDs.
 date: 2025-07-15
+lastUpdated: 2026-06-29
 cover: /images/blog/announcing-auto-increment-support/cover.avif
 timeToRead: 5
 author: jake-barnby

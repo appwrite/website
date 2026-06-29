@@ -5,6 +5,7 @@ description: Learn how to add a search function to your application.
 cover: /images/blog/add-a-search-function-to-your-app/cover.avif
 timeToRead: 5
 date: 2023-11-17
+lastUpdated: 2026-06-29
 author: haimantika-mitra
 category: tutorial
 featured: false
@@ -14,7 +15,7 @@ faqs:
   - question: "What is an Appwrite Function template?"
     answer: "Function templates are pre-built [Appwrite Functions](/docs/products/functions) you can deploy in a few clicks. They cover common integrations like Stripe, OpenAI, Meilisearch, and more. You configure the required environment variables, connect a Git repo, and the function is deployed and ready to call."
   - question: "How does the Meilisearch sync function stay in sync with new rows?"
-    answer: "By default the template syncs rows on demand when the function runs. To keep the index up to date automatically, configure the function to trigger on database row events so every change is mirrored to Meilisearch in near real time."
+    answer: "By default the template syncs rows on demand when the function runs. To keep the index up to date automatically, configure the function to trigger on `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.create`, `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.update`, and `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.delete` events so every change is mirrored to Meilisearch in near real time."
   - question: "Do I need to self-host Meilisearch to use this template?"
     answer: "No. Meilisearch Cloud is the easiest option and the template works against either Cloud or a self-hosted instance. You just need a Meilisearch endpoint URL, an admin API key for indexing, and a search key for client-side queries."
   - question: "Can I run the Meilisearch sync function on a schedule?"
@@ -97,7 +98,7 @@ Visit the **Domains** tab on the function page and copy the domain URL to test
 We’ve added search functionality to our app and opened up many possibilities to improve the experience of our app’s users.
 
 How can the *template* be extended ?
-- Using events to automatically index new tables
+- Using `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.create`, `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.update`, and `tablesdb.<DATABASE_ID>.tables.<TABLE_ID>.rows.*.delete` events to automatically index new rows
 - Using weights and other meilisearch features to optimise search such as excluding certain fields from indexing
 
 Some examples are:
@@ -109,6 +110,6 @@ Be sure to check out the other available Function Templates. We’ve created mul
 
 For more information about Appwrite and Appwrite Functions:
 
-1. **[Appwrite Function Docs](https://appwrite.io/docs/functions)**: Learn more about how to use Appwrite Functions.
+1. **[Appwrite Function Docs](/docs/products/functions)**: Learn more about how to use Appwrite Functions.
 2. **[Functions Announcement](https://dev.to/appwrite/serverless-your-way-unleashing-appwrite-functions-true-potential-2l4f)**: Read the full announcement on Functions 1.4.
-3. **[Appwrite Discord](https://discord.com/invite/appwrite)**: Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+3. **[Appwrite Discord](/discord)**: Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

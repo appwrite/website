@@ -3,7 +3,7 @@ layout: post
 title: "Announcing encrypted text column support: Built-in encryption for sensitive fields"
 description: Easily encrypt sensitive text fields at rest, with no manual encryption logic.
 date: 2025-07-10
-lastUpdated: 2026-05-22
+lastUpdated: 2026-06-29
 cover: /images/blog/announcing-encrypted-string-attributes/cover.avif
 timeToRead: 5
 author: jake-barnby

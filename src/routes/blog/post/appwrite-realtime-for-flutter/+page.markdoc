@@ -7,7 +7,7 @@ timeToRead: 6
 date: 2024-09-02
 author: damodar-lohani
 category: tutorial
-lastUpdated: 2025-10-14
+lastUpdated: 2026-06-29
 faqs:
   - question: "What is Appwrite Realtime, and how does it work?"
     answer: "Appwrite Realtime lets your app respond instantly to changes, like new database entries or deleted rows, without needing manual refreshes. You simply subscribe to events (e.g., row creation, updates, or deletions), and Appwrite automatically pushes updates to your app via a WebSocket connection."

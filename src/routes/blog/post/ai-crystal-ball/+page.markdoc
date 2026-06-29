@@ -3,6 +3,7 @@ layout: post
 title: "Predicting your developer destiny: how I built the AI Crystal Ball"
 description: How I used Appwrite, OpenAI, GitHub, and SvelteKit to develop an AI prank app.
 date: 2024-05-10
+lastUpdated: 2026-06-29
 cover: /images/blog/ai-crystal-ball/cover.avif
 timeToRead: 9
 author: aditya-oberai
@@ -80,10 +81,10 @@ Create the table and add the following columns:
 
 | Key | Type | Size | Required | Array |
 | --- | --- | --- | --- | --- |
-| languages | Text | 2000 | - | Yes |
+| languages | Text | - | - | Yes |
 | followers | Integer | - | Yes | - |
 | following | Integer | - | Yes | - |
-| username | Text | 255 | Yes | - |
+| username | Varchar | 255 | Yes | - |
 
 Visit the table settings, enable **Row security,** and set the following (table-level) **Permissions**:
 
@@ -97,8 +98,8 @@ Create the table and add the following columns:
 
 | Key | Type | Size | Required |
 | --- | --- | --- | --- |
-| destiny | Text | 25000 | Yes |
-| username | Text | 255 | Yes |
+| destiny | MediumText | - | Yes |
+| username | Varchar | 255 | Yes |
 
 Visit the table settings, enable **Row security,** and set the following (table-level) **Permissions**:
 
@@ -281,7 +282,7 @@ export const github = {
 }
 ```
 
-At this point, we also want to create our database library using the Appwrite SDK, so that we can store the information from the GitHub API. For that, we shall create a file `./src/lib/tables-db.js` and add the following:
+At this point, we also want to create our database library using the Appwrite SDK, so that we can store the information from the GitHub API. For that, we shall create a file `./src/lib/databases.js` and add the following:
 
 ```js
 import { Permission, Role, ID } from 'appwrite';
@@ -511,12 +512,14 @@ Since our UI has already been prepared in the previous step, we need not make an
 
 ## Storing and sharing the destiny
 
-Lastly, to share our destiny with the rest of the world, we must create an additional page that gets destiny data from the Appwrite Database and displays it. For this, we must first add functions to add and get destinies from the Appwrite Database to our Database library. To do so, we visit `./src/lib/databases/js` and add the following functions to our export:
+Lastly, to share our destiny with the rest of the world, we must create an additional page that gets destiny data from the Appwrite Database and displays it. For this, we must first add functions to add and get destinies from the Appwrite Database to our Database library. To do so, we visit `./src/lib/databases.js` and add the following functions to our export:
 
 ```js
 const destinyTableId = env.PUBLIC_APPWRITE_TABLE_ID_DESTINY;
 
-export const destinyDb = {
+export const db = {
+    // Existing getUserData and addUserData functions
+
     addDestiny: async (username, destiny) => {
         return await tablesDB.createRow({
             databaseId,

@@ -3,6 +3,7 @@ layout: post
 title: "Introducing new text column types for Appwrite Databases"
 description: Appwrite Databases now supports varchar, text, mediumtext, and longtext column types, giving you explicit control over how text data is stored and indexed. The legacy string type is now deprecated.
 date: 2026-02-12
+lastUpdated: 2026-06-29
 cover: /images/blog/new-string-types/cover.avif
 timeToRead: 5
 author: eldad-fux
@@ -81,36 +82,30 @@ const tablesDB = new sdk.TablesDB(client);
 await tablesDB.createTable({
     databaseId: '<DATABASE_ID>',
     tableId: '<TABLE_ID>',
-    name: 'articles'
-});
-
-await tablesDB.createVarcharColumn({
-    databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    key: 'title',
-    size: 255,
-    required: true
-});
-
-await tablesDB.createTextColumn({
-    databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    key: 'summary',
-    required: false
-});
-
-await tablesDB.createMediumtextColumn({
-    databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    key: 'body',
-    required: false
-});
-
-await tablesDB.createLongtextColumn({
-    databaseId: '<DATABASE_ID>',
-    tableId: '<TABLE_ID>',
-    key: 'raw_data',
-    required: false
+    name: 'articles',
+    columns: [
+        {
+            key: 'title',
+            type: 'varchar',
+            size: 255,
+            required: true
+        },
+        {
+            key: 'summary',
+            type: 'text',
+            required: false
+        },
+        {
+            key: 'body',
+            type: 'mediumtext',
+            required: false
+        },
+        {
+            key: 'raw_data',
+            type: 'longtext',
+            required: false
+        }
+    ]
 });
 ```
 

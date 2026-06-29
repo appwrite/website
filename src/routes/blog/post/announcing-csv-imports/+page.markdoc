@@ -3,6 +3,7 @@ layout: post
 title: "Announcing CSV Import: Bring in large datasets to Appwrite with ease"
 description: Learn how to import rows into your Appwrite tables using a simple CSV file, a new feature built on top of Appwrite's migration APIs.
 date: 2025-07-01
+lastUpdated: 2026-06-29
 # update this cover later, once available!
 cover: /images/blog/announcing-csv-imports/cover.avif
 timeToRead: 5

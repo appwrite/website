@@ -8,7 +8,7 @@ timeToRead: 5
 author: ebenezer-don
 category: product
 featured: false
-lastUpdated: 2025-10-14
+lastUpdated: 2026-06-29
 faqs:
   - question: "What are serverless functions?"
     answer: "Serverless functions let you run small pieces of code in the cloud without managing servers. You just define a function, deploy it, and the platform (like Appwrite, AWS Lambda, or Vercel) automatically scales it up or down based on usage. You only pay for the time your code runs, no idle costs, no manual infrastructure setup."

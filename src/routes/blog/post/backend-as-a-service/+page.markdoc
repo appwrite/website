@@ -8,7 +8,7 @@ timeToRead: 12
 date: 2024-10-09
 author: aditya-oberai
 category: product
-lastUpdated: 2026-05-04
+lastUpdated: 2026-06-29
 faqs:
   - question: "What is backend as a service (BaaS)?"
     answer: "BaaS is a model where a vendor runs common backend primitives (authentication, databases, file storage, APIs, and often serverless functions), and you integrate through SDKs and HTTP APIs instead of provisioning and operating that infrastructure yourself."

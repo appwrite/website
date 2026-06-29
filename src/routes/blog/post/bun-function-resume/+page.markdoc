@@ -3,6 +3,7 @@ layout: post
 title: Share your resume using Appwrite Functions
 description: How you can create a resume using HTML and use a Bun Appwrite Function to share it with the world. 
 date: 2024-03-07
+lastUpdated: 2026-06-29
 cover: /images/blog/bun-function-resume/cover.avif
 timeToRead: 7
 author: aditya-oberai

@@ -3,6 +3,7 @@ layout: post
 title: Secure sensitive database fields with encrypted text columns
 description: Learn how to use encrypted text columns to protect sensitive data in your Appwrite database.
 date: 2025-07-10
+lastUpdated: 2026-06-29
 cover: /images/blog/encrypted-attributes-for-sensitive-fields/cover.avif
 timeToRead: 5
 author: ebenezer-don

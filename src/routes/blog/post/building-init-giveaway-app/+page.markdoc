@@ -3,6 +3,7 @@ layout: post
 title: Building the giveaway app for Init Discord sessions
 description: How we used Appwrite and SvelteKit to develop a custom roulette-style giveaway web application.
 date: 2024-03-06
+lastUpdated: 2026-06-29
 cover: /images/blog/building-init-giveaway-app/cover.avif
 timeToRead: 7
 author: aditya-oberai
@@ -66,7 +67,7 @@ Each table contained two **columns**:
 
 | Key         | Type        | Size        | Required    |
 | ----------- | ----------- | ----------- | ----------- |
-| discordName | Text      | 255         | Yes         |
+| discordName | Varchar   | 255         | Yes         |
 | email       | Email       | -           | Yes         |
 
 To ensure that one user could only be added once for a day’s giveaway, we created an **index** of the `unique` type.
@@ -369,7 +370,7 @@ Using the load function would ensure that this list would be available on our pa
 	// Uses Appwrite Realtime to get newly created rows and regenerate the wheel
 	function subscribe() {
 		return client.subscribe(
-			`databases.${DATABASE_NAME}.tables.${TABLE_NAME}.rows`,
+				`tablesdb.${DATABASE_NAME}.tables.${TABLE_NAME}.rows`,
 			(response) => {
 				console.log(response);
 				props.items.push({ label: response.payload.discordName });

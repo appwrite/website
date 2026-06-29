@@ -3,6 +3,7 @@ layout: post
 title: Build a SaaS waitlist landing page with Appwrite
 description: Learn how to ship a production-ready waitlist page with Vite, React, and Appwrite, including unique email validation and clean error handling.
 date: 2026-04-23
+lastUpdated: 2026-06-29
 cover: /images/blog/build-saas-waitlist/cover.avif
 timeToRead: 10
 author: atharva

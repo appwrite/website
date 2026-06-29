@@ -5,6 +5,7 @@ description: Learning how to add the URL shortener function template to your app
 cover: /images/blog/adding-url-shortener/cover.avif
 timeToRead: 5
 date: 2023-11-08
+lastUpdated: 2026-06-29
 author: haimantika-mitra
 category: tutorial
 featured: false
@@ -68,6 +69,6 @@ Be sure to check out the other available Function Templates. We’ve created man
 
 For more information about Appwrite and Appwrite Functions:
 
-1. **[Appwrite Function Docs](https://appwrite.io/docs/functions)**: Learn more about how to use Appwrite Functions.
+1. **[Appwrite Function Docs](/docs/products/functions)**: Learn more about how to use Appwrite Functions.
 2. **[Functions Announcement](https://dev.to/appwrite/serverless-your-way-unleashing-appwrite-functions-true-potential-2l4f)**: Read the full announcement on Functions 1.4.
-3. **[Appwrite Discord](https://discord.com/invite/appwrite)**: Connect with other developers and the Appwrite team for discussion, questions, and collaboration.
+3. **[Appwrite Discord](/discord)**: Connect with other developers and the Appwrite team for discussion, questions, and collaboration.

@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Atomic numeric operations: Safe, server-side increments and decrements"
 description: Safely update numeric columns like counters, stock levels, or credits without fetching or rewriting the row.
 date: 2025-08-04
+lastUpdated: 2026-06-29
 cover: /images/blog/announcing-atomic-numeric-operations/cover.avif
 timeToRead: 5
 author: jake-barnby

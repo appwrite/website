@@ -3,6 +3,7 @@ layout: post
 title: Solving CORS errors with Appwrite
 description: Understanding why you are getting CORS error when sending a request to an Appwrite backend and how to debug.
 date: 2024-01-16
+lastUpdated: 2026-06-29
 cover: /images/blog/cors-error/cors_cover.avif
 timeToRead: 3
 author: dennis-ivy

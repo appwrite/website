@@ -3,6 +3,7 @@ layout: post
 title: "Announcing time helper queries: Cleaner, more expressive time-based queries"
 description: Handle time-based filtering directly in your queries using new helpers for created and updated timestamps.
 date: 2025-09-02
+lastUpdated: 2026-06-29
 cover: /images/blog/announcing-time-helper-queries/cover.avif
 timeToRead: 5
 author: jake-barnby

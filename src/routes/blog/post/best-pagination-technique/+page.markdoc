@@ -3,6 +3,7 @@ layout: post
 title: "Best database pagination technique"
 description: "Learn how to fix database-related performance problems using offset and cursor pagination."
 date: 2024-08-05
+lastUpdated: 2026-06-29
 cover: /images/blog/best-pagination-technique/cover.avif
 timeToRead: 8
 author: matej-baco

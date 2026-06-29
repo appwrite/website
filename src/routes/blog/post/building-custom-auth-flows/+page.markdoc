@@ -7,7 +7,7 @@ cover: /images/blog/building-custom-auth-flows/cover.avif
 timeToRead: 11
 author: ebenezer-don
 category: tutorial
-lastUpdated: 2025-10-14
+lastUpdated: 2026-06-29
 faqs:
   - question: "What exactly are custom authentication flows?"
     answer: "They're login systems you build yourself instead of relying on standard providers like Google or Firebase. You decide how users are verified, how tokens or sessions are issued, and how identity data is stored. It's useful when your app needs unique logic or you already manage users elsewhere."

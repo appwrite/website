@@ -3,6 +3,7 @@ layout: post
 title: Building a full-stack app with Svelte and Appwrite
 description: Learn how to build full-stack apps with Svelte and Appwrite by building an expense tracker.
 date: 2025-01-31
+lastUpdated: 2026-06-29
 cover: /images/blog/build-fullstack-svelte-appwrite/cover.avif
 timeToRead: 15
 author: ebenezer-don
@@ -547,9 +548,9 @@ We'll start with our imports and state management:
 ```svelte
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { databases, account } from '$lib/appwrite'
+	import { tablesDB, account } from '$lib/appwrite'
 	import { DATABASE_ID, EXPENSES_TABLE_ID } from '$lib/appwrite'
-	import { Query, Permission, Role } from 'appwrite'
+	import { Query, Permission, Role, ID } from 'appwrite'
 	import { formatDistanceToNow } from 'date-fns'
 
 	let expenses = []
@@ -736,7 +737,7 @@ function getCategoryName(categoryId) {
 function editExpense(expense) {
   editingExpense = expense
   editFormData = {
-    amount: expense.amount.toText(),
+    amount: expense.amount.toString(),
     description: expense.description,
     category: expense.category
   }
@@ -957,7 +958,7 @@ Visit the displayed URL in your browser, and you should see a fully functional e
 
 The expense tracker can be enhanced in several ways. Data visualization with charts would help users understand their spending patterns over time. Advanced filtering and search would make it easier to find specific expenses or analyze spending by category.
 
-Data export would let users analyze their expenses in external tools. Custom categories would let users organize expenses in ways that make sense for them. Budget tracking with alerts could help users stay within spending limits, while receipt image uploads would provide better expense rowation.
+Data export would let users analyze their expenses in external tools. Custom categories would let users organize expenses in ways that make sense for them. Budget tracking with alerts could help users stay within spending limits, while receipt image uploads would provide better expense documentation.
 
 ## Conclusion
 

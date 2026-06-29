@@ -3,6 +3,7 @@ layout: post
 title: A technical deep dive into image classification
 description: Learn all about image classification and how to integrate it into your Appwrite project using TensorFlow
 date: 2024-08-06
+lastUpdated: 2026-06-29
 cover: /images/blog/image-classification.avif
 timeToRead: 9
 author: bradley-schofield

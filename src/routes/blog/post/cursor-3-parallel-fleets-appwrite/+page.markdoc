@@ -3,6 +3,7 @@ layout: post
 title: "Cursor 3: parallel agents, cloud agents, skills, and MCP"
 description: An overview of Cursor 3 - agent-first layout, cloud agents, the skills marketplace and MCP, and the integrated browser - with notes on using it alongside Appwrite.
 date: 2026-04-03
+lastUpdated: 2026-06-29
 cover: /images/blog/cursor-3-parallel-fleets-appwrite/cover.avif
 timeToRead: 7
 author: eldad-fux

@@ -3,6 +3,7 @@ layout: post
 title: Integrate any external authentication solution into your Appwrite project
 description: Add any custom authentication flow to your applications.
 date: 2024-05-30
+lastUpdated: 2026-06-29
 cover: /images/blog/integrate-custom-auth-sveltekit/cover.avif
 timeToRead: 6
 author: aditya-oberai
