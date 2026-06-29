@@ -949,6 +949,10 @@
         "redirect": "/docs/products/databases/tablesdb/geo-queries"
     },
     {
+        "link": "/docs/products/databases/legacy",
+        "redirect": "/docs/products/databases/tablesdb/legacy"
+    },
+    {
         "link": "/docs/products/databases/legacy/atomic-numeric-operations",
         "redirect": "/docs/products/databases/tablesdb/legacy/atomic-numeric-operations"
     },
