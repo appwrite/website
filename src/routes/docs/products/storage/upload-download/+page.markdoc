@@ -10,7 +10,11 @@ You can upload and download files both programmatically using SDKs or through th
 
 After you create a bucket or have navigated to bucket details, you can access the **Files** tab so you can upload, view, delete and update files in the bucket using the Appwrite project's dashboard. You can also perform all those operations from Appwrite's client SDK, server SDKs, and REST APIs as long as you have the proper permission.
 
-When you are in the **Files** tab, you can click **Add File** and select a file to upload. If the bucket is configured to accept the file type and size you are uploading, your file will be uploaded, and you will see the file in the list of files.
+When you are in the **Files** tab, you can click **Add File** and select one or more files to upload. You can also drag and drop files directly onto the bucket page. The Console supports uploading multiple files at once, processing up to 5 files in parallel for faster bulk uploads.
+
+During upload, a progress indicator displays the real-time upload percentage for each file. If a file fails to upload, the Console will show an error notification with details. Files that don't match the bucket's allowed file extensions are automatically rejected before the upload begins.
+
+If the bucket is configured to accept the file types and sizes you are uploading, your files will be uploaded, and you will see them in the list of files.
 
 You can also upload files programmatically using our SDKs:
 
