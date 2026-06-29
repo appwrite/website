@@ -582,6 +582,61 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
       - _APP_DOMAIN_SITES
 
+  appwrite-worker-screenshots:
+    image: appwrite/appwrite:1.9.5
+    entrypoint: worker-screenshots
+    <<: *x-logging
+    container_name: appwrite-worker-screenshots
+    restart: unless-stopped
+    networks:
+      - appwrite
+    volumes:
+      - appwrite-uploads:/storage/uploads:rw
+    depends_on:
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
+    environment:
+      - _APP_ENV
+      - _APP_WORKER_PER_CORE
+      - _APP_OPENSSL_KEY_V1
+      - _APP_BROWSER_HOST
+      - _APP_OPTIONS_FORCE_HTTPS
+      - _APP_REDIS_HOST
+      - _APP_REDIS_PORT
+      - _APP_REDIS_USER
+      - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
+      - _APP_DB_HOST
+      - _APP_DB_PORT
+      - _APP_DB_SCHEMA
+      - _APP_DB_USER
+      - _APP_DB_PASS
+      - _APP_LOGGING_CONFIG
+      - _APP_STORAGE_DEVICE
+      - _APP_STORAGE_S3_ACCESS_KEY
+      - _APP_STORAGE_S3_SECRET
+      - _APP_STORAGE_S3_REGION
+      - _APP_STORAGE_S3_BUCKET
+      - _APP_STORAGE_S3_ENDPOINT
+      - _APP_STORAGE_DO_SPACES_ACCESS_KEY
+      - _APP_STORAGE_DO_SPACES_SECRET
+      - _APP_STORAGE_DO_SPACES_REGION
+      - _APP_STORAGE_DO_SPACES_BUCKET
+      - _APP_STORAGE_BACKBLAZE_ACCESS_KEY
+      - _APP_STORAGE_BACKBLAZE_SECRET
+      - _APP_STORAGE_BACKBLAZE_REGION
+      - _APP_STORAGE_BACKBLAZE_BUCKET
+      - _APP_STORAGE_LINODE_ACCESS_KEY
+      - _APP_STORAGE_LINODE_SECRET
+      - _APP_STORAGE_LINODE_REGION
+      - _APP_STORAGE_LINODE_BUCKET
+      - _APP_STORAGE_WASABI_ACCESS_KEY
+      - _APP_STORAGE_WASABI_SECRET
+      - _APP_STORAGE_WASABI_REGION
+      - _APP_STORAGE_WASABI_BUCKET
+
   appwrite-worker-certificates:
     image: appwrite/appwrite:1.9.5
     entrypoint: worker-certificates
@@ -866,6 +921,43 @@ services:
       - _APP_MAINTENANCE_RETENTION_AUDIT_CONSOLE
       - _APP_MAINTENANCE_RETENTION_USAGE_HOURLY
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
+
+  appwrite-task-interval:
+    image: appwrite/appwrite:1.9.5
+    entrypoint: interval
+    <<: *x-logging
+    container_name: appwrite-task-interval
+    restart: unless-stopped
+    networks:
+      - appwrite
+    depends_on:
+      __DB_SERVICE__:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - _APP_ENV
+      - _APP_WORKER_PER_CORE
+      - _APP_OPENSSL_KEY_V1
+      - _APP_DOMAIN
+      - _APP_DOMAIN_TARGET_CNAME
+      - _APP_DOMAIN_TARGET_AAAA
+      - _APP_DOMAIN_TARGET_A
+      - _APP_DOMAIN_TARGET_CAA
+      - _APP_DNS
+      - _APP_DOMAIN_FUNCTIONS
+      - _APP_DOMAIN_SITES
+      - _APP_REDIS_HOST
+      - _APP_REDIS_PORT
+      - _APP_REDIS_USER
+      - _APP_REDIS_PASS
+      - _APP_DB_ADAPTER
+      - _APP_DB_HOST
+      - _APP_DB_PORT
+      - _APP_DB_SCHEMA
+      - _APP_DB_USER
+      - _APP_DB_PASS
+      - _APP_LOGGING_CONFIG
 
   appwrite-task-stats-resources:
     image: appwrite/appwrite:1.9.5
