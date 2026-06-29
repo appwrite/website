@@ -79,7 +79,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Email and password login',

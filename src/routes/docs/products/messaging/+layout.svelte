@@ -84,7 +84,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Send push notifications',
