@@ -12,7 +12,7 @@ unlisted: true
 faqs:
   - question: Is cloud storage safe?
     answer: Its safety depends on configuring permissions correctly and choosing a reputable provider, since most breaches come from misconfiguration rather than the provider itself.
-  - question: "What's the difference between cloud storage and a database?"
+  - question: What's the difference between cloud storage and a database?
     answer: Cloud storage holds files and unstructured data like images and documents. A database stores structured, queryable records. Many applications use both, storing files in cloud storage and metadata in a database.
   - question: Is cloud storage free?
     answer: Many providers offer a free tier with limited capacity. Beyond that, you pay based on how much you store and how much data you transfer out, so costs scale with usage.
