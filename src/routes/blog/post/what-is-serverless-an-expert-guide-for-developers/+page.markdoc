@@ -11,9 +11,9 @@ featured: false
 unlisted: true
 faqs:
   - question: Does serverless mean there are no servers?
-    answer: "No. Servers still run your code. The term means you don't manage them. The cloud provider provisions, scales, and maintains the infrastructure on your behalf."
+    answer: No. Servers still run your code. The term means you don't manage them. The cloud provider provisions, scales, and maintains the infrastructure on your behalf.
   - question: Is serverless the same as cloud computing?
-    answer: "No. Serverless is one model within cloud computing. Cloud computing also includes virtual machines, containers, and managed services that don't fit the serverless model."
+    answer: No. Serverless is one model within cloud computing. Cloud computing also includes virtual machines, containers, and managed services that don't fit the serverless model.
   - question: Is serverless cheaper than traditional hosting?
     answer: Often, yes, for variable or low-to-moderate traffic, because you pay only when code runs. For steady, high-volume workloads, always-on servers can sometimes be more cost-effective.
   - question: When should I not use serverless?
