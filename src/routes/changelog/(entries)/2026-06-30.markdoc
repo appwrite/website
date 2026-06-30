@@ -13,7 +13,6 @@ Most notably, this release includes:
 - BigInt columns for Databases
 - Rust runtime for Functions
 - X (formerly Twitter) OAuth support for Auth
-- Email policies to block disposable, aliased, and free email addresses
 - Bun and Deno build runtimes for Sites
 - Git deployment triggers for Functions and Sites
 - Parallel chunk uploads for faster Storage uploads
