@@ -3,7 +3,7 @@ layout: post
 title: Announcing Appwrite 1.9.5 for self-hosted deployments
 description: Appwrite 1.9.5 brings the Presences API, BigInt columns, the Rust runtime, X OAuth, email policies, Bun and Deno build runtimes, Git deployment triggers, faster Storage uploads, and broader migrations to self-hosted deployments.
 cover: /images/blog/appwrite-1-9-5-self-hosted-release/cover.avif
-date: 2026-06-29
+date: 2026-06-30
 timeToRead: 6
 author: chirag-aggarwal
 category: announcement
