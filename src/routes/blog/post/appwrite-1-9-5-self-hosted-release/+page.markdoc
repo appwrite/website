@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Appwrite 1.9.5 for self-hosted deployments
-description: Appwrite 1.9.5 brings the Presences API, BigInt columns, the Rust runtime, X OAuth, email policies, Bun and Deno build runtimes, Git deployment triggers, faster Storage uploads, and broader migrations to self-hosted deployments.
+description: Appwrite 1.9.5 brings the Presences API, BigInt columns, the Rust runtime, X OAuth, Bun and Deno build runtimes, Git deployment triggers, faster Storage uploads, and broader migrations to self-hosted deployments.
 cover: /images/blog/appwrite-1-9-5-self-hosted-release/cover.avif
 date: 2026-06-30
 timeToRead: 6
@@ -11,7 +11,7 @@ featured: false
 callToAction: true
 faqs:
   - question: "What is new in Appwrite 1.9.5 for self-hosted deployments?"
-    answer: "Appwrite 1.9.5 brings the Presences API, BigInt columns for [Databases](/docs/products/databases), the Rust runtime for [Functions](/docs/products/functions), X OAuth and email policies for [Auth](/docs/products/auth), Bun and Deno build runtimes and Git deployment triggers for [Sites](/docs/products/sites), faster Storage uploads with parallel chunks, and broader migration coverage."
+    answer: "Appwrite 1.9.5 brings the Presences API, BigInt columns for [Databases](/docs/products/databases), the Rust runtime for [Functions](/docs/products/functions), X OAuth for [Auth](/docs/products/auth), Bun and Deno build runtimes and Git deployment triggers for [Sites](/docs/products/sites), faster Storage uploads with parallel chunks, and broader migration coverage."
   - question: "How do I self-host Appwrite 1.9.5?"
     answer: "Run the Docker installer with the 1.9.5 image, then open the setup wizard on port 20080 to finish configuration. See the [self-hosting installation guide](/docs/advanced/self-hosting/installation) for the full command and system requirements."
   - question: "How do I upgrade my self-hosted instance to 1.9.5?"
@@ -24,8 +24,6 @@ faqs:
     answer: "Yes. Appwrite 1.9.5 adds Rust as a first-class [Functions](/docs/products/functions) runtime, so you can write and deploy functions in Rust and pair them with the official Appwrite Rust SDK."
   - question: "Can I build my Appwrite Sites with Bun or Deno?"
     answer: "Yes. Appwrite [Sites](/docs/products/sites) can now build Node-based frameworks with Bun or Deno. You can switch the build runtime per Site from its Runtime settings, and the change applies on the next deployment."
-  - question: "Can I block disposable or free email addresses at signup?"
-    answer: "Yes. Email policies in [Appwrite Auth](/docs/products/auth) let you block disposable inboxes, aliased addresses, and free email providers at user creation and on email updates, either from the Console or through any server SDK."
   - question: "How much faster are Storage uploads in 1.9.5?"
     answer: "Appwrite SDKs now upload Storage file chunks in parallel. In our Node SDK benchmark, a 1.28 GB upload dropped from 4 minutes 44 seconds to under 40 seconds, a 7.10x improvement, with no API changes required."
 ---
@@ -81,14 +79,6 @@ Read the announcement
 Appwrite Auth now supports signing in with X (formerly Twitter) through OAuth 2.0 with PKCE. You can enable it from the Console by adding your X app credentials, with no additional configuration in your application code.
 
 {% arrow_link href="/blog/post/x-oauth2-appwrite" %}
-Read the announcement
-{% /arrow_link %}
-
-# Email policies
-
-Email policies let you restrict which email addresses can create accounts or update their email. Block disposable inboxes to keep throwaway accounts out of your users table, and deny free providers so business products only accept corporate addresses. Each policy is an independent toggle in the Console or any server SDK.
-
-{% arrow_link href="/blog/post/announcing-email-policies" %}
 Read the announcement
 {% /arrow_link %}
 
