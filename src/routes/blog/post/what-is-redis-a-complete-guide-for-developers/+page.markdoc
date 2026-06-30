@@ -9,6 +9,15 @@ author: aditya-oberai
 category: architecture
 featured: false
 unlisted: true
+faqs:
+  - question: Is Redis a database or a cache?
+    answer: Both. Redis is an in-memory data store that can act as a database, a cache, and a message broker. It's most commonly used as a cache, but it's flexible enough to fill all three roles.
+  - question: Does Redis store data permanently?
+    answer: It can. By default Redis keeps data in memory, but with persistence options like RDB snapshots or AOF logging enabled, it saves data to disk and can recover after a restart.
+  - question: What is Redis used for most often?
+    answer: Caching is the most common use, storing frequently accessed data to speed up applications and reduce database load. It's also widely used for sessions, real-time features, and queues.
+  - question: Is Redis a SQL or NoSQL database?
+    answer: Redis is a NoSQL data store. It uses a key-value model with rich data structures rather than the tables and SQL queries of a relational database.
 ---
 
 **Redis is an open-source, in-memory data store used as a database, cache, and message broker, prized for its extreme speed because it keeps data in memory rather than on disk.** Its name stands for Remote Dictionary Server, and it's one of the most popular tools for making applications fast, handling everything from caching to real-time features.
