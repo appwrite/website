@@ -27,7 +27,7 @@ Redis is versatile enough to act as a database, a cache, and a message broker, o
 
 Redis is fast for two main reasons. First, it stores data **in memory** rather than on disk, and reading from RAM is orders of magnitude quicker than reading from a disk. Second, Redis is built around simple, efficient data structures and operations, and it's single-threaded for command execution, which avoids the overhead of managing concurrent access to the same data.
 
-The result is that Redis can handle a very large number of operations per second with extremely low latency, often under a millisecond. This is why it's the go-to choice for [caching](https://appwrite.io/blog) and other speed-critical tasks. The trade-off is that memory is more limited and more expensive than disk, so Redis is used for data that benefits from being fast to access rather than for storing everything.
+The result is that Redis can handle a very large number of operations per second with extremely low latency, often under a millisecond. This is why it's the go-to choice for caching and other speed-critical tasks. The trade-off is that memory is more limited and more expensive than disk, so Redis is used for data that benefits from being fast to access rather than for storing everything.
 
 # How does Redis work?
 
