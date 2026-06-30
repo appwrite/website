@@ -16,8 +16,8 @@ faqs:
     answer: No. Docker builds and runs individual containers. Kubernetes orchestrates many containers across many machines. They are usually used together.
   - question: Do I need Kubernetes for a small app?
     answer: Often not. For a single small service, simpler options are easier and cheaper. Kubernetes pays off when you have multiple services, real scaling needs, or strict uptime requirements.
-  - question: "What does \"K8s\" mean?"
-    answer: "K8s is a shorthand for Kubernetes, where the \"8\" stands for the eight letters between the \"K\" and the \"s.\""
+  - question: What does \"K8s\" mean?
+    answer: K8s is a shorthand for Kubernetes, where the \"8\" stands for the eight letters between the \"K\" and the \"s.\"
 ---
 **Kubernetes is an open-source platform that automates deploying, scaling, and managing containerized applications across a cluster of machines.** Often shortened to "K8s," it takes the manual work out of running containers in production by deciding where they run, restarting them when they fail, and scaling them up or down as demand changes.
 
