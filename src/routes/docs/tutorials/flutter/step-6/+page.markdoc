@@ -1,0 +1,165 @@
+---
+layout: tutorial
+title: Add database
+description: Connect a database to your Flutter application using Appwrite Flutter SDK.
+step: 6
+---
+In this step, you'll set up a database to store ideas in Appwrite, configure permissions, then create a
+context to manage ideas in your Flutter app.
+
+## Create database {% #create-database %}
+To store your ideas, you need to create a database first.
+
+1. Go to the Databases section in your Appwrite Console
+2. Click *Create Database*
+3. Give it a name and ID. For this tutorial, we'll use `Ideas Tracker` as the name and `default` as the ID.
+4. You'll need to remember the database ID as you'll need it later.
+
+## Create table {% #create-table %}
+In Appwrite, data is stored as a table of rows. Create a table in the [Appwrite Console](https://cloud.appwrite.io/) to store our ideas.
+Make sure to the remember the table ID, for this tutorial, we'll use `ideas_tracker` as the table ID.
+
+{% only_dark %}
+![Create project screen](/images/docs/tutorials/dark/idea-tracker-table.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/tutorials/idea-tracker-table.png)
+{% /only_light %}
+
+Create a new table with the following columns:
+| Field       | Type    | Required | Size |
+|-------------|---------|----------|------|
+| userId      | Varchar | Yes      | 200   |
+| title       | Varchar | Yes      | 200   |
+| description | Text    | No       | -    |
+
+## Configure permissions {% #configure-permissions %}
+{% only_dark %}
+![Table permissions screen](/images/docs/tutorials/dark/idea-tracker-permissions.png)
+{% /only_dark %}
+{% only_light %}
+![Table permissions screen](/images/docs/tutorials/idea-tracker-permissions.png)
+{% /only_light %}
+
+Navigate to the **Settings** tab of your table, add the role **Any** and check the **Read** box.
+Next, add a **Users** role and give them access to **Create** by checking those boxes.
+These permissions apply to all rows in your new table.
+
+Finally, enable **Row security** to allow further permissions to be set at the row level.
+Remember to click the **Update** button to apply your changes.
+
+## Ideas context {% #ideas-context %}
+
+Now that you have a table to hold ideas, we can read and write to it from our app.
+Like you did with the user data, we will create a Flutter provider to hold our ideas.
+
+Create a new file `lib/providers/ideas_provider.dart` and add the following code to it.
+
+```dart
+import 'package:appwrite/appwrite.dart';
+import 'package:flutter/material.dart';
+import 'package:appwrite/models.dart' as models;
+import 'package:ideas_tracker/appwrite.dart';
+
+class IdeasProvider extends ChangeNotifier {
+  static const String ideasDatabaseId = "default"; // Replace with your database ID
+  static const String ideasCollectionId = "ideas_tracker"; // Replace with your table ID
+
+  List<models.Document> _ideas = [];
+  List<models.Document> get current => _ideas;
+
+  IdeasProvider() {
+    init();
+  }
+
+  Future<void> init() async {
+    try {
+      final response = await db.listDocuments(
+        databaseId: ideasDatabaseId,
+        collectionId: ideasCollectionId,
+        queries: [Query.orderDesc("\$createdAt"), Query.limit(10)],
+      );
+      _ideas = response.documents;
+      notifyListeners();
+    } catch (e) {
+      debugPrint("Error fetching ideas: $e");
+    }
+  }
+
+  Future<void> add(Map<String, dynamic> data, String userId) async {
+    try {
+      final document = await db.createDocument(
+        databaseId: ideasDatabaseId,
+        collectionId: ideasCollectionId,
+        documentId: ID.unique(),
+        data: data,
+        permissions: [Permission.write(Role.user(userId))],
+      );
+
+      _ideas = [document, ..._ideas];
+      if (_ideas.length > 10) _ideas = _ideas.sublist(0, 10);
+
+      notifyListeners();
+      debugPrint('Idea added');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> remove(String id) async {
+    try {
+      await db.deleteDocument(
+        databaseId: ideasDatabaseId,
+        collectionId: ideasCollectionId,
+        documentId: id,
+      );
+
+      _ideas.removeWhere((item) => item.$id == id);
+      notifyListeners();
+      debugPrint('Idea removed');
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
+```
+
+Notice that new ideas have the added permission `Permission.write(Role.user(userId))`.
+This permission ensures that only the user who created the idea can modify it.
+
+Remember to add the `IdeasProvider` to your `main.dart` file.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/ideas_provider.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:ideas_tracker/routes.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        // Add IdeasProvider to make it accessible throughout the App
+        ChangeNotifierProvider(create: (_) => IdeasProvider()), 
+      ],
+      child: const MyApp(),
+    )
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Ideas Tracker",
+      debugShowCheckedModeBanner: false,
+      home: Routes()
+    );
+  }
+}
+```
