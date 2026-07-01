@@ -66,7 +66,7 @@ Anthropic published a benchmark table comparing Sonnet 5 against its predecessor
 
 The most useful way to think about Sonnet 5 is not as a cheaper Sonnet upgrade, but as part of Anthropic's newer 5-series generation, alongside models like Fable 5. It is more capable than Sonnet 4.6 and has lower per-token pricing than Opus 4.8, but that does not automatically make every run cheaper.
 
-Anthropic lets developers adjust the effort level, from lower settings for faster runs up to max mode for harder tasks that need deeper reasoning. The important caveat is that Sonnet 5 tends to spend far more tokens at higher reasoning levels, so lower per-token pricing does not always mean lower task cost. In Artificial Analysis' benchmark, Sonnet 5 at max effort cost more per task than Opus 4.8 at standard pricing and also cost more to run than Fable 5 in the referenced comparison. That makes the tradeoff less about "cheap Sonnet vs expensive Opus" and more about choosing the right effort level for the workload.
+Anthropic lets developers adjust the effort level, from lower settings for faster runs up to max mode for harder tasks that need deeper reasoning. The important caveat is that Sonnet 5 tends to spend far more tokens at higher reasoning levels, so lower per-token pricing does not always mean lower task cost. In Artificial Analysis' benchmark, Sonnet 5 at max effort cost more overall than Fable 5 and Opus 4.8, officially being the most expensive model on their benchmark. That makes the tradeoff less about "cheap Sonnet vs expensive Opus" and more about choosing the right effort level for the workload.
 
 The practical takeaway is to treat cost as a mix of model price, total tokens used, and effort level:
 
