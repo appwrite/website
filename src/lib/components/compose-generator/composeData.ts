@@ -748,6 +748,35 @@ services:
       - _APP_DOCKER_HUB_PASSWORD
       - _APP_LOGGING_CONFIG
 
+  appwrite-worker-executions:
+    image: appwrite/appwrite:1.9.0
+    entrypoint: worker-executions
+    <<: *x-logging
+    container_name: appwrite-worker-executions
+    restart: unless-stopped
+    networks:
+      - appwrite
+    depends_on:
+      redis:
+        condition: service_healthy
+      __DB_SERVICE__:
+        condition: service_healthy
+    environment:
+      - _APP_ENV
+      - _APP_WORKER_PER_CORE
+      - _APP_OPENSSL_KEY_V1
+      - _APP_DB_ADAPTER
+      - _APP_DB_HOST
+      - _APP_DB_PORT
+      - _APP_DB_SCHEMA
+      - _APP_DB_USER
+      - _APP_DB_PASS
+      - _APP_REDIS_HOST
+      - _APP_REDIS_PORT
+      - _APP_REDIS_USER
+      - _APP_REDIS_PASS
+      - _APP_LOGGING_CONFIG
+
   appwrite-worker-mails:
     image: appwrite/appwrite:1.9.5
     entrypoint: worker-mails
