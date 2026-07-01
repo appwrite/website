@@ -5,7 +5,7 @@
     "": {
       "name": "appwrite-website",
       "dependencies": {
-        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
+        "@appwrite.io/specs": "github:appwrite/specs#f4f57222fd2460713056b9c998655503ed34dbdd",
         "@sentry/sveltekit": "^10.28.0",
         "@statsig/js-client": "^3.33.0",
         "@statsig/session-replay": "^3.33.0",
@@ -130,7 +130,7 @@
 
     "@appwrite.io/pink-icons": ["@appwrite.io/pink-icons@0.26.0", "", {}, "sha512-abLQdT0zlDkEEwvgU1ymFq0ztxuRerwx7t1oeUGFgXlm9gXrxt6nce2f5GRqg9Rb7hM3F3nyc1ds8zRRWHQOyw=="],
 
-    "@appwrite.io/specs": ["@appwrite.io/specs@github:appwrite/specs#9f7af41", {}, "appwrite-specs-9f7af41", "sha512-Hgz0Xzw8forEivWtM+30u+ysV1TnBH7DwsKXrjv6LJQqxjetgr6Qxanf7lwwjvW2DEdm6R/w96CWqh/IEj2zrw=="],
+    "@appwrite.io/specs": ["@appwrite.io/specs@github:appwrite/specs#f4f5722", {}, "appwrite-specs-f4f5722"],
 
     "@babel/code-frame": ["@babel/code-frame@7.27.1", "", { "dependencies": { "@babel/helper-validator-identifier": "7.27.1", "js-tokens": "4.0.0", "picocolors": "1.1.1" } }, "sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg=="],
 
