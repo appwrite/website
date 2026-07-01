@@ -10,7 +10,7 @@
     let { children } = $props();
 
     const parent: NavParent = {
-        href: '/docs',
+        href: '/docs/products/databases',
         label: 'Databases'
     };
 
@@ -20,11 +20,11 @@
             items: [
                 {
                     label: 'Overview',
-                    href: '/docs/products/databases'
+                    href: '/docs/products/databases/tablesdb'
                 },
                 {
                     label: 'Quick start',
-                    href: '/docs/products/databases/quick-start'
+                    href: '/docs/products/databases/tablesdb/quick-start'
                 }
             ]
         },
@@ -33,45 +33,45 @@
             items: [
                 {
                     label: 'Databases',
-                    href: '/docs/products/databases/databases'
+                    href: '/docs/products/databases/tablesdb/databases'
                 },
                 {
                     label: 'Tables',
-                    href: '/docs/products/databases/tables'
+                    href: '/docs/products/databases/tablesdb/tables'
                 },
                 {
                     label: 'Rows',
-                    href: '/docs/products/databases/rows'
+                    href: '/docs/products/databases/tablesdb/rows'
                 },
                 {
                     label: 'Permissions',
-                    href: '/docs/products/databases/permissions'
+                    href: '/docs/products/databases/tablesdb/permissions'
                 },
                 {
                     label: 'Relationships',
-                    href: '/docs/products/databases/relationships'
+                    href: '/docs/products/databases/tablesdb/relationships'
                 },
                 {
                     label: 'Queries',
-                    href: '/docs/products/databases/queries'
+                    href: '/docs/products/databases/tablesdb/queries'
                 },
                 {
                     label: 'Order',
-                    href: '/docs/products/databases/order'
+                    href: '/docs/products/databases/tablesdb/order'
                 },
                 {
                     label: 'Operators',
-                    href: '/docs/products/databases/operators',
+                    href: '/docs/products/databases/tablesdb/operators',
                     new: isNewUntil('31 Dec 2025')
                 },
                 {
                     label: 'Geo queries',
-                    href: '/docs/products/databases/geo-queries',
+                    href: '/docs/products/databases/tablesdb/geo-queries',
                     new: isNewUntil('30 Sep 2025')
                 },
                 {
                     label: 'Backups',
-                    href: '/docs/products/databases/backups'
+                    href: '/docs/products/databases/tablesdb/backups'
                 }
             ]
         },
@@ -80,50 +80,50 @@
             items: [
                 {
                     label: 'Pagination',
-                    href: '/docs/products/databases/pagination'
+                    href: '/docs/products/databases/tablesdb/pagination'
                 },
                 {
                     label: 'Transactions',
-                    href: '/docs/products/databases/transactions',
+                    href: '/docs/products/databases/tablesdb/transactions',
                     new: isNewUntil('31 Oct 2025')
                 },
                 {
                     label: 'Type generation',
-                    href: '/docs/products/databases/type-generation',
+                    href: '/docs/products/databases/tablesdb/type-generation',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'Offline sync',
-                    href: '/docs/products/databases/offline'
+                    href: '/docs/products/databases/tablesdb/offline'
                 },
                 {
                     label: 'Bulk operations',
-                    href: '/docs/products/databases/bulk-operations',
+                    href: '/docs/products/databases/tablesdb/bulk-operations',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'Atomic numeric operations',
-                    href: '/docs/products/databases/atomic-numeric-operations',
+                    href: '/docs/products/databases/tablesdb/atomic-numeric-operations',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'CSV imports',
-                    href: '/docs/products/databases/csv-imports',
+                    href: '/docs/products/databases/tablesdb/csv-imports',
                     new: isNewUntil('31 Jul 2025')
                 },
                 {
                     label: 'CSV exports',
-                    href: '/docs/products/databases/csv-exports',
+                    href: '/docs/products/databases/tablesdb/csv-exports',
                     new: isNewUntil('28 Feb 2026')
                 },
                 {
                     label: 'AI suggestions',
-                    href: '/docs/products/databases/ai-suggestions',
+                    href: '/docs/products/databases/tablesdb/ai-suggestions',
                     new: isNewUntil('31 Dec 2025')
                 },
                 {
                     label: 'Timestamp overrides',
-                    href: '/docs/products/databases/timestamp-overrides'
+                    href: '/docs/products/databases/tablesdb/timestamp-overrides'
                 }
             ]
         },
@@ -145,16 +145,16 @@
 
     const legacyUrl = $derived(
         page.url.pathname
-            .replace('/products/databases', '/products/databases/legacy')
-            .replace('rows', 'documents')
-            .replace('tables', 'collections')
+            .replace('/tablesdb/', '/tablesdb/legacy/')
+            .replace(/\/rows(\/|$)/, '/documents$1')
+            .replace(/\/tables(\/|$)/, '/collections$1')
     );
 
     const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
 
     const shouldShowSubtitle = $derived(
         !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
-            !page.url.pathname.endsWith('products/databases')
+            !page.url.pathname.endsWith('products/databases/tablesdb')
     );
 
     const headerSectionInfoAlert = writable<HeaderSectionInfoAlert | null>(null);
