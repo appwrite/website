@@ -66,7 +66,7 @@ Anthropic published a benchmark table comparing Sonnet 5 against its predecessor
 
 The most useful way to think about Sonnet 5 is not as a cheaper Sonnet upgrade, but as part of Anthropic's newer 5-series generation, alongside models like Fable 5. It is more capable than Sonnet 4.6 and has lower per-token pricing than Opus 4.8, but that does not automatically make every run cheaper.
 
-Anthropic lets developers adjust the effort level, from lower settings for faster runs up to max mode for harder tasks that need deeper reasoning. That matters because total cost depends on more than token price. If Sonnet 5 uses significantly more tokens on a long agent workflow or benchmark run, it can still end up costing more overall.
+Anthropic lets developers adjust the effort level, from lower settings for faster runs up to max mode for harder tasks that need deeper reasoning. The important caveat is that Sonnet 5 tends to spend far more tokens at higher reasoning levels, so lower per-token pricing does not always mean lower task cost. In Artificial Analysis' benchmark, Sonnet 5 at max effort cost more per task than Opus 4.8 at standard pricing and also cost more to run than Fable 5 in the referenced comparison. That makes the tradeoff less about "cheap Sonnet vs expensive Opus" and more about choosing the right effort level for the workload.
 
 The practical takeaway is to treat cost as a mix of model price, total tokens used, and effort level:
 
@@ -83,6 +83,8 @@ Anthropic's early-access partners were consistent in their feedback: Sonnet 5 is
 * **Tool use and reasoning.** The gains over Sonnet 4.6 in tool use, reasoning, and coding are what let it operate browsers and terminals autonomously and recover when a step doesn't go as planned.
 
 # Claude Sonnet 5's safety and safeguards
+
+More autonomy also raises the bar for safety. Since Sonnet 5 is designed for tool-heavy agentic work, Anthropic evaluated how well it handles malicious requests, prompt injection, hallucination, sycophancy, and cyber misuse.
 
 * Anthropic's pre-deployment evaluations found Sonnet 5 to be an overall improvement on Sonnet 4.6 for safety. It's better at refusing malicious requests and at resisting hijack attempts in prompt injection attacks, a meaningful property for agents that read untrusted web content or tool output. It also shows lower rates of hallucination and sycophancy than Sonnet 4.6.
 * On Anthropic's automated behavioral audit, which tests for a wide range of misaligned behaviors such as cooperation with misuse and deception, Sonnet 5 scored lower (that is, safer) overall than Sonnet 4.6. It did show somewhat higher rates of misaligned behavior than the more capable Opus 4.8 and Claude Mythos Preview, which is the expected pattern for a smaller model.
@@ -122,6 +124,6 @@ Recent releases have added [MongoDB support, Appwrite 1.9.0, realtime upgrades, 
 
 * [Appwrite MCP server docs](https://appwrite.io/docs/tooling/ai/mcp-servers/docs)
 * [Start building on Appwrite Cloud](https://cloud.appwrite.io/)
-* [Appwrite AI products](https://appwrite.io/docs/tooling/ai)
+* [Appwrite AI tooling](https://appwrite.io/docs/tooling/ai)
 * [Appwrite integrations](https://appwrite.io/integrations)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
