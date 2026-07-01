@@ -94,6 +94,17 @@
             ]
         },
         {
+            label: 'Partners',
+            items: [
+                {
+                    label: 'Project',
+                    href: '/docs/partners/project',
+                    icon: 'icon-briefcase',
+                    isParent: true
+                }
+            ]
+        },
+        {
             label: 'Utilities',
             collapsible: true,
             initiallyCollapsed: true,
