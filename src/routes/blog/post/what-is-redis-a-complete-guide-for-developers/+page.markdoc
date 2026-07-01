@@ -98,7 +98,7 @@ Getting hands-on is the fastest way to understand Redis.
 4. **Set an expiry** on a key with `EXPIRE` to see how Redis handles temporary data, the heart of caching.
 5. **Integrate Redis into an app** as a cache in front of your database, and measure the speedup.
 
-A backend platform like [Appwrite](https://appwrite.io/docs) provides databases, storage, and functions that pair naturally with a caching layer like Redis in a production stack.
+Appwrite uses Redis-like technology internally for list caching, while developers can still use Redis alongside Appwrite when their own apps need caching, queues, sessions, or fast temporary data.
 
 # Redis best practices
 
