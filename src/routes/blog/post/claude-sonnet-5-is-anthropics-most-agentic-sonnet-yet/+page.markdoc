@@ -122,8 +122,8 @@ Recent releases have added [MongoDB support, Appwrite 1.9.0, realtime upgrades, 
 
 # Resources
 
-* [Appwrite MCP server docs](https://appwrite.io/docs/tooling/ai/mcp-servers/docs)
+* [Appwrite MCP server docs](/docs/tooling/ai/mcp-servers/)
 * [Start building on Appwrite Cloud](https://cloud.appwrite.io/)
-* [Appwrite AI tooling](https://appwrite.io/docs/tooling/ai)
-* [Appwrite integrations](https://appwrite.io/integrations)
+* [Appwrite AI tooling](/docs/tooling/ai)
+* [Appwrite integrations](/integrations)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
