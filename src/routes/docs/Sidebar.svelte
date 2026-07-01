@@ -94,11 +94,11 @@
             ]
         },
         {
-            label: 'Platforms',
+            label: 'Partners',
             items: [
                 {
                     label: 'Project',
-                    href: '/docs/platforms/project',
+                    href: '/docs/partners/project',
                     icon: 'icon-briefcase',
                     isParent: true
                 }

@@ -499,5 +499,5 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 Freezing, revoking, and deleting in that order turns a cancellation into a safe, repeatable teardown rather than a risky one-off. It is the mirror image of onboarding:
 
-- [Provision a project's baseline](/docs/platforms/project/provisioning) is the same sequence in reverse.
-- [Issue and rotate API keys](/docs/platforms/project/key-rotation) covers the credentials you revoke here.
+- [Provision a project's baseline](/docs/partners/project/provisioning) is the same sequence in reverse.
+- [Issue and rotate API keys](/docs/partners/project/key-rotation) covers the credentials you revoke here.

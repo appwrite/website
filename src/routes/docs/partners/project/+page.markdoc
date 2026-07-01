@@ -16,40 +16,40 @@ Driving configuration from code is what makes a fleet of projects manageable. Pr
 # Concepts {% #concepts %}
 
 {% cards %}
-{% cards_item href="/docs/platforms/project/auth-methods" title="Auth methods" %}
+{% cards_item href="/docs/partners/project/auth-methods" title="Auth methods" %}
 Enable or disable authentication methods on your project.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/oauth" title="OAuth providers" %}
+{% cards_item href="/docs/partners/project/oauth" title="OAuth providers" %}
 Configure OAuth2 sign-in providers like Google, GitHub, and Apple.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/api-keys" title="API keys" %}
+{% cards_item href="/docs/partners/project/api-keys" title="API keys" %}
 Create and manage API keys used by Server SDKs.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/platforms" title="Platforms" %}
+{% cards_item href="/docs/partners/project/platforms" title="Platforms" %}
 Register the apps and origins that are allowed to call your project.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/protocols" title="Protocols" %}
+{% cards_item href="/docs/partners/project/protocols" title="Protocols" %}
 Toggle the API protocols clients can use to reach your project.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/services" title="Services" %}
+{% cards_item href="/docs/partners/project/services" title="Services" %}
 Turn individual Appwrite services on or off for your project.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/policies" title="Policies" %}
+{% cards_item href="/docs/partners/project/policies" title="Policies" %}
 Configure project-wide policies that apply across resources.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/mock-phones" title="Mock phones" %}
+{% cards_item href="/docs/partners/project/mock-phones" title="Mock phones" %}
 Register fictional phone numbers and OTPs to test phone authentication.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/environment-variables" title="Environment variables" %}
+{% cards_item href="/docs/partners/project/environment-variables" title="Environment variables" %}
 Share constants and secrets across your functions and sites.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/smtp" title="SMTP" %}
+{% cards_item href="/docs/partners/project/smtp" title="SMTP" %}
 Send emails from your own custom SMTP server.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/email-templates" title="Email templates" %}
+{% cards_item href="/docs/partners/project/email-templates" title="Email templates" %}
 Customize the account management emails Appwrite sends to your users.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/labels" title="Labels" %}
+{% cards_item href="/docs/partners/project/labels" title="Labels" %}
 Tag projects with customizable labels to organize and filter them.
 {% /cards_item %}
 {% /cards %}
@@ -57,19 +57,19 @@ Tag projects with customizable labels to organize and filter them.
 # Journeys {% #journeys %}
 
 {% cards %}
-{% cards_item href="/docs/platforms/project/provisioning" title="Provisioning" %}
+{% cards_item href="/docs/partners/project/provisioning" title="Provisioning" %}
 Apply a standard baseline to a new customer's project from a script.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/key-rotation" title="Key rotation" %}
+{% cards_item href="/docs/partners/project/key-rotation" title="Key rotation" %}
 Issue, audit, rotate, and revoke scoped API keys programmatically.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/branded-emails" title="Branded emails" %}
+{% cards_item href="/docs/partners/project/branded-emails" title="Branded emails" %}
 Route a project's mail through custom SMTP and rebrand the templates.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/plan-tiers" title="Plan tiers" %}
+{% cards_item href="/docs/partners/project/plan-tiers" title="Plan tiers" %}
 Turn a pricing tier into enforceable project limits and gated services.
 {% /cards_item %}
-{% cards_item href="/docs/platforms/project/offboarding" title="Offboarding" %}
+{% cards_item href="/docs/partners/project/offboarding" title="Offboarding" %}
 Freeze, revoke, and delete a project as one clean teardown.
 {% /cards_item %}
 {% /cards %}

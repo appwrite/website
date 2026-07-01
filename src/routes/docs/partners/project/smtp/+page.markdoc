@@ -4,7 +4,7 @@ title: SMTP
 description: Configure a custom SMTP server to send Appwrite's account management emails from your own domain, improve deliverability, and unlock custom email templates.
 ---
 
-By default, Appwrite sends account management emails such as verification, password recovery, and magic URL links from a shared SMTP server. Configuring a custom SMTP server lets you send these emails through your own provider instead. This sends mail from your own domain, improves deliverability, and unlocks [custom email templates](/docs/platforms/project/email-templates).
+By default, Appwrite sends account management emails such as verification, password recovery, and magic URL links from a shared SMTP server. Configuring a custom SMTP server lets you send these emails through your own provider instead. This sends mail from your own domain, improves deliverability, and unlocks [custom email templates](/docs/partners/project/email-templates).
 
 # Configure in the Console {% #console %}
 
@@ -602,4 +602,4 @@ appwrite project create-smtp-test \
 
 - **Send from your own domain.** Deliver account emails from your branded sender address instead of Appwrite's shared one, so users recognize and trust them.
 - **Better deliverability.** Routing mail through an authenticated provider, with SPF and DKIM set up on your domain, reduces the chance of verification and recovery emails landing in spam.
-- **Unlocks custom templates.** A custom SMTP server is required to customize [email templates](/docs/platforms/project/email-templates) per locale.
+- **Unlocks custom templates.** A custom SMTP server is required to customize [email templates](/docs/partners/project/email-templates) per locale.

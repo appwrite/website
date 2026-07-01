@@ -16,7 +16,7 @@ The Project API lets you encode that baseline once and apply it from your backen
 Each call uses a [Server SDK](/docs/sdks#server) with an API key.
 
 {% info title="Required scopes" %}
-The API key used for these calls needs the `project.write` and `platforms.write` scopes. See [API keys](/docs/platforms/project/api-keys) to create one.
+The API key used for these calls needs the `project.write` and `platforms.write` scopes. See [API keys](/docs/partners/project/api-keys) to create one.
 {% /info %}
 
 # Register the customer's app {% #register-platform %}
@@ -753,6 +753,6 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 Wrap these calls in a single function keyed to the customer and every project you bring online starts identical, which is what keeps the next thousand projects manageable. With the baseline in place, the rest of the project's life uses the same Project API:
 
-- [Issue and rotate API keys](/docs/platforms/project/key-rotation) for the integrations that run against the project.
-- [Brand its transactional emails](/docs/platforms/project/branded-emails) so they come from the customer's domain.
-- [Map a pricing tier](/docs/platforms/project/plan-tiers) onto the project's limits.
+- [Issue and rotate API keys](/docs/partners/project/key-rotation) for the integrations that run against the project.
+- [Brand its transactional emails](/docs/partners/project/branded-emails) so they come from the customer's domain.
+- [Map a pricing tier](/docs/partners/project/plan-tiers) onto the project's limits.

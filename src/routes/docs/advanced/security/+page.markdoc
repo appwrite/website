@@ -109,7 +109,7 @@ Learn about Console organization member roles and the access each one grants.
 Appwrite has rate limits on some endpoints to prevent abuse.
 {% /cards_item %}
 
-{% cards_item href="/docs/platforms/project/api-keys" title="API keys" %}
+{% cards_item href="/docs/partners/project/api-keys" title="API keys" %}
 Create and manage API keys used by Server SDKs.
 {% /cards_item %}
 
@@ -123,7 +123,7 @@ Create and manage dev keys used by Client SDKs in dev environments.
 Pass constants and secrets to your Appwrite resources.
 
 {% cards %}
-{% cards_item href="/docs/platforms/project/environment-variables" title="Environment variables" %}
+{% cards_item href="/docs/partners/project/environment-variables" title="Environment variables" %}
 Use project, function, and site environment variables to pass constants and secrets to your Functions and Sites.
 {% /cards_item %}
 {% /cards %}

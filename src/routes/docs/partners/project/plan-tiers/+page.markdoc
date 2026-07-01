@@ -545,5 +545,5 @@ Disabling a service removes it from the client-facing API only. A Server SDK usi
 
 Group these calls into one function per tier and a plan change becomes a single call against the customer's project, with Appwrite enforcing the limits from then on. From here:
 
-- [Provision a project's baseline](/docs/platforms/project/provisioning) and apply the tier as part of onboarding.
-- Read the [Policies](/docs/platforms/project/policies) reference for the other limits you can enforce.
+- [Provision a project's baseline](/docs/partners/project/provisioning) and apply the tier as part of onboarding.
+- Read the [Policies](/docs/partners/project/policies) reference for the other limits you can enforce.

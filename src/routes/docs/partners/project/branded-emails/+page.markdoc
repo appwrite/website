@@ -896,5 +896,5 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 With SMTP and templates driven from code, every customer's project sends mail that carries their brand rather than yours. From here:
 
-- [Provision a project's baseline](/docs/platforms/project/provisioning) so branding the emails is one step in onboarding.
-- Read the [SMTP](/docs/platforms/project/smtp) and [Email templates](/docs/platforms/project/email-templates) references for every field you can set.
+- [Provision a project's baseline](/docs/partners/project/provisioning) so branding the emails is one step in onboarding.
+- Read the [SMTP](/docs/partners/project/smtp) and [Email templates](/docs/partners/project/email-templates) references for every field you can set.
