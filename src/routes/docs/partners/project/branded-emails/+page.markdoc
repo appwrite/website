@@ -6,7 +6,7 @@ description: Route a customer's project emails through their own SMTP server and
 
 When a user on your customer's app resets their password, the email that lands in their inbox is part of your customer's brand, or it should be. Out of the box, those messages go through Appwrite's shared sender and carry Appwrite's default templates, which quietly breaks the white-label illusion the moment a user reads the "from" line. The Project API lets you route a project's mail through the customer's own SMTP server and rewrite every template, so verification, recovery, and invitation emails come from the customer's domain and read in their voice.
 
-This journey:
+This guide:
 
 - Points a project at the customer's SMTP server.
 - Confirms that mail is reaching the inbox.

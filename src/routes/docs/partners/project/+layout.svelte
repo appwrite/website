@@ -71,7 +71,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Provisioning',
@@ -84,14 +84,6 @@
                 {
                     label: 'Branded emails',
                     href: '/docs/partners/project/branded-emails'
-                },
-                {
-                    label: 'Plan tiers',
-                    href: '/docs/partners/project/plan-tiers'
-                },
-                {
-                    label: 'Offboarding',
-                    href: '/docs/partners/project/offboarding'
                 }
             ]
         }

@@ -11,7 +11,7 @@ An Appwrite **Project** is the top-level container for all the resources your ap
 
 The Console configures one project at a time by hand. The Project API does the same configuration programmatically, which is what teams need when they operate not one project but many: a platform that gives every customer their own project, an agency running client environments, or an enterprise standardizing dozens of internal apps.
 
-Driving configuration from code is what makes a fleet of projects manageable. Provision every new project to the same baseline, enforce one security posture across all of them, send each customer branded emails from their own domain, map pricing tiers onto enforceable limits, and tear a project down cleanly when a customer leaves. The [journeys](#journeys) below walk through each of these end to end.
+Driving configuration from code is what makes a fleet of projects manageable. Provision every new project to the same baseline, enforce one security posture across all of them, and send each customer branded emails from their own domain. The [guides](#guides) below walk through each of these end to end.
 
 # Concepts {% #concepts %}
 
@@ -54,7 +54,7 @@ Tag projects with customizable labels to organize and filter them.
 {% /cards_item %}
 {% /cards %}
 
-# Journeys {% #journeys %}
+# Guides {% #guides %}
 
 {% cards %}
 {% cards_item href="/docs/partners/project/provisioning" title="Provisioning" %}
@@ -65,12 +65,6 @@ Issue, audit, rotate, and revoke scoped API keys programmatically.
 {% /cards_item %}
 {% cards_item href="/docs/partners/project/branded-emails" title="Branded emails" %}
 Route a project's mail through custom SMTP and rebrand the templates.
-{% /cards_item %}
-{% cards_item href="/docs/partners/project/plan-tiers" title="Plan tiers" %}
-Turn a pricing tier into enforceable project limits and gated services.
-{% /cards_item %}
-{% cards_item href="/docs/partners/project/offboarding" title="Offboarding" %}
-Freeze, revoke, and delete a project as one clean teardown.
 {% /cards_item %}
 {% /cards %}
 

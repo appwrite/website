@@ -755,4 +755,3 @@ Wrap these calls in a single function keyed to the customer and every project yo
 
 - [Issue and rotate API keys](/docs/partners/project/key-rotation) for the integrations that run against the project.
 - [Brand its transactional emails](/docs/partners/project/branded-emails) so they come from the customer's domain.
-- [Map a pricing tier](/docs/partners/project/plan-tiers) onto the project's limits.
