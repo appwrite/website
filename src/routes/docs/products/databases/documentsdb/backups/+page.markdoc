@@ -1,13 +1,12 @@
 ---
 layout: article
 title: Backups
-description: Learn how to back up and restore your DocumentsDB databases on Appwrite Cloud, ensuring data security and seamless recovery.
+description: Learn how to back up and restore your DocumentsDB databases, ensuring data security and seamless recovery.
 ---
 
-Appwrite Backups enable seamless, **encrypted** database backups on Cloud.
-All backups are **hot** backups, ensuring zero downtime and fast recovery.
+Backups protect your DocumentsDB data by capturing a full copy of a database that you can restore later. Every backup is **encrypted** and taken as a **hot** backup, so your database keeps serving traffic with zero downtime and recovery stays fast.
 
-{% info title="Backups are available on Appwrite Cloud for all Pro and Enterprise customers." %}
+{% info title="Backups are available for all Pro and Enterprise customers." %}
 {% /info %}
 
 You manage backups from a database's **Backups** tab, where you can automate backups with policies or create manual backups on demand.

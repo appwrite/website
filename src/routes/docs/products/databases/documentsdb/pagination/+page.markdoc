@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Pagination
-description: Implement pagination for large data sets in Appwrite Databases. Explore techniques for splitting and displaying data across multiple pages.
+description: Implement pagination for large data sets in Appwrite DocumentsDB. Explore techniques for splitting and displaying data across multiple pages.
 ---
 
 As your collection grows in size, you'll need to paginate the documents returned.

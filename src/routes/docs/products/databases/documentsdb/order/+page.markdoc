@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Order
-description: Understand how to do data ordering in Appwrite Databases. Learn how to order and sort your database records for efficient data retrieval.
+description: Understand how to do data ordering in Appwrite DocumentsDB. Learn how to order and sort your database records for efficient data retrieval.
 ---
 
-You can order results returned by Appwrite Databases by using an order query.
+You can order results returned by Appwrite DocumentsDB by using an order query.
 For best performance, create an [index](/docs/products/databases/documentsdb/collections#indexes) on the field you plan to order by.
 
 # Ordering one field {% #one-field %}
