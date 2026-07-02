@@ -2,7 +2,7 @@
 layout: post
 title: What is Kubernetes? An expert guide for developers
 description: Learn what Kubernetes is, how its architecture works, core components like pods and services, and how it differs from Docker, in this developer guide.
-date: 2026-06-29
+date: 2026-07-02
 cover: /images/blog/what-is-kubernetes-an-expert-guide-for-developers/cover.avif
 timeToRead: 5
 author: luke-silver
