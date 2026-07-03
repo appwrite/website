@@ -48,6 +48,10 @@
                 {
                     label: 'Image transformations',
                     href: '/docs/products/storage/images'
+                },
+                {
+                    label: 'S3 API',
+                    href: '/docs/products/storage/s3'
                 }
             ]
         },
