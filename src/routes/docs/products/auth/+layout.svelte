@@ -60,6 +60,10 @@
                     new: isNewUntil('30 June 2026')
                 },
                 {
+                    label: 'Message templates',
+                    href: '/docs/products/auth/message-templates'
+                },
+                {
                     label: 'Tokens',
                     href: '/docs/products/auth/tokens'
                 },
@@ -75,7 +79,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Email and password login',
@@ -108,6 +112,11 @@
                 {
                     label: 'SSR login',
                     href: '/docs/products/auth/server-side-rendering'
+                },
+                {
+                    label: 'React library',
+                    href: '/docs/products/auth/react',
+                    new: isNewUntil('30 June 2026')
                 },
                 {
                     label: 'Custom token login',

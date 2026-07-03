@@ -150,7 +150,7 @@ export const GET: RequestHandler = ({ request }) => {
             }
 
             // Skip stub pages with no useful content
-            if (href === '/docs/advanced/integration' || href === '/blog/category/integrations') {
+            if (href === '/blog/category/integrations') {
                 continue;
             }
 

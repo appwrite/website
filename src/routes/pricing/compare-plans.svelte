@@ -177,12 +177,12 @@
                     free: '-',
                     pro: {
                         text: 'View rates',
-                        url: '/docs/advanced/platform/phone-otp#rates',
+                        url: '/docs/advanced/billing/phone-otp#rates',
                         event: 'pricing-pro-view_phone_otp_rates-click'
                     },
                     scale: {
                         text: 'View rates',
-                        url: '/docs/advanced/platform/phone-otp#rates',
+                        url: '/docs/advanced/billing/phone-otp#rates',
                         event: 'pricing-scale-view_phone_otp_rates-click'
                     },
                     enterprise: 'Custom'

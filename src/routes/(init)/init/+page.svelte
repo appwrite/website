@@ -127,7 +127,7 @@
                 },
                 {
                     title: 'Dev Keys',
-                    url: '/docs/advanced/platform/dev-keys',
+                    url: '/docs/advanced/security/dev-keys',
                     type: 'Docs',
                     label: 'Visit docs'
                 }
