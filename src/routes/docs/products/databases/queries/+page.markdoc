@@ -2043,6 +2043,121 @@ Query::updated_after("2025-01-01T00:00:00Z").to_string()
 {"method":"updatedAfter","values":["2025-01-01T00:00:00Z"]}
 ```
 {% /multicode %}
+
+# Vector queries {% #vector-queries %}
+
+Vector query helpers search vector attributes by similarity to a query vector. Use them with VectorsDB document list endpoints and pass a numeric vector with the same dimensions as the stored embeddings.
+
+Choose the helper that matches the similarity metric you want to use:
+
+| Helper | Similarity metric |
+|--------|-------------------|
+| `vectorDot` | Dot product |
+| `vectorCosine` | Cosine similarity |
+| `vectorEuclidean` | Euclidean distance |
+
+You can include one vector similarity query per request. Vector queries can be combined with standard filters and pagination helpers such as `Query.equal()` and `Query.limit()`.
+
+{% multicode %}
+```client-web
+Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```client-flutter
+Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```client-react-native
+Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```client-apple
+Query.vectorDot("embeddings", vector: [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", vector: [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", vector: [0.12, 0.24, 0.48])
+```
+```client-android-kotlin
+Query.vectorDot("embeddings", listOf(0.12, 0.24, 0.48))
+Query.vectorCosine("embeddings", listOf(0.12, 0.24, 0.48))
+Query.vectorEuclidean("embeddings", listOf(0.12, 0.24, 0.48))
+```
+```client-android-java
+Query.vectorDot("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+Query.vectorCosine("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+Query.vectorEuclidean("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+```
+```server-nodejs
+const sdk = require('node-appwrite');
+
+sdk.Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+sdk.Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+sdk.Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-python
+Query.vector_dot("embeddings", [0.12, 0.24, 0.48])
+Query.vector_cosine("embeddings", [0.12, 0.24, 0.48])
+Query.vector_euclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-ruby
+Query.vector_dot("embeddings", [0.12, 0.24, 0.48])
+Query.vector_cosine("embeddings", [0.12, 0.24, 0.48])
+Query.vector_euclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-deno
+Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-php
+Query::vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query::vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query::vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-dotnet
+Query.VectorDot("embeddings", new List<double> { 0.12, 0.24, 0.48 })
+Query.VectorCosine("embeddings", new List<double> { 0.12, 0.24, 0.48 })
+Query.VectorEuclidean("embeddings", new List<double> { 0.12, 0.24, 0.48 })
+```
+```server-go
+query.VectorDot("embeddings", []float64{0.12, 0.24, 0.48})
+query.VectorCosine("embeddings", []float64{0.12, 0.24, 0.48})
+query.VectorEuclidean("embeddings", []float64{0.12, 0.24, 0.48})
+```
+```server-dart
+Query.vectorDot("embeddings", [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", [0.12, 0.24, 0.48])
+```
+```server-swift
+Query.vectorDot("embeddings", vector: [0.12, 0.24, 0.48])
+Query.vectorCosine("embeddings", vector: [0.12, 0.24, 0.48])
+Query.vectorEuclidean("embeddings", vector: [0.12, 0.24, 0.48])
+```
+```server-kotlin
+Query.vectorDot("embeddings", listOf(0.12, 0.24, 0.48))
+Query.vectorCosine("embeddings", listOf(0.12, 0.24, 0.48))
+Query.vectorEuclidean("embeddings", listOf(0.12, 0.24, 0.48))
+```
+```server-java
+Query.vectorDot("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+Query.vectorCosine("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+Query.vectorEuclidean("embeddings", Arrays.asList(0.12, 0.24, 0.48))
+```
+```server-rust
+Query::vector_dot("embeddings", serde_json::json!([0.12, 0.24, 0.48])).to_string()
+Query::vector_cosine("embeddings", serde_json::json!([0.12, 0.24, 0.48])).to_string()
+Query::vector_euclidean("embeddings", serde_json::json!([0.12, 0.24, 0.48])).to_string()
+```
+```http
+{"method":"vectorDot","column":"embeddings","values":[[0.12,0.24,0.48]]}
+{"method":"vectorCosine","column":"embeddings","values":[[0.12,0.24,0.48]]}
+{"method":"vectorEuclidean","column":"embeddings","values":[[0.12,0.24,0.48]]}
+```
+{% /multicode %}
+
 # Geo queries and spatial operations {% #geo-queries %}
 
 Geo queries enable geographic operations on [spatial columns](/docs/products/databases/spatial). Coordinates are specified as `[longitude, latitude]` arrays. Distance measurements can be specified in meters or degrees.
@@ -3072,4 +3187,3 @@ let rows = tables_db.list_rows(
 
 This example demonstrates how to combine `OR` and `AND` operations. The query uses `Query.or()` to match either condition: books under $20 OR magazines under $10.
 Each condition within the OR is composed of two AND conditions - one for the category and one for the price threshold. The database will return rows that match either of these combined conditions.
-
