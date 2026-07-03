@@ -1396,6 +1396,8 @@
   "static/images/docs/advanced/security/dpa.png": "5bfbf7c5654a27d23eeefe49ff70c79861d2734f454c62758978b1a600f1c85d",
   "static/images/docs/advanced/security/mfa-modal.png": "f56b55bcb1ca889597bf8cb803fcabe8b66deaf2f06fd4f49a100d9a507cabef",
   "static/images/docs/advanced/security/mfa.png": "903def2fe311e439851c1ed0b730bb6c88f8b8b32a8ad53152d244fb48b141e5",
+  "static/images/docs/advanced/self-hosting/dokploy/dark/deployed-service.png": "5ea12bd592dcebfa14257989174f1ecbd9cdc704cdfedd35e41ecb89dd668b4e",
+  "static/images/docs/advanced/self-hosting/dokploy/deployed-service.png": "0a4d09ed43507f05c3668723d7df06dfdbe492f9ce23eec2f5cebbb59c871feb",
   "static/images/docs/advanced/self-hosting/installation/dark/wizard-account.png": "b7082787919afe0cb0d7975361356438d798927efda8a47c7471f08b4dd8816a",
   "static/images/docs/advanced/self-hosting/installation/dark/wizard-review.png": "7d4cebea557f02e9e519390b5c16b2d552f641e8dff2c7c89db9851c8887edfa",
   "static/images/docs/advanced/self-hosting/installation/dark/wizard-secure.png": "e558268592865d2ce464e37188b92ff4e1bd54d3c59fd643ad4acac2bcb117ce",
