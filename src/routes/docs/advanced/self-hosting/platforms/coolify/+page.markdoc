@@ -56,7 +56,7 @@ To enable email notifications, configure these environment variables:
 _APP_SMTP_HOST=smtp.example.com
 _APP_SMTP_PASSWORD=password
 _APP_SMTP_PORT=587
-_APP_SMTP_SECURE=true
+_APP_SMTP_SECURE=tls
 _APP_SMTP_USERNAME=username
 ```
 
