@@ -43,6 +43,10 @@
                 {
                     label: 'Coolify',
                     href: '/docs/advanced/self-hosting/platforms/coolify'
+                },
+                {
+                    label: 'Dokploy',
+                    href: '/docs/advanced/self-hosting/platforms/dokploy'
                 }
             ]
         },
