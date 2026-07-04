@@ -56,6 +56,14 @@ Dokploy's built-in Let's Encrypt uses the HTTP-01 challenge, which cannot issue 
 
 Traefik then serves your uploaded certificate for matching subdomains via SNI.
 
+**Simpler alternative: per-domain certificates**
+If you only need HTTPS on a handful of specific site or function domains — for example a production site on `app.sites.your-domain` or a custom domain — you can skip the wildcard certificate entirely. HTTP-01 can issue a certificate for a specific hostname (just not a wildcard), so:
+
+1. In the service's **Domains** tab, add the exact domain (not a wildcard) with **Port 80**, **HTTPS** enabled, and the **Let's Encrypt** certificate provider.
+2. Redeploy. Dokploy issues a standard certificate for that host, the same way it does for your main domain.
+
+The domain must resolve to your server (the wildcard `A` record already handles this) and be publicly reachable on port 80 for the challenge. This is easier than managing a wildcard certificate, but you repeat it for each domain and it does not cover Appwrite's auto-generated preview subdomains — use the wildcard certificate above if you need every subdomain covered automatically.
+
 {% info title="Using Cloudflare" %}
 Cloudflare's free Universal SSL only covers your apex and first-level wildcard (`*.your-domain`), not second-level wildcards like `*.sites.your-domain`. If these subdomains are proxied (orange cloud), a matching edge certificate requires Cloudflare Advanced Certificate Manager. To avoid that cost, set the `*.sites` and `*.functions` records to **DNS only** (grey cloud) and rely on the Let's Encrypt wildcard certificate above. A Cloudflare **Origin** certificate will not work here — it is only trusted behind Cloudflare's proxy, never by browsers directly.
 {% /info %}
