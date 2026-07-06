@@ -39,7 +39,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Upload and download',

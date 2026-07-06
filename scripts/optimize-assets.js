@@ -2,8 +2,9 @@
  * Converts raster images under `static/` and `src/` to AVIF (max edge 1280px, quality ~82),
  * deletes the originals, and rewrites matching paths in source and docs.
  *
- * Skips: `static/email/**` (HTML email compatibility), `static/images/logos/icons/apple-touch-icon*`
- * (iOS), `static/favicon.png`, and animated GIFs (not listed in RASTER_EXT).
+ * Skips: `static/assets/**` (downloadable brand assets), `static/email/**` (HTML email
+ * compatibility), `static/images/logos/icons/apple-touch-icon*` (iOS), `static/favicon.png`,
+ * and animated GIFs (not listed in RASTER_EXT).
  *
  * Env: `OPTIMIZE_MAX_FILES=n` limits work for local debugging. With `CI` set, stops after one file.
  *
@@ -41,6 +42,7 @@ const TEXT_EXTENSIONS = new Set([
 
 /** Paths relative to repo root (POSIX) that must stay in original format. */
 function should_skip_file(rel_posix) {
+    if (rel_posix.startsWith('static/assets/')) return true;
     if (rel_posix.startsWith('static/email/')) return true;
     if (rel_posix.startsWith('static/images/logos/icons/apple-touch-icon')) return true;
     if (rel_posix === 'static/favicon.png') return true;

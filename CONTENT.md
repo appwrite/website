@@ -193,7 +193,7 @@ Remember to use a specific language label if the code is using an Appwrite SDK. 
 
 ### Sections
 
-Use sections when there is a clear step-by-step format to a page. This is used mainly in journey pages and tutorials.
+Use sections when there is a clear step-by-step format to a page. This is used mainly in guide pages and tutorials.
 
 ```md
 {% section #featured-products-1 step=1 title="Title" %}

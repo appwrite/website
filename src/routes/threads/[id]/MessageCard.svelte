@@ -29,13 +29,20 @@
             <div class="author-img">
                 <img src={message.author_avatar} alt="" class="h-full w-full rounded-[inherit]" />
             </div>
-            <span class="text-sub-body text-primary font-medium">{message.author}</span>
+            {#if message.author_id}
+                <a
+                    href="/threads/authors/{message.author_id}"
+                    class="text-sub-body text-primary web-link font-medium">{message.author}</a
+                >
+            {:else}
+                <span class="text-sub-body text-primary font-medium">{message.author}</span>
+            {/if}
         </div>
         <span class="timestamp text-caption">
             {formatTimestamp(message.timestamp)}
         </span>
     </div>
-    <div class="text-sub-body mt-4 font-medium">
+    <div class="text-sub-body message-content mt-4 font-medium">
         <SvelteMarkdown
             source={message.message}
             renderers={{
@@ -45,12 +52,24 @@
             }}
         />
     </div>
+    {#if message.reaction_count}
+        <div class="reactions">
+            <span class="web-icon-heart" aria-hidden="true"></span>
+            <span class="text-caption">{message.reaction_count}</span>
+        </div>
+    {/if}
     <slot />
 </div>
 
 <style lang="scss">
     .web-card {
         overflow: hidden;
+    }
+
+    .message-content {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        min-width: 0;
     }
 
     .header {
@@ -63,6 +82,15 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    .reactions {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-block-start: 0.75rem;
+        opacity: 0.7;
+        font-size: 0.875rem;
     }
 
     .author-img {

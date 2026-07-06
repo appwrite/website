@@ -76,7 +76,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Pagination',

@@ -22,9 +22,20 @@ You can change the session limit in the **Security** tab of the Auth Service in 
 # Permissions {% #permissions %}
 
 Security is very important to protect users' data and privacy.
-Appwrite uses a [permissions model](/docs/advanced/platform/permissions) coupled with user sessions to ensure users need correct permissions to access resources.
+Appwrite uses a [permissions model](/docs/advanced/security/permissions) coupled with user sessions to ensure users need correct permissions to access resources.
 With all Appwrite services, including databases and storage, access is granted at the table, bucket, row, or file level.
 These permissions are enforced for client SDKs and server SDKs when using JWT, but are ignored when using a server SDK with an API key.
+
+# Password strength {% #password-strength %}
+
+Password strength lets you set the minimum requirements a password must meet when a user creates an account or changes their password. Enforcing these rules makes passwords harder to guess and brute-force.
+
+You can configure two kinds of requirements:
+
+- **Minimum length**: the smallest number of characters a password is allowed to have.
+- **Character requirements**: require any combination of an uppercase letter, a lowercase letter, a number, and a special character. Each requirement is an independent toggle, so you can enforce as few or as many as your app needs.
+
+Passwords that don't meet the configured requirements are rejected when a user signs up and whenever they change their password. To configure password strength, navigate to **Auth** > **Security** > **Password strength**, set the minimum length and character requirements, then click **Update**.
 
 # Password history {% #password-history %}
 
@@ -34,7 +45,7 @@ Password history can be enabled in the Auth service's **Security** tab on the Ap
 
 # Password dictionary {% #password-dictionary %}
 
-Password dictionary protects users from using bad passwords. It compares the user's password to the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt) and throws an error if there's a match. Together with [rate limits](/docs/advanced/platform/rate-limits), password dictionary will significantly reduce the chance of a malicious actor guessing user passwords.
+Password dictionary protects users from using bad passwords. It compares the user's password to the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt) and throws an error if there's a match. Together with [rate limits](/docs/advanced/security/rate-limits), password dictionary will significantly reduce the chance of a malicious actor guessing user passwords.
 
 Password dictionary can be enabled in the Auth service's **Security** tab on the Appwrite Console.
 
