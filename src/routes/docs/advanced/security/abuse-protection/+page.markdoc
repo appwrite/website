@@ -19,7 +19,7 @@ Learn more about rate limits
 {% /arrow_link %}
 
 # Email policies {% #email-policies %}
-Email policies let you block sign-ups and email updates from free, aliased, or disposable email providers. This helps keep throwaway accounts, signup spam, and bot registrations out of your project before they reach your authentication and rate-limit layers. Policies run at sign-up time and on email updates, and do not affect existing sessions.
+Email policies are currently available on Appwrite Cloud only. They let you block sign-ups and email updates from free, aliased, or disposable email providers. This helps keep throwaway accounts, signup spam, and bot registrations out of your project before they reach your authentication and rate-limit layers. Policies run at sign-up time and on email updates, and do not affect existing sessions.
 
 {% arrow_link href="/docs/products/auth/email-policies" %}
 Learn more about email policies

@@ -68,9 +68,9 @@ Disallowing personal data can be enabled in the Auth service's **Security** tab 
 
 # Email policies {% #email-policies %}
 
-Email policies let you restrict which email addresses can sign up for your project. You can independently block free email providers, aliased addresses, and disposable email services to keep throwaway accounts, signup spam, and bot registrations out of your user base. Policies run at sign-up and on email updates, and existing users can still sign in even if their address would not pass the current policy.
+Email policies are currently available on Appwrite Cloud only. They let you restrict which email addresses can sign up for your project. You can independently block free email providers, aliased addresses, and disposable email services to keep throwaway accounts, signup spam, and bot registrations out of your user base. Policies run at sign-up and on email updates, and existing users can still sign in even if their address would not pass the current policy.
 
-Email policies can be enabled in the Auth service's **Security** tab on the Appwrite Console, or programmatically through the Project service. Learn more in the [Email policies](/docs/products/auth/email-policies) docs.
+On Appwrite Cloud, email policies can be enabled in the Auth service's **Security** tab on the Appwrite Console, or programmatically through the Project service. Learn more in the [Email policies](/docs/products/auth/email-policies) docs.
 
 # Session alerts {% #session-alerts %}
 
