@@ -249,28 +249,26 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createPush(
-    {
-        messageId: '<MESSAGE_ID>',
-        title: '<TITLE>',
-        body: '<BODY>',
-        topics: [],
-        users: [],
-        targets: [],
-        data: {},
-        action: '<ACTION>',
-        icon: '<ICON>',
-        sound: '<SOUND>',
-        color: '<COLOR>',
-        tag: '<TAG>',
-        badge: 1,
-        contentAvailable: false,
-        critical: false,
-        priority: 'normal',
-        draft: true,
-        scheduledAt: ''
-    }
-    );
+const message = await messaging.createPush({
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
+    topics: [],
+    users: [],
+    targets: [],
+    data: {},
+    action: '<ACTION>',
+    icon: '<ICON>',
+    sound: '<SOUND>',
+    color: '<COLOR>',
+    tag: '<TAG>',
+    badge: 1,
+    contentAvailable: false,
+    critical: false,
+    priority: 'normal',
+    draft: true,
+    scheduledAt: ''
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -286,28 +284,26 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createPush(
-    {
-        messageId: '<MESSAGE_ID>',
-        title: '<TITLE>',
-        body: '<BODY>',
-        topics: [],
-        users: [],
-        targets: [],
-        data: {},
-        action: '<ACTION>',
-        icon: '<ICON>',
-        sound: '<SOUND>',
-        color: '<COLOR>',
-        tag: '<TAG>',
-        badge: 1,
-        contentAvailable: false,
-        critical: false,
-        priority: 'normal',
-        draft: true,
-        scheduledAt: ''
-    }
-    );
+const message = await messaging.createPush({
+    messageId: '<MESSAGE_ID>',
+    title: '<TITLE>',
+    body: '<BODY>',
+    topics: [],
+    users: [],
+    targets: [],
+    data: {},
+    action: '<ACTION>',
+    icon: '<ICON>',
+    sound: '<SOUND>',
+    color: '<COLOR>',
+    tag: '<TAG>',
+    badge: 1,
+    contentAvailable: false,
+    critical: false,
+    priority: 'normal',
+    draft: true,
+    scheduledAt: ''
+});
 ```
 ```php
 <?php
@@ -1001,8 +997,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSms(
-        {
+const message = await messaging.createSms({
     messageId: '<MESSAGE_ID>',
     content: '<CONTENT>',
     topics: [],
@@ -1010,8 +1005,7 @@ const message = await messaging.createSms(
     targets: [],
     draft: true,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -1027,8 +1021,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSms(
-        {
+const message = await messaging.createSms({
     messageId: '<MESSAGE_ID>',
     content: '<CONTENT>',
     topics: [],
@@ -1036,8 +1029,7 @@ const message = await messaging.createSms(
     targets: [],
     draft: true,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```php
 <?php

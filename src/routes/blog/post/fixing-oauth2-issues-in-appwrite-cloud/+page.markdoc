@@ -84,7 +84,7 @@ const signInWithGoogle = () => {
       provider: 'google',
       success: `${baseUrl}/auth/callback`,
       failure: `${baseUrl}/auth`
-  }, // failure URL
+  },
   )
 }
 

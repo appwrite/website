@@ -80,8 +80,7 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const result = storage.getFilePreview(
-    {
+const result = storage.getFilePreview({
     bucketId: 'photos',
     fileId: 'sunset.png',
     width: 1800,
@@ -95,8 +94,7 @@ const result = storage.getFilePreview(
     rotation: 0,
     background: 'FFFFFF',
     output: 'webp'
-}              // output jpg format
-);
+});
 
 console.log(result.href);
 ```

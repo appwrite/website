@@ -20,7 +20,7 @@ faqs:
   - question: "What does CSV import do in [Appwrite Databases](/docs/products/databases)?"
     answer: "CSV import lets you bring a CSV file directly into an Appwrite table through the migration APIs. It is built for seeding tables, onboarding legacy data, and bulk loading without writing a custom script."
   - question: "How does encrypted text column support work?"
-    answer: "Appwrite can encrypt text columns at rest in [Databases](/docs/products/databases), so you do not have to implement encryption logic in your application code. You enable encryption on the column from the Console."
+    answer: "Appwrite can encrypt text columns at rest in [Databases](/docs/products/databases) and [Storage](/docs/products/storage), so you do not have to implement encryption logic in your application code. You enable encryption on the column from the Console."
   - question: "What changed with OTP email previews?"
     answer: "Appwrite now surfaces the OTP code in the email preview, so end users can read the code from the notification without opening the message. This reduces friction on phones and improves login completion rates."
 ---
@@ -76,7 +76,7 @@ Database Upsert lets you create or update a row with a single API call. If the r
 
 ![Encrypted ](/images/blog/announcing-encrypted-string-attributes/cover.avif)
 
-We’ve added an extra layer of security to Appwrite Databases. This feature allows you to encrypt text columns at rest directly from the Appwrite console, without needing to implement manual encryption.
+We’ve added an extra layer of security to Appwrite Databases and Storage. This feature allows you to encrypt text columns at rest directly from the Appwrite console, without needing to implement manual encryption.
 
 [Learn more](/blog/post/announcing-encrypted-string-attributes)
 

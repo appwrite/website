@@ -32,7 +32,7 @@ This new feature automatically handles a `$sequence` column within your rows, in
 
 # Automatic, predictable ordering
 
-Maintaining consistent insertion order and generating numeric identifiers can require manual increments, complex logic, or dependence on timestamps, which are not always accurate or reliable. Appwrite’s Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new row added.
+Previously, maintaining consistent insertion order and generating numeric identifiers required either manual increments, complex logic, or dependence on timestamps, which weren't always accurate or reliable. Appwrite’s new Auto-increment support feature solves these issues seamlessly, providing a built-in numeric identifier that increases predictably with every new row added.
 
 Whether you're creating paginated data sets, managing invoice numbers, logging activities, or building real-time feeds, Appwrite's Auto-increment support feature offers effortless numeric sequencing. This means less manual work, fewer bugs, and significantly improved reliability.
 

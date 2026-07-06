@@ -51,16 +51,14 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const target = await users.createTarget(
-    {
+const target = await users.createTarget({
     userId: '<USER_ID>',
     targetId: '<TARGET_ID>',
     providerType: sdk.MessagingProviderType.Email,
     identifier: '<IDENTIFIER>',
     providerId: '<PROVIDER_ID>',
     name: '<NAME>'
-}                         // name (optional)
-);
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -72,16 +70,14 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const target = await users.createTarget(
-    {
+const target = await users.createTarget({
     userId: '<USER_ID>',
     targetId: '<TARGET_ID>',
     providerType: sdk.MessagingProviderType.Email,
     identifier: '<IDENTIFIER>',
     providerId: '<PROVIDER_ID>',
     name: '<NAME>'
-}                         // name (optional)
-);
+});
 ```
 ```php
 <?php
@@ -323,12 +319,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const topic = await messaging.createTopic(
-        {
+const topic = await messaging.createTopic({
     topicId: '<TOPIC_ID>',
     name: '<NAME>'
-}                                 // name
-    );
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -344,12 +338,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const topic = await messaging.createTopic(
-        {
+const topic = await messaging.createTopic({
     topicId: '<TOPIC_ID>',
     name: '<NAME>'
-}                                 // name
-    );
+});
 ```
 ```php
 <?php
@@ -562,8 +554,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-        {
+const message = await messaging.createEmail({
     messageId: '<MESSAGE_ID>',
     subject: '<SUBJECT>',
     content: '<CONTENT>',
@@ -576,8 +567,7 @@ const message = await messaging.createEmail(
     draft: false,
     html: false,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -593,8 +583,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-        {
+const message = await messaging.createEmail({
     messageId: '<MESSAGE_ID>',
     subject: '<SUBJECT>',
     content: '<CONTENT>',
@@ -607,8 +596,7 @@ const message = await messaging.createEmail(
     draft: false,
     html: false,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```php
 <?php
@@ -902,21 +890,19 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-    {
-        messageId: '<MESSAGE_ID>',
-        subject: '<SUBJECT>',
-        content: '<CONTENT>',
-        topics: [],
-        users: [],
-        targets: [],
-        cc: [],
-        bcc: [],
-        draft: false,
-        html: false,
-        scheduledAt: '2025-02-13T22:01:00+0000'
-    }
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    draft: false,
+    html: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";

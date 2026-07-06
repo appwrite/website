@@ -187,16 +187,14 @@ const client = new Client()
 
 const teams = new Teams(client);
 
-const promise = teams.updatePrefs(
-    {
+const promise = teams.updatePrefs({
     teamId: '<TEAM_ID>',
     prefs: {
         theme: 'corporate',
         notificationsEnabled: true,
         defaultView: 'kanban'
     }
-}
-);
+});
 
 promise.then(function (response) {
     console.log(response); // Success

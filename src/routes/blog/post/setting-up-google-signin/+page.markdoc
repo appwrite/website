@@ -129,7 +129,7 @@ account.createOAuth2Session(
     provider: OAuthProvider.Google,
     success: 'https://example.com/success',
     failure: 'https://example.com/failed'
-}, // redirect here on failure
+},
 );
 ```
 

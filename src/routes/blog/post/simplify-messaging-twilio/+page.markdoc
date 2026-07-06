@@ -98,16 +98,14 @@ client
 	.setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const promise = await messaging.updateTwilioProvider(
-  {
+const promise = await messaging.updateTwilioProvider({
     providerId: '<PROVIDER_ID>',
     name: '<NAME>',
     enabled: false,
     accountSid: '<ACCOUNT_SID>',
     authToken: '<AUTH_TOKEN>',
     from: '<FROM>'
-}                                 // from (optional)
-);
+});
 ```
 
 # Resources

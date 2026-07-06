@@ -53,8 +53,7 @@ const client = new Client()
 
 const storage = new Storage(client);
 
-const bucket = await storage.createBucket(
-  {
+const bucket = await storage.createBucket({
     bucketId: ID.unique(),
     name: 'User Uploads',
     permissions: ['any'],
@@ -62,8 +61,7 @@ const bucket = await storage.createBucket(
     enabled: true,
     maximumFileSize: 10000000,
     allowedFileExtensions: ['image/jpeg', 'image/png', 'application/pdf']
-} // allowedFileExtensions (MIME types or extensions, e.g. 'jpg')
-);
+});
 ```
 
 The `fileSecurity` flag is important. When set to `true`, each file can have its own permissions in addition to bucket-level permissions. When `false`, only bucket-level permissions apply. For a multi-user file manager, you'll want `fileSecurity: true`.

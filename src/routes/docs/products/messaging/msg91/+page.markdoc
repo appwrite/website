@@ -80,8 +80,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSms(
-        {
+const message = await messaging.createSms({
     messageId: '<MESSAGE_ID>',
     content: '<CONTENT>',
     topics: [],
@@ -89,8 +88,7 @@ const message = await messaging.createSms(
     targets: [],
     draft: true,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -106,8 +104,7 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createSms(
-        {
+const message = await messaging.createSms({
     messageId: '<MESSAGE_ID>',
     content: '<CONTENT>',
     topics: [],
@@ -115,8 +112,7 @@ const message = await messaging.createSms(
     targets: [],
     draft: true,
     scheduledAt: ''
-}                                       // scheduledAt (optional)
-    );
+});
 ```
 ```php
 <?php
@@ -387,16 +383,14 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.updateMsg91Provider(
-        {
+const message = await messaging.updateMsg91Provider({
     providerId: '<PROVIDER_ID>',
     name: '<NAME>',
     enabled: false,
-    templateId: '<SENDER_ID>',
-    senderId: '<AUTH_KEY>',
-    authKey: '<FROM>'
-}                                 // from (optional)
-    );
+    templateId: '<TEMPLATE_ID>',
+    senderId: '<SENDER_ID>',
+    authKey: '<AUTH_KEY>'
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -412,16 +406,14 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.updateMsg91Provider(
-        {
+const message = await messaging.updateMsg91Provider({
     providerId: '<PROVIDER_ID>',
     name: '<NAME>',
     enabled: false,
-    templateId: '<SENDER_ID>',
-    senderId: '<AUTH_KEY>',
-    authKey: '<FROM>'
-}                                 // from (optional)
-    );
+    templateId: '<TEMPLATE_ID>',
+    senderId: '<SENDER_ID>',
+    authKey: '<AUTH_KEY>'
+});
 ```
 ```php
 <?php

@@ -41,13 +41,11 @@ const client = new Client()
 const teams = new Teams(client);
 
 // Create team for a new tenant
-const tenantTeam = await teams.create(
-    {
+const tenantTeam = await teams.create({
     teamId: 'example_corp',
     name: 'Example Corp',
     roles: ['owner', 'admin', 'member']
-} // Tenant roles
-);
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';
@@ -116,14 +114,12 @@ const client = new Client()
 const teams = new Teams(client);
 
 // Invite a member to the tenant
-const membership = await teams.createMembership(
-    {
+const membership = await teams.createMembership({
     teamId: 'example_corp',
     roles: ['admin'],
     email: 'user@example.com',
     url: 'https://example.com/accept-invite'
-} // Redirect URL after accepting
-);
+});
 ```
 ```client-flutter
 import 'package:appwrite/appwrite.dart';

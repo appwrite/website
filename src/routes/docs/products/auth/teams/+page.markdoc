@@ -120,13 +120,11 @@ client
     .setProject('<PROJECT_ID>') // Your project ID
 ;
 
-const promise = teams.createMembership(
-    {
+const promise = teams.createMembership({
     teamId: 'teachers',
     roles: ["maths"],
     email: "david@example.com"
-}
-    );
+});
 
 promise.then(function (response) {
     console.log(response); // Success

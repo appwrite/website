@@ -15,7 +15,7 @@ faqs:
   - question: "Why is the Bulk API restricted to server-side SDKs?"
     answer: "Bulk operations typically involve high-volume data changes that should be authorized by trusted code, not by end users. Restricting the API to server SDKs (which use API keys) prevents clients from issuing mass writes or deletes against your project."
   - question: "When should I use the Bulk API instead of single-row calls?"
-    answer: "Reach for the Bulk API any time you are processing data in batches: importing CSV files, syncing from another database, applying changes from a scheduled job, or cleaning up stale records. For interactive UI writes, the regular methods are usually clearer."
+    answer: "Reach for the Bulk API any time you are processing data in batches: importing CSV files, syncing from another database, applying changes from a scheduled job, or cleaning up stale records. For interactive UI writes (one row at a time), the regular methods are usually clearer."
   - question: "How does Appwrite handle partial failures in a bulk request?"
     answer: "Bulk operations are transactional at the row level, so individual row validations (such as permissions or schema mismatches) are reported alongside successes. Check the response to see which rows were processed and which failed, then retry only the failures."
   - question: "Are there limits on how many rows I can send in one bulk call?"
@@ -28,9 +28,9 @@ We're excited to introduce another Appwrite Databases feature, **Bulk API**. Exp
 
 # Faster development with bulk actions
 
-Writing or modifying large amounts of data in Appwrite Databases can require many row-level operations. Sending one request per row is inefficient for batch workloads, especially when dealing with thousands of records.
+Previously, writing or modifying large amounts of data in Appwrite Databases required sending one request per row. This method was inefficient, slow, and resource-intensive, especially when dealing with thousands of records.
 
-With the Bulk API, you can create, update, or delete multiple rows in one go, vastly speeding up your workflows and reducing network overhead.
+With the new Bulk API, you can create, update, or delete multiple rows in one go, vastly speeding up your workflows and reducing network overhead.
 
 # Optimized for server-side workloads
 

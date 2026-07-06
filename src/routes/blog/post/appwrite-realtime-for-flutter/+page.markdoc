@@ -49,7 +49,6 @@ Switch to the Columns tab and create the following column. Also note down the *
 
 - Type: Text
 - Column Key: name
-- Size: 25
 - Default: null
 - Required: true
 - Array: false

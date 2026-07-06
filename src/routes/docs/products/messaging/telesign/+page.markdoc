@@ -381,16 +381,14 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateTelesignProvider(
-        {
+const provider = await messaging.updateTelesignProvider({
     providerId: '<PROVIDER_ID>',
     name: '<NAME>',
     enabled: false,
-    customerId: '<USERNAME>',
-    apiKey: '<PASSWORD>',
+    customerId: '<CUSTOMER_ID>',
+    apiKey: '<API_KEY>',
     from: '<FROM>'
-}                                 // from (optional)
-    );
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -406,16 +404,14 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const provider = await messaging.updateTelesignProvider(
-        {
+const provider = await messaging.updateTelesignProvider({
     providerId: '<PROVIDER_ID>',
     name: '<NAME>',
     enabled: false,
-    customerId: '<USERNAME>',
-    apiKey: '<PASSWORD>',
+    customerId: '<CUSTOMER_ID>',
+    apiKey: '<API_KEY>',
     from: '<FROM>'
-}                                 // from (optional)
-    );
+});
 ```
 ```php
 <?php
