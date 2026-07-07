@@ -35,6 +35,14 @@
                 {
                     label: 'Actions',
                     href: '/docs/products/firewall/actions'
+                },
+                {
+                    label: 'Logs',
+                    href: '/docs/products/firewall/logs'
+                },
+                {
+                    label: 'Analytics',
+                    href: '/docs/products/firewall/analytics'
                 }
             ]
         },
@@ -44,19 +52,6 @@
                 {
                     label: 'Common rules',
                     href: '/docs/products/firewall/common-rules'
-                }
-            ]
-        },
-        {
-            label: 'Monitoring',
-            items: [
-                {
-                    label: 'Logs',
-                    href: '/docs/products/firewall/logs'
-                },
-                {
-                    label: 'Analytics',
-                    href: '/docs/products/firewall/analytics'
                 }
             ]
         }
