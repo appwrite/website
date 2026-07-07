@@ -36,7 +36,7 @@ This condition matches requests originating from the Netherlands or Germany. Whe
 | Operator | Description |
 | -------- | ----------- |
 | `equal` | The attribute equals any of the values. |
-| `notEqual` | The attribute does not equal the value. |
+| `notEqual` | The attribute does not equal any of the values. |
 | `contains` | The attribute contains any of the values as a substring. |
 | `notContains` | The attribute does not contain any of the values. |
 | `startsWith` | The attribute starts with the value. |
@@ -51,6 +51,8 @@ This condition matches requests originating from the Netherlands or Germany. Whe
 | `notBetween` | The attribute is not between the two values. |
 | `isNull` | The attribute is absent. |
 | `isNotNull` | The attribute is present. |
+
+The `equal`, `notEqual`, `contains`, and `notContains` operators accept multiple values and match if any single value matches. The `startsWith`, `endsWith`, and relational operators compare against a single value, and `between` uses exactly two values for the range bounds.
 
 {% info title="Matching IP ranges" %}
 The `equal` operator compares IP addresses as exact strings. To match a range of addresses, use `startsWith` with the shared prefix, for example `startsWith` on `ip` with the value `203.0.113.`.
