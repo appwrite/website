@@ -24,7 +24,7 @@ To do the opposite and serve only specific countries, use `notEqual` conditions,
 
 # Restrict a path to known IP addresses {% #ip-allowlist %}
 
-Allowlists use two rules. A `bypass` rule at a lower priority number exempts trusted traffic, and a `deny` rule behind it blocks everyone else. See [priority and evaluation order](/docs/products/firewall/rules#priority) for why the ordering matters.
+Allowlists use two rules. A `bypass` rule at a lower priority number exempts trusted traffic, and a `deny` rule behind it blocks everyone else. See [priority and evaluation order](/docs/products/network/firewall/rules#priority) for why the ordering matters.
 
 Rule 1 allows your trusted IP addresses through:
 

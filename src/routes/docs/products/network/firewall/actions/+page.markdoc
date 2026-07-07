@@ -46,7 +46,7 @@ Use redirect to send blocked visitors to an explanation page or to route traffic
 
 # Bypass {% #bypass %}
 
-Bypass explicitly allows the request and stops evaluation, so no later rule can block it. Bypass is the building block for allowlists: place a bypass rule for trusted traffic at a lower priority number than a broader deny rule, and the trusted traffic is exempted from the block. See [Rules](/docs/products/firewall/rules#priority) for how priority ordering makes this work.
+Bypass explicitly allows the request and stops evaluation, so no later rule can block it. Bypass is the building block for allowlists: place a bypass rule for trusted traffic at a lower priority number than a broader deny rule, and the trusted traffic is exempted from the block. See [Rules](/docs/products/network/firewall/rules#priority) for how priority ordering makes this work.
 
 # Response headers {% #response-headers %}
 

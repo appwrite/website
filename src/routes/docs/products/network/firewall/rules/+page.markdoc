@@ -4,7 +4,7 @@ title: Rules
 description: Learn how firewall rules are structured, scoped to resources, ordered by priority, and evaluated against incoming requests.
 ---
 
-A firewall rule tells Appwrite what traffic to match and what to do with it. Each rule combines a set of [conditions](/docs/products/firewall/conditions), an [action](/docs/products/firewall/actions), a priority, and a scope.
+A firewall rule tells Appwrite what traffic to match and what to do with it. Each rule combines a set of [conditions](/docs/products/network/firewall/conditions), an [action](/docs/products/network/firewall/actions), a priority, and a scope.
 
 # Anatomy of a rule {% #anatomy %}
 
@@ -40,7 +40,7 @@ Priority is a number between `-100000` and `100000`, and defaults to `0`. Leave 
 
 # Matching {% #matching %}
 
-A rule matches a request only when every one of its conditions matches. A rule with no conditions never matches. To express alternatives, like matching one country or another, use a single condition with multiple values, or nest conditions with the `or` operator. See [Conditions](/docs/products/firewall/conditions) for details.
+A rule matches a request only when every one of its conditions matches. A rule with no conditions never matches. To express alternatives, like matching one country or another, use a single condition with multiple values, or nest conditions with the `or` operator. See [Conditions](/docs/products/network/firewall/conditions) for details.
 
 # Managing rules {% #managing-rules %}
 
@@ -53,4 +53,4 @@ Manage rules from the **Firewall** page in your project in the Appwrite Console:
 
 # Failure behavior {% #failure-behavior %}
 
-Firewall fails open. If a rule's conditions or configuration cannot be parsed, the rule is skipped and evaluation continues with the next rule. Appwrite prioritizes keeping your application reachable over enforcing a broken rule, so always verify new rules behave as expected using the [logs](/docs/products/firewall/logs).
+Firewall fails open. If a rule's conditions or configuration cannot be parsed, the rule is skipped and evaluation continues with the next rule. Appwrite prioritizes keeping your application reachable over enforcing a broken rule, so always verify new rules behave as expected using the [logs](/docs/products/network/firewall/logs).

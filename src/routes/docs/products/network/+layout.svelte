@@ -35,6 +35,10 @@
                 {
                     label: 'Endpoints',
                     href: '/docs/products/network/endpoints'
+                },
+                {
+                    label: 'Firewall',
+                    href: '/docs/products/network/firewall'
                 }
             ]
         },
@@ -60,10 +64,6 @@
                 {
                     label: 'TLS',
                     href: '/docs/products/network/tls'
-                },
-                {
-                    label: 'WAF',
-                    href: '/docs/products/network/waf'
                 },
                 {
                     label: 'Compression',

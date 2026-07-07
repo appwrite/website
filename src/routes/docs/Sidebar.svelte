@@ -93,7 +93,7 @@
                 },
                 {
                     label: 'Firewall',
-                    href: '/docs/products/firewall',
+                    href: '/docs/products/network/firewall',
                     icon: 'icon-shield-check',
                     isParent: true
                 }

@@ -23,11 +23,11 @@ Firewall is designed to fail open. If a rule is misconfigured or cannot be evalu
 
 | Concept | Description |
 | ------- | ----------- |
-| [Rules](/docs/products/firewall/rules) | The unit of configuration. A rule combines conditions, an action, a priority, and a scope. |
-| [Conditions](/docs/products/firewall/conditions) | What a rule matches on: IP address, country, path, HTTP method, host, or user agent. |
-| [Actions](/docs/products/firewall/actions) | What happens on a match: deny, rate limit, challenge, redirect, or bypass. |
-| [Logs](/docs/products/firewall/logs) | A record of the requests your rules acted on. |
-| [Analytics](/docs/products/firewall/analytics) | Aggregated metrics on blocked, challenged, and redirected traffic. |
+| [Rules](/docs/products/network/firewall/rules) | The unit of configuration. A rule combines conditions, an action, a priority, and a scope. |
+| [Conditions](/docs/products/network/firewall/conditions) | What a rule matches on: IP address, country, path, HTTP method, host, or user agent. |
+| [Actions](/docs/products/network/firewall/actions) | What happens on a match: deny, rate limit, challenge, redirect, or bypass. |
+| [Logs](/docs/products/network/firewall/logs) | A record of the requests your rules acted on. |
+| [Analytics](/docs/products/network/firewall/analytics) | Aggregated metrics on blocked, challenged, and redirected traffic. |
 
 # Common use cases {% #common-use-cases %}
 
@@ -37,8 +37,8 @@ Firewall is designed to fail open. If a rule is misconfigured or cannot be evalu
 - Challenge suspicious traffic, like requests with automation user agents.
 - Redirect blocked visitors to an explanation page.
 
-See [Common rules](/docs/products/firewall/common-rules) for ready-to-use examples of each.
+See [Common rules](/docs/products/network/firewall/common-rules) for ready-to-use examples of each.
 
 # Getting started {% #getting-started %}
 
-Follow the [quick start](/docs/products/firewall/quick-start) to create your first rule from the Appwrite Console.
+Follow the [quick start](/docs/products/network/firewall/quick-start) to create your first rule from the Appwrite Console.

@@ -40,6 +40,6 @@ Back in the **Rules** tab, disable or delete the rule to restore your access. Di
 
 # Next steps {% #next-steps %}
 
-- Learn how [rules](/docs/products/firewall/rules) are scoped, ordered, and evaluated.
-- Explore the full set of [conditions](/docs/products/firewall/conditions) and [actions](/docs/products/firewall/actions).
-- Copy patterns from [common rules](/docs/products/firewall/common-rules) like geo-blocking and IP allowlists.
+- Learn how [rules](/docs/products/network/firewall/rules) are scoped, ordered, and evaluated.
+- Explore the full set of [conditions](/docs/products/network/firewall/conditions) and [actions](/docs/products/network/firewall/actions).
+- Copy patterns from [common rules](/docs/products/network/firewall/common-rules) like geo-blocking and IP allowlists.

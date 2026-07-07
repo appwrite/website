@@ -3,7 +3,7 @@
     import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
 
     const parent: NavParent = {
-        href: '/docs',
+        href: '/docs/products/network',
         label: 'Firewall'
     };
 
@@ -13,11 +13,11 @@
             items: [
                 {
                     label: 'Overview',
-                    href: '/docs/products/firewall'
+                    href: '/docs/products/network/firewall'
                 },
                 {
                     label: 'Quick start',
-                    href: '/docs/products/firewall/quick-start'
+                    href: '/docs/products/network/firewall/quick-start'
                 }
             ]
         },
@@ -26,23 +26,23 @@
             items: [
                 {
                     label: 'Rules',
-                    href: '/docs/products/firewall/rules'
+                    href: '/docs/products/network/firewall/rules'
                 },
                 {
                     label: 'Conditions',
-                    href: '/docs/products/firewall/conditions'
+                    href: '/docs/products/network/firewall/conditions'
                 },
                 {
                     label: 'Actions',
-                    href: '/docs/products/firewall/actions'
+                    href: '/docs/products/network/firewall/actions'
                 },
                 {
                     label: 'Logs',
-                    href: '/docs/products/firewall/logs'
+                    href: '/docs/products/network/firewall/logs'
                 },
                 {
                     label: 'Analytics',
-                    href: '/docs/products/firewall/analytics'
+                    href: '/docs/products/network/firewall/analytics'
                 }
             ]
         },
@@ -51,7 +51,7 @@
             items: [
                 {
                     label: 'Common rules',
-                    href: '/docs/products/firewall/common-rules'
+                    href: '/docs/products/network/firewall/common-rules'
                 }
             ]
         }

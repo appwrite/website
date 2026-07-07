@@ -35,4 +35,4 @@ A few patterns worth watching:
 - A high challenge count with few subsequent successful requests suggests the challenged traffic was automated.
 - If a rule shows no activity over a long period, verify it still matches what you intended, or consider removing it to keep your rule set easy to reason about.
 
-For request-level detail behind any of these numbers, switch to the [logs](/docs/products/firewall/logs).
+For request-level detail behind any of these numbers, switch to the [logs](/docs/products/network/firewall/logs).
