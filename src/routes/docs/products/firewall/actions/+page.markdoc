@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Actions
-description: Choose what happens when a firewall rule matches a request: deny, rate limit, challenge, redirect, or bypass.
+description: Choose whether a firewall rule denies, rate limits, challenges, redirects, or bypasses the requests it matches.
 ---
 
 A rule's action determines what happens to a request that matches all of the rule's conditions. Appwrite Firewall supports five actions.
