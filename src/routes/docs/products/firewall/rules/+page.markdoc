@@ -1,0 +1,56 @@
+---
+layout: article
+title: Rules
+description: Learn how firewall rules are structured, scoped to resources, ordered by priority, and evaluated against incoming requests.
+---
+
+A firewall rule tells Appwrite what traffic to match and what to do with it. Each rule combines a set of [conditions](/docs/products/firewall/conditions), an [action](/docs/products/firewall/actions), a priority, and a scope.
+
+# Anatomy of a rule {% #anatomy %}
+
+| Field | Description |
+| ----- | ----------- |
+| `name` | A human-friendly name for the rule. |
+| `description` | An optional description of what the rule is for. |
+| `resourceType` | What the rule applies to: your project's APIs, functions, or sites. |
+| `resourceId` | The specific function or site the rule applies to. |
+| `action` | What happens when the rule matches: `deny`, `rateLimit`, `challenge`, `redirect`, or `bypass`. |
+| `priority` | The evaluation order. Rules with lower numbers are evaluated first. |
+| `enabled` | Whether the rule participates in evaluation. Disabled rules are skipped. |
+| `conditions` | The list of conditions a request must match for the rule to apply. |
+
+# Scope {% #scope %}
+
+Rules are scoped to a resource type, and for functions and sites, to a specific resource. A rule scoped to one site only evaluates against requests for that site's domains, and a rule scoped to one function only evaluates against that function's executions over its domain.
+
+# Priority and evaluation order {% #priority %}
+
+When a request arrives, your project's rules are sorted by priority, from the lowest number to the highest, and evaluated in that order. The first rule whose conditions all match determines the outcome, and no further rules are evaluated.
+
+This first-match behavior is what makes rule ordering powerful. A common pattern is to place a narrow `bypass` rule at a low priority number ahead of a broader `deny` rule, which creates an allowlist:
+
+1. Priority `5`: bypass requests to `/admin` from your office IP.
+2. Priority `10`: deny all other requests to `/admin`.
+
+A request from the office IP matches the first rule and is let through. Any other request to `/admin` falls through to the second rule and is blocked.
+
+{% info title="Priority values" %}
+Priority is a number between `-100000` and `100000`, and defaults to `0`. Leave gaps between your priority values, like `10`, `20`, `30`, so you can insert rules between existing ones later.
+{% /info %}
+
+# Matching {% #matching %}
+
+A rule matches a request only when every one of its conditions matches. A rule with no conditions never matches. To express alternatives, like matching one country or another, use a single condition with multiple values, or nest conditions with the `or` operator. See [Conditions](/docs/products/firewall/conditions) for details.
+
+# Managing rules {% #managing-rules %}
+
+Manage rules from the **Firewall** page in your project in the Appwrite Console:
+
+- **Create** a rule from the **Rules** tab. You choose the action first, then add conditions and configuration specific to that action.
+- **Edit** a rule to change its conditions, priority, or configuration. Changes propagate to the edge network automatically.
+- **Disable** a rule to take it out of evaluation without losing its configuration.
+- **Delete** a rule to remove it permanently.
+
+# Failure behavior {% #failure-behavior %}
+
+Firewall fails open. If a rule's conditions or configuration cannot be parsed, the rule is skipped and evaluation continues with the next rule. Appwrite prioritizes keeping your application reachable over enforcing a broken rule, so always verify new rules behave as expected using the [logs](/docs/products/firewall/logs).

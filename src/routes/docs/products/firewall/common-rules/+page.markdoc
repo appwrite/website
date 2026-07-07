@@ -1,0 +1,105 @@
+---
+layout: article
+title: Common rules
+description: Ready-to-use firewall rule patterns for geo-blocking, IP allowlists, rate limiting, and bot challenges.
+---
+
+These patterns cover the most common ways to use Appwrite Firewall. Each example shows the rule's action, priority, and conditions. Create them from the **Firewall** page in your project in the Appwrite Console, adjusting values to your needs.
+
+# Block traffic from specific countries {% #geo-blocking %}
+
+A single `deny` rule with a multi-value `equal` condition on `country` blocks every listed country:
+
+- **Action**: `deny`
+- **Priority**: `10`
+- **Conditions**:
+
+```json
+[
+    { "method": "equal", "attribute": "country", "values": ["KP", "IR"] }
+]
+```
+
+To do the opposite and serve only specific countries, use `notEqual` conditions, or pair a `bypass` rule for the allowed countries with a broader `deny` rule.
+
+# Restrict a path to known IP addresses {% #ip-allowlist %}
+
+Allowlists use two rules. A `bypass` rule at a lower priority number exempts trusted traffic, and a `deny` rule behind it blocks everyone else. See [priority and evaluation order](/docs/products/firewall/rules#priority) for why the ordering matters.
+
+Rule 1 allows your trusted IP addresses through:
+
+- **Action**: `bypass`
+- **Priority**: `5`
+- **Conditions**:
+
+```json
+[
+    { "method": "startsWith", "attribute": "path", "values": ["/admin"] },
+    { "method": "equal", "attribute": "ip", "values": ["203.0.113.7", "203.0.113.8"] }
+]
+```
+
+Rule 2 blocks all other traffic to the same path:
+
+- **Action**: `deny`
+- **Priority**: `10`
+- **Conditions**:
+
+```json
+[
+    { "method": "startsWith", "attribute": "path", "values": ["/admin"] }
+]
+```
+
+# Rate limit an authentication endpoint {% #rate-limit-auth %}
+
+Slow down brute-force attempts by limiting how often a single IP address can call a login route:
+
+- **Action**: `rateLimit`
+- **Priority**: `20`
+- **Configuration**: limit `10`, interval `60` seconds
+- **Conditions**:
+
+```json
+[
+    { "method": "equal", "attribute": "method", "values": ["POST"] },
+    { "method": "equal", "attribute": "path", "values": ["/v1/login"] }
+]
+```
+
+Legitimate users are unaffected until they exceed 10 requests per minute, and clients over the limit receive a `429` response with a `Retry-After` header.
+
+# Challenge automated clients {% #challenge-bots %}
+
+Require verification from clients that identify as automation tools or send no user agent at all:
+
+- **Action**: `challenge`
+- **Priority**: `30`
+- **Conditions**:
+
+```json
+[
+    {
+        "method": "or",
+        "values": [
+            { "method": "contains", "attribute": "userAgent", "values": ["curl", "python-requests", "Go-http-client"] },
+            { "method": "isNull", "attribute": "userAgent" }
+        ]
+    }
+]
+```
+
+# Redirect blocked visitors to an explanation page {% #redirect-blocked %}
+
+Instead of serving a bare `403`, send blocked traffic somewhere informative:
+
+- **Action**: `redirect`
+- **Priority**: `10`
+- **Configuration**: location `https://example.com/not-available`, status code `302`
+- **Conditions**:
+
+```json
+[
+    { "method": "equal", "attribute": "country", "values": ["KP"] }
+]
+```

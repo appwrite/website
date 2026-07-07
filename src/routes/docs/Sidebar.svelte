@@ -90,6 +90,12 @@
                     icon: 'icon-globe-alt',
                     isParent: true,
                     new: isNewUntil('19 Jul 2025')
+                },
+                {
+                    label: 'Firewall',
+                    href: '/docs/products/firewall',
+                    icon: 'icon-shield-check',
+                    isParent: true
                 }
             ]
         },

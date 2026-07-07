@@ -1,0 +1,38 @@
+---
+layout: article
+title: Analytics
+description: Monitor how much traffic your firewall rules block, challenge, and redirect, and see where blocked traffic comes from.
+---
+
+Firewall analytics aggregate what your rules are doing over time, so you can see how much traffic is filtered and where it comes from.
+
+Open the **Analytics** tab on the **Firewall** page in your project in the Appwrite Console to view them.
+
+# Metrics {% #metrics %}
+
+Analytics track the requests your rules acted on, grouped by outcome:
+
+| Metric | Description |
+| ------ | ----------- |
+| Blocked | Requests stopped by `deny` rules or rate limits. |
+| Challenged | Requests issued a verification challenge. |
+| Redirected | Requests sent to a different URL by `redirect` rules. |
+
+Metrics are shown as totals with trends over your selected date range, along with a time series so you can spot spikes.
+
+# Traffic sources {% #traffic-sources %}
+
+Analytics also break blocked traffic down by origin:
+
+- **Top blocked IP addresses** show which clients trigger your rules most, which helps identify persistent abusers worth a dedicated deny rule.
+- **Top blocked countries** show the geographic distribution of filtered traffic, which helps evaluate whether geo-blocking rules are working as intended.
+
+# Using analytics {% #using-analytics %}
+
+A few patterns worth watching:
+
+- A sudden spike in blocked requests usually means an attack or scraper found your application, and your rules are absorbing it.
+- A high challenge count with few subsequent successful requests suggests the challenged traffic was automated.
+- If a rule shows no activity over a long period, verify it still matches what you intended, or consider removing it to keep your rule set easy to reason about.
+
+For request-level detail behind any of these numbers, switch to the [logs](/docs/products/firewall/logs).
