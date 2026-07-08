@@ -29,6 +29,8 @@ import groovy from 'highlight.js/lib/languages/groovy';
 import rust from 'highlight.js/lib/languages/rust';
 import ini from 'highlight.js/lib/languages/ini';
 import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import sql from 'highlight.js/lib/languages/sql';
+import pgsql from 'highlight.js/lib/languages/pgsql';
 import { Platform } from './references';
 import { writable } from 'svelte/store';
 
@@ -71,7 +73,9 @@ const languages = {
     env: ini,
     dotenv: ini,
     dockerfile: dockerfile,
-    docker: dockerfile
+    docker: dockerfile,
+    sql: sql,
+    pgsql: pgsql
 } as const satisfies Record<string, LanguageFn>;
 
 const platformAliases: Record<string, keyof typeof languages> = {
@@ -113,6 +117,9 @@ Object.entries(platformAliases).forEach(([key, value]) => {
 
 /** HashiCorp Configuration Language (Terraform); core highlight.js has no HCL grammar */
 hljs.registerAliases(['hcl', 'terraform', 'tf'], { languageName: 'ini' });
+
+/** Prisma schema language; core highlight.js has no Prisma grammar, GraphQL is the closest match */
+hljs.registerAliases(['prisma'], { languageName: 'graphql' });
 
 export type Language = keyof typeof languages | Platform;
 

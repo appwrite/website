@@ -6,7 +6,7 @@
 
     const parent: NavParent = {
         href: '/docs/products/databases',
-        label: 'Databases'
+        label: 'PostgreSQL'
     };
 
     const navigation: NavTree = [
@@ -16,6 +16,133 @@
                 {
                     label: 'Overview',
                     href: '/docs/products/databases/postgresql'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/products/databases/postgresql/quick-start'
+                }
+            ]
+        },
+        {
+            label: 'Connecting',
+            items: [
+                {
+                    label: 'Connections',
+                    href: '/docs/products/databases/postgresql/connections'
+                },
+                {
+                    label: 'Connection pooling',
+                    href: '/docs/products/databases/postgresql/connection-pooling'
+                }
+            ]
+        },
+        {
+            label: 'Manage',
+            items: [
+                {
+                    label: 'Extensions',
+                    href: '/docs/products/databases/postgresql/extensions'
+                },
+                {
+                    label: 'Backups',
+                    href: '/docs/products/databases/postgresql/backups'
+                },
+                {
+                    label: 'Branches',
+                    href: '/docs/products/databases/postgresql/branches'
+                },
+                {
+                    label: 'High availability',
+                    href: '/docs/products/databases/postgresql/high-availability'
+                },
+                {
+                    label: 'Scaling',
+                    href: '/docs/products/databases/postgresql/scaling'
+                },
+                {
+                    label: 'Network security',
+                    href: '/docs/products/databases/postgresql/network-security'
+                },
+                {
+                    label: 'Monitoring',
+                    href: '/docs/products/databases/postgresql/monitoring'
+                },
+                {
+                    label: 'Maintenance',
+                    href: '/docs/products/databases/postgresql/maintenance'
+                }
+            ]
+        },
+        {
+            label: 'Integrations',
+            items: [
+                {
+                    label: 'Node.js drivers',
+                    href: '/docs/products/databases/postgresql/integrations/drivers'
+                },
+                {
+                    label: 'Prisma',
+                    href: '/docs/products/databases/postgresql/integrations/prisma'
+                },
+                {
+                    label: 'Drizzle',
+                    href: '/docs/products/databases/postgresql/integrations/drizzle'
+                },
+                {
+                    label: 'Auth.js',
+                    href: '/docs/products/databases/postgresql/integrations/auth-js'
+                },
+                {
+                    label: 'Better Auth',
+                    href: '/docs/products/databases/postgresql/integrations/better-auth'
+                },
+                {
+                    label: 'Laravel',
+                    href: '/docs/products/databases/postgresql/integrations/laravel'
+                },
+                {
+                    label: 'Rails',
+                    href: '/docs/products/databases/postgresql/integrations/rails'
+                },
+                {
+                    label: 'Django',
+                    href: '/docs/products/databases/postgresql/integrations/django'
+                },
+                {
+                    label: 'FastAPI',
+                    href: '/docs/products/databases/postgresql/integrations/fastapi'
+                },
+                {
+                    label: 'Spring Boot',
+                    href: '/docs/products/databases/postgresql/integrations/spring-boot'
+                },
+                {
+                    label: 'EF Core',
+                    href: '/docs/products/databases/postgresql/integrations/ef-core'
+                },
+                {
+                    label: 'GORM',
+                    href: '/docs/products/databases/postgresql/integrations/gorm'
+                },
+                {
+                    label: 'Next.js',
+                    href: '/docs/products/databases/postgresql/integrations/nextjs'
+                },
+                {
+                    label: 'dbt',
+                    href: '/docs/products/databases/postgresql/integrations/dbt'
+                },
+                {
+                    label: 'Metabase',
+                    href: '/docs/products/databases/postgresql/integrations/metabase'
+                },
+                {
+                    label: 'Grafana',
+                    href: '/docs/products/databases/postgresql/integrations/grafana'
+                },
+                {
+                    label: 'Retool',
+                    href: '/docs/products/databases/postgresql/integrations/retool'
                 }
             ]
         }
