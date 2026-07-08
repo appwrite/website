@@ -260,7 +260,7 @@ Admin clients should only be used if you need to perform admin actions that bypa
 or [unauthenticated requests that bypass rate limits](/docs/products/auth/server-side-rendering#rate-limits).
 {% /info %}
 
-To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/platform/api-keys#create-api-key). 
+To initialize the admin client, we'll need to first [generated an API key](/docs/advanced/security/api-keys#create-api-key). 
 The API key should have the following scope in order to perform authentication:
 
 | Category  {% width=120 %} | Required scopes    | Purpose |
@@ -297,7 +297,7 @@ let admin_client = Client::new()
 ```
 {% /multicode %}
 
-It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/platform/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
+It is important to use an API key, as this will allow your server requests to bypass [rate limits](/docs/advanced/security/rate-limits). If you don't use an API key, your server will be rate limited as if it were a client from a single IP address.
 
 ## Session client {% #session-client %}
 

@@ -14,15 +14,15 @@
         // },
         {
             question: 'What payment methods does Appwrite support?',
-            answer: 'Appwrite currently supports <a class="web-link underline" href="/docs/advanced/platform/billing#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link underline" href="/contact-us">contact us</a> in case this is an issue for you.'
+            answer: 'Appwrite currently supports <a class="web-link underline" href="/docs/advanced/billing/payments#payment-methods">credit and debit card payments</a>. We are actively working on adding support for more methods. Please <a class="web-link underline" href="/contact-us">contact us</a> in case this is an issue for you.'
         },
         {
             question: 'What happens if I reach a resource limit in my Pro plan?',
-            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link underline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link underline" href="/docs/advanced/platform/pro#budget-cap">budget cap</a> on your organization. <a class="web-link underline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            answer: 'Your project will continue to run, and additional charges will apply. You can find the costs for additional resources in the <a class="web-link underline" href="/pricing">pricing plans comparison</a>. We will also send you email reminders when you hit 75% and 100% of your resource limits. To avoid unexpected payments, you can set up a <a class="web-link underline" href="/docs/advanced/billing/pro#budget-cap">budget cap</a> on your organization. <a class="web-link underline" href="/docs/advanced/billing/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'What happens if I reach a resource limit in my Free plan?',
-            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link underline" href="/docs/advanced/platform/pro#reaching-resource-limits">Learn more in our docs</a>.'
+            answer: 'Your project will freeze, and Appwrite Console will continue running in read-only mode. You need to upgrade to Pro, remove resources that exceed their limit, or wait for the next billing cycle, which resets usage limits. <a class="web-link underline" href="/docs/advanced/billing/pro#reaching-resource-limits">Learn more in our docs</a>.'
         },
         {
             question: 'Why does Appwrite ask for payment verification for up to $150?',
