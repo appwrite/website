@@ -1,0 +1,118 @@
+---
+layout: post
+title: "Meta Muse Spark 1.1 brings agentic coding to API"
+description: "Meta Muse Spark 1.1 brings agentic coding to Meta Model API, with 1M context, multimodal tool use, benchmark caveats, pricing, and developer impact."
+date: 2026-07-09
+cover: /images/blog/meta-muse-spark-1-1/cover.png
+timeToRead: 8
+author: atharva
+category: ai
+featured: false
+unlisted: true
+faqs:
+  - question: "What is Meta Muse Spark 1.1?"
+    answer: "Meta Muse Spark 1.1 is a multimodal reasoning model from Meta Superintelligence Labs built for agentic tasks, coding, tool use, computer use, and multimodal workflows."
+  - question: "Is Muse Spark 1.1 available through an API?"
+    answer: "Yes. Meta says Muse Spark 1.1 is available through the new Meta Model API in public preview, and it is also available in Thinking mode in the Meta AI app and on meta.ai."
+  - question: "What context window does Muse Spark 1.1 support?"
+    answer: "Meta says Muse Spark 1.1 can actively manage a 1 million token context window and retrieve information from much earlier work during long-running tasks."
+  - question: "How much does Muse Spark 1.1 cost?"
+    answer: "Meta's developer guide lists pay-as-you-go pricing for Muse Spark 1.1 at $1.25 per 1M input tokens and $4.25 per 1M output tokens, with $20 in free credits for new Meta Model API accounts."
+  - question: "Are independent Muse Spark 1.1 API benchmarks available?"
+    answer: "Major API-performance trackers have not published Muse Spark 1.1 provider results. Artificial Analysis currently lists no benchmarked API providers for Muse Spark, so the broad 1.1 benchmark table should be treated as Meta-reported."
+  - question: "How can I build apps around agentic models with Appwrite?"
+    answer: "Use [Appwrite Functions](/docs/products/functions) for server-side model calls and secrets, [AI in Functions](/docs/tooling/ai/ai-in-functions) for provider integration patterns, and [Appwrite MCP servers](/docs/tooling/ai/mcp-servers/api) when an agent needs structured access to project resources."
+---
+
+Agentic coding models are moving from chat products into developer APIs, and that changes the cost model for anyone building AI-native software. A model that can plan, call tools, read screenshots, manage a long context window, and delegate sub-tasks is useful only if developers can run it often enough to matter.
+
+That is why Meta's new release is worth watching. [Mark Zuckerberg announced Muse Spark 1.1](https://x.com/finkd/status/2075218444056707458) today as a low-cost agentic and coding model, and Meta has now put it behind the new Meta Model API.
+
+# Meta Muse Spark 1.1 is now an API model
+
+[Meta's official announcement](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) describes Muse Spark 1.1 as a multimodal reasoning model from Meta Superintelligence Labs, built for **agentic tasks, tool use, computer use, coding, and multimodal understanding**. The practical shift is availability: Muse Spark started as a Meta AI product surface and private API preview, and Muse Spark 1.1 is now available to U.S. developers through the [Meta Model API](https://developer.meta.com/ai/resources/blog/build-with-muse-spark/) in public preview.
+
+Meta says the model is also available in **Thinking** mode in the Meta AI app and on [meta.ai](https://www.meta.ai). The API matters more for developers because it lets agent builders test Muse Spark inside coding tools, workflow agents, internal apps, and customer-facing AI products.
+
+The headline technical capabilities are:
+
+- **1M-token context window** that Meta says the model can actively manage through retrieval and compaction.
+- **Multi-agent orchestration**, where a main agent can plan and delegate execution to parallel subagents.
+- **Computer use**, including GUI actions across desktop-style workflows and scripting when automation is faster.
+- **Multimodal input**, including images, video, PDFs, and audio according to Meta's launch materials and partner quotes.
+- **Tool and function calling** through the API, with support for MCP servers and custom skills.
+
+Meta's developer guide lists pay-as-you-go pricing at **$1.25 per 1M input tokens** and **$4.25 per 1M output tokens**, with **$20 in free credits** for new Meta Model API accounts. It also says Meta Model API is self-serve, OpenAI SDK-compatible, and supports Chat Completions, Responses, and Anthropic-style Messages formats over the same backend.
+
+The model ID is `muse-spark-1.1`, and OpenAI-compatible clients point at `https://api.meta.ai/v1`. Meta also notes that Muse Spark is a reasoning model: reasoning tokens appear under completion token usage and are billed as output, so `reasoning_effort` is part of the cost and latency trade-off.
+
+# The agent design is the main story
+
+The biggest architectural claim is not that Muse Spark 1.1 writes code. Every frontier model now claims that. The more interesting claim is that Meta trained it for **long-running agent loops**.
+
+Meta says Muse Spark 1.1 can act as both a main agent and a subagent. As the main agent, it gathers context, builds a plan, and delegates work across parallel subagents. As a subagent, it follows its assigned job, understands which tools are available, and escalates back when the task needs the main agent.
+
+That maps closely to where agent products are heading. A realistic coding agent does not just answer a prompt. It searches the repo, edits files, runs tests, reads failures, captures screenshots, fixes visible regressions, and decides which work can happen in parallel. Meta's launch examples include a debugging flow in OpenCode where the model builds a chat web app, takes screenshots, traces UI failures back to code, applies fixes, and validates the result.
+
+This is also why the 1M-token context window matters. Large codebases and workflow histories are not just long prompts. They are state that the model needs to retrieve from, compress, and revisit after many tool calls. Meta's evaluation report includes a long-context retrieval setup at 1M tokens, and the launch post says the model remembers actions and retrieves information from much earlier work.
+
+# Meta's Muse Spark 1.1 benchmarks are strong, with caveats
+
+Meta published a broad benchmark table in the [Muse Spark 1.1 Evaluation Report](https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report). The table below pulls from Meta's reported general capability results. For competitor models, Meta says it uses the highest available reasoning effort and, for coding and agentic benchmarks, reports self-reported results when available.
+
+That means the numbers are useful, but not final. Treat them as a vendor benchmark snapshot until independent API evaluators can run the public preview model directly.
+
+| Benchmark | Focus | Muse Spark 1.1 | Strongest compared model in Meta's table |
+| --- | --- | ---: | --- |
+| MCP Atlas | Scaled tool use | **88.1** | Muse Spark / Opus 4.8 at 82.2 |
+| JobBench | Professional tool use | **54.7** | Opus 4.8 at 48.4 |
+| Toolathlon-Verified | Personal tool use | 75.6 | **Opus 4.8 at 76.2** |
+| OSWorld-Verified | Agentic computer use | 80.8 | **Opus 4.8 at 83.4** |
+| Humanity's Last Exam with tools | Multidisciplinary reasoning | **62.1** | Opus 4.8 at 57.9 |
+| Finance Agent v2 | Agentic financial analysis | **57.2** | Opus 4.8 at 53.9 |
+| Terminal-Bench 2.1 | Agentic terminal coding | 80.0 | **GPT-5.5 at 83.4** |
+| SWE-Bench Pro | Diverse software engineering | 61.5 | **Opus 4.8 at 69.2** |
+| DeepSWE 1.1 | Long-horizon coding | 53.3 | **GPT-5.5 at 67.0** |
+| CharXiv Reasoning | Chart QA | 88.4 | **Opus 4.8 at 89.9** |
+| BabyVision | Visual reasoning | 76.3 | **GPT-5.5 at 83.6** |
+
+The pattern is clear. Muse Spark 1.1 looks especially competitive on **tool-use and workflow-agent benchmarks**, including MCP Atlas, JobBench, Humanity's Last Exam with tools, and Finance Agent v2. It is less clearly ahead on pure coding-agent benchmarks. Meta's own report says Muse Spark 1.1 trails Claude Opus 4.8 and/or GPT-5.5 on Terminal-Bench 2.1 and SWE-Bench Pro, while showing meaningful gains over Muse Spark 1.0.
+
+There is one independent signal already worth noting. [Scale's SWE-Bench Pro public leaderboard](https://labs.scale.com/leaderboard/swe_bench_pro_public) describes SWE-Bench Pro as a harder long-horizon software-engineering benchmark built around complex professional repositories, and Meta's report says Muse Spark 1.1's SWE-Bench Pro result is sourced from Scale. That is stronger than a purely internal coding score, but it is still one benchmark and one harness.
+
+[Artificial Analysis](https://artificialanalysis.ai/models/muse-spark/providers), which tracks model provider performance and pricing, currently lists **0 API providers** for Muse Spark and shows empty provider benchmark rows for this model. As of July 9, developers still lack an independent view of Muse Spark 1.1's API latency, throughput, real blended price, and provider reliability.
+
+# The safety report matters for agent builders
+
+The [Muse Spark 1.1 Evaluation Report](https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report) is not just a benchmark appendix. It also evaluates the release under Meta's Advanced AI Scaling Framework across Chemical and Biological, Cybersecurity, and Loss of Control risk categories.
+
+Meta says that before mitigations, it cannot rule out Muse Spark 1.1 meeting the "high risk" capability threshold in Chemical and Biological and Cybersecurity domains. After applying mitigations, Meta says residual risk is reduced to "moderate or lower" across those domains. The report also calls out prompt injection, tool misuse, and agent robustness evaluations, which are directly relevant to developers exposing tools to an AI system.
+
+For application builders, the practical lesson is simple: **do not treat model-level safeguards as your only control plane**. If an agent can call tools, read files, send messages, browse the web, or mutate customer data, the application still needs strict tool allowlists, scoped credentials, workspace isolation, audit logs, and server-side permission checks.
+
+# What developers can build with it
+
+Muse Spark 1.1 is positioned for workloads where a single chat completion is not enough:
+
+- **Coding agents** that inspect repositories, edit code, run tests, and validate UI output.
+- **Enterprise workflow agents** that operate across documents, spreadsheets, browsers, internal tools, and SaaS APIs.
+- **Multimodal agents** that inspect images, video, PDFs, and audio before taking action.
+- **Research and analysis agents** that combine long context, tool use, browsing, and structured outputs.
+- **MCP-based agents** that need to discover and call a large set of external tools without packing every tool schema into the prompt.
+
+The cost target makes those use cases more realistic. Long-horizon agents burn tokens through planning, tool results, retries, screenshots, summaries, and validation. A low input and output price can matter as much as benchmark rank when the product loops many times per task.
+
+The trade-off is maturity. Meta Model API is new, Muse Spark 1.1's public API behavior has not been widely benchmarked yet, and the ecosystem around SDKs, rate limits, observability, prompt caching, and production playbooks is still forming. Teams should test it against their own workload traces before moving critical agent traffic.
+
+# Building agentic apps on Appwrite
+
+Muse Spark 1.1 is another sign that agentic models are becoming infrastructure, not just chat surfaces. The model can plan and call tools, but your app still needs identity, data, files, permissions, server-side logic, and logs around those calls. That is the durable layer behind an [AI backend](/blog/post/what-is-an-ai-backend).
+
+If you are experimenting with Muse Spark or another agentic model, start by putting model calls behind server-side functions, keep API keys out of the browser, and store tool-call state in your backend. Appwrite gives you those primitives in one place: Auth for identity, Databases for state, Storage for files, Functions for secure model calls, Realtime for agent progress, and MCP servers for agent access to project resources.
+
+Useful Appwrite resources:
+
+- [Appwrite Cloud](https://cloud.appwrite.io)
+- [AI in Functions](/docs/tooling/ai/ai-in-functions)
+- [Appwrite Functions](/docs/products/functions)
+- [Appwrite MCP servers](/docs/tooling/ai/mcp-servers/api)
