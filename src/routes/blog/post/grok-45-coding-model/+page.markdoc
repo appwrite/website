@@ -8,7 +8,7 @@ timeToRead: 8
 author: atharva
 category: ai
 featured: false
-unlisted: true
+unlisted: false
 faqs:
     - question: "What is Grok 4.5?"
       answer: "Grok 4.5 is SpaceXAI's flagship model for coding, agentic tool calling, and knowledge work. It is available as `grok-4.5` with a 500K token context window, configurable reasoning, text and image input, and text output."
@@ -59,9 +59,9 @@ The benchmark story is strong, but not one-dimensional. Grok 4.5 is effectively 
 
 That is the right way to read this release: **Grok 4.5 looks competitive with frontier coding models, especially on cost and speed, but it is not a clean benchmark sweep.**
 
-# Independent measurements are starting to appear
+# Grok 4.5 independent measurements
 
-Artificial Analysis already lists [Grok 4.5 (high)](https://artificialanalysis.ai/models/grok-4-5) with independent measurements across price, speed, context, and its Intelligence Index. These are not a substitute for evaluating the model on your own codebase, but they give a useful outside view of the API.
+Artificial Analysis already lists [Grok 4.5 (high)](https://artificialanalysis.ai/models/grok-4-5) with independent measurements across price, speed, context, and its Intelligence Index. These are not a substitute for evaluating the model on your own codebase, but they give a useful outside view of the API. Following are some insights from Artificial Analysis at the time of writing this blog.
 
 | Metric | Artificial Analysis result |
 | --- | ---: |
@@ -102,13 +102,13 @@ The most relevant detail for Appwrite developers is MCP support. SpaceXAI says G
 
 For backend work, this is the difference between a model that writes code about your infrastructure and an agent that can inspect or change infrastructure through an explicit tool interface. That is where MCP becomes the important abstraction.
 
-# Availability has one important limitation
+# Grok 4.5 availability
 
 SpaceXAI says Grok 4.5 is available now in the SpaceXAI console, Grok Build, and Cursor. The official model docs list `grok-4.5` as the flagship model for code, agentic tool calling, configurable reasoning, and general text use, with a 500K token context window.
 
 There is one regional caveat: the launch page says Grok 4.5 is not available in the EU yet, with EU availability expected in mid-July 2026. If you are building production workflows around the API, that availability detail matters for teams, customers, and CI/CD infrastructure located in the EU.
 
-# The practical developer read
+# Grok 4.5 for developers
 
 Grok 4.5 is not trying to be only a better autocomplete model. It is built for the agent loop: read, plan, edit, run, inspect, and repeat. The benchmark and pricing profile make it especially interesting for tasks where the expensive part is not one perfect answer, but several minutes of directed tool use.
 
