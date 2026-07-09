@@ -28,6 +28,12 @@ Before launching the MCP server, you must [set up an Appwrite project](https://c
 
 Ensure you save the **API key** along with the **project ID**, **region** and **endpoint URL** from the Settings page of your project as you'll need them later.
 
+## OAuth consent
+
+When an MCP client connects through Appwrite's hosted OAuth flow, the Console consent screen lets the user review the requested access before granting it. For MCP grants, users can keep the full requested access or customize the grant by narrowing project and organization resources and selecting read-only or read/write access where supported.
+
+This narrowing happens at consent time. The MCP client still receives an OAuth grant only for the access the user approved, so requests outside the approved resources or scopes are not authorized.
+
 ## Install uv
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:

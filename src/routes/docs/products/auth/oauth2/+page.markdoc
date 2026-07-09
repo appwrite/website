@@ -231,6 +231,14 @@ You'll be redirected to the OAuth 2 provider's login page to log in. Once comple
 
 You can optionally configure `success` or `failure` redirect links on web to handle success and failure scenarios.
 
+# Console consent redirects {% #console-consent-redirects %}
+
+Some OAuth 2 flows, such as connecting an OAuth client to Appwrite or approving access for an MCP client, show an Appwrite Console consent screen before the user is redirected back to the requesting app.
+
+When the redirect target is a native app deep link, the browser hands the redirect to the operating system. After the user approves or cancels the request, Appwrite Console shows a final outcome screen in the browser tab instead of leaving the consent screen open. On success, the screen includes an **Open app** action that retries the native redirect if the user dismissed the operating system prompt.
+
+If the user needs to sign in before approving a consent request, Appwrite Console may store the full authorize request with a Pushed Authorization Request (PAR) handle and send the user through login with only `client_id` and `request_uri` in the resume URL. After login, Console resumes the original request from that handle. This is browser-visible as a shorter login redirect URL, but it does not change the OAuth response your app receives after approval.
+
 # OAuth 2 profile {% #profile %}
 
 After authenticating a user through their OAuth 2 provider, you can fetch their profile information such as their avatar image or name. To do this you can use the access token from the OAuth 2 provider and make API calls to the provider.
