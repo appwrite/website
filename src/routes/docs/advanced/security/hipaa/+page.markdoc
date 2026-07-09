@@ -46,7 +46,10 @@ Appwrite provides access to different types of logs depending on the context:
 
 - **Function logs**: Each serverless function or hosted sites includes stdout and stderr logs you can access per execution. Those are retained for different periods per plan.
 
-- **Audit logs**: For users or teams with compliance needs, we provide structured audit logs covering authentication events, permission changes, and other relevant activities directly on your console, under an activity tab in the different products the platform offers. Those are retained for different periods per plan.
+- **Audit logs**: For compliance needs, we provide structured audit logs covering authentication events, permission changes, and other relevant activities.
+  Audit logs are no longer available through Activity tabs in the Appwrite Console.
+  For user-specific audit data, use the [Users API references](/docs/references/cloud/server-nodejs/users) from a server environment with an API key.
+  Audit logs are retained for different periods per plan.
 
 Please note that while Appwrite Cloud serves as a HIPAA-compliant platform to handle data,
 it is the responsibility of developers to ensure that their application is also compliant with HIPAA regulations.

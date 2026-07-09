@@ -92,9 +92,6 @@ appwrite teams [COMMAND] [OPTIONS]
 * `delete [options]`                  
 * Delete a team using its ID. Only team members with the owner role can delete the team.
 ---
-* `list-logs [options]`               
-* Get the team activity logs list by its unique ID.
----
 * `list-memberships [options]`         
 * Use this endpoint to list a team's members using the team's ID. All team members have read access to this endpoint.
 ---  
