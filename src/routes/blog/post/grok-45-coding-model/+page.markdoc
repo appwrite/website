@@ -79,7 +79,7 @@ The speed number is especially interesting because SpaceXAI's own launch post sa
 
 As of the launch window, [LMArena's public text leaderboard](https://lmarena.ai/leaderboard/text) was dated July 1, 2026 in the visible page data and did not show Grok 4.5 among the top listed models. That makes Artificial Analysis the more useful independent public source for this release right now.
 
-# Pricing is the sharpest part of the launch
+# Grok 4.5 pricing is the sharpest part of the launch
 
 SpaceXAI lists Grok 4.5 at **$2 per million input tokens** and **$6 per million output tokens** in both the [launch announcement](https://x.ai/news/grok-4-5) and the [model docs](https://docs.x.ai/developers/models). Artificial Analysis lists the same standard pricing and a $0.50 per million cached-input price.
 
