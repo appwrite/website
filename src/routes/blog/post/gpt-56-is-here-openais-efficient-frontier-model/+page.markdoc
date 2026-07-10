@@ -36,7 +36,11 @@ The number identifies the generation. Sol, Terra, and Luna are durable capabilit
 
 The headline is efficiency. Instead of forcing you to pick a slow, expensive model for hard problems and a cheap one for easy problems, GPT-5.6 is tuned to do more with each token by default, then scale up only when you ask it to.
 
-The clearest evidence is on Agents' Last Exam, an evaluation of long-running workflows across 55 professional fields. OpenAI highlights a score of 53.6 for GPT-5.6 Sol in its launch announcement, while its full benchmark table lists a score of 52.7%. Both results place it ahead of Claude Fable 5, although the difference appears to reflect different evaluation configurations. Even at medium reasoning it beats Fable 5 by 11.4 points at roughly one quarter of the estimated cost. That efficiency reaches down the lineup too: Terra and Luna outperform Fable 5 at around one sixteenth of the cost. On the broader Artificial Analysis Intelligence Index, GPT-5.6 Sol with max reasoning comes within one point of Fable 5 while completing tasks in 61% less time at roughly half the cost.
+The clearest evidence shows up across two independent evaluations:
+
+* **Agents' Last Exam:** OpenAI highlights a score of 53.6 for GPT-5.6 Sol in its launch announcement, while its full benchmark table lists 52.7%. Both results place it ahead of Claude Fable 5, although the difference appears to reflect different evaluation configurations.
+* **Efficiency across the family:** At medium reasoning, Sol beats Fable 5 by 11.4 points at roughly one quarter of the estimated cost. Terra and Luna outperform Fable 5 at around one sixteenth of the cost.
+* **Artificial Analysis Intelligence Index:** Sol with max reasoning comes within one point of Fable 5 while completing tasks in 61% less time at roughly half the cost.
 
 Two mechanisms make that flexibility possible.
 
@@ -54,19 +58,19 @@ If you build agentic apps, these two are the reason to pay attention.
 
 # How does GPT-5.6 perform?
 
-GPT-5.6 Sol sets new state of the art results across coding, knowledge work, cybersecurity, and science, and the family as a whole is built to beat or match the previous generation at a fraction of the cost. Here is a snapshot of GPT-5.6 Sol against GPT-5.5, before the domain detail.
+GPT-5.6 Sol sets new state of the art results across coding, knowledge work, cybersecurity, and science, and the family as a whole is built to beat or match the previous generation at a fraction of the cost. Here is a snapshot against GPT-5.5, Claude Fable 5, and Claude Opus 4.8 where OpenAI reported comparison data.
 
-| Benchmark                              | GPT-5.6 Sol | GPT-5.5 |
-| -------------------------------------- | ----------- | ------- |
-| Agents' Last Exam                      | 52.7%       | 46.9%   |
-| Artificial Analysis Coding Agent Index | 80          | 76.4    |
-| Terminal-Bench 2.1                     | 88.8%       | 85.6%   |
-| DeepSWE v1.1                           | 72.7%       | 67%     |
-| BrowseComp                             | 90.4%       | 84.4%   |
-| OSWorld 2.0                            | 62.6%       | 47.5%   |
-| SEC-Bench Pro                          | 71.2%       | 45.8%   |
-| ExploitBench                           | 73.5%       | 47.9%   |
-| GPQA Diamond                           | 94.6%       | 93.6%   |
+| Benchmark                              | GPT-5.6 Sol | GPT-5.5 | Claude Fable 5 | Claude Opus 4.8 |
+| -------------------------------------- | ----------- | ------- | -------------- | --------------- |
+| Agents' Last Exam                      | 52.7%       | 46.9%   | 40.5%          | 45.2%           |
+| Artificial Analysis Coding Agent Index | 80          | 76.4    | 77.2           | 72.5            |
+| Terminal-Bench 2.1                     | 88.8%       | 85.6%   | 83.1%          | 78.9%           |
+| DeepSWE v1.1                           | 72.7%       | 67%     | 69.7%          | 59%             |
+| BrowseComp                             | 90.4%       | 84.4%   | Not reported   | 84.3%           |
+| OSWorld 2.0                            | 62.6%       | 47.5%   | Not reported   | 54.8%           |
+| SEC-Bench Pro                          | 71.2%       | 45.8%   | Not reported   | Not reported    |
+| ExploitBench                           | 73.5%       | 47.9%   | Not reported   | 40%             |
+| GPQA Diamond                           | 94.6%       | 93.6%   | 92.6%          | 92%             |
 
 ## Coding
 
@@ -74,7 +78,6 @@ GPT-5.6 Sol is OpenAI's best coding model yet. On the [Artificial Analysis](http
 
 * Terra performs just above Fable 5, and Luna outperforms Claude Opus 4.8, each in roughly one third of the time at about one quarter of the cost.
 * Sol sets new records on Terminal-Bench 2.1 and DeepSWE, which test command-line workflows and long-horizon engineering in real codebases.
-* For balance, this is a performance-per-dollar win, not a clean sweep. On SWE-Bench Pro, Claude Mythos 5 still leads at 80.3% versus Sol's 64.6%. GPT-5.6 gets close to the top on most coding evals while spending far less.
 
 ## Agents and tool use
 
@@ -88,15 +91,19 @@ Those numbers point at the same thing: fewer wasted steps between a prompt and a
 
 ## Design
 
-GPT-5.6 delivers a step change in design judgment. From only high-level direction, it can create tasteful, ergonomic, and functional interfaces rather than generic scaffolding. What sets it apart is that its stronger computer-use skills let it inspect the rendered result, not just generate the underlying code, so it can catch visual and functional issues and apply finishing touches before handing the work back. OpenAI's own examples range from small browser games to a museum website to an interior design presentation.
+GPT-5.6 delivers a step change in design judgment. From only high-level direction, it can create tasteful, ergonomic, and functional interfaces rather than generic scaffolding. What sets it apart is that its stronger and faster computer-use skills let it inspect the rendered result, not just generate the underlying code, so it can catch visual and functional issues and apply finishing touches before handing the work back. OpenAI's own examples range from small browser games to a museum website to an interior design presentation.
 
-Its frontend capabilities also turn natural-language requests into polished, interactive explanations and visualizations inside ChatGPT Work, from a working spirograph to a wave-interference demo to a tokenizer explainer, rendered live rather than described.
+Its frontend capabilities are a clear improvement over GPT-5.5, but Claude models still tend to produce stronger UI designs out of the box. With clear visual direction and iteration, GPT-5.6 can create polished interfaces. Inside ChatGPT Work, it can also turn natural-language requests into interactive explanations and visualizations, from a working spirograph to a wave-interference demo to a tokenizer explainer.
 
 ## Knowledge work
 
-GPT-5.6 takes messy context from tools like Slack, Notion, Microsoft 365, and Google Drive and converts it into expert-level, shareable artifacts. It sets new state of the art on BrowseComp at 90.4%, rising to 92.2% with `ultra`, and reaches 62.6% on OSWorld 2.0, surpassing Opus 4.8 while using 85% fewer output tokens. The performance-per-dollar gains hold across the family here too: Luna nearly matches GPT-5.5's peak at less than half the cost, while Terra surpasses it at lower cost.
+GPT-5.6 takes messy context from tools like Slack, Notion, Microsoft 365, and Google Drive and converts it into expert-level, shareable artifacts:
 
-The quality gains show up most clearly in documents. GPT-5.6 can create fully editable presentations from scratch, translating a prompt and source material into a coherent visual narrative with strong layout and hierarchy. It is especially good at following reference decks: it can infer a deck's design system, its layouts, typography, spacing, colors, and even rules embedded in the Slide Master, then apply those conventions consistently to new material. It also handles equations, financial models, and spreadsheets with more precision, which matters for repeatable knowledge work.
+* **Browsing and computer use:** Sol scores 90.4% on BrowseComp, rising to 92.2% with `ultra`, and reaches 62.6% on OSWorld 2.0. On OSWorld, it surpasses Opus 4.8 while using 85% fewer output tokens.
+* **Efficiency across the family:** Luna nearly matches GPT-5.5's peak performance at less than half the cost, while Terra surpasses it at lower cost.
+* **Presentations:** GPT-5.6 can create fully editable decks from scratch, translating a prompt and source material into a coherent visual narrative with strong layout and hierarchy.
+* **Reference decks:** It can infer layouts, typography, spacing, colors, and rules embedded in the Slide Master, then apply those conventions consistently to new material.
+* **Documents and spreadsheets:** It handles equations, financial models, and spreadsheets with more precision, which matters for repeatable knowledge work.
 
 ## Cybersecurity and science
 
@@ -145,9 +152,9 @@ Pricing is listed in the family table above. GPT-5.6 also adds more predictable 
 
 GPT-5.6's whole pitch is doing more per token and finishing sooner. That advantage disappears the moment the agent hands you a diff and you spend the rest of the day connecting it to auth, a database, storage, functions, and an API layer. The backend is where saved time usually goes to die.
 
-[Appwrite](https://appwrite.io/) closes that gap. It is an open source backend as a service with [Auth](https://appwrite.io/docs/products/auth), [Databases](https://appwrite.io/docs/products/databases), [Storage](https://appwrite.io/docs/products/storage), [Functions](https://appwrite.io/docs/products/functions), and [Messaging](https://appwrite.io/docs/products/messaging) built in, plus [Sites](https://appwrite.io/docs/products/sites), an open source Vercel alternative that deploys your frontend right next to it. Run it on managed Cloud or self-host it. Rather than assembling auth, schemas, file handling, deploys, and APIs by hand, you hand your GPT-5.6 agent a single Appwrite project that already has all of it.
+[Appwrite](/) closes that gap. It is an open source backend as a service with [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Messaging](/docs/products/messaging) built in, plus [Sites](/docs/products/sites), an open source Vercel alternative that deploys your frontend right next to it. Run it on managed Cloud or self-host it. Rather than assembling auth, schemas, file handling, deploys, and APIs by hand, you hand your GPT-5.6 agent a single Appwrite project that already has all of it.
 
-The [Appwrite plugin for Codex](https://appwrite.io/blog/post/announcing-appwrite-codex-plugin) makes the handoff clean. It includes agent skills for the Appwrite CLI and major SDKs and registers the Appwrite Docs MCP server.
+The [Appwrite plugin for Codex](/blog/post/announcing-appwrite-codex-plugin) makes the handoff clean. It includes agent skills for the Appwrite CLI and major SDKs and registers the Appwrite Docs MCP server.
 
 `codex plugin marketplace add appwrite/codex-plugin`
 
@@ -157,8 +164,8 @@ Want to see the full loop? [Create a free Appwrite project](https://cloud.appwri
 
 # Resources
 
-* [Appwrite plugin for Codex](blog/post/announcing-appwrite-codex-plugin)
+* [Appwrite plugin for Codex](/blog/post/announcing-appwrite-codex-plugin)
 * [Create a free Appwrite project](https://cloud.appwrite.io/)
-* [Appwrite products](docs/products/)
-* [Appwrite integrations](integrations)
-* [Join the Appwrite Discord](https://appwrite.io/discord)
+* [Appwrite products](/docs/products/)
+* [Appwrite integrations](/integrations)
+* [Join the Appwrite Discord](/discord)
