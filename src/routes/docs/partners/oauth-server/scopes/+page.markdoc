@@ -1,0 +1,40 @@
+---
+layout: article
+title: Scopes
+description: The built-in OpenID Connect scopes and the custom scopes clients can request from your Appwrite OAuth server.
+back: /docs/partners/oauth-server
+---
+
+Scopes are the permissions a client asks for during authorization. The user sees the requested scopes on the consent screen and approves or declines them. The access token the server issues carries the scopes that were granted.
+
+# Built-in scopes {% #built-in %}
+
+Four OpenID Connect scopes are always available and cannot be removed:
+
+| Scope | Grants access to |
+| --- | --- |
+| `openid` | The user's subject identifier. Required for OpenID Connect and to receive an ID token. |
+| `profile` | The user's profile claims, such as their name. |
+| `email` | The user's email address. |
+| `phone` | The user's phone number. |
+
+These appear as locked entries in the **Scopes** field on the OAuth2 server settings. A client requests them by listing them in the `scope` parameter on the authorization request, space-separated, for example `openid profile email`.
+
+# Custom scopes {% #custom %}
+
+Beyond the built-in scopes, you define your own to represent permissions in your product, such as `read:projects` or `write:billing`. Add them in the **Scopes** field on the OAuth2 server settings, or with the `scopes` array on the `updateOAuth2Server` method. The `openid`, `profile`, `email`, and `phone` scopes are always merged in, so you only list the custom ones.
+
+{% only_dark %}
+![Configuring scopes on the OAuth2 server](/images/docs/oauth-server/dark/oauth2-server-settings.avif)
+{% /only_dark %}
+{% only_light %}
+![Configuring scopes on the OAuth2 server](/images/docs/oauth-server/oauth2-server-settings.avif)
+{% /only_light %}
+
+A project can define up to 100 scopes, each up to 128 characters. A client can only request scopes you have defined; requesting an unknown scope fails the authorization request.
+
+Custom scopes are labels the OAuth server carries through the flow and stamps onto the access token. Enforcing what each scope allows is your resource server's job: read the `scope` claim from the access token (or from an [introspection](/docs/partners/oauth-server/tokens#introspect) response) and allow or deny the request accordingly.
+
+# Requesting scopes {% #requesting %}
+
+A client lists the scopes it wants in the `scope` parameter, space-separated, when it starts [authorization](/docs/partners/oauth-server/authorization#authorize). The user is shown exactly these scopes on your consent screen. Whatever they approve is what the issued access token carries in its `scope` claim, so a client should request only what it needs.

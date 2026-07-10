@@ -1,0 +1,348 @@
+---
+layout: article
+title: Tokens
+description: Access, refresh, and ID tokens issued by Appwrite's OAuth server, their lifetimes, and how to refresh, introspect, and revoke them.
+back: /docs/partners/oauth-server
+---
+
+When a client redeems an authorization code, the OAuth server issues three tokens: an access token, a refresh token, and an ID token. This page covers what each one is, how long it lives, and how to refresh, validate, and revoke them.
+
+# The three tokens {% #tokens %}
+
+- **Access token.** A JWT the client sends to call APIs on the user's behalf. It is signed with your project's key (`RS256`) and carries the granted scopes. Present it as a `Bearer` token to the userinfo endpoint or your own resource server.
+- **Refresh token.** An opaque token the client exchanges for a new access token when the old one expires, without sending the user through authorization again.
+- **ID token.** A JWT from the OpenID Connect layer that identifies the user (subject, and any profile claims the granted scopes allow). Clients validate it against the server's published keys.
+
+# Exchange a code for tokens {% #exchange %}
+
+The client exchanges its authorization code at the token endpoint with `grantType: 'authorization_code'`. A confidential client sends its `clientSecret`; a public client sends its `codeVerifier` instead.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.createToken({
+    grantType: '<GRANT_TYPE>',
+    code: '<CODE>', // optional
+    refreshToken: '<REFRESH_TOKEN>', // optional
+    deviceCode: '<DEVICE_CODE>', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>', // optional
+    codeVerifier: '<CODE_VERIFIER>', // optional
+    redirectUri: 'https://example.com', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2Token result = await oauth2.createToken(
+    grantType: '<GRANT_TYPE>',
+    code: '<CODE>', // optional
+    refreshToken: '<REFRESH_TOKEN>', // optional
+    deviceCode: '<DEVICE_CODE>', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>', // optional
+    codeVerifier: '<CODE_VERIFIER>', // optional
+    redirectUri: 'https://example.com', // optional
+    resource: '', // optional
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2Token = try await oauth2.createToken(
+    grant_type: "<GRANT_TYPE>",
+    code: "<CODE>", // optional
+    refresh_token: "<REFRESH_TOKEN>", // optional
+    device_code: "<DEVICE_CODE>", // optional
+    client_id: "<CLIENT_ID>", // optional
+    client_secret: "<CLIENT_SECRET>", // optional
+    code_verifier: "<CODE_VERIFIER>", // optional
+    redirect_uri: "https://example.com", // optional
+    resource: "" // optional
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.createToken(
+    grant_type = "<GRANT_TYPE>", 
+    code = "<CODE>", // (optional)
+    refresh_token = "<REFRESH_TOKEN>", // (optional)
+    device_code = "<DEVICE_CODE>", // (optional)
+    client_id = "<CLIENT_ID>", // (optional)
+    client_secret = "<CLIENT_SECRET>", // (optional)
+    code_verifier = "<CODE_VERIFIER>", // (optional)
+    redirect_uri = "https://example.com", // (optional)
+    resource = "", // (optional)
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.createToken(
+    "<GRANT_TYPE>", // grant_type 
+    "<CODE>", // code (optional)
+    "<REFRESH_TOKEN>", // refresh_token (optional)
+    "<DEVICE_CODE>", // device_code (optional)
+    "<CLIENT_ID>", // client_id (optional)
+    "<CLIENT_SECRET>", // client_secret (optional)
+    "<CODE_VERIFIER>", // code_verifier (optional)
+    "https://example.com", // redirect_uri (optional)
+    "", // resource (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.createToken({
+    grantType: '<GRANT_TYPE>',
+    code: '<CODE>', // optional
+    refreshToken: '<REFRESH_TOKEN>', // optional
+    deviceCode: '<DEVICE_CODE>', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>', // optional
+    codeVerifier: '<CODE_VERIFIER>', // optional
+    redirectUri: 'https://example.com', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+The response contains the access token, refresh token, ID token, granted scope, and the access token's lifetime in seconds.
+
+# Token lifetimes {% #lifetimes %}
+
+Lifetimes default by client type and are configurable per project on the **OAuth2 server** settings.
+
+| | Confidential | Public |
+| --- | --- | --- |
+| Access token | 8 hours | 1 hour |
+| Refresh token | 365 days | 30 days |
+
+Public clients get shorter lifetimes because their tokens live on user devices, where the risk of theft is higher, so the window of exposure is kept small.
+
+# Refresh with rotation {% #refresh %}
+
+To refresh, the client calls the token endpoint with `grantType: 'refresh_token'` and its current refresh token. The response includes a **new** access token and a **new** refresh token.
+
+Refresh tokens rotate: each refresh invalidates the token that was used. If an old refresh token is presented again, the server treats it as a compromise and revokes the entire token family, forcing the user to reauthorize. This means a client must always store the newest refresh token it received.
+
+To refresh, reuse the `createToken` call with the refresh grant:
+
+```http
+POST /v1/oauth2/<PROJECT_ID>/token HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+Authorization: Basic <BASE64(CLIENT_ID:CLIENT_SECRET)>
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>
+```
+
+# Validate tokens {% #validate %}
+
+Access and ID tokens are `RS256` JWTs signed with your project's key. A client validates them offline by fetching the server's public keys once from the JWKS endpoint and checking the signature, issuer, and expiry.
+
+```http
+GET /v1/oauth2/<PROJECT_ID>/.well-known/jwks.json HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+```
+
+To read the user's profile from an access token, call the userinfo endpoint:
+
+```http
+GET /v1/oauth2/<PROJECT_ID>/userinfo HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+Authorization: Bearer <ACCESS_TOKEN>
+```
+
+# Introspect a token {% #introspect %}
+
+A resource server can ask the OAuth server whether a token is still valid with the introspection endpoint. Introspection requires client authentication, so only confidential clients (or an API key with the `oauth2.read` scope) can call it. A public client, having no secret, cannot introspect.
+
+```http
+POST /v1/oauth2/<PROJECT_ID>/introspect HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+Authorization: Basic <BASE64(CLIENT_ID:CLIENT_SECRET)>
+Content-Type: application/x-www-form-urlencoded
+
+token=<ACCESS_TOKEN>
+```
+
+A valid token returns `"active": true` with its scope, subject, and expiry. A revoked or expired token returns `"active": false`.
+
+# Revoke a token {% #revoke %}
+
+A client revokes a token it no longer needs with the revocation endpoint. Confidential clients authenticate with their secret; public clients revoke without one.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.revoke({
+    token: '<TOKEN>',
+    tokenTypeHint: 'access_token', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>' // optional
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+ result = await oauth2.revoke(
+    token: '<TOKEN>',
+    tokenTypeHint: 'access_token', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>', // optional
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let result = try await oauth2.revoke(
+    token: "<TOKEN>",
+    token_type_hint: "access_token", // optional
+    client_id: "<CLIENT_ID>", // optional
+    client_secret: "<CLIENT_SECRET>" // optional
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.revoke(
+    token = "<TOKEN>", 
+    token_type_hint = "access_token", // (optional)
+    client_id = "<CLIENT_ID>", // (optional)
+    client_secret = "<CLIENT_SECRET>", // (optional)
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.revoke(
+    "<TOKEN>", // token 
+    "access_token", // token_type_hint (optional)
+    "<CLIENT_ID>", // client_id (optional)
+    "<CLIENT_SECRET>", // client_secret (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.revoke({
+    token: '<TOKEN>',
+    tokenTypeHint: 'access_token', // optional
+    clientId: '<CLIENT_ID>', // optional
+    clientSecret: '<CLIENT_SECRET>' // optional
+});
+
+console.log(result);
+```
+{% /multicode %}

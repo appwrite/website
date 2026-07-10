@@ -1,0 +1,522 @@
+---
+layout: article
+title: Authorization
+description: The OAuth 2.1 authorization code flow with PKCE, and how to host a consent screen for your Appwrite OAuth server.
+back: /docs/partners/oauth-server
+---
+
+Authorization is the step where a user allows a client to act on their behalf. Appwrite's OAuth server uses the **authorization code flow with PKCE**, the flow the OAuth 2.1 draft recommends for every client type. This page covers the flow end to end and how to host the consent screen it depends on.
+
+# The authorization code flow {% #flow %}
+
+1. The client sends the user to the **authorization endpoint** with its client ID, a registered redirect URI, `response_type=code`, and the scopes it wants.
+2. Appwrite checks for a user session on your project. With a session, it creates a grant and redirects to your **authorization URL** with a `grant_id`. Without one, it redirects to your authorization URL with the full request so you can sign the user in first.
+3. Your **consent screen** loads the grant, shows the user what is being requested, and approves or rejects it.
+4. On approval, Appwrite redirects back to the client's redirect URI with a short-lived authorization `code`.
+5. The client exchanges the code for tokens at the token endpoint. See [Tokens](/docs/partners/oauth-server/tokens).
+
+# PKCE {% #pkce %}
+
+PKCE (Proof Key for Code Exchange) binds an authorization request to the client that started it, so an intercepted code cannot be redeemed by anyone else. The client generates a random `code_verifier`, hashes it with SHA-256 into a `code_challenge`, and sends the challenge on the authorize request. When it later redeems the code, it presents the original verifier, and the server checks that they match.
+
+The server supports the `S256` challenge method only. PKCE is **always required for public clients**. For confidential clients it is optional and controlled per project by the **Require PKCE** setting, since those clients already authenticate with a secret.
+
+# Start authorization {% #authorize %}
+
+Send the user to the authorization endpoint. A public client includes its `code_challenge`; a confidential client includes it when PKCE is enabled.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.authorize({
+    clientId: '<CLIENT_ID>',
+    redirectUri: 'https://example.com',
+    responseType: 'code',
+    scope: '<SCOPE>', // optional
+    state: '<STATE>', // optional
+    nonce: '<NONCE>', // optional
+    codeChallenge: '<CODE_CHALLENGE>', // optional
+    codeChallengeMethod: 's256', // optional
+    prompt: '<PROMPT>', // optional
+    maxAge: 0, // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2Authorize result = await oauth2.authorize(
+    clientId: '<CLIENT_ID>',
+    redirectUri: 'https://example.com',
+    responseType: 'code',
+    scope: '<SCOPE>', // optional
+    state: '<STATE>', // optional
+    nonce: '<NONCE>', // optional
+    codeChallenge: '<CODE_CHALLENGE>', // optional
+    codeChallengeMethod: 's256', // optional
+    prompt: '<PROMPT>', // optional
+    maxAge: 0, // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '', // optional
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2Authorize = try await oauth2.authorize(
+    client_id: "<CLIENT_ID>",
+    redirect_uri: "https://example.com",
+    response_type: "code",
+    scope: "<SCOPE>", // optional
+    state: "<STATE>", // optional
+    nonce: "<NONCE>", // optional
+    code_challenge: "<CODE_CHALLENGE>", // optional
+    code_challenge_method: "s256", // optional
+    prompt: "<PROMPT>", // optional
+    max_age: 0, // optional
+    authorization_details: "<AUTHORIZATION_DETAILS>", // optional
+    resource: "" // optional
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.authorize(
+    client_id = "<CLIENT_ID>", 
+    redirect_uri = "https://example.com", 
+    response_type = "code", 
+    scope = "<SCOPE>", // (optional)
+    state = "<STATE>", // (optional)
+    nonce = "<NONCE>", // (optional)
+    code_challenge = "<CODE_CHALLENGE>", // (optional)
+    code_challenge_method = "s256", // (optional)
+    prompt = "<PROMPT>", // (optional)
+    max_age = 0, // (optional)
+    authorization_details = "<AUTHORIZATION_DETAILS>", // (optional)
+    resource = "", // (optional)
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.authorize(
+    "<CLIENT_ID>", // client_id 
+    "https://example.com", // redirect_uri 
+    "code", // response_type 
+    "<SCOPE>", // scope (optional)
+    "<STATE>", // state (optional)
+    "<NONCE>", // nonce (optional)
+    "<CODE_CHALLENGE>", // code_challenge (optional)
+    "s256", // code_challenge_method (optional)
+    "<PROMPT>", // prompt (optional)
+    0, // max_age (optional)
+    "<AUTHORIZATION_DETAILS>", // authorization_details (optional)
+    "", // resource (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.authorize({
+    clientId: '<CLIENT_ID>',
+    redirectUri: 'https://example.com',
+    responseType: 'code',
+    scope: '<SCOPE>', // optional
+    state: '<STATE>', // optional
+    nonce: '<NONCE>', // optional
+    codeChallenge: '<CODE_CHALLENGE>', // optional
+    codeChallengeMethod: 's256', // optional
+    prompt: '<PROMPT>', // optional
+    maxAge: 0, // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+Without a session on the project, Appwrite redirects to your authorization URL with the original request parameters attached. Sign the user in there (with your normal [Appwrite authentication](/docs/products/auth)), then send them back through the authorize endpoint so a grant can be created.
+
+# Host the consent screen {% #consent %}
+
+Your authorization URL is a page you host. When Appwrite redirects a signed-in user to it with a `grant_id`, the page reads the grant, presents it, and records the user's decision. The consent endpoints authenticate with the user's session on your project.
+
+**Load the grant** to see which client, scopes, and resources are being requested, then render your UI.
+
+{% info title="Required scope" %}
+Reading a grant requires the `oauth2.read` scope. Approving or rejecting one requires `oauth2.write`.
+{% /info %}
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.getGrant({
+    grantId: '<GRANT_ID>'
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2Grant result = await oauth2.getGrant(
+    grantId: '<GRANT_ID>',
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2Grant = try await oauth2.getGrant(
+    grant_id: "<GRANT_ID>"
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.getGrant(
+    grant_id = "<GRANT_ID>", 
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.getGrant(
+    "<GRANT_ID>", // grant_id 
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.getGrant({
+    grantId: '<GRANT_ID>'
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+**Approve** the grant to continue. Appwrite responds with the redirect URL back to the client, carrying the authorization code. Send the user there.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.approve({
+    grantId: '<GRANT_ID>',
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    scope: '<SCOPE>' // optional
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2Approve result = await oauth2.approve(
+    grantId: '<GRANT_ID>',
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    scope: '<SCOPE>', // optional
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2Approve = try await oauth2.approve(
+    grant_id: "<GRANT_ID>",
+    authorization_details: "<AUTHORIZATION_DETAILS>", // optional
+    scope: "<SCOPE>" // optional
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.approve(
+    grant_id = "<GRANT_ID>", 
+    authorization_details = "<AUTHORIZATION_DETAILS>", // (optional)
+    scope = "<SCOPE>", // (optional)
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.approve(
+    "<GRANT_ID>", // grant_id 
+    "<AUTHORIZATION_DETAILS>", // authorization_details (optional)
+    "<SCOPE>", // scope (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.approve({
+    grantId: '<GRANT_ID>',
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    scope: '<SCOPE>' // optional
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+**Reject** the grant if the user declines. Appwrite responds with the redirect URL carrying an error instead of a code.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.reject({
+    grantId: '<GRANT_ID>'
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2Reject result = await oauth2.reject(
+    grantId: '<GRANT_ID>',
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2Reject = try await oauth2.reject(
+    grant_id: "<GRANT_ID>"
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.reject(
+    grant_id = "<GRANT_ID>", 
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.reject(
+    "<GRANT_ID>", // grant_id 
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.reject({
+    grantId: '<GRANT_ID>'
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+# Redirect URI matching {% #redirect-uris %}
+
+The `redirect_uri` on an authorization request must exactly match one of the client's registered redirect URIs, character for character. This is what stops an attacker from redirecting a code to a URL they control.
+
+There is one narrow exception. For **public** clients, an `http` loopback address (`localhost`, `127.0.0.1`, or `[::1]`) matches on everything except the port. Native and CLI apps bind an unpredictable local port at runtime and cannot register it ahead of time (RFC 8252). Confidential clients get no such exception; their redirect URIs must match exactly, port included.

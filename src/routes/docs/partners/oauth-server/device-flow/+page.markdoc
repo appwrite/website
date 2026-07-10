@@ -1,0 +1,171 @@
+---
+layout: article
+title: Device flow
+description: Authorize TVs, CLIs, and other input-constrained devices against your Appwrite OAuth server with the device authorization grant.
+back: /docs/partners/oauth-server
+---
+
+Some devices cannot show a browser or take typed input: a TV app, a CLI on a remote server, a hardware device. The **device authorization grant** (RFC 8628) lets these clients get tokens by having the user approve on a second device, like their phone or laptop.
+
+# How it works {% #how-it-works %}
+
+1. The device asks the OAuth server to start a device authorization. The server returns a **device code**, a short **user code**, and a **verification URL**.
+2. The device shows the user code and verification URL to the user (for example, "Go to example.com/activate and enter WDJB-MJHT").
+3. The user opens the verification URL on another device, signs in, and approves.
+4. Meanwhile the device polls the token endpoint. Once the user approves, the poll returns tokens.
+
+Device flow is available to a client only when both the project has a **verification URL** configured on the OAuth2 server settings and the client has **device flow** enabled. Device clients are public clients, so they authenticate with no secret.
+
+# Enable device flow on a client {% #enable %}
+
+Turn on **Device flow** when you create or update the client. In the Console, it is a toggle in the client dialog; with a Server SDK, set `deviceFlow: true` on the [client](/docs/partners/oauth-server/clients#register).
+
+# Start a device authorization {% #start %}
+
+The device requests a device authorization with its client ID and the scopes it wants.
+
+{% multicode %}
+```client-web
+import { Client, Oauth2 } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.createDeviceAuthorization({
+    clientId: '<CLIENT_ID>', // optional
+    scope: '<SCOPE>', // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2DeviceAuthorization result = await oauth2.createDeviceAuthorization(
+    clientId: '<CLIENT_ID>', // optional
+    scope: '<SCOPE>', // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '', // optional
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let oauth2 = Oauth2(client)
+
+let oauth2DeviceAuthorization = try await oauth2.createDeviceAuthorization(
+    client_id: "<CLIENT_ID>", // optional
+    scope: "<SCOPE>", // optional
+    authorization_details: "<AUTHORIZATION_DETAILS>", // optional
+    resource: "" // optional
+)
+
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.coroutines.CoroutineCallback
+import io.appwrite.services.Oauth2
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val oauth2 = Oauth2(client)
+
+val result = oauth2.createDeviceAuthorization(
+    client_id = "<CLIENT_ID>", // (optional)
+    scope = "<SCOPE>", // (optional)
+    authorization_details = "<AUTHORIZATION_DETAILS>", // (optional)
+    resource = "", // (optional)
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.createDeviceAuthorization(
+    "<CLIENT_ID>", // client_id (optional)
+    "<SCOPE>", // scope (optional)
+    "<AUTHORIZATION_DETAILS>", // authorization_details (optional)
+    "", // resource (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+
+```
+```client-react-native
+import { Client, Oauth2 } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const oauth2 = new Oauth2(client);
+
+const result = await oauth2.createDeviceAuthorization({
+    clientId: '<CLIENT_ID>', // optional
+    scope: '<SCOPE>', // optional
+    authorizationDetails: '<AUTHORIZATION_DETAILS>', // optional
+    resource: '' // optional
+});
+
+console.log(result);
+```
+{% /multicode %}
+
+The response contains the codes and where to send the user:
+
+```json
+{
+    "device_code": "8575375669b9031cb5371b0ee39985c2...",
+    "user_code": "WDJB-MJHT",
+    "verification_uri": "https://example.com/activate",
+    "verification_uri_complete": "https://example.com/activate?user_code=WDJB-MJHT",
+    "expires_in": 600,
+    "interval": 1
+}
+```
+
+Show the `user_code` and `verification_uri` to the user. The `verification_uri_complete` embeds the code so a phone can open it directly, often as a QR code.
+
+# Poll for tokens {% #poll %}
+
+While the user approves on their other device, the client polls the token endpoint with the device code grant, waiting `interval` seconds between attempts.
+
+```http
+POST /v1/oauth2/<PROJECT_ID>/token HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=urn:ietf:params:oauth:grant-type:device_code&device_code=<DEVICE_CODE>&client_id=<CLIENT_ID>
+```
+
+Until the user approves, the endpoint returns `authorization_pending`; keep polling. Once they approve, it returns an access token, refresh token, and ID token, exactly like the [authorization code flow](/docs/partners/oauth-server/tokens). If the user declines or the codes expire, the poll returns a terminal error and the device restarts the flow.
