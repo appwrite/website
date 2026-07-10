@@ -46,23 +46,7 @@ Browse all quick start prompts
 
 If you installed the Appwrite plugin in [Step 1](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
 
-Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation.
-
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
-
-{% tabs %}
-{% tabsitem #api-server-prerequisites title="API server" %}
-
-[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-server-prerequisites title="Docs server" %}
-
-[Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
-
-{% /tabsitem %}
-{% /tabs %}
+Connect Appwrite MCP servers to Cursor for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
 
 Open the **Cursor Settings** page, head to the **MCP** tab, and click on the **Add new global MCP server** button. This will open an `mcp.json` file in your editor.
 
@@ -77,26 +61,14 @@ Update the `mcp.json` file to include the API server:
 {
     "mcpServers": {
         "appwrite-api": {
-            "command": "uvx",
-            "args": [
-                "mcp-server-appwrite"
-            ],
-            "env": {
-                "APPWRITE_API_KEY": "your-api-key",
-                "APPWRITE_PROJECT_ID": "your-project-id",
-                "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
-            }
+            "url": "https://mcp.appwrite.io/mcp"
         }
     }
 }
 
 ```
 
-**Configuration:**
-
-- Replace `your-project-id` with your actual Appwrite project ID
-- Replace `your-api-key` with your Appwrite API key
-- Replace `<REGION>` with your Appwrite Cloud region (e.g., `nyc`, `fra`)
+The API server uses OAuth for authentication. After you save the file, click **Needs login** next to the server in the MCP settings. Your browser opens so you can sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 
@@ -108,11 +80,7 @@ Update the `mcp.json` file to include the docs server:
 {
   "mcpServers": {
     "appwrite-docs": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "<https://mcp-for-docs.appwrite.io>"
-      ]
+      "url": "https://mcp-for-docs.appwrite.io"
     }
   }
 }

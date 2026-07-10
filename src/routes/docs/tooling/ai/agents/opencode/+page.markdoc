@@ -23,23 +23,7 @@ Browse all quick start prompts
 
 {% section #step-2 step=2 title="Add MCP servers" %}
 
-Connect Appwrite MCP servers to OpenCode for deeper integration with the Appwrite API and documentation.
-
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
-
-{% tabs %}
-{% tabsitem #api-server-prerequisites title="API server" %}
-
-[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-server-prerequisites title="Docs server" %}
-
-[Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
-
-{% /tabsitem %}
-{% /tabs %}
+Connect Appwrite MCP servers to OpenCode for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
 
 Use the following configuration in your `opencode.json` file to use the Appwrite MCP servers.
 
@@ -48,31 +32,19 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
 
 ```json
 {
-  "$schema": "<https://opencode.ai/config.json>",
+  "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "appwrite": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "mcp-server-appwrite"
-      ],
+    "appwrite-api": {
+      "type": "remote",
       "enabled": true,
-      "environment": {
-        "APPWRITE_PROJECT_ID": "your-project-id",
-        "APPWRITE_API_KEY": "your-api-key",
-        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
-      }
+      "url": "https://mcp.appwrite.io/mcp"
     }
   }
 }
 
 ```
 
-**Configuration:**
-
-- Replace `your-project-id` with your actual Appwrite project ID
-- Replace `your-api-key` with your Appwrite API key
-- Replace `<REGION>` with your Appwrite Cloud region (e.g., `nyc`, `fra`)
+The API server uses OAuth for authentication. When OpenCode first connects to the server, complete the sign-in flow in your browser to sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 
@@ -80,12 +52,12 @@ Use the following configuration in your `opencode.json` file to use the Appwrite
 
 ```json
 {
-  "$schema": "<https://opencode.ai/config.json>",
+  "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "appwrite-docs": {
       "type": "remote",
       "enabled": true,
-      "url": "<https://mcp-for-docs.appwrite.io>"
+      "url": "https://mcp-for-docs.appwrite.io"
     }
   }
 }

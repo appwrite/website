@@ -25,21 +25,9 @@ Browse all quick start prompts
 
 Connect Appwrite MCP servers to Claude Desktop for deeper integration with the Appwrite API and documentation.
 
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
+Before you begin, ensure you have [Node.js](https://nodejs.org/en/download) and npm installed on your system.
 
-{% tabs %}
-{% tabsitem #api-server-prerequisites title="API server" %}
-
-[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-server-prerequisites title="Docs server" %}
-
-[Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
-
-{% /tabsitem %}
-{% /tabs %}
+Unlike other IDEs, Claude Desktop only supports local (stdio) MCP servers and not remote servers. The `mcp-remote` package acts as a proxy to connect to the remote Appwrite MCP servers.
 
 In the Claude Desktop app, open the app's **Settings** page (press `CTRL + ,` on Windows or `CMD + ,` on MacOS) and head to the **Developer** tab.
 
@@ -58,25 +46,17 @@ Add the API server to your configuration:
 {
     "mcpServers": {
         "appwrite-api": {
-            "command": "uvx",
+            "command": "npx",
             "args": [
-                "mcp-server-appwrite"
-            ],
-            "env": {
-                "APPWRITE_PROJECT_ID": "your-project-id",
-                "APPWRITE_API_KEY": "your-api-key",
-                "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
-            }
+                "mcp-remote",
+                "https://mcp.appwrite.io/mcp"
+            ]
         }
     }
 }
 ```
 
-**Configuration:**
-
-- Replace `your-project-id` with your actual Appwrite project ID
-- Replace `your-api-key` with your Appwrite API key
-- Replace `<REGION>` with your Appwrite Cloud region (e.g., `nyc`, `fra`)
+The API server uses OAuth for authentication. When Claude Desktop first connects to the server, your browser opens so you can sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 
@@ -98,10 +78,6 @@ Add the docs server to your configuration:
 }
 ```
 
-**Why do we use the `mcp-remote` package?**
-
-Unlike other IDEs, Claude Desktop only supports local (stdio) MCP servers and not remote servers. The `mcp-remote` package acts as a proxy to connect to the docs MCP server.
-
 {% /tabsitem %}
 {% /tabs %}
 
@@ -113,9 +89,9 @@ Restart the Claude Desktop app, click on the MCP tools button (at the bottom rig
 
 ![Appwrite MCP tools](/images/docs/mcp/claude-desktop/claude-mcp-tools.avif)
 
-{% info title="uvx ENOENT error" %}
+{% info title="npx ENOENT error" %}
 
-In case you see a `uvx ENOENT` error, ensure that you either add `uvx` to the `PATH` environment variable on your system or use the full path to your `uvx` installation in the config file.
+In case you see an `npx ENOENT` error, ensure that you either add `npx` to the `PATH` environment variable on your system or use the full path to your `npx` installation in the config file.
 
 {% /info %}
 
