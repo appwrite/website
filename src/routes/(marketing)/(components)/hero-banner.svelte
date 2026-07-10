@@ -12,7 +12,12 @@
     const { title, href, icon = 'sparkle' }: Props = $props();
 </script>
 
-<a {href} class="web-hero-banner-button relative mb-4 flex items-center!">
+<a
+    {href}
+    target={href.startsWith('http') ? '_blank' : undefined}
+    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+    class="web-hero-banner-button relative mb-4 flex items-center!"
+>
     {#if icon === 'mongo'}
         <span class="mongo-icon-badge shrink-0" aria-hidden="true">
             <Icon name="mongo" style="width: 0.75rem; height: 1.125rem; color: #00ED64;" />
