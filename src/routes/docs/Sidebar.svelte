@@ -141,21 +141,6 @@
                     href: '/docs/apis/realtime',
                     icon: 'icon-clock',
                     isParent: true
-                },
-                {
-                    label: 'Events',
-                    href: '/docs/apis/events',
-                    icon: 'icon-switch-horizontal'
-                },
-                {
-                    label: 'Webhooks',
-                    href: '/docs/apis/webhooks',
-                    icon: 'icon-bell'
-                },
-                {
-                    label: 'Response codes',
-                    href: '/docs/apis/response-codes',
-                    icon: 'icon-code'
                 }
             ]
         },
@@ -225,11 +210,6 @@
                     href: '/docs/advanced/self-hosting',
                     icon: 'icon-server',
                     isParent: true
-                },
-                {
-                    label: 'Release policy',
-                    href: '/docs/advanced/release-policy',
-                    icon: 'icon-tag'
                 }
             ]
         }
