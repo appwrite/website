@@ -88,14 +88,15 @@ The modern best practice is to serve next-generation formats like AVIF or WebP t
 
 The HTML `<picture>` element lets the browser pick the best format it supports, so you can offer AVIF first, then WebP, then a JPEG or PNG fallback.
 
-html
-
 ```html
 <picture>
   <source srcset="photo.avif" type="image/avif">
   <source srcset="photo.webp" type="image/webp">
   <img src="photo.jpg" alt="A descriptive caption">
 </picture>
+```
+
+The browser uses the first format it understands, so modern browsers get the smaller AVIF or WebP file while older browsers still receive the JPEG. This pattern combines modern compression with broad compatibility.
 
 The browser uses the first format it understands, so modern browsers get the small AVIF or WebP file while older ones still receive the JPEG. This pattern gives you the best of both worlds: cutting-edge compression with universal compatibility.
 
