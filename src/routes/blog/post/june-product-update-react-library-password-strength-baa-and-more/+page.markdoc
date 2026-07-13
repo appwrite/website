@@ -77,7 +77,7 @@ Password strength works alongside existing Appwrite Auth protections like passwo
 
 The Appwrite React library helps developers manage Appwrite Auth in React apps with less boilerplate.
 
-It ships with an AppwriteProvider and a small set of authentication hooks for sign-up, sign-in, sign-out, OAuth, and current user state.
+It ships with an `AppwriteProvider` and a small set of authentication hooks for sign-up, sign-in, sign-out, OAuth, and current user state.
 
 The library supports client-side React apps, plus SSR support for Next.js and TanStack Start.
 
