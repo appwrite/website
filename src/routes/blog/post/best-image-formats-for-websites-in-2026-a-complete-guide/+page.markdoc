@@ -86,7 +86,7 @@ The modern best practice is to serve next-generation formats like AVIF or WebP t
 
 # How do you serve modern image formats with fallbacks?
 
-The HTML [`<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) lets the browser pick the best format it supports, so you can offer AVIF first, then WebP, then a JPEG or PNG fallback.
+The HTML `<picture>` element lets the browser pick the best format it supports, so you can offer AVIF first, then WebP, then a JPEG or PNG fallback.
 
 html
 
