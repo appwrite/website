@@ -33,9 +33,9 @@ Here is a quick overview of what shipped in June:
 
 Let's dive in.
 
-![Appwrite plugin for Claude Code is now in the official Claude marketplace.jpg](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Appwrite_plugin_for_Claude_Code_is_now_in_the_official_Claude_marketplace.avif)
-
 # Appwrite plugin for Claude Code is now in the official Claude marketplace
+
+![Appwrite plugin for Claude Code is now in the official Claude marketplace.jpg](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Appwrite_plugin_for_Claude_Code_is_now_in_the_official_Claude_marketplace.avif)
 
 The Appwrite plugin for Claude Code is now listed in the official Claude marketplace.
 
@@ -43,11 +43,11 @@ Developers can now install the plugin directly and start using Claude Code with 
 
 The plugin includes agent skills for the Appwrite CLI and major SDKs, plus MCP servers for the Appwrite API and documentation. This helps Claude Code better understand Appwrite projects, docs, SDK usage, and common development workflows.
 
-[Read more](https://appwrite.io/docs/tooling/ai/agents/claude-code)
-
-![introducing self-serve baa.png](/images/blog/june-product-update-react-library-password-strength-baa-and-more/introducing_self-serve_baa.avif)
+[Read more](/docs/tooling/ai/agents/claude-code)
 
 # Introducing self-serve BAA
+
+![introducing self-serve baa.png](/images/blog/june-product-update-react-library-password-strength-baa-and-more/introducing_self-serve_baa.avif)
 
 Eligible Pro organizations can now enable a HIPAA Business Associate Agreement directly from the Appwrite Console.
 
@@ -55,11 +55,11 @@ Organization owners can open the Settings tab, select Enable BAA in the BAA sect
 
 This helps teams building healthcare apps, patient portals, telehealth platforms, and PHI-related workflows move faster with the agreement in place.
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-self-serve-baa)
-
-![Password Strength](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Password_Strength.avif)
+[Read the announcement](/blog/post/announcing-self-serve-baa)
 
 # Introducing Password strength for Appwrite Auth
+
+![Password Strength](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Password_Strength.avif)
 
 Appwrite Auth now lets you enforce Password strength on every project.
 
@@ -69,11 +69,11 @@ These rules run at sign-up and whenever a user changes their password, so weak p
 
 Password strength works alongside existing Appwrite Auth protections like password history and the password dictionary, giving teams more control without custom password validation logic.
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-password-strength)
-
-![Introducing the Appwrite React library](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Introducing_the_Appwrite_React_library.avif)
+[Read the announcement](/blog/post/announcing-password-strength)
 
 # Introducing the Appwrite React library
+
+![Introducing the Appwrite React library](/images/blog/june-product-update-react-library-password-strength-baa-and-more/Introducing_the_Appwrite_React_library.avif)
 
 The Appwrite React library helps developers manage Appwrite Auth in React apps with less boilerplate.
 
@@ -85,11 +85,11 @@ Install it with:
 
 `npm install @appwrite.io/react`
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-appwrite-react-library)
-
-[community.avif](June%20product%20update%20React%20library,%20Password%20streng/community.avif)
+[Read the announcement](/blog/post/announcing-appwrite-react-library)
 
 # Community Recognitions
+
+[community.avif](June%20product%20update%20React%20library,%20Password%20streng/community.avif)
 
 We are excited to feature Arhan Ansari as part of our monthly Community Recognitions for June 2026. Arhan built [HRMate](https://github.com/ArhanAnsari/HRMate), a cross-platform HR management app built with Expo and Appwrite. It helps companies manage employees, attendance, leave requests, payroll, payslips, and company announcements from one place. Appwrite powers authentication, databases, storage, and realtime updates, while Gemini powers the built-in AI HR assistant. Keep in mind that this is a community-backed project and is not maintained by Appwrite.
 
@@ -97,13 +97,13 @@ If you would like to participate in next month's Community Recognitions, [join o
 
 # Engineering resources
 
-* [What is CI/CD? A complete guide for developers](https://appwrite.io/blog/post/what-is-cicd-a-complete-guide-for-developers)
-* [Appwrite Arena: June 2026 update](https://appwrite.io/blog/post/arena-june-2026-update)
-* [Best AI productivity stack for developers in 2026](https://appwrite.io/blog/post/best-ai-productivity-stack-for-developers-in-2026)
-* [What is Docker? A simple guide for developers](https://appwrite.io/blog/post/what-is-docker-a-simple-guide-for-developers)
+* [What is CI/CD? A complete guide for developers](/blog/post/what-is-cicd-a-complete-guide-for-developers)
+* [Appwrite Arena: June 2026 update](/blog/post/arena-june-2026-update)
+* [Best AI productivity stack for developers in 2026](/blog/post/best-ai-productivity-stack-for-developers-in-2026)
+* [What is Docker? A simple guide for developers](/blog/post/what-is-docker-a-simple-guide-for-developers)
 
 # What's next
 
 We are continuing to improve Appwrite across Auth, developer experience, compliance, frontend development, and AI-assisted workflows.
 
-Follow us on [X](https://x.com/appwrite) and check our [Changelog](https://appwrite.io/changelog) regularly, as we will release more information in the coming weeks.
+Follow us on [X](https://x.com/appwrite) and check our [Changelog](/changelog) regularly, as we will release more information in the coming weeks.
