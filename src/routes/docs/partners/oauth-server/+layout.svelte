@@ -52,6 +52,10 @@
                 {
                     label: 'Sign in with your product',
                     href: '/docs/partners/oauth-server/sign-in-with-your-product/step-1'
+                },
+                {
+                    label: 'Custom scopes',
+                    href: '/docs/partners/oauth-server/custom-scopes/step-1'
                 }
             ]
         }

@@ -14,8 +14,6 @@ Appwrite can act as an **OAuth 2.1 and OpenID Connect provider**. When you enabl
 ![OAuth2 server settings in the Appwrite Console](/images/docs/oauth-server/oauth2-server-settings.avif)
 {% /only_light %}
 
-This is the inverse of the [OAuth providers](/docs/partners/project/oauth) feature. OAuth providers let your users sign in to your project *with* an external service. The OAuth server lets external services sign their users in *with your project*.
-
 # How it works {% #how-it-works %}
 
 The OAuth server has three moving parts.
@@ -59,10 +57,13 @@ Authorize TVs, CLIs, and other input-constrained devices.
 {% /cards_item %}
 {% /cards %}
 
-# Guide {% #guide %}
+# Guides {% #guides %}
 
 {% cards %}
 {% cards_item href="/docs/partners/oauth-server/sign-in-with-your-product/step-1" title="Sign in with your product" %}
 Build a full sign-in with your product experience end to end, from the consent screen to the token exchange.
+{% /cards_item %}
+{% cards_item href="/docs/partners/oauth-server/custom-scopes/step-1" title="Protect your API with custom scopes" %}
+Define custom scopes, request them from a client, and enforce them on your own API.
 {% /cards_item %}
 {% /cards %}

@@ -18,7 +18,8 @@ A **client** is a third-party app that authenticates users through your project'
 
 Every client is one of two types, and the difference comes down to a single question: can the app keep a secret?
 
-A **confidential** client runs code on a server the developer controls, so it can store a `client_secret` that users never see. It authenticates to the token endpoint with that secret, which lets your server prove which client is calling. A **public** client runs entirely on the user's device (a single-page app, a native mobile app, a CLI), where any embedded secret would ship to the user and could be read. Public clients receive no secret and rely on PKCE instead.
+- A **confidential** client runs code on a server the developer controls, so it can store a `client_secret` that users never see. It authenticates to the token endpoint with that secret, which lets your server prove which client is calling.
+- A **public** client runs entirely on the user's device (a single-page app, a native mobile app, a CLI), where any embedded secret would ship to the user and could be read. Public clients receive no secret and rely on PKCE instead.
 
 {% only_dark %}
 ![Token lifetimes for confidential and public clients](/images/docs/oauth-server/dark/oauth2-server-token-lifetimes.avif)

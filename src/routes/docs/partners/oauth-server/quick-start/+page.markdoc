@@ -396,11 +396,6 @@ Once enabled, the server publishes an OpenID Connect discovery document. Integra
 
 Open it in a browser to confirm the server is live. It returns JSON describing the authorization, token, userinfo, and JWKS endpoints.
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/.well-known/openid-configuration HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
-```
-
 # Register a client {% #register %}
 
 Open the **Apps** sub-tab and create a client. Give it a name, add at least one redirect URI, and choose a type. Pick **Confidential** for this walkthrough so you get a secret to authenticate the token exchange. Copy the secret when it is shown, because it appears only once.
