@@ -91,8 +91,11 @@ The HTML [`<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML
 html
 
 ```html
-<picture><sourcesrcset="photo.avif"type="image/avif"><sourcesrcset="photo.webp"type="image/webp"><imgsrc="photo.jpg"alt="A descriptive caption"></picture>
-```
+<picture>
+  <source srcset="photo.avif" type="image/avif">
+  <source srcset="photo.webp" type="image/webp">
+  <img src="photo.jpg" alt="A descriptive caption">
+</picture>
 
 The browser uses the first format it understands, so modern browsers get the small AVIF or WebP file while older ones still receive the JPEG. This pattern gives you the best of both worlds: cutting-edge compression with universal compatibility.
 
