@@ -102,14 +102,16 @@ The practical takeaway is that sharding is a powerful but complex tool best rese
 
 # Start building scalable apps with Appwrite
 
-Appwrite Cloud gives developers a fully managed backend so you can ship fast without provisioning or maintaining any infrastructure. You get storage, auth, databases, functions, and real-time out of the box, with file storage that scales automatically as your app grows. Its Databases product gives you a scalable, managed data layer with a clean API, so you can focus on your app instead of standing up and operating your own database infrastructure. That means you defer the complexity of scaling decisions like sharding until you genuinely need them, and lean on a managed backend when you do.
+The recurring theme in this guide is that sharding is a last resort, and that for most apps the day you need it never comes. The catch is that scaling problems tend to arrive right when you have the least time to re-architect your data layer, so the real win is not having to make that call yourself.
 
-Whether you're prototyping your next idea or scaling a production app, Appwrite gives you auth, databases, storage, functions, and real-time in one place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
+That's the gap a managed backend fills. Appwrite's [Databases](/docs/products/databases) product gives you a scalable data layer behind a clean API, so the infrastructure decisions this article describes, when to partition, when to replicate, when to shard, stay the platform's problem instead of yours. You get indexing and [queries](/docs/products/databases/queries) to handle performance early, the simpler fixes you should reach for first, without provisioning or operating any of it yourself.
+
+So you follow the advice above by default: build on a managed backend, use the cheap optimizations while they carry you, and defer the genuine complexity of sharding until you have a concrete problem that demands it. Appwrite also bundles auth, storage, functions, real-time, and Sites in the same place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
 
 ## Resources
 
-* [Appwrite Databases docs](https://appwrite.io/docs/products/databases)
-* [Query and manage data](https://appwrite.io/docs/products/databases/queries)
-* [Appwrite quick start guides](https://appwrite.io/docs/quick-starts)
+* [Appwrite Databases docs](/docs/products/databases)
+* [Query and manage data](/docs/products/databases/queries)
+* [Appwrite quick start guides](o/docs/quick-starts)
 * [Appwrite on GitHub](https://github.com/appwrite/appwrite)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
