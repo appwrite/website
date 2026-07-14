@@ -5,7 +5,7 @@ description: Verify incoming access tokens against your project's JWKS and read 
 step: 4
 ---
 
-TaskFlow's API is about to accept access tokens from the outside world, so it first needs a way to tell a token it issued from one somebody made up. Access tokens from your OAuth server are RS256-signed JWTs, and the matching public keys are published at your project's JWKS endpoint. That means TaskFlow can verify tokens locally, with no call back to the OAuth server on each request.
+TaskFlow's API is about to accept access tokens from the outside world, so it first needs a way to tell a token it issued from one somebody made up. Access tokens from your OAuth2 server are RS256-signed JWTs, and the matching public keys are published at your project's JWKS endpoint. That means TaskFlow can verify tokens locally, with no call back to the OAuth2 server on each request.
 
 # Install jose {% #install %}
 
@@ -23,13 +23,13 @@ Create `provider/src/lib/resource-server.ts`:
 ```ts
 // provider/src/lib/resource-server.ts
 // TaskFlow's resource server: validates access tokens issued by the
-// project's OAuth server and enforces the scopes they carry.
+// project's OAuth2 server and enforces the scopes they carry.
 import '@tanstack/react-start/server-only'
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose'
 
 const issuer = process.env.OAUTH_ISSUER!
 
-// The OAuth server publishes its signing keys as a JWK Set. jose caches
+// The OAuth2 server publishes its signing keys as a JWK Set. jose caches
 // the keys and refetches them when it sees an unknown key ID.
 const jwks = createRemoteJWKSet(new URL(`${issuer}/.well-known/jwks.json`))
 
@@ -60,7 +60,7 @@ export function hasScope(token: AccessToken, scope: string): boolean {
 
 `jwtVerify` checks the signature against the published keys and rejects expired tokens, so a forged or stale token never reaches your handlers. It also pins the algorithm to the RS256 keys in the JWKS, so `alg: none` and HMAC confusion attacks fail here too.
 
-The `{ typ: 'at+jwt' }` option matters more than it looks. Your OAuth server signs [ID tokens](/docs/partners/oauth-server/tokens) with the same key as access tokens, and an ID token has no `scope` claim. Without the type check, a client could present its ID token to your API; requiring `at+jwt` (the [access token type](/docs/partners/oauth-server/tokens)) rejects it before it reaches a handler. An ID token is meant for the client that received it, never as a credential for your API.
+The `{ typ: 'at+jwt' }` option matters more than it looks. Your OAuth2 server signs [ID tokens](/docs/partners/oauth-server/tokens) with the same key as access tokens, and an ID token has no `scope` claim. Without the type check, a client could present its ID token to your API; requiring `at+jwt` (the [access token type](/docs/partners/oauth-server/tokens)) rejects it before it reaches a handler. An ID token is meant for the client that received it, never as a credential for your API.
 
 Two claims in the verified payload matter for the API:
 
@@ -68,7 +68,7 @@ Two claims in the verified payload matter for the API:
 - `sub` is the ID of the user who approved the grant. The API uses it to load that user's tasks, so a token can never read anyone else's data.
 
 {% info title="Build the JWKS URL from your own configuration" %}
-The guard builds the JWKS URL from the `OAUTH_ISSUER` value the provider already has, the same base it uses for every other OAuth server call. Since [tokens](/docs/partners/oauth-server/tokens) are standard JWTs, any JWT library with JWKS support in any language can do this job. The API route just happens to live next to the consent screen here.
+The guard builds the JWKS URL from the `OAUTH_ISSUER` value the provider already has, the same base it uses for every other OAuth2 server call. Since [tokens](/docs/partners/oauth-server/tokens) are standard JWTs, any JWT library with JWKS support in any language can do this job. The API route just happens to live next to the consent screen here.
 {% /info %}
 
 Continue to put the guard in front of an API route.

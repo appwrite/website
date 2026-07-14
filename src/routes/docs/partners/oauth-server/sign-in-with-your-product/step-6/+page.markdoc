@@ -5,7 +5,7 @@ description: Handle the callback, exchange the authorization code for tokens on 
 step: 6
 ---
 
-The OAuth server redirects back to Vantage's redirect URI with a `code` and the `state`. Vantage exchanges that code for tokens on its server, reads the user's profile, and signs them in.
+The OAuth2 server redirects back to Vantage's redirect URI with a `code` and the `state`. Vantage exchanges that code for tokens on its server, reads the user's profile, and signs them in.
 
 # Add the token functions {% #token-functions %}
 

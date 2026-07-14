@@ -25,7 +25,7 @@ pnpm dev
 
 ![TaskFlow consent screen with the write permission switched off](/images/docs/oauth-server/scopes-guide/taskflow-consent-choice.avif)
 
-Open `http://localhost:4100` and click **Sign in with TaskFlow**. On the consent screen, switch **Create and update your tasks** off and authorize. The OAuth server narrows the grant to what was actually approved, so the access token comes back carrying `read:tasks` but not `write:tasks`.
+Open `http://localhost:4100` and click **Sign in with TaskFlow**. On the consent screen, switch **Create and update your tasks** off and authorize. The OAuth2 server narrows the grant to what was actually approved, so the access token comes back carrying `read:tasks` but not `write:tasks`.
 
 ![Vantage dashboard with the write attempt refused as insufficient_scope](/images/docs/oauth-server/scopes-guide/vantage-write-denied.avif)
 
@@ -41,7 +41,7 @@ Add the same task again. It lands in the list, and the `write:tasks` chip sits i
 
 # What each piece did {% #recap %}
 
-- **The OAuth server** published the scopes, put them in front of the user as individual choices, and stamped the approved subset onto a signed access token.
+- **The OAuth2 server** published the scopes, put them in front of the user as individual choices, and stamped the approved subset onto a signed access token.
 - **TaskFlow's API** verified each token against the project's JWKS and turned the `scope` claim into an allow-or-deny decision per operation.
 - **Vantage** requested the scopes it can use, and its access ends exactly where the user's grant does.
 

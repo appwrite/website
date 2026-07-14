@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Scopes
-description: The built-in OpenID Connect scopes and the custom scopes clients can request from your Appwrite OAuth server.
+description: The built-in OpenID Connect scopes and the custom scopes clients can request from your Appwrite OAuth2 server.
 back: /docs/partners/oauth-server
 ---
 
@@ -22,7 +22,9 @@ These appear as locked entries in the **Scopes** field on the OAuth2 server sett
 
 # Custom scopes {% #custom %}
 
-Beyond the built-in scopes, you define your own to represent permissions in your product, such as `read:projects` or `write:billing`. Add them in the **Scopes** field on the OAuth2 server settings, or with the `scopes` array on the `updateOAuth2Server` method. The `openid`, `profile`, `email`, and `phone` scopes are always merged in, so you only list the custom ones.
+Beyond the built-in scopes, you define your own to represent permissions in your product. A common naming pattern is `resource.action`, such as `games.read` or `billing.write`. Some products also define an `admin` scope for full access. If you use a broad scope, describe it clearly on the consent screen and enforce it consistently in your API.
+
+Add custom scopes in the **Scopes** field on the OAuth2 server settings, or with the `scopes` array on the `updateOAuth2Server` method. The `openid`, `profile`, `email`, and `phone` scopes are always merged in, so you only list the custom ones.
 
 {% only_dark %}
 ![Configuring scopes on the OAuth2 server](/images/docs/oauth-server/dark/oauth2-server-settings.avif)
@@ -33,166 +35,25 @@ Beyond the built-in scopes, you define your own to represent permissions in your
 
 A project can define up to 100 scopes, each up to 128 characters. A client can only request scopes you have defined; requesting an unknown scope fails the authorization request.
 
-Custom scopes are labels the OAuth server carries through the flow and stamps onto the access token. Enforcing what each scope allows is your resource server's job: read the `scope` claim from the access token (or from an [introspection](/docs/partners/oauth-server/tokens#introspect) response) and allow or deny the request accordingly.
+Custom scopes are labels the OAuth2 server carries through the flow and stamps onto the access token. Enforcing what each scope allows is your resource server's job: read the `scope` claim from the access token (or from an [introspection](/docs/partners/oauth-server/tokens#introspect) response) and allow or deny the request accordingly.
 
 # Requesting scopes {% #requesting %}
 
-A client asks for scopes when it starts [authorization](/docs/partners/oauth-server/authorization#authorize). The request is a redirect to your project's authorize URL, and the scopes ride along as the `scope` query parameter, space-separated:
+A client asks for scopes in the space-separated `scope` parameter when it starts authorization, for example `openid profile games.read`. See [Authorization](/docs/partners/oauth-server/authorization#authorize) for the authorize request and SDK examples.
 
-```text
-https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
-    ?client_id=<CLIENT_ID>
-    &redirect_uri=https://example.com/oauth/callback
-    &response_type=code
-    &scope=openid%20profile%20email%20read:tasks
-    &state=<STATE>
-```
-
-Integrators building on the Appwrite SDKs make the same request with the `authorize` method:
-
-{% multicode %}
-```client-web
-import { Client, Oauth2 } from 'appwrite';
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
-
-const oauth2 = new Oauth2(client);
-
-const result = await oauth2.authorize({
-    clientId: '<CLIENT_ID>',
-    redirectUri: 'https://example.com/oauth/callback',
-    responseType: 'code',
-    scope: 'openid profile email read:tasks',
-    state: '<STATE>',
-});
-```
-```client-flutter
-import 'package:appwrite/appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
-
-Oauth2 oauth2 = Oauth2(client);
-
-Oauth2Authorize result = await oauth2.authorize(
-    clientId: '<CLIENT_ID>',
-    redirectUri: 'https://example.com/oauth/callback',
-    responseType: 'code',
-    scope: 'openid profile email read:tasks',
-    state: '<STATE>',
-);
-```
-```client-apple
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-
-let oauth2 = Oauth2(client)
-
-let result = try await oauth2.authorize(
-    client_id: "<CLIENT_ID>",
-    redirect_uri: "https://example.com/oauth/callback",
-    response_type: "code",
-    scope: "openid profile email read:tasks",
-    state: "<STATE>"
-)
-```
-```client-android-kotlin
-import io.appwrite.Client
-import io.appwrite.services.Oauth2
-
-val client = Client(context)
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-
-val oauth2 = Oauth2(client)
-
-val result = oauth2.authorize(
-    client_id = "<CLIENT_ID>",
-    redirect_uri = "https://example.com/oauth/callback",
-    response_type = "code",
-    scope = "openid profile email read:tasks",
-    state = "<STATE>",
-)
-```
-```client-android-java
-import io.appwrite.Client;
-import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Oauth2;
-
-Client client = new Client(context)
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
-
-Oauth2 oauth2 = new Oauth2(client);
-
-oauth2.authorize(
-    "<CLIENT_ID>", // client_id
-    "https://example.com/oauth/callback", // redirect_uri
-    "code", // response_type
-    "openid profile email read:tasks", // scope (optional)
-    "<STATE>", // state (optional)
-    null, // nonce (optional)
-    null, // code_challenge (optional)
-    null, // code_challenge_method (optional)
-    null, // prompt (optional)
-    null, // max_age (optional)
-    null, // authorization_details (optional)
-    null, // resource (optional)
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-
-        Log.d("Appwrite", result.toString());
-    })
-);
-```
-```client-react-native
-import { Client, Oauth2 } from "react-native-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
-
-const oauth2 = new Oauth2(client);
-
-const result = await oauth2.authorize({
-    clientId: '<CLIENT_ID>',
-    redirectUri: 'https://example.com/oauth/callback',
-    responseType: 'code',
-    scope: 'openid profile email read:tasks',
-    state: '<STATE>',
-});
-```
-{% /multicode %}
-
-The user is shown exactly these scopes on your consent screen, where they [approve or withhold each one](/docs/partners/oauth-server/authorization#consent). Whatever they grant is what the issued access token carries in its `scope` claim, and the token response reports the granted set in its `scope` field, so a client can tell when it received less than it asked for. Request only what the integration needs; smaller requests are easier to approve.
+Your consent screen shows the requested scopes and can approve a subset. The access token and token response contain the scopes that were granted, so the client can detect when it received less access than it requested. Clients should request only the permissions the integration needs.
 
 # Rich authorization requests {% #rich-authorization-requests %}
 
-A scope is a flat string, which works well for broad capabilities like `read:tasks` but cannot express structured constraints like "read tasks, in these two projects only". For that, the OAuth server supports rich authorization requests (RAR, [RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)): the client sends an `authorization_details` parameter, a JSON array of objects that each describe one grant of access in your product's own vocabulary.
+A scope is a flat permission such as `tasks.read`. It tells your API what the client may do, but it cannot identify which projects the permission applies to. Rich authorization requests (RAR, [RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)) add those structured details.
 
-Scopes and authorization details are not exclusive. Use scopes for broad capabilities, and add authorization details when an integration needs caveats a flat string cannot carry.
+Keep scopes as the primary permission contract for third-party clients. Use authorization details to bind those permissions to resources selected during consent. With this model, a client can request `tasks.read` without knowing a project ID, and your consent screen can ask the user which projects to grant.
 
 ## Define accepted types {% #define-authorization-details-types %}
 
-Think of an `authorization_details` entry as a small form the client fills in to ask for access. The `type` is the name printed at the top of the form. When your API sees `"type": "tasks"`, it knows it is reading the "access to tasks" form, so it knows what the other fields on it mean: which actions, which projects.
+The OAuth2 server accepts only the authorization detail types configured in `authorizationDetailsTypes`. For project-level restrictions, include `project`. A `project` entry contains a non-empty `identifiers` array with project IDs, or `*` to represent every project.
 
-For the task example, the two mechanisms cover the same resource at different granularities:
-
-- The `read:tasks` **scope** grants blanket read access to every task.
-- A `tasks` **entry** describes task access with constraints attached, such as which actions and which projects.
-
-An integration that needs everything requests the scope. One that should only touch part of the data requests a `tasks` entry instead.
-
-The OAuth server only accepts types you have allowed on the project. Define them with the `authorizationDetailsTypes` parameter:
+Configure the accepted types when you update the OAuth2 server:
 
 {% multicode %}
 ```server-nodejs
@@ -208,8 +69,8 @@ const project = new Project(client);
 const result = await project.updateOAuth2Server({
     enabled: true,
     authorizationUrl: 'https://your-product.com/oauth/consent',
-    scopes: ['read:tasks', 'write:tasks'],
-    authorizationDetailsTypes: ['tasks'],
+    scopes: ['tasks.read', 'tasks.write'],
+    authorizationDetailsTypes: ['project'],
 });
 ```
 ```server-php
@@ -228,8 +89,8 @@ $project = new Project($client);
 $result = $project->updateOAuth2Server(
     enabled: true,
     authorizationUrl: 'https://your-product.com/oauth/consent',
-    scopes: ['read:tasks', 'write:tasks'],
-    authorizationDetailsTypes: ['tasks']
+    scopes: ['tasks.read', 'tasks.write'],
+    authorizationDetailsTypes: ['project']
 );
 ```
 ```server-python
@@ -246,8 +107,8 @@ project = Project(client)
 result = project.update_o_auth2_server(
     enabled = True,
     authorization_url = 'https://your-product.com/oauth/consent',
-    scopes = ['read:tasks', 'write:tasks'],
-    authorization_details_types = ['tasks']
+    scopes = ['tasks.read', 'tasks.write'],
+    authorization_details_types = ['project']
 )
 ```
 ```server-ruby
@@ -265,8 +126,8 @@ project = Project.new(client)
 result = project.update_o_auth2_server(
     enabled: true,
     authorization_url: 'https://your-product.com/oauth/consent',
-    scopes: ['read:tasks', 'write:tasks'],
-    authorization_details_types: ['tasks']
+    scopes: ['tasks.read', 'tasks.write'],
+    authorization_details_types: ['project']
 )
 ```
 ```server-dart
@@ -282,8 +143,8 @@ Project project = Project(client);
 Project result = await project.updateOAuth2Server(
     enabled: true,
     authorizationUrl: 'https://your-product.com/oauth/consent',
-    scopes: ['read:tasks', 'write:tasks'],
-    authorizationDetailsTypes: ['tasks'],
+    scopes: ['tasks.read', 'tasks.write'],
+    authorizationDetailsTypes: ['project'],
 );
 ```
 ```server-dotnet
@@ -301,8 +162,8 @@ Project project = new Project(client);
 Project result = await project.UpdateOAuth2Server(
     enabled: true,
     authorizationUrl: "https://your-product.com/oauth/consent",
-    scopes: new List<string> { "read:tasks", "write:tasks" },
-    authorizationDetailsTypes: new List<string> { "tasks" }
+    scopes: new List<string> { "tasks.read", "tasks.write" },
+    authorizationDetailsTypes: new List<string> { "project" }
 );
 ```
 ```server-kotlin
@@ -319,8 +180,8 @@ val project = Project(client)
 val response = project.updateOAuth2Server(
     enabled = true,
     authorizationUrl = "https://your-product.com/oauth/consent",
-    scopes = listOf("read:tasks", "write:tasks"),
-    authorizationDetailsTypes = listOf("tasks")
+    scopes = listOf("tasks.read", "tasks.write"),
+    authorizationDetailsTypes = listOf("project")
 )
 ```
 ```server-java
@@ -338,8 +199,8 @@ Project project = new Project(client);
 project.updateOAuth2Server(
     true, // enabled
     "https://your-product.com/oauth/consent", // authorizationUrl
-    List.of("read:tasks", "write:tasks"), // scopes (optional)
-    List.of("tasks"), // authorizationDetailsTypes (optional)
+    List.of("tasks.read", "tasks.write"), // scopes (optional)
+    List.of("project"), // authorizationDetailsTypes (optional)
     null, // accessTokenDuration (optional)
     null, // refreshTokenDuration (optional)
     null, // publicAccessTokenDuration (optional)
@@ -372,8 +233,8 @@ let project = Project(client)
 let result = try await project.updateOAuth2Server(
     enabled: true,
     authorizationUrl: "https://your-product.com/oauth/consent",
-    scopes: ["read:tasks", "write:tasks"],
-    authorizationDetailsTypes: ["tasks"]
+    scopes: ["tasks.read", "tasks.write"],
+    authorizationDetailsTypes: ["project"]
 )
 ```
 ```server-go
@@ -397,8 +258,8 @@ func main() {
     response, err := service.UpdateOAuth2Server(
         true,
         "https://your-product.com/oauth/consent",
-        project.WithUpdateOAuth2ServerScopes([]string{"read:tasks", "write:tasks"}),
-        project.WithUpdateOAuth2ServerAuthorizationDetailsTypes([]string{"tasks"}),
+        project.WithUpdateOAuth2ServerScopes([]string{"tasks.read", "tasks.write"}),
+        project.WithUpdateOAuth2ServerAuthorizationDetailsTypes([]string{"project"}),
     )
     if err != nil {
         panic(err)
@@ -424,8 +285,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .update_o_auth2_server(
             true,
             "https://your-product.com/oauth/consent",
-            Some(vec!["read:tasks".into(), "write:tasks".into()]),
-            Some(vec!["tasks".into()]), // authorization details types
+            Some(vec!["tasks.read".into(), "tasks.write".into()]),
+            Some(vec!["project".into()]), // authorization details types
             None,
             None,
             None,
@@ -449,55 +310,50 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 `updateOAuth2Server` sets the full OAuth2 server configuration in one call. Include your existing scopes and settings when adding types, or they reset to their defaults.
 {% /info %}
 
-Like scopes, a project can define up to 100 types, each up to 128 characters. The accepted types are published in the [discovery document](/docs/partners/oauth-server/quick-start#discovery) under `authorization_details_types_supported`, so integrators can see them without asking you.
+Like scopes, a project can define up to 100 types, each up to 128 characters. The accepted types are published in the [discovery document](/docs/partners/oauth-server/quick-start#discovery) under `authorization_details_types_supported`.
 
 ## Request authorization details {% #request-authorization-details %}
 
-A client sends its entries, JSON-encoded, as the `authorization_details` parameter on the same [authorize request](/docs/partners/oauth-server/authorization#authorize) that carries `scope`:
+Most clients should request scopes without sending `authorization_details`. Your consent screen can read the requested scopes, ask the user to select resources, and add the details when it approves the grant. This keeps project IDs and resource-selection logic out of the third-party integration.
 
-```client-web
-import { Client, Oauth2 } from 'appwrite';
+For example, after a client requests `tasks.read`, the user might choose one project. The consent screen approves the grant with the selected project in `authorization_details`:
 
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
-
-const oauth2 = new Oauth2(client);
-
-const details = [
+```bash
+curl --request POST \
+  'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve' \
+  --header 'Accept: application/json' \
+  --header 'X-Appwrite-Session: <SESSION_TOKEN>' \
+  --form 'grant_id=<GRANT_ID>' \
+  --form 'authorization_details=[
     {
-        type: 'tasks',
-        actions: ['read'],
-        projects: ['launch'],
-    },
-];
-
-const result = await oauth2.authorize({
-    clientId: '<CLIENT_ID>',
-    redirectUri: 'https://example.com/oauth/callback',
-    responseType: 'code',
-    scope: 'openid',
-    authorizationDetails: JSON.stringify(details),
-});
+      "type": "project",
+      "identifiers": ["<RESOURCE_PROJECT_ID>"]
+    }
+  ]'
 ```
 
-The server validates every entry before creating the grant:
+In a browser-based consent screen, the project session cookie is sent automatically, so the `X-Appwrite-Session` header is not needed. The JSON response contains the client's redirect URL. Send the browser to that URL to continue the authorization flow.
 
-- `type` is required and must be one of the types you defined. An unknown type fails the request with `invalid_authorization_details`.
-- `actions`, when present, must be an array of non-empty strings.
-- Every other field, like `projects` above, is yours to design. The server carries them through untouched.
+A client that already knows the relevant resource IDs may send the same structure on its [authorize request](/docs/partners/oauth-server/authorization#authorize). Treat that as an optional preselection. The authorization flow should also work when the client omits it, and the consent screen should let the user review or narrow the final resource selection.
+
+For the `project` type, Appwrite accepts only `type` and a non-empty `identifiers` array. Each identifier must be a project ID, or `*` for every project. Other values fail validation before the grant is approved.
 
 ## Consent and enforcement {% #authorization-details-consent %}
 
-Authorization details ride through the flow the same way scopes do:
+Scopes and authorization details answer different questions throughout the flow:
 
-1. The requested details are stored on the grant, where your consent screen reads them to show the user exactly what is being asked.
-2. When approving, the consent screen can pass a narrowed `authorization_details` back, the same way [consent](/docs/partners/oauth-server/authorization#consent) can grant a subset of the requested scopes. The user might approve `"actions": ["read"]` after the client asked for read and write.
-3. The granted details are returned in the token response and stamped onto the access token as the `authorization_details` claim.
+1. The client requests capabilities such as `tasks.read`.
+2. Your consent screen reads the grant and asks the user which projects those capabilities should cover.
+3. The consent screen approves the grant with the selected `authorization_details`.
+4. Appwrite returns the granted details in the token response, includes them in the access token, and returns them from token introspection.
 
-Enforcement works exactly like scopes. Your API reads the `authorization_details` claim from the verified access token and applies the constraints it describes. The OAuth server only carries the details; your product gives them meaning.
+Your resource server must enforce both parts. After [introspecting the access token](/docs/partners/oauth-server/tokens#introspect), check that `active` is `true`, require the scope needed by the API operation, and then require an authorization detail that covers the requested resource. For an endpoint that reads tasks from one project, require `tasks.read` and a `project` entry whose `identifiers` contains that project ID or `*`.
 
-That includes deciding how the two mechanisms combine when a token carries both:
+Apply these checks conservatively:
 
-- If the token holds a `tasks` entry, apply its constraints: only the listed actions, only the listed projects.
-- If it holds only the blanket scope, allow the whole resource.
+- Treat a missing scope, missing authorization detail, unknown type, or unmatched identifier as denied.
+- Interpret `*` explicitly as every project. Decide whether that includes projects created later and state that behavior on the consent screen.
+- If `admin` grants every operation, document whether it also bypasses resource restrictions. Keep that rule consistent across every API endpoint.
+- Compare stable resource IDs, not display names, and remove duplicate identifiers before evaluating them.
+
+Appwrite validates and carries the authorization details. Your consent screen decides what the user grants, and your resource server decides whether the granted scopes and details cover each API request.

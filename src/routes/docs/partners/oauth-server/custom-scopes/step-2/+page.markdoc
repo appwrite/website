@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Define the scopes
-description: Add read:tasks and write:tasks to your OAuth server's scopes.
+description: Add read:tasks and write:tasks to your OAuth2 server's scopes.
 step: 2
 ---
 
-Scopes have to be defined on the OAuth server before a client can request them. Requesting a scope you have not defined fails the authorization request with `invalid_scope`.
+Scopes have to be defined on the OAuth2 server before a client can request them. Requesting a scope you have not defined fails the authorization request with `invalid_scope`.
 
 # Add the scopes {% #add %}
 

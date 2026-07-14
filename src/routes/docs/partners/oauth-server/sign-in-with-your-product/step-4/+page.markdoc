@@ -47,7 +47,7 @@ export function vantageSession() {
 
 # The start route {% #start-route %}
 
-Clicking the button navigates to `/oauth/start`. Its loader mints a random `state` value, stores it in the session to protect against CSRF, and redirects to the OAuth server. Create `consumer/src/routes/oauth.start.tsx`:
+Clicking the button navigates to `/oauth/start`. Its loader mints a random `state` value, stores it in the session to protect against CSRF, and redirects to the OAuth2 server. Create `consumer/src/routes/oauth.start.tsx`:
 
 ```tsx
 // consumer/src/routes/oauth.start.tsx
@@ -83,4 +83,4 @@ On the landing page, the button is a link to `/oauth/start`:
 </a>
 ```
 
-Start the app with `pnpm dev` and open `http://localhost:4100`. You have a landing page with a working sign-in button. Clicking it redirects to the OAuth server, which sends the user to TaskFlow's consent screen. That screen does not exist yet, so build it next.
+Start the app with `pnpm dev` and open `http://localhost:4100`. You have a landing page with a working sign-in button. Clicking it redirects to the OAuth2 server, which sends the user to TaskFlow's consent screen. That screen does not exist yet, so build it next.

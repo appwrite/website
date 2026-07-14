@@ -1,11 +1,13 @@
 ---
 layout: article
 title: Clients
-description: Register confidential and public OAuth clients against your Appwrite project's OAuth server and manage their secrets.
+description: Register confidential and public OAuth clients against your Appwrite project's OAuth2 server and manage them from your own developer platform.
 back: /docs/partners/oauth-server
 ---
 
-A **client** is a third-party app that authenticates users through your project's OAuth server. Each client registers the redirect URIs it is allowed to return to, and, depending on its type, receives a client secret. Clients are managed from the **Auth > OAuth2 server > Apps** tab in the Console, or with a [Server SDK](/docs/sdks#server).
+A **client** is a third-party app that authenticates users through your project's OAuth2 server. Each client registers the redirect URIs it is allowed to return to and the post-logout redirect URIs it can end sessions at, sets its type, and chooses whether the [device flow](/docs/partners/oauth-server/device-flow) is enabled. Its other attributes serve two surfaces: branding like the name, logo, and tagline can appear on your consent screen, while attributes like tags, images, and the privacy policy URL are for your project's apps marketplace.
+
+Integrators never visit the Appwrite Console. You are expected to build a developer platform on your own website with the [Client SDKs](/docs/sdks#client)' `apps` service, which covers the full lifecycle: `create`, `update`, `get`, `list`, `delete`, along with `createSecret`, `listSecrets`, `getSecret`, `deleteSecret`, `updateTeam`, and `deleteTokens`. Any signed-in user on your project can call them; no API key is involved. The Console's **Auth > OAuth2 server > Apps** tab is your own administrative view of the same data.
 
 {% only_dark %}
 ![OAuth2 clients list in the Appwrite Console](/images/docs/oauth-server/dark/oauth2-server-apps-list.avif)
@@ -13,6 +15,8 @@ A **client** is a third-party app that authenticates users through your project'
 {% only_light %}
 ![OAuth2 clients list in the Appwrite Console](/images/docs/oauth-server/oauth2-server-apps-list.avif)
 {% /only_light %}
+
+Server SDKs matter in exactly two places: [introspecting](/docs/partners/oauth-server/tokens#introspect) a public client's tokens, which needs an API key because there is no client secret, and administrative operations like [curating labels](#labels).
 
 # Confidential and public clients {% #client-types %}
 
@@ -34,7 +38,7 @@ The type a client uses changes what it can do:
 | --- | --- | --- |
 | Client secret | Issued, sent on token requests | None issued |
 | PKCE | Optional (configurable per project) | Always required |
-| Token introspection | Allowed | Not allowed |
+| Token introspection | With its client secret | With a project API key holding the `oauth2.read` scope |
 | Default access token lifetime | 8 hours | 1 hour |
 | Default refresh token lifetime | 365 days | 30 days |
 
@@ -42,7 +46,133 @@ Choose confidential whenever the app has a backend. It is the safer default: the
 
 # Register a client {% #register %}
 
-Create a client from the **Apps** tab, or with the `create` method of the `Apps` service. Registering a confidential client returns its secret once. Store it immediately, because the full value cannot be retrieved again.
+Create a client with the `create` method. It needs only a name and a redirect URI; everything else can be filled in later with `update`. Registering a confidential client also calls for a [secret](#secrets) before it can exchange tokens.
+
+{% multicode %}
+```client-web
+import { Client, Apps, ID } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Custom App',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+App app = await apps.create(
+    appId: ID.unique(),
+    name: 'Custom App',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let apps = Apps(client)
+
+let app = try await apps.create(
+    appId: ID.unique(),
+    name: "Custom App",
+    redirectUris: ["http://customapp.localhost/auth/redirect"]
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val apps = Apps(client)
+
+val app = apps.create(
+    appId = ID.unique(),
+    name = "Custom App",
+    redirectUris = listOf("http://customapp.localhost/auth/redirect")
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Apps apps = new Apps(client);
+
+apps.create(
+    ID.unique(), // appId
+    "Custom App", // name
+    List.of("http://customapp.localhost/auth/redirect"), // redirectUris
+    null, // description (optional)
+    null, // clientUri (optional)
+    null, // logoUri (optional)
+    null, // privacyPolicyUrl (optional)
+    null, // termsUrl (optional)
+    null, // contacts (optional)
+    null, // tagline (optional)
+    null, // tags (optional)
+    null, // images (optional)
+    null, // supportUrl (optional)
+    null, // dataDeletionUrl (optional)
+    null, // postLogoutRedirectUris (optional)
+    null, // enabled (optional)
+    null, // type (optional)
+    null, // deviceFlow (optional)
+    null, // teamId (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+```
+```client-react-native
+import { Client, Apps, ID } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Custom App',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+});
+```
+{% /multicode %}
+
+An app is owned by the user who created it. For team-oriented platforms, pass `teamId` on creation to make it team-owned instead: every team member can see it, while members with the `owner` or `developer` role manage it.
+
+You can also create clients from the Console's **Apps** tab, which offers the same fields.
 
 {% only_dark %}
 ![Create an OAuth2 client dialog](/images/docs/oauth-server/dark/oauth2-server-create-app.avif)
@@ -51,444 +181,15 @@ Create a client from the **Apps** tab, or with the `create` method of the `Apps`
 ![Create an OAuth2 client dialog](/images/docs/oauth-server/oauth2-server-create-app.avif)
 {% /only_light %}
 
-{% info title="Required scope" %}
-The API key used for this call needs the `apps.write` scope.
+{% info title="Use Storage for logos and images" %}
+`logoUri` and `images` accept URLs, not files. [Appwrite Storage](/docs/products/storage) pairs well here: upload the file to a bucket, take its preview URL, and store that URL on the app.
 {% /info %}
-
-{% multicode %}
-```server-nodejs
-import { Client, Apps } from 'node-appwrite';
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.create({
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    redirectUris: [],
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    postLogoutRedirectUris: [], // optional
-    enabled: false, // optional
-    type: 'public', // optional
-    deviceFlow: false, // optional
-    teamId: '<TEAM_ID>' // optional
-});
-```
-```server-deno
-import { Client, Apps } from "npm:node-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.create({
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    redirectUris: [],
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    postLogoutRedirectUris: [], // optional
-    enabled: false, // optional
-    type: 'public', // optional
-    deviceFlow: false, // optional
-    teamId: '<TEAM_ID>' // optional
-});
-```
-```server-php
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Apps;
-
-$client = (new Client())
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>'); // Your secret API key
-
-$apps = new Apps($client);
-
-$result = $apps->create(
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    redirectUris: [],
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    postLogoutRedirectUris: [], // optional
-    enabled: false, // optional
-    type: 'public', // optional
-    deviceFlow: false, // optional
-    teamId: '<TEAM_ID>' // optional
-);```
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.apps import Apps
-from appwrite.models import App
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project('<YOUR_PROJECT_ID>') # Your project ID
-client.set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps(client)
-
-result: App = apps.create(
-    app_id = '<APP_ID>',
-    name = '<NAME>',
-    redirect_uris = [],
-    description = '<DESCRIPTION>', # optional
-    client_uri = 'https://example.com', # optional
-    logo_uri = 'https://example.com', # optional
-    privacy_policy_url = 'https://example.com', # optional
-    terms_url = 'https://example.com', # optional
-    contacts = [], # optional
-    tagline = '<TAGLINE>', # optional
-    tags = [], # optional
-    images = [], # optional
-    support_url = 'https://example.com', # optional
-    data_deletion_url = 'https://example.com', # optional
-    post_logout_redirect_uris = [], # optional
-    enabled = False, # optional
-    type = 'public', # optional
-    device_flow = False, # optional
-    team_id = '<TEAM_ID>' # optional
-)
-
-print(result.model_dump())
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps.new(client)
-
-result = apps.create(
-    app_id: '<APP_ID>',
-    name: '<NAME>',
-    redirect_uris: [],
-    description: '<DESCRIPTION>', # optional
-    client_uri: 'https://example.com', # optional
-    logo_uri: 'https://example.com', # optional
-    privacy_policy_url: 'https://example.com', # optional
-    terms_url: 'https://example.com', # optional
-    contacts: [], # optional
-    tagline: '<TAGLINE>', # optional
-    tags: [], # optional
-    images: [], # optional
-    support_url: 'https://example.com', # optional
-    data_deletion_url: 'https://example.com', # optional
-    post_logout_redirect_uris: [], # optional
-    enabled: false, # optional
-    type: 'public', # optional
-    device_flow: false, # optional
-    team_id: '<TEAM_ID>' # optional
-)
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-Apps apps = Apps(client);
-
-App result = await apps.create(
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    redirectUris: [],
-    description: '<DESCRIPTION>', // (optional)
-    clientUri: 'https://example.com', // (optional)
-    logoUri: 'https://example.com', // (optional)
-    privacyPolicyUrl: 'https://example.com', // (optional)
-    termsUrl: 'https://example.com', // (optional)
-    contacts: [], // (optional)
-    tagline: '<TAGLINE>', // (optional)
-    tags: [], // (optional)
-    images: [], // (optional)
-    supportUrl: 'https://example.com', // (optional)
-    dataDeletionUrl: 'https://example.com', // (optional)
-    postLogoutRedirectUris: [], // (optional)
-    enabled: false, // (optional)
-    type: 'public', // (optional)
-    deviceFlow: false, // (optional)
-    teamId: '<TEAM_ID>', // (optional)
-);
-```
-```server-dotnet
-```csharp
-using Appwrite;
-using Appwrite.Models;
-using Appwrite.Services;
-
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetKey("<YOUR_API_KEY>"); // Your secret API key
-
-Apps apps = new Apps(client);
-
-App result = await apps.Create(
-    appId: "<APP_ID>",
-    name: "<NAME>",
-    redirectUris: new List<string>(),
-    description: "<DESCRIPTION>", // optional
-    clientUri: "https://example.com", // optional
-    logoUri: "https://example.com", // optional
-    privacyPolicyUrl: "https://example.com", // optional
-    termsUrl: "https://example.com", // optional
-    contacts: new List<string>(), // optional
-    tagline: "<TAGLINE>", // optional
-    tags: new List<string>(), // optional
-    images: new List<string>(), // optional
-    supportUrl: "https://example.com", // optional
-    dataDeletionUrl: "https://example.com", // optional
-    postLogoutRedirectUris: new List<string>(), // optional
-    enabled: false, // optional
-    type: "public", // optional
-    deviceFlow: false, // optional
-    teamId: "<TEAM_ID>" // optional
-);```
-```
-```server-kotlin
-import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
-import io.appwrite.services.Apps
-
-val client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
-
-val apps = Apps(client)
-
-val response = apps.create(
-    appId = "<APP_ID>",
-    name = "<NAME>",
-    redirectUris = listOf(),
-    description = "<DESCRIPTION>", // optional
-    clientUri = "https://example.com", // optional
-    logoUri = "https://example.com", // optional
-    privacyPolicyUrl = "https://example.com", // optional
-    termsUrl = "https://example.com", // optional
-    contacts = listOf(), // optional
-    tagline = "<TAGLINE>", // optional
-    tags = listOf(), // optional
-    images = listOf(), // optional
-    supportUrl = "https://example.com", // optional
-    dataDeletionUrl = "https://example.com", // optional
-    postLogoutRedirectUris = listOf(), // optional
-    enabled = false, // optional
-    type = "public", // optional
-    deviceFlow = false, // optional
-    teamId = "<TEAM_ID>" // optional
-)
-```
-```server-java
-import io.appwrite.Client;
-import io.appwrite.coroutines.CoroutineCallback;
-import io.appwrite.services.Apps;
-
-Client client = new Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>"); // Your secret API key
-
-Apps apps = new Apps(client);
-
-apps.create(
-    "<APP_ID>", // appId
-    "<NAME>", // name
-    List.of(), // redirectUris
-    "<DESCRIPTION>", // description (optional)
-    "https://example.com", // clientUri (optional)
-    "https://example.com", // logoUri (optional)
-    "https://example.com", // privacyPolicyUrl (optional)
-    "https://example.com", // termsUrl (optional)
-    List.of(), // contacts (optional)
-    "<TAGLINE>", // tagline (optional)
-    List.of(), // tags (optional)
-    List.of(), // images (optional)
-    "https://example.com", // supportUrl (optional)
-    "https://example.com", // dataDeletionUrl (optional)
-    List.of(), // postLogoutRedirectUris (optional)
-    false, // enabled (optional)
-    "public", // type (optional)
-    false, // deviceFlow (optional)
-    "<TEAM_ID>", // teamId (optional)
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-
-        System.out.println(result);
-    })
-);
-
-```
-```server-swift
-import Appwrite
-
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
-
-let apps = Apps(client)
-
-let app = try await apps.create(
-    appId: "<APP_ID>",
-    name: "<NAME>",
-    redirectUris: [],
-    description: "<DESCRIPTION>", // optional
-    clientUri: "https://example.com", // optional
-    logoUri: "https://example.com", // optional
-    privacyPolicyUrl: "https://example.com", // optional
-    termsUrl: "https://example.com", // optional
-    contacts: [], // optional
-    tagline: "<TAGLINE>", // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: "https://example.com", // optional
-    dataDeletionUrl: "https://example.com", // optional
-    postLogoutRedirectUris: [], // optional
-    enabled: false, // optional
-    type: "public", // optional
-    deviceFlow: false, // optional
-    teamId: "<TEAM_ID>" // optional
-)
-
-```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/repoowner/reponame/client"
-    "github.com/repoowner/reponame/apps"
-)
-
-client := client.New(
-    client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.WithProject("<YOUR_PROJECT_ID>")
-    appwrite.WithKey("<YOUR_API_KEY>")
-)
-
-service := apps.New(client)
-
-response, error := service.Create(
-    "<APP_ID>",
-    "<NAME>",
-    []string{},
-    apps.WithCreateDescription("<DESCRIPTION>"),
-    apps.WithCreateClientUri("https://example.com"),
-    apps.WithCreateLogoUri("https://example.com"),
-    apps.WithCreatePrivacyPolicyUrl("https://example.com"),
-    apps.WithCreateTermsUrl("https://example.com"),
-    apps.WithCreateContacts([]string{}),
-    apps.WithCreateTagline("<TAGLINE>"),
-    apps.WithCreateTags([]string{}),
-    apps.WithCreateImages([]string{}),
-    apps.WithCreateSupportUrl("https://example.com"),
-    apps.WithCreateDataDeletionUrl("https://example.com"),
-    apps.WithCreatePostLogoutRedirectUris([]string{}),
-    apps.WithCreateEnabled(false),
-    apps.WithCreateType("public"),
-    apps.WithCreateDeviceFlow(false),
-    apps.WithCreateTeamId("<TEAM_ID>"),
-)
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::Apps;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new();
-    client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
-    client.set_project("<YOUR_PROJECT_ID>"); // Your project ID
-    client.set_key("<YOUR_API_KEY>"); // Your secret API key
-
-    let apps = Apps::new(&client);
-
-    let result = apps.create(
-        "<APP_ID>",
-        "<NAME>",
-        vec![],
-        Some("<DESCRIPTION>"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some(vec![]), // optional
-        Some("<TAGLINE>"), // optional
-        Some(vec![]), // optional
-        Some(vec![]), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some(vec![]), // optional
-        Some(false), // optional
-        Some("public"), // optional
-        Some(false), // optional
-        Some("<TEAM_ID>") // optional
-    ).await?;
-
-    let _ = result;
-
-    Ok(())
-}
-```
-{% /multicode %}
-
-The `type` parameter accepts `confidential` (the default) or `public`. Set `deviceFlow` to `true` to let the client use the [device authorization flow](/docs/partners/oauth-server/device-flow). The branding fields (`logoUri`, `tagline`, `privacyPolicyUrl`, `termsUrl`) appear on the consent screen your users see.
 
 # Manage client secrets {% #secrets %}
 
-A confidential client authenticates with a secret. Generate a new secret with the `createSecret` method. The plaintext value is returned only in this response.
+A confidential client authenticates with a secret. Four methods manage them in one place: `createSecret`, `listSecrets`, `getSecret`, and `deleteSecret`.
+
+Generate a new secret with `createSecret`. The plaintext value is returned only in this response.
 
 {% only_dark %}
 ![OAuth2 client secret shown once on creation](/images/docs/oauth-server/dark/oauth2-server-secret-created.avif)
@@ -498,142 +199,67 @@ A confidential client authenticates with a secret. Generate a new secret with th
 {% /only_light %}
 
 {% multicode %}
-```server-nodejs
-import { Client, Apps } from 'node-appwrite';
+```client-web
+import { Client, Apps } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const apps = new Apps(client);
 
-const result = await apps.createSecret({
-    appId: '<APP_ID>'
+const secret = await apps.createSecret({
+    appId: '<APP_ID>',
 });
 ```
-```server-deno
-import { Client, Apps } from "npm:node-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.createSecret({
-    appId: '<APP_ID>'
-});
-```
-```server-php
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Apps;
-
-$client = (new Client())
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>'); // Your secret API key
-
-$apps = new Apps($client);
-
-$result = $apps->createSecret(
-    appId: '<APP_ID>'
-);```
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.apps import Apps
-from appwrite.models import AppSecretPlaintext
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project('<YOUR_PROJECT_ID>') # Your project ID
-client.set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps(client)
-
-result: AppSecretPlaintext = apps.create_secret(
-    app_id = '<APP_ID>'
-)
-
-print(result.model_dump())
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps.new(client)
-
-result = apps.create_secret(
-    app_id: '<APP_ID>'
-)
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
+```client-flutter
+import 'package:appwrite/appwrite.dart';
 
 Client client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 Apps apps = Apps(client);
 
-AppSecretPlaintext result = await apps.createSecret(
+AppSecretPlaintext secret = await apps.createSecret(
     appId: '<APP_ID>',
 );
 ```
-```server-dotnet
-```csharp
-using Appwrite;
-using Appwrite.Models;
-using Appwrite.Services;
+```client-apple
+import Appwrite
 
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetKey("<YOUR_API_KEY>"); // Your secret API key
-
-Apps apps = new Apps(client);
-
-AppSecretPlaintext result = await apps.CreateSecret(
-    appId: "<APP_ID>"
-);```
-```
-```server-kotlin
-import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
-import io.appwrite.services.Apps
-
-val client = Client()
+let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+let apps = Apps(client)
+
+let secret = try await apps.createSecret(
+    appId: "<APP_ID>"
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
 val apps = Apps(client)
 
-val response = apps.createSecret(
+val secret = apps.createSecret(
     appId = "<APP_ID>"
 )
 ```
-```server-java
+```client-android-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Apps;
 
-Client client = new Client()
+Client client = new Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>"); // Your secret API key
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Apps apps = new Apps(client);
 
@@ -645,301 +271,336 @@ apps.createSecret(
             return;
         }
 
-        System.out.println(result);
+        Log.d("Appwrite", result.toString());
     })
 );
-
 ```
-```server-swift
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const secret = await apps.createSecret({
+    appId: '<APP_ID>',
+});
+```
+{% /multicode %}
+
+A client can hold several secrets at once, which is how you rotate them without downtime: create the new secret, roll it out, then delete the old one. Each entry in `listSecrets` carries the metadata for deciding which secret can be removed safely: a `hint` of the value, who created it (`createdById`, `createdByName`), when it was created, and `lastAccessedAt` for when it last authenticated a request.
+
+{% multicode %}
+```client-web
+import { Client, Apps } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const secrets = await apps.listSecrets({
+    appId: '<APP_ID>',
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+AppSecretList secrets = await apps.listSecrets(
+    appId: '<APP_ID>',
+);
+```
+```client-apple
 import Appwrite
 
 let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
 
 let apps = Apps(client)
 
-let appSecretPlaintext = try await apps.createSecret(
+let secrets = try await apps.listSecrets(
     appId: "<APP_ID>"
 )
-
 ```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/repoowner/reponame/client"
-    "github.com/repoowner/reponame/apps"
-)
-
-client := client.New(
-    client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.WithProject("<YOUR_PROJECT_ID>")
-    appwrite.WithKey("<YOUR_API_KEY>")
-)
-
-service := apps.New(client)
-
-response, error := service.CreateSecret(
-    "<APP_ID>",
-)
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::Apps;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new();
-    client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
-    client.set_project("<YOUR_PROJECT_ID>"); // Your project ID
-    client.set_key("<YOUR_API_KEY>"); // Your secret API key
-
-    let apps = Apps::new(&client);
-
-    let result = apps.create_secret(
-        "<APP_ID>"
-    ).await?;
-
-    let _ = result;
-
-    Ok(())
-}
-```
-{% /multicode %}
-
-A client can hold more than one secret at a time, which lets you rotate without downtime: create the new secret, deploy it, then delete the old one. Deleting a secret immediately breaks any client still using it, including token refreshes in flight.
-
-# List clients {% #list %}
-
-{% info title="Required scope" %}
-The API key used for this call needs the `apps.read` scope.
-{% /info %}
-
-{% multicode %}
-```server-nodejs
-import { Client, Apps } from 'node-appwrite';
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.list({
-    queries: [], // optional
-    total: false // optional
-});
-```
-```server-deno
-import { Client, Apps } from "npm:node-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.list({
-    queries: [], // optional
-    total: false // optional
-});
-```
-```server-php
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Apps;
-
-$client = (new Client())
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>'); // Your secret API key
-
-$apps = new Apps($client);
-
-$result = $apps->list(
-    queries: [], // optional
-    total: false // optional
-);```
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.apps import Apps
-from appwrite.models import AppsList
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project('<YOUR_PROJECT_ID>') # Your project ID
-client.set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps(client)
-
-result: AppsList = apps.list(
-    queries = [], # optional
-    total = False # optional
-)
-
-print(result.model_dump())
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps.new(client)
-
-result = apps.list(
-    queries: [], # optional
-    total: false # optional
-)
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
-
-Client client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-Apps apps = Apps(client);
-
-AppsList result = await apps.list(
-    queries: [], // (optional)
-    total: false, // (optional)
-);
-```
-```server-dotnet
-```csharp
-using Appwrite;
-using Appwrite.Models;
-using Appwrite.Services;
-
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetKey("<YOUR_API_KEY>"); // Your secret API key
-
-Apps apps = new Apps(client);
-
-AppsList result = await apps.List(
-    queries: new List<string>(), // optional
-    total: false // optional
-);```
-```
-```server-kotlin
+```client-android-kotlin
 import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Apps
 
-val client = Client()
+val client = Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
 
 val apps = Apps(client)
 
-val response = apps.list(
-    queries = listOf(), // optional
-    total = false // optional
+val secrets = apps.listSecrets(
+    appId = "<APP_ID>"
 )
 ```
-```server-java
+```client-android-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Apps;
 
-Client client = new Client()
+Client client = new Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>"); // Your secret API key
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Apps apps = new Apps(client);
 
-apps.list(
-    List.of(), // queries (optional)
-    false, // total (optional)
+apps.listSecrets(
+    "<APP_ID>", // appId
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
 
-        System.out.println(result);
+        Log.d("Appwrite", result.toString());
     })
 );
-
 ```
-```server-swift
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const secrets = await apps.listSecrets({
+    appId: '<APP_ID>',
+});
+```
+{% /multicode %}
+
+`getSecret` reads a single entry by ID, and `deleteSecret` revokes it immediately.
+
+# List clients {% #list %}
+
+The `list` method drives three different screens, depending on the queries you pass:
+
+- **A developer portal**: filter by the signed-in user with `Query.equal('userId', userId)` so developers manage their own apps.
+- **Team settings**: filter with `Query.equal('teamId', teamId)` for the apps a team owns.
+- **An apps marketplace**: list without an owner filter to show all registered apps. Filter by [labels](#labels), such as `Query.contains('labels', ['official'])`, when the marketplace should only show apps you have vetted, because labels cannot be self-assigned.
+
+Always paginate with `Query.limit()` and `Query.cursorAfter()`; a marketplace can grow past any single page.
+
+{% multicode %}
+```client-web
+import { Client, Apps, Query } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const portal = await apps.list({
+    queries: [
+        Query.equal('userId', '<SIGNED_IN_USER_ID>'),
+        Query.limit(25),
+    ],
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+AppList portal = await apps.list(
+    queries: [
+        Query.equal('userId', '<SIGNED_IN_USER_ID>'),
+        Query.limit(25),
+    ],
+);
+```
+```client-apple
 import Appwrite
 
 let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
 
 let apps = Apps(client)
 
-let appsList = try await apps.list(
-    queries: [], // optional
-    total: false // optional
-)
-
-```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/repoowner/reponame/client"
-    "github.com/repoowner/reponame/apps"
-)
-
-client := client.New(
-    client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.WithProject("<YOUR_PROJECT_ID>")
-    appwrite.WithKey("<YOUR_API_KEY>")
-)
-
-service := apps.New(client)
-
-response, error := service.List(
-    apps.WithListQueries([]string{}),
-    apps.WithListTotal(false),
+let portal = try await apps.list(
+    queries: [
+        Query.equal("userId", value: "<SIGNED_IN_USER_ID>"),
+        Query.limit(25)
+    ]
 )
 ```
-```server-rust
-use appwrite::Client;
-use appwrite::services::Apps;
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.Query
+import io.appwrite.services.Apps
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new();
-    client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
-    client.set_project("<YOUR_PROJECT_ID>"); // Your project ID
-    client.set_key("<YOUR_API_KEY>"); // Your secret API key
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
-    let apps = Apps::new(&client);
+val apps = Apps(client)
 
-    let result = apps.list(
-        Some(vec![]), // optional
-        Some(false) // optional
-    ).await?;
+val portal = apps.list(
+    queries = listOf(
+        Query.equal("userId", "<SIGNED_IN_USER_ID>"),
+        Query.limit(25)
+    )
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.Query;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
 
-    let _ = result;
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
-    Ok(())
-}
+Apps apps = new Apps(client);
+
+apps.list(
+    List.of(
+        Query.Companion.equal("userId", "<SIGNED_IN_USER_ID>"),
+        Query.Companion.limit(25)
+    ), // queries (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+```
+```client-react-native
+import { Client, Apps, Query } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const portal = await apps.list({
+    queries: [
+        Query.equal('userId', '<SIGNED_IN_USER_ID>'),
+        Query.limit(25),
+    ],
+});
+```
+{% /multicode %}
+
+# Get a client {% #get %}
+
+Read a single client with `get`. This backs the app detail page in a developer portal, and a [consent screen](/docs/partners/oauth-server/authorization#consent) uses it to show the requesting app's name and logo.
+
+{% multicode %}
+```client-web
+import { Client, Apps } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.get({
+    appId: '<APP_ID>',
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+App app = await apps.get(
+    appId: '<APP_ID>',
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let apps = Apps(client)
+
+let app = try await apps.get(
+    appId: "<APP_ID>"
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val apps = Apps(client)
+
+val app = apps.get(
+    appId = "<APP_ID>"
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Apps apps = new Apps(client);
+
+apps.get(
+    "<APP_ID>", // appId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+```
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.get({
+    appId: '<APP_ID>',
+});
 ```
 {% /multicode %}
 
@@ -948,425 +609,246 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 Change a client's redirect URIs, branding, or type with the `update` method.
 
 {% multicode %}
-```server-nodejs
-import { Client, Apps } from 'node-appwrite';
+```client-web
+import { Client, Apps } from 'appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 const apps = new Apps(client);
 
-const result = await apps.update({
+const app = await apps.update({
     appId: '<APP_ID>',
-    name: '<NAME>',
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    enabled: false, // optional
-    redirectUris: [], // optional
-    postLogoutRedirectUris: [], // optional
-    type: 'public', // optional
-    deviceFlow: false // optional
+    name: 'Custom App',
+    description: 'A third-party app that signs in with your product.',
+    logoUri: 'https://example.com/logo.png',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    enabled: true,
 });
 ```
-```server-deno
-import { Client, Apps } from "npm:node-appwrite";
-
-const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
-
-const apps = new Apps(client);
-
-const result = await apps.update({
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    enabled: false, // optional
-    redirectUris: [], // optional
-    postLogoutRedirectUris: [], // optional
-    type: 'public', // optional
-    deviceFlow: false // optional
-});
-```
-```server-php
-```php
-<?php
-
-use Appwrite\Client;
-use Appwrite\Services\Apps;
-
-$client = (new Client())
-    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    ->setProject('<YOUR_PROJECT_ID>') // Your project ID
-    ->setKey('<YOUR_API_KEY>'); // Your secret API key
-
-$apps = new Apps($client);
-
-$result = $apps->update(
-    appId: '<APP_ID>',
-    name: '<NAME>',
-    description: '<DESCRIPTION>', // optional
-    clientUri: 'https://example.com', // optional
-    logoUri: 'https://example.com', // optional
-    privacyPolicyUrl: 'https://example.com', // optional
-    termsUrl: 'https://example.com', // optional
-    contacts: [], // optional
-    tagline: '<TAGLINE>', // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: 'https://example.com', // optional
-    dataDeletionUrl: 'https://example.com', // optional
-    enabled: false, // optional
-    redirectUris: [], // optional
-    postLogoutRedirectUris: [], // optional
-    type: 'public', // optional
-    deviceFlow: false // optional
-);```
-```
-```server-python
-from appwrite.client import Client
-from appwrite.services.apps import Apps
-from appwrite.models import App
-
-client = Client()
-client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-client.set_project('<YOUR_PROJECT_ID>') # Your project ID
-client.set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps(client)
-
-result: App = apps.update(
-    app_id = '<APP_ID>',
-    name = '<NAME>',
-    description = '<DESCRIPTION>', # optional
-    client_uri = 'https://example.com', # optional
-    logo_uri = 'https://example.com', # optional
-    privacy_policy_url = 'https://example.com', # optional
-    terms_url = 'https://example.com', # optional
-    contacts = [], # optional
-    tagline = '<TAGLINE>', # optional
-    tags = [], # optional
-    images = [], # optional
-    support_url = 'https://example.com', # optional
-    data_deletion_url = 'https://example.com', # optional
-    enabled = False, # optional
-    redirect_uris = [], # optional
-    post_logout_redirect_uris = [], # optional
-    type = 'public', # optional
-    device_flow = False # optional
-)
-
-print(result.model_dump())
-```
-```server-ruby
-require 'appwrite'
-
-include Appwrite
-
-client = Client.new
-    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
-    .set_project('<YOUR_PROJECT_ID>') # Your project ID
-    .set_key('<YOUR_API_KEY>') # Your secret API key
-
-apps = Apps.new(client)
-
-result = apps.update(
-    app_id: '<APP_ID>',
-    name: '<NAME>',
-    description: '<DESCRIPTION>', # optional
-    client_uri: 'https://example.com', # optional
-    logo_uri: 'https://example.com', # optional
-    privacy_policy_url: 'https://example.com', # optional
-    terms_url: 'https://example.com', # optional
-    contacts: [], # optional
-    tagline: '<TAGLINE>', # optional
-    tags: [], # optional
-    images: [], # optional
-    support_url: 'https://example.com', # optional
-    data_deletion_url: 'https://example.com', # optional
-    enabled: false, # optional
-    redirect_uris: [], # optional
-    post_logout_redirect_uris: [], # optional
-    type: 'public', # optional
-    device_flow: false # optional
-)
-```
-```server-dart
-import 'package:dart_appwrite/dart_appwrite.dart';
+```client-flutter
+import 'package:appwrite/appwrite.dart';
 
 Client client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<YOUR_PROJECT_ID>') // Your project ID
-    .setKey('<YOUR_API_KEY>'); // Your secret API key
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
 Apps apps = Apps(client);
 
-App result = await apps.update(
+App app = await apps.update(
     appId: '<APP_ID>',
-    name: '<NAME>',
-    description: '<DESCRIPTION>', // (optional)
-    clientUri: 'https://example.com', // (optional)
-    logoUri: 'https://example.com', // (optional)
-    privacyPolicyUrl: 'https://example.com', // (optional)
-    termsUrl: 'https://example.com', // (optional)
-    contacts: [], // (optional)
-    tagline: '<TAGLINE>', // (optional)
-    tags: [], // (optional)
-    images: [], // (optional)
-    supportUrl: 'https://example.com', // (optional)
-    dataDeletionUrl: 'https://example.com', // (optional)
-    enabled: false, // (optional)
-    redirectUris: [], // (optional)
-    postLogoutRedirectUris: [], // (optional)
-    type: 'public', // (optional)
-    deviceFlow: false, // (optional)
+    name: 'Custom App',
+    description: 'A third-party app that signs in with your product.',
+    logoUri: 'https://example.com/logo.png',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    enabled: true,
 );
 ```
-```server-dotnet
-```csharp
-using Appwrite;
-using Appwrite.Models;
-using Appwrite.Services;
+```client-apple
+import Appwrite
 
-Client client = new Client()
-    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .SetProject("<YOUR_PROJECT_ID>") // Your project ID
-    .SetKey("<YOUR_API_KEY>"); // Your secret API key
-
-Apps apps = new Apps(client);
-
-App result = await apps.Update(
-    appId: "<APP_ID>",
-    name: "<NAME>",
-    description: "<DESCRIPTION>", // optional
-    clientUri: "https://example.com", // optional
-    logoUri: "https://example.com", // optional
-    privacyPolicyUrl: "https://example.com", // optional
-    termsUrl: "https://example.com", // optional
-    contacts: new List<string>(), // optional
-    tagline: "<TAGLINE>", // optional
-    tags: new List<string>(), // optional
-    images: new List<string>(), // optional
-    supportUrl: "https://example.com", // optional
-    dataDeletionUrl: "https://example.com", // optional
-    enabled: false, // optional
-    redirectUris: new List<string>(), // optional
-    postLogoutRedirectUris: new List<string>(), // optional
-    type: "public", // optional
-    deviceFlow: false // optional
-);```
-```
-```server-kotlin
-import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
-import io.appwrite.services.Apps
-
-val client = Client()
+let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+let apps = Apps(client)
+
+let app = try await apps.update(
+    appId: "<APP_ID>",
+    name: "Custom App",
+    description: "A third-party app that signs in with your product.",
+    logoUri: "https://example.com/logo.png",
+    redirectUris: ["http://customapp.localhost/auth/redirect"],
+    enabled: true
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
 val apps = Apps(client)
 
-val response = apps.update(
+val app = apps.update(
     appId = "<APP_ID>",
-    name = "<NAME>",
-    description = "<DESCRIPTION>", // optional
-    clientUri = "https://example.com", // optional
-    logoUri = "https://example.com", // optional
-    privacyPolicyUrl = "https://example.com", // optional
-    termsUrl = "https://example.com", // optional
-    contacts = listOf(), // optional
-    tagline = "<TAGLINE>", // optional
-    tags = listOf(), // optional
-    images = listOf(), // optional
-    supportUrl = "https://example.com", // optional
-    dataDeletionUrl = "https://example.com", // optional
-    enabled = false, // optional
-    redirectUris = listOf(), // optional
-    postLogoutRedirectUris = listOf(), // optional
-    type = "public", // optional
-    deviceFlow = false // optional
+    name = "Custom App",
+    description = "A third-party app that signs in with your product.",
+    logoUri = "https://example.com/logo.png",
+    redirectUris = listOf("http://customapp.localhost/auth/redirect"),
+    enabled = true
 )
 ```
-```server-java
+```client-android-java
 import io.appwrite.Client;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Apps;
 
-Client client = new Client()
+Client client = new Client(context)
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>"); // Your secret API key
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Apps apps = new Apps(client);
 
 apps.update(
     "<APP_ID>", // appId
-    "<NAME>", // name
-    "<DESCRIPTION>", // description (optional)
-    "https://example.com", // clientUri (optional)
-    "https://example.com", // logoUri (optional)
-    "https://example.com", // privacyPolicyUrl (optional)
-    "https://example.com", // termsUrl (optional)
-    List.of(), // contacts (optional)
-    "<TAGLINE>", // tagline (optional)
-    List.of(), // tags (optional)
-    List.of(), // images (optional)
-    "https://example.com", // supportUrl (optional)
-    "https://example.com", // dataDeletionUrl (optional)
-    false, // enabled (optional)
-    List.of(), // redirectUris (optional)
-    List.of(), // postLogoutRedirectUris (optional)
-    "public", // type (optional)
-    false, // deviceFlow (optional)
+    "Custom App", // name
+    "A third-party app that signs in with your product.", // description (optional)
+    null, // clientUri (optional)
+    "https://example.com/logo.png", // logoUri (optional)
+    null, // privacyPolicyUrl (optional)
+    null, // termsUrl (optional)
+    null, // contacts (optional)
+    null, // tagline (optional)
+    null, // tags (optional)
+    null, // images (optional)
+    null, // supportUrl (optional)
+    null, // dataDeletionUrl (optional)
+    true, // enabled (optional)
+    List.of("http://customapp.localhost/auth/redirect"), // redirectUris (optional)
+    null, // postLogoutRedirectUris (optional)
+    null, // type (optional)
+    null, // deviceFlow (optional)
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
             error.printStackTrace();
             return;
         }
 
-        System.out.println(result);
+        Log.d("Appwrite", result.toString());
     })
 );
-
 ```
-```server-swift
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.update({
+    appId: '<APP_ID>',
+    name: 'Custom App',
+    description: 'A third-party app that signs in with your product.',
+    logoUri: 'https://example.com/logo.png',
+    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    enabled: true,
+});
+```
+{% /multicode %}
+
+The `type` parameter accepts `confidential` (the default) or `public`. Set `deviceFlow` to `true` to let the client use the [device authorization flow](/docs/partners/oauth-server/device-flow). The branding fields (`logoUri`, `tagline`, `privacyPolicyUrl`, `termsUrl`) can appear on the consent screen, and they fill out the app's listing on your marketplace.
+
+# Transfer to a team {% #transfer %}
+
+Convert a user-owned app to team ownership, or move it between teams, with `updateTeam`. The member doing the transfer needs the `owner` or `developer` role in the app's current team, and at least membership in the new one.
+
+{% multicode %}
+```client-web
+import { Client, Apps } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.updateTeam({
+    appId: '<APP_ID>',
+    teamId: '<TEAM_ID>',
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+App app = await apps.updateTeam(
+    appId: '<APP_ID>',
+    teamId: '<TEAM_ID>',
+);
+```
+```client-apple
 import Appwrite
 
 let client = Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
 
 let apps = Apps(client)
 
-let app = try await apps.update(
+let app = try await apps.updateTeam(
     appId: "<APP_ID>",
-    name: "<NAME>",
-    description: "<DESCRIPTION>", // optional
-    clientUri: "https://example.com", // optional
-    logoUri: "https://example.com", // optional
-    privacyPolicyUrl: "https://example.com", // optional
-    termsUrl: "https://example.com", // optional
-    contacts: [], // optional
-    tagline: "<TAGLINE>", // optional
-    tags: [], // optional
-    images: [], // optional
-    supportUrl: "https://example.com", // optional
-    dataDeletionUrl: "https://example.com", // optional
-    enabled: false, // optional
-    redirectUris: [], // optional
-    postLogoutRedirectUris: [], // optional
-    type: "public", // optional
-    deviceFlow: false // optional
-)
-
-```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/repoowner/reponame/client"
-    "github.com/repoowner/reponame/apps"
-)
-
-client := client.New(
-    client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.WithProject("<YOUR_PROJECT_ID>")
-    appwrite.WithKey("<YOUR_API_KEY>")
-)
-
-service := apps.New(client)
-
-response, error := service.Update(
-    "<APP_ID>",
-    "<NAME>",
-    apps.WithUpdateDescription("<DESCRIPTION>"),
-    apps.WithUpdateClientUri("https://example.com"),
-    apps.WithUpdateLogoUri("https://example.com"),
-    apps.WithUpdatePrivacyPolicyUrl("https://example.com"),
-    apps.WithUpdateTermsUrl("https://example.com"),
-    apps.WithUpdateContacts([]string{}),
-    apps.WithUpdateTagline("<TAGLINE>"),
-    apps.WithUpdateTags([]string{}),
-    apps.WithUpdateImages([]string{}),
-    apps.WithUpdateSupportUrl("https://example.com"),
-    apps.WithUpdateDataDeletionUrl("https://example.com"),
-    apps.WithUpdateEnabled(false),
-    apps.WithUpdateRedirectUris([]string{}),
-    apps.WithUpdatePostLogoutRedirectUris([]string{}),
-    apps.WithUpdateType("public"),
-    apps.WithUpdateDeviceFlow(false),
+    teamId: "<TEAM_ID>"
 )
 ```
-```server-rust
-use appwrite::Client;
-use appwrite::services::Apps;
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new();
-    client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
-    client.set_project("<YOUR_PROJECT_ID>"); // Your project ID
-    client.set_key("<YOUR_API_KEY>"); // Your secret API key
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
 
-    let apps = Apps::new(&client);
+val apps = Apps(client)
 
-    let result = apps.update(
-        "<APP_ID>",
-        "<NAME>",
-        Some("<DESCRIPTION>"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some(vec![]), // optional
-        Some("<TAGLINE>"), // optional
-        Some(vec![]), // optional
-        Some(vec![]), // optional
-        Some("https://example.com"), // optional
-        Some("https://example.com"), // optional
-        Some(false), // optional
-        Some(vec![]), // optional
-        Some(vec![]), // optional
-        Some("public"), // optional
-        Some(false) // optional
-    ).await?;
+val app = apps.updateTeam(
+    appId = "<APP_ID>",
+    teamId = "<TEAM_ID>"
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
 
-    let _ = result;
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
-    Ok(())
-}
+Apps apps = new Apps(client);
+
+apps.updateTeam(
+    "<APP_ID>", // appId
+    "<TEAM_ID>", // teamId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+```
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+const app = await apps.updateTeam({
+    appId: '<APP_ID>',
+    teamId: '<TEAM_ID>',
+});
 ```
 {% /multicode %}
 
-# Delete a client {% #delete %}
+# Curate with labels {% #labels %}
 
-Deleting a client immediately invalidates every token issued to it.
+Labels are trust markers like `official`, `partner`, or `verified`. They are read-only for clients: only a [Server SDK](/docs/sdks#server) using a project API key with the `apps.write` scope can set them, so app owners cannot mark themselves as trusted. That is what makes them safe to filter a marketplace by.
 
 {% multicode %}
 ```server-nodejs
@@ -1379,8 +861,9 @@ const client = new Client()
 
 const apps = new Apps(client);
 
-const result = await apps.delete({
-    appId: '<APP_ID>'
+const app = await apps.updateLabels({
+    appId: '<APP_ID>',
+    labels: ['official'],
 });
 ```
 ```server-deno
@@ -1393,12 +876,12 @@ const client = new Client()
 
 const apps = new Apps(client);
 
-const result = await apps.delete({
-    appId: '<APP_ID>'
+const app = await apps.updateLabels({
+    appId: '<APP_ID>',
+    labels: ['official'],
 });
 ```
 ```server-php
-```php
 <?php
 
 use Appwrite\Client;
@@ -1411,9 +894,10 @@ $client = (new Client())
 
 $apps = new Apps($client);
 
-$result = $apps->delete(
-    appId: '<APP_ID>'
-);```
+$app = $apps->updateLabels(
+    appId: '<APP_ID>',
+    labels: ['official']
+);
 ```
 ```server-python
 from appwrite.client import Client
@@ -1426,8 +910,9 @@ client.set_key('<YOUR_API_KEY>') # Your secret API key
 
 apps = Apps(client)
 
-result = apps.delete(
-    app_id = '<APP_ID>'
+app = apps.update_labels(
+    app_id = '<APP_ID>',
+    labels = ['official']
 )
 ```
 ```server-ruby
@@ -1442,8 +927,9 @@ client = Client.new
 
 apps = Apps.new(client)
 
-result = apps.delete(
-    app_id: '<APP_ID>'
+app = apps.update_labels(
+    app_id: '<APP_ID>',
+    labels: ['official']
 )
 ```
 ```server-dart
@@ -1456,12 +942,12 @@ Client client = Client()
 
 Apps apps = Apps(client);
 
-await apps.delete(
+App app = await apps.updateLabels(
     appId: '<APP_ID>',
+    labels: ['official'],
 );
 ```
 ```server-dotnet
-```csharp
 using Appwrite;
 using Appwrite.Models;
 using Appwrite.Services;
@@ -1473,13 +959,13 @@ Client client = new Client()
 
 Apps apps = new Apps(client);
 
-await apps.Delete(
-    appId: "<APP_ID>"
-);```
+App app = await apps.UpdateLabels(
+    appId: "<APP_ID>",
+    labels: new List<string> { "official" }
+);
 ```
 ```server-kotlin
 import io.appwrite.Client
-import io.appwrite.coroutines.CoroutineCallback
 import io.appwrite.services.Apps
 
 val client = Client()
@@ -1489,8 +975,9 @@ val client = Client()
 
 val apps = Apps(client)
 
-val response = apps.delete(
-    appId = "<APP_ID>"
+val app = apps.updateLabels(
+    appId = "<APP_ID>",
+    labels = listOf("official")
 )
 ```
 ```server-java
@@ -1502,6 +989,257 @@ Client client = new Client()
     .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
     .setProject("<YOUR_PROJECT_ID>") // Your project ID
     .setKey("<YOUR_API_KEY>"); // Your secret API key
+
+Apps apps = new Apps(client);
+
+apps.updateLabels(
+    "<APP_ID>", // appId
+    List.of("official"), // labels
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+    .setKey("<YOUR_API_KEY>") // Your secret API key
+
+let apps = Apps(client)
+
+let app = try await apps.updateLabels(
+    appId: "<APP_ID>",
+    labels: ["official"]
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/apps"
+    "github.com/appwrite/sdk-for-go/client"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        client.WithProject("<YOUR_PROJECT_ID>"),
+        client.WithKey("<YOUR_API_KEY>"),
+    )
+
+    service := apps.New(c)
+
+    app, err := service.UpdateLabels(
+        "<APP_ID>",
+        []string{"official"},
+    )
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(app)
+}
+```
+```server-rust
+use appwrite::client::Client;
+use appwrite::services::apps::Apps;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+        .set_project("<YOUR_PROJECT_ID>") // Your project ID
+        .set_key("<YOUR_API_KEY>"); // Your secret API key
+
+    let apps = Apps::new(&client);
+
+    let app = apps
+        .update_labels(
+            "<APP_ID>",
+            vec!["official".into()],
+        )
+        .await?;
+
+    let _ = app;
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+Labels replace the previous set on every call. Up to 100 labels are allowed, each up to 36 alphanumeric characters.
+
+# Revoke all tokens {% #revoke-tokens %}
+
+`deleteTokens` invalidates every token issued to a client at once: a kill switch for all of its sessions. Reach for it when testing, since it forces the consent screen to reappear, or as an emergency response to a leaked secret, together with rotating the secret itself.
+
+{% multicode %}
+```client-web
+import { Client, Apps } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+await apps.deleteTokens({
+    appId: '<APP_ID>',
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+await apps.deleteTokens(
+    appId: '<APP_ID>',
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let apps = Apps(client)
+
+try await apps.deleteTokens(
+    appId: "<APP_ID>"
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val apps = Apps(client)
+
+apps.deleteTokens(
+    appId = "<APP_ID>"
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
+
+Apps apps = new Apps(client);
+
+apps.deleteTokens(
+    "<APP_ID>", // appId
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        Log.d("Appwrite", result.toString());
+    })
+);
+```
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+await apps.deleteTokens({
+    appId: '<APP_ID>',
+});
+```
+{% /multicode %}
+
+# Delete a client {% #delete %}
+
+Deleting a client immediately invalidates every token issued to it.
+
+{% multicode %}
+```client-web
+import { Client, Apps } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+const apps = new Apps(client);
+
+await apps.delete({
+    appId: '<APP_ID>',
+});
+```
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
+
+Apps apps = Apps(client);
+
+await apps.delete(
+    appId: '<APP_ID>',
+);
+```
+```client-apple
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+let apps = Apps(client)
+
+try await apps.delete(
+    appId: "<APP_ID>"
+)
+```
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>") // Your project ID
+
+val apps = Apps(client)
+
+apps.delete(
+    appId = "<APP_ID>"
+)
+```
+```client-android-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<YOUR_PROJECT_ID>"); // Your project ID
 
 Apps apps = new Apps(client);
 
@@ -1513,67 +1251,51 @@ apps.delete(
             return;
         }
 
-        System.out.println(result);
+        Log.d("Appwrite", result.toString());
     })
 );
-
 ```
-```server-swift
-import Appwrite
+```client-react-native
+import { Client, Apps } from "react-native-appwrite";
 
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<YOUR_PROJECT_ID>") // Your project ID
-    .setKey("<YOUR_API_KEY>") // Your secret API key
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<YOUR_PROJECT_ID>'); // Your project ID
 
-let apps = Apps(client)
+const apps = new Apps(client);
 
-let result = try await apps.delete(
-    appId: "<APP_ID>"
-)
-
-```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/repoowner/reponame/client"
-    "github.com/repoowner/reponame/apps"
-)
-
-client := client.New(
-    client.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    client.WithProject("<YOUR_PROJECT_ID>")
-    appwrite.WithKey("<YOUR_API_KEY>")
-)
-
-service := apps.New(client)
-
-response, error := service.Delete(
-    "<APP_ID>",
-)
-```
-```server-rust
-use appwrite::Client;
-use appwrite::services::Apps;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new();
-    client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
-    client.set_project("<YOUR_PROJECT_ID>"); // Your project ID
-    client.set_key("<YOUR_API_KEY>"); // Your secret API key
-
-    let apps = Apps::new(&client);
-
-    let result = apps.delete(
-        "<APP_ID>"
-    ).await?;
-
-    let _ = result;
-
-    Ok(())
-}
+await apps.delete({
+    appId: '<APP_ID>',
+});
 ```
 {% /multicode %}
+
+# Dynamic client registration {% #dynamic-registration %}
+
+Clients can also register themselves over plain HTTP, without an Appwrite SDK or a signed-in user, through the registration endpoint ([RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)). This is what makes your OAuth2 server compatible with MCP servers and other software that provisions its own client on first contact. Registration is rate-limited per IP.
+
+```http
+POST /v1/oauth2/<PROJECT_ID>/register HTTP/1.1
+Host: <REGION>.cloud.appwrite.io
+Content-Type: application/json
+
+{
+    "client_name": "MCP Client",
+    "redirect_uris": ["http://customapp.localhost/auth/redirect"],
+    "token_endpoint_auth_method": "none"
+}
+```
+
+```json
+{
+    "client_id": "6a56677caf736a2310a2",
+    "client_id_issued_at": 1784047484,
+    "redirect_uris": ["http://customapp.localhost/auth/redirect"],
+    "token_endpoint_auth_method": "none",
+    "grant_types": ["authorization_code"],
+    "response_types": ["code"],
+    "client_name": "MCP Client"
+}
+```
+
+`token_endpoint_auth_method: none` registers a public client for PKCE; `client_secret_basic` (the default) and `client_secret_post` register confidential clients. The registered app appears in your Console and in `list` like any other client.

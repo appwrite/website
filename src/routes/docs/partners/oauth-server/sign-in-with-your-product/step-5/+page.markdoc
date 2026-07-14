@@ -5,7 +5,7 @@ description: Host the consent screen where your users sign in and approve access
 step: 5
 ---
 
-The consent screen is the page TaskFlow hosts at its authorization URL. When the OAuth server sends a user here, the screen signs them in, shows what the client is asking for, and records their decision. All of it runs on TaskFlow's server, carrying the user's Appwrite session.
+The consent screen is the page TaskFlow hosts at its authorization URL. When the OAuth2 server sends a user here, the screen signs them in, shows what the client is asking for, and records their decision. All of it runs on TaskFlow's server, carrying the user's Appwrite session.
 
 # Types for the consent card {% #types %}
 
@@ -33,7 +33,7 @@ export const SCOPE_LABELS: Record<string, string> = {
 
 # The server helpers {% #helpers %}
 
-Create `provider/src/lib/oauth-server.ts`. Every function here calls the OAuth server on behalf of the signed-in user. Appwrite returns the user's session token in a cookie on login, and that token is passed as the `X-Appwrite-Session` header on later calls.
+Create `provider/src/lib/oauth-server.ts`. Every function here calls the OAuth2 server on behalf of the signed-in user. Appwrite returns the user's session token in a cookie on login, and that token is passed as the `X-Appwrite-Session` header on later calls.
 
 ```ts
 // provider/src/lib/oauth-server.ts
@@ -98,7 +98,7 @@ export async function getClientApp(appId: string): Promise<ClientApp> {
   return res.json()
 }
 
-/** Approve or reject a grant. The OAuth server returns the URL to send the
+/** Approve or reject a grant. The OAuth2 server returns the URL to send the
  *  user back to, carrying the authorization code (approve) or an error (reject). */
 async function decide(
   action: 'approve' | 'reject',
@@ -212,8 +212,8 @@ The component renders one of two cards from the loader data. The login form subm
 
 ![TaskFlow consent screen sign-in form](/images/docs/oauth-server/guide/taskflow-login.avif)
 
-When the OAuth server sends a user to the consent screen, they first sign in with their TaskFlow account.
+When the OAuth2 server sends a user to the consent screen, they first sign in with their TaskFlow account.
 
 ![TaskFlow consent screen showing the requested permissions](/images/docs/oauth-server/guide/taskflow-consent.avif)
 
-The consent card then shows the client's name and exactly what it is asking for. On **Authorize**, the OAuth server redirects back to Vantage with an authorization code. Vantage handles it next.
+The consent card then shows the client's name and exactly what it is asking for. On **Authorize**, the OAuth2 server redirects back to Vantage with an authorization code. Vantage handles it next.

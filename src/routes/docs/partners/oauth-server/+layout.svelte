@@ -4,7 +4,7 @@
 
     const parent: NavParent = {
         href: '/docs',
-        label: 'OAuth server'
+        label: 'OAuth2 server'
     };
 
     const navigation: NavTree = [

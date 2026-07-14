@@ -1,22 +1,22 @@
 ---
 layout: tutorial
 title: Sign in with your product
-description: Build an end-to-end "Sign in with your product" experience against your Appwrite OAuth server, from the consent screen to the token exchange.
+description: Build an end-to-end "Sign in with your product" experience against your Appwrite OAuth2 server, from the consent screen to the token exchange.
 step: 1
 difficulty: intermediate
 readtime: 25
 framework: TanStack Start
-category: OAuth server
+category: OAuth2 server
 back: /docs/partners/oauth-server
 ---
 
-Once your project's [OAuth server](/docs/partners/oauth-server) is enabled, other apps can offer "Sign in with your product". This tutorial builds that experience end to end with two small [TanStack Start](https://tanstack.com/start) apps, so you can see every moving part.
+Once your project's [OAuth2 server](/docs/partners/oauth-server) is enabled, other apps can offer "Sign in with your product". This tutorial builds that experience end to end with two small [TanStack Start](https://tanstack.com/start) apps, so you can see every moving part.
 
 # What you will build {% #what-you-will-build %}
 
 Two apps play the two sides of an OAuth integration:
 
-- **TaskFlow**, the provider. It owns the Appwrite project with the OAuth server enabled, and it hosts the **consent screen** where its users approve access.
+- **TaskFlow**, the provider. It owns the Appwrite project with the OAuth2 server enabled, and it hosts the **consent screen** where its users approve access.
 - **Vantage**, the consumer. A separate product that adds a **Sign in with TaskFlow** button, exchanges the authorization code for tokens on its server, and reads the user's profile.
 
 TaskFlow is your product. Vantage stands in for any third party integrating with it.
@@ -26,7 +26,7 @@ TaskFlow is your product. Vantage stands in for any third party integrating with
 When a Vantage user clicks **Sign in with TaskFlow**, this happens:
 
 1. Vantage redirects the user to TaskFlow's **authorize** endpoint.
-2. The OAuth server sends the user to TaskFlow's **consent screen** to sign in and approve.
+2. The OAuth2 server sends the user to TaskFlow's **consent screen** to sign in and approve.
 3. On approval, the server redirects back to Vantage with an **authorization code**.
 4. Vantage's server **exchanges the code for tokens** using its client secret.
 5. Vantage reads the user's profile from **userinfo** and signs them in.
@@ -47,4 +47,4 @@ Vantage is a **confidential client**: it has a client secret. That secret authen
 The complete apps from this tutorial are on GitHub at [appwrite-community/oauth-guide-taskflow](https://github.com/appwrite-community/oauth-guide-taskflow). Clone it to follow along or to compare against your own.
 {% /info %}
 
-Continue to enable the OAuth server on your project.
+Continue to enable the OAuth2 server on your project.

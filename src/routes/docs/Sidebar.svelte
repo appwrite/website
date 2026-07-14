@@ -103,7 +103,7 @@
                     isParent: true
                 },
                 {
-                    label: 'OAuth server',
+                    label: 'OAuth2 server',
                     href: '/docs/partners/oauth-server',
                     icon: 'icon-key',
                     isParent: true,
