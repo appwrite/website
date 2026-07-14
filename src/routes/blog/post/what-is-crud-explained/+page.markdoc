@@ -93,7 +93,7 @@ The practical takeaway is that once you can spot CRUD, most software becomes eas
 
 # Start building CRUD apps with Appwrite
 
-Because CRUD is such a universal pattern, [Appwrite](https://appwrite.io/) gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
+Because CRUD is such a universal pattern, [Appwrite](/) gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
 
 Here's the full CRUD lifecycle for the to-do list from earlier:
 
