@@ -98,14 +98,18 @@ The practical takeaway is to use SSR where first-load speed and search visibilit
 
 # Start building SSR apps with Appwrite
 
-Appwrite Cloud gives developers a fully managed backend so you can ship fast without provisioning or maintaining any infrastructure. You get storage, auth, databases, functions, and real-time out of the box, with file storage that scales automatically as your app grows. It provides server-side SDKs and SSR-friendly authentication, so you can fetch data and manage sessions securely on the server in frameworks like Next.js, Nuxt, and SvelteKit. With Databases, Storage, and Functions behind a clean API, the backend for your server-rendered app is ready to go.
+As the conclusion above puts it, SSR comes down to two things: a framework to do the rendering, and a backend that works cleanly on the server. Appwrite gives you a home for both.
 
-Whether you're prototyping your next idea or scaling a production app, Appwrite gives you auth, databases, storage, functions, and real-time in one place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
+[Appwrite Sites](/docs/products/sites) is where your server-rendered app runs. You deploy a framework like Next.js, Nuxt, or SvelteKit directly to Sites, and it executes the framework's server runtime for you, handling the per-request rendering this guide describes without you provisioning or maintaining servers. Because Sites lives in the same platform as the rest of your backend, your app renders right next to its data instead of reaching across the internet on every request.
+
+That proximity is what makes the data-fetching step fast and secure. Appwrite's [server SDKs](/docs/sdks) and [SSR-friendly authentication](/docs/products/auth/server-side-rendering) let you load data and manage sessions on the server, so the first render already contains real content and no session secrets ever reach the browser. Databases, Storage, and Functions sit behind the same clean API, so everything your server render needs is one call away.
+
+The result is the full SSR stack in one place: Sites runs the rendering, and Auth, Databases, Storage, and Functions feed it, all open-source and managed for you. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next server-rendered build a real backend to grow on.
 
 ## Resources
 
-* [Appwrite server SDKs](https://appwrite.io/docs/sdks)
-* [Server-side rendering with Appwrite](https://appwrite.io/docs/products/auth/server-side-rendering)
-* [Appwrite quick start guides](https://appwrite.io/docs/quick-starts)
+* [Appwrite server SDKs](/docs/sdks)
+* [Server-side rendering with Appwrite](/docs/products/auth/server-side-rendering)
+* [Appwrite quick start guides](/docs/quick-starts)
 * [Appwrite on GitHub](https://github.com/appwrite/appwrite)
 * [Join the Appwrite Discord](https://appwrite.io/discord)
