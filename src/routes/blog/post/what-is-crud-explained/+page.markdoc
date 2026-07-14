@@ -93,9 +93,30 @@ The practical takeaway is that once you can spot CRUD, most software becomes eas
 
 # Start building CRUD apps with Appwrite
 
-Appwrite Cloud gives developers a fully managed backend so you can ship fast without provisioning or maintaining any infrastructure. You get storage, auth, databases, functions, and real-time out of the box, with file storage that scales automatically as your app grows. Its Databases product gives you full CRUD out of the box through a clean API and SDKs for every major platform, so you can create, read, update, and delete records without writing and maintaining your own endpoints. Built-in permissions and queries mean the hard parts are handled for you.
+Because CRUD is such a universal pattern, [Appwrite](https://appwrite.io/) gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
 
-Whether you're prototyping your next idea or scaling a production app, Appwrite gives you auth, databases, storage, functions, and real-time in one place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
+Here's the full CRUD lifecycle for the to-do list from earlier:
+
+```js
+// Create a task
+await databases.createDocument(DB, COLLECTION, ID.unique(), {
+    title: "Buy groceries",
+    completed: false,
+});
+
+// Read all tasks
+await databases.listDocuments(DB, COLLECTION);
+
+// Update a task
+await databases.updateDocument(DB, COLLECTION, taskId, { completed: true });
+
+// Delete a task
+await databases.deleteDocument(DB, COLLECTION, taskId);
+```
+
+That's every operation from the article, create, read, update, and delete, with no custom backend to build or maintain. Appwrite handles the database, API layer, and validation, while built-in [permissions](/docs/products/databases/permissions) and [queries](/docs/products/databases/queries) cover the parts that usually take the most work to get right.
+
+Whether you're prototyping an idea or scaling a production app, Appwrite gives you auth, databases, storage, functions, sites and real-time in one place, all open-source. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
 
 ## Resources
 
