@@ -14,6 +14,13 @@ This flow involves two applications:
 
 # How it works {% #how-it-works %}
 
+{% only_dark %}
+![The device flow between the device, the OAuth2 server, and the user's phone](/images/docs/oauth-server/dark/diagram-device-flow.avif)
+{% /only_dark %}
+{% only_light %}
+![The device flow between the device, the OAuth2 server, and the user's phone](/images/docs/oauth-server/diagram-device-flow.avif)
+{% /only_light %}
+
 1. The device client starts a device authorization. Appwrite returns a device code, a shorter user code, and the URL of your verification page.
 2. The device shows the user code and verification URL to the user.
 3. The user opens the verification page on a second device, confirms the code, signs in, and reviews the request.

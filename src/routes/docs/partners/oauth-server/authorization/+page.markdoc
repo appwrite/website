@@ -9,6 +9,13 @@ Authorization is the step where a user allows a client to act on their behalf. A
 
 # The authorization code flow {% #flow %}
 
+{% only_dark %}
+![The authorization code flow between the browser, the client, the OAuth2 server, and your consent screen](/images/docs/oauth-server/dark/diagram-authorization.avif)
+{% /only_dark %}
+{% only_light %}
+![The authorization code flow between the browser, the client, the OAuth2 server, and your consent screen](/images/docs/oauth-server/diagram-authorization.avif)
+{% /only_light %}
+
 1. The client sends the user to the **authorization endpoint** with its client ID, a registered redirect URI, `response_type=code`, and the scopes it wants.
 2. Appwrite checks whether the user has a session on your project. If they are signed in, Appwrite creates a pending authorization request called a **grant**. The grant connects the user, client, requested scopes, and redirect URI.
 3. Appwrite sends the browser to your **authorization URL**, which hosts your consent screen. The URL contains the grant ID for a signed-in user or the original authorization parameters for a signed-out user.

@@ -9,6 +9,13 @@ When a client redeems an authorization code, the OAuth2 server issues an access 
 
 # The three tokens {% #tokens %}
 
+{% only_dark %}
+![The token endpoint issues access, refresh, and ID tokens, with refresh rotation and revocation](/images/docs/oauth-server/dark/diagram-tokens.avif)
+{% /only_dark %}
+{% only_light %}
+![The token endpoint issues access, refresh, and ID tokens, with refresh rotation and revocation](/images/docs/oauth-server/diagram-tokens.avif)
+{% /only_light %}
+
 - **Access token.** A signed JWT that a client presents to a resource server when it calls an API on the user's behalf. It contains the authorization information the resource server needs to evaluate the request. The claims are explained in [Validate tokens](#validate).
 - **Refresh token.** A value the client exchanges for a new access token when the current one expires, without sending the user through authorization again. Treat it as an opaque secret even though Appwrite currently encodes it as a JWT.
 - **ID token.** A signed JWT from OpenID Connect that tells the client who authenticated. It is returned when the `openid` scope is granted and can include profile, email, or phone claims when those scopes were approved. A public client can use these verified claims to show the user's name or decide that its sign-in UI needs attention before calling an API. Resource servers authorize requests with the access token, not the ID token.

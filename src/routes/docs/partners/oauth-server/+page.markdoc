@@ -16,6 +16,13 @@ Your Appwrite project can act as an **OAuth 2.1 and OpenID Connect provider** (O
 
 # How it works {% #how-it-works %}
 
+{% only_dark %}
+![A third-party app obtaining tokens from your project's OAuth2 server and calling your APIs](/images/docs/oauth-server/dark/diagram-overview.avif)
+{% /only_dark %}
+{% only_light %}
+![A third-party app obtaining tokens from your project's OAuth2 server and calling your APIs](/images/docs/oauth-server/diagram-overview.avif)
+{% /only_light %}
+
 The OAuth2 server has three moving parts.
 
 1. **The authorization server.** Enabling the server on your project exposes the full set of endpoints: discovery, JWKS, authorize, approve and reject, token, userinfo, introspect, logout, and revoke. More advanced integrations also get device authorization, pushed authorization, and dynamic client registration.

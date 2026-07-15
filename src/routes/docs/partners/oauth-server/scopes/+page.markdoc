@@ -39,6 +39,13 @@ Custom scopes are labels the OAuth2 server carries through the flow and stamps o
 
 # Requesting scopes {% #requesting %}
 
+{% only_dark %}
+![A scope travels from the client's request through consent and the access token to the resource server's check](/images/docs/oauth-server/dark/diagram-scopes.avif)
+{% /only_dark %}
+{% only_light %}
+![A scope travels from the client's request through consent and the access token to the resource server's check](/images/docs/oauth-server/diagram-scopes.avif)
+{% /only_light %}
+
 A client asks for scopes in the space-separated `scope` parameter when it starts authorization, for example `openid profile games.read`. See [Authorization](/docs/partners/oauth-server/authorization#authorize) for the authorize request and SDK examples.
 
 Your consent screen shows the requested scopes and can approve a subset. The access token and token response contain the scopes that were granted, so the client can detect when it received less access than it requested. Clients should request only the permissions the integration needs.
