@@ -85,33 +85,36 @@ Building CRUD from scratch means setting up a database, writing an API layer wit
 
 Alternatively, you can use a backend platform that provides CRUD operations out of the box. Instead of writing your own create, read, update, and delete endpoints, you define your data and call ready-made methods from an SDK. For most teams this removes a large chunk of boilerplate and lets you focus on the parts of your app that are actually unique.
 
-# Conclusion
-
-CRUD stands for Create, Read, Update, and Delete, the four operations at the heart of nearly every application that stores data. The pattern is powerful because it's consistent: the same four ideas map cleanly onto HTTP methods in an API and onto statements in a database, which makes systems predictable and easier to build. CRUD is separate from REST, which is one common way to expose those operations over the web.
-
-The practical takeaway is that once you can spot CRUD, most software becomes easier to understand and build, and you rarely need to write those four operations by hand when a good backend already provides them.
-
 # Start building CRUD apps with Appwrite
 
-Because CRUD is such a universal pattern, [Appwrite](/) gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
+CRUD stands for Create, Read, Update, and Delete, the four operations at the heart of nearly every application that stores data. The pattern is powerful because it's consistent: the same four ideas map cleanly onto HTTP methods in an API and onto statements in a database, and CRUD stays separate from REST, which is just one common way to expose those operations over the web. The practical takeaway is that once you can spot CRUD, most software becomes easier to understand and build, and you rarely need to write those four operations by hand when a good backend already provides them.
 
-Here's the full CRUD lifecycle for the to-do list from earlier:
+That's exactly what [Appwrite](/) does: because CRUD is such a universal pattern, it gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
+
+Here's the full CRUD lifecycle for the to-do list from earlier, using Appwrite's TablesDB API:
 
 ```js
-// Create a task
-await databases.createDocument(DB, COLLECTION, ID.unique(), {
-    title: "Buy groceries",
-    completed: false,
+// Create a row
+await tablesDB.createRow({
+    databaseId: DB,
+    tableId: TABLE,
+    rowId: ID.unique(),
+    data: { title: "Buy groceries", completed: false },
 });
 
-// Read all tasks
-await databases.listDocuments(DB, COLLECTION);
+// Read all rows
+await tablesDB.listRows({ databaseId: DB, tableId: TABLE });
 
-// Update a task
-await databases.updateDocument(DB, COLLECTION, taskId, { completed: true });
+// Update a row
+await tablesDB.updateRow({
+    databaseId: DB,
+    tableId: TABLE,
+    rowId: taskId,
+    data: { completed: true },
+});
 
-// Delete a task
-await databases.deleteDocument(DB, COLLECTION, taskId);
+// Delete a row
+await tablesDB.deleteRow({ databaseId: DB, tableId: TABLE, rowId: taskId });
 ```
 
 That's every operation from the article, create, read, update, and delete, with no custom backend to build or maintain. Appwrite handles the database, API layer, and validation, while built-in [permissions](/docs/products/databases/permissions) and [queries](/docs/products/databases/queries) cover the parts that usually take the most work to get right.
