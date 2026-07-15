@@ -17,11 +17,11 @@ Configure your client with the following values. S3 clients authenticate with an
 | Endpoint | `https://<REGION>.cloud.appwrite.io/v1/s3` |
 | Access key ID | Your Appwrite project ID |
 | Secret access key | An Appwrite API key secret |
-| Region | `auto` or `us-east-1` |
+| Region | `auto` |
 | Signature version | AWS Signature Version 4 (SigV4) |
 | Addressing style | Path-style only |
 
-The `<REGION>` in the endpoint is your Appwrite Cloud region (for example, `fra` or `nyc`), the same host you use for the rest of the Appwrite API. The S3 `region` setting is separate, and Appwrite ignores it. Set it to `auto` or `us-east-1` and leave it alone. Some S3 clients require a region to sign requests, but the value has no effect.
+The `<REGION>` in the endpoint is your Appwrite Cloud region (for example, `fra` or `nyc`), the same host you use for the rest of the Appwrite API. The S3 `region` setting is separate, and Appwrite ignores it. Set it to `auto` and leave it alone. Some S3 clients require a region to sign requests, but the value has no effect.
 
 # Configure your client {% #configure-your-client %}
 
@@ -137,6 +137,30 @@ Listing a bucket to discover the `{fileId}-{fileName}` key is also how the S3 AP
 Because a new file ID is generated on every plain upload, uploading twice with the same key creates two distinct objects instead of overwriting. To read, copy, overwrite, or delete an object, use its canonical key from a list operation. Uploading to a canonical key that already exists overwrites that object in place.
 {% /info %}
 
+# Folders {% #folders %}
+
+Appwrite Storage buckets are flat. There is no folder resource, and folders are never created or deleted on their own: they exist only as `/`-separated prefixes in object keys. Uploading to `reports/2024/january.pdf` stores a single object whose name contains those prefixes; it does not create `reports/` or `reports/2024/` as separate entities.
+
+To browse a bucket like a directory tree, list objects with the `/` delimiter and, optionally, a `prefix`. Appwrite groups object names at each `/` boundary: names sharing a prefix up to the next `/` collapse into a single entry under `CommonPrefixes` (the "folders"), while objects at the current level are returned under `Contents` (the "files"). Grouping is applied to the object's name, the key you uploaded, so folder prefixes come back clean, without the generated file ID. Pass a `prefix` such as `reports/` to open that folder and list one level deeper. Listing without a delimiter returns every matching object with its full name, which is how you enumerate a bucket recursively.
+
+Objects under `Contents` are still identified by their canonical `{fileId}-{fileName}` key (see [Object key mapping](#object-key-mapping)); use that key to read, copy, or delete a file. `CommonPrefixes` are folder paths only, with nothing to download at the prefix itself.
+
+`/` is the only supported delimiter. Setting `delimiter` to any other value returns `NotImplemented` (HTTP 501).
+
+```bash
+# List the top level of a bucket: immediate folders (CommonPrefixes) and files
+aws s3api list-objects-v2 --bucket my-bucket --delimiter / \
+  --endpoint-url https://<REGION>.cloud.appwrite.io/v1/s3
+
+# Open the "reports" folder and list one level down
+aws s3api list-objects-v2 --bucket my-bucket --prefix reports/ --delimiter / \
+  --endpoint-url https://<REGION>.cloud.appwrite.io/v1/s3
+
+# aws s3 ls uses the / delimiter automatically; omit --recursive to browse by folder
+aws s3 ls s3://my-bucket/reports/ \
+  --endpoint-url https://<REGION>.cloud.appwrite.io/v1/s3
+```
+
 # Example commands {% #example-commands %}
 
 Once your client is configured, everyday S3 commands work as usual. These AWS CLI examples assume you have run `aws configure` as shown above and set an alias or environment default for the endpoint.
@@ -186,7 +210,7 @@ The following object operations are supported.
 | `DeleteObject` | Delete a single object. |
 | `DeleteObjects` | Delete multiple objects in one request, including quiet mode. |
 | `ListObjects` | List objects in a bucket, with `prefix` filtering. |
-| `ListObjectsV2` | List objects with `prefix`, `delimiter`, `max-keys`, `continuation-token`, and `start-after`. |
+| `ListObjectsV2` | List objects with `prefix`, `delimiter` (only `/`), `max-keys`, `continuation-token`, and `start-after`. Use `delimiter=/` to browse [folders](#folders). |
 | `GetObjectAcl`, `PutObjectAcl` | Compatibility responses only. See [Limitations](#limitations). |
 
 Content type is taken from the `Content-Type` you send. When that is missing or generic (`application/octet-stream`), Appwrite infers a type from the file extension. Buckets keep their constraints under the S3 API: uploads that exceed the bucket's maximum file size or use a disallowed extension are rejected, and disabled buckets are treated as not found.
@@ -217,7 +241,7 @@ The S3 API targets the operations most clients depend on. Keep the following in 
 - **Signature Version 4 only.** Requests are authenticated with SigV4, and the request timestamp must be within 15 minutes of the server's clock.
 - **Reading back objects.** Reads, copies, overwrites, and deletes address objects by their canonical `{fileId}-{fileName}` key from a list operation, not by the raw key you uploaded with. See [Object key mapping](#object-key-mapping).
 - **ACLs are compatibility responses.** `GetObjectAcl`, `PutObjectAcl`, `GetBucketAcl`, and `PutBucketAcl` return a canned private ACL and are accepted for tooling compatibility. They do not change access. Manage access with [Appwrite permissions](/docs/products/storage/permissions) and API key scopes instead.
-- **Folders are not supported.** Uploading a folder marker (a key ending in `/`) returns `NotImplemented` (HTTP 501). Object keys can still contain `/`, so prefixes behave as expected.
+- **No folder resource or folder markers.** Folders are virtual: they are `/`-separated prefixes in object keys, browsed by listing with `delimiter=/`. See [Folders](#folders). `/` is the only supported delimiter, and any other delimiter value returns `NotImplemented` (HTTP 501). Uploading a folder-marker object (a key ending in `/`) is likewise not supported and returns `NotImplemented` (HTTP 501).
 - **Object listings are built in memory.** `ListObjects` and `ListObjectsV2` load the matching objects from the database and order them in the API. `ListObjects` returns every matching object in a single response, while `ListObjectsV2` honors `max-keys` (capped at 1000) and paginates with `IsTruncated` and a `NextContinuationToken`. No objects are silently dropped, but listing very large buckets increases per-request latency and memory.
 - **Custom file IDs with hyphens.** The canonical key is split on the first `-`. Objects created through the S3 API use generated IDs without hyphens, so this only affects interop with pre-existing files whose custom ID contains a `-`. A mismatch returns `NoSuchKey` rather than the wrong object.
 - **Unsupported S3 features.** Object tagging, CORS, lifecycle, bucket policies and policy status, encryption configuration, ownership controls, notifications, and versioning are not supported. Requests to these sub-resources return `NotImplemented` (HTTP 501).
