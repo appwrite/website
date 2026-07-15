@@ -684,6 +684,7 @@ Vantage begins the sign-in by sending the user's browser to TaskFlow's authoriza
 
 The URL uses TaskFlow's Appwrite API endpoint because its Appwrite project is acting as the authorization server. Replace `<REGION>` with the region from your API endpoint, `<PROJECT_ID>` with TaskFlow's Appwrite project ID, and `<CLIENT_ID>` with the ID generated when you registered Vantage:
 
+{% multicode %}
 ```text
 https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
     ?client_id=<CLIENT_ID>
@@ -692,6 +693,24 @@ https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
     &scope=openid profile email
     &state=<STATE>
 ```
+```curl
+curl -G 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize' \
+  --data-urlencode 'client_id=<CLIENT_ID>' \
+  --data-urlencode 'redirect_uri=http://vantage.localhost/auth/redirect' \
+  --data-urlencode 'response_type=code' \
+  --data-urlencode 'scope=openid profile email' \
+  --data-urlencode 'state=<STATE>'
+```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
+[Query]
+client_id: <CLIENT_ID>
+redirect_uri: http://vantage.localhost/auth/redirect
+response_type: code
+scope: openid profile email
+state: <STATE>
+```
+{% /multicode %}
 
 Each query parameter tells TaskFlow how to handle the request:
 
@@ -719,13 +738,13 @@ After Vantage opens the authorization endpoint:
 
 - **Sign in if the grant ID is missing.** A URL without a `grant_id` means the user does not have an active TaskFlow session. Sign in a user on the project, then open Vantage's authorization URL again.
 
-- **Approve Vantage's request.** Send the `grant_id` to the approval endpoint using the same TaskFlow user's session. A browser sends the session cookie automatically. From another environment, pass the session token in the `X-Appwrite-Session` header. Use this request:
+- **Approve Vantage's request.** Send the `grant_id` to the approval endpoint using the same TaskFlow user's session. A browser sends the session cookie automatically. From another environment, send the same cookie yourself: it is named `a_session_<PROJECT_ID>` and holds the session token. Use this request:
 
 {% multicode %}
 ```curl
 curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve' \
   -H 'Content-Type: application/json' \
-  -H 'X-Appwrite-Session: <SESSION_TOKEN>' \
+  -H 'Cookie: a_session_<PROJECT_ID>=<SESSION_TOKEN>' \
   -d '{
     "grant_id": "<GRANT_ID>"
   }'
@@ -733,7 +752,7 @@ curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve'
 ```hurl
 POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve
 Content-Type: application/json
-X-Appwrite-Session: <SESSION_TOKEN>
+Cookie: a_session_<PROJECT_ID>=<SESSION_TOKEN>
 {
     "grant_id": "<GRANT_ID>"
 }

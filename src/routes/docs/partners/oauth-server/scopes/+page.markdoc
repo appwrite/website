@@ -329,7 +329,7 @@ For example, after a client requests `tasks.read`, the user might choose one pro
 curl --request POST \
   'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve' \
   --header 'Accept: application/json' \
-  --header 'X-Appwrite-Session: <SESSION_TOKEN>' \
+  --header 'Cookie: a_session_<PROJECT_ID>=<SESSION_TOKEN>' \
   --form 'grant_id=<GRANT_ID>' \
   --form 'authorization_details=[
     {
@@ -339,7 +339,7 @@ curl --request POST \
   ]'
 ```
 
-In a browser-based consent screen, the project session cookie is sent automatically, so the `X-Appwrite-Session` header is not needed. The JSON response contains the client's redirect URL. Send the browser to that URL to continue the authorization flow.
+In a browser-based consent screen, the project session cookie is sent automatically, so the `Cookie` header is not needed. The JSON response contains the client's redirect URL. Send the browser to that URL to continue the authorization flow.
 
 A client that already knows the relevant resource IDs may send the same structure on its [authorize request](/docs/partners/oauth-server/authorization#authorize). Treat that as an optional preselection. The authorization flow should also work when the client omits it, and the consent screen should let the user review or narrow the final resource selection.
 
