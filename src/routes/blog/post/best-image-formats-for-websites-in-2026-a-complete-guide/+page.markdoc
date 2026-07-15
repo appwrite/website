@@ -118,15 +118,11 @@ It's also worth remembering that the heaviest single image on a page, often the 
 * **Deliver images through a CDN** to cut load times for visitors everywhere.
 * **Always include descriptive alt text** for accessibility and SEO.
 
-# Conclusion
-
-The best image formats for websites in 2026 come down to a clear modern stack: AVIF and WebP for photographs and general images, SVG for logos and icons, and JPEG or PNG as dependable fallbacks. Choosing the right format for each image, then serving next-generation formats with fallbacks through the `<picture>` element, is one of the simplest and most effective ways to speed up a site and improve its search performance. Because images dominate page weight, getting formats right pays off on every page load.
-
-Once you've picked the right formats, the remaining work is storing and delivering those images efficiently, at the correct size, in the correct format, for every visitor, which is exactly where a good storage layer earns its keep.
-
 # Deliver your optimized images with Appwrite
 
-Picking the right format is only half the job; the other half is serving those images at the right size and format for each device. [Appwrite Storage](https://appwrite.io/docs/products/storage) handles that for you: upload an image once, then use its [image transformation API](https://appwrite.io/docs/products/storage/images) to resize, compress, and convert files to formats like WebP on the fly, and cache the results behind a CDN. That's the same responsive, fallback-friendly delivery strategy this guide recommends, without building the pipeline by hand.
+The best image formats for websites in 2026 come down to a clear modern stack: AVIF and WebP for photographs and general images, SVG for logos and icons, and JPEG or PNG as dependable fallbacks. Serving next-generation formats with fallbacks through the `<picture>` element is one of the simplest and most effective ways to speed up a site and improve its search performance, and because images dominate page weight, getting formats right pays off on every page load.
+
+But picking the right format is only half the job; the other half is serving those images at the right size and format for each device. [Appwrite Storage](/docs/products/storage) handles that for you: upload an image once, then use its [image transformation API](/docs/products/storage/images) to resize, compress, and convert files to formats like WebP on the fly, and cache the results behind a CDN. That's the same responsive, fallback-friendly delivery strategy this guide recommends, without building the pipeline by hand.
 
 Appwrite is a complete cloud platform that gives you auth, databases, storage, functions, realtime, and sites in one place. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) and give your images a fast, developer-friendly home in minutes.
 
