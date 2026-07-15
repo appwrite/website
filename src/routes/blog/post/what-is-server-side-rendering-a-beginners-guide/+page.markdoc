@@ -36,6 +36,8 @@ Server-side rendering flips this around:
 
 The key difference is where the work happens. SSR does the rendering on the server for every request, so the user sees real content sooner instead of waiting for their device to build the page.
 
+That final step, loading the JavaScript to make the page interactive, is called **hydration**. The server-rendered HTML is static at first, so buttons and other interactive elements don't work until the framework ["hydrates"](https://react.dev/reference/react-dom/client/hydrateRoot) the page by attaching event listeners and application state to the existing HTML, turning the static page into a live app. Hydration is powerful but has a cost: shipping and running that JavaScript takes time, and heavy hydration can delay when a page becomes usable. Reducing this cost is a major focus of modern frameworks.
+
 # Server-side rendering vs client-side rendering: What's the difference?
 
 This is the core comparison, and each approach has clear tradeoffs.
@@ -53,12 +55,6 @@ SSR is often confused with static site generation (SSG), because both send real 
 SSR generates the page on every request, so the content is always current and can be personalized per user. SSG generates all pages once at build time, so they're served as static files that are extremely fast and cheap, but the content is fixed until the next build.
 
 Use SSG for content that rarely changes, such as documentation or a landing page. Use SSR when content is dynamic or personalized and needs to be fresh on every visit.
-
-# What is hydration in server-side rendering?
-
-Hydration is the step that makes server-rendered HTML interactive. When SSR sends a fully rendered page, that HTML is static at first, so buttons and other interactive elements don't work yet.
-
-Once the browser loads the JavaScript, the framework ["hydrates"](https://react.dev/reference/react-dom/client/hydrateRoot) the page by attaching event listeners and application state to the existing HTML, turning the static page into a live, interactive app. Hydration is powerful but has a cost: shipping and running that JavaScript takes time, and heavy hydration can delay when a page becomes usable. Reducing this cost is a major focus of modern frameworks.
 
 # Benefits of server-side rendering
 
