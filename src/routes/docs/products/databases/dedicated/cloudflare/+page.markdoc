@@ -49,7 +49,7 @@ Hyperdrive connects to the origin over TLS and validates the server certificate 
 
 Add the binding to `wrangler.toml` and enable Node.js compatibility, which the database drivers require:
 
-```ini
+```toml
 name = "my-worker"
 main = "src/index.ts"
 compatibility_date = "2026-06-05"
