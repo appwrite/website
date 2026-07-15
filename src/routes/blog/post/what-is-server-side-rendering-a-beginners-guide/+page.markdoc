@@ -90,15 +90,9 @@ SSR is worth it when fast initial load and search visibility matter, such as for
 
 It's usually overkill for internal tools, dashboards, and apps behind a login where SEO is irrelevant and users don't mind a brief initial load. In those cases, client-side rendering is simpler and often good enough. As with most architecture choices, match the rendering method to the job rather than defaulting to one everywhere.
 
-# Conclusion
-
-Server-side rendering generates a page's HTML on the server for each request and sends it ready to display, so users see content faster and search engines can index it reliably. It differs from client-side rendering, which builds the page in the browser, and from static site generation, which builds pages once at build time. The tradeoff for SSR's speed and SEO benefits is more server work and added complexity, with hydration bridging the gap between static HTML and a fully interactive app.
-
-The practical takeaway is to use SSR where first-load speed and search visibility genuinely matter, lean on a framework to handle it, and pair it with a backend that works cleanly on the server so data fetching stays fast and secure.
-
 # Start building SSR apps with Appwrite
 
-As the conclusion above puts it, SSR comes down to two things: a framework to do the rendering, and a backend that works cleanly on the server. Appwrite gives you a home for both.
+Server-side rendering generates a page's HTML on the server for each request and sends it ready to display, so users see content faster and search engines can index it reliably. It differs from client-side rendering, which builds the page in the browser, and from static site generation, which builds pages once at build time, with hydration bridging the gap between static HTML and a fully interactive app. The practical takeaway is to use SSR where first-load speed and search visibility genuinely matter, lean on a framework to handle it, and pair it with a backend that works cleanly on the server so data fetching stays fast and secure. That last part comes down to two things: a framework to do the rendering, and a backend that works cleanly on the server. Appwrite gives you a home for both.
 
 [Appwrite Sites](/docs/products/sites) is where your server-rendered app runs. You deploy a framework like Next.js, Nuxt, or SvelteKit directly to Sites, and it executes the framework's server runtime for you, handling the per-request rendering this guide describes without you provisioning or maintaining servers. Because Sites lives in the same platform as the rest of your backend, your app renders right next to its data instead of reaching across the internet on every request.
 
