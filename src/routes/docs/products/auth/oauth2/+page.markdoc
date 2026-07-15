@@ -24,6 +24,15 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 6. Copy information from your OAuth2 provider's developer platform to fill the **OAuth2 Settings** modal in the Appwrite Console.
 7. Configure redirect URL in your OAuth 2 provider's developer platform. Set it to URL provided to you by **OAuth2 Settings** modal in Appwrite Console.
 
+## Configure OpenID Connect authorization {% #configure-oidc-authorization %}
+
+When you use the **OpenID Connect** provider, navigate to **Auth** > **Settings**, open the provider, and expand **Advanced** to configure its authorization behavior.
+
+- **Prompt** controls which interaction the provider requests from the user. Select `none` for no authentication or consent UI, `login` to require sign-in again, `consent` to request consent, or `select_account` to ask the user to choose an account. You can combine prompt values when your provider supports the combination, but `none` must be used by itself.
+- **Max age** sets the maximum time, in seconds, since the user's last authentication. Use it when your application requires recent authentication for sensitive actions. If that time has elapsed, the provider asks the user to authenticate again. Leave it empty to disable the limit.
+
+These settings add parameters to the authorization request Appwrite sends to the OpenID Connect provider. They don't change the success or failure URL, the provider's redirect URI, or how your client handles the callback.
+
 # Initialize OAuth 2 login {% #init %}
 
 To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
