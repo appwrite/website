@@ -61,7 +61,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Custom App',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 });
 ```
 ```client-flutter
@@ -76,7 +76,7 @@ Apps apps = Apps(client);
 App app = await apps.create(
     appId: ID.unique(),
     name: 'Custom App',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 );
 ```
 ```client-apple
@@ -91,7 +91,7 @@ let apps = Apps(client)
 let app = try await apps.create(
     appId: ID.unique(),
     name: "Custom App",
-    redirectUris: ["http://customapp.localhost/auth/redirect"]
+    redirectUris: ["http://vantage.localhost/auth/redirect"]
 )
 ```
 ```client-android-kotlin
@@ -108,7 +108,7 @@ val apps = Apps(client)
 val app = apps.create(
     appId = ID.unique(),
     name = "Custom App",
-    redirectUris = listOf("http://customapp.localhost/auth/redirect")
+    redirectUris = listOf("http://vantage.localhost/auth/redirect")
 )
 ```
 ```client-android-java
@@ -126,7 +126,7 @@ Apps apps = new Apps(client);
 apps.create(
     ID.unique(), // appId
     "Custom App", // name
-    List.of("http://customapp.localhost/auth/redirect"), // redirectUris
+    List.of("http://vantage.localhost/auth/redirect"), // redirectUris
     null, // description (optional)
     null, // clientUri (optional)
     null, // logoUri (optional)
@@ -165,7 +165,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Custom App',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 });
 ```
 {% /multicode %}
@@ -623,7 +623,7 @@ const app = await apps.update({
     name: 'Custom App',
     description: 'A third-party app that signs in with your product.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 });
 ```
@@ -641,7 +641,7 @@ App app = await apps.update(
     name: 'Custom App',
     description: 'A third-party app that signs in with your product.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 );
 ```
@@ -659,7 +659,7 @@ let app = try await apps.update(
     name: "Custom App",
     description: "A third-party app that signs in with your product.",
     logoUri: "https://example.com/logo.png",
-    redirectUris: ["http://customapp.localhost/auth/redirect"],
+    redirectUris: ["http://vantage.localhost/auth/redirect"],
     enabled: true
 )
 ```
@@ -678,7 +678,7 @@ val app = apps.update(
     name = "Custom App",
     description = "A third-party app that signs in with your product.",
     logoUri = "https://example.com/logo.png",
-    redirectUris = listOf("http://customapp.localhost/auth/redirect"),
+    redirectUris = listOf("http://vantage.localhost/auth/redirect"),
     enabled = true
 )
 ```
@@ -708,7 +708,7 @@ apps.update(
     null, // supportUrl (optional)
     null, // dataDeletionUrl (optional)
     true, // enabled (optional)
-    List.of("http://customapp.localhost/auth/redirect"), // redirectUris (optional)
+    List.of("http://vantage.localhost/auth/redirect"), // redirectUris (optional)
     null, // postLogoutRedirectUris (optional)
     null, // type (optional)
     null, // deviceFlow (optional)
@@ -736,7 +736,7 @@ const app = await apps.update({
     name: 'Custom App',
     description: 'A third-party app that signs in with your product.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 });
 ```
@@ -1274,23 +1274,36 @@ await apps.delete({
 
 Clients can also register themselves over plain HTTP, without an Appwrite SDK or a signed-in user, through the registration endpoint ([RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)). This is what makes your OAuth2 server compatible with MCP servers and other software that provisions its own client on first contact. Registration is rate-limited per IP.
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/register HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/register' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "client_name": "MCP Client",
+    "redirect_uris": [
+        "http://vantage.localhost/auth/redirect"
+    ],
+    "token_endpoint_auth_method": "none"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/register
 Content-Type: application/json
-
 {
     "client_name": "MCP Client",
-    "redirect_uris": ["http://customapp.localhost/auth/redirect"],
+    "redirect_uris": [
+        "http://vantage.localhost/auth/redirect"
+    ],
     "token_endpoint_auth_method": "none"
 }
 ```
+{% /multicode %}
 
 ```json
 {
     "client_id": "6a56677caf736a2310a2",
     "client_id_issued_at": 1784047484,
-    "redirect_uris": ["http://customapp.localhost/auth/redirect"],
+    "redirect_uris": ["http://vantage.localhost/auth/redirect"],
     "token_endpoint_auth_method": "none",
     "grant_types": ["authorization_code"],
     "response_types": ["code"],

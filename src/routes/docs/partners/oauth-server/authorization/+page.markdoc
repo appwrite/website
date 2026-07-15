@@ -37,10 +37,29 @@ The request contains:
 - `state`, which the client uses to connect the callback to the request it started and protect against request forgery.
 - `code_challenge` and `code_challenge_method=S256`, which are required for public clients and for confidential clients when **Require PKCE** is enabled.
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/authorize?client_id=<CLIENT_ID>&redirect_uri=https%3A%2F%2Fclient.example.com%2Fcallback&response_type=code&scope=openid%20profile&state=<STATE>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256 HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -G 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize' \
+  --data-urlencode 'client_id=<CLIENT_ID>' \
+  --data-urlencode 'redirect_uri=https://client.example.com/callback' \
+  --data-urlencode 'response_type=code' \
+  --data-urlencode 'scope=openid profile' \
+  --data-urlencode 'state=<STATE>' \
+  --data-urlencode 'code_challenge=<CODE_CHALLENGE>' \
+  --data-urlencode 'code_challenge_method=S256'
 ```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
+[Query]
+client_id: <CLIENT_ID>
+redirect_uri: https://client.example.com/callback
+response_type: code
+scope: openid profile
+state: <STATE>
+code_challenge: <CODE_CHALLENGE>
+code_challenge_method: S256
+```
+{% /multicode %}
 
 After Appwrite validates the request, the browser goes to the authorization URL configured for your project. Your consent screen handles the user's session and decision.
 
@@ -48,21 +67,34 @@ After Appwrite validates the request, the browser goes to the authorization URL 
 
 Pushed authorization requests (PAR) keep the authorization parameters out of the browser URL. The client first sends the parameters to the PAR endpoint:
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/par HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/par' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "client_id": "<CLIENT_ID>",
+    "redirect_uri": "https://client.example.com/callback",
+    "response_type": "code",
+    "scope": "openid profile",
+    "state": "<STATE>",
+    "code_challenge": "<CODE_CHALLENGE>",
+    "code_challenge_method": "S256"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/par
 Content-Type: application/json
-
 {
-  "client_id": "<CLIENT_ID>",
-  "redirect_uri": "https://client.example.com/callback",
-  "response_type": "code",
-  "scope": "openid profile",
-  "state": "<STATE>",
-  "code_challenge": "<CODE_CHALLENGE>",
-  "code_challenge_method": "S256"
+    "client_id": "<CLIENT_ID>",
+    "redirect_uri": "https://client.example.com/callback",
+    "response_type": "code",
+    "scope": "openid profile",
+    "state": "<STATE>",
+    "code_challenge": "<CODE_CHALLENGE>",
+    "code_challenge_method": "S256"
 }
 ```
+{% /multicode %}
 
 Appwrite returns a `request_uri` and the number of seconds before it expires:
 
@@ -73,12 +105,19 @@ Appwrite returns a `request_uri` and the number of seconds before it expires:
 }
 ```
 
-Before it expires, send the user to the authorization endpoint with only the URL-encoded `request_uri`. Do not repeat the original authorization parameters.
+Before it expires, send the user to the authorization endpoint with only the `request_uri`. Do not repeat the original authorization parameters.
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/authorize?request_uri=<URL_ENCODED_REQUEST_URI> HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -G 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize' \
+  --data-urlencode 'request_uri=<REQUEST_URI>'
 ```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
+[Query]
+request_uri: <REQUEST_URI>
+```
+{% /multicode %}
 
 # 2. Host the consent screen {% #consent %}
 
@@ -175,7 +214,6 @@ let oauth2Authorize = try await oauth2.authorize(
     authorization_details: "<AUTHORIZATION_DETAILS>", // optional
     resource: "" // optional
 )
-
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -236,7 +274,6 @@ oauth2.authorize(
         Log.d("Appwrite", result.toString());
     })
 );
-
 ```
 ```client-react-native
 import { Client, Oauth2 } from "react-native-appwrite";
@@ -313,7 +350,6 @@ let oauth2 = Oauth2(client)
 let oauth2Grant = try await oauth2.getGrant(
     grant_id: "<GRANT_ID>"
 )
-
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -352,7 +388,6 @@ oauth2.getGrant(
         Log.d("Appwrite", result.toString());
     })
 );
-
 ```
 ```client-react-native
 import { Client, Oauth2 } from "react-native-appwrite";
@@ -422,7 +457,6 @@ let oauth2Approve = try await oauth2.approve(
     authorization_details: "<AUTHORIZATION_DETAILS>", // optional
     scope: "<SCOPE>" // optional
 )
-
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -465,7 +499,6 @@ oauth2.approve(
         Log.d("Appwrite", result.toString());
     })
 );
-
 ```
 ```client-react-native
 import { Client, Oauth2 } from "react-native-appwrite";
@@ -531,7 +564,6 @@ let oauth2 = Oauth2(client)
 let oauth2Reject = try await oauth2.reject(
     grant_id: "<GRANT_ID>"
 )
-
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -570,7 +602,6 @@ oauth2.reject(
         Log.d("Appwrite", result.toString());
     })
 );
-
 ```
 ```client-react-native
 import { Client, Oauth2 } from "react-native-appwrite";

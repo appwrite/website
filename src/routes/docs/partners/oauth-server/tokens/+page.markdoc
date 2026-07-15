@@ -82,7 +82,6 @@ let oauth2Token = try await oauth2.createToken(
     redirect_uri: "https://example.com", // optional
     resource: "" // optional
 )
-
 ```
 ```client-android-kotlin
 import io.appwrite.Client
@@ -137,7 +136,6 @@ oauth2.createToken(
         Log.d("Appwrite", result.toString());
     })
 );
-
 ```
 ```client-react-native
 import { Client, Oauth2 } from "react-native-appwrite";
@@ -197,17 +195,26 @@ Each successful refresh replaces the stored refresh token. The client must store
 
 This public-client example sends JSON. A confidential client also includes its `client_secret`.
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/token HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "grant_type": "refresh_token",
+    "refresh_token": "<REFRESH_TOKEN>",
+    "client_id": "<CLIENT_ID>"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token
 Content-Type: application/json
-
 {
-  "grant_type": "refresh_token",
-  "refresh_token": "<REFRESH_TOKEN>",
-  "client_id": "<CLIENT_ID>"
+    "grant_type": "refresh_token",
+    "refresh_token": "<REFRESH_TOKEN>",
+    "client_id": "<CLIENT_ID>"
 }
 ```
+{% /multicode %}
 
 The response has the same shape as the original token response, with new values for `access_token`, `refresh_token`, and `expires_in`.
 
@@ -217,9 +224,8 @@ Access and ID tokens are `RS256` JWTs signed with your project's key. A JWT cont
 
 The server publishes its public keys as a JWKS document:
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/.well-known/jwks.json HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+```text
+https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/.well-known/jwks.json
 ```
 
 A web client can use the `jose` package to read the discovery document, select the correct public key from the JWKS response, and verify both tokens:
@@ -286,11 +292,16 @@ A client may decode a token without verification to make a temporary UI choice, 
 
 To retrieve the current user's profile with an access token, call the userinfo endpoint:
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/userinfo HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/userinfo' \
+  -H 'Authorization: Bearer <ACCESS_TOKEN>'
+```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/userinfo
 Authorization: Bearer <ACCESS_TOKEN>
 ```
+{% /multicode %}
 
 # Introspect a token {% #introspect %}
 
@@ -309,18 +320,28 @@ Introspection verifies the token against the current OAuth identity, so it detec
 
 The resource server sends JSON:
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/introspect HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/introspect' \
+  -H 'X-Appwrite-Project: <PROJECT_ID>' \
+  -H 'X-Appwrite-Key: <API_KEY>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "token": "<ACCESS_TOKEN>",
+    "token_type_hint": "access_token"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/introspect
 X-Appwrite-Project: <PROJECT_ID>
 X-Appwrite-Key: <API_KEY>
 Content-Type: application/json
-
 {
-  "token": "<ACCESS_TOKEN>",
-  "token_type_hint": "access_token"
+    "token": "<ACCESS_TOKEN>",
+    "token_type_hint": "access_token"
 }
 ```
+{% /multicode %}
 
 An active access token returns its client, user, audience, expiry, and granted scopes:
 
@@ -356,17 +377,26 @@ A third-party client should revoke its token when the user disconnects the integ
 
 This public-client example sends JSON. A confidential client also includes its `client_secret`.
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/revoke HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/revoke' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "token": "<TOKEN>",
+    "token_type_hint": "access_token",
+    "client_id": "<CLIENT_ID>"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/revoke
 Content-Type: application/json
-
 {
-  "token": "<TOKEN>",
-  "token_type_hint": "access_token",
-  "client_id": "<CLIENT_ID>"
+    "token": "<TOKEN>",
+    "token_type_hint": "access_token",
+    "client_id": "<CLIENT_ID>"
 }
 ```
+{% /multicode %}
 
 A successful revocation returns `200 OK` with an empty body. The endpoint returns the same response for an unknown token so callers cannot use it to discover valid tokens.
 
@@ -380,9 +410,20 @@ Before using logout, add the destination to the app's **Post-logout redirect URI
 
 Send the browser to the logout endpoint with the ID token previously issued to the app:
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/logout?id_token_hint=<URL_ENCODED_ID_TOKEN>&post_logout_redirect_uri=https%3A%2F%2Fclient.example.com%2Fsigned-out&state=<STATE> HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -G 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/logout' \
+  --data-urlencode 'id_token_hint=<ID_TOKEN>' \
+  --data-urlencode 'post_logout_redirect_uri=https://client.example.com/signed-out' \
+  --data-urlencode 'state=<STATE>'
 ```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/logout
+[Query]
+id_token_hint: <ID_TOKEN>
+post_logout_redirect_uri: https://client.example.com/signed-out
+state: <STATE>
+```
+{% /multicode %}
 
 Appwrite verifies the ID token's signature, issuer, client, and user. It accepts an expired ID token as a logout hint, but still requires the token to be validly signed. After deleting the current project session and the app's OAuth identity, Appwrite redirects to the registered URI and returns `state` unchanged. If no post-logout redirect URI is supplied, the endpoint returns `204 No Content`.

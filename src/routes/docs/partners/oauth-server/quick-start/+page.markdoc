@@ -9,8 +9,8 @@ This guide turns your project into an OAuth2 provider and runs one sign-in throu
 
 The examples follow two apps, the same pair the [tutorials](/docs/partners/oauth-server/sign-in-with-your-product/step-1) build out in full:
 
-- **TaskFlow** (`http://platform.localhost`): your product and the **OAuth2 provider**, also called the authorization server. It authenticates users, presents the consent screen, and issues tokens.
-- **Vantage** (`http://customapp.localhost`): the third-party **consumer**, called the client in OAuth2. It sends users to TaskFlow for authorization and receives tokens after they approve access.
+- **TaskFlow** (`http://taskflow.localhost`): your product and the **OAuth2 provider**, also called the authorization server. It authenticates users, presents the consent screen, and issues tokens.
+- **Vantage** (`http://vantage.localhost`): the third-party **consumer**, called the client in OAuth2. It sends users to TaskFlow for authorization and receives tokens after they approve access.
 
 # Enable the server {% #enable %}
 
@@ -23,7 +23,7 @@ In the Console, open **Auth**, select the **OAuth2 server** tab, and turn on **E
 ![Enabling the OAuth2 server in the Appwrite Console](/images/docs/oauth-server/oauth2-server-settings.avif)
 {% /only_light %}
 
-Set the **Authorization URL** to the page you will host the consent screen on. This is where Appwrite redirects users during authorization, and where you present them the details of the request so they can approve or cancel. Point it at `http://platform.localhost/consent`, where TaskFlow will host its consent screen. Nothing needs to run there yet. The `openid`, `profile`, and `email` scopes are always included; add any scopes your custom APIs will support.
+Set the **Authorization URL** to the page you will host the consent screen on. This is where Appwrite redirects users during authorization, and where you present them the details of the request so they can approve or cancel. Point it at `http://taskflow.localhost/consent`, where TaskFlow will host its consent screen. Nothing needs to run there yet. The `openid`, `profile`, and `email` scopes are always included; add any scopes your custom APIs will support.
 
 You can also enable and configure the server with a [Server SDK](/docs/sdks#server) using the `updateOAuth2Server` method.
 
@@ -290,7 +290,6 @@ project.updateOAuth2Server(
         System.out.println(result);
     })
 );
-
 ```
 ```server-swift
 import Appwrite
@@ -317,7 +316,6 @@ let project = try await project.updateOAuth2Server(
     userCodeFormat: "numeric", // optional
     deviceCodeDuration: 60 // optional
 )
-
 ```
 ```server-go
 package main
@@ -403,7 +401,7 @@ Open it in a browser to confirm the server is live. It returns JSON describing t
 
 # Register a client {% #register %}
 
-Each app that integrates with your project registers as a client. Here that is Vantage. The **redirect URI** it declares is a URL on Vantage, `http://customapp.localhost/auth/redirect`, where the OAuth2 server sends users back with the authorization code. Any HTTP or HTTPS URL works.
+Each app that integrates with your project registers as a client. Here that is Vantage. The **redirect URI** it declares is a URL on Vantage, `http://vantage.localhost/auth/redirect`, where the OAuth2 server sends users back with the authorization code. Any HTTP or HTTPS URL works.
 
 Open the **Apps** sub-tab and create a client. Name it `Vantage`, add the redirect URI, and choose a type. Pick **Confidential** for this walkthrough so you get a secret to authenticate the token exchange. Copy the secret when it is shown, because it appears only once.
 
@@ -429,7 +427,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 });
 ```
 ```client-flutter
@@ -444,7 +442,7 @@ Apps apps = Apps(client);
 App app = await apps.create(
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 );
 ```
 ```client-apple
@@ -459,7 +457,7 @@ let apps = Apps(client)
 let app = try await apps.create(
     appId: ID.unique(),
     name: "Vantage",
-    redirectUris: ["http://customapp.localhost/auth/redirect"]
+    redirectUris: ["http://vantage.localhost/auth/redirect"]
 )
 ```
 ```client-android-kotlin
@@ -476,7 +474,7 @@ val apps = Apps(client)
 val app = apps.create(
     appId = ID.unique(),
     name = "Vantage",
-    redirectUris = listOf("http://customapp.localhost/auth/redirect")
+    redirectUris = listOf("http://vantage.localhost/auth/redirect")
 )
 ```
 ```client-android-java
@@ -494,7 +492,7 @@ Apps apps = new Apps(client);
 apps.create(
     ID.unique(), // appId
     "Vantage", // name
-    List.of("http://customapp.localhost/auth/redirect"), // redirectUris
+    List.of("http://vantage.localhost/auth/redirect"), // redirectUris
     null, // description (optional)
     null, // clientUri (optional)
     null, // logoUri (optional)
@@ -533,7 +531,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
 });
 ```
 {% /multicode %}
@@ -555,7 +553,7 @@ const app = await apps.update({
     name: 'Vantage',
     description: 'A dashboard that signs in with TaskFlow.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 });
 ```
@@ -573,7 +571,7 @@ App app = await apps.update(
     name: 'Vantage',
     description: 'A dashboard that signs in with TaskFlow.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 );
 ```
@@ -591,7 +589,7 @@ let app = try await apps.update(
     name: "Vantage",
     description: "A dashboard that signs in with TaskFlow.",
     logoUri: "https://example.com/logo.png",
-    redirectUris: ["http://customapp.localhost/auth/redirect"],
+    redirectUris: ["http://vantage.localhost/auth/redirect"],
     enabled: true
 )
 ```
@@ -610,7 +608,7 @@ val app = apps.update(
     name = "Vantage",
     description = "A dashboard that signs in with TaskFlow.",
     logoUri = "https://example.com/logo.png",
-    redirectUris = listOf("http://customapp.localhost/auth/redirect"),
+    redirectUris = listOf("http://vantage.localhost/auth/redirect"),
     enabled = true
 )
 ```
@@ -640,7 +638,7 @@ apps.update(
     null, // supportUrl (optional)
     null, // dataDeletionUrl (optional)
     true, // enabled (optional)
-    List.of("http://customapp.localhost/auth/redirect"), // redirectUris (optional)
+    List.of("http://vantage.localhost/auth/redirect"), // redirectUris (optional)
     null, // postLogoutRedirectUris (optional)
     null, // type (optional)
     null, // deviceFlow (optional)
@@ -668,7 +666,7 @@ const app = await apps.update({
     name: 'Vantage',
     description: 'A dashboard that signs in with TaskFlow.',
     logoUri: 'https://example.com/logo.png',
-    redirectUris: ['http://customapp.localhost/auth/redirect'],
+    redirectUris: ['http://vantage.localhost/auth/redirect'],
     enabled: true,
 });
 ```
@@ -689,9 +687,9 @@ The URL uses TaskFlow's Appwrite API endpoint because its Appwrite project is ac
 ```text
 https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
     ?client_id=<CLIENT_ID>
-    &redirect_uri=http://customapp.localhost/auth/redirect
+    &redirect_uri=http://vantage.localhost/auth/redirect
     &response_type=code
-    &scope=openid%20profile%20email
+    &scope=openid profile email
     &state=<STATE>
 ```
 
@@ -717,21 +715,30 @@ After Vantage opens the authorization endpoint:
 
 - **TaskFlow presents the request.** A complete consent screen uses the grant ID to show that Vantage is asking for the user's profile and email, then lets the user approve or cancel. The [Authorization](/docs/partners/oauth-server/authorization#consent) guide shows how to build this screen.
 
-- **Copy the grant ID.** This quick start does not build TaskFlow's consent screen, so the browser lands on `http://platform.localhost/consent` and finds nothing there. Copy the `grant_id` from the address bar to continue manually.
+- **Copy the grant ID.** This quick start does not build TaskFlow's consent screen, so the browser lands on `http://taskflow.localhost/consent` and finds nothing there. Copy the `grant_id` from the address bar to continue manually.
 
 - **Sign in if the grant ID is missing.** A URL without a `grant_id` means the user does not have an active TaskFlow session. Sign in a user on the project, then open Vantage's authorization URL again.
 
 - **Approve Vantage's request.** Send the `grant_id` to the approval endpoint using the same TaskFlow user's session. A browser sends the session cookie automatically. From another environment, pass the session token in the `X-Appwrite-Session` header. Use this request:
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/approve HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Appwrite-Session: <SESSION_TOKEN>' \
+  -d '{
+    "grant_id": "<GRANT_ID>"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/approve
 Content-Type: application/json
-
+X-Appwrite-Session: <SESSION_TOKEN>
 {
     "grant_id": "<GRANT_ID>"
 }
 ```
+{% /multicode %}
 
 - **Return to Vantage.** After approval, Appwrite redirects the browser to Vantage's registered redirect URI with an authorization `code` in the query string. Vantage uses this code in the next step.
 
@@ -739,20 +746,32 @@ Content-Type: application/json
 
 Vantage's server sends the code to the token endpoint. A confidential client passes its `client_secret`; a public client passes its PKCE `code_verifier` instead.
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/token HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "grant_type": "authorization_code",
+    "code": "<CODE>",
+    "redirect_uri": "http://vantage.localhost/auth/redirect",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<SECRET_FOR_CONFIDENTIAL_CLIENTS>",
+    "code_verifier": "<PKCE_VERIFIER_FOR_PUBLIC_CLIENTS>"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token
 Content-Type: application/json
-
 {
     "grant_type": "authorization_code",
     "code": "<CODE>",
-    "redirect_uri": "http://customapp.localhost/auth/redirect",
+    "redirect_uri": "http://vantage.localhost/auth/redirect",
     "client_id": "<CLIENT_ID>",
     "client_secret": "<SECRET_FOR_CONFIDENTIAL_CLIENTS>",
     "code_verifier": "<PKCE_VERIFIER_FOR_PUBLIC_CLIENTS>"
 }
 ```
+{% /multicode %}
 
 The response contains an access token, a refresh token, and an ID token:
 
@@ -771,11 +790,16 @@ The response contains an access token, a refresh token, and an ID token:
 
 Call the userinfo endpoint with the access token to confirm the sign-in worked end to end:
 
-```http
-GET /v1/oauth2/<PROJECT_ID>/userinfo HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/userinfo' \
+  -H 'Authorization: Bearer <ACCESS_TOKEN>'
+```
+```hurl
+GET https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/userinfo
 Authorization: Bearer <ACCESS_TOKEN>
 ```
+{% /multicode %}
 
 ```json
 {

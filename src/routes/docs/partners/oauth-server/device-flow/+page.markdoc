@@ -51,17 +51,26 @@ The device client uses HTTP for the device authorization and token requests.
 
 Send the client ID and requested scopes to the device authorization endpoint as JSON:
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/device_authorization HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/device_authorization' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+    "client_id": "<CLIENT_ID>",
+    "scope": "openid profile tasks.read"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/device_authorization
 Content-Type: application/json
 Accept: application/json
-
 {
     "client_id": "<CLIENT_ID>",
     "scope": "openid profile tasks.read"
 }
 ```
+{% /multicode %}
 
 The request can also include:
 
@@ -90,18 +99,28 @@ Show the `user_code` and `verification_uri` on the device. You can also present 
 
 Start polling the token endpoint in the background. Wait at least the number of seconds in `interval` between requests:
 
-```http
-POST /v1/oauth2/<PROJECT_ID>/token HTTP/1.1
-Host: <REGION>.cloud.appwrite.io
+{% multicode %}
+```curl
+curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+    "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
+    "device_code": "<DEVICE_CODE>",
+    "client_id": "<CLIENT_ID>"
+  }'
+```
+```hurl
+POST https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token
 Content-Type: application/json
 Accept: application/json
-
 {
     "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
     "device_code": "<DEVICE_CODE>",
     "client_id": "<CLIENT_ID>"
 }
 ```
+{% /multicode %}
 
 Handle each response according to its `error` value:
 
