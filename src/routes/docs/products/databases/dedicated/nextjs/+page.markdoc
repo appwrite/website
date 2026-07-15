@@ -4,7 +4,7 @@ title: Next.js
 description: Connect a Next.js App Router application to an Appwrite dedicated database from Route Handlers, Server Actions, and Server Components, pool from serverless, and fall back to the SQL API on the Edge runtime.
 ---
 
-A dedicated database is a standard PostgreSQL, MySQL, MariaDB, or MongoDB engine, so a [Next.js](https://nextjs.org/) App Router application talks to it through any normal driver or ORM. There's nothing Appwrite-specific in the setup, you point your driver at the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and query from the server.
+A dedicated database is a standard PostgreSQL, MySQL, or MariaDB engine, so a [Next.js](https://nextjs.org/) App Router application talks to it through any normal driver or ORM. There's nothing Appwrite-specific in the setup, you point your driver at the connection string from the [Connect](/docs/products/databases/dedicated/connect) page and query from the server.
 
 {% info title="Before you start" %}
 You'll need a dedicated database in a `ready` state and its credentials. See [Dedicated databases](/docs/products/databases/dedicated) to create one and [Connect](/docs/products/databases/dedicated/connect) to retrieve the connection string. The default database name and username are both `appwrite`. Deploying to Vercel? Pair this with the [Vercel](/docs/products/databases/dedicated/vercel) guide.
