@@ -15,7 +15,7 @@ You'll need a dedicated database in a `ready` state and an [API key](/docs/advan
 Dashboards should never connect as the primary `appwrite` user, which owns the database and can run DDL. Instead, create a dedicated connection user with the `readonly` role so Grafana can only run `SELECT` statements. Send a request to the [connections endpoint](/docs/products/databases/dedicated/connect#connections), replacing `<id>` with your database ID:
 
 ```bash
-curl -X POST https://<region>.appwrite.center/v1/compute/databases/<id>/connections \
+curl -X POST https://<region>.cloud.appwrite.io/v1/compute/databases/<id>/connections \
   -H "X-Appwrite-Project: <projectId>" \
   -H "X-Appwrite-Key: <apiKey>" \
   -H "Content-Type: application/json" \
