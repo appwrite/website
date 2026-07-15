@@ -9,6 +9,15 @@ author: aishwari
 category: ai
 featured: false
 unlisted: true
+faqs:
+  - question: How does a vector database work?
+    answer: An embedding model converts text, images, audio, or other data into vectors. The database indexes those vectors and uses similarity search to find the nearest matches to a query vector.
+  - question: What is the difference between a vector database and a traditional database?
+    answer: Traditional databases retrieve exact values, ranges, or structured records. Vector databases retrieve ranked results based on semantic similarity and are commonly used alongside a primary relational or document database.
+  - question: Do I need a vector database for RAG?
+    answer: RAG usually requires a way to retrieve relevant context by meaning, but it does not always require a dedicated vector database. Smaller projects can often use PostgreSQL with pgvector or vector search built into an existing database. 
+  - question: When should I use a dedicated vector database?
+    answer: Use a dedicated vector database when your application needs low-latency similarity search across a large number of embeddings or requires advanced indexing, filtering, scaling, and retrieval features.
 ---
 # What is a vector database? An AI developer guide
 
