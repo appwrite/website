@@ -9,6 +9,15 @@ author: aishwari
 category: architecture
 featured: false
 unlisted: true
+faqs:
+  - question: How is a document database different from a relational database?
+    answer: A relational database stores data in structured tables with a fixed schema and uses joins to connect records. A document database stores related data together in flexible documents that can have different structures.
+  - question: Is a document database a NoSQL database? 
+    answer: Yes. Document databases are a category of NoSQL databases designed to store and query flexible, semi-structured data such as JSON documents.
+  - question: Do document databases support relationships? 
+    answer: Yes. Document databases can model relationships by embedding related data inside a document or by storing references to other documents. The best approach depends on how the data is read and updated.
+  - question: When should you use a document database?
+    answer: Use a document database when your data is nested, varies between records, or changes frequently. It is commonly used for user profiles, product catalogs, content management systems, real-time apps, and AI applications.
 ---
 # What is a document database? An expert guide for developers
 
