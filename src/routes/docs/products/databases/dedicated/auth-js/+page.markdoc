@@ -163,7 +163,7 @@ In CI or production, apply already-generated migrations without prompting:
 npx prisma migrate deploy
 ```
 
-With Drizzle, run `drizzle-kit push` (or `migrate()`) against the same direct URL. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL, so always migrate as `appwrite`.
+With Drizzle, generate and commit the SQL migration with `drizzle-kit generate`, then apply it to the same direct URL with `drizzle-kit migrate`. The primary `appwrite` user owns the default database and can run schema changes; narrower [connection users](/docs/products/databases/dedicated/connect#connections) (`readonly` / `readwrite`) intentionally cannot run DDL, so always migrate as `appwrite`.
 
 # Wire the adapter into Auth.js {% #config %}
 
@@ -217,7 +217,7 @@ Dedicated [branches](/docs/products/databases/dedicated/branches) are instant, i
 
 1. Create a branch from the API and read its `connectionString`.
 2. Export the direct variant as `DIRECT_URL` and the pooled variant as `DATABASE_URL`.
-3. Run `prisma migrate deploy` (or `drizzle-kit push`) and your auth flow against the branch.
+3. Run `prisma migrate deploy` (or `drizzle-kit migrate`) and your auth flow against the branch.
 4. Delete the branch when the job finishes.
 
 Because a branch starts from a storage snapshot, the Auth.js tables already exist with realistic data, so preview sign-ins behave like production without touching it.
