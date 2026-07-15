@@ -16,16 +16,16 @@ This tutorial continues with the same two apps. TaskFlow gains a task API that c
 
 # What you will build {% #what-you-will-build %}
 
-- Two custom scopes on TaskFlow's OAuth2 server: `read:tasks` and `write:tasks`.
+- Two custom scopes on TaskFlow's OAuth2 server: `tasks.read` and `tasks.write`.
 - A consent screen where the user grants or withholds **each permission individually**.
 - A **resource server**: an API route on TaskFlow that validates access tokens and enforces the scopes they carry, operation by operation.
 - A task composer on Vantage's dashboard that succeeds or gets refused depending on what the user granted.
 
-The resource server is the new idea. The OAuth2 server issues tokens and stamps the granted scopes onto them, but it does not know what `read:tasks` means in your product. Your API gives the scope its meaning by checking it on every request.
+The resource server is the new idea. The OAuth2 server issues tokens and stamps the granted scopes onto them, but it does not know what `tasks.read` means in your product. Your API gives the scope its meaning by checking it on every request.
 
 # The flow {% #the-flow %}
 
-1. Vantage adds `read:tasks` and `write:tasks` to its authorization request.
+1. Vantage adds `tasks.read` and `tasks.write` to its authorization request.
 2. TaskFlow's consent screen shows each permission, and the user decides which to grant.
 3. The access token Vantage receives carries exactly the approved scopes in its `scope` claim.
 4. Vantage calls TaskFlow's task API with the access token.

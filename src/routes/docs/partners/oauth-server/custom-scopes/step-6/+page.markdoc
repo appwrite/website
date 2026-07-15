@@ -37,7 +37,7 @@ export type TaskFlowTask = {
   done: boolean
 }
 
-/** Read the user's tasks. Requires the read:tasks scope. */
+/** Read the user's tasks. Requires the tasks.read scope. */
 export async function fetchTasks(accessToken: string): Promise<TaskFlowTask[]> {
   const res = await fetch(`${taskflowApi}/api/tasks`, {
     headers: { Authorization: `Bearer ${accessToken}` },
@@ -52,7 +52,7 @@ export type WriteResult =
   | { created: false; status: number; error: string }
 
 /** Create a task on TaskFlow. Succeeds only when the access token
- *  carries the write:tasks scope; otherwise TaskFlow answers with
+ *  carries the tasks.write scope; otherwise TaskFlow answers with
  *  403 insufficient_scope. */
 export async function createTask(
   accessToken: string,
@@ -106,7 +106,7 @@ const loadDashboard = createServerFn().handler(
     if (!user || !accessToken) throw redirect({ to: '/' })
 
     // Reads the user's tasks from TaskFlow's API with the granted
-    // access token. Works because the user granted read:tasks.
+    // access token. Works because the user granted tasks.read.
     const tasks = await fetchTasks(accessToken)
 
     return { user, grantedScope: grantedScope ?? '', tasks }
@@ -120,7 +120,7 @@ const addTask = createServerFn({ method: 'POST' })
     const { accessToken } = session.data
     if (!accessToken) throw redirect({ to: '/' })
 
-    // TaskFlow only accepts this if the token carries write:tasks.
+    // TaskFlow only accepts this if the token carries tasks.write.
     return createTask(accessToken, data.title)
   })
 ```

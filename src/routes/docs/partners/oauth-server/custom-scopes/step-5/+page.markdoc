@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protect the API route
-description: Serve tasks only to tokens that carry read:tasks.
+description: Serve tasks only to tokens that carry tasks.read.
 step: 5
 ---
 
@@ -108,7 +108,7 @@ export const Route = createFileRoute('/api/tasks')({
       GET: async ({ request }) => {
         const token = await authenticate(request)
         if (!token) return unauthorized()
-        if (!hasScope(token, 'read:tasks')) return forbidden('read:tasks')
+        if (!hasScope(token, 'tasks.read')) return forbidden('tasks.read')
 
         // The token's subject is the TaskFlow user who approved access.
         return Response.json({ tasks: tasksFor(token.sub!) })
@@ -117,7 +117,7 @@ export const Route = createFileRoute('/api/tasks')({
       POST: async ({ request }) => {
         const token = await authenticate(request)
         if (!token) return unauthorized()
-        if (!hasScope(token, 'write:tasks')) return forbidden('write:tasks')
+        if (!hasScope(token, 'tasks.write')) return forbidden('tasks.write')
 
         const { title } = await request.json()
         return Response.json(
@@ -137,6 +137,6 @@ Each handler applies the same two checks, in order:
 
 The two error shapes follow RFC 6750, including the `WWW-Authenticate` header, so standard OAuth client libraries understand the refusal. The distinction matters to callers: a 401 means get a new token, a 403 means ask the user for more scopes.
 
-Note what the `POST` handler implies: a client can hold a perfectly valid token and still be refused a write with it, whenever the user granted `read:tasks` but withheld `write:tasks` on the consent screen.
+Note what the `POST` handler implies: a client can hold a perfectly valid token and still be refused a write with it, whenever the user granted `tasks.read` but withheld `tasks.write` on the consent screen.
 
 Continue to call the API from Vantage.

@@ -64,7 +64,7 @@ The `{ typ: 'at+jwt' }` option matters more than it looks. Your OAuth2 server si
 
 Two claims in the verified payload matter for the API:
 
-- `scope` holds the granted scopes as a single space-separated string, such as `openid profile email read:tasks`. `hasScope` splits it and looks for an exact entry.
+- `scope` holds the granted scopes as a single space-separated string, such as `openid profile email tasks.read`. `hasScope` splits it and looks for an exact entry.
 - `sub` is the ID of the user who approved the grant. The API uses it to load that user's tasks, so a token can never read anyone else's data.
 
 {% info title="Build the JWKS URL from your own configuration" %}

@@ -25,7 +25,7 @@ pnpm dev
 
 ![TaskFlow consent screen with the write permission switched off](/images/docs/oauth-server/scopes-guide/taskflow-consent-choice.avif)
 
-Open `http://localhost:4100` and click **Sign in with TaskFlow**. On the consent screen, switch **Create and update your tasks** off and authorize. The OAuth2 server narrows the grant to what was actually approved, so the access token comes back carrying `read:tasks` but not `write:tasks`.
+Open `http://localhost:4100` and click **Sign in with TaskFlow**. On the consent screen, switch **Create and update your tasks** off and authorize. The OAuth2 server narrows the grant to what was actually approved, so the access token comes back carrying `tasks.read` but not `tasks.write`.
 
 ![Vantage dashboard with the write attempt refused as insufficient_scope](/images/docs/oauth-server/scopes-guide/vantage-write-denied.avif)
 
@@ -33,11 +33,11 @@ On the dashboard, your tasks render live, so the read scope is doing its job. No
 
 # Grant the write {% #grant %}
 
-Sign out of Vantage and sign in again. This time leave every permission on and authorize. The previous grant did not cover `write:tasks`, so the consent screen asks again.
+Sign out of Vantage and sign in again. This time leave every permission on and authorize. The previous grant did not cover `tasks.write`, so the consent screen asks again.
 
-![Vantage dashboard with write:tasks granted and the new task in the list](/images/docs/oauth-server/scopes-guide/vantage-write-granted.avif)
+![Vantage dashboard with tasks.write granted and the new task in the list](/images/docs/oauth-server/scopes-guide/vantage-write-granted.avif)
 
-Add the same task again. It lands in the list, and the `write:tasks` chip sits in the granted scopes. Nothing about TaskFlow's API changed between the two runs; the same guard that refused the write now lets it through, because the token finally carries the scope it checks for.
+Add the same task again. It lands in the list, and the `tasks.write` chip sits in the granted scopes. Nothing about TaskFlow's API changed between the two runs; the same guard that refused the write now lets it through, because the token finally carries the scope it checks for.
 
 # What each piece did {% #recap %}
 

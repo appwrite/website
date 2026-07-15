@@ -13,9 +13,9 @@ In the consumer, extend the scope list in `consumer/src/lib/oauth.ts`:
 
 ```ts
 // consumer/src/lib/oauth.ts
-// read:tasks and write:tasks are custom scopes defined on TaskFlow's
+// tasks.read and tasks.write are custom scopes defined on TaskFlow's
 // OAuth2 server. They authorize Vantage against TaskFlow's task API.
-export const SCOPES = 'openid profile email read:tasks write:tasks'
+export const SCOPES = 'openid profile email tasks.read tasks.write'
 ```
 
 `authorizeUrl` already passes `SCOPES` as the `scope` parameter, so nothing else changes on the consumer. The OAuth2 server carries the requested scopes into the grant and shows them to the user.
@@ -33,12 +33,12 @@ export const SCOPE_LABELS: Record<string, string> = {
   profile: 'See your name and profile details',
   email: 'See your email address',
   phone: 'See your phone number',
-  'read:tasks': 'See your tasks',
-  'write:tasks': 'Create and update your tasks',
+  'tasks.read': 'See your tasks',
+  'tasks.write': 'Create and update your tasks',
 }
 ```
 
-A raw scope string like `read:tasks` means something to you, not to your users. The label is what stands between them and approving a permission they do not understand.
+A raw scope string like `tasks.read` means something to you, not to your users. The label is what stands between them and approving a permission they do not understand.
 
 # Let the user choose {% #choose %}
 

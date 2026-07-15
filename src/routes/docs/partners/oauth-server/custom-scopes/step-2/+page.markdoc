@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Define the scopes
-description: Add read:tasks and write:tasks to your OAuth2 server's scopes.
+description: Add tasks.read and tasks.write to your OAuth2 server's scopes.
 step: 2
 ---
 
@@ -10,16 +10,16 @@ Scopes have to be defined on the OAuth2 server before a client can request them.
 # Add the scopes {% #add %}
 
 {% only_dark %}
-![The read:tasks and write:tasks scopes on the OAuth2 server settings](/images/docs/oauth-server/dark/scopes-defined.avif)
+![The tasks.read and tasks.write scopes on the OAuth2 server settings](/images/docs/oauth-server/dark/scopes-defined.avif)
 {% /only_dark %}
 {% only_light %}
-![The read:tasks and write:tasks scopes on the OAuth2 server settings](/images/docs/oauth-server/scopes-defined.avif)
+![The tasks.read and tasks.write scopes on the OAuth2 server settings](/images/docs/oauth-server/scopes-defined.avif)
 {% /only_light %}
 
 In the Console, open **Auth**, select the **OAuth2 server** tab, and find the **Scopes** field on the **Integration** card. Add two scopes and click **Update**:
 
-- `read:tasks` grants read access to the user's tasks.
-- `write:tasks` grants permission to create and update tasks.
+- `tasks.read` grants read access to the user's tasks.
+- `tasks.write` grants permission to create and update tasks.
 
 The `openid`, `profile`, `email`, and `phone` scopes stay locked in place. They are always available, so you only define the ones specific to your product.
 
