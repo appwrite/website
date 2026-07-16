@@ -74,7 +74,7 @@ MCP defines two standard transports for how clients and servers actually talk to
 
 Because MCP standardizes the message format above the transport, the same server logic works whether it runs locally over stdio or remotely over HTTP. You write your tool and resource handlers once, then choose how to deploy.
 
-# MCP vs REST APIs: what is the difference?
+# MCP vs REST APIs: What is the difference?
 
 A common question is whether MCP is just another API. It is not, and the difference is about layers.
 
