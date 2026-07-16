@@ -59,7 +59,7 @@ SpaceXAI develops Grok Build internally and periodically syncs the public tree f
 
 That limits community maintenance of the official project, even while the license enables independent forks. It also makes the announcement's goal of letting anyone help create a more reliable harness less direct than it would be with an open contribution process. The immediate value is transparency and experimentation. Upstream code collaboration may require SpaceXAI to change its contribution policy later.
 
-# Local inference moves the privacy boundary
+# Can Grok Build run local AI models for private coding?
 
 Open-sourcing the harness gives developers control over one half of an agent system. The other half is inference, where prompts, source snippets, and tool results are processed by a model.
 
