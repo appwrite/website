@@ -51,7 +51,7 @@ grok --version
 
 Windows users can install from PowerShell. The [Grok Build product page](https://x.ai/cli) also documents headless execution for scripts and CI, editor embedding through the Agent Client Protocol, and features including plan mode, subagents, skills, hooks, MCP servers, `AGENTS.md`, sandboxed execution, and Git integration.
 
-# Open source does not mean open contribution yet
+# Can developers contribute to the Grok Build open-source repository?
 
 There is an important distinction in this release. The code is licensed for use, modification, and redistribution under Apache 2.0, but the repository's contributing guide says **external pull requests and unsolicited patches are not accepted**.
 
