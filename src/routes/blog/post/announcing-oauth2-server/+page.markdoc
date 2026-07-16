@@ -259,7 +259,7 @@ Every flow follows the corresponding specification, so off-the-shelf OAuth and O
 
 The OAuth2 server is available on Appwrite Cloud. Enable it from the **Auth** section of your project, register a client, and run your first sign-in in a few minutes with the quick start.
 
-- [OAuth2 server documentation](/docs/partners/oauth-server)
-- [Quick start: run your first authorization flow](/docs/partners/oauth-server/quick-start)
-- [Tutorial: add Sign in with your product to an app](/docs/partners/oauth-server/sign-in-with-your-product/step-1)
-- [Tutorial: protect an API with custom scopes](/docs/partners/oauth-server/custom-scopes/step-1)
+- [OAuth2 server documentation](/docs/products/auth/oauth-server)
+- [Quick start: run your first authorization flow](/docs/products/auth/oauth-server/quick-start)
+- [Tutorial: add Sign in with your product to an app](/docs/products/auth/oauth-server/sign-in-with-your-product/step-1)
+- [Tutorial: protect an API with custom scopes](/docs/products/auth/oauth-server/custom-scopes/step-1)

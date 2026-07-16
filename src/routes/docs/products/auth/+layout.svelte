@@ -75,6 +75,11 @@
                     label: 'Presences',
                     href: '/docs/products/auth/presences',
                     new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'OAuth2 server',
+                    href: '/docs/products/auth/oauth-server',
+                    new: isNewUntil('30 Aug 2026')
                 }
             ]
         },

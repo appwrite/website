@@ -101,13 +101,6 @@
                     href: '/docs/partners/project',
                     icon: 'icon-briefcase',
                     isParent: true
-                },
-                {
-                    label: 'OAuth2 server',
-                    href: '/docs/partners/oauth-server',
-                    icon: 'icon-key',
-                    isParent: true,
-                    new: isNewUntil('31 Aug 2026')
                 }
             ]
         },
