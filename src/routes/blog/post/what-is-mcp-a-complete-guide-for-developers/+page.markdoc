@@ -104,7 +104,7 @@ Two good ways to get hands-on:
 * **Use existing servers.** Attach servers for the tools you already work with. Our roundup of the [best MCP servers and clients](/blog/post/10-best-mcp-server-client) is a good starting point for what is available.
 * **Connect your backend.** If you build on Appwrite, the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) exposes your project to any MCP-compatible client so an AI agent can manage [Databases](/docs/products/databases), create users through [Auth](/docs/products/auth), upload files to [Storage](/docs/products/storage), and deploy [Functions](/docs/products/functions) directly from a chat.
 
-# A note on security
+# MCP security best practices
 
 MCP itself is just the protocol; security depends entirely on how a server is configured and what credentials it holds. Treat every MCP server like a privileged backend service.
 
