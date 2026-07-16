@@ -41,7 +41,7 @@ MCP collapses that to **M + N**. Each tool ships one MCP server, each AI applica
 
 This is the same shift the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) brought to code editors. Before LSP, every editor needed custom support for every language. After it, one language server worked in any compatible editor. MCP applies that pattern to AI applications and the tools they need to reach.
 
-# How MCP works: architecture
+# How MCP works: Architecture
 
 MCP uses a client-server architecture with three roles. Understanding the split is the key to reasoning about how everything connects.
 
