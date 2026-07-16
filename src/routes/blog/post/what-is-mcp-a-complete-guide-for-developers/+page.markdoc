@@ -53,7 +53,7 @@ A single host can run many clients at once, each connected to a different server
 
 Under the hood, MCP is built on [JSON-RPC 2.0](https://www.jsonrpc.org/specification). Clients and servers exchange structured request and response messages, and the connection begins with an initialization handshake where both sides declare which features they support.
 
-# MCP primitives: tools, resources, and prompts
+# MCP primitives: Tools, resources, and prompts
 
 MCP servers expose their capabilities through three primitives. Knowing which one to reach for is most of what you need to design a good server.
 
