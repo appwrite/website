@@ -108,7 +108,7 @@ The repository additionally documents an optional external OpenTelemetry stream 
 
 The deletion of previously retained data remains a company commitment stated in the announcement, not something a client-side code audit can independently prove. Teams with contractual retention requirements should verify their account policy and deployment path with SpaceXAI rather than inferring server behavior from the CLI alone.
 
-# The harness is now part of the evaluation surface
+# Why the Grok Build coding-agent harness matters for evaluation and security
 
 Model benchmarks measure only part of an agent's usefulness. A coding agent also depends on context collection, tool schemas, permission handling, retry behavior, compaction, code search, checkpointing, and the quality of the prompts wrapped around each model call.
 
