@@ -14,8 +14,8 @@ faqs:
     answer: CRUD describes the operations performed on data. REST is an architectural style for designing networked APIs around resources and HTTP methods. A REST API can expose CRUD operations, but CRUD and REST are not the same concept.
   - question: Is CRUD only used with SQL databases?
     answer: No. CRUD applies to relational databases, document databases, key-value stores, file systems, APIs, and other systems that persist data. The commands may differ, but the four underlying operations remain the same.
-  - question: Is CRUD only used with SQL databases?
-    answer: No. CRUD applies to relational databases, document databases, key-value stores, file systems, APIs, and other systems that persist data. The commands may differ, but the four underlying operations remain the same.
+  - question: What does CRUD stand for?
+    answer: CRUD stands for Create, Read, Update, and Delete. These are the four fundamental operations applications use to add, retrieve, modify, and remove stored data.
   - question: Can I build a CRUD application with Appwrite?
     answer: Yes. Appwrite Databases provides SDK methods for creating, reading, updating, and deleting rows. You can combine these operations with Appwrite Auth, permissions, queries, transactions, Functions, and Realtime without building a complete backend API from scratch.
 ---
