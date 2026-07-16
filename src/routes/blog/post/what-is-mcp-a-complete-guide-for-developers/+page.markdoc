@@ -33,7 +33,7 @@ MCP was developed by [Anthropic](https://www.anthropic.com/news/model-context-pr
 
 The short version: MCP turns a model that can only think into one that can fetch real data and trigger real actions, without you writing bespoke plumbing for each connection.
 
-# Why MCP exists: the integration problem
+# Why MCP exists: The integration problem
 
 The problem MCP solves is combinatorial. If you have **M** AI applications and **N** tools, connecting them directly means building and maintaining M × N integrations. Every new tool multiplies the work, and every API change breaks something downstream.
 
