@@ -19,7 +19,7 @@ faqs:
   - question: "How do I disable data sharing in Grok Build?"
     answer: "Run `/privacy` to view the current status and `/privacy opt-out` to opt out of coding-data sharing. The open-source configuration guide also documents `telemetry = false` and `trace_upload = false` controls."
   - question: "Can developers contribute code to Grok Build?"
-    answer: "Not through external pull requests at launch. The repository's contributing guide says SpaceXAI develops the software internally and publishes a periodically synced public tree for source transparency and local builds. Developers can contact SpaceXAI engineers on X and submit security vulnerabilities through [HackerOne](https://hackerone.com/x?type=team)."
+    answer: "Not through external pull requests at launch. The repository's contributing guide says SpaceXAI develops the software internally and publishes a periodically synced public tree for source transparency and local builds."
 ---
 
 Coding agents can modify thousands of lines, run shell commands, and send code context to an inference service. That makes the harness around the model part of the security boundary, not just a convenient interface.
