@@ -104,6 +104,8 @@ public class User {
 }
 ```
 
+Add a repository interface for it:
+
 ```java
 package com.example.demo;
 

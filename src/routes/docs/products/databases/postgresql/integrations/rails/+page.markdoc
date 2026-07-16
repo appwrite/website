@@ -106,12 +106,16 @@ class CreateUsers < ActiveRecord::Migration[7.1]
 end
 ```
 
+Define the matching model:
+
 ```ruby
 # app/models/user.rb
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 end
 ```
+
+Create and query records as usual:
 
 ```ruby
 User.create!(email: 'ada@example.com')

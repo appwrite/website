@@ -99,6 +99,8 @@ class Post extends Model
 }
 ```
 
+Create and query posts through the model:
+
 ```php
 use App\Models\Post;
 

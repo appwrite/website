@@ -128,6 +128,8 @@ DATABASE_URL="mysql://admin:<password>@db-<hash>.<region>.appwrite.center:6033/<
 DIRECT_URL="mysql://admin:<password>@db-<hash>.<region>.appwrite.center:3306/<database>"
 ```
 
+The Drizzle Kit config then reads the direct URL:
+
 ```ts
 import { defineConfig } from 'drizzle-kit';
 

@@ -151,6 +151,8 @@ DATABASE_URL="mysql+asyncmy://admin:<password>@db-<hash>.<region>.appwrite.cente
 DATABASE_SSL=true
 ```
 
+And in the engine setup:
+
 ```python
 from sqlalchemy import NullPool
 

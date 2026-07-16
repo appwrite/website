@@ -146,6 +146,8 @@ The pooler defaults to **transaction mode**, which does not keep a backend conne
 DATABASE_URL="postgresql+asyncpg://admin:<password>@db-<hash>.<region>.appwrite.center:6432/<database>?prepared_statement_cache_size=0"
 ```
 
+And in the engine setup:
+
 ```python
 from sqlalchemy import NullPool
 
