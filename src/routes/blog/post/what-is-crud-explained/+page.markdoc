@@ -1,0 +1,162 @@
+---
+layout: post
+title: What is CRUD? Explained
+description: Learn what CRUD means, how Create, Read, Update, and Delete map to HTTP and SQL, and how developers use CRUD to build data-driven applications.
+date: 2026-07-16
+cover: /images/blog/what-is-crud-explained/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: architecture
+featured: false
+unlisted: true
+faqs:
+  - question: What is the difference between CRUD and REST?
+    answer: CRUD describes the operations performed on data. REST is an architectural style for designing networked APIs around resources and HTTP methods. A REST API can expose CRUD operations, but CRUD and REST are not the same concept.
+  - question: Is CRUD only used with SQL databases?
+    answer: No. CRUD applies to relational databases, document databases, key-value stores, file systems, APIs, and other systems that persist data. The commands may differ, but the four underlying operations remain the same.
+  - question: Is CRUD only used with SQL databases?
+    answer: No. CRUD applies to relational databases, document databases, key-value stores, file systems, APIs, and other systems that persist data. The commands may differ, but the four underlying operations remain the same.
+  - question: Can I build a CRUD application with Appwrite?
+    answer: Yes. Appwrite Databases provides SDK methods for creating, reading, updating, and deleting rows. You can combine these operations with Appwrite Auth, permissions, queries, transactions, Functions, and Realtime without building a complete backend API from scratch.
+---
+**CRUD stands for Create, Read, Update, and Delete, the four basic operations you perform on stored data.** Almost every application that saves information relies on CRUD, from a to-do list to a banking system, and it forms the foundation of how developers build data-driven software.
+
+This guide explains what CRUD is, what each operation does, how CRUD maps to HTTP methods and SQL commands, how it works across relational and NoSQL databases, and how to build a CRUD application. It's written for developers who want a complete picture, not just a definition.
+
+# What does CRUD stand for?
+
+CRUD is an acronym for the four operations that make up the lifecycle of persistent data:
+
+* **Create.** Add a new record to your data store.
+* **Read.** Retrieve one or more existing records.
+* **Update.** Modify an existing record.
+* **Delete.** Remove a record.
+
+You can think of CRUD as the vocabulary every application uses to talk to its database. When you sign up for an account, you **create** a record. When you view your profile, you **read** it. When you change your email, you **update** it. When you close the account, you **delete** it. Almost any feature you can name reduces to some combination of these four actions.
+
+The term has been around since the early days of database design, and it endures because it describes something universal. If your software stores state, it does CRUD, whether you call it that or not.
+
+# Why does CRUD matter?
+
+CRUD matters because it gives developers a shared, predictable model for working with data. Instead of inventing a new way to handle storage for every feature, you build on the same four operations everywhere.
+
+* **Consistency.** A single mental model covers every data-driven feature, which makes code easier to reason about and maintain.
+* **Predictable APIs.** When your endpoints follow CRUD conventions, other developers can guess how they behave without reading the docs.
+* **Faster development.** Many frameworks and backend platforms scaffold CRUD operations automatically, so you write less boilerplate.
+* **A clear security boundary.** Mapping permissions to Create, Read, Update, and Delete makes it obvious who can do what to which data.
+
+Understanding CRUD also makes it easier to learn new tools. REST APIs, SQL, and most database SDKs are all organized around these operations, so once the pattern clicks, new technologies feel familiar.
+
+# The four CRUD operations explained
+
+Each CRUD operation has a distinct job, and together they cover the full lifecycle of a record.
+
+## Create
+
+Create adds a brand-new record to your data store. You provide the data, and the system assigns it an identifier and saves it. Creating a user account, posting a comment, or uploading a file all begin with a create operation.
+
+## Read
+
+Read retrieves existing data without changing it. This is the most common operation in most applications, since users view data far more often than they change it. A read can fetch a single record by its ID or return a filtered, sorted list of many records.
+
+## Update
+
+Update modifies a record that already exists. Depending on the system, an update can replace the entire record or change only specific fields. Editing a profile, marking a task as done, or changing a setting are all updates.
+
+## Delete
+
+Delete removes a record. Some systems delete data permanently, while others use a "soft delete" that marks a record as removed without erasing it, so it can be recovered or audited later. Deleting an account or removing a post are delete operations.
+
+# How CRUD maps to HTTP methods
+
+In web development, CRUD operations usually map onto the [HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used by REST APIs. This mapping is why RESTful APIs feel so consistent: once you know the pattern, you can predict how any well-designed endpoint behaves.
+
+| CRUD operation | HTTP method      | Example                          |
+| -------------- | ---------------- | -------------------------------- |
+| Create         | `POST`           | `POST /users`                    |
+| Read           | `GET`            | `GET /users` or `GET /users/123` |
+| Update         | `PUT` or `PATCH` | `PUT /users/123`                 |
+| Delete         | `DELETE`         | `DELETE /users/123`              |
+
+The distinction between `PUT` and `PATCH` is worth knowing. **`PUT` replaces an entire record**, while **`PATCH` updates only the fields you send**. Using the right one keeps your API predictable and avoids accidentally wiping out data you didn't mean to touch.
+
+If you want to go deeper on how APIs expose these operations, our guide on [REST vs GraphQL vs WebSockets](/blog/post/rest-vs-graphql-websockets-which-is-best-for-your-app) covers the trade-offs between the main API styles.
+
+# How CRUD maps to SQL commands
+
+In relational databases, the same four operations map onto [SQL](https://www.postgresql.org/docs/current/sql-commands.html) statements. This is the layer where CRUD actually touches stored data.
+
+| CRUD operation | SQL command | Example                                        |
+| -------------- | ----------- | ---------------------------------------------- |
+| Create         | `INSERT`    | `INSERT INTO users (name) VALUES ('Ada')`      |
+| Read           | `SELECT`    | `SELECT * FROM users WHERE id = 123`           |
+| Update         | `UPDATE`    | `UPDATE users SET name = 'Ada' WHERE id = 123` |
+| Delete         | `DELETE`    | `DELETE FROM users WHERE id = 123`             |
+
+Notice how the concept stays identical even though the syntax changes. A create is an `INSERT`, a read is a `SELECT`, and so on. This is the value of CRUD as a mental model: it stays constant across HTTP, SQL, and whatever SDK you use, so you only have to learn the mapping once.
+
+# CRUD in NoSQL and document databases
+
+CRUD isn't limited to SQL. NoSQL and document databases perform the exact same four operations, just with different terminology and data shapes. Instead of rows in tables, a document database stores flexible documents, but you still create, read, update, and delete them.
+
+For example, a document database SDK might expose methods like `createDocument`, `getDocument`, `updateDocument`, and `deleteDocument`. The names spell out the CRUD operation directly. If you're weighing which data model fits your project, our breakdown of [SQL vs NoSQL](/blog/post/sql-vs-nosql) explains where each one shines.
+
+[Appwrite Databases](/docs/products/databases) is a good example of CRUD in practice. You create rows, read them back with [queries](/docs/products/databases/queries) for filtering and sorting, update them as data changes, and delete them when they're no longer needed, all through a consistent SDK across web, mobile, and server platforms.
+
+# CRUD vs REST: what's the difference?
+
+CRUD and REST are related but not the same thing. **CRUD is a set of four operations on data, while** [REST](https://developer.mozilla.org/en-US/docs/Glossary/REST) **is an architectural style for designing web APIs.** They overlap because REST APIs commonly expose CRUD operations over HTTP, but they answer different questions.
+
+CRUD describes *what* you do to data: create, read, update, delete. REST describes *how* you structure an API to expose those actions, using resources, URLs, and HTTP methods. You can implement CRUD without REST, for instance directly in SQL, and a REST API can do more than plain CRUD. In practice, though, "a RESTful CRUD API" is one of the most common backend patterns you'll build.
+
+# Common CRUD use cases
+
+Because CRUD is so fundamental, it shows up nearly everywhere data is stored:
+
+* **User management.** Register, view, edit, and remove user accounts.
+* **Content management.** Publish, display, edit, and delete posts, pages, or products.
+* **To-do and task apps.** Add tasks, list them, mark them done, and remove them.
+* **E-commerce.** Manage products, carts, and orders through the same four operations.
+* **Admin dashboards.** Nearly every internal tool is a CRUD interface over a database.
+* **Social features.** Create comments and likes, read feeds, edit posts, and delete content.
+
+# How to build a CRUD application
+
+Building a CRUD app is the fastest way to internalize the pattern, and it's a common first project for good reason.
+
+1. **Model your data.** Decide what a record looks like, such as a task with a title, status, and due date.
+2. **Choose a data store.** Pick a relational database, a document database, or a backend platform that provides one.
+3. **Implement Create and Read first.** Add a record and list records back. This gets data flowing end to end.
+4. **Add Update and Delete.** Round out the four operations so records can change and be removed.
+5. **Add permissions and validation.** Control who can perform each operation and reject invalid data before it's stored.
+6. **Build a UI or API on top.** Expose the operations through forms, endpoints, or an SDK your frontend can call.
+
+A backend platform like [Appwrite](/docs) removes most of the boilerplate here, giving you a database, authentication, and permissions so you can focus on your data model instead of wiring up storage from scratch. You can follow the [quick start guides](/docs/quick-starts) to stand up a working CRUD backend in minutes.
+
+# CRUD best practices
+
+* **Validate input on create and update** so malformed or malicious data never reaches your database.
+* **Enforce permissions per operation**, since who can read data is often different from who can delete it.
+* **Paginate your reads** instead of returning entire tables, which protects performance as data grows.
+* **Prefer `PATCH` over `PUT`** when you only need to change a few fields, to avoid overwriting data unintentionally.
+* **Consider soft deletes** for important records, marking them removed rather than erasing them, so you keep an audit trail.
+* **Use transactions** when several operations must succeed or fail together, keeping your data consistent.
+
+# Conclusion
+
+CRUD stands for Create, Read, Update, and Delete, the four operations that define how applications work with stored data. Understanding its core pieces, namely the four operations themselves, how they map onto HTTP methods and SQL commands, and how the same model carries across relational and NoSQL databases, gives you a foundation that applies to almost every backend you'll ever build. Because nearly all software stores state, CRUD is one of the most useful patterns a developer can master. The best way to learn it is to build a small CRUD app, wire up all four operations end to end, and watch data flow from your UI to your database and back.
+
+# Building CRUD apps with Appwrite
+
+[Appwrite Databases](/docs/products/databases) gives you a complete CRUD backend without the boilerplate. You create rows, read them with powerful [queries](/docs/products/databases/queries), update them as your data changes, and delete them when they're done, all through a consistent SDK across web, mobile, Flutter, and server platforms. Fine-grained [permissions](/docs/products/databases/permissions) let you control exactly who can perform each operation, and [transactions](/docs/products/databases/transactions) keep multi-step changes consistent.
+
+Whether you're prototyping a to-do app or scaling a production system, Appwrite gives you Auth, Databases, Storage, Functions, Sites, and Realtime in one open-source platform. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) or spin up a self-hosted instance in minutes, and give your next build a real backend to grow on.
+
+## Resources
+
+* [Appwrite Databases documentation](/docs/products/databases)
+* [Appwrite Databases queries](/docs/products/databases/queries)
+* [Appwrite quick start guides](/docs/quick-starts)
+* [SQL vs NoSQL: how to choose](/blog/post/sql-vs-nosql)
+* [Appwrite on GitHub](https://github.com/appwrite/appwrite)
+* [Join the Appwrite Discord](https://appwrite.io/discord)
