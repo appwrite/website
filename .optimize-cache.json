@@ -1601,6 +1601,8 @@
   "static/images/docs/platform/dark/execution-details.png": "c0481ddc206447460f9d317ba8d421615066f67a50bc9ef41a8f71766ecffb14",
   "static/images/docs/platform/env-variables.png": "16f95151e4f6ee9fb8056f075b9f5027fd91f0c2a28586c5624c3ffe9b7a1ee8",
   "static/images/docs/platform/execution-details.png": "ece1364b8b00254bbd982421b6eed6d7f519d34c4e80377fcaaa4cb5d5dd3f89",
+  "static/images/docs/products/databases/concepts/dark/index-lookup.png": "2866b226af8235d58ee2d6e42fe941cc6648db77210a995cd11b668e43cae477",
+  "static/images/docs/products/databases/concepts/index-lookup.png": "530acb39218dccdad6388986119b04446fa0769719c120c5c3aa69552ca75cfb",
   "static/images/docs/products/databases/mysql/create-database-specs.png": "623282bddd45eb245adb20166fd336089718a91bb7207a4f22b9811e13b96ba7",
   "static/images/docs/products/databases/mysql/create-database-type.png": "0ff2c521f3f40f467587954120339572bcac0c6d6f76f0f2e6935e640d7adba3",
   "static/images/docs/products/databases/mysql/dark/create-database-specs.png": "41bcda64b5cfac906639e077549c1429ec3701f8af9f49c4d1548e4716a23028",

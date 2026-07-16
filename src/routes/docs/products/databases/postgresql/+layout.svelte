@@ -24,6 +24,39 @@
             ]
         },
         {
+            label: 'Concepts',
+            items: [
+                {
+                    label: 'Tables and data types',
+                    href: '/docs/products/databases/postgresql/concepts/tables'
+                },
+                {
+                    label: 'Querying rows',
+                    href: '/docs/products/databases/postgresql/concepts/queries'
+                },
+                {
+                    label: 'Joins and relationships',
+                    href: '/docs/products/databases/postgresql/concepts/joins'
+                },
+                {
+                    label: 'Indexes',
+                    href: '/docs/products/databases/postgresql/concepts/indexes'
+                },
+                {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/postgresql/concepts/transactions'
+                },
+                {
+                    label: 'Data modeling',
+                    href: '/docs/products/databases/postgresql/concepts/data-modeling'
+                },
+                {
+                    label: 'Security and access control',
+                    href: '/docs/products/databases/postgresql/concepts/access-control'
+                }
+            ]
+        },
+        {
             label: 'Connecting',
             items: [
                 {
