@@ -3,7 +3,7 @@ layout: post
 title: "GPT-Red automates prompt injection red-teaming"
 description: "GPT-Red uses adversarial self-play to find prompt injection failures at scale. See OpenAI's results, training loop, and lessons for agent builders."
 date: 2026-07-16
-cover: /images/blog/gpt-red-automated-red-teaming/cover.png
+cover: /images/blog/gpt-red-automated-red-teaming/cover.avif
 timeToRead: 7
 author: aishwari
 category: ai
