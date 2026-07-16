@@ -120,9 +120,9 @@ It also creates a clearer route for security review. The repository's [`SECURITY
 
 Grok Build already supports two standards that help an agent work safely and accurately in an Appwrite project: **`AGENTS.md` instructions and MCP servers**.
 
-An [`AGENTS.md` file](https://appwrite.io/docs/tooling/ai/agents-md) gives the agent repository-specific conventions, including the framework, SDK, project structure, and Appwrite services in use. This keeps durable guidance in version control instead of repeating it in every prompt.
+An [`AGENTS.md` file](/docs/tooling/ai/agents-md) gives the agent repository-specific conventions, including the framework, SDK, project structure, and Appwrite services in use. This keeps durable guidance in version control instead of repeating it in every prompt.
 
-Appwrite's [MCP servers](https://appwrite.io/docs/tooling/ai/mcp-servers) serve a different role. The docs server gives an agent current Appwrite documentation, while the API server can interact with an authorized Appwrite project. Keep API credentials scoped to the operations the agent needs, review tool approvals, and separate documentation access from project mutation.
+Appwrite's [MCP servers](/docs/tooling/ai/mcp-servers) serve a different role. The docs server gives an agent current Appwrite documentation, while the API server can interact with an authorized Appwrite project. Keep API credentials scoped to the operations the agent needs, review tool approvals, and separate documentation access from project mutation.
 
 Open source makes Grok Build easier to inspect and adapt, but safe agent operation still comes from explicit boundaries. Start with a test repository, review the privacy state, choose the inference endpoint deliberately, inspect enabled integrations, and grant the narrowest practical permissions.
 
@@ -132,6 +132,6 @@ The Grok Build release pushes coding agents toward a more inspectable stack. Dev
 
 For the backend behind an AI-assisted project, [start on Appwrite Cloud](https://cloud.appwrite.io) and give your agent current, project-specific context through Appwrite's tooling:
 
-- [Generate an `AGENTS.md` file](https://appwrite.io/docs/tooling/ai/agents-md)
-- [Configure Appwrite MCP servers](https://appwrite.io/docs/tooling/ai/mcp-servers)
-- [Explore Appwrite AI tooling](https://appwrite.io/docs/tooling/ai)
+- [Generate an `AGENTS.md` file](/docs/tooling/ai/agents-md)
+- [Configure Appwrite MCP servers](/docs/tooling/ai/mcp-servers)
+- [Explore Appwrite AI tooling](/docs/tooling/ai)
