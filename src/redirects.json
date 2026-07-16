@@ -97,15 +97,15 @@
     },
     {
         "link": "/docs/databases-queries",
-        "redirect": "/docs/products/databases/queries"
+        "redirect": "/docs/products/databases/tablesdb/queries"
     },
     {
         "link": "/docs/databases-pagination",
-        "redirect": "/docs/products/databases/pagination"
+        "redirect": "/docs/products/databases/tablesdb/pagination"
     },
     {
         "link": "/docs/databases-relationships",
-        "redirect": "/docs/products/databases/relationships"
+        "redirect": "/docs/products/databases/tablesdb/relationships"
     },
     {
         "link": "/docs/storage",
@@ -213,11 +213,11 @@
     },
     {
         "link": "/docs/queries",
-        "redirect": "/docs/products/databases/queries"
+        "redirect": "/docs/products/databases/tablesdb/queries"
     },
     {
         "link": "/docs/pagination",
-        "redirect": "/docs/products/databases/pagination"
+        "redirect": "/docs/products/databases/tablesdb/pagination"
     },
     {
         "link": "/docs/webhooks",
@@ -915,6 +915,142 @@
     {
         "link": "/heroes",
         "redirect": "/"
+    },
+    {
+        "link": "/docs/products/databases/ai-suggestions",
+        "redirect": "/docs/products/databases/tablesdb/ai-suggestions"
+    },
+    {
+        "link": "/docs/products/databases/atomic-numeric-operations",
+        "redirect": "/docs/products/databases/tablesdb/atomic-numeric-operations"
+    },
+    {
+        "link": "/docs/products/databases/backups",
+        "redirect": "/docs/products/databases/tablesdb/backups"
+    },
+    {
+        "link": "/docs/products/databases/bulk-operations",
+        "redirect": "/docs/products/databases/tablesdb/bulk-operations"
+    },
+    {
+        "link": "/docs/products/databases/csv-exports",
+        "redirect": "/docs/products/databases/tablesdb/csv-exports"
+    },
+    {
+        "link": "/docs/products/databases/csv-imports",
+        "redirect": "/docs/products/databases/tablesdb/csv-imports"
+    },
+    {
+        "link": "/docs/products/databases/databases",
+        "redirect": "/docs/products/databases/tablesdb/databases"
+    },
+    {
+        "link": "/docs/products/databases/geo-queries",
+        "redirect": "/docs/products/databases/tablesdb/geo-queries"
+    },
+    {
+        "link": "/docs/products/databases/legacy",
+        "redirect": "/docs/products/databases/tablesdb/legacy"
+    },
+    {
+        "link": "/docs/products/databases/legacy/atomic-numeric-operations",
+        "redirect": "/docs/products/databases/tablesdb/legacy/atomic-numeric-operations"
+    },
+    {
+        "link": "/docs/products/databases/legacy/bulk-operations",
+        "redirect": "/docs/products/databases/tablesdb/legacy/bulk-operations"
+    },
+    {
+        "link": "/docs/products/databases/legacy/collections",
+        "redirect": "/docs/products/databases/tablesdb/legacy/collections"
+    },
+    {
+        "link": "/docs/products/databases/legacy/databases",
+        "redirect": "/docs/products/databases/tablesdb/legacy/databases"
+    },
+    {
+        "link": "/docs/products/databases/legacy/documents",
+        "redirect": "/docs/products/databases/tablesdb/legacy/documents"
+    },
+    {
+        "link": "/docs/products/databases/legacy/order",
+        "redirect": "/docs/products/databases/tablesdb/legacy/order"
+    },
+    {
+        "link": "/docs/products/databases/legacy/pagination",
+        "redirect": "/docs/products/databases/tablesdb/legacy/pagination"
+    },
+    {
+        "link": "/docs/products/databases/legacy/permissions",
+        "redirect": "/docs/products/databases/tablesdb/legacy/permissions"
+    },
+    {
+        "link": "/docs/products/databases/legacy/queries",
+        "redirect": "/docs/products/databases/tablesdb/legacy/queries"
+    },
+    {
+        "link": "/docs/products/databases/legacy/quick-start",
+        "redirect": "/docs/products/databases/tablesdb/legacy/quick-start"
+    },
+    {
+        "link": "/docs/products/databases/legacy/relationships",
+        "redirect": "/docs/products/databases/tablesdb/legacy/relationships"
+    },
+    {
+        "link": "/docs/products/databases/legacy/type-generation",
+        "redirect": "/docs/products/databases/tablesdb/legacy/type-generation"
+    },
+    {
+        "link": "/docs/products/databases/offline",
+        "redirect": "/docs/products/databases/tablesdb/offline"
+    },
+    {
+        "link": "/docs/products/databases/operators",
+        "redirect": "/docs/products/databases/tablesdb/operators"
+    },
+    {
+        "link": "/docs/products/databases/order",
+        "redirect": "/docs/products/databases/tablesdb/order"
+    },
+    {
+        "link": "/docs/products/databases/pagination",
+        "redirect": "/docs/products/databases/tablesdb/pagination"
+    },
+    {
+        "link": "/docs/products/databases/permissions",
+        "redirect": "/docs/products/databases/tablesdb/permissions"
+    },
+    {
+        "link": "/docs/products/databases/queries",
+        "redirect": "/docs/products/databases/tablesdb/queries"
+    },
+    {
+        "link": "/docs/products/databases/quick-start",
+        "redirect": "/docs/products/databases/tablesdb/quick-start"
+    },
+    {
+        "link": "/docs/products/databases/relationships",
+        "redirect": "/docs/products/databases/tablesdb/relationships"
+    },
+    {
+        "link": "/docs/products/databases/rows",
+        "redirect": "/docs/products/databases/tablesdb/rows"
+    },
+    {
+        "link": "/docs/products/databases/tables",
+        "redirect": "/docs/products/databases/tablesdb/tables"
+    },
+    {
+        "link": "/docs/products/databases/timestamp-overrides",
+        "redirect": "/docs/products/databases/tablesdb/timestamp-overrides"
+    },
+    {
+        "link": "/docs/products/databases/transactions",
+        "redirect": "/docs/products/databases/tablesdb/transactions"
+    },
+    {
+        "link": "/docs/products/databases/type-generation",
+        "redirect": "/docs/products/databases/tablesdb/type-generation"
     },
     {
         "link": "/docs/advanced/platform",

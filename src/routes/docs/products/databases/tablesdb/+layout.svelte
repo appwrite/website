@@ -1,0 +1,180 @@
+<script lang="ts">
+    import { setContext } from 'svelte';
+    import { page } from '$app/state';
+    import { writable } from 'svelte/store';
+    import Docs from '$lib/layouts/Docs.svelte';
+    import { isNewUntil } from '$lib/utils/date';
+    import Sidebar, { type NavParent, type NavTree } from '$lib/layouts/Sidebar.svelte';
+    import type { HeaderSectionInfoAlert } from '$lib/layouts/DocsArticle.svelte';
+
+    let { children } = $props();
+
+    const parent: NavParent = {
+        href: '/docs/products/databases',
+        label: 'Databases'
+    };
+
+    const navigation: NavTree = [
+        {
+            label: 'Getting started',
+            items: [
+                {
+                    label: 'Overview',
+                    href: '/docs/products/databases/tablesdb'
+                },
+                {
+                    label: 'Quick start',
+                    href: '/docs/products/databases/tablesdb/quick-start'
+                }
+            ]
+        },
+        {
+            label: 'Concepts',
+            items: [
+                {
+                    label: 'Databases',
+                    href: '/docs/products/databases/tablesdb/databases'
+                },
+                {
+                    label: 'Tables',
+                    href: '/docs/products/databases/tablesdb/tables'
+                },
+                {
+                    label: 'Rows',
+                    href: '/docs/products/databases/tablesdb/rows'
+                },
+                {
+                    label: 'Permissions',
+                    href: '/docs/products/databases/tablesdb/permissions'
+                },
+                {
+                    label: 'Relationships',
+                    href: '/docs/products/databases/tablesdb/relationships'
+                },
+                {
+                    label: 'Queries',
+                    href: '/docs/products/databases/tablesdb/queries'
+                },
+                {
+                    label: 'Order',
+                    href: '/docs/products/databases/tablesdb/order'
+                },
+                {
+                    label: 'Operators',
+                    href: '/docs/products/databases/tablesdb/operators',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Geo queries',
+                    href: '/docs/products/databases/tablesdb/geo-queries',
+                    new: isNewUntil('30 Sep 2025')
+                },
+                {
+                    label: 'Backups',
+                    href: '/docs/products/databases/tablesdb/backups'
+                }
+            ]
+        },
+        {
+            label: 'Guides',
+            items: [
+                {
+                    label: 'Pagination',
+                    href: '/docs/products/databases/tablesdb/pagination'
+                },
+                {
+                    label: 'Transactions',
+                    href: '/docs/products/databases/tablesdb/transactions',
+                    new: isNewUntil('31 Oct 2025')
+                },
+                {
+                    label: 'Type generation',
+                    href: '/docs/products/databases/tablesdb/type-generation',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'Offline sync',
+                    href: '/docs/products/databases/tablesdb/offline'
+                },
+                {
+                    label: 'Bulk operations',
+                    href: '/docs/products/databases/tablesdb/bulk-operations',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'Atomic numeric operations',
+                    href: '/docs/products/databases/tablesdb/atomic-numeric-operations',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'CSV imports',
+                    href: '/docs/products/databases/tablesdb/csv-imports',
+                    new: isNewUntil('31 Jul 2025')
+                },
+                {
+                    label: 'CSV exports',
+                    href: '/docs/products/databases/tablesdb/csv-exports',
+                    new: isNewUntil('28 Feb 2026')
+                },
+                {
+                    label: 'AI suggestions',
+                    href: '/docs/products/databases/tablesdb/ai-suggestions',
+                    new: isNewUntil('31 Dec 2025')
+                },
+                {
+                    label: 'Timestamp overrides',
+                    href: '/docs/products/databases/tablesdb/timestamp-overrides'
+                }
+            ]
+        },
+        {
+            label: 'References',
+            items: [
+                {
+                    label: 'TablesDB API',
+                    href: '/docs/references/cloud/client-web/tablesDB',
+                    new: isNewUntil('31 Oct 2025')
+                },
+                {
+                    label: 'Legacy API',
+                    href: '/docs/references/cloud/client-web/databases'
+                }
+            ]
+        }
+    ];
+
+    const legacyUrl = $derived(
+        page.url.pathname
+            .replace('/tablesdb/', '/tablesdb/legacy/')
+            .replace(/\/rows(\/|$)/, '/documents$1')
+            .replace(/\/tables(\/|$)/, '/collections$1')
+    );
+
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
+
+    const shouldShowSubtitle = $derived(
+        !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&
+            !page.url.pathname.endsWith('products/databases/tablesdb')
+    );
+
+    const headerSectionInfoAlert = writable<HeaderSectionInfoAlert | null>(null);
+
+    $effect(() => {
+        if (shouldShowSubtitle) {
+            headerSectionInfoAlert.set({
+                title: 'New API',
+                description: `This is a relatively new API. For details on the previous version and its terminology, see the legacy <a class="web-link underline" href="${legacyUrl}">Collections API documentation</a>.`
+            });
+        } else {
+            headerSectionInfoAlert.set(null);
+        }
+    });
+
+    setContext('headerSectionInfoAlert', headerSectionInfoAlert);
+</script>
+
+<Docs variant="two-side-navs">
+    <Sidebar {navigation} {parent} />
+
+    {@render children()}
+</Docs>
