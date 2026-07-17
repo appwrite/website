@@ -61,7 +61,7 @@ OpenAI evaluated GPT-Red on defender models and scenarios outside its training d
 
 These figures do not make GPT-5.6 Sol immune to prompt injection. They cover particular environments, harnesses, attack budgets, and success criteria. OpenAI has not yet published the full methodology, confidence intervals, or attack transcripts needed to compare the system independently.
 
-# Real agents exposed failures that static tests miss
+# How GPT-Red tests prompt injection attacks on real AI agents
 
 OpenAI also tested whether GPT-Red could transfer attacks into realistic agent systems with incomplete knowledge of their underlying models and harnesses.
 
