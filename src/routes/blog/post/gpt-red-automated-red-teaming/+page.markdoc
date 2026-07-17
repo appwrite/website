@@ -97,7 +97,7 @@ OpenAI explicitly positions GPT-Red alongside human and third-party red-teaming,
 
 These controls line up with OpenAI's earlier guidance on [designing agents to resist prompt injection](https://openai.com/index/designing-agents-to-resist-prompt-injection/). Filtering suspicious text is not enough. Systems also need sandboxing, constrained data flow, monitoring, and limits on what a compromised agent can do.
 
-# Build AI agents with narrow, testable permissions
+# Build safer AI workflows with Appwrite
 
 GPT-Red is internal, and OpenAI says a preprint with more technical detail will follow. Until its environments and methodology are public, the reported gains are best treated as promising evidence for adaptive safety training rather than a solved security problem.
 
