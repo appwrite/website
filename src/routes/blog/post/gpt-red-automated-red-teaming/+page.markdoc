@@ -75,7 +75,7 @@ OpenAI disclosed the vulnerabilities and says new safeguards are being tested. T
 
 A second evaluation targeted a Codex CLI agent backed by GPT-5.4 Mini across 10 held-out data-exfiltration scenarios. OpenAI says GPT-Red succeeded in more scenarios and used fewer tokens than a prompted GPT-5.5 baseline. The announcement does not publish the exact success counts, so those results cannot yet be quantified beyond the stated comparison.
 
-# Stronger defenses did not come from refusing more work
+# How GPT-Red improves prompt injection defenses without over-refusal
 
 A model can look robust by refusing broadly or losing the ability to use tools. That would lower attack success, but it would also make the agent less useful.
 
