@@ -8,7 +8,7 @@ timeToRead: 7
 author: aishwari
 category: ai
 featured: false
-unlisted: true
+unlisted: false
 faqs:
   - question: "Is Grok Build open source?"
     answer: "Yes. SpaceXAI published the Grok Build CLI, terminal UI, and agent runtime on [GitHub](https://github.com/xai-org/grok-build) under the Apache License 2.0. The repository can be inspected, modified, and built locally, although SpaceXAI does not currently accept external pull requests."
