@@ -83,7 +83,7 @@ OpenAI says it evaluated general frontier capabilities alongside targeted over-r
 
 The training history also suggests that GPT-Red is not a one-off benchmark run. OpenAI used progressively stronger precursors in the training of each production model since GPT-5.3. As defenders improved, GPT-Red's attack success dropped monotonically across a broad set of robustness environments, creating pressure to produce more complex attacks.
 
-# Automated red-teaming is one layer of agent security
+# Why GPT-Red automated red-teaming is one layer of AI agent security
 
 GPT-Red's most important contribution is scale, not completeness. Automated attackers can generate diverse adversarial training data, replay regression suites, and search for combinations that humans may not try. They still operate inside environments and objectives that people design.
 
