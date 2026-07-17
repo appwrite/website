@@ -59,7 +59,7 @@ To test the provider on mobile apps, there are some additional configuration ste
 4. Add `google-services.json` at the root of your project.
 5. Add Google Services class path to your app-level Gradle dependencies block `"com.google.gms:google-services:4.4.0"`.
 6. Add the Google Services plugin to your app-level Gradle in the plugins block as `"com.google.gms.google-services"`.
-7. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongside other activities. Find an example of this service in the [Send push notification](https://appwrite.io/docs/products/messaging/send-push-notifications#add-targets) journey.
+7. Add notification handler service to `AndroidManifest.xml` inside the application tag, alongside other activities. Find an example of this service in the [Send push notification](https://appwrite.io/docs/products/messaging/send-push-notifications#add-targets) guide.
 
 ```xml
 <service android:name="<YOUR_NOTIFICATION_HANDLER_SERVICE>" android:exported="false">
