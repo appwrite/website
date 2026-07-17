@@ -73,7 +73,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://vantage.localhost/auth/redirect'],
+    redirectUris: ['https://vantage.localhost/auth/redirect'],
 });
 ```
 ```client-flutter
@@ -88,7 +88,7 @@ Apps apps = Apps(client);
 App app = await apps.create(
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://vantage.localhost/auth/redirect'],
+    redirectUris: ['https://vantage.localhost/auth/redirect'],
 );
 ```
 ```client-apple
@@ -103,7 +103,7 @@ let apps = Apps(client)
 let app = try await apps.create(
     appId: ID.unique(),
     name: "Vantage",
-    redirectUris: ["http://vantage.localhost/auth/redirect"]
+    redirectUris: ["https://vantage.localhost/auth/redirect"]
 )
 ```
 ```client-android-kotlin
@@ -120,7 +120,7 @@ val apps = Apps(client)
 val app = apps.create(
     appId = ID.unique(),
     name = "Vantage",
-    redirectUris = listOf("http://vantage.localhost/auth/redirect")
+    redirectUris = listOf("https://vantage.localhost/auth/redirect")
 )
 ```
 ```client-android-java
@@ -138,7 +138,7 @@ Apps apps = new Apps(client);
 apps.create(
     ID.unique(), // appId
     "Vantage", // name
-    List.of("http://vantage.localhost/auth/redirect"), // redirectUris
+    List.of("https://vantage.localhost/auth/redirect"), // redirectUris
     null, // description (optional)
     null, // clientUri (optional)
     null, // logoUri (optional)
@@ -177,7 +177,7 @@ const apps = new Apps(client);
 const app = await apps.create({
     appId: ID.unique(),
     name: 'Vantage',
-    redirectUris: ['http://vantage.localhost/auth/redirect'],
+    redirectUris: ['https://vantage.localhost/auth/redirect'],
 });
 ```
 {% /multicode %}
@@ -196,7 +196,7 @@ The default flow is the standard authorization code flow. When a user clicks **S
 ```text
 https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/authorize
     ?client_id=<CLIENT_ID>
-    &redirect_uri=http://vantage.localhost/auth/redirect
+    &redirect_uri=https://vantage.localhost/auth/redirect
     &response_type=code
     &scope=openid profile email
     &state=<STATE>
@@ -211,7 +211,7 @@ curl -X POST 'https://<REGION>.cloud.appwrite.io/v1/oauth2/<PROJECT_ID>/token' \
   -d '{
     "grant_type": "authorization_code",
     "code": "<CODE>",
-    "redirect_uri": "http://vantage.localhost/auth/redirect",
+    "redirect_uri": "https://vantage.localhost/auth/redirect",
     "client_id": "<CLIENT_ID>",
     "client_secret": "<SECRET_FOR_CONFIDENTIAL_CLIENTS>",
     "code_verifier": "<PKCE_VERIFIER_FOR_PUBLIC_CLIENTS>"
@@ -223,7 +223,7 @@ Content-Type: application/json
 {
     "grant_type": "authorization_code",
     "code": "<CODE>",
-    "redirect_uri": "http://vantage.localhost/auth/redirect",
+    "redirect_uri": "https://vantage.localhost/auth/redirect",
     "client_id": "<CLIENT_ID>",
     "client_secret": "<SECRET_FOR_CONFIDENTIAL_CLIENTS>",
     "code_verifier": "<PKCE_VERIFIER_FOR_PUBLIC_CLIENTS>"
