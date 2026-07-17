@@ -15,7 +15,7 @@ faqs:
   - question: "Can developers use GPT-Red?"
     answer: "No. OpenAI describes GPT-Red as internal-only and has not announced an API or public release. The company says it plans to publish a preprint with more technical details."
   - question: "How effective is GPT-Red?"
-    answer: "OpenAI reports that GPT-Red succeeded in 84% of held-out indirect prompt injection scenarios against GPT-5.1, compared with 13% for human red-teamers. These are OpenAI's internal results and have not yet been independently reproduced."
+    answer: "In OpenAI’s internal replication of an indirect prompt injection arena, GPT-Red succeeded in 84% of the predefined scenarios against GPT-5.1, compared with 13% for human red-teamers. These results have not yet been independently reproduced. These are OpenAI's internal results and have not yet been independently reproduced."
   - question: "How did GPT-Red improve GPT-5.6 Sol?"
     answer: "OpenAI used attacks from GPT-Red and its precursors while training production models from GPT-5.3 onward. GPT-5.6 Sol failed on 0.05% of GPT-Red's direct prompt injections and had six times fewer failures than OpenAI's best production model from four months earlier on its hardest direct prompt injection benchmark."
   - question: "Does GPT-Red replace human security testing?"
