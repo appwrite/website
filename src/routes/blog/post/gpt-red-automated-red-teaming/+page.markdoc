@@ -61,8 +61,6 @@ OpenAI evaluated GPT-Red on defender models and scenarios outside its training d
 
 These figures do not make GPT-5.6 Sol immune to prompt injection. They cover particular environments, harnesses, attack budgets, and success criteria. OpenAI has not yet published the full methodology, confidence intervals, or attack transcripts needed to compare the system independently.
 
-That distinction matters because GPT-Red is a red-teamer, not a general-purpose frontier model. General model benchmarks from Artificial Analysis or LMArena would not measure the claim OpenAI is making here, and neither organization has published an independent GPT-Red evaluation. The relevant evidence is attack success against held-out defenders and the resulting change in defender robustness.
-
 # Real agents exposed failures that static tests miss
 
 OpenAI also tested whether GPT-Red could transfer attacks into realistic agent systems with incomplete knowledge of their underlying models and harnesses.
