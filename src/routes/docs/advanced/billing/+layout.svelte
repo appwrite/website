@@ -60,6 +60,10 @@
                 {
                     label: 'Database Reads and Writes',
                     href: '/docs/advanced/billing/database-reads-and-writes'
+                },
+                {
+                    label: 'Premium Geo DB',
+                    href: '/docs/advanced/billing/premium-geo-db'
                 }
             ]
         },

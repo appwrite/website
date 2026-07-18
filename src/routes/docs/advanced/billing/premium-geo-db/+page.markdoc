@@ -1,0 +1,40 @@
+---
+layout: article
+title: Premium Geo DB
+description: Enrich Appwrite Cloud session and request data with detailed IP geolocation information.
+---
+
+Premium Geo DB is a per-project Appwrite Cloud add-on that enriches session and request data with detailed IP geolocation information. It adds details such as timezone, postal code, internet service provider (ISP), connection type, and organization. You can use this location context to tailor currencies and languages, apply region-specific behavior, and identify suspicious sign-ins.
+
+{% info title="Availability" %}
+Premium Geo DB is available only on Appwrite Cloud and only with organization plans that support the add-on. A project owner must manage it from the project's settings. If your current plan does not support Premium Geo DB, the Console displays an upgrade option when a supporting plan is available.
+{% /info %}
+
+# Enable Premium Geo DB {% #enable %}
+
+To enable the add-on:
+
+1. In the Appwrite Console, open your project.
+2. Select **Settings** and find **Premium Geo DB**.
+3. Select **Enable Premium Geo DB**.
+4. Review the monthly price and the prorated amount due for the remainder of the current billing cycle, then select **Enable**.
+5. Complete payment authentication if your payment method requires it.
+
+The prorated amount, plus applicable taxes and fees, is charged immediately. The full monthly price is then added to the project's subscription for future billing cycles. The confirmation dialog shows both amounts before you enable the add-on.
+
+# Lifecycle and actions {% #lifecycle %}
+
+The Premium Geo DB section in project settings shows the add-on's current state and the available action:
+
+- **Payment pending**: Payment requires confirmation or is still processing. After completing payment authentication, select **Refresh** to check the payment and add-on status. If authorization fails, you can start the enable flow again.
+- **Active**: Premium Geo DB is enabled for the project. The Console displays its monthly price and lets you select **Disable Premium Geo DB**.
+- **Scheduled for removal**: The add-on remains active through the end of the current billing cycle but will not renew. Select **Keep Premium Geo DB** before the cycle ends to cancel removal and keep it enabled.
+- **Not enabled**: The project can enable the add-on when its organization plan supports it.
+
+Payment confirmation can complete asynchronously. If the payment provider confirms the invoice before the Console refreshes, the Console synchronizes the add-on state and treats the already-completed payment as successful.
+
+# Disable or re-enable Premium Geo DB {% #disable-re-enable %}
+
+Select **Disable Premium Geo DB** and confirm to schedule removal. Disabling does not remove access immediately: Premium Geo DB remains active until the end of the current billing cycle and is not renewed for the next cycle.
+
+While removal is scheduled, select **Keep Premium Geo DB** to re-enable renewal. Re-enabling is normally not charged again because the current billing cycle is already paid, but the Console requests payment authentication if an additional charge is required.
