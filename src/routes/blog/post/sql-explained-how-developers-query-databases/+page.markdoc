@@ -132,7 +132,7 @@ GROUP BY user_id;
 
 `GROUP BY` collapses rows that share a value into a single result row, and the aggregate function runs over each group. Add a `HAVING` clause to filter those groups, for example to find only users with more than five orders. This is how dashboards, reports, and analytics screens get their numbers.
 
-# Writing and changing data
+# How to write and modify data with SQL
 
 Reading is only half of SQL. The other three CRUD operations change what the database stores.
 
