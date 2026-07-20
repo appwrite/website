@@ -160,7 +160,7 @@ WHERE email = 'ada@example.com';
 
 A missing `WHERE` on an `UPDATE` or `DELETE` affects every row in the table. It is the most common way developers cause real damage in production, so treat those two statements with care.
 
-# How SQL keeps data correct: transactions and ACID
+# How SQL keeps data correct: Transactions and ACID
 
 When several changes must succeed or fail together, SQL uses **transactions**. A classic example is a money transfer: you subtract from one account and add to another, and it must never happen that one succeeds while the other fails.
 
