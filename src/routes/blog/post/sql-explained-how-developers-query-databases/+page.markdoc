@@ -98,7 +98,7 @@ LIMIT 10;
 
 `DESC` sorts in descending order (newest first), and `ASC` sorts ascending. Sorting and limiting are also the building blocks of pagination, which is how apps load data one page at a time instead of all at once.
 
-# Combining tables with JOINs
+# How to combine SQL tables with JOINs
 
 The real power of SQL shows up when you pull data from multiple tables in a single query. This is what "relational" means in practice, and it is done with a **`JOIN`**.
 
