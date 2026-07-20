@@ -173,7 +173,7 @@ COMMIT;
 
 If anything goes wrong before `COMMIT`, you can `ROLLBACK` and the database behaves as if none of it happened. This behavior is guaranteed by **ACID** properties (Atomicity, Consistency, Isolation, Durability), which are a core reason SQL databases are trusted for financial, ordering, and other systems where correctness is non-negotiable.
 
-# SQL vs NoSQL: when SQL is the right choice
+# SQL vs NoSQL: When SQL is the right choice
 
 SQL is not the only way to store data. **NoSQL** databases (such as document, key-value, and graph stores) trade the rigid table structure for flexibility and horizontal scale.
 
