@@ -1,0 +1,666 @@
+---
+layout: article
+title: Registration
+description: Register your app for Sign in with Appwrite through the Console or the Apps API.
+back: /docs/partners/apps
+---
+
+Your app appears on the consent screen as a registered client: a name, a logo, and a set of credentials tied to redirect URIs. Appwrite gives you two ways to register: the Console for people, the Apps API for code.
+
+| Method | Best for | Credentials |
+| --- | --- | --- |
+| [Console](#console) | Products with a marketplace listing: a logo, legal pages, managed secrets | Client ID and secrets you manage |
+| [Apps API](#apps-api) | The same apps, managed from code | Client ID and secrets you manage |
+
+# Client types {% #client-types %}
+
+Every client is `confidential` or `public`, and the choice decides how it authenticates.
+
+- **Confidential** clients have a backend that keeps a secret. They authenticate token requests with the client secret, and their tokens live longer: 8 hours for access tokens and 365 days for refresh tokens by default.
+- **Public** clients run where a secret cannot survive: single-page apps, native apps, CLIs. They carry no secret and must use [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) with `S256` on every authorization. Their tokens default to 1 hour and 30 days.
+
+Choose confidential whenever a server takes part in the flow. Public exists for the rest.
+
+# Console {% #console %}
+
+{% only_dark %}
+![Marketplace tab of an organization showing the app catalog and the Add app action](/images/docs/partners/apps/dark/registration-marketplace.avif)
+{% /only_dark %}
+{% only_light %}
+![Marketplace tab of an organization showing the app catalog and the Add app action](/images/docs/partners/apps/registration-marketplace.avif)
+{% /only_light %}
+
+Register through the Console when your app is a product: the same flow that creates the client also builds its marketplace listing. In your organization, open the **Marketplace** tab and click **Add app**. Give the app a name, a slug, a category, and a description. The slug becomes the app's client ID, and the app starts as a draft that only your organization sees.
+
+The app's pages hold everything else, split across **General**, **OAuth client**, **OAuth secrets**, **Legal**, **Support**, and **Publish**.
+
+## OAuth client {% #console-oauth-client %}
+
+{% only_dark %}
+![OAuth client settings with client type, device flow, and redirect URIs](/images/docs/partners/apps/dark/registration-oauth-client.avif)
+{% /only_dark %}
+{% only_light %}
+![OAuth client settings with client type, device flow, and redirect URIs](/images/docs/partners/apps/registration-oauth-client.avif)
+{% /only_light %}
+
+The **OAuth client** page sets the protocol details: the [client type](#client-types), the device flow toggle for TVs and CLIs, and the redirect URIs. Add every URI your app returns to; the authorization endpoint rejects anything not on the list.
+
+## OAuth secrets {% #console-oauth-secrets %}
+
+{% only_dark %}
+![OAuth secrets page listing an active secret with its hint](/images/docs/partners/apps/dark/registration-secrets.avif)
+{% /only_dark %}
+{% only_light %}
+![OAuth secrets page listing an active secret with its hint](/images/docs/partners/apps/registration-secrets.avif)
+{% /only_light %}
+
+The **OAuth secrets** page issues client secrets for confidential apps. Each secret's value appears once, at creation; store it in your deployment environment before closing the dialog. The list keeps only a hint of each secret, its creation date, and when it was last used. See [Secrets](#secrets) for the rotation workflow.
+
+## Publish {% #console-publish %}
+
+**Legal** and **Support** hold the privacy policy, terms of service, data deletion, and contact details that the consent screen links. When the listing is complete, the **Publish** page makes the app visible in the marketplace catalog for every organization. Publishing changes discovery, not authorization: users consent to your app the same way whether it is a draft or published.
+
+# Apps API {% #apps-api %}
+
+Everything the Console does, the `apps` service does from code. Authenticate with your Appwrite account's session; the apps you create belong to you, or to a team you pass in `teamId`.
+
+{% multicode %}
+```server-nodejs
+import { Client, Apps, ID } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['https://horizon.example.com/oauth/callback'],
+    description: 'Deployment dashboard for your Appwrite projects.',
+    tagline: 'Ship from one place',
+    logoUri: 'https://horizon.example.com/logo.png',
+    clientUri: 'https://horizon.example.com',
+    privacyPolicyUrl: 'https://horizon.example.com/privacy',
+    termsUrl: 'https://horizon.example.com/terms',
+    type: 'confidential'
+});
+```
+
+```server-deno
+import { Client, Apps, ID } from 'npm:node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['https://horizon.example.com/oauth/callback'],
+    description: 'Deployment dashboard for your Appwrite projects.',
+    tagline: 'Ship from one place',
+    logoUri: 'https://horizon.example.com/logo.png',
+    clientUri: 'https://horizon.example.com',
+    privacyPolicyUrl: 'https://horizon.example.com/privacy',
+    termsUrl: 'https://horizon.example.com/terms',
+    type: 'confidential'
+});
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.apps import Apps
+from appwrite.id import ID
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('console')
+client.set_session('')  # Your Appwrite account session
+
+apps = Apps(client)
+
+app = apps.create(
+    app_id = ID.unique(),
+    name = 'Horizon',
+    redirect_uris = ['https://horizon.example.com/oauth/callback'],
+    description = 'Deployment dashboard for your Appwrite projects.',
+    tagline = 'Ship from one place',
+    logo_uri = 'https://horizon.example.com/logo.png',
+    client_uri = 'https://horizon.example.com',
+    privacy_policy_url = 'https://horizon.example.com/privacy',
+    terms_url = 'https://horizon.example.com/terms',
+    type = 'confidential'
+)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Apps;
+use Appwrite\ID;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1')
+    ->setProject('console')
+    ->setSession(''); // Your Appwrite account session
+
+$apps = new Apps($client);
+
+$app = $apps->create(
+    appId: ID::unique(),
+    name: 'Horizon',
+    redirectUris: ['https://horizon.example.com/oauth/callback'],
+    description: 'Deployment dashboard for your Appwrite projects.',
+    tagline: 'Ship from one place',
+    logoUri: 'https://horizon.example.com/logo.png',
+    clientUri: 'https://horizon.example.com',
+    privacyPolicyUrl: 'https://horizon.example.com/privacy',
+    termsUrl: 'https://horizon.example.com/terms',
+    type: 'confidential'
+);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1')
+    .set_project('console')
+    .set_session('') # Your Appwrite account session
+
+apps = Apps.new(client)
+
+app = apps.create(
+    app_id: ID.unique(),
+    name: 'Horizon',
+    redirect_uris: ['https://horizon.example.com/oauth/callback'],
+    description: 'Deployment dashboard for your Appwrite projects.',
+    tagline: 'Ship from one place',
+    logo_uri: 'https://horizon.example.com/logo.png',
+    client_uri: 'https://horizon.example.com',
+    privacy_policy_url: 'https://horizon.example.com/privacy',
+    terms_url: 'https://horizon.example.com/terms',
+    type: 'confidential'
+)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+Apps apps = Apps(client);
+
+App app = await apps.create(
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['https://horizon.example.com/oauth/callback'],
+    description: 'Deployment dashboard for your Appwrite projects.',
+    tagline: 'Ship from one place',
+    logoUri: 'https://horizon.example.com/logo.png',
+    clientUri: 'https://horizon.example.com',
+    privacyPolicyUrl: 'https://horizon.example.com/privacy',
+    termsUrl: 'https://horizon.example.com/terms',
+    type: 'confidential',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Apps
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+val apps = Apps(client)
+
+val app = apps.create(
+    appId = ID.unique(),
+    name = "Horizon",
+    redirectUris = listOf("https://horizon.example.com/oauth/callback"),
+    description = "Deployment dashboard for your Appwrite projects.",
+    tagline = "Ship from one place",
+    logoUri = "https://horizon.example.com/logo.png",
+    clientUri = "https://horizon.example.com",
+    privacyPolicyUrl = "https://horizon.example.com/privacy",
+    termsUrl = "https://horizon.example.com/terms",
+    type = "confidential"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+apps.create(
+    ID.unique(), // appId
+    "Horizon", // name
+    List.of("https://horizon.example.com/oauth/callback"), // redirectUris
+    "Deployment dashboard for your Appwrite projects.", // description
+    "https://horizon.example.com", // clientUri
+    "https://horizon.example.com/logo.png", // logoUri
+    "https://horizon.example.com/privacy", // privacyPolicyUrl
+    "https://horizon.example.com/terms", // termsUrl
+    null, // contacts
+    "Ship from one place", // tagline
+    null, // tags
+    null, // images
+    null, // supportUrl
+    null, // dataDeletionUrl
+    null, // postLogoutRedirectUris
+    null, // enabled
+    "confidential", // type
+    null, // deviceFlow
+    null, // teamId
+    new CoroutineCallback<>((app, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(app);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+let apps = Apps(client)
+
+let app = try await apps.create(
+    appId: ID.unique(),
+    name: "Horizon",
+    redirectUris: ["https://horizon.example.com/oauth/callback"],
+    description: "Deployment dashboard for your Appwrite projects.",
+    tagline: "Ship from one place",
+    logoUri: "https://horizon.example.com/logo.png",
+    clientUri: "https://horizon.example.com",
+    privacyPolicyUrl: "https://horizon.example.com/privacy",
+    termsUrl: "https://horizon.example.com/terms",
+    type: "confidential"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1")
+    .SetProject("console")
+    .SetSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+App app = await apps.Create(
+    appId: ID.Unique(),
+    name: "Horizon",
+    redirectUris: new List<string> { "https://horizon.example.com/oauth/callback" },
+    description: "Deployment dashboard for your Appwrite projects.",
+    tagline: "Ship from one place",
+    logoUri: "https://horizon.example.com/logo.png",
+    clientUri: "https://horizon.example.com",
+    privacyPolicyUrl: "https://horizon.example.com/privacy",
+    termsUrl: "https://horizon.example.com/terms",
+    type: "confidential"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+
+    "github.com/appwrite/sdk-for-go/apps"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("https://cloud.appwrite.io/v1"),
+        client.WithProject("console"),
+        client.WithSession(""), // Your Appwrite account session
+    )
+
+    service := apps.New(c)
+
+    app, err := service.Create(
+        id.Unique(),
+        "Horizon",
+        []string{"https://horizon.example.com/oauth/callback"},
+        apps.WithCreateDescription("Deployment dashboard for your Appwrite projects."),
+        apps.WithCreateTagline("Ship from one place"),
+        apps.WithCreateLogoUri("https://horizon.example.com/logo.png"),
+        apps.WithCreateClientUri("https://horizon.example.com"),
+        apps.WithCreatePrivacyPolicyUrl("https://horizon.example.com/privacy"),
+        apps.WithCreateTermsUrl("https://horizon.example.com/terms"),
+        apps.WithCreateType("confidential"),
+    )
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(app)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::services::Apps;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    client.set_endpoint("https://cloud.appwrite.io/v1");
+    client.set_project("console");
+    client.set_session(""); // Your Appwrite account session
+
+    let apps = Apps::new(&client);
+
+    let app = apps.create(
+        &ID::unique(),
+        "Horizon",
+        vec!["https://horizon.example.com/oauth/callback"],
+        Some("Deployment dashboard for your Appwrite projects."),
+        Some("https://horizon.example.com"),
+        Some("https://horizon.example.com/logo.png"),
+        Some("https://horizon.example.com/privacy"),
+        Some("https://horizon.example.com/terms"),
+        None,
+        Some("Ship from one place"),
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        Some("confidential"),
+        None,
+        None,
+    ).await?;
+
+    println!("{}", app.id);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+The consent screen shows the name, logo, and tagline on the authorization card, and links the privacy policy and terms of service in its footer. `description`, `tags`, `images`, `supportUrl`, `dataDeletionUrl`, and `contacts` complete the listing where apps are browsed.
+
+Redirect URIs match exactly, with one exception: public clients may register loopback URIs (`http://127.0.0.1`, `http://localhost`), which match on any port. Redirect URIs must use HTTPS, a loopback address, or a private-use scheme such as `com.example.app:/callback` for native apps.
+
+# Secrets {% #secrets %}
+
+Confidential clients authenticate with a secret. Create one after registering:
+
+{% multicode %}
+```server-nodejs
+import { Client, Apps } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const secret = await apps.createSecret({
+    appId: '<APP_ID>'
+});
+
+console.log(secret.secret); // Shown only once
+```
+
+```server-deno
+import { Client, Apps } from 'npm:node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const secret = await apps.createSecret({
+    appId: '<APP_ID>'
+});
+
+console.log(secret.secret); // Shown only once
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.apps import Apps
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('console')
+client.set_session('')  # Your Appwrite account session
+
+apps = Apps(client)
+
+secret = apps.create_secret(
+    app_id = '<APP_ID>'
+)
+
+print(secret.secret)  # Shown only once
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Apps;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1')
+    ->setProject('console')
+    ->setSession(''); // Your Appwrite account session
+
+$apps = new Apps($client);
+
+$secret = $apps->createSecret(
+    appId: '<APP_ID>'
+);
+
+echo $secret['secret']; // Shown only once
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1')
+    .set_project('console')
+    .set_session('') # Your Appwrite account session
+
+apps = Apps.new(client)
+
+secret = apps.create_secret(
+    app_id: '<APP_ID>'
+)
+
+puts secret.secret # Shown only once
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+Apps apps = Apps(client);
+
+AppSecretPlaintext secret = await apps.createSecret(
+    appId: '<APP_ID>',
+);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Apps
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+val apps = Apps(client)
+
+val secret = apps.createSecret(
+    appId = "<APP_ID>"
+)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+apps.createSecret(
+    "<APP_ID>", // appId
+    new CoroutineCallback<>((secret, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(secret);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+let apps = Apps(client)
+
+let secret = try await apps.createSecret(
+    appId: "<APP_ID>"
+)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1")
+    .SetProject("console")
+    .SetSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+AppSecretPlaintext secret = await apps.CreateSecret(
+    appId: "<APP_ID>"
+);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+
+    "github.com/appwrite/sdk-for-go/apps"
+    "github.com/appwrite/sdk-for-go/client"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("https://cloud.appwrite.io/v1"),
+        client.WithProject("console"),
+        client.WithSession(""), // Your Appwrite account session
+    )
+
+    service := apps.New(c)
+
+    secret, err := service.CreateSecret("<APP_ID>")
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(secret)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Apps;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    client.set_endpoint("https://cloud.appwrite.io/v1");
+    client.set_project("console");
+    client.set_session(""); // Your Appwrite account session
+
+    let apps = Apps::new(&client);
+
+    let secret = apps.create_secret("<APP_ID>").await?;
+    println!("{}", secret.secret); // Shown only once
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+An app holds several active secrets at once, so rotation needs no downtime: create a new secret, deploy it, then delete the old one. Each stored secret keeps a `hint` (its last characters), who created it, and when it was last used, which tells you when the old secret is safe to delete.
+
+Two more operations matter over an app's life. `updateTeam` moves ownership to a team, so registration does not depend on one person's account. `deleteTokens` is the kill switch: it invalidates every token the app has been issued, for every user.
+
+# Labels {% #labels %}
+
+Labels such as `official` and `partner` mark apps the platform vouches for, and consent screens surface them as trust signals. Labels are assigned by Appwrite, not by the app itself, so they cannot be self-granted. Contact your partner manager to have your app labeled.

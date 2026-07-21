@@ -1,0 +1,46 @@
+---
+layout: article
+title: Consent
+description: What users see on the Sign in with Appwrite consent screen, what they can change, and what your app receives.
+back: /docs/partners/apps
+---
+
+Consent is where the user decides. Appwrite hosts the screen, renders what your app asked for, and gives the user the final say over scopes and targets. Your app never sees the screen; it sees the outcome.
+
+# The consent screen {% #consent-screen %}
+
+{% only_dark %}
+![Consent screen showing app identity, requested permissions, and project selection](/images/docs/partners/apps/dark/consent-screen.avif)
+{% /only_dark %}
+{% only_light %}
+![Consent screen showing app identity, requested permissions, and project selection](/images/docs/partners/apps/consent-screen.avif)
+{% /only_light %}
+
+The screen leads with your app's identity: the name, logo, and tagline from [registration](/docs/partners/apps/registration), with the privacy policy and terms linked in the footer. Below it, each requested scope appears as a permission line in plain language, and a summary states the overall reach, from "view your identity" for a bare OIDC request up to full account access.
+
+When the request targets projects or organizations, the screen shows a picker. A wildcard request becomes a list of the user's resources to choose from; a request for named IDs shows those resources for confirmation. The user signs in first if no session exists, and can switch accounts from the screen itself.
+
+# Users can grant less {% #partial-grants %}
+
+The user approves the request as a whole, a subset of it, or nothing. They deselect projects, drop scopes, and for agent-style grants toggle whole categories to read-only. Only `openid` always survives approval, so an approved flow always identifies the user.
+
+Your app learns the outcome from the token response: `scope` holds the scopes that survived, `authorization_details` the targets. Build for partial grants from the start. A dashboard asked to read five projects but granted two should show two projects, not an error.
+
+# When the screen is skipped {% #consent-reuse %}
+
+Appwrite remembers approvals. A returning user is redirected straight back to your app, without seeing the screen, when the new request stays inside the stored consent: no new scopes, and `authorization_details` identical to what was approved. The screen reappears when anything differs, including a request that omits `authorization_details` after a consent that had them, so send the same authorization parameters on every sign-in.
+
+Two request parameters override this. `prompt=consent` forces the screen even when a matching consent exists, and `prompt=none` forbids it, returning `error=consent_required` or `error=login_required` instead of showing UI. Use `prompt=none` to probe for existing access silently.
+
+# Revocation {% #revocation %}
+
+{% only_dark %}
+![Account applications page listing authorized apps with their token families](/images/docs/partners/apps/dark/account-applications.avif)
+{% /only_dark %}
+{% only_light %}
+![Account applications page listing authorized apps with their token families](/images/docs/partners/apps/account-applications.avif)
+{% /only_light %}
+
+Every consent appears on the user's account applications page, which lists each authorized app, the scopes it holds, and the tokens issued under it. The user revokes a single token or the whole consent; revoking the consent invalidates every token your app holds for that user.
+
+Your app sees revocation as failure, not as a message: token refreshes and API calls start returning `401`. Handle it by sending the user through authorization again. To leave cleanly, delete on your side too: revoke the tokens you hold at the [revocation endpoint](/docs/partners/apps/tokens#revocation) when a user disconnects your app.

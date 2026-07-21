@@ -1,0 +1,953 @@
+---
+layout: article
+title: Start with Sign in with Appwrite
+description: Register an app and run the full Sign in with Appwrite flow, from consent screen to your first authorized API call.
+back: /docs/partners/apps
+---
+
+This guide builds Sign in with Appwrite into an app, start to finish. The running example is Horizon, a deployment dashboard: a user clicks its sign-in button, approves access on the Appwrite consent screen, and Horizon reads their projects with the tokens it receives. By the end, you will have run the same journey with your own app.
+
+You need a server that can receive a redirect and keep a client secret. The examples use `http://localhost:7700/oauth/callback` as the redirect URI; replace it with your own.
+
+# Register your app {% #register %}
+
+{% only_dark %}
+![Marketplace tab of an organization with the Add app action](/images/docs/partners/apps/dark/registration-marketplace.avif)
+{% /only_dark %}
+{% only_light %}
+![Marketplace tab of an organization with the Add app action](/images/docs/partners/apps/registration-marketplace.avif)
+{% /only_light %}
+
+Before Appwrite can show your app to anyone, it needs to know the app exists. In the Console, open your organization's **Marketplace** tab and click **Add app**. Give it a name, a slug, a category, and a short description; the slug becomes your client ID, so Horizon signs in as `horizon`.
+
+{% only_dark %}
+![OAuth client page with client type and redirect URIs](/images/docs/partners/apps/dark/registration-oauth-client.avif)
+{% /only_dark %}
+{% only_light %}
+![OAuth client page with client type and redirect URIs](/images/docs/partners/apps/registration-oauth-client.avif)
+{% /only_light %}
+
+The new app opens on its settings pages. On **OAuth client**, keep the type **Confidential**, since your server will hold a secret, and add your redirect URI to the list. The authorization endpoint refuses to send users anywhere else, which is what makes the callback trustworthy.
+
+{% only_dark %}
+![OAuth secrets page with active secrets](/images/docs/partners/apps/dark/registration-secrets.avif)
+{% /only_dark %}
+{% only_light %}
+![OAuth secrets page with active secrets](/images/docs/partners/apps/registration-secrets.avif)
+{% /only_light %}
+
+Last, your app needs a way to prove it is really Horizon when it exchanges codes for tokens. On **OAuth secrets**, select **Create secret** and copy the value; it is shown once. Store the client ID and the secret in your server's environment.
+
+The same registration works from code with the `apps` service, which is how you would script it in CI or offer it inside your own product:
+
+{% multicode %}
+```server-nodejs
+import { Client, Apps, ID } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['http://localhost:7700/oauth/callback'],
+    type: 'confidential'
+});
+
+const secret = await apps.createSecret({ appId: app.$id });
+```
+
+```server-deno
+import { Client, Apps, ID } from 'npm:node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+const apps = new Apps(client);
+
+const app = await apps.create({
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['http://localhost:7700/oauth/callback'],
+    type: 'confidential'
+});
+
+const secret = await apps.createSecret({ appId: app.$id });
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.apps import Apps
+from appwrite.id import ID
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('console')
+client.set_session('')  # Your Appwrite account session
+
+apps = Apps(client)
+
+app = apps.create(
+    app_id = ID.unique(),
+    name = 'Horizon',
+    redirect_uris = ['http://localhost:7700/oauth/callback'],
+    type = 'confidential'
+)
+
+secret = apps.create_secret(app_id = app.id)
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Apps;
+use Appwrite\ID;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1')
+    ->setProject('console')
+    ->setSession(''); // Your Appwrite account session
+
+$apps = new Apps($client);
+
+$app = $apps->create(
+    appId: ID::unique(),
+    name: 'Horizon',
+    redirectUris: ['http://localhost:7700/oauth/callback'],
+    type: 'confidential'
+);
+
+$secret = $apps->createSecret(appId: $app['$id']);
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1')
+    .set_project('console')
+    .set_session('') # Your Appwrite account session
+
+apps = Apps.new(client)
+
+app = apps.create(
+    app_id: ID.unique(),
+    name: 'Horizon',
+    redirect_uris: ['http://localhost:7700/oauth/callback'],
+    type: 'confidential'
+)
+
+secret = apps.create_secret(app_id: app.id)
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setSession(''); // Your Appwrite account session
+
+Apps apps = Apps(client);
+
+App app = await apps.create(
+    appId: ID.unique(),
+    name: 'Horizon',
+    redirectUris: ['http://localhost:7700/oauth/callback'],
+    type: 'confidential',
+);
+
+AppSecretPlaintext secret = await apps.createSecret(appId: app.$id);
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.ID
+import io.appwrite.services.Apps
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+val apps = Apps(client)
+
+val app = apps.create(
+    appId = ID.unique(),
+    name = "Horizon",
+    redirectUris = listOf("http://localhost:7700/oauth/callback"),
+    type = "confidential"
+)
+
+val secret = apps.createSecret(appId = app.id)
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.ID;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Apps;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+apps.create(
+    ID.unique(), // appId
+    "Horizon", // name
+    List.of("http://localhost:7700/oauth/callback"), // redirectUris
+    null, // description
+    null, // clientUri
+    null, // logoUri
+    null, // privacyPolicyUrl
+    null, // termsUrl
+    null, // contacts
+    null, // tagline
+    null, // tags
+    null, // images
+    null, // supportUrl
+    null, // dataDeletionUrl
+    null, // postLogoutRedirectUris
+    null, // enabled
+    "confidential", // type
+    null, // deviceFlow
+    null, // teamId
+    new CoroutineCallback<>((app, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(app);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setSession("") // Your Appwrite account session
+
+let apps = Apps(client)
+
+let app = try await apps.create(
+    appId: ID.unique(),
+    name: "Horizon",
+    redirectUris: ["http://localhost:7700/oauth/callback"],
+    type: "confidential"
+)
+
+let secret = try await apps.createSecret(appId: app.id)
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1")
+    .SetProject("console")
+    .SetSession(""); // Your Appwrite account session
+
+Apps apps = new Apps(client);
+
+App app = await apps.Create(
+    appId: ID.Unique(),
+    name: "Horizon",
+    redirectUris: new List<string> { "http://localhost:7700/oauth/callback" },
+    type: "confidential"
+);
+
+AppSecretPlaintext secret = await apps.CreateSecret(appId: app.Id);
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+
+    "github.com/appwrite/sdk-for-go/apps"
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/id"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("https://cloud.appwrite.io/v1"),
+        client.WithProject("console"),
+        client.WithSession(""), // Your Appwrite account session
+    )
+
+    service := apps.New(c)
+
+    app, err := service.Create(
+        id.Unique(),
+        "Horizon",
+        []string{"http://localhost:7700/oauth/callback"},
+        apps.WithCreateType("confidential"),
+    )
+    if err != nil {
+        panic(err)
+    }
+
+    secret, err := service.CreateSecret(app.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(secret)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::id::ID;
+use appwrite::services::Apps;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    client.set_endpoint("https://cloud.appwrite.io/v1");
+    client.set_project("console");
+    client.set_session(""); // Your Appwrite account session
+
+    let apps = Apps::new(&client);
+
+    let app = apps.create(
+        &ID::unique(),
+        "Horizon",
+        vec!["http://localhost:7700/oauth/callback"],
+        None, None, None, None, None, None, None, None, None, None, None, None, None,
+        Some("confidential"),
+        None, None,
+    ).await?;
+
+    let secret = apps.create_secret(&app.id).await?;
+    println!("{}", secret.secret); // Shown only once
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+[Registration](/docs/partners/apps/registration) covers both paths in detail.
+
+# Redirect the user {% #redirect %}
+
+With credentials in your environment, Horizon can offer its sign-in button. The button sends the user to the authorization endpoint, and the query string carries everything your app asks for: identity scopes, one project scope, and an `authorization_details` parameter that lets the user pick which projects the grant applies to.
+
+```text
+https://cloud.appwrite.io/v1/oauth2/console/authorize
+  ?client_id=<CLIENT_ID>
+  &redirect_uri=http://localhost:7700/oauth/callback
+  &response_type=code
+  &scope=openid profile email project:databases.read
+  &state=<RANDOM_STATE>
+  &authorization_details=[{"type":"project","identifiers":["*"]}]
+```
+
+URL-encode the values. Generate a fresh random `state` per request and verify it on the way back; it is your protection against forged callbacks. The wildcard identifier asks for any project, which the consent screen turns into a picker the user controls. Scopes are described in the [scope catalog](/docs/partners/apps/scopes).
+
+# User grants access {% #consent %}
+
+{% only_dark %}
+![Consent screen asking to authorize the app with selected projects](/images/docs/partners/apps/dark/quick-start-consent.avif)
+{% /only_dark %}
+{% only_light %}
+![Consent screen asking to authorize the app with selected projects](/images/docs/partners/apps/quick-start-consent.avif)
+{% /only_light %}
+
+This is the moment the user meets your app inside Appwrite. The consent screen shows Horizon's name and logo, lists each requested permission in plain language, and lets the user select the projects the grant covers or reduce the access to read-only. On approval, the browser returns to your redirect URI:
+
+```text
+http://localhost:7700/oauth/callback?code=<CODE>&state=<RANDOM_STATE>&iss=https://cloud.appwrite.io/v1/oauth2/console
+```
+
+Verify that `state` matches what you sent, then use the code within five minutes. It is single-use.
+
+# Exchange the code {% #exchange %}
+
+From your server, exchange the code for tokens. Authenticate with your client credentials over HTTP basic auth.
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
+  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code" \
+  -d "code=<CODE>" \
+  -d "redirect_uri=http://localhost:7700/oauth/callback"
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/token
+[BasicAuth]
+<CLIENT_ID>: <CLIENT_SECRET>
+[Form]
+grant_type: authorization_code
+code: <CODE>
+redirect_uri: http://localhost:7700/oauth/callback
+```
+{% /multicode %}
+
+The response carries the three tokens and echoes what the user actually granted:
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJSUzI1NiJ9...",
+  "token_type": "Bearer",
+  "expires_in": 28800,
+  "refresh_token": "eyJhbGciOiJIUzI1NiJ9...",
+  "scope": "openid profile email project:databases.read",
+  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
+  "id_token": "eyJhbGciOiJSUzI1NiJ9..."
+}
+```
+
+Compare `scope` and `authorization_details` against what you requested; the user may have granted less. Store the refresh token like a password. [Tokens](/docs/partners/apps/tokens) covers lifetimes, refresh rotation, and revocation.
+
+# List the user's projects {% #list-projects %}
+
+The user is signed in and Horizon holds its tokens. Now the payoff: every Sign in with Appwrite token can list the projects and organizations it was granted. Pass the access token as a bearer token with any Appwrite Server SDK.
+
+{% multicode %}
+```server-nodejs
+import { Client, Oauth2 } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The user's access token
+
+const oauth2 = new Oauth2(client);
+
+const projects = await oauth2.listProjects();
+```
+
+```server-deno
+import { Client, Oauth2 } from 'npm:node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The user's access token
+
+const oauth2 = new Oauth2(client);
+
+const projects = await oauth2.listProjects();
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.oauth2 import Oauth2
+
+client = Client()
+client.set_endpoint('https://cloud.appwrite.io/v1')
+client.set_project('console')
+client.set_bearer('Bearer <ACCESS_TOKEN>')  # The user's access token
+
+oauth2 = Oauth2(client)
+
+projects = oauth2.list_projects()
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Oauth2;
+
+$client = (new Client())
+    ->setEndpoint('https://cloud.appwrite.io/v1')
+    ->setProject('console')
+    ->setBearer('Bearer <ACCESS_TOKEN>'); // The user's access token
+
+$oauth2 = new Oauth2($client);
+
+$projects = $oauth2->listProjects();
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://cloud.appwrite.io/v1')
+    .set_project('console')
+    .set_bearer('Bearer <ACCESS_TOKEN>') # The user's access token
+
+oauth2 = Oauth2.new(client)
+
+projects = oauth2.list_projects
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('console')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The user's access token
+
+Oauth2 oauth2 = Oauth2(client);
+
+Oauth2ProjectList projects = await oauth2.listProjects();
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Oauth2
+
+val client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setBearer("Bearer <ACCESS_TOKEN>") // The user's access token
+
+val oauth2 = Oauth2(client)
+
+val projects = oauth2.listProjects()
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Oauth2;
+
+Client client = new Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setBearer("Bearer <ACCESS_TOKEN>"); // The user's access token
+
+Oauth2 oauth2 = new Oauth2(client);
+
+oauth2.listProjects(
+    null, // limit (optional)
+    null, // offset (optional)
+    null, // search (optional)
+    new CoroutineCallback<>((projects, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(projects);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject("console")
+    .setBearer("Bearer <ACCESS_TOKEN>") // The user's access token
+
+let oauth2 = Oauth2(client)
+
+let projects = try await oauth2.listProjects()
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://cloud.appwrite.io/v1")
+    .SetProject("console")
+    .SetBearer("Bearer <ACCESS_TOKEN>"); // The user's access token
+
+Oauth2 oauth2 = new Oauth2(client);
+
+Oauth2ProjectList projects = await oauth2.ListProjects();
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/oauth2"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("https://cloud.appwrite.io/v1"),
+        client.WithProject("console"),
+        client.WithBearer("Bearer <ACCESS_TOKEN>"), // The user's access token
+    )
+
+    service := oauth2.New(c)
+
+    projects, err := service.ListProjects()
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(projects)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Oauth2;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    client.set_endpoint("https://cloud.appwrite.io/v1");
+    client.set_project("console");
+    client.set_bearer("Bearer <ACCESS_TOKEN>"); // The user's access token
+
+    let oauth2 = Oauth2::new(&client);
+
+    let projects = oauth2.list_projects(None, None, None).await?;
+    println!("{:?}", projects.projects);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+Each entry carries the project's `$id`, `region`, and `endpoint`, which is everything your app needs to call it.
+
+# Call a project API {% #call-project-api %}
+
+The listing gives Horizon everything it needs to do real work. Point a client at a granted project's endpoint, keep the same bearer token, and call the APIs your scopes allow. With `project:databases.read`, that is the read side of Databases.
+
+{% multicode %}
+```server-nodejs
+import { Client, Databases } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('<PROJECT_ENDPOINT>') // From the project listing
+    .setProject('<PROJECT_ID>')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The same access token
+
+const databases = new Databases(client);
+
+const result = await databases.list();
+```
+
+```server-deno
+import { Client, Databases } from 'npm:node-appwrite';
+
+const client = new Client()
+    .setEndpoint('<PROJECT_ENDPOINT>') // From the project listing
+    .setProject('<PROJECT_ID>')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The same access token
+
+const databases = new Databases(client);
+
+const result = await databases.list();
+```
+
+```server-python
+from appwrite.client import Client
+from appwrite.services.databases import Databases
+
+client = Client()
+client.set_endpoint('<PROJECT_ENDPOINT>')  # From the project listing
+client.set_project('<PROJECT_ID>')
+client.set_bearer('Bearer <ACCESS_TOKEN>')  # The same access token
+
+databases = Databases(client)
+
+result = databases.list()
+```
+
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Databases;
+
+$client = (new Client())
+    ->setEndpoint('<PROJECT_ENDPOINT>') // From the project listing
+    ->setProject('<PROJECT_ID>')
+    ->setBearer('Bearer <ACCESS_TOKEN>'); // The same access token
+
+$databases = new Databases($client);
+
+$result = $databases->list();
+```
+
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('<PROJECT_ENDPOINT>') # From the project listing
+    .set_project('<PROJECT_ID>')
+    .set_bearer('Bearer <ACCESS_TOKEN>') # The same access token
+
+databases = Databases.new(client)
+
+result = databases.list
+```
+
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('<PROJECT_ENDPOINT>') // From the project listing
+    .setProject('<PROJECT_ID>')
+    .setBearer('Bearer <ACCESS_TOKEN>'); // The same access token
+
+Databases databases = Databases(client);
+
+DatabaseList result = await databases.list();
+```
+
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Databases
+
+val client = Client()
+    .setEndpoint("<PROJECT_ENDPOINT>") // From the project listing
+    .setProject("<PROJECT_ID>")
+    .setBearer("Bearer <ACCESS_TOKEN>") // The same access token
+
+val databases = Databases(client)
+
+val result = databases.list()
+```
+
+```server-java
+import io.appwrite.Client;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Databases;
+
+Client client = new Client()
+    .setEndpoint("<PROJECT_ENDPOINT>") // From the project listing
+    .setProject("<PROJECT_ID>")
+    .setBearer("Bearer <ACCESS_TOKEN>"); // The same access token
+
+Databases databases = new Databases(client);
+
+databases.list(
+    null, // queries (optional)
+    null, // search (optional)
+    null, // total (optional)
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+
+        System.out.println(result);
+    })
+);
+```
+
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("<PROJECT_ENDPOINT>") // From the project listing
+    .setProject("<PROJECT_ID>")
+    .setBearer("Bearer <ACCESS_TOKEN>") // The same access token
+
+let databases = Databases(client)
+
+let result = try await databases.list()
+```
+
+```server-dotnet
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("<PROJECT_ENDPOINT>") // From the project listing
+    .SetProject("<PROJECT_ID>")
+    .SetBearer("Bearer <ACCESS_TOKEN>"); // The same access token
+
+Databases databases = new Databases(client);
+
+DatabaseList result = await databases.List();
+```
+
+```server-go
+package main
+
+import (
+    "fmt"
+
+    "github.com/appwrite/sdk-for-go/client"
+    "github.com/appwrite/sdk-for-go/databases"
+)
+
+func main() {
+    c := client.New(
+        client.WithEndpoint("<PROJECT_ENDPOINT>"), // From the project listing
+        client.WithProject("<PROJECT_ID>"),
+        client.WithBearer("Bearer <ACCESS_TOKEN>"), // The same access token
+    )
+
+    service := databases.New(c)
+
+    result, err := service.List()
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Databases;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    client.set_endpoint("<PROJECT_ENDPOINT>"); // From the project listing
+    client.set_project("<PROJECT_ID>");
+    client.set_bearer("Bearer <ACCESS_TOKEN>"); // The same access token
+
+    let databases = Databases::new(&client);
+
+    let result = databases.list(None, None, None).await?;
+    println!("{:?}", result.total);
+
+    Ok(())
+}
+```
+{% /multicode %}
+
+A call outside the granted scopes or projects fails with a `401` error of type `general_unauthorized_scope`. The token works on every region, so your app never maps regions itself; use each project's `endpoint` value from the listing.
+
+# Sign in through Appwrite Auth {% #appwrite-provider %}
+
+{% only_dark %}
+![Appwrite provider settings with quick setup filling credentials from an organization app](/images/docs/partners/apps/dark/quick-start-provider-setup.avif)
+{% /only_dark %}
+{% only_light %}
+![Appwrite provider settings with quick setup filling credentials from an organization app](/images/docs/partners/apps/quick-start-provider-setup.avif)
+{% /only_light %}
+
+If your product itself runs on an Appwrite project, you do not need to handle the flow by hand. Appwrite Auth ships an **Appwrite** OAuth provider. In your project, open **Auth** and then **Social providers**, select **Appwrite**, and use **Quick setup** to create or pick an organization app; Appwrite registers the callback URI and fills the client ID and secret for you. Then sign users in with the same call you would use for GitHub or Google.
+
+{% multicode %}
+```client-web
+import { Client, Account, OAuthProvider } from 'appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>'); // Your project, not the user's
+
+const account = new Account(client);
+
+account.createOAuth2Session({
+    provider: OAuthProvider.Appwrite,
+    success: 'https://example.com/success',
+    failure: 'https://example.com/failure'
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>'); // Your project, not the user's
+
+Account account = Account(client);
+
+await account.createOAuth2Session(
+    provider: OAuthProvider.appwrite,
+);
+```
+
+```client-apple
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>") // Your project, not the user's
+
+let account = Account(client)
+
+try await account.createOAuth2Session(
+    provider: .appwrite
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.enums.OAuthProvider
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<YOUR_PROJECT_ID>") // Your project, not the user's
+
+val account = Account(client)
+
+account.createOAuth2Session(
+    activity = activity,
+    provider = OAuthProvider.APPWRITE,
+)
+```
+
+```client-react-native
+import { Client, Account, OAuthProvider } from 'react-native-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<YOUR_PROJECT_ID>'); // Your project, not the user's
+
+const account = new Account(client);
+
+account.createOAuth2Token({
+    provider: OAuthProvider.Appwrite,
+    success: '<YOUR_DEEP_LINK>',
+    failure: '<YOUR_DEEP_LINK>'
+});
+```
+{% /multicode %}
+
+The provider requests the identity scopes, signs the user into your project, and stores the issued tokens on the user's [identity](/docs/products/auth/identities). Use this when you want "Sign in with Appwrite" as a login method; use the manual flow above when your app needs scoped access to the user's projects.
+
+# Next steps {% #next-steps %}
+
+{% cards %}
+{% cards_item href="/docs/partners/apps/registration" title="Registration" %}
+Give your app a logo and consent screen details, and manage secrets.
+{% /cards_item %}
+{% cards_item href="/docs/partners/apps/scopes" title="Scopes" %}
+Request exactly the access your app needs.
+{% /cards_item %}
+{% cards_item href="/docs/partners/apps/dashboards" title="Dashboards" %}
+Build a read-only dashboard over granted projects.
+{% /cards_item %}
+{% cards_item href="/docs/partners/apps/tokens" title="Tokens" %}
+Refresh tokens before they expire and handle revocation.
+{% /cards_item %}
+{% /cards %}

@@ -1,0 +1,83 @@
+---
+layout: article
+title: Scopes
+description: The Sign in with Appwrite scope catalog, and how grants target the projects and organizations a user chooses.
+back: /docs/partners/apps
+---
+
+A scope names an action your app wants to perform. A grant pairs scopes with the projects and organizations they apply to. Both halves matter: `project:databases.read` by itself says what, and the user's project selection on the consent screen says where.
+
+Request the smallest set that serves your app. Every scope you ask for appears on the consent screen as a permission line, and users decline requests that want too much.
+
+# Identity scopes {% #identity-scopes %}
+
+The OpenID Connect scopes cover who the user is. They are the same four scopes every OIDC provider uses.
+
+| Scope | Grants |
+| --- | --- |
+| `openid` | The user's subject identifier. Required to receive an ID token. |
+| `profile` | Profile claims, such as the user's name. |
+| `email` | The user's email address and its verification state. |
+| `phone` | The user's phone number and its verification state. |
+
+An app that only signs users in requests `openid profile email` and stops there.
+
+# Project scopes {% #project-scopes %}
+
+Project scopes carry the `project:` prefix and map to the permissions [API keys](/docs/partners/project/api-keys) use, one `.read` and one `.write` scope per resource. The catalog covers every Appwrite product:
+
+| Product | Scopes |
+| --- | --- |
+| Databases | `project:databases.read`, `project:databases.write`, `project:tables.read`, `project:tables.write`, `project:columns.read`, `project:columns.write`, `project:rows.read`, `project:rows.write`, `project:indexes.read`, `project:indexes.write` |
+| Auth | `project:users.read`, `project:users.write`, `project:sessions.read`, `project:sessions.write`, `project:teams.read`, `project:teams.write` |
+| Storage | `project:buckets.read`, `project:buckets.write`, `project:files.read`, `project:files.write`, `project:tokens.read`, `project:tokens.write` |
+| Functions | `project:functions.read`, `project:functions.write`, `project:executions.read`, `project:executions.write` |
+| Sites | `project:sites.read`, `project:sites.write`, `project:log.read`, `project:log.write` |
+| Messaging | `project:providers.read`, `project:providers.write`, `project:topics.read`, `project:topics.write`, `project:subscribers.read`, `project:subscribers.write`, `project:targets.read`, `project:targets.write`, `project:messages.read`, `project:messages.write` |
+| Project configuration | `project:project.read`, `project:project.write`, `project:keys.read`, `project:keys.write`, `project:platforms.read`, `project:platforms.write`, `project:webhooks.read`, `project:webhooks.write`, `project:policies.read`, `project:policies.write` |
+| Networking | `project:rules.read`, `project:rules.write`, `project:domains.read`, `project:domains.write`, `project:wafRules.read`, `project:wafRules.write` |
+| Operations | `project:usage.read`, `project:health.read`, `project:migrations.read`, `project:migrations.write`, `project:backups.policies.read`, `project:backups.policies.write`, `project:archives.read`, `project:archives.write`, `project:restorations.read`, `project:restorations.write` |
+
+`project:all` grants the full project catalog at once. Reserve it for tools that genuinely administer whole projects; the consent screen presents it as full project access.
+
+The full list is published in the discovery document under `scopes_supported`:
+
+```text
+https://cloud.appwrite.io/v1/oauth2/console/.well-known/openid-configuration
+```
+
+# Organization scopes {% #organization-scopes %}
+
+Organization scopes carry the `organization:` prefix and cover what a user's organization owns: its profile, members, projects, domains, and keys.
+
+| Area | Scopes |
+| --- | --- |
+| Organization | `organization:organization.read`, `organization:organization.write` |
+| Members | `organization:organization.memberships.read`, `organization:organization.memberships.write` |
+| Projects | `organization:projects.read`, `organization:projects.write` |
+| Domains | `organization:domains.read`, `organization:domains.write` |
+| Keys | `organization:organization.keys.read`, `organization:organization.keys.write` |
+| Dev keys | `organization:devKeys.read`, `organization:devKeys.write` |
+
+`organization:all` grants the full set. `organization:projects.write` is the scope that creates projects, which lets an app provision on a user's behalf.
+
+# Targeting projects and organizations {% #targeting %}
+
+Scopes alone never grant access to a resource. The authorization request also carries `authorization_details` ([RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)), a JSON array that names the projects and organizations the grant covers:
+
+```json
+[
+  { "type": "project", "identifiers": ["*"] },
+  { "type": "organization", "identifiers": ["<ORGANIZATION_ID>"] }
+]
+```
+
+Each entry has a `type`, either `project` or `organization`, and an `identifiers` array of IDs. The wildcard `*` asks for all of them, which the consent screen turns into a picker where the user chooses. Your app receives the final selection in the token response's `authorization_details` field and can read the granted projects at any time by listing them, as shown in the [quick start](/docs/partners/apps/quick-start#list-projects).
+
+A granted scope applies only inside the granted targets. A token with `project:databases.read` reads databases in the projects the user selected and fails everywhere else with a `401` error of type `general_unauthorized_scope`. There is one hard exclusion: an authorization detail can never name the `console` project itself as a target.
+
+# When requests fail {% #failures %}
+
+Requesting a scope outside the catalog fails before consent: the authorization endpoint redirects back with `error=invalid_scope`. Malformed or unsupported `authorization_details` fail the same way with `error=invalid_authorization_details`. Validate both against the discovery document, which also publishes `authorization_details_types_supported`.
+
+The user can also grant less than you asked. Consent may drop scopes or narrow write access to read, so treat the `scope` string in the token response as the truth, not your request. [Consent](/docs/partners/apps/consent) shows what that narrowing looks like.
