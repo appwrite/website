@@ -51,14 +51,14 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
-);
+const target = await users.createTarget({
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Email,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -70,14 +70,14 @@ const client = new sdk.Client()
 
 const users = new sdk.Users(client);
 
-const target = await users.createTarget(
-    '<USER_ID>',                     // userId
-    '<TARGET_ID>',                   // targetId
-    sdk.MessagingProviderType.Email, // providerType
-    '<IDENTIFIER>',                  // identifier
-    '<PROVIDER_ID>',                 // providerId (optional)
-    '<NAME>'                         // name (optional)
-);
+const target = await users.createTarget({
+    userId: '<USER_ID>',
+    targetId: '<TARGET_ID>',
+    providerType: sdk.MessagingProviderType.Email,
+    identifier: '<IDENTIFIER>',
+    providerId: '<PROVIDER_ID>',
+    name: '<NAME>'
+});
 ```
 ```php
 <?php
@@ -319,10 +319,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const topic = await messaging.createTopic(
-        '<TOPIC_ID>',                            // topicId
-        '<NAME>'                                 // name
-    );
+const topic = await messaging.createTopic({
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -338,10 +338,10 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const topic = await messaging.createTopic(
-        '<TOPIC_ID>',                            // topicId
-        '<NAME>'                                 // name
-    );
+const topic = await messaging.createTopic({
+    topicId: '<TOPIC_ID>',
+    name: '<NAME>'
+});
 ```
 ```php
 <?php
@@ -554,20 +554,20 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-        '<MESSAGE_ID>',                          // messageId
-        '<SUBJECT>',                             // subject
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        [],                                      // cc (optional)
-        [],                                      // bcc (optional)
-        [],                                      // attachments (optional)
-        false,                                   // draft (optional)
-        false,                                   // html (optional)
-        ''                                       // scheduledAt (optional)
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    attachments: [],
+    draft: false,
+    html: false,
+    scheduledAt: ''
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -583,20 +583,20 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-        '<MESSAGE_ID>',                          // messageId
-        '<SUBJECT>',                             // subject
-        '<CONTENT>',                             // content
-        [],                                      // topics (optional)
-        [],                                      // users (optional)
-        [],                                      // targets (optional)
-        [],                                      // cc (optional)
-        [],                                      // bcc (optional)
-        [],                                      // attachments (optional)
-        false,                                   // draft (optional)
-        false,                                   // html (optional)
-        ''                                       // scheduledAt (optional)
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    attachments: [],
+    draft: false,
+    html: false,
+    scheduledAt: ''
+});
 ```
 ```php
 <?php
@@ -890,19 +890,19 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message = await messaging.createEmail(
-        '<MESSAGE_ID>',            // messageId
-        '<SUBJECT>',               // subject
-        '<CONTENT>',               // content
-        [],                        // topics (optional)
-        [],                        // users (optional)
-        [],                        // targets (optional)
-        [],                        // cc (optional)
-        [],                        // bcc (optional)
-        false,                     // draft (optional)
-        false,                     // html (optional)
-        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    draft: false,
+    html: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+});
 ```
 ```deno
 import * as sdk from "npm:node-appwrite";
@@ -918,19 +918,19 @@ client
     .setKey('919c2d18fb5d4...a2ae413da83346ad2') // Your secret API key
 ;
 
-const message - await messaging.createEmail(
-        '<MESSAGE_ID>',            // messageId
-        '<SUBJECT>',               // subject
-        '<CONTENT>',               // content
-        [],                        // topics (optional)
-        [],                        // users (optional)
-        [],                        // targets (optional)
-        [],                        // cc (optional)
-        [],                        // bcc (optional)
-        false,                     // draft (optional)
-        false,                     // html (optional)
-        '2025-02-13T22:01:00+0000' // scheduledAt (optional)
-    );
+const message = await messaging.createEmail({
+    messageId: '<MESSAGE_ID>',
+    subject: '<SUBJECT>',
+    content: '<CONTENT>',
+    topics: [],
+    users: [],
+    targets: [],
+    cc: [],
+    bcc: [],
+    draft: false,
+    html: false,
+    scheduledAt: '2025-02-13T22:01:00+0000'
+});
 ```
 ```php
 <?php
