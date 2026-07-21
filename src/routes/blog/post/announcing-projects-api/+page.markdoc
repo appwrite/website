@@ -32,12 +32,12 @@ This is part of a wider effort to make everything in Appwrite accessible through
 
 # Why this matters
 
-A project's configuration is the foundation every other resource sits on. Which auth methods are enabled, which platforms can connect, how email is delivered: these decisions shape how your app behaves. Managing them from code opens up workflows that were previously manual:
+A project's configuration is the foundation every other resource sits on. Which auth methods are enabled, which platforms can connect, how email is delivered: these decisions shape how your app behaves. This matters most for partners: agencies, consultancies, and platforms that manage Appwrite projects on behalf of their clients, where every new client means another project to set up and keep consistent. Managing configuration from code opens up workflows that were previously manual:
 
 - **Reproducible environments** where development, staging, and production projects are configured from the same script
 - **Project provisioning** that sets up auth, platforms, and policies for a new project in one run
 - **Multi-tenant platforms** that configure a project per customer without Console access
-- **Partner workflows**, where [Appwrite Partners](/partners) such as agencies and consultancies provision and manage projects for their clients at scale, without clicking through the Console for each one
+- **Partner workflows**, where agencies, consultancies, and other teams that build for clients provision and manage projects at scale without clicking through the Console for each one
 - **Configuration in version control**, so changes to a project are reviewed and tracked like any other code
 
 # What you can configure
