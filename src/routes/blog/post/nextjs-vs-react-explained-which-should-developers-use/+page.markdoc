@@ -1,0 +1,176 @@
+---
+layout: post
+title: "Next.js vs. React explained: Which should developers use?"
+description: Compare React and Next.js to understand their key differences, what Next.js adds, and which option best fits your app’s SEO, performance, and project needs.
+date: 2026-07-21
+cover: /images/blog/nextjs-vs-react-explained-which-should-developers-use/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+unlisted: true
+faqs:
+  - question: Is Next.js better than React?
+    answer: Next.js is better for projects that need SEO, server-side rendering, file-based routing, and production features out of the box. React is better when you want maximum flexibility or are building a client-side application that does not need server rendering.
+  - question: What is the main difference between React and Next.js?
+    answer: React is a JavaScript library for building user interfaces. Next.js is a full-stack framework built on React that adds routing, server rendering, backend functions, and build optimizations.
+  - question: Is Next.js built on React?
+    answer: Yes. Next.js uses React for building components and adds the infrastructure needed to route, render, optimize, and deploy complete web applications.
+  - question: Can I use Next.js without React?
+    answer: No. Next.js is built on React, so every Next.js application uses React underneath.
+  - question: Is Next.js faster than React?
+    answer: Next.js can provide faster initial page loads through server rendering, static generation, and React Server Components. A lightweight React application may perform equally well for highly interactive applications where most content loads after sign-in.
+---
+Ask a room of developers whether they use Next.js or React, and half of them will say "both" without realizing the question has a real answer. The confusion is understandable: Next.js is built on top of React, so the line between them blurs the moment you start a project. But they solve different problems, and picking the wrong one adds complexity you'll pay for later.
+
+This is the core of the Next.js vs. React debate. **React** is a library for building user interfaces. **Next.js** is a framework that wraps React with routing, rendering, and infrastructure decisions already made for you. Knowing which layer you actually need saves you from either reinventing a framework or fighting one you didn't want.
+
+This article breaks down what each does, what Next.js adds on top of React, and how to decide which fits your project.
+
+# What is React?
+
+React is an open-source JavaScript library for building user interfaces, maintained by Meta. It gives you a component model, a virtual DOM for efficient updates, and hooks like `useState` and `useEffect` for managing state and side effects. That's the scope: React renders components and keeps the UI in sync with your data.
+
+What React deliberately does **not** include is just as important:
+
+- No routing. You add a library like React Router yourself.
+- No built-in data fetching conventions or server rendering out of the box.
+- No opinion on your build tooling, folder structure, or deployment.
+
+React is unopinionated by design. You assemble the rest of the stack from separate packages. That flexibility is powerful when you know what you're building, and a burden when you'd rather not make a dozen infrastructure decisions before writing a feature.
+
+```jsx
+import { useState } from "react";
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>;
+}
+```
+
+# What is Next.js?
+
+Next.js is a React framework built by Vercel that adds structure and infrastructure on top of the React library. It ships with a router, multiple rendering strategies, a build system, and production optimizations, so you start from a working full-stack setup instead of an empty canvas.
+
+When you use Next.js, you're still writing React components. The difference is that Next.js decides how those components are routed, rendered, and served. It fills in the gaps React leaves open, which is why so many teams reach for it by default.
+
+Next.js has two routing systems: the older **Pages Router** and the newer **App Router**, which is built around [React Server Components](/blog/post/client-vs-server-components-react) and is the recommended default in current versions. Recent releases have leaned further into server-first rendering, streaming, and partial pre-rendering. If you want a deeper look at the latest changes, see [everything new in Next.js 16](/blog/post/everything-new-in-nextjs16).
+
+# Next.js vs. React: what's the core difference?
+
+**React is a library; Next.js is a framework built on React.** A library gives you a tool to solve one problem (rendering UI). A framework gives you a structure and makes the surrounding decisions for you (routing, rendering, bundling, and deployment conventions).
+
+Put simply: you can use React without Next.js, but you can't use Next.js without React.
+
+Here's how the two compare across the decisions that matter most:
+
+|  | React | Next.js |
+| --- | --- | --- |
+| Type | UI library | Full-stack framework built on React |
+| Routing | Not included (add React Router) | File-based routing included |
+| Rendering | Client-side by default | SSR, SSG, ISR, and RSC out of the box |
+| SEO | Requires extra setup for server rendering | Strong defaults for crawlable HTML |
+| Data fetching | Bring your own pattern | Server components and built-in conventions |
+| Backend/API | Separate service required | API routes and server functions included |
+| Build tooling | You configure it (Vite, etc.) | Preconfigured and optimized |
+| Flexibility | High, you assemble the stack | Opinionated, decisions made for you |
+
+The trade-off is straightforward. React gives you maximum control and minimum assumptions. Next.js gives you speed and sensible defaults at the cost of some flexibility.
+
+# What Next.js adds on top of React
+
+Since Next.js is React underneath, the useful comparison is not "which renders UI better." It's "what does Next.js hand you that you'd otherwise build yourself." The main additions:
+
+- **File-based routing:** Create a file in the right directory and it becomes a route. No route configuration to maintain by hand.
+- **Multiple rendering modes:** Server-side rendering (SSR), static site generation (SSG), incremental static regeneration (ISR), and client-side rendering, chosen per route. Plain React is client-side rendered unless you build the server layer yourself.
+- **React Server Components:** Render components on the server and ship less JavaScript to the browser. See our breakdown of [client vs. server components in React](/blog/post/client-vs-server-components-react).
+- **API routes and server functions:** Write backend endpoints inside the same project, so light server logic doesn't require a separate service.
+- **Built-in optimizations:** Automatic code splitting, image optimization, and font optimization that you'd otherwise wire up manually.
+- **Preconfigured build tooling:** Bundling, transpilation, and production builds work out of the box.
+
+If you find yourself installing React Router, setting up a custom SSR pipeline, and hand-tuning your bundler on top of a React project, you're rebuilding a large part of what Next.js already provides.
+
+# Next.js vs. React for SEO and performance
+
+**For SEO, Next.js is the stronger default.** A standard client-side React app sends the browser a near-empty HTML shell and builds the page with JavaScript after load. Search crawlers and social preview bots can struggle with content that only appears after the bundle executes, and the page metadata isn't present in the initial HTML.
+
+Next.js renders HTML on the server (or at build time), so crawlers receive fully formed content and metadata on the first request. That directly benefits indexing, link previews, and pages where organic search matters. This is the same SSR vs. CSR trade-off covered in [SSR vs. CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs).
+
+On raw performance, the picture is more nuanced:
+
+- **Initial load:** Next.js typically wins because the browser can paint server-rendered HTML immediately instead of waiting for JavaScript to fetch data and build the DOM.
+- **Bundle size:** Server components in Next.js ship less JavaScript to the client, which speeds up interaction readiness on content-heavy pages.
+- **Highly interactive apps:** For a dashboard behind a login where SEO is irrelevant, a lean client-side React app can perform just as well without the framework overhead.
+
+Performance is not automatically better with either choice. It depends on whether your app is content-first (favoring Next.js) or interaction-first (where plain React is fine).
+
+# When should you use React on its own?
+
+Reach for React without a framework when:
+
+- You're building a **single-page application** behind authentication, like an internal dashboard or admin panel, where SEO doesn't matter.
+- You want **full control** over your stack and are comfortable choosing your own router, data layer, and build setup.
+- You're adding interactivity to **part of an existing page** rather than building a full site.
+- You're targeting a **non-web platform**, where React Native, not Next.js, is the relevant tool.
+
+A modern React app with Vite starts fast and stays lightweight. If you don't need server rendering or file-based routing, adding a framework is complexity you won't use.
+
+# When should you use Next.js?
+
+Choose Next.js when:
+
+- **SEO matters:** marketing sites, blogs, e-commerce, documentation, or any page you want indexed and shared with rich previews.
+- You want **routing, rendering, and tooling decided for you** so you can start shipping features immediately.
+- Your app benefits from a **mix of static and dynamic pages**, using SSG for content and SSR for personalized routes.
+- You want to keep **light backend logic** (form handling, webhooks, simple APIs) in the same project via API routes.
+
+For most new web projects that face the public internet, Next.js is the pragmatic default. You get production-ready patterns without assembling them yourself.
+
+# Next.js vs. React: which should developers use?
+
+There's no universally correct answer in the Next.js vs. React decision, but there is a correct answer for your project. Use this as the short version:
+
+- **Public-facing site where SEO and first-load speed matter?** Use Next.js.
+- **Interactive app behind a login where SEO is irrelevant?** React on its own is enough.
+- **Want decisions made for you so you can ship fast?** Next.js.
+- **Want full control over every layer of your stack?** React with the libraries you choose.
+
+Remember that this is not React *or* Next.js as competing technologies. Next.js is React with the surrounding infrastructure filled in. The real question is how much of that infrastructure you want to own yourself versus have handled for you.
+
+# Adding a backend to your Next.js or React app
+
+Whichever you pick, the frontend is only half the story. Both React and Next.js still need somewhere to authenticate users, store data, handle files, and run server-side logic. Next.js API routes cover light backend needs, but a growing app usually wants a real backend rather than stretching route handlers into one.
+
+This is where [Appwrite](/docs) fits. It gives your React or Next.js frontend a complete backend: [Authentication](/docs/products/auth) with OAuth, MFA, and phone login; [Databases](/docs/products/databases) with real-time subscriptions; file [Storage](/docs/products/storage) with per-user permissions; and serverless [Functions](/docs/products/functions). Because Appwrite is client-agnostic, the same setup works whether your frontend is a plain React SPA or a server-rendered Next.js app.
+
+```js
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+  .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>");
+
+const account = new Account(client);
+const user = await account.get();
+```
+
+For SSR in Next.js, Appwrite supports server-side session handling with the Node.js SDK, so authenticated requests work correctly on the server. The [SSR vs. CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs) guide walks through both patterns in detail.
+
+# Deploy your Next.js or React app with Appwrite
+
+The Next.js vs. React choice comes down to how much infrastructure you want to own. Use React when you need control and don't need server rendering. Use Next.js when SEO, first-load performance, and sensible defaults matter more than raw flexibility. Either way, you'll need a backend and a place to host it.
+
+[Appwrite Sites](/docs/products/sites) hosts both React and Next.js apps with Git-based deployments, global edge distribution, and full support for SSR and React Server Components. Pair it with Appwrite's backend services and your frontend and backend live in one platform. [Sign up for Appwrite Cloud](https://cloud.appwrite.io) for free, or self-host using the [installation guide](/docs/advanced/self-hosting).
+
+Resources:
+
+- [Deploy a Next.js app to Appwrite Sites](/blog/post/deploy-nextjs-app-to-appwrite-sites)
+- [Client vs. server components in React](/blog/post/client-vs-server-components-react)
+- [SSR vs. CSR with Next.js](/blog/post/csr-vs-ssr-with-nextjs)
+- [Everything new in Next.js 16](/blog/post/everything-new-in-nextjs16)
+- [Appwrite Sites documentation](/docs/products/sites)
+- [React documentation](https://react.dev)
+- [Next.js documentation](https://nextjs.org/docs)
+- [Join the Appwrite Discord](https://appwrite.io/discord)
+</content>
+</invoke>
