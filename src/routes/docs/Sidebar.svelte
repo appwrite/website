@@ -100,7 +100,8 @@
                     label: 'Project',
                     href: '/docs/partners/project',
                     icon: 'icon-briefcase',
-                    isParent: true
+                    isParent: true,
+                    new: isNewUntil('22 Aug 2026')
                 },
                 {
                     label: 'Apps',
