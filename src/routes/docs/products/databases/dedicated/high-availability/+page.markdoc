@@ -1,7 +1,7 @@
 ---
 layout: article
 title: High availability
-description: Run up to five replicas of a dedicated database with synchronous, semi-synchronous, or asynchronous replication and automatic failover on primary failure.
+description: Run up to five replicas of a dedicated database with asynchronous replication and automatic failover on primary failure.
 ---
 
 High availability adds replicas to a dedicated database and enables automatic failover when the primary becomes unhealthy. With HA on, a primary outage is recovered in seconds by promoting the most up-to-date replica, without manual intervention.
@@ -14,24 +14,16 @@ When you enable HA, Appwrite scales the underlying database to the configured re
 
 | Engine     | Replication mechanism                                                                 |
 |------------|---------------------------------------------------------------------------------------|
-| PostgreSQL | Streaming replication over WAL                                                        |
-| MySQL      | Semi-synchronous binlog replication                                                   |
-| MariaDB    | Semi-synchronous binlog replication                                                   |
+| PostgreSQL | Asynchronous streaming replication over WAL                                           |
+| MySQL      | Asynchronous binlog replication                                                       |
+| MariaDB    | Asynchronous binlog replication                                                       |
 | MongoDB    | Replica-set oplog tailing with Raft-based primary election                            |
 
 Replicas are placed on different physical hosts from the primary, so a single host failure does not take down both the primary and a replica.
 
 # Sync modes {% #sync-modes %}
 
-PostgreSQL and MySQL/MariaDB expose three durability modes. MongoDB uses its own write-concern model and is not configurable through this setting.
-
-| Mode         | Commit acknowledged when…                            | Durability     | Write latency       |
-|--------------|------------------------------------------------------|----------------|---------------------|
-| `async`      | The primary persists the write to local WAL/binlog   | Low            | Lowest (default)    |
-| `sync`       | At least one replica acknowledges the write          | High           | +network round-trip |
-| `quorum`     | A majority of replicas acknowledge the write         | Highest        | +network round-trip |
-
-A safe default for production is `sync` with two replicas, a single replica failure does not block writes, and you still cannot lose a committed write to a primary-only crash.
+Replication is asynchronous: a commit is acknowledged as soon as the primary persists the write to its local WAL/binlog, and replicas apply it moments later. `syncMode` accepts only `async` — synchronous and quorum modes are not yet available, and the API rejects them. On a primary crash, writes committed after the promoted replica's applied position are lost; failover discloses those coordinates. MongoDB uses its own write-concern model and is not configurable through this setting.
 
 # Enable HA {% #enable %}
 
@@ -52,7 +44,7 @@ await compute.updateDatabase({
     databaseId: '<DATABASE_ID>',
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: 'sync',
+    highAvailabilitySyncMode: 'async',
 });
 ```
 ```server-deno
@@ -69,7 +61,7 @@ await compute.updateDatabase({
     databaseId: '<DATABASE_ID>',
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: 'sync',
+    highAvailabilitySyncMode: 'async',
 });
 ```
 ```server-php
@@ -91,7 +83,7 @@ $compute->updateDatabase(
     databaseId: '<DATABASE_ID>',
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: 'sync',
+    highAvailabilitySyncMode: 'async',
 );
 ```
 ```server-python
@@ -109,7 +101,7 @@ compute.update_database(
     database_id='<DATABASE_ID>',
     high_availability=True,
     high_availability_replica_count=2,
-    high_availability_sync_mode='sync',
+    high_availability_sync_mode='async',
 )
 ```
 ```server-ruby
@@ -128,7 +120,7 @@ compute.update_database(
     database_id: '<DATABASE_ID>',
     high_availability: true,
     high_availability_replica_count: 2,
-    high_availability_sync_mode: 'sync',
+    high_availability_sync_mode: 'async',
 )
 ```
 ```server-dotnet
@@ -146,7 +138,7 @@ await compute.UpdateDatabase(
     databaseId: "<DATABASE_ID>",
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: "sync"
+    highAvailabilitySyncMode: "async"
 );
 ```
 ```server-dart
@@ -163,7 +155,7 @@ await compute.updateDatabase(
     databaseId: '<DATABASE_ID>',
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: 'sync',
+    highAvailabilitySyncMode: 'async',
 );
 ```
 ```server-kotlin
@@ -181,7 +173,7 @@ compute.updateDatabase(
     databaseId = "<DATABASE_ID>",
     highAvailability = true,
     highAvailabilityReplicaCount = 2,
-    highAvailabilitySyncMode = "sync",
+    highAvailabilitySyncMode = "async",
 )
 ```
 ```server-swift
@@ -198,7 +190,7 @@ _ = try await compute.updateDatabase(
     databaseId: "<DATABASE_ID>",
     highAvailability: true,
     highAvailabilityReplicaCount: 2,
-    highAvailabilitySyncMode: "sync"
+    highAvailabilitySyncMode: "async"
 )
 ```
 ```server-go
@@ -220,7 +212,7 @@ func main() {
     _, err := compute.UpdateDatabase("<DATABASE_ID>",
         compute.WithUpdateDatabaseHighAvailability(true),
         compute.WithUpdateDatabaseHighAvailabilityReplicaCount(2),
-        compute.WithUpdateDatabaseHighAvailabilitySyncMode("sync"),
+        compute.WithUpdateDatabaseHighAvailabilitySyncMode("async"),
     )
     if err != nil {
         panic(err)
@@ -243,7 +235,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     compute.update_database("<DATABASE_ID>")
         .high_availability(true)
         .high_availability_replica_count(2)
-        .high_availability_sync_mode("sync")
+        .high_availability_sync_mode("async")
         .send()
         .await?;
 
@@ -258,7 +250,7 @@ curl -X PATCH \
   -d '{
     "highAvailability": true,
     "highAvailabilityReplicaCount": 2,
-    "highAvailabilitySyncMode": "sync"
+    "highAvailabilitySyncMode": "async"
   }' \
   https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
 ```
@@ -667,7 +659,7 @@ In `async` mode, a read that lands on a replica immediately after a write to the
 
 - **Always read from the primary**, the safest default. The pooler routes all queries to the primary if read/write splitting is off.
 - **Use read replicas, with primary-affinity for writes**, turn on the [connection pooler with read/write split](/docs/products/databases/dedicated/pooler). The pooler pins transactions and writes to the primary and routes ambient `SELECT`s to replicas.
-- **Use a stronger sync mode**, in `sync` or `quorum`, any reader on an in-sync replica sees the write as soon as `COMMIT` returns.
+- **Pin critical reads to the primary**, run the read inside a transaction or use `SELECT ... FOR UPDATE` — the [pooler routes both to the primary](/docs/products/databases/dedicated/pooler#read-write) even with read/write splitting on.
 
 # Cross-region failover {% #cross-region-failover %}
 
@@ -685,7 +677,6 @@ Cross-region replicas and standbys are billed as feature add-ons, see the [speci
 |------------------------------------------------|-------|
 | Maximum replicas per database                  | 5     |
 | Replica count change (online)                  | yes   |
-| Sync mode change without recreating replicas   | yes   |
 | Failover cooldown after auto-promote           | 60 s  |
 | Health-check timeout per attempt               | 3 s   |
 | Consecutive failed health checks before failover | 2     |
