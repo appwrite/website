@@ -296,6 +296,13 @@ This means users can't create new files or read, update, and delete existing fil
 
 [Learn about configuring permissions](/docs/products/storage/permissions).
 
+# Folders {% #folders %}
+Files in a bucket can be organized into virtual folders.
+Each file carries a folder path, like `photos/2026`, that you set when uploading it.
+Folders are derived from these paths, so there is nothing to create or manage separately: a folder appears when the first file is uploaded into it and disappears when the last file inside it is deleted.
+
+[Learn about working with folders](/docs/products/storage/folders).
+
 # Encryption {% #encryption %}
 Appwrite provides added security settings for your buckets. Enable encryption under your bucket's **Settings** > **Security settings**.
 You can enable encryption to encrypt files in your buckets. If your files are leaked, encrypted files cannot be read by the malicious actor.

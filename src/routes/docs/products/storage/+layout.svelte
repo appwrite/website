@@ -29,6 +29,10 @@
                     href: '/docs/products/storage/buckets'
                 },
                 {
+                    label: 'Folders',
+                    href: '/docs/products/storage/folders'
+                },
+                {
                     label: 'Permissions',
                     href: '/docs/products/storage/permissions'
                 },
