@@ -31,8 +31,6 @@ In the **Configure** step, you will need to provide details from your Resend das
 {% only_light %}
 ![Configure Resend provider](/images/docs/messaging/providers/resend/configure-resend.avif)
 {% /only_light %}
-You will need to provide the following information from your **SendGrid dashboard**.
-
 You will need to provide the following information from your **Resend dashboard**.
 
 {% table %}
