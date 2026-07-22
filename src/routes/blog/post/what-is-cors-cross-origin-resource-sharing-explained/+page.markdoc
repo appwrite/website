@@ -134,5 +134,4 @@ CORS stops being a mystery once you see it for what it is: a server-side allowli
 * [Handle CORS errors in Appwrite Functions](/blog/post/handle-cors-in-serverless-functions)
 * [Appwrite Functions documentation](/docs/products/functions)
 * [Appwrite security documentation](/docs/advanced/security)
-* [MDN: Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guide/CORS)
 * [Join the Appwrite Discord server](https://appwrite.io/discord)
