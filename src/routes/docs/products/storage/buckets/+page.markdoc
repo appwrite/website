@@ -23,7 +23,7 @@ You can create a bucket by heading to the **Storage** page and clicking **Create
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-You can also create tables programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/security/api-keys).
+You can also create tables programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/partners/project/api-keys).
 
 {% multicode %}
 
@@ -110,7 +110,7 @@ client = Client()
 
 storage = Storage(client)
 
-result = storage.create_bucket('<BUCKET_ID>', '<NAME>')
+result = storage.create_bucket(bucket_id='<BUCKET_ID>', name='<NAME>')
 ```
 ```ruby
 require 'Appwrite'

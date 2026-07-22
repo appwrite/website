@@ -2,9 +2,6 @@ name: Staging deployment
 
 on:
     workflow_dispatch:
-    push:
-        branches:
-            - main
 
 concurrency:
     group: ${{ github.workflow }}

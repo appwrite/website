@@ -94,6 +94,18 @@
             ]
         },
         {
+            label: 'Partners',
+            items: [
+                {
+                    label: 'Project',
+                    href: '/docs/partners/project',
+                    icon: 'icon-briefcase',
+                    isParent: true,
+                    new: isNewUntil('22 Aug 2026')
+                }
+            ]
+        },
+        {
             label: 'Utilities',
             collapsible: true,
             initiallyCollapsed: true,
