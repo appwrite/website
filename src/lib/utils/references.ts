@@ -136,6 +136,8 @@ export const platformMap: Record<Language | string, string> = {
     csharp: 'C#',
     cpp: 'C++',
     bash: 'Bash',
+    curl: 'cURL',
+    hurl: 'Hurl',
     powershell: 'PowerShell',
     cmd: 'CMD',
     yaml: 'YAML',
