@@ -5,7 +5,14 @@ description: The Sign in with Appwrite scope catalog, and how grants target the 
 back: /docs/partners/apps
 ---
 
-A scope names an action your app wants to perform. A grant pairs scopes with the projects and organizations they apply to. Both halves matter: `project:databases.read` by itself says what, and the user's project selection on the consent screen says where.
+{% only_dark %}
+![Scopes and targets combine into a grant that the access token carries and every request is checked against](/images/docs/partners/apps/dark/diagram-scopes.avif)
+{% /only_dark %}
+{% only_light %}
+![Scopes and targets combine into a grant that the access token carries and every request is checked against](/images/docs/partners/apps/diagram-scopes.avif)
+{% /only_light %}
+
+A scope names an action your app wants to perform. A grant pairs scopes with the projects and organizations they apply to. Both halves matter: `project:tables.read` by itself says what, and the user's project selection on the consent screen says where.
 
 Request the smallest set that serves your app. Every scope you ask for appears on the consent screen as a permission line, and users decline requests that want too much.
 
@@ -57,27 +64,94 @@ Organization scopes carry the `organization:` prefix and cover what a user's org
 | Projects | `organization:projects.read`, `organization:projects.write` |
 | Domains | `organization:domains.read`, `organization:domains.write` |
 | Keys | `organization:organization.keys.read`, `organization:organization.keys.write` |
-| Dev keys | `organization:devKeys.read`, `organization:devKeys.write` |
 
 `organization:all` grants the full set. `organization:projects.write` is the scope that creates projects, which lets an app provision on a user's behalf.
 
 # Targeting projects and organizations {% #targeting %}
 
-Scopes alone never grant access to a resource. The authorization request also carries `authorization_details` ([RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)), a JSON array that names the projects and organizations the grant covers:
+Scopes say what your app can do. Targets say where. Every grant carries both.
 
-```json
-[
-  { "type": "project", "identifiers": ["*"] },
-  { "type": "organization", "identifiers": ["<ORGANIZATION_ID>"] }
-]
+## The user picks the targets {% #targets-picked %}
+
+When your request includes a project or organization scope, the consent screen asks the user which projects or organizations the scope applies to. You send only the scopes; the user's selection is written into the grant. This is the default, and it needs nothing extra from your app.
+
+## Pre-selecting a target {% #targets-preselected %}
+
+When your app already knows which project it wants, name it in the authorization request with the `authorization_details` parameter ([RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)). The consent screen then shows that project for confirmation instead of an open picker.
+
+```text
+https://cloud.appwrite.io/v1/oauth2/console/authorize
+  ?client_id=<CLIENT_ID>
+  &redirect_uri=<REDIRECT_URI>
+  &response_type=code
+  &scope=openid project:tables.read
+  &authorization_details=[{"type":"project","identifiers":["<PROJECT_ID>"]}]
 ```
 
-Each entry has a `type`, either `project` or `organization`, and an `identifiers` array of IDs. The wildcard `*` asks for all of them, which the consent screen turns into a picker where the user chooses. Your app receives the final selection in the token response's `authorization_details` field and can read the granted projects at any time by listing them, as shown in the [quick start](/docs/partners/apps/quick-start#list-projects).
+Each entry has a `type`, either `project` or `organization`, and an `identifiers` array of IDs. Use this for flows like connecting one specific project to your app.
 
-A granted scope applies only inside the granted targets. A token with `project:databases.read` reads databases in the projects the user selected and fails everywhere else with a `401` error of type `general_unauthorized_scope`. There is one hard exclusion: an authorization detail can never name the `console` project itself as a target.
+## Reading what was granted {% #targets-granted %}
+
+Either way, the token response's `authorization_details` field holds the projects the user ended up granting.
+
+To check a token you already hold, introspect it with your client credentials:
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/introspect \
+  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "token=<ACCESS_TOKEN>"
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/introspect
+[BasicAuth]
+<CLIENT_ID>: <CLIENT_SECRET>
+[Form]
+token: <ACCESS_TOKEN>
+```
+{% /multicode %}
+
+The response returns the granted scopes and targets:
+
+```json
+{
+  "active": true,
+  "scope": "openid project:tables.read",
+  "client_id": "<CLIENT_ID>",
+  "sub": "6a150ace003bc4c2919e",
+  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
+  "exp": 1784737416,
+  "token_use": "access_token"
+}
+```
+
+To turn the targets into concrete projects, list them with the token itself:
+
+{% multicode %}
+```curl
+curl https://cloud.appwrite.io/v1/oauth2/console/projects \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
+
+```hurl
+GET https://cloud.appwrite.io/v1/oauth2/console/projects
+Authorization: Bearer <ACCESS_TOKEN>
+```
+{% /multicode %}
+
+Each project in the response carries its `$id`, `region`, and `endpoint`, which is everything your app needs to call it.
+
+A scope only works inside its granted targets. A token with `project:tables.read` reads tables in the selected projects and returns `401 general_unauthorized_scope` everywhere else.
 
 # When requests fail {% #failures %}
 
-Requesting a scope outside the catalog fails before consent: the authorization endpoint redirects back with `error=invalid_scope`. Malformed or unsupported `authorization_details` fail the same way with `error=invalid_authorization_details`. Validate both against the discovery document, which also publishes `authorization_details_types_supported`.
+Two mistakes fail before the user ever sees a consent screen. The authorization endpoint redirects straight back to your app with an error:
+
+- A scope outside the catalog returns `error=invalid_scope`.
+- Malformed or unsupported `authorization_details` return `error=invalid_authorization_details`.
+
+Both catalogs are published in the discovery document, under `scopes_supported` and `authorization_details_types_supported`, so your app can validate requests before sending them.
 
 The user can also grant less than you asked. Consent may drop scopes or narrow write access to read, so treat the `scope` string in the token response as the truth, not your request. [Consent](/docs/partners/apps/consent) shows what that narrowing looks like.

@@ -7,10 +7,10 @@ back: /docs
 
 Appwrite is an **OAuth 2.1 and OpenID Connect provider**. Your app can send any Appwrite user to a consent screen, ask for access to the projects and organizations they choose, and receive tokens that call their project APIs directly. This is **Sign in with Appwrite**: the same consent flow users know from "Sign in with Google", pointed at their Appwrite account and backend.
 
-Before this, a tool that worked with a user's Appwrite project asked them to create an API key and paste it in. That key never expired unless they remembered it, carried whatever scopes they picked under pressure, and had to be repeated for every project. With Sign in with Appwrite, the user approves once, picks the projects your app can reach, and can revoke everything from their account page at any time.
+Before this, a tool that worked with a user's Appwrite project asked them to create an API key and paste it in. The key carried whatever scopes and expiry the user picked at creation, worked for one project only, and lived outside their control once pasted. With Sign in with Appwrite, the user approves once, picks the projects your app can reach, and can revoke everything from their account page at any time.
 
 {% info title="Building your own provider?" %}
-This section is for apps that build on top of Appwrite itself. To make your own product an OAuth provider so that third parties can offer "Sign in with your product", see the [OAuth2 server](/docs/products/auth/oauth-server) documentation.
+This section is for apps that build on top of Appwrite itself. To make your own product an OAuth2 provider so that third parties can offer "Sign in with your product", see the [OAuth2 server](/docs/products/auth/oauth-server) documentation.
 {% /info %}
 
 # What you can build {% #what-you-can-build %}
@@ -24,6 +24,13 @@ Your app authenticates the user once and then acts on their Appwrite resources w
 
 # How it works {% #how-it-works %}
 
+{% only_dark %}
+![Your app sends the user through the Appwrite consent screen and calls their projects with the issued tokens](/images/docs/partners/apps/dark/diagram-overview.avif)
+{% /only_dark %}
+{% only_light %}
+![Your app sends the user through the Appwrite consent screen and calls their projects with the issued tokens](/images/docs/partners/apps/diagram-overview.avif)
+{% /only_light %}
+
 Sign in with Appwrite is the authorization code flow from OAuth 2.1, served by Appwrite.
 
 1. **Your app redirects the user** to the Appwrite authorization endpoint with the scopes it needs.
@@ -31,7 +38,7 @@ Sign in with Appwrite is the authorization code flow from OAuth 2.1, served by A
 3. **Your app receives an authorization code** at its redirect URI and exchanges it for an access token, a refresh token, and an ID token.
 4. **Your app calls Appwrite APIs** with the access token as a bearer token, on any of the granted projects, in any region.
 
-Because the provider is spec-compliant, any OAuth or OIDC library works against the discovery document without Appwrite-specific code:
+Because the provider is spec-compliant, any OAuth2 or OIDC library works against the discovery document without Appwrite-specific code:
 
 ```text
 https://cloud.appwrite.io/v1/oauth2/console/.well-known/openid-configuration
@@ -46,7 +53,7 @@ Users stay in control after the redirect too. Every authorization appears on the
 Register an app and run the full flow, from consent to your first authorized API call.
 {% /cards_item %}
 {% cards_item href="/docs/partners/apps/registration" title="Registration" %}
-Register your app in the Console or from code with the Apps API.
+Register your app in the Console and shape its consent screen listing.
 {% /cards_item %}
 {% cards_item href="/docs/partners/apps/scopes" title="Scopes" %}
 The scope catalog and how grants target specific projects and organizations.

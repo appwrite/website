@@ -5,6 +5,13 @@ description: What users see on the Sign in with Appwrite consent screen, what th
 back: /docs/partners/apps
 ---
 
+{% only_dark %}
+![The consent screen turns your request into a granted token response or an access_denied redirect](/images/docs/partners/apps/dark/diagram-consent.avif)
+{% /only_dark %}
+{% only_light %}
+![The consent screen turns your request into a granted token response or an access_denied redirect](/images/docs/partners/apps/diagram-consent.avif)
+{% /only_light %}
+
 Consent is where the user decides. Appwrite hosts the screen, renders what your app asked for, and gives the user the final say over scopes and targets. Your app never sees the screen; it sees the outcome.
 
 # The consent screen {% #consent-screen %}
@@ -16,21 +23,34 @@ Consent is where the user decides. Appwrite hosts the screen, renders what your 
 ![Consent screen showing app identity, requested permissions, and project selection](/images/docs/partners/apps/consent-screen.avif)
 {% /only_light %}
 
-The screen leads with your app's identity: the name, logo, and tagline from [registration](/docs/partners/apps/registration), with the privacy policy and terms linked in the footer. Below it, each requested scope appears as a permission line in plain language, and a summary states the overall reach, from "view your identity" for a bare OIDC request up to full account access.
+The screen is built from your [registration](/docs/partners/apps/registration) and your request:
 
-When the request targets projects or organizations, the screen shows a picker. A wildcard request becomes a list of the user's resources to choose from; a request for named IDs shows those resources for confirmation. The user signs in first if no session exists, and can switch accounts from the screen itself.
+- **Your app's identity**: the name, logo, and tagline you registered.
+- **Permissions**: each requested scope as a plain-language line, under a one-line summary of the overall reach.
+- **Project access**: a picker for the projects or organizations the grant covers when the request carries project or organization scopes. If your request named specific IDs, the picker shows them for confirmation instead.
+
+The user signs in first if no session exists, and can switch accounts from the screen itself.
 
 # Users can grant less {% #partial-grants %}
 
-The user approves the request as a whole, a subset of it, or nothing. They deselect projects, drop scopes, and for agent-style grants toggle whole categories to read-only. Only `openid` always survives approval, so an approved flow always identifies the user.
+What you request is not always what you get. On the consent screen, the user can:
 
-Your app learns the outcome from the token response: `scope` holds the scopes that survived, `authorization_details` the targets. Build for partial grants from the start. A dashboard asked to read five projects but granted two should show two projects, not an error.
+- Deselect projects.
+- Drop scopes, or narrow them to read-only.
+- Decline the whole request.
+
+Only `openid` always survives approval, so an approved flow always identifies the user.
+
+The token response tells you what you got: `scope` holds the granted scopes, `authorization_details` the granted projects. Build for this from the start. A dashboard that asked for five projects but got two should show two projects, not an error.
 
 # When the screen is skipped {% #consent-reuse %}
 
-Appwrite remembers approvals. A returning user is redirected straight back to your app, without seeing the screen, when the new request stays inside the stored consent: no new scopes, and `authorization_details` identical to what was approved. The screen reappears when anything differs, including a request that omits `authorization_details` after a consent that had them, so send the same authorization parameters on every sign-in.
+Appwrite remembers approvals. When a returning user's request asks for nothing new, they skip the screen and land straight back in your app. When anything differs from the stored approval, the screen reappears. Send the same authorization parameters on every sign-in and returning users sign in silently.
 
-Two request parameters override this. `prompt=consent` forces the screen even when a matching consent exists, and `prompt=none` forbids it, returning `error=consent_required` or `error=login_required` instead of showing UI. Use `prompt=none` to probe for existing access silently.
+Two `prompt` values override this:
+
+- `prompt=consent` always shows the screen, even when an approval exists.
+- `prompt=none` never shows it, returning `error=consent_required` or `error=login_required` instead. Use it to check for existing access silently.
 
 # Revocation {% #revocation %}
 
@@ -41,6 +61,8 @@ Two request parameters override this. `prompt=consent` forces the screen even wh
 ![Account applications page listing authorized apps with their token families](/images/docs/partners/apps/account-applications.avif)
 {% /only_light %}
 
-Every consent appears on the user's account applications page, which lists each authorized app, the scopes it holds, and the tokens issued under it. The user revokes a single token or the whole consent; revoking the consent invalidates every token your app holds for that user.
+Every approval appears on the user's account applications page. From there, the user revokes a single token or the whole app, which kills every token your app holds for them.
 
-Your app sees revocation as failure, not as a message: token refreshes and API calls start returning `401`. Handle it by sending the user through authorization again. To leave cleanly, delete on your side too: revoke the tokens you hold at the [revocation endpoint](/docs/partners/apps/tokens#revocation) when a user disconnects your app.
+Your app gets no notification. Calls and refreshes start returning `401`, and the fix is to send the user through authorization again.
+
+Revocation goes both ways: when a user disconnects your app on your side, revoke the tokens you hold at the [revocation endpoint](/docs/partners/apps/tokens#revocation).

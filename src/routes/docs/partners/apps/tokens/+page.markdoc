@@ -5,7 +5,43 @@ description: Use, refresh, and revoke the tokens Appwrite issues to your app thr
 back: /docs/partners/apps
 ---
 
-A successful token exchange returns three tokens with different jobs. The access token calls APIs, the refresh token replaces expired access tokens, and the ID token proves who signed in.
+{% only_dark %}
+![Your app exchanges the code for tokens, calls granted projects, renews with the refresh token, and revokes when done](/images/docs/partners/apps/dark/diagram-tokens.avif)
+{% /only_dark %}
+{% only_light %}
+![Your app exchanges the code for tokens, calls granted projects, renews with the refresh token, and revokes when done](/images/docs/partners/apps/diagram-tokens.avif)
+{% /only_light %}
+
+Your app holds three tokens with different jobs:
+
+- The **access token** calls APIs.
+- The **refresh token** replaces expired access tokens.
+- The **ID token** proves who signed in.
+
+All three come from one call. After the user approves your app on the consent screen, exchange the authorization code at the token endpoint, authenticated with your client credentials:
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
+  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code" \
+  -d "code=<CODE>" \
+  -d "redirect_uri=<REDIRECT_URI>"
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/token
+[BasicAuth]
+<CLIENT_ID>: <CLIENT_SECRET>
+[Form]
+grant_type: authorization_code
+code: <CODE>
+redirect_uri: <REDIRECT_URI>
+```
+{% /multicode %}
+
+The response carries all three tokens, along with what the user granted:
 
 ```json
 {
@@ -13,7 +49,7 @@ A successful token exchange returns three tokens with different jobs. The access
   "token_type": "Bearer",
   "expires_in": 28800,
   "refresh_token": "eyJhbGciOiJIUzI1NiJ9...",
-  "scope": "openid profile email project:databases.read",
+  "scope": "openid profile email project:tables.read",
   "authorization_details": [{ "type": "project", "identifiers": ["6a357f7e001c7237296b"] }],
   "id_token": "eyJhbGciOiJSUzI1NiJ9..."
 }
@@ -21,22 +57,53 @@ A successful token exchange returns three tokens with different jobs. The access
 
 # Access tokens {% #access-tokens %}
 
-The access token is a JWT of type `at+jwt` ([RFC 9068](https://datatracker.ietf.org/doc/html/rfc9068)), signed with `RS256`. Its claims carry the whole grant: `sub` is the user, `client_id` your app, `scope` the granted scopes, and `authorization_details` the granted targets, along with the standard `iss`, `aud`, `exp`, `iat`, `jti`, and `auth_time`.
+The access token is a JWT of type `at+jwt` ([RFC 9068](https://datatracker.ietf.org/doc/html/rfc9068)), signed with `RS256`. Its claims carry the whole grant:
 
-Pass it as a bearer token. The Server SDKs send it through `setBearer`, with the `Bearer ` scheme included in the value:
+- `sub`: the user who signed in.
+- `client_id`: your app.
+- `scope`: the granted scopes.
+- `authorization_details`: the granted projects and organizations.
+- The standard JWT claims:
+    - `iss`: who issued the token, always `https://cloud.appwrite.io/v1/oauth2/console`.
+    - `aud`: who the token is for, the Appwrite API.
+    - `exp`: when the token expires, as a Unix timestamp.
+    - `iat`: when the token was issued.
+    - `jti`: a unique ID for this token.
+    - `auth_time`: when the user last authenticated.
 
-```server-nodejs
-import { Client, Oauth2 } from 'node-appwrite';
+Pass it as a bearer token in the `Authorization` header. The userinfo endpoint is the simplest call to try it on:
 
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('console')
-    .setBearer('Bearer <ACCESS_TOKEN>');
+{% multicode %}
+```curl
+curl https://cloud.appwrite.io/v1/oauth2/console/userinfo \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-One token works everywhere the grant reaches. Appwrite validates it across regions, so your app calls each granted project at its own `endpoint` with the same token, and the console endpoints for [listing projects and organizations](/docs/partners/apps/quick-start#list-projects) with that token too.
+```hurl
+GET https://cloud.appwrite.io/v1/oauth2/console/userinfo
+Authorization: Bearer <ACCESS_TOKEN>
+```
+{% /multicode %}
 
-Default lifetimes depend on the client type: 8 hours for confidential clients, 1 hour for public ones.
+The response is the signed-in user:
+
+```json
+{
+  "sub": "6a150ace003bc4c2919e",
+  "name": "Walter O'Brien",
+  "email": "walter@example.com",
+  "email_verified": true
+}
+```
+
+The same token works in two places:
+
+- The [listing endpoints](/docs/partners/apps/scopes#targets-granted), to see which projects and organizations the user granted.
+- Every granted project's API, whatever region the project lives in.
+
+Your app never handles regions itself. Take each project's `endpoint` from the listing, call it, and send the same token.
+
+Access tokens last 8 hours for confidential clients and 1 hour for public ones.
 
 # Refresh tokens {% #refresh-tokens %}
 
@@ -61,15 +128,52 @@ refresh_token: <REFRESH_TOKEN>
 ```
 {% /multicode %}
 
-Refresh tokens rotate: every exchange returns a new refresh token and invalidates the old one. Persist the new token atomically before you discard the old response.
+The response is a fresh pair, in the same shape as the original exchange:
 
-Rotation is also a tripwire. If an old refresh token is presented again, Appwrite treats it as theft and deletes the whole token family: the current access token and the newest refresh token stop working, and the user must authorize your app again. A refresh loop that retries a stale token after a crash triggers this, which is why atomic persistence matters. Refresh tokens default to 365 days for confidential clients and 30 days for public ones, treat them like passwords, and store them encrypted.
+```json
+{
+  "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJSUzI1NiJ9...",
+  "token_type": "Bearer",
+  "expires_in": 28800,
+  "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+  "scope": "openid profile email project:tables.read",
+  "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9..."
+}
+```
+
+Refresh tokens are single-use. Each exchange invalidates the token you sent and returns a new one, so store the new token as soon as the response arrives.
+
+This is deliberate. A refresh token that gets used twice looks like theft, and Appwrite responds by killing the entire token family. The user has to authorize your app again. The most common way to trip this by accident is a crash between refreshing and saving, after which your app retries with the token it already spent.
+
+Refresh tokens last 365 days for confidential clients and 30 days for public ones. Treat them like passwords and store them encrypted.
 
 # ID tokens {% #id-tokens %}
 
-The ID token is an OpenID Connect JWT issued when the grant includes `openid`. It carries identity claims scoped to what was granted: `name` with `profile`, `email` and `email_verified` with `email`, `phone_number` and `phone_number_verified` with `phone`.
+The ID token is an OpenID Connect JWT, issued when the grant includes `openid`. It answers one question: who signed in. Decoded, it looks like this:
 
-Use it to establish who signed in, never to call APIs. Its audience is your `client_id`, not Appwrite's API, and resource servers reject it because its type is not `at+jwt`. For a live view of the same claims, call the userinfo endpoint with the access token.
+```json
+{
+  "iss": "https://cloud.appwrite.io/v1/oauth2/console",
+  "sub": "6a150ace003bc4c2919e",
+  "aud": "horizon",
+  "name": "Walter O'Brien",
+  "email": "walter@example.com",
+  "email_verified": true,
+  "updated_at": 1784707579,
+  "auth_time": 1784617272,
+  "iat": 1784711196,
+  "exp": 1784739996,
+  "at_hash": "ro6WSzsVqgrWqQy4m7_DGA"
+}
+```
+
+The granted scopes decide which of these fields the token carries:
+
+- `profile` adds `name` and `updated_at`.
+- `email` adds `email` and `email_verified`.
+- `phone` adds `phone_number` and `phone_number_verified`.
+
+Never use the ID token to call APIs; it only tells your app who signed in, and Appwrite rejects it as a bearer token. To fetch fresh values for the same fields, call the userinfo endpoint with the access token.
 
 # Validating tokens {% #validation %}
 
@@ -79,7 +183,44 @@ If your app runs its own API and receives Appwrite access tokens from clients, v
 https://cloud.appwrite.io/v1/oauth2/console/.well-known/jwks.json
 ```
 
-Check the signature, the `iss` claim, the audience, the expiry, and require the `at+jwt` type so an ID token can never pass as an access token. When you need revocation awareness that offline validation cannot give, call the introspection endpoint ([RFC 7662](https://datatracker.ietf.org/doc/html/rfc7662)) with your client credentials; it returns `"active": false` for anything expired, revoked, or rotated away.
+Check the signature, the `iss` claim, the audience, the expiry, and require the `at+jwt` type so an ID token can never pass as an access token.
+
+Offline validation cannot see revocation. For the authoritative answer, call the introspection endpoint ([RFC 7662](https://datatracker.ietf.org/doc/html/rfc7662)) with your client credentials:
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/introspect \
+  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "token=<ACCESS_TOKEN>"
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/introspect
+[BasicAuth]
+<CLIENT_ID>: <CLIENT_SECRET>
+[Form]
+token: <ACCESS_TOKEN>
+```
+{% /multicode %}
+
+An active token comes back with everything it holds:
+
+```json
+{
+  "active": true,
+  "scope": "openid profile email project:tables.read",
+  "client_id": "horizon",
+  "token_type": "Bearer",
+  "sub": "6a150ace003bc4c2919e",
+  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
+  "exp": 1784737416,
+  "iat": 1784708616,
+  "token_use": "access_token"
+}
+```
+
+Anything expired, revoked, or rotated away returns only `{ "active": false }`.
 
 # Revocation {% #revocation %}
 
@@ -102,6 +243,6 @@ token: <REFRESH_TOKEN>
 ```
 {% /multicode %}
 
-Revoking either token of a pair invalidates both. The endpoint returns an empty `200` whether or not the token existed, as [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009) requires.
+The response is an empty `200`, whether or not the token existed, as [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009) requires. Revoking either token of a pair invalidates both.
 
 Revocation also arrives from outside your app. Users revoke from their account applications page, and reuse detection tears tokens down on its own. Treat a `401` with a previously working token as the signal to re-authorize, not to retry.
