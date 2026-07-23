@@ -23,53 +23,25 @@ Browse all quick start prompts
 
 {% section #step-2 step=2 title="Add MCP servers" %}
 
-Connect Appwrite MCP servers to Zed for deeper integration with the Appwrite API and documentation.
-
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
-
-{% tabs %}
-{% tabsitem #api-server-prerequisites title="API server" %}
-
-[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-server-prerequisites title="Docs server" %}
-
-No additional prerequisites. The docs server runs as a remote HTTP endpoint.
-
-{% /tabsitem %}
-{% /tabs %}
+Connect Appwrite MCP servers to Zed for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
 
 In Zed, open the **Command Palette** (press `CMD + Shift + P` on MacOS or `CTRL + Shift + P` on Linux), run the `agent: add context server` action, and choose which MCP server you want to configure:
 
 {% tabs %}
 {% tabsitem #api-only title="API server" %}
 
-In the **Local** tab, update the JSON configuration to include the API server:
+In the **Remote** tab, update the JSON configuration to include the API server:
 
 ```json
 {
   "appwrite-api": {
-    "command": "uvx",
-    "args": [
-      "mcp-server-appwrite"
-    ],
-    "env": {
-      "APPWRITE_PROJECT_ID": "your-project-id",
-      "APPWRITE_API_KEY": "your-api-key",
-      "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
-    }
+    "url": "https://mcp.appwrite.io/mcp"
   }
 }
 
 ```
 
-**Configuration:**
-
-- Replace `your-project-id` with your actual Appwrite project ID
-- Replace `your-api-key` with your Appwrite API key
-- Replace `<REGION>` with your Appwrite Cloud region (e.g., `nyc`, `fra`)
+The API server uses OAuth for authentication. When Zed first connects to the server, your browser opens so you can sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 

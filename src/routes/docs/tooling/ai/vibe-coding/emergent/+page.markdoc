@@ -21,26 +21,18 @@ To connect Appwrite MCP servers to Emergent:
 {
   "mcpServers": {
     "appwrite-api": {
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "mcp-server-appwrite"
-      ],
-      "env": {
-        "APPWRITE_PROJECT_ID": "your-project-id",
-        "APPWRITE_API_KEY": "your-api-key",
-        "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
-      }
+        "mcp-remote",
+        "https://mcp.appwrite.io/mcp"
+      ]
     }
   }
 }
 
 ```
 
-**Configuration:**
-
-- Replace `your-project-id` with your actual Appwrite project ID
-- Replace `your-api-key` with your Appwrite API key
-- Replace `<REGION>` with your Appwrite Cloud region (e.g., `fra`, `nyc`)
+The API server uses OAuth for authentication. When Emergent first connects to the server, complete the sign-in flow in your browser to sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 
@@ -53,7 +45,7 @@ To connect Appwrite MCP servers to Emergent:
       "command": "npx",
       "args": [
         "mcp-remote",
-        "<https://mcp-for-docs.appwrite.io>"
+        "https://mcp-for-docs.appwrite.io"
       ]
     }
   }

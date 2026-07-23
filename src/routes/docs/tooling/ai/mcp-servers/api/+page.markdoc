@@ -12,12 +12,40 @@ Here are some of the key benefits of using the MCP server:
 - **Real-time data access**: Allows LLMs to fetch and manipulate live data from your Appwrite instance
 - **Simplified workflows**: Facilitates complex operations through simple natural language prompts
 - **Automatic service discovery**: All supported Appwrite services are automatically registered, no configuration needed
+- **No local setup**: Runs as a hosted HTTP service, so there is nothing to install or keep updated
+
+# Connection details {% #connection-details %}
+
+The MCP server for Appwrite API is a remote server that uses the HTTP transport. It is available at the following URL:
+
+```
+https://mcp.appwrite.io/mcp
+```
+
+The server uses OAuth for authentication. When you add the server to an AI tool and connect for the first time, your browser opens so you can sign in to your Appwrite account and authorize access. You don't need to create or manage API keys.
 
 # Pre-requisites {% #pre-requisites %}
 
-## Appwrite API key
+Before connecting to the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) on Appwrite Cloud. No additional software needs to be installed on your system.
 
-Before launching the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) and create an **API key** with the necessary scopes enabled.
+# Installation {% #installation %}
+
+{% partial file="mcp-add-ides-tools.md" /%}
+
+## How it works
+
+The MCP server starts in a compact workflow where only two MCP tools are exposed to the model:
+
+- `appwrite_search_tools` - Searches the full Appwrite tool catalog at runtime
+- `appwrite_call_tool` - Calls a specific Appwrite tool by name
+
+The full Appwrite tool catalog stays internal and is searched at runtime, using less of the model's context.
+
+# Self-hosted Appwrite {% #self-hosted %}
+
+The hosted MCP server authenticates against Appwrite Cloud. If you are running a [self-hosted Appwrite instance](/docs/advanced/self-hosting), use the local MCP server instead. It runs on your machine over the stdio transport and connects to your instance with an API key.
+
+First, create an **API key** with the necessary scopes enabled in your Appwrite project.
 
 {% only_light %}
 ![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.avif)
@@ -26,11 +54,9 @@ Before launching the MCP server, you must [set up an Appwrite project](https://c
 ![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.avif)
 {% /only_dark %}
 
-Ensure you save the **API key** along with the **project ID**, **region** and **endpoint URL** from the Settings page of your project as you'll need them later.
+Ensure you save the **API key** along with the **project ID** and **endpoint URL** from the Settings page of your project.
 
-## Install uv
-
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
+Next, install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
 
 {% tabs %}
 {% tabsitem #uv-linux-macos title="Linux and MacOS" %}
@@ -45,29 +71,32 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-``` 
+```
 
 {% /tabsitem %}
 {% /tabs %}
 
-You can verify the installation by running the following command in your terminal:
+Then, add the local MCP server to your AI tool's MCP configuration:
 
-```bash
-uv
+```json
+{
+  "mcpServers": {
+    "appwrite-api": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-appwrite"
+      ],
+      "env": {
+        "APPWRITE_PROJECT_ID": "your-project-id",
+        "APPWRITE_API_KEY": "your-api-key",
+        "APPWRITE_ENDPOINT": "https://your-appwrite-domain/v1"
+      }
+    }
+  }
+}
 ```
 
-# Installation {% #installation %}
-
-{% partial file="mcp-add-ides-tools.md" /%}
-
-## How it works
-
-The MCP server starts in a compact workflow where only two MCP tools are exposed to the model:
-
-- `appwrite_search_tools` - Searches the full Appwrite tool catalog at runtime
-- `appwrite_call_tool` - Calls a specific Appwrite tool by name
-
-The full Appwrite tool catalog stays internal and is searched at runtime, using less of the model's context.
+Replace `your-project-id` and `your-api-key` with the values from your project, and point `APPWRITE_ENDPOINT` to your instance's API endpoint.
 
 # Usage {% #usage %}
 

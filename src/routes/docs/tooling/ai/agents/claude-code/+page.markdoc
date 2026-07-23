@@ -55,23 +55,7 @@ Browse all quick start prompts
 
 If you installed the Appwrite plugin in [Step 1](#install-plugin), MCP servers are already configured and you can skip to [Step 4](#step-4).
 
-Connect Appwrite MCP servers to Claude Code for deeper integration with the Appwrite API and documentation.
-
-Before you begin, ensure you have the following **pre-requisites** installed on your system:
-
-{% tabs %}
-{% tabsitem #api-server-prerequisites title="API server" %}
-
-[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed on your system.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-server-prerequisites title="Docs server" %}
-
-[Node.js](https://nodejs.org/en/download) and npm must be installed on your system.
-
-{% /tabsitem %}
-{% /tabs %}
+Connect Appwrite MCP servers to Claude Code for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
 
 Run the following commands in your terminal to add the MCP servers:
 
@@ -79,16 +63,18 @@ Run the following commands in your terminal to add the MCP servers:
 {% tabsitem #api-only title="API server" %}
 
 ```bash
-claude mcp add-json appwrite-api '{"command":"uvx","args":["mcp-server-appwrite"],"env":{"APPWRITE_PROJECT_ID": "your-project-id", "APPWRITE_API_KEY": "your-api-key", "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"}}'
+claude mcp add --transport http appwrite-api https://mcp.appwrite.io/mcp
 
 ```
+
+The API server uses OAuth for authentication. Run `/mcp` in Claude Code, select **appwrite-api**, and choose **Authenticate**. Your browser opens so you can sign in to your Appwrite account and authorize access.
 
 {% /tabsitem %}
 
 {% tabsitem #docs-only title="Docs server" %}
 
 ```bash
-claude mcp add appwrite-docs <https://mcp-for-docs.appwrite.io> -t http
+claude mcp add --transport http appwrite-docs https://mcp-for-docs.appwrite.io
 
 ```
 
