@@ -67,7 +67,7 @@ OpenAI reports that Presence is already running in production, starting with its
 
 OpenAI's phone support channel handles open-ended requests, verifies callers, uses account context, and takes approved actions. The 15-point drop in handoffs came from the same Codex loop that investigates production sessions and proposes changes, which is the part of Presence built to keep an agent improving after launch.
 
-Several enterprises are building on the same foundation as design partners:
+Several enterprises are building on the same foundation:
 
 * **BBVA** is exploring AI-powered voice support for everyday banking needs in Mexico.
 * **SoftBank** is testing natural Japanese-language customer conversations.
