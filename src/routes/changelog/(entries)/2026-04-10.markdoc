@@ -1,0 +1,27 @@
+---
+layout: changelog
+title: "Appwrite CLI now ships native Homebrew binaries"
+date: 2026-04-10
+---
+
+The Appwrite CLI installed via [Homebrew](https://brew.sh/) now delivers **native compiled binaries** instead of a Node.js-based package. This means faster startup, no runtime dependencies, and a smaller install footprint on macOS and Linux.
+
+Supported platforms and architectures:
+
+- macOS Apple Silicon (arm64)
+- macOS Intel (x64)
+- Linux arm64
+- Linux x64
+
+Install or upgrade with Homebrew:
+
+```sh
+brew install appwrite    # new install
+brew upgrade appwrite    # existing install
+```
+
+The CLI is still available via npm (`npm install -g appwrite-cli`) and platform-specific install scripts for environments where Homebrew is not an option.
+
+{% arrow_link href="/docs/tooling/command-line/installation" %}
+Read the updated installation docs
+{% /arrow_link %}
