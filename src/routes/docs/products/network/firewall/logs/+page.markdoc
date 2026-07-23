@@ -1,0 +1,38 @@
+---
+layout: article
+title: Logs
+description: Inspect the requests your firewall rules acted on, filter by rule or action, and export logs for further analysis.
+---
+
+Firewall logs record the requests your rules acted on, so you can verify that rules behave as intended and investigate suspicious traffic.
+
+Open the **Logs** tab on the **Firewall** page in your project in the Appwrite Console to browse them.
+
+# Log entries {% #log-entries %}
+
+Each log entry describes one request a rule acted on:
+
+| Field | Description |
+| ----- | ----------- |
+| Timestamp | When the request was processed. |
+| Action | The action that was applied to the request. |
+| IP address | The client's IP address. |
+| Country | The client's country, resolved from the IP address. |
+| Method and path | The HTTP method and request path. |
+| Status code | The HTTP status code returned to the client. |
+| Rule | The rule that matched the request. |
+| User agent | The request's `User-Agent` header. |
+
+# Filtering {% #filtering %}
+
+Narrow the log view to find what you need:
+
+- Filter by action to see only blocked, challenged, or allowed requests.
+- Filter by rule to review everything a single rule has matched.
+- Search by IP address, path, rule name, or user agent.
+
+Filtering by rule is the fastest way to validate a rule you just created: create the rule, send a test request that should match it, and confirm the request appears in the log with the expected action.
+
+# Exporting {% #exporting %}
+
+Export the current log view as a CSV file to analyze traffic in external tools, share findings with your team, or keep records beyond the retention window.

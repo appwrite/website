@@ -1,0 +1,86 @@
+---
+layout: article
+title: Conditions
+description: Match requests by IP address, country, path, method, host, or user agent using firewall rule conditions and operators.
+---
+
+Conditions define what traffic a firewall rule matches. Each condition compares one request attribute against one or more values using an operator. A rule matches a request only when all of its conditions match.
+
+# Structure {% #structure %}
+
+A condition has three parts: an attribute to inspect, an operator, and the values to compare against.
+
+```json
+{
+    "method": "equal",
+    "attribute": "country",
+    "values": ["NL", "DE"]
+}
+```
+
+This condition matches requests originating from the Netherlands or Germany. When an operator receives multiple values, the condition matches if any one of the values matches.
+
+# Attributes {% #attributes %}
+
+| Attribute | Description | Example value |
+| --------- | ----------- | ------------- |
+| `ip` | The client's IP address. | `203.0.113.7` |
+| `country` | The client's country as a two-letter ISO 3166-1 code, resolved from the client's IP address. | `NL` |
+| `method` | The HTTP method, in uppercase. | `POST` |
+| `path` | The request path. | `/v1/login` |
+| `host` | The hostname the request was sent to. | `myapp.appwrite.network` |
+| `userAgent` | The request's `User-Agent` header. | `Mozilla/5.0 ...` |
+
+# Operators {% #operators %}
+
+| Operator | Description |
+| -------- | ----------- |
+| `equal` | The attribute equals any of the values. |
+| `notEqual` | The attribute does not equal any of the values. |
+| `contains` | The attribute contains any of the values as a substring. |
+| `notContains` | The attribute does not contain any of the values. |
+| `startsWith` | The attribute starts with the value. |
+| `notStartsWith` | The attribute does not start with the value. |
+| `endsWith` | The attribute ends with the value. |
+| `notEndsWith` | The attribute does not end with the value. |
+| `lessThan` | The attribute is less than the value. |
+| `lessThanEqual` | The attribute is less than or equal to the value. |
+| `greaterThan` | The attribute is greater than the value. |
+| `greaterThanEqual` | The attribute is greater than or equal to the value. |
+| `between` | The attribute is between the two values, inclusive. |
+| `notBetween` | The attribute is not between the two values. |
+| `isNull` | The attribute is absent. |
+| `isNotNull` | The attribute is present. |
+
+The `equal`, `notEqual`, `contains`, and `notContains` operators accept multiple values and match if any single value matches. The `startsWith`, `endsWith`, and relational operators compare against a single value, and `between` uses exactly two values for the range bounds.
+
+{% info title="Matching IP ranges" %}
+The `equal` operator compares IP addresses as exact strings. To match a range of addresses, use `startsWith` with the shared prefix, for example `startsWith` on `ip` with the value `203.0.113.`.
+{% /info %}
+
+# Combining conditions {% #combining-conditions %}
+
+All conditions on a rule must match, which behaves like a logical AND:
+
+```json
+[
+    { "method": "equal", "attribute": "method", "values": ["POST"] },
+    { "method": "startsWith", "attribute": "path", "values": ["/v1/login"] }
+]
+```
+
+This rule only matches `POST` requests to paths starting with `/v1/login`.
+
+To express alternatives beyond a multi-value `equal`, nest conditions with the logical `or` and `and` operators. A logical condition's `values` array contains other conditions:
+
+```json
+{
+    "method": "or",
+    "values": [
+        { "method": "contains", "attribute": "userAgent", "values": ["curl", "python-requests"] },
+        { "method": "isNull", "attribute": "userAgent" }
+    ]
+}
+```
+
+This condition matches requests with an automation user agent or no user agent at all. Logical conditions can be nested to build more complex expressions.
