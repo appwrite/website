@@ -93,7 +93,7 @@ OpenAI Presence is available to eligible enterprise customers through a limited 
 
 For use cases that go beyond what the product supports today, OpenAI's Forward Deployed Engineers and partners can work with the customer to bring the workflow into production. OpenAI also says it will keep supporting voice customers who want frontier model access directly through the [OpenAI API](https://platform.openai.com/docs/overview).
 
-In short: if you are an enterprise with a high-value workflow and an OpenAI account team, Presence is something you can pilot now. If you are a developer building your own agents, the product is not yet available to you, but the architecture behind it is entirely reproducible.
+In short: eligible enterprises with high-value workflows can contact their OpenAI account team to explore whether Presence is suitable for their organization. If you are a developer building your own agents, Presence is not currently available as a self-serve product, but many of its core architectural principles can be reproduced.
 
 # What OpenAI Presence means for developers building agents
 
