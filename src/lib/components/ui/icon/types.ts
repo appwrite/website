@@ -40,6 +40,7 @@ export type IconType =
     | 'mcp'
     | 'message'
     | 'microsoft'
+    | 'mongo'
     | 'minus'
     | 'nuxt'
     | 'persons'
