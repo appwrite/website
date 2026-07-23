@@ -22,7 +22,6 @@ faqs:
   - question: "Will AI replace developers?"
     answer: "Not in any short timeframe. AI shifts what developers spend time on (more architecture and review, less boilerplate), but you still need humans to define what to build, judge quality, and own production systems. The developers who get the biggest leverage from AI are the ones who learn to use it deliberately rather than as a smarter search bar."
 ---
-
 If you've been using AI the way most developers use it, pasting an error into a chat window, skimming the half-useful answer, and going back to Stack Overflow when it doesn't pan out, you're using maybe five percent of what's actually available to you. The developers who've quietly moved up to a different speed tier aren't running on some secret model you don't have access to. They've just collected a handful of specific, non-obvious techniques that turn AI from a slightly smarter search bar into an actual extension of how they work.
 
 Some of these are technical. Some are almost embarrassingly simple. All of them feel like cheat codes the first time they click. Here are six worth stealing today.
