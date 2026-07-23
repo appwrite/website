@@ -1,0 +1,44 @@
+---
+layout: tutorial
+title: Initialize SDK
+description: Add Authentication to a Flutter project using Appwrite.
+step: 3
+---
+Before you can use Appwrite, you need to instanciate the Appwrite `Client` class with the project ID and endpoint. 
+This tells the SDK where your Appwrite project is hosted and which one to connect to.
+
+The client is then used to initialize services like `Databases` and `Account`, so they all point to the same Appwrite project.
+
+You can do this by instantiating the services you need in a file like `lib/config/appwrite.dart` and **exporting the instances**.
+
+```dart
+// lib/config/appwrite.dart
+import 'package:appwrite/appwrite.dart';
+
+import 'package:my_flutter_project/constants.dart' as constants;
+
+class Appwrite {
+  static final Appwrite instance = Appwrite._instance();
+
+  late final Client client;
+
+  late final Account account;
+
+  Appwrite._instance() {
+    client = Client()
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject(constants.appwriteProjectID);
+    account = Account(client);
+  }
+}
+```
+
+`appwriteProjectID` is a variable that you can store in a different constants file.
+
+For example, your `lib/constants.dart` file might look something similar to this.
+
+```dart
+String appwriteProjectID = "642sdddf85b440dc7e5bf";
+```
+
+You can get the value for this variable from the Appwrite console's **Settings** page.
