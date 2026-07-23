@@ -29,6 +29,10 @@
                     href: '/docs/products/storage/buckets'
                 },
                 {
+                    label: 'Folders',
+                    href: '/docs/products/storage/folders'
+                },
+                {
                     label: 'Permissions',
                     href: '/docs/products/storage/permissions'
                 },
@@ -48,6 +52,10 @@
                 {
                     label: 'Image transformations',
                     href: '/docs/products/storage/images'
+                },
+                {
+                    label: 'S3 API',
+                    href: '/docs/products/storage/s3'
                 }
             ]
         },
