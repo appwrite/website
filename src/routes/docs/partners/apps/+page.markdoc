@@ -34,7 +34,7 @@ Your app authenticates the user once and then acts on their Appwrite resources w
 Sign in with Appwrite is the authorization code flow from OAuth 2.1, served by Appwrite.
 
 1. **Your app redirects the user** to the Appwrite authorization endpoint with the scopes it needs.
-2. **Appwrite shows the consent screen.** The user sees your app's name and logo, reviews the requested permissions, and picks which projects and organizations they apply to. They can narrow the request, down to read-only.
+2. **Appwrite shows the consent screen.** The user sees your app's name and logo, reviews the requested permissions, and picks which projects and organizations they apply to. They can grant fewer projects than you asked for, or decline entirely.
 3. **Your app receives an authorization code** at its redirect URI and exchanges it for an access token, a refresh token, and an ID token.
 4. **Your app calls Appwrite APIs** with the access token as a bearer token, on any of the granted projects, in any region.
 

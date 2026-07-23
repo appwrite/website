@@ -56,14 +56,14 @@ With credentials in your environment, Horizon can offer a Sign in with Appwrite 
 The query string carries everything your app asks for:
 
 - Identity scopes, so Horizon knows who signed in.
-- One project scope, `project:tables.read`, for the data it needs.
+- One project scope, `project:databases.read`, for the data it needs.
 
 ```text
 https://cloud.appwrite.io/v1/oauth2/console/authorize
   ?client_id=<CLIENT_ID>
   &redirect_uri=http://localhost:7700/oauth/callback
   &response_type=code
-  &scope=openid profile email project:tables.read
+  &scope=openid profile email project:databases.read
 ```
 
 URL-encode the values. Because the request carries a project scope, the consent screen asks the user which projects the grant covers. Scopes are described in the [scope catalog](/docs/partners/apps/scopes).
@@ -77,36 +77,40 @@ URL-encode the values. Because the request carries a project scope, the consent 
 ![Consent screen asking to authorize the app with selected projects](/images/docs/partners/apps/quick-start-consent.avif)
 {% /only_light %}
 
-This is the moment the user meets your app inside Appwrite. The consent screen shows Horizon's name and logo, lists each requested permission in plain language, and lets the user select the projects the grant covers or reduce the access to read-only. On approval, the browser returns to your redirect URI:
+This is the moment the user meets your app inside Appwrite. The consent screen shows Horizon's name and logo, lists each requested permission in plain language, and lets the user select the projects the grant covers. On approval, the browser returns to your redirect URI:
 
 ```text
-http://localhost:7700/oauth/callback?code=<CODE>&iss=https://cloud.appwrite.io/v1/oauth2/console
+http://localhost:7700/oauth/callback?code=<CODE>
 ```
 
 Use the code within five minutes. It is single-use.
 
 # Exchange the code {% #exchange %}
 
-From your server, exchange the code for tokens. Authenticate with your client credentials over HTTP basic auth.
+From your server, exchange the code for tokens, sending your client credentials in the request body.
 
 {% multicode %}
 ```curl
 curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=authorization_code" \
-  -d "code=<CODE>" \
-  -d "redirect_uri=http://localhost:7700/oauth/callback"
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "authorization_code",
+    "code": "<CODE>",
+    "redirect_uri": "http://localhost:7700/oauth/callback",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 ```hurl
 POST https://cloud.appwrite.io/v1/oauth2/console/token
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-grant_type: authorization_code
-code: <CODE>
-redirect_uri: http://localhost:7700/oauth/callback
+{
+  "grant_type": "authorization_code",
+  "code": "<CODE>",
+  "redirect_uri": "http://localhost:7700/oauth/callback",
+  "client_id": "<CLIENT_ID>",
+  "client_secret": "<CLIENT_SECRET>"
+}
 ```
 {% /multicode %}
 
@@ -118,51 +122,43 @@ The response carries the three tokens and echoes what the user actually granted:
   "token_type": "Bearer",
   "expires_in": 28800,
   "refresh_token": "eyJhbGciOiJIUzI1NiJ9...",
-  "scope": "openid profile email project:tables.read",
+  "scope": "openid profile email project:databases.read",
   "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
   "id_token": "eyJhbGciOiJSUzI1NiJ9..."
 }
 ```
 
-Check `scope` for the scopes that survived consent and `authorization_details` for the projects the user selected; both may be less than you asked for. Store the refresh token like a password. [Tokens](/docs/partners/apps/tokens) covers lifetimes, refresh rotation, and revocation.
+Check `authorization_details` for the projects the user selected; they may cover less than you asked for. Store the refresh token like a password. [Tokens](/docs/partners/apps/tokens) covers lifetimes, refresh rotation, and revocation.
 
 # Verify the token {% #verify-token %}
 
-Horizon does not need to trust its own bookkeeping. At any point, it can ask Appwrite what a token is worth by introspecting it, authenticated with the same client credentials:
+Before doing anything else with the token, ask Appwrite who it belongs to. The userinfo endpoint answers with the user's identity, and only for tokens that are still active:
 
 {% multicode %}
 ```curl
-curl -X POST https://cloud.appwrite.io/v1/oauth2/console/introspect \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "token=<ACCESS_TOKEN>"
+curl https://cloud.appwrite.io/v1/oauth2/console/userinfo \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
 ```hurl
-POST https://cloud.appwrite.io/v1/oauth2/console/introspect
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-token: <ACCESS_TOKEN>
+GET https://cloud.appwrite.io/v1/oauth2/console/userinfo
+Authorization: Bearer <ACCESS_TOKEN>
 ```
 {% /multicode %}
 
-A live token comes back with everything the grant holds:
+The response is the signed-in user:
 
 ```json
 {
-  "active": true,
-  "scope": "openid profile email project:tables.read",
-  "client_id": "horizon",
-  "token_type": "Bearer",
   "sub": "6a150ace003bc4c2919e",
-  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
-  "exp": 1784737416,
-  "token_use": "access_token"
+  "name": "Walter O'Brien",
+  "email": "walter@example.com",
+  "email_verified": true,
+  "updated_at": 1784707579
 }
 ```
 
-An expired or revoked token returns only `{ "active": false }`. This is the authoritative check: it reflects revocation the moment it happens, which decoding the JWT yourself cannot.
+An expired or revoked token returns a `401` of type `oauth2_invalid_token` instead, so a successful response also proves the token is still live.
 
 # List the user's projects {% #list-projects %}
 
@@ -200,11 +196,11 @@ The response lists every project the grant covers:
 }
 ```
 
-Each entry carries the project's `$id`, `region`, and `endpoint`, which is everything your app needs to call it.
+Each entry carries the project's `$id`, `region`, and `endpoint`, which is everything your app needs to call it. The listing returns 25 projects per page and accepts `limit` and `offset` parameters for paging through more. A matching `/oauth2/console/organizations` endpoint lists granted organizations the same way.
 
 # Call a project API {% #call-project-api %}
 
-The listing gives Horizon everything it needs to do real work. Point a client at a granted project's endpoint, keep the same bearer token, and call the APIs your scopes allow. With `project:tables.read`, that is reading the tables of a database in the project.
+The listing gives Horizon everything it needs to do real work. Point a client at a granted project's endpoint, keep the same bearer token, and call the APIs your scopes allow. With `project:databases.read`, that is listing the databases the project holds.
 
 {% info title="No SDK required" %}
 Prefer not to use an SDK? The cURL and Hurl tabs show the raw API call: the project's endpoint, the `X-Appwrite-Project` header, and the access token in the `Authorization` header. Every Appwrite API accepts the same shape.
@@ -212,13 +208,13 @@ Prefer not to use an SDK? The cURL and Hurl tabs show the raw API call: the proj
 
 {% multicode %}
 ```curl
-curl "<PROJECT_ENDPOINT>/tablesdb/<DATABASE_ID>/tables" \
+curl "<PROJECT_ENDPOINT>/tablesdb" \
   -H "X-Appwrite-Project: <PROJECT_ID>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
 ```hurl
-GET <PROJECT_ENDPOINT>/tablesdb/<DATABASE_ID>/tables
+GET <PROJECT_ENDPOINT>/tablesdb
 X-Appwrite-Project: <PROJECT_ID>
 Authorization: Bearer <ACCESS_TOKEN>
 ```
@@ -233,9 +229,7 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.listTables({
-    databaseId: '<DATABASE_ID>'
-});
+const result = await tablesDB.list();
 ```
 
 ```server-deno
@@ -248,9 +242,7 @@ const client = new Client()
 
 const tablesDB = new TablesDB(client);
 
-const result = await tablesDB.listTables({
-    databaseId: '<DATABASE_ID>'
-});
+const result = await tablesDB.list();
 ```
 
 ```server-python
@@ -264,9 +256,7 @@ client.set_bearer('Bearer <ACCESS_TOKEN>')  # The same access token
 
 tables_db = TablesDB(client)
 
-result = tables_db.list_tables(
-    database_id = '<DATABASE_ID>'
-)
+result = tables_db.list()
 ```
 
 ```server-php
@@ -282,9 +272,7 @@ $client = (new Client())
 
 $tablesDB = new TablesDB($client);
 
-$result = $tablesDB->listTables(
-    databaseId: '<DATABASE_ID>'
-);
+$result = $tablesDB->list();
 ```
 
 ```server-ruby
@@ -299,9 +287,7 @@ client = Client.new
 
 tables_db = TablesDB.new(client)
 
-result = tables_db.list_tables(
-    database_id: '<DATABASE_ID>'
-)
+result = tables_db.list()
 ```
 
 ```server-dart
@@ -314,9 +300,7 @@ Client client = Client()
 
 TablesDB tablesDB = TablesDB(client);
 
-TableList result = await tablesDB.listTables(
-    databaseId: '<DATABASE_ID>',
-);
+DatabaseList result = await tablesDB.list();
 ```
 
 ```server-kotlin
@@ -330,9 +314,7 @@ val client = Client()
 
 val tablesDB = TablesDB(client)
 
-val result = tablesDB.listTables(
-    databaseId = "<DATABASE_ID>"
-)
+val result = tablesDB.list()
 ```
 
 ```server-java
@@ -347,8 +329,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-tablesDB.listTables(
-    "<DATABASE_ID>", // databaseId
+tablesDB.list(
     null, // queries (optional)
     null, // search (optional)
     null, // total (optional)
@@ -373,9 +354,7 @@ let client = Client()
 
 let tablesDB = TablesDB(client)
 
-let tableList = try await tablesDB.listTables(
-    databaseId: "<DATABASE_ID>"
-)
+let databaseList = try await tablesDB.list()
 ```
 
 ```server-dotnet
@@ -390,9 +369,7 @@ Client client = new Client()
 
 TablesDB tablesDB = new TablesDB(client);
 
-TableList result = await tablesDB.ListTables(
-    databaseId: "<DATABASE_ID>"
-);
+DatabaseList result = await tablesDB.List();
 ```
 
 ```server-go
@@ -414,7 +391,7 @@ func main() {
 
     service := tablesdb.New(c)
 
-    result, err := service.ListTables("<DATABASE_ID>")
+    result, err := service.List()
     if err != nil {
         panic(err)
     }
@@ -436,7 +413,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let tables_db = TablesDB::new(&client);
 
-    let result = tables_db.list_tables("<DATABASE_ID>", None, None, None).await?;
+    let result = tables_db.list(None, None, None).await?;
     println!("{:?}", result.total);
 
     Ok(())
@@ -445,6 +422,35 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 {% /multicode %}
 
 A call outside the granted scopes or projects fails with a `401` error of type `general_unauthorized_scope`. The token works on every region, so your app never maps regions itself; use each project's `endpoint` value from the listing.
+
+# Refresh the token {% #refresh-token %}
+
+Access tokens expire after 8 hours. When one does, trade the refresh token for a new pair instead of sending the user back through consent:
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "refresh_token",
+    "refresh_token": "<REFRESH_TOKEN>",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/token
+{
+  "grant_type": "refresh_token",
+  "refresh_token": "<REFRESH_TOKEN>",
+  "client_id": "<CLIENT_ID>",
+  "client_secret": "<CLIENT_SECRET>"
+}
+```
+{% /multicode %}
+
+The response has the same shape as the original exchange: a fresh access token and a new refresh token. Refresh tokens are single-use, so store the new one as soon as it arrives; reusing a spent token invalidates the whole pair. [Tokens](/docs/partners/apps/tokens#refresh-tokens) covers rotation in detail.
 
 # Sign in through Appwrite Auth {% #appwrite-provider %}
 
@@ -478,7 +484,7 @@ account.createOAuth2Session({
     provider: OAuthProvider.Appwrite,
     success: 'https://example.com/success',
     failure: 'https://example.com/failure',
-    scopes: ['project:tables.read']
+    scopes: ['project:databases.read']
 });
 ```
 
@@ -494,7 +500,7 @@ Account account = Account(client);
 
 await account.createOAuth2Session(
     provider: OAuthProvider.appwrite,
-    scopes: ['project:tables.read'],
+    scopes: ['project:databases.read'],
 );
 ```
 
@@ -510,7 +516,7 @@ let account = Account(client)
 
 try await account.createOAuth2Session(
     provider: .appwrite,
-    scopes: ["project:tables.read"]
+    scopes: ["project:databases.read"]
 )
 ```
 
@@ -528,7 +534,7 @@ val account = Account(client)
 account.createOAuth2Session(
     activity = activity,
     provider = OAuthProvider.APPWRITE,
-    scopes = listOf("project:tables.read"),
+    scopes = listOf("project:databases.read"),
 )
 ```
 
@@ -545,7 +551,7 @@ account.createOAuth2Token({
     provider: OAuthProvider.Appwrite,
     success: '<YOUR_DEEP_LINK>',
     failure: '<YOUR_DEEP_LINK>',
-    scopes: ['project:tables.read']
+    scopes: ['project:databases.read']
 });
 ```
 {% /multicode %}

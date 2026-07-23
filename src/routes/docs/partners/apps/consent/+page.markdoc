@@ -27,7 +27,7 @@ The screen is built from your [registration](/docs/partners/apps/registration) a
 
 - **Your app's identity**: the name, logo, and tagline you registered.
 - **Permissions**: each requested scope as a plain-language line, under a one-line summary of the overall reach.
-- **Project access**: a picker for the projects or organizations the grant covers when the request carries project or organization scopes. If your request named specific IDs, the picker shows them for confirmation instead.
+- **Project access**: a picker for the projects or organizations the grant covers when the request carries project or organization scopes.
 
 The user signs in first if no session exists, and can switch accounts from the screen itself.
 
@@ -35,11 +35,10 @@ The user signs in first if no session exists, and can switch accounts from the s
 
 What you request is not always what you get. On the consent screen, the user can:
 
-- Deselect projects.
-- Drop scopes, or narrow them to read-only.
+- Deselect projects or organizations, shrinking where the grant applies.
 - Decline the whole request.
 
-Only `openid` always survives approval, so an approved flow always identifies the user.
+The permission list itself is not editable. Scopes are granted as you requested them or not at all, which is another reason to request the smallest set that serves your app.
 
 The token response tells you what you got: `scope` holds the granted scopes, `authorization_details` the granted projects. Build for this from the start. A dashboard that asked for five projects but got two should show two projects, not an error.
 

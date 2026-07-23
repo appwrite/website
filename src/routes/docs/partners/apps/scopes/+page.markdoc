@@ -12,7 +12,7 @@ back: /docs/partners/apps
 ![Scopes and targets combine into a grant that the access token carries and every request is checked against](/images/docs/partners/apps/diagram-scopes.avif)
 {% /only_light %}
 
-A scope names an action your app wants to perform. A grant pairs scopes with the projects and organizations they apply to. Both halves matter: `project:tables.read` by itself says what, and the user's project selection on the consent screen says where.
+A scope names an action your app wants to perform. A grant pairs scopes with the projects and organizations they apply to. Both halves matter: `project:databases.read` by itself says what, and the user's project selection on the consent screen says where.
 
 Request the smallest set that serves your app. Every scope you ask for appears on the consent screen as a permission line, and users decline requests that want too much.
 
@@ -41,9 +41,14 @@ Project scopes carry the `project:` prefix and map to the permissions [API keys]
 | Functions | `project:functions.read`, `project:functions.write`, `project:executions.read`, `project:executions.write` |
 | Sites | `project:sites.read`, `project:sites.write`, `project:log.read`, `project:log.write` |
 | Messaging | `project:providers.read`, `project:providers.write`, `project:topics.read`, `project:topics.write`, `project:subscribers.read`, `project:subscribers.write`, `project:targets.read`, `project:targets.write`, `project:messages.read`, `project:messages.write` |
-| Project configuration | `project:project.read`, `project:project.write`, `project:keys.read`, `project:keys.write`, `project:platforms.read`, `project:platforms.write`, `project:webhooks.read`, `project:webhooks.write`, `project:policies.read`, `project:policies.write` |
-| Networking | `project:rules.read`, `project:rules.write`, `project:domains.read`, `project:domains.write`, `project:wafRules.read`, `project:wafRules.write` |
-| Operations | `project:usage.read`, `project:health.read`, `project:migrations.read`, `project:migrations.write`, `project:backups.policies.read`, `project:backups.policies.write`, `project:archives.read`, `project:archives.write`, `project:restorations.read`, `project:restorations.write` |
+| Projects | `project:project.read`, `project:project.write`, `project:keys.read`, `project:keys.write`, `project:platforms.read`, `project:platforms.write`, `project:webhooks.read`, `project:webhooks.write`, `project:policies.read`, `project:policies.write` |
+| Proxy | `project:rules.read`, `project:rules.write` |
+| Domains | `project:domains.read`, `project:domains.write` |
+| WAF | `project:wafRules.read`, `project:wafRules.write` |
+| Usage | `project:usage.read` |
+| Health | `project:health.read` |
+| Migrations | `project:migrations.read`, `project:migrations.write` |
+| Backups | `project:backups.policies.read`, `project:backups.policies.write`, `project:archives.read`, `project:archives.write`, `project:restorations.read`, `project:restorations.write` |
 
 `project:all` grants the full project catalog at once. Reserve it for tools that genuinely administer whole projects; the consent screen presents it as full project access.
 
@@ -71,61 +76,26 @@ Organization scopes carry the `organization:` prefix and cover what a user's org
 
 Scopes say what your app can do. Targets say where. Every grant carries both.
 
-## The user picks the targets {% #targets-picked %}
-
-When your request includes a project or organization scope, the consent screen asks the user which projects or organizations the scope applies to. You send only the scopes; the user's selection is written into the grant. This is the default, and it needs nothing extra from your app.
-
-## Pre-selecting a target {% #targets-preselected %}
-
-When your app already knows which project it wants, name it in the authorization request with the `authorization_details` parameter ([RFC 9396](https://datatracker.ietf.org/doc/html/rfc9396)). The consent screen then shows that project for confirmation instead of an open picker.
-
-```text
-https://cloud.appwrite.io/v1/oauth2/console/authorize
-  ?client_id=<CLIENT_ID>
-  &redirect_uri=<REDIRECT_URI>
-  &response_type=code
-  &scope=openid project:tables.read
-  &authorization_details=[{"type":"project","identifiers":["<PROJECT_ID>"]}]
-```
-
-Each entry has a `type`, either `project` or `organization`, and an `identifiers` array of IDs. Use this for flows like connecting one specific project to your app.
+When your request includes a project or organization scope, the consent screen asks the user which projects or organizations the scope applies to. You send only the scopes; the user's selection is written into the grant, and your app does nothing extra to make it happen.
 
 ## Reading what was granted {% #targets-granted %}
 
-Either way, the token response's `authorization_details` field holds the projects the user ended up granting.
+The token response's `authorization_details` field holds the projects the user ended up granting.
 
-To check a token you already hold, introspect it with your client credentials:
-
-{% multicode %}
-```curl
-curl -X POST https://cloud.appwrite.io/v1/oauth2/console/introspect \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "token=<ACCESS_TOKEN>"
-```
-
-```hurl
-POST https://cloud.appwrite.io/v1/oauth2/console/introspect
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-token: <ACCESS_TOKEN>
-```
-{% /multicode %}
-
-The response returns the granted scopes and targets:
+To check a token you already hold, decode it. The access token is a JWT, and its payload carries the granted scopes and targets alongside the standard claims:
 
 ```json
 {
-  "active": true,
-  "scope": "openid project:tables.read",
-  "client_id": "<CLIENT_ID>",
+  "iss": "https://cloud.appwrite.io/v1/oauth2/console",
   "sub": "6a150ace003bc4c2919e",
+  "client_id": "horizon",
+  "scope": "openid project:databases.read",
   "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
-  "exp": 1784737416,
-  "token_use": "access_token"
+  "exp": 1784832895
 }
 ```
+
+Neither value changes after issuance, so a decode is authoritative for what the token holds. [Tokens](/docs/partners/apps/tokens#validation) covers verifying the signature.
 
 To turn the targets into concrete projects, list them with the token itself:
 
@@ -141,17 +111,12 @@ Authorization: Bearer <ACCESS_TOKEN>
 ```
 {% /multicode %}
 
-Each project in the response carries its `$id`, `region`, and `endpoint`, which is everything your app needs to call it.
+Each project in the response carries its `$id`, `region`, and `endpoint`, which is everything your app needs to call it. The listing returns 25 projects per page and accepts `limit` and `offset` parameters; a matching `/oauth2/console/organizations` endpoint lists granted organizations the same way.
 
-A scope only works inside its granted targets. A token with `project:tables.read` reads tables in the selected projects and returns `401 general_unauthorized_scope` everywhere else.
+A scope only works inside its granted targets. A token with `project:databases.read` lists databases in the selected projects and returns `401 general_unauthorized_scope` everywhere else.
 
 # When requests fail {% #failures %}
 
-Two mistakes fail before the user ever sees a consent screen. The authorization endpoint redirects straight back to your app with an error:
+A scope outside the catalog fails before the user ever sees a consent screen: the authorization endpoint redirects straight back to your app with `error=invalid_scope`. The catalog is published in the discovery document under `scopes_supported`, so your app can validate requests before sending them.
 
-- A scope outside the catalog returns `error=invalid_scope`.
-- Malformed or unsupported `authorization_details` return `error=invalid_authorization_details`.
-
-Both catalogs are published in the discovery document, under `scopes_supported` and `authorization_details_types_supported`, so your app can validate requests before sending them.
-
-The user can also grant less than you asked. Consent may drop scopes or narrow write access to read, so treat the `scope` string in the token response as the truth, not your request. [Consent](/docs/partners/apps/consent) shows what that narrowing looks like.
+The user can also grant less than you asked by deselecting projects or organizations on the consent screen, so treat the token response's `authorization_details` as the truth, not your request. [Consent](/docs/partners/apps/consent) shows what partial grants look like.

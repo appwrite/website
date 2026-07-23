@@ -18,26 +18,30 @@ Your app holds three tokens with different jobs:
 - The **refresh token** replaces expired access tokens.
 - The **ID token** proves who signed in.
 
-All three come from one call. After the user approves your app on the consent screen, exchange the authorization code at the token endpoint, authenticated with your client credentials:
+All three come from one call. After the user approves your app on the consent screen, exchange the authorization code at the token endpoint, sending your client credentials in the request body:
 
 {% multicode %}
 ```curl
 curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=authorization_code" \
-  -d "code=<CODE>" \
-  -d "redirect_uri=<REDIRECT_URI>"
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "authorization_code",
+    "code": "<CODE>",
+    "redirect_uri": "<REDIRECT_URI>",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 ```hurl
 POST https://cloud.appwrite.io/v1/oauth2/console/token
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-grant_type: authorization_code
-code: <CODE>
-redirect_uri: <REDIRECT_URI>
+{
+  "grant_type": "authorization_code",
+  "code": "<CODE>",
+  "redirect_uri": "<REDIRECT_URI>",
+  "client_id": "<CLIENT_ID>",
+  "client_secret": "<CLIENT_SECRET>"
+}
 ```
 {% /multicode %}
 
@@ -49,11 +53,54 @@ The response carries all three tokens, along with what the user granted:
   "token_type": "Bearer",
   "expires_in": 28800,
   "refresh_token": "eyJhbGciOiJIUzI1NiJ9...",
-  "scope": "openid profile email project:tables.read",
+  "scope": "openid profile email project:databases.read",
   "authorization_details": [{ "type": "project", "identifiers": ["6a357f7e001c7237296b"] }],
   "id_token": "eyJhbGciOiJSUzI1NiJ9..."
 }
 ```
+
+# Public clients {% #public-clients %}
+
+Mobile apps, desktop apps, and SPAs cannot keep a client secret, so they register as [public clients](/docs/partners/apps/registration#client-types) and prove themselves with PKCE ([RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636)) instead. Before redirecting the user, generate a random `code_verifier`, hash it with SHA-256, and send the hash along in the authorization request:
+
+```text
+https://cloud.appwrite.io/v1/oauth2/console/authorize
+  ?client_id=<CLIENT_ID>
+  &redirect_uri=<REDIRECT_URI>
+  &response_type=code
+  &scope=openid profile email project:databases.read
+  &code_challenge=<CODE_CHALLENGE>
+  &code_challenge_method=S256
+```
+
+The challenge is not optional: a public client authorizing without one is redirected back with `error=invalid_request`. At the token endpoint, the original verifier replaces the client secret:
+
+{% multicode %}
+```curl
+curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "authorization_code",
+    "code": "<CODE>",
+    "redirect_uri": "<REDIRECT_URI>",
+    "client_id": "<CLIENT_ID>",
+    "code_verifier": "<CODE_VERIFIER>"
+  }'
+```
+
+```hurl
+POST https://cloud.appwrite.io/v1/oauth2/console/token
+{
+  "grant_type": "authorization_code",
+  "code": "<CODE>",
+  "redirect_uri": "<REDIRECT_URI>",
+  "client_id": "<CLIENT_ID>",
+  "code_verifier": "<CODE_VERIFIER>"
+}
+```
+{% /multicode %}
+
+The response carries the same three tokens, on shorter leases: access tokens last 1 hour and refresh tokens 30 days, against 8 hours and 365 days for confidential clients.
 
 # Access tokens {% #access-tokens %}
 
@@ -70,6 +117,24 @@ The access token is a JWT of type `at+jwt` ([RFC 9068](https://datatracker.ietf.
     - `iat`: when the token was issued.
     - `jti`: a unique ID for this token.
     - `auth_time`: when the user last authenticated.
+
+Decoded, the payload reads:
+
+```json
+{
+  "iss": "https://cloud.appwrite.io/v1/oauth2/console",
+  "aud": ["https://cloud.appwrite.io/v1/console"],
+  "sub": "6a150ace003bc4c2919e",
+  "client_id": "horizon",
+  "scope": "openid profile email project:databases.read",
+  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
+  "exp": 1784832895,
+  "iat": 1784804095,
+  "jti": "d0fe924a1fe6113ba1bab1eaf631603d",
+  "auth_time": 1784803731,
+  "tokenId": "6a61f2f3c94806401116"
+}
+```
 
 Pass it as a bearer token in the `Authorization` header. The userinfo endpoint is the simplest call to try it on:
 
@@ -92,7 +157,8 @@ The response is the signed-in user:
   "sub": "6a150ace003bc4c2919e",
   "name": "Walter O'Brien",
   "email": "walter@example.com",
-  "email_verified": true
+  "email_verified": true,
+  "updated_at": 1784707579
 }
 ```
 
@@ -112,19 +178,23 @@ When the access token expires, exchange the refresh token for a new pair:
 {% multicode %}
 ```curl
 curl -X POST https://cloud.appwrite.io/v1/oauth2/console/token \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=refresh_token" \
-  -d "refresh_token=<REFRESH_TOKEN>"
+  -H "Content-Type: application/json" \
+  -d '{
+    "grant_type": "refresh_token",
+    "refresh_token": "<REFRESH_TOKEN>",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 ```hurl
 POST https://cloud.appwrite.io/v1/oauth2/console/token
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-grant_type: refresh_token
-refresh_token: <REFRESH_TOKEN>
+{
+  "grant_type": "refresh_token",
+  "refresh_token": "<REFRESH_TOKEN>",
+  "client_id": "<CLIENT_ID>",
+  "client_secret": "<CLIENT_SECRET>"
+}
 ```
 {% /multicode %}
 
@@ -136,7 +206,7 @@ The response is a fresh pair, in the same shape as the original exchange:
   "token_type": "Bearer",
   "expires_in": 28800,
   "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-  "scope": "openid profile email project:tables.read",
+  "scope": "openid profile email project:databases.read",
   "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9..."
 }
 ```
@@ -177,7 +247,12 @@ Never use the ID token to call APIs; it only tells your app who signed in, and A
 
 # Validating tokens {% #validation %}
 
-If your app runs its own API and receives Appwrite access tokens from clients, verify them against the published keys:
+Your app never needs to check a token before using it. Every Appwrite API validates the bearer token on each call and rejects anything expired or revoked, so the normal move is to send the token and handle the `401`.
+
+Decoding the token still helps in two places:
+
+- **UX**: read `exp` locally and send the user to sign-in the moment the token expires, instead of letting a request fail first.
+- **Your own API**: if your backend accepts Appwrite access tokens from its clients, verify them like any JWT against the published keys:
 
 ```text
 https://cloud.appwrite.io/v1/oauth2/console/.well-known/jwks.json
@@ -185,42 +260,7 @@ https://cloud.appwrite.io/v1/oauth2/console/.well-known/jwks.json
 
 Check the signature, the `iss` claim, the audience, the expiry, and require the `at+jwt` type so an ID token can never pass as an access token.
 
-Offline validation cannot see revocation. For the authoritative answer, call the introspection endpoint ([RFC 7662](https://datatracker.ietf.org/doc/html/rfc7662)) with your client credentials:
-
-{% multicode %}
-```curl
-curl -X POST https://cloud.appwrite.io/v1/oauth2/console/introspect \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "token=<ACCESS_TOKEN>"
-```
-
-```hurl
-POST https://cloud.appwrite.io/v1/oauth2/console/introspect
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-token: <ACCESS_TOKEN>
-```
-{% /multicode %}
-
-An active token comes back with everything it holds:
-
-```json
-{
-  "active": true,
-  "scope": "openid profile email project:tables.read",
-  "client_id": "horizon",
-  "token_type": "Bearer",
-  "sub": "6a150ace003bc4c2919e",
-  "authorization_details": [{ "type": "project", "identifiers": ["*"] }],
-  "exp": 1784737416,
-  "iat": 1784708616,
-  "token_use": "access_token"
-}
-```
-
-Anything expired, revoked, or rotated away returns only `{ "active": false }`.
+Signature checks cannot see revocation, so your own API accepts a revoked token until it expires; the short access token lifetime bounds that window. Appwrite's own APIs reject revoked tokens the moment revocation happens.
 
 # Revocation {% #revocation %}
 
@@ -229,17 +269,21 @@ Revoke tokens when a user disconnects your app:
 {% multicode %}
 ```curl
 curl -X POST https://cloud.appwrite.io/v1/oauth2/console/revoke \
-  -u "<CLIENT_ID>:<CLIENT_SECRET>" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "token=<REFRESH_TOKEN>"
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "<REFRESH_TOKEN>",
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 ```hurl
 POST https://cloud.appwrite.io/v1/oauth2/console/revoke
-[BasicAuth]
-<CLIENT_ID>: <CLIENT_SECRET>
-[Form]
-token: <REFRESH_TOKEN>
+{
+  "token": "<REFRESH_TOKEN>",
+  "client_id": "<CLIENT_ID>",
+  "client_secret": "<CLIENT_SECRET>"
+}
 ```
 {% /multicode %}
 

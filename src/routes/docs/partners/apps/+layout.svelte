@@ -39,6 +39,10 @@
                 {
                     label: 'Tokens',
                     href: '/docs/partners/apps/tokens'
+                },
+                {
+                    label: 'Device flow',
+                    href: '/docs/partners/apps/device-flow'
                 }
             ]
         }
