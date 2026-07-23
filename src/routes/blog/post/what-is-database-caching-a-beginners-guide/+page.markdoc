@@ -1,0 +1,153 @@
+---
+layout: post
+title: "What is database caching? A beginner's guide"
+description: Database caching speeds up your app by serving repeated queries from fast storage. Learn how it works, the main strategies, and when you actually need it.
+date: 2026-07-21
+cover: /images/blog/what-is-database-caching-a-beginners-guide/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: performance
+featured: false
+unlisted: true
+faqs:
+  - question: What is a cache hit and a cache miss?
+    answer: A cache hit happens when the requested data is already stored in the cache. A cache miss happens when the data is not available, so the application queries the database and usually stores the result for future requests.
+  - question: What is TTL in database caching?
+    answer: TTL stands for time to live. It defines how long cached data remains available before it expires and must be fetched from the database again.
+  - question: Is Redis required for database caching?
+    answer: No. Redis is a popular option, but applications can also use Memcached, local in-process caches, distributed caches, CDNs, or caching features built into a backend platform.
+  - question: What is the best database caching strategy?
+    answer: Cache-aside is the most common strategy for most applications. The application checks the cache first, queries the database after a miss, and then stores the result in the cache.
+---
+**Database caching is a technique that stores the results of frequent or expensive database queries in fast, temporary storage so your app can serve them instantly instead of hitting the database every time.** Done well, it turns slow, repeated reads into responses that feel instant and takes a large chunk of load off your primary database.
+
+This guide explains what database caching is, how it works, the main caching strategies, where the cache lives, how invalidation works, and when you actually need it. It's written for developers who want a complete picture, not just a definition.
+
+# What is database caching?
+
+Database caching is the practice of keeping copies of frequently accessed data in a fast storage layer that sits between your application and your database. When a request comes in, your app checks the cache first. If the data is there, it's returned immediately. If not, the app queries the database, stores the result in the cache, and returns it.
+
+The database remains the source of truth. The cache is a faster shortcut to data your app reads over and over. Think of it like the notepad on your desk: your main database is the filing cabinet, reliable but slower to open, while the cache holds the few things you need right now so you can grab them instantly.
+
+Most caches live in memory rather than on disk, which is why they respond in under a millisecond. That speed is the entire point. Reading from RAM is orders of magnitude faster than reading from disk, and database caching is how you put that speed in front of your data.
+
+# How does database caching work?
+
+Database caching works by intercepting reads before they reach the database. Every request either finds its data already stored (a **cache hit**) or doesn't (a **cache miss**).
+
+Here's the typical flow:
+
+1. Your app receives a request for some data, such as a product listing.
+2. It checks the cache using a **key**, usually derived from the query or resource ID.
+3. On a **cache hit**, the cached value is returned immediately, and the database is never touched.
+4. On a **cache miss**, the app queries the database, stores the result in the cache under that key, and returns it.
+5. The next identical request is now a cache hit, served straight from memory.
+
+The ratio of hits to total requests is your **hit rate**, and it's the single most important number in caching. A high hit rate means most requests skip the database entirely. A low hit rate means the cache is adding overhead without much payoff, which usually points to the wrong data being cached or keys that rarely repeat.
+
+# Why database caching matters
+
+Databases are often the slowest part of a request and the hardest part to scale. A query that joins several tables, sorts a large result set, or runs an aggregation can take tens or hundreds of milliseconds. Multiply that by thousands of concurrent users and the database becomes a bottleneck.
+
+Database caching attacks this in three ways:
+
+* **Lower latency.** Cached reads come from memory in under a millisecond, so pages and API responses feel instant.
+* **Less database load.** Every cache hit is a query your database never has to run, which frees capacity for writes and uncacheable reads.
+* **Lower cost.** Serving reads from a cache is far cheaper than scaling database instances or paying per-query on a managed database.
+
+The cost of *not* caching shows up as slow pages under traffic, database CPU pinned near its limit, and expensive vertical scaling to buy headroom you could get for free. For read-heavy workloads, caching is usually the highest-leverage performance change you can make.
+
+# Database caching strategies
+
+There are several caching strategies, and the right one depends on your read and write patterns. Most systems mix a few of them.
+
+## Cache-aside (lazy loading)
+
+The application manages the cache directly. It checks the cache first, and on a miss, loads from the database and populates the cache. This is the most common strategy because it's simple and only caches data that's actually requested. The trade-off is that the first request for any item always misses.
+
+## Read-through
+
+The cache sits inline and loads missing data from the database itself, so the application only ever talks to the cache. It's cleaner than cache-aside but requires a cache layer that supports it. Behavior on a miss is otherwise similar: fetch, store, return.
+
+## Write-through
+
+Every write goes to the cache and the database at the same time, keeping the two in sync. Reads are always fresh, but writes are slightly slower because they touch two systems. This suits data that's read often and must never be stale.
+
+## Write-back (write-behind)
+
+Writes go to the cache first and are flushed to the database asynchronously. This makes writes fast but risks data loss if the cache fails before the flush, so it's used carefully and usually only where some durability risk is acceptable.
+
+Here's how the main strategies compare:
+
+| Strategy      | Reads                           | Writes                        | Best for                           |
+| ------------- | ------------------------------- | ----------------------------- | ---------------------------------- |
+| Cache-aside   | App checks cache, loads on miss | Write to DB, invalidate cache | General-purpose read-heavy apps    |
+| Read-through  | Cache loads on miss             | Handled separately            | Simpler app code                   |
+| Write-through | Always fresh                    | Slower, writes twice          | Data that can't be stale           |
+| Write-back    | Fast                            | Fast, flushed later           | Write-heavy, tolerant of some risk |
+
+# Where does the cache live?
+
+Database caching can happen at several layers, and they're often combined.
+
+* **In-memory cache.** A store like [Redis](/blog/post/what-is-redis-a-complete-guide-for-developers) or Memcached holds data in RAM for microsecond reads. This is the most common place to cache database results.
+* **Local (in-process) cache.** Data cached inside the application process itself, which is the fastest option but isn't shared across servers and vanishes on restart.
+* **Distributed cache.** A shared cache cluster accessible by every application server, so a value cached by one server is a hit for all of them.
+* **Edge and CDN caching.** For read-heavy public data, a [CDN](/blog/post/what-is-cdn) can cache API responses close to users, cutting both latency and origin load.
+
+Redis is by far the most popular choice for database caching because it's fast, supports expiration natively, and offers rich data structures. If you're evaluating it, our [complete guide to Redis](/blog/post/what-is-redis-a-complete-guide-for-developers) walks through how it works and why it's so fast.
+
+# Cache invalidation and TTL
+
+Cache invalidation is the hardest part of database caching. The moment you store a copy of data, it can go stale when the underlying record changes. Your job is to decide how stale is acceptable and how to refresh.
+
+The two main approaches are:
+
+* **Time-based expiration (TTL).** Each cached entry gets a **time to live**. When it expires, the next request repopulates it from the database. Invalidation is automatic and predictable, but data can be stale for up to the length of the TTL.
+* **Event-based invalidation.** When a record is written or deleted, you explicitly remove or update its cache entry. This keeps data fresh but adds complexity, because every write path has to know which cache keys it affects.
+
+TTL is the pragmatic default for most read-heavy data. You pick a window that matches how stale the data can safely be. A product catalog might tolerate 5 minutes, while a public leaderboard might refresh every few seconds. Data where staleness is unacceptable, like an account balance or a shopping cart, is usually a poor fit for time-based caching.
+
+# When do you actually need database caching?
+
+You need database caching when the same data is read far more often than it changes, and when database read latency or load is hurting your app. Be honest about both conditions before adding a cache.
+
+Caching is a strong fit for:
+
+* **Read-heavy, slow-changing data** such as product listings, category pages, blog content, and configuration.
+* **Expensive queries** with joins, aggregations, or large sorts that repeat often.
+* **Public, shared responses** where many users request the same thing.
+
+Caching is a poor fit, or needs extra care, for:
+
+* **Data that must always be current**, like balances, inventory counts, or cart contents.
+* **Highly personalized data** that rarely repeats between users, giving you a low hit rate.
+* **Write-heavy workloads** where invalidation churn cancels out the benefit.
+
+A cache is not free. It adds a moving part, a new failure mode, and the ongoing question of correctness. If your database is comfortably fast and lightly loaded, you may not need one yet. Add caching to solve a measured problem, not preemptively.
+
+# Database caching best practices
+
+* **Set a TTL on everything.** Expiration keeps memory bounded and gives you a safety net against stale data even when explicit invalidation is missed.
+* **Cache the right data.** Target read-heavy, slow-changing, frequently repeated queries, not everything.
+* **Design keys carefully.** Include the parameters that make a query unique, such as filters, sort, and pagination, so different results don't collide on one key.
+* **Measure your hit rate.** A low hit rate means you're caching the wrong things or your keys don't repeat.
+* **Plan for cache misses and failures.** Your app should degrade gracefully to the database if the cache is unavailable.
+* **Match staleness to the data.** Short TTLs for fast-changing data, longer TTLs for stable content.
+
+# Getting started with caching on Appwrite
+
+If you're building on [Appwrite](https://cloud.appwrite.io/), you can get the benefits of database caching without wiring up and maintaining a separate cache. [Appwrite Databases](/docs/products/databases) supports [TTL-based list caching](/blog/post/announcing-list-cache-ttl): you pass a `ttl` parameter to your existing `listRows` call, and Appwrite serves identical repeat requests from memory until the window expires. The query, endpoint, and SDK stay the same, so you can roll it out behind a feature flag.
+
+We put that cache under sustained load and measured it in our [TTL caching benchmark](/blog/post/ttl-cache-performance-benchmark), where 100,000 requests per phase showed the biggest gains at the tail of the latency distribution. Beyond the database layer, [Appwrite Sites](/docs/products/sites) and the [Appwrite Network](/docs/products/network/caching) add edge caching for static and dynamic content, so you can cache at every layer from one platform.
+
+Appwrite Cloud gives you a fully managed backend with Auth, Databases, Storage, Functions, Sites, and Realtime out of the box, scaling automatically as your app grows. [Sign up for Appwrite Cloud](https://cloud.appwrite.io/) and give your next build a backend that's fast by default.
+
+## Resources
+
+* [Appwrite Databases documentation](/docs/products/databases)
+* [TTL list caching announcement](/blog/post/announcing-list-cache-ttl)
+* [Benchmarking TTL list caching](/blog/post/ttl-cache-performance-benchmark)
+* [What is Redis? A complete guide for developers](/blog/post/what-is-redis-a-complete-guide-for-developers)
+* [Appwrite Network caching docs](/docs/products/network/caching)
+* [Join the Appwrite Discord](https://appwrite.io/discord)

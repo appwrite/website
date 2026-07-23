@@ -1,0 +1,137 @@
+---
+layout: post
+title: What is CORS? Cross-origin resource sharing explained
+description: Learn what CORS is, why it exists, how it works, what preflight requests are, why CORS errors happen, and how to fix them on the server, in this dev guide.
+date: 2026-07-21
+cover: /images/blog/what-is-cors-cross-origin-resource-sharing-explained/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: security
+featured: false
+unlisted: true
+faqs:
+  - question: What is CORS in simple terms?
+    answer: CORS is a browser security mechanism that uses HTTP headers to control whether a web page on one origin can read a response from another origin.
+  - question: What does CORS stand for?
+    answer: CORS stands for Cross-Origin Resource Sharing.
+  - question: What causes a CORS error?
+    answer: A CORS error occurs when the server does not return the headers the browser expects for a cross-origin request. Common causes include a missing allowed origin, a failed preflight request, or an origin mismatch.
+  - question: What is the same-origin policy?
+    answer: The same-origin policy is a browser security rule that prevents scripts on one origin from reading responses from another origin unless the server explicitly allows it through CORS.
+---
+# What is CORS? Cross-origin resource sharing explained
+
+You wire up a frontend, call your API, and the browser throws a wall of red: `Access to fetch at 'https://api.example.com' from origin 'https://app.example.com' has been blocked by CORS policy`. The request worked fine in Postman and in `curl`, so it looks like the browser is getting in your way for no reason.
+
+It isn't. **CORS (Cross-Origin Resource Sharing)** is a browser security mechanism that decides whether JavaScript on one origin is allowed to read a response from another origin. The confusing part is that CORS is enforced by the browser, not your server, and the error you see rarely tells you what actually went wrong. This guide explains what CORS is, why it exists, how it works under the hood, what preflight requests are, and how to fix CORS errors properly instead of papering over them with a wildcard.
+
+## What is CORS in simple terms?
+
+**CORS is a set of HTTP headers that lets a server tell the browser which other origins are allowed to read its responses.** Without those headers, the browser blocks cross-origin JavaScript from reading the result, even if the request itself reached the server and returned data.
+
+An **origin** is the combination of scheme, host, and port. These three URLs are all different origins:
+
+* [`https://app.example.com`](https://app.example.com) and [`http://app.example.com`](http://app.example.com) (different scheme)
+* [`https://app.example.com`](https://app.example.com) and [`https://api.example.com`](https://api.example.com) (different host)
+* [`https://app.example.com`](https://app.example.com) and [`https://app.example.com:8080`](https://app.example.com:8080) (different port)
+
+If any of the three differ between the page making the request and the resource being requested, the request is **cross-origin**, and CORS rules apply.
+
+## Why does CORS exist?
+
+To understand CORS, you first have to understand the rule it relaxes: the **same-origin policy**. By default, browsers stop a script loaded from one origin from reading responses from a different origin. This is one of the oldest and most important protections on the web.
+
+The reason is cookies. Browsers automatically attach your cookies to requests sent to a domain, including cross-origin requests. Imagine you are logged into your bank at `bank.com` and then open a malicious page at `evil.com`. Without the same-origin policy, JavaScript on `evil.com` could quietly call `bank.com/account` in the background, ride along on your session cookie, and read your balance and transaction history. That class of attack is the whole reason the boundary exists.
+
+The same-origin policy is deliberately strict, but plenty of legitimate apps need to talk across origins. A React app on `app.example.com` calling an API on `api.example.com` is completely normal. **CORS is the controlled exception**: it gives the server a way to say "these specific origins are allowed to read my responses," so browsers can permit safe cross-origin access without dropping the protection for everyone else.
+
+## How CORS works
+
+CORS is a conversation between the browser and the server carried out through HTTP headers. The browser adds an `Origin` header to cross-origin requests, and the server answers with `Access-Control-*` headers describing what it permits. If the response headers don't cover the request, the browser refuses to hand the response to your JavaScript.
+
+There are two paths this conversation can take: simple requests and preflighted requests.
+
+### Simple requests
+
+**A simple request is one the browser considers safe enough to send directly, without asking permission first.** A request qualifies as simple when it meets all of these conditions:
+
+* The method is `GET`, `HEAD`, or `POST`.
+* The only headers set are ones on the CORS safelist, such as `Accept`, `Accept-Language`, and `Content-Type`.
+* If `Content-Type` is set, it is `text/plain`, `multipart/form-data`, or `application/x-www-form-urlencoded`.
+
+For a simple request, the browser sends it straight to the server with an `Origin` header. The server responds with the data plus an `Access-Control-Allow-Origin` header. If that header matches the requesting origin (or is the wildcard `*`), the browser exposes the response to your code. If it's missing or doesn't match, the browser blocks it and logs a CORS error.
+
+### Preflight requests
+
+The moment a request steps outside the "simple" rules, for example by sending `Content-Type: application/json`, a custom header like `Authorization`, or a method like `PUT`, `PATCH`, or `DELETE`, the browser does something extra first. **This is the preflight request: an automatic `OPTIONS` request the browser sends before the real one to check whether the actual request is allowed.**
+
+The preflight `OPTIONS` request includes headers describing what the real request intends to do:
+
+* `Access-Control-Request-Method` names the HTTP method the real request will use.
+* `Access-Control-Request-Headers` lists the custom headers it will send.
+
+The server responds with the matching permissions:
+
+* `Access-Control-Allow-Origin` for the allowed origin.
+* `Access-Control-Allow-Methods` for the allowed methods.
+* `Access-Control-Allow-Headers` for the allowed request headers.
+* `Access-Control-Max-Age` for how long the browser can cache this preflight result, so it doesn't repeat the check on every call.
+
+Only if the preflight response approves the method, headers, and origin does the browser send the real request. You don't write the preflight yourself; the browser generates it. But your server does have to answer it, which is a common source of errors when an `OPTIONS` handler is missing.
+
+### Requests with credentials
+
+If your request needs to send cookies or HTTP authentication across origins, there are two extra rules. The client must opt in (for example, `fetch(url, { credentials: 'include' })`), and the server must respond with `Access-Control-Allow-Credentials: true`.
+
+There's an important catch here: **when credentials are involved, the wildcard `Access-Control-Allow-Origin: *` is not allowed.** The server has to echo back the exact requesting origin instead. This trips up a lot of developers who get things working with a wildcard and then break authentication the moment they add cookies.
+
+## Why CORS errors happen
+
+Here is the detail that causes the most confusion. **A CORS error almost never means CORS itself is broken. It usually means the response was missing the headers the browser expected, and the reason is often a different failure entirely.**
+
+Because the browser blocks the response before your JavaScript can read it, you can't see the real status code or error body in your code. A misconfigured server, a `500` error, a `404` on the endpoint, or an auth failure can all surface as a generic CORS message even though the underlying problem has nothing to do with origins.
+
+The most common causes are:
+
+* **The server doesn't send CORS headers at all.** The API was never configured to allow cross-origin requests, so no `Access-Control-Allow-Origin` header comes back.
+* **The allowed origin doesn't match.** A trailing slash, `http` vs `https`, or `www` vs the bare domain is enough to fail the check.
+* **No `OPTIONS` handler.** The server returns data on `GET`/`POST` but returns an error or nothing on the preflight `OPTIONS` request, so the real request never fires.
+* **Wildcard plus credentials.** The server sends `Access-Control-Allow-Origin: *` while the client sends credentials, which the browser rejects.
+* **The real error is upstream.** A bad request ID, wrong endpoint, or server exception returns a `4xx`/`5xx` without CORS headers, and the browser reports it as a CORS problem.
+
+To see what's really happening, open your browser's **Network tab** and inspect the failed request. The raw status code and response body there will tell you far more than the console's CORS message. If you're debugging this against an Appwrite backend specifically, [Solving CORS errors with Appwrite](/blog/post/cors-error) walks through the exact causes and fixes.
+
+## How to fix CORS errors on the server
+
+**CORS is fixed on the server, not the client.** You cannot disable CORS from your frontend code, and you shouldn't try to route around it with browser flags or extensions, because that only hides the problem on your machine while every real user still hits the wall.
+
+The correct fix is to configure the server to return the right headers:
+
+* **Set `Access-Control-Allow-Origin` to your frontend's exact origin.** For production, list the specific domains you serve from rather than using `*`. A wildcard means any website on the internet can call your API, which defeats the purpose of the same-origin policy.
+* **Handle the `OPTIONS` preflight request.** Return a `200`/`204` with `Access-Control-Allow-Methods` and `Access-Control-Allow-Headers` that cover what your client actually sends.
+* **Echo the origin when using credentials.** If you send cookies or `Authorization` headers, respond with the specific origin and `Access-Control-Allow-Credentials: true`.
+* **Match the origin exactly.** Scheme, host, and port all have to line up, with no trailing slash.
+
+If you're setting CORS headers inside serverless functions, the response model can differ from a traditional Express server. [Handle CORS errors in Appwrite Functions](/blog/post/handle-cors-in-serverless-functions) shows how to attach the headers correctly and respond to preflight requests in that environment.
+
+## CORS is not a substitute for authorization
+
+One last point worth being direct about: CORS is a browser protection, not an access control layer. It stops other websites' JavaScript from reading your responses in a user's browser. It does nothing to stop a server, a script, or a tool like `curl` from calling your API directly, because those clients don't enforce CORS at all.
+
+That means CORS is not a replacement for authentication, API keys, or permission checks. You still need real authorization on the server. Treat CORS as one layer in a defense-in-depth setup, alongside proper auth and rate limiting. For more on where that responsibility sits, see [Appwrite's security documentation](/docs/advanced/security).
+
+## Handling CORS with Appwrite
+
+If you're building on Appwrite, you don't configure CORS headers by hand. Instead, you register the origins your app runs on as **platforms** in the Appwrite Console. Add a web platform with your hostname (`localhost` in development, your domain in production), and Appwrite allows requests from that origin while rejecting everything else. This is the same allowlist model CORS is built on, exposed as a setting instead of raw headers.
+
+Because Appwrite handles the CORS layer for its own APIs, most "blocked by CORS policy" messages against an Appwrite backend come down to a missing or mistyped platform, a wrong project ID, or the wrong regional endpoint, rather than headers you need to write yourself. When you call your own [Appwrite Functions](/docs/products/functions) directly from the browser, you set the headers in the function response, which is where the serverless guide above comes in.
+
+CORS stops being a mystery once you see it for what it is: a server-side allowlist enforced by the browser to keep untrusted origins from reading your responses. Configure the right origins, answer the preflight, keep the wildcard out of production, and back it with real authorization, and the red console errors go away for good. If you want a backend that manages the CORS layer for you and lets you focus on your app, Appwrite is a solid place to start.
+
+## Getting started with Appwrite
+
+* [Solving CORS errors with Appwrite](/blog/post/cors-error)
+* [Handle CORS errors in Appwrite Functions](/blog/post/handle-cors-in-serverless-functions)
+* [Appwrite Functions documentation](/docs/products/functions)
+* [Appwrite security documentation](/docs/advanced/security)
+* [Join the Appwrite Discord server](https://appwrite.io/discord)
