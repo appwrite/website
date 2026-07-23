@@ -20,7 +20,7 @@ faqs:
 ---
 The hard part of AI agents is no longer proving they can work. A model can answer a billing question or draft an insurance claim in a demo. The hard part is making an agent reliable enough to do that work in production, day after day, as products, policies, and user behavior change around it.
 
-That gap is what OpenAI is targeting with [OpenAI Presence](https://openai.com/index/introducing-openai-presence/), a deployed enterprise product for putting AI agents to work across customer and internal workflows. Announced on July 23, 2026, Presence pairs model reasoning with policies, guardrails, and escalation rules, then wraps the whole thing in an improvement loop that keeps the agent current after launch.
+That gap is what OpenAI is targeting with [OpenAI Presence](https://openai.com/index/introducing-openai-presence/), a deployed enterprise product for putting AI agents to work across customer and internal workflows. Announced on July 22, 2026, Presence pairs model reasoning with policies, guardrails, and escalation rules, then wraps the whole thing in an improvement loop that keeps the agent current after launch.
 
 This is not a public API or a self-serve tool. It is a deployed product delivered with OpenAI's own engineers. But the way OpenAI Presence structures a production agent is worth studying closely, because the pattern applies whether or not you ever use the product itself.
 
