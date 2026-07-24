@@ -102,6 +102,13 @@
                     icon: 'icon-briefcase',
                     isParent: true,
                     new: isNewUntil('22 Aug 2026')
+                },
+                {
+                    label: 'Apps',
+                    href: '/docs/partners/apps',
+                    icon: 'icon-key',
+                    isParent: true,
+                    new: isNewUntil('31 Aug 2026')
                 }
             ]
         },
