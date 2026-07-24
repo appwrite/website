@@ -2,7 +2,7 @@
 layout: post
 title: "What is database sharding? A beginner's guide"
 description: Learn what database sharding is, how it works, common strategies, benefits, tradeoffs, and when to use it to scale large applications effectively.
-date: 2026-07-21
+date: 2026-07-23
 cover: /images/blog/what-is-database-sharding-a-beginners-guide/cover.avif
 timeToRead: 5
 author: atharva
