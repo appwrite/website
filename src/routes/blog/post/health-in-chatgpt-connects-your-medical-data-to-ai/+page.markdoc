@@ -69,7 +69,7 @@ None of this makes the output infallible. OpenAI states plainly that ChatGPT can
 * **Extra encryption on top of the baseline.** All ChatGPT conversations are encrypted at rest and in transit. Connected medical records and Apple Health data get additional encryption on top of that.
 * **No training, no ads.** Connected records, Apple Health data, and any conversation that uses them are excluded from foundation model training and ad targeting, regardless of your general model-training setting.
 * **Permission before use.** By default, ChatGPT asks before it uses connected data to personalize a response. You can approve each request or choose to always allow access. You control it in Settings.
-* **Disconnect and delete.** You can disconnect any source at any time. When you do, data synced from it is deleted from OpenAI's systems within 30 days.
+* **Disconnect and delete.** OpenAI says data synced from that source is deleted from its systems within 30 days. Information already included in existing ChatGPT conversations remains until the user deletes those conversations.
 
 There are extra checks on sharing too. Before ChatGPT takes an action in another plugin that could expose health information, like sending a training plan built from your Apple Health data, safeguards verify the sharing matches your request, and some sensitive actions require confirmation. Memories can be created from health conversations to personalize future chats, but never directly from connected records, and you can turn memory off or use Temporary Chat.
 
