@@ -1,0 +1,32 @@
+---
+layout: tutorial
+title: Create app
+description: Create a Flutter app project using Appwrite.
+step: 2
+---
+
+## Create Flutter project {% #create-flutter-project %}
+
+Create a Flutter app with the `flutter create` command.
+
+```sh
+flutter create ideas_tracker
+cd ideas_tracker
+```
+
+## Add dependencies {% #add-dependencies %}
+
+Install the Flutter Appwrite SDK and provider.
+
+```sh
+flutter pub add appwrite
+flutter pub add provider
+```
+
+For iOS, make sure you have CocoaPods installed. Then install the pods to complete the installation:
+
+```
+cd ios
+pod install
+cd ..
+```

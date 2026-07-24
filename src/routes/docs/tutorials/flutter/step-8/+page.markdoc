@@ -1,0 +1,17 @@
+---
+layout: tutorial
+title: Next steps
+description: Run your Flutter project built with Appwrite
+step: 8
+---
+
+## Test your project {% #test-project %}
+You can run your project using the `flutter run` command. This will compile your app and install it on your connected device or emulator.
+
+While the app is running, you can use Hot Reload by pressing `r` in the terminal to see changes instantly without restarting the app.
+
+## Bundling for production {% #bundle-production %}
+Appwrite's Flutter SDK is compatible with standard Flutter build targets. When you are ready to distribute your app, you can generate a release binary for your specific platform:
+- Android (APK/App Bundle): `flutter build apk` or `flutter build appbundle`
+- iOS: `flutter build ios`
+- Web: `flutter build web`
