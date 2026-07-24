@@ -115,4 +115,4 @@ The pattern OpenAI describes maps directly onto Appwrite's building blocks. Keep
 
 For the AI layer specifically, start with [Appwrite's AI overview](/docs/products/ai), which walks through integrating models and running agent logic on the server. If you want more context on the security side of production agents, our post on [GPT-Red and designing agents to resist prompt injection](/blog/post/gpt-red-automated-red-teaming) covers the failure modes the trust layer is meant to contain.
 
-When you are ready to build, [create a free Appwrite project](https://cloud.appwrite.io/) and stand up the auth, database, and server functions your agent needs. The model is only one piece. The trusted, job-scoped system around it is what puts an agent into production, and that is the part you own.
+When you are ready to build, [create a free Appwrite project](https://cloud.appwrite.io/) and stand up the auth, database, and serverless functions your agent needs. The model is only one piece. The trusted, job-scoped system around it is what puts an agent into production, and that is the part you own.
