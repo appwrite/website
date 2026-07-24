@@ -260,7 +260,4 @@ appwrite tables-db [COMMAND] [OPTIONS]
 * `delete-index [options]`
 * Delete an index.
 ---
-* `list-table-logs [options]`
-* Get the table activity logs list by its unique ID.
----
 {% /table %}

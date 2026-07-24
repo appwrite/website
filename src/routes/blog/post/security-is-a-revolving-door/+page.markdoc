@@ -141,7 +141,7 @@ This protection is infrastructure-level and requires no configuration on your pa
 
 Appwrite's [audit logs](/docs/advanced/security/audit-logs) record events across all products (authentication, databases, storage, functions, and messaging) including the user, event type, IP address, location, and timestamp for each action.
 
-Audit logs are available at the project level, table or bucket level, and per-user level. For Pro plans, logs are retained for 7 days. For applications where compliance or incident response requires event tracing, audit logs provide the trail needed to understand what happened and when.
+Audit logs remain useful for compliance and incident response, and the current retrieval guidance lives in the [audit logs documentation](/docs/advanced/security/audit-logs). For Pro plans, audit logs are retained for 7 days.
 
 # Compliance certifications
 

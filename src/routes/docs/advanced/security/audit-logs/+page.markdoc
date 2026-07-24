@@ -12,20 +12,14 @@ and effectively.
 
 # Access audit logs {% #access-audit-logs %}
 
-You can access audit logs for different products under the **Activity** tab where applicable.
-Logs are available for tables, rows, and individual users.
+Audit logs are no longer available through **Activity** tabs in the Appwrite Console.
 
-{% only_dark %}
-![Project settings screen](/images/docs/advanced/security/dark/activity.avif)
-{% /only_dark %}
-
-{% only_light %}
-![Project settings screen](/images/docs/advanced/security/activity.avif)
-{% /only_light %}
+For user-specific audit data, use the [Users API references](/docs/references/cloud/server-nodejs/users)
+from a server environment with an API key.
 
 # Format {% #format %}
 
-Audit log entries under the **Activity** tab has the following structure.
+Audit log entries have the following structure.
 Each entry describes an event.
 
 {% table %}
