@@ -21,6 +21,7 @@ faqs:
   - question: When should I use synchronous programming?
     answer: Use synchronous programming for quick calculations, startup tasks, simple scripts, and operations that must run in a strict order. It is often easier to read, test, and debug.
 ---
+
 Most performance problems in application code come down to one decision made early and rarely revisited: whether a piece of work runs synchronously or asynchronously. Get it wrong and a single slow network call freezes your entire request, your UI stops responding, and your server sits idle waiting on I/O it could have handled in parallel.
 
 The confusing part is that synchronous and asynchronous code often look almost identical. The difference is not in the syntax, it is in what happens while the work is in progress. This post breaks down synchronous vs asynchronous programming, explains how blocking and non-blocking execution actually work, and gives you a clear rule for when to reach for each.
