@@ -1,0 +1,712 @@
+---
+layout: article
+title: Network
+description: Per-database hostname, mandatory TLS, optional IP allowlists, and connection limits for dedicated databases.
+---
+
+Every dedicated database gets a public hostname behind Appwrite's edge proxy. The proxy terminates TLS, applies your IP allowlist, and forwards the connection to the database engine over the Appwrite network.
+
+# Hostname {% #hostname %}
+
+On provision, a database hostname is generated in the form:
+
+```
+db-<projectId>-<databaseId>.<region>.appwrite.center
+```
+
+Example: `db-proj456-abc123.fra.appwrite.center`.
+
+The hostname is stable for the lifetime of the database. It resolves to the regional edge proxy via a wildcard `*.appwrite.center` DNS record, so you do not need to manage DNS yourself.
+
+# TLS {% #tls %}
+
+TLS is terminated at the edge proxy. Prefer the `connectionString` returned by the [credentials endpoint](/docs/products/databases/dedicated/connect#credentials), which already carries the correct SSL parameters for your engine, over hand-building one:
+
+| Engine     | Connection string parameter                                                          |
+|------------|--------------------------------------------------------------------------------------|
+| PostgreSQL | `sslmode=require`                                                                     |
+| MySQL      | `ssl=true`                                                                            |
+| MariaDB    | `ssl=true`                                                                            |
+| MongoDB    | `ssl=true`, alongside `authSource=admin`, `directConnection=true`, `retryWrites=true`, and `serverSelectionTryOnce=false` |
+
+Proxy TLS termination covers all four engines: PostgreSQL, MySQL, MariaDB, and MongoDB. The certificate is signed by a well-known public CA, your driver does not need a custom CA bundle.
+
+To require mutual TLS (mTLS) where the client presents a certificate signed by your CA, contact support. mTLS is configured at the edge proxy and enforced before the connection is forwarded.
+
+# IP allowlist {% #allowlist %}
+
+By default, a dedicated database is reachable from any IP. To restrict access, set the `networkIPAllowlist` field with a list of CIDR ranges:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkIPAllowlist: [
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkIPAllowlist: [
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkIPAllowlist: [
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    network_ip_allowlist=[
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    network_ip_allowlist: [
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkIPAllowlist: new List<string> {
+        "203.0.113.0/24",
+        "198.51.100.10/32"
+    }
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkIPAllowlist: [
+        '203.0.113.0/24',
+        '198.51.100.10/32',
+    ],
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    networkIPAllowlist = listOf(
+        "203.0.113.0/24",
+        "198.51.100.10/32",
+    ),
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkIPAllowlist: [
+        "203.0.113.0/24",
+        "198.51.100.10/32",
+    ]
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseNetworkIPAllowlist([]string{
+            "203.0.113.0/24",
+            "198.51.100.10/32",
+        }),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .network_ip_allowlist(vec![
+            "203.0.113.0/24".to_string(),
+            "198.51.100.10/32".to_string(),
+        ])
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "networkIPAllowlist": [
+      "203.0.113.0/24",
+      "198.51.100.10/32"
+    ]
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+{% /multicode %}
+
+The allowlist is enforced at the edge proxy. A connection from a non-allowlisted IP is dropped at TCP handshake, no banner, no error message. Up to 100 CIDR entries are accepted per database.
+
+Send an empty array to remove all entries and restore unrestricted access.
+
+# Max connections {% #connections %}
+
+Each specification has a hard ceiling on the number of simultaneous connections (see the [specifications page](/docs/products/databases/dedicated/specifications)). Use `networkMaxConnections` to set a per-database limit at or below that ceiling:
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkMaxConnections: 500,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkMaxConnections: 500,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkMaxConnections: 500,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    network_max_connections=500,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    network_max_connections: 500,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkMaxConnections: 500
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkMaxConnections: 500,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    networkMaxConnections = 500,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkMaxConnections: 500
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseNetworkMaxConnections(500),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .network_max_connections(500)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "networkMaxConnections": 500 }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+{% /multicode %}
+
+When the limit is reached, new connection attempts are rejected at the proxy with a clear error rather than being queued or held open.
+
+The pooler (if enabled) is counted as a single backend connection per pooled slot, not per client, turning on the pooler is the right way to push effective client concurrency well above this limit.
+
+# Connection idle timeout {% #idle-timeout %}
+
+Idle connections are closed by the edge proxy after `networkIdleTimeoutSeconds` of inactivity. The default is 900 (15 minutes). A higher value keeps connection-heavy clients alive longer; a lower value reclaims unused slots faster.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkIdleTimeoutSeconds: 600,
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+await compute.updateDatabase({
+    databaseId: '<DATABASE_ID>',
+    networkIdleTimeoutSeconds: 600,
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$compute->updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkIdleTimeoutSeconds: 600,
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+compute.update_database(
+    database_id='<DATABASE_ID>',
+    network_idle_timeout_seconds=600,
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+compute.update_database(
+    database_id: '<DATABASE_ID>',
+    network_idle_timeout_seconds: 600,
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+await compute.UpdateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkIdleTimeoutSeconds: 600
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+await compute.updateDatabase(
+    databaseId: '<DATABASE_ID>',
+    networkIdleTimeoutSeconds: 600,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+compute.updateDatabase(
+    databaseId = "<DATABASE_ID>",
+    networkIdleTimeoutSeconds = 600,
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+_ = try await compute.updateDatabase(
+    databaseId: "<DATABASE_ID>",
+    networkIdleTimeoutSeconds: 600
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    _, err := compute.UpdateDatabase("<DATABASE_ID>",
+        compute.WithUpdateDatabaseNetworkIdleTimeoutSeconds(600),
+    )
+    if err != nil {
+        panic(err)
+    }
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    compute.update_database("<DATABASE_ID>")
+        .network_idle_timeout_seconds(600)
+        .send()
+        .await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{ "networkIdleTimeoutSeconds": 600 }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>
+```
+{% /multicode %}
+
+# Locking down access {% #lockdown %}
+
+By default, a dedicated database is reachable over the public internet on the engine's standard port. To lock the surface down:
+
+1. **Restrict the allowlist** to your application server egress IPs only.
+2. **Rotate the primary password** through the credentials endpoint after onboarding, so the initial generated password doesn't live in CI logs or chat history forever.
+3. **Keep TLS on**, the platform enforces it at the proxy, so non-TLS clients can't connect even if they tried.
+4. **Avoid embedding credentials in client-side code.** Connect from a server-side workload, an Appwrite Function, your application backend, or a CI job, and surface results through your own API.
+
+# Limits {% #limits %}
+
+| Limit                              | Value                          |
+|------------------------------------|--------------------------------|
+| IP allowlist entries               | up to 100 CIDR ranges          |
+| Max simultaneous connections (cap) | 10,000 (specification-bound)   |
+| Idle timeout range                 | 60 – 86,400 seconds (24 hours) |

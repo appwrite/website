@@ -32,7 +32,7 @@
         "@statsig/session-replay": "^3.33.0",
         "@statsig/statsig-node-core": "^0.19.3",
         "@statsig/web-analytics": "^3.33.0",
-        "@appwrite.io/specs": "github:appwrite/specs#9f7af415c733583dc4b32b090df0c89986407cbd",
+        "@appwrite.io/specs": "github:appwrite/specs#f4f57222fd2460713056b9c998655503ed34dbdd",
         "h3": "^1.15.4",
         "sharp": "^0.34.5"
     },
