@@ -19,6 +19,7 @@ faqs:
   - question: Is MCP secure?
     answer: MCP can support authorization for remote HTTP servers, but connecting a server still gives an AI application access to potentially sensitive tools and data. Developers should use narrowly scoped credentials, validate inputs, require approval for sensitive actions, and only connect trusted servers.
 ---
+
 AI models are good at reasoning and terrible at acting. Ask one to summarize your latest report, check today's database entries, or open a pull request, and it stalls. It has no way to reach your files, your database, or your APIs. It can only work with what was in its training data.
 
 For a while, the fix was custom integrations: write glue code for every tool, handle each authentication scheme, and rewrite it all when an API changes. That does not scale. **Model Context Protocol (MCP)** is the standard that replaces those one-off integrations with a single, shared interface.
