@@ -26,7 +26,7 @@ This is not a public API or a self-serve tool. It is a deployed product delivere
 
 # What is OpenAI Presence?
 
-OpenAI Presence is a proven enterprise product that helps companies deploy trusted AI agents that can answer questions, resolve issues, use company systems, take approved actions, and escalate to a person when needed. It is available today for real-time voice and chat agents.
+OpenAI Presence is an enterprise product that helps companies deploy trusted AI agents that can answer questions, resolve issues, use company systems, take approved actions, and escalate to a person when needed. It is available today for real-time voice and chat agents.
 
 Each Presence deployment starts with a specific job. Resolving a billing issue, supporting an insurance claim, or handling an employee IT service request. The agent receives only the knowledge and system access that job requires. The company defines the rest: what the agent can do, when it needs approval, and when a human should take over.
 
