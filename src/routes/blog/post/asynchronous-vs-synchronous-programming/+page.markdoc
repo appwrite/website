@@ -126,28 +126,59 @@ Async gives you throughput, but it introduces failure modes that synchronous cod
 * **Accidental serialization.** Awaiting calls one after another when they could run together wastes the whole benefit. Use `Promise.all` to run independent operations concurrently.
 * **Blocking the event loop.** Running heavy CPU work inside an async runtime still blocks everything, because there is only one thread handling the loop. Offload it to a worker or a background function.
 
-# Handling synchronous and asynchronous work with Appwrite
+# Using async functions with Appwrite SDKs
 
-Once you move this decision from a single function into a real backend, you need infrastructure that supports both models cleanly. [Appwrite Functions](/docs/products/functions) is built around exactly this distinction.
+Appwrite SDK methods are asynchronous because most operations involve making a network request and waiting for a response. In JavaScript and TypeScript, methods for authentication, databases, storage, and other Appwrite services return promises that you can handle using `async` and `await`.
 
-When you [execute a function](/docs/products/functions/execute), you choose the mode explicitly. A **synchronous execution** makes the caller wait for the result and is capped at a 30-second timeout, which suits API endpoints and short tasks where you need the response immediately. An **asynchronous execution** returns an execution ID right away and runs the work in the background, which suits long-running jobs like batch processing, email delivery, or upload post-processing.
+```javascript
+const user = await account.get();
+
+const documents = await databases.listDocuments({
+    databaseId: '<DATABASE_ID>',
+    collectionId: '<COLLECTION_ID>',
+});
+```
+
+This gives developers readable, sequential-looking code without blocking the application while the request is in progress.
+
+When multiple Appwrite requests do not depend on one another, you can run them concurrently with `Promise.all()` instead of waiting for each one separately.
+
+```javascript
+const [user, documents] = await Promise.all([
+    account.get(),
+    databases.listDocuments({
+        databaseId: '<DATABASE_ID>',
+        collectionId: '<COLLECTION_ID>',
+    }),
+]);
+```
+
+The same async programming principles apply when using Appwrite: await an operation when the next step depends on its result, and run independent requests concurrently when it is safe to do so.
+
+# Synchronous and asynchronous Appwrite Function executions
+
+[Appwrite Functions](/docs/products/functions) introduce another execution choice: whether Appwrite should wait for the function to finish before returning a response.
+
+A synchronous execution keeps the request open until the function completes and returns its result. This works well for short operations where the caller needs the output immediately.
+
+An asynchronous execution returns an execution ID immediately while the function continues running in the background. This is better suited to work such as batch processing, email delivery, report generation, or upload post-processing.
 
 ```javascript
 const execution = await functions.createExecution({
     functionId: '<FUNCTION_ID>',
-    async: true, // returns immediately, runs in the background
+    async: true,
 });
 ```
 
-Beyond Functions, the same non-blocking philosophy runs through the platform. [Appwrite Realtime](/docs/apis/realtime) pushes updates to clients over subscriptions instead of forcing them to poll, and [Appwrite Messaging](/docs/products/messaging) handles email, SMS, and push delivery as background work so your request path stays fast. Together they let you keep user-facing calls synchronous and responsive while heavy work happens asynchronously out of the critical path.
+The SDK method is asynchronous in both cases. The `async` option controls whether Appwrite waits for the Function execution to complete before responding.
 
-To go deeper on structuring this well, read the [complete guide to Appwrite Functions](/blog/post/appwrite-functions-guide) for triggers and execution modes, and [serverless functions best practices](/blog/post/serverless-functions-best-practices) for patterns that keep async work reliable in production.
+# Choosing the right approach with Appwrite
 
-# Getting started with Appwrite Functions
+Use `await` when your application needs the result of an Appwrite SDK request before continuing. Run independent SDK requests concurrently when they can safely happen together.
 
-Choosing between synchronous and asynchronous execution is not about picking a favorite. It is about matching the model to the work: synchronous for fast, CPU-bound, order-dependent tasks, and asynchronous for anything that waits on I/O or runs long. Get that mapping right and both your servers and your users stop waiting on work that never needed to block them.
+For Appwrite Functions, use synchronous execution when the caller needs the function result immediately. Use asynchronous execution when the work can continue in the background without blocking the request.
 
-The fastest way to see it in practice is to deploy a function and try both execution modes yourself.
+To explore these patterns further:
 
 * [Appwrite Functions overview](/docs/products/functions)
 * [Execute a function synchronously or asynchronously](/docs/products/functions/execute)
