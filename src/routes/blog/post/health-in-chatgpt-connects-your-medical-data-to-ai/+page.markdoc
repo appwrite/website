@@ -24,7 +24,7 @@ More than 300 million people ask ChatGPT a health question every week. They past
 
 # What is Health in ChatGPT?
 
-**Health in ChatGPT is a feature that lets logged-in US users connect real health data so ChatGPT can ground its answers in their own records rather than general knowledge.** With your permission, ChatGPT can draw on connected information like medications, lab results, recent visits, sleep, and activity when it responds. You can compare a new result against prior tests, summarize what changed since your last appointment, or explore how sleep and workouts relate to your routine.
+**Health in ChatGPT is a feature that lets logged-in US users connect Apple Health and supported medical records so ChatGPT can draw on relevant personal information when responding.** With your permission, ChatGPT can draw on connected information like medications, lab results, recent visits, sleep, and activity when it responds. You can compare a new result against prior tests, summarize what changed since your last appointment, or explore how sleep and workouts relate to your routine.
 
 It is rolling out to logged-in ChatGPT users 18 and older in the US, on web and iOS, across the Free, Go, Plus, and Pro plans. You open **Health** from the sidebar to get started. It is not yet available in Codex.
 
