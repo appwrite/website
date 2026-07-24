@@ -109,10 +109,10 @@ None of these are model features. They are backend and infrastructure concerns: 
 
 # Building trusted AI agents with Appwrite
 
-Presence is a managed enterprise product, so most developers will build the equivalent controls themselves. That work is mostly backend work, and it is where [Appwrite](/) fits.
+Presence is a managed enterprise product, but developers can apply many of the same architectural principles when building their own agents. Most of that work happens in the backend, which is where [Appwrite](/) fits.
 
-The pattern OpenAI describes maps directly onto Appwrite's building blocks. Keep provider credentials and privileged, approved actions on the server with [Appwrite Functions](/docs/products/functions) instead of exposing them to the client. Verify callers and enforce who can do what with [Appwrite Auth](/docs/products/auth). Store policies, session history, and escalation state in [Appwrite Databases](/docs/products/databases) so your agent has durable context and an audit trail. Then wire the model in through the [OpenAI integration](/docs/products/ai/integrations/openai).
+Use [Appwrite Functions](/docs/products/functions) to keep provider credentials and privileged actions on the server instead of exposing them to the client. Use [Appwrite Auth](/docs/products/auth) to verify users and control who can perform specific actions. Store policies, session history, evaluation results, and escalation state in [Appwrite Databases](/docs/products/databases) so your agent has durable context and an audit trail.
 
-For the AI layer specifically, start with [Appwrite's AI overview](/docs/products/ai), which walks through integrating models and running agent logic on the server. If you want more context on the security side of production agents, our post on [GPT-Red and designing agents to resist prompt injection](/blog/post/gpt-red-automated-red-teaming) covers the failure modes the trust layer is meant to contain.
+For the model layer, connect OpenAI models through Appwrite's [OpenAI integration](/docs/products/ai/integrations/openai) and run the surrounding agent logic securely on the server. [Appwrite's AI overview](/docs/products/ai) explains how to integrate models and build AI-powered workflows with Appwrite.
 
-When you are ready to build, [create a free Appwrite project](https://cloud.appwrite.io/) and stand up the auth, database, and serverless functions your agent needs. The model is only one piece. The trusted, job-scoped system around it is what puts an agent into production, and that is the part you own.
+When you are ready to build, [create a free Appwrite project](https://cloud.appwrite.io/) and set up the auth, database, and functions your agent needs. The model is only one part of the system. The permissions, policies, data, and server-side controls around it are what make an agent ready for production.
