@@ -1,0 +1,63 @@
+---
+layout: tutorial
+title: Set up Appwrite
+description: Import and initialize Appwrite for your React application.
+step: 3
+---
+# Create project {% #create-project %}
+
+Head to the [Appwrite Console](https://cloud.appwrite.io/console).
+
+{% only_dark %}
+![Create project screen](/images/docs/quick-starts/dark/create-project.png)
+{% /only_dark %}
+{% only_light %}
+![Create project screen](/images/docs/quick-starts/create-project.png)
+{% /only_light %}
+
+If this is your first time using Appwrite, create an account and create your first project.
+
+Next, under **Add a platform**, choose  **Web app**. For the **Hostname**, use "localhost".
+
+{% only_dark %}
+![Add a platform](/images/docs/quick-starts/dark/add-platform.png)
+{% /only_dark %}
+{% only_light %}
+![Add a platform](/images/docs/quick-starts/add-platform.png)
+{% /only_light %}
+
+You can skip optional steps.
+
+# Initialize Appwrite SDK {% #init-sdk %}
+
+To use Appwrite in our React app, we need to identify our project ID. You can find this ID on the **Settings** page.
+
+{% only_dark %}
+![Project settings screen](/images/docs/quick-starts/dark/project-id.png)
+{% /only_dark %}
+{% only_light %}
+![Project settings screen](/images/docs/quick-starts/project-id.png)
+{% /only_light %}
+
+Create a new file `src/lib/appwrite.js` to store our Appwrite-related code.
+
+```js
+import { Client, Databases } from "appwrite";
+
+const client = new Client();
+
+client
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("import.meta.env.VITE_APPWRITE_PROJECT_ID");
+
+export const databases = new Databases(client);
+```
+
+# Create environment file {% #create-env-file %}
+Set up the environment configuration for your project to declare project-wide variables like Appwrite project ID, database ID, and collection ID. Create a `.env` and add the declare variables.
+```sh
+VITE_APPWRITE_PROJECT_ID=<YOUR_PROJECT_ID>
+VITE_APPWRITE_DATABASE_ID=<YOUR_DATABASE_ID>
+VITE_APPWRITE_COLLECTION_ID=<YOUR_COLLECTION_ID>
+```
+This `.env` file will now act as the central place for your project's environment-specific configurations. Make sure not to sure this file publicly, especially if it contains sensitive information like API keys or database credentials.
