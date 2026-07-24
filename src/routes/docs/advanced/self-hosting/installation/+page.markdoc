@@ -137,6 +137,11 @@ For advanced users who prefer manual setup, you can install Appwrite using Docke
 
 1. Create a directory named `appwrite` and place both `docker-compose.yml` and `.env` inside
 2. Edit the `.env` file to customize your installation. At minimum, update `_APP_OPENSSL_KEY_V1` and `_APP_EXECUTOR_SECRET` with unique secret values
+
+{% info title="Let's Encrypt" %}
+If you plan to use Let's Encrypt for SSL certificates, make sure the `_APP_EMAIL_CERTIFICATE` environment variable in your `appwrite/.env` file is set to a valid email address before starting Appwrite. Without this value, Let's Encrypt certificates cannot be issued.
+{% /info %}
+
 3. Start the Appwrite stack:
 
 ```bash
