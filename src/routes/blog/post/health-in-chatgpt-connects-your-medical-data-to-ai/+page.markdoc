@@ -77,7 +77,7 @@ There are extra checks on sharing too. Before ChatGPT takes an action in another
 
 The pattern here is bigger than one feature. Users now expect health tools to be personalized, private by default, and under their control. If you are building anything that touches health data, the bar OpenAI just set is the one your users will hold you to.
 
-That bar is largely a compliance and infrastructure problem. Any app handling identifiable health data for US patients typically falls under [HIPAA](https://www.hhs.gov/hipaa/for-professionals/index.html), which governs how Protected Health Information is stored, transmitted, and accessed. Meeting it means encryption, access controls, audit logging, and consent, built correctly and provable under audit. That is a lot to run yourself.
+That bar is largely a compliance and infrastructure problem. Whether HIPAA applies depends on the app’s role and relationships. It generally applies to covered entities and business associates that create, receive, maintain, or transmit Protected Health Information. Other consumer health apps may be governed by different federal or state privacy requirements. For regulated applications, compliance requires appropriate administrative, physical, and technical safeguards, supported by documented policies and risk management. That is a lot to run yourself.
 
 This is where a backend that handles the platform layer for you matters. [Appwrite Cloud is HIPAA compliant](/blog/post/announcing-appwrite-is-hipaa-compliant), so the technical and organizational safeguards a health app needs are already in place. A few primitives map directly onto the model OpenAI shipped:
 
