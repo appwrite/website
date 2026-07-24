@@ -20,7 +20,7 @@ faqs:
 ---
 More than 300 million people ask ChatGPT a health question every week. They paste in a lab result, describe what a doctor said, or try to make sense of a symptom. The problem is that the context behind those questions lives somewhere else. It is scattered across patient portals, medical records, fitness apps, and wearables, and none of it is in the chat.
 
-[Health in ChatGPT](https://openai.com/index/health-in-chatgpt/) is OpenAI's answer to that gap. It lets US users securely connect their medical records and Apple Health data so ChatGPT can reason over their real information instead of the generic case it has to guess at. This post covers what shipped, the privacy model behind it, and what it means if you are building health apps of your own.
+[Health in ChatGPT](https://openai.com/index/health-in-chatgpt/) is OpenAI's answer to that gap. It lets logged-in US users securely connect Apple Health and supported medical records so ChatGPT can use relevant personal context to provide more informed, personalized responses. This post covers what shipped, the privacy model behind it, and what it means if you are building health apps of your own.
 
 # What is Health in ChatGPT?
 
