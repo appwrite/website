@@ -48,7 +48,7 @@ Earlier in 2026, OpenAI tested a dedicated health experience that lived in its o
 
 Someone planning meals wants ChatGPT to account for a food allergy. Someone choosing a weekend activity wants it to remember a recent injury. Forcing them into a separate tab added a step for no reason.
 
-So Health now works everywhere. Once your information is synced, you can ask anywhere in ChatGPT and it will use connected data based on your permissions. You can also type **@Health** to pull that context in explicitly. The Health section in the sidebar stays as your home base for connecting accounts, seeing trends, browsing synced records, and revisiting past conversations.
+Once your information is synced, you can ask questions anywhere in ChatGPT. When relevant, ChatGPT may use connected Health information based on your permissions. You can also type @Health to explicitly ask ChatGPT to include that context. The Health section in the sidebar remains the home base for connecting and managing information, viewing recent data and trends, browsing synced records, and returning to past Health conversations.
 
 # The models behind health conversations
 
