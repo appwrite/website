@@ -47,7 +47,7 @@ The most useful way to think about Opus 5 is as the daily-driver counterpart to 
 The practical guidance:
 
 * Reach for **Opus 5** as your default for agentic coding, knowledge work, and computer use, where it is state-of-the-art and cheaper to run at scale.
-* Reach for **Fable 5** when you need its edge on the longest, most complex tasks, or on cybersecurity and biology work where Opus 5's safeguards route requests elsewhere.
+* Reach for **Fable 5** when you need its edge on the longest and most complex tasks. For offensive cybersecurity and long-running autonomous biology research, Anthropic says Mythos 5 remains stronger.
 * Tune the **effort setting** rather than assuming a fixed cost. Higher effort spends more tokens, so match it to how hard the task actually is.
 
 This mirrors the tradeoff we covered for [Claude Sonnet 5](/blog/post/claude-sonnet-5-is-anthropics-most-agentic-sonnet-yet): per-token price is only one input to total task cost. Effort level and total tokens used matter just as much.
