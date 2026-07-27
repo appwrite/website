@@ -18,7 +18,7 @@ faqs:
   - question: Does Claude Opus 5 support Fast mode?
     answer: Yes. Claude Opus 5 offers a Fast mode that runs around 2.5 times faster than the default mode and is priced at twice the base rate.
 ---
-Claude Opus 5 is now Anthropic's default everyday model, landing close to the frontier intelligence of Claude Fable 5 while costing half as much per token. Anthropic [announced Claude Opus 5](https://www.anthropic.com/news/claude-opus-5) on July 24, 2026, positioning it as a thoughtful, proactive model built to be used every day rather than reached for only on the hardest problems. You call it through the Claude API with the model id `claude-opus-5`.
+Claude Opus 5 is Anthropic's new model for everyday work, landing close to the frontier intelligence of Claude Fable 5 while costing half as much per token. Anthropic [announced Claude Opus 5](https://www.anthropic.com/news/claude-opus-5) on July 24, 2026, positioning it as a thoughtful, proactive model built to be used every day rather than reached for only on the hardest problems. You call it through the Claude API with the model id `claude-opus-5`.
 
 The headline is the price-to-intelligence ratio. On coding and knowledge work evaluations, Opus 5 is state-of-the-art, yet it is priced the same as its predecessor Opus 4.8 and half the per-token price of Fable 5. Here is what shipped, how it compares, and what it means if you build agents on Appwrite.
 
