@@ -105,7 +105,7 @@ MCP supports two transports, and the right security posture differs for each.
 
 For local servers, prefer `stdio`. It limits access to just the MCP client that spawned the process and avoids exposing a network port. If you must use HTTP locally, require an authorization token or bind to a Unix domain socket rather than a public interface.
 
-For remote servers, authentication is mandatory. Servers that implement authorization **MUST** verify every inbound request and **MUST NOT** use sessions as a substitute for authentication. Generate session IDs with a secure random source, bind them to the authenticated user with a key format like `<user_id>:<session_id>`, and expire them. That binding means a guessed session ID still cannot impersonate another user, because identity is derived from the verified token rather than from the client.
+For remote servers, authentication is mandatory. The MCP specification recommends **OAuth 2.1** as the standard authorization framework, which provides a secure, well-understood foundation for delegated access. Servers **MUST** verify every inbound request and **MUST NOT** use sessions as a substitute for authentication. With OAuth 2.1, use PKCE for all authorization code flows, require exact `redirect_uri` matching, and issue short-lived access tokens. Generate session IDs with a secure random source, bind them to the authenticated user with a key format like `<user_id>:<session_id>`, and expire them. That binding means a guessed session ID still cannot impersonate another user, because identity is derived from the verified token rather than from the client.
 
 # Prevent the common MCP attacks
 
