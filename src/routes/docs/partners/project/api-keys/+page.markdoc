@@ -23,10 +23,10 @@ API keys are for server SDKs and the CLI in production environments, while Dev k
 # Create API key {% #create-api-key %}
 
 {% only_dark %}
-![Project settings screen](/images/docs/platform/dark/create-api-key.avif)
+![Project settings screen](/images/docs/project/dark/create-api-key.avif)
 {% /only_dark %}
 {% only_light %}
-![Project settings screen](/images/docs/platform/create-api-key.avif)
+![Project settings screen](/images/docs/project/create-api-key.avif)
 {% /only_light %}
 
 To create a new API key, navigate to **Overview** > **Integration** > **API keys** and click **Create API key**.
@@ -567,7 +567,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, ID, Scopes } from 'node-appwrite';
+import { Client, Project, ID, ProjectKeyScopes } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -579,12 +579,12 @@ const project = new Project(client);
 const result = await project.createKey({
     keyId: ID.unique(),
     name: 'My API Key',
-    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite],
+    scopes: [ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite],
     expire: '2026-12-31T23:59:59.000+00:00'
 });
 ```
 ```server-deno
-import { Client, Project, ID, Scopes } from "npm:node-appwrite";
+import { Client, Project, ID, ProjectKeyScopes } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -596,7 +596,7 @@ const project = new Project(client);
 const result = await project.createKey({
     keyId: ID.unique(),
     name: 'My API Key',
-    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite],
+    scopes: [ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite],
     expire: '2026-12-31T23:59:59.000+00:00'
 });
 ```
@@ -627,7 +627,7 @@ $result = $project->createKey(
 from appwrite.client import Client
 from appwrite.id import ID
 from appwrite.services.project import Project
-from appwrite.enums.scopes import Scopes
+from appwrite.enums import ProjectKeyScopes
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -639,7 +639,7 @@ project = Project(client)
 result = project.create_key(
     key_id=ID.unique(),
     name='My API Key',
-    scopes=[Scopes.DATABASES_READ, Scopes.DATABASES_WRITE],
+    scopes=[ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE],
     expire='2026-12-31T23:59:59.000+00:00'
 )
 ```
@@ -678,7 +678,7 @@ Project project = new Project(client);
 var result = await project.CreateKey(
     keyId: ID.Unique(),
     name: "My API Key",
-    scopes: new List<Scopes> {Scopes.DatabasesRead, Scopes.DatabasesWrite},
+    scopes: new List<ProjectKeyScopes> {ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite},
     expire: "2026-12-31T23:59:59.000+00:00"
 );
 ```
@@ -696,14 +696,14 @@ Project project = Project(client);
 final result = await project.createKey(
     keyId: ID.unique(),
     name: 'My API Key',
-    scopes: [enums.Scopes.databasesRead, enums.Scopes.databasesWrite],
+    scopes: [enums.ProjectKeyScopes.databasesRead, enums.ProjectKeyScopes.databasesWrite],
     expire: '2026-12-31T23:59:59.000+00:00',
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
 import io.appwrite.ID
-import io.appwrite.enums.Scopes
+import io.appwrite.enums.ProjectKeyScopes
 import io.appwrite.services.Project
 
 val client = Client()
@@ -716,14 +716,14 @@ val project = Project(client)
 val result = project.createKey(
     keyId = ID.unique(),
     name = "My API Key",
-    scopes = listOf(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE),
+    scopes = listOf(ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE),
     expire = "2026-12-31T23:59:59.000+00:00"
 )
 ```
 ```server-java
 import io.appwrite.Client;
 import io.appwrite.ID;
-import io.appwrite.enums.Scopes;
+import io.appwrite.enums.ProjectKeyScopes;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Project;
 
@@ -737,7 +737,7 @@ Project project = new Project(client);
 project.createKey(
     ID.unique(),                                     // keyId
     "My API Key",                                    // name
-    List.of(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE), // scopes
+    List.of(ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE), // scopes
     "2026-12-31T23:59:59.000+00:00",                // expire
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -762,7 +762,7 @@ let project = Project(client)
 let result = try await project.createKey(
     keyId: ID.unique(),
     name: "My API Key",
-    scopes: [Scopes.databasesRead, Scopes.databasesWrite],
+    scopes: [ProjectKeyScopes.databasesRead, ProjectKeyScopes.databasesWrite],
     expire: "2026-12-31T23:59:59.000+00:00"
 )
 ```
@@ -800,7 +800,7 @@ func main() {
 ```server-rust
 use appwrite::Client;
 use appwrite::id::ID;
-use appwrite::enums::Scopes;
+use appwrite::enums::ProjectKeyScopes;
 use appwrite::services::project::Project;
 
 #[tokio::main]
@@ -815,8 +815,241 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let result = project.create_key(
         ID::unique(),                                  // key_id
         "My API Key",                                  // name
-        vec![Scopes::DatabasesRead, Scopes::DatabasesWrite], // scopes
+        vec![ProjectKeyScopes::DatabasesRead, ProjectKeyScopes::DatabasesWrite], // scopes
         Some("2026-12-31T23:59:59.000+00:00"),         // expire
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
+```
+{% /multicode %}
+
+## Create an ephemeral key {% #create-an-ephemeral-key %}
+
+Ephemeral keys are short-lived API keys that expire after a set duration, useful for temporary or single-session server access without managing a long-lived key. Pass the `scopes` to grant and a `duration` in seconds (maximum 3600). The response includes the generated secret and its expiration time.
+
+{% multicode %}
+```server-nodejs
+import { Client, Project, ProjectKeyScopes } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.createEphemeralKey({
+    scopes: [ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite],
+    duration: 600
+});
+```
+```server-deno
+import { Client, Project, ProjectKeyScopes } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const project = new Project(client);
+
+const result = await project.createEphemeralKey({
+    scopes: [ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite],
+    duration: 600
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Project;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$project = new Project($client);
+
+$result = $project->createEphemeralKey(
+    scopes: ['tables.read', 'tables.write'],
+    duration: 600
+);
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.project import Project
+from appwrite.enums import ProjectKeyScopes
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+project = Project(client)
+
+result = project.create_ephemeral_key(
+    scopes=[ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE],
+    duration=600
+)
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+project = Project.new(client)
+
+response = project.create_ephemeral_key(
+    scopes: ['tables.read', 'tables.write'],
+    duration: 600
+)
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Enums;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+var result = await project.CreateEphemeralKey(
+    scopes: new List<ProjectKeyScopes> {ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite},
+    duration: 600
+);
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+import 'package:dart_appwrite/enums.dart' as enums;
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Project project = Project(client);
+
+final result = await project.createEphemeralKey(
+    scopes: [enums.ProjectKeyScopes.tablesRead, enums.ProjectKeyScopes.tablesWrite],
+    duration: 600,
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.enums.ProjectKeyScopes
+import io.appwrite.services.Project
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val project = Project(client)
+
+val result = project.createEphemeralKey(
+    scopes = listOf(ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE),
+    duration = 600
+)
+```
+```server-java
+import io.appwrite.Client;
+import io.appwrite.enums.ProjectKeyScopes;
+import io.appwrite.coroutines.CoroutineCallback;
+import io.appwrite.services.Project;
+
+Client client = new Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>");
+
+Project project = new Project(client);
+
+project.createEphemeralKey(
+    List.of(ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE), // scopes
+    600, // duration
+    new CoroutineCallback<>((result, error) -> {
+        if (error != null) {
+            error.printStackTrace();
+            return;
+        }
+        System.out.println(result);
+    })
+);
+```
+```server-swift
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
+let result = try await project.createEphemeralKey(
+    scopes: [ProjectKeyScopes.tablesRead, ProjectKeyScopes.tablesWrite],
+    duration: 600
+)
+```
+```server-go
+package main
+
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.CreateEphemeralKey(
+        []string{"tables.read", "tables.write"},
+        600,
+    )
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::enums::ProjectKeyScopes;
+use appwrite::services::project::Project;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.create_ephemeral_key(
+        vec![ProjectKeyScopes::TablesRead, ProjectKeyScopes::TablesWrite], // scopes
+        600, // duration
     ).await?;
 
     println!("{:?}", result);
@@ -829,7 +1062,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, Scopes } from 'node-appwrite';
+import { Client, Project, ProjectKeyScopes } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -841,12 +1074,12 @@ const project = new Project(client);
 const result = await project.updateKey({
     keyId: '<KEY_ID>',
     name: 'Updated Key',
-    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead],
+    scopes: [ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite, ProjectKeyScopes.UsersRead],
     expire: '2027-06-30T23:59:59.000+00:00'
 });
 ```
 ```server-deno
-import { Client, Project, Scopes } from "npm:node-appwrite";
+import { Client, Project, ProjectKeyScopes } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -858,7 +1091,7 @@ const project = new Project(client);
 const result = await project.updateKey({
     keyId: '<KEY_ID>',
     name: 'Updated Key',
-    scopes: [Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead],
+    scopes: [ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite, ProjectKeyScopes.UsersRead],
     expire: '2027-06-30T23:59:59.000+00:00'
 });
 ```
@@ -887,7 +1120,7 @@ $result = $project->updateKey(
 ```server-python
 from appwrite.client import Client
 from appwrite.services.project import Project
-from appwrite.enums.scopes import Scopes
+from appwrite.enums import ProjectKeyScopes
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -899,7 +1132,7 @@ project = Project(client)
 result = project.update_key(
     key_id='<KEY_ID>',
     name='Updated Key',
-    scopes=[Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ],
+    scopes=[ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE, ProjectKeyScopes.USERS_READ],
     expire='2027-06-30T23:59:59.000+00:00'
 )
 ```
@@ -938,7 +1171,7 @@ Project project = new Project(client);
 var result = await project.UpdateKey(
     keyId: "<KEY_ID>",
     name: "Updated Key",
-    scopes: new List<Scopes> {Scopes.DatabasesRead, Scopes.DatabasesWrite, Scopes.UsersRead},
+    scopes: new List<ProjectKeyScopes> {ProjectKeyScopes.DatabasesRead, ProjectKeyScopes.DatabasesWrite, ProjectKeyScopes.UsersRead},
     expire: "2027-06-30T23:59:59.000+00:00"
 );
 ```
@@ -956,13 +1189,13 @@ Project project = Project(client);
 final result = await project.updateKey(
     keyId: '<KEY_ID>',
     name: 'Updated Key',
-    scopes: [enums.Scopes.databasesRead, enums.Scopes.databasesWrite, enums.Scopes.usersRead],
+    scopes: [enums.ProjectKeyScopes.databasesRead, enums.ProjectKeyScopes.databasesWrite, enums.ProjectKeyScopes.usersRead],
     expire: '2027-06-30T23:59:59.000+00:00',
 );
 ```
 ```server-kotlin
 import io.appwrite.Client
-import io.appwrite.enums.Scopes
+import io.appwrite.enums.ProjectKeyScopes
 import io.appwrite.services.Project
 
 val client = Client()
@@ -975,13 +1208,13 @@ val project = Project(client)
 val result = project.updateKey(
     keyId = "<KEY_ID>",
     name = "Updated Key",
-    scopes = listOf(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ),
+    scopes = listOf(ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE, ProjectKeyScopes.USERS_READ),
     expire = "2027-06-30T23:59:59.000+00:00"
 )
 ```
 ```server-java
 import io.appwrite.Client;
-import io.appwrite.enums.Scopes;
+import io.appwrite.enums.ProjectKeyScopes;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Project;
 
@@ -995,7 +1228,7 @@ Project project = new Project(client);
 project.updateKey(
     "<KEY_ID>",                                      // keyId
     "Updated Key",                                   // name
-    List.of(Scopes.DATABASES_READ, Scopes.DATABASES_WRITE, Scopes.USERS_READ), // scopes
+    List.of(ProjectKeyScopes.DATABASES_READ, ProjectKeyScopes.DATABASES_WRITE, ProjectKeyScopes.USERS_READ), // scopes
     "2027-06-30T23:59:59.000+00:00",                // expire
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -1020,7 +1253,7 @@ let project = Project(client)
 let result = try await project.updateKey(
     keyId: "<KEY_ID>",
     name: "Updated Key",
-    scopes: [Scopes.databasesRead, Scopes.databasesWrite, Scopes.usersRead],
+    scopes: [ProjectKeyScopes.databasesRead, ProjectKeyScopes.databasesWrite, ProjectKeyScopes.usersRead],
     expire: "2027-06-30T23:59:59.000+00:00"
 )
 ```
@@ -1056,7 +1289,7 @@ func main() {
 ```
 ```server-rust
 use appwrite::Client;
-use appwrite::enums::Scopes;
+use appwrite::enums::ProjectKeyScopes;
 use appwrite::services::project::Project;
 
 #[tokio::main]
@@ -1071,7 +1304,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let result = project.update_key(
         "<KEY_ID>",                                    // key_id
         "Updated Key",                                 // name
-        vec![Scopes::DatabasesRead, Scopes::DatabasesWrite, Scopes::UsersRead], // scopes
+        vec![ProjectKeyScopes::DatabasesRead, ProjectKeyScopes::DatabasesWrite, ProjectKeyScopes::UsersRead], // scopes
         Some("2027-06-30T23:59:59.000+00:00"),         // expire
     ).await?;
 

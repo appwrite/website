@@ -14,7 +14,7 @@ You can create a database by navigating to the **Databases** page and clicking *
 
 
 # Create using Server SDKs {% #create-using-server-sdks %}
-You can programmatically create databases using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/security/api-keys).
+You can programmatically create databases using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/partners/project/api-keys).
 
 {% multicode %}
 ```server-nodejs
@@ -100,7 +100,7 @@ client = Client()
 
 tablesDB = TablesDB(client)
 
-result = tablesDB.create('<DATABASE_ID>', '<NAME>')
+result = tablesDB.create(database_id='<DATABASE_ID>', name='<NAME>')
 ```
 ```ruby
 require 'Appwrite'
