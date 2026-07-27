@@ -77,7 +77,7 @@ Anthropic reports that Opus 5 is its most aligned model to date. On its automate
 * It is the least susceptible to being tricked into misuse.
 * It is Anthropic's safest model yet at avoiding reckless actions with hard-to-reverse side effects.
 
-On dual-use safety, Opus 5 does not advance the frontier. Anthropic deliberately avoided training it on cyber tasks, and in evaluations run with private-sector and government partners it remains behind Mythos 5 in both biology research and offensive cybersecurity. Opus 5 comes close to Mythos 5 at finding cybersecurity vulnerabilities, but stays substantially behind at turning those vulnerabilities into working exploits. On Anthropic's OSS-Fuzz evaluation, the two models identify vulnerabilities with similar success, yet Opus 5's exploit-development score is far below Mythos 5's. Full detail is in the [Claude Opus 5 System Card](https://www.anthropic.com/news/claude-opus-5).
+On dual-use safety, Opus 5 does not advance the frontier. Anthropic deliberately avoided training it on cyber tasks, and in evaluations run with private-sector and government partners it remains behind Mythos 5 in both biology research and offensive cybersecurity. Opus 5 comes close to Mythos 5 at finding cybersecurity vulnerabilities, but stays substantially behind at turning those vulnerabilities into working exploits. On Anthropic's OSS-Fuzz evaluation, the two models identify vulnerabilities with similar success, yet Opus 5's exploit-development score is far below Mythos 5's. Full detail is in the [Claude Opus 5 System Card](https://www-cdn.anthropic.com/c5fbac3f0b1280a933ebd26d3cb8bb9f5bdeaf48/Claude%20Opus%205%20System%20Card.pdf).
 
 # Claude Opus 5 safeguards and cyber fallbacks
 
