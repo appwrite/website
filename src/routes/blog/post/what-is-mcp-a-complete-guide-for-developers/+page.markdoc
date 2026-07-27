@@ -94,16 +94,18 @@ MCP is already in production across everyday developer workflows, not just demos
 
 The common thread is that each of these used to require custom integration work. MCP makes the capability portable across every client that speaks the protocol.
 
-# How to start building with MCP
+# How to build an MCP server
 
-You do not need to implement the protocol by hand. The MCP project ships official [SDKs](https://modelcontextprotocol.io/docs/sdk) for TypeScript, Python, and other languages that handle the JSON-RPC layer, the handshake, and the transport for you. Building a server usually comes down to declaring your tools, resources, and prompts and wiring them to real logic.
+You do not need to implement the protocol by hand. The MCP project provides official [SDKs](https://modelcontextprotocol.io/docs/sdk) that handle the JSON-RPC layer, initialization handshake, and transport for you.
 
-If you are using MCP rather than authoring a server, the workflow is simpler: pick a client, point it at a server, and start prompting. The client handles discovery and tool calls automatically.
+Building an MCP server generally involves four steps:
 
-Two good ways to get hands-on:
+1. **Define its capabilities.** Decide which tools, resources, or prompts the server should expose.
+2. **Connect those capabilities to real logic.** A tool might call an API, query a database, or trigger an action, while a resource might return documentation or stored data.
+3. **Choose a transport.** Use stdio when the server runs locally or Streamable HTTP when it is hosted remotely.
+4. **Connect and test the server.** Add it to an MCP-compatible client and confirm that its capabilities can be discovered and invoked correctly.
 
-* **Use existing servers.** Attach servers for the tools you already work with. Our roundup of the [best MCP servers and clients](/blog/post/10-best-mcp-server-client) is a good starting point for what is available.
-* **Connect your backend.** If you build on Appwrite, the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) exposes your project to any MCP-compatible client so an AI agent can manage [Databases](/docs/products/databases), create users through [Auth](/docs/products/auth), upload files to [Storage](/docs/products/storage), and deploy [Functions](/docs/products/functions) directly from a chat.
+Start with a small, narrowly scoped server. Once the basic connection works, you can add more capabilities without changing how compatible clients communicate with it.
 
 # MCP security best practices
 
@@ -111,16 +113,18 @@ MCP itself is just the protocol; security depends entirely on how a server is co
 
 Scope API keys to the minimum permissions the task needs, prefer local stdio servers when you want credentials to stay on your machine, and use staging projects for exploratory work. Before connecting any server, audit which tools it exposes. An MCP server is only as safe as the access you hand it.
 
-# Getting started with the Appwrite MCP server
+# Getting started with Appwrite MCP servers
 
-MCP is the layer that lets AI applications actually do things instead of only describing them. Once you understand the architecture, the three primitives, and the transports, most servers become predictable to reason about and straightforward to build.
+Appwrite provides multiple MCP servers for different workflows.
 
-The fastest way to see it in action is to connect your own backend. The Appwrite MCP server exposes your entire project to AI coding agents through a compact two-tool architecture, so you can create users, query databases, and deploy functions from within Claude Code, Cursor, or any MCP client. Read [how we rebuilt it in MCP Server 2.0](/blog/post/announcing-appwrite-mcp-server-2), then follow the docs to add it to your setup.
+The [Appwrite API MCP server](/docs/tooling/ai/mcp-servers/api) connects AI coding agents to your Appwrite project, allowing them to work with services such as Auth, Databases, Storage, and Functions. Its compact two-tool architecture automatically supports Appwrite services while using less model context.
+
+The [Appwrite Docs MCP server](/docs/tooling/ai/mcp-servers/docs) gives compatible AI clients access to Appwrite documentation, helping them answer product questions and generate code using relevant Appwrite context.
+
+Read [how we rebuilt the API MCP server in MCP Server 2.0](/blog/post/announcing-appwrite-mcp-server-2), then follow the documentation to connect the server that fits your workflow.
 
 # Resources
 
-* [Appwrite MCP server documentation](/docs/tooling/ai/mcp-servers/api)
-* [Appwrite Docs MCP server](/docs/tooling/ai/mcp-servers/docs)
 * [What exactly is MCP, and why is it trending?](/blog/post/what-is-mcp)
 * [10 awesome MCP servers and clients for developers](/blog/post/10-best-mcp-server-client)
 * [Official MCP specification](https://modelcontextprotocol.io)
