@@ -30,7 +30,7 @@ This guide covers what MCP is, how its architecture and primitives work, the tra
 
 MCP is an open protocol that defines how AI applications connect to external tools, data sources, and APIs through a uniform interface. Instead of teaching a model a new integration for every service, you expose your capabilities through an **MCP server**, and any MCP-compatible client can use them.
 
-MCP was developed by [Anthropic](https://www.anthropic.com/news/model-context-protocol) and released as an open standard in November 2024. It has since been adopted across IDE assistants, desktop clients, and backend platforms, and the specification is maintained openly at [modelcontextprotocol.io](https://modelcontextprotocol.io).
+MCP was developed by Anthropic and released as an open standard in November 2024. In December 2025, Anthropic donated MCP to the [Agentic AI Foundation](https://aaif.io/), a directed fund under the Linux Foundation, to support vendor-neutral governance. The specification and project development continue openly at [modelcontextprotocol.io](https://modelcontextprotocol.io).
 
 The short version: MCP turns a model that can only think into one that can fetch real data and trigger real actions, without you writing bespoke plumbing for each connection.
 
