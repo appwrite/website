@@ -138,23 +138,6 @@ If you are building a remote MCP server, you need somewhere to run it that handl
 
 The [Appwrite MCP server](/docs/tooling/ai/mcp-servers) itself follows these patterns: it runs locally over `stdio` by default, so your AI client never exposes raw credentials over the network, and it authenticates with a scoped project key rather than an admin token.
 
-# Frequently asked questions
-
-**Is MCP secure by default?**
-No. MCP is a protocol, not a security model. It standardizes how clients and servers talk, but authentication, authorization, credential scoping, and input validation are all the server operator's responsibility. Treat every MCP server as a privileged backend.
-
-**What is the most dangerous MCP misconfiguration?**
-Token passthrough and over-scoped credentials. Forwarding client tokens the server never validated, or handing the server an admin key it does not need, means a single leak or manipulated request can reach everything the server can touch.
-
-**How do I stop prompt injection through an MCP server?**
-You cannot fully stop the model from being manipulated, but the server can refuse to act on manipulated requests. Enforce authorization and input validation independently of what the model asks, treat tool descriptions and returned content as untrusted, and gate destructive tools behind explicit confirmation.
-
-**Should I use stdio or remote HTTP transport?**
-Use `stdio` for local servers. It limits access to the client that spawned the process and avoids opening a network port. Use Streamable HTTP for remote servers, but put them behind OAuth, verify every request, and bind sessions to a user identity.
-
-**How do I limit what an MCP server can access?**
-Apply least privilege. Expose the smallest set of tools needed, split read and write operations, request minimal OAuth scopes and elevate on demand, and back the server with scoped, rotatable credentials rather than a single broad key.
-
 # Build MCP servers on infrastructure you can verify
 
 Securing an MCP server comes down to one principle: it is a privileged backend, and every access decision is yours to make. Scope credentials, minimize tools and permissions, validate inputs, harden the transport, and log everything the server can do. The protocol will not do this for you.
@@ -170,5 +153,3 @@ Appwrite gives you the primitives to apply these practices without building them
 - [What exactly is MCP, and why is it trending?](/blog/post/what-is-mcp)
 - [MCP security best practices specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices)
 - [Join the Appwrite Discord community](https://appwrite.io/discord)
-</content>
-</invoke>
