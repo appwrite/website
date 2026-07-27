@@ -1,8 +1,8 @@
-import { posts, authors, categories } from './content';
+import { publishedPosts, authors, categories } from './content';
 
 export async function load({ data }) {
     return {
-        posts,
+        posts: publishedPosts,
         authors,
         categories,
         rawContent: data.rawContent
