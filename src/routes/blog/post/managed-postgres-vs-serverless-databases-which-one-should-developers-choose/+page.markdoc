@@ -19,7 +19,6 @@ faqs:
   - question: Is managed Postgres better than a serverless database?
     answer: Managed Postgres is better for steady workloads, predictable traffic, low-latency applications, and teams that need full control over PostgreSQL configuration. A serverless database is better for spiky, unpredictable, or low-traffic workloads where automatic scaling and usage-based pricing matter more.
 ---
-# Managed Postgres vs. serverless databases: Which one should developers choose?
 
 **Choose managed Postgres when your workload is steady and you want full control over a proven relational engine. Choose a serverless database when your traffic is spiky or unpredictable and you want to pay only for what you use, scale automatically, and avoid capacity planning.** Both run [PostgreSQL](https://www.postgresql.org/) or a Postgres-compatible engine under the hood, so the real decision is about the operating model, not the query language.
 
