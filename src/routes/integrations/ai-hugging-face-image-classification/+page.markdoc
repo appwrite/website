@@ -26,7 +26,7 @@ Image classification is a key application of machine learning that involves cate
 
 # How does the integration work?
 
-You can utilize a pre-built Appwrite function template to add image classification with Hugging Face to your app. This will allow you to upload an image to an Appwrite storage bucket and store labels from the image in an Appwrite collection.
+You can utilize a pre-built Appwrite function template to add image classification with Hugging Face to your app. This will allow you to upload an image to an Appwrite storage bucket and store labels from the image in an Appwrite table.
 
 # How to implement
 
@@ -54,13 +54,13 @@ Then, create a new repository with the default branch and root directory setting
 
 ## Step 3: Test the function
 
-Once all the steps are complete, it is time to test the function! Use the Appwrite console or one of Appwrite’s SDKs to [upload an image](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) to the `image_classification` storage bucket. If successful, you will find a response saved in the `image_classification` collection in the `ai` database in the following format:
+Once all the steps are complete, it is time to test the function! Use the Appwrite console or one of Appwrite’s SDKs to [upload an image](https://appwrite.io/docs/references/cloud/client-web/storage#createFile) to the `image_classification` storage bucket. If successful, you will find a response saved in the `image_classification` table in the `ai` database in the following format:
     
 | image | labels |
 | --- | --- |
 | `66a13bf100318c752f1b` | `[{"label":"llama","score":0.9664694666862488},{"label":"comic book","score":0.019199883565306664},{"label":"suit, suit of clothes","score":0.005637330934405327},{"label":"television, television system","score":0.00037627643905580044},{"label":"muzzle","score":0.00019786457414738834}]` |
     
-The `image` attribute contains the ID of the image file uploaded to the `image_classification` storage bucket, and the `labels` attribute contains the response from Hugging Face, including all the labels and their confidence score.
+The `image` column contains the ID of the image file uploaded to the `image_classification` storage bucket, and the `labels` column contains the response from Hugging Face, including all the labels and their confidence score.
     
 
 # Read more about Hugging Face and Appwrite Functions

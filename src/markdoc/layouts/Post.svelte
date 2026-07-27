@@ -43,6 +43,8 @@
     export let callToAction: BlogCallToActionInput;
     export let lastUpdated: string;
     export let faqs: { question: string; answer: string }[] | undefined = undefined;
+    /** Frontmatter `draft: true`: the post stays reachable by its direct URL but is hidden from all listings/feeds and marked noindex. */
+    export let draft = false;
 
     const posts = getContext<PostsData[]>('posts')?.filter(
         (post) => !(post.unlisted ?? false) && !(post.draft ?? false)
@@ -133,6 +135,10 @@
 </script>
 
 <svelte:head>
+    {#if draft}
+        <!-- Draft: reachable by direct URL but kept out of search indexes -->
+        <meta name="robots" content="noindex" />
+    {/if}
     <!-- Titles -->
     <title>{resolvedMetaTitle + TITLE_SUFFIX}</title>
     <meta property="og:title" content={resolvedMetaTitle} />
