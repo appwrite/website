@@ -109,7 +109,7 @@ Alongside the model, Anthropic released two updates in beta that matter for anyo
 * **Mid-conversation tool changes on the Claude Platform.** You can now change which tools Claude can use partway through a conversation without invalidating the prompt cache. That keeps cache hits intact on earlier turns as an agent's available tools evolve.
 * **Automatic fallbacks on the API.** Requests flagged by the safety classifiers on Opus 5 or Fable 5 can automatically route to another model instead of being blocked, so API requests always resolve to the best available model by default.
 
-For tuning your prompts to the new model, Anthropic published a [prompting guide for Opus 5](https://www.anthropic.com/news/claude-opus-5).
+For tuning your prompts to the new model, Anthropic published a [prompting guide for Opus 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5).
 
 # What Claude Opus 5 means if you build on Appwrite
 
