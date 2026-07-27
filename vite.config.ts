@@ -9,7 +9,11 @@ export default defineConfig({
     // Native N-API binary; must not be bundled by Vite SSR.
     // https://docs.statsig.com/server-core/node-core
     ssr: {
-        external: ['@statsig/statsig-node-core']
+        external: ['@statsig/statsig-node-core'],
+        resolve: {
+            conditions: ['node'],
+            externalConditions: ['node']
+        }
     },
     plugins: [
         // sentrySvelteKit({
