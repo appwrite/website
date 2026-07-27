@@ -19,7 +19,6 @@ faqs:
   - question: When should you use a document database?
     answer: Use a document database when your data is nested, varies between records, or changes frequently. It is commonly used for user profiles, product catalogs, content management systems, real-time apps, and AI applications.
 ---
-# What is a document database? An expert guide for developers
 
 Most database tutorials start with tables, rows, and columns. But the data you actually work with in application code rarely looks like a table. It looks like a nested object: a user with an address, a list of orders, and a set of preferences, all in one place. A **document database** stores that object as-is, without flattening it across five normalized tables.
 
