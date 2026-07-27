@@ -107,7 +107,7 @@ Opus 5 is also offered in Fast mode, where it runs around 2.5 times the default 
 Alongside the model, Anthropic released two updates in beta that matter for anyone writing their own agent harness:
 
 * **Mid-conversation tool changes on the Claude Platform.** You can now change which tools Claude can use partway through a conversation without invalidating the prompt cache. That keeps cache hits intact on earlier turns as an agent's available tools evolve.
-* **Automatic fallbacks on the API.** Requests flagged by the safety classifiers on Opus 5 or Fable 5 can automatically route to another model instead of being blocked, so API requests always resolve to the best available model by default.
+* **Automatic fallbacks on the API.** Users can choose to have requests flagged by the safety classifiers on Opus 5 or Fable 5 automatically route to another model. With automatic fallbacks enabled, API requests route to the best available model instead of being blocked.
 
 For tuning your prompts to the new model, Anthropic published a [prompting guide for Opus 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5).
 
