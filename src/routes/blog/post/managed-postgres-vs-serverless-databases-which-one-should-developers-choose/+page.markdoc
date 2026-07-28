@@ -16,7 +16,7 @@ faqs:
     answer: Some serverless databases can have cold starts when compute scales to zero and needs to resume. This can add latency to the first query after an idle period, so it matters for latency-sensitive applications.
   - question: Is serverless Postgres the same as managed Postgres?
     answer: No. Serverless Postgres is still managed, but it uses automatic scaling and usage-based billing. Traditional managed Postgres runs as a provisioned, always-on instance with fixed capacity.
-  - question: Is managed Postgres better than a serverless database?
+  - question: Is dedicated Postgres better than a serverless database?
     answer: Managed Postgres is better for steady workloads, predictable traffic, low-latency applications, and teams that need full control over PostgreSQL configuration. A serverless database is better for spiky, unpredictable, or low-traffic workloads where automatic scaling and usage-based pricing matter more.
 ---
 
