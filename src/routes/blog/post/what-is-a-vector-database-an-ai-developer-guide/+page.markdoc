@@ -139,7 +139,7 @@ The common pattern looks like this:
 
 Since version 1.9, Appwrite also supports MongoDB as its underlying database engine, which brings native vector search within reach for teams that want to keep embeddings and operational data in one place. See [choosing the right database for AI applications: when to use MongoDB](/blog/post/choosing-the-right-database-for-ai-applications-when-to-use-mongodb).
 
-## Getting started with vector search on Appwrite
+## Getting started with VectorsDB on Appwrite
 
 A vector database is the right tool when your feature depends on meaning rather than exact matches, which describes most RAG, semantic search, and recommendation workloads. It is not a replacement for your primary database, and for small datasets a vector extension is often enough. Match the tool to the scale and retrieval features you actually need.
 
