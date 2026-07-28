@@ -122,7 +122,7 @@ MongoDB consistently ranks as the most popular document database in the [DB-Engi
 
 ## How Appwrite implements the document model
 
-[Appwrite Databases](/docs/products/databases) is a document database that stores data in collections of JSON-like documents. It keeps the flexibility of the document model while adding the pieces most projects end up needing anyway.
+Appwrite DocumentsDB is a document database that stores data in collections of JSON-like documents. It combines the flexibility of the document model with built-in queries, relationships, permissions, and realtime updates.
 
 * [Queries](/docs/products/databases/queries) let you filter, sort, and paginate documents without writing raw query syntax. For a walkthrough, see [understand Appwrite queries](/blog/post/understand-data-queries).
 * [Relationships](/docs/products/databases/relationships) give you first-class one-to-many and many-to-many links between collections.
