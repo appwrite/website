@@ -24,7 +24,7 @@ faqs:
 
 That distinction matters because picking the wrong model shows up later as a surprise bill, a scaling wall, or a migration you did not budget for. This guide breaks down dedicated Postgres and serverless databases across scaling, pricing, performance, and operations, then gives you concrete guidance on when to pick each.
 
-# What is a managed Postgres database?
+# What is a dedicated Postgres database?
 
 **A dedicated Postgres database gives your application dedicated database capacity that is provisioned for you rather than dynamically scaled per request.** The database can still be hosted and maintained by a cloud provider, which handles tasks such as backups, patching, replication, and failover, while you control the provisioned capacity and configuration.
 
