@@ -1,0 +1,16 @@
+---
+layout: changelog
+title: "Announcing the S3 API for Appwrite Storage"
+date: 2026-07-31
+cover: /images/blog/announcing-s3-api/cover.avif
+---
+
+Appwrite Storage now exposes an **S3-compatible API**. Point the AWS CLI, the AWS SDKs, and tools like rclone or s3cmd at your Appwrite buckets by changing three settings: the endpoint (`https://<REGION>.cloud.appwrite.io/v1/s3`), the credentials (your project ID and an API key secret), and the region (`auto`).
+
+The API uses AWS Signature Version 4 and covers the operations most clients depend on, including bucket management, object uploads and downloads, copy and batch delete, folder-style listings with `delimiter=/`, and the full multipart upload flow. It works alongside your existing data: buckets and files are addressable over both the native Storage API and the S3 API at the same time, with no migration required.
+
+The S3 API is available on Appwrite Cloud today.
+
+{% arrow_link href="/blog/post/announcing-s3-api" %}
+Read the announcement
+{% /arrow_link %}
