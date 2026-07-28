@@ -206,11 +206,13 @@ const result = await tablesDB.listRows({
 
 That query does exactly what the SQL `SELECT ... WHERE ... ORDER BY ... LIMIT` earlier in this post does. You get the querying model SQL made standard, plus permissions, realtime updates, and pagination handled for you. And because Appwrite can run on a SQL engine like MariaDB under the hood, you are not locked out of raw SQL when you need it. See how to [integrate SQL, NoSQL, and other databases into your project](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project) for more.
 
-# Start querying your data with Appwrite Databases
+# Start with Appwrite Databases
 
-Understanding SQL gives you a mental model that applies to nearly every database you will ever touch: describe the data you want, and let the engine do the work. Whether you write raw queries or use a Query API, the core ideas of filtering, joining, aggregating, and transactions stay the same.
+Appwrite Databases gives you a structured way to store and work with application data without managing the underlying database infrastructure yourself. You can define your data model, store records in tables, control access with permissions, and build applications around the data using Appwrite's database services.
 
-If you want that querying power without managing a database server yourself, [Appwrite Databases](/docs/products/databases) gives you filtering, sorting, and pagination through a clean [Query API](/docs/products/databases/queries), backed by a relational engine and wrapped in permissions and realtime. It is a fast way to put everything in this post into practice.
+For developers coming from SQL, the underlying concepts will feel familiar: tables hold structured data, rows represent records, and queries let you filter, sort, and paginate the data you need. Appwrite adds these capabilities as part of its native database experience, alongside permissions and realtime updates.
+
+To get started, see the [Appwrite Databases documentation](/docs/products/databases) and [databases quick start](/docs/products/databases/quick-start).
 
 ## Resources
 
