@@ -20,7 +20,7 @@
 >
     {#if icon === 'mongo'}
         <span class="mongo-icon-badge shrink-0" aria-hidden="true">
-            <Icon name="mongo" style="width: 0.75rem; height: 1.125rem; color: #00ED64;" />
+            <Icon name="mongo" style="width: 0.75rem; height: 1.125rem;" />
         </span>
     {:else if icon === 'claude'}
         <span class="claude-icon-badge shrink-0" aria-hidden="true">

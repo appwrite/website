@@ -54,6 +54,8 @@ const languages = {
     java: java,
     cpp: cpp,
     bash: bash,
+    curl: bash,
+    hurl: http,
     powershell: powershell,
     cmd: dos,
     yaml: yaml,

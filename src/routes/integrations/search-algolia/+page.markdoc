@@ -8,14 +8,14 @@ isPartner: true
 isNew: false
 cover: /images/integrations/search-algolia/cover.avif
 category: search
-product: 
+product:
     avatar: '/images/integrations/avatars/algolia.avif'
     vendor: Algolia
     description: 'Algolia is a search platform that helps you add fast and relevant search capabilities to your app.'
-platform: 
+platform:
     - 'Self-hosted'
     - 'Cloud'
-images: 
+images:
     - /images/integrations/search-algolia/cover.avif
     - /images/integrations/search-algolia/overview.avif
     - /images/integrations/search-algolia/index.avif
@@ -46,13 +46,13 @@ Then, click on the **Search** page from the left sidebar and **create a new Inde
 
 ## Step 2: Create the Appwrite Function
 
-For this step, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/register) or [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already. In case you decide to self-host Appwrite, there are [additional setup steps](https://appwrite.io/docs/advanced/self-hosting/functions) to use Appwrite Function templates. Additionally, for this template, you must have an Appwrite Database and Collection filled with data in advance.
+For this step, you must [create an account on Appwrite Cloud](https://cloud.appwrite.io/register) or [self-host Appwrite](https://appwrite.io/docs/advanced/self-hosting) if you haven’t already. In case you decide to self-host Appwrite, there are [additional setup steps](https://appwrite.io/docs/advanced/self-hosting/functions) to use Appwrite Function templates. Additionally, for this template, you must have an Appwrite database and table filled with data in advance.
 
 Head over to the Appwrite console, navigate to the **Functions** page, click the **Templates** tab, and search for the **Algolia** function template.
 
 ![Function template](/images/integrations/search-algolia/template.avif)
 
-During the setup process, click on the checkbox to create an Appwrite API key on completion and add the Appwrite Database ID and Collection ID for the data you want to index and search as well as the **Algolia application ID**, **search API key**, **write API key** (under Admin API Key), and **index ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint. 
+During the setup process, click on the checkbox to create an Appwrite API key on completion and add the Appwrite database ID and table ID for the data you want to index and search as well as the **Algolia application ID**, **search API key**, **write API key** (under Admin API Key), and **index ID** in the **Variables** step. If you are self-hosting Appwrite, click on the **optional variables** dropdown and update the Appwrite endpoint to your instance’s publicly accessible endpoint.
 
 ![Env variables](/images/integrations/search-algolia/variables.avif)
 
@@ -62,16 +62,16 @@ Then, create a new repository with the default branch and root directory setting
 
 Once all the steps are complete, it is time to test the function! Before we go further, visit the **Domains** tab on the **Functions** page and copy the domain URL to test the function.
 
-Send a POST (HTTP) Request to the function URL to index the Appwrite Collection in Algolia. 
+Send a POST (HTTP) Request to the function URL to index the Appwrite table in Algolia.
 
 ```bash
 curl -XPOST https://DEPLOYED_FUNCTION_DOMAIN
 ```
 
-In case you have a large collection of data and your function executions timeout, you can head to the **Settings** tab on the **Functions** page and increase the function timeout limit from **15 seconds** to **900 seconds** (maximum).
-    
+In case you have a large table of data and your function executions timeout, you can head to the **Settings** tab on the **Functions** page and increase the function timeout limit from **15 seconds** to **900 seconds** (maximum).
+
 Then, open your function URL in the browser to try the interactive search UI.
-    
+
 
 ![Demo](/images/integrations/search-algolia/demo.avif)
 

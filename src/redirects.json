@@ -201,7 +201,7 @@
     },
     {
         "link": "/docs/keys",
-        "redirect": "/docs/advanced/security/api-keys"
+        "redirect": "/docs/partners/project/api-keys"
     },
     {
         "link": "/docs/permissions",
@@ -1014,7 +1014,11 @@
     },
     {
         "link": "/docs/advanced/platform/api-keys",
-        "redirect": "/docs/advanced/security/api-keys"
+        "redirect": "/docs/partners/project/api-keys"
+    },
+    {
+        "link": "/docs/advanced/security/api-keys",
+        "redirect": "/docs/partners/project/api-keys"
     },
     {
         "link": "/docs/advanced/platform/dev-keys",
@@ -1038,7 +1042,11 @@
     },
     {
         "link": "/docs/advanced/platform/environment-variables",
-        "redirect": "/docs/advanced/security/environment-variables"
+        "redirect": "/docs/partners/project/environment-variables"
+    },
+    {
+        "link": "/docs/advanced/security/environment-variables",
+        "redirect": "/docs/partners/project/environment-variables"
     },
     {
         "link": "/docs/advanced/integration",
