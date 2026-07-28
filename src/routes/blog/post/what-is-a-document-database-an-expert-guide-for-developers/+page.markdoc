@@ -20,9 +20,9 @@ faqs:
     answer: Use a document database when your data is nested, varies between records, or changes frequently. It is commonly used for user profiles, product catalogs, content management systems, real-time apps, and AI applications.
 ---
 
-Most database tutorials start with tables, rows, and columns. But the data you actually work with in application code rarely looks like a table. It looks like a nested object: a user with an address, a list of orders, and a set of preferences, all in one place. A **document database** stores that object as-is, without flattening it across five normalized tables.
+Application data rarely stays as simple as a fixed set of columns. A user profile might gain new preferences, an order might contain nested items, and different records may need different fields over time. Relational databases handle this through structured schemas and normalized tables, but that structure can become cumbersome when the shape of your data changes frequently.
 
-If you have ever spent an afternoon writing a migration just to add one optional field, you already understand the cost this model tries to remove. This guide explains what a document database is, how it stores data, how it differs from a relational database, and when it is the right choice.
+Document databases take a different approach: they store related data together as flexible, JSON-like documents. This guide explains how the document model works, how it differs from relational databases, and when it is the right choice.
 
 ## What is a document database?
 
