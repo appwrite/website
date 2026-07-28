@@ -54,6 +54,10 @@
                     href: '/docs/products/messaging/mailgun'
                 },
                 {
+                    label: 'Email with Resend',
+                    href: '/docs/products/messaging/resend'
+                },
+                {
                     label: 'Email with SendGrid',
                     href: '/docs/products/messaging/sendgrid'
                 },
