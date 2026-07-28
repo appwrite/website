@@ -86,7 +86,7 @@ const MONGODB_SERVICE = `  mongodb:
         exec mongod --replSet rs0 --bind_ip_all --auth --keyFile "$$KEYFILE_PATH"
     healthcheck:
       test: |
-        mongosh -u root -p "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --quiet --eval "rs.status().ok" | grep -q 1
+        mongosh -u root -p "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --quiet --eval "const hello = db.adminCommand({hello: 1}); hello.isWritablePrimary && hello.setName === 'rs0'" | grep -q true
       interval: 10s
       timeout: 10s
       retries: 10
@@ -146,7 +146,7 @@ services:
       - appwrite
 
   appwrite:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     container_name: appwrite
     <<: *x-logging
     restart: unless-stopped
@@ -290,7 +290,7 @@ services:
   appwrite-console:
     <<: *x-logging
     container_name: appwrite-console
-    image: appwrite/console:8.7.5
+    image: appwrite/console:8.7.30
     restart: unless-stopped
     networks:
       - appwrite
@@ -310,7 +310,7 @@ services:
       - traefik.http.routers.appwrite_console_https.tls=true
 
   appwrite-realtime:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: realtime
     container_name: appwrite-realtime
     <<: *x-logging
@@ -356,7 +356,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-audits:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-audits
     <<: *x-logging
     container_name: appwrite-worker-audits
@@ -385,7 +385,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-webhooks:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-webhooks
     <<: *x-logging
     container_name: appwrite-worker-webhooks
@@ -416,7 +416,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-deletes:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-deletes
     <<: *x-logging
     container_name: appwrite-worker-deletes
@@ -482,7 +482,7 @@ services:
       - _APP_EMAIL_CERTIFICATES
 
   appwrite-worker-databases:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-databases
     <<: *x-logging
     container_name: appwrite-worker-databases
@@ -511,7 +511,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-builds:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-builds
     <<: *x-logging
     container_name: appwrite-worker-builds
@@ -583,7 +583,7 @@ services:
       - _APP_DOMAIN_SITES
 
   appwrite-worker-screenshots:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-screenshots
     <<: *x-logging
     container_name: appwrite-worker-screenshots
@@ -638,7 +638,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-certificates:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-certificates
     <<: *x-logging
     container_name: appwrite-worker-certificates
@@ -678,7 +678,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-executions:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-executions
     <<: *x-logging
     container_name: appwrite-worker-executions
@@ -706,7 +706,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-functions:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-functions
     <<: *x-logging
     container_name: appwrite-worker-functions
@@ -749,7 +749,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-worker-mails:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-mails
     <<: *x-logging
     container_name: appwrite-worker-mails
@@ -787,7 +787,7 @@ services:
       - _APP_OPTIONS_FORCE_HTTPS
 
   appwrite-worker-messaging:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-messaging
     <<: *x-logging
     container_name: appwrite-worker-messaging
@@ -842,7 +842,7 @@ services:
       - _APP_STORAGE_WASABI_BUCKET
 
   appwrite-worker-migrations:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-migrations
     <<: *x-logging
     container_name: appwrite-worker-migrations
@@ -880,7 +880,7 @@ services:
       - _APP_MIGRATIONS_FIREBASE_CLIENT_SECRET
 
   appwrite-task-maintenance:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: maintenance
     <<: *x-logging
     container_name: appwrite-task-maintenance
@@ -923,7 +923,7 @@ services:
       - _APP_MAINTENANCE_RETENTION_SCHEDULES
 
   appwrite-task-interval:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: interval
     <<: *x-logging
     container_name: appwrite-task-interval
@@ -960,7 +960,7 @@ services:
       - _APP_LOGGING_CONFIG
 
   appwrite-task-stats-resources:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     container_name: appwrite-task-stats-resources
     entrypoint: stats-resources
     <<: *x-logging
@@ -992,7 +992,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-resources:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-stats-resources
     container_name: appwrite-worker-stats-resources
     <<: *x-logging
@@ -1023,7 +1023,7 @@ services:
       - _APP_STATS_RESOURCES_INTERVAL
 
   appwrite-worker-stats-usage:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: worker-stats-usage
     container_name: appwrite-worker-stats-usage
     <<: *x-logging
@@ -1054,7 +1054,7 @@ services:
       - _APP_USAGE_AGGREGATION_INTERVAL
 
   appwrite-task-scheduler-functions:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: schedule-functions
     container_name: appwrite-task-scheduler-functions
     <<: *x-logging
@@ -1083,7 +1083,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-executions:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: schedule-executions
     container_name: appwrite-task-scheduler-executions
     <<: *x-logging
@@ -1112,7 +1112,7 @@ services:
       - _APP_DB_PASS
 
   appwrite-task-scheduler-messages:
-    image: appwrite/appwrite:1.9.5
+    image: appwrite/appwrite:1.9.6
     entrypoint: schedule-messages
     container_name: appwrite-task-scheduler-messages
     <<: *x-logging
@@ -1141,7 +1141,7 @@ services:
 __ASSISTANT_BLOCK__
 
   appwrite-browser:
-    image: appwrite/browser:0.3.2
+    image: appwrite/browser:0.3.3
     container_name: appwrite-browser
     <<: *x-logging
     restart: unless-stopped
@@ -1154,7 +1154,7 @@ __ASSISTANT_BLOCK__
     <<: *x-logging
     restart: unless-stopped
     stop_signal: SIGINT
-    image: openruntimes/executor:0.25.1
+    image: openruntimes/executor:0.25.4
     networks:
       - appwrite
       - runtimes

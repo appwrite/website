@@ -1,116 +1,116 @@
 {
-    "search": {
+    "apple": {
         "encodedCode": "\\ea01",
         "prefix": "web-icon",
-        "className": "web-icon-search",
+        "className": "web-icon-apple",
         "unicode": "&#59905;"
     },
-    "arrow-down": {
+    "appwrite": {
         "encodedCode": "\\ea02",
         "prefix": "web-icon",
-        "className": "web-icon-arrow-down",
+        "className": "web-icon-appwrite",
         "unicode": "&#59906;"
     },
-    "system": {
+    "arena": {
         "encodedCode": "\\ea03",
         "prefix": "web-icon",
-        "className": "web-icon-system",
+        "className": "web-icon-arena",
         "unicode": "&#59907;"
     },
-    "refine": {
+    "arrow-down": {
         "encodedCode": "\\ea04",
         "prefix": "web-icon",
-        "className": "web-icon-refine",
+        "className": "web-icon-arrow-down",
         "unicode": "&#59908;"
     },
-    "microsoft": {
+    "arrow-ext-link": {
         "encodedCode": "\\ea05",
         "prefix": "web-icon",
-        "className": "web-icon-microsoft",
+        "className": "web-icon-arrow-ext-link",
         "unicode": "&#59909;"
     },
-    "platform": {
+    "arrow-left": {
         "encodedCode": "\\ea06",
         "prefix": "web-icon",
-        "className": "web-icon-platform",
+        "className": "web-icon-arrow-left",
         "unicode": "&#59910;"
     },
-    "vue": {
+    "arrow-right": {
         "encodedCode": "\\ea07",
         "prefix": "web-icon",
-        "className": "web-icon-vue",
+        "className": "web-icon-arrow-right",
         "unicode": "&#59911;"
     },
-    "rust": {
+    "arrow-up": {
         "encodedCode": "\\ea08",
         "prefix": "web-icon",
-        "className": "web-icon-rust",
+        "className": "web-icon-arrow-up",
         "unicode": "&#59912;"
     },
-    "chevron-down": {
+    "bluesky": {
         "encodedCode": "\\ea09",
         "prefix": "web-icon",
-        "className": "web-icon-chevron-down",
+        "className": "web-icon-bluesky",
         "unicode": "&#59913;"
     },
-    "firebase": {
+    "calendar": {
         "encodedCode": "\\ea0a",
         "prefix": "web-icon",
-        "className": "web-icon-firebase",
+        "className": "web-icon-calendar",
         "unicode": "&#59914;"
     },
-    "github": {
+    "check": {
         "encodedCode": "\\ea0b",
         "prefix": "web-icon",
-        "className": "web-icon-github",
+        "className": "web-icon-check",
         "unicode": "&#59915;"
     },
-    "ticket": {
+    "chevron-down": {
         "encodedCode": "\\ea0c",
         "prefix": "web-icon",
-        "className": "web-icon-ticket",
+        "className": "web-icon-chevron-down",
         "unicode": "&#59916;"
     },
-    "sparkle": {
+    "chevron-left": {
         "encodedCode": "\\ea0d",
         "prefix": "web-icon",
-        "className": "web-icon-sparkle",
+        "className": "web-icon-chevron-left",
         "unicode": "&#59917;"
     },
-    "divider-vertical": {
+    "chevron-right": {
         "encodedCode": "\\ea0e",
         "prefix": "web-icon",
-        "className": "web-icon-divider-vertical",
+        "className": "web-icon-chevron-right",
         "unicode": "&#59918;"
     },
-    "nuxt": {
+    "chevron-up": {
         "encodedCode": "\\ea0f",
         "prefix": "web-icon",
-        "className": "web-icon-nuxt",
+        "className": "web-icon-chevron-up",
         "unicode": "&#59919;"
     },
-    "chevron-up": {
+    "close": {
         "encodedCode": "\\ea10",
         "prefix": "web-icon",
-        "className": "web-icon-chevron-up",
+        "className": "web-icon-close",
         "unicode": "&#59920;"
     },
-    "ycombinator": {
+    "command": {
         "encodedCode": "\\ea11",
         "prefix": "web-icon",
-        "className": "web-icon-ycombinator",
+        "className": "web-icon-command",
         "unicode": "&#59921;"
     },
-    "x": {
+    "copy": {
         "encodedCode": "\\ea12",
         "prefix": "web-icon",
-        "className": "web-icon-x",
+        "className": "web-icon-copy",
         "unicode": "&#59922;"
     },
-    "textmagic": {
+    "customize": {
         "encodedCode": "\\ea13",
         "prefix": "web-icon",
-        "className": "web-icon-textmagic",
+        "className": "web-icon-customize",
         "unicode": "&#59923;"
     },
     "daily-dev": {
@@ -119,28 +119,28 @@
         "className": "web-icon-daily-dev",
         "unicode": "&#59924;"
     },
-    "chevron-right": {
+    "dark": {
         "encodedCode": "\\ea15",
         "prefix": "web-icon",
-        "className": "web-icon-chevron-right",
+        "className": "web-icon-dark",
         "unicode": "&#59925;"
     },
-    "instagram": {
+    "discord": {
         "encodedCode": "\\ea16",
         "prefix": "web-icon",
-        "className": "web-icon-instagram",
+        "className": "web-icon-discord",
         "unicode": "&#59926;"
     },
-    "ext-link": {
+    "divider-vertical": {
         "encodedCode": "\\ea17",
         "prefix": "web-icon",
-        "className": "web-icon-ext-link",
+        "className": "web-icon-divider-vertical",
         "unicode": "&#59927;"
     },
-    "arrow-right": {
+    "download": {
         "encodedCode": "\\ea18",
         "prefix": "web-icon",
-        "className": "web-icon-arrow-right",
+        "className": "web-icon-download",
         "unicode": "&#59928;"
     },
     "edge": {
@@ -149,190 +149,190 @@
         "className": "web-icon-edge",
         "unicode": "&#59929;"
     },
-    "download": {
+    "ext-link": {
         "encodedCode": "\\ea1a",
         "prefix": "web-icon",
-        "className": "web-icon-download",
+        "className": "web-icon-ext-link",
         "unicode": "&#59930;"
     },
-    "dark": {
+    "external-icon": {
         "encodedCode": "\\ea1b",
         "prefix": "web-icon",
-        "className": "web-icon-dark",
+        "className": "web-icon-external-icon",
         "unicode": "&#59931;"
     },
-    "bluesky": {
+    "firebase": {
         "encodedCode": "\\ea1c",
         "prefix": "web-icon",
-        "className": "web-icon-bluesky",
+        "className": "web-icon-firebase",
         "unicode": "&#59932;"
     },
-    "plus": {
+    "github": {
         "encodedCode": "\\ea1d",
         "prefix": "web-icon",
-        "className": "web-icon-plus",
+        "className": "web-icon-github",
         "unicode": "&#59933;"
     },
-    "check": {
+    "google": {
         "encodedCode": "\\ea1e",
         "prefix": "web-icon",
-        "className": "web-icon-check",
+        "className": "web-icon-google",
         "unicode": "&#59934;"
     },
-    "close": {
+    "hamburger-menu": {
         "encodedCode": "\\ea1f",
         "prefix": "web-icon",
-        "className": "web-icon-close",
+        "className": "web-icon-hamburger-menu",
         "unicode": "&#59935;"
     },
-    "copy": {
+    "instagram": {
         "encodedCode": "\\ea20",
         "prefix": "web-icon",
-        "className": "web-icon-copy",
+        "className": "web-icon-instagram",
         "unicode": "&#59936;"
     },
-    "terraform": {
+    "light": {
         "encodedCode": "\\ea21",
         "prefix": "web-icon",
-        "className": "web-icon-terraform",
+        "className": "web-icon-light",
         "unicode": "&#59937;"
     },
-    "message": {
+    "linkedin": {
         "encodedCode": "\\ea22",
         "prefix": "web-icon",
-        "className": "web-icon-message",
+        "className": "web-icon-linkedin",
         "unicode": "&#59938;"
     },
-    "play": {
+    "location": {
         "encodedCode": "\\ea23",
         "prefix": "web-icon",
-        "className": "web-icon-play",
+        "className": "web-icon-location",
         "unicode": "&#59939;"
     },
-    "remix": {
+    "logout-left": {
         "encodedCode": "\\ea24",
         "prefix": "web-icon",
-        "className": "web-icon-remix",
+        "className": "web-icon-logout-left",
         "unicode": "&#59940;"
     },
-    "skills": {
+    "logout-right": {
         "encodedCode": "\\ea25",
         "prefix": "web-icon",
-        "className": "web-icon-skills",
+        "className": "web-icon-logout-right",
         "unicode": "&#59941;"
     },
-    "hamburger-menu": {
+    "mailgun": {
         "encodedCode": "\\ea26",
         "prefix": "web-icon",
-        "className": "web-icon-hamburger-menu",
+        "className": "web-icon-mailgun",
         "unicode": "&#59942;"
     },
-    "google": {
+    "mcp": {
         "encodedCode": "\\ea27",
         "prefix": "web-icon",
-        "className": "web-icon-google",
+        "className": "web-icon-mcp",
         "unicode": "&#59943;"
     },
-    "rest": {
+    "message": {
         "encodedCode": "\\ea28",
         "prefix": "web-icon",
-        "className": "web-icon-rest",
+        "className": "web-icon-message",
         "unicode": "&#59944;"
     },
-    "star": {
+    "microsoft": {
         "encodedCode": "\\ea29",
         "prefix": "web-icon",
-        "className": "web-icon-star",
+        "className": "web-icon-microsoft",
         "unicode": "&#59945;"
     },
-    "mailgun": {
+    "minus": {
         "encodedCode": "\\ea2a",
         "prefix": "web-icon",
-        "className": "web-icon-mailgun",
+        "className": "web-icon-minus",
         "unicode": "&#59946;"
     },
-    "regions": {
+    "nuxt": {
         "encodedCode": "\\ea2b",
         "prefix": "web-icon",
-        "className": "web-icon-regions",
+        "className": "web-icon-nuxt",
         "unicode": "&#59947;"
     },
-    "youtube": {
+    "persons": {
         "encodedCode": "\\ea2c",
         "prefix": "web-icon",
-        "className": "web-icon-youtube",
+        "className": "web-icon-persons",
         "unicode": "&#59948;"
     },
-    "command": {
+    "platform": {
         "encodedCode": "\\ea2d",
         "prefix": "web-icon",
-        "className": "web-icon-command",
+        "className": "web-icon-platform",
         "unicode": "&#59949;"
     },
-    "logout-right": {
+    "play": {
         "encodedCode": "\\ea2e",
         "prefix": "web-icon",
-        "className": "web-icon-logout-right",
+        "className": "web-icon-play",
         "unicode": "&#59950;"
     },
-    "tanstack": {
+    "plus": {
         "encodedCode": "\\ea2f",
         "prefix": "web-icon",
-        "className": "web-icon-tanstack",
+        "className": "web-icon-plus",
         "unicode": "&#59951;"
     },
-    "location": {
+    "pop-locations": {
         "encodedCode": "\\ea30",
         "prefix": "web-icon",
-        "className": "web-icon-location",
+        "className": "web-icon-pop-locations",
         "unicode": "&#59952;"
     },
-    "arrow-up": {
+    "product-hunt": {
         "encodedCode": "\\ea31",
         "prefix": "web-icon",
-        "className": "web-icon-arrow-up",
+        "className": "web-icon-product-hunt",
         "unicode": "&#59953;"
     },
-    "linkedin": {
+    "refine": {
         "encodedCode": "\\ea32",
         "prefix": "web-icon",
-        "className": "web-icon-linkedin",
+        "className": "web-icon-refine",
         "unicode": "&#59954;"
     },
-    "arena": {
+    "regions": {
         "encodedCode": "\\ea33",
         "prefix": "web-icon",
-        "className": "web-icon-arena",
+        "className": "web-icon-regions",
         "unicode": "&#59955;"
     },
-    "twitter": {
+    "remix": {
         "encodedCode": "\\ea34",
         "prefix": "web-icon",
-        "className": "web-icon-twitter",
+        "className": "web-icon-remix",
         "unicode": "&#59956;"
     },
-    "customize": {
+    "resend": {
         "encodedCode": "\\ea35",
         "prefix": "web-icon",
-        "className": "web-icon-customize",
+        "className": "web-icon-resend",
         "unicode": "&#59957;"
     },
-    "discord": {
+    "rest": {
         "encodedCode": "\\ea36",
         "prefix": "web-icon",
-        "className": "web-icon-discord",
+        "className": "web-icon-rest",
         "unicode": "&#59958;"
     },
-    "calendar": {
+    "rust": {
         "encodedCode": "\\ea37",
         "prefix": "web-icon",
-        "className": "web-icon-calendar",
+        "className": "web-icon-rust",
         "unicode": "&#59959;"
     },
-    "arrow-left": {
+    "search": {
         "encodedCode": "\\ea38",
         "prefix": "web-icon",
-        "className": "web-icon-arrow-left",
+        "className": "web-icon-search",
         "unicode": "&#59960;"
     },
     "sendgrid": {
@@ -341,76 +341,88 @@
         "className": "web-icon-sendgrid",
         "unicode": "&#59961;"
     },
-    "pop-locations": {
+    "skills": {
         "encodedCode": "\\ea3a",
         "prefix": "web-icon",
-        "className": "web-icon-pop-locations",
+        "className": "web-icon-skills",
         "unicode": "&#59962;"
     },
-    "product-hunt": {
+    "sparkle": {
         "encodedCode": "\\ea3b",
         "prefix": "web-icon",
-        "className": "web-icon-product-hunt",
+        "className": "web-icon-sparkle",
         "unicode": "&#59963;"
     },
-    "appwrite": {
+    "star": {
         "encodedCode": "\\ea3c",
         "prefix": "web-icon",
-        "className": "web-icon-appwrite",
+        "className": "web-icon-star",
         "unicode": "&#59964;"
     },
-    "arrow-ext-link": {
+    "system": {
         "encodedCode": "\\ea3d",
         "prefix": "web-icon",
-        "className": "web-icon-arrow-ext-link",
+        "className": "web-icon-system",
         "unicode": "&#59965;"
     },
-    "logout-left": {
+    "tanstack": {
         "encodedCode": "\\ea3e",
         "prefix": "web-icon",
-        "className": "web-icon-logout-left",
+        "className": "web-icon-tanstack",
         "unicode": "&#59966;"
     },
-    "external-icon": {
+    "terraform": {
         "encodedCode": "\\ea3f",
         "prefix": "web-icon",
-        "className": "web-icon-external-icon",
+        "className": "web-icon-terraform",
         "unicode": "&#59967;"
     },
-    "apple": {
+    "textmagic": {
         "encodedCode": "\\ea40",
         "prefix": "web-icon",
-        "className": "web-icon-apple",
+        "className": "web-icon-textmagic",
         "unicode": "&#59968;"
     },
-    "tiktok": {
+    "ticket": {
         "encodedCode": "\\ea41",
         "prefix": "web-icon",
-        "className": "web-icon-tiktok",
+        "className": "web-icon-ticket",
         "unicode": "&#59969;"
     },
-    "minus": {
+    "tiktok": {
         "encodedCode": "\\ea42",
         "prefix": "web-icon",
-        "className": "web-icon-minus",
+        "className": "web-icon-tiktok",
         "unicode": "&#59970;"
     },
-    "chevron-left": {
+    "twitter": {
         "encodedCode": "\\ea43",
         "prefix": "web-icon",
-        "className": "web-icon-chevron-left",
+        "className": "web-icon-twitter",
         "unicode": "&#59971;"
     },
-    "light": {
+    "vue": {
         "encodedCode": "\\ea44",
         "prefix": "web-icon",
-        "className": "web-icon-light",
+        "className": "web-icon-vue",
         "unicode": "&#59972;"
     },
-    "mcp": {
+    "x": {
         "encodedCode": "\\ea45",
         "prefix": "web-icon",
-        "className": "web-icon-mcp",
+        "className": "web-icon-x",
         "unicode": "&#59973;"
+    },
+    "ycombinator": {
+        "encodedCode": "\\ea46",
+        "prefix": "web-icon",
+        "className": "web-icon-ycombinator",
+        "unicode": "&#59974;"
+    },
+    "youtube": {
+        "encodedCode": "\\ea47",
+        "prefix": "web-icon",
+        "className": "web-icon-youtube",
+        "unicode": "&#59975;"
     }
 }
