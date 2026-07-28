@@ -144,11 +144,11 @@ This gives developers readable, sequential-looking code without blocking the app
 When multiple Appwrite requests do not depend on one another, you can run them concurrently with `Promise.all()` instead of waiting for each one separately.
 
 ```javascript
-const [user, documents] = await Promise.all([
+const [user, rows] = await Promise.all([
     account.get(),
-    databases.listDocuments({
+    tablesDB.listRows({
         databaseId: '<DATABASE_ID>',
-        collectionId: '<COLLECTION_ID>',
+        tableId: '<TABLE_ID>',
     }),
 ]);
 ```
