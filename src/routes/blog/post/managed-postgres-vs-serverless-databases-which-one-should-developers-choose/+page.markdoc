@@ -26,7 +26,7 @@ That distinction matters because picking the wrong model shows up later as a sur
 
 # What is a managed Postgres database?
 
-**A managed Postgres database is a PostgreSQL instance that a cloud provider hosts and maintains for you, while you still control its size, configuration, and connection limits.** You pick an instance class, the provider handles backups, patching, replication, and failover, and you pay for that provisioned capacity whether or not it is fully used.
+**A dedicated Postgres database gives your application dedicated database capacity that is provisioned for you rather than dynamically scaled per request.** The database can still be hosted and maintained by a cloud provider, which handles tasks such as backups, patching, replication, and failover, while you control the provisioned capacity and configuration.
 
 Services like [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/), [Google Cloud SQL](https://cloud.google.com/sql), and Azure Database for PostgreSQL are the common examples. You get a real Postgres server with a fixed amount of CPU, memory, and storage that runs continuously.
 
