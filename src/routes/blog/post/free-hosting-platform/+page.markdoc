@@ -74,7 +74,7 @@ Appwrite is an **all-in-one development platform with web hosting and backend de
 * **Strengths:** Integrated backend services, scalability, strong open-source ecosystem.
 * **Free tier:** Generous limits with databases, APIs, storage, and hosting included.
 
-{% call\_to\_action title\="Build your startup with Appwrite" description\="An all-in-one development platform for you to develop, host, and scale your products." point1\="Cloud credits" point2\="Priority support" point3\="Ship faster" point4\="Built-in security and compliance" cta\="Apply for the program" url\="https://appwrite.io/startups" /%}
+{% call_to_action title="Build your startup with Appwrite" description="An all-in-one development platform for you to develop, host, and scale your products." point1="Cloud credits" point2="Priority support" point3="Ship faster" point4="Built-in security and compliance" cta="Apply for the program" url="https://appwrite.io/startups" /%}
 
 ## 2. Vercel
 
