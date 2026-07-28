@@ -5,7 +5,7 @@ description: Appwrite Storage now exposes an S3-compatible API. Point the AWS CL
 date: 2026-07-31
 cover: /images/blog/announcing-s3-api/cover.avif
 timeToRead: 5
-author: aditya-oberai
+author: torsten-dittmann
 category: announcement
 featured: false
 callToAction: true
@@ -48,7 +48,7 @@ S3 clients authenticate with an access key ID and a secret access key. Appwrite 
 | Endpoint | `https://<REGION>.cloud.appwrite.io/v1/s3` |
 | Access key ID | Your Appwrite project ID |
 | Secret access key | An Appwrite API key secret |
-| Region | `auto` |
+| Region | `auto` or your project's Appwrite region |
 | Signature version | AWS Signature Version 4 (SigV4) |
 | Addressing style | Path-style only |
 
@@ -127,7 +127,7 @@ S3 buckets map directly to Appwrite Storage buckets, and S3 objects map to files
 
 This means files created through the native Storage API or the Console are usable over S3 too: list the bucket to discover a file's canonical key, then address it with that key.
 
-Folders work the way they do on S3 itself: they are virtual, existing as `/`-separated prefixes in object keys. List a bucket with the `/` delimiter and an optional `prefix` to browse it like a directory tree, with folders grouped under `CommonPrefixes` and files under `Contents`.
+[Folders](/docs/products/storage/folders) work the way they do on S3 itself: they are virtual, existing as `/`-separated prefixes in object keys. List a bucket with the `/` delimiter and an optional `prefix` to browse it like a directory tree, with folders grouped under `CommonPrefixes` and files under `Contents`.
 
 # What's supported
 
