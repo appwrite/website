@@ -22,7 +22,7 @@ faqs:
 
 **Choose dedicated Postgres when your workload is steady and you want dedicated, predictable database capacity. Choose a serverless database when your traffic is spiky or unpredictable and you want compute to scale automatically with demand.** Both can run [PostgreSQL](https://www.postgresql.org/) or a Postgres-compatible engine under the hood, so the real decision is how compute is provisioned and scaled.
 
-That distinction matters because picking the wrong model shows up later as a surprise bill, a scaling wall, or a migration you did not budget for. This guide breaks down managed Postgres and serverless databases across scaling, pricing, performance, and operations, then gives you concrete guidance on when to pick each.
+That distinction matters because picking the wrong model shows up later as a surprise bill, a scaling wall, or a migration you did not budget for. This guide breaks down dedicated Postgres and serverless databases across scaling, pricing, performance, and operations, then gives you concrete guidance on when to pick each.
 
 # What is a managed Postgres database?
 
