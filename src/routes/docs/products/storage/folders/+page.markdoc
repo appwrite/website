@@ -294,12 +294,12 @@ For example, `Query.equal('folder', ['photos/2026/'])` matches files in `photos/
 
 # List folders {% #list-folders %}
 
-To browse the folders inside a bucket, use the `listFolders` method.
-It returns the folders directly inside a given folder, or the top-level folders of the bucket when no folder is passed.
+Folders are aggregated from the files inside a bucket.
+To browse them, [paginate](/docs/products/databases/pagination) through the bucket's files and collect the unique folder paths from each file's `folder` attribute, including the implied parent folders.
 
 {% multicode %}
   ```client-web
-  import { Client, Storage } from "appwrite";
+  import { Client, Storage, Query } from "appwrite";
 
   const client = new Client()
       .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -307,12 +307,37 @@ It returns the folders directly inside a given folder, or the top-level folders 
 
   const storage = new Storage(client);
 
-  const result = await storage.listFolders({
-      bucketId: '<BUCKET_ID>',
-      folder: 'photos/' // Omit to list top-level folders
-  });
+  const limit = 100;
+  let cursor = '';
+  const folders = new Set();
 
-  console.log(result.folders);
+  while (true) {
+      const page = await storage.listFiles({
+          bucketId: '<BUCKET_ID>',
+          queries: [
+              Query.limit(limit),
+              ...(cursor ? [Query.cursorAfter(cursor)] : [])
+          ]
+      });
+
+      for (const file of page.files) {
+          let path = '';
+
+          // Add the folder and its implied parent folders
+          for (const part of file.folder.split('/').filter(Boolean)) {
+              path += `${part}/`;
+              folders.add(path);
+          }
+      }
+
+      if (page.files.length < limit) {
+          break; // All files scanned
+      }
+
+      cursor = page.files[page.files.length - 1].$id;
+  }
+
+  console.log([...folders].sort());
   ```
 
   ```server-nodejs
@@ -325,12 +350,37 @@ It returns the folders directly inside a given folder, or the top-level folders 
 
   const storage = new sdk.Storage(client);
 
-  const result = await storage.listFolders({
-      bucketId: '<BUCKET_ID>',
-      folder: 'photos/' // Omit to list top-level folders
-  });
+  const limit = 100;
+  let cursor = '';
+  const folders = new Set();
 
-  console.log(result.folders);
+  while (true) {
+      const page = await storage.listFiles({
+          bucketId: '<BUCKET_ID>',
+          queries: [
+              sdk.Query.limit(limit),
+              ...(cursor ? [sdk.Query.cursorAfter(cursor)] : [])
+          ]
+      });
+
+      for (const file of page.files) {
+          let path = '';
+
+          // Add the folder and its implied parent folders
+          for (const part of file.folder.split('/').filter(Boolean)) {
+              path += `${part}/`;
+              folders.add(path);
+          }
+      }
+
+      if (page.files.length < limit) {
+          break; // All files scanned
+      }
+
+      cursor = page.files[page.files.length - 1].$id;
+  }
+
+  console.log([...folders].sort());
   ```
 
   ```client-flutter
@@ -343,192 +393,43 @@ It returns the folders directly inside a given folder, or the top-level folders 
 
     final storage = Storage(client);
 
-    final result = await storage.listFolders(
-      bucketId: '<BUCKET_ID>',
-      folder: 'photos/', // Omit to list top-level folders
-    );
-  }
-  ```
-
-  ```client-android-kotlin
-  import io.appwrite.Client
-  import io.appwrite.services.Storage
-
-  suspend fun main() {
-      val client = Client(applicationContext)
-          .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("<PROJECT_ID>") // Your project ID
-
-      val storage = Storage(client)
-
-      val result = storage.listFolders(
-          bucketId = "<BUCKET_ID>",
-          folder = "photos/" // Omit to list top-level folders
-      )
-  }
-  ```
-
-  ```client-apple
-  import Appwrite
-
-  func main() async throws {
-      let client = Client()
-          .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-          .setProject("<PROJECT_ID>")
-
-      let storage = Storage(client)
-
-      let result = try await storage.listFolders(
-          bucketId: "<BUCKET_ID>",
-          folder: "photos/" // Omit to list top-level folders
-      )
-  }
-  ```
-
-  ```client-react-native
-  import { Client, Storage } from 'react-native-appwrite';
-
-  const client = new Client()
-      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-      .setProject('<PROJECT_ID>');
-
-  const storage = new Storage(client);
-
-  const result = await storage.listFolders({
-      bucketId: '<BUCKET_ID>',
-      folder: 'photos/' // Omit to list top-level folders
-  });
-  ```
-{% /multicode %}
-
-Each folder in the response has a `key` (the full folder path), a `name` (the last segment of the path), and a `parent` (the path of the folder that contains it).
-
-```json
-{
-  "folders": [
-    {
-      "key": "photos/2025/",
-      "name": "2025",
-      "parent": "photos/"
-    },
-    {
-      "key": "photos/2026/",
-      "name": "2026",
-      "parent": "photos/"
-    }
-  ]
-}
-```
-
-## Pagination {% #pagination %}
-
-`listFolders` returns up to `limit` folders per page, 25 by default and 100 at most, sorted by path.
-Because folders are derived from files instead of being stored as records, the response doesn't include a total count.
-
-To fetch the next page, pass the `key` of the last folder you received as the `cursor` parameter.
-When a page comes back with fewer folders than the limit, you've reached the end of the listing.
-
-{% multicode %}
-  ```client-web
-  import { Client, Storage } from "appwrite";
-
-  const client = new Client()
-      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-      .setProject('<PROJECT_ID>');
-
-  const storage = new Storage(client);
-
-  const limit = 25;
-  let cursor = '';
-  let folders = [];
-
-  while (true) {
-      const page = await storage.listFolders({
-          bucketId: '<BUCKET_ID>',
-          folder: 'photos/',
-          limit,
-          cursor
-      });
-
-      folders.push(...page.folders);
-
-      if (page.folders.length < limit) {
-          break; // Listing is complete
-      }
-
-      cursor = page.folders[page.folders.length - 1].key;
-  }
-  ```
-
-  ```server-nodejs
-  const sdk = require('node-appwrite');
-
-  const client = new sdk.Client()
-      .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-      .setProject('<PROJECT_ID>')
-      .setKey('<API_KEY>');
-
-  const storage = new sdk.Storage(client);
-
-  const limit = 25;
-  let cursor = '';
-  let folders = [];
-
-  while (true) {
-      const page = await storage.listFolders({
-          bucketId: '<BUCKET_ID>',
-          folder: 'photos/',
-          limit,
-          cursor
-      });
-
-      folders.push(...page.folders);
-
-      if (page.folders.length < limit) {
-          break; // Listing is complete
-      }
-
-      cursor = page.folders[page.folders.length - 1].key;
-  }
-  ```
-
-  ```client-flutter
-  import 'package:appwrite/appwrite.dart';
-  import 'package:appwrite/models.dart';
-
-  void main() async {
-    final client = Client()
-        .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
-        .setProject('<PROJECT_ID>');
-
-    final storage = Storage(client);
-
-    const limit = 25;
+    const limit = 100;
     var cursor = '';
-    final folders = <Folder>[];
+    final folders = <String>{};
 
     while (true) {
-      final page = await storage.listFolders(
+      final page = await storage.listFiles(
         bucketId: '<BUCKET_ID>',
-        folder: 'photos/',
-        limit: limit,
-        cursor: cursor,
+        queries: [
+          Query.limit(limit),
+          if (cursor.isNotEmpty) Query.cursorAfter(cursor),
+        ],
       );
 
-      folders.addAll(page.folders);
+      for (final file in page.files) {
+        var path = '';
 
-      if (page.folders.length < limit) {
-        break; // Listing is complete
+        // Add the folder and its implied parent folders
+        for (final part in file.folder.split('/').where((p) => p.isNotEmpty)) {
+          path += '$part/';
+          folders.add(path);
+        }
       }
 
-      cursor = page.folders.last.key;
+      if (page.files.length < limit) {
+        break; // All files scanned
+      }
+
+      cursor = page.files.last.$id;
     }
+
+    print(folders.toList()..sort());
   }
   ```
 
   ```client-android-kotlin
   import io.appwrite.Client
-  import io.appwrite.models.Folder
+  import io.appwrite.Query
   import io.appwrite.services.Storage
 
   suspend fun main() {
@@ -538,32 +439,40 @@ When a page comes back with fewer folders than the limit, you've reached the end
 
       val storage = Storage(client)
 
-      val limit = 25L
+      val limit = 100
       var cursor = ""
-      val folders = mutableListOf<Folder>()
+      val folders = mutableSetOf<String>()
 
       while (true) {
-          val page = storage.listFolders(
+          val page = storage.listFiles(
               bucketId = "<BUCKET_ID>",
-              folder = "photos/",
-              limit = limit,
-              cursor = cursor
+              queries = listOfNotNull(
+                  Query.limit(limit),
+                  if (cursor.isNotEmpty()) Query.cursorAfter(cursor) else null
+              )
           )
 
-          folders.addAll(page.folders)
+          for (file in page.files) {
+              var path = ""
 
-          if (page.folders.size < limit) {
-              break // Listing is complete
+              // Add the folder and its implied parent folders
+              for (part in file.folder.split("/").filter { it.isNotEmpty() }) {
+                  path += "$part/"
+                  folders.add(path)
+              }
           }
 
-          cursor = page.folders.last().key
+          if (page.files.size < limit) {
+              break // All files scanned
+          }
+
+          cursor = page.files.last().id
       }
   }
   ```
 
   ```client-apple
   import Appwrite
-  import AppwriteModels
 
   func main() async throws {
       let client = Client()
@@ -572,31 +481,42 @@ When a page comes back with fewer folders than the limit, you've reached the end
 
       let storage = Storage(client)
 
-      let limit = 25
+      let limit = 100
       var cursor = ""
-      var folders: [AppwriteModels.Folder] = []
+      var folders = Set<String>()
 
       while true {
-          let page = try await storage.listFolders(
-              bucketId: "<BUCKET_ID>",
-              folder: "photos/",
-              limit: limit,
-              cursor: cursor
-          )
-
-          folders.append(contentsOf: page.folders)
-
-          if page.folders.count < limit {
-              break // Listing is complete
+          var queries = [Query.limit(limit)]
+          if !cursor.isEmpty {
+              queries.append(Query.cursorAfter(cursor))
           }
 
-          cursor = page.folders.last!.key
+          let page = try await storage.listFiles(
+              bucketId: "<BUCKET_ID>",
+              queries: queries
+          )
+
+          for file in page.files {
+              var path = ""
+
+              // Add the folder and its implied parent folders
+              for part in file.folder.split(separator: "/") {
+                  path += "\(part)/"
+                  folders.insert(path)
+              }
+          }
+
+          if page.files.count < limit {
+              break // All files scanned
+          }
+
+          cursor = page.files.last!.id
       }
   }
   ```
 
   ```client-react-native
-  import { Client, Storage } from 'react-native-appwrite';
+  import { Client, Storage, Query } from 'react-native-appwrite';
 
   const client = new Client()
       .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -604,35 +524,55 @@ When a page comes back with fewer folders than the limit, you've reached the end
 
   const storage = new Storage(client);
 
-  const limit = 25;
+  const limit = 100;
   let cursor = '';
-  let folders = [];
+  const folders = new Set();
 
   while (true) {
-      const page = await storage.listFolders({
+      const page = await storage.listFiles({
           bucketId: '<BUCKET_ID>',
-          folder: 'photos/',
-          limit,
-          cursor
+          queries: [
+              Query.limit(limit),
+              ...(cursor ? [Query.cursorAfter(cursor)] : [])
+          ]
       });
 
-      folders.push(...page.folders);
+      for (const file of page.files) {
+          let path = '';
 
-      if (page.folders.length < limit) {
-          break; // Listing is complete
+          // Add the folder and its implied parent folders
+          for (const part of file.folder.split('/').filter(Boolean)) {
+              path += `${part}/`;
+              folders.add(path);
+          }
       }
 
-      cursor = page.folders[page.folders.length - 1].key;
+      if (page.files.length < limit) {
+          break; // All files scanned
+      }
+
+      cursor = page.files[page.files.length - 1].$id;
   }
+
+  console.log([...folders].sort());
   ```
 {% /multicode %}
 
-The cursor must be a folder directly inside the folder you are listing. Passing any other path returns an error.
+For example, a file with the folder `photos/2026/july/` produces three folders:
+
+```text
+photos/
+photos/2026/
+photos/2026/july/
+```
+
+Scanning every file works well for small buckets.
+For buckets with many files, maintain your own folder index instead, for example in a [Databases](/docs/products/databases) table that you update whenever you upload or delete files.
 
 # Permissions {% #permissions %}
 
 Folders don't carry their own permissions. Access is derived from the files inside them.
-When a bucket uses [file security](/docs/products/storage/permissions), listing folders only returns folders that contain at least one file the user can read.
+When a bucket uses [file security](/docs/products/storage/permissions), listing files returns only the files a user can read, so aggregating folders discovers only the folders that contain at least one such file.
 
 {% arrow_link href="/docs/products/storage/permissions" %}
 Learn more about storage permissions
