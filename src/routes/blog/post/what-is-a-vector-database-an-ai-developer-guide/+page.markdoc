@@ -141,11 +141,21 @@ Since version 1.9, Appwrite also supports MongoDB as its underlying database eng
 
 ## Getting started with VectorsDB on Appwrite
 
-A vector database is the right tool when your feature depends on meaning rather than exact matches, which describes most RAG, semantic search, and recommendation workloads. It is not a replacement for your primary database, and for small datasets a vector extension is often enough. Match the tool to the scale and retrieval features you actually need.
+Appwrite VectorsDB is built for storing embeddings and performing similarity search, making it a natural fit for AI workloads such as RAG, semantic search, and recommendations.
 
-If you want the backend, auth, storage, and functions to orchestrate a vector search pipeline in one place, [Appwrite](/docs/products/ai) is built for exactly that kind of fast, iterative AI development. Start with the [Functions quick start](/docs/products/functions/quick-start), or read one of the guides below to go deeper.
+A typical workflow looks like this:
 
-* [The top 6 vector databases to use for AI applications](/blog/post/top-6-vector-databases-2025)
-* [Choosing the right AI database for your application](/blog/post/choosing-the-right-ai-database)
-* [Why NoSQL databases are a better fit for AI applications](/blog/post/why-nosql-databases-are-a-better-fit-for-ai-applications-than-relational-databases)
+* **Generate embeddings.** Convert your documents, images, or other data into embeddings using an embedding model.
+* **Store embeddings in VectorsDB.** Store the resulting vectors alongside the metadata you need to retrieve and filter your data.
+* **Search by similarity.** When a user submits a query, generate an embedding for it and use VectorsDB to find the most relevant results.
+* **Use the retrieved context.** Pass the relevant results to your AI model to generate a grounded response.
+
+Because VectorsDB is part of Appwrite's database offering, you can build the rest of your AI application on the same backend. Use [Appwrite Auth](/docs/products/auth) to manage access, [Appwrite Storage](/docs/products/storage) for source files, and [Appwrite Functions](/docs/products/functions) for embedding generation and other AI workflows.
+
+This gives you a single backend for the application data, authentication, files, server-side logic, and vector search your AI application needs.
+
+For more on building AI applications with Appwrite, see:
+
+* [Appwrite AI](/docs/products/ai)
+* [Appwrite Functions](/docs/products/functions)
 * [Integrate SQL, NoSQL, vector, graph, or any database into your Appwrite project](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project)
