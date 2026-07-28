@@ -17,11 +17,11 @@ Configure your client with the following values. S3 clients authenticate with an
 | Endpoint | `https://<REGION>.cloud.appwrite.io/v1/s3` |
 | Access key ID | Your Appwrite project ID |
 | Secret access key | An Appwrite API key secret |
-| Region | `auto` |
+| Region | `auto` or your project's Appwrite region code |
 | Signature version | AWS Signature Version 4 (SigV4) |
 | Addressing style | Path-style only |
 
-The `<REGION>` in the endpoint is your Appwrite Cloud region (for example, `fra` or `nyc`), the same region you use for the rest of the Appwrite API. The S3 `region` setting is separate: some clients require a region to sign requests, but Appwrite ignores the value, so set it to `auto`.
+The `<REGION>` in the endpoint is your Appwrite Cloud region (for example, `fra` or `nyc`), the same region you use for the rest of the Appwrite API. The S3 `region` setting accepts `auto` or that same region code; some clients require a region to sign requests, and either value works.
 
 The examples below apply these settings in the AWS CLI and the AWS SDKs.
 
@@ -160,7 +160,7 @@ Because a new file ID is generated on every plain upload, uploading twice with t
 
 # Folders {% #folders %}
 
-Appwrite Storage buckets are flat. There is no folder resource, and folders are never created or deleted on their own: they exist only as `/`-separated prefixes in object keys. Uploading to `reports/2024/january.pdf` stores a single object whose name contains those prefixes; it does not create `reports/` or `reports/2024/` as separate entities.
+Appwrite Storage organizes the files in a bucket with [virtual folders](/docs/products/storage/folders), derived from the paths of your files and never created or deleted on their own. Over the S3 API, folders appear as `/`-separated prefixes in object keys: uploading to `reports/2024/january.pdf` stores a single object whose name contains those prefixes, and does not create `reports/` or `reports/2024/` as separate entities.
 
 To browse a bucket like a directory tree, list objects with the `/` delimiter and, optionally, a `prefix`. Appwrite groups object names at each `/` boundary: names sharing a prefix up to the next `/` collapse into a single entry under `CommonPrefixes` (the "folders"), while objects at the current level are returned under `Contents` (the "files").
 
