@@ -133,9 +133,9 @@ Appwrite is also flexible about its storage engine. It originally shipped with M
 
 ## Getting started with Appwrite DocumentsDB
 
-A document database is the right choice when your data is flexible, nested, or still evolving, and when iteration speed matters as much as structure. It is not a universal replacement for relational databases, but for the majority of modern app and AI workloads, the document model removes friction without giving up much in return.
+Appwrite DocumentsDB is a good fit when your application data is flexible, nested, or still evolving. It gives you the document model along with built-in queries, relationships, permissions, and realtime updates.
 
-If you want the flexibility of the document model with permissions, queries, relationships, and realtime built in, [Appwrite Databases](/docs/products/databases) is designed for exactly that kind of fast, iterative development. Start with the [databases quick start](/docs/products/databases/quick-start), or read one of the guides below to go deeper.
+If you want to build with a document database while keeping these capabilities in the same backend, Appwrite DocumentsDB is designed for that kind of fast, iterative application development. Start with the [databases quick start](/docs/products/databases/quick-start), or read one of the guides below to go deeper.
 
 * [Document vs relational databases: finding the right fit for your project](/blog/post/document-vs-relational-databases-vibecoding)
 * [SQL vs NoSQL: choosing the right database for your project](/blog/post/sql-vs-nosql)
