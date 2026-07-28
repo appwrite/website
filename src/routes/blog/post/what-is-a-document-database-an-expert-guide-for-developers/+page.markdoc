@@ -131,7 +131,7 @@ Appwrite DocumentsDB is a document database that stores data in collections of J
 
 Appwrite is also flexible about its storage engine. It originally shipped with MariaDB and, since version 1.9, supports MongoDB as the underlying database, while your application code talks to the same Databases API regardless. If you want to connect an external engine instead, see [integrate SQL, NoSQL, vector, graph, or any database into your Appwrite project](/blog/post/integrate-sql-nosql-vector-graph-or-any-database-into-your-appwrite-project).
 
-## Getting started with Appwrite Databases
+## Getting started with Appwrite DocumentsDB
 
 A document database is the right choice when your data is flexible, nested, or still evolving, and when iteration speed matters as much as structure. It is not a universal replacement for relational databases, but for the majority of modern app and AI workloads, the document model removes friction without giving up much in return.
 
