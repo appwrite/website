@@ -162,6 +162,10 @@ Once authorized, the browser confirms that your device is connected. Return to y
 
 You can log in to multiple accounts or change the **current** account by re-running the command. You can revoke the CLI's access anytime in your account settings.
 
+{% info title="CI and scripting" %}
+The browser-based login flow does not affect API key based authentication. Non-interactive mode with API keys continues to work as before and remains the recommended way to authenticate the CLI in CI workflows. [Learn more about CI mode](/docs/tooling/command-line/non-interactive)
+{% /info %}
+
 # Initialization {% #initialization %}
 
 After you're logged in, the CLI needs to be initialized with your Appwrite project. You can initialize the CLI using:
