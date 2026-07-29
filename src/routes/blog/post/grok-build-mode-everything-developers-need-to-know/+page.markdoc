@@ -18,7 +18,7 @@ faqs:
   - question: "What's the difference between Grok Build Mode and Grok Build?"
     answer: Grok Build Mode is an in-chat AI app builder for creating and publishing applications from prompts. Grok Build is an open-source terminal coding agent designed for repository-based software development.
 ---
-Most AI tools stop at the code. You describe an app, you get a snippet, and then the real work starts: wiring it up, running it somewhere, and getting a link you can actually share. Grok Build Mode is SpaceXAI's attempt to collapse that gap. You describe what you want, Grok builds a working version live in the chat, and you publish it to a link anyone can open.
+Most AI coding tools stop at generated code. Grok Build Mode aims to go a step further by turning a prompt into a running web app that you can preview, iterate on, and publish without leaving the conversation. You describe what you want, Grok builds a working version live in the chat, and you publish it to a link anyone can open.
 
 This post breaks down what Grok Build Mode is, how it works, who can use it in the Early Beta, and where it fits against a real backend when you move past a prototype.
 
