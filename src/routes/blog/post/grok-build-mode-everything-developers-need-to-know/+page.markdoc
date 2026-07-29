@@ -93,7 +93,7 @@ Grok Build Mode is strong at getting from idea to shareable artifact fast. That 
 
 Where it stops is the same place every in-chat builder stops: the app it publishes is largely self-contained. That is fine for a prototype and a problem for a product. Once you need multiple users, persistent data, authentication, file uploads, or server-side logic you control, a generated `grok.me` app is not a backend you own.
 
-This is the same trade-off we flagged across vibe coding platforms in [The hidden costs of vibe coding platforms](/blog/post/hidden-costs-of-vibe-coding-platforms). The generated frontend is the easy 80%. The backend, the data model, and the parts that have to be correct in production are the hard 20% that these tools tend to gloss over.
+This is the same trade-off we flagged across vibe coding platforms in [The hidden costs of vibe coding platforms](/blog/post/hidden-costs-of-vibe-coding-platforms). 
 
 # Adding a real backend to a Grok Build Mode app
 
