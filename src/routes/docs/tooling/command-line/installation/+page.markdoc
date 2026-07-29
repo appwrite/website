@@ -123,12 +123,58 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
-Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag.
+Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag. Self-hosted instances do not currently support OAuth-based CLI authentication, so the CLI will prompt for your email and password instead.
 
 ```sh
 appwrite login --endpoint "<URL_HERE>"
 ```
-You can log in to multiple accounts or change the **current** account by re-running the command.
+
+The CLI signs you in through your browser using device authorization. It displays a code and a URL, then waits for approval.
+
+![Appwrite CLI login in the terminal](/images/docs/command-line/cli-login-terminal.avif)
+
+Press `Enter` to open the URL in your default browser, or copy the URL and open it manually. In the browser, confirm that the device code matches the code shown in your terminal, then click **Continue**.
+
+{% only_dark %}
+![Confirm your device code](/images/docs/command-line/dark/cli-login-confirm-code.avif)
+{% /only_dark %}
+{% only_light %}
+![Confirm your device code](/images/docs/command-line/cli-login-confirm-code.avif)
+{% /only_light %}
+
+Review the permissions requested by the CLI, then click **Authorize**.
+
+{% only_dark %}
+![Authorize Appwrite CLI](/images/docs/command-line/dark/cli-login-authorize.avif)
+{% /only_dark %}
+{% only_light %}
+![Authorize Appwrite CLI](/images/docs/command-line/cli-login-authorize.avif)
+{% /only_light %}
+
+Once authorized, the browser confirms that your device is connected. Return to your terminal, where the CLI continues automatically and completes the login.
+
+{% only_dark %}
+![Device connected](/images/docs/command-line/dark/cli-login-device-connected.avif)
+{% /only_dark %}
+{% only_light %}
+![Device connected](/images/docs/command-line/cli-login-device-connected.avif)
+{% /only_light %}
+
+You can log in to multiple accounts or change the **current** account by re-running the command. You can revoke the CLI's access anytime in your account settings.
+
+{% info title="Seeing an email and password prompt instead?" %}
+Older CLI versions, and CLI sessions pointed at a self-hosted Appwrite instance, do not support the OAuth device authorization flow and fall back to asking for your email and password. Run `appwrite update` to get the latest version, or pass the Appwrite Cloud endpoint explicitly:
+
+```sh
+appwrite login --endpoint="https://cloud.appwrite.io/v1"
+```
+
+If the CLI still points at a self-hosted instance, clear the saved preferences by deleting `prefs.json`. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
+{% /info %}
+
+{% info title="CI and scripting" %}
+The browser-based login flow does not affect API key based authentication. Non-interactive mode with API keys continues to work as before and remains the recommended way to authenticate the CLI in CI workflows. [Learn more about CI mode](/docs/tooling/command-line/non-interactive)
+{% /info %}
 
 # Initialization {% #initialization %}
 
