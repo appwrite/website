@@ -123,7 +123,7 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
-Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag.
+Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag. Self-hosted instances do not currently support OAuth-based CLI authentication, so the CLI will prompt for your email and password instead.
 
 ```sh
 appwrite login --endpoint "<URL_HERE>"
@@ -161,6 +161,16 @@ Once authorized, the browser confirms that your device is connected. Return to y
 {% /only_light %}
 
 You can log in to multiple accounts or change the **current** account by re-running the command. You can revoke the CLI's access anytime in your account settings.
+
+{% info title="Seeing an email and password prompt instead?" %}
+Older CLI versions, and CLI sessions pointed at a self-hosted Appwrite instance, do not support the OAuth device authorization flow and fall back to asking for your email and password. Run `appwrite update` to get the latest version, or pass the Appwrite Cloud endpoint explicitly:
+
+```sh
+appwrite login --endpoint="https://cloud.appwrite.io/v1"
+```
+
+If the CLI still points at a self-hosted instance, clear the saved preferences by deleting `prefs.json`. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
+{% /info %}
 
 {% info title="CI and scripting" %}
 The browser-based login flow does not affect API key based authentication. Non-interactive mode with API keys continues to work as before and remains the recommended way to authenticate the CLI in CI workflows. [Learn more about CI mode](/docs/tooling/command-line/non-interactive)

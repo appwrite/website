@@ -56,6 +56,16 @@ appwrite login
 
 The [CLI installation guide](/docs/tooling/command-line/installation#login) walks through every step with screenshots.
 
+{% info title="Seeing an email and password prompt instead?" %}
+The CLI either needs an update or is pointed at a self-hosted Appwrite instance, which does not support the OAuth device authorization flow. Run `appwrite update` to get the latest version, or log in with the Appwrite Cloud endpoint explicitly:
+
+```sh
+appwrite login --endpoint="https://cloud.appwrite.io/v1"
+```
+
+If a self-hosted endpoint persists, delete `prefs.json` from the CLI config directory. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
+{% /info %}
+
 {% info title="Existing authentication flows" %}
 API key based authentication is not affected by this change. Existing CLI sessions and non-interactive flows that authenticate with an API key through `appwrite client` will continue to work, and API keys remain the recommended way to authenticate the CLI in CI workflows. [Learn more about non-interactive mode](/docs/tooling/command-line/non-interactive)
 {% /info %}
