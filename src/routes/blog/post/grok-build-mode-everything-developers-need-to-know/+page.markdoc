@@ -91,7 +91,7 @@ Grok Build Mode is strong at getting from idea to shareable artifact fast. That 
 * **Landing pages and portfolios** that need to go live quickly.
 * **Games and interactive experiences** that are self-contained by nature.
 
-Where it stops is the same place every in-chat builder stops: the app it publishes is largely self-contained. That is fine for a prototype and a problem for a product. Once you need multiple users, persistent data, authentication, file uploads, or server-side logic you control, a generated `grok.me` app is not a backend you own.
+As with many AI app builders, Build Mode is best suited to rapidly generating and sharing prototypes. Teams building production software may eventually need additional backend infrastructure depending on their application's requirements. That is fine for a prototype and a problem for a product. Once you need multiple users, persistent data, authentication, file uploads, or server-side logic you control, a generated `grok.me` app is not a backend you own.
 
 This is the same trade-off we flagged across vibe coding platforms in [The hidden costs of vibe coding platforms](/blog/post/hidden-costs-of-vibe-coding-platforms). 
 
