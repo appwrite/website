@@ -44,7 +44,7 @@ The important shift here is that the preview is the product. Older AI coding ass
 
 # What you can build with Grok Build Mode
 
-SpaceXAI groups Build Mode output into four categories. The interactive dashboards case is the one worth flagging for developers, since it uses connectors to pull in live data rather than static mockups.
+XAI groups Build Mode output into four categories. The interactive dashboards case is the one worth flagging for developers, since it uses connectors to pull in live data rather than static mockups.
 
 | Category               | What it covers                                                                                                |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------- |
