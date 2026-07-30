@@ -15,6 +15,7 @@ Before installing Appwrite, ensure your system meets these minimum requirements:
 - **2GB of swap memory**
 - **Operating system** that supports Docker
 - **Docker Compose Version 2**
+- **Docker Engine** recent enough for the installer CLI, or pass `--env DOCKER_API_VERSION=<daemon max>` (for example `1.42`) if you see `client version ... is too new`
 
 # Install with Docker {% #install-with-docker %}
 
