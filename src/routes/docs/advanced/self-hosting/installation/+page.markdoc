@@ -65,6 +65,10 @@ docker run -it --rm `
 {% /tabsitem %}
 {% /tabs %}
 
+{% info title="Docker API version mismatch" %}
+If install fails with `client version ... is too new`, add `--env DOCKER_API_VERSION=<max from error>` (for example `1.42`) to the command, or upgrade Docker on the host.
+{% /info %}
+
 Once the command is running, open your browser and navigate to `http://localhost:20080` to access the setup wizard.
 
 # Setup wizard {% #setup-wizard %}
