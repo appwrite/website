@@ -1,28 +1,63 @@
 ---
 layout: article
 title: Lovable
-description: Learn how to connect the Appwrite docs MCP server to Lovable for AI-assisted development with access to Appwrite documentation.
+description: Learn how to connect the Appwrite MCP servers to Lovable for AI-assisted development with access to the Appwrite API and documentation.
 ---
 
-{% section #add-mcp-server step=1 title="Add MCP server" %}
+{% section #add-mcp-servers step=1 title="Add MCP servers" %}
 
-To connect the Appwrite docs MCP server to Lovable:
+Connect Appwrite MCP servers to Lovable for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
+
+To add an Appwrite MCP server to Lovable:
 
 1. Go to **Settings** → **Connectors** → **Personal connectors**.
 2. Click **New MCP server**.
 3. Enter the following details:
-    - **Server name**: `Appwrite Docs`
-    - **Server URL**: `https://mcp-for-docs.appwrite.io`
-    - **Authentication**: Select **No authentication**
+
+{% tabs %}
+{% tabsitem #api-only title="API server" %}
+
+- **Server name**: `Appwrite API`
+- **Server URL**: `https://mcp.appwrite.io/mcp`
+- **Authentication**: Select **OAuth**
+
+The API server uses OAuth for authentication. When Lovable first connects to the server, complete the sign-in flow in your browser to sign in to your Appwrite account and authorize access.
+
+{% /tabsitem %}
+
+{% tabsitem #docs-only title="Docs server" %}
+
+- **Server name**: `Appwrite Docs`
+- **Server URL**: `https://mcp-for-docs.appwrite.io`
+- **Authentication**: Select **No authentication**
+
+{% /tabsitem %}
+{% /tabs %}
+
 4. Click **Add server**.
 
-The Appwrite docs MCP server will now appear in your list of personal connectors.
+The Appwrite MCP servers will now appear in your list of personal connectors.
 
 {% /section %}
 
 {% section #test-the-integration step=2 title="Test the integration" %}
 
-Once connected, Lovable has access to Appwrite documentation context. You can use prompts like:
+You can try out the following example prompts based on the MCP server you have configured:
+
+{% tabs %}
+{% tabsitem #test-api title="API server" %}
+
+**Example prompts:**
+
+- `Create a new user in my Appwrite project`
+- `List all databases in my project`
+- `Show me the tables in my database`
+- `Create a new row in my table`
+- `Delete a specific user by ID`
+
+{% /tabsitem %}
+
+{% tabsitem #test-docs title="Docs server" %}
 
 **Example prompts:**
 
@@ -31,5 +66,8 @@ Once connected, Lovable has access to Appwrite documentation context. You can us
 - `What are the best practices for database queries?`
 - `How do I implement file uploads with Appwrite Storage?`
 - `Show me an example of using Appwrite Functions`
+
+{% /tabsitem %}
+{% /tabs %}
 
 {% /section %}

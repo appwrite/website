@@ -66,14 +66,14 @@ Once you have understood how the Appwrite MCP server is configured in Cursor, yo
 
 {% only_light %}
 {% cards %}
-{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=integrations-catalog" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby9tY3AifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 {% /cards %}
 {% /only_light %}
 
 {% only_dark %}
 {% cards %}
-{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=integrations-catalog" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby9tY3AifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 {% /cards %}
 {% /only_dark %}
