@@ -73,7 +73,7 @@ Sometimes a tool needs something from the user mid-call, such as a confirmation 
 
 This is the change that makes mid-call confirmations safe over stateless transports. A tool can ask the user to approve a destructive action, like deleting data or provisioning a paid resource, before it runs.
 
-# Header-based routing
+# What is header-based routing in MCP?
 
 Streamable HTTP requests must now include the `Mcp-Method` and `Mcp-Name` headers (SEP-2243). The method name (`tools/call`) and the tool name (`search`) travel in HTTP headers, not just the JSON body.
 
