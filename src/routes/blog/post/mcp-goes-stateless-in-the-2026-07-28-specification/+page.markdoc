@@ -89,7 +89,7 @@ Responses from `tools/list`, `prompts/list`, `resources/list`, and `resources/re
 
 The practical win is fewer redundant round trips. In the old model, a reconnect often meant re-listing everything. With cache hints and a deterministic ordering, clients can keep tool catalogs cached and keep upstream prompt caches stable across reconnects, which cuts both latency and token usage.
 
-# Authorization hardening in the 2026-07-28 specification
+# OAuth and security changes in MCP 2026-07-28
 
 Authorization is where implementers spend most of their integration time, so this release continues to tighten MCP's auth and security posture. The key changes:
 
