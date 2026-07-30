@@ -1,0 +1,155 @@
+---
+layout: post
+title: MCP security best practices for servers
+description: Learn MCP security best practices for protecting credentials, limiting permissions, validating tools, and safely deploying secure MCP servers.
+date: 2026-07-27
+cover: /images/blog/mcp-security-best-practices-for-servers/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: security
+featured: false
+unlisted: true
+faqs:
+  - question: Is MCP secure by default?
+    answer: "No. MCP is a protocol, not a security model. It standardizes how clients and servers talk, but authentication, authorization, credential scoping, and input validation are all the server operator's responsibility. Treat every MCP server as a privileged backend."
+  - question: What is the most dangerous MCP misconfiguration?
+    answer: Token passthrough and over-scoped credentials. Forwarding client tokens the server never validated, or handing the server an admin key it does not need, means a single leak or manipulated request can reach everything the server can touch.
+  - question: How do I stop prompt injection through an MCP server?
+    answer: You cannot fully stop the model from being manipulated, but the server can refuse to act on manipulated requests. Enforce authorization and input validation independently of what the model asks, treat tool descriptions and returned content as untrusted, and gate destructive tools behind explicit confirmation.
+  - question: How do I limit what an MCP server can access?
+    answer: Apply least privilege. Expose the smallest set of tools needed, split read and write operations, request minimal OAuth scopes and elevate on demand, and back the server with scoped, rotatable credentials rather than a single broad key.
+---
+An MCP server is not a plugin. It is a privileged backend service that hands an AI model the ability to read your data, call your APIs, and run actions on your behalf. Once you frame it that way, the security requirements stop being optional.
+
+The [Model Context Protocol](/blog/post/what-is-mcp) standardizes how AI assistants connect to tools, databases, and APIs. That convenience is exactly what makes a misconfigured server dangerous. A single MCP server can hold long-lived credentials, expose destructive tools, and sit between an untrusted model and your production systems. Get the boundaries wrong and you have built a confused deputy that an attacker can point at anything you can reach.
+
+This post covers MCP security best practices for the people who build and operate servers: how to protect credentials, limit permissions, validate tools, harden the transport, and deploy safely.
+
+# What are the MCP security best practices for servers?
+
+For readers who want the short answer first, secure MCP servers follow six rules:
+
+- **Treat the server as a privileged backend**, not a trusted extension of the model.
+- **Scope credentials tightly** and never pass client tokens straight through to downstream APIs.
+- **Apply least privilege to tools and OAuth scopes**, starting minimal and elevating on demand.
+- **Validate every tool input and output**, and defend against prompt injection and SSRF.
+- **Secure the transport**: prefer `stdio` locally, and put remote HTTP servers behind OAuth.
+- **Sandbox, log, and monitor** everything the server can execute.
+
+The rest of this post explains why each of these matters and what to actually do.
+
+# Why MCP servers are a high-value target
+
+MCP servers concentrate risk in one place. To be useful, they need broad access: a database connection, an API key, a file system path, or an OAuth token to a third-party service. That is precisely the access an attacker wants.
+
+Three properties make them attractive:
+
+- **They hold credentials.** Most servers authenticate to downstream systems with a stored secret, often with more scope than any single task needs.
+- **They execute actions.** Tools do not just read data. They can delete records, send messages, or spawn processes.
+- **They sit next to an untrusted input source.** The model deciding which tool to call is influenced by content it reads, and that content can be attacker-controlled.
+
+The cost of getting this wrong is not a broken feature. It is data exfiltration, credential theft, or arbitrary code execution on the host. The official [MCP security best practices specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) documents these attack patterns in detail, and they map directly to real deployments.
+
+# Treat the MCP server as a privileged backend
+
+The single most important mindset shift: an MCP server deserves the same scrutiny as any internet-facing backend service. This is the same [shared responsibility thinking](/blog/post/backend-platform-security-responsibilities) that applies to any backend platform. The protocol handles message framing and discovery. Everything about who can call what, with which credentials, and under what limits is your responsibility.
+
+Concretely, that means the server, not the model, owns every security decision. The model can request a tool call, but the server must independently verify authorization, validate inputs, and enforce limits before acting. Never assume a request is safe because the model produced it. The model can be manipulated, and it is not an authority on your access policy.
+
+# Protect credentials and never pass tokens through
+
+Credential handling is where most MCP servers leak. The two rules that matter most:
+
+**Scope and rotate the secrets the server uses.** A server that needs to read one collection should not hold an admin key. Use short-lived, narrowly scoped credentials wherever the platform supports them. Appwrite's [dynamic API keys](/blog/post/how-to-leverage-dynamic-api-keys-for-better-security) are a good model here: they are generated per session and scoped to specific actions, so a leaked key is both limited and short-lived.
+
+**Never do token passthrough.** Token passthrough is when a server accepts a token from the client and forwards it to a downstream API without verifying the token was issued for the server itself. The MCP specification explicitly forbids it, because it bypasses rate limiting, breaks audit trails, and lets a stolen token turn your server into a data exfiltration proxy. A server **MUST NOT** accept any token that was not explicitly issued to it.
+
+| Do | Don't |
+| --- | --- |
+| Store secrets in environment variables or a secrets manager | Hardcode keys in source or config committed to git |
+| Use scoped, rotatable credentials per server | Reuse one admin key across every server and task |
+| Validate that inbound tokens were issued to this server | Forward client tokens straight to downstream APIs |
+| Bind sessions to a user identity server-side | Trust a session ID as proof of identity on its own |
+
+# Apply least privilege to tools and scopes
+
+Every tool you expose expands the attack surface. If a task only needs read access, do not ship a delete tool alongside it. The [principle of least privilege](/docs/products/databases/permissions) applies to MCP servers as directly as it does to database roles.
+
+Scope minimization is the OAuth version of the same idea. Publishing every possible scope in `scopes_supported` and requesting them all up front means a single compromised token grants access to everything. Instead, start with a minimal baseline scope for low-risk discovery and reads, then elevate incrementally when a privileged operation is actually attempted. Broad, omnibus scopes like `admin:*` or `full-access` inflate the blast radius of any leak and train users to click through consent screens without reading them.
+
+Practical rules for tool design:
+
+- Expose the smallest set of tools that accomplishes the intended workflows.
+- Split read and write operations so you can grant them independently.
+- Require explicit user confirmation for destructive or irreversible actions.
+- Version and document each tool so consumers know exactly what it does.
+
+# Validate tool inputs, outputs, and defend against injection
+
+Because the model chooses tool calls based on content it reads, that content is an attack vector. Two threats dominate.
+
+**Prompt injection and tool poisoning.** Malicious instructions hidden in a document, an issue comment, or a tool description can steer the model into calling tools it should not. The server cannot prevent the model from being manipulated, but it can refuse to act on manipulated requests by enforcing authorization and validation independently of what the model asks for. Treat tool descriptions and returned data as untrusted, and keep destructive tools behind confirmation.
+
+**Server-Side Request Forgery (SSRF).** If a tool fetches a URL, an attacker can point it at internal resources like `http://169.254.169.254/` (the cloud metadata endpoint) or `http://localhost:6379/` to steal credentials or reach internal services. Mitigate it by enforcing HTTPS, blocking private and link-local IP ranges, validating redirect targets, and routing outbound requests through an egress proxy. Do not hand-roll IP validation, as attackers use octal, hex, and IPv4-mapped IPv6 tricks that naive parsers miss. The [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html) is the reference here.
+
+Beyond these, validate every tool argument against a strict schema. Enforce type, length, and format before the argument reaches a query, a file path, or a shell command. This is the same input hygiene that prevents SQL injection and command injection in any backend.
+
+# Secure the transport: stdio versus remote HTTP
+
+MCP supports two transports, and the right security posture differs for each.
+
+| Transport | Where it runs | Main risks | Key mitigations |
+| --- | --- | --- | --- |
+| `stdio` | Local process on the user's machine | Malicious startup commands, local process access, arbitrary code execution | Only run servers from trusted sources, sandbox the process, show the exact command before executing it |
+| Streamable HTTP | Remote server serving many clients | Missing auth, session hijacking, confused deputy, SSRF | OAuth with proper consent, non-deterministic session IDs bound to user identity, exact `redirect_uri` matching |
+
+For local servers, prefer `stdio`. It limits access to just the MCP client that spawned the process and avoids exposing a network port. If you must use HTTP locally, require an authorization token or bind to a Unix domain socket rather than a public interface.
+
+For remote servers, authentication is mandatory. The MCP specification recommends **OAuth 2.1** as the standard authorization framework, which provides a secure, well-understood foundation for delegated access. Servers **MUST** verify every inbound request and **MUST NOT** use sessions as a substitute for authentication. With OAuth 2.1, use PKCE for all authorization code flows, require exact `redirect_uri` matching, and issue short-lived access tokens. Generate session IDs with a secure random source, bind them to the authenticated user with a key format like `<user_id>:<session_id>`, and expire them. That binding means a guessed session ID still cannot impersonate another user, because identity is derived from the verified token rather than from the client.
+
+# Prevent the common MCP attacks
+
+The MCP specification catalogs a handful of attacks that recur across real servers. This table maps each to its fix.
+
+| Attack | What happens | Mitigation |
+| --- | --- | --- |
+| Confused deputy | An attacker reuses a consent cookie to obtain auth codes without user approval | Implement per-client consent before forwarding to third-party auth, exact `redirect_uri` matching, single-use `state` |
+| Token passthrough | Server forwards client tokens it never validated | Reject any token not issued to the server itself |
+| Session hijacking | An attacker guesses or steals a session ID and impersonates the user | Non-deterministic session IDs bound to user identity, verify every request |
+| SSRF | A tool is tricked into calling internal or metadata endpoints | Enforce HTTPS, block private IP ranges, validate redirects |
+| Local server compromise | A malicious server or startup command runs code on the host | Trust the source, sandbox execution, require explicit consent for the exact command |
+
+# Sandbox, log, and monitor everything
+
+Assume something will eventually go wrong and design so the damage is contained and visible.
+
+- **Sandbox execution.** Run servers with minimal default privileges, restricted file system access, and no more network reach than they need. Containers or platform sandboxes keep a compromised server from touching the rest of the host.
+- **Log tool calls.** Record which tool was invoked, with what arguments, by which identity, and when. Without this, you cannot investigate an incident or spot abuse. [Audit logs](/docs/advanced/security/audit-logs) give you that trail.
+- **Rate limit.** Cap how often tools can run to blunt brute-force and denial-of-service attempts, and to limit how much data a compromised session can pull.
+
+# Deploying a secure MCP server with Appwrite
+
+If you are building a remote MCP server, you need somewhere to run it that handles the platform layer correctly so you can focus on the server's own logic. Appwrite gives you the pieces that map onto the practices above.
+
+- **Scoped, rotatable credentials.** Use [dynamic API keys](/blog/post/how-to-leverage-dynamic-api-keys-for-better-security) so a server holds only the access a task needs, for only as long as it needs it.
+- **Granular permissions.** Appwrite's [permission system](/docs/products/databases/permissions) enforces least privilege at the table, row, bucket, and file level, so a leaked credential cannot reach beyond its scope.
+- **Managed hosting.** Deploy the server itself on [Appwrite Functions](/docs/products/functions) or [Appwrite Sites](/docs/products/sites), where the runtime, patching, and TLS are handled for you.
+- **Audit visibility.** [Security tooling and audit logs](/docs/advanced/security) give you the trail to monitor and investigate what your tools actually did.
+
+The [Appwrite MCP server](/docs/tooling/ai/mcp-servers) itself follows these patterns: it runs locally over `stdio` by default, so your AI client never exposes raw credentials over the network, and it authenticates with a scoped project key rather than an admin token.
+
+# Build MCP servers on infrastructure you can verify
+
+Securing an MCP server comes down to one principle: it is a privileged backend, and every access decision is yours to make. Scope credentials, minimize tools and permissions, validate inputs, harden the transport, and log everything the server can do. The protocol will not do this for you.
+
+Appwrite gives you the primitives to apply these practices without building them from scratch, from scoped dynamic keys and granular permissions to managed hosting and audit logging. And because Appwrite is open source, you can verify every security-relevant decision in the codebase rather than trusting a vendor claim.
+
+## Resources
+
+- [Appwrite MCP servers documentation](/docs/tooling/ai/mcp-servers)
+- [Appwrite security overview](/docs/advanced/security)
+- [Dynamic API keys for better security](/blog/post/how-to-leverage-dynamic-api-keys-for-better-security)
+- [Security responsibilities when using backend platforms](/blog/post/backend-platform-security-responsibilities)
+- [What exactly is MCP, and why is it trending?](/blog/post/what-is-mcp)
+- [MCP security best practices specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices)
+- [Join the Appwrite Discord community](https://appwrite.io/discord)
