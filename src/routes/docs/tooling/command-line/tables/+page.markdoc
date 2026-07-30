@@ -221,13 +221,7 @@ Then push the table:
 appwrite push tables
 ```
 
-Push reports the change as a rename instead of a deletion followed by an addition:
-
-```text
-  Key                       │ Action   │ Reason
- ───────────────────────────┼──────────┼────────────────────────────────────
-  headline in Posts (posts) │ renaming │ key renamed from title to headline
-```
+Push reports the change as a rename instead of a deletion followed by an addition, and the rows carry over to the new name.
 
 Indexes that reference the column follow the rename, so they are not recreated. Keep the index `columns` array in sync with the new name, as in the example above. If an index still points at the old name, the CLI treats it as a changed index and recreates it.
 
@@ -235,33 +229,12 @@ You can rename a column and change its updatable fields in the same push. The CL
 
 ## How the CLI resolves previousKey {% #how-previouskey-resolves %}
 
-The hint describes the state you want, so pushing the same config twice is safe.
+The hint describes the state you want, so pushing the same config twice is safe. Push looks at what the table already has and decides from there:
 
-{% table %}
-* State on the server
-* What push does
----
-* `title` exists, `headline` does not
-* Renames `title` to `headline`
----
-* `headline` exists, `title` does not
-* Nothing, the rename already happened and the leftover hint is ignored
----
-* Neither exists
-* Creates `headline` as a new column
----
-* Both exist
-* Warns and ignores the hint. `title` is deleted if it is absent from your config
-{% /table %}
-
-## Validation {% #previouskey-validation %}
-
-Push rejects the config before contacting the server when:
-
-- `previousKey` is the same as `key`
-- `previousKey` matches the `key` of another column in the same table
-- Two columns in the same table share the same `previousKey`
-- `previousKey` is set on an index, which the config schema does not accept, since indexes have no rename API and must be recreated
+- If the old name is still on the server and the new one isn't, push renames the column.
+- If the new name is already there, the rename has happened. Push does nothing and ignores the leftover hint.
+- If neither name is on the server, push ignores the hint and creates the column as a new one.
+- If both names are on the server, push cannot rename without a collision. It warns, ignores the hint, and deletes the old column if it is absent from your config.
 
 # Commands {% #commands %}
 
