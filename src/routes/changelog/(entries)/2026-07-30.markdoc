@@ -1,0 +1,18 @@
+---
+layout: changelog
+title: "Smoother workflows in the Appwrite CLI"
+date: 2026-07-30
+---
+
+Recent Appwrite CLI improvements make everyday development and deployment workflows more reliable and easier to scan.
+
+- Function source paths that use symlinks now resolve correctly when you run functions locally or deploy them.
+- Deployment lists use compact summaries with status, type, activation, size, and build duration at a glance.
+- `appwrite push sites` now preserves SPA fallback files, Git repository settings, and the region used for screenshot previews.
+- Generated commands use shorter service names, making commands easier to discover and type.
+- Session refresh now uses the account session endpoint for more reliable authentication.
+- `appwrite logout` exits cleanly when there are no selectable accounts instead of showing an empty prompt.
+
+{% arrow_link href="/docs/tooling/command-line/installation#update-your-cli" %}
+Update the CLI to get the latest improvements
+{% /arrow_link %}
