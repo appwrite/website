@@ -46,7 +46,7 @@ MCP went stateless because sessions made remote servers hard to scale. Under the
 
 In the MCP 2026-07-28 specification, every request is self-describing. There is no handshake and no session ID, so any request can land on any instance behind a standard load balancer with no shared storage. That is the difference between running MCP like a special protocol and running it like the rest of the web.
 
-# The stateless core: no handshake, no sessions
+# How MCP's new stateless architecture works
 
 The `initialize`/`initialized` exchange and the `Mcp-Session-Id` header are gone (see SEP-2575 and SEP-2567). Each request now travels on its own, carrying its protocol version, client identity, and client capabilities in `_meta`.
 
