@@ -18,7 +18,7 @@ faqs:
   - question: "Does the remote server keep the two-tool architecture from MCP Server 2.0?"
     answer: "Yes. The remote server exposes the same two MCP tools, `appwrite_search_tools` and `appwrite_call_tool`, introduced in [MCP Server 2.0](/blog/post/announcing-appwrite-mcp-server-2). The full Appwrite tool catalog stays internal and is searched at runtime, so the model's context is not filled with tool definitions it may never use."
   - question: "Which AI tools work with the remote Appwrite MCP server?"
-    answer: "Any MCP client that supports remote servers over the HTTP transport with OAuth, including Claude Code, Codex, Cursor, Claude Desktop, VS Code, Zed, OpenCode, Windsurf, Zenflow, and Google Antigravity. The [documentation](/docs/tooling/ai) has setup guides for each tool."
+    answer: "Any MCP client that supports remote servers over the HTTP transport with OAuth, including Claude Code, Codex, Cursor, Claude Desktop, VS Code, Zed, OpenCode, Windsurf, Zenflow, Google Antigravity, and Grok Build. The [documentation](/docs/tooling/ai) has setup guides for each tool."
 ---
 
 The Appwrite MCP server connects AI coding agents to your Appwrite project, so tools like Claude Code, Cursor, and Codex can create users, manage databases, deploy functions, and work with every other Appwrite service from a chat. Until now, using it meant running a server on your own machine: installing uv, creating an API key with the right scopes, and pasting your endpoint, project ID, and key into every tool's MCP configuration.
@@ -97,7 +97,7 @@ claude mcp add --transport http appwrite-api https://mcp.appwrite.io/mcp
 
 Then run `/mcp`, select **appwrite-api**, and choose **Authenticate** to sign in.
 
-In Cursor, VS Code, Zed, and other editors, add the URL to your MCP configuration and complete the OAuth sign-in when prompted. The documentation has step-by-step guides for [Claude Code](/docs/tooling/ai/agents/claude-code), [Codex](/docs/tooling/ai/agents/codex), [Cursor](/docs/tooling/ai/agents/cursor), [Claude Desktop](/docs/tooling/ai/vibe-coding/claude-desktop), [VS Code](/docs/tooling/ai/agents/vscode), [Zed](/docs/tooling/ai/agents/zed), [OpenCode](/docs/tooling/ai/agents/opencode), [Windsurf](/docs/tooling/ai/agents/windsurf), [Zenflow](/docs/tooling/ai/vibe-coding/zenflow), and [Google Antigravity](/docs/tooling/ai/agents/antigravity).
+In Cursor, VS Code, Zed, and other editors, add the URL to your MCP configuration and complete the OAuth sign-in when prompted. The documentation has step-by-step guides for [Claude Code](/docs/tooling/ai/agents/claude-code), [Codex](/docs/tooling/ai/agents/codex), [Cursor](/docs/tooling/ai/agents/cursor), [Claude Desktop](/docs/tooling/ai/vibe-coding/claude-desktop), [VS Code](/docs/tooling/ai/agents/vscode), [Zed](/docs/tooling/ai/agents/zed), [OpenCode](/docs/tooling/ai/agents/opencode), [Windsurf](/docs/tooling/ai/agents/windsurf), [Zenflow](/docs/tooling/ai/vibe-coding/zenflow), [Google Antigravity](/docs/tooling/ai/agents/antigravity), and [Grok Build](/docs/tooling/ai/agents/grok-build).
 
 Once connected, try a prompt like:
 
