@@ -73,10 +73,6 @@ docker run -it --rm `
     appwrite/appwrite:<APPWRITE_VERSION>
 ```
 
-{% info title="Docker API version mismatch" %}
-If upgrade fails with `client version ... is too new`, add `--env DOCKER_API_VERSION=<max from error>` (for example `1.42`) to the command, or upgrade Docker on the host.
-{% /info %}
-
 This will pull the `docker-compose.yml` for the selected version/tag and perform the upgrade steps.
 Once the setup completes, verify that you have the latest version of Appwrite.
 
