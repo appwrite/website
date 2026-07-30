@@ -116,7 +116,7 @@ Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTT
 - **Migrate off** the legacy HTTP+SSE transport to Streamable HTTP.
 - **Rely on** the twelve-month minimum window before anything is removed.
 
-# SDK support for the new spec
+# Which SDKs support MCP 2026-07-28?
 
 All four Tier 1 SDKs speak `2026-07-28` as of the release, and the Rust SDK supports it in beta.
 
