@@ -95,10 +95,10 @@ You can also **directly add the MCP servers to Cursor** using the following link
 {% only_light %}
 {% cards %}
 
-{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="API server" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite-api&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby9tY3AifQ==" title="API server" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 
-{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Docs server" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite-docs&config=eyJ1cmwiOiJodHRwczovL21jcC1mb3ItZG9jcy5hcHB3cml0ZS5pbyJ9" title="Docs server" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% /cards %}
@@ -107,10 +107,10 @@ You can also **directly add the MCP servers to Cursor** using the following link
 {% only_dark %}
 {% cards %}
 
-{% cards_item href="https://apwr.dev/api-mcp-cursor?ref=docs" title="API server" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite-api&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby9tY3AifQ==" title="API server" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 
-{% cards_item href="https://apwr.dev/docs-mcp-cursor?ref=docs" title="Docs server" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite-docs&config=eyJ1cmwiOiJodHRwczovL21jcC1mb3ItZG9jcy5hcHB3cml0ZS5pbyJ9" title="Docs server" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% /cards %}
