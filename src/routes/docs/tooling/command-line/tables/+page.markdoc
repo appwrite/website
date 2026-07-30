@@ -146,6 +146,96 @@ Learn more about multi-file configuration
 appwrite push tables
 ```
 
+# Update columns {% #update-columns %}
+
+When you change a column that already exists on the server, the CLI updates it in place instead of deleting and recreating it, so the rows in that column keep their data. Only a subset of fields can change this way. Every other change still needs a delete and recreate, which clears the data in that column, and push warns you before it does that.
+
+{% table %}
+* Change
+* Behavior
+---
+* `required` and `default` on any column except relationship columns
+* Updated in place
+---
+* `size` on `varchar` columns and on `string` columns without a `format`
+* Updated in place
+---
+* `min` and `max` on `integer`, `bigint`, and `double` columns
+* Updated in place
+---
+* `elements` on enum columns
+* Updated in place
+---
+* `onDelete` on relationship columns
+* Updated in place
+---
+* `type`, `array`, `encrypt`, and `format`
+* Recreated, data in the column is lost
+---
+* `relatedTable`, `relationType`, `twoWay`, and `twoWayKey` on relationship columns
+* Recreated, data in the column is lost
+---
+* Any change to an index
+* Recreated, indexes hold no row data
+{% /table %}
+
+If an in-place update fails, for example when a new `size` is too small for the values already stored, push stops with an error before it deletes anything, so a failed update cannot leave your table half-migrated.
+
+# Rename a column {% #rename-column %}
+
+Renaming a column in `appwrite.config.json` looks like a delete and an add to the CLI, which would drop the column's data. To rename without losing data, set the column's `key` to the new name and add a `previousKey` field pointing at the name that still exists on the server.
+
+You always add `previousKey` yourself. The CLI never writes it for you, and `appwrite pull tables` removes it from your config because pull replaces the `columns` array with the server's version.
+
+```json
+{
+    "tables": [
+        {
+            "$id": "posts",
+            "databaseId": "blog",
+            "name": "Posts",
+            "columns": [
+                {
+                    "key": "headline",
+                    "previousKey": "title",
+                    "type": "varchar",
+                    "size": 255,
+                    "required": true
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "by_headline",
+                    "type": "key",
+                    "columns": ["headline"]
+                }
+            ]
+        }
+    ]
+}
+```
+
+Then push the table:
+
+```sh
+appwrite push tables
+```
+
+Push reports the change as a rename instead of a deletion followed by an addition, and the rows carry over to the new name.
+
+Indexes that reference the column follow the rename, so they are not recreated. Keep the index `columns` array in sync with the new name, as in the example above. If an index still points at the old name, the CLI treats it as a changed index and recreates it.
+
+You can rename a column and change its updatable fields in the same push. The CLI applies the rename first, then the field update.
+
+## How the CLI resolves previousKey {% #how-previouskey-resolves %}
+
+The hint describes the state you want, so pushing the same config twice is safe. Push looks at what the table already has and decides from there:
+
+- If the old name is still on the server and the new one isn't, push renames the column.
+- If the new name is already there, the rename has happened. Push does nothing and ignores the leftover hint.
+- If neither name is on the server, push ignores the hint and creates the column as a new one.
+- If both names are on the server, push cannot rename without a collision. It warns, ignores the hint, and deletes the old column if it is absent from your config.
+
 # Commands {% #commands %}
 
 The tables-db command allows you to create structured tables of rows, queries, and filter lists of rows. Appwrite TablesDB CLI commands generally follow the following syntax:
