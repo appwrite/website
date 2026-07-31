@@ -44,19 +44,15 @@ The server uses OAuth for authentication. After you save the file, click **Needs
 
 You can also **directly add the MCP server to Cursor** using the following link:
 
-{% only_light %}
-{% cards %}
-
-{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby8ifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
+{% cards_item href="https://cursor.com/install-mcp?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby8ifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% /cards %}
-{% /only_light %}
-
+@@ -139,50 +56,27 @@ You can also **directly add the MCP servers to Cursor** using the following link
 {% only_dark %}
 {% cards %}
 
-{% cards_item href="cursor://anysphere.cursor-deeplink/mcp/install?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby8ifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
+{% cards_item href="https://cursor.com/install-mcp?name=appwrite&config=eyJ1cmwiOiJodHRwczovL21jcC5hcHB3cml0ZS5pby8ifQ==" title="Add to Cursor" image="/images/docs/mcp/logos/dark/cursor-ai.svg" %}
 {% /cards_item %}
 
 {% /cards %}
