@@ -84,7 +84,7 @@ Version 2.0 pushes this further by using fewer reasoning tokens to reach the sam
 
 In production, that efficiency has a concrete payoff: **tool calls fire faster**. SpaceXAI reports that a tool call usually executes before the end of the agent's first sentence. So while the agent says "Let me pull that up for you," the request to your backend is already in flight. By the time the sentence ends, the data is often back. That is the behavior that makes a voice agent feel responsive instead of stalled.
 
-# Conversational capability
+# Grok Voice Think Fast 2.0 conversational capabilities
 
 Benchmarks reward correct answers, but voice agents live or die on how they feel to talk to. SpaceXAI used extensive reinforcement learning to push Grok Voice Think Fast 2.0 toward patterns observed in real human conversation.
 
