@@ -110,7 +110,7 @@ Migration requires no work in the common case.
 | Action to upgrade | None |
 | Action to stay on 1.0 | Pin `grok-voice-think-fast-1.0` before August 5, 2026 |
 
-SpaceXAI expects improved performance across almost all use cases with no prompt edits. In A/B testing on Starlink's support line (+1 888 GO STARLINK), it reported a meaningful increase in both sales conversion rate and support containment rate, the share of calls resolved without a human agent. If you are on version 1.0 today, the safe default is to let the automatic upgrade happen and measure the same two metrics on your own traffic.
+SpaceXAI expects improved performance across almost all use cases with no prompt edits. In A/B testing on Starlink's support line (+1 888 GO STARLINK), it reported a meaningful increase in both sales conversion rate and support containment rate, the share of calls resolved without a human agent. If you are using the floating alias, the upgrade happens automatically on August 5. xAI recommends evaluating the new model on your own workloads.
 
 # When to reach for Grok Voice Think Fast 2.0
 
