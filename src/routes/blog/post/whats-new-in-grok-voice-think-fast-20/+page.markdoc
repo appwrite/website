@@ -72,7 +72,7 @@ That last point is the one that matters in the field. The evaluation deliberatel
 
 Coverage spans English, Spanish, Portuguese, Arabic, Chinese, Japanese, Hindi, and more, including regional variants such as Spanish (Spain) versus Spanish (Mexico) and Arabic across Saudi Arabia and the UAE. For multilingual products, that regional split matters more than a single aggregate score.
 
-# Reasoning efficiency: thinking while speaking
+# How Grok Voice Think Fast 2.0 reasons while speaking
 
 The defining trait of the Think Fast line is that it reasons through a query *while* speaking, not before. Reasoning in parallel with speech is what lets the model be meaningfully smarter than other speech-to-speech models without paying for it in latency.
 
