@@ -102,7 +102,7 @@ Authorization is where implementers spend most of their integration time, so thi
 
 If you are building auth into an MCP server, treat it like any privileged backend: validate issuers, scope credentials tightly, and require approval for sensitive actions.
 
-# Tasks and the extensions framework
+# New MCP extensions: Tasks, MCP Apps, and EMA
 
 The 2026-07-28 specification formally locks in an extensions framework, so new capabilities can ship without bloating the core spec. **Tasks** moves out of the experimental core and into the `io.modelcontextprotocol/tasks` extension (SEP-2663), with a poll-based `tasks/get` and a new `tasks/update`. Change notifications move from the old HTTP GET endpoint to a single `subscriptions/listen` stream that clients opt into per notification type.
 
