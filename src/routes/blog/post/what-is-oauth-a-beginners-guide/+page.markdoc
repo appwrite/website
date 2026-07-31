@@ -128,7 +128,7 @@ Building it yourself means registering an app with every provider, handling redi
 
 The faster path is to use a backend that implements the flows for you. [Appwrite Authentication](/docs/products/auth) supports [OAuth2 login](/docs/products/auth/oauth2) with more than 30 providers, including Google, GitHub, Apple, and Microsoft. You enable a provider in the console, add its credentials, and trigger the flow with a single SDK call. Appwrite handles the redirect, the token exchange, and session management.
 
-Here is what an OAuth2 login looks like with the Appwrite web SDK:
+Here is what an OAuth2 login looks like with the Appwrite web SDK. Depending on your use case, you can start the flow with [`createOAuth2Session()`](/docs/references/cloud/client-web/account#createOAuth2Session) or [`createOAuth2Token()`](/docs/references/cloud/client-web/account#createOAuth2Token). The example below uses `createOAuth2Session()`.
 
 ```client-web
 import { Client, Account, OAuthProvider } from "appwrite";
