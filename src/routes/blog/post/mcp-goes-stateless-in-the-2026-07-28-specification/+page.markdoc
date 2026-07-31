@@ -1,11 +1,11 @@
 ---
 layout: post
-title: What's new in the MCP 2026-07-28 specification
+title: "What's new in the MCP 2026-07-28 specification"
 description: The MCP 2026-07-28 spec drops sessions, adds header based routing, cacheable lists, and MRTR. Here is what changed and what you need to migrate your servers.
 date: 2026-07-30
 cover: /images/blog/mcp-goes-stateless-in-the-2026-07-28-specification/cover.avif
 timeToRead: 5
-author: aishwari
+author: aditya-oberai
 category: news
 featured: false
 faqs:
@@ -150,6 +150,7 @@ We have updated the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) to f
 - **Header-based routing**, so gateways can route on `Mcp-Method` and `Mcp-Name` without parsing bodies.
 - **Mid-call interaction (MRTR)**, so tools can ask for confirmation or input without holding open streams.
 - **Cacheable tool catalogs**, so clients do not refetch on every reconnect.
+
 
 # Resources
 
