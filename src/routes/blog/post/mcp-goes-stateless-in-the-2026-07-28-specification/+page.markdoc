@@ -1,11 +1,11 @@
 ---
 layout: post
-title: What's new in the MCP 2026-07-28 specification
+title: "What's new in the MCP 2026-07-28 specification"
 description: The MCP 2026-07-28 spec drops sessions, adds header based routing, cacheable lists, and MRTR. Here is what changed and what you need to migrate your servers.
 date: 2026-07-30
 cover: /images/blog/mcp-goes-stateless-in-the-2026-07-28-specification/cover.avif
 timeToRead: 5
-author: aishwari
+author: aditya-oberai
 category: news
 featured: false
 faqs:
@@ -46,7 +46,7 @@ MCP went stateless because sessions made remote servers hard to scale. Under the
 
 In the MCP 2026-07-28 specification, every request is self-describing. There is no handshake and no session ID, so any request can land on any instance behind a standard load balancer with no shared storage. That is the difference between running MCP like a special protocol and running it like the rest of the web.
 
-# How MCP's new stateless architecture works
+# The stateless core: no handshake, no sessions
 
 The `initialize`/`initialized` exchange and the `Mcp-Session-Id` header are gone (see SEP-2575 and SEP-2567). Each request now travels on its own, carrying its protocol version, client identity, and client capabilities in `_meta`.
 
@@ -73,7 +73,7 @@ Sometimes a tool needs something from the user mid-call, such as a confirmation 
 
 This is the change that makes mid-call confirmations safe over stateless transports. A tool can ask the user to approve a destructive action, like deleting data or provisioning a paid resource, before it runs.
 
-# What is header-based routing in MCP?
+# Header-based routing
 
 Streamable HTTP requests must now include the `Mcp-Method` and `Mcp-Name` headers (SEP-2243). The method name (`tools/call`) and the tool name (`search`) travel in HTTP headers, not just the JSON body.
 
@@ -89,7 +89,7 @@ Responses from `tools/list`, `prompts/list`, `resources/list`, and `resources/re
 
 The practical win is fewer redundant round trips. In the old model, a reconnect often meant re-listing everything. With cache hints and a deterministic ordering, clients can keep tool catalogs cached and keep upstream prompt caches stable across reconnects, which cuts both latency and token usage.
 
-# OAuth and security changes in MCP 2026-07-28
+# Authorization hardening in the 2026-07-28 specification
 
 Authorization is where implementers spend most of their integration time, so this release continues to tighten MCP's auth and security posture. The key changes:
 
@@ -102,7 +102,7 @@ Authorization is where implementers spend most of their integration time, so thi
 
 If you are building auth into an MCP server, treat it like any privileged backend: validate issuers, scope credentials tightly, and require approval for sensitive actions.
 
-# New MCP extensions: Tasks, MCP Apps, and EMA
+# Tasks and the extensions framework
 
 The 2026-07-28 specification formally locks in an extensions framework, so new capabilities can ship without bloating the core spec. **Tasks** moves out of the experimental core and into the `io.modelcontextprotocol/tasks` extension (SEP-2663), with a poll-based `tasks/get` and a new `tasks/update`. Change notifications move from the old HTTP GET endpoint to a single `subscriptions/listen` stream that clients opt into per notification type.
 
@@ -110,13 +110,13 @@ Tasks joins other extensions in the framework, including **MCP Apps** and **Ente
 
 # What is deprecated in MCP 2026-07-28?
 
-Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTTP+SSE transport. Existing implementations remain compatible: everything deprecated in this release keeps working for at least twelve months under the new formal deprecation policy. That gives teams time to migrate gradually instead of upgrading immediately.
+Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTTP+SSE transport. Everything deprecated in this release keeps working for at least twelve months under a new formal deprecation policy, so you can plan migrations rather than scramble for them.
 
 - **Do not adopt** Roots, Sampling, or Logging in new implementations.
 - **Migrate off** the legacy HTTP+SSE transport to Streamable HTTP.
-- **Plan your migration** during the twelve-month compatibility window before deprecated features are removed.
+- **Rely on** the twelve-month minimum window before anything is removed.
 
-# Which SDKs support MCP 2026-07-28?
+# SDK support for the new spec
 
 All four Tier 1 SDKs speak `2026-07-28` as of the release, and the Rust SDK supports it in beta.
 
@@ -150,6 +150,8 @@ We have updated the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) to f
 - **Header-based routing**, so gateways can route on `Mcp-Method` and `Mcp-Name` without parsing bodies.
 - **Mid-call interaction (MRTR)**, so tools can ask for confirmation or input without holding open streams.
 - **Cacheable tool catalogs**, so clients do not refetch on every reconnect.
+
+We do not fully use every capability in the spec yet, which leaves room to keep improving as the ecosystem matures. To go deeper on how the server itself is built, read [how we rebuilt the API MCP server in MCP Server 2.0](/blog/post/announcing-appwrite-mcp-server-2), then connect the server that fits your workflow.
 
 # Resources
 
