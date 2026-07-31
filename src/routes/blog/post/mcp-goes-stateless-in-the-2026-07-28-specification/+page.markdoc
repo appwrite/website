@@ -110,7 +110,7 @@ Tasks joins other extensions in the framework, including **MCP Apps** and **Ente
 
 # What is deprecated in MCP 2026-07-28?
 
-Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTTP+SSE transport. Everything deprecated in this release keeps working for at least twelve months under a new formal deprecation policy, so you can plan migrations rather than scramble for them.
+Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTTP+SSE transport. Existing implementations remain compatible: everything deprecated in this release keeps working for at least twelve months under the new formal deprecation policy. That gives teams time to migrate gradually instead of upgrading immediately.
 
 - **Do not adopt** Roots, Sampling, or Logging in new implementations.
 - **Migrate off** the legacy HTTP+SSE transport to Streamable HTTP.
