@@ -114,7 +114,7 @@ Roots, Sampling, and Logging are deprecated (SEP-2577), and so is the legacy HTT
 
 - **Do not adopt** Roots, Sampling, or Logging in new implementations.
 - **Migrate off** the legacy HTTP+SSE transport to Streamable HTTP.
-- **Rely on** the twelve-month minimum window before anything is removed.
+- **Plan your migration** during the twelve-month compatibility window before deprecated features are removed.
 
 # SDK support for the new spec
 
