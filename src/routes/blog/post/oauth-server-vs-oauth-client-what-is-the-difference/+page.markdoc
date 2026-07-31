@@ -19,7 +19,7 @@ faqs:
   - question: What does an OAuth server do?
     answer: An OAuth server verifies the user’s identity, displays the consent screen, processes authorization requests, and issues access and refresh tokens. It may also validate, revoke, and rotate tokens.
 ---
-"OAuth server" and "OAuth client" get used interchangeably in a lot of tutorials, and that is where the confusion starts. They are not two names for the same thing. They are two different roles on opposite ends of the same authorization flow, and mixing them up leads to real bugs: tokens stored in the wrong place, secrets leaked to the browser, or a login flow that never completes.
+Most developers never need to build an OAuth server. They need an OAuth client. But because the terms are often used interchangeably, it's easy to misunderstand which role your application actually plays. That confusion leads to incorrect architectures, unnecessary complexity, and security mistakes. This guide explains the difference, how the two work together, and how to know which one you're building.
 
 If you are adding "Sign in with Google" to your app, integrating a third-party API, or building a service other apps authenticate against, you need to know which role you are playing. This post breaks down what an OAuth server is, what an OAuth client is, how they interact, and how to decide which side you are building.
 
