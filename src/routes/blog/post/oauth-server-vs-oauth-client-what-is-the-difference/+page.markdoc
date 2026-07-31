@@ -69,7 +69,7 @@ A **confidential client** can keep a secret. This is a server-side application, 
 
 ## Public clients
 
-A **public client** cannot keep a secret. Single-page apps, mobile apps, and desktop apps fall into this category, because any secret shipped in their code can be extracted. Public clients rely on the [PKCE extension](https://oauth.net/2/pkce/) (Proof Key for Code Exchange) instead of a client secret to protect the token exchange.
+A **public client** cannot keep a secret. Single-page apps, mobile apps, and desktop apps fall into this category because any secret shipped in their code can be extracted. Instead of using a client secret, public clients typically use the [PKCE extension](https://oauth.net/2/pkce/) (Proof Key for Code Exchange) to protect the authorization code flow. PKCE is mandatory in OAuth 2.1 and strongly recommended for OAuth 2.0 public clients.
 
 Getting this classification wrong is one of the most common OAuth mistakes. Embedding a client secret in a mobile app or browser bundle is the same category of error as putting an API key in client-side code: anyone who inspects the app can extract it.
 
