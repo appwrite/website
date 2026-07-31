@@ -123,7 +123,7 @@ The model is built for the voice agent loop: listen, reason, call a tool, respon
 
 Be careful where correctness depends on private context the model cannot hear. The model can call tools, but it still needs scoped credentials, current data, and a backend that returns the right answer. A fast, accurate voice model wired to the wrong data source just gets to the wrong answer sooner.
 
-# Give your voice agent a backend it can act on
+# Building voice agents with Grok Voice Think Fast 2.0 and Appwrite
 
 A speech-to-speech model is only half of a voice agent. The other half is everything the tool calls actually do: authenticate the caller, read and write their data, run the business logic, and stream state to whatever screen is watching the call. The model handles voice. Something has to handle the rest.
 
