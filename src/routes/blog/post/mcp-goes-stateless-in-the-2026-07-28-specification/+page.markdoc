@@ -151,7 +151,6 @@ We have updated the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) to f
 - **Mid-call interaction (MRTR)**, so tools can ask for confirmation or input without holding open streams.
 - **Cacheable tool catalogs**, so clients do not refetch on every reconnect.
 
-
 # Resources
 
 - [Appwrite API MCP server documentation](/docs/tooling/ai/mcp-servers/api)
