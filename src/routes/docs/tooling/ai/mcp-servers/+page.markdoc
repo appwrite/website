@@ -4,7 +4,7 @@ title: Model Context Protocol
 description: Enable LLMs and code-generation tools to interact with your Appwrite project
 ---
 
-Appwrite offers [Model Context Protocol](https://modelcontextprotocol.io) (MCP) servers that allow LLMs to directly interact with Appwrite's API and docs. Using MCP servers, you can use applications such as Claude Code, Codex, Cursor, Claude Desktop, and others to operate on your Appwrite project as well as gain context about the latest updates to Appwrite's SDKs, APIs, and CLI.
+Appwrite offers a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that allows LLMs to directly interact with Appwrite's API and docs. Using the MCP server, you can use applications such as Claude Code, Codex, Cursor, Claude Desktop, and others to operate on your Appwrite project as well as gain context about the latest updates to Appwrite's SDKs, APIs, and CLI.
 
 # What is MCP?
 
@@ -16,23 +16,20 @@ The key benefits of using MCP servers include:
 - **Improved context**: By accessing up-to-date documentation and API definitions, LLMs can provide more accurate and relevant responses.
 - **Seamless integration**: MCP servers can be easily integrated with popular AI tools and code editors, enhancing their functionality.
 
-# Available MCP servers
+# The Appwrite MCP server
 
-Appwrite currently offers the following MCP servers:
+Appwrite offers a single MCP server that covers both the Appwrite API and documentation:
 
 {% cards %}
 
-{% cards_item href="/docs/tooling/ai/mcp-servers/api" title="MCP server for Appwrite API" icon="icon-globe-alt"%}
-{% /cards_item %}
-
-{% cards_item href="/docs/tooling/ai/mcp-servers/docs" title="MCP server for Appwrite docs" icon="icon-document-text" %}
+{% cards_item href="/docs/tooling/ai/mcp-servers/api" title="Appwrite MCP server" icon="icon-globe-alt"%}
 {% /cards_item %}
 
 {% /cards %}
 
-## Why use Appwrite's MCP servers?
+## Why use the Appwrite MCP server?
 
-Some **popular use cases** for Appwrite's MCP servers include:
+Some **popular use cases** for the Appwrite MCP server include:
 
 - **Code generation**: Automatically generate code snippets or entire files based on user input and context.
 - **Documentation lookup**: Quickly find relevant documentation for specific API endpoints or SDK features.

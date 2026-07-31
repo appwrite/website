@@ -21,53 +21,28 @@ Browse all quick start prompts
 
 {% /section %}
 
-{% section #add-mcp-servers step=2 title="Add MCP servers" %}
+{% section #add-mcp-servers step=2 title="Add the MCP server" %}
 
-Connect Appwrite MCP servers to Windsurf for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
+Connect the Appwrite MCP server to Windsurf for deeper integration with the Appwrite API and documentation. It is a remote HTTP server, so there are no additional pre-requisites to install.
 
 Open the **Windsurf Settings** page, head to the **Cascade** tab, find the **Model Context Protocol (MCP) Servers** section, and click on the **View raw config** button.
 
 ![Windsurf add MCP server](/images/docs/mcp/windsurf/windsurf-add-mcp-server.avif)
 
-Choose which MCP server you want to configure:
-
-{% tabs %}
-{% tabsitem #api-only title="API server" %}
-
-Update the `mcp_config.json` file to include the API server:
+Update the `mcp_config.json` file to include the Appwrite MCP server:
 
 ```json
 {
   "mcpServers": {
-    "appwrite-api": {
-      "serverUrl": "https://mcp.appwrite.io/mcp"
+    "appwrite": {
+      "serverUrl": "https://mcp.appwrite.io/"
     }
   }
 }
 
 ```
 
-The API server uses OAuth for authentication. When Windsurf first connects to the server, you are prompted to log in, and your browser opens so you can sign in to your Appwrite account and authorize access.
-
-{% /tabsitem %}
-
-{% tabsitem #docs-only title="Docs server" %}
-
-Update the `mcp_config.json` file to include the docs server:
-
-```json
-{
-  "mcpServers": {
-    "appwrite-docs": {
-      "serverUrl": "https://mcp-for-docs.appwrite.io"
-    }
-  }
-}
-
-```
-
-{% /tabsitem %}
-{% /tabs %}
+The server uses OAuth for authentication. When Windsurf first connects to the server, you are prompted to log in, and your browser opens so you can sign in to your Appwrite account and authorize access.
 
 Once you save the details, head back to the MCP Servers section in the Windsurf Settings and click on the **Refresh** button.
 
@@ -75,35 +50,15 @@ Once you save the details, head back to the MCP Servers section in the Windsurf 
 
 {% section #test-the-integration step=3 title="Test the integration" %}
 
-Open Cascade chat in the Windsurf Editor and test your MCP integrations. You can try out the following example prompts based on the MCP server you have configured:
-
-{% tabs %}
-{% tabsitem #test-api title="API server" %}
+Open Cascade chat in the Windsurf Editor and test your MCP integration. You can try out the following example prompts:
 
 **Example prompts:**
 
 - `Create a new user in my Appwrite project`
 - `List all databases in my project`
 - `Show me the tables in my database`
-- `Create a new row in my table`
-- `Delete a specific user by ID`
-
-{% /tabsitem %}
-
-{% tabsitem #test-docs title="Docs server" %}
-
-**Example prompts:**
-
 - `How do I set up real-time subscriptions in Appwrite?`
 - `Show me how to authenticate users with OAuth`
-- `What are the best practices for database queries?`
 - `How do I implement file uploads with Appwrite Storage?`
-- `Show me an example of using Appwrite Functions`
-
-{% /tabsitem %}
-
-{% /tabs %}
-
-![Windsurf Cascade chat](/images/docs/mcp/windsurf/windsurf-cascade-chat.avif)
 
 {% /section %}

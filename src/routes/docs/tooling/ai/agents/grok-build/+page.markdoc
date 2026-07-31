@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Grok Build
-description: Learn how you can add the Appwrite MCP servers to Grok Build to interact with both the Appwrite API and documentation.
+description: Learn how you can add the Appwrite MCP server to Grok Build to interact with both the Appwrite API and documentation.
 ---
 
 {% section #quick-start-prompts step=1 title="Quick start prompts" %}
@@ -21,67 +21,34 @@ Browse all quick start prompts
 
 {% /section %}
 
-{% section #step-2 step=2 title="Add MCP servers" %}
+{% section #step-2 step=2 title="Add the MCP server" %}
 
-Connect Appwrite MCP servers to Grok Build for deeper integration with the Appwrite API and documentation. Both servers are remote HTTP servers, so there are no additional pre-requisites to install.
+Connect the Appwrite MCP server to Grok Build for deeper integration with the Appwrite API and documentation. It is a remote HTTP server, so there are no additional pre-requisites to install.
 
-Run the following commands in your terminal to add the MCP servers:
-
-{% tabs %}
-{% tabsitem #api-only title="API server" %}
+Run the following command in your terminal to add the MCP server:
 
 ```bash
-grok mcp add --transport http appwrite-api https://mcp.appwrite.io/mcp
+grok mcp add --transport http appwrite https://mcp.appwrite.io/
 
 ```
 
-The API server uses OAuth for authentication. When Grok Build first connects to the server, your browser opens so you can sign in to your Appwrite account and authorize access. In case you are not prompted automatically, run `/mcps` in Grok Build, select **appwrite-api**, and press `i` to authenticate.
+The server uses OAuth for authentication. When Grok Build first connects to the server, your browser opens so you can sign in to your Appwrite account and authorize access. In case you are not prompted automatically, run `/mcps` in Grok Build, select **appwrite**, and press `i` to authenticate.
 
-{% /tabsitem %}
-
-{% tabsitem #docs-only title="Docs server" %}
-
-```bash
-grok mcp add --transport http appwrite-docs https://mcp-for-docs.appwrite.io
-
-```
-
-{% /tabsitem %}
-{% /tabs %}
-
-You can verify the servers are configured by running `grok mcp list` in your terminal or `/mcps` in a Grok Build session.
+You can verify the server is configured by running `grok mcp list` in your terminal or `/mcps` in a Grok Build session.
 
 {% /section %}
 
 {% section #step-3 step=3 title="Test the integration" %}
 
-Open a Grok Build session by running `grok` in your terminal and test your MCP integrations. You can try out the following example prompts based on the MCP server you have configured:
-
-{% tabs %}
-{% tabsitem #test-api title="API server" %}
+Open a Grok Build session by running `grok` in your terminal and test your MCP integration. You can try out the following example prompts:
 
 **Example prompts:**
 
 - `Create a new user in my Appwrite project`
 - `List all databases in my project`
 - `Show me the tables in my database`
-- `Create a new row in my table`
-- `Delete a specific user by ID`
-
-{% /tabsitem %}
-
-{% tabsitem #test-docs title="Docs server" %}
-
-**Example prompts:**
-
 - `How do I set up real-time subscriptions in Appwrite?`
 - `Show me how to authenticate users with OAuth`
-- `What are the best practices for database queries?`
 - `How do I implement file uploads with Appwrite Storage?`
-- `Show me an example of using Appwrite Functions`
-
-{% /tabsitem %}
-
-{% /tabs %}
 
 {% /section %}
