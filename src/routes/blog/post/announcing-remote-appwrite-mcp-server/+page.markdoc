@@ -43,6 +43,21 @@ The remote server replaces the local setup for Appwrite Cloud users, and it remo
 Here is the difference in a Claude Code `.mcp.json`:
 
 {% tabs %}
+{% tabsitem #after title="After" %}
+
+```json
+{
+  "mcpServers": {
+    "appwrite": {
+      "type": "http",
+      "url": "https://mcp.appwrite.io/"
+    }
+  }
+}
+```
+
+{% /tabsitem %}
+
 {% tabsitem #before title="Before" %}
 
 ```json
@@ -57,21 +72,6 @@ Here is the difference in a Claude Code `.mcp.json`:
           "APPWRITE_ENDPOINT": "https://<REGION>.cloud.appwrite.io/v1"
         }
       }
-  }
-}
-```
-
-{% /tabsitem %}
-
-{% tabsitem #after title="After" %}
-
-```json
-{
-  "mcpServers": {
-    "appwrite": {
-      "type": "http",
-      "url": "https://mcp.appwrite.io/"
-    }
   }
 }
 ```
@@ -116,7 +116,7 @@ List users in my Appwrite project
 
 # Self-hosting Appwrite?
 
-The remote server authenticates against Appwrite Cloud. If you run a [self-hosted Appwrite instance](/docs/advanced/self-hosting), the local MCP server is still available and works the way it always has: it runs on your machine over the stdio transport and connects to your instance with an API key. The [MCP server documentation](/docs/tooling/ai/mcp-servers/api#self-hosted) walks through the setup.
+The remote server authenticates against Appwrite Cloud. If you run a [self-hosted Appwrite instance](/docs/advanced/self-hosting), the local MCP server is still available and works the way it always has: it runs on your machine over the stdio transport and connects to your instance with an API key. The [MCP server documentation](/docs/advanced/self-hosting/mcp) walks through the setup.
 
 # Resources
 

@@ -46,60 +46,7 @@ The full Appwrite tool catalog stays internal and is searched at runtime, using 
 
 # Self-hosted Appwrite {% #self-hosted %}
 
-The hosted MCP server authenticates against Appwrite Cloud. If you are running a [self-hosted Appwrite instance](/docs/advanced/self-hosting), use the local MCP server instead. It runs on your machine over the stdio transport and connects to your instance with an API key.
-
-First, create an **API key** with the necessary scopes enabled in your Appwrite project.
-
-{% only_light %}
-![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.avif)
-{% /only_light %}
-{% only_dark %}
-![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.avif)
-{% /only_dark %}
-
-Ensure you save the **API key** along with the **project ID** and **endpoint URL** from the Settings page of your project.
-
-Next, install [uv](https://docs.astral.sh/uv/getting-started/installation/) on your system with:
-
-{% tabs %}
-{% tabsitem #uv-linux-macos title="Linux and MacOS" %}
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-{% /tabsitem %}
-
-{% tabsitem #uv-windows title="Windows" %}
-
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-{% /tabsitem %}
-{% /tabs %}
-
-Then, add the local MCP server to your AI tool's MCP configuration:
-
-```json
-{
-  "mcpServers": {
-    "appwrite": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-appwrite"
-      ],
-      "env": {
-        "APPWRITE_PROJECT_ID": "your-project-id",
-        "APPWRITE_API_KEY": "your-api-key",
-        "APPWRITE_ENDPOINT": "https://your-appwrite-domain/v1"
-      }
-    }
-  }
-}
-```
-
-Replace `your-project-id` and `your-api-key` with the values from your project, and point `APPWRITE_ENDPOINT` to your instance's API endpoint.
+The hosted MCP server authenticates against Appwrite Cloud. If you are running a [self-hosted Appwrite instance](/docs/advanced/self-hosting), use the local MCP server instead. It runs on your machine over the stdio transport and connects to your instance with an API key. Follow the [self-hosted MCP server documentation](/docs/advanced/self-hosting/mcp) to set it up.
 
 # Usage {% #usage %}
 
