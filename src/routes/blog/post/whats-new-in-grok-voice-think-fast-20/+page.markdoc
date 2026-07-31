@@ -23,7 +23,7 @@ faqs:
 
 Voice agents fail in two places that a benchmark table rarely captures: the pause before the agent starts speaking, and the words it gets wrong when a customer calls from a car with the windows down. Latency breaks the illusion of a conversation, and a single misheard order number breaks the transaction. Most voice stacks trade one for the other.
 
-SpaceXAI's answer is [Grok Voice Think Fast 2.0](https://x.ai/news/grok-voice-think-fast-2), announced on July 31, 2026 as the next generation of its speech-to-speech voice model. The pitch is that you no longer have to choose. It is faster to first audio, more accurate on transcription, and smarter in conversation than its predecessor, without any changes to your existing prompts.
+SpaceXAI's answer is [Grok Voice Think Fast 2.0](https://x.ai/news/grok-voice-think-fast-2), announced on July 29, 2026 as the next generation of its speech-to-speech voice model. The pitch is that you no longer have to choose. It is faster to first audio, more accurate on transcription, and smarter in conversation than its predecessor, without any changes to your existing prompts.
 
 This post covers what Grok Voice Think Fast 2.0 is, how it performs on the benchmarks SpaceXAI published, what it costs, how migration works, and what you need on the backend to ship a voice agent that actually does something.
 
