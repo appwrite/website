@@ -21,6 +21,8 @@ appwrite [COMMAND] [OPTIONS]
 
 Below is a list of the available commands in the Appwrite CLI. You can get more information on each command by running `appwrite [COMMAND] --help`.
 
+Run `appwrite --help` to browse commands grouped by what you want to do, including getting started, managing project settings and resources, and using CLI utilities. The root help uses short descriptions so commonly used commands are easier to find.
+
 ## General commands {% #general-commands %}
 
 {% table %}
@@ -29,6 +31,12 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 ---
 * `client [options]`
 * The client command allows you to configure your CLI.
+---
+* `list-organizations [options]`
+* List the organizations available to your current session.
+---
+* `list-projects [options]`
+* List the projects available to your current session, including each project's region and endpoint.
 ---
 * `locale`
 * The locale command allows you to customize your app based on your users' location.
@@ -60,7 +68,7 @@ Below is a list of the available commands in the Appwrite CLI. You can get more 
 * Prints link to register an Appwrite account.
 ---
 * `whoami`
-* The whomai command gives information about the currently logged-in user.
+* The whoami command gives information about the currently logged-in user and shows how to recover another saved account when one is available.
 ---
 {% /table %}
 
@@ -93,6 +101,12 @@ The `init`, `pull`, `push`, and `run` commands support [multi-file project confi
 * Command
 * Description
 ---
+* `project`
+* Manage project settings, usage, variables, API keys, platforms, and other project-level resources. Pass `--project-id` to target a project without linking the current directory.
+---
+* `organization`
+* Manage an organization and its projects. Pass `--organization-id` to target an organization explicitly.
+---
 * `account`
 * The account command allows you to authenticate and manage a user account.
 ---
@@ -119,6 +133,25 @@ The `init`, `pull`, `push`, and `run` commands support [multi-file project confi
 ---
 {% /table %}
 
+## Target projects and organizations {% #target-projects-and-organizations %}
+
+Project and organization commands can be run from any directory. Pass the target explicitly when you do not want to use the IDs in `appwrite.config.json`:
+
+```sh
+appwrite project get --project-id "<PROJECT_ID>"
+appwrite project list-keys --project-id "<PROJECT_ID>"
+appwrite organization list-projects --organization-id "<ORGANIZATION_ID>"
+```
+
+The CLI resolves these IDs in the following order: the command option, the `APPWRITE_PROJECT_ID` or `APPWRITE_ORGANIZATION_ID` environment variable, then `appwrite.config.json`. This makes the same commands usable in scripts without creating a project configuration file.
+
+```sh
+APPWRITE_PROJECT_ID="<PROJECT_ID>" appwrite project get
+APPWRITE_ORGANIZATION_ID="<ORGANIZATION_ID>" appwrite organization list-projects
+```
+
+When only a project ID is available, the CLI can discover its organization. Project API requests continue to use the project's regional endpoint, while account, organization, and other Console-level requests are sent to the appropriate Console endpoint. The root `list-projects`, `list-organizations`, and `organization get` commands also work with supported self-hosted Appwrite installations.
+
 ## Command options {% #command-options %}
 
 {% table %}
@@ -135,8 +168,8 @@ The `init`, `pull`, `push`, and `run` commands support [multi-file project confi
 * `-j, --json`        
 * Output in JSON format
 ---
-* `-f,--force`        
-* Flag to confirm all warnings
+* `-f, --force`
+* Skip confirmation prompts
 ---
 * `-a,--all`          
 * Flag to push all resources
@@ -167,11 +200,16 @@ appwrite users list --json
 ```
 
 # Force {% #force %}
-By default, when pushing or pulling resources, the Appwrite CLI will ask you to confirm destructive operations. Use the `--force` flag to verify all questions.
+By default, the Appwrite CLI asks you to confirm destructive operations such as resetting the client or overwriting resources. Use the `--force` flag to skip confirmation prompts, including in non-interactive scripts.
 
 ```sh
 appwrite push tables --force
+appwrite client --reset --force
 ```
+
+# Human-readable and JSON output {% #command-output %}
+
+By default, the CLI formats responses for quick reading. It summarizes long lists of enabled settings, adds readable hints to timestamps, durations, and byte sizes, and hides secret values. Use `--json` for filtered JSON or `--raw` for the complete API response when you need machine-readable output. Add `--show-secrets` only when you intentionally need secret values in the output.
 
 # All {% #all %}
 By default, when pushing or pulling resources, Appwrite CLI would ask you to select specific resources. Use the `--all` flag to select all available options.
