@@ -1,0 +1,9 @@
+---
+layout: changelog
+title: Large relationship-heavy database grids now load reliably
+date: 2026-08-03
+---
+
+The Console now loads table and collection grids with wide relationships instead of failing the entire grid with a `400 Invalid query` error when relationship resolution exceeds the query value limit.
+
+When a relationship is too large to resolve in the initial request, the Console retries the grid request and fetches the relationship data in smaller chunks. If an individual chunk cannot be resolved, the grid remains available instead of crashing, so you can continue viewing and paging through large relationship-heavy datasets.
