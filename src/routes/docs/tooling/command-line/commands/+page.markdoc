@@ -150,7 +150,7 @@ APPWRITE_PROJECT_ID="<PROJECT_ID>" appwrite project get
 APPWRITE_ORGANIZATION_ID="<ORGANIZATION_ID>" appwrite organization list-projects
 ```
 
-When only a project ID is available, the CLI can discover its organization. Project API requests continue to use the project's regional endpoint, while account, organization, and other Console-level requests are sent to the appropriate Console endpoint. The root `list-projects`, `list-organizations`, and `organization get` commands also work with supported self-hosted Appwrite installations.
+When only a project ID is available, the CLI can discover its organization. Project API requests continue to use the project's regional endpoint, while account, organization, and other Console-level requests are sent to the appropriate Console endpoint. 
 
 ## Command options {% #command-options %}
 
