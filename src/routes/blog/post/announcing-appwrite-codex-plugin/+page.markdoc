@@ -3,6 +3,7 @@ layout: post
 title: "Introducing the Appwrite plugin for Codex: Skills and MCP in one install"
 description: The Appwrite plugin for Codex bundles agent skills and the Appwrite Docs MCP server into a single install, so Codex can build with Appwrite out of the box.
 date: 2026-05-11
+lastUpdated: 2026-07-31
 cover: /images/blog/announcing-appwrite-codex-plugin/cover.avif
 timeToRead: 4
 author: aditya-oberai
@@ -22,6 +23,12 @@ faqs:
   - question: "Do I still need to install Appwrite Skills separately if I use the Codex plugin?"
     answer: "No. The plugin bundles the same [Appwrite language and CLI skills](/docs/tooling/ai/skills), so installing the plugin gives Codex everything it needs in one step. You only need to install skills separately if you want to use them with another [AI IDE, CLI, or dev tool](/docs/tooling/ai) that doesn't have its own Appwrite plugin yet."
 ---
+
+{% info title="Update (July 2026)" %}
+
+The Appwrite MCP server is now a hosted remote server at `https://mcp.appwrite.io/` that uses OAuth authentication, with documentation search built in. The API-key configuration described in this post is no longer needed for Appwrite Cloud, and the plugin is being updated to accommodate the same changes. Read the [changelog entry](/changelog/entry/2026-07-31) for details.
+
+{% /info %}
 
 Codex is OpenAI's terminal-resident coding agent. It reads, writes, and runs code against your project, and it has been steadily picking up the building blocks needed to work well with platforms like Appwrite: skills for language-specific context, MCP servers for live tool and documentation access, and a marketplace for distributing them. Using Codex with Appwrite has worked for a while, but getting set up meant copying skill files into `~/.codex/skills/`, hand-editing `~/.codex/config.toml` to register the docs MCP, and stitching everything together yourself.
 

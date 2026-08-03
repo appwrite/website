@@ -1,7 +1,7 @@
 ---
 layout: article
-title: Claude Code
-description: Learn how to use Claude Code with Appwrite through quick start prompts and the Appwrite MCP server for AI-assisted development.
+title: Grok Build
+description: Learn how you can add the Appwrite MCP server to Grok Build to interact with both the Appwrite API and documentation.
 ---
 
 {% section #quick-start-prompts step=1 title="Quick start prompts" %}
@@ -23,33 +23,24 @@ Browse all quick start prompts
 
 {% section #step-2 step=2 title="Add the MCP server" %}
 
-Connect the Appwrite MCP server to Claude Code for deeper integration with the Appwrite API and documentation. It is a remote HTTP server, so there are no additional pre-requisites to install.
+Connect the Appwrite MCP server to Grok Build for deeper integration with the Appwrite API and documentation. It is a remote HTTP server, so there are no additional pre-requisites to install.
 
 Run the following command in your terminal to add the MCP server:
 
 ```bash
-claude mcp add --transport http appwrite https://mcp.appwrite.io/
+grok mcp add --transport http appwrite https://mcp.appwrite.io/
+
 ```
 
-The server uses OAuth for authentication. Run `/mcp` in Claude Code, select **appwrite**, and choose **Authenticate**. Your browser opens so you can sign in to your Appwrite account and authorize access.
+The server uses OAuth for authentication. When Grok Build first connects to the server, your browser opens so you can sign in to your Appwrite account and authorize access. In case you are not prompted automatically, run `/mcps` in Grok Build, select **appwrite**, and press `i` to authenticate.
+
+You can verify the server is configured by running `grok mcp list` in your terminal or `/mcps` in a Grok Build session.
 
 {% /section %}
 
-{% section #step-3 step=3 title="Verify MCP tools" %}
+{% section #step-3 step=3 title="Test the integration" %}
 
-Run the following command in your terminal (where Claude Code is running).
-
-```bash
-/mcp
-```
-
-You should see the added MCP server listed there.
-
-{% /section %}
-
-{% section #step-4 step=4 title="Test the integration" %}
-
-Try out the following example prompts:
+Open a Grok Build session by running `grok` in your terminal and test your MCP integration. You can try out the following example prompts:
 
 **Example prompts:**
 

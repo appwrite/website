@@ -8,7 +8,7 @@ Appwrite provides a comprehensive set of tools and resources to help you build w
 
 # IDEs {% #ides %}
 
-AI-powered IDEs and code editors provide intelligent code completion and context-aware assistance as you write code. These tools support our MCP servers, giving AI agents direct access to your Appwrite project.
+AI-powered IDEs and code editors provide intelligent code completion and context-aware assistance as you write code. These tools support the Appwrite MCP server, giving AI agents direct access to your Appwrite project and documentation.
 
 {% only_light %}
 {% cards %}
@@ -32,6 +32,9 @@ AI-powered IDEs and code editors provide intelligent code completion and context
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agents/antigravity" title="Antigravity" image="/images/docs/mcp/logos/google-antigravity.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/agents/grok-build" title="Grok Build" image="/images/docs/mcp/logos/grok-build.svg" %}
 {% /cards_item %}
 
 {% /cards %}
@@ -59,6 +62,9 @@ AI-powered IDEs and code editors provide intelligent code completion and context
 {% /cards_item %}
 
 {% cards_item href="/docs/tooling/ai/agents/antigravity" title="Antigravity" image="/images/docs/mcp/logos/dark/google-antigravity.svg" %}
+{% /cards_item %}
+
+{% cards_item href="/docs/tooling/ai/agents/grok-build" title="Grok Build" image="/images/docs/mcp/logos/dark/grok-build.svg" %}
 {% /cards_item %}
 
 {% /cards %}
@@ -118,7 +124,7 @@ These resources help AI tools understand and work with Appwrite. Use them alongs
 {% cards_item href="/docs/tooling/ai/quickstart-prompts" title="Quickstart prompts" %}
 Pre-built prompts to quickly generate your first Appwrite project with AI assistants.
 {% /cards_item %}
-{% cards_item href="/docs/tooling/ai/mcp-servers/api" title="MCP servers" %}
+{% cards_item href="/docs/tooling/ai/mcp-servers/api" title="MCP server" %}
 Give AI tools direct access to your Appwrite project and docs.
 {% /cards_item %}
 {% cards_item href="/docs/tooling/ai/agents-md" title="AGENTS.md" %}

@@ -76,6 +76,10 @@
                 {
                     label: 'Google Antigravity',
                     href: '/docs/tooling/ai/agents/antigravity'
+                },
+                {
+                    label: 'Grok Build',
+                    href: '/docs/tooling/ai/agents/grok-build'
                 }
             ]
         },
