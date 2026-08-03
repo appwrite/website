@@ -1,0 +1,158 @@
+---
+layout: post
+title: Best self-hosted backend solutions for mobile apps
+description: Compare the best self-hosted backend solutions for mobile apps based on features, scalability, and developer experience.
+date: 2026-08-03
+cover: /images/blog/best-self-hosted-backend-solutions-for-mobile-apps/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+unlisted: true
+---
+
+Most self-hosted backend platforms were designed for web apps first. That distinction stops being academic the moment you ship to the App Store, because mobile apps need things web apps don't: native SDKs for Swift and Kotlin, push notifications through APNs and FCM, offline behavior when the network drops, and API stability across app versions you can no longer control.
+
+That last point is the one teams underestimate. A web app updates when the user refreshes. A mobile app sits on devices running a build you shipped eight months ago, and your self-hosted backend has to keep serving it. Picking a platform without native mobile support means you end up writing the SDK layer, the push pipeline, and the token registration logic yourself.
+
+This post compares the self-hosted backend solutions that actually hold up for mobile, and how to choose between them.
+
+# Short answer: which self-hosted backend should you use for a mobile app?
+
+- **[Appwrite](/docs)** if you want native Flutter, Swift, Kotlin, and React Native SDKs plus built-in push notifications in one Docker deployment.
+- **[Supabase](https://supabase.com)** if Postgres and raw SQL are non-negotiable and you're comfortable wiring push notifications yourself.
+- **[PocketBase](https://pocketbase.io)** if you're a solo developer shipping a small app and want a single binary with near-zero operations.
+- **[Parse Platform](https://parseplatform.org)** if you need a battle-tested mobile SDK surface and are fine maintaining a Node.js and MongoDB stack.
+- **[Nhost](https://nhost.io)** if your team is already GraphQL-first and wants Hasura on Postgres.
+
+If you're still deciding whether to self-host at all, read [self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) first. The rest of this post assumes you've made that call.
+
+# What a mobile app needs from a self-hosted backend
+
+Feature checklists for backend platforms tend to be written from a web perspective. Here is what actually determines whether a self-hosted backend works for a mobile app:
+
+| Requirement | Why it matters on mobile |
+| --- | --- |
+| Native mobile SDKs | REST works, but you'll hand-roll session persistence, token refresh, and file uploads on every platform |
+| Push notifications | APNs and FCM are the only delivery paths to iOS and Android, and both need device token management |
+| Offline behavior | Connectivity drops in elevators, tunnels, and rural areas. Your app still has to function |
+| Realtime updates | Chat, presence, and collaborative features need a persistent connection, not polling that drains battery |
+| OAuth and social login | Sign in with Apple is an App Store requirement if you offer any third-party login |
+| Backward-compatible APIs | Old app versions stay in production for months. Breaking changes strand users |
+| File storage with transforms | Serving full-resolution images to a phone wastes bandwidth and looks slow |
+
+A backend that handles the first two badly costs you weeks. A backend that handles the last one badly costs you app store reviews.
+
+# The best self-hosted backend solutions for mobile apps
+
+## Appwrite
+
+Appwrite is an open-source backend platform that covers [authentication](/docs/products/auth), [databases](/docs/products/databases), [file storage](/docs/products/storage), [serverless functions](/docs/products/functions), and [messaging](/docs/products/messaging) in a single deployment. It self-hosts on any Docker-compatible infrastructure and is BSD 3-Clause licensed, so there are no commercial-use restrictions or paid tiers on the server itself.
+
+For mobile specifically, Appwrite ships first-party SDKs for [Flutter](/docs/quick-starts/flutter), [Apple platforms](/docs/quick-starts/apple), [Android](/docs/quick-starts/android), and [React Native](/docs/quick-starts/react-native). Session handling, OAuth2 redirects, and file uploads are handled by the SDK rather than by your networking layer.
+
+Push notifications are part of the platform, not an add-on. [Appwrite Messaging](/docs/products/messaging/send-push-notifications) manages device targets and sends through [APNs](/docs/products/messaging/apns) and [FCM](/docs/products/messaging/fcm), with topics for broadcast and scheduling built in. Email and SMS run through the same API, so a single notification flow covers all three channels.
+
+**Self-hosting requirements:** Docker, 2 CPU cores, 4GB RAM, and 2GB swap for a baseline instance, per the [installation guide](/docs/advanced/self-hosting/installation).
+
+**Best for:** Teams that want the full mobile backend surface, including push, without assembling it from separate services.
+
+**Trade-off:** The database is SQL-backed but accessed through a REST or GraphQL API rather than direct SQL. If your team wants to write raw queries and run `psql` against production, that's a real constraint.
+
+## Supabase
+
+Supabase is an open-source Firebase alternative built on Postgres, with auth, storage, realtime subscriptions, and edge functions. It offers official mobile SDKs for Flutter, Swift, and Kotlin Multiplatform, and Row Level Security gives you a clean way to express per-user data access rules directly in the database.
+
+The gap for mobile is push notifications. Supabase doesn't deliver them, so you connect FCM, APNs, or a third-party service like OneSignal and trigger sends from an edge function or database webhook. That's a solvable problem, but it's a component you build, monitor, and debug yourself.
+
+Self-hosting Supabase means running a multi-container stack: Postgres, GoTrue, PostgREST, Realtime, Storage, Kong, and Studio. It's documented, but it's meaningfully more operational surface than a single Compose file.
+
+**Best for:** Teams with Postgres expertise and complex relational query patterns.
+
+**Trade-off:** Higher self-hosting complexity, and push notifications are your responsibility.
+
+## PocketBase
+
+PocketBase is a single Go executable with an embedded SQLite database, auth, file storage, and realtime over server-sent events. Operationally it's the simplest option here: one binary, one data directory, no external dependencies.
+
+Mobile support is functional but thin. There are official JavaScript and Dart SDKs, so Flutter and React Native are covered, but native Swift and Kotlin clients come from the community. There's no built-in push notification pipeline.
+
+SQLite also sets the scaling ceiling. It runs on one machine, which is fine for a lot of apps and a hard stop for others.
+
+**Best for:** Solo developers and small apps where operational simplicity outweighs feature breadth.
+
+**Trade-off:** No push notifications, no horizontal scaling, and limited native SDK coverage.
+
+## Parse Platform
+
+Parse Server is the open-source continuation of the original Parse backend, maintained by the community since Facebook shut down the hosted service in 2017. Its mobile SDK coverage is the most mature of any platform on this list, with long-standing iOS, Android, and Flutter clients, and push notification support has been part of the product since the beginning.
+
+The cost is the stack you inherit. Parse Server runs on Node.js with MongoDB or Postgres, and you assemble the dashboard, file adapter, and push configuration yourself. It's a set of components with a shared history rather than an integrated platform.
+
+**Best for:** Teams migrating legacy Parse apps, or teams that value proven mobile SDKs above all else.
+
+**Trade-off:** Community-driven roadmap and more assembly required than a modern all-in-one platform.
+
+## Nhost
+
+Nhost pairs Postgres with Hasura's GraphQL engine, adding auth, storage, and serverless functions. If your mobile team already writes GraphQL and uses a client like Ferry or Apollo, the data layer feels natural, and subscriptions come free with the GraphQL model.
+
+SDK coverage is JavaScript and Dart. Native iOS and Android apps talk to Nhost through a standard GraphQL client rather than a first-party SDK, which means auth and storage integration is more manual. Push notifications, as with Supabase, are external.
+
+**Best for:** GraphQL-first teams comfortable operating Hasura.
+
+**Trade-off:** No native Swift or Kotlin SDK, and no built-in push.
+
+# Self-hosted mobile backend comparison
+
+| | Appwrite | Supabase | PocketBase | Parse Platform | Nhost |
+| --- | --- | --- | --- | --- | --- |
+| **Flutter SDK** | Official | Official | Official (Dart) | Official | Official (Dart) |
+| **Swift SDK** | Official | Official | Community | Official | GraphQL client |
+| **Kotlin SDK** | Official | Official (KMP) | Community | Official | GraphQL client |
+| **React Native** | Official | Official | Official (JS) | Official (JS) | Official (JS) |
+| **Push notifications** | Built in (APNs, FCM) | External | External | Built in | External |
+| **Realtime** | WebSockets | WebSockets | Server-sent events | LiveQuery | GraphQL subscriptions |
+| **Database** | SQL-backed (API) | Postgres | SQLite | MongoDB or Postgres | Postgres (GraphQL) |
+| **Offline sync** | Via integration | Community libraries | Community libraries | Local datastore | Community libraries |
+| **Self-hosting** | Docker Compose | Multi-container | Single binary | Node.js + database | Docker Compose |
+| **License** | BSD 3-Clause | Apache 2.0 | MIT | BSD-style | MIT |
+
+# How to choose a self-hosted backend for your mobile app
+
+Work through these in order. The first hard constraint you hit usually decides it:
+
+1. **Do you need push notifications on day one?** If yes, Appwrite and Parse are the only options that don't require building the delivery pipeline yourself. Push is where most mobile backend timelines slip.
+2. **Is Postgres and raw SQL a hard requirement?** Then it's Supabase or Nhost, and you accept the extra operational and push-integration work.
+3. **Do you have native iOS and Android apps, not just Flutter or React Native?** Weight first-party Swift and Kotlin SDKs heavily. Talking to a GraphQL endpoint from Swift is fine until you're implementing token refresh and multipart uploads by hand.
+4. **Who operates the infrastructure?** No DevOps capacity points to a single binary or a single Compose file. A multi-container stack needs someone who owns it.
+5. **What happens if you outgrow it?** Check for a managed option with identical APIs, and check whether the license permits your commercial use at scale.
+
+Then prototype. Ship auth, one read and write path, and one push notification on your top two finalists before committing your data model. Push is the step that exposes the difference between platforms fastest.
+
+# Self-hosting realities specific to mobile
+
+Two operational details matter more for mobile than for web.
+
+**API versioning is not optional.** Your users decide when to update. A breaking API change strands every device running an older build, and you can't hotfix a shipped binary. Pin your backend version, read the release notes before upgrading, and treat your API contract as something older clients still depend on.
+
+**Push credentials are infrastructure.** APNs keys and FCM service accounts expire, rotate, and break silently. A self-hosted backend means you own that rotation. Put it in your runbook alongside TLS certificate renewal and database backups, and cover it in your [production checklist](/docs/advanced/self-hosting/production).
+
+Beyond that, the usual self-hosting responsibilities apply: TLS, backups, monitoring, and patching. For a lighter path, [self-hosting Appwrite with Coolify](/blog/post/self-hosting-appwrite-with-coolify) handles a lot of that scaffolding for you.
+
+# Getting started with self-hosted Appwrite for your mobile app
+
+If you want native mobile SDKs and push notifications without stitching services together, Appwrite is the shortest path. It self-hosts on a single Docker Compose file, and [Appwrite Cloud](https://cloud.appwrite.io) runs the same APIs, so you can start managed and move to your own infrastructure later without rewriting your app. If you're coming from Firebase, [Appwrite Migrations](/docs/advanced/migrations/firebase) transfers users, databases, and storage files directly.
+
+# Resources
+
+- [Self-hosting Appwrite](/docs/advanced/self-hosting)
+- [Appwrite installation guide](/docs/advanced/self-hosting/installation)
+- [Send push notifications with Appwrite Messaging](/docs/products/messaging/send-push-notifications)
+- [Flutter quick start](/docs/quick-starts/flutter)
+- [Apple quick start](/docs/quick-starts/apple)
+- [Android quick start](/docs/quick-starts/android)
+- [Offline sync for Appwrite Databases](/docs/products/databases/offline)
+- [Open-source alternatives to proprietary BaaS tools](/blog/post/open-source-baas-alternatives)
+- [Migrate your Firebase project to Appwrite](/blog/post/migrate-firebase-projects-to-appwrite)
+- [Join the Appwrite Discord community](https://appwrite.io/discord)

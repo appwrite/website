@@ -1,0 +1,172 @@
+---
+layout: post
+title: When should you self-host your backend?
+description: Learn when self-hosting your backend makes sense and when a managed cloud backend is the better choice.
+date: 2026-08-03
+cover: /images/blog/when-should-you-self-host-your-backend/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: self-hosting
+featured: false
+unlisted: true
+---
+
+Most teams decide whether to self-host their backend by looking at a pricing page. They see a metered line item, multiply it by an optimistic traffic projection, and conclude that running it themselves will be cheaper. Six months later they are tuning a Redis eviction policy on a Saturday instead of shipping features.
+
+The opposite mistake is just as common. A team with a hard data residency requirement or an on-premise customer contract stays on a managed platform because self-hosting feels like a step backwards, then spends months negotiating an exception they were never going to get.
+
+Self-hosting is not a philosophy. It is an operational trade: you take on infrastructure work in exchange for control. This post covers when that trade pays off, when it does not, and how to keep the decision reversible.
+
+# The short answer: when should you self-host your backend?
+
+**Self-host your backend when a requirement, not a preference, makes managed hosting unworkable.** In practice that comes down to four situations:
+
+- **Data residency or sovereignty.** Regulation or a customer contract requires data to stay in a specific country, region, or inside your own data center.
+- **On-premise or air-gapped deployment.** You ship your product into customer infrastructure that has restricted or no outbound internet access.
+- **Source-level customization.** You need to patch or extend the backend itself, not just configure it.
+- **Predictable, sustained scale.** Your traffic profile is steady and large enough that infrastructure you operate costs meaningfully less than metered hosting, and you already employ the people who can run it.
+
+If none of those apply, a managed cloud backend is the better default. That covers most teams, most of the time.
+
+# What self-hosting a backend actually involves
+
+The install is the easy part. Any modern open-source backend gets you running with a single Docker command. The work that follows is what teams underestimate:
+
+- **Provisioning and sizing.** Picking instance types, disk, and swap, then resizing when you get it wrong.
+- **TLS and DNS.** Certificate issuance, renewal, and the wildcard domains your functions and previews need.
+- **Backups you have actually restored.** An untested backup is a hypothesis, not a recovery plan.
+- **Upgrades and migrations.** Version bumps, schema migrations, and the maintenance windows around them.
+- **Monitoring and alerting.** Container health, disk pressure, queue depth, and someone whose phone rings when a threshold breaks.
+- **Scaling.** Replicating stateless workers, load balancing them, and clustering the stateful pieces like your database and cache.
+- **Third-party plumbing.** SMTP for transactional email, an SMS provider, an object storage backend, and the credentials for all of it.
+
+None of this is hard in isolation. Together it is a recurring commitment measured in engineer-days per month, and it never reaches zero. That cost is the entire subject of the decision.
+
+# Signs you should self-host your backend
+
+## Compliance and data residency are contractual, not aspirational
+
+If a customer contract, a sector regulation, or a public-sector tender specifies where data physically lives, self-hosting is often the only way to satisfy it cleanly. The [GDPR](https://gdpr-info.eu/) does not ban transfers outside the EU, but it does put the burden of proof on you, and enterprise buyers frequently write stricter residency terms into contracts than the law requires. Health data under [HIPAA](https://www.hhs.gov/hipaa/for-professionals/security/index.html) and payment data under [PCI DSS](https://www.pcisecuritystandards.org/) add their own controls on where and how data is processed.
+
+The useful test: can you name the clause and the counterparty? If yes, self-hosting is a requirement. If the answer is "our data feels sensitive," it is a preference, and a managed platform with published compliance attestations will usually serve you better than an instance you maintain yourself.
+
+## You ship into customer infrastructure
+
+Some products are delivered, not accessed. If your buyer installs your application inside their VPC, their factory network, or a facility with no outbound internet, a managed backend is not an option. Self-hosting is the product requirement.
+
+## You need to change the backend, not just configure it
+
+Configuration covers most needs: environment variables, custom SMTP, storage adapters, rate limits. Occasionally it does not. If you need to patch behavior in the backend itself, add an internal integration, or run a fork with a change your team maintains, you need the source and the ability to build and deploy it.
+
+This is a real reason, but it is rarer than teams assume. Before committing to a fork, check whether serverless functions and webhooks already cover the extension point you need.
+
+## Your scale is predictable and your team already runs infrastructure
+
+Metered pricing is efficient when usage is spiky and unpredictable, because you pay for what you use instead of what you provisioned. It becomes less efficient when load is flat and high, because you are paying a premium for elasticity you do not need.
+
+The condition that matters here is the second half of the sentence. If you already have an SRE function, an on-call rotation, and infrastructure-as-code in place, adding one more service is marginal work. If you do not, self-hosting means hiring or reassigning for it.
+
+## You need a local or ephemeral environment
+
+This is the least controversial reason to self-host, and it does not compete with managed hosting at all. Running the backend locally in Docker gives you a fast development loop, deterministic integration tests in CI, and a throwaway environment per branch. Plenty of teams self-host for development and run production on a managed platform.
+
+# Signs a managed cloud backend is the better choice
+
+## No one owns on-call
+
+Self-hosting creates a pager. If there is no rotation, the pager is one person, and that person becomes a single point of failure for your product's availability. Managed hosting converts that risk into a provider SLA.
+
+## Your growth curve is unknown
+
+Sizing infrastructure for traffic you cannot predict means over-provisioning or getting paged. Early-stage products in particular are better served by elasticity than by control, and by keeping the architecture as simple as the requirements allow. We wrote about this failure mode in more detail in [how to avoid backend overengineering in early-stage products](/blog/post/avoid-backend-overengineering).
+
+## Your differentiator is the product, not the platform
+
+Running a backend well is a genuine engineering skill, and it is almost never the thing your users pay you for. Pre-product-market-fit especially, the cost of infrastructure work is not the hours, it is the delayed feedback. Ship on managed hosting, learn what the product is, and revisit hosting once you have a load profile worth optimizing.
+
+# Self-hosted vs managed cloud backend: a side-by-side comparison
+
+| Dimension | Self-hosted backend | Managed cloud backend |
+|---|---|---|
+| Setup time | Hours to days, plus production hardening | Minutes |
+| Data location | Any region, VPC, or on-premise you choose | Provider regions |
+| Upgrades | You plan the window and run the migration | Handled by the provider |
+| Scaling | You size, replicate, and load balance | Automatic |
+| Backups | You configure, schedule, and test restores | Included, verify retention terms |
+| Incident response | Your on-call rotation | Provider SLA |
+| Cost shape | Fixed infrastructure plus engineer time | Metered, scales with usage |
+| Compliance | You own the full audit scope | Provider attestations plus your app |
+| Customization | Full source access | Configuration and extension points |
+| Best fit | Regulated, on-premise, or steady high scale | Most teams, especially small ones |
+
+# The cost of self-hosting, line by line
+
+The comparison people run is "server bill versus subscription." That comparison is wrong because it counts one column. Here is the fuller picture:
+
+| Cost line | Self-hosted | Managed cloud |
+|---|---|---|
+| Compute, storage, bandwidth | Your cloud or hardware bill | Included in plan and usage |
+| Initial setup and hardening | Engineer days | Near zero |
+| Upgrades and migrations | Recurring engineer time | Provider handles it |
+| Backup configuration and restore drills | Yours | Configure retention, verify |
+| Monitoring, logging, alerting stack | You install and maintain | Provider dashboards |
+| On-call coverage | Salary or opportunity cost | Provider SLA |
+| SMTP, SMS, object storage providers | Bring your own accounts | Often bundled |
+| Compliance evidence and audits | Full scope is yours | Shared with provider |
+
+A useful heuristic: self-hosting starts winning on pure cost when your monthly managed bill exceeds the fully loaded monthly cost of the engineer time you spend operating it. For a small team, that crossover point is higher than most people estimate, because a fraction of an engineer's month is expensive. For a team that already runs infrastructure, the marginal cost is small and the crossover arrives much sooner.
+
+Security cost does not disappear either way. It moves. Which layers you own versus which the platform owns is worth mapping explicitly, and we broke that down in [security responsibilities when using backend platforms](/blog/post/backend-platform-security-responsibilities).
+
+# A decision checklist for self-hosting your backend
+
+| If this is true | Then |
+|---|---|
+| A contract or regulation names a data location | Self-host, or use a provider with that exact region |
+| Customers install your product in their own network | Self-host |
+| You must patch the backend source | Self-host |
+| Load is flat, high, and you already run infrastructure | Self-host and measure the saving |
+| You need fast local dev and CI environments | Self-host for development, managed for production |
+| No one owns on-call | Managed |
+| Traffic is unpredictable or early-stage | Managed |
+| The reason is "self-hosting feels cheaper" | Managed, until you have real numbers |
+
+# Keep the self-hosting decision reversible
+
+The strongest position is not picking correctly on day one. It is picking a platform where the decision can change without a rewrite.
+
+That is the practical argument for building on an open-source backend rather than a proprietary one. If the same APIs, SDKs, and data model run in both places, hosting becomes a deployment detail instead of an architectural commitment. If they do not, switching means rewriting your data access layer, your auth flow, and your permission model. We covered that asymmetry in [Firebase vs open source: the trade-offs developers miss](/blog/post/firebase-vs-open-source-tradeoffs).
+
+Ask any candidate platform two questions before you commit. Can I run this on my own infrastructure if a compliance requirement lands next year? And if I start self-hosted, can I move to managed hosting without changing application code?
+
+# Self-hosting your backend with Appwrite
+
+Appwrite is an open-source developer infrastructure platform for building web, mobile, and AI apps. It includes a backend server providing [authentication](/docs/products/auth), [databases](/docs/products/databases), [file storage](/docs/products/storage), [serverless functions](/docs/products/functions), real-time subscriptions, and [messaging](/docs/products/messaging), plus [Sites](/docs/products/sites) for deploying static and server-side rendered frontends. The same platform runs two ways, and the choice is yours rather than the vendor's.
+
+[Self-hosted Appwrite](/docs/advanced/self-hosting) runs on any operating system with a Docker CLI. The minimum footprint is 2 CPU cores, 4GB of RAM, and 2GB of swap, and the [installation](/docs/advanced/self-hosting/installation) is a single command that launches a setup wizard:
+
+```bash
+docker run -it --rm \
+    --publish 20080:20080 \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw \
+    --entrypoint="install" \
+    appwrite/appwrite:1.9.6
+```
+
+Getting to production is the part worth planning for. The [production checklist](/docs/advanced/self-hosting/production) covers [security](/docs/advanced/self-hosting/production/security), [scaling](/docs/advanced/self-hosting/production/scaling), [rate limits](/docs/advanced/self-hosting/production/rate-limits), [backups](/docs/advanced/self-hosting/production/backups), and [updates](/docs/advanced/self-hosting/production/updates) explicitly rather than leaving them as exercises. One-click deployments exist for DigitalOcean, AWS Marketplace, and Akamai Compute, and there are guides for [Coolify](/docs/advanced/self-hosting/platforms/coolify) and [Dokploy](/docs/advanced/self-hosting/platforms/dokploy) if you want a PaaS layer over raw Docker Compose. For a full VPS walkthrough, see [self-hosting Appwrite with Coolify](/blog/post/self-hosting-appwrite-with-coolify).
+
+[Appwrite Cloud](https://cloud.appwrite.io) runs the same platform as a managed service, with the same APIs and SDKs. Because the surface is identical, your application code does not change when you move between them, and [migrations](/docs/advanced/migrations) exist for moving projects in either direction. Appwrite is also open source under the BSD 3-Clause license, so reading the code that handles your authentication and permissions is an option rather than a support request.
+
+To be fair about the trade-off: self-hosting Appwrite still means you own backups, upgrades, TLS renewal, and on-call. Appwrite makes the deployment portable, not the operational work optional.
+
+# Getting started with Appwrite self-hosting
+
+If your answer is self-hosting, start with the [installation guide](/docs/advanced/self-hosting/installation) and work through the [production checklist](/docs/advanced/self-hosting/production) before you point real traffic at it. If your answer is managed hosting, start on [Appwrite Cloud](https://cloud.appwrite.io) and keep self-hosting as the exit you never have to negotiate for.
+
+- [Appwrite self-hosting docs](/docs/advanced/self-hosting)
+- [Installation guide](/docs/advanced/self-hosting/installation)
+- [Production checklist](/docs/advanced/self-hosting/production)
+- [Environment variables reference](/docs/advanced/self-hosting/configuration/environment-variables)
+- [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
+- [Join the Appwrite Discord community](https://appwrite.io/discord)

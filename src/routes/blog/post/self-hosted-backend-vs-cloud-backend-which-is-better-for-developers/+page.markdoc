@@ -1,0 +1,169 @@
+---
+layout: post
+title: "Self-hosted backend vs cloud backend: Which is better for developers?"
+description: Compare self-hosted and cloud backends across cost, control, scalability, and security.
+date: 2026-08-03
+cover: /images/blog/self-hosted-backend-vs-cloud-backend-which-is-better-for-developers/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+unlisted: true
+---
+
+Most teams pick between a self-hosted backend and a cloud backend for the wrong reason: the monthly bill. A $20 VPS looks cheaper than a managed platform, so self-hosting wins on the spreadsheet. Then someone spends a weekend restoring a database after a failed upgrade, and the spreadsheet turns out to have been measuring the wrong thing.
+
+The real comparison is not compute price. It is who owns the operational surface of your backend, and what that ownership costs in engineering hours, incident risk, and shipping speed. This post breaks the decision down across cost, control, scalability, security, and compliance, and gives you a framework you can apply to your own project today.
+
+# Self-hosted backend vs cloud backend: the short answer
+
+**A cloud backend is better for most developers most of the time.** It removes provisioning, patching, scaling, and backup work so your team spends its hours on product. **A self-hosted backend is better when you have a hard requirement that a managed platform cannot satisfy**, most commonly data residency, regulatory control, deep infrastructure customization, or per-request economics that break down at very high volume.
+
+Here is the difference at a glance:
+
+| Dimension | Self-hosted backend | Cloud backend |
+| --- | --- | --- |
+| Infrastructure ownership | Your team | Provider |
+| Time to first deploy | Hours to days | Minutes |
+| Security patching | You schedule and test it | Applied for you |
+| Scaling | You design and tune it | Built in |
+| Backups and disaster recovery | You configure and test restores | Provider-managed |
+| On-call burden | Yours | Provider's |
+| Data residency control | Complete | Limited to provider regions |
+| Cost shape | Fixed infrastructure plus engineering time | Usage-based, no ops headcount |
+| Customization | Full, including source-level changes | Limited to platform features |
+| Predictable failure mode | Ops debt | Bill growth at scale |
+
+If nothing in the self-hosted column is a requirement for you, choose the cloud backend and revisit the decision when something changes.
+
+# What a self-hosted backend actually involves
+
+Self-hosting means your team runs the backend. Not just the initial `docker compose up`, but everything after it. The recurring work includes:
+
+- Provisioning and sizing servers or containers
+- Managing the database, including migrations, connection limits, and tuning
+- Configuring object storage and CDN delivery for files
+- Setting up TLS, DNS, and reverse proxying
+- Monitoring uptime, latency, and disk pressure, plus alerting on all three
+- Applying security patches to the platform and the host OS
+- Running backups and, critically, testing restores
+- Responding to incidents at whatever hour they happen
+
+The first item takes an afternoon. The rest never finishes. That is the honest framing of self-hosting: you are trading a recurring bill for a recurring commitment.
+
+To be fair, this work is meaningfully easier than it was five years ago. [Docker Compose](https://docs.docker.com/compose/) and [Kubernetes](https://kubernetes.io/) have made deployment reproducible, managed Postgres and object storage are available from every major provider, and modern open-source backends ship sensible defaults. A single engineer who knows their way around containers can run a production self-hosted backend. The question is whether that is the highest-value use of their week.
+
+# What a cloud backend actually covers
+
+A cloud backend hands the operational surface to the provider. You get an endpoint, an API key, and SDKs. Provisioning, scaling rules, failover, patch cycles, and backups are the provider's problem, usually backed by an SLA and a dedicated operations team.
+
+What you give up is control at the edges. You get the features the platform supports, in the regions it operates, under the limits it enforces. When you need a specific database index type, a custom authentication flow, or a compute runtime the platform does not offer, you either work around it or wait for the roadmap.
+
+For most teams building a product rather than a platform, that is an easy trade. The features you actually need from a backend ([authentication](/docs/products/auth), [databases](/docs/products/databases), [file storage](/docs/products/storage), [serverless functions](/docs/products/functions), and [hosting](/docs/products/sites)) are exactly the ones managed platforms have standardized.
+
+# Cost: comparing self-hosted backend and cloud backend pricing
+
+This is where the decision most often goes wrong, so it is worth being precise. Self-hosted backend cost has two components, and teams routinely model only the first.
+
+**Infrastructure cost** is the visible one: compute, managed database, object storage, bandwidth, and backup storage. For a small production workload this can genuinely land under $100 a month, and it scales sub-linearly with traffic.
+
+**Engineering cost** is the invisible one:
+
+- Initial setup, hardening, and staging environment
+- Monitoring and observability tooling, plus the time to wire it up
+- Patch and upgrade cycles, including regression testing
+- On-call rotation coverage
+- Incident response and post-incident work
+- Security review and audit preparation
+
+Price a mid-level engineer's time honestly and even a few hours a week on backend operations exceeds most managed platform bills by a wide margin. That is the break-even nobody puts in the spreadsheet.
+
+Where self-hosting wins on cost is at the other end of the curve. Managed platforms typically price on monthly active users, API calls, reads and writes, or storage volume, and those metrics grow with your product. At high enough volume, per-request pricing crosses above the cost of running your own infrastructure plus a dedicated ops engineer. If you have modeled your usage trajectory and can see that crossover coming, self-hosting is a rational cost decision rather than a false economy.
+
+**The rule of thumb:** below the crossover, a cloud backend is cheaper in total cost of ownership. Above it, self-hosting is. Most teams never reach the crossover, and the ones that do usually reach it long after launch.
+
+# Control and customization
+
+Self-hosting is the only option that gives you source-level control. With an open-source backend you can read the code, patch behavior, add a custom OAuth provider, change a rate limit the platform hardcodes, or run it inside an air-gapped network. You can also pin a version and upgrade on your schedule instead of the provider's.
+
+Cloud backends give you configuration, not modification. That is usually sufficient, but "usually" is doing real work in that sentence. Before committing, list the specific things you need to change about your backend's behavior. If that list is empty, you do not need self-hosting for control. If it has three concrete items on it, you probably do.
+
+# Scalability: which model handles growth better
+
+Cloud backends scale by default. Capacity, replication, and failover are handled upstream, and you find out about a traffic spike from a dashboard rather than a pager.
+
+Self-hosted backends scale as well as you engineer them to. That means horizontal scaling of the API layer, read replicas or sharding for the database, a queue and worker topology that keeps up with your function invocations, and a CDN in front of file delivery. Appwrite documents this path in its [scaling guide](/docs/advanced/self-hosting/production/scaling), and the guidance is real work rather than a config flag.
+
+The distinction that matters:
+
+- **Cloud backend:** scaling is a solved problem you inherit
+- **Self-hosted backend:** scaling is a problem you own, and you can solve it in ways the platform never would
+
+Teams that need unusual scaling characteristics (a single tenant with enormous write volume, a workload pinned to specific hardware, a topology that spans on-prem and cloud) get real value from owning it. Teams with a normal growth curve do not.
+
+# Security and compliance
+
+Both models can be secure. They fail differently.
+
+A cloud backend gives you a provider that patches CVEs quickly, runs security teams, and holds certifications you would otherwise pursue yourself. Your remaining responsibility is application-level: permissions, session handling, and input validation. The [OWASP Top 10](https://owasp.org/www-project-top-ten/) is still yours to answer for.
+
+A self-hosted backend gives you complete control and complete responsibility. Every unpatched dependency, misconfigured firewall rule, and exposed admin console is yours. Appwrite's [production security checklist](/docs/advanced/self-hosting/production/security) covers the baseline, and following it is not optional.
+
+Compliance is where the decision often gets made for you. If you are subject to [GDPR](https://gdpr-info.eu/) data residency obligations, [HIPAA](https://www.hhs.gov/hipaa/index.html), or a customer contract that requires data to stay inside a specific jurisdiction or inside your own infrastructure, self-hosting answers that question definitively. Many cloud backends now offer regional deployments that satisfy residency requirements without self-hosting, so check the provider's [region coverage](/docs/products/network/regions) before assuming you need to run it yourself.
+
+Enterprise sales adds a related pressure. B2B buyers in regulated industries increasingly require the option to run your application in their own cloud account. If that is on your roadmap, a self-hostable backend is a product requirement, not an infrastructure preference.
+
+# When to choose a self-hosted backend
+
+Self-host when at least one of these is true:
+
+- Data residency or compliance requires operational control over where data lives
+- You need source-level customization the platform cannot provide
+- Enterprise customers require deployment into their own environment
+- You have modeled usage and per-request pricing crosses above your infrastructure plus ops cost
+- You already have DevOps capacity and mature incident processes
+- Avoiding vendor dependency is a stated, non-negotiable requirement
+
+# When to choose a cloud backend
+
+Choose managed when:
+
+- You are pre-launch or early-stage and shipping speed is the constraint
+- Your team has no dedicated DevOps capacity
+- Your compliance needs are met by the provider's regions and certifications
+- You want predictable operations rather than predictable infrastructure bills
+- Nobody on the team wants to own a pager for the database
+
+If you are between these lists, default to managed. The cost of switching later is lower than the cost of running infrastructure you did not need.
+
+# Why you should not have to choose permanently
+
+The worst version of this decision is one that locks you in. If you pick a proprietary cloud backend and later need to self-host for compliance, you rewrite. If you pick a self-hosted stack and later want to shed operations, you rewrite. Either way the platform choice, not the requirement, is what costs you the quarter.
+
+The way out is to pick a backend that supports both modes with the same APIs. [Appwrite](/) is open source under BSD 3-Clause and runs either way:
+
+- **Managed:** [Appwrite Cloud](https://cloud.appwrite.io) handles infrastructure, scaling, and patching. Free tier is sufficient for most early-stage apps, and [pricing](/pricing) scales with usage.
+- **Self-hosted:** [deploy Appwrite](/docs/advanced/self-hosting) on any Docker-compatible infrastructure, including your own data center or a customer's cloud account.
+
+The APIs, SDKs, and data models are identical across both. Moving from Cloud to self-hosted, or the reverse, does not change your application code. That turns a platform migration into an infrastructure change, which is a far smaller problem. If you are coming from a closed platform, the [Firebase migration guide](/blog/post/migrate-firebase-projects-to-appwrite) covers what that move actually looks like.
+
+# Choose based on requirements, not ideology
+
+Self-hosted backends offer control. Cloud backends offer velocity. Neither is universally better, and the teams that get this decision right are the ones who write down their actual requirements before comparing prices.
+
+If you have a compliance, customization, or scale requirement that demands ownership, self-host and budget for the operational work honestly. If you do not, use a cloud backend and put those hours into your product. And whichever you pick, pick a platform that lets you change your mind without a rewrite.
+
+# Getting started with Appwrite
+
+You can have a working backend on [Appwrite Cloud](https://cloud.appwrite.io) in a few minutes, with [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Sites](/docs/products/sites) available from the same console. When your requirements change, the [self-hosting guide](/docs/advanced/self-hosting) gets the same stack running on your own infrastructure without touching your application code. Start where your team is today, not where you think you will be in two years.
+
+# Resources
+
+- [Appwrite Docs](/docs)
+- [Self-hosting Appwrite](/docs/advanced/self-hosting)
+- [Production checklist for self-hosted Appwrite](/docs/advanced/self-hosting/production)
+- [Sign up for Appwrite Cloud](https://cloud.appwrite.io)
+- [Appwrite pricing](/pricing)
+- [Self-hosting Appwrite with Coolify](/blog/post/self-hosting-appwrite-with-coolify)
+- [BaaS vs custom backend](/blog/post/baas-vs-custom-backend)
+- [Join our Discord community](https://appwrite.io/discord)
