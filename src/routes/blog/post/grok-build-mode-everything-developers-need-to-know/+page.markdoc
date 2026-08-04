@@ -53,7 +53,7 @@ XAI groups Build Mode output into four categories. The interactive dashboards ca
 | Games                  | Arcade racers, puzzles, and interactive 3D worlds                                                             |
 | Interactive dashboards | Live charts and filterable views built from connected data sources, explorable and shareable immediately      |
 
-Dashboards are the category with the most depth. XAI describes them as using connectors so Grok can pull in the data that matters to your business, then turn it into live charts and filterable views. That is closer to a real application than a static site, because the output reflects actual data rather than placeholder content. It is also the case where the boundary of a self-contained build shows up fastest, since business data usually lives in systems that need authentication, access control, and a persistent store behind them.
+Dashboards are the category with the most depth. SpaceXAI describes them as using connectors so Grok can pull in the data that matters to your business, then turn it into live charts and filterable views. That is closer to a real application than a static site, because the output reflects actual data rather than placeholder content. It is also the case where the boundary of a self-contained build shows up fastest, since business data usually lives in systems that need authentication, access control, and a persistent store behind them.
 
 # Who can use Grok Build Mode right now?
 
