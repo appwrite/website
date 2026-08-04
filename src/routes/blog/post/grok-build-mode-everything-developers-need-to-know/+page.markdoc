@@ -24,7 +24,7 @@ This post breaks down what Grok Build Mode is, how it works, who can use it in t
 
 # What is Grok Build Mode?
 
-**Grok Build Mode is a new mode inside Grok that turns a plain-language description into a working website, app, game, or interactive dashboard, previews it inside the conversation, and publishes it to a shareable link.** XAI announced it in a [July 2026 launch post](https://x.ai/news/grok-build-mode) as an Early Beta feature.
+**Grok Build Mode is a new mode inside Grok that turns a plain-language description into a working website, app, game, or interactive dashboard, previews it inside the conversation, and publishes it to a shareable link.** SpaceXAI announced it in a [July 2026 launch post](https://x.ai/news/grok-build-mode) as an Early Beta feature.
 
 Build Mode runs directly inside the Grok experience, so you can start building without setting up a local development environment. Grok writes the code and renders a live preview in the chat. You never touch the code unless you want to. When it is ready, you publish it to a URL you can hand to your team or anyone else.
 
