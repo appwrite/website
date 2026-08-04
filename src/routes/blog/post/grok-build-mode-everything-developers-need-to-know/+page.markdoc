@@ -101,8 +101,6 @@ When a Build Mode prototype earns its keep and needs to become a real product, t
 
 If you're integrating Appwrite with a Grok Build Mode project, follow our guide on [using Appwrite with Grok Build](/docs/tooling/ai/grok-build) to connect authentication, databases, storage, and other backend services to your generated app.
 
-If you're integrating Appwrite with a Grok Build Mode project, follow our guide on [using Appwrite with Grok Build](/docs/tooling/ai/grok-build) to connect authentication, databases, storage, and other backend services to your generated app.
-
 * [Appwrite Auth](/docs/products/auth) handles sign-in, sessions, OAuth providers, and multi-factor auth so your app supports real users, not a single anonymous session.
 * [Appwrite Databases](/docs/products/databases) gives you a persistent, queryable data layer with permissions, so state survives a page refresh and stays scoped per user.
 * [Appwrite Storage](/docs/products/storage) covers file uploads, image transformations, and secure downloads.
