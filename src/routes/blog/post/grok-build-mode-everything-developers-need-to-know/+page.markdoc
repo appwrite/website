@@ -12,7 +12,7 @@ faqs:
   - question: What is Grok Build Mode?
     answer: Grok Build Mode is an AI-powered app builder inside Grok that turns natural language prompts into working websites, apps, games, and interactive dashboards. You can preview the result in chat, refine it through conversation, and publish it to a shareable link.
   - question: Is Grok Build Mode free?
-    answer: No. At launch, Grok Build Mode is available in Early Beta for SuperGrok Heavy subscribers. xAI has not announced a free tier.
+    answer: No. At launch, Grok Build Mode is available in Early Beta for SuperGrok Heavy subscribers. SpaceXAI has not announced a free tier.
   - question: Who can use Grok Build Mode?
     answer: During the Early Beta, Grok Build Mode is available on grok.com, iOS, and Android for SuperGrok Heavy subscribers.
   - question: "What's the difference between Grok Build Mode and Grok Build?"
