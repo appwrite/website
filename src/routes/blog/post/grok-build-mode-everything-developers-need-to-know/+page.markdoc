@@ -38,7 +38,7 @@ The core loop is conversational. You tell Grok an idea, it builds a working prev
 * **Iterate in chat.** Change the layout, add a feature, or restyle anything by asking. No code editing required.
 * **Publish to a link.** Ship to a `grok.me` link or a custom domain you own, then share it.
 
-The example XAI highlights makes the flow concrete. The prompt "Build a peaceful 3D driving game: an endless forest I can drive through freely, with no missions and no timers" produced a playable game published at `driver.grok.me`. Every showcased project came from a single message.
+The example SpaceXAI highlights makes the flow concrete. The prompt "Build a peaceful 3D driving game: an endless forest I can drive through freely, with no missions and no timers" produced a playable game published at `driver.grok.me`. Every showcased project came from a single message.
 
 The important shift here is that the preview is the product. Older AI coding assistants hand you text and leave running it as an exercise for the reader. Build Mode keeps the running app in front of you the whole time, so the feedback loop is "look at it, ask for a change, look again" instead of "copy, paste, run, debug." For non-developers that removes the entire toolchain. For developers it removes the ceremony of scaffolding a throwaway project just to test an idea.
 
