@@ -28,7 +28,7 @@ This post breaks down what Grok Build Mode is, how it works, who can use it in t
 
 Build Mode runs directly inside the Grok experience, so you can start building without setting up a local development environment. Grok writes the code and renders a live preview in the chat. You never touch the code unless you want to. When it is ready, you publish it to a URL you can hand to your team or anyone else.
 
-If you have followed XAI's other releases, note the naming. This is **not** the same product as [Grok Build](/blog/post/grok-build-open-source), the open-source terminal coding agent and CLI. Grok Build Mode lives inside the Grok chat apps and is aimed at building and shipping self-contained apps without leaving the conversation.
+If you have followed SpaceXAI's other releases, note the naming. This is **not** the same product as [Grok Build](/blog/post/grok-build-open-source), the open-source terminal coding agent and CLI. Grok Build Mode lives inside the Grok chat apps and is aimed at building and shipping self-contained apps without leaving the conversation.
 
 # How Grok Build Mode works
 
