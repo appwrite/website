@@ -121,7 +121,7 @@ Device Authorization Grant is the standard OAuth flow for input-constrained clie
 
 **Self-hosted users:** nothing breaks. The existing email and password flow continues to work unchanged.
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-cli-device-authorization)
+[Read the announcement](/blog/post/announcing-cli-device-authorization)
 
 # Appwrite 1.9.6 is now available
 
