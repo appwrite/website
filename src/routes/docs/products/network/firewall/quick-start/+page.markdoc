@@ -1,0 +1,45 @@
+---
+layout: article
+title: Start with Firewall
+description: Create your first firewall rule in the Appwrite Console and verify that it blocks traffic.
+---
+
+You can create your first firewall rule in a few minutes. This example blocks all traffic to a site from a single IP address, which is an easy rule to verify with your own connection.
+
+{% section #create-rule step=1 title="Create a rule" %}
+
+In the Appwrite Console, open your project and navigate to **Firewall** in the sidebar, then open the **Rules** tab and click **Create rule**.
+
+Configure the rule:
+
+1. Give the rule a name, for example `Block test IP`.
+2. Select the resource the rule applies to. Choose one of your sites or functions.
+3. Set the action to **Deny**.
+4. Add a condition that matches your own IP address: set the attribute to **IP address**, the operator to **equal**, and the value to your current public IP.
+5. Leave the priority at its default and keep the rule enabled.
+
+Save the rule. Changes propagate to Appwrite's edge network automatically.
+{% /section %}
+
+{% section #verify step=2 title="Verify the rule" %}
+
+Visit your site's domain from the same connection. The request is blocked with a `403` response before it reaches your deployment.
+
+You can confirm the firewall handled the request by inspecting the response headers:
+
+```http
+X-Appwrite-WAF-Rule: <rule ID>
+X-Appwrite-WAF-Action: deny
+```
+{% /section %}
+
+{% section #clean-up step=3 title="Disable the rule" %}
+
+Back in the **Rules** tab, disable or delete the rule to restore your access. Disabled rules keep their configuration but are skipped during evaluation, which is useful when you want to switch protection on and off without recreating rules.
+{% /section %}
+
+# Next steps {% #next-steps %}
+
+- Learn how [rules](/docs/products/network/firewall/rules) are scoped, ordered, and evaluated.
+- Explore the full set of [conditions](/docs/products/network/firewall/conditions) and [actions](/docs/products/network/firewall/actions).
+- Copy patterns from [common rules](/docs/products/network/firewall/common-rules) like geo-blocking and IP allowlists.

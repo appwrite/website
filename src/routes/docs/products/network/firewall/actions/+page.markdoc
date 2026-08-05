@@ -1,0 +1,62 @@
+---
+layout: article
+title: Actions
+description: Choose whether a firewall rule denies, rate limits, challenges, redirects, or bypasses the requests it matches.
+---
+
+A rule's action determines what happens to a request that matches all of the rule's conditions. Appwrite Firewall supports five actions.
+
+| Action | Behavior | Response |
+| ------ | -------- | -------- |
+| `deny` | Blocks the request. | `403` |
+| `rateLimit` | Blocks the request once a request limit is exceeded. | `429` when over the limit |
+| `challenge` | Requires the client to pass a verification challenge. | `403` until the challenge is passed |
+| `redirect` | Redirects the request to a different URL. | `3xx` |
+| `bypass` | Allows the request and stops rule evaluation. | Request continues normally |
+
+# Deny {% #deny %}
+
+Deny blocks the request outright with a `403` status code. The request never reaches your function or site. Use deny for traffic you never want to serve, like known-abusive IP addresses or countries you cannot serve.
+
+# Rate limit {% #rate-limit %}
+
+Rate limit allows matching requests up to a configured limit within a time window, tracked per client IP address. Once a client exceeds the limit, further matching requests from that client are blocked with a `429` status code until the window resets.
+
+| Configuration | Description | Default |
+| ------------- | ----------- | ------- |
+| Limit | The number of requests allowed per window. | `100` |
+| Interval | The window length in seconds. | `3600` |
+
+Blocked responses include a `Retry-After` header indicating how many seconds the client should wait before retrying. Use rate limiting to protect expensive endpoints and to slow down brute-force attempts against authentication routes.
+
+# Challenge {% #challenge %}
+
+Challenge requires the client to prove it is a legitimate browser before the request is allowed through. Requests that have not passed the challenge receive a `403` status code. Use challenge for traffic that looks suspicious but might be human, where an outright block would be too aggressive.
+
+# Redirect {% #redirect %}
+
+Redirect sends the client to a different URL instead of serving the request.
+
+| Configuration | Description | Default |
+| ------------- | ----------- | ------- |
+| Location | The URL to redirect to. | Required |
+| Status code | The redirect status code, in the `3xx` range. | `302` |
+
+Use redirect to send blocked visitors to an explanation page or to route traffic from specific regions to a different destination.
+
+# Bypass {% #bypass %}
+
+Bypass explicitly allows the request and stops evaluation, so no later rule can block it. Bypass is the building block for allowlists: place a bypass rule for trusted traffic at a lower priority number than a broader deny rule, and the trusted traffic is exempted from the block. See [Rules](/docs/products/network/firewall/rules#priority) for how priority ordering makes this work.
+
+# Response headers {% #response-headers %}
+
+When a firewall rule acts on a request, the response identifies the rule and action:
+
+| Header | Description |
+| ------ | ----------- |
+| `X-Appwrite-WAF-Rule` | The ID of the matched rule. |
+| `X-Appwrite-WAF-Action` | The action that was applied. |
+| `X-Appwrite-WAF-Challenge-Type` | The type of challenge issued. Only present on challenge responses. |
+| `Retry-After` | Seconds until the rate limit window resets. Only present on rate-limited responses. |
+
+These headers are useful when testing new rules or debugging why a request was blocked.

@@ -1,0 +1,44 @@
+---
+layout: article
+title: Firewall
+description: Control the traffic that reaches your Appwrite project with firewall rules that block, challenge, rate limit, or redirect requests at the edge.
+---
+
+Appwrite Firewall lets you control which requests reach your project. You define rules that match requests by attributes like IP address, country, path, or user agent, and choose what happens when they match: block the request, rate limit it, challenge it, redirect it, or explicitly allow it through.
+
+Rules are enforced on Appwrite's edge network, before a request reaches your [function](/docs/products/functions) or [site](/docs/products/sites). A blocked request never executes your code, never triggers a cold start, and never consumes your project's compute resources.
+
+# How it works {% #how-it-works %}
+
+Every request to your project's functions and sites passes through an Appwrite edge location. When your project has firewall rules, the edge evaluates them before running your deployment:
+
+1. Rules are evaluated in priority order, from the lowest priority number to the highest.
+2. A rule matches when all of its conditions match the incoming request.
+3. The first matching rule wins. Its action is applied and evaluation stops.
+4. If no rule matches, the request continues to your function or site as usual.
+
+Firewall is designed to fail open. If a rule is misconfigured or cannot be evaluated, the rule is skipped and traffic continues to flow, so a broken rule degrades protection rather than availability.
+
+# Key concepts {% #key-concepts %}
+
+| Concept | Description |
+| ------- | ----------- |
+| [Rules](/docs/products/network/firewall/rules) | The unit of configuration. A rule combines conditions, an action, a priority, and a scope. |
+| [Conditions](/docs/products/network/firewall/conditions) | What a rule matches on: IP address, country, path, HTTP method, host, or user agent. |
+| [Actions](/docs/products/network/firewall/actions) | What happens on a match: deny, rate limit, challenge, redirect, or bypass. |
+| [Logs](/docs/products/network/firewall/logs) | A record of the requests your rules acted on. |
+| [Analytics](/docs/products/network/firewall/analytics) | Aggregated metrics on blocked, challenged, and redirected traffic. |
+
+# Common use cases {% #common-use-cases %}
+
+- Block traffic from specific IP addresses or countries.
+- Rate limit expensive or sensitive endpoints, like authentication routes.
+- Restrict an admin path to a known set of IP addresses.
+- Challenge suspicious traffic, like requests with automation user agents.
+- Redirect blocked visitors to an explanation page.
+
+See [Common rules](/docs/products/network/firewall/common-rules) for ready-to-use examples of each.
+
+# Getting started {% #getting-started %}
+
+Follow the [quick start](/docs/products/network/firewall/quick-start) to create your first rule from the Appwrite Console.
