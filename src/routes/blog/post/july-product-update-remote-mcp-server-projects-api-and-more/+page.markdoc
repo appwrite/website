@@ -81,7 +81,7 @@ Settings that previously lived only in the Console are now programmable:
 * **Session policies.** Control session length and limits per project
 * **Labels.** Organize and tag projects at scale
 
-## Why does a Projects API matter?
+## Why does Projects API matter?
 
 Because it turns project configuration into code.
 
