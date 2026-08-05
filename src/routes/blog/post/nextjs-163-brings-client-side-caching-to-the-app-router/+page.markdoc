@@ -161,7 +161,6 @@ test('product title is available immediately', async ({ page }) => {
 });
 ```
 
-This is the piece most teams will skip and later regret. Navigation performance regresses silently, and nothing else in the release catches it in CI.
 
 # New Next.js 16.3 APIs worth adopting
 
