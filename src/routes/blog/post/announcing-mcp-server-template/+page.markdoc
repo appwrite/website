@@ -2,7 +2,7 @@
 layout: post
 title: "Build and deploy an MCP server with Appwrite Functions"
 description: Deploy your own MCP server on Appwrite Functions with the new Python template. Expose custom tools to Claude Code, Cursor, and other AI clients over HTTPS.
-date: 2026-08-05
+date: 2026-08-06
 cover: /images/blog/announcing-mcp-server-template/cover.avif
 timeToRead: 6
 author: chirag-aggarwal
