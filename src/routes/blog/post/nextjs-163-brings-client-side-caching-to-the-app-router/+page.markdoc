@@ -209,7 +209,7 @@ Anyone maintaining a file-based content directory has been writing `fs.readdir` 
 
 Two features are behind experimental flags and worth watching rather than shipping:
 
-* **Rust-based React Compiler** (`experimental.turbopackRustReactCompiler`) runs the compiler inside Turbopack instead of Babel. On large apps like v0, time from `next dev` to a ready page dropped 34% on cold builds and 46% on warm ones. The gains assume you have removed Babel entirely.
+* **Rust-based React Compiler** (`experimental.turbopackRustReactCompiler`) runs the compiler inside Turbopack instead of Babel. On large apps like v0, time from `next dev` to a ready page dropped 34% on cold builds and 46% on warm ones. The Rust React Compiler currently targets projects that are not using Babel.
 * **Network resilience** (`experimental.useOffline`) keeps navigations, fetches, and Server Actions pending instead of throwing when the connection drops, then retries on reconnect. A `useOffline` hook lets you surface that state to users.
 
 Feedback goes in the [Next.js 16.3 discussion](https://github.com/vercel/next.js/discussions/95130).
