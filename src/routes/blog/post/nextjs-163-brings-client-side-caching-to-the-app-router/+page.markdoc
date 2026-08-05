@@ -226,7 +226,7 @@ Feedback goes in the [Next.js 16.3 discussion](https://github.com/vercel/next.js
 | Large `generateStaticParams` catalog   | The new ISR behavior is the single biggest reason to adopt Cache Components.     |
 | Heavy Babel usage                      | Skip the Rust React Compiler until you can drop Babel.                           |
 
-Upgrading itself is one command:
+For most projects, upgrading starts with:
 
 ```bash
 npm install next@latest
