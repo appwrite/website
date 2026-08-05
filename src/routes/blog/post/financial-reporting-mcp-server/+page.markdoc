@@ -288,6 +288,6 @@ The design principle still holds: expose the smallest reporting capability an ag
 Build agentic apps on [Appwrite Cloud](https://cloud.appwrite.io) with data, permissions, and Functions. Explore the [Appwrite AI docs](/docs/tooling/ai) for implementation guides. Configure the backend with the Appwrite MCP server, then deploy the template with your agent's actions. Adapt the pattern to support, commerce, operations, and other workflows.
 
 - [Appwrite MCP server documentation](/docs/tooling/ai/mcp-servers/api)
-- [Appwrite Function templates](/docs/products/functions/templates)
+- [MCP server template announcement](/blog/post/announcing-mcp-server-template)
 - [Appwrite database queries](/docs/products/databases/queries)
 - [Financial reporting MCP demo](https://github.com/appwrite-community/finance-mcp-demo)
