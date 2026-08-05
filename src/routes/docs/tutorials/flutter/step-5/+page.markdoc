@@ -1,0 +1,107 @@
+---
+layout: tutorial
+title: Add routing 
+description: Add routing to your Flutter application using Appwrite.
+step: 5
+---
+In this step, you'll add some basic routing to your app. 
+Based on the user's login status, you'll redirect them to the login page or the home page.
+
+## Home page  {% #home-page %}
+
+Create a new file `lib/screens/home.dart` and add the following stub code to it.
+We'll update this page later to display the ideas posted by other users and allow the user to post their ideas.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:provider/provider.dart';
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final userProvider = context.watch<UserProvider>();
+    final email = userProvider.current?.email ?? "Please login";
+
+    return Scaffold(
+        body: Center(
+            child: Text("Welcome, $email")
+        )
+    );
+  }
+}
+```
+
+## Routing  {% #routing %}
+To handle routing, we can use provider to check the user's state.
+This router consumes the `UserProvider` to determine if the user is logged in or not to redirect the user automatically.
+
+Create a file `lib/routes.dart` and add the following code to it.  
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/screens/home.dart';
+import 'package:ideas_tracker/screens/login.dart';
+import 'package:provider/provider.dart';
+import 'providers/user_provider.dart';
+
+class Routes extends StatelessWidget {
+  const Routes({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final userProvider = context.watch<UserProvider>();
+
+    if (userProvider.current != null) {
+      return const Home();
+    } else {
+      return const Login();
+    }
+  }
+}
+
+```
+
+We'll display this router in the `main.dart` file by replacing `Login()` by `Routes()`.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:ideas_tracker/providers/user_provider.dart';
+import 'package:ideas_tracker/routes.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: const MyApp(),
+    )
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Ideas Tracker",
+      debugShowCheckedModeBanner: false,
+      home: Routes()
+    );
+  }
+}
+```
+
+## Test the routing  {% #test-routing %}
+Now, if you run the app, you should see the login page.
+If you create a new account, you should be logged in and redirected to the home page.
+
+Run the app using the following command.
+```sh
+flutter run
+```
