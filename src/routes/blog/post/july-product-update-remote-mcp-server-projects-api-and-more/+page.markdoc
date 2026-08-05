@@ -96,7 +96,7 @@ With the Projects API you can:
 
 It also pairs naturally with the remote MCP server. Configuration that is expressible through an API is configuration an AI agent can reason about and apply for you.
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-projects-api)
+[Read the announcement](/blog/post/announcing-projects-api)
 
 # OAuth Device Authorization for the Appwrite CLI
 
