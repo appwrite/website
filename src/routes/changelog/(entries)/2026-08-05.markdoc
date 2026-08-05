@@ -12,11 +12,3 @@ Existing Sites and Functions keep running normally and are not rewritten in plac
 {% arrow_link href="/blog/post/appwrite-sites-squashfs-migration" %}
 Read the SquashFS migration analysis
 {% /arrow_link %}
-
-{% arrow_link href="/docs/products/sites/deployments#redeploy" %}
-Redeploy an Appwrite Site
-{% /arrow_link %}
-
-{% arrow_link href="/docs/products/functions/deployments#redeploy" %}
-Redeploy an Appwrite Function
-{% /arrow_link %}
