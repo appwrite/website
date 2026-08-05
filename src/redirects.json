@@ -655,6 +655,10 @@
         "link": "/policy/privacy",
         "redirect": "/privacy"
     },
+    {
+        "link": "/policy/baa",
+        "redirect": "/baa"
+    },
 
     {
         "link": "/case-studies",
