@@ -5,7 +5,7 @@ description: Appwrite Sites now packages new deployments with SquashFS to reduce
 date: 2026-08-05
 cover: /images/blog/appwrite-sites-squashfs-migration/cover.png
 timeToRead: 8
-author: aditya-oberai
+author: luke-silver
 category: announcement
 featured: false
 callToAction: true
