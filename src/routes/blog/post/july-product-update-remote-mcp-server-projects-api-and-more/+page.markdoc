@@ -137,7 +137,7 @@ Appwrite 1.9.6 focuses on improving reliability for self-hosted deployments foll
 
 If you are self-hosting and still on 1.9.5, this is a recommended upgrade. Review the [self-hosting docs](https://appwrite.io/docs/advanced/self-hosting) before you start, and as always, back up before upgrading.
 
-[Read the announcement](https://appwrite.io/blog/post/appwrite-1-9-6-self-hosted-release)
+[Read the announcement](/blog/post/appwrite-1-9-6-self-hosted-release)
 
 # Engineering resources
 
