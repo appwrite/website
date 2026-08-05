@@ -5,7 +5,7 @@ description: Deploy your own MCP server on Appwrite Functions with the new Pytho
 date: 2026-08-05
 cover: /images/blog/announcing-mcp-server-template/cover.avif
 timeToRead: 6
-author: aditya-oberai
+author: chirag-aggarwal
 category: announcement, ai
 featured: false
 faqs:
@@ -36,6 +36,8 @@ Today, we are announcing the **MCP server template** for Appwrite Functions. It 
 - **Streamable HTTP transport**: stateless JSON-RPC over your function's domain, supporting both the legacy MCP handshake and the stateless protocol from the [MCP 2026-07-28 specification](/blog/post/mcp-goes-stateless-in-the-2026-07-28-specification).
 - **Optional bearer authentication**: one environment variable gates the endpoint behind an `Authorization` header.
 - **Nothing to operate**: your function's domain is the server URL. TLS, deployments, scaling, and logs all come from [Appwrite Functions](/docs/products/functions).
+
+The template pins the MCP Python SDK to `mcp==2.0.0`. Version 2.0.0 [became stable on July 28, 2026](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.0.0), so it is still a new major release. The exact pin is deliberate because the template's serverless adapter uses lower-level SDK entry points that can change between releases. Review compatibility before upgrading it.
 
 # Deploy an MCP server from the Console
 
@@ -79,7 +81,7 @@ In Cursor or Claude Desktop, add the URL to your MCP configuration:
 }
 ```
 
-That is the whole setup. Ask your agent to call the `echo` tool, and you will see the request travel from your editor to a serverless function and back.
+That is the whole setup. Ask your agent to list the server's available tools, then call one to see the request travel from your editor to a serverless function and back.
 
 # Write your own tools
 
