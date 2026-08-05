@@ -25,7 +25,7 @@
             label: 'Tooling',
             items: [
                 {
-                    label: 'MCP servers',
+                    label: 'MCP server',
                     href: '/docs/tooling/ai/mcp-servers'
                 },
                 {
