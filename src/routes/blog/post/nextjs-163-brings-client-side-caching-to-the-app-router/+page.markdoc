@@ -247,7 +247,7 @@ To be fair about the tradeoff: Vercel ships Next.js features on day one because 
 
 Upgrade your `next` dependency, run your test suite, and deploy. If you want to try Instant Navigations without touching a production app, spin up a fresh Next.js project, enable `cacheComponents` and `partialPrefetching`, and deploy it to Appwrite Sites to see how the loading shells behave over a real network instead of localhost. The [Next.js quick start](/docs/products/sites/quick-start/nextjs) gets you from `create-next-app` to a live URL in a few minutes, and Appwrite's free tier covers side projects.
 
-# More resources
+# Resources
 
 * [Deploy a Next.js app to Appwrite Sites](/docs/products/sites/quick-start/nextjs)
 * [Appwrite Sites documentation](/docs/products/sites)
