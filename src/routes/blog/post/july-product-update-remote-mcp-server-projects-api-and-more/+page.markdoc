@@ -113,7 +113,7 @@ Instead of entering credentials in the terminal, the CLI now uses the [OAuth 2.0
 3. Review the permissions being requested and approve access.
 4. The CLI signs in automatically.
 
-No password typed into a shell, no credentials lingering in your terminal history.
+You authenticate in your browser, so you never have to type your password into the terminal.
 
 ## Why device authorization instead of a password prompt?
 
