@@ -102,7 +102,7 @@ It also pairs naturally with the remote MCP server. Configuration that is expres
 
 ![OAuth Device Authorization for the Appwrite CLI.png](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/OAuth_Device_Authorization_for_the_Appwrite_CLI.avif)
 
-Logging into the [Appwrite CLI](https://appwrite.io/docs/tooling/command-line-interface) is now much simpler.
+Logging into the [Appwrite CLI](/docs/tooling/command-line-interface) is now much simpler.
 
 ## How does the new CLI login flow work?
 
