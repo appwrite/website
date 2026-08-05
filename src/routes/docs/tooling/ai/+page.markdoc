@@ -146,6 +146,9 @@ Open-source benchmark evaluating how well AI models understand Appwrite's APIs a
 Guides for building AI-powered features on top of Appwrite, from running models in Functions to building full agent pipelines.
 
 {% cards %}
+{% cards_item href="/docs/tooling/ai/build-mcp-server" title="Build an MCP server" %}
+Expose custom tools to AI clients over HTTPS with the MCP server Function template.
+{% /cards_item %}
 {% cards_item href="/docs/tooling/ai/ai-in-functions" title="AI in Functions" %}
 Run AI models inside Appwrite Functions with providers like OpenAI and Anthropic.
 {% /cards_item %}

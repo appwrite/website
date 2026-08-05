@@ -150,7 +150,7 @@ The MCP server template is available now on [Appwrite Cloud](https://cloud.appwr
 
 To see the template applied to a realistic use case, follow our [financial analysis MCP server tutorial](/blog/post/financial-reporting-mcp-server). It shows how to turn account and transaction data into controlled tools for portfolio summaries, statements, spending analysis, and cash-flow reports.
 
-- [Function templates documentation](/docs/products/functions/templates)
+- [Build an MCP server guide](/docs/tooling/ai/build-mcp-server)
 - [Appwrite Functions development guide](/docs/products/functions/develop)
 - [MCP server template source on GitHub](https://github.com/appwrite/templates/tree/main/python/mcp-server)
 - [What's new in the MCP 2026-07-28 specification](/blog/post/mcp-goes-stateless-in-the-2026-07-28-specification)

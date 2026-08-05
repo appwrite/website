@@ -27,6 +27,18 @@ Appwrite offers a single MCP server that covers both the Appwrite API and docume
 
 {% /cards %}
 
+# Build your own MCP server
+
+Use the MCP server Function template to expose your application's own tools to AI clients over HTTPS. Appwrite provides the stateless transport, deployment, Function domain, and optional bearer authentication.
+
+{% cards %}
+
+{% cards_item href="/docs/tooling/ai/build-mcp-server" title="Build an MCP server" %}
+Create, secure, deploy, and connect a custom MCP server on Appwrite Functions.
+{% /cards_item %}
+
+{% /cards %}
+
 ## Why use the Appwrite MCP server?
 
 Some **popular use cases** for the Appwrite MCP server include:
