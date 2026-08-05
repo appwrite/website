@@ -19,7 +19,7 @@ You can signup and login a user with an account create through
 [OAuth 2](/docs/products/auth/oauth2)
 authentication.
 
-To control which email addresses can sign up, enable [email policies](/docs/products/auth/email-policies) to block free, aliased, or disposable email providers.
+On Appwrite Cloud, you can use [email policies](/docs/products/auth/email-policies) to block sign-ups from free, aliased, or disposable email providers.
 
 # Permissions {% #permissions %}
 
@@ -36,5 +36,4 @@ individual users using the `Role.user(<USER_ID>, <STATUS>)` role.
 {% arrow_link href="/docs/advanced/security/permissions" %}
 Learn more about permissions
 {% /arrow_link %}
-
 

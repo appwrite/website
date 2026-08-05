@@ -2,4 +2,4 @@ The Project service allows you to manage all the core settings and resources of 
 
 Register new client platforms such as [Web](/docs/references/1.9.x/server-nodejs/project#createWebPlatform), [Apple](/docs/references/1.9.x/server-nodejs/project#createApplePlatform), and [Android](/docs/references/1.9.x/server-nodejs/project#createAndroidPlatform) so your applications can securely communicate with the Appwrite API. Create, update, and revoke [API keys](/docs/references/1.9.x/server-nodejs/project#createKey) to control server-to-server access with the exact scopes your integrations need.
 
-This service also lets you manage [project variables](/docs/references/1.9.x/server-nodejs/project#createVariable) that are available to all your functions and sites, and update email-handling preferences such as disposable, free, and canonical email policies for your project.
+This service also lets you manage [project variables](/docs/references/1.9.x/server-nodejs/project#createVariable) that are available to all your functions and sites. On Appwrite Cloud, it can also update email-handling preferences such as disposable, free, and canonical email policies for your project.
