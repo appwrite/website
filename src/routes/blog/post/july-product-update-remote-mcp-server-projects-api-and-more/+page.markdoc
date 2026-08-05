@@ -27,17 +27,17 @@ There's a common thread running through all four: removing the manual steps betw
 In July 2026, Appwrite shipped four releases:
 
 * **Hosted remote Appwrite MCP Server with OAuth.** Connect any MCP-compatible AI tool with a single URL, no local install required.
-* **Projects API.** Configure and manage nearly every project setting programmatically through the SDKs and [CLI](https://appwrite.io/docs/tooling/command-line-interface).
+* **Projects API.** Configure and manage nearly every project setting programmatically through the SDKs and [CLI](/docs/tooling/command-line-interface).
 * **OAuth Device Authorization for the Appwrite CLI.** Log in through your browser instead of typing credentials into the terminal.
-* **Appwrite 1.9.6.** Reliability and migration fixes for [self-hosted deployments](https://appwrite.io/docs/advanced/self-hosting).
+* **Appwrite 1.9.6.** Reliability and migration fixes for [self-hosted deployments](/docs/advanced/self-hosting).
 
 Let's dive in.
 
 # The Appwrite MCP server is now remote
 
-![The Appwrite MCP server is now remote.png](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/The_Appwrite_MCP_server_is_now_remote.avif)
+![The Appwrite MCP server is now remote](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/The_Appwrite_MCP_server_is_now_remote.avif)
 
-The [Appwrite MCP server](/docs/tooling/mcp) is now available as a hosted remote server.
+The [Appwrite MCP server](/docs/tooling/ai/mcp-servers) is now available as a hosted remote server.
 
 ## What is the remote Appwrite MCP server?
 
@@ -65,7 +65,7 @@ If you were already using the local MCP server, the remote server is the recomme
 
 # Introducing the Projects API
 
-![Introducing the projects api.png](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/Introducing_the_projects_api.avif)
+![Introducing the Projects API](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/Introducing_the_projects_api.avif)
 
 The new Projects API lets you configure and manage nearly every Appwrite project setting through the SDKs and CLI.
 
@@ -100,7 +100,7 @@ It also pairs naturally with the remote MCP server. Configuration that is expres
 
 # OAuth Device Authorization for the Appwrite CLI
 
-![OAuth Device Authorization for the Appwrite CLI.png](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/OAuth_Device_Authorization_for_the_Appwrite_CLI.avif)
+![OAuth Device Authorization for the Appwrite CLI](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/OAuth_Device_Authorization_for_the_Appwrite_CLI.avif)
 
 Logging into the [Appwrite CLI](/docs/tooling/command-line-interface) is now much simpler.
 
@@ -125,7 +125,7 @@ Device Authorization Grant is the standard OAuth flow for input-constrained clie
 
 # Appwrite 1.9.6 is now available
 
-![Appwrite 1.9.6 is now available.png](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/Appwrite_1.9.6_is_now_available.avif)
+![Appwrite 1.9.6 is now available](/images/blog/july-product-update-remote-mcp-server-projects-api-and-more/Appwrite_1.9.6_is_now_available.avif)
 
 Appwrite 1.9.6 focuses on improving reliability for self-hosted deployments following the 1.9.5 release.
 
@@ -143,7 +143,7 @@ If you are self-hosting and still on 1.9.5, this is a recommended upgrade. Revie
 
 * [Claude is now free for K-12 educators in the US](/blog/post/anthropic-launches-free-claude-access-for-us-k-12-teachers)
 * [Grok 4.5 Coding is here. Here's what developers need to know.](/blog/post/grok-45-coding-model)
-* [Claude Sonnet 5 is Anthropic's most agentic Sonnet yet](https://appwrite.io/blog/post/claude-sonnet-5-is-anthropics-most-agentic-sonnet-yet)
+* [Claude Sonnet 5 is Anthropic's most agentic Sonnet yet](/blog/post/claude-sonnet-5-is-anthropics-most-agentic-sonnet-yet)
 * [What's new in the MCP 2026-07-28 specification](/blog/post/mcp-goes-stateless-in-the-2026-07-28-specification)
 * [Claude Opus 5 nears Fable 5 intelligence at half the price](/blog/post/claude-opus-5-nears-fable-5-intelligence-at-half-the-price)
 
@@ -153,4 +153,4 @@ July laid the groundwork for what's next, but we're only getting started.
 
 We've been building some of our biggest updates yet, and while we're not quite ready to share them, we think you'll want to keep an eye on what's coming. Stay tuned for major announcements around the Appwrite platform in the weeks ahead.
 
-In the meantime, [follow us on X](https://x.com/appwrite), check the [Changelog](https://appwrite.io/changelog) regularly, and browse the [docs](https://appwrite.io/docs) to stay up to date with the latest releases.
+In the meantime, [follow us on X](https://x.com/appwrite), check the [Changelog](/changelog) regularly, and browse the [docs](/docs) to stay up to date with the latest releases.
