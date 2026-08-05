@@ -236,7 +236,7 @@ Existing projects moving to Cache Components can follow the official migration g
 
 # Deploying Next.js 16.3 without rewriting your app for serverless
 
-A Next.js minor release is only cheap to adopt if your host keeps up with it. This is where a lot of teams get stuck: features like streaming SSR, Server Actions, and now client-side caching depend on the full Next.js server, and platforms that adapt Next.js to serverless primitives tend to lag behind or require adapters.
+A Next.js minor release is only cheap to adopt if your host keeps up with it. This is where some teams run into friction: features like streaming SSR, Server Actions, and now client-side caching depend on the full Next.js server, and some hosting platforms rely on adapters to support newer Next.js capabilities.
 
 [Appwrite Sites](/docs/products/sites) runs Next.js in a container-based Node.js runtime rather than translating it into serverless functions, so [SSR](/docs/products/sites/rendering/ssr), API routes, middleware, and Server Actions work without the OpenNext adapter or platform-specific configuration. Upgrading to 16.3 is a dependency bump and a [Git push](/docs/products/sites/deploy-from-git).
 
