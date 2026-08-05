@@ -57,7 +57,7 @@ Under the hood, the server keeps the same context-efficient architecture as the 
 
 ## What can you build with it?
 
-Once connected, your AI tool can read Appwrite documentation directly instead of guessing at SDK signatures from memory, and it can work against your actual project structure rather than a generic template. In practice that means fewer hallucinated method names, fewer round trips to the docs tab, and less time spent correcting code that was written against an older version of the API.
+Once connected, your AI tool can read Appwrite documentation directly instead of guessing at SDK signatures from memory, and it can work against your actual project. In practice that means fewer hallucinated method names, fewer round trips to the docs tab, and less time spent correcting code that was written against an older version of the API.
 
 If you were already using the local MCP server, the remote server is the recommended path forward. If you skipped MCP entirely because the setup felt like a side quest, this is the release to revisit.
 
