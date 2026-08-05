@@ -61,7 +61,7 @@ Once connected, your AI tool can read Appwrite documentation directly instead of
 
 If you were already using the local MCP server, the remote server is the recommended path forward. If you skipped MCP entirely because the setup felt like a side quest, this is the release to revisit.
 
-[Read the announcement](https://appwrite.io/blog/post/announcing-remote-appwrite-mcp-server)
+[Read the announcement](/blog/post/announcing-remote-appwrite-mcp-server)
 
 # Introducing the Projects API
 
