@@ -1,0 +1,185 @@
+---
+layout: post
+title: "What is a database index? Types, examples, and when to use them"
+description: "A practical guide to database indexes: what they are, how they make queries fast, the index types you will see, when to add one, and when adding more hurts performance."
+date: 2026-06-26
+cover: /images/blog/what-is-a-database-index/cover.avif
+timeToRead: 9
+author: atharva
+category: product
+featured: false
+unlisted: true
+callToAction: true
+faqs:
+  - question: "What is a database index in simple words?"
+    answer: "A database index is a sorted, lookup-optimized copy of one or more columns from a table, with pointers back to the rows. It lets the database find matching rows quickly instead of reading every row to check. The analogy is the index at the back of a book: you find the topic in a sorted list and jump to the right page, instead of reading the whole book."
+  - question: "Why do databases use indexes?"
+    answer: "Without an index, the database has to perform a full table scan, checking every row to see whether it matches the query. Even on modest tables that becomes slow as data grows. An index reduces the work from \"check every row\" to \"jump to the matching range\", which is the difference between a query that takes seconds and one that takes milliseconds."
+  - question: "What are the main types of database indexes?"
+    answer: "The common ones are single-column indexes for filtering and sorting on one column, composite indexes covering several columns together, unique indexes that enforce no duplicates, full-text indexes for searching text content, spatial indexes for geographic data, hash indexes for exact-match key lookups, and vector indexes for similarity search in AI applications."
+  - question: "Does adding more indexes always make a database faster?"
+    answer: "No. Indexes speed up reads but slow down writes. Every insert, update, or delete has to update every index on the table. A table with too many redundant indexes pays a heavy write cost without a matching read benefit. Add indexes for queries you do run, and drop ones that no query uses."
+  - question: "What is the difference between a primary key and an index?"
+    answer: "A primary key uniquely identifies a row in a table and is almost always backed by an index automatically. An index is the underlying data structure that makes lookups fast. So a primary key is one specific use of an index, but you can also create plenty of additional indexes on non-key columns to speed up other queries."
+  - question: "When should I create a composite index?"
+    answer: "Create a composite index when your queries consistently filter or sort on the same combination of columns. For example, if you regularly query posts by status and authorId together, a composite index on (status, authorId) is more efficient than two separate single-column indexes. The order of columns matters: a (status, authorId) index helps filtering on status alone or status plus authorId, but not authorId alone."
+---
+
+Every database starts fast. With a few hundred rows, every query feels instant, no matter how you write it. Then your table reaches a hundred thousand rows, and the same query that used to return in 20 milliseconds now takes 4 seconds. Nothing in your code changed. What you ran into is the cost of a full table scan, and the fix is almost always the same: an index.
+
+This post is a practical guide to what a database index is, how it makes queries fast, the types you will see across modern databases, when to add one, and the rule that catches most developers off guard about when to leave them off.
+
+# What is a database index?
+
+A database index is a separate data structure that the database keeps alongside a table, holding one or more columns in a sorted, lookup-optimized form along with pointers back to the matching rows. When a query filters or sorts on those columns, the database can consult the index instead of reading every row in the table.
+
+The classic analogy is the index at the back of a book. The book itself is in chapter order. The index at the back is in alphabetical order, with page numbers pointing into the book. If you want every page that mentions "B-tree", you do not read the book cover to cover. You flip to the index, find the entry, and jump to those pages. A database index is the same idea, applied to rows.
+
+An index is not a copy of the table. It is a copy of one or more columns, sorted and structured so the database can search them in logarithmic time instead of linear time. The original table is still the source of truth.
+
+# How indexes work under the hood
+
+Most relational and document databases use a B-tree (or its close cousin, the B+ tree) as the default index structure. A B-tree is a balanced tree where each node holds a sorted range of values and pointers to child nodes. To find a value, the database walks down the tree, comparing at each level, and reaches the matching leaf in a few hops even for a table with millions of rows.
+
+You do not need to know the internals to use indexes. What is worth remembering is this: the cost of a lookup in a B-tree index grows with the logarithm of the table size, not its raw size. Doubling the rows in your table only adds one extra hop. That is what makes indexes scale.
+
+Other index structures exist for specific cases:
+
+- **Hash indexes** map a value to its row through a hash function. They are extremely fast for exact-match lookups but useless for range queries or sorting.
+- **Inverted indexes** are used by full-text search engines. They map each word back to the list of documents that contain it.
+- **Spatial indexes** use structures like R-trees to support "points within this polygon" style queries on geographic data.
+- **Vector indexes** use algorithms like HNSW or IVF to find nearest neighbors in high-dimensional embedding space, which is what powers AI semantic search.
+
+For everyday application work, the B-tree is doing most of the heavy lifting, and the other structures appear when your query pattern calls for them.
+
+# Types of database indexes you will see
+
+A quick tour of the index types you are most likely to create:
+
+## Single-column index
+
+The simplest index. One column, sorted, with pointers to rows. Use it when you frequently filter or sort by that single column. A `status` column on a posts table is a textbook case.
+
+## Composite (multi-column) index
+
+A composite index covers more than one column in a specific order. It is the right choice when queries consistently filter on those columns together. A composite index on `(status, authorId)` is efficient for filtering by `status` alone, or by `status` and `authorId` together. It is not efficient for filtering by `authorId` alone, because the index is sorted by `status` first.
+
+The order of columns in a composite index follows a simple rule: put the most selective column first, or follow the prefix of your most common query.
+
+## Unique index
+
+A unique index does everything a regular index does, plus it enforces that no two rows can share the same value. Use it for columns like email addresses, usernames, or external IDs that must be unique by definition. Unique indexes are enforced at the database level, so concurrent inserts of the same value cannot both succeed.
+
+## Full-text index
+
+A full-text index is required for word-level text search across long string columns like `title`, `body`, or `description`. Without one, a search query has to scan every row and run substring matching, which gets slow fast. Full-text indexes use an inverted-index structure: each word maps back to the rows that contain it.
+
+## Spatial index
+
+A spatial index is for geographic data: points, lines, polygons. It is what makes "find all coffee shops within 2 km of this point" answer in milliseconds. If you store location data and ever query it geographically, a spatial index is non-optional.
+
+## Hash index
+
+A hash index is built around a hash function and supports only exact-match lookups. PostgreSQL exposes hash indexes as a separate index type. Some key-value stores use hashing as their primary access method. You rarely create one explicitly in application code; the database picks it when appropriate.
+
+## Vector index
+
+Vector indexes are the newest entry on this list. They store embeddings (numerical vectors that represent meaning) and let you query by similarity instead of equality. HNSW and IVF are the two most common algorithms. If you are building semantic search, retrieval-augmented generation, or recommendation systems, you will be creating vector indexes either in a dedicated vector database or in a general-purpose database that supports them. For a tour of the options, see [the top vector databases for AI applications](/blog/post/top-6-vector-databases-2025).
+
+# A worked example: slow query, then fast
+
+Consider a posts table with a million rows. You run this query:
+
+```js
+const recent = await tablesDB.listRows({
+  databaseId: "<DATABASE_ID>",
+  tableId: "posts",
+  queries: [
+    Query.equal("status", ["published"]),
+    Query.orderDesc("publishedAt"),
+    Query.limit(10),
+  ],
+});
+```
+
+Without an index on `status` and `publishedAt`, the database has to read every row, check whether `status` equals `'published'`, sort the matches by `publishedAt`, then return the first ten. On a million rows that is going to feel slow.
+
+Add a composite index on `(status, publishedAt)` (descending), and the database can walk directly to the published rows in `publishedAt` order and stop after ten. The same query goes from seconds to milliseconds, with no change to the application code.
+
+That is the whole pitch of indexes in one example. The query did not change. The work the database had to do did.
+
+# When to add an index
+
+A short checklist, in order of impact:
+
+- **Filtered columns.** Every column you use in equality or range filters on a large table is a candidate.
+- **Sorted columns.** Anything you pass to `ORDER BY` (or `Query.orderAsc` / `Query.orderDesc`) benefits from an index.
+- **Joined columns.** Foreign key columns used in joins should be indexed on both sides.
+- **Searched text columns.** Any column you run text search against needs a full-text index.
+- **Unique constraints.** Columns that must be unique should have a unique index.
+- **Geographic columns.** Geometry columns you query spatially need a spatial index.
+
+A reasonable rule of thumb: write the queries your app will run, look at the columns each query touches, and index those. If a query already runs in single-digit milliseconds today, do not pre-emptively add indexes "just in case", because indexes have a cost too.
+
+# When NOT to add an index
+
+This is the part most developers learn the hard way. Indexes are not free.
+
+- **Every index slows down writes.** Inserts, updates, and deletes all have to update every index on the table. A table with 10 indexes pays roughly 10 times the write overhead of one with no indexes.
+- **Low-cardinality columns rarely benefit.** A boolean column with only `true` and `false` values, on a table where half the rows are each, gains almost nothing from an index. The database still has to read half the rows.
+- **Small tables do not need indexes.** A full scan on a 500-row table is faster than the index lookup overhead. The database planner often skips the index for small tables anyway.
+- **Indexes you never query.** An index that no query ever uses still has to be maintained on every write. Drop it.
+
+A useful signal that you have over-indexed: write throughput drops noticeably as insert volume grows, even though your read patterns have not changed. That is the index maintenance cost showing up in production.
+
+# Indexes in popular databases
+
+Every modern database supports indexes, with slightly different vocabulary. A quick cross-reference:
+
+| Database | How you create an index |
+| --- | --- |
+| PostgreSQL | `CREATE INDEX idx_status ON posts (status);` |
+| MySQL | `CREATE INDEX idx_status ON posts (status);` |
+| MongoDB | `db.posts.createIndex({ status: 1 })` |
+| Appwrite TablesDB | `tablesDB.createIndex({ databaseId, tableId, key, type, attributes, orders })` |
+
+The mechanics differ, but the mental model is the same. You declare which columns to index and what type of index to use, and the engine maintains it for you from then on.
+
+# Get started with indexes in Appwrite
+
+[Appwrite Databases](/docs/products/databases) supports key, unique, full-text, and spatial indexes through the TablesDB API. You can create them from the Console under the Indexes tab on any table, or programmatically through any official SDK.
+
+Creating a composite index on `(status, publishedAt)` for the worked example above:
+
+```js
+import { Client, TablesDB } from "node-appwrite";
+
+const client = new Client()
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("<PROJECT_ID>")
+  .setKey("<API_KEY>");
+
+const tablesDB = new TablesDB(client);
+
+await tablesDB.createIndex({
+  databaseId: "<DATABASE_ID>",
+  tableId: "posts",
+  key: "status_publishedAt",
+  type: "key",
+  attributes: ["status", "publishedAt"],
+  orders: ["ASC", "DESC"],
+});
+```
+
+Indexes are built asynchronously and report a `processing` status until they are ready. For a deeper walkthrough of each Appwrite index type, when to pick which, and how indexes pair with the Query API, see [Appwrite Indexes: how to speed up your database queries](/blog/post/appwrite-indexes).
+
+# Wrapping up
+
+A database index is the difference between a query that scales with your data and one that grinds to a halt at it. The mental model is straightforward: indexes trade a little extra write work and a little extra storage for a lot of read speed. Add them deliberately for the queries you run, pick the type that matches your access pattern, and drop the ones that no query ever uses.
+
+To keep reading:
+
+- [Appwrite Indexes: how to speed up your database queries](/blog/post/appwrite-indexes)
+- [Best database pagination technique](/blog/post/best-pagination-technique)
+- [SQL vs NoSQL: choosing the right database for your project](/blog/post/sql-vs-nosql)
+- [Appwrite Databases documentation](/docs/products/databases)
