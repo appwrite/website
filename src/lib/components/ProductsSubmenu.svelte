@@ -93,7 +93,7 @@
 
 <button
     class={cn(
-        'text-primary focus:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
+        'text-primary focus-visible:text-accent hover:text-accent inline-flex cursor-pointer items-center justify-between outline-none',
         {
             'text-accent': $open
         }
