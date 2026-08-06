@@ -1,0 +1,11 @@
+---
+layout: changelog
+title: Appwrite Cloud OAuth consent now supports resource-bound authorization
+date: 2026-07-03
+---
+
+Appwrite Cloud's OAuth consent flow now makes requested access easier to review before authorizing a connected app. The consent screen shows a read-only permission summary, grouping requested scopes into clear access rows so users can see what the app is asking for without accidentally changing the requested permission set.
+
+For apps using Rich Authorization Requests, Appwrite Cloud now also lets users bind requested access to specific projects and organizations through `authorization_details`-based resource selection. Users can choose whether project and organization access applies broadly or only to selected resources, and Appwrite sends the resulting resource binding back when the request is approved.
+
+This gives connected apps a clearer consent experience while keeping authorization precise: scopes describe the requested privileges, and `authorization_details` controls which Appwrite Cloud projects or organizations those privileges are bound to.
