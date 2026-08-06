@@ -1,0 +1,13 @@
+---
+layout: changelog
+title: Upgraded default build resources for Sites and Functions
+date: 2026-07-14
+---
+
+We have upgraded the default build specification for Appwrite Sites and Functions on Cloud. Every deployment build now runs with **2 CPU cores and 2GB of memory**, replacing the previous 0.5 CPU and 512MB default. Lower build specifications have been removed.
+
+The new default applies to all plans, including Free, and requires no configuration changes. Expect faster dependency installs, compilation, and bundling across your sites and functions. Runtime specifications are unaffected by this change.
+
+{% arrow_link href="/docs/advanced/billing/compute" %}
+Learn more about compute specifications
+{% /arrow_link %}

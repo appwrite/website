@@ -10,19 +10,22 @@ These options help you tune performance and cost: for example, a large install o
 
 # Specifications {% #specifications %}
 
-Appwrite Cloud offers the following specification tiers. The same tiers are available for **build** and **runtime** independently on each function or site:
+Appwrite Cloud offers the following specification tiers. You can set **build** and **runtime** specifications independently on each function or site:
 
-| Memory | CPU cores | Hourly usage |
-|--------|-----------|--------------|
-| 512MB  | 0.5       | 0.25         |
-| 512MB  | 1         | 0.5          |
-| 1GB    | 1         | 1            |
-| 2GB    | 2         | 4            |
-| 4GB    | 2         | 8            |
-| 4GB    | 4         | 16           |
+| Memory | CPU cores | Hourly usage | Available for     |
+|--------|-----------|--------------|-------------------|
+| 512MB  | 0.5       | 0.25         | Runtime           |
+| 512MB  | 1         | 0.5          | Runtime           |
+| 1GB    | 1         | 1            | Runtime           |
+| 2GB    | 2         | 4            | Build and runtime |
+| 4GB    | 2         | 8            | Build and runtime |
+| 4GB    | 4         | 16           | Build and runtime |
+| 4GB    | 8         | 32           | Build and runtime |
+| 8GB    | 4         | 32           | Build and runtime |
+| 8GB    | 8         | 64           | Build and runtime |
 
 {% info title="Note" %}
-On Appwrite Cloud, **Pro** plan organizations can change build and runtime specifications from the default 512MB and 0.5 CPU. The Free plan uses the default. For custom compute options, contact our [sales team](https://appwrite.io/contact-us/enterprise).
+On Appwrite Cloud, **Pro** plan organizations can change build and runtime specifications from the defaults: 2GB and 2 CPU for builds, and 512MB and 0.5 CPU for runtime. The Free plan uses the defaults. For custom compute options, contact our [sales team](https://appwrite.io/contact-us/enterprise).
 {% /info %}
 
 # Build timeouts {% #build-timeouts %}
