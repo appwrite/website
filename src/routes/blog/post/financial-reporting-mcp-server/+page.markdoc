@@ -8,16 +8,15 @@ timeToRead: 8
 author: aditya-oberai
 category: tutorial, ai
 featured: false
-unlisted: true
 faqs:
-  - question: "What is a financial reporting MCP server?"
-    answer: "A financial reporting MCP server exposes controlled reporting operations as tools that an AI client can call. Instead of giving the model unrestricted database access, you can define tools for tasks such as portfolio summaries, account statements, transaction searches, and monthly cash-flow reports."
   - question: "What does the Appwrite MCP server template include?"
     answer: "The template includes a Python MCP server, stateless Streamable HTTP transport, example `echo` and `add` tools, optional bearer authentication, configurable tool timeouts, and the adapter needed to run the server as an Appwrite Function. Replace the example tools with your own domain-specific operations."
   - question: "How does the Appwrite MCP server differ from the MCP server template?"
     answer: "The [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) lets an AI agent manage Appwrite resources, so you can use it to create the database schema and seed demo data. The MCP server template lets you build and host your own domain-specific server, such as the financial reporting server in this tutorial."
   - question: "Which AI clients can connect to an MCP server hosted on Appwrite?"
     answer: "Any MCP client that supports remote servers over Streamable HTTP can connect to the Function's generated domain. This includes clients such as Claude Code, Cursor, and Claude Desktop. If bearer authentication is enabled, configure the client to send the token in its `Authorization` header."
+  - question: "What does the financial reporting MCP server in this tutorial do?"
+    answer: "It exposes controlled reporting operations as tools that an AI client can call. The server runs as an Appwrite Function and defines eight read-only tools over financial data in TablesDB, including portfolio summaries, account statements, spending by category, monthly cash flow, and transaction search. The AI client gets useful reports without unrestricted database access."
   - question: "How does the financial reporting function access Appwrite TablesDB?"
     answer: "Appwrite passes a dynamic API key to each Function execution in the `x-appwrite-key` request header. The server uses that key with the supplied project endpoint and project ID. The demo limits the key to `databases.read`, `tables.read`, and `rows.read`, which allows reporting without granting write access."
   - question: "How should a financial MCP server handle multiple currencies?"
