@@ -29,7 +29,7 @@ Simple as that! Now, let's create the page itself. Replace the contents in `src/
 	import { addIdea, deleteIdea } from '$lib/ideas.js';
 	import { user } from '$lib/user.js';
 
-	export let data;
+	let { data } = $props();
 
 	const add = async (e) => {
 		e.preventDefault();
