@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing OAuth Device Authorization for the Appwrite CLI: Log in from your browser"
-description: The Appwrite CLI now signs you in through your browser. Confirm a device code, review permissions, and authorize, without typing credentials into your terminal.
+description: The Appwrite CLI now signs you in through your browser. Confirm a device code, review permissions, and authorize without typing credentials into your terminal.
 date: 2026-07-29
 cover: /images/blog/announcing-cli-device-authorization/cover.avif
 timeToRead: 4
@@ -13,7 +13,7 @@ faqs:
   - question: "What is OAuth Device Authorization in the Appwrite CLI?"
     answer: "OAuth Device Authorization is the new login flow for the Appwrite CLI, based on the OAuth 2.0 device authorization pattern. Instead of prompting for your credentials in the terminal, the CLI shows a code and a URL. You confirm the code in your browser, review the requested permissions, and authorize the CLI with your Appwrite account."
   - question: "Which command starts the new login flow?"
-    answer: "The same command as before: `appwrite login`. If you use a self-hosted instance, add the `--endpoint` flag with your instance URL. The only thing that changes is what happens after you run it."
+    answer: "The same command as before: `appwrite login`. The only thing that changes is what happens after you run it. Note that self-hosted instances do not currently support the OAuth device authorization flow, so the CLI will prompt for your email and password instead when you log in with the `--endpoint` flag."
   - question: "What permissions does the Appwrite CLI request?"
     answer: "The authorization screen lists the exact access you grant: viewing your identity and fully managing your Appwrite account on your behalf. You review and approve these permissions in the browser before the CLI can act."
   - question: "How do I revoke the CLI's access to my account?"
@@ -36,9 +36,17 @@ Press Enter to open the URL, or copy it into any browser. Confirm the code on th
 
 ![Confirming the device code in the browser](/images/docs/command-line/dark/cli-login-confirm-code.avif)
 
-Review the permissions the CLI requests and click **Authorize**. Once approved, the CLI detects the authorization and finishes signing you in.
+Review the permissions the CLI requests and click **Authorize**.
 
 ![Authorizing the Appwrite CLI in the Console](/images/docs/command-line/dark/cli-login-authorize.avif)
+
+Once approved, the browser confirms that your device is connected. Back in the terminal, the CLI detects the authorization and finishes signing you in.
+
+![The browser confirming the device is connected](/images/docs/command-line/dark/cli-login-device-connected.avif)
+
+{% info title="CLI instances authenticated by API keys" %}
+API key based authentication is not affected by this change. Existing CLI sessions and non-interactive flows that authenticate with an API key through `appwrite client` will continue to work, and API keys remain the recommended way to authenticate the CLI in CI workflows. [Learn more about non-interactive mode.](/docs/tooling/command-line/non-interactive)
+{% /info %}
 
 # Consent you can see
 
@@ -63,11 +71,7 @@ The CLI either needs an update or is pointed at a self-hosted Appwrite instance,
 appwrite login --endpoint="https://cloud.appwrite.io/v1"
 ```
 
-If a self-hosted endpoint persists, delete `prefs.json` from the CLI config directory. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
-{% /info %}
-
-{% info title="Existing authentication flows" %}
-API key based authentication is not affected by this change. Existing CLI sessions and non-interactive flows that authenticate with an API key through `appwrite client` will continue to work, and API keys remain the recommended way to authenticate the CLI in CI workflows. [Learn more about non-interactive mode](/docs/tooling/command-line/non-interactive)
+If the CLI still points at a self-hosted instance, clear the saved preferences by deleting `prefs.json`. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
 {% /info %}
 
 # More resources
