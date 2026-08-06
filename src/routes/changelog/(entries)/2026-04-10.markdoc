@@ -1,0 +1,13 @@
+---
+layout: changelog
+title: "Multi-file uploads and upload progress in Storage Console"
+date: 2026-04-10
+---
+
+The Appwrite Console now supports uploading multiple files at once to your storage buckets. You can select several files from the file picker or drag and drop them directly onto the bucket page. Files are uploaded in parallel with a concurrency limit of 5 for optimal performance.
+
+You can also now track upload progress in real time. Each file displays a progress percentage as it uploads, and the Console surfaces clear error messages if any files fail during the upload process. Files with extensions not allowed by the bucket configuration are automatically rejected before the upload begins.
+
+{% arrow_link href="/docs/products/storage/upload-download" %}
+Learn more about uploading files
+{% /arrow_link %}
