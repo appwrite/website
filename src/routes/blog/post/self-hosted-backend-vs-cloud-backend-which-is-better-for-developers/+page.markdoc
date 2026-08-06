@@ -9,6 +9,21 @@ author: aditya-oberai
 category: comparisons
 featured: false
 unlisted: true
+faqs:
+  - question: Which is better: a self-hosted backend or a cloud backend?
+    answer: A cloud backend is the better choice for most developers because it eliminates infrastructure management, scaling, backups, and patching. A self-hosted backend is a better fit when you need complete control over your infrastructure, data residency, compliance, or deep platform customization.
+  - question: Is a self-hosted backend cheaper than a cloud backend?
+    answer: Not always. While self-hosting can reduce infrastructure costs, you also need to account for engineering time spent on deployment, monitoring, security updates, backups, and incident response. For most teams, a cloud backend has a lower total cost of ownership until they reach very large scale.
+  - question: When should I choose a self-hosted backend?
+    answer: Choose a self-hosted backend if you need strict data residency, regulatory compliance, source-level customization, deployment in a customer's environment, or your infrastructure costs become lower than usage-based cloud pricing at scale.
+  - question: When should I choose a cloud backend?
+    answer: A cloud backend is the best option for most startups and development teams. It lets you deploy quickly, scales automatically, handles backups and patching, and removes the operational burden of managing infrastructure.
+  - question: Can I switch from a cloud backend to a self-hosted backend later?
+    answer: It depends on the platform. Some backends require significant migration work, while platforms like Appwrite provide the same APIs for both Appwrite Cloud and self-hosted deployments, making it possible to move between them without changing your application code.
+  - question: Is a cloud backend more secure than a self-hosted backend?
+    answer: Both deployment models can be secure. Cloud providers typically handle infrastructure security, patching, and operational best practices, while self-hosting gives you complete control but also makes your team responsible for securing, monitoring, and maintaining the entire environment.
+  - question: Can I use Appwrite as both a cloud backend and a self-hosted backend?
+    answer: Yes. Appwrite is available as both Appwrite Cloud and a self-hosted deployment. Both deployment models use the same APIs and SDKs, allowing you to move between them without rewriting your application.
 ---
 
 Most teams pick between a self-hosted backend and a cloud backend for the wrong reason: the monthly bill. A $20 VPS looks cheaper than a managed platform, so self-hosting wins on the spreadsheet. Then someone spends a weekend restoring a database after a failed upgrade, and the spreadsheet turns out to have been measuring the wrong thing.
