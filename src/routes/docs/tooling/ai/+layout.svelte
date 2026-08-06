@@ -25,7 +25,7 @@
             label: 'Tooling',
             items: [
                 {
-                    label: 'MCP servers',
+                    label: 'MCP server',
                     href: '/docs/tooling/ai/mcp-servers'
                 },
                 {
@@ -111,6 +111,10 @@
         {
             label: 'Guides',
             items: [
+                {
+                    label: 'Build an MCP server',
+                    href: '/docs/tooling/ai/build-mcp-server'
+                },
                 {
                     label: 'AI in Functions',
                     href: '/docs/tooling/ai/ai-in-functions'

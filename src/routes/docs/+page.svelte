@@ -59,6 +59,13 @@
             event: 'docs-ai-ide_vscode-click'
         },
         {
+            href: '/docs/tooling/ai/agents/zed',
+            title: 'Zed',
+            logoDark: '/images/docs/mcp/logos/dark/zed.svg',
+            logoLight: '/images/docs/mcp/logos/zed.svg',
+            event: 'docs-ai-ide_zed-click'
+        },
+        {
             href: '/docs/tooling/mcp/opencode',
             title: 'OpenCode',
             logoDark: '/images/docs/mcp/logos/dark/opencode.svg',
@@ -71,6 +78,13 @@
             logoDark: '/images/docs/mcp/logos/dark/google-antigravity.svg',
             logoLight: '/images/docs/mcp/logos/google-antigravity.svg',
             event: 'docs-ai-ide_antigravity-click'
+        },
+        {
+            href: '/docs/tooling/ai/agents/grok-build',
+            title: 'Grok Build',
+            logoDark: '/images/docs/mcp/logos/dark/grok-build.svg',
+            logoLight: '/images/docs/mcp/logos/grok-build.svg',
+            event: 'docs-ai-ide_grok-build-click'
         }
     ];
 

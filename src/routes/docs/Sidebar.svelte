@@ -155,6 +155,12 @@
                     isParent: true
                 },
                 {
+                    label: 'MCP server',
+                    href: '/docs/tooling/ai/mcp-servers',
+                    icon: 'icon-globe-alt',
+                    isParent: true
+                },
+                {
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
                     icon: 'icon-terminal',
