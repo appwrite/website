@@ -1,0 +1,285 @@
+---
+layout: tutorial
+title: Implementing the cursor pagination
+description: Explore cursor pagination and how the React app accesses the appwrite backend using this method.
+step: 8
+---
+In this step, we'll delve into adding the cursor pagination method to our app.
+
+# What is cursor pagination? {% #what-is-cursor-pagination %}
+Cursor pagination uses a unique identifier(often a timestamp, ID, or another consistently ordered field) for a specific document. This identifer acts as a pointer to the next document we want to start querying from to get the next page of data. For instance, if you have a dataset of blog posts ordered by their creation date and you want to retrieve post after a specific data, you would use that date as the cursor.
+
+With Appwrite, cursor pagination is achieved using the `Query.cursorAfter(lastId)` or the `Query.cursorBefore(firstId)` query methods. Here is an example using Appwrite's `listDocuments()` function to retrieve the next page of documents:
+
+```js
+const page2 = await databases.listDocuments(
+    '[DATABASE_ID]',
+    '[COLLECTION_ID]',
+    [
+        Query.limit(25),
+        Query.cursorAfter(lastId),
+    ]
+);
+```
+Cursor pagination is typically used in scenarios where the dataset is large, and the exact number of total items might not be known upfront. Here are different ways you can utilize cursor pagination:
+
+# Creating the Pagination Component {% #creating-the-pagination-component %}
+{% tabs %}
+{% tabsitem #Basic-cursor-pagination title="Basic Cursor Pagination" %}
+
+Open the file named `src/pages/TodosWithBasicCursorPagination.jsx`, overwrite the content with the following code:
+```js
+import React, { useCallback } from "react";
+import { useTodos } from "../lib/context/CursorProvider";
+
+export function TodosWithBasicCursorPagination() {
+  const todos = useTodos();
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current &&
+          todos.current.map((todo) => (
+            <li key={`todo-${todo.taskId}`} className='todo' s>
+              <span>{`Todo-${todo.taskId}: `}</span>
+              <input type='checkbox' id={todo.taskId} name={todo.title} />
+              <label htmlFor={todo.title}>{todo.title}</label>
+            </li>
+          ))}
+      </ul>
+      <CursorPagination
+        loadMore={todos.loadMore}
+        currentPage={todos.currentPage}
+        hasMore={todos.hasMore}
+      />
+    </section>
+  );
+}
+function CursorPagination(props) {
+  const { hasMore, loadMore, currentPage } = props;
+
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadMore = useCallback(debounce(loadMore, 300), [loadMore]);
+  return (
+    <div>
+      <button disabled={!hasMore} onClick={debouncedLoadMore}>
+        Load More
+      </button>
+    </div>
+  );
+}
+
+```
+This is the most straightforward use of cursor pagination. You have "Load More" button,which will fetch more data based on the last item's cursor.
+{% /tabsitem %}
+{% tabsitem #Bidirectional-cursor-pagination title="Bidirectional Cursor Pagination" %}
+Open the file named `src/pages/TodosWithBidirectionalCursorPagination.jsx`, overwrite the content with the following code:
+```js
+import React, { useCallback } from "react";
+import { useTodos } from "../lib/context/CursorProvider";
+
+export function TodosWithBidirectionalCursorPagination() {
+  const todos = useTodos();
+
+  return (
+    <section>
+      <h2>Todos</h2>
+      <ul>
+        {todos.current &&
+          todos.current.map((todo) => (
+            <li key={`todo-${todo.taskId}`} className='todo' s>
+              <span>{`Todo-${todo.taskId}: `}</span>
+              <input type='checkbox' id={todo.taskId} name={todo.title} />
+              <label htmlFor={todo.title}>{todo.title}</label>
+            </li>
+          ))}
+      </ul>
+      <BidirectionalPagination
+        loadPrev={todos.loadPrev}
+        loadNext={todos.loadNext}
+        currentPage={todos.currentPage}
+        hasMore={todos.hasMore}
+      />
+    </section>
+  );
+}
+function BidirectionalPagination(props) {
+  const { hasMore, loadNext, loadPrev, currentPage } = props;
+
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debouncedLoadNext = useCallback(debounce(loadNext, 300), [loadNext]);
+  const debouncedLoadPrev = useCallback(debounce(loadPrev, 300), [loadPrev]);
+  return (
+    <div>
+      <button disabled={currentPage === 1} onClick={debouncedLoadPrev}>
+        Load Prev
+      </button>
+      <span>Page {currentPage}</span>
+      <button disabled={!hasMore} onClick={debouncedLoadNext}>
+        Load Next
+      </button>
+    </div>
+  );
+}
+```
+Bidirectional cursor pagination allows users to navigate through datasets both forwards and backwards using a cursor to maintain position, providing greater flexibility in exploring data. On the other hand, regular cursor pagination typically only supports forward navigation through the dataset, limiting the user's ability to easily access or revisit previous data entries.
+{% /tabsitem %}
+{% /tabs %}
+
+# Update CursorProvider context {% #updating-cursorprovider-context %}
+
+Update the contents of `src/lib/context/CursorProvider.jsx` with the following code:
+
+```js
+import { createContext, useContext, useEffect, useState } from "react";
+import { databases } from "../appwrite";
+import { Query } from "appwrite";
+
+const TodosContext = createContext();
+
+export function useTodos() {
+  return useContext(TodosContext);
+}
+
+export function CursorProvider(props) {
+  const [todos, setTodos] = useState([]);
+  const [lastId, setLastId] = useState(null);
+  const [firstId, setFirstId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const pageLimit = 4;
+  const hasMore = totalPages > currentPage;
+
+  async function loadMore() {
+    if (todos.length === 0 || (hasMore && !loading)) {
+      setLoading(true);
+      try {
+        const response = await databases.listDocuments(
+          import.meta.env.VITE_APPWRITE_DATABASE_ID,
+          import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+          [
+            Query.orderAsc("$createdAt"),
+            Query.limit(pageLimit),
+            Query.cursorAfter(lastId),
+          ],
+        );
+        setCurrentPage((prevPage) => prevPage + 1);
+        setFirstId(response.documents[0].$id);
+        setLastId(response.documents[response.documents.length - 1].$id);
+        setTodos((prevTodos) => [...prevTodos, ...response.documents]);
+      } catch (error) {
+        console.log("Error loading more todos:", error);
+      }
+      setLoading(false);
+    }
+  }
+
+  async function loadNext() {
+    if (todos.length === 0 || (hasMore && !loading)) {
+      setLoading(true);
+      try {
+        const response = await databases.listDocuments(
+          import.meta.env.VITE_APPWRITE_DATABASE_ID,
+          import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+          [
+            Query.orderAsc("$createdAt"),
+            Query.limit(pageLimit),
+            Query.cursorAfter(lastId),
+          ],
+        );
+        setCurrentPage((prevPage) => prevPage + 1);
+        setFirstId(response.documents[0].$id);
+        setLastId(response.documents[response.documents.length - 1].$id);
+        setTodos(response.documents);
+      } catch (error) {
+        console.log("Error loading more todos:", error);
+      }
+      setLoading(false);
+    }
+  }
+
+  async function loadPrev() {
+    if (currentPage > 1) {
+      try {
+        const response = await databases.listDocuments(
+          import.meta.env.VITE_APPWRITE_DATABASE_ID,
+          import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+          [
+            Query.orderAsc("$createdAt"),
+            Query.limit(pageLimit),
+            Query.cursorBefore(firstId),
+          ],
+        );
+        setCurrentPage(currentPage - 1);
+        setFirstId(response.documents[0].$id);
+        setLastId(response.documents[response.documents.length - 1].$id);
+        setTodos(response.documents);
+      } catch (error) {
+        console.error("Error loading previous todos:", error);
+      }
+    }
+  }
+  async function init() {
+    setLoading(true);
+    try {
+      const response = await databases.listDocuments(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+        [Query.orderAsc("$createdAt"), Query.limit(pageLimit)],
+      );
+      setFirstId(response.documents[0].$id);
+      setLastId(response.documents[response.documents.length - 1].$id);
+      setTodos(response.documents);
+      setTotalPages(Math.ceil(response.total / pageLimit));
+    } catch (error) {
+      console.log("Error initializing tasks:", error);
+    }
+    setLoading(false);
+  }
+  useEffect(() => {
+    init();
+  }, [pageLimit]);
+
+  return (
+    <TodosContext.Provider
+      value={{
+        current: todos,
+        loadMore,
+        loadNext,
+        loadPrev,
+        loading,
+        currentPage,
+        totalPages,
+        hasMore,
+      }}>
+      {props.children}
+    </TodosContext.Provider>
+  );
+}
+```
+In this updated context:
+ * We're using `Query.cursorAfter()` is used to fetch documents that come after a specific document.
+ * We're using `Query.cursorBefore()` is used to fetch documents that come before a specific document.
+ * We've added `lastId` to hold the ID of the last document in the current set of todos.By using this ID with `Query.cursorAfter()`, We're essentially telling Appwrite: "Give me the next set of todos that come after this specific todo item."
+ * We's added `firstId` to hold the ID of the first document in the current set of todos. By using this ID with `Query.cursorBefore()`, we're telling Appwrite: "Give me the set of todos that come before this specific todo item."
+
+Now, you can use this context in your components to display todo items and handle pagination using Appwrite's cursor pagination methods.
+
+# See it in action {% #see-it-in-action %}
+Now's the perfect time to take a moment to run your application and see cursor pagination in action. Navigate using the "Load Previous" and "Load More" buttons, you can manually navigate through tasks, showcasing the efficiency of cursor pagination.This approach ensures a smoother user experience by fetching only a subset of todo items, reducing server load and enhancing responsiveness.

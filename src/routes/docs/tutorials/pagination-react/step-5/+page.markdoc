@@ -1,0 +1,66 @@
+---
+layout: tutorial
+title: Environment setup
+description: Setup the environment for seeding the database
+step: 5
+---
+
+# Seeding the collection {% #seeding-the-collection %}
+We'll now create a script that populates documents from a `setup.json` file.Create a new file `./db/setup.js` in the root of your project directory for this purpose.
+
+Insert the following code, make sure that you have `[APPWRITE_DATABASE_ID]` and `[APPWRITE_COLLECTION_ID]` with your respective database and collection IDs in a `.env` file on the root.
+
+```js
+import { Client, Databases, ID } from "appwrite";
+
+import dotenv from "dotenv";
+dotenv.config();
+
+const client = new Client();
+
+client
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject(process.env.VITE_APPWRITE_PROJECT_ID); // Replace with your project ID
+
+export const databases = new Databases(client);
+
+
+const dataURL = "https://jsonplaceholder.typicode.com/users/1/todos";
+
+async function seedCollection() {
+  const response = await fetch(dataURL);
+  const data = await response.json();
+  console.log("Starting to seed collection...");
+  try {
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i];
+      let promise = await databases.createDocument(
+        process.env.VITE_APPWRITE_DATABASE_ID,
+        process.env.VITE_APPWRITE_COLLECTION_ID,
+        ID.unique(),
+        {
+          taskId: item.id,
+          title: item.title,
+          completed: item.completed,
+        },
+      );
+      console.log(`${promise.title} has been added to the collection`);
+    }
+    console.log("Seeding collection done!");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+seedCollection();
+```
+
+# Run seed script {% #run-seed-script %}
+
+Open a terminal and run the following command:
+
+```sh
+node ./db/setup.js
+```
+
+You should see the process running in the terminal. Once it's completed, check your collection to verify that it's populated with the data.
