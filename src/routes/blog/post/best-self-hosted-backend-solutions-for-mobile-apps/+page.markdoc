@@ -9,6 +9,19 @@ author: aditya-oberai
 category: comparisons
 featured: false
 unlisted: true
+faqs:
+  - question: What is the best self-hosted backend for mobile apps?
+    answer: It depends on your priorities. If you need native mobile SDKs, built-in push notifications, authentication, databases, storage, and serverless functions in a single deployment, Appwrite is a strong choice. If direct PostgreSQL access is your top priority, Supabase may be a better fit.
+  - question: Which self-hosted backend includes built-in push notifications?
+    answer: Among the platforms compared in this guide, Appwrite and Parse Platform include built-in push notifications. Supabase, PocketBase, and Nhost require you to integrate APNs, FCM, or another push notification service yourself.
+  - question: Which self-hosted backend supports Flutter, Swift, and Kotlin?
+    answer: Appwrite provides first-party SDKs for Flutter, Apple platforms, Android, and React Native. Supabase also offers official Flutter, Swift, and Kotlin Multiplatform SDKs, while Parse Platform has mature mobile SDKs. PocketBase and Nhost rely more heavily on community SDKs or GraphQL clients.
+  - question: Is Appwrite or Supabase better for mobile apps?
+    answer: Appwrite is a better fit if you want an integrated mobile backend with native SDKs and built-in push notifications. Supabase is a stronger choice if direct PostgreSQL access and raw SQL are essential, but you'll need to build your own push notification pipeline.
+  - question: Which self-hosted backend is easiest to deploy?
+    answer: PocketBase is the simplest to deploy because it runs as a single executable. Appwrite is also straightforward to self-host using Docker Compose, while Supabase, Parse Platform, and Nhost require multiple services and have a larger operational footprint.
+  - question: How do I choose the right self-hosted backend for a mobile app?
+    answer: Start with your hard requirements. If you need built-in push notifications, Appwrite and Parse Platform are the strongest options. If PostgreSQL and raw SQL are non-negotiable, consider Supabase or Nhost. If operational simplicity is your priority, PocketBase is a good choice for smaller projects.
 ---
 
 Most self-hosted backend platforms were designed for web apps first. That distinction stops being academic the moment you ship to the App Store, because mobile apps need things web apps don't: native SDKs for Swift and Kotlin, push notifications through APNs and FCM, offline behavior when the network drops, and API stability across app versions you can no longer control.
