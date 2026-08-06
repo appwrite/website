@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Build your own AI financial analyst with Appwrite MCP"
+title: "Build a financial reporting MCP server with Appwrite Functions"
 description: Learn how to build a financial reporting MCP server with Appwrite Functions, TablesDB, and custom tools for statements, cash flow, and portfolio insights.
 date: 2026-08-06
 cover: /images/blog/financial-reporting-mcp-server/cover.avif
