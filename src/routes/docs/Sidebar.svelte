@@ -120,46 +120,6 @@
             ]
         },
         {
-            label: 'AI',
-            items: [
-                {
-                    label: 'Overview',
-                    href: '/docs/tooling/ai',
-                    icon: 'icon-view-grid'
-                },
-                {
-                    label: 'Quick start prompts',
-                    href: '/docs/tooling/ai/quickstart-prompts',
-                    icon: 'icon-sparkles',
-                    isParent: true
-                },
-                {
-                    label: 'MCP server',
-                    href: '/docs/tooling/ai/mcp-servers',
-                    icon: 'icon-globe-alt',
-                    isParent: true
-                },
-                {
-                    label: 'Agent skills',
-                    href: '/docs/tooling/ai/skills',
-                    icon: 'icon-puzzle',
-                    isParent: true
-                },
-                {
-                    label: 'AGENTS.md',
-                    href: '/docs/tooling/ai/agents-md',
-                    icon: 'icon-document-text',
-                    isParent: true
-                },
-                {
-                    label: 'Appwrite Arena',
-                    href: '/docs/tooling/ai/arena',
-                    icon: 'icon-cube',
-                    isParent: true
-                }
-            ]
-        },
-        {
             label: 'APIS',
             items: [
                 {
@@ -188,6 +148,18 @@
         {
             label: 'Tooling',
             items: [
+                {
+                    label: 'AI',
+                    href: '/docs/tooling/ai',
+                    icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
+                    label: 'MCP server',
+                    href: '/docs/tooling/ai/mcp-servers',
+                    icon: 'icon-globe-alt',
+                    isParent: true
+                },
                 {
                     label: 'CLI',
                     href: '/docs/tooling/command-line/installation',
