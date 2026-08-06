@@ -148,7 +148,7 @@ If streaming or long-running synchronous calls are hard requirements, a containe
 
 The MCP server template is available now on [Appwrite Cloud](https://cloud.appwrite.io) and for self-hosted instances. Open your project, head to **Functions** > **Templates**, search for **MCP server**, and you will have a live endpoint your AI tools can call in a few minutes. If you are new to the Model Context Protocol, our [complete guide to MCP](/blog/post/what-is-mcp-a-complete-guide-for-developers) covers how the protocol works before you start building on it.
 
-To see the template applied to a realistic use case, follow our [financial analysis MCP server tutorial](/blog/post/financial-reporting-mcp-server). It shows how to turn account and transaction data into controlled tools for portfolio summaries, statements, spending analysis, and cash-flow reports.
+To see the template applied to a realistic use case, follow our [financial analysis MCP server tutorial](/blog/post/financial-analysis-mcp-server). It shows how to turn account and transaction data into controlled tools for portfolio summaries, statements, spending analysis, and cash-flow reports.
 
 - [Build an MCP server guide](/docs/tooling/ai/build-mcp-server)
 - [Appwrite Functions development guide](/docs/products/functions/develop)

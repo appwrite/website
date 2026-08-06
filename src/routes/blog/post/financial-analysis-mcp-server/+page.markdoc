@@ -1,23 +1,23 @@
 ---
 layout: post
-title: "Build a financial reporting MCP server with Appwrite Functions"
-description: Learn how to build a financial reporting MCP server with Appwrite Functions, TablesDB, and custom tools for statements, cash flow, and portfolio insights.
+title: "Build a financial analysis MCP server with Appwrite Functions"
+description: Learn how to build a financial analysis MCP server with Appwrite Functions, TablesDB, and custom tools for statements, cash flow, and portfolio insights.
 date: 2026-08-06
-cover: /images/blog/financial-reporting-mcp-server/cover.avif
+cover: /images/blog/financial-analysis-mcp-server/cover.avif
 timeToRead: 8
 author: aditya-oberai
 category: tutorial, ai
 featured: false
 faqs:
   - question: "What does the Appwrite MCP server template include?"
-    answer: "The template includes a Python MCP server, stateless Streamable HTTP transport, example `echo` and `add` tools, optional bearer authentication, configurable tool timeouts, and the adapter needed to run the server as an Appwrite Function. Replace the example tools with your own domain-specific operations."
+    answer: "The template includes a Python MCP server, stateless Streamable HTTP transport, optional bearer authentication, configurable tool timeouts, and the adapter needed to run the server as an Appwrite Function. Replace the example tools with your own domain-specific operations."
   - question: "How does the Appwrite MCP server differ from the MCP server template?"
-    answer: "The [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) lets an AI agent manage Appwrite resources, so you can use it to create the database schema and seed demo data. The MCP server template lets you build and host your own domain-specific server, such as the financial reporting server in this tutorial."
+    answer: "The [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) lets an AI agent manage Appwrite resources, so you can use it to create the database schema and seed demo data. The MCP server template lets you build and host your own domain-specific server, such as the financial analysis server in this tutorial."
   - question: "Which AI clients can connect to an MCP server hosted on Appwrite?"
     answer: "Any MCP client that supports remote servers over Streamable HTTP can connect to the Function's generated domain. This includes clients such as Claude Code, Cursor, and Claude Desktop. If bearer authentication is enabled, configure the client to send the token in its `Authorization` header."
-  - question: "What does the financial reporting MCP server in this tutorial do?"
+  - question: "What does the financial analysis MCP server in this tutorial do?"
     answer: "It exposes controlled reporting operations as tools that an AI client can call. The server runs as an Appwrite Function and defines eight read-only tools over financial data in TablesDB, including portfolio summaries, account statements, spending by category, monthly cash flow, and transaction search. The AI client gets useful reports without unrestricted database access."
-  - question: "How does the financial reporting function access Appwrite TablesDB?"
+  - question: "How does the financial analysis function access Appwrite TablesDB?"
     answer: "Appwrite passes a dynamic API key to each Function execution in the `x-appwrite-key` request header. The server uses that key with the supplied project endpoint and project ID. The demo limits the key to `databases.read`, `tables.read`, and `rows.read`, which allows reporting without granting write access."
   - question: "How should a financial MCP server handle multiple currencies?"
     answer: "Keep totals grouped by currency unless you have an explicit exchange-rate source and conversion policy. The demo reports USD, EUR, and GBP separately so it never adds unlike monetary values or implies a conversion rate that was not supplied."
@@ -25,7 +25,7 @@ faqs:
     answer: "The architecture can be adapted for real data, but the demo is not a production banking system. Before using sensitive data, add user-specific authorization, audit logging, data minimization, stricter secret management, and compliance controls appropriate to your jurisdiction and use case."
 ---
 
-MCP is moving AI beyond isolated chat experiences. It gives models a standard, controlled way to work with the systems that run real products, from support platforms and internal operations to commerce and financial reporting. Instead of pasting data into a prompt, developers can expose focused tools that retrieve live information, enforce business rules, and return structured results.
+MCP is moving AI beyond isolated chat experiences. It gives models a standard, controlled way to work with the systems that run real products, from support platforms and internal operations to commerce and financial analysis. Instead of pasting data into a prompt, developers can expose focused tools that retrieve live information, enforce business rules, and return structured results.
 
 We wanted to test that impact with a scenario where accuracy and controlled access matter. Using our new [MCP server Function template](/blog/post/announcing-mcp-server-template), we developed a **financial analysis MCP server** that can summarize a portfolio, generate account statements, analyze spending, calculate monthly cash flow, and search transactions from an AI client.
 
@@ -36,7 +36,7 @@ We built the entire scenario on Appwrite. First, we used the [Appwrite MCP serve
 The project uses two MCP servers with different responsibilities:
 
 - **Appwrite MCP server:** Connects your AI coding agent to Appwrite so it can create the TablesDB schema and seed test data.
-- **Your financial reporting MCP server:** Runs as an Appwrite Function and exposes only the reporting tools you define.
+- **Your financial analysis MCP server:** Runs as an Appwrite Function and exposes only the reporting tools you define.
 
 The second server never needs a long-lived Appwrite API key. Appwrite Functions receive a dynamic API key for each execution, and its permissions are limited by the Function scopes you select. This lets the AI client request useful reports without receiving unrestricted database access.
 
@@ -162,9 +162,9 @@ Set `MCP_AUTH_MODE` to `bearer`, add a long random value as `MCP_AUTH_TOKEN`, an
 
 Also set `FINDB_DATABASE_ID=findb` if you changed the default in the code. Keep `MCP_TOOL_TIMEOUT` at 25 seconds so a slow tool can return a clean error before the Function reaches its 30-second execution limit.
 
-# Extend the template with financial reporting tools
+# Extend the template with financial analysis tools
 
-The template includes `echo` and `add` tools to prove the transport works. Replace them in `src/app.py` with a server configured for financial reporting:
+The template includes `echo` and `add` tools to prove the transport works. Replace them in `src/app.py` with a server configured for financial analysis:
 
 ```python
 import os
@@ -176,7 +176,7 @@ server = MCPServer(
     name=os.environ.get("MCP_SERVER_NAME") or "findb-reporting",
     version="1.0.0",
     instructions=(
-        "Read-only financial reporting over customers, accounts, cards, "
+        "Read-only financial analysis over customers, accounts, cards, "
         "categories, and transactions. Group totals by currency and never "
         "convert currencies."
     ),
@@ -274,7 +274,7 @@ flow. Keep currencies separate and state which tools you used.
 
 The final prompt lets the client combine deterministic reports into a readable answer without receiving unrestricted access to TablesDB.
 
-# Harden financial reporting before using real data
+# Harden financial analysis before using real data
 
 This project uses fictional data, shared bearer authentication, and whole-dataset reporting. Treat it as a technical pattern, not a production banking system.
 
@@ -289,4 +289,4 @@ Build agentic apps on [Appwrite Cloud](https://cloud.appwrite.io) with data, per
 - [Appwrite MCP server documentation](/docs/tooling/ai/mcp-servers/api)
 - [MCP server template announcement](/blog/post/announcing-mcp-server-template)
 - [Appwrite database queries](/docs/products/databases/queries)
-- [Financial reporting MCP demo](https://github.com/appwrite-community/finance-mcp-demo)
+- [Financial analysis MCP demo](https://github.com/appwrite-community/finance-mcp-demo)

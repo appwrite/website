@@ -210,6 +210,6 @@ The template uses stateless request and response handling. It does not provide l
 
 Requests through a Function domain are [synchronous executions](/docs/products/functions/execute#synchronous-executions) with a 30-second limit. Keep tools focused and leave `MCP_TOOL_TIMEOUT` at 25 seconds so the server can return a clean error first. For longer work, create one tool that starts a job and returns an ID, then another tool that checks the job's status.
 
-{% arrow_link href="/blog/post/financial-reporting-mcp-server" %}
-See a complete financial reporting MCP server built with this template
+{% arrow_link href="/blog/post/financial-analysis-mcp-server" %}
+See a complete financial analysis MCP server built with this template
 {% /arrow_link %}
