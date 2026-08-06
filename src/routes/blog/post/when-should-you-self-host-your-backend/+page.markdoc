@@ -9,6 +9,17 @@ author: aditya-oberai
 category: self-hosting
 featured: false
 unlisted: true
+faqs:
+  - question: When should you self-host your backend?
+    answer: You should self-host your backend when you have a hard requirement that managed hosting cannot meet, such as data residency, regulatory compliance, on-premise deployments, source-level customization, or predictable high-scale workloads.
+  - question: Is it better to self-host your backend or use a managed cloud backend?
+    answer: For most developers, a managed cloud backend is the better choice because it handles infrastructure, scaling, backups, and security updates. Self-hosting is better when you need greater control over your infrastructure or must meet specific compliance or deployment requirements.
+  - question: Is self-hosting a backend cheaper than using a cloud backend?
+    answer: Not always. While self-hosting can lower infrastructure costs, it also requires ongoing engineering time for deployment, monitoring, upgrades, backups, and incident response. For most teams, managed hosting has a lower total cost of ownership until they reach large-scale workloads.
+  - question: What are the biggest advantages of self-hosting a backend?
+    answer: Self-hosting gives you complete control over your infrastructure, data location, deployment environment, upgrade schedule, and backend customization. It is especially valuable for organizations with compliance requirements or customers that require on-premise deployments.
+  - question: Can I switch from a managed backend to a self-hosted backend later?
+    answer: It depends on the platform. Some platforms require significant migration work, while Appwrite offers the same APIs and SDKs for both Appwrite Cloud and self-hosted deployments, making it possible to move between them without changing your application code.
 ---
 
 Most teams decide whether to self-host their backend by looking at a pricing page. They see a metered line item, multiply it by an optimistic traffic projection, and conclude that running it themselves will be cheaper. Six months later they are tuning a Redis eviction policy on a Saturday instead of shipping features.
