@@ -37,7 +37,7 @@ Here is the full change set in one place.
 | One model across Instant and Thinking | Plus, Pro                    | Consistent tone whether the answer is quick or deliberate        |
 | Reasoning slider                      | Plus, Pro                    | User-controlled effort on web, mobile, and desktop               |
 | GPT-5.6 Luna as default               | Free, Go                     | Latest small model instead of the previous default               |
-| Unlimited text chats                  | Free, Go                     | No rate limit on text conversations, subject to abuse guardrails |
+| Unlimited text chats                  | Free, Go                     | Rolling out with no text chat limits, subject to abuse guardrails |
 | Think button                          | Free, Go                     | Opt-in higher reasoning for harder questions                     |
 
 The scale context matters for reading the rest of this. OpenAI says roughly **1 billion people use ChatGPT each week** across quick questions, search, planning, research, and complex decisions. Tuning decisions at that volume are made against a much wider distribution of prompts than most of us ever evaluate against.
