@@ -55,7 +55,7 @@ Two things make the second answer better, and both are things you can specify in
 
 On the follow-up ("assume I'm leaving around 5:30"), the update reissues the recommendation without restating the full forecast. Verbose models tend to re-dump context on every turn, which is one of the most common complaints about LLM chat features and one of the easiest to fix.
 
-# GPT-5.6 Sol makes fewer factual errors
+# OpenAI reports fewer factual errors with GPT-5.6 Sol
 
 **OpenAI reports that in an internal evaluation of financial, medical, and legal prompts requiring factual detail, responses containing at least one factual error were about 62% less common with GPT-5.6 Luna and 68% less common with GPT-5.6 Sol than with GPT-5.5 Instant.**
 
