@@ -103,7 +103,7 @@ Luna as the free default is a notable move given the pricing history. When OpenA
 | Codex                    | No                                              |
 | OpenAI API               | No                                              |
 
-This split is worth internalizing. "GPT-5.6 Sol" is now a family of tuned variants behind one name, so a behavior you observe in ChatGPT is not a reliable prediction of what the API returns for the same prompt. If you benchmark models for your product, benchmark the surface you actually ship on. Our [Claude vs GPT vs Gemini comparison](/blog/post/claude-vs-gpt-vs-gemini-for-developers-who-wins-in-2026) has more on evaluating models against your own workload rather than published scores.
+This split is worth internalizing. The ChatGPT version of GPT-5.6 Sol is tuned differently from the version used in the API, Codex, and ChatGPT Work, so behavior you observe in ChatGPT is not a reliable prediction of what the API returns for the same prompt. If you benchmark models for your product, benchmark the surface you actually ship on. Our [Claude vs GPT vs Gemini comparison](/blog/post/claude-vs-gpt-vs-gemini-for-developers-who-wins-in-2026) has more on evaluating models against your own workload rather than published scores.
 
 # Safety changes and under-18 protections
 
