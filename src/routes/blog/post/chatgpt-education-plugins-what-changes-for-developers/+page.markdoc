@@ -28,7 +28,7 @@ This post covers what shipped, who can access it, and what the ChatGPT education
 
 **The ChatGPT education plugins are three role-specific packages for ChatGPT Work and Codex that bundle apps, skills, instructions, and prebuilt workflows for K-12 educators, college educators, and college students.** They ship through ChatGPT Edu and ChatGPT for Teachers district deployments, not consumer ChatGPT.
 
-The point is to remove setup. Instead of teaching a teacher how to write a good prompt, the plugin already knows what an exit ticket is, connects to the documents and calendars they already use, and carries the task through multiple steps. OpenAI frames the principle behind it as AI that supports learning rather than shortcuts it, with educators and students keeping control over pedagogical decisions, grading, and agentic actions.
+The point is to remove setup. Instead of teaching a teacher how to write a good prompt, the workflow is already designed around common classroom tasks like exit tickets, connects to the documents and calendars they already use, and carries the task through multiple steps. OpenAI frames the principle behind it as AI that supports learning rather than shortcuts it, with educators and students keeping control over pedagogical decisions, grading, and agentic actions.
 
 # The three ChatGPT education plugins, compared
 
