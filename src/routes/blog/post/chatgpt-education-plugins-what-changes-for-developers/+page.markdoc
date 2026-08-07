@@ -18,7 +18,7 @@ faqs:
   - question: What do the ChatGPT education plugins mean for developers?
     answer: Developers should build tools that expose secure APIs, support institutional permissions, and work with AI agents that can access and act on backend services.
 ---
-Most AI-in-education coverage stops at "students will cheat" or "teachers will save time." Both miss the part that actually matters if you build software. OpenAI just shipped [three education plugins for ChatGPT Work and Codex](https://openai.com/index/learn-teach-chatgpt-work-codex/), and the interesting thing is not the prompts inside them. It is that the unit of distribution in EdTech is quietly moving from the app to the plugin.
+Most AI-in-education coverage stops at "students will cheat" or "teachers will save time." Both miss the part that actually matters if you build software. OpenAI just shipped [three education plugins for ChatGPT Work and Codex](https://openai.com/index/learn-teach-chatgpt-work-codex/), and the interesting thing is not the prompts inside them. It suggests that AI plugins and workflows may become an increasingly important distribution layer for EdTech.
 
 A plugin bundles apps, role-specific skills, instructions, and common workflows into one package. A teacher does not construct a prompt chain. They pick a workflow, connect their course materials, and the agent runs. That changes what an EdTech product has to expose, and what its backend has to handle.
 
