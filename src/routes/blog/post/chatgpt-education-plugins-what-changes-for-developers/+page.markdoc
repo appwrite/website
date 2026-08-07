@@ -44,7 +44,7 @@ The K-12 Educator plugin was developed alongside working teachers and integrates
 
 That integration is the substantive part. It gives the plugin access to local academic standards, the granular learning components beneath each standard, and the progressions that connect prior and future learning. A drafted lesson comes out scaffolded and standards-aligned rather than generic. The teacher still owns pedagogy, grading, and which agentic actions run.
 
-This is the same architectural pattern Anthropic used when it [launched free Claude access for US K-12 teachers](/blog/post/anthropic-launches-free-claude-access-for-us-k-12-teachers), which also leans on Learning Commons for standards alignment. Two frontier labs converging on the same grounding layer is a signal about where classroom AI is heading.
+This is the same architectural pattern Anthropic used when it [launched free Claude access for US K-12 teachers](/blog/post/anthropic-launches-free-claude-access-for-us-k-12-teachers), which also leans on Learning Commons for standards alignment. The fact that both companies are building around the same grounding layer suggests it could become an important foundation for classroom AI.
 
 ## The College Educator plugin handles course design and LMS packaging
 
