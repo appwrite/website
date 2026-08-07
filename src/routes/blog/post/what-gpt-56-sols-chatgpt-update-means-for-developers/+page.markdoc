@@ -89,7 +89,7 @@ GPT-5.6 Luna becomes the default model for Free and Go users this week. Unlimite
 | Free, Go  | GPT-5.6 Luna          | Think button     | Unlimited (text only) |
 | Plus, Pro | GPT-5.6 Sol (updated) | Reasoning slider | Plan limits apply     |
 
-Luna as the free default is a notable move given the pricing history. When OpenAI [cut GPT-5.6 pricing on July 30](/blog/post/openai-cuts-gpt-56-pricing-and-adds-fast-mode-to-the-api), Luna dropped 80% to $0.20 per million input tokens and $1.20 per million output tokens. Serving it as the free default is only viable because it got that cheap, which is the same economics that makes high-volume agent features viable in your own app.
+Luna as the free default is a notable move given the pricing history. When OpenAI [cut GPT-5.6 pricing on July 30](/blog/post/openai-cuts-gpt-56-pricing-and-adds-fast-mode-to-the-api), Luna dropped 80% to $0.20 per million input tokens and $1.20 per million output tokens. Serving it as the free default is likely helped by those lower serving costs, the same economics that make high-volume AI features more practical in production.
 
 # Does this change GPT-5.6 Sol in the API, Codex, or ChatGPT Work?
 
