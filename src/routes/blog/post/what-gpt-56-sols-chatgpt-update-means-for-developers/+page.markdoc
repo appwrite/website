@@ -33,7 +33,7 @@ Here is the full change set in one place.
 | Change                                | Who gets it                  | What it does                                                     |
 | ------------------------------------- | ---------------------------- | ---------------------------------------------------------------- |
 | Retuned GPT-5.6 Sol                   | Plus, Pro                    | More direct answers, tighter formatting, less filler             |
-| Fewer factual errors                  | Plus, Pro (Sol), Free (Luna) | Better use of retrieved sources for dates, numbers, and rules    |
+| Fewer factual errors                  | Plus, Pro (Sol), Free (Luna) | Better use of available sources, especially for dates, numbers, rules, and assumptions |
 | GPT-5.6 Sol across fast and deeper reasoning | Plus, Pro | Consistent tone whether responses are quick or more deliberate |
 | Reasoning slider                      | Plus, Pro                    | User-controlled effort on web, mobile, and desktop               |
 | GPT-5.6 Luna as default               | Free, Go                     | Latest small model instead of the previous default               |
