@@ -34,7 +34,7 @@ Here is the full change set in one place.
 | ------------------------------------- | ---------------------------- | ---------------------------------------------------------------- |
 | Retuned GPT-5.6 Sol                   | Plus, Pro                    | More direct answers, tighter formatting, less filler             |
 | Fewer factual errors                  | Plus, Pro (Sol), Free (Luna) | Better use of retrieved sources for dates, numbers, and rules    |
-| One model across Instant and Thinking | Plus, Pro                    | Consistent tone whether the answer is quick or deliberate        |
+| GPT-5.6 Sol across fast and deeper reasoning | Plus, Pro | Consistent tone whether responses are quick or more deliberate |
 | Reasoning slider                      | Plus, Pro                    | User-controlled effort on web, mobile, and desktop               |
 | GPT-5.6 Luna as default               | Free, Go                     | Latest small model instead of the previous default               |
 | Unlimited text chats                  | Free, Go                     | Rolling out with no text chat limits, subject to abuse guardrails |
