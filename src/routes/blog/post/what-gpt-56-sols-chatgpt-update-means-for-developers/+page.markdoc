@@ -76,7 +76,7 @@ Plus and Pro users now get a slider in ChatGPT on web, mobile, and desktop to ch
 
 The same model now powers both Instant responses and deeper reasoning for paid users, which is what makes the slider feel like a dial instead of a switch. Moving it up should feel like the model taking longer on the same problem, not like being handed off to a different model with its own tone and formatting habits.
 
-That distinction is the design lesson. GPT-5.6 already exposes effort settings in the API, including `max` and `ultra` as we covered in the [launch breakdown](/blog/post/gpt-56-is-here-openais-efficient-frontier-model). Most teams bury those settings in a router and guess at the user's intent from the prompt. OpenAI just concluded that at ChatGPT's scale, the user often knows better, and that surfacing the control is cheaper than inferring it.
+That distinction is the design lesson. GPT-5.6 already exposes effort settings in the API, including `max` and `ultra` as we covered in the [launch breakdown](/blog/post/gpt-56-is-here-openais-efficient-frontier-model). Most teams bury those settings in a router and guess at the user's intent from the prompt. This update suggests OpenAI believes giving users direct control over reasoning effort can work better than always inferring it from the prompt.
 
 Free users get a coarser version of the same idea: a **Think button** that gives GPT-5.6 Luna more time on a hard question. One button, no slider, same principle.
 
