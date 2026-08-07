@@ -44,7 +44,7 @@ The scale context matters for reading the rest of this. OpenAI says roughly **1 
 
 # GPT-5.6 Sol gives more focused answers
 
-The clearest behavior change is length discipline. The updated GPT-5.6 Sol leads with the answer, adapts detail to the question, drops unnecessary formatting, and pushes back when simply agreeing would not help.
+The clearest behavior change is length discipline. The updated GPT-5.6 Sol leads with the answer, adapts detail to the question, drops unnecessary formatting, and pushes back when simply agreeing would not help. It is also less likely to agree with incorrect assumptions simply to be agreeable, helping conversations stay more accurate instead of overly validating the user.
 
 OpenAI's own example is a weather question: can I bike from the Mission to Ocean Beach after work without getting soaked? GPT-5.5 Instant returned a four-section forecast breakdown with a caveat paragraph. The updated GPT-5.6 Sol answered "yes, you should stay dry," named wind rather than rain as the real problem, and recommended a light wind layer. Nothing else.
 
