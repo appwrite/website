@@ -123,7 +123,7 @@ Two things were explicitly *not* invariants. Human-readable table output stays r
 
 The help screen turned out to be the interesting case. It was never listed as an invariant, and that is exactly how cobra's default screen survived seven phases of the project without anyone noticing: 41 services in one alphabetical list, each with its full API description, and nothing to tell a new user where to start. The grouped screen the TypeScript CLI had is now the Go CLI's too, generated from one shared table rather than maintained by hand in two places.
 
-![The full appwrite --help screen, with commands grouped under GET STARTED, PROJECT, RESOURCES, UTILITIES, DEPRECATED, and OTHER](/images/blog/rewriting-the-appwrite-cli-in-go/help.png "contain")
+![The full appwrite --help screen, with commands grouped under GET STARTED, PROJECT, RESOURCES, UTILITIES, DEPRECATED, and OTHER](/images/blog/rewriting-the-appwrite-cli-in-go/help.avif "contain")
 
 Getting that screen to match took more care than it looks like it should have. The paragraph wrap alone took four passes: our first version was a straightforward greedy word wrap that agreed with the TypeScript at 80 columns, the width we happened to check, and disagreed at twelve other widths. `commander`'s wrap is regex-driven and puts `columnWidth - 1` characters on a line, not `columnWidth`, and its first line carries two characters that were never measured. Reproducing the quirk is what makes the screens agree at every width instead of at one. We verified it by calling `commander`'s own wrap function with our arguments and diffing every terminal width from 6 to 80.
 
