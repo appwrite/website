@@ -1,0 +1,174 @@
+---
+layout: post
+title: How to choose the right backend as a service platform for your app
+description: Learn how to choose the right backend as a service platform for an app, with key features, costs, scalability, security, and developer experience now.
+date: 2026-08-10
+cover: /images/blog/how-to-choose-the-right-backend-as-a-service-platform-for-your-app/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+unlisted: true
+faqs:
+  - question: What is Backend as a Service (BaaS)?
+    answer: Backend as a Service (BaaS) is a managed platform that provides backend features such as authentication, databases, storage, serverless functions, realtime APIs, and messaging. It lets developers build applications without provisioning and managing backend infrastructure themselves.
+  - question: Which BaaS platform is best?
+    answer: "The best BaaS platform depends on your application's data model, pricing requirements, programming languages, compliance needs, and tolerance for vendor lock-in. Popular options include Appwrite, Firebase, Supabase, AWS Amplify, and Convex, each with different strengths."
+  - question: How much does BaaS cost?
+    answer: "BaaS pricing depends on factors such as database usage, storage, bandwidth, function executions, authentication users, and realtime activity. Instead of comparing only free tiers, estimate your costs at 10x and 100x your current traffic to understand how each platform's pricing model scales."
+  - question: Can I migrate from one BaaS platform to another?
+    answer: "Yes, but the difficulty depends on how closely the platforms' data models, authentication systems, APIs, and server-side functions match. A migration is much easier when the platform provides clean data exports, user migration tools, documented schemas, and a deployment model that can be reproduced outside the vendor's cloud."
+---
+Most teams choose a backend as a service platform from a feature checklist. Auth, database, storage, functions, all present, ship it. Six months later the same teams are writing migration scripts, because the thing that broke was never on the checklist: the pricing curve, the permission model, or the fact that there was no way to run the stack anywhere but the vendor's cloud.
+
+A backend as a service (BaaS) decision is a data model decision and a cost decision wearing a feature list as a disguise. Your schema, permission rules, and SDK calls end up spread across every screen in your app. Replacing them later is not a weekend of work, it is a quarter.
+
+This post breaks down the criteria that actually decide the choice, compares the main BaaS platforms on each one, and gives you a concrete evaluation you can run in two weeks before you commit.
+
+# What a backend as a service platform actually gives you
+
+**Short answer:** a BaaS is a managed platform that runs the backend primitives every app needs, exposed through SDKs and HTTP APIs, so you integrate instead of provisioning and operating servers.
+
+Every serious backend as a service platform covers roughly the same surface:
+
+* **Authentication:** accounts, sessions, OAuth providers, MFA, password recovery
+* **Database:** managed data store with permissions attached to resources or rows
+* **Storage:** file buckets with access rules, signed URLs, and often image transforms
+* **Functions:** serverless compute triggered by HTTP, platform events, or a schedule
+* **Realtime:** subscriptions so clients see changes without polling
+* **Messaging and hosting:** email, SMS, push, and a deploy target for your frontend
+
+Because the surface is similar across vendors, features rarely separate them. What separates them is how those features behave under load, under a compliance audit, and on a bill at 100x your current traffic. If you are still deciding whether to use a BaaS at all, [BaaS vs custom backend](/blog/post/baas-vs-custom-backend) covers that question first.
+
+# Seven criteria for choosing a backend as a service platform
+
+**Short answer:** score platforms on data model, auth depth, runtime breadth, pricing shape, self-hosting and lock-in, compliance, and migration path. Everything else is a detail.
+
+| Criterion                    | The question to ask                                          | Why it decides the choice                            |
+| ---------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| **Data model**               | Does the store match how you query?                          | Schema shape is the hardest thing to change later    |
+| **Auth depth**               | Are SSO, MFA, and teams first-class or an upgrade tier?      | Enterprise deals stall on auth gaps                  |
+| **Runtime breadth**          | Can server logic run in the language your team already uses? | Narrow runtimes force rewrites of existing libraries |
+| **Pricing shape**            | Does cost scale with users, reads, or resources?             | Per-operation billing is the most common bill shock  |
+| **Self-hosting and lock-in** | Can you run the server yourself if you need to?              | Determines whether leaving is a project or a rewrite |
+| **Compliance**               | Are GDPR, HIPAA, and data residency supported today?         | Retrofitting compliance is far more expensive        |
+| **Migration path**           | Are importers and exports first-party?                       | An advertised exit is the only reliable one          |
+
+The rest of this post works through each one.
+
+## Match the data model before anything else
+
+Pick the store that matches your access patterns, not the one with the nicer marketing page. Relational data with joins, aggregates, and reporting queries points toward SQL. Document-shaped data with heavy nesting and denormalized reads points toward a document store.
+
+Get this wrong and you spend the next year working around it. Deeply nested documents make analytics queries painful. Heavily normalized SQL makes mobile reads chatty. Both are recoverable, neither is cheap.
+
+Also check how permissions are expressed. Some platforms use a separate rules language you have to learn, lint, and test on its own. Others attach permissions directly to tables and rows, so the rule protecting a user's data sits next to the data it governs. [Appwrite Databases](/docs/products/databases) takes the second approach, which means fewer moving parts when you audit access later.
+
+## Check auth depth, not just the provider count
+
+Every backend as a service platform lists OAuth providers. The count is not the signal. What matters is what sits behind the basics:
+
+* **MFA and session control:** available on the base tier, or gated behind an enterprise upgrade?
+* **Teams and roles:** modeled by the platform, or something you build on top of a users table?
+* **Enterprise SSO:** SAML and OIDC when your first large customer asks, which they will
+* **Custom tokens:** a supported path to bring an existing auth system across
+
+[Appwrite Auth](/docs/products/auth) covers email and password, magic URL, email OTP, phone, anonymous sessions, JWTs, custom tokens, and OAuth2 across roughly 44 providers, with teams and labels built in. [Firebase Authentication](https://firebase.google.com/docs/auth) covers the common methods but moves MFA, SAML, OIDC, and multi-tenancy behind an Identity Platform upgrade. That is a normal tradeoff, it is just one to price in before you sign.
+
+## Confirm the function runtimes match your team
+
+Server-side logic is where your app touches secrets, calls third-party APIs, and writes with elevated privileges. If the platform only runs TypeScript and your data pipeline is Python, you are either rewriting it or running a second service alongside your BaaS.
+
+[Appwrite Functions](/docs/products/functions) runs Node.js, PHP, Ruby, Python, Python ML, Deno, Bun, Dart, .NET, Java, Swift, Kotlin, C++, and Go. Firebase Cloud Functions runs JavaScript, TypeScript, and Python. Supabase Edge Functions run TypeScript on Deno. For a full breakdown, see [Appwrite vs Firebase vs Supabase serverless functions](/blog/post/appwrite-vs-firebase-vs-supabase-functions-comparison).
+
+Narrow runtimes are fine if your team is standardized on one language. They become a tax the moment a single workload wants a different one.
+
+## Model the pricing shape, not the free tier
+
+**Short answer:** free tiers are marketing. What matters is the unit of billing, because that determines whether your bill tracks revenue or tracks traffic.
+
+| Billing model                                  | How cost behaves                             | Where it bites                                           |
+| ---------------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| **Per operation** (reads, writes, invocations) | Scales with traffic, not users               | A viral moment or a bad polling loop multiplies the bill |
+| **Resource tiers** (plan plus caps)            | Predictable, step changes at tier boundaries | Less granular, you pay for headroom                      |
+| **Underlying cloud services**                  | Tracks each service separately               | Hard to forecast, spread across many line items          |
+| **Self-hosted**                                | Fixed infrastructure plus engineering time   | Ops cost is real and often underestimated                |
+
+Run the numbers at 10x and 100x your current traffic before you decide. Per-operation billing is the most common source of surprise invoices, because a chatty client or a misconfigured realtime listener costs money in a way a fixed tier does not. [Appwrite pricing](/pricing) uses plan tiers with resource caps, which trades some granularity for a bill you can forecast.
+
+## Decide how much lock-in you can accept
+
+This is where backend as a service platforms diverge most, and where the difference is hardest to reverse.
+
+| Platform        | Open source                                                             | Self-hosting                                 | Lock-in profile                                           |
+| --------------- | ----------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------- |
+| **Appwrite**    | Yes, [BSD 3-Clause](https://opensource.org/license/bsd-3-clause) server | Yes, Docker, single documented path          | Lower, same APIs on cloud and self-host                   |
+| **Firebase**    | Client SDKs only                                                        | No first-party self-host                     | High, tied to Google Cloud and Firestore's model          |
+| **Supabase**    | Yes, major server components                                            | Yes, Docker or Kubernetes, more moving parts | Medium, Postgres is portable, platform APIs still migrate |
+| **AWS Amplify** | Partial                                                                 | No, you deploy into your own AWS account     | High, coupled to AWS IAM and the service graph            |
+
+Lock-in is not automatically bad. Firebase's tight coupling to Google Cloud is exactly what makes it fast to start on, and for a consumer app that will never leave that ecosystem, it is a reasonable trade. The mistake is accepting lock-in without noticing you did.
+
+The practical test is simple: if this vendor tripled prices or deprecated a service you depend on, what would your response actually be? If the honest answer is "rewrite the app," weight open source and self-hosting more heavily. [Self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) works through that tradeoff in more detail.
+
+## Verify compliance before you need it
+
+Compliance is the criterion teams skip at the prototype stage and pay for during their first enterprise deal. Check for the certifications you will actually be asked about: GDPR, SOC 2, HIPAA where health data is involved, and data residency if your users are in regulated regions.
+
+Ask three questions of any BaaS vendor:
+
+* Which regions can data physically live in?
+* Is a BAA or DPA available, and on which plan?
+* If the answer is no, can you self-host inside your own compliance boundary?
+
+That last question is why open-source platforms keep showing up in regulated shortlists. When the managed offering cannot meet the requirement, running the same server yourself is an option rather than a dead end.
+
+## Confirm the migration path is first-party
+
+An exit path only counts if the vendor documents and maintains it. Look for importers from the platforms you might come from, clean exports of schemas and users, and parity between managed and self-hosted deployments so moving is a redeployment rather than a rewrite.
+
+Appwrite ships [documented migrations](/docs/advanced/migrations) from Firebase, Supabase, and Nhost, plus self-hosted to cloud and back. That is worth checking on every platform on your list, because a migration tool that exists in the docs is very different from one you have to build.
+
+# How to evaluate a backend as a service platform in two weeks
+
+Shortlist two platforms, then build the same thin slice on both. Not a hello world, a real slice:
+
+1. **Auth flow:** sign up, log in, and one permission rule that stops user A from reading user B's data
+2. **One read and write path:** the core object in your app, with the query you will actually run most
+3. **One background job:** a scheduled or event-triggered function that calls an external API
+4. **One file upload:** with access control, from the client you actually ship
+5. **A deploy:** push to production from Git and roll it back
+
+Then score what you learned:
+
+* How long did the permission rule take to get right, and could you test it?
+* Did the SDK match the docs?
+* What did the console tell you when something failed?
+* What would this slice cost at 100x traffic?
+
+Two weeks of this reveals more than two months of comparison tables, including this one. [Appwrite quick starts](/docs/quick-starts) cover the framework setup for the slice.
+
+# Where Appwrite fits among backend as a service platforms
+
+Appwrite is a single open-source platform covering [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), [Realtime](/docs/apis/realtime), [Messaging](/docs/products/messaging), and [Sites](/docs/products/sites) for hosting your frontend. It runs as a managed service on Appwrite Cloud or self-hosted through Docker, with the same APIs on both, so the hosting decision does not have to be made on day one.
+
+It is a strong fit when you want one console instead of a service graph, permissions attached to your data rather than a separate rules language, broad function runtimes, and a real self-hosting path if compliance or cost pushes you there.
+
+It is a weaker fit in two cases worth being direct about. If Postgres and raw SQL are non-negotiable for your team, Supabase is the more natural center of gravity, and [Appwrite compared to Supabase](/blog/post/appwrite-compared-to-supabase) lays out the differences. If you are already deep in AWS IAM and want everything under one bill, Amplify fits that shape better than any standalone BaaS.
+
+For a vendor-by-vendor table across Appwrite, Firebase, Supabase, Amplify, and Convex, see [Backend as a service (BaaS)](/blog/post/backend-as-a-service).
+
+# Getting started with Appwrite as your backend as a service platform
+
+The fastest way to test any of this is to build the thin slice above. Create a project on [Appwrite Cloud](https://cloud.appwrite.io/), wire up auth and one data path, and see how far you get in an afternoon. If self-hosting is where you expect to land, run the same slice through [self-hosting](/docs/advanced/self-hosting) and compare, the APIs will not change underneath you.
+
+## Resources
+
+* [Appwrite Docs](/docs)
+* [Quick starts for your framework](/docs/quick-starts)
+* [Self-hosting Appwrite](/docs/advanced/self-hosting)
+* [Migrating from Firebase, Supabase, or Nhost](/docs/advanced/migrations)
+* [Appwrite pricing](/pricing)
+* [Backend as a service (BaaS) comparison](/blog/post/backend-as-a-service)
+* [BaaS vs custom backend](/blog/post/baas-vs-custom-backend)
+* [Join the Appwrite Discord community](https://appwrite.io/discord)
