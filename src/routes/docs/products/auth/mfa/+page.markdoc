@@ -15,6 +15,8 @@ If you are looking for MFA on your Appwrite Console account, please refer to the
 
 Appwrite currently allows two factors of authentication. More factors of authentication will be available soon.
 
+This page covers the built-in factors: email, phone (SMS), TOTP, and recovery codes. To send the second factor through your own channel, see [Custom MFA factor](/docs/products/auth/custom-mfa).
+
 Here are the steps to implement MFA in your application.
 
 {% section #display-recover-code step=1 title="Display recovery codes" %}
@@ -783,6 +785,7 @@ The returned object will be formatted like this.
 }
 ```
 
+
 {% multicode %}
 ```client-web
 const factors = await account.listMfaFactors();
@@ -954,6 +957,18 @@ val response = account.createMfaChallenge(
 val challengeId = response.id
 ```
 {% /multicode %}
+{% /tabsitem %}
+
+{% tabsitem #custom title="Custom" %}
+Appwrite generates a code and delivers nothing. Your application sends the code through any channel, such as WhatsApp, a voice call, or an internal system.
+
+```client-web
+const challenge = await account.createMFAChallenge({
+    factor: AuthenticationFactor.Custom
+});
+```
+
+The steps that read and deliver the code need a Server SDK. See [Custom MFA factor](/docs/products/auth/custom-mfa) for the full flow and the security requirements.
 {% /tabsitem %}
 {% /tabs %}
 {% /section %}

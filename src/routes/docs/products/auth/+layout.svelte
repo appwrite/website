@@ -127,6 +127,11 @@
                     href: '/docs/products/auth/mfa'
                 },
                 {
+                    label: 'Custom MFA factor',
+                    href: '/docs/products/auth/custom-mfa',
+                    new: isNewUntil('30 November 2026')
+                },
+                {
                     label: 'Auth status check',
                     href: '/docs/products/auth/checking-auth-status'
                 },
