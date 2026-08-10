@@ -18,7 +18,7 @@ You can create a table by heading to the **Databases** page, navigate to a [data
 {% /tabsitem %}
 
 {% tabsitem #server-sdk title="Server SDK" %}
-You can also create tables programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/advanced/security/api-keys).
+You can also create tables programmatically using a [Server SDK](/docs/sdks#server). Appwrite [Server SDKs](/docs/sdks#server) require an [API key](/docs/partners/project/api-keys).
 
 {% multicode %}
 
@@ -1568,7 +1568,7 @@ You can choose between the following types.
 
 | Column    | Description                                                      |
 |--------------|------------------------------------------------------------------|
-| `varchar`    | String column. Fully indexable if size < 768. Maximum 16,383 characters. |
+| `varchar`    | Short text column. Fully indexable if size < 768. Maximum 16,383 characters. |
 | `text`       | Text column. Prefix indexing only. Maximum 16,383 characters. |
 | `mediumtext` | Text column. Prefix indexing only. Maximum 4,194,303 characters. |
 | `longtext`   | Text column. Prefix indexing only. Maximum 1,073,741,823 characters. |

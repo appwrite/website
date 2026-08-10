@@ -94,6 +94,18 @@
             ]
         },
         {
+            label: 'Partners',
+            items: [
+                {
+                    label: 'Project',
+                    href: '/docs/partners/project',
+                    icon: 'icon-briefcase',
+                    isParent: true,
+                    new: isNewUntil('22 Aug 2026')
+                }
+            ]
+        },
+        {
             label: 'Utilities',
             collapsible: true,
             initiallyCollapsed: true,
@@ -140,6 +152,12 @@
                     label: 'AI',
                     href: '/docs/tooling/ai',
                     icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
+                    label: 'MCP server',
+                    href: '/docs/tooling/ai/mcp-servers',
+                    icon: 'icon-globe-alt',
                     isParent: true
                 },
                 {

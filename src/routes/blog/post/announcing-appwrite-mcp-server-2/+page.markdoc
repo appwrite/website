@@ -3,6 +3,7 @@ layout: post
 title: "Announcing Appwrite MCP Server 2.0"
 description: The Appwrite MCP server has been rebuilt with a compact two-tool architecture that uses less context, requires zero configuration flags, and automatically supports all Appwrite services.
 date: 2026-04-13
+lastUpdated: 2026-07-31
 cover: /images/blog/announcing-appwrite-mcp-server-2/cover.avif
 timeToRead: 4
 author: chirag-aggarwal
@@ -22,6 +23,12 @@ faqs:
   - question: "Can I use the MCP server with self-hosted Appwrite?"
     answer: "Yes. The MCP server accepts the same connection settings as the Appwrite SDKs (endpoint, project ID, API key), so you can point it at a self-hosted Appwrite instance. The [MCP server documentation](/docs/tooling/ai/mcp-servers/api) walks through configuration for both Cloud and self-hosted setups."
 ---
+
+{% info title="Update (July 2026)" %}
+
+The Appwrite MCP server is now a hosted remote server at `https://mcp.appwrite.io/` that uses OAuth authentication, with documentation search built in. It replaces the local setup described in this post for Appwrite Cloud users. Read the [changelog entry](/changelog/entry/2026-07-31) for details.
+
+{% /info %}
 
 When we launched the Appwrite MCP server, connecting your Appwrite project to AI coding agents was already straightforward. But as the number of enabled services grew, so did the number of tool definitions loaded into the model's context, leaving less room for your actual prompts and code.
 
@@ -69,6 +76,8 @@ The full catalog of Appwrite operations stays internal to the server. When the m
 # How to upgrade
 
 If you are already using the Appwrite MCP server, remove all service flags from the list of arguments from your existing configuration. Using `uvx` automatically fetches the latest version.
+
+A special thanks to [Abid Abdulgafoor](https://www.linkedin.com/in/abidabdulgafoor/) from our community, who suggested the two-tool architecture that shaped this release.
 
 # Resources
 

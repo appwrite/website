@@ -89,12 +89,12 @@ What personal data we collect, why we collect it, and how it is used
 * - Consent
 ---
 * Third parties with whom we share your personal data
-* - Userlist
-  - MSG91 
+* - Resend
+  - MSG91
   - Activetrail (Israel only)
   - SMS.to
   - Sentry.io
-* - Userlist
+* - SendGrid
 ---
 * Consequences of not providing the Personal Data
 * - Cannot create an account
@@ -160,7 +160,7 @@ What personal data we collect, why we collect it, and how it is used
 ---
 * Third parties with whom we share your personal data
 * 3rd party platforms such as:
-  - Userlist
+  - SendGrid
 ---
 * Consequences of not providing the personal data
 * - Cannot add you to our mailing list

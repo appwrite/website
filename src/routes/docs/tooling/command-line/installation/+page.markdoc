@@ -123,12 +123,68 @@ Before you can use the CLI, you need to login to your Appwrite account using
 appwrite login
 ```
 
-Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag.
+Add the `--endpoint` flag if you're using a self-hosted instance of Appwrite. This flag requires you to add the URL string you're using for your self-hosted instance after the `--endpoint` flag. Self-hosted instances do not currently support OAuth-based CLI authentication, so the CLI will prompt for your email and password instead.
 
 ```sh
-appwrite login --endpoint "<URL_HERE>"
+appwrite login --endpoint "https://appwrite.example.com/v1"
 ```
-You can log in to multiple accounts or change the **current** account by re-running the command.
+
+Include the `/v1` API path. The CLI validates and normalizes custom endpoints before prompting for credentials, and suggests the correct URL when the API path is missing. A trailing slash is optional.
+
+The CLI signs you in through your browser using device authorization. It displays a code and a URL, then waits for approval.
+
+![Appwrite CLI login in the terminal](/images/docs/command-line/cli-login-terminal.avif)
+
+Press `Enter` to open the URL in your default browser, or copy the URL and open it manually. In the browser, confirm that the device code matches the code shown in your terminal, then click **Continue**.
+
+{% only_dark %}
+![Confirm your device code](/images/docs/command-line/dark/cli-login-confirm-code.avif)
+{% /only_dark %}
+{% only_light %}
+![Confirm your device code](/images/docs/command-line/cli-login-confirm-code.avif)
+{% /only_light %}
+
+Review the permissions requested by the CLI, then click **Authorize**.
+
+{% only_dark %}
+![Authorize Appwrite CLI](/images/docs/command-line/dark/cli-login-authorize.avif)
+{% /only_dark %}
+{% only_light %}
+![Authorize Appwrite CLI](/images/docs/command-line/cli-login-authorize.avif)
+{% /only_light %}
+
+Once authorized, the browser confirms that your device is connected. Return to your terminal, where the CLI continues automatically and completes the login.
+
+{% only_dark %}
+![Device connected](/images/docs/command-line/dark/cli-login-device-connected.avif)
+{% /only_dark %}
+{% only_light %}
+![Device connected](/images/docs/command-line/cli-login-device-connected.avif)
+{% /only_light %}
+
+You can log in to multiple accounts or change the **current** account by re-running the command. You can revoke the CLI's access anytime in your account settings.
+
+If changing the client endpoint leaves a previously signed-in account inactive, switch back to any saved account without signing in again:
+
+```sh
+appwrite login --switch
+```
+
+The CLI lists the available accounts and endpoints for you to choose from. You can also run `appwrite whoami` to see the active account or get recovery instructions when another saved account is available.
+
+{% info title="Seeing an email and password prompt instead?" %}
+Older CLI versions, and CLI sessions pointed at a self-hosted Appwrite instance, do not support the OAuth device authorization flow and fall back to asking for your email and password. Run `appwrite update` to get the latest version, or pass the Appwrite Cloud endpoint explicitly:
+
+```sh
+appwrite login --endpoint="https://cloud.appwrite.io/v1"
+```
+
+If the CLI still points at a self-hosted instance, clear the saved preferences by deleting `prefs.json`. On macOS and Linux it lives at `~/.appwrite/prefs.json`, on Windows at `%USERPROFILE%\.appwrite\prefs.json`.
+{% /info %}
+
+{% info title="CI and scripting" %}
+The browser-based login flow does not affect API key based authentication. Non-interactive mode with API keys continues to work as before and remains the recommended way to authenticate the CLI in CI workflows. [Learn more about CI mode](/docs/tooling/command-line/non-interactive)
+{% /info %}
 
 # Initialization {% #initialization %}
 
@@ -206,7 +262,7 @@ The CLI resolves resource paths relative to the file that defines the resource. 
 
 The single-file format continues to work. You can split any supported resource arrays over time and keep other arrays in the root config.
 
-Supported include keys are `functions`, `sites`, `databases`, `collections`, `tablesDB`, `tables`, `topics`, `teams`, `buckets`, `webhooks`, and `messages`.
+Supported include keys are `functions`, `sites`, `databases`, `tablesDB`, `tables`, `topics`, `teams`, `buckets`, `webhooks`, and `messages`.
 
 Include paths must be local JSON files inside your project. They must be relative paths, end in `.json`, and cannot use parent-directory segments, absolute paths, URLs, URL-like schemes, null bytes, or JSON pointer fragments.
 
@@ -242,14 +298,19 @@ appwrite help
 
 # Configuration {% #configuration %}
 
-At any point, if you would like to change your server's endpoint, project ID, or self-signed certificate acceptance, use the `client` command.
+At any point, if you would like to change your server's endpoint, API key, or self-signed certificate acceptance, use the `client` command. When the endpoint matches a saved signed-in account, the CLI switches to that account. For a new endpoint, the current account remains saved and can be restored with `appwrite login --switch`.
 
 ```sh
 appwrite client --endpoint https://<REGION>.cloud.appwrite.io/v1
 appwrite client --key 23f24gwrhSDgefaY
 appwrite client --self-signed true
-appwrite client --reset // Resets your CLI configuration
-appwrite client --debug // Prints your current configuration
+appwrite client --debug
+```
+
+Use `appwrite client --reset` to clear the CLI configuration. If the reset would sign out saved accounts, the CLI asks for confirmation. For scripts and other non-interactive environments, explicitly confirm the reset with:
+
+```sh
+appwrite client --reset --force
 ```
 
 # Uninstall {% #uninstall %}

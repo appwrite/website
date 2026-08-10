@@ -92,6 +92,15 @@
             ]
         },
         {
+            label: 'Tooling',
+            items: [
+                {
+                    label: 'MCP server',
+                    href: '/docs/advanced/self-hosting/mcp'
+                }
+            ]
+        },
+        {
             label: 'Production',
             items: [
                 {
