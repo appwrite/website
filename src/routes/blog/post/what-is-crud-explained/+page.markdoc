@@ -87,9 +87,7 @@ Alternatively, you can use a backend platform that provides CRUD operations out 
 
 # Start building CRUD apps with Appwrite
 
-CRUD stands for Create, Read, Update, and Delete, the four operations at the heart of nearly every application that stores data. The pattern is powerful because it's consistent: the same four ideas map cleanly onto HTTP methods in an API and onto statements in a database, and CRUD stays separate from REST, which is just one common way to expose those operations over the web. The practical takeaway is that once you can spot CRUD, most software becomes easier to understand and build, and you rarely need to write those four operations by hand when a good backend already provides them.
-
-That's exactly what [Appwrite](/) does: because CRUD is such a universal pattern, it gives you all four operations out of the box. Instead of standing up a database, writing a separate endpoint for each operation, and wiring permissions by hand, you define your data once and call ready-made methods from the SDK.
+[Appwrite](/) provides CRUD operations through its TablesDB API, so you can work with your data directly from the SDK without building a separate endpoint for each operation.
 
 Here's the full CRUD lifecycle for the to-do list from earlier, using Appwrite's TablesDB API:
 
