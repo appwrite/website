@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What GPT-5.6 Sol's ChatGPT update means for developers"
+title: "ChatGPT is now free and unlimited when using GPT-5.6 Luna"
 description: OpenAI retuned GPT-5.6 Sol for ChatGPT and made Luna the free default. Here is what it changes for developers building on the API, and what to copy from it.
 date: 2026-08-07
 cover: /images/blog/what-gpt-56-sols-chatgpt-update-means-for-developers/cover.avif
@@ -119,7 +119,7 @@ Strip out the consumer packaging and this release is a list of defensible defaul
 
 * **Answer first, then support it.** Lead with the conclusion and cut formatting that does not earn its place. Long structured answers read as thorough and usually are not.
 * **Do not re-dump context on follow-ups.** Update the recommendation. Do not restate everything the user already read two turns ago.
-* **Evaluate grounding, not vibes.** Build test cases specifically around dates, numbers, source attribution, rules, and assumptions. That is where retrieved-context answers fail.
+* **Evaluate grounding** Build test cases specifically around dates, numbers, source attribution, rules, and assumptions. That is where retrieved-context answers fail.
 * **Give the user the effort dial.** A visible slider or a single Think button beats a router silently guessing how hard the question is.
 
 The one thing you cannot copy directly is tier consistency. Serving quick and deliberate answers from one tuned model is what keeps tone stable across effort levels. If you route between a cheap model and an expensive one, users feel the seam. Matching prompts and output formats across both tiers gets you most of the way there.
@@ -143,4 +143,4 @@ If you are building with Codex, the [Appwrite plugin for Codex](/blog/post/annou
 * [Appwrite plugin for Codex](/blog/post/announcing-appwrite-codex-plugin)
 * [Appwrite Functions docs](/docs/products/functions)
 * [Create a free Appwrite project](https://cloud.appwrite.io/)
-* [Join the Appwrite Discord](/discord)
+* [Join the Appwrite Discord](https://appwrite.io/discord)
