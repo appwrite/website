@@ -134,7 +134,7 @@ One caveat on either path: flat per-seat pricing makes spend predictable but tie
 
 # Ship what Codex builds on an Appwrite backend
 
-More capacity per seat means your developers finish more in a session. That shifts the bottleneck rather than removing it. The next thing in the way is usually the backend: authenticating users, storing state between agent steps, persisting uploaded files, keeping API keys off the client, and running model calls server-side. That plumbing is where the hours you just bought back tend to disappear.
+If your team is using Codex to build applications, the next question is what those applications need on the backend. That includes authentication, data storage, file storage, server-side logic, and deployment.
 
 [Appwrite](/) is an open source backend as a service that covers it. [Auth](/docs/products/auth) for accounts and sessions, [Databases](/docs/products/databases) for application and conversation state, [Storage](/docs/products/storage) for files, [Functions](/docs/products/functions) to call the OpenAI API server-side with your key kept secret, and [Messaging](/docs/products/messaging) for notifications. Deploy your frontend next to it with [Sites](/docs/products/sites). Run it on managed Cloud or self-host it.
 
