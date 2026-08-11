@@ -7,7 +7,7 @@ cover: /images/blog/announcing-remote-appwrite-mcp-server/cover.avif
 timeToRead: 4
 author: aditya-oberai
 category: product, announcement
-featured: false
+featured: true
 faqs:
   - question: "What is the remote Appwrite MCP server?"
     answer: "It is a hosted version of the [Appwrite MCP server](/docs/tooling/ai/mcp-servers/api) that runs over the HTTP transport at `https://mcp.appwrite.io/`. Instead of installing and running the server locally, you add the URL to your AI tool's MCP configuration and authenticate with OAuth. It gives AI agents like Claude Code, Cursor, and Codex access to your Appwrite project and the Appwrite documentation."
