@@ -19,7 +19,7 @@ faqs:
   - question: Can you mix Standard and Premium seats in ChatGPT Business?
     answer: Yes. Business workspaces can have both Standard and Premium seats, allowing teams to give higher-capacity access only to users who need it.
 ---
-OpenAI is adding a second seat tier to ChatGPT Business. [Premium seats](https://openai.com/index/premium-seats-chatgpt-business/) cost $125 per user per month, give 5x the usage of a Standard seat, and remove the five-hour usage limit that currently interrupts long sessions. Standard seats stay at $25 per user per month, and you can mix both tiers inside the same workspace.
+OpenAI is introducing Premium seats for ChatGPT Business. [Premium seats](https://openai.com/index/premium-seats-chatgpt-business/) provide 5x more usage than Standard seats and remove the five-hour usage limit. Premium seats cost $125 per user per month, or $100 per user per month when billed annually. Standard seats remain $25 per user per month, or $20 per user per month when billed annually. Teams can mix Standard and Premium seats within the same workspace.
 
 If your team keeps bouncing off usage limits in the middle of a Codex run or a long analysis, this is the change that matters. If only two people on your team hit those limits, the more useful part is that you no longer have to upgrade everyone to fix it for them.
 
