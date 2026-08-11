@@ -9,7 +9,7 @@ author: chirag-aggarwal
 category: announcement
 featured: true
 callToAction: true
-draft: true
+draft: false
 faqs:
   - question: "Is a change necessary when you upgrade?"
     answer: "In almost all conditions, no. Install the new version in the same way that you installed the old version. Your appwrite.config.json file, your flags, your scripts, and your CI pipelines continue to operate. Only your stored login does not move, because the credentials go to a different keyring entry. Run appwrite login one time after you upgrade."
