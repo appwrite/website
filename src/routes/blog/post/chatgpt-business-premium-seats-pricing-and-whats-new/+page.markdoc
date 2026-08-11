@@ -21,7 +21,7 @@ faqs:
 ---
 OpenAI is introducing Premium seats for ChatGPT Business. [Premium seats](https://openai.com/index/premium-seats-chatgpt-business/) provide 5x more usage than Standard seats and remove the five-hour usage limit. Premium seats cost $125 per user per month, or $100 per user per month when billed annually. Standard seats remain $25 per user per month, or $20 per user per month when billed annually. Teams can mix Standard and Premium seats within the same workspace.
 
-If your team keeps bouncing off usage limits in the middle of a Codex run or a long analysis, this is the change that matters. If only two people on your team hit those limits, the more useful part is that you no longer have to upgrade everyone to fix it for them.
+The change is aimed at teams whose most active users need more capacity for larger projects and longer sessions. Because Standard and Premium seats can be mixed, teams can give higher-capacity seats to the people who need them without upgrading everyone.
 
 This post covers ChatGPT Business Premium seats pricing, what the usage change actually removes, how seat mixing works, the limited-time credit offer that ends on August 20, and how to decide between a Premium seat and the OpenAI API.
 
