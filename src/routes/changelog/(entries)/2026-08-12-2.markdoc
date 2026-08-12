@@ -1,0 +1,9 @@
+---
+layout: changelog
+title: Free organizations no longer become read-only because of seat limits
+date: 2026-08-12
+---
+
+Starter and free-plan organizations are no longer incorrectly switched to read-only mode when their billing data reports a seat limit of zero. For plans without a seat cap, the Console now treats that value as unlimited instead of as a reached limit.
+
+Affected organizations can create projects and invite members again without changing plans or billing settings.

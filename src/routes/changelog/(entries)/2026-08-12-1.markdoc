@@ -1,0 +1,9 @@
+---
+layout: changelog
+title: External CIMD URLs work across Console OAuth flows again
+date: 2026-08-12
+---
+
+The Console once again supports OAuth clients whose metadata is hosted at an external Client ID Metadata Document (CIMD) URL. Consent and device authorization flows can now load URL-based client metadata directly instead of relying on the Appwrite API to resolve the URL as an application ID.
+
+Connected applications that use external CIMD URLs also display correctly in account settings. Existing OAuth clients do not need to change their client IDs or metadata URLs.
