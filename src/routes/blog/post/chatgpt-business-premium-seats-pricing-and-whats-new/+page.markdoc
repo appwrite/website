@@ -57,12 +57,6 @@ If a Premium user still runs out, workspace owners can add **shared workspace cr
 
 The five-hour limit is a rolling cap that stops a heavy session partway through. Removing it is a bigger practical change than the raw 5x number, because rolling caps punish exactly the workflows teams are moving toward: long agentic runs, large refactors, multi-file code review, and analysis over a big pile of source documents.
 
-Premium seat usage includes:
-
-* **5x more usage** than a Standard seat.
-* **No five-hour usage limit.**
-* **Predictable weekly usage resets.**
-
 Premium is designed to give active users more capacity for longer and more ambitious work, including coding, analysis, and other sustained sessions.
 
 Predictable weekly resets matter for a less obvious reason. A rolling five-hour window is hard to plan around because you cannot tell when it clears without hitting it. A weekly reset you can schedule against, which is the difference between rationing capacity and budgeting it.
