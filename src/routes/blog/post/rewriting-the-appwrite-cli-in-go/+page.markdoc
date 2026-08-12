@@ -7,7 +7,7 @@ cover: /images/blog/rewriting-the-appwrite-cli-in-go/cover.avif
 timeToRead: 9
 author: chirag-aggarwal
 category: announcement
-featured: true
+featured: false
 callToAction: true
 draft: false
 faqs:
