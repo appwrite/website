@@ -1,0 +1,117 @@
+---
+layout: post
+title: "Grok Bot puts AI agents to work across your tools"
+description: "Grok Bot gives AI agents a persistent cloud computer to operate apps, learn routines, and work together. See what the early beta means for developers."
+date: 2026-08-12
+cover: /images/blog/grok-bot-early-beta/cover.png
+timeToRead: 6
+author: aishwari
+category: ai, news
+featured: false
+unlisted: true
+faqs:
+  - question: "What is Grok Bot?"
+    answer: "Grok Bot is an early-beta product from xAI that gives AI agents access to a persistent cloud computer. Bots can use websites and apps, retain context, learn recurring routines, and coordinate with other Bots."
+  - question: "Who can use Grok Bot during the early beta?"
+    answer: "Grok Bot is currently available to SuperGrok Heavy, Cursor Ultra, and Cursor Premium Teams subscribers. xAI says enterprise access is coming later and currently offers a waitlist."
+  - question: "Which devices support Grok Bot?"
+    answer: "xAI lists desktop access on macOS and Windows, plus access through the iOS app. The launch page currently offers a direct macOS download."
+  - question: "Does every Grok Bot get a separate computer?"
+    answer: "No. xAI says a user's Bots share one persistent cloud computer, including its files, browser, and logins. Isolation is per user rather than per Bot."
+  - question: "How does Grok Bot learn a recurring workflow?"
+    answer: "A user can ask a Bot to observe a workflow while the user completes it. Grok Bot saves the workflow as a routine, incorporates corrections, and can run the routine later."
+  - question: "Does Grok Bot have an API?"
+    answer: "xAI has not announced a public Grok Bot API. The early beta is presented as a desktop and iOS product, so developers should not assume that its computer-use or orchestration layer is currently programmable."
+---
+
+Most AI assistants still stop at advice. They draft the follow-up, summarize the support ticket, or explain what to update in a CRM, then leave the final action to a person. [Grok Bot](https://x.com/bot/status/2087224798078517251) is xAI's attempt to close that gap by giving AI agents a persistent cloud computer and letting them operate the same tools as their users.
+
+That makes Grok Bot less like a chat interface and more like an execution environment. A Bot can sign in to websites, move between apps, retain context, and keep working after the user's laptop closes. Multiple Bots can also coordinate, which turns one assistant into a small set of role-specific workers.
+
+The product is now in early beta for **SuperGrok Heavy, Cursor Ultra, and Cursor Premium Teams subscribers**. The [official launch announcement](https://x.ai/news/introducing-grok-bot) calls the team tier Cursor Teams Premium, while the product and FAQ pages label it Cursor Premium Teams. It is available on desktop and iOS, with enterprise access planned for later.
+
+# Grok Bot is a persistent computer-use agent
+
+The core design choice is simple: **Grok Bot has access to a persistent computer in the cloud**. Instead of requiring every service to expose an API or Model Context Protocol (MCP) server, it can interact with the interface a human already uses.
+
+xAI says Bots can work across apps, inboxes, tools, and websites, including products without a clean API or MCP integration. This opens more workflows, but it also changes the reliability model. An API call has a documented schema and a predictable response. A computer-use agent must interpret pages, handle navigation state, survive interface changes, and confirm that an action actually completed.
+
+Grok Bot is designed to continue running 24/7, even when the user's own device is offline. That persistent execution separates it from agents that borrow a local browser or terminal and stop when the host machine sleeps.
+
+# Grok Bot combines routines, memory, and coordination
+
+Grok Bot does more than replay a fixed automation. Its launch materials describe three layers that work together.
+
+## Bots learn recurring work by observation
+
+Users can ask a Bot to follow along while they complete a workflow. The Bot saves those steps as a routine, accepts corrections, and runs the process later without requiring the user to describe it again.
+
+This approach lowers the setup cost for workflows that are tedious to encode in an automation builder. It also creates a versioning problem developers will recognize: a learned routine can drift when an app changes its interface or when the business process changes. Teams still need a way to inspect, test, and update important routines.
+
+## Context persists across tasks
+
+Bots remember conversations, working preferences, edge cases, and prior project context. xAI positions that memory as the mechanism that helps a Bot learn when to continue independently and when to ask for input.
+
+Persistent context is useful, but it should not become an unstructured pile of chat history. Agent systems need explicit records for task status, approvals, outputs, and the facts that may be reused later. Appwrite's guide to [building persistent agents with Databases and Realtime](/docs/tooling/ai/persistent-agents-with-realtime) shows the underlying pattern: save messages and state in a table, load the relevant history for each run, and stream updates to connected clients.
+
+## Bots can hand work to each other
+
+Users can run several Bots in parallel and place them in a shared thread. xAI says Bots can exchange context, assign ownership, and escalate judgment calls to the user. Its own teams reportedly use a chief-of-staff pattern, with specialist Bots for areas such as inbox management, expenses, recruiting, and bug fixes.
+
+The useful abstraction is not an unlimited swarm. It is a small workflow graph with clear roles and handoff points. A sales Bot can research an account, another can draft outreach, and a coordinating Bot can collect the result for approval. Each handoff should carry a defined artifact and an owner, not just another conversational message.
+
+# The early use cases span operations and engineering
+
+xAI says Grok Bot began as an internal prototype before spreading across the company. The examples in the announcement are multi-step jobs that cross several systems:
+
+- **Sales outbound:** Research accounts, score contacts, and prepare personalized email and LinkedIn drafts for approval.
+- **CRM maintenance:** Add notes from call transcripts, draft follow-ups, flag stalled opportunities, and maintain account context.
+- **Operations and finance:** Process invoices from Gmail, handle office tasks, and support onboarding workflows.
+- **Engineering:** Reproduce a bug in the product interface, file a ticket, and hand the issue to a debugging Bot.
+- **Customer support:** Work a support queue inside tools such as Zendesk and return when a decision needs approval.
+
+These examples matter because they cross the boundary between generating content and changing business systems. Success is no longer measured by whether the model produced a plausible answer. It is measured by whether the CRM contains the correct record, the invoice reached the correct workflow, or the bug report includes a reproducible case.
+
+# Shared computers make permissions the critical design constraint
+
+The [Grok Bot product page](https://x.ai/bot) clarifies that a user's Bots do not each receive an isolated machine. They share one persistent cloud computer, including its files, browser, and logins. Isolation happens per user, not per Bot.
+
+That makes collaboration easier because one Bot can pick up another's work without a fresh login. It also increases the blast radius of a mistake. A Bot assigned to expenses and a Bot assigned to sales may both be able to reach every account available in the shared browser session unless the connected services enforce narrower permissions.
+
+xAI says the cloud computer is encrypted in transit and at rest, includes a training opt-out, and can route sensitive actions through **Auto Review** before execution. It also lists enterprise controls such as data loss prevention, certificates, proxies, and network controls, although enterprise access is not open yet.
+
+Teams evaluating Grok Bot should treat access design as part of the implementation, not a later security pass:
+
+- Give the shared computer dedicated work accounts instead of personal administrator sessions.
+- Apply least-privilege roles inside every connected product.
+- Require approval for payments, external messages, destructive changes, and permission updates.
+- Keep an external audit record of inputs, actions, approvals, and final outputs.
+- Test how Bots recover from expired sessions, changed interfaces, duplicate submissions, and partial failures.
+
+The key question is not whether an agent can click a button. It is whether the system can prove which agent initiated the action, what context it used, who approved it, and whether the outcome was verified.
+
+# Grok Bot availability and pricing
+
+Grok Bot launched on August 11, 2026, as an early beta. The current access options are:
+
+| Plan | Listed price | Grok Bot access |
+| --- | ---: | --- |
+| SuperGrok Heavy | Existing subscription | Included |
+| Cursor Ultra | $200 per month | Included |
+| Cursor Premium Teams | $120 per seat per month | Included |
+| Enterprise | Not announced | Waitlist |
+
+xAI says subscriptions include weekly usage, with additional usage billed according to token cost. The company has not published a separate Grok Bot API, a detailed usage allowance, or a general release date. Developers should therefore treat the beta as a user-facing desktop and mobile product rather than a programmable agent platform.
+
+# Build the backend around long-running AI work
+
+Grok Bot is a clear signal that computer-use agents are moving from demos toward persistent operational work. The difficult engineering still sits around the model: identity, durable state, permissions, event processing, audit history, and recovery from partial execution.
+
+For teams building their own agentic products, Appwrite provides those backend primitives. [Authentication](/docs/products/auth) handles user identity and permissions, [Databases](/docs/products/databases) stores task and approval state, and [Functions](/docs/products/functions) runs isolated server-side logic from HTTP requests, events, webhooks, or schedules. Start on [Appwrite Cloud](https://cloud.appwrite.io), then use the persistent-agent guide to connect stored state to live client updates.
+
+Resources:
+
+- [Build persistent agents with Appwrite Realtime](/docs/tooling/ai/persistent-agents-with-realtime)
+- [Run AI workloads in Appwrite Functions](/docs/tooling/ai/ai-in-functions)
+- [Appwrite Functions documentation](/docs/products/functions)
+- [Grok Bot official launch announcement](https://x.ai/news/introducing-grok-bot)
