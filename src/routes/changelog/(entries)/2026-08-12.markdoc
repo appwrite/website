@@ -1,0 +1,13 @@
+---
+layout: changelog
+title: JWTs now respect linked session expiration
+date: 2026-08-12
+---
+
+JSON Web Tokens (JWTs) created from a user session now stop working as soon as that linked session expires. Previously, a JWT could remain valid until its own 15-minute expiration even after the session that created it had expired.
+
+JWTs continue to stop working when their linked session is deleted. No changes are required in your application; this fix ensures JWT authentication consistently follows the lifetime of the originating session.
+
+{% arrow_link href="/docs/products/auth/jwt" %}
+Learn more about JWT authentication
+{% /arrow_link %}
