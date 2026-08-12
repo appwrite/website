@@ -35,9 +35,6 @@ Here is the full comparison.
 | --------------------- | ------------------------ | ------------------------- |
 | Monthly billing       | $25 per user per month   | $125 per user per month   |
 | Annual billing        | $20 per user per month   | $100 per user per month   |
-| Usage allowance       | Baseline                 | 5x Standard               |
-| Five-hour usage limit | Applies                  | Removed                   |
-| Usage resets          | Plan limits apply        | Predictable weekly resets |
 | Workspace             | Same Business workspace  | Same Business workspace   |
 | Overflow option       | Shared workspace credits | Shared workspace credits  |
 
