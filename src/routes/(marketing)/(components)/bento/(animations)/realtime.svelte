@@ -34,7 +34,7 @@
             [topRightCursor, { scale: 1 }, { duration: 0.25, at: 0.35 }]
         ];
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -47,7 +47,7 @@
             { amount: 'all' }
         );
 
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
             animate(to);
 
@@ -55,6 +55,11 @@
                 animate(from);
             };
         });
+
+        return () => {
+            stopInView();
+            stopHover();
+        };
     });
 </script>
 

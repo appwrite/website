@@ -26,7 +26,7 @@
             [notification, { opacity: 1, y: 0, filter: 'blur(0px)' }, { duration: 0.2, at: 0.15 }]
         ];
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -39,7 +39,7 @@
             { amount: 'all' }
         );
 
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
             animate(to);
 
@@ -47,6 +47,11 @@
                 animate(from);
             };
         });
+
+        return () => {
+            stopInView();
+            stopHover();
+        };
     });
 </script>
 
