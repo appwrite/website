@@ -332,6 +332,8 @@
   "static/images/blog/appwrite-realtime-with-flutter/cover.png": "99376d2cf9983874f7e9238dee186f5098c9b7a23d6f8ea3550d518580c8bb6e",
   "static/images/blog/appwrite-realtime/cover.png": "db1c1110935b9ad2a5675e80242914ec38e919004011b0e1060c4d8bc93db5d5",
   "static/images/blog/appwrite-server-sdk-vs-client-sdk/cover.png": "3b674e35218dc6f203824b8ee53eb367e79c33755f64a5456f290768ad5db96f",
+  "static/images/blog/appwrite-sites-squashfs-migration/cold-start-times.png": "6100fd85d746580f176c3112cd74c465199dee1972bf4179fdc732112b1aa62d",
+  "static/images/blog/appwrite-sites-squashfs-migration/cover.png": "951399e6bde5d57cc431c49ab730842b76a6b84f93006f84017763866ea18275",
   "static/images/blog/appwrite-storage-file-manager/cover.png": "11698e50fb864b4ff99d850290556143b281a988c7fabd23c26b98f653b9b305",
   "static/images/blog/appwrite-teams-roles/cover.png": "34f333eb8ec3ef92514f67d365850a2054e9c9990671f6647ea575533e2954d1",
   "static/images/blog/appwrite-vs-auth0-b2c/appwrite-vs-auth0-chart.png": "bba9245370213f15d1d2066260b22a07fccc054b2847596ad66f57bd968e2d63",
