@@ -106,7 +106,7 @@ The plugin workflows map cleanly onto backend primitives. Here is the concrete v
 
 Three rules worth applying regardless of which backend you pick:
 
-* **Put permissions on the data, not the UI.** Document-level rules survive an agent calling your API directly. A hidden button does not.
+**Put permissions on the data, not the UI.** Row-level permissions survive an agent calling your API directly. A hidden button does not.
 * **Make every agent-triggered write server-side.** Route it through a function that validates input and enforces rate limits, so a retry loop cannot quietly corrupt a roster.
 * **Log who did what.** Audit trails are a compliance requirement in education, and they are the only way to answer "why did the agent change this grade" after the fact.
 
