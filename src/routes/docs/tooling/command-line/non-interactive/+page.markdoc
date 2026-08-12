@@ -16,6 +16,41 @@ When you set the global configuration parameters using the `appwrite client` com
 
 In this mode, the CLI can only interact with one project at a time.
 
+# Switch saved accounts {% #switch-saved-accounts %}
+
+Scripts can make a saved account current without opening the interactive account picker. Use `appwrite login --switch` with `--endpoint`, `--email`, or both:
+
+```sh
+appwrite login --switch \
+    --endpoint "https://<REGION>.cloud.appwrite.io/v1" \
+    --email "user@example.com"
+```
+
+The selectors must identify exactly one account that is already signed in. Use both when the same email is saved for multiple endpoints or multiple emails are saved for one endpoint. Without a selector, `appwrite login --switch` opens the account picker in a terminal and fails in a headless environment.
+
+This switches between stored user sessions. For CI jobs that access a project, continue to use an API key as described below.
+
+# Install agent skills {% #install-agent-skills %}
+
+Select skills explicitly to run installation without prompts:
+
+```sh
+appwrite init skill --all
+```
+
+Use `--skill <directory-name>` instead of `--all` to select individual skills. Repeat `--skill` to install more than one. The two selection modes cannot be combined.
+
+```sh
+appwrite init skill \
+    --skill <SKILL_DIRECTORY> \
+    --skill <ANOTHER_SKILL_DIRECTORY> \
+    --agent .agents \
+    --agent .claude \
+    --method copy
+```
+
+`--agent` is repeatable and accepts `.agents` or `.claude`. `--method` accepts `symlink` or `copy`. When `--all` or at least one `--skill` makes the installation non-interactive, the CLI defaults to `--agent .agents` and `--method symlink` if those options are omitted.
+
 # API Keys {% #api-keys %}
 In non-interactive mode, the CLI uses an API key to authenticate. Your API key must have sufficient permissions to execute the commands you plan to use. [Learn more about API Keys](/docs/partners/project/api-keys).
 

@@ -30,6 +30,39 @@ Skills work across all major AI dev tools that support them. They are installed 
 When you run `appwrite init project`, the Appwrite CLI auto-detects your project configuration and installs relevant skills automatically. You can also install skills manually using the steps below.
 {% /info %}
 
+## Install with the Appwrite CLI {% #install-with-appwrite-cli %}
+
+Run `appwrite init skill` from an Appwrite project to choose the skills, agent directories, and installation method interactively:
+
+```sh
+appwrite init skill
+```
+
+For a manual installation without prompts, select all available skills or name individual skill directories:
+
+```sh
+appwrite init skill --all
+
+appwrite init skill \
+    --skill <SKILL_DIRECTORY> \
+    --skill <ANOTHER_SKILL_DIRECTORY>
+```
+
+`--skill` is repeatable. Do not combine it with `--all`. Unknown skill directory names fail with a list of the available names.
+
+Choose one or both supported agent directories with repeatable `--agent` options, and choose how files are installed with `--method`:
+
+```sh
+appwrite init skill --all \
+    --agent .agents \
+    --agent .claude \
+    --method symlink
+```
+
+`--agent` accepts `.agents` and `.claude`. `--method` accepts `symlink` and `copy`. Once you pass `--all` or at least one `--skill`, installation does not prompt: omitted agent and method options default to `.agents` and `symlink`, respectively.
+
+## Install with the skills installer {% #install-with-skills-installer %}
+
 {% section #step-1 step=1 title="Run the install command" %}
 Run the following command in your project directory:
 
