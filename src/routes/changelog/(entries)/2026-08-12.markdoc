@@ -1,7 +1,7 @@
 ---
 layout: changelog
 title: "Up to 4x faster dependency installs with the build cache"
-date: 2026-06-16
+date: 2026-08-12
 cover: /images/blog/inside-appwrites-new-build-cache/cover.avif
 ---
 
