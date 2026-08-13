@@ -160,7 +160,7 @@ A model that sustains work across many steps only pays off if there is a real ba
 
 The connection point is MCP. Appwrite's [remote MCP server](/docs/tooling/ai/mcp-servers) gives an agent both API access to your project and current Appwrite documentation, so it writes real SDK calls instead of guessing at them. To add it to Grok Build, follow the [Grok Build integration guide](/docs/tooling/ai/agents/grok-build):
 
-`grok mcp add --transport http appwrite `[`https://mcp.appwrite.io/`](https://mcp.appwrite.io/)
+`grok mcp add --transport http appwrite https://mcp.appwrite.io/`
 
 Then hand it something concrete, like scaffolding a Next.js app with email and password auth and a todos table. It pulls the right docs, calls the API, and gives you back product you can review. [Create a free Appwrite project](https://cloud.appwrite.io/) and try the loop on a small, reviewable task first.
 
