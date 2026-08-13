@@ -86,7 +86,7 @@ Three things stand out.
 * **It matches GPT-5.6 Sol on the composite.** Both sit at 61 on the [Artificial Analysis](https://artificialanalysis.ai/) Intelligence Index, a nine-benchmark composite, with Fable 5 Max one point ahead at 62.
 * **It is not a clean sweep.** GPT-5.6 Sol leads clearly on DeepSWE v1.1 and Terminal-Bench v3.0, and Fable 5 Max leads on CursorBench, FrontierCode, APEX-Agents, and APEX-SWE. Grok 4.6 takes GDPVal-AA v2, AA-Briefcase, and Harvey LAB.
 
-The pattern is worth reading carefully. Grok 4.6 is strongest on knowledge work benchmarks and competitive on agentic coding, but terminal-heavy autonomy is still where the gap to GPT-5.6 Sol and Fable 5 is widest.
+Grok 4.6 is strongest on knowledge work benchmarks and competitive on agentic coding, but terminal-heavy autonomy is still where the gap to GPT-5.6 Sol and Fable 5 is widest.
 
 # How the Grok 4.6 500K context window is priced
 
