@@ -20,7 +20,7 @@ faqs:
 ---
 Most coding models are still evaluated as if the job ends with a good first answer. Real agent work does not end there. It runs for many steps, reads unfamiliar code, calls tools, checks its own output, and either holds the task in its head or quietly drifts off it.
 
-That drift is the problem [Grok 4.6](https://x.ai/news/grok-4-6) is aimed at. SpaceXAI released it on August 12, 2026, and the framing is narrower than a usual generational bump: it builds on [Grok 4.5](/blog/post/grok-45-coding-model) with a specific focus on long-running agents and on interactive and visual work that takes more than one pass to get right.
+That drift is the problem [Grok 4.6](https://x.ai/news/grok-4-6) is designed to address. xAI released it on August 12, 2026, building on [Grok 4.5](/blog/post/grok-45-coding-model) with a focus on long-running agents, coding, and interactive and visual work.
 
 This post covers what is new in Grok 4.6, the official benchmark numbers, how the 500K context window is priced, where you can use it, and when it is the right model to reach for.
 
