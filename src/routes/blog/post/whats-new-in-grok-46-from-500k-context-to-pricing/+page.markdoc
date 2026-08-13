@@ -97,7 +97,7 @@ The pattern is worth reading carefully. Grok 4.6 is strongest on knowledge work 
 | Under 200K        |        $2.00 |               $0.50 |         $6.00 |
 | 200K and above    |        $4.00 |               $1.00 |        $12.00 |
 
-For agent workloads this matters more than the raw window size. A long-running agent accumulates context steadily: file contents, tool results, test output, and its own reasoning. Cross 200K and every subsequent token in that request bills at the higher tier, including output.
+For agent workloads this matters more than the raw window size. A long-running agent accumulates context steadily: file contents, tool results, test output, and its own reasoning.
 
 The practical response is context hygiene rather than avoiding long tasks. Keep tool results trimmed, avoid pasting whole files when a targeted read will do, and lean on cached input for the stable parts of your prompt. A well-scoped MCP tool call that returns exactly the resource an agent asked for is cheaper than a broad dump the model has to read past.
 
