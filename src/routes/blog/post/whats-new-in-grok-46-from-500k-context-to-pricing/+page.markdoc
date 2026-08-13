@@ -113,7 +113,7 @@ Standard pricing is unchanged from Grok 4.5 at **$2 per million input tokens** a
 | Claude Opus 4.8 |           $5 |           $25 |      1M |
 | Gemini 3.1 Pro  |           $2 |           $12 |      1M |
 
-The output side is where the gap shows. Agents spend most of their tokens writing: plans, tool arguments, diffs, test summaries, review notes. Moving from $25 or $30 per million output tokens to $6 changes which long tasks are worth automating at all, which is the same argument that made [Grok 4.5 interesting on cost](/blog/post/grok-45-coding-model).
+Agents spend most of their tokens writing: plans, tool arguments, diffs, test summaries, review notes. Moving from $25 or $30 per million output tokens to $6 changes which long tasks are worth automating at all, which is the same argument that made [Grok 4.5 interesting on cost](/blog/post/grok-45-coding-model).
 
 # Independent measurements: what Grok 4.6 costs in latency
 
