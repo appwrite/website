@@ -2,7 +2,7 @@
 layout: post
 title: "Inside Appwrite's new build cache: 4x faster dependency installs"
 description: A deep dive into how Appwrite now caches your dependencies between builds, and what it means for your deployment times.
-date: 2026-08-12
+date: 2026-08-13
 cover: /images/blog/inside-appwrites-new-build-cache/cover.avif
 timeToRead: 7
 author: torsten-dittmann
