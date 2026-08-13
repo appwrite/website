@@ -254,3 +254,40 @@ export function createDiscussionForumPageSchema(options: {
 
     return escapeJsonLtForHtmlScript(JSON.stringify(graph));
 }
+
+export function createAuthorPageSchema({
+    canonicalUrl,
+    author
+}: {
+    canonicalUrl: string;
+    author: {
+        display_name: string;
+        username: string;
+        avatar?: string;
+        thread_count: number;
+        reply_count: number;
+        bio?: string;
+    };
+}): string {
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        url: canonicalUrl,
+        mainEntity: {
+            '@type': 'Person',
+            name: author.display_name,
+            alternateName: author.username,
+            ...(author.avatar ? { image: author.avatar } : {}),
+            ...(author.bio ? { description: author.bio } : {}),
+            interactionStatistic: [
+                {
+                    '@type': 'InteractionCounter',
+                    interactionType: 'https://schema.org/WriteAction',
+                    userInteractionCount: author.thread_count + author.reply_count
+                }
+            ]
+        }
+    };
+
+    return escapeJsonLtForHtmlScript(JSON.stringify(schema));
+}

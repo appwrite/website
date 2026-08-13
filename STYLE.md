@@ -48,6 +48,11 @@ APIs section:
 - [GraphQL](https://appwrite.io/docs/apis/graphql)
 - [REST](https://appwrite.io/docs/apis/rest)
 - [Realtime](https://appwrite.io/docs/apis/realtime)
+- [Events](https://appwrite.io/docs/apis/events)
+- [Webhooks](https://appwrite.io/docs/apis/webhooks)
+- [Response codes](https://appwrite.io/docs/apis/response-codes)
+- [Release policy](https://appwrite.io/docs/apis/release-policy)
+- [Error handling](https://appwrite.io/docs/apis/error-handling)
 
 Tooling section:
 
@@ -57,7 +62,7 @@ Tooling section:
 
 Advanced section:
 
-- [Platform](https://appwrite.io/docs/advanced/platform)
+- [Billing](https://appwrite.io/docs/advanced/billing)
 - [Migrations](https://appwrite.io/docs/advanced/migrations)
 - [Self-hosting](https://appwrite.io/docs/advanced/self-hosting)
 - [Security](https://appwrite.io/docs/advanced/security)
@@ -89,7 +94,7 @@ Each product page has three main sections
     - These pages usually align with sections shown in the product in the Appwrite Console.
     - Focused on describing concepts a user should know, but not actions you might take.
     - Cover all the details
-- Journeys
+- Guides
     - These pages focus on common actions and work flows
     - Detailed examples that span many concepts
     - Like cookbook at other organizations' documentation.
@@ -214,10 +219,10 @@ Split content such that each piece makes sense without reading dependents or exp
 - [ ] Point Cloud to new version in [src/routes/docs/references/[version]/[platform]/[service]/+page.server.ts](src/routes/docs/references/[version]/[platform]/[service]/+page.server.ts)
 - [ ] Update install command in [/workspaces/website/src/routes/docs/advanced/self-hosting/+page.markdoc](/workspaces/website/src/routes/docs/advanced/self-hosting/+page.markdoc)
 - [ ] Update events [src/partials/[product]-events.md](src/partials/)
-- [ ] Update response code [src/routes/docs/advanced/platform/response-codes/+page.markdoc](src/routes/docs/advanced/platform/response-codes/+page.markdoc)
+- [ ] Update response code [src/routes/docs/apis/response-codes/+page.markdoc](src/routes/docs/apis/response-codes/+page.markdoc)
 - [ ] Bump latest SDK versions in SDKs page, quick start, and tutorials
 - [ ] Create new sections for new products
-- [ ] Create new concept and journey pages for new features
+- [ ] Create new concept and guide pages for new features
 - [ ] Update docs for breaking changes
 
 ### Documenting a new API
@@ -346,7 +351,7 @@ easily, and the code example is expected to be runnable and complete.
 
 This means, you need to include imports, dependencies, and all parts needed to arrive at a functional example.
 
-For concept and journey product pages, still try your best to have complete examples, unless:
+For concept and guide product pages, still try your best to have complete examples, unless:
 
 1. The example will become opinionated. We avoid opinionated implementation and choices in product pages. Keep them in blogs, quick starts, and tutorials.
 2. The example cannot be given in a complete form cleanly. For example, many of the Messaging services's examples cannot be given in complete form because the boiler plate and set up is complex and documented in Android/Swift documentation.

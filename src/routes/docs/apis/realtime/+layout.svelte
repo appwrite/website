@@ -4,7 +4,7 @@
     import { isNewUntil } from '$lib/utils/date';
 
     const parent: NavParent = {
-        href: '/docs',
+        href: '/docs/apis',
         label: 'Realtime'
     };
 

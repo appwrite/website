@@ -102,6 +102,10 @@ A comment is made to your PR about the build, unless you enable **Silent mode**.
 * Generate PDFs programmatically with Appwrite Functions.
 * Node.js
 ---
+* MCP server
+* Expose custom tools to AI clients over HTTPS using the Model Context Protocol.
+* Python
+---
 * Payments with Stripe
 * Receive card payments and store paid orders.
 * Node.js

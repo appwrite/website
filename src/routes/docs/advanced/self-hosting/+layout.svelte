@@ -43,6 +43,10 @@
                 {
                     label: 'Coolify',
                     href: '/docs/advanced/self-hosting/platforms/coolify'
+                },
+                {
+                    label: 'Dokploy',
+                    href: '/docs/advanced/self-hosting/platforms/dokploy'
                 }
             ]
         },
@@ -84,6 +88,15 @@
                 {
                     label: 'Version control',
                     href: '/docs/advanced/self-hosting/configuration/version-control'
+                }
+            ]
+        },
+        {
+            label: 'Tooling',
+            items: [
+                {
+                    label: 'MCP server',
+                    href: '/docs/advanced/self-hosting/mcp'
                 }
             ]
         },

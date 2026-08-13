@@ -7,6 +7,17 @@
     export let query: string;
 
     $: highlightTerms = query?.split(' ') ?? [];
+    $: isResolved = thread.is_resolved || /\[(solved|resolved|closed|fixed)\]/i.test(thread.title);
+
+    function timeAgo(dateStr: string): string {
+        const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+        const formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+        if (diff < 3600) return formatter.format(-Math.floor(diff / 60), 'minute');
+        if (diff < 86400) return formatter.format(-Math.floor(diff / 3600), 'hour');
+        if (diff < 2592000) return formatter.format(-Math.floor(diff / 86400), 'day');
+        if (diff < 31536000) return formatter.format(-Math.floor(diff / 2592000), 'month');
+        return formatter.format(-Math.floor(diff / 31536000), 'year');
+    }
 </script>
 
 {#key highlightTerms}
@@ -30,6 +41,14 @@
 
         <div class="mt-4 flex min-w-0 flex-wrap justify-between gap-4">
             <ul class="flex min-w-0 flex-wrap gap-2">
+                {#if isResolved}
+                    <li class="min-w-0">
+                        <div class="web-tag tag-resolved truncate">
+                            <span class="web-icon-check"></span>
+                            Resolved
+                        </div>
+                    </li>
+                {/if}
                 {#each thread.tags ?? [] as tag, index (tag + index)}
                     <li class="min-w-0">
                         <div class="web-tag truncate">{tag}</div>
@@ -37,12 +56,17 @@
                 {/each}
             </ul>
 
-            <div
-                class="web-icon-button is-more-content web-u-pointer-events-none flex shrink-0 items-center"
-                aria-label="Replies"
-            >
-                <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
-                <span class="text-caption font-inter">{thread.message_count}</span>
+            <div class="flex shrink-0 items-center gap-3">
+                <div
+                    class="web-icon-button is-more-content web-u-pointer-events-none flex items-center"
+                    aria-label="Replies"
+                >
+                    <span class="web-icon-message web-u-font-size-16" aria-hidden="true"></span>
+                    <span class="text-caption font-inter">{thread.message_count}</span>
+                </div>
+                {#if thread.last_activity}
+                    <span class="text-caption">{timeAgo(thread.last_activity)}</span>
+                {/if}
             </div>
         </div>
     </a>
@@ -52,6 +76,11 @@
     .web-card {
         padding: 1.25rem;
         overflow: hidden;
+    }
+
+    .tag-resolved {
+        color: #22c55e;
+        border-color: rgba(34, 197, 94, 0.3);
     }
 
     .thread {

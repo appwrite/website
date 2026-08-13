@@ -94,6 +94,18 @@
             ]
         },
         {
+            label: 'Partners',
+            items: [
+                {
+                    label: 'Project',
+                    href: '/docs/partners/project',
+                    icon: 'icon-briefcase',
+                    isParent: true,
+                    new: isNewUntil('22 Aug 2026')
+                }
+            ]
+        },
+        {
             label: 'Utilities',
             collapsible: true,
             initiallyCollapsed: true,
@@ -111,10 +123,9 @@
             label: 'APIS',
             items: [
                 {
-                    label: 'Realtime',
-                    href: '/docs/apis/realtime',
-                    icon: 'icon-clock',
-                    isParent: true
+                    label: 'Overview',
+                    href: '/docs/apis',
+                    icon: 'icon-view-grid'
                 },
                 {
                     label: 'REST',
@@ -125,6 +136,12 @@
                     label: 'GraphQL',
                     href: '/docs/apis/graphql',
                     icon: 'icon-graphql'
+                },
+                {
+                    label: 'Realtime',
+                    href: '/docs/apis/realtime',
+                    icon: 'icon-clock',
+                    isParent: true
                 }
             ]
         },
@@ -135,6 +152,12 @@
                     label: 'AI',
                     href: '/docs/tooling/ai',
                     icon: 'icon-sparkles',
+                    isParent: true
+                },
+                {
+                    label: 'MCP server',
+                    href: '/docs/tooling/ai/mcp-servers',
+                    icon: 'icon-globe-alt',
                     isParent: true
                 },
                 {
@@ -152,7 +175,8 @@
                 {
                     label: 'Command Center',
                     href: '/docs/tooling/command-center',
-                    icon: 'web-icon-command'
+                    icon: 'web-icon-command',
+                    isParent: true
                 },
                 {
                     label: 'The Appwriter',
@@ -165,9 +189,9 @@
             label: 'Advanced',
             items: [
                 {
-                    label: 'Platform',
-                    href: '/docs/advanced/platform',
-                    icon: 'web-icon-platform',
+                    label: 'Billing',
+                    href: '/docs/advanced/billing',
+                    icon: 'icon-credit-card',
                     isParent: true
                 },
                 {

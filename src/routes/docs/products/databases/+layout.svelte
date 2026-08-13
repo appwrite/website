@@ -76,7 +76,7 @@
             ]
         },
         {
-            label: 'Journeys',
+            label: 'Guides',
             items: [
                 {
                     label: 'Pagination',
@@ -163,7 +163,7 @@
         if (shouldShowSubtitle) {
             headerSectionInfoAlert.set({
                 title: 'New API',
-                description: `This is a relatively new API. For details on the previous version and its terminology, see the legacy <a class="web-link underline" href="${legacyUrl}">Collections API documentation</a>.`
+                description: `This is a relatively new API. For details on the previous version and its terminology, see the <a class="web-link underline" href="${legacyUrl}">legacy API documentation</a>.`
             });
         } else {
             headerSectionInfoAlert.set(null);

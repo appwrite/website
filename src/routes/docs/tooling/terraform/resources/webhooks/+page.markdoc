@@ -33,14 +33,14 @@ resource "appwrite_webhook" "user_events" {
 resource "appwrite_webhook" "authenticated" {
   name          = "authenticated webhook"
   url           = "https://api.example.com/webhooks/secure"
-  events        = ["databases.*.collections.*.documents.*.create"]
+  events        = ["tablesdb.*.tables.*.rows.*.create"]
   auth_username = "webhook"
   auth_password = var.webhook_password
   tls           = true
 }
 ```
 
-Use the read-only **`secret`** attribute when configuring **signature verification** for payloads Appwrite sends to your URL (see [Webhooks](/docs/advanced/platform/webhooks) in the platform docs).
+Use the read-only **`secret`** attribute when configuring **signature verification** for payloads Appwrite sends to your URL (see [Webhooks](/docs/apis/webhooks) in the platform docs).
 
 # Data sources {% #data-sources %}
 
@@ -61,4 +61,4 @@ See the [Terraform Registry](https://registry.terraform.io/providers/appwrite/ap
 # Related {% #related %}
 
 - [Configuration](/docs/tooling/terraform/provider): authentication and endpoints
-- [Webhooks](/docs/advanced/platform/webhooks): event delivery, headers, and signatures
+- [Webhooks](/docs/apis/webhooks): event delivery, headers, and signatures

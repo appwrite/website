@@ -42,6 +42,10 @@
             label: 'Features',
             items: [
                 {
+                    label: 'Custom domains',
+                    href: '/docs/products/network/custom-domains'
+                },
+                {
                     label: 'DNS',
                     href: '/docs/products/network/dns'
                 },
