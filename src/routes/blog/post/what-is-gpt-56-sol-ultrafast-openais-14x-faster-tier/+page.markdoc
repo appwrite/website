@@ -79,7 +79,7 @@ When frontier intelligence stops costing you 30 seconds, it moves into parts of 
 
 The common thread is not that these tasks are hard. It is that they all have a deadline set by something outside your system: an outage clock, a market tick, a person breathing on a phone call, a shopper's patience. Below a certain latency the model participates. Above it, the moment has passed.
 
-Voice is the sharpest example. Conversational turn-taking breaks down past roughly a second of silence, which is why voice agents have historically been built on small models. Ultrafast puts a frontier model inside that budget even when the answer requires several tool calls across different systems.
+Voice is the sharpest example. Conversational turn-taking breaks down past roughly a second of silence, which is why voice agents have historically been built on small models. Ultrafast makes it more practical to use frontier intelligence in real-time voice experiences, even when finding the answer requires multiple steps or systems.
 
 Early preview customers span coding, commerce, financial research, and support, including Jane Street, [Podium](https://www.podium.com/), Basis, and [Rogo](https://rogo.ai/).
 
