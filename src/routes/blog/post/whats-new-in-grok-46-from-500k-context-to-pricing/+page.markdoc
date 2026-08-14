@@ -103,22 +103,6 @@ Standard pricing is unchanged from Grok 4.5 at **$2 per million input tokens** a
 
 Agents spend most of their tokens writing: plans, tool arguments, diffs, test summaries, review notes. Moving from $25 or $30 per million output tokens to $6 changes which long tasks are worth automating at all, which is the same argument that made [Grok 4.5 interesting on cost](/blog/post/grok-45-coding-model).
 
-# Independent measurements: what Grok 4.6 costs in latency
-
-Vendor benchmarks tell you about capability. Artificial Analysis lists independent measurements for [Grok 4.6 (high)](https://artificialanalysis.ai/models/grok-4-6) that tell you about the experience of calling it.
-
-| Metric                      |        Measured result |
-| --------------------------- | ---------------------: |
-| AA Intelligence Index       |                     61 |
-| Output speed                | 65.5 tokens per second |
-| Time to first answer token  |          31.18 seconds |
-| Context window              |            500K tokens |
-| Blended price per 1M tokens |                  $1.35 |
-
-Read those two speed numbers together with the "most intelligent and fastest model" claim, because they point the other way. At high reasoning effort, output speed is measured below average for reasoning models in this price tier, and time to first token is at the high end at 31.18 seconds. That is a reasoning tax, not a throughput problem, and it is why the fast variant exists.
-
-The takeaway is straightforward: Grok 4.6 at high effort is a good fit for asynchronous, long-running work and a poor fit for a user waiting on a chat response. For interactive surfaces, either lower the effort or pay for the fast variant.
-
 # Where you can use Grok 4.6
 
 Grok 4.6 is available on launch day across SpaceXAI's own surfaces and through several third-party platforms:
