@@ -37,7 +37,6 @@ The [official model docs](https://docs.x.ai/developers/models) list the details 
 | Input modalities  | Text and image      |
 | Output modalities | Text                |
 | Knowledge cutoff  | February 1, 2026    |
-| Reasoning         | Configurable effort |
 | Released          | August 12, 2026     |
 
 SpaceXAI positions it as its most intelligent and fastest model and recommends it for code and chat applications.
