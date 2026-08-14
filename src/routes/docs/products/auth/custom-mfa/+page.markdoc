@@ -1,0 +1,386 @@
+---
+layout: article
+title: Custom MFA factor
+description: Deliver a second authentication factor through any channel you want. Use Appwrite Functions or your own backend to send the challenge code.
+---
+
+Appwrite has three built-in factors for multi-factor authentication: email, phone (SMS), and TOTP. The custom factor removes the channel limit. Appwrite generates and verifies the code. Your application decides how the user receives it.
+
+Use the custom factor to send the second factor through a channel of your choice. Examples:
+
+- WhatsApp
+- A voice call
+- An internal messaging system
+- A hardware token service
+- A third-party provider that Appwrite does not support directly
+
+[Custom token login](/docs/products/auth/custom-token) uses the same pattern for sign-in. This page applies the pattern to the second factor.
+
+{% info title="Appwrite delivers nothing for this factor" %}
+A custom challenge sends no email and no SMS. If your application does not deliver the code, the user cannot complete the challenge.
+{% /info %}
+
+# How the flow works {% #how-it-works %}
+
+1. **Client.** Create a challenge with the `custom` factor. Appwrite stores a 6-digit code.
+2. **Client.** Call your function and pass the challenge ID.
+3. **Function.** Read the code with a Server SDK.
+4. **Function.** Send the code through your channel.
+5. **Client.** Complete the challenge with the code the user typed.
+
+# Before you start {% #before-you-start %}
+
+You need two things.
+
+- An Appwrite Function, or your own backend.
+- The `users.read` scope. For an Appwrite Function, set the scope on the function. Appwrite then puts a temporary API key in the `x-appwrite-key` header of each execution, and you do not store a permanent key.
+
+# Create the challenge {% #create-challenge %}
+
+Call this from your app after the user completes the first factor.
+
+{% multicode %}
+```client-web
+import { Client, Account, AuthenticationFactor } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>'); // Your project ID
+
+const account = new Account(client);
+
+const challenge = await account.createMFAChallenge({
+    factor: AuthenticationFactor.Custom
+});
+```
+
+```client-flutter
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart' as enums;
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>'); // Your project ID
+
+Account account = Account(client);
+
+MfaChallenge challenge = await account.createMFAChallenge(
+    factor: enums.AuthenticationFactor.custom,
+);
+```
+
+```client-apple
+import Appwrite
+import AppwriteEnums
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+
+let account = Account(client)
+
+let challenge = try await account.createMFAChallenge(
+    factor: .custom
+)
+```
+
+```client-android-kotlin
+import io.appwrite.Client
+import io.appwrite.enums.AuthenticationFactor
+import io.appwrite.services.Account
+
+val client = Client(context)
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+
+val account = Account(client)
+
+val challenge = account.createMFAChallenge(
+    factor = AuthenticationFactor.CUSTOM
+)
+```
+{% /multicode %}
+
+The response holds the challenge ID and the expiry time. It never holds the code. Keep the challenge ID for the last step.
+
+# Call your function {% #call-function %}
+
+Send the challenge ID to your function with the Client SDK. Use `createExecution`, and not the function domain.
+
+```client-web
+import { Functions } from "appwrite";
+
+const functions = new Functions(client);
+
+await functions.createExecution({
+    functionId: '<FUNCTION_ID>',
+    body: JSON.stringify({ challengeId: challenge.$id }),
+    async: false
+});
+```
+
+`createExecution` puts the ID of the signed-in user in the `x-appwrite-user-id` header of the execution. A direct call to the function domain leaves that header empty, and your function cannot then know who the caller is.
+
+# Read the code {% #read-code %}
+
+Read the code with a Server SDK. Give the path parameter the user ID from the `x-appwrite-user-id` header.
+
+{% multicode %}
+```server-nodejs
+const sdk = require('node-appwrite');
+
+const client = new sdk.Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>'); // Your secret API key
+
+const users = new sdk.Users(client);
+
+const result = await users.getMFAChallenge({
+    userId: '<USER_ID>',
+    challengeId: '<CHALLENGE_ID>'
+});
+```
+
+```python
+from appwrite.client import Client
+from appwrite.services.users import Users
+from appwrite.models import MfaChallengeSecret
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+client.set_project('<PROJECT_ID>') # Your project ID
+client.set_key('<API_KEY>') # Your secret API key
+
+users = Users(client)
+
+result: MfaChallengeSecret = users.get_mfa_challenge(
+    user_id = '<USER_ID>',
+    challenge_id = '<CHALLENGE_ID>'
+)
+```
+
+```php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Users;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    ->setProject('<PROJECT_ID>') // Your project ID
+    ->setKey('<API_KEY>'); // Your secret API key
+
+$users = new Users($client);
+
+$result = $users->getMFAChallenge(
+    userId: '<USER_ID>',
+    challengeId: '<CHALLENGE_ID>'
+);
+```
+
+```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1') # Your API Endpoint
+    .set_project('<PROJECT_ID>') # Your project ID
+    .set_key('<API_KEY>') # Your secret API key
+
+users = Users.new(client)
+
+result = users.get_mfa_challenge(
+    user_id: '<USER_ID>',
+    challenge_id: '<CHALLENGE_ID>'
+)
+```
+
+```server-rust
+use appwrite::Client;
+use appwrite::services::Users;
+
+let client = Client::new();
+client.set_endpoint("https://<REGION>.cloud.appwrite.io/v1"); // Your API Endpoint
+client.set_project("<PROJECT_ID>"); // Your project ID
+client.set_key("<API_KEY>"); // Your secret API key
+
+let users = Users::new(&client);
+
+let result = users.get_mfa_challenge(
+    "<USER_ID>",
+    "<CHALLENGE_ID>"
+).await?;
+```
+
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('<PROJECT_ID>') // Your project ID
+    .setKey('<API_KEY>'); // Your secret API key
+
+Users users = Users(client);
+
+MfaChallengeSecret result = await users.getMFAChallenge(
+    userId: '<USER_ID>',
+    challengeId: '<CHALLENGE_ID>',
+);
+```
+
+```csharp
+using Appwrite;
+using Appwrite.Models;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .SetProject("<PROJECT_ID>") // Your project ID
+    .SetKey("<API_KEY>"); // Your secret API key
+
+Users users = new Users(client);
+
+MfaChallengeSecret result = await users.GetMFAChallenge(
+    userId: "<USER_ID>",
+    challengeId: "<CHALLENGE_ID>"
+);
+```
+
+```swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
+    .setProject("<PROJECT_ID>") // Your project ID
+    .setKey("<API_KEY>") // Your secret API key
+
+let users = Users(client)
+
+let mfaChallengeSecret = try await users.getMFAChallenge(
+    userId: "<USER_ID>",
+    challengeId: "<CHALLENGE_ID>"
+)
+```
+{% /multicode %}
+
+# Deliver the code {% #deliver-code %}
+
+Put the last two steps together in a function. Read the destination address from your own data. Never read it from the request body.
+
+{% multicode %}
+```server-nodejs
+import { Client, Users } from 'node-appwrite';
+
+export default async ({ req, res, error }) => {
+    const userId = req.headers['x-appwrite-user-id'];
+
+    if (!userId) {
+        return res.json({ ok: false }, 401);
+    }
+
+    const { challengeId } = JSON.parse(req.bodyRaw || '{}');
+
+    const client = new Client()
+        .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT)
+        .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+        .setKey(req.headers['x-appwrite-key']);
+
+    const users = new Users(client);
+
+    const challenge = await users.getMFAChallenge({ userId, challengeId });
+
+    // Read the destination from your own table, and not from the request.
+    const destination = await lookupWhatsAppNumber(userId);
+
+    await sendWhatsAppMessage(destination, `Your code is ${challenge.code}`);
+
+    return res.json({ ok: true });
+};
+```
+
+```server-rust
+use appwrite::services::Users;
+use appwrite::Client;
+use openruntimes::{Context, Response};
+use serde_json::json;
+
+pub fn main(context: Context) -> Response {
+    let user_id = match context.req.headers.get("x-appwrite-user-id") {
+        Some(v) if !v.is_empty() => v.clone(),
+        _ => return context.res.json(&json!({ "ok": false }), Some(401), None),
+    };
+
+    let api_key = context.req.headers.get("x-appwrite-key").cloned().unwrap_or_default();
+    let body: serde_json::Value = serde_json::from_str(&context.req.body_text()).unwrap_or(json!({}));
+    let challenge_id = body["challengeId"].as_str().unwrap_or_default().to_string();
+
+    let runtime = tokio::runtime::Runtime::new().unwrap();
+
+    let challenge = runtime.block_on(async {
+        let client = Client::new()
+            .set_endpoint(std::env::var("APPWRITE_FUNCTION_API_ENDPOINT").unwrap_or_default())
+            .set_project(std::env::var("APPWRITE_FUNCTION_PROJECT_ID").unwrap_or_default())
+            .set_key(api_key);
+
+        Users::new(&client).get_mfa_challenge(user_id.clone(), challenge_id).await
+    });
+
+    let challenge = match challenge {
+        Ok(c) => c,
+        Err(e) => {
+            context.error(format!("{:?}", e));
+            return context.res.json(&json!({ "ok": false }), Some(401), None);
+        }
+    };
+
+    // Read the destination from your own table, and not from the request.
+    send_whatsapp_message(&lookup_whatsapp_number(&user_id), &challenge.code);
+
+    context.res.json(&json!({ "ok": true }), Some(200), None)
+}
+```
+{% /multicode %}
+
+# Complete the challenge {% #complete-challenge %}
+
+The user types the code. Send the code with the challenge ID.
+
+{% multicode %}
+```client-web
+const session = await account.updateMFAChallenge({
+    challengeId: challenge.$id,
+    otp: '<OTP>'
+});
+```
+
+```client-flutter
+Session session = await account.updateMFAChallenge(
+    challengeId: challenge.$id,
+    otp: '<OTP>',
+);
+```
+
+```client-apple
+let session = try await account.updateMFAChallenge(
+    challengeId: challenge.id,
+    otp: "<OTP>"
+)
+```
+
+```client-android-kotlin
+val session = account.updateMFAChallenge(
+    challengeId = challenge.id,
+    otp = "<OTP>"
+)
+```
+{% /multicode %}
+
+# Security requirements {% #security %}
+
+Read this section before you go to production.
+
+- **Select the destination on the server.** Read the telephone number, the chat ID, or the address from your own table. If you take the destination from the request body, an attacker who knows the password can send the code to their own device.
+- **Use the user ID from the header.** Use `x-appwrite-user-id`. Never use a user ID that the client sends. Appwrite then rejects a challenge that belongs to a different user. Your function needs no ownership check of its own.
+- **Never log the code.** Keep the code out of your logs and out of your responses to the client.
