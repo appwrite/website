@@ -52,17 +52,6 @@ The changes are concentrated in three places: training, sustained multi-step wor
 
 **Stronger first passes.** On visual and interactive projects, Grok 4.6 is described as able to establish the structure and visual language of an application in a single pass, then keep refining through several rounds of feedback. The practical read is that it is better suited to starting from something substantial and iterating than to producing generic scaffolding you rewrite.
 
-Here is the summary of what actually changed:
-
-| Area                  | Grok 4.5                        | Grok 4.6                                         |
-| --------------------- | ------------------------------- | ------------------------------------------------ |
-| Primary focus         | Coding and agentic tool calling | Long-running agents, interactive and visual work |
-| Self-verification     | Not highlighted                 | More self-testing on long trajectories           |
-| Cached input price    | $0.30 per 1M tokens             | $0.50 per 1M tokens                              |
-| AA Intelligence Index | 56                              | 61                                               |
-| Context window        | 500K                            | 500K                                             |
-| Standard pricing      | $2 / $6 per 1M tokens           | $2 / $6 per 1M tokens                            |
-
 # Grok 4.6 benchmarks: how it compares to GPT-5.6 and Fable 5
 
 SpaceXAI published a full eval table with the release. Treat these as vendor-reported results, since SpaceXAI controls the harnesses and the comparison set. Third-party model scores are the best of self-reported or publicly available results.
