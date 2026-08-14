@@ -61,7 +61,7 @@ OpenAI's own demo makes the point without numbers: Ultrafast and Standard buildi
 
 Ultrafast is the next step in OpenAI's partnership with [Cerebras](https://www.cerebras.ai/), which builds wafer-scale accelerators designed around inference latency rather than raw training throughput.
 
-The reason this matters is architectural. Token generation is memory-bandwidth bound, and conventional GPU clusters pay a latency cost every time weights and activations cross chip boundaries. Cerebras keeps far more of the model resident on a single very large piece of silicon, which cuts the per-token overhead that normally caps output speed.
+The reason this matters is architectural. Ultrafast marks the next step in OpenAI's partnership with Cerebras to bring ultra-low-latency inference to its platform. OpenAI says Cerebras is supporting GPT-5.6 Sol at up to 750 output tokens per second, allowing businesses to build more responsive products and workflows.
 
 The practical read: this is not a distilled or quantized Sol running on the same stack. It is the same model on hardware built for a different bottleneck. That is why OpenAI can claim a 14x speedup with no intelligence trade-off, which is a claim you should normally be skeptical of.
 
