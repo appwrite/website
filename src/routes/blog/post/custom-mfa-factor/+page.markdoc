@@ -2,7 +2,7 @@
 layout: post
 title: "Custom MFA factor: send a second factor through any channel"
 description: Appwrite now supports a custom MFA factor. Appwrite generates and verifies the code, and your function delivers it through WhatsApp, a voice call, or any provider you choose.
-date: 2026-08-10
+date: 2026-08-14
 cover: /images/blog/custom-mfa-factor/cover.avif
 timeToRead: 8
 author: atharva
