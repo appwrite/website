@@ -29,15 +29,14 @@ This post covers what GPT-5.6 Sol Ultrafast actually is, how 750 output tokens p
 
 The key detail is what does not change: Ultrafast is a service tier, not a new model. It runs GPT-5.6 Sol, with the difference being how quickly the model generates responses.
 
-| Property     | GPT-5.6 Sol Ultrafast              |
-| ------------ | ---------------------------------- |
-| Type         | Service tier, not a new model      |
-| Speed        | Up to 14x Standard processing      |
-| Throughput   | Up to 750 output tokens per second |
-| Hardware     | Cerebras                           |
-| Surface      | OpenAI API first                   |
-| Availability | Limited preview, waitlist open     |
-| Intelligence | Unchanged from GPT-5.6 Sol         |
+The key details are:
+
+* **Type:** Service tier, not a new model.
+* **Speed:** Up to 14x faster than Standard processing.
+* **Throughput:** Up to 750 output tokens per second.
+* **Hardware:** Runs on Cerebras hardware.
+* **Availability:** Currently in limited preview through the OpenAI API.
+* **Intelligence:** The same GPT-5.6 Sol model, with the difference being how quickly it generates responses.
 
 # How fast is 750 tokens per second compared to Fast mode?
 
