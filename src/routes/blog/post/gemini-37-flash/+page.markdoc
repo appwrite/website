@@ -64,7 +64,7 @@ Google published a larger evaluation set than the announcement highlights. The m
 | GDP.pdf | Expert PDF comprehension | 34.0% | 22.0% | +12.0 pp |
 | OSWorld 2.0 | Agentic computer use | 47.9% | 33.8% | +14.1 pp |
 
-These are [Google-reported results](https://deepmind.google/models/model-cards/gemini-3-7-flash), and several use private sets or model-specific harnesses. They should guide where to run your own evaluations, not replace them. Still, the gains are consistent across code generation, terminal work, browser or desktop interaction, workflow automation, and document comprehension.
+These are [Google-reported results](https://deepmind.google/models/model-cards/gemini-3-7-flash) from the Gemini 3.7 Flash model card; some evaluations use private datasets or specific evaluation setups. Google's announcement reports a slightly different Gemini 3.6 Flash DeepSWE v1.1 result of 49.0%, so benchmark figures should be interpreted according to the specific source and evaluation setup.
 
 The model does not improve everywhere. On CharXiv Reasoning without tools, 3.7 Flash scored 84.5% compared with 85.2% for 3.6 Flash. With tools, it scored 88.7% compared with 89.4%. The release is a broad upgrade for agentic work, not a universal win on every evaluation.
 
