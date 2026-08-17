@@ -138,7 +138,7 @@ If Ultrafast removes model latency from your critical path, whatever is left has
 * [Auth](/docs/products/auth) for accounts and sessions, and [Storage](/docs/products/storage) for uploads that feed into prompts.
 * [Sites](/docs/products/sites) to deploy your frontend next to the backend it calls, served over Appwrite's [global network](/docs/products/network).
 
-Run it on managed Cloud or [self-host](/docs/advanced/self-hosting) it. If you want the longer version of what a real-time AI feature actually requires underneath, our guide to [what an AI backend needs](/blog/post/what-is-an-ai-backend) walks through it.
+Run it on [managed Cloud](https://cloud.appwrite.io/) or [self-host](/docs/advanced/self-hosting) it. If you want the longer version of what a real-time AI feature actually requires underneath, our guide to [what an AI backend needs](/blog/post/what-is-an-ai-backend) walks through it.
 
 Building with Codex? The [Appwrite plugin for Codex](/blog/post/announcing-appwrite-codex-plugin) ships agent skills for the Appwrite CLI and major SDKs and registers the Appwrite Docs MCP server, so your GPT-5.6 agent writes real SDK calls against a backend that already exists.
 
