@@ -25,7 +25,7 @@ faqs:
 ---
 Production AI agents live or die on the quality of their first pass. A model that needs repeated prompting to repair code, recover from a failed tool call, or match a reference design can look inexpensive per token while becoming expensive per completed task.
 
-[Gemini 3.7 Flash](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/), released on August 13, 2026, is Google's answer to that problem. It arrives only three weeks after Gemini 3.6 Flash with higher coding and agent scores, a 1 million token context window, and introductory pricing that lasts through the end of 2026.
+[Gemini 3.7 Flash](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/), released on August 13, 2026, is Google's answer to that problem. It follows Gemini 3.6 Flash with higher coding and agent scores, a 1 million token context window, and introductory pricing that lasts through the end of 2026.
 
 For developers, the more interesting story is less about a new headline capability and more about improving first-pass code accuracy, UI design adherence, instruction following, and multi-step agent workflows. Google says 3.7 Flash is designed to reduce manual oversight and retries across engineering workflows.
 
