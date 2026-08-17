@@ -76,7 +76,7 @@ That independent score places 3.7 Flash around far more expensive frontier confi
 
 WebDev Arena's 1588 Elo is another independent signal, but it measures pairwise human preference for generated web experiences rather than correctness in an existing repository. A visually compelling one-shot page and a safe multi-file patch are different workloads. Teams building coding agents should keep both UI preference tests and repository-level regression tests in their evaluation suite.
 
-# First-pass accuracy is the real product change
+# Is Gemini 3.7 Flash good for coding and AI agents?
 
 Google's announcement repeatedly emphasizes first-pass code accuracy, design adherence, instruction following, and recovery from roadblocks. Those improvements target the expensive part of agent deployment: retries and supervision.
 
