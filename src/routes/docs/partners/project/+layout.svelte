@@ -78,10 +78,6 @@
                     href: '/docs/partners/project/provisioning'
                 },
                 {
-                    label: 'Key rotation',
-                    href: '/docs/partners/project/key-rotation'
-                },
-                {
                     label: 'Branded emails',
                     href: '/docs/partners/project/branded-emails'
                 }

@@ -753,5 +753,5 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 Wrap these calls in a single function keyed to the customer and every project you bring online starts identical, which is what keeps the next thousand projects manageable. With the baseline in place, the rest of the project's life uses the same Project API:
 
-- [Issue and rotate API keys](/docs/partners/project/key-rotation) for the integrations that run against the project.
+- [Create API keys](/docs/partners/project/api-keys) for the integrations that run against the project.
 - [Brand its transactional emails](/docs/partners/project/branded-emails) so they come from the customer's domain.

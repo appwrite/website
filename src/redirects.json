@@ -1051,5 +1051,9 @@
     {
         "link": "/docs/advanced/integration",
         "redirect": "/docs/apis/rest"
+    },
+    {
+        "link": "/docs/partners/project/key-rotation",
+        "redirect": "/docs/partners/project/api-keys"
     }
 ]
