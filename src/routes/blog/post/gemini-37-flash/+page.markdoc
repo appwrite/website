@@ -45,7 +45,7 @@ The API-level specifications are:
 | Knowledge cutoff | March 2026, with some domains limited to January 2025 |
 | Thinking | Configurable |
 
-That last knowledge-cutoff qualification matters. Google says users can expect March 2026 information in some domains, while other domains remain aligned with the wider Gemini 3 family's January 2025 cutoff. Retrieval and tool use still matter when an agent needs current or domain-specific facts.
+That knowledge-cutoff qualification matters. Google says the model's knowledge cutoff is March 2026, but users may encounter knowledge limited to January 2025 in some domains, in line with the wider Gemini 3 model family. Retrieval and tool use still matter when an agent needs current or domain-specific facts.
 
 The model is available in the Gemini API, Google AI Studio, Google Antigravity, Android Studio, Gemini Enterprise Agent Platform, and the Gemini Enterprise app. Google is also moving Gemini Spark, its always-on personal agent for eligible Google AI Pro and Ultra subscribers, to 3.7 Flash.
 
