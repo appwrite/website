@@ -70,9 +70,9 @@ The model does not improve everywhere. On CharXiv Reasoning without tools, 3.7 F
 
 ## Artificial Analysis gives Gemini 3.7 Flash a 56 Intelligence Index
 
-[Artificial Analysis](https://artificialanalysis.ai/models/gemini-3-7-flash) independently measured Gemini 3.7 Flash at high reasoning effort and gave it an **Intelligence Index score of 56**. Its current index combines nine evaluations spanning knowledge work, banking agents, terminal use, science coding, expert reasoning, and long-context retrieval.
+[Artificial Analysis](https://artificialanalysis.ai/models/gemini-3-7-flash) gives Gemini 3.7 Flash an **Intelligence Index score of 56** at high reasoning effort. Its index combines nine evaluations spanning knowledge work, banking agents, terminal use, science coding, expert reasoning, and long-context retrieval. Google also includes the Intelligence Index in its [Gemini 3.7 Flash model card](https://deepmind.google/models/model-cards/gemini-3-7-flash/) alongside other frontier model comparisons.
 
-That independent score places 3.7 Flash around far more expensive frontier configurations. Artificial Analysis also reports a cost of about **$0.40 per Intelligence Index task** under the introductory price and spent $484.73 to run its full evaluation. Cost per completed task is the more useful production metric because reasoning models can consume very different numbers of hidden and visible output tokens.
+The score provides an additional evaluation signal, rather than serving as a standalone measure of the model's ov
 
 WebDev Arena's 1588 Elo is another independent signal, but it measures pairwise human preference for generated web experiences rather than correctness in an existing repository. A visually compelling one-shot page and a safe multi-file patch are different workloads. Teams building coding agents should keep both UI preference tests and repository-level regression tests in their evaluation suite.
 
@@ -89,6 +89,8 @@ The benchmark pattern supports three practical use cases:
 * **Business agents:** The gains on AutomationBench, GDP.pdf, and OSWorld point to stronger workflows that read dense documents, use desktop tools, and complete several connected steps.
 
 None of those scores establishes production reliability on its own. Google's model card lists hallucinations, occasional slowness, and timeout issues among the model's known limitations. Google's frontier safety assessment also notes that Gemini 3.7 Flash can complete individual coding tasks but does not yet have enough independence to chain them into an end-to-end research workflow without human intervention. Teams should therefore validate structured outputs, keep tool permissions narrow, make write operations reversible, and require appropriate human approval for consequential actions.
+
+Google's frontier safety assessment also says Gemini 3.7 Flash reaches the alert threshold for its cybersecurity CCL, although it does not reach the CCL itself. For applications that give models access to development environments, credentials, or production systems, model capability should therefore be evaluated alongside strict permission boundaries and application-level safeguards.
 
 # How much does Gemini 3.7 Flash cost?
 
