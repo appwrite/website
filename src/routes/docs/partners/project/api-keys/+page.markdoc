@@ -156,7 +156,7 @@ If you need to replace your API Key, create a new key, update your app credentia
 You can also manage API keys programmatically using a Server SDK. This requires an API key with the `keys.read` and `keys.write` [scopes](#scopes).
 
 {% info title="Creating keys" %}
-Create long-lived API keys in the Appwrite Console. The Project API can list, update, and delete existing keys, and can issue [ephemeral keys](#create-an-ephemeral-key) for short-lived access. [Learn more in the changelog](/changelog/entry/2026-08-17).
+Creating API keys with the Project API is deprecated as of 17 August 2026. Create long-lived keys in the Appwrite Console. The Project API can list, update, and delete existing keys, and can issue [ephemeral keys](#create-an-ephemeral-key) for short-lived access. [Learn more in the changelog](/changelog/entry/2026-08-17).
 {% /info %}
 
 {% info title="Sensitive scopes" %}

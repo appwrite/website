@@ -60,9 +60,6 @@ Tag projects with customizable labels to organize and filter them.
 {% cards_item href="/docs/partners/project/provisioning" title="Provisioning" %}
 Apply a standard baseline to a new customer's project from a script.
 {% /cards_item %}
-{% cards_item href="/docs/partners/project/key-rotation" title="Key rotation" %}
-Audit, rotate, and revoke scoped API keys.
-{% /cards_item %}
 {% cards_item href="/docs/partners/project/branded-emails" title="Branded emails" %}
 Route a project's mail through custom SMTP and rebrand the templates.
 {% /cards_item %}
