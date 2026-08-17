@@ -18,7 +18,7 @@ When you build backend APIs to extend Appwrite's functionality, these APIs shoul
 
 [JSON Web Tokens](https://jwt.io/introduction) (JWTs) are a secure means to transfer information or claims between two parties. JWTs act like temporary copies of the user's ID card that allow Appwrite's Server SDKs to access information on behalf of a user.
 
-You need to create a session using the Client SDKs **before** generating a JWT. The JWT will be a stateless proof of claim for the identity of the authenticated user and expire after 15 minutes or when the session is deleted.
+You need to create a session using the Client SDKs **before** generating a JWT. The JWT is a stateless proof of claim for the identity of the authenticated user and expires after 15 minutes. It also becomes invalid if the session it was created from expires or is deleted.
 
 You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
 
