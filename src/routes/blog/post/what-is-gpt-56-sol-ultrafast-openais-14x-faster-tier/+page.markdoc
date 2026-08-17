@@ -80,13 +80,9 @@ Voice is the sharpest example. Conversational turn-taking breaks down past rough
 
 Early preview customers span coding, commerce, financial research, and support, including Jane Street, [Podium](https://www.podium.com/), Basis, and [Rogo](https://rogo.ai/).
 
-John Crepezzi, who works on AI Assistants at [Jane Street](https://www.janestreet.com/), framed the effect this way:
-
-> "The increase in speed brought by Cerebras is impressive. It enables different ways of using the models, and makes it practical for developers to work in a more focused and productive way alongside them."
-
 # How OpenAI uses Ultrafast internally
 
-OpenAI also describes two ways its own teams are using Ultrafast.```
+OpenAI also describes two ways its own teams are using Ultrafast.\`\`\`
 
 **Incident response.** When an alert fires, engineers use Ultrafast to read logs, analyze traces, synthesize conversations, identify the next checks, and help prepare or validate a fix. The value is not that the model does something new. It is that the delay between observing a signal, testing a hypothesis, and choosing the next action collapses, while the evidence is still changing. Engineers keep responsibility for judgment and deployment.
 
