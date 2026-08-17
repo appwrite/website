@@ -3,7 +3,7 @@ layout: post
 title: "Claude AI watermarking: What developers need to know"
 description: "Claude AI watermarking is rolling out for EU AI Act compliance. Learn how text marks, C2PA metadata, detection, and limitations affect developers."
 date: 2026-08-17
-cover: /images/blog/claude-ai-watermarking/cover.png
+cover: /images/blog/claude-ai-watermarking/cover.avif
 timeToRead: 7
 author: aditya-oberai
 category: ai
