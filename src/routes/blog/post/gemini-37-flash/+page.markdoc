@@ -68,7 +68,7 @@ These are [Google-reported results](https://deepmind.google/models/model-cards/g
 
 The model does not improve everywhere. On CharXiv Reasoning without tools, 3.7 Flash scored 84.5% compared with 85.2% for 3.6 Flash. With tools, it scored 88.7% compared with 89.4%. The release is a broad upgrade for agentic work, not a universal win on every evaluation.
 
-## Independent results support the intelligence claim
+## Artificial Analysis gives Gemini 3.7 Flash a 56 Intelligence Index
 
 [Artificial Analysis](https://artificialanalysis.ai/models/gemini-3-7-flash) independently measured Gemini 3.7 Flash at high reasoning effort and gave it an **Intelligence Index score of 56**. Its current index combines nine evaluations spanning knowledge work, banking agents, terminal use, science coding, expert reasoning, and long-context retrieval.
 
