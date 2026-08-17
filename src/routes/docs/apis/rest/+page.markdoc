@@ -124,7 +124,7 @@ X-Appwrite-Key: [API_KEY]
 
 ## JWT {% #jwt %}
 
-JWT authentication is frequently used by server applications to act on behalf of a user. Generate tokens using the [Create JWT](/docs/references/cloud/server-nodejs/users#createJWT) endpoint. When issuing requests authenticated with a JWT, Appwrite will treat the request like it is from the authenticated user.
+JWT authentication is frequently used by server applications to act on behalf of a user. Users generate tokens using the [Create JWT](/docs/references/cloud/server-nodejs/users#createJWT) endpoint. When issuing requests authenticated with a JWT, Appwrite will treat the request like it is from the authenticated user.
 
 ```json
 GET /v1/account HTTP/1.1
