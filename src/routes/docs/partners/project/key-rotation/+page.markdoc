@@ -1,17 +1,23 @@
 ---
 layout: article
 title: Issue and rotate API keys
-description: Manage the full life of an API key with the Project API, from issuing a scoped credential to auditing, rotating, and revoking it.
+description: Manage the life of an API key, from creating a scoped credential in the Console to auditing, rotating, and revoking it with the Project API.
 ---
 
-Every connection your platform makes into a customer's project rides on an API key, and a key is a credential like any other in production. Left alone, a long-lived key with broad scopes is exactly the thing a security review flags: too much access, no expiry, no record of when it was last rotated. The Project API lets you run a key's whole life from your backend so it never becomes that liability:
+Every connection your platform makes into a customer's project rides on an API key, and a key is a credential like any other in production. Left alone, a long-lived key with broad scopes is exactly the thing a security review flags: too much access, no expiry, no record of when it was last rotated.
 
-- Issue it scoped to one integration, with an expiry.
+Create long-lived keys in the Console, scoped to one integration and with an expiry from the start. The Project API then lets you audit, update, and revoke those keys from your backend, and issue [ephemeral keys](#ephemeral-access) when a job does not need a long-lived secret.
+
+- Create it in the Console, scoped to one integration, with an expiry.
 - Audit the keys on the project before each rotation cycle.
-- Replace its secret on a schedule, with no downtime.
+- Replace it on a schedule by creating a new key in the Console, then deleting the old one.
 - Revoke it the moment it is no longer needed.
 
 This guide follows one key from the day you stand up an integration against a customer's project, through the routine audit and rotation that keeps it fresh, to the day you retire it.
+
+{% info title="Creating keys" %}
+Long-lived API keys can only be created from the Appwrite Console. The Project API can list, update, and delete existing keys, and can still issue [ephemeral keys](#ephemeral-access) for short-lived access. [Learn more in the changelog](/changelog/entry/2026-08-17).
+{% /info %}
 
 {% info title="Required scopes" %}
 The API key used for these calls needs the `keys.read` and `keys.write` scopes.
@@ -19,11 +25,19 @@ The API key used for these calls needs the `keys.read` and `keys.write` scopes.
 
 # Issue a key scoped to the integration {% #issue-key %}
 
-When you connect a new integration to a customer's project, give it a key that can reach only the parts of the API that integration touches, and put an expiry on it from the start. Set up the client once, then issue the key. A sync job that reads and writes tables needs the `tables.read` and `tables.write` scopes and nothing more, so that is all its key gets.
+When you connect a new integration to a customer's project, give it a key that can reach only the parts of the API that integration touches, and put an expiry on it from the start. A sync job that reads and writes tables needs the `tables.read` and `tables.write` scopes and nothing more, so that is all its key gets.
+
+Create that key in the Console: navigate to **Overview** > **Integration** > **API keys** and click **Create API key**. See [Create API key](/docs/partners/project/api-keys#create-api-key) for the full Console steps.
+
+The secret is returned once, on creation, and never again. Write it straight to your secrets manager, because there is no call that reads it back.
+
+# Audit the project's keys {% #audit-keys %}
+
+Rotation begins with knowing what is out there. When a rotation window comes due, list the keys on the project to see them all and when each one expires.
 
 {% multicode %}
 ```server-nodejs
-import { Client, Project, ID, ProjectKeyScopes } from 'node-appwrite';
+import { Client, Project } from 'node-appwrite';
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -32,15 +46,10 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.createKey({
-    keyId: ID.unique(),
-    name: 'Tenant integration',
-    scopes: [ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite],
-    expire: '2026-12-31T23:59:59.000+00:00'
-});
+const result = await project.listKeys();
 ```
 ```server-deno
-import { Client, Project, ID, ProjectKeyScopes } from "npm:node-appwrite";
+import { Client, Project } from "npm:node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -49,18 +58,12 @@ const client = new Client()
 
 const project = new Project(client);
 
-const result = await project.createKey({
-    keyId: ID.unique(),
-    name: 'Tenant integration',
-    scopes: [ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite],
-    expire: '2026-12-31T23:59:59.000+00:00'
-});
+const result = await project.listKeys();
 ```
 ```server-php
 <?php
 
 use Appwrite\Client;
-use Appwrite\ID;
 use Appwrite\Services\Project;
 
 $client = new Client();
@@ -72,18 +75,11 @@ $client
 
 $project = new Project($client);
 
-$result = $project->createKey(
-    keyId: ID::unique(),
-    name: 'Tenant integration',
-    scopes: ['tables.read', 'tables.write'],
-    expire: '2026-12-31T23:59:59.000+00:00'
-);
+$result = $project->listKeys();
 ```
 ```server-python
 from appwrite.client import Client
-from appwrite.id import ID
 from appwrite.services.project import Project
-from appwrite.enums import ProjectKeyScopes
 
 client = Client()
 client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -92,12 +88,7 @@ client.set_key('<YOUR_API_KEY>')
 
 project = Project(client)
 
-result = project.create_key(
-    key_id=ID.unique(),
-    name='Tenant integration',
-    scopes=[ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE],
-    expire='2026-12-31T23:59:59.000+00:00'
-)
+result = project.list_keys()
 ```
 ```server-ruby
 require 'appwrite'
@@ -111,18 +102,11 @@ client = Client.new
 
 project = Project.new(client)
 
-response = project.create_key(
-    key_id: ID.unique(),
-    name: 'Tenant integration',
-    scopes: ['tables.read', 'tables.write'],
-    expire: '2026-12-31T23:59:59.000+00:00'
-)
+response = project.list_keys()
 ```
 ```server-dotnet
 using Appwrite;
-using Appwrite.Enums;
 using Appwrite.Services;
-using Appwrite.Models;
 
 Client client = new Client()
     .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
@@ -131,16 +115,10 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-var result = await project.CreateKey(
-    keyId: ID.Unique(),
-    name: "Tenant integration",
-    scopes: new List<ProjectKeyScopes> {ProjectKeyScopes.TablesRead, ProjectKeyScopes.TablesWrite},
-    expire: "2026-12-31T23:59:59.000+00:00"
-);
+var result = await project.ListKeys();
 ```
 ```server-dart
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/enums.dart' as enums;
 
 Client client = Client()
     .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
@@ -149,17 +127,10 @@ Client client = Client()
 
 Project project = Project(client);
 
-final result = await project.createKey(
-    keyId: ID.unique(),
-    name: 'Tenant integration',
-    scopes: [enums.ProjectKeyScopes.tablesRead, enums.ProjectKeyScopes.tablesWrite],
-    expire: '2026-12-31T23:59:59.000+00:00',
-);
+final result = await project.listKeys();
 ```
 ```server-kotlin
 import io.appwrite.Client
-import io.appwrite.ID
-import io.appwrite.enums.ProjectKeyScopes
 import io.appwrite.services.Project
 
 val client = Client()
@@ -169,17 +140,10 @@ val client = Client()
 
 val project = Project(client)
 
-val result = project.createKey(
-    keyId = ID.unique(),
-    name = "Tenant integration",
-    scopes = listOf(ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE),
-    expire = "2026-12-31T23:59:59.000+00:00"
-)
+val result = project.listKeys()
 ```
 ```server-java
 import io.appwrite.Client;
-import io.appwrite.ID;
-import io.appwrite.enums.ProjectKeyScopes;
 import io.appwrite.coroutines.CoroutineCallback;
 import io.appwrite.services.Project;
 
@@ -190,148 +154,6 @@ Client client = new Client()
 
 Project project = new Project(client);
 
-project.createKey(
-    ID.unique(),                                     // keyId
-    "Tenant integration",                                    // name
-    List.of(ProjectKeyScopes.TABLES_READ, ProjectKeyScopes.TABLES_WRITE), // scopes
-    "2026-12-31T23:59:59.000+00:00",                // expire
-    new CoroutineCallback<>((result, error) -> {
-        if (error != null) {
-            error.printStackTrace();
-            return;
-        }
-        System.out.println(result);
-    })
-);
-```
-```server-swift
-import Appwrite
-import AppwriteEnums
-
-let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
-    .setProject("<PROJECT_ID>")
-    .setKey("<YOUR_API_KEY>")
-
-let project = Project(client)
-
-let result = try await project.createKey(
-    keyId: ID.unique(),
-    name: "Tenant integration",
-    scopes: [ProjectKeyScopes.tablesRead, ProjectKeyScopes.tablesWrite],
-    expire: "2026-12-31T23:59:59.000+00:00"
-)
-```
-```server-go
-package main
-
-import (
-    "fmt"
-    "github.com/appwrite/sdk-for-go/appwrite"
-    "github.com/appwrite/sdk-for-go/id"
-)
-
-func main() {
-    client := appwrite.NewClient(
-        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
-        appwrite.WithProject("<PROJECT_ID>"),
-        appwrite.WithKey("<YOUR_API_KEY>"),
-    )
-
-    project := appwrite.NewProject(client)
-    result, err := project.CreateKey(
-        id.Unique(),
-        "Tenant integration",
-        []string{"tables.read", "tables.write"},
-        project.WithCreateKeyExpire("2026-12-31T23:59:59.000+00:00"),
-    )
-
-    if err != nil {
-        panic(err)
-    }
-
-    fmt.Println(result)
-}
-```
-```server-rust
-use appwrite::Client;
-use appwrite::id::ID;
-use appwrite::enums::ProjectKeyScopes;
-use appwrite::services::project::Project;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new()
-        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
-        .set_project("<PROJECT_ID>")
-        .set_key("<YOUR_API_KEY>");
-
-    let project = Project::new(&client);
-
-    let result = project.create_key(
-        ID::unique(),                                  // key_id
-        "Tenant integration",                                  // name
-        vec![ProjectKeyScopes::TablesRead, ProjectKeyScopes::TablesWrite], // scopes
-        Some("2026-12-31T23:59:59.000+00:00"),         // expire
-    ).await?;
-
-    println!("{:?}", result);
-    Ok(())
-}
-```
-```bash
-appwrite project create-key \
-    --key-id 'unique()' \
-    --name "Tenant integration" \
-    --scopes tables.read tables.write
-```
-```http
-POST /v1/project/keys HTTP/1.1
-Content-Type: application/json
-X-Appwrite-Project: <PROJECT_ID>
-X-Appwrite-Key: <YOUR_API_KEY>
-
-{
-  "keyId": "unique()",
-  "name": "Tenant integration",
-  "scopes": ["tables.read", "tables.write"],
-  "expire": "2026-12-31T23:59:59.000+00:00"
-}
-```
-{% /multicode %}
-
-The secret is returned once, on creation, and never again. Write it straight to your secrets manager, because there is no call that reads it back.
-
-# Audit the project's keys {% #audit-keys %}
-
-Rotation begins with knowing what is out there. When a rotation window comes due, list the keys on the project to see them all and when each one expires.
-
-{% multicode %}
-```server-nodejs
-const result = await project.listKeys();
-```
-```server-deno
-const result = await project.listKeys();
-```
-```server-php
-$result = $project->listKeys();
-```
-```server-python
-result = project.list_keys()
-```
-```server-ruby
-response = project.list_keys()
-```
-```server-dotnet
-var result = await project.ListKeys();
-```
-```server-dart
-final result = await project.listKeys();
-```
-```server-kotlin
-val result = project.listKeys()
-```
-```server-java
 project.listKeys(
     new CoroutineCallback<>((result, error) -> {
         if (error != null) {
@@ -343,25 +165,65 @@ project.listKeys(
 );
 ```
 ```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let project = Project(client)
+
 let result = try await project.listKeys()
 ```
 ```server-go
-result, err := project.ListKeys()
+package main
 
-if err != nil {
-    panic(err)
+import (
+    "fmt"
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    project := appwrite.NewProject(client)
+    result, err := project.ListKeys()
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println(result)
 }
-
-fmt.Println(result)
 ```
 ```server-rust
-let result = project.list_keys(
-    None,  // queries
-    None,  // total
-).await?;
+use appwrite::Client;
+use appwrite::services::project::Project;
 
-println!("{:?}", result);
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let project = Project::new(&client);
+
+    let result = project.list_keys(
+        None,  // queries
+        None,  // total
+    ).await?;
+
+    println!("{:?}", result);
+    Ok(())
+}
 ```
+
 ```bash
 appwrite project list-keys
 ```
@@ -601,7 +463,7 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 Rotating the secret itself, the part a security policy usually requires on a fixed cadence, means retiring one key and standing up another without a gap in service:
 
-1. Issue a fresh key with the same scopes using the create call above.
+1. Create a fresh key in the Console with the same scopes.
 2. Point the integration at the new secret.
 3. Confirm its traffic has moved over.
 4. Delete the old key so the retired secret stops working.
@@ -805,7 +667,7 @@ X-Appwrite-Key: <YOUR_API_KEY>
 
 # Next steps {% #next-steps %}
 
-Running a key's whole life from code is what lets you treat customer credentials as managed infrastructure instead of secrets someone pasted once. The same Project API covers the rest of a project's life:
+Treating customer credentials as managed infrastructure means creating long-lived keys in the Console, then auditing, updating, and revoking them from code. The same Project API covers the rest of a project's life:
 
-- [Provision a project's baseline](/docs/partners/project/provisioning) before you issue its first key.
+- [Provision a project's baseline](/docs/partners/project/provisioning) before you create its first key.
 - Read the [API keys](/docs/partners/project/api-keys) reference for the full list of scopes a key can hold.

@@ -61,7 +61,7 @@ Tag projects with customizable labels to organize and filter them.
 Apply a standard baseline to a new customer's project from a script.
 {% /cards_item %}
 {% cards_item href="/docs/partners/project/key-rotation" title="Key rotation" %}
-Issue, audit, rotate, and revoke scoped API keys programmatically.
+Audit, rotate, and revoke scoped API keys.
 {% /cards_item %}
 {% cards_item href="/docs/partners/project/branded-emails" title="Branded emails" %}
 Route a project's mail through custom SMTP and rebrand the templates.

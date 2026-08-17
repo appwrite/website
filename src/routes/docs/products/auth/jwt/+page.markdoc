@@ -18,59 +18,159 @@ When you build backend APIs to extend Appwrite's functionality, these APIs shoul
 
 [JSON Web Tokens](https://jwt.io/introduction) (JWTs) are a secure means to transfer information or claims between two parties. JWTs act like temporary copies of the user's ID card that allow Appwrite's Server SDKs to access information on behalf of a user.
 
-You need to create a session using the Client SDKs **before** generating a JWT. The JWT will be a stateless proof of claim for the identity of the authenticated user and expire after 15 minutes or when the session is deleted.
+{% info title="Creating JWTs" %}
+Create JWTs with a Server SDK using `users.createJWT`. This requires an API key with the `users.write` scope. A JWT cannot mint another JWT, so a leaked token cannot outlive its expiry. [Learn more in the changelog](/changelog/entry/2026-08-17).
+{% /info %}
 
-You can generate a JWT like this on a [Client SDK](/docs/sdks#client).
+The user needs an active session before you generate a JWT. The JWT is a stateless proof of that session and expires after 15 minutes by default (configurable up to 1 hour), or when the session is deleted.
+
+You can generate a JWT with a [Server SDK](/docs/sdks#server).
 
 {% multicode %}
-```client-web
-import { Client, Account } from "appwrite";
+```server-nodejs
+import { Client, Users } from 'node-appwrite';
 
 const client = new Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
 
-const account = new Account(client);
+const users = new Users(client);
 
-const user = await account.createJWT();
+const jwt = await users.createJWT({
+    userId: '<USER_ID>',
+    duration: 900
+});
 ```
-```client-flutter
-import 'package:appwrite/appwrite.dart';
+```server-deno
+import { Client, Users } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const users = new Users(client);
+
+const jwt = await users.createJWT({
+    userId: '<USER_ID>',
+    duration: 900
+});
+```
+```php
+use Appwrite\Client;
+use Appwrite\Services\Users;
+
+$client = (new Client())
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$users = new Users($client);
+
+$jwt = $users->createJWT(
+    userId: '<USER_ID>',
+    duration: 900
+);
+```
+```python
+from appwrite.client import Client
+from appwrite.services.users import Users
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+users = Users(client)
+
+jwt = users.create_jwt(
+    user_id='<USER_ID>',
+    duration=900
+)
+```
+```ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+users = Users.new(client)
+
+jwt = users.create_jwt(
+    user_id: '<USER_ID>',
+    duration: 900
+)
+```
+```dart
+import 'package:dart_appwrite/dart_appwrite.dart';
 
 final client = Client()
-    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('<PROJECT_ID>');                 // Your project ID
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
 
-final account = Account(client);
+final users = Users(client);
 
-final jwt = await account.createJWT();
+final jwt = await users.createJWT(
+    userId: '<USER_ID>',
+    duration: 900,
+);
 ```
-```client-apple
+```kotlin
+import io.appwrite.Client
+import io.appwrite.services.Users
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val users = Users(client)
+
+val jwt = users.createJWT(
+    userId = "<USER_ID>",
+    duration = 900
+)
+```
+```swift
 import Appwrite
 
 let client = Client()
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
 
-let account = Account(client)
+let users = Users(client)
 
-let jwt = try await account.createJWT()
+let jwt = try await users.createJWT(
+    userId: "<USER_ID>",
+    duration: 900
+)
 ```
-```client-android-kotlin
-import io.appwrite.Client
-import io.appwrite.services.Account
+```csharp
+using Appwrite;
+using Appwrite.Services;
 
-val client = Client(context)
-    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1") // Your API Endpoint
-    .setProject("<PROJECT_ID>")                  // Your project ID
+var client = new Client()
+    .SetEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
 
-val account = Account(client)
+var users = new Users(client);
 
-val jwt = account.createJWT()
+var jwt = await users.CreateJWT(
+    userId: "<USER_ID>",
+    duration: 900
+);
 ```
 ```graphql
 mutation {
-    accountCreateJWT {
+    usersCreateJWT(userId: "<USER_ID>", duration: 900) {
         jwt
     }
 }
@@ -187,7 +287,7 @@ Here's an example table of birthdays with the following rows. Notice how they al
 | bc7fc866ad1e| Laura | 1999-09-22| "read(\"user:user-b\")"|
 | cc2fc886ad1e| Bob   | 1982-05-11| "read(\"user:user-c\")"|
 
-If you're authenticated on the client-side as `user-a` and created a JWT `'eyJJ9.eyJ...886ca'`, you can pass this JWT to a Server SDK on the backend server to fetch only the birthdays `user-a` can read.
+If you created a JWT `'eyJJ9.eyJ...886ca'` for `user-a` with `users.createJWT`, you can pass this JWT to a Server SDK to fetch only the birthdays `user-a` can read.
 
 {% multicode %}
 ```js
