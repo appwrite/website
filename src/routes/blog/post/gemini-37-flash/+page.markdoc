@@ -105,7 +105,7 @@ For a request with 100,000 input tokens and 10,000 output tokens, the token char
 
 Configurable thinking adds another cost variable. Higher reasoning effort may improve hard tasks but can increase latency and output-token consumption. Route simple transformations and classifications to a lower effort setting, then reserve higher effort for ambiguous code changes, long-horizon planning, and recovery from failed tools.
 
-# Gemini Spark gets stronger Workspace tool use
+# How does Gemini 3.7 Flash power Gemini Spark?
 
 Gemini 3.7 Flash also powers Gemini Spark starting with this release. Spark is available to Google AI Pro and Ultra subscribers in supported countries and runs persistent, multi-step tasks across products including Gmail, Google Calendar, and Google Docs.
 
