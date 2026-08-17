@@ -121,7 +121,7 @@ Stay on Standard when:
 
 That last one is where most teams misdiagnose the problem. Measure before you chase a faster tier: instrument time-to-first-token, tokens-per-second, and total request time separately. If generation is 40% of your p95 and network plus tool calls are the rest, a 14x faster model gives you nowhere near a 14x faster product.
 
-The uncomfortable follow-on is that at 750 tokens per second, the model stops being the slow part and your infrastructure becomes it. A cold-start function, an unindexed query, or a chatty auth check that was invisible behind 30 seconds of generation is suddenly the thing your user is waiting on.
+At 750 tokens per second, the model may stop being the slowest part of the request. Your infrastructure can become the bottleneck instead. A cold-start function, an unindexed query, or a chatty auth check that was previously hidden behind 30 seconds of generation can suddenly become the thing your user is waiting on.
 
 # Build real-time GPT-5.6 apps on Appwrite
 
