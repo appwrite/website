@@ -68,13 +68,11 @@ The practical read: this is not a distilled or quantized Sol running on the same
 
 When frontier intelligence stops costing you 30 seconds, it moves into parts of a business that previously could not wait for it. OpenAI names five categories from its preview customers.
 
-| Workload                          | What changes at Ultrafast speed                                                                                   |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Incident response and reliability | Analyze logs, recent commits, and engineer reports to identify a likely cause while the outage is still unfolding |
-| Financial research and security   | Assess transactions and flag suspicious activity while market conditions are still changing                       |
-| Customer support and voice        | Resolve multi-step issues in real time without a dead-air pause in the conversation                               |
-| Commerce                          | Answer product questions, check inventory, and fix checkout problems while the shopper is still deciding          |
-| Live research and experimentation | Turn an overnight experiment run into an interactive working session                                              |
+* **Incident response and reliability:** Analyze logs, recent commits, and engineer reports to identify a likely cause while the outage is still unfolding.
+* **Financial research and security:** Assess transactions and flag suspicious activity while market conditions are still changing.
+* **Customer support and voice:** Resolve multi-step issues in real time without a dead-air pause in the conversation.
+* **Commerce:** Answer product questions, check inventory, and fix checkout problems while the shopper is still deciding.
+* **Live research and experimentation:** Turn an overnight experiment run into an interactive working session.
 
 The common thread is not that these tasks are hard. It is that they all have a deadline set by something outside your system: an outage clock, a market tick, a person breathing on a phone call, a shopper's patience. Below a certain latency the model participates. Above it, the moment has passed.
 
