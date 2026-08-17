@@ -25,6 +25,8 @@ https://mcp.appwrite.io/
 
 The server uses OAuth for authentication. When you add the server to an AI tool and connect for the first time, your browser opens so you can sign in to your Appwrite account and authorize access. You don't need to create or manage API keys.
 
+MCP clients complete that OAuth flow with a localhost callback URL. If you run your AI tool on a remote host, follow [Authenticate from a remote machine](#remote).
+
 # Pre-requisites {% #pre-requisites %}
 
 Before connecting to the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) on Appwrite Cloud. No additional software needs to be installed on your system.
@@ -43,6 +45,18 @@ The MCP server starts in a compact workflow where only a small set of MCP tools 
 - `appwrite_search_docs` - Semantically searches the Appwrite documentation
 
 The full Appwrite tool catalog stays internal and is searched at runtime, using less of the model's context.
+
+# Authenticate from a remote machine {% #remote %}
+
+MCP clients listen on a localhost callback URL for the OAuth redirect. When the client runs over SSH, on a droplet, or on any host without a local browser, that callback stays on the remote machine's loopback.
+
+Log in from the [Claude Code](/docs/tooling/ai/agents/claude-code) shell with `--no-browser`:
+
+```bash
+claude mcp login appwrite --no-browser
+```
+
+The command prints an authorization URL. Open it in a browser on your local machine, sign in to Appwrite, and authorize access. After you approve, the browser navigates to a `http://localhost:.../callback` URL. Copy the full URL from the address bar and paste it into the Claude Code prompt.
 
 # Self-hosted Appwrite {% #self-hosted %}
 
