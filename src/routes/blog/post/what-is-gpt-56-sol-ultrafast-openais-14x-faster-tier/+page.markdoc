@@ -86,7 +86,7 @@ John Crepezzi, who works on AI Assistants at [Jane Street](https://www.janestree
 
 # How OpenAI uses Ultrafast internally
 
-Internal usage is usually the more honest signal, and OpenAI describes two workflows.
+OpenAI also describes two ways its own teams are using Ultrafast.```
 
 **Incident response.** When an alert fires, engineers use Ultrafast to read logs, analyze traces, synthesize conversations, identify the next checks, and help prepare or validate a fix. The value is not that the model does something new. It is that the delay between observing a signal, testing a hypothesis, and choosing the next action collapses, while the evidence is still changing. Engineers keep responsibility for judgment and deployment.
 
