@@ -42,7 +42,7 @@ The API-level specifications are:
 | Output modality | Text |
 | Context window | Up to 1M tokens |
 | Maximum output | 64K tokens |
-| Knowledge cutoff | March 2026, with some domains limited to January 2025 |
+| Knowledge cutoff | March 2026; some domains may remain limited to January 2025 |
 | Thinking | Configurable |
 
 That knowledge-cutoff qualification matters. Google says the model's knowledge cutoff is March 2026, but users may encounter knowledge limited to January 2025 in some domains, in line with the wider Gemini 3 model family. Retrieval and tool use still matter when an agent needs current or domain-specific facts.
