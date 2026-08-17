@@ -33,6 +33,14 @@ claude mcp add --transport http appwrite https://mcp.appwrite.io/
 
 The server uses OAuth for authentication. Run `/mcp` in Claude Code, select **appwrite**, and choose **Authenticate**. Your browser opens so you can sign in to your Appwrite account and authorize access.
 
+If you run Claude Code on a remote host, log in from the shell with `--no-browser`:
+
+```bash
+claude mcp login appwrite --no-browser
+```
+
+Open the printed authorization URL in a browser on your local machine, sign in, and authorize access. After you approve, copy the full `http://localhost:.../callback` URL from the address bar and paste it into the Claude Code prompt. Use an interactive SSH session (`ssh -t`) so the prompt can accept the paste. This is the same localhost-callback pattern described in [Authenticate from a remote machine](/docs/tooling/ai/mcp-servers/api#remote).
+
 {% /section %}
 
 {% section #step-3 step=3 title="Verify MCP tools" %}
