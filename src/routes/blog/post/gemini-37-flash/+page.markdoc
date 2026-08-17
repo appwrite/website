@@ -88,7 +88,7 @@ The benchmark pattern supports three practical use cases:
 * **Design-to-code workflows:** The WebDev Arena improvement and Google's reference-adherence claims make 3.7 Flash worth testing when a model must translate screenshots, images, or a design system into a functional interface.
 * **Business agents:** The gains on AutomationBench, GDP.pdf, and OSWorld point to stronger workflows that read dense documents, use desktop tools, and complete several connected steps.
 
-None of those scores guarantees reliability. Google's model card still lists hallucinations, occasional slowness, and timeouts as known limitations. Keep tools permissioned, validate structured output, make write operations reversible, and require human approval for consequential actions.
+None of those scores establishes production reliability on its own. Google's model card lists hallucinations, occasional slowness, and timeout issues among the model's known limitations. Google's frontier safety assessment also notes that Gemini 3.7 Flash can complete individual coding tasks but does not yet have enough independence to chain them into an end-to-end research workflow without human intervention. Teams should therefore validate structured outputs, keep tool permissions narrow, make write operations reversible, and require appropriate human approval for consequential actions.
 
 # Gemini 3.7 Flash pricing rewards early adoption
 
