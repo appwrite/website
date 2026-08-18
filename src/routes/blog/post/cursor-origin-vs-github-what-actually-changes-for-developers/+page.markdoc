@@ -58,24 +58,19 @@ Connect GitHub to Cursor, pick your org, and select which repos to sync. Cursor 
 * **Pull requests sync both ways.** Comment in Cursor and it posts to GitHub. React or reply on GitHub and it appears in Cursor within seconds. A review assigned to you on GitHub can be reviewed and merged from Cursor.
 * **Anyone with read or write access on GitHub can view the synced repo in Cursor.**
 * **You can disconnect a repo at any time.**
-Cursor says anyone with read or write access to a synced GitHub repository can view that repository in Cursor as well. Origin also provides repository settings for managing access and connected apps, so teams should review how their existing GitHub permissions map to the Origin workflow before rolling it out broadly.
+
 Cursor says anyone with read or write access to a synced GitHub repository can view that repository in Cursor as well. Origin also provides repository settings for managing access and connected apps, so teams should review how their existing GitHub permissions map to the Origin workflow before rolling it out broadly.
 
 Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
-Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
-Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
-
-That is deliberate. Sync is the on-ramp, not the destination.
 
 # Does Cursor Origin replace GitHub?
 
 Not yet, and not for most teams. Here is what Origin does not do in beta:
 
-* **No issues.** Your backlog, triage labels, and issue templates stay on GitHub or Linear or Jira.
-* **No native CI.** Origin connects Depot and Buildkite, and both run your existing GitHub Actions workflows. Buildkite also runs its native pipelines. Your CI config is portable, but the runner is a third party.
-* **No packages, releases, or wikis.** If you publish to GitHub Packages or cut releases with `gh release`, that stays put.
-* **No free tier.** Open source projects that live on GitHub because it is free for public repos have no path here.
-* **No org-level structures** matching what large teams have built on GitHub over years: nested teams, CODEOWNERS conventions, compliance audit trails, SSO edge cases.
+* The beta focuses on repositories, pull requests, code browsing, and GitHub sync.
+* CI currently comes through integrations such as Depot and Buildkite.
+* Origin's initial scope is much narrower than GitHub's broader platform ecosystem.
+* There is currently no free tier.
 
 Git hosting is a trust-and-inertia product, not a feature-checklist product. A faster, more integrated alternative inside your editor is a real pitch, but it is competing against switching costs that have nothing to do with speed.
 
@@ -101,9 +96,9 @@ Connect Vercel from a repo's Apps tab and every PR gets a preview deployment wit
 
 If your stack is anything else, you are waiting for the app ecosystem to fill in.
 
-## Nothing else changes
+## What stays in GitHub
 
-For synced repositories, GitHub remains the source of truth, while Cursor provides a synchronized surface for browsing and pull request work. All untouched, because sync keeps GitHub authoritative.
+For synced repositories, GitHub remains the source of truth, while Cursor provides a synchronized surface for browsing and pull request work. Existing GitHub repositories continue to be part of the workflow rather than being replaced outright.
 
 # Should you use Cursor Origin?
 
@@ -135,7 +130,7 @@ Here is the part worth thinking about before you move anything.
 
 Most modern deploy pipelines are coupled to your git host, not to git. Your hosting provider watches a GitHub repo, builds on push, and generates preview URLs from pull request events. Change the host and that contract breaks, which is precisely why Origin's sync model leaves pushes on GitHub.
 
-[Appwrite Sites](/docs/products/sites) and [Appwrite Functions](/docs/products/functions) work the same way. [Git-based deployments](/docs/products/sites/deploy-from-git) connect to a GitHub repository, and pushing to your production branch builds and activates a deployment, while pushes to other branches create [preview deployments](/docs/products/sites/previews) you can test before promoting. With sync enabled, none of that changes: Cursor mirrors the repo, GitHub still fires the webhook, Appwrite still builds.
+[Appwrite Sites](/docs/products/sites) and [Appwrite Functions](/docs/products/functions) work the same way. [Git-based deployments](/docs/products/sites/deploy-from-git) connect to a GitHub repository, and pushing to your production branch builds and activates a deployment, while pushes to other branches create [preview deployments](/docs/products/sites/previews) you can test before promoting.With GitHub sync enabled, GitHub remains part of the deployment workflow. Existing GitHub-based deployment integrations can continue to operate while Origin provides an additional development and review surface.
 
 The escape hatch matters too. Appwrite supports [deploying from the CLI](/docs/products/sites/deploy-from-cli), which is host-agnostic. If Origin becomes your source of truth for a project, `appwrite deploy` works from any repo, on any forge, from any CI runner. That is the property you actually want while the git hosting market is in motion: a backend that does not care which forge won this week.
 
