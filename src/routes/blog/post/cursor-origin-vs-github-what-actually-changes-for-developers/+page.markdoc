@@ -55,7 +55,7 @@ Until now, Cursor's core proposition has centered on the development environment
 
 That changes the competitive landscape. GitHub is no longer only the place where Cursor users keep their code. Origin gives Cursor a way to host repositories itself while still supporting GitHub as part of the workflow.
 
-The timing also amplified the comparison with GitHub. Origin launched as GitHub experienced an outage on August 17 to 18, making the new code-hosting product particularly visible to devel.
+The timing also amplified the comparison with GitHub. Origin launched as GitHub experienced an outage on August 17 to 18, making the new code-hosting product particularly visible to developers.
 
 # How Cursor Origin's GitHub sync actually works
 
