@@ -76,7 +76,7 @@ The strongest argument for Origin is not the code browser. It is that Cursor's c
 
 That is a meaningful architectural difference from connecting an agent to an external forge through an app integration. When the agent, repository, and review surface live within the same platform, there is less integration plumbing between those parts of the workflow. If you already run [parallel agents in Cursor](/blog/post/cursor-3-parallel-fleets-appwrite), that tighter integration could become one of Origin's strongest advantages.
 
-The caveat is that Cursor's own changelog says "agent-native features ship soon." Today, Origin is a competent forge with good agent access. The thesis that hosting plus agents produces a categorically better workflow is stated, not yet demonstrated by shipped features.
+Origin already supports agentic workflows through Cloud Agents and Automations. Cursor says additional agent-native features are still coming.
 
 # Should you switch to Cursor Origin? An engineer's verdict
 
