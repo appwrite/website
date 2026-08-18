@@ -101,8 +101,6 @@ Ask Cursor about code you are browsing and it answers, makes changes, updates th
 
 For monorepos you touch occasionally, or a service another team owns, this is the difference between asking a question and filing a Slack message.
 
-## What stays in GitHub
-
 For synced repositories, GitHub remains the source of truth, while Cursor provides a synchronized surface for browsing and pull request work. Existing GitHub repositories continue to be part of the workflow rather than being replaced outright.
 
 # What Cursor Origin means for your deployment pipeline
