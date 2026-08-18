@@ -81,6 +81,7 @@ Not yet, and not for most teams. Here is what Origin does not do in beta:
 * CI currently comes through integrations such as Depot and Buildkite.
 * Origin's initial scope is much narrower than GitHub's broader platform ecosystem.
 * There is currently no free tier.
+* **Public repositories are not supported in the current beta.** That makes Origin a poor fit for open source projects that depend on public repositories, discoverability, and external contributors.
 
 Git hosting is a trust-and-inertia product, not a feature-checklist product. A faster, more integrated alternative inside your editor is a real pitch, but it is competing against switching costs that have nothing to do with speed.
 
