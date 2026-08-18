@@ -59,7 +59,9 @@ Connect GitHub to Cursor, pick your org, and select which repos to sync. Cursor 
 * **Anyone with read or write access on GitHub can view the synced repo in Cursor.**
 * **You can disconnect a repo at any time.**
 Cursor says anyone with read or write access to a synced GitHub repository can view that repository in Cursor as well. Origin also provides repository settings for managing access and connected apps, so teams should review how their existing GitHub permissions map to the Origin workflow before rolling it out broadly.
+Cursor says anyone with read or write access to a synced GitHub repository can view that repository in Cursor as well. Origin also provides repository settings for managing access and connected apps, so teams should review how their existing GitHub permissions map to the Origin workflow before rolling it out broadly.
 
+Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
 Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
 Read that second bullet again, because it is the whole design. For synced repos, Origin is a **read-and-review surface over your existing GitHub repo**, not a replacement for it. Cursor's sync model keeps GitHub in the workflow for synced repositories, with pushes continuing to go to GitHub.
 
