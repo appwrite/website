@@ -74,7 +74,7 @@ None of this is surprising for a product in early beta. These are also exactly t
 
 The strongest argument for Origin is not the code browser. It is that Cursor's cloud agents can operate on Origin repositories natively, cloning, branching, committing, pushing, and opening pull requests, and that automations can trigger those agents on schedules or source-control events like a push or PR.
 
-That is a meaningful architectural difference from bolting an agent onto an external forge through an app integration. When the agent, the repository, and the review surface share one permission model and one event stream, you remove a category of latency and auth plumbing that every "AI reviews your PRs" integration currently pays for. If you already run [parallel agents in Cursor](/blog/post/cursor-3-parallel-fleets-appwrite), not round-tripping through a third-party API for every branch operation is a real gain.
+That is a meaningful architectural difference from connecting an agent to an external forge through an app integration. When the agent, repository, and review surface live within the same platform, there is less integration plumbing between those parts of the workflow. If you already run [parallel agents in Cursor](/blog/post/cursor-3-parallel-fleets-appwrite), that tighter integration could become one of Origin's strongest advantages.
 
 The caveat is that Cursor's own changelog says "agent-native features ship soon." Today, Origin is a competent forge with good agent access. The thesis that hosting plus agents produces a categorically better workflow is stated, not yet demonstrated by shipped features.
 
