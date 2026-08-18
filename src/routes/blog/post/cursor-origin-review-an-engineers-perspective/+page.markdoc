@@ -20,7 +20,7 @@ Git forges have been a settled question for most engineering teams for over a de
 
 Cursor positions Origin as ["a git forge for the agentic era"](https://cursor.com/origin): code is now produced faster than the infrastructure around it was designed to handle, so the forge should be where agents live rather than a system they call into from outside.
 
-This review evaluates what Cursor documents Origin doing today, what its documentation does not cover, and how to weigh the switching cost. It is a technical evaluation based on Cursor's [official changelog](https://cursor.com/changelog/origin-code-hosting) and [Origin docs](https://cursor.com/docs/origin), not a hands-on benchmark.
+This review combines Cursor's documented Origin features with my experience using the early beta. I wanted to understand not just what Origin claims to support, but what it actually feels like to use as an engineer, where the workflow works well, and where the product still feels early.
 
 # What is Cursor Origin?
 
