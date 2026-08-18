@@ -24,7 +24,7 @@ This review evaluates what Cursor documents Origin doing today, what its documen
 
 # What is Cursor Origin?
 
-**Direct answer:** Cursor Origin is Cursor's own Git hosting service. It stores repositories, serves code browsing and search at `cursor.com/codebase`, supports pull requests, and can mirror repositories from GitHub. Cursor lists it as early beta on Pro, Teams, and Enterprise plans, with enterprise admins able to opt out.
+Cursor Origin is Cursor's own Git hosting service. It stores repositories, serves code browsing and search at `cursor.com/codebase`, supports pull requests, and can mirror repositories from GitHub. Cursor lists it as early beta on Pro, Teams, and Enterprise plans, with enterprise admins able to opt out.
 
 The mental model is straightforward. You claim a codebase namespace, which becomes part of every repository URL (`cursor.com/codebase/acme-corp`). You install the Origin CLI, run `origin auth login`, and then standard Git operations work over HTTPS against `https://origin.cursor.com/{owner}/{repo}.git`. Cursor's docs note the CLI is needed for authentication, not for every subsequent Git command.
 
