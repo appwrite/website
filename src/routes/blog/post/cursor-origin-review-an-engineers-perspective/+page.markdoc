@@ -68,7 +68,7 @@ An evaluation is only useful if it covers what is not there. Based on Cursor's c
 * **Integration maturity.** Origin provides APIs, webhooks, SSH key management, and integrations with tools such as Buildkite, Depot, and Vercel. Teams with mature GitHub setups should still evaluate whether their existing internal tooling and third-party integrations can be reproduced on Origin before moving their primary repositories.
 * **Privacy and compliance posture.** Cursor notes that Origin privacy follows the namespace owner's Privacy Mode settings, and that teams on legacy privacy mode must upgrade first. That is a real prerequisite for regulated teams, not a footnote.
 
-None of this is damning for an early beta. It is exactly the list you would expect a forge to be missing eighteen months before it is enterprise-ready. It is also exactly the list that determines whether you can move.
+None of this is surprising for a product in early beta. These are also exactly the kinds of capabilities mature engineering teams need to evaluate before moving their primary repositories.
 
 # What Cursor Origin gets right: agents and repositories in one place
 
