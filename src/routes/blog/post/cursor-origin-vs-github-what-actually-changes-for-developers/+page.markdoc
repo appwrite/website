@@ -30,7 +30,7 @@ Cursor Origin is a code hosting platform built directly into Cursor. You create 
 
 The beta ships four things: **repos, pull requests, code browsing, and GitHub sync**. Agents operate inside every repo, so they can answer questions about code you are browsing, make changes, update PRs, and push branches without leaving the tab.
 
-It is available on Pro, Teams, and Enterprise plans, rolling out in stages. There is no free tier. Teams still on Cursor's legacy privacy mode cannot access Origin until they switch to the newer Privacy Mode.
+Origin is rolling out in early beta to paid Cursor plans. There is no free tier.
 
 # Cursor Origin vs GitHub: the short answer
 
