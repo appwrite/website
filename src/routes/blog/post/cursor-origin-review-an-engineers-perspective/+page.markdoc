@@ -82,7 +82,7 @@ The caveat is that Cursor's own changelog says "agent-native features ship soon.
 
 Here is the nuanced read, split by who is asking.
 
-**Try it now if** you are an individual developer or a small team already doing most development inside Cursor, without years of accumulated GitHub automation. Your switching cost is close to zero, the mirror makes the experiment reversible, and you are the audience the beta is shaped around.
+**Try it now if** you are an individual developer or a small team already doing most development inside Cursor, without years of accumulated GitHub automation. The cost of experimenting is relatively low, the mirror lets you evaluate Origin without immediately moving your source of truth, and you are the audience the beta is shaped around.
 
 **Mirror, but do not move, if** you have a working GitHub setup with real automation. Point Origin at one active repository, use it for browsing and review, and let pushes keep flowing to GitHub. You get a genuine read on the product without betting your release process on a beta.
 
