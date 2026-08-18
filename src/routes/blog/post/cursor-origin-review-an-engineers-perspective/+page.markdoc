@@ -47,7 +47,7 @@ That last row matters more than it looks. Cursor is explicit that mirroring cove
 
 # How Cursor Origin's GitHub sync actually works
 
-**Direct answer:** Origin mirrors a GitHub repository rather than migrating it. Cursor's docs state that Origin stays updated as the GitHub repository changes, that pushes to a synced repository pass through to GitHub, and that GitHub remains the source of truth while the mirror is active.
+Origin mirrors a GitHub repository rather than migrating it. Cursor's docs state that Origin stays updated as the GitHub repository changes, that pushes to a synced repository pass through to GitHub, and that GitHub remains the source of truth while the mirror is active.
 
 The documented mechanics are worth spelling out, because "sync" is doing a lot of work in the marketing copy:
 
