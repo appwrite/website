@@ -126,7 +126,7 @@ Depends on which of these you are:
 | Solo dev, new side project               | Try Origin natively. The CLI-to-hosted-repo path is fast and the agent integration is the point. |
 | Small team, already all-in on Cursor     | Sync your repos. You get in-editor review at zero migration cost and can bail anytime.           |
 | Team with mature CI/CD on GitHub Actions | Sync only. Do not move source of truth.                                                          |
-| Open source maintainer                   | Stay on GitHub. No free tier, no issues, no discoverability.                                     |
+| Open source maintainer                   | Stay on GitHub. Origin does not currently support public repositories, and its broader OSS workflow is much more limited.               |
 | Enterprise with compliance requirements  | Wait. Audit trails and access review tooling are not there yet.                                  |
 
 The realistic move for almost everyone is: **connect sync, use Origin for review and agent work, keep pushing to GitHub.** That gets you the actual benefit and costs you nothing if Origin stalls.
