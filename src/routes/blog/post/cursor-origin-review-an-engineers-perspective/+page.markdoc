@@ -45,17 +45,30 @@ Here is what Cursor documents as available today, and what it explicitly does no
 
 That last row matters more than it looks. Cursor is explicit that mirroring covers code and pull requests, not the surrounding project management and automation layer.
 
-# The gaps to check before you move code hosting
+# What Cursor Origin feels like to use
 
-An evaluation is only useful if it covers what is not there. Based on Cursor's current Origin documentation, the following are undocumented rather than confirmed missing, and any team with a mature GitHub setup should verify each one directly before committing:
+Origin is still very clearly an early beta. The core repository and pull request workflows work, but after using it for a while, there are a number of smaller rough edges that make it feel less mature than the Git tooling developers are used to.
 
-* **Repository governance.** Origin documents branch rules and merge protections through its Rules and Protections settings. However, teams relying on GitHub-specific workflows such as CODEOWNERS or merge queues should verify whether Origin's current controls cover their requirements before migrating.
-* **CI ownership.** Origin does not run Actions itself. The documented path is connecting Depot or Buildkite, both of which run your existing GitHub Actions workflows, with Buildkite also running native pipelines. That is pragmatic, but it means your CI vendor list grows rather than shrinks.
-* **Issues and project tracking.** These stay on GitHub. Teams that live in GitHub Issues will be operating across two surfaces.
-* **Integration maturity.** Origin provides APIs, webhooks, SSH key management, and integrations with tools such as Buildkite, Depot, and Vercel. Teams with mature GitHub setups should still evaluate whether their existing internal tooling and third-party integrations can be reproduced on Origin before moving their primary repositories.
-* **Privacy and compliance posture.** Cursor notes that Origin privacy follows the namespace owner's Privacy Mode settings, and that teams on legacy privacy mode must upgrade first. That is a real prerequisite for regulated teams, not a footnote.
+I ran into issues while switching between accounts, including rate limits, and some repository creation flows left old modals open on previous pages. None of these were serious enough to make the product unusable, but they are the kind of details you notice quickly when using Origin day to day.
 
-None of this is surprising for a product in early beta. These are also exactly the kinds of capabilities mature engineering teams need to evaluate before moving their primary repositories.
+The bigger limitation for me is how much repository management still happens outside the UI. For basic tasks such as creating a README, creating or deleting a branch, or editing files, I often need to use an agent, the Origin CLI, or Git directly rather than managing everything from the web interface.
+
+The pull request experience also feels unfinished in places. Things developers are used to seeing at a glance, such as the number of open pull requests or labels directly in the PR list, are missing. Origin also defaults the pull request view to my own PRs, which means agent-created PRs or PRs opened by teammates are not immediately visible without changing the filter.
+
+Individually, these are small issues. Together, they make Origin feel more like a functional early forge than a finished replacement for the Git platforms engineering teams already use.
+
+# Where Cursor Origin still feels early
+
+Some of Origin's limitations are expected for an early beta, but they matter if you are evaluating it as your primary Git forge.
+
+* **No public repositories.** Origin repositories are currently private, which means open source projects cannot make Origin their public home.
+* **No built-in CI/CD platform.** Origin supports app integrations such as Depot and Buildkite, but there is no native equivalent to a full CI/CD system like GitHub Actions.
+* **The platform surface is still small.** Features developers may expect from a mature Git platform, including Discussions, Insights, Projects, Releases, Issues, and Packages, are not part of Origin today.
+* **Repository management is limited in the UI.** Some basic operations still require Git, the CLI, or an agent rather than being available directly through the interface.
+* **The integration surface has gaps.** OAuth2 support is limited, and some installation APIs are missing write operations. Git can work around several of these limitations, but actions such as repository deletion expose gaps that cannot always be avoided that way.
+* **The UX still needs polish.** Pull request discovery, filtering, labels, and other small workflow details do not yet have the depth developers are accustomed to from mature Git platforms.
+
+None of these make Origin unusable. They do make it clear that the product is still at the beginning of its lifecycle.
 
 # What Cursor Origin gets right: agents and repositories in one place
 
@@ -64,6 +77,8 @@ The strongest argument for Origin is not the code browser. It is that Cursor's c
 That is a meaningful architectural difference from connecting an agent to an external forge through an app integration. When the agent, repository, and review surface live within the same platform, there is less integration plumbing between those parts of the workflow. If you already run [parallel agents in Cursor](/blog/post/cursor-3-parallel-fleets-appwrite), that tighter integration could become one of Origin's strongest advantages.
 
 Origin already supports agentic workflows through Cloud Agents and Automations. Cursor says additional agent-native features are still coming.
+
+That is also where I think Origin has the most room to become interesting. As a Git forge by itself, much of what Origin does already exists elsewhere. The opportunity is in what happens when the repository, agents, automations, and review workflow are designed as one system rather than connected through integrations.
 
 # Should you switch to Cursor Origin? An engineer's verdict
 
@@ -75,9 +90,11 @@ Here is the nuanced read, split by who is asking.
 
 **Wait if** your workflow depends heavily on GitHub-specific governance, CODEOWNERS, merge queues, GitHub Issues, or a large ecosystem of internal and third-party integrations. Origin is still in early beta, and teams with years of policy and automation around GitHub should verify that their requirements are covered before moving their primary repositories.
 
-For Origin to become a serious default, its governance controls and integration ecosystem will need to mature further, while its agent-native workflows need to demonstrate a clear advantage over agents connected to established Git forges. The first part determines whether mature teams can safely adopt it. The second is the thesis that could make Origin meaningfully different.
+My impression after using Origin is that the Git hosting itself is not revolutionary yet. Most of the core concepts are familiar, and several parts of the experience are still less complete than what developers expect from mature Git platforms.
 
-So, is Cursor Origin just code hosting inside Cursor, or something more? Today, the code-hosting foundation is clearer than the agent-native advantage Cursor ultimately wants to prove. The GitHub mirror is one of the smartest parts of the product because it turns a migration decision into an evaluation. That is a much easier decision to say yes to.
+That does not make Origin uninteresting. The bet is clearly bigger than rebuilding GitHub inside Cursor. If Cursor can make repositories, agents, automations, and code review work together in ways that are difficult to reproduce with separate tools, Origin could become meaningfully different.
+
+For now, I would treat it as an interesting early beta rather than a Git forge I would immediately move an established engineering workflow onto.
 
 # Where your backend fits when your git forge changes
 
