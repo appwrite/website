@@ -99,7 +99,7 @@ If your stack is anything else, you are waiting for the app ecosystem to fill in
 
 ## Nothing else changes
 
-Your permissions model, your compliance posture, your deploy hooks, your `gh` CLI muscle memory, your org's SAML config. All untouched, because sync keeps GitHub authoritative.
+For synced repositories, GitHub remains the source of truth, while Cursor provides a synchronized surface for browsing and pull request work. All untouched, because sync keeps GitHub authoritative.
 
 # Should you use Cursor Origin?
 
