@@ -45,19 +45,6 @@ Here is what Cursor documents as available today, and what it explicitly does no
 
 That last row matters more than it looks. Cursor is explicit that mirroring covers code and pull requests, not the surrounding project management and automation layer.
 
-# How Cursor Origin's GitHub sync actually works
-
-Origin mirrors a GitHub repository rather than migrating it. Cursor's docs state that Origin stays updated as the GitHub repository changes, that pushes to a synced repository pass through to GitHub, and that GitHub remains the source of truth while the mirror is active.
-
-The documented mechanics are worth spelling out, because "sync" is doing a lot of work in the marketing copy:
-
-* **Setup requires GitHub admin access** on the repository you want to mirror, plus the Cursor GitHub app connected to the owning organization.
-* **What syncs:** Git history, branches, tags, browsable code, and pull requests in both directions. Comment in Cursor and it posts to GitHub; reply on GitHub and it appears in Cursor.
-* **What does not sync:** GitHub Issues, Actions workflows, and secrets.
-* **Detaching stops GitHub synchronization.** Cursor's settings offer "Detach from GitHub," which converts the Origin copy into a standalone Origin-hosted repository. After detaching, Origin becomes the source of truth and pushes no longer flow to GitHub.
-
-This is the single most important design decision in the product. Because pushes pass through to GitHub, adoption is not a migration. You can run Origin as a read-and-review surface on top of an unchanged GitHub setup, and your existing CI, deployment hooks, and compliance tooling keep firing against the same source of truth they always have. Cursor even tells you not to bother mirroring if all you want is automated review comments on GitHub PRs, and to use Cursor Review or Bugbot instead.
-
 # The gaps to check before you move code hosting
 
 An evaluation is only useful if it covers what is not there. Based on Cursor's current Origin documentation, the following are undocumented rather than confirmed missing, and any team with a mature GitHub setup should verify each one directly before committing:
