@@ -62,7 +62,7 @@ This is the single most important design decision in the product. Because pushes
 
 An evaluation is only useful if it covers what is not there. Based on Cursor's current Origin documentation, the following are undocumented rather than confirmed missing, and any team with a mature GitHub setup should verify each one directly before committing:
 
-* **Branch protection, CODEOWNERS, and merge queues.** The pull request docs cover requesting reviewers and merging once reviews and CI are satisfied. They do not describe enforced required reviewers, protected branches, or a merge queue.
+* **Repository governance.** Origin documents branch rules and merge protections through its Rules and Protections settings. However, teams relying on GitHub-specific workflows such as CODEOWNERS or merge queues should verify whether Origin's current controls cover their requirements before migrating.
 * **CI ownership.** Origin does not run Actions itself. The documented path is connecting Depot or Buildkite, both of which run your existing GitHub Actions workflows, with Buildkite also running native pipelines. That is pragmatic, but it means your CI vendor list grows rather than shrinks.
 * **Issues and project tracking.** These stay on GitHub. Teams that live in GitHub Issues will be operating across two surfaces.
 * **API, webhooks, and SSH.** Cursor's docs describe HTTPS clone URLs and CLI authentication. A public REST API, webhook system, and SSH support are not documented.
