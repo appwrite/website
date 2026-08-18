@@ -54,7 +54,7 @@ The documented mechanics are worth spelling out, because "sync" is doing a lot o
 * **Setup requires GitHub admin access** on the repository you want to mirror, plus the Cursor GitHub app connected to the owning organization.
 * **What syncs:** Git history, branches, tags, browsable code, and pull requests in both directions. Comment in Cursor and it posts to GitHub; reply on GitHub and it appears in Cursor.
 * **What does not sync:** GitHub Issues, Actions workflows, and secrets.
-* **Detaching is a one-way door in the useful sense.** Cursor's settings offer "Detach from GitHub," which stops the sync and converts the Origin copy into a standalone Origin-hosted repository. After that, Origin is authoritative and pushes stop flowing to GitHub.
+* **Detaching stops GitHub synchronization.** Cursor's settings offer "Detach from GitHub," which converts the Origin copy into a standalone Origin-hosted repository. After detaching, Origin becomes the source of truth and pushes no longer flow to GitHub.
 
 This is the single most important design decision in the product. Because pushes pass through to GitHub, adoption is not a migration. You can run Origin as a read-and-review surface on top of an unchanged GitHub setup, and your existing CI, deployment hooks, and compliance tooling keep firing against the same source of truth they always have. Cursor even tells you not to bother mirroring if all you want is automated review comments on GitHub PRs, and to use Cursor Review or Bugbot instead.
 
