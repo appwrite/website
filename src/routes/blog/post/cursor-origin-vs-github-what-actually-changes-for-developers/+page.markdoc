@@ -18,7 +18,7 @@ faqs:
   - question: What features does Cursor Origin have?
     answer: The early beta includes repository hosting, pull requests, code browsing, and GitHub synchronization. Cursor also integrates agents directly into the repository workflow so they can understand code, make changes, update pull requests, and push branches.
 ---
-Cursor now hosts your code. On August 17, 2026, Cursor shipped **Origin**, a git forge built into the editor, in early beta for paid plans. Repos, pull requests, code browsing, and GitHub sync, all inside the tool where your agents already run.
+On August 17, 2026, Cursor shipped **Origin**, a git forge built into the editor, in early beta for paid plans. Repos, pull requests, code browsing, and GitHub sync, all inside the tool where your agents already run.
 
 The reaction split into two camps immediately: "GitHub is over" and "nobody is migrating anything." Both are wrong, and both skip the question that actually matters if you ship software for a living. What changes in your workflow on Monday?
 
