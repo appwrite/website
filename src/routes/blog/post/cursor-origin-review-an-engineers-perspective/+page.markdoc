@@ -11,8 +11,6 @@ featured: false
 faqs:
   - question: Does Cursor Origin support CI/CD?
     answer: Yes, but the setup depends on how the repository is hosted. GitHub-mirrored repositories continue using their existing GitHub CI, while Origin-hosted repositories can integrate with tools such as Depot and Buildkite.
-  - question: Does Cursor Origin support branch protection?
-    answer: Cursor Origin includes Rules and Protections settings for configuring branch rules and merge protections. Cursor notes that these controls are still evolving during the early beta.
   - question: What happens if you detach Cursor Origin from GitHub?
     answer: Detaching stops synchronization and turns the Origin copy into a standalone repository. Cursor Origin then becomes the source of truth, while the original GitHub repository remains unchanged.
   - question: Should I switch from GitHub to Cursor Origin?
