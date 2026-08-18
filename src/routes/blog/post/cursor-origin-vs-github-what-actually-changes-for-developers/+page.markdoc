@@ -90,12 +90,6 @@ Ask Cursor about code you are browsing and it answers, makes changes, updates th
 
 For monorepos you touch occasionally, or a service another team owns, this is the difference between asking a question and filing a Slack message.
 
-## PR preview deploys, if you use Vercel
-
-Connect Vercel from a repo's Apps tab and every PR gets a preview deployment with inline comments. Merge and it ships to production. If your stack is Vercel plus Depot or Buildkite, Origin already covers the loop.
-
-If your stack is anything else, you are waiting for the app ecosystem to fill in.
-
 ## What stays in GitHub
 
 For synced repositories, GitHub remains the source of truth, while Cursor provides a synchronized surface for browsing and pull request work. Existing GitHub repositories continue to be part of the workflow rather than being replaced outright.
