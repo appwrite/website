@@ -86,7 +86,7 @@ Here is the nuanced read, split by who is asking.
 
 **Mirror, but do not move, if** you have a working GitHub setup with real automation. Point Origin at one active repository, use it for browsing and review, and let pushes keep flowing to GitHub. You get a genuine read on the product without betting your release process on a beta.
 
-**Wait if** your workflow depends on enforced branch protection, CODEOWNERS, merge queues, GitHub Issues, or webhook-driven internal tooling. The features that would make that migration safe are not documented yet, and rebuilding a decade of policy against an early beta is not a good trade at any AI velocity.
+**Wait if** your workflow depends heavily on GitHub-specific governance, CODEOWNERS, merge queues, GitHub Issues, or a large ecosystem of internal and third-party integrations. Origin is still in early beta, and teams with years of policy and automation around GitHub should verify that their requirements are covered before moving their primary repositories.
 
 For Origin to become a serious default, three things need to happen: documented policy enforcement at the branch and review level, a public API and webhook surface so internal tooling can be ported rather than rewritten, and agent-native features that are actually better than an agent talking to GitHub over an app integration. The first two are table stakes. The third is the entire thesis.
 
