@@ -90,7 +90,7 @@ Here is the nuanced read, split by who is asking.
 
 For Origin to become a serious default, three things need to happen: documented policy enforcement at the branch and review level, a public API and webhook surface so internal tooling can be ported rather than rewritten, and agent-native features that are actually better than an agent talking to GitHub over an app integration. The first two are table stakes. The third is the entire thesis.
 
-So, is Cursor Origin just code hosting inside Cursor, or something more? Today it is the former, built deliberately so that trying it does not require believing in the latter. The GitHub mirror is the smartest thing about the product, because it turns a migration decision into an evaluation. That is a much easier decision to say yes to.
+So, is Cursor Origin just code hosting inside Cursor, or something more? Today, the code-hosting foundation is clearer than the agent-native advantage Cursor ultimately wants to prove. The GitHub mirror is one of the smartest parts of the product because it turns a migration decision into an evaluation. That is a much easier decision to say yes to.
 
 # Where your backend fits when your git forge changes
 
