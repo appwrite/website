@@ -145,8 +145,6 @@ Whether you host on GitHub, Origin, or both, the code your agent writes still ne
 
 If you are building in Cursor, the [Appwrite plugin for Cursor](/blog/post/announcing-appwrite-cursor-plugin) bundles [Appwrite Skills](/docs/tooling/ai/skills) and MCP servers so agents generate correct SDK code instead of guessing at method names.
 
-{% call\_to\_action title\="All-in-one development platform" description\="Use built-in backend infrastructure and web hosting, all from a single place." point1\="Start for free" point2\="Open source" point3\="Support for over 13 SDKs" point4\="Managed cloud solution" cta\="Start building" url\="https://cloud.appwrite.io/" /%}
-
 # Resources
 
 * [Appwrite Sites documentation](/docs/products/sites)
