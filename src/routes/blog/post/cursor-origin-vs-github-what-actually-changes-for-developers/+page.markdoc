@@ -117,15 +117,13 @@ The realistic move for almost everyone is: **connect sync, use Origin for review
 
 # Why Cursor shipped a GitHub competitor now
 
-Treating Origin as "Cursor shipped a feature" misses the structurally interesting part.
+Treating Origin as just another Cursor feature misses the bigger shift.
 
-Origin landed days after SpaceX closed its [$60 billion acquisition of Anysphere](/blog/post/spacex-acquires-cursor-in-60-billion-ai-deal), Cursor's parent company, folding Cursor into the xAI division. Origin is the first major Cursor product to ship after that close, and it is not a small feature. It is a direct swing at GitHub's core business: hosting the world's code.
+Until now, Cursor's core proposition has centered on the development environment and AI-assisted coding. With Origin, Cursor is moving into code hosting itself, putting repositories, pull requests, code browsing, and agents into the same product.
 
-That puts an odd shape on the competitive map. GitHub is owned by Microsoft, which also backs OpenAI. Cursor now sits under SpaceX. A code hosting platform launched by a Grok-adjacent company, aimed at the incumbent owned by an OpenAI backer, is a new front in a rivalry that used to be fought on model quality and IDE features.
+That changes the competitive landscape. GitHub is no longer only the place where Cursor users keep their code. Origin gives Cursor a way to host repositories itself while still supporting GitHub as part of the workflow.
 
-The timing sharpened the story further. Origin went live during a GitHub outage on August 17 to 18. Cursor's team has said that was not planned, but the internet ran with it anyway, and an outage is exactly the moment developers are most receptive to "your code could live somewhere else."
-
-Cursor is no longer competing with GitHub Copilot on autocomplete quality. It is trying to host the repos Copilot reads.
+The timing also amplified the comparison with GitHub. Origin launched as GitHub experienced an outage on August 17 to 18, making the new code-hosting product particularly visible to devel.
 
 # What Cursor Origin means for your deployment pipeline
 
