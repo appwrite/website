@@ -88,7 +88,7 @@ Here is the nuanced read, split by who is asking.
 
 **Wait if** your workflow depends heavily on GitHub-specific governance, CODEOWNERS, merge queues, GitHub Issues, or a large ecosystem of internal and third-party integrations. Origin is still in early beta, and teams with years of policy and automation around GitHub should verify that their requirements are covered before moving their primary repositories.
 
-For Origin to become a serious default, three things need to happen: documented policy enforcement at the branch and review level, a public API and webhook surface so internal tooling can be ported rather than rewritten, and agent-native features that are actually better than an agent talking to GitHub over an app integration. The first two are table stakes. The third is the entire thesis.
+For Origin to become a serious default, its governance controls and integration ecosystem will need to mature further, while its agent-native workflows need to demonstrate a clear advantage over agents connected to established Git forges. The first part determines whether mature teams can safely adopt it. The second is the thesis that could make Origin meaningfully different.
 
 So, is Cursor Origin just code hosting inside Cursor, or something more? Today, the code-hosting foundation is clearer than the agent-native advantage Cursor ultimately wants to prove. The GitHub mirror is one of the smartest parts of the product because it turns a migration decision into an evaluation. That is a much easier decision to say yes to.
 
