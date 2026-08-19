@@ -32,11 +32,18 @@
 
     let articlesHeader: HTMLElement;
 
-    let previousPage: number | null = null;
+    function getBlogPageNumber(pageParam: string | undefined): number {
+        const pageNumber = parseInt(pageParam ?? '1', 10);
+        return Number.isNaN(pageNumber) ? 1 : pageNumber;
+    }
 
-    onNavigate(async ({ from, type }) => {
-        previousPage = type === 'link' ? parseInt(from?.params?.page ?? '1') : null;
-        if (!articlesHeader || !previousPage) return;
+    onNavigate(async ({ from, to, type }) => {
+        const fromPage = getBlogPageNumber(from?.params?.page);
+        const toPage = getBlogPageNumber(to?.params?.page);
+        const isPaginationNavigation =
+            type === 'link' && fromPage !== toPage && from?.url.search === to?.url.search;
+
+        if (!articlesHeader || !isPaginationNavigation) return;
 
         await tick();
         articlesHeader.scrollIntoView();
@@ -87,6 +94,35 @@
     });
 
     const { debounce, reset } = createDebounce();
+
+    async function handleCategoryClick(event: MouseEvent, category?: string) {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        const scrollPosition = {
+            left: window.scrollX,
+            top: window.scrollY
+        };
+
+        const url = new URL('/blog', page.url);
+
+        if (category) {
+            url.searchParams.set('category', category);
+        }
+
+        await goto(url.toString(), {
+            noScroll: true,
+            keepFocus: true
+        });
+
+        await tick();
+        window.scrollTo(scrollPosition);
+        requestAnimationFrame(() => window.scrollTo(scrollPosition));
+        setTimeout(() => window.scrollTo(scrollPosition), 100);
+    }
 
     const search = (node: HTMLInputElement) => {
         const inputHandler = () => debounce(() => handleSearch());
@@ -335,8 +371,10 @@
                                 <li class="flex items-center">
                                     <a
                                         href={base + '/blog'}
+                                        data-sveltekit-noscroll
                                         class="web-interactive-tag web-caption-400 cursor-pointer"
                                         class:is-selected={selectedCategory === 'Latest'}
+                                        onclick={(event) => handleCategoryClick(event)}
                                     >
                                         Latest
                                     </a>
@@ -348,8 +386,11 @@
                                             href={base +
                                                 '/blog?category=' +
                                                 encodeURIComponent(category.name)}
+                                            data-sveltekit-noscroll
                                             class="web-interactive-tag web-caption-400 cursor-pointer"
                                             class:is-selected={selectedCategory === category.name}
+                                            onclick={(event) =>
+                                                handleCategoryClick(event, category.name)}
                                         >
                                             {category.name}
                                         </a>
