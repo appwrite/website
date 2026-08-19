@@ -1,0 +1,539 @@
+---
+layout: article
+title: Connect
+description: Connect to a dedicated database with psql, mysql, mongosh, or any standard driver. Retrieve credentials from the API, manage additional users, and rotate the primary password.
+---
+
+A dedicated database exposes a real engine endpoint over TLS. You connect to it the same way you would connect to any PostgreSQL, MySQL, MariaDB, or MongoDB server: with the engine's standard CLI or any ORM/driver in any language.
+
+# Get connection details in Console {% #console %}
+
+The fastest way to connect is through the Appwrite Console:
+
+1. Open your project in the Appwrite Console.
+2. Open **Databases** and select your dedicated database.
+3. Open the **Connect** or **Credentials** view.
+4. Copy the connection string for your engine.
+5. Paste it into `psql`, `mysql`, `mongosh`, your ORM, or your database client.
+
+Use the API or SDK flow below when you need to fetch credentials from automation, rotate credentials from a script, or inject the connection string into your deployment pipeline.
+
+# Get credentials with the API {% #credentials %}
+
+The connection details for a dedicated database are exposed through the [credentials endpoint](/docs/references/cloud/server-rest/compute#getDatabaseCredentials). Call it from any server SDK with an API key that has the `databases.read` scope.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const credentials = await compute.getDatabaseCredentials({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const credentials = await compute.getDatabaseCredentials({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$credentials = $compute->getDatabaseCredentials(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+credentials = compute.get_database_credentials(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+credentials = compute.get_database_credentials(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var credentials = await compute.GetDatabaseCredentials(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final credentials = await compute.getDatabaseCredentials(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val credentials = compute.getDatabaseCredentials(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let credentials = try await compute.getDatabaseCredentials(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    credentials, err := compute.GetDatabaseCredentials("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = credentials
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let credentials = compute.get_database_credentials("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X GET \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/credentials
+```
+{% /multicode %}
+
+Response:
+
+```json
+{
+  "host": "db-<projectId>-<dbId>.<region>.appwrite.center",
+  "port": 5432,
+  "username": "appwrite",
+  "password": "<32-char-hex>",
+  "database": "appwrite",
+  "engine": "postgres",
+  "ssl": true,
+  "connectionString": "postgres://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require"
+}
+```
+
+The default database name and username on every engine are both `appwrite`. The primary password is generated on provision and stored encrypted in the platform database; you can rotate it from the API at any time without provisioning a new database.
+
+# Connect from a shell {% #shells %}
+
+PostgreSQL:
+
+```bash
+psql "$(curl -s ... credentials | jq -r .connectionString)"
+# or directly:
+psql -h db-<projectId>-<dbId>.<region>.appwrite.center -p 5432 -U appwrite -d appwrite
+```
+
+MySQL / MariaDB:
+
+```bash
+mysql -h db-<projectId>-<dbId>.<region>.appwrite.center -P 3306 -u appwrite -p appwrite
+```
+
+MongoDB:
+
+```bash
+mongosh "mongodb://appwrite:<password>@db-<projectId>-<dbId>.<region>.appwrite.center:27017/appwrite?authSource=admin&ssl=true&directConnection=true&retryWrites=true&serverSelectionTryOnce=false"
+```
+
+# Rotate the primary password {% #rotate %}
+
+The credentials endpoint also accepts `PATCH` to issue a new password for the primary user. The change is applied atomically in the underlying engine and the stored credential is updated in the same call. Existing sessions remain alive until the engine's idle timeout, then have to authenticate with the new password. The API key needs the `databases.write` scope.
+
+{% multicode %}
+```server-nodejs
+import { Client, Compute } from 'node-appwrite';
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const credentials = await compute.updateDatabaseCredentials({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-deno
+import { Client, Compute } from "npm:node-appwrite";
+
+const client = new Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+const compute = new Compute(client);
+
+const credentials = await compute.updateDatabaseCredentials({
+    databaseId: '<DATABASE_ID>',
+});
+```
+```server-php
+<?php
+
+use Appwrite\Client;
+use Appwrite\Services\Compute;
+
+$client = new Client();
+
+$client
+    ->setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    ->setProject('<PROJECT_ID>')
+    ->setKey('<YOUR_API_KEY>');
+
+$compute = new Compute($client);
+
+$credentials = $compute->updateDatabaseCredentials(databaseId: '<DATABASE_ID>');
+```
+```server-python
+from appwrite.client import Client
+from appwrite.services.compute import Compute
+
+client = Client()
+client.set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+client.set_project('<PROJECT_ID>')
+client.set_key('<YOUR_API_KEY>')
+
+compute = Compute(client)
+
+credentials = compute.update_database_credentials(database_id='<DATABASE_ID>')
+```
+```server-ruby
+require 'appwrite'
+
+include Appwrite
+
+client = Client.new
+    .set_endpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .set_project('<PROJECT_ID>')
+    .set_key('<YOUR_API_KEY>')
+
+compute = Compute.new(client)
+
+credentials = compute.update_database_credentials(database_id: '<DATABASE_ID>')
+```
+```server-dotnet
+using Appwrite;
+using Appwrite.Services;
+
+Client client = new Client()
+    .SetEndPoint("https://<REGION>.cloud.appwrite.io/v1")
+    .SetProject("<PROJECT_ID>")
+    .SetKey("<YOUR_API_KEY>");
+
+Compute compute = new Compute(client);
+
+var credentials = await compute.UpdateDatabaseCredentials(databaseId: "<DATABASE_ID>");
+```
+```server-dart
+import 'package:dart_appwrite/dart_appwrite.dart';
+
+Client client = Client()
+    .setEndpoint('https://<REGION>.cloud.appwrite.io/v1')
+    .setProject('<PROJECT_ID>')
+    .setKey('<YOUR_API_KEY>');
+
+Compute compute = Compute(client);
+
+final credentials = await compute.updateDatabaseCredentials(
+    databaseId: '<DATABASE_ID>',
+);
+```
+```server-kotlin
+import io.appwrite.Client
+import io.appwrite.services.Compute
+
+val client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+val compute = Compute(client)
+
+val credentials = compute.updateDatabaseCredentials(
+    databaseId = "<DATABASE_ID>",
+)
+```
+```server-swift
+import Appwrite
+
+let client = Client()
+    .setEndpoint("https://<REGION>.cloud.appwrite.io/v1")
+    .setProject("<PROJECT_ID>")
+    .setKey("<YOUR_API_KEY>")
+
+let compute = Compute(client)
+
+let credentials = try await compute.updateDatabaseCredentials(
+    databaseId: "<DATABASE_ID>"
+)
+```
+```server-go
+package main
+
+import (
+    "github.com/appwrite/sdk-for-go/appwrite"
+)
+
+func main() {
+    client := appwrite.NewClient(
+        appwrite.WithEndpoint("https://<REGION>.cloud.appwrite.io/v1"),
+        appwrite.WithProject("<PROJECT_ID>"),
+        appwrite.WithKey("<YOUR_API_KEY>"),
+    )
+
+    compute := appwrite.NewCompute(client)
+
+    credentials, err := compute.UpdateDatabaseCredentials("<DATABASE_ID>")
+    if err != nil {
+        panic(err)
+    }
+    _ = credentials
+}
+```
+```server-rust
+use appwrite::Client;
+use appwrite::services::compute::Compute;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new()
+        .set_endpoint("https://<REGION>.cloud.appwrite.io/v1")
+        .set_project("<PROJECT_ID>")
+        .set_key("<YOUR_API_KEY>");
+
+    let compute = Compute::new(&client);
+
+    let credentials = compute.update_database_credentials("<DATABASE_ID>").await?;
+
+    Ok(())
+}
+```
+```bash
+curl -X PATCH \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/credentials
+```
+{% /multicode %}
+
+# Additional connection users {% #connections %}
+
+The primary `appwrite` user has full ownership of the default database. For applications that need narrower roles, a read-only reporting user, a write-only ingestion user, a per-tenant user, you can create additional connections from the API:
+
+```bash
+curl -X POST \
+  -H "X-Appwrite-Project: <PROJECT_ID>" \
+  -H "X-Appwrite-Key: <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "analytics_ro",
+    "database": "appwrite",
+    "role": "readonly"
+  }' \
+  https://<REGION>.cloud.appwrite.io/v1/compute/databases/<DATABASE_ID>/connections
+```
+
+The response contains the generated password for the new user. Appwrite stores it encrypted; if you lose it, delete the connection and create a new one.
+
+Available roles:
+
+| Role         | PostgreSQL / MySQL / MariaDB                          | MongoDB                       |
+|--------------|-------------------------------------------------------|-------------------------------|
+| `readonly`   | `SELECT` on all tables in the schema                  | `read` on the database        |
+| `readwrite`  | `SELECT`, `INSERT`, `UPDATE`, `DELETE` (no schema DDL)| `readWrite` on the database   |
+
+`readwrite` is the default. List, get, and delete connections through the same endpoints. The primary `appwrite` user cannot be deleted.
+
+# TLS {% #tls %}
+
+The edge proxy terminates TLS and forwards to the engine over the Appwrite network. The `connectionString` from the credentials endpoint already carries the right SSL settings, `sslmode=require` for PostgreSQL and `ssl=true` for MySQL, MariaDB, and MongoDB, so your driver should not need any extra configuration. MySQL 8.x authenticates with the `caching_sha2_password` plugin, which requires a TLS connection, using the provided connection string handles this for you.
+
+Proxy TLS termination covers all four engines, so every connection is encrypted end to end.
+
+To require mTLS, see the [network page](/docs/products/databases/dedicated/network).
+
+# Cold-start (shared databases) {% #cold-start %}
+
+If your database is on the **Free** specification, it spins down to zero compute after 15 minutes of inactivity. The next connection is intercepted by the edge proxy, which sends a start command to the platform and waits for the database to become ready before forwarding the handshake.
+
+The cold-start adds a few seconds to the first query after an idle period. Subsequent queries see no extra latency. The underlying storage is preserved across spin-downs, so no data is lost.
+
+# Connecting from an application {% #drivers %}
+
+There's nothing Appwrite-specific about the driver setup. A few example snippets:
+
+{% multicode %}
+```server-nodejs
+import { Client } from 'pg';
+
+const client = new Client({
+    host: 'db-<projectId>-<dbId>.<region>.appwrite.center',
+    port: 5432,
+    user: 'appwrite',
+    password: process.env.DB_PASSWORD,
+    database: 'appwrite',
+    ssl: { rejectUnauthorized: true },
+});
+
+await client.connect();
+const { rows } = await client.query('SELECT now()');
+console.log(rows);
+```
+```server-python
+import psycopg
+import os
+
+with psycopg.connect(
+    host='db-<projectId>-<dbId>.<region>.appwrite.center',
+    port=5432,
+    user='appwrite',
+    password=os.environ['DB_PASSWORD'],
+    dbname='appwrite',
+    sslmode='require',
+) as conn:
+    with conn.cursor() as cur:
+        cur.execute('SELECT now()')
+        print(cur.fetchone())
+```
+```server-php
+<?php
+
+$pdo = new PDO(
+    'pgsql:host=db-<projectId>-<dbId>.<region>.appwrite.center;port=5432;dbname=appwrite;sslmode=require',
+    'appwrite',
+    getenv('DB_PASSWORD'),
+);
+
+$rows = $pdo->query('SELECT now()')->fetchAll();
+print_r($rows);
+```
+```server-go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/jackc/pgx/v5"
+)
+
+func main() {
+    conn, _ := pgx.Connect(context.Background(),
+        fmt.Sprintf("postgres://appwrite:%s@db-<projectId>-<dbId>.<region>.appwrite.center:5432/appwrite?sslmode=require",
+            os.Getenv("DB_PASSWORD")))
+    defer conn.Close(context.Background())
+
+    var now string
+    conn.QueryRow(context.Background(), "SELECT now()").Scan(&now)
+    fmt.Println(now)
+}
+```
+{% /multicode %}
+
+Once you can run a query, you can use any tool that talks the engine's wire protocol: pgAdmin, DataGrip, MySQL Workbench, MongoDB Compass, your ORM of choice, your migration tool of choice, your read-replica failover library of choice. Appwrite gets out of the way.

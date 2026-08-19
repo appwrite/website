@@ -66,6 +66,11 @@
                     href: `${prefix}/tablesDB`
                 },
                 {
+                    label: 'Compute',
+                    icon: 'icon-server',
+                    href: `${prefix}/compute`
+                },
+                {
                     label: 'Sites',
                     icon: 'icon-globe-alt',
                     href: `${prefix}/sites`

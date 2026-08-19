@@ -128,6 +128,66 @@
             ]
         },
         {
+            label: 'Dedicated databases',
+            items: [
+                {
+                    label: 'Overview',
+                    href: '/docs/products/databases/dedicated',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Specifications',
+                    href: '/docs/products/databases/dedicated/specifications',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Connect',
+                    href: '/docs/products/databases/dedicated/connect',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'High availability',
+                    href: '/docs/products/databases/dedicated/high-availability',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Backups & PITR',
+                    href: '/docs/products/databases/dedicated/backups',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Branches',
+                    href: '/docs/products/databases/dedicated/branches',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Extensions',
+                    href: '/docs/products/databases/dedicated/extensions',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Connection pooler',
+                    href: '/docs/products/databases/dedicated/pooler',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'SQL API',
+                    href: '/docs/products/databases/dedicated/sql-api',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Network',
+                    href: '/docs/products/databases/dedicated/network',
+                    new: isNewUntil('31 Aug 2026')
+                },
+                {
+                    label: 'Monitoring & insights',
+                    href: '/docs/products/databases/dedicated/monitoring',
+                    new: isNewUntil('31 Aug 2026')
+                }
+            ]
+        },
+        {
             label: 'References',
             items: [
                 {
@@ -150,7 +210,7 @@
             .replace('tables', 'collections')
     );
 
-    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports'];
+    const hideSubtitleRoutes = ['offline', 'backups', 'csv-imports', 'csv-exports', 'dedicated'];
 
     const shouldShowSubtitle = $derived(
         !hideSubtitleRoutes.some((segment) => page.route.id?.includes(segment)) &&

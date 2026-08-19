@@ -42,6 +42,9 @@ Scalable and robust database backed by your favorite technologies.
 {% cards_item href="/docs/references/cloud/client-web/tablesDB" title="TablesDB" %}
 Create structured tables of rows with validated columns and fine-grained permissions.
 {% /cards_item %}
+{% cards_item href="/docs/references/cloud/server-nodejs/compute" title="Compute" %}
+Provision and manage dedicated PostgreSQL, MySQL, MariaDB, and MongoDB databases.
+{% /cards_item %}
 {% cards_item href="/docs/references/cloud/server-nodejs/sites" title="Sites" %}
 Build and deploy websites on the internet at scale.
 {% /cards_item %}
