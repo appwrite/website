@@ -60,7 +60,7 @@ After that, create a virtual environment in this directory and activate it.
 # Create a venv
 python -m venv .venv
 
-# Active the venv in Unix shell
+# Activate the venv in Unix shell
 source .venv/bin/activate
 
 # Or in Powershell
@@ -217,7 +217,7 @@ def seed_database():
 {% section #step-7 step=7 title="Retrieve rows" %}
 
 Create a function to retrieve the mock todo data,
-then execute the functions in `_main_`.
+then execute the functions in `__main__`.
 
 ```py
 from appwrite.query import Query
