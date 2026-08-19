@@ -101,6 +101,10 @@
                     href: '/docs/products/ai/integrations/elevenlabs'
                 },
                 {
+                    label: 'FlowSpeech',
+                    href: '/docs/products/ai/integrations/flowspeech'
+                },
+                {
                     label: 'LangChain',
                     href: '/docs/products/ai/integrations/langchain'
                 },

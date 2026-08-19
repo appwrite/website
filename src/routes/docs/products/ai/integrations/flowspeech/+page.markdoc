@@ -1,0 +1,166 @@
+---
+layout: article
+title: Integrating FlowSpeech
+description: Learn how to generate speech with FlowSpeech and store the audio in Appwrite Storage.
+difficulty: intermediate
+readtime: 10
+---
+
+FlowSpeech is a [text to speech AI](https://flowspeech.io/) for generating natural audio from text, including context-aware narration and multi-speaker dialogue.
+
+This tutorial uses an Appwrite Function to send text to the FlowSpeech API, convert the returned PCM audio to a WAV file, and store the result in Appwrite Storage.
+
+# Prerequisites {% #prerequisites %}
+
+- An Appwrite project
+- An Appwrite Storage bucket
+- A FlowSpeech API key created at `/settings/apikeys/create`
+
+{% section #step-1 step=1 title="Create a function" %}
+Open the [Appwrite Console](https://cloud.appwrite.io/console), select your project, and create a Function.
+
+1. In the Appwrite Console sidebar, click **Functions**.
+1. Click **Create function**.
+1. Under **Connect Git repository**, select your provider.
+1. Select the **Node.js** starter template.
+1. Add `FLOWSPEECH_API_KEY` and `APPWRITE_BUCKET_ID` in the **Variables** step.
+1. For `APPWRITE_API_KEY`, select **Generate API key on completion**.
+1. Finish the wizard to create the Function.
+
+Keep `FLOWSPEECH_API_KEY` in Function variables. Do not expose it in browser code or commit it to your repository.
+{% /section %}
+
+{% section #step-2 step=2 title="Add dependencies" %}
+Clone the repository created for the Function, then install the HTTP and Appwrite packages.
+
+```bash
+npm install undici node-appwrite
+```
+{% /section %}
+
+{% section #step-3 step=3 title="Create a WAV helper" %}
+FlowSpeech returns base64-encoded PCM audio together with its sample rate, channel count, and bit depth. Create `src/audio.js` to add a WAV header before uploading the audio.
+
+```js
+export function pcmToWav(pcm, sampleRate, channels, bitsPerSample) {
+  const header = Buffer.alloc(44);
+  const blockAlign = channels * (bitsPerSample / 8);
+  const byteRate = sampleRate * blockAlign;
+
+  header.write('RIFF', 0);
+  header.writeUInt32LE(36 + pcm.length, 4);
+  header.write('WAVE', 8);
+  header.write('fmt ', 12);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(channels, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(byteRate, 28);
+  header.writeUInt16LE(blockAlign, 32);
+  header.writeUInt16LE(bitsPerSample, 34);
+  header.write('data', 36);
+  header.writeUInt32LE(pcm.length, 40);
+
+  return Buffer.concat([header, pcm]);
+}
+```
+{% /section %}
+
+{% section #step-4 step=4 title="Generate and store speech" %}
+Replace `src/main.js` with a handler that validates the request, calls FlowSpeech, and stores the resulting WAV file.
+
+```js
+import { Client, ID, Permission, Role, Storage } from 'node-appwrite';
+import { InputFile } from 'node-appwrite/file';
+import { fetch } from 'undici';
+import { pcmToWav } from './audio.js';
+
+export default async ({ req, res, error }) => {
+  if (req.method !== 'POST') {
+    return res.json({ ok: false, error: 'Use a POST request' }, 405);
+  }
+
+  if (!req.body?.text || typeof req.body.text !== 'string') {
+    return res.json({ ok: false, error: 'Missing required field `text`' }, 400);
+  }
+
+  const required = [
+    'FLOWSPEECH_API_KEY',
+    'APPWRITE_API_KEY',
+    'APPWRITE_BUCKET_ID',
+    'APPWRITE_FUNCTION_PROJECT_ID',
+  ];
+
+  const missing = required.filter((key) => !process.env[key]);
+  if (missing.length > 0) {
+    error(`Missing environment variables: ${missing.join(', ')}`);
+    return res.json({ ok: false, error: 'Function is not configured' }, 500);
+  }
+
+  const speechResponse = await fetch(
+    'https://flowspeech.io/api/ai/text-to-speech',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.FLOWSPEECH_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: req.body.text,
+        originalText: req.body.text,
+        speakers: [{ voiceName: req.body.voiceName || 'Kore' }],
+      }),
+    },
+  );
+
+  const payload = await speechResponse.json();
+  if (!speechResponse.ok || payload.code !== 0 || !payload.data?.audioBase64) {
+    error(`FlowSpeech request failed with status ${speechResponse.status}`);
+    return res.json({ ok: false, error: 'Failed to generate speech' }, 502);
+  }
+
+  const pcm = Buffer.from(payload.data.audioBase64, 'base64');
+  const wav = pcmToWav(
+    pcm,
+    payload.data.sampleRate || 24000,
+    payload.data.numChannels || 1,
+    payload.data.bitsPerSample || 16,
+  );
+
+  const endpoint =
+    process.env.APPWRITE_ENDPOINT ?? 'https://<REGION>.cloud.appwrite.io/v1';
+  const client = new Client()
+    .setEndpoint(endpoint)
+    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setKey(process.env.APPWRITE_API_KEY);
+  const storage = new Storage(client);
+
+  const file = await storage.createFile({
+    bucketId: process.env.APPWRITE_BUCKET_ID,
+    fileId: ID.unique(),
+    file: InputFile.fromBuffer(wav, 'speech.wav'),
+    permissions: [Permission.read(Role.any())],
+  });
+
+  const audioUrl = `${endpoint}/storage/buckets/${process.env.APPWRITE_BUCKET_ID}/files/${file.$id}/view?project=${process.env.APPWRITE_FUNCTION_PROJECT_ID}`;
+  return res.json({ ok: true, audioUrl, fileId: file.$id });
+};
+```
+
+The example grants public read access so the returned URL can be played without authentication. Use user- or team-specific permissions instead when generated audio should remain private.
+{% /section %}
+
+{% section #step-5 step=5 title="Test the function" %}
+Deploy the Function by pushing the changes to its connected repository. In the Appwrite Console, open the Function and click **Execute now**.
+
+Use a `POST` request with this JSON body:
+
+```json
+{
+  "text": "Welcome to Appwrite. This audio was generated with FlowSpeech.",
+  "voiceName": "Kore"
+}
+```
+
+A successful execution returns the Appwrite Storage file ID and a public `audioUrl` that you can use in an HTML audio element or application client.
+{% /section %}
