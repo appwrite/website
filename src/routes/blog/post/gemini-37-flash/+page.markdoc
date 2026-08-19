@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Gemini 3.7 Flash: Benchmarks, pricing, and API details"
-description: "Gemini 3.7 Flash targets coding and production agents with stronger benchmarks, a 1M context window, and introductory API pricing through 2026."
+description: Gemini 3.7 Flash targets coding and production agents with stronger benchmarks, a 1M context window, and introductory API pricing through 2026.
 date: 2026-08-17
 cover: /images/blog/gemini-37-flash/cover.avif
 timeToRead: 8
@@ -11,11 +11,11 @@ featured: false
 unlisted: true
 faqs:
   - question: What is Gemini 3.7 Flash?
-    answer: Gemini 3.7 Flash is Google's workhorse model for coding, agentic workflows, web development, and knowledge work. It accepts text, image, audio, and video input, has a 1 million token context window, and can produce up to 64,000 text output tokens.
+    answer: "Gemini 3.7 Flash is Google's workhorse model for coding, agentic workflows, web development, and knowledge work. It accepts text, image, audio, and video input, has a 1 million token context window, and can produce up to 64,000 text output tokens."
   - question: How much does Gemini 3.7 Flash cost?
     answer: Through December 31, 2026, Gemini 3.7 Flash costs $0.75 per million input tokens and $3.75 per million output tokens. On January 1, 2027, pricing rises to $1.50 per million input tokens and $7.50 per million output tokens.
   - question: Is Gemini 3.7 Flash better than Gemini 3.6 Flash for coding?
-    answer: Google's published evaluations show substantial gains. Gemini 3.7 Flash scored 43.6% versus 34.4% on FrontierCode 1.1 Main, 65.3% versus 48.6% on DeepSWE v1.1, and 85.8% versus 78.0% on Terminal-bench 2.1.
+    answer: "Google's published evaluations show substantial gains. Gemini 3.7 Flash scored 43.6% versus 34.4% on FrontierCode 1.1 Main, 65.3% versus 48.6% on DeepSWE v1.1, and 85.8% versus 78.0% on Terminal-bench 2.1."
   - question: What is the Gemini 3.7 Flash context window?
     answer: Gemini 3.7 Flash supports up to 1 million input tokens and up to 64,000 text output tokens. Its supported inputs include text, images, audio, and video.
   - question: Where is Gemini 3.7 Flash available?
@@ -35,15 +35,15 @@ For developers, the more interesting story is less about a new headline capabili
 
 The API-level specifications are:
 
-| Property | Gemini 3.7 Flash |
-| --- | --- |
-| Model ID | `gemini-3.7-flash` |
-| Input modalities | Text, image, audio, and video |
-| Output modality | Text |
-| Context window | Up to 1M tokens |
-| Maximum output | 64K tokens |
+| Property         | Gemini 3.7 Flash                                            |
+| ---------------- | ----------------------------------------------------------- |
+| Model ID         | `gemini-3.7-flash`                                          |
+| Input modalities | Text, image, audio, and video                               |
+| Output modality  | Text                                                        |
+| Context window   | Up to 1M tokens                                             |
+| Maximum output   | 64K tokens                                                  |
 | Knowledge cutoff | March 2026; some domains may remain limited to January 2025 |
-| Thinking | Configurable |
+| Thinking         | Configurable                                                |
 
 That knowledge-cutoff qualification matters. Google says the model's knowledge cutoff is March 2026, but users may encounter knowledge limited to January 2025 in some domains, in line with the wider Gemini 3 model family. Retrieval and tool use still matter when an agent needs current or domain-specific facts.
 
@@ -53,16 +53,16 @@ The model is available in the Gemini API, Google AI Studio, Google Antigravity, 
 
 Google published a larger evaluation set than the announcement highlights. The most useful comparison is against Gemini 3.6 Flash because both models occupy the same product tier and have the same introductory token price.
 
-| Benchmark | Measures | Gemini 3.7 Flash | Gemini 3.6 Flash | Change |
-| --- | --- | ---: | ---: | ---: |
-| FrontierCode 1.1 Main | Production code quality | 43.6% | 34.4% | +9.2 pp |
-| DeepSWE v1.1 | Long-horizon software engineering | 65.3% | 48.6% | +16.7 pp |
-| WebDev Arena | Web development preference | 1588 Elo | 1538 Elo | +50 |
-| Terminal-bench 2.1 | Agentic terminal coding | 85.8% | 78.0% | +7.8 pp |
-| Terminal-bench 3.0 | General agent capabilities | 14.9% | 5.4% | +9.5 pp |
-| AutomationBench | Enterprise workflow automation | 30.4% | 17.0% | +13.4 pp |
-| GDP.pdf | Expert PDF comprehension | 34.0% | 22.0% | +12.0 pp |
-| OSWorld 2.0 | Agentic computer use | 47.9% | 33.8% | +14.1 pp |
+| Benchmark             | Measures                          | Gemini 3.7 Flash | Gemini 3.6 Flash |   Change |
+| --------------------- | --------------------------------- | ---------------: | ---------------: | -------: |
+| FrontierCode 1.1 Main | Production code quality           |            43.6% |            34.4% |  +9.2 pp |
+| DeepSWE v1.1          | Long-horizon software engineering |            65.3% |            48.6% | +16.7 pp |
+| WebDev Arena          | Web development preference        |         1588 Elo |         1538 Elo |      +50 |
+| Terminal-bench 2.1    | Agentic terminal coding           |            85.8% |            78.0% |  +7.8 pp |
+| Terminal-bench 3.0    | General agent capabilities        |            14.9% |             5.4% |  +9.5 pp |
+| AutomationBench       | Enterprise workflow automation    |            30.4% |            17.0% | +13.4 pp |
+| GDP.pdf               | Expert PDF comprehension          |            34.0% |            22.0% | +12.0 pp |
+| OSWorld 2.0           | Agentic computer use              |            47.9% |            33.8% | +14.1 pp |
 
 These are [Google-reported results](https://deepmind.google/models/model-cards/gemini-3-7-flash) from the Gemini 3.7 Flash model card; some evaluations use private datasets or specific evaluation setups. Google's announcement reports a slightly different Gemini 3.6 Flash DeepSWE v1.1 result of 49.0%, so benchmark figures should be interpreted according to the specific source and evaluation setup.
 
@@ -97,9 +97,9 @@ Google's frontier safety assessment also says Gemini 3.7 Flash reaches the alert
 Through December 31, 2026, Gemini 3.7 Flash uses the following introductory API prices:
 
 | Token type | Introductory price through 2026 | Price from January 1, 2027 |
-| --- | ---: | ---: |
-| Input | $0.75 per 1M tokens | $1.50 per 1M tokens |
-| Output | $3.75 per 1M tokens | $7.50 per 1M tokens |
+| ---------- | ------------------------------: | -------------------------: |
+| Input      |             $0.75 per 1M tokens |        $1.50 per 1M tokens |
+| Output     |             $3.75 per 1M tokens |        $7.50 per 1M tokens |
 
 Both rates double on January 1, 2027. A team projecting annual agent costs should model the permanent price now, not extrapolate the launch rate into next year.
 
@@ -125,7 +125,7 @@ If you build in Google Antigravity, Appwrite's [Antigravity integration guide](/
 
 Start with a small evaluation set drawn from your real work: one multi-file code change, one failed-tool recovery, one reference-driven UI, and one document-heavy workflow. Run each case at multiple thinking settings, log total tokens and retries, and compare cost per accepted result. That will tell you more than a single leaderboard rank.
 
-Resources:
+# Resources:
 
 * [Create a free Appwrite Cloud project](https://cloud.appwrite.io/)
 * [Run AI workloads in Appwrite Functions](/docs/tooling/ai/ai-in-functions)
