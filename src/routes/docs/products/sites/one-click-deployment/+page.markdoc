@@ -1,0 +1,123 @@
+---
+layout: article
+title: One-Click Deployment
+description: Make your site available to deploy with one click for other users.
+---
+
+Appwrite allows you to make your site available to deploy with one click for other users. This is useful if your site is a template or an open-source project. Using one-click deployment link will ensure your site is easy to setup and deploy for other users, with you providing all the necessary information and configuration.
+
+You may add the deploy link to your GitHub repository's README file or any other documentation you may have.
+
+# The deploy button {% #the-deploy-button %}
+
+You may use the deploy button wherever you want to display a button to deploy your site with Appwrite. The button is hosted on the following URL:
+
+```text
+https://appwrite.io/deploy
+```
+
+By default, the button will be displayed in dark mode. You may change the mode by appending `?variant=light` to the URL.
+
+# Create deployment link {% #create-deployment-link %}
+
+You may construct the deploy URL by using the following URL:
+
+```text
+https://cloud.appwrite.io/console/sites/deploy?repo=[GITHUB_REPO_URL]
+```
+
+If you are self-hosting Appwrite, you may point the URL to your Appwrite instance.
+
+# Deployment parameters {% #deployment-parameters %}
+
+You can customize the deployment link by adding query parameters to the URL. The following parameters are available:
+
+{% table %}
+- Parameter
+- Description
+---
+- `repo` / `repository`
+- GitHub repository URL. One of these must be present whenever `template` is absent.
+---
+- `template`
+- Required when launching from a curated template; expects a Sites template ID such as `starter-for-nextjs`. Not needed if `repo` is present.
+---
+- `name`
+- Optional string to override the displayed project/site name (defaults to template or repo name). Only shown when `screenshot` is present.
+---
+- `tagline`
+- Optional short description surfaced in the deploy card (defaults to template tagline when available). Only shown when `screenshot` is present.
+---
+- `screenshot`
+- Optional image URL to preview the template/repo. 
+---
+- `env`
+- Comma-separated list of environment variable keys (e.g., `?env=ENV1,ENV2`). 
+---
+- `preset`
+- Optional string to override the framework preset (defaults to `nextjs`).
+---
+- `install`
+- Optional string to override the install command.
+---
+- `build`
+- Optional string to override the build command.
+---
+- `output`
+- Optional string to override the output directory.
+{% /table %}
+
+# Presets {% #presets %}
+
+Appwrite Sites supports the following framework presets. By default, Appwrite will consider the framework of your repository to be Next.js.
+
+{% table %}
+- Preset
+- Value
+---
+- Analog
+- `analog`
+---
+- Angular
+- `angular`
+---
+- Next.js
+- `nextjs`
+---
+- React
+- `react`
+---
+- Nuxt
+- `nuxt`
+---
+- Vue
+- `vue`
+---
+- SvelteKit
+- `sveltekit`
+---
+- Astro
+- `astro`
+---
+- TanStack Start
+- `tanstack-start`
+---
+- Remix
+- `remix`
+---
+- Lynx
+- `lynx`
+---
+- Flutter
+- `flutter`
+---
+- React Native
+- `react-native`
+---
+- Vite
+- `vite`
+---
+- Other
+- `other`
+{% /table %}
+
