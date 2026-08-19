@@ -125,7 +125,7 @@ If you build in Google Antigravity, Appwrite's [Antigravity integration guide](/
 
 Start with a small evaluation set drawn from your real work: one multi-file code change, one failed-tool recovery, one reference-driven UI, and one document-heavy workflow. Run each case at multiple thinking settings, log total tokens and retries, and compare cost per accepted result. That will tell you more than a single leaderboard rank.
 
-# Resources:
+# Resources
 
 * [Create a free Appwrite Cloud project](https://cloud.appwrite.io/)
 * [Run AI workloads in Appwrite Functions](/docs/tooling/ai/ai-in-functions)
