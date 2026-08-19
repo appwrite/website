@@ -88,7 +88,7 @@ Appwrite provides official SDKs for JavaScript, Flutter, Swift, Kotlin, React Na
 | Database engine | MariaDB | SQLite |
 | Auth methods | Email, OAuth2, phone, magic URL, OTP, anonymous, custom tokens | Email, OAuth2, OTP, MFA |
 | Realtime protocol | WebSockets | Server-Sent Events |
-| Serverless functions | Yes, 15 runtimes | JavaScript hooks (ES5 JSVM) or Go framework |
+| Serverless functions | Yes, 15 runtimes | JavaScript hooks (Goja JSVM) or Go framework |
 | Messaging | Email, SMS, push | Email via SMTP only |
 | Web hosting | Appwrite Sites | Static files via pb_public only |
 | Official SDKs | 10+ (web, mobile, server) | JavaScript, Dart |
