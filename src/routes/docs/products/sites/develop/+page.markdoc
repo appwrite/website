@@ -47,7 +47,7 @@ The default timeout is set at `15 seconds` and the maximum value possible is `30
 
 # Resource limits {% #resource-limits %}
 
-Under **Settings** - **Resource limits**, you can set **build** and **runtime** specifications independently. The build spec applies while dependencies are installed and your site is built for deployment; the runtime spec applies when your site serves traffic, including server-side rendering (SSR). Both use the same CPU and memory tiers on Cloud.
+Under **Settings** - **Resource limits**, you can set **build** and **runtime** specifications independently. The build spec applies while dependencies are installed and your site is built for deployment; the runtime spec applies when your site serves traffic, including server-side rendering (SSR). On Cloud, builds run on at least 2 CPU cores and 2GB of memory.
 
 On Appwrite Cloud, customizing specifications requires the **Pro** plan. See [Compute](/docs/advanced/billing/compute) for tiers, GB-hours, and pricing.
 
