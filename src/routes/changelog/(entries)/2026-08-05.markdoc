@@ -1,0 +1,17 @@
+---
+layout: changelog
+title: Smoother setup and clearer guidance in the Appwrite CLI
+date: 2026-08-05
+---
+
+The latest Appwrite CLI removes several points of confusion during setup and troubleshooting. `appwrite init functions` no longer warns that an install command is missing when the selected runtime does not need one. When initializing a Function or Site, the CLI now offers only build specifications that the selected build accepts, preventing configurations that would later fail when pushed.
+
+Error output now suggests `--verbose` only when rerunning with it can provide more detail. The `appwrite types` command also lists its supported language values when detection or selection finds an unsupported language, and suggests the correct value for common aliases such as `dotnet` and `typescript`.
+
+Windows PowerShell and Scoop installers now derive release asset names from the same package naming source as other installers, keeping downloads pointed at the correct CLI binaries.
+
+Update to the latest CLI version to use these improvements.
+
+{% arrow_link href="/docs/tooling/command-line/installation#update-your-cli" %}
+Update the Appwrite CLI
+{% /arrow_link %}
