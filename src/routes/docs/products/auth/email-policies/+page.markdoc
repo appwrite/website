@@ -1,10 +1,14 @@
 ---
 layout: article
 title: Email policies
-description: Control which email addresses can sign up for your Appwrite project by blocking free, aliased, or disposable email providers from the Console or Project API.
+description: On Appwrite Cloud, control which email addresses can sign up for your Appwrite project by blocking free, aliased, or disposable email providers from the Console or Project API.
 ---
 
-Email policies let you restrict which email addresses can be used for user creation and email updates on a project. Each policy is an independent toggle that runs at sign-up time and when an existing user changes their email. Policies do not affect session creation, so existing users can still sign in if their address would not pass the current policy.
+Email policies are currently available on Appwrite Cloud only. They let you restrict which email addresses can be used for user creation and email updates on a project. Each policy is an independent toggle that runs at sign-up time and when an existing user changes their email. Policies do not affect session creation, so existing users can still sign in if their address would not pass the current policy.
+
+{% info title="Availability" %}
+Email policies are not available in self-hosted Appwrite deployments. In self-hosted projects, the Appwrite Console does not show the email-policy controls.
+{% /info %}
 
 Three policies are available:
 
@@ -14,7 +18,7 @@ Three policies are available:
 | Deny aliased emails | Addresses with aliases, tags, subaddresses, or any provider-specific variation | `user+folder1@gmail.com` |
 | Deny disposable emails | Temporary and disposable email providers | `alex9734@mailinator.com` |
 
-Policies can be configured from the Appwrite Console or programmatically through any server SDK using the Project service.
+On Appwrite Cloud, policies can be configured from the Appwrite Console or programmatically through any server SDK using the Project service.
 
 # Manage from the Console {% #manage-console %}
 
