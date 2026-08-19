@@ -40,7 +40,7 @@ If you are prototyping something quickly with no Docker experience, PocketBase w
 
 PocketBase uses **SQLite** with a structured collection system. It supports relation fields, JSON fields, and geo-distance queries. Access control is handled through filter-based API rules that express row-level permissions using request context, nested relation traversal, and field values simultaneously. This is unusually expressive for a system this simple.
 
-Appwrite uses **MariaDB** under the hood, organized into collections and documents. It supports typed attributes, indexes, rich query operators, and [relationships](/docs/products/databases/relationships) with configurable on-delete behaviors. Appwrite also includes atomic numeric operations, CSV imports and exports, bulk operations, and database backups on paid plans.
+Appwrite provides a **relational database model** organized into databases, tables, rows, and columns. It supports indexes, rich query operators, and [relationships](/docs/products/databases/relationships) between rows. Appwrite also includes atomic numeric operations, CSV imports and exports, bulk operations, and database backups on paid plans.
 
 SQLite is excellent for single-node deployments but has limits under high write concurrency. MariaDB handles concurrent writes more conventionally and scales horizontally. For high-throughput workloads, that difference matters.
 
