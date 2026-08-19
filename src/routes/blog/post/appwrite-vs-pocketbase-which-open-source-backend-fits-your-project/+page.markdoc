@@ -56,7 +56,7 @@ For most projects, both platforms have enough auth coverage. The gap shows up wh
 
 This is where the two platforms diverge most clearly.
 
-PocketBase extends through **JavaScript hooks** running in an embedded ES5 JSVM or by using PocketBase as a Go package and compiling your own binary. JavaScript hooks handle scheduled jobs, custom routes, and record lifecycle events. They are limited to CommonJS modules with no npm packages and no arbitrary runtimes.
+PocketBase extends through **JavaScript hooks** running in an embedded Goja JSVM or by using PocketBase as a Go package and compiling your own binary. The JavaScript engine supports most ES6 functionality, and hooks can handle scheduled jobs, custom routes, and record lifecycle events.
 
 Appwrite offers proper **serverless functions** with 15 supported runtimes including Node.js, Python, Go, Dart, PHP, Ruby, .NET, Java, Swift, Kotlin, Bun, and Deno. Functions [deploy from Git](/docs/products/functions/deploy-from-git), run in isolated containers with full dependency management, and can be triggered by HTTP requests, events, schedules, or SDK calls. If you are building anything beyond simple data transformations, the difference in capability is significant.
 
