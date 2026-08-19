@@ -3,7 +3,7 @@ layout: post
 title: Announcing Database Reads and Writes pricing
 description: To ensure Appwrite Cloud's sustainability, we are introducing pricing for database read and write operations, effective April 10th, 2025.
 date: 2025-03-13
-lastUpdated: 2026-06-29
+lastUpdated: 2026-07-21
 cover: /images/blog/announcing-database-reads-and-writes-pricing/cover.avif
 timeToRead: 6
 author: eldad-fux
@@ -16,9 +16,9 @@ faqs:
   - question: "What's included in the free database operation quota?"
     answer: "The Free plan includes 500,000 read operations and 250,000 write operations per month. The Pro plan includes 1,750,000 reads and 750,000 writes monthly, and Enterprise has custom limits. Operations beyond the included quota are billed at $0.060 per 100,000 reads and $0.10 per 100,000 writes. See the [pricing page](/pricing) for details."
   - question: "How can I reduce my database operation usage?"
-    answer: "Filter data server-side instead of fetching large datasets and filtering on the client. Use the `limit` and `offset` parameters to paginate so you only retrieve what you need. Cache frequently accessed data in your app or CDN, and monitor usage in the [Appwrite Console](/docs/products/databases) to spot inefficient query patterns."
+    answer: "Filter data server-side instead of fetching large datasets and filtering on the client. Use the `limit` and `offset` parameters to paginate so you only retrieve what you need. Cache frequently accessed data in your app or CDN, and monitor database operations from your organization's **Usage** page or your project's **Settings > Usage** page in the Appwrite Console."
   - question: "Where can I see my current database operation usage?"
-    answer: "You can review usage in your organization's usage page or in the usage section of a specific database. This shows reads and writes over time, broken down so you can identify which tables or workloads drive the most operations. Use this data to plan ahead before crossing the included quota."
+    answer: "In the Appwrite Console, select your organization and open **Usage** to review database operations across its projects. For a specific project, select the project and open **Settings > Usage**. Use this data to plan ahead before crossing the included quota."
   - question: "Does the pricing apply to self-hosted Appwrite?"
     answer: "No, the read and write operation pricing applies only to [Appwrite Cloud](/pricing). Self-hosted Appwrite has no per-operation billing because you provide the infrastructure. The same database APIs work in both, so you can develop locally on self-hosted and deploy to Cloud without code changes."
   - question: "Why is Appwrite charging for database operations now?"
@@ -67,7 +67,7 @@ Most operations are counted based on the number of rows affected. For example, i
 
 # Your usage
 
-To help prepare for these changes, teams can review their current database operation usage through their organization's usage page or the usage section of specific databases. This will help you understand your usage patterns and plan accordingly.
+To review current database operation usage in the Appwrite Console, select your organization and open **Usage**. For a specific project, select the project and open **Settings > Usage**. This will help you understand your usage patterns and plan accordingly.
 
 # Optimizing your database operations
 
@@ -76,7 +76,7 @@ To help you manage your database operations efficiently, here are some best prac
 1. **Use efficient queries**: Filter data on the server side rather than retrieving large datasets and filtering client-side.
 2. **Implement pagination**: Use the `limit` and `offset` parameters to retrieve only the data you need.
 3. **Consider caching**: Cache frequently accessed data to reduce repeated read operations.
-4. **Monitor usage**: Keep track of your database operations through the Appwrite Console.
+4. **Monitor usage**: Track database operations from your organization's **Usage** page or your project's **Settings > Usage** page in the Appwrite Console.
 
 # We're here to help
 

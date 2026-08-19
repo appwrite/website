@@ -46,7 +46,7 @@
         },
         {
             question: 'Where can I find an overview of my organization usage stats?',
-            answer: "Go to the Appwrite Console and select the organization you wish to view. Here, you will find a usage tab with an overview of all your project's usage stats."
+            answer: "In the Appwrite Console, select the organization you want to view, then select <b>Usage</b> in the organization navigation. This page provides an overview of usage across all of the organization's projects."
         },
         {
             question:
