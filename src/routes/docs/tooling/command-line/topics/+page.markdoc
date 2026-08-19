@@ -114,9 +114,6 @@ appwrite messaging [COMMAND] [OPTIONS]
 * `delete [options]`        
 * Delete a message. If the message is not a draft or scheduled, but has been sent, this will not recall the message.
 ---
-* `list-message-logs [options]`          
-* Get the message activity logs listed by its unique ID.
----
 * `list-targets [options]`
 * Get a list of the targets associated with a message.
 ---
@@ -189,12 +186,6 @@ appwrite messaging [COMMAND] [OPTIONS]
 * `delete-provider [options]`
 * Delete a provider by its unique ID.
 ---
-* `list-provider-logs [options]`   
-* Get the provider activity logs listed by its unique ID.
----
-* `list-subscriber-logs [options]`
-* Get the subscriber activity logs listed by its unique ID.
----
 * `list-topics [options]`            
 * Get a list of all topics from the current Appwrite project.
 ---
@@ -209,9 +200,6 @@ appwrite messaging [COMMAND] [OPTIONS]
 ---
 * `delete-topic [options]`          
 * Delete a topic by its unique ID.
----
-* `list-topic-logs [options]`           
-* Get the topic activity logs listed by its unique ID.
 ---
 * `list-subscribers [options]`       
 * Get a list of all subscribers from the current Appwrite project.
