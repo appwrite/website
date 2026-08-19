@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cursor Origin review: An engineer’s perspective"
-description: An Appwrite engineer reviews Cursor Origin, exploring its code hosting, AI workflows, GitHub integration, and what it means for developers.
+description: A detailed review of Cursor Origin, covering Git hosting, GitHub sync, cloud agents, current limitations, and whether it’s worth switching.
 date: 2026-08-18
 cover: /images/blog/cursor-origin-review-an-engineers-perspective/cover.avif
 timeToRead: 5
