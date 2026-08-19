@@ -43,6 +43,26 @@ Update the `mcp.json` file to include the Appwrite MCP server:
 
 The server uses OAuth for authentication. When the server starts, VS Code prompts you to authenticate, and your browser opens so you can sign in to your Appwrite account and authorize access.
 
+You can also **directly add the MCP server to VS Code** using the following link:
+
+{% only_light %}
+{% cards %}
+
+{% cards_item href="vscode:mcp/install?%7B%22name%22%3A%22appwrite%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.appwrite.io%2F%22%7D" title="Add to VS Code" image="/images/docs/mcp/logos/vscode.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_light %}
+
+{% only_dark %}
+{% cards %}
+
+{% cards_item href="vscode:mcp/install?%7B%22name%22%3A%22appwrite%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.appwrite.io%2F%22%7D" title="Add to VS Code" image="/images/docs/mcp/logos/dark/vscode.svg" %}
+{% /cards_item %}
+
+{% /cards %}
+{% /only_dark %}
+
 Once you save the configuration, Copilot Chat will connect with the MCP server and load all available tools.
 
 {% /section %}
