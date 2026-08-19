@@ -1,0 +1,13 @@
+---
+layout: changelog
+title: 'Vector query helpers are now available across Appwrite SDKs'
+date: 2026-07-03
+---
+
+Appwrite SDKs now include `Query.vectorDot()`, `Query.vectorCosine()`, and `Query.vectorEuclidean()` helpers for vector similarity queries.
+
+Use these helpers with VectorsDB document list endpoints to query vector attributes with dot product, cosine similarity, or Euclidean distance metrics.
+
+{% arrow_link href="/docs/products/databases/queries#vector-queries" %}
+View vector query examples
+{% /arrow_link %}
