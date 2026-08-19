@@ -22,7 +22,7 @@ That simplicity is the point. For solo developers or small teams who want to mov
 
 # What is Appwrite?
 
-Appwrite is an open-source backend platform that runs as a set of Docker containers. It covers [authentication](/docs/products/auth), [databases](/docs/products/databases), [storage](/docs/products/storage), [serverless functions](/docs/products/functions), realtime, [messaging](/docs/products/messaging), and web hosting through a unified API and dashboard. It is backed by a company, has a managed cloud offering, and provides official SDKs for 10+ platforms.
+Appwrite is an open-source backend platform that runs as a set of Docker containers. It covers [authentication](/docs/products/auth), [databases](/docs/products/databases), [storage](/docs/products/storage), [serverless functions](/docs/products/functions), realtime, [messaging](/docs/products/messaging), and web hosting through [Appwrite Sites](/docs/products/sites), all through a unified API and dashboard.
 
 Where PocketBase optimizes for simplicity, Appwrite optimizes for breadth and team scalability.
 
