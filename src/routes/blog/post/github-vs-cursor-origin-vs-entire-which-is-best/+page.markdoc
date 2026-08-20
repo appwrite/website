@@ -121,7 +121,7 @@ The practical value shows up in three places:
 
 * **Review by intent, not just diff.** You can see the prompt and constraints behind a change, which matters when the author was an agent.
 * **Recovery.** `entire session resume` puts you back at a known-good checkpoint when an agent goes sideways, including one a teammate created.
-* **Audit.** An append-only log of AI interactions inside the repository is the artifact compliance teams keep asking for.
+* **Audit.** The recorded agent context can provide a useful audit trail for AI-assisted development.
 
 Two caveats before you enable it. Session transcripts live in your git repository, so on a public repo that data is visible to anyone. Entire redacts detected secrets when writing to the checkpoint branch, but redaction is best-effort, and the CLI supports pointing checkpoints at a separate private repo for exactly this reason.
 
