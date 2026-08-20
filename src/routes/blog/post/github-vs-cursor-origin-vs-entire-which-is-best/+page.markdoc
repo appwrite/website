@@ -18,7 +18,7 @@ faqs:
   - question: "Which is better: GitHub, Cursor Origin, or Entire?"
     answer: GitHub is the strongest choice for a complete development platform. Origin makes the most sense for Cursor-heavy workflows, while Entire is useful for teams that want deeper visibility into AI agent activity.
 ---
-Git hosting was a settled question for a decade. Then two products landed inside a week of each other: Cursor shipped [Origin](https://cursor.com/origin), a git forge built into the editor, and Thomas Dohmke, GitHub's former CEO, launched [Entire](https://entire.io/blog/hello-entire-world) with a $60 million seed round and an open source CLI.
+Git hosting was a settled question for a decade. Now two newer products are challenging different parts of that workflow: Cursor shipped [Origin](https://cursor.com/origin), a git forge built into the editor, while Thomas Dohmke, GitHub's former CEO, launched [Entire](https://entire.io/blog/hello-entire-world) earlier this year with a $60 million seed round and an open source CLI.
 
 The framing everywhere is "GitHub killers." That framing is wrong, and it will cost you time if you evaluate these three against each other as if they were the same product. They are not. One is a platform, one is an early beta forge, and one is not a forge at all.
 
