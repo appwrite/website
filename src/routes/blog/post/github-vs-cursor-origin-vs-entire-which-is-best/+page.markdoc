@@ -1,0 +1,175 @@
+---
+layout: post
+title: "GitHub vs. Cursor Origin vs. Entire: Which is best?"
+description: Compare GitHub, Cursor Origin, and Entire across code hosting, pull requests, CI/CD, collaboration, agent workflows, integrations, and developer UX.
+date: 2026-08-19
+cover: /images/blog/github-vs-cursor-origin-vs-entire-which-is-best/cover.avif
+timeToRead: 5
+author: atharva
+category: comparisons
+featured: false
+faqs:
+  - question: What is the difference between GitHub, Cursor Origin, and Entire?
+    answer: GitHub is a complete development platform for hosting code, collaboration, CI/CD, and project management. Cursor Origin is a Git forge built into Cursor, while Entire adds AI agent context and session history to existing Git workflows.
+  - question: Is Cursor Origin a GitHub alternative?
+    answer: Yes. Cursor Origin can host repositories, manage pull requests, and support agent-driven development, but it is still in early beta and does not yet match GitHub’s broader feature set and ecosystem.
+  - question: What are Entire checkpoints?
+    answer: Entire checkpoints capture the context behind an AI coding session and associate it with code changes. This helps developers understand, review, and resume work produced by coding agents.
+  - question: "Which is better: GitHub, Cursor Origin, or Entire?"
+    answer: GitHub is the strongest choice for a complete development platform. Origin makes the most sense for Cursor-heavy workflows, while Entire is useful for teams that want deeper visibility into AI agent activity.
+---
+Git hosting was a settled question for a decade. Then two products landed inside a week of each other: Cursor shipped [Origin](https://cursor.com/origin), a git forge built into the editor, and Thomas Dohmke, GitHub's former CEO, launched [Entire](https://entire.io/blog/hello-entire-world) with a $60 million seed round and an open source CLI.
+
+The framing everywhere is "GitHub killers." That framing is wrong, and it will cost you time if you evaluate these three against each other as if they were the same product. They are not. One is a platform, one is an early beta forge, and one is not a forge at all.
+
+Here is the comparison that actually helps you decide.
+
+# GitHub vs Cursor Origin vs Entire: the short answer
+
+**GitHub is the only one of the three that can be your entire development platform today. Cursor Origin is a private git forge with native agents, best used as a review surface alongside GitHub. Entire is not a forge at all. It is an agent context layer that records how your code was written, and it works on top of GitHub.**
+
+That means the real decision is not "which one wins." It is which combination fits your workflow:
+
+|                     | GitHub                | Cursor Origin                   | Entire                                          |
+| ------------------- | --------------------- | ------------------------------- | ----------------------------------------------- |
+| **What it is**      | Full git platform     | Git forge inside Cursor         | Agent session capture plus a git mirror network |
+| **Maturity**        | 18 years              | Early beta, weeks old           | Early access, weeks old                         |
+| **Replaces GitHub** | n/a                   | Partially, for private repos    | No, it layers on top                            |
+| **Core value**      | Ecosystem and inertia | Agents and repos in one surface | Traceability of agent-written code              |
+| **Availability**    | Free tier             | Paid Cursor plans only          | CLI is free and MIT licensed                    |
+
+# What is Cursor Origin?
+
+Cursor Origin is Cursor's own git hosting service, served at `cursor.com/codebase`. You claim a namespace, install the Origin CLI, authenticate once, then push over HTTPS. Standard git works after that.
+
+The early beta ships four things: repositories, pull requests, code browsing, and GitHub sync. Cursor's cloud agents operate inside every repo, so they can clone, branch, commit, push, and open pull requests without a local checkout.
+
+For a deeper look at the sync model and what it means day to day, we covered it in [Cursor Origin vs GitHub: What changes for developers](/blog/post/cursor-origin-vs-github-what-actually-changes-for-developers).
+
+# What is Entire?
+
+Entire is a developer platform company founded by Thomas Dohmke, GitHub's former CEO. Its first product is the [Entire CLI](https://github.com/entireio/cli), an MIT-licensed Go binary that hooks into your git workflow and captures AI agent sessions as they happen.
+
+When you or an agent commit, Entire writes a checkpoint: the prompt and response transcript, the files touched, token usage, and tool calls. That metadata lands on a separate `entire/checkpoints/v1` branch, so your working branch history stays clean. It works with Claude Code, Codex, Gemini, Cursor, Copilot CLI, opencode, and Factory Droid.
+
+Entire also runs a distributed git network with regional mirrors, which is aimed at fast clones rather than at replacing pull requests. Dohmke's stated thesis is that "git repositories were never extended to version everything developers build with in the AI era."
+
+**Entire is not competing with GitHub for your repositories today. It is competing for the layer above them.** If your team is already thinking about [context engineering](/blog/post/context-engineering-intro), this is that idea applied to version control.
+
+# GitHub vs Cursor Origin vs Entire: feature comparison
+
+This is where the three products separate. Blank cells are not criticism, they are scope.
+
+| Capability              | GitHub                                 | Cursor Origin                         | Entire                                      |
+| ----------------------- | -------------------------------------- | ------------------------------------- | ------------------------------------------- |
+| **Repository hosting**  | Public and private                     | Private only in beta                  | Hosts and mirrors repos via CLI             |
+| **Public repositories** | Yes                                    | Not supported                         | Supported, with a caveat on checkpoint data |
+| **Pull requests**       | Full, with reviews and merge queues    | Timeline, diffs, line comments, merge | Not a pull request product                  |
+| **Issues and projects** | Issues, Projects, Discussions          | None                                  | None                                        |
+| **CI/CD**               | Actions, first-party                   | Via Depot and Buildkite integrations  | None, runs on your existing CI              |
+| **Releases, packages**  | Releases, Packages, Pages              | None                                  | None                                        |
+| **Agent integration**   | Copilot coding agent, separate surface | Native cloud agents and automations   | Captures sessions from seven agents         |
+| **Agent traceability**  | Commit history only                    | Commit history only                   | Prompt to change to commit, searchable      |
+| **Ecosystem**           | Thousands of Apps and Actions          | Vercel, Depot, Buildkite, growing     | Plugin system, agent binaries               |
+| **Open source**         | Platform is closed                     | Closed                                | CLI is MIT licensed                         |
+| **Pricing**             | Free tier upward                       | Pro, Teams, Enterprise only           | CLI free, platform in early access          |
+
+The pattern is clear. GitHub is broad. Origin is narrow and deep on one workflow. Entire is orthogonal to both.
+
+# Where Cursor Origin falls short today
+
+We spent time in the Origin beta. These are our observations as of August 20, 2026, and the list is worth taking as a snapshot rather than a verdict. Most of these are the kind of gaps a focused team closes in weeks.
+
+**Platform scope gaps:**
+
+* No public repositories, which rules out open source projects that need discoverability and external contributors.
+* No issues, projects, releases, or native CI/CD.
+* One account maps to one organization. You cannot belong to several.
+
+**Repository management gaps:**
+
+* Only the Origin CLI can create a repository. Integrations cannot, and the same limitation applies to deleting one.
+* No way to rename a repository.
+* No way to download a repository as a zip.
+* You cannot edit or download a file from the UI. You need an agent or a terminal.
+* You cannot create or delete a branch from the UI, again agent or terminal only.
+
+**Pull request and UX gaps:**
+
+* The pull request list defaults to your own PRs, so agent-created and teammate PRs are hidden until you change the filter.
+* Labels exist but are missing from several places where you would expect them.
+* Images in pull request comments do not render, which breaks integrations that post QR codes or progress illustrations.
+* Dates render in local timezone with no UTC copy option.
+
+Our [engineer's review of Cursor Origin](/blog/post/cursor-origin-review-an-engineers-perspective) goes further on how this feels over a full working day.
+
+# What Cursor Origin gets right
+
+The gaps above are real, but they sit next to a set of things Origin does genuinely well.
+
+* **Agentic work from the browser feels well integrated.** This is the product's actual argument, and it lands. Asking an agent about code you are browsing, then having it push a branch, works without ceremony.
+* **The preview section in pull requests is good.** Deployment previews sit where you need them during review.
+* **Feature parity on what exists is high.** The features Origin does ship work like a charm rather than feeling like stubs.
+* **Pinned repos and recently visited are small wins.** Navigation is faster than the equivalent on a mature forge.
+* **The installation flow lets you reinstall an integration with the same settings.** A detail, but it makes connecting apps noticeably smoother.
+
+# Does Entire compete with GitHub or complement it?
+
+**It complements it.** Entire has no pull requests, no issues, and no CI. You keep GitHub, add the Entire CLI, and get a searchable record of every agent session tied to your commits.
+
+The practical value shows up in three places:
+
+* **Review by intent, not just diff.** You can see the prompt and constraints behind a change, which matters when the author was an agent.
+* **Recovery.** `entire session resume` puts you back at a known-good checkpoint when an agent goes sideways, including one a teammate created.
+* **Audit.** An append-only log of AI interactions inside the repository is the artifact compliance teams keep asking for.
+
+Two caveats before you enable it. Session transcripts live in your git repository, so on a public repo that data is visible to anyone. Entire redacts detected secrets when writing to the checkpoint branch, but redaction is best-effort, and the CLI supports pointing checkpoints at a separate private repo for exactly this reason.
+
+# Which is best for your team?
+
+| Your situation                                    | Best setup                                                                              |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Open source maintainer                            | GitHub. Origin has no public repos, and Entire's checkpoint data needs care in public.  |
+| Solo dev on a new private project                 | Origin natively. CLI to hosted repo is fast and agents are the point.                   |
+| Small team already living in Cursor               | Sync repos to Origin for review, keep pushing to GitHub. Zero migration cost.           |
+| Team with mature GitHub Actions pipelines         | GitHub as source of truth. Do not move it.                                              |
+| Team shipping large volumes of agent-written code | GitHub plus Entire. The traceability gap is your real problem, not the forge.           |
+| Enterprise with compliance requirements           | GitHub. Evaluate Entire for the audit log. Origin's access review tooling is not there. |
+
+The realistic answer for most teams: **GitHub stays the source of truth, Origin becomes a review and agent surface, Entire fills in the context your commit history never captured.** All three can run at once, and none of those steps requires a migration.
+
+# What changing your git forge means for your deploy pipeline
+
+Before you experiment, check the layer downstream of your repository, because most deploy pipelines are coupled to your git host rather than to git itself.
+
+[Appwrite Sites](/docs/products/sites) and [Appwrite Functions](/docs/products/functions) work this way. [Git-based deployments](/docs/products/sites/deploy-from-git) connect to a GitHub repository, pushes to your production branch build and activate a deployment, and pushes to other branches create [preview deployments](/docs/products/sites/previews) you can test before promoting.
+
+That gives you a clean read on each of the three:
+
+* **Origin, synced:** pushes still land on GitHub, so existing deployments keep working unchanged. Detaching from GitHub is what breaks the connection.
+* **Origin, native:** GitHub-based deploy integrations no longer see your pushes. Use the CLI path instead.
+* **Entire:** no impact. Your code commits are untouched, and checkpoints live on a separate branch.
+
+The forge-agnostic escape hatch is [deploying from the CLI](/docs/products/sites/deploy-from-cli). The [Appwrite CLI](/docs/tooling/command-line) runs from any CI system on any forge, so `appwrite deploy` keeps working whether your repo lives on GitHub, Origin, or somewhere that does not exist yet. That is the property you want while this market is in motion, and it is the same argument we made in [what an AI backend actually is](/blog/post/what-is-an-ai-backend).
+
+# Building on Appwrite while the git forge market moves
+
+Whichever combination you pick, the code your agents write still needs somewhere to run. Appwrite gives you [Auth](/docs/products/auth), [Databases](/docs/products/databases), [Storage](/docs/products/storage), [Functions](/docs/products/functions), and [Sites](/docs/products/sites) behind one SDK, open source and self-hostable, so a change in where your repositories live never becomes a change in how your app ships.
+
+If your agents are writing that code, give them the context to write it correctly. The [Appwrite plugin for Cursor](/blog/post/announcing-appwrite-cursor-plugin) bundles [Appwrite Skills](/docs/tooling/ai/skills) and [MCP servers](/docs/tooling/ai/mcp-servers) so agents generate real SDK calls instead of inventing method names. That matters a great deal more when the agent is opening pull requests on its own.
+
+Set it up with the [Cursor integration guide](/docs/tooling/ai/agents/cursor) and point it at a free Appwrite project.
+
+# Resources
+
+* [Appwrite documentation](/docs)
+* [Deploy Appwrite Sites from Git](/docs/products/sites/deploy-from-git)
+* [Deploy from the Appwrite CLI](/docs/products/sites/deploy-from-cli)
+* [Appwrite Skills for AI agents](/docs/tooling/ai/skills)
+* [Appwrite MCP servers](/docs/tooling/ai/mcp-servers)
+* [Cursor integration guide](/docs/tooling/ai/agents/cursor)
+* [Cursor Origin vs GitHub: What changes for developers](/blog/post/cursor-origin-vs-github-what-actually-changes-for-developers)
+* [Cursor Origin review: An engineer's perspective](/blog/post/cursor-origin-review-an-engineers-perspective)
+* [Cursor Origin](https://cursor.com/origin)
+* [Entire CLI on GitHub](https://github.com/entireio/cli)
+* [Join the Appwrite Discord](https://appwrite.io/discord)
