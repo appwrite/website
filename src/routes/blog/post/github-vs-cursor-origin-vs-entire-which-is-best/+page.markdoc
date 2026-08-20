@@ -26,7 +26,7 @@ Here is the comparison that actually helps you decide.
 
 # GitHub vs Cursor Origin vs Entire: the short answer
 
-**GitHub is the only one of the three that can be your entire development platform today. Cursor Origin is a private git forge with native agents, best used as a review surface alongside GitHub. Entire is not a forge at all. It is an agent context layer that records how your code was written, and it works on top of GitHub.**
+**GitHub is the only one of the three that can be your entire development platform today. Cursor Origin is a private git forge built around Cursor and its agents. Entire combines agent context and checkpoints with a distributed Git network that can mirror GitHub repositories.**
 
 That means the real decision is not "which one wins." It is which combination fits your workflow:
 
