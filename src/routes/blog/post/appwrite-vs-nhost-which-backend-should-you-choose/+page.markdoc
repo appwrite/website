@@ -1,0 +1,175 @@
+---
+layout: post
+title: "Appwrite vs Nhost: Which backend should you choose?"
+description: Compare Appwrite and Nhost across databases, auth, storage, functions, pricing, and developer experience to find the best backend for your app.
+date: 2026-08-21
+cover: /images/blog/appwrite-vs-nhost-which-backend-should-you-choose/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+faqs:
+  - question: Is Appwrite better than Nhost?
+    answer: It depends on your stack. Appwrite is a better fit if you want an all-in-one backend with frontend hosting, messaging, multiple function runtimes, mobile SDKs, and one permissions model. Nhost is stronger if you specifically want Postgres, SQL access, and a GraphQL-first backend built around Hasura.
+  - question: Which is better for serverless functions, Appwrite or Nhost?
+    answer: Appwrite offers more runtime flexibility, supporting languages including Node.js, Python, Go, PHP, Dart, Java, Kotlin, Swift, .NET, Ruby, Deno, C++, and Bun. Nhost Functions focus on JavaScript and TypeScript, with Nhost Run available for custom container workloads.
+  - question: Can Appwrite and Nhost both be self-hosted?
+    answer: "Yes. Both Appwrite and Nhost are open source and can be deployed on your own infrastructure. Appwrite provides a Docker-based self-hosting setup with the same API surface as Appwrite Cloud, while Nhost's self-hosted stack includes Postgres, Hasura, Auth, and supporting services."
+  - question: What is the main difference between Appwrite and Nhost?
+    answer: The main difference is their architecture. Nhost is built around PostgreSQL and Hasura, giving developers direct SQL access and a GraphQL-first API. Appwrite provides its own backend APIs and SDKs with one permissions model across databases, storage, functions, and other services.
+---
+Appwrite and Nhost are both open-source backend platforms that bundle a database, authentication, file storage, and serverless functions behind a managed cloud with a self-hosting option. On paper they look interchangeable. In practice they make one very different architectural bet, and that bet shapes almost everything downstream.
+
+Nhost is Postgres plus Hasura GraphQL. Your API is generated from your schema, and your access control lives in Hasura permission rules. Appwrite is a product-oriented platform with its own API layer across Databases, Auth, Storage, Functions, Messaging, Sites, and Realtime, exposed through REST, GraphQL, WebSockets, and SDKs.
+
+Picking wrong is expensive. Auth models, permission rules, and function runtimes are the hardest parts of a backend to swap later. This comparison covers what each platform actually ships today so you can decide before you write the first migration.
+
+# What is the difference between Appwrite and Nhost?
+
+Nhost is a GraphQL-first backend built on Postgres and Hasura, best suited to teams who want SQL and a generated GraphQL API. Appwrite is a broader all-in-one platform that adds frontend hosting, messaging, and 13 function runtimes on top of the same core backend services, with its own permissions model instead of raw SQL.
+
+|                   | Nhost                                      | Appwrite                                                        |
+| ----------------- | ------------------------------------------ | --------------------------------------------------------------- |
+| Core bet          | Postgres + Hasura GraphQL                  | Product APIs over a managed database                            |
+| Primary API style | GraphQL                                    | REST, GraphQL, WebSockets, SDKs                                 |
+| Access control    | Hasura permission rules and Postgres roles | Per-document and per-collection permissions across all products |
+| Function runtimes | Node.js only (JS/TS)                       | 13 runtimes                                                     |
+| Frontend hosting  | Not included                               | Appwrite Sites                                                  |
+| License           | MIT                                        | BSD 3-Clause                                                    |
+
+# Appwrite vs Nhost: feature comparison at a glance
+
+| Capability        | Nhost                                                                                                                          | Appwrite                                                                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Database          | Managed Postgres with extensions, backups, major-version upgrades                                                              | [Databases](/docs/products/databases) with tables, typed columns, relationships, queries, indexes, transactions                                |
+| API surface       | Auto-generated GraphQL via Hasura, plus REST for auth and storage                                                              | [REST](/docs/apis/rest), [GraphQL](/docs/apis/graphql), [Realtime WebSockets](/docs/apis/realtime)                                             |
+| Auth              | Email/password, magic link, email and SMS OTP, WebAuthn, TOTP MFA, anonymous, \~15 OAuth providers, acts as an OAuth2 provider | Email/password, magic URL, email and SMS OTP, passkeys, TOTP and email/SMS MFA, anonymous, custom token, 30+ OAuth providers, Teams and labels |
+| Storage           | Buckets, CDN, image transformation, antivirus, presigned URLs                                                                  | [Buckets](/docs/products/storage) with per-file permissions, image transformation, antivirus, encryption, compression                          |
+| Functions         | Node.js 22/24/26, JS and TS only                                                                                               | Node, Python, PHP, Ruby, Dart, Deno, Go, Java, Kotlin, Swift, .NET, C++, Bun                                                                   |
+| Background jobs   | Hasura event triggers, cron triggers, scheduled events                                                                         | Function [event and CRON triggers](/docs/products/functions/execute), webhooks                                                                 |
+| Realtime          | GraphQL subscriptions on database changes                                                                                      | Realtime channels for database, storage, auth, and function events                                                                             |
+| Messaging         | Not included, transactional auth emails only                                                                                   | [Messaging](/docs/products/messaging) with push, email, and SMS across 11 providers                                                            |
+| Frontend hosting  | Not included                                                                                                                   | [Sites](/docs/products/sites) with Git deploys, SSR, custom domains, previews                                                                  |
+| Custom containers | Nhost Run, Pro plan and above                                                                                                  | Not included                                                                                                                                   |
+| AI features       | Graphite: auto-embeddings, AI assistants, backend MCP server                                                                   | [MCP servers](/docs/tooling/ai/mcp-servers), [Agent Skills](/docs/tooling/ai/skills), editor plugins                                           |
+| Regions           | 6 regions, 80+ CDN locations                                                                                                   | 6 available regions, more planned                                                                                                              |
+| Self-hosting      | MIT, community edition plus paid support tiers                                                                                 | BSD 3-Clause, single-command Docker install                                                                                                    |
+
+# How do Appwrite and Nhost handle databases and APIs?
+
+Nhost gives you real Postgres and generates a GraphQL API from your schema. Appwrite gives you a managed database behind product APIs, so you query through SDKs instead of writing SQL.
+
+With Nhost, you define tables in Postgres, and Hasura exposes queries, mutations, and subscriptions for them automatically. You get Postgres extensions, computed fields, remote schemas to stitch in external GraphQL services, and full SQL access when you need it. The cost is that your data layer and your authorization layer both live in Hasura's permission rule editor, which is a genuinely different mental model from application code.
+
+With Appwrite, you create tables and columns through the Console, CLI, or API, then read and write rows with SDK calls. Relationships, queries, indexes, and transactions are all first-class. Permissions attach to rows and tables using the same syntax you use for files and function execution, which means one access control model across the whole backend rather than two.
+
+Neither approach is strictly better. If your team already thinks in SQL and wants GraphQL for free, Nhost's model is a real advantage. If you would rather not maintain permission rules in a separate DSL, Appwrite's model removes a layer. For a deeper look at the API style trade-off itself, read [REST vs GraphQL vs WebSockets](/blog/post/rest-vs-graphql-websockets-which-is-best-for-your-app).
+
+# Which has better authentication, Appwrite Auth or Nhost Auth?
+
+Both are strong. Nhost Auth is notable for acting as an OAuth2 provider itself, so other apps can sign in with your app. Appwrite Auth covers more sign-in methods, more OAuth providers, and adds Teams for multi-tenant permissions.
+
+Nhost Auth ships email/password, magic links, email and SMS OTP, WebAuthn, TOTP MFA, anonymous sessions, bot protection, custom JWT claims, elevated permissions, and roughly 15 OAuth providers including Apple, Entra ID, GitHub, Google, and WorkOS. The OAuth2 provider feature is unusual for a BaaS and useful if you are building a platform other tools integrate with.
+
+[Appwrite Auth](/docs/products/auth) ships email/password, magic URLs, email and SMS OTP, passkeys, anonymous sessions, custom tokens for bridging existing identity systems, MFA via TOTP and email/SMS, and 30+ OAuth providers. It also includes [Teams](/docs/products/auth/teams) and labels, which give you organization membership and role-based permissions without modeling them yourself.
+
+The practical split: pick Nhost if you need to be an identity provider. Pick Appwrite if you need multi-tenant teams, a wider provider list, or a custom token bridge to an existing user database.
+
+# How do serverless functions compare in Appwrite and Nhost?
+
+Nhost Functions are JavaScript and TypeScript on Node.js only. Appwrite Functions support 13 runtimes across Node, Python, PHP, Ruby, Dart, Deno, Go, Java, Kotlin, Swift, .NET, C++, and Bun.
+
+This is the widest gap between the two platforms, and the limits matter:
+
+* **Language.** Nhost supports Node.js 22, 24, and 26 with npm, yarn, or pnpm. Native addons are stripped at deploy time, so `sharp`, `bcrypt`, `canvas`, and `better-sqlite3` will not run. If your image pipeline or ML step needs Python, it goes in a Nhost Run container instead, which requires a paid plan.
+* **Timeouts.** Nhost function timeouts are tier-dependent: 10 seconds on Starter, 180 seconds on Pro, 600 seconds on Team. Request and response payloads are capped at 6 MB regardless of tier.
+* **Triggers.** Nhost leans on Hasura event triggers, cron triggers, and one-off scheduled events, with retry configuration and payload transformations built in. That event system is well designed and worth crediting.
+* **Appwrite Functions.** [Functions](/docs/products/functions) run on HTTP requests, platform events, CRON schedules, or manual execution, with a template marketplace, per-function domains, and Git-based deploys.
+
+If your backend logic is all TypeScript, Nhost's constraint costs you nothing. If any part of your stack is Python, Go, or Dart, Appwrite avoids a container detour.
+
+# Does Appwrite or Nhost include frontend hosting?
+
+Appwrite includes frontend hosting through Appwrite Sites. Nhost does not host frontends, so you pair it with Vercel, Netlify, or Cloudflare Pages.
+
+Nhost Run deploys custom container services next to your backend with no egress cost between them, which is excellent for sidecar workloads like a Python worker or a third-party service. It is not a static site or SSR host, and it is a Pro-plan feature.
+
+[Appwrite Sites](/docs/products/sites) handles static and server-rendered frontends with Git-based deploys, branch and commit preview URLs, custom domains with automatic TLS, environment variables, rollbacks, and logs. That means one dashboard and one bill for the frontend and backend instead of two vendors.
+
+If you are already committed to Vercel or Netlify for hosting, this difference is close to irrelevant. If you want to consolidate, it is one of the main reasons teams move.
+
+# How do Appwrite and Nhost compare on AI and MCP support?
+
+Nhost's Graphite service handles embeddings and assistants inside the backend. Appwrite's AI tooling is aimed at coding agents building on Appwrite rather than at runtime AI features.
+
+Nhost Graphite generates embeddings automatically as rows are inserted or updated, currently using OpenAI, and exposes similarity search through GraphQL on top of pgvector. Its AI assistants inherit Hasura and Auth permissions, so a user only ever queries data they can already see. It also ships a backend MCP server for Claude and Cursor. If you want RAG without building an embedding pipeline, that is a genuine head start.
+
+Appwrite takes the other side. It ships an [API MCP server](/docs/tooling/ai/mcp-servers/api) so agents can act on your project, a Docs MCP server, [Agent Skills](/docs/tooling/ai/skills) across the CLI and SDKs, and editor plugins for [Claude Code](/docs/tooling/ai/ai-dev-tools/claude-code) and [Cursor](/docs/tooling/ai/ai-dev-tools/cursor). Runtime AI is built in Functions, and [vector search](/docs/tooling/ai/vector-db-and-embeddings) is wired to an external vector database such as Pinecone or Qdrant rather than managed in-platform.
+
+So: Nhost automates the embedding layer for you. Appwrite gives you more control and better agent tooling, at the cost of assembling the RAG pipeline yourself.
+
+# Appwrite vs Nhost pricing: which is cheaper?
+
+Both start free and both charge $25/month for their first paid tier. The difference is what happens above that, where Nhost bills compute separately and its team tier jumps to $599/month.
+
+| Plan            | Nhost                                                                                               | Appwrite                                                                                                                     |
+| --------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Free            | 1 GB database, 1 GB storage, 5 GB egress, 1 project, paused after a week idle                       | 5 GB bandwidth, 2 GB storage, 750K executions, 75K MAU, 2 projects, paused after a week idle                                 |
+| First paid tier | Pro from $25/mo, 10 GB database, 50 GB storage, 50 GB egress, backups and PITR, $15 compute credits | Pro from $25/mo, 2 TB bandwidth, 150 GB storage, 3.5M executions, 200K MAU, unlimited databases and functions, daily backups |
+| Next tier       | Team from $599/mo, SOC 2 Type II, SLA support, external database connections                        | Enterprise, custom pricing, SLAs, SOC 2, HIPAA, SSO, 90-day log retention                                                    |
+| Compute billing | $15/vCPU/month shared, $50/vCPU/month dedicated, billed per minute                                  | Included in plan, dedicated resources per project on Pro                                                                     |
+
+Read the compute line carefully. Nhost's $25 Pro price includes $15 of compute credits, so your real bill depends on how many vCPUs your Postgres, Hasura, and Auth services consume. Appwrite's Pro pricing bundles compute into the plan with usage-based overages on bandwidth, storage, executions, and MAU. Model your own workload against both before assuming they are equivalent.
+
+The gap that catches teams out is the middle. If you need SOC 2 on Nhost, the next step from $25 is $599. On Appwrite, compliance sits in Enterprise with custom pricing, so it is a conversation rather than a fixed jump.
+
+# Can you self-host Appwrite and Nhost?
+
+Yes, both are open source and self-hostable. Nhost is MIT licensed with a community edition plus paid support and dedicated-cluster options. Appwrite is BSD 3-Clause with a single-command Docker install.
+
+Nhost's community edition is free to run, with support coming from public docs and forums. Paid support agreements and fully managed dedicated clusters on your own infrastructure are available for teams that need vendor involvement. Because the stack is Postgres, Hasura, and a set of Go services, self-hosting means operating several moving parts.
+
+Appwrite self-hosts as a Docker Compose stack with a [single install command](/docs/advanced/self-hosting) and the same API surface as Appwrite Cloud, so moving between the two does not change your code. Nhost's cloud features like managed Grafana and point-in-time recovery are cloud-tier features you would replicate yourself when self-hosting.
+
+If self-hosting is the plan rather than the fallback, weigh the operational surface honestly. Our breakdown of [self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) covers what that actually costs in engineering time.
+
+# When should you choose Nhost over Appwrite?
+
+Nhost is the better fit when:
+
+* You want real Postgres with full SQL access, extensions, and major-version control.
+* GraphQL is your preferred API style and you want the schema generated for you.
+* Your team is comfortable authoring Hasura permission rules.
+* Your backend logic is entirely JavaScript or TypeScript.
+* You need managed auto-embeddings and permission-aware AI assistants without building a RAG pipeline.
+* You want to act as an OAuth2 provider so other apps can sign in with your app.
+* You need to run custom containers next to your database with no egress cost.
+
+# When should you choose Appwrite over Nhost?
+
+[Appwrite](/) is the better fit when:
+
+* You want frontend hosting, backend, and database in one platform and one bill.
+* Any part of your backend logic is Python, Go, Dart, Java, Kotlin, Swift, or .NET.
+* You need push notifications, transactional email, or SMS as a first-party product.
+* You want one permissions model across database rows, files, and function execution instead of a separate rules DSL.
+* You need Teams, labels, custom token login, or 30+ OAuth providers.
+* You are shipping to mobile and want first-party SDKs for Flutter, Apple, Android, and React Native.
+* You want coding agents to operate on your backend through first-party MCP servers and Agent Skills.
+
+Both platforms are credible. Nhost's GraphQL-on-Postgres model is a real strength for SQL-fluent teams, and Graphite's auto-embeddings solve a problem Appwrite leaves to you. Appwrite covers more of the stack in one place and does not constrain your function runtime. Choose based on which constraint you would rather live with, not on which feature list is longer.
+
+# Getting started with Appwrite as your backend
+
+If the all-in-one path fits your project, you can have a working backend running in a few minutes. Create a project on [Appwrite Cloud](https://cloud.appwrite.io/), pick your region, and connect your app with the SDK for your platform. From there, add [Auth](/docs/products/auth) for sign-in, [Databases](/docs/products/databases) for your data model, and [Sites](/docs/products/sites) when you are ready to deploy the frontend alongside it. Coming from a Postgres-backed platform, the [migration docs](/docs/advanced/migrations) cover moving your data across.
+
+## Resources
+
+* [Appwrite documentation](/docs)&#x20;
+* [Appwrite Databases](/docs/products/databases)&#x20;
+* [Appwrite Auth](/docs/products/auth)&#x20;
+* [Appwrite Functions](/docs/products/functions)&#x20;
+* [Appwrite Sites](/docs/products/sites)&#x20;
+* [Self-hosting Appwrite](/docs/advanced/self-hosting)&#x20;
+* [Appwrite Discord](https://appwrite.io/discord)&#x20;
+* [Appwrite on GitHub](https://github.com/appwrite/appwrite)&#x20;
