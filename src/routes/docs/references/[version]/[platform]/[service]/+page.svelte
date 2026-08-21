@@ -192,6 +192,11 @@
 
     let platformBindingForSelect = $derived(page.params.platform as Platform);
     let platform = $derived(/**$preferredPlatform ?? */ page.params.platform as Platform);
+    // Platforms whose SDK exists for the current version, keeping the current
+    // one listed even when it was discontinued so the select stays coherent.
+    let availablePlatforms = $derived(
+        data.platforms.includes(platform) ? data.platforms : [platform, ...data.platforms]
+    );
     let platformType = $derived(platform.startsWith('client-') ? 'CLIENT' : 'SERVER');
     let serviceName = $derived(serviceMap[data.service?.name]);
     let title = $derived(serviceName + API_REFERENCE_TITLE_SUFFIX);
@@ -233,14 +238,14 @@
                             value={platformBindingForSelect}
                             on:change={selectPlatform}
                             options={[
-                                ...Object.values(Platform)
+                                ...availablePlatforms
                                     .filter((p) => p.startsWith('client-'))
                                     .map((p) => ({
                                         value: p,
                                         label: platformMap[p],
                                         group: 'Client'
                                     })),
-                                ...Object.values(Platform)
+                                ...availablePlatforms
                                     .filter((p) => p.startsWith('server-'))
                                     .map((p) => ({
                                         value: p,
@@ -298,7 +303,7 @@
                     </div>
                 {/if}
             </section>
-            {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
+            {#each Object.values(groupMethodsByGroup(data.methods)) as methods, groupIndex (groupIndex)}
                 {#each sortMethods(methods) as method (method.id)}
                     <section class="web-article-content-grid-6-4">
                         <div class="web-article-content-grid-6-4-column-1 flex flex-col gap-8">
@@ -339,14 +344,16 @@
                                         process
                                         withLineNumbers={false}
                                     />
-                                    <div class="mt-6">
-                                        <Fence
-                                            language={platform}
-                                            content={method.demo}
-                                            process
-                                            withLineNumbers={false}
-                                        />
-                                    </div>
+                                    {#if method.demo !== null}
+                                        <div class="mt-6">
+                                            <Fence
+                                                language={platform}
+                                                content={method.demo}
+                                                process
+                                                withLineNumbers={false}
+                                            />
+                                        </div>
+                                    {/if}
                                 </div>
                             </div>
                         </div>
@@ -387,7 +394,7 @@
                         </button>
                     </div>
                     <ul class="web-references-menu-list">
-                        {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods]}
+                        {#each Object.entries(groupMethodsByGroup(data.methods)) as [group, methods] (group)}
                             <li class="web-references-menu-group">
                                 {#if group !== ''}
                                     <h6 class="text-eyebrow text-greyscale-500 mb-2 uppercase">
@@ -395,7 +402,7 @@
                                     </h6>
                                 {/if}
                                 <ul class="flex flex-col gap-2">
-                                    {#each sortMethods(methods) as method}
+                                    {#each sortMethods(methods) as method (method.id)}
                                         <li class="web-references-menu-item">
                                             <a
                                                 href={`#${method.id}`}

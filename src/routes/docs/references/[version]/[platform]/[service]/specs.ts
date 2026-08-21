@@ -65,7 +65,7 @@ export type SDKMethod = {
     id: string;
     title: string;
     description: string;
-    demo: string;
+    demo: string | null;
     group?: string;
     parameters: Array<{
         name: string;
@@ -95,20 +95,18 @@ type AppwriteDeprecated = {
 
 type AppwriteOperationObject = OpenAPIV3.OperationObject & {
     'x-appwrite': {
-        method: string;
+        method?: string;
         group?: string;
-        weight: number;
-        cookies: boolean;
-        type: string;
-        demo: string;
-        edit: string;
-        'rate-limit': number;
-        'rate-time': number;
-        'rate-key': string;
-        scope: string;
-        platforms: string[];
-        packaging: boolean;
-        public: boolean;
+        weight?: number;
+        type?: string;
+        demo?: string;
+        edit?: string;
+        'rate-limit'?: number;
+        'rate-time'?: number;
+        'rate-key'?: string;
+        scope?: string;
+        platforms?: string[];
+        public?: boolean;
         methods?: AppwriteAdditionalMethod[];
     };
 };
@@ -145,6 +143,81 @@ export const ModelType = {
 
 type ModelTypeType = keyof typeof ModelType;
 type ModelTypeValue = (typeof ModelType)[ModelTypeType];
+
+/**
+ * Stable identifier for a method, used for heading ids and anchor links.
+ * Specs up to 1.8.x carry it as `x-appwrite.method`; newer specs dropped the
+ * field, so it is derived from the standard `operationId`, which is always
+ * the service tag followed by the method name (e.g. `accountCreate`).
+ */
+function methodId(operation: AppwriteOperationObject): string {
+    const legacy = operation['x-appwrite']?.method;
+    if (legacy) {
+        return legacy;
+    }
+
+    const operationId = operation.operationId ?? '';
+    const tag = operation.tags?.[0] ?? '';
+    const stripped = operationId.toLowerCase().startsWith(tag.toLowerCase())
+        ? operationId.slice(tag.length)
+        : operationId;
+    return stripped.charAt(0).toLowerCase() + stripped.slice(1);
+}
+
+/**
+ * OAuth2 methods (`x-appwrite.type: webAuth`) are browser redirect flows that
+ * cannot be expressed as a GraphQL operation. The SDK generator deliberately
+ * skips their GraphQL examples, so the reference pages skip the methods too.
+ */
+function isHiddenOnPlatform(operation: AppwriteOperationObject, platform: string): boolean {
+    const isGraphql = platform === Platform.ClientGraphql || platform === Platform.ServerGraphql;
+    return isGraphql && operation['x-appwrite']?.type === 'webAuth';
+}
+
+/**
+ * Platforms whose SDK exists for a given version. SDKs come and go between
+ * releases (Deno was discontinued in 1.9.x, Go and Rust appeared in 1.6.x),
+ * and the examples directory shipped with the spec is the ground truth for
+ * which SDKs a release was generated with.
+ */
+export function getAvailablePlatforms(version: string): Platform[] {
+    assertValidVersion(version);
+    return Object.values(Platform).filter((platform) =>
+        existsSync(join(specsRoot, exampleRoot(version, platform)))
+    );
+}
+
+/**
+ * Services documented in a spec, derived from operation tags.
+ */
+export function getAvailableServices(api: OpenAPIV3.Document): Set<string> {
+    const tags = new Set<string>();
+    for (const path of Object.values(api.paths)) {
+        for (const operation of Object.values(path ?? {})) {
+            (operation as OpenAPIV3.OperationObject).tags?.forEach((tag) => tags.add(tag));
+        }
+    }
+    return tags;
+}
+
+/**
+ * Directory holding a platform's examples. Android SDKs share one directory
+ * per Java/Kotlin pair, split by language subdirectory.
+ */
+function exampleRoot(version: string, platform: string): string {
+    switch (platform) {
+        case Platform.ClientAndroidJava:
+            return `examples/${version}/client-android/java`;
+        case Platform.ClientAndroidKotlin:
+            return `examples/${version}/client-android/kotlin`;
+        case Platform.ServerJava:
+            return `examples/${version}/server-kotlin/java`;
+        case Platform.ServerKotlin:
+            return `examples/${version}/server-kotlin/kotlin`;
+        default:
+            return `examples/${version}/${platform}/examples`;
+    }
+}
 
 async function loadExample(relativePath: string): Promise<string | null> {
     try {
@@ -356,7 +429,7 @@ function getParameters(operation: AppwriteOperationObject): SDKMethod['parameter
                 description: parameter.description ?? '',
                 required: parameter.required ?? false,
                 type: schema?.type ?? '',
-                example: schema?.example
+                example: schema?.example ?? (schema as AppwriteSchemaObject)?.['x-example'] ?? ''
             });
         }
     }
@@ -368,7 +441,7 @@ function getParameters(operation: AppwriteOperationObject): SDKMethod['parameter
                 description: property.description ?? '',
                 required: schemaJson?.required?.includes(key) ?? false,
                 type: property.type ?? '',
-                example: property['x-example'] ?? ''
+                example: property.example ?? property['x-example'] ?? ''
             });
         }
     }
@@ -380,7 +453,7 @@ function getParameters(operation: AppwriteOperationObject): SDKMethod['parameter
                 description: property.description ?? '',
                 required: schemaMultipart?.required?.includes(key) ?? false,
                 type: property.type ?? '',
-                example: property['x-example'] ?? ''
+                example: property.example ?? property['x-example'] ?? ''
             });
         }
     }
@@ -467,15 +540,6 @@ export async function getService(
     // the public allowlist before any filesystem access.
     assertValidPlatform(platform);
 
-    /**
-     * Exceptions for Android SDK.
-     */
-    const isAndroidJava =
-        platform === Platform.ClientAndroidJava || platform === Platform.ServerJava;
-    const isAndroidKotlin =
-        platform === Platform.ClientAndroidKotlin || platform === Platform.ServerKotlin;
-    const isAndroid = isAndroidJava || isAndroidKotlin;
-    const isAndroidServer = platform === Platform.ServerJava || platform === Platform.ServerKotlin;
     const api = await getApi(version, platform);
 
     const data: Awaited<ReturnType<typeof getService>> = {
@@ -486,26 +550,34 @@ export async function getService(
         methods: []
     };
 
-    const prepared = Array.from(iterateAllMethods(api, service)).map(({ method, value, url }) => {
-        const operation = value as AppwriteOperationObject;
-        const parameters = getParameters(operation);
-        const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
-            (tuple) => {
-                const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
-                const models: SDKMethodModel[] = [];
-                const schemas = response?.content?.['application/json']
-                    ?.schema as OpenAPIV3.SchemaObject;
-                if (code !== '204') {
-                    if (schemas?.oneOf) {
-                        schemas.oneOf.forEach((ref) => {
-                            const schema = resolveReference(ref as OpenAPIV3.ReferenceObject, api);
-                            models.push({
-                                id: getIdFromReference(ref as OpenAPIV3.ReferenceObject),
-                                name: schema.description ?? ''
-                            });
-                        });
-                    } else {
-                        if (schemas) {
+    const prepared = Array.from(iterateAllMethods(api, service))
+        .filter(({ value }) => !isHiddenOnPlatform(value as AppwriteOperationObject, platform))
+        .map(({ method, value, url }) => {
+            const operation = value as AppwriteOperationObject;
+            const parameters = getParameters(operation);
+            const responses: SDKMethod['responses'] = Object.entries(operation.responses ?? {}).map(
+                (tuple) => {
+                    const [code, response] = tuple as [string, OpenAPIV3.ResponseObject];
+                    const models: SDKMethodModel[] = [];
+                    const schemas = response?.content?.['application/json']
+                        ?.schema as OpenAPIV3.SchemaObject;
+                    // Only reference schemas point at named models; inline
+                    // schemas (e.g. a binary body) have no model to link.
+                    if (code !== '204') {
+                        if (schemas?.oneOf) {
+                            schemas.oneOf
+                                .filter((ref) => '$ref' in ref)
+                                .forEach((ref) => {
+                                    const schema = resolveReference(
+                                        ref as OpenAPIV3.ReferenceObject,
+                                        api
+                                    );
+                                    models.push({
+                                        id: getIdFromReference(ref as OpenAPIV3.ReferenceObject),
+                                        name: schema.description ?? ''
+                                    });
+                                });
+                        } else if (schemas && '$ref' in schemas) {
                             const id = getIdFromReference(schemas as OpenAPIV3.ReferenceObject);
                             const schema = resolveReference(
                                 schemas as OpenAPIV3.ReferenceObject,
@@ -517,60 +589,62 @@ export async function getService(
                             });
                         }
                     }
+
+                    return {
+                        code: Number(code),
+                        contentType: response?.content
+                            ? Object.keys(response.content)[0]
+                            : undefined,
+                        models
+                    };
                 }
+            );
 
-                return {
-                    code: Number(code),
-                    contentType: response?.content ? Object.keys(response.content)[0] : undefined,
-                    models
-                };
-            }
-        );
+            const examplePath = `${exampleRoot(version, platform)}/${operation['x-appwrite']?.demo}`;
 
-        const examplePath = isAndroid
-            ? `examples/${version}/${
-                  isAndroidServer ? 'server-kotlin' : 'client-android'
-              }/${isAndroidJava ? 'java' : 'kotlin'}/${operation['x-appwrite']?.demo}`
-            : `examples/${version}/${platform}/examples/${operation['x-appwrite']?.demo}`;
-
-        return { method, value: operation, url, parameters, responses, examplePath };
-    });
+            return { method, value: operation, url, parameters, responses, examplePath };
+        });
 
     const demos = await Promise.all(prepared.map((p) => loadExample(p.examplePath)));
 
     for (let i = 0; i < prepared.length; i++) {
+        const { method, value: operation, url, parameters, responses, examplePath } = prepared[i];
+
+        // A missing example file no longer hides the method; the page renders
+        // the full reference and simply omits the code sample panel.
         const demo = demos[i];
         if (demo === null) {
-            continue;
+            console.warn(
+                `Missing SDK example ${examplePath} for ${service}.${methodId(operation)}`
+            );
         }
-        const { method, value: operation, url, parameters, responses } = prepared[i];
 
         data.methods.push({
-            id: operation['x-appwrite'].method,
-            group: operation['x-appwrite'].group,
-            demo: stripMarkdownCodeFence(demo),
+            id: methodId(operation),
+            group: operation['x-appwrite']?.group,
+            demo: demo === null ? null : stripMarkdownCodeFence(demo),
             title: operation.summary ?? '',
             description: operation.description ?? '',
             parameters: parameters ?? [],
             responses: responses ?? [],
             method,
             url,
-            'rate-limit': operation['x-appwrite']['rate-limit'],
-            'rate-time': operation['x-appwrite']['rate-time'],
-            'rate-key': operation['x-appwrite']['rate-key']
+            'rate-limit': operation['x-appwrite']?.['rate-limit'] ?? 0,
+            'rate-time': operation['x-appwrite']?.['rate-time'] ?? 0,
+            'rate-key': operation['x-appwrite']?.['rate-key'] ?? ''
         });
     }
 
-    // Sort methods by weight from x-appwrite metadata
-    data.methods.sort((a, b) => {
-        const aPath = api.paths[a.url] as OpenAPIV3.PathItemObject;
-        const bPath = api.paths[b.url] as OpenAPIV3.PathItemObject;
-        const aMethod = a.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
-        const bMethod = b.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
-        const aWeight = (aPath?.[aMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
-        const bWeight = (bPath?.[bMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight ?? 0;
-        return aWeight - bWeight;
-    });
+    // Older specs carry a curated `x-appwrite.weight`; newer specs dropped it,
+    // where the generator's path order is the intended order already.
+    const weightOf = (item: SDKMethod): number | undefined => {
+        const path = api.paths[item.url] as OpenAPIV3.PathItemObject;
+        const httpMethod = item.method.toLowerCase() as Lowercase<OpenAPIV3.HttpMethods>;
+        return (path?.[httpMethod] as AppwriteOperationObject)?.['x-appwrite']?.weight;
+    };
+    if (data.methods.some((item) => weightOf(item) !== undefined)) {
+        data.methods.sort((a, b) => (weightOf(a) ?? 0) - (weightOf(b) ?? 0));
+    }
 
     return data;
 }
