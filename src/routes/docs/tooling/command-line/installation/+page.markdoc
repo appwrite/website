@@ -208,7 +208,7 @@ The CLI will also auto-detect your project configuration and automatically insta
 You can run your first CLI command after logging in. Try fetching information about your Appwrite project.
 
 ```sh
-appwrite projects get --project-id "<PROJECT_ID>"
+appwrite project get --project-id "<PROJECT_ID>"
 ```
 
 # Multi-file configuration {% #multi-file-configuration %}
