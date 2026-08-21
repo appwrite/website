@@ -128,6 +128,7 @@ type AppwriteAdditionalMethod = {
 
 export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
     'x-example': string;
+    example?: OpenAPIV3.SchemaObject['example'];
 };
 
 export interface Property {
@@ -368,7 +369,7 @@ function getParameters(operation: AppwriteOperationObject): SDKMethod['parameter
                 description: property.description ?? '',
                 required: schemaJson?.required?.includes(key) ?? false,
                 type: property.type ?? '',
-                example: property['x-example'] ?? ''
+                example: property.example ?? property['x-example'] ?? ''
             });
         }
     }
@@ -380,7 +381,7 @@ function getParameters(operation: AppwriteOperationObject): SDKMethod['parameter
                 description: property.description ?? '',
                 required: schemaMultipart?.required?.includes(key) ?? false,
                 type: property.type ?? '',
-                example: property['x-example'] ?? ''
+                example: property.example ?? property['x-example'] ?? ''
             });
         }
     }
