@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { page } from '$app/state';
     import Article from '$markdoc/layouts/Article.svelte';
     import { Table, Thead, Tr, Th, Tbody, Td, Heading, Fence } from '$markdoc/nodes/_Module.svelte';
     import { parse } from '$lib/utils/markdown';
@@ -33,11 +32,12 @@
                 </Tr>
             </Thead>
             <Tbody>
-                {#each data.model.properties as property}
+                {#each data.model.properties as property (property.name)}
                     <Tr>
                         <Td>{property.name}</Td>
                         <Td>{property.type}</Td>
                         <Td>
+                            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                             {@html parse(property.description)}
                             {#if property.relatedModels}
                                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -50,7 +50,7 @@
         </Table>
         <Heading id="example" level={2}>Example</Heading>
         <Tabs>
-            {#each data.examples as example}
+            {#each data.examples as example (example.type)}
                 <TabsItem id={example.type.toLowerCase()} title={example.type}>
                     <Fence
                         content={JSON.stringify(example.example, null, 4)}

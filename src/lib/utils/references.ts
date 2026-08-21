@@ -25,22 +25,39 @@ export const versions: Readonly<Array<Omit<Version, 'cloud'>>> = allVersions.fil
 
 export const latestVersion = allVersions[0];
 
+/**
+ * Resolves the public `cloud` alias to the newest versioned spec. Every
+ * consumer of spec data (service pages, model pages, markdown generators)
+ * must resolve through here so `cloud` always means the same version.
+ */
+export function resolveVersion(version: string): string {
+    return version === 'cloud' ? latestVersion : version;
+}
+
 export const Service = {
     Account: 'account',
+    Activities: 'activities',
+    Advisor: 'advisor',
+    Apps: 'apps',
     Avatars: 'avatars',
+    Backups: 'backups',
     Databases: 'databases',
     TablesDB: 'tablesDB',
     Functions: 'functions',
     Messaging: 'messaging',
     Health: 'health',
     Locale: 'locale',
+    OAuth2: 'oauth2',
+    Organization: 'organization',
     Presences: 'presences',
+    Proxy: 'proxy',
     Storage: 'storage',
     Teams: 'teams',
     Users: 'users',
     Sites: 'sites',
     Tokens: 'tokens',
-    Project: 'project'
+    Project: 'project',
+    Webhooks: 'webhooks'
 } as const;
 
 export type ServiceType = typeof Service;
@@ -71,7 +88,6 @@ export const Platform = {
     ServerRest: 'server-rest'
 } as const;
 
-type PlatformType = typeof Platform;
 export type Platform = (typeof Platform)[keyof typeof Platform];
 export const VALID_PLATFORMS = new Set(Object.values(Platform));
 
@@ -156,20 +172,28 @@ export const platformMap: Record<Language | string, string> = {
 
 export const serviceMap: Record<ServiceValue, string> = {
     [Service.Account]: 'Account',
+    [Service.Activities]: 'Activities',
+    [Service.Advisor]: 'Advisor',
+    [Service.Apps]: 'Apps',
     [Service.Avatars]: 'Avatars',
+    [Service.Backups]: 'Backups',
     [Service.Databases]: 'Databases',
     [Service.TablesDB]: 'TablesDB',
     [Service.Functions]: 'Functions',
     [Service.Messaging]: 'Messaging',
     [Service.Health]: 'Health',
     [Service.Locale]: 'Locale',
+    [Service.OAuth2]: 'OAuth2',
+    [Service.Organization]: 'Organization',
     [Service.Presences]: 'Presences',
+    [Service.Proxy]: 'Proxy',
     [Service.Storage]: 'Storage',
     [Service.Teams]: 'Teams',
     [Service.Users]: 'Users',
     [Service.Sites]: 'Sites',
     [Service.Tokens]: 'Tokens',
-    [Service.Project]: 'Project'
+    [Service.Project]: 'Project',
+    [Service.Webhooks]: 'Webhooks'
 };
 
 export const preferredVersion = writable<Version | null>(

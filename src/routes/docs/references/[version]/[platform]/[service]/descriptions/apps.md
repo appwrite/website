@@ -1,0 +1,3 @@
+The Apps service allows you to manage OAuth2 applications in your project — their keys, secrets, scopes, and installations. Apps are the counterpart to the [OAuth2 service](/docs/references/cloud/server-nodejs/oauth2): you register an application here, and users authorize it through the standard OAuth2 flows.
+
+Each application carries its own keys and secrets for authenticating token exchanges, and exposes the OAuth2 and installation scopes it may request. Installations track where an application has been authorized, and installation tokens let an installed application act within the granted scopes.
