@@ -13,7 +13,7 @@ faqs:
   - question: "What is new in Bun 1.4?"
     answer: "Bun 1.4 is the first Bun release written in Rust instead of Zig. It reports Node.js 26 compatibility, starts 50% faster on Linux, uses up to 35% less memory for HTTP servers, and ships a faster bun install with a global virtual store. The full changelog is on the [Bun blog](https://bun.com/blog/bun-v1.4)."
   - question: "How do I use Bun 1.4 on Appwrite?"
-    answer: "For [Appwrite Functions](/docs/products/functions), pick `bun-1.4` as the runtime when creating or updating a function. For [Appwrite Sites](/docs/products/sites), pick Bun 1.4 as the build runtime in Site settings under Runtime settings; for SSR sites it also serves your requests. Both are available on Appwrite Cloud today."
+    answer: "For [Appwrite Functions](/docs/products/functions), pick `bun-1.4` as the runtime when creating or updating a function. For [Appwrite Sites](/docs/products/sites), pick Bun 1.4 as the build runtime in Site settings under Runtime settings. Both are available on Appwrite Cloud today."
   - question: "Do I need to change my code to upgrade from Bun 1.3 to Bun 1.4?"
     answer: "Most projects need no changes. Bun 1.4 tightens TLS certificate verification, parses YAML 1.2 strictly, and no longer loads .env files when invoked as node, so projects relying on those behaviors should review the [upgrade notes](https://bun.com/blog/bun-v1.4) before switching."
   - question: "Is Bun 1.4 faster than Node for building sites?"
@@ -22,7 +22,7 @@ faqs:
     answer: "The Bun team ported the entire codebase from Zig to Rust to improve memory safety and long-term maintainability. The port was written by around 64 Claude agents working concurrently over 11 days, landed with the full test suite passing, and shipped as Bun 1.4. The team documented the process in [Bun in Rust](https://bun.com/blog/bun-in-rust)."
 ---
 
-Bun 1.4 is now available on Appwrite Cloud, as a runtime for Appwrite Functions and Appwrite Sites. You can pick `bun-1.4` for new functions today, switch existing functions over with a redeploy, and select it in the build runtime dropdown for any Node-based Sites framework. For SSR sites, the runtime you pick also serves your requests; static sites use it for the build only.
+Bun 1.4 is now available on Appwrite Cloud, as a runtime for Appwrite Functions and Appwrite Sites. You can pick `bun-1.4` for new functions today, switch existing functions over with a redeploy, and select it in the build runtime dropdown for any Node-based Sites framework.
 
 Version bumps to a runtime line are usually routine, but Bun 1.4 is the first release of Bun written in Rust, and the release before it, 1.3.14, was the last one written in Zig. The team and the test suite stayed the same while the language underneath changed. We wanted to know what that means in practice for functions and site builds, so we benchmarked it. The numbers are further down.
 
