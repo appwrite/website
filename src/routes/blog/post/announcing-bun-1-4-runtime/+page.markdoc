@@ -51,6 +51,8 @@ Before the release, the Rust port ran in production for months inside Claude Cod
 
 # Benchmark: build times on Appwrite Cloud
 
+![Median build time of a 640-package Next.js app: 152 seconds on Bun 1.4, 195 on Bun 1.3, 213 on Node 26](/images/blog/announcing-bun-1-4-runtime/build-medians.avif)
+
 Faster installs and faster startup should add up to faster deployments, so we measured the one number every deploy pays: build time. We deployed the same app five times per runtime on Appwrite Cloud and compared Bun 1.4 against Bun 1.3 and Node 26.
 
 The setup:
