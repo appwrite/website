@@ -1,0 +1,126 @@
+---
+layout: post
+title: "We benchmarked Appwrite MCP against Vercel MCP"
+description: I benchmarked Appwrite MCP against Vercel MCP across deployment speed, latency, logs, rollback, and write safety. Here is what each server won.
+date: 2026-08-14
+cover: /images/blog/we-benchmarked-appwrite-mcp-against-vercel-mcp/cover.avif
+timeToRead: 8
+author: chirag-aggarwal
+category: ai, comparisons
+featured: false
+faqs:
+  - question: "What is the Appwrite MCP server?"
+    answer: "The Appwrite MCP server connects AI coding agents to an Appwrite project. It is hosted at `https://mcp.appwrite.io/`, authenticates over OAuth, and lets an agent work with auth, databases, storage, messaging, functions, sites, and other Appwrite services. See the [MCP server documentation](/docs/tooling/ai/mcp-servers/api) to connect it."
+  - question: "How does the Appwrite MCP server keep its tool catalog small?"
+    answer: "Appwrite exposes a small set of meta-tools, including `appwrite_get_context`, `appwrite_search_tools`, `appwrite_call_tool`, and `appwrite_search_docs`, while keeping the full operation catalog behind them. An agent searches for an operation at runtime instead of loading hundreds of schemas into its context up front."
+  - question: "Is Appwrite MCP or Vercel MCP better?"
+    answer: "Neither is better for every task. Appwrite reached much further into the backend and was the only one of the two exposing rollback, deletion, and explicit write confirmation. Vercel deployed faster and its dedicated log tools filter properly, which makes for a cleaner diagnostic loop."
+  - question: "Can an agent roll back an Appwrite deployment through MCP?"
+    answer: "Yes. Deployment activation and deactivation are exposed through Appwrite MCP. In this benchmark, switching the active deployment from v2 back to v1 took 1.32 seconds. Vercel's tested MCP surface exposed no rollback, no redeploy to an existing project, and no project deletion; this describes its MCP tool surface, not the full Vercel platform."
+  - question: "Does the Appwrite MCP server protect against accidental writes?"
+    answer: "Yes. Mutating operations require an explicit `confirm_write=true` argument. In the benchmark, Appwrite refused the first unconfirmed create."
+---
+
+An MCP server should be judged by what an agent can finish, not by how many tools sit in its catalog. So I pointed an agent at the hosted Appwrite and Vercel MCP servers and asked both to do the same job: deploy identical applications, inspect the builds, diagnose a deliberate failure, ship a second version, and recover from it.
+
+The two servers are built for different jobs, and the result splits along those lines:
+
+- **Appwrite reached much further into the backend** and was the only one of the two exposing rollback, deletion, and explicit write confirmation through MCP.
+- **Vercel deployed faster and reported runtime failures better.** It reached `READY` in about 2.1 seconds on the static app and its dedicated log tools filter properly.
+
+# How I tested
+
+Both hosted MCP servers ran over OAuth from the same Darwin 25.5 arm64 client. I threw away the first call to each tool so nobody paid for a cold start, then alternated between the two servers so neither got the benefit of going second. Anything that wrote data went into a throwaway project I could delete afterwards.
+
+Two test apps:
+
+- A static site with identical `index.html` and `marker.json` files, deployed from the same source archive on both platforms.
+- A Next.js 15.2.8 SSR app with deterministic build markers and controlled 200, 400, and 500 responses.
+
+Each agent had to discover its workspace, deploy both apps, inspect logs and analytics, recover from an intentional build failure, publish v2, attempt a rollback, and handle 50 requests at concurrency 10.
+
+![The six stages of the run, from orient through deploy, break, observe, recover, and a bounded concurrency burst, with the lanes where each server pulled ahead](/images/blog/we-benchmarked-appwrite-mcp-against-vercel-mcp/run-sheet.avif)
+
+## How I scored it
+
+Six things counted, correctness most of all: correctness and completeness at 30%, then result compactness, discoverability and call economy, median and p95 latency, and safety and lifecycle control at 15% each, and error recovery quality at 10%.
+
+The two combined totals landed close enough that the gap between them tells you nothing, and the per-category numbers behind them were never written up. The per-task scores from the read and observability phases are the ones worth putting on screen:
+
+![Per-task scores out of 5 for the eight read and observability tasks, comparing Appwrite and Vercel](/images/blog/we-benchmarked-appwrite-mcp-against-vercel-mcp/task-scores.avif)
+
+Appwrite wins five of the eight tasks, and the three it loses are the ones it loses badly.
+
+# Router versus toolbox
+
+Vercel exposes **33 direct tools** covering projects, deployments, logs, analytics, agent runs, collaboration, domains, purchases, and deployment protection. Once the agent has a team or project ID, it calls a tool named for the task.
+
+Appwrite exposes **992 operations across 81 services** behind a handful of meta-tools. Instead of loading every schema into the model's context, the agent works through four calls:
+
+- `appwrite_get_context` to find the account, organization, and project
+- `appwrite_search_tools` to find an operation
+- `appwrite_call_tool` to execute it
+- `appwrite_search_docs` to search current documentation
+
+![One dot per operation, drawn to the same scale: 33 named Vercel tools against 992 Appwrite operations behind four meta-tools](/images/blog/we-benchmarked-appwrite-mcp-against-vercel-mcp/tool-reach.avif)
+
+The router usually costs one extra call before an unfamiliar operation, and buys access to Auth, Databases, Storage, Messaging, Functions, Sites, usage, domains, and infrastructure from one interface. Vercel's toolbox is easier to navigate as long as the work stays inside deployment.
+
+# What each server actually covers
+
+| Use case | Appwrite MCP | Vercel MCP |
+| --- | --- | --- |
+| Static and SSR deployment | Sites, deployments, activation | **One-call project creation** |
+| Build and runtime logs | Available, with defects | **Dedicated, filter-rich tools** |
+| Auth and user management | **Full backend management** | Not exposed |
+| Databases and storage | **Full backend management** | Not exposed |
+| Functions | **CRUD, deployments, executions, variables** | Runtime and deployment inspection |
+| Usage and analytics | **Resource and compute metrics** | **Visitors, pageviews, routes, events** |
+| Deployment protection | Site and project controls | **Direct protection and bypass tools** |
+| Domains | **Domain catalog and DNS** | **Availability, purchase, management** |
+| Agent collaboration | No direct equivalent | **Agent traces and toolbar threads** |
+| Rollback and cleanup | **Activation, rollback, delete** | Not exposed through the tested tools |
+
+# Lifecycle control: Appwrite exposed more
+
+Getting the first URL live is the easy half. An operator also has to publish updates, switch versions, disable things, and clean up.
+
+Appwrite deployed v2 to the existing Site with an explicit build cache hit, switched the active deployment, and then rolled back to v1 in **1.32 seconds**. The public health endpoint returned `version: "v1"` immediately. Disabling the Site returned a 404 `router_deployment_not_found`, and re-enabling restored v1 straight away.
+
+Vercel's inline deployment tool created a _new project_ for v2, which also meant it reported no previous build cache. Its tested MCP surface exposed no rollback, no redeploy to an existing project, no project deletion, and no general environment-variable management. Those capabilities exist elsewhere on the Vercel platform; the benchmark required MCP-only operation. The practical consequence is that both Vercel projects from this run are still live, because nothing in the 33 tools can delete them.
+
+Write safety differed too. Appwrite required `confirm_write=true` before every mutation and refused the first unconfirmed create. Vercel's deploy tool had no equivalent parameter, though its commercial operations do separate quotes from purchases.
+
+# Deployment speed: Vercel was a bit faster
+
+Vercel accepted an inline file tree and had the static app ready in about **2.1 seconds**, on one write. Appwrite needed two, create the Site then upload and activate a gzipped deployment, and took about **27 seconds end to end**. On SSR the gap narrowed to **39.1 seconds** against a **91-second build**, roughly 2.3 times faster on reported build time alone.
+
+Both platforms rejected an earlier version of the SSR app, for different and legitimate reasons: Appwrite's adapter expected a `next.config.*` file, and Vercel blocked Next.js 15.2.4 over a known vulnerability. Each agent diagnosed its own failure from the logs it was handed.
+
+# Observed latency
+
+Once the agent had picked a project, Appwrite was faster on every repeated read I measured, in the case of build logs by a factor of eight.
+
+![Bar chart of observed MCP call latency in milliseconds across resource detail, deployment list, deployment detail, build logs, analytics, and docs search](/images/blog/we-benchmarked-appwrite-mcp-against-vercel-mcp/latency.avif)
+
+Both servers cleared the bounded concurrency check without errors. Appwrite returned 50 of 50 in **5.146 seconds** wall time, Vercel 50 of 50 in **4.714 seconds**. Vercel was modestly faster, and the sample is far too small to support a broader performance claim.
+
+Compactness is where the read gap is real rather than marginal. Asking for 100 log entries returned roughly 115 KB from Appwrite for 96 events, which got context-truncated, against 12.3 KB of filtered events from Vercel.
+
+# Choosing between them
+
+**Appwrite MCP** fits when the agent has to operate the backend as well as the deployment: users, data, files, messaging, functions, and Sites. It is also the stronger fit when you need explicit write confirmation, rollback, repeated deployment to one resource, and cleanup the agent can actually perform.
+
+**Vercel MCP** fits when the job is deploying, inspecting, diagnosing, and analyzing Vercel-hosted applications. Its direct tools remove selection ambiguity, its builds were faster here, and its log filters make for a cleaner diagnostic loop.
+
+Worth saying plainly: both of these deploy sites well. Every app I handed to either server went live, and both agents read their own build failure and fixed it without help. Vercel got there faster, 2.1 seconds against 27 on the static app and roughly 2.3 times quicker on the SSR build, and its log responses came back small enough to actually read. Appwrite was slower to the first URL and reached much further once it arrived: rollback, deletion, write confirmation, and the rest of the 992 operations behind the router, none of which the 33 Vercel tools touch. If your work stops at deploying, that speed is the whole story. If it doesn't, one extra search call buys you a lot.
+
+---
+
+**Test conditions**
+
+- **Access.** Hosted MCP endpoints, authenticated over OAuth.
+- **Client.** A single macOS arm64 machine, one continuous session.
+- **Write phase.** Static deployment, SSR deployment, an induced build failure, a second version, and a rollback.
+- **Excluded.** No paid protection tier was enabled, and no purchase operation was executed.
+- **Scope.** Results describe the MCP surfaces as tested, not controlled infrastructure benchmarks.
