@@ -1,3 +1,4 @@
+import { resolveVersion } from '$lib/utils/references';
 import { getService } from '../../routes/docs/references/[version]/[platform]/[service]/specs';
 import type { SDKMethod } from '../../routes/docs/references/[version]/[platform]/[service]/specs';
 
@@ -10,7 +11,7 @@ export async function generateServiceMarkdown(
     serviceName: string
 ): Promise<string | null> {
     try {
-        const version = versionParam === 'cloud' ? '1.8.x' : versionParam;
+        const version = resolveVersion(versionParam);
         const serviceData = await getService(version, platform, serviceName);
 
         const { service, methods } = serviceData;

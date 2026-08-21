@@ -1,3 +1,4 @@
+import { resolveVersion } from '$lib/utils/references';
 import {
     getApi,
     getSchema,
@@ -16,7 +17,7 @@ export async function generateModelMarkdown(
     modelName: string
 ): Promise<string | null> {
     try {
-        const version = versionParam === 'cloud' ? '1.8.x' : versionParam;
+        const version = resolveVersion(versionParam);
         const api = await getApi(version, 'console-web');
         const schema = getSchema(modelName, api);
 

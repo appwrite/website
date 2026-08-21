@@ -6,6 +6,7 @@ import {
     type Property,
     ModelType
 } from '../../[platform]/[service]/specs';
+import { resolveVersion } from '$lib/utils/references';
 import type { OpenAPIV3 } from 'openapi-types';
 import type { PageServerLoad } from './$types';
 
@@ -21,7 +22,7 @@ type Model = {
 };
 
 export const load: PageServerLoad = async ({ params }) => {
-    const version = params.version === 'cloud' ? '1.8.x' : params.version;
+    const version = resolveVersion(params.version);
     const api = await getApi(version, 'console-web');
     const schema = getSchema(params.model, api);
     const props = Object.entries(schema.properties ?? {});
