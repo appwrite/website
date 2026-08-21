@@ -2,13 +2,13 @@ You can create functions using the CLI without needing to access the Console.
 
 {% partial file="cli-disclaimer.md" /%}
 
-To deploy your function with the Appwrite CLI, use the `appwrite init functions` command to create a starter function and paste your code into the generated file and folder.
+To create a function with the Appwrite CLI, start the guided `appwrite init function` workflow. It walks you through runtime selection, local or GitHub-backed source, execution access, generated domains, and environment variables before it writes files or creates resources.
 
 ```sh
-appwrite init functions
+appwrite init function
 ```
 
-To deploy the generated code, add any dependencies and push the function using the following command:
+After the review step, the CLI can save the function locally or create and deploy it immediately. To deploy the generated code later, add any dependencies and push the function using the following command:
 
 ```sh
 appwrite push functions
