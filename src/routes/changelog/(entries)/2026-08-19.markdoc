@@ -1,0 +1,15 @@
+---
+layout: changelog
+title: Guided function setup in the Appwrite CLI
+date: 2026-08-19
+---
+
+The Appwrite CLI now walks you through function setup with a guided `appwrite init function` flow instead of dropping you straight into a starter folder.
+
+During setup, the CLI can collect the runtime, build and runtime compute, execution access, regional or edge networking, generated domains, local or GitHub source, and environment variables. Before anything is written or created, it shows a final review so you can save, deploy, start over, or exit without changing anything.
+
+This makes it easier to scaffold Functions from the terminal without switching back to the Console for the first round of configuration.
+
+{% arrow_link href="/docs/tooling/command-line/functions#initialize-function" %}
+Learn about CLI function setup
+{% /arrow_link %}

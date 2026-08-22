@@ -79,7 +79,7 @@ Run `appwrite --help` to browse commands grouped by what you want to do, includi
 * Description
 ---
 * `init [options]`
-* The init command provides a convenient wrapper for creating and initializing projects, functions, tables, buckets, teams, and messaging-topics in Appwrite.
+* The init command provides a convenient wrapper for creating and initializing projects, functions, tables, buckets, teams, and messaging-topics in Appwrite. For functions, it opens a guided setup flow with a final review before files or resources are created.
 ---
 * `pull`
 * The pull command helps you pull your Appwrite project, functions, tables, buckets, teams, and messaging-topics.

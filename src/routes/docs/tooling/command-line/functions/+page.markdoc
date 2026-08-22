@@ -13,8 +13,19 @@ The CLI handles the creation, deployment, and execution of Appwrite Functions, a
 Create a new function using the following command:
 
 ```sh
-appwrite init functions
+appwrite init function
 ```
+
+The function setup flow is guided. The CLI can prompt you for:
+
+- the runtime to scaffold
+- build and runtime compute settings
+- execution access
+- regional or edge networking with generated domains
+- local source or a GitHub-backed setup
+- environment variables to import before the first deployment
+
+Before it creates files or Appwrite resources, the CLI shows a final review so you can save the configuration, create and deploy immediately, start over, or exit without writing anything.
 
 # Pull function {% #pull-function %}
 
