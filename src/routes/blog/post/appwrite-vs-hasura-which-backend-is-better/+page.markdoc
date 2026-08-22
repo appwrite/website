@@ -1,0 +1,187 @@
+---
+layout: post
+title: "Appwrite vs. Hasura: Which backend is better?"
+description: Compare Appwrite and Hasura across architecture, APIs, auth, databases, pricing, and developer experience to choose the right backend.
+date: 2026-08-22
+cover: /images/blog/appwrite-vs-hasura-which-backend-is-better/cover.avif
+timeToRead: 5
+author: atharva
+category: comparisons
+featured: false
+faqs:
+  - question: Is Appwrite a good alternative to Hasura?
+    answer: Yes, especially if you are building a new application and want authentication, databases, storage, functions, realtime, messaging, and hosting from one platform. Hasura is a better fit when you already have databases and need to expose or federate them through GraphQL.
+  - question: What is the main difference between Appwrite and Hasura?
+    answer: Appwrite is a Backend-as-a-Service platform that provides the backend infrastructure needed to build an application. Hasura is primarily a data access layer that generates APIs over databases and services you already operate.
+  - question: Is Hasura a Backend-as-a-Service?
+    answer: Hasura can replace part of a traditional backend, but it is not an all-in-one BaaS like Appwrite. Hasura focuses on generating APIs and managing access to existing data, while services such as authentication, file storage, frontend hosting, and messaging need to come from other providers.
+  - question: Can Appwrite and Hasura be self-hosted?
+    answer: Yes. Both offer open-source components that can be self-hosted. Appwrite can be self-hosted as a complete backend platform, while Hasura can be self-hosted as the data and API layer alongside the databases, authentication, storage, and other services your application requires.
+---
+"Which backend is better, Appwrite or Hasura?" is the wrong first question. The two tools sit at different layers of the stack. Hasura generates an API over databases you already run. Appwrite gives you the database, the auth, the file storage, and the server-side logic in one platform.
+
+Pick the wrong one and the cost shows up weeks later. Teams that choose Hasura for a greenfield mobile app discover they still need to source auth, file uploads, and background jobs from somewhere else. Teams that choose Appwrite for a data federation project discover it was never built to join Snowflake and Postgres behind a single GraphQL endpoint.
+
+This comparison covers what each platform actually does, where they overlap, and how to make the call for your project.
+
+# Appwrite vs Hasura: what is the core difference?
+
+**Hasura is a data access layer. Appwrite is a backend platform.**
+
+Hasura connects to databases and services you already operate and generates a unified API over them. It does not store your data, manage your users, or host your files. Its job is to expose data you already have, with fine-grained permissions on top.
+
+Appwrite is a Backend-as-a-Service. It ships the database, authentication, file storage, serverless functions, realtime channels, messaging, and frontend hosting as first-party services behind one API and one set of SDKs.
+
+|                          | Hasura                                     | Appwrite                                  |
+| ------------------------ | ------------------------------------------ | ----------------------------------------- |
+| Category                 | Data access and API layer                  | Backend-as-a-Service platform             |
+| Brings its own database  | No, connects to yours                      | Yes, TablesDB                             |
+| Primary API              | GraphQL (plus JSON:API on DDN)             | REST, GraphQL, Realtime                   |
+| Built-in user management | No, delegates to a JWT or webhook provider | Yes, [Appwrite Auth](/docs/products/auth) |
+| Typical buyer            | Data platform and enterprise teams         | App developers and product teams          |
+| Open source              | Apache 2.0 engine                          | BSD 3-Clause                              |
+
+# What is Hasura and what problem does it solve?
+
+**Hasura is a data delivery platform that generates APIs over existing data sources.** You point it at Postgres, MongoDB, ClickHouse, SQL Server, BigQuery, Snowflake, or a REST service, and it introspects the schema and serves a queryable API without you writing resolvers.
+
+The current product line has three parts:
+
+* **GraphQL Engine (v2).** The original open-source engine that produces instant GraphQL over Postgres and other databases, with subscriptions, permissions, Actions for custom business logic, and Event Triggers that fire webhooks on database changes.
+* **Data Delivery Network (DDN, v3).** The rewrite. You define your API in Hasura Metadata Language, connect sources through [native data connectors](https://hasura.io/docs/3.0/basics/overview/), and build a supergraph that federates many sources behind one endpoint. Builds are immutable, and you can serve them on Hasura DDN or your own infrastructure.
+* **PromptQL.** Hasura's AI layer, aimed at giving LLMs accurate, governed access to business data.
+
+Hasura's strength is federation and governance. If your data already lives in five systems owned by three teams, Hasura's supergraph model with independent subgraphs, per-role permissions, and multi-repo CI/CD is built for exactly that shape of problem.
+
+## Where Hasura leaves gaps for app teams
+
+Hasura is deliberately not a full backend. Building a product on it means sourcing several pieces elsewhere:
+
+* **Authentication.** Hasura's docs are explicit that ["actual authentication is handled outside Hasura"](https://hasura.io/docs/2.0/auth/authentication/index/). It verifies JWTs or calls a webhook to resolve session variables, then enforces permissions. You still bring Auth0, Cognito, Firebase Auth, or your own service.
+* **File storage.** Not included. Uploads, avatars, and documents need S3 or an equivalent, plus your own permission logic on top.
+* **The database itself.** You provision, tune, back up, and pay for Postgres separately.
+* **Frontend hosting.** Not part of the platform.
+* **Push, email, and SMS.** Sourced elsewhere.
+
+None of this is a flaw. It is the scope Hasura chose. It does mean a small team shipping a mobile app on Hasura is assembling four or five vendors before the first screen works.
+
+# What is Appwrite and what problem does it solve?
+
+**Appwrite is an open-source backend platform that ships the services most apps need as first-party products.** Instead of composing a stack, you get one API surface, one permission model, and one console.
+
+The services:
+
+* [Auth](/docs/products/auth) with email and password, OAuth across 30+ providers, phone, magic URL, anonymous sessions, MFA, plus Teams and roles.
+* [TablesDB](/docs/products/databases) with typed columns, relationships, queries, indexes, transactions, and row-level permissions.
+* [Storage](/docs/products/storage) with buckets, per-file permissions, antivirus scanning, file tokens for external sharing, and image transformations.
+* [Functions](/docs/products/functions) on Node, Python, Go, PHP, Ruby, Dart, Deno, Rust, and more, triggered by events, HTTP, or CRON.
+* [Realtime](/docs/apis/realtime) channels that push row and event changes to clients over WebSockets.
+* [Sites](/docs/products/sites) for hosting the frontend with Git-based deploys, custom domains, and rollbacks.
+* [Messaging](/docs/products/messaging) for email, SMS, and push notifications.
+
+The trade-off runs the other direction from Hasura. Appwrite gives you the whole app backend, but it is not a federation layer. It does not join your existing Snowflake warehouse and a legacy SQL Server behind one endpoint, and it does not generate an API over a database you already run.
+
+# Appwrite vs Hasura: feature comparison
+
+| Capability       | Hasura                                                                                   | Appwrite                                                             |
+| ---------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Database         | Connects to Postgres, MongoDB, ClickHouse, SQL Server, BigQuery, Snowflake, and 20+ more | Built-in TablesDB with typed columns and relationships               |
+| API protocols    | GraphQL, JSON:API, MCP on DDN                                                            | REST, [GraphQL](/docs/apis/graphql), Realtime WebSockets             |
+| Authentication   | Delegated to a JWT or webhook provider                                                   | First-party Auth with OAuth, MFA, Teams                              |
+| Authorization    | Role-based permissions on models and fields via metadata                                 | Permissions on tables, rows, buckets, and files                      |
+| File storage     | Not included                                                                             | Buckets with permissions, antivirus, transformations                 |
+| Custom logic     | Actions, Event Triggers, TypeScript/Python/Go connectors                                 | Functions in 10+ runtimes with event and CRON triggers               |
+| Realtime         | GraphQL subscriptions                                                                    | Realtime channels for rows, files, and custom events                 |
+| Frontend hosting | Not included                                                                             | Sites with Git deploys and rollbacks                                 |
+| Data federation  | Core strength, supergraph across many sources                                            | Not a federation layer                                               |
+| Self-hosting     | Yes, Apache 2.0 engine                                                                   | Yes, full platform under BSD 3-Clause                                |
+| SDKs             | GraphQL clients, any language                                                            | Official SDKs for web, Flutter, Apple, Android, and server languages |
+
+# Does Hasura or Appwrite give you authentication out of the box?
+
+**Appwrite does. Hasura does not.**
+
+Hasura is a permission enforcement layer, not an identity provider. You run an auth service that issues JWTs with claims like `x-hasura-role` and `x-hasura-user-id`, and Hasura uses those claims to filter queries. That design is flexible and pairs cleanly with an enterprise IdP you already run, but it is one more system to select, integrate, and pay for.
+
+Appwrite Auth manages users, sessions, OAuth flows, MFA enrollment, and Teams directly. Permissions on rows and files reference those users and teams without a token-mapping layer in between.
+
+If your organization already standardizes on Okta or Entra ID, Hasura's delegation model is a reasonable fit. If you are starting from zero, an integrated auth service removes a week of setup.
+
+# How do Appwrite and Hasura compare on GraphQL?
+
+**Both support GraphQL, but they arrive at it differently.**
+
+Hasura's whole premise is instant GraphQL. It introspects your schema and generates queries, mutations, subscriptions, aggregations, and relationship traversal automatically. The generated schema is deep, and filtering, pagination, and nested selection are handled for you.
+
+Appwrite exposes a [GraphQL API](/docs/apis/graphql) at `/v1/graphql` covering every resource on the platform. Everything available through REST is available through GraphQL, except OAuth. Model parameters are prefixed with `_` instead of `$`, since `$` is reserved in GraphQL. It is a complete API, but it is a platform API rather than a generated schema tuned to an arbitrary database you designed.
+
+If GraphQL ergonomics over a complex relational schema are the deciding factor, Hasura is the stronger tool. If you want a choice of REST, GraphQL, or Realtime against a backend you did not have to assemble, Appwrite covers more ground. Our breakdown of [REST vs GraphQL vs WebSockets](/blog/post/rest-vs-graphql-websockets-which-is-best-for-your-app) goes deeper on picking a protocol.
+
+# Which is better for realtime updates?
+
+**Both do realtime, with different mechanics.**
+
+Hasura serves GraphQL subscriptions that re-run a query and push results when underlying data changes. Event Triggers complement this by calling webhooks on inserts, updates, and deletes.
+
+Appwrite Realtime opens a WebSocket connection and streams events on channels you subscribe to, including row changes, file events, and account events. There is no query language involved, which makes it simpler to wire into a client but less expressive for filtered result sets.
+
+Subscriptions win when clients need live results of a specific filtered query. Channels win when clients need to react to events across the backend with minimal setup.
+
+# How do Appwrite and Hasura pricing models compare?
+
+|               | Hasura DDN                                                                                                         | Appwrite Cloud                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Free tier     | $0, unlimited models, single supergraph developer, 15-minute observability retention                               | Free plan with limits on bandwidth, storage, executions, and users                   |
+| Mid tier      | Base from $5 per active model per month, adds unlimited developers, 30-day retention, SSO, audit logs, VPC options | Pro from $25 per month with 2TB bandwidth, 150GB storage, 3.5M executions, 200K MAUs |
+| Higher tier   | Advanced from $30 per active model per month, adds federated collaboration and multi-repo CI/CD                    | Scale from $599 per month, plus Enterprise                                           |
+| Metering unit | Active models, defined as models accessed more than 1,000 times per month                                          | Bandwidth, storage, executions, and monthly active users                             |
+| Extra costs   | Database hosting, auth provider, file storage, connector hosting at $0.075 per vCPU-hour                           | None for the bundled services; add-ons available                                     |
+
+The unit of billing is the real difference. Hasura's per-active-model pricing scales with how many entities you expose, which is predictable for a stable data model and less so during rapid schema growth. Appwrite's usage-based pricing scales with traffic. Model both against your own numbers rather than comparing headline prices, and remember to add the database and auth bills to the Hasura column.
+
+# Can you self-host Appwrite and Hasura?
+
+**Yes, both, with different scope.**
+
+Hasura's GraphQL Engine v2 core is Apache 2.0, and the v3 engine and connectors are [open source on GitHub](https://github.com/hasura/graphql-engine) under Apache 2.0. Several DDN platform features, including managed builds, observability retention, and team collaboration tooling, are part of the commercial offering.
+
+Appwrite is BSD 3-Clause and self-hosts as a complete platform. The self-hosted API surface matches Appwrite Cloud, so moving between them is a configuration change rather than a rewrite. Our post on [self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) covers the operational trade-offs either way.
+
+# When should you choose Hasura?
+
+Hasura fits when the data already exists and the problem is access:
+
+* You need one API over multiple databases, warehouses, and services owned by different teams.
+* Your schema is complex and relational, and generated GraphQL saves real resolver work.
+* You already run an identity provider and want a permission layer that consumes its tokens.
+* Governance requirements call for role-based field access, audit logs, and SSO at the data layer.
+* You are exposing governed business data to LLMs and want a semantic layer in front of it.
+
+# When should you choose Appwrite?
+
+Appwrite fits when you are building the product, not federating existing data:
+
+* You are starting a new app and need auth, database, storage, and functions on day one.
+* Your team is small and integration time is the scarcest resource.
+* You need mobile-friendly SDKs for Flutter, Apple, Android, and web against one backend.
+* You want user-scoped permissions on rows and files without writing an authorization layer.
+* You want to self-host the full stack under a permissive license, or move between self-hosted and Cloud later.
+
+Some teams run both. Appwrite handles the app backend while Hasura federates analytics and legacy systems for internal tools. Those roles do not conflict.
+
+# Getting started with Appwrite as a Hasura alternative
+
+If your project is an application rather than a data federation problem, start with [Appwrite Cloud](https://cloud.appwrite.io) and the [quick start guides](/docs/quick-starts). You can build auth, a database, file uploads, and server-side logic against one API before deciding whether to self-host.
+
+If your project is genuinely about unifying data you already own across many systems, Hasura is the better-suited tool and worth evaluating on its own terms.
+
+## Resources
+
+* [Appwrite documentation](/docs)
+* [Appwrite Auth](/docs/products/auth)
+* [Appwrite TablesDB](/docs/products/databases)
+* [Appwrite GraphQL API](/docs/apis/graphql)
+* [Appwrite Functions](/docs/products/functions)
+* [Appwrite pricing](/pricing)
+* [Appwrite on GitHub](https://github.com/appwrite/appwrite)
+* [Join the Appwrite Discord](https://appwrite.io/discord)
