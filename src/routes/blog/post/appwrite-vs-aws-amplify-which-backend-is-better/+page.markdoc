@@ -1,0 +1,201 @@
+---
+layout: post
+title: "Appwrite vs. AWS Amplify: Which backend is better?"
+description: Compare Appwrite and AWS Amplify across features, pricing, auth, databases, functions, and hosting to find the better backend for your project.
+date: 2026-08-22
+cover: /images/blog/appwrite-vs-aws-amplify-which-backend-is-better/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+faqs:
+  - question: Is Appwrite a good alternative to AWS Amplify?
+    answer: Yes. Appwrite is a strong AWS Amplify alternative if you want authentication, databases, storage, functions, realtime, messaging, and hosting in one platform without assembling separate AWS services. It can also run on Appwrite Cloud or be self-hosted.
+  - question: Which is cheaper, Appwrite or AWS Amplify?
+    answer: It depends on your workload. Appwrite Cloud uses tiered plans with defined resource limits, while AWS Amplify uses pay-as-you-go pricing across Amplify Hosting and underlying services such as Cognito, DynamoDB, AppSync, Lambda, and S3. AWS can be inexpensive at low usage, but estimating total backend costs requires accounting for several services.
+  - question: Can AWS Amplify be self-hosted?
+    answer: No. AWS Amplify provisions and runs backend infrastructure on AWS. Appwrite can be run as a managed service on Appwrite Cloud or self-hosted on infrastructure that supports Docker.
+  - question: Which is better for React and Next.js, Appwrite or AWS Amplify?
+    answer: Both work with React and Next.js. Amplify Gen 2 provides a TypeScript-first development model built around AWS infrastructure, while Appwrite is framework-agnostic and provides SDKs and APIs alongside Sites for deploying static and server-rendered applications.
+  - question: Which is better for mobile apps, Appwrite or AWS Amplify?
+    answer: Both support mobile development. Appwrite is a good fit when you want the same backend APIs across web and mobile with SDKs for platforms such as Flutter, Apple, Android, and React Native. Amplify is stronger when the mobile application needs deep integration with the wider AWS ecosystem.
+---
+Both Appwrite and AWS Amplify get filed under "backend as a service," and that label hides the thing that actually matters. Appwrite is one platform with its own auth, database, storage, functions, messaging, and hosting behind a single API. Amplify is a toolchain that provisions and wires together AWS services you then own directly: Cognito, AppSync, DynamoDB, S3, Lambda, and CloudFront.
+
+That difference shows up in your first week and again two years later when you try to change something. This comparison walks through auth, databases, functions, hosting, pricing, and lock-in so you can pick based on your team and constraints rather than feature checklists.
+
+# What is the difference between Appwrite and AWS Amplify?
+
+**Appwrite is an open-source backend platform you can self-host or run on Appwrite Cloud, with auth, databases, storage, functions, realtime, messaging, and hosting as first-party products behind one API. AWS Amplify is a TypeScript-based toolchain and hosting layer that provisions AWS services into your own AWS account, so your backend is really a set of AWS primitives that Amplify configures for you.**
+
+Here is the short version before the details:
+
+| Dimension          | Appwrite                                           | AWS Amplify                                            |
+| ------------------ | -------------------------------------------------- | ------------------------------------------------------ |
+| Shape              | Single integrated platform                         | Toolchain over many AWS services                       |
+| Open source        | Yes (BSD 3-Clause)                                 | SDKs and CLI are open; the platform is AWS-managed     |
+| Self-hosting       | Yes, full stack via Docker                         | No, you deploy into an AWS account                     |
+| Backend definition | Console, CLI, or API                               | TypeScript files compiled through AWS CDK              |
+| Data model         | Databases, tables, rows with row-level permissions | GraphQL schema on DynamoDB, or existing MySQL/Postgres |
+| Pricing shape      | Tiered plans with resource caps                    | Per-service AWS usage billing                          |
+| Best fit           | Teams that want one backend and portability        | Teams already standardized on AWS                      |
+
+# What is AWS Amplify?
+
+[AWS Amplify](https://aws.amazon.com/amplify/) is AWS's front door for full-stack app development. In Gen 2, you declare your backend in TypeScript files like `amplify/auth/resource.ts` and `amplify/data/resource.ts`, and Amplify compiles those definitions through the AWS CDK into real AWS resources.
+
+What sits underneath each Amplify feature:
+
+* **Auth** is Amazon Cognito user pools, with sign-in flows, MFA, and social providers configured from code.
+* **Data** is [AWS AppSync](https://docs.amplify.aws/react/build-a-backend/data/) exposing a GraphQL API over DynamoDB, with the option to connect existing MySQL and PostgreSQL databases.
+* **Storage** is Amazon S3 with access rules expressed in your backend definition.
+* **Functions** are AWS Lambda.
+* **Hosting** is Amplify Hosting on CloudFront, with branch-based deployments, pull request previews, and Next.js SSR support.
+
+The developer experience worth calling out is the sandbox: each developer gets an isolated cloud environment to iterate against, and shared environments map one-to-one with Git branches. If your team already lives in AWS, that model is genuinely good. Your backend is IaC, your IAM policies are the same policies as the rest of your org, and you can drop into raw CDK whenever Amplify's abstractions run out.
+
+# What is Appwrite?
+
+[Appwrite](/) is an open-source backend platform that ships auth, data, files, server-side logic, realtime, messaging, and hosting as products on one API surface. You can run it on [Appwrite Cloud](https://cloud.appwrite.io/) or [self-host it](/docs/advanced/self-hosting) with Docker, and the API is the same either way.
+
+The product surface:
+
+* [Auth](/docs/products/auth) with email and password, OAuth2 providers, phone and email OTP, magic URLs, JWT, anonymous sessions, MFA, plus Teams and labels for roles.
+* [Databases](/docs/products/databases) organized into databases, tables, and rows, with typed columns, relationships, indexes, queries, pagination, and row-level permissions.
+* [Storage](/docs/products/storage) with buckets, permissions, antivirus scanning, file previews, and image transformations.
+* [Functions](/docs/products/functions) with in-house [runtimes](/docs/products/functions/runtimes) for 14 languages including Node.js, Python, PHP, Ruby, Dart, Go, Java, Kotlin, Swift, .NET, Rust, Deno, Bun, and C++.
+* [Realtime](/docs/apis/realtime) over WebSockets across products, not just database changes.
+* [Messaging](/docs/products/messaging) for email, SMS, and push through configured providers.
+* [Sites](/docs/products/sites) for hosting static and SSR frontends with Git deploys, custom domains, environment variables, deployment previews, and instant rollbacks.
+
+Everything is reachable through [REST, GraphQL, and 13+ SDKs](/docs/sdks), and the source is on [GitHub](https://github.com/appwrite/appwrite) under BSD 3-Clause.
+
+# Appwrite vs AWS Amplify: feature comparison
+
+| Capability             | Appwrite                                                         | AWS Amplify                                        |
+| ---------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
+| Auth                   | First-party Auth with OAuth2, OTP, magic URL, MFA, Teams, labels | Amazon Cognito user pools                          |
+| Database               | Databases, tables, rows, relationships, row-level permissions    | GraphQL over DynamoDB, or connected MySQL/Postgres |
+| API style              | REST, GraphQL, and realtime WebSockets                           | GraphQL-first via AppSync, REST via API Gateway    |
+| Storage                | Buckets with permissions, previews, image transformations        | Amazon S3 with access rules                        |
+| Functions              | 14 language runtimes, event and CRON triggers                    | AWS Lambda, Node.js and Python                     |
+| Realtime               | WebSocket channels across all products                           | AppSync GraphQL subscriptions                      |
+| Messaging              | Email, SMS, push as a first-party product                        | Assemble from SES, SNS, and Pinpoint yourself      |
+| Frontend hosting       | Appwrite Sites, static and SSR                                   | Amplify Hosting on CloudFront, static and SSR      |
+| Client SDKs            | Web, Flutter, Apple, Android, React Native, and server SDKs      | JavaScript, Swift, Android, Flutter, React Native  |
+| Infrastructure as code | Appwrite CLI and Terraform provider                              | Native, TypeScript definitions on AWS CDK          |
+| Self-host              | Yes, full platform                                               | No                                                 |
+
+## How do Appwrite and Amplify compare on authentication?
+
+**Both cover the standard flows. The difference is whether identity is a product you configure or a service you assemble.**
+
+Appwrite Auth is one API with sessions, OAuth2 providers, OTP, magic URLs, MFA, and password security defaults, plus Teams for multi-tenant roles. Amplify Auth is Cognito, which is a mature, enterprise-grade identity service with deep IAM integration, adaptive authentication on its Plus tier, and SAML and OIDC federation. Cognito is also the piece developers most often describe as awkward to configure, and SMS and email delivery route through SNS and SES as separate services you set up and pay for.
+
+If you need SAML federation tied to AWS IAM roles, Cognito is the stronger fit. If you want auth working in an afternoon with Teams and roles included, Appwrite is faster to stand up.
+
+## How do the databases compare?
+
+**Amplify is GraphQL-first over DynamoDB. Appwrite gives you tables and rows with permissions per row, queried through REST, GraphQL, or SDKs.**
+
+Amplify's `defineData` generates a typed client from your GraphQL schema, which is a real productivity win if GraphQL is already your API layer. The trade-off is DynamoDB's access patterns: you design your keys and indexes around your queries up front, and getting that wrong is expensive to fix later. Amplify Data can connect to existing MySQL and PostgreSQL if you need relational semantics, but that is a bring-your-own-database path with its own setup.
+
+Appwrite Databases sit at a higher level of abstraction. You define tables and typed columns, model relationships, add indexes, and set permissions on individual rows without writing rules in a separate language. You get less control over the query planner than raw SQL gives you, which is the honest cost of that abstraction.
+
+## How do serverless functions compare?
+
+**Appwrite runs functions in 14 languages on its own runtimes. Amplify functions are Lambda, which means fewer Amplify-managed languages but the full Lambda ecosystem behind them.**
+
+Amplify's function story is deliberately thin because Lambda already exists. You can define handlers in your Amplify backend or attach any Lambda you already have, with all of the Lambda ecosystem's layers, VPC access, and step function orchestration available. Cold starts, IAM policies, and CloudWatch debugging come along with it.
+
+Appwrite [Functions](/docs/products/functions) covers a much wider language surface, ships a template marketplace for common integrations, and triggers on platform events or CRON schedules without extra wiring. It does not give you the depth of the Lambda ecosystem, so heavy orchestration workloads are a genuine point in Amplify's favor.
+
+## How does hosting compare between Appwrite Sites and Amplify Hosting?
+
+**Both do Git-based deployments with custom domains, previews, and SSR. Amplify Hosting rides on CloudFront; Appwrite Sites runs on the Appwrite Network and sits next to your backend in the same console.**
+
+Amplify Hosting is a solid CDN-backed host with branch deployments, PR previews, and Next.js SSR. Appwrite Sites gives you the same core workflow with [zero-config framework detection](/docs/products/sites/frameworks), [instant rollbacks](/docs/products/sites/instant-rollbacks), and one dashboard for the frontend and the backend it talks to. For a wider look at this specific slice, see our [Vercel, Netlify, Amplify, and Appwrite Sites comparison](/blog/post/netlify-vs-vercel-vs-amplify-vs-appwrite-sites).
+
+{% call\_to\_action title\="All-in-one development platform" description\="Use built-in backend infrastructure and web hosting, all from a single place." point1\="Start for free" point2\="Open source" point3\="Support for over 13 SDKs" point4\="Managed cloud solution" cta\="Start building" url\="https://cloud.appwrite.io/" /%}
+
+# How does pricing compare between Appwrite and AWS Amplify?
+
+**Appwrite charges tiered plans with published resource caps. Amplify charges per AWS service, so your bill is the sum of hosting, Cognito, Lambda, DynamoDB, AppSync, and S3 usage.**
+
+Amplify's published rates, as of August 2026:
+
+| Amplify component        | Rate                                        |
+| ------------------------ | ------------------------------------------- |
+| Build minutes (standard) | 1,000/month free, then $0.01/minute         |
+| Data served              | 15 GB/month free, then $0.15/GB             |
+| Data stored on CDN       | 5 GB/month free, then $0.023/GB             |
+| SSR requests             | 500K/month free, then $0.30 per million     |
+| SSR compute              | 100 GB-hours/month free, then $0.20/GB-hour |
+| Cognito (Essentials)     | 10,000 MAU free, then $0.015/MAU            |
+
+Those are [Amplify Hosting](https://aws.amazon.com/amplify/pricing/) and [Cognito](https://aws.amazon.com/cognito/pricing/) only. DynamoDB reads and writes, Lambda invocations, AppSync operations, S3 storage and requests, and data transfer are billed separately at their own rates.
+
+Appwrite's [plans](/pricing):
+
+| Appwrite plan | Price           | Included                                                                 |
+| ------------- | --------------- | ------------------------------------------------------------------------ |
+| Free          | $0              | 5 GB bandwidth, 2 GB storage, 750K executions, 75K MAU                   |
+| Pro           | From $25/month  | 2 TB bandwidth, 150 GB storage, 3.5M executions, 200K MAU, daily backups |
+| Scale         | From $599/month | Higher limits, more control, dedicated support                           |
+| Self-hosted   | Free            | Your own infrastructure costs                                            |
+
+The practical difference is forecasting. Amplify's model is precise and scales down to near zero for small projects, but predicting a bill means modeling six services at once. Appwrite's tiers are easier to reason about, at the cost of paying for headroom you may not use yet. Neither is universally cheaper, and if you already run AWS workloads with committed spend, Amplify's usage billing may come out ahead.
+
+# How much vendor lock-in does each platform have?
+
+**Amplify has high lock-in to AWS by design. Appwrite has lower lock-in because the platform itself is open source and self-hostable with an identical API.**
+
+Amplify's lock-in is not the CLI or the SDKs, both of which are open source. It is the service graph underneath: Cognito user pools, DynamoDB table designs, AppSync resolvers, and IAM policies do not transfer anywhere else. Because Gen 2 compiles to CDK, you keep your resources if you stop using Amplify, but they remain AWS resources.
+
+Appwrite runs the same API on Appwrite Cloud and on your own Docker infrastructure, so moving between managed and self-hosted does not mean rewriting your application. That is a real difference in exit cost, though it is worth being honest that migrating off any backend still means moving data, rewriting auth integration, and re-testing permissions. Our post on [self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) digs into that trade-off.
+
+# When should you choose AWS Amplify?
+
+Amplify is the better pick when:
+
+* Your organization is already standardized on AWS, with existing IAM, billing, and compliance processes.
+* You want your backend defined as infrastructure as code and expect to extend it with raw CDK.
+* GraphQL is your API layer and you want a typed client generated from your schema.
+* You need AWS-specific services in the same stack, like Bedrock, Step Functions, or Kinesis.
+* Cognito's SAML and OIDC federation or adaptive authentication maps to a real requirement.
+* You have or can hire the AWS expertise to debug across service boundaries.
+
+# When should you choose Appwrite?
+
+Appwrite is the better pick when:
+
+* You want auth, data, storage, functions, realtime, messaging, and hosting from one platform and one console.
+* Self-hosting matters for data residency, compliance, or cost control, now or later.
+* You want to write functions in a language AWS does not offer a managed Amplify runtime for.
+* You need first-party push, SMS, and email without assembling SNS, SES, and Pinpoint.
+* You are shipping mobile apps and want first-party Flutter, Apple, Android, and React Native SDKs.
+* You would rather read one pricing page than model six services.
+
+# So which backend is better, Appwrite or AWS Amplify?
+
+Neither wins outright, and the honest answer depends on one question: is AWS a constraint you already live with, or a choice you are making now?
+
+If AWS is already your platform, Amplify is the path of least resistance. It gives you a real IaC workflow, an escape hatch into CDK, and access to every AWS service without leaving your account. The costs are a steeper learning curve, cross-service debugging, and a bill that takes work to predict.
+
+If you are choosing freely, Appwrite covers the same surface area with far less assembly, and keeps an exit path open through open source and self-hosting. The trade-offs are a younger third-party ecosystem than AWS, less depth than Lambda for heavy orchestration, and less control than raw SQL for query-intensive workloads.
+
+The fastest way to decide is to build the same thin slice on both: signup and login, one create-read-update path, and one background job. A weekend of that tells you more than any comparison table, including this one. For the wider landscape, our [backend as a service comparison](/blog/post/backend-as-a-service) covers Firebase, Supabase, Convex, and Amplify side by side.
+
+# Getting started with Appwrite&#x20;
+
+If Appwrite looks like the right fit, the quickest start is a free project on [Appwrite Cloud](https://cloud.appwrite.io/). Set up [Auth](/docs/products/auth/quick-start), model your first table in [Databases](/docs/products/databases/quick-start), and deploy your frontend with [Appwrite Sites](/docs/products/sites/quick-start) so the frontend and backend sit in the same console. If self-hosting is the requirement, the [self-hosting guide](/docs/advanced/self-hosting) gets you running with a single Docker command, and your application code stays the same.
+
+# Resources
+
+* [Appwrite documentation](/docs)&#x20;
+* [Appwrite Sites](/docs/products/sites)&#x20;
+* [Functions runtimes](/docs/products/functions/runtimes)&#x20;
+* [Self-hosting Appwrite](/docs/advanced/self-hosting)&#x20;
+* [Appwrite pricing](/pricing)&#x20;
+* [Appwrite GitHub](https://github.com/appwrite/appwrite)&#x20;
+* [Appwrite Discord](https://appwrite.io/discord)&#x20;
