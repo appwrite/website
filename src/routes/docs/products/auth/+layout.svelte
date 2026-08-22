@@ -132,6 +132,11 @@
                     new: isNewUntil('30 November 2026')
                 },
                 {
+                    label: 'Custom MFA channels',
+                    href: '/docs/products/auth/custom-mfa-channels',
+                    new: isNewUntil('30 November 2026')
+                },
+                {
                     label: 'Auth status check',
                     href: '/docs/products/auth/checking-auth-status'
                 },
