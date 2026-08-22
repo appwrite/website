@@ -25,7 +25,7 @@
     $effect(() => {
         baseWidth = activeCommand.offsetWidth;
 
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
 
             widthAnim?.stop();
@@ -46,7 +46,7 @@
             };
         });
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -70,6 +70,13 @@
             },
             { amount: 'all' }
         );
+
+        return () => {
+            stopHover();
+            stopInView();
+            widthAnim?.stop();
+            widthAnim = null;
+        };
     });
 </script>
 

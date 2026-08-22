@@ -16,7 +16,15 @@
     let currentAnimation: WriteAnimation | null = null;
 
     $effect(() => {
-        inView(
+        // The write animation can settle after the component has been destroyed
+        // (e.g. the user clicks the card mid-animation), by which point
+        // `bind:this` has already reset `button` to null.
+        const pulseButton = () => {
+            if (!button) return;
+            animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
+        };
+
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -28,9 +36,7 @@
                     1000,
                     password.length
                 );
-                currentAnimation.then(() => {
-                    animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
-                });
+                currentAnimation.then(pulseButton);
                 return () => {
                     currentAnimation?.cancel();
                     currentAnimation = unwrite(
@@ -43,14 +49,12 @@
             { amount: 'all' }
         );
 
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
 
             currentAnimation?.cancel();
             currentAnimation = write('•••••••••••••', (v) => (password = v), 1000, password.length);
-            currentAnimation.then(() => {
-                animate(button, { scale: [1, 0.95, 1] }, { duration: 0.25 });
-            });
+            currentAnimation.then(pulseButton);
             return () => {
                 currentAnimation?.cancel();
                 currentAnimation = unwrite(
@@ -60,6 +64,13 @@
                 );
             };
         });
+
+        return () => {
+            stopInView();
+            stopHover();
+            currentAnimation?.cancel();
+            currentAnimation = null;
+        };
     });
 </script>
 

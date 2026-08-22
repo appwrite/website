@@ -10,7 +10,7 @@
     let image: HTMLElement;
 
     $effect(() => {
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
 
             animate(image, { borderRadius: '24px', filter: 'grayscale(25%)' }, { duration: 0.2 });
@@ -27,7 +27,7 @@
             };
         });
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -53,6 +53,11 @@
                 amount: 'all'
             }
         );
+
+        return () => {
+            stopHover();
+            stopInView();
+        };
     });
 </script>
 

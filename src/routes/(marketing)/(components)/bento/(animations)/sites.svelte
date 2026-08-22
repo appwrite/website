@@ -46,9 +46,10 @@
     ];
 
     let shouldAnimate = $state<boolean>(false);
+    let secondsAnimation: ReturnType<typeof animate> | null = null;
 
     $effect(() => {
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
 
             shouldAnimate = true;
@@ -57,6 +58,7 @@
                 onUpdate: (latest) => (seconds = +latest.toFixed()),
                 duration: 44
             });
+            secondsAnimation = animation;
 
             currentAnimation?.cancel();
             currentAnimation = write(
@@ -82,7 +84,7 @@
             };
         });
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -92,6 +94,7 @@
                     onUpdate: (latest) => (seconds = +latest.toFixed()),
                     duration: 44
                 });
+                secondsAnimation = animation;
 
                 currentAnimation?.cancel();
                 currentAnimation = write(
@@ -118,6 +121,15 @@
             },
             { amount: 'all' }
         );
+
+        return () => {
+            stopHover();
+            stopInView();
+            secondsAnimation?.stop();
+            secondsAnimation = null;
+            currentAnimation?.cancel();
+            currentAnimation = null;
+        };
     });
 </script>
 

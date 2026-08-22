@@ -65,7 +65,7 @@
     let shouldAnimate = $state<boolean>(false);
 
     $effect(() => {
-        hover(container, () => {
+        const stopHover = hover(container, () => {
             if (isMobile()) return;
             animate(
                 table,
@@ -99,7 +99,7 @@
             };
         });
 
-        inView(
+        const stopInView = inView(
             container,
             () => {
                 if (!isMobile()) return;
@@ -137,6 +137,11 @@
             },
             { amount: 'all' }
         );
+
+        return () => {
+            stopHover();
+            stopInView();
+        };
     });
 </script>
 
