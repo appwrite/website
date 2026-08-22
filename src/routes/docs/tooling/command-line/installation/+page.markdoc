@@ -172,6 +172,16 @@ appwrite login --switch
 
 The CLI lists the available accounts and endpoints for you to choose from. You can also run `appwrite whoami` to see the active account or get recovery instructions when another saved account is available.
 
+To select a saved account without a prompt, pass its endpoint, email, or both:
+
+```sh
+appwrite login --switch --endpoint "https://<REGION>.cloud.appwrite.io/v1" --email "user@example.com"
+```
+
+The CLI matches `--email` case-insensitively and normalizes equivalent Appwrite Cloud regional endpoints. A selector must match exactly one saved account. If it matches multiple accounts, the CLI tells you to add the missing `--email` or `--endpoint` selector; if it matches none, the CLI lists the available saved accounts. In a non-interactive terminal, `--switch` requires at least one selector and fails instead of opening a prompt.
+
+The `--password`, `--mfa`, and `--code` options cannot be combined with `--switch`. They are credentials for a new self-hosted login, not selectors for a saved account.
+
 {% info title="Seeing an email and password prompt instead?" %}
 Older CLI versions, and CLI sessions pointed at a self-hosted Appwrite instance, do not support the OAuth device authorization flow and fall back to asking for your email and password. Run `appwrite update` to get the latest version, or pass the Appwrite Cloud endpoint explicitly:
 

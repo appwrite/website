@@ -52,6 +52,37 @@ Run `appwrite --help` to browse commands grouped by what you want to do, includi
 ---
 {% /table %}
 
+## GraphQL requests {% #graphql-requests %}
+
+Both `appwrite graphql query` and `appwrite graphql mutation` accept a raw GraphQL document with `--query`:
+
+```sh
+appwrite graphql query --query 'query { usersList { total } }'
+
+appwrite graphql mutation --query 'mutation { usersCreate(userId: "unique()", email: "user@example.com", password: "very_strong_password") { _id } }'
+```
+
+For variables or `operationName`, pass a JSON request object whose `query` field contains the document:
+
+```sh
+appwrite graphql query --query '{
+  "query": "query GetUser($id: String!) { usersGet(userId: $id) { _id name } }",
+  "variables": { "id": "USER_ID" },
+  "operationName": "GetUser"
+}'
+```
+
+To batch operations, pass a JSON array of request objects:
+
+```sh
+appwrite graphql query --query '[
+  { "query": "query { usersList { total } }" },
+  { "query": "query { teamsList { total } }" }
+]'
+```
+
+The value of `--query` must be a non-empty raw GraphQL document, a JSON request object, or a JSON array of request objects. A JSON string containing a GraphQL document is also accepted. JSON booleans, numbers, and `null` are rejected.
+
 ## Account commands {% #account-commands %}
 
 {% table %}
@@ -172,7 +203,7 @@ When only a project ID is available, the CLI can discover its organization. Proj
 * Skip confirmation prompts
 ---
 * `-a,--all`          
-* Flag to push all resources
+* Select every applicable resource or skill
 ---
 * `--id [id...]`      
 * Flag to pass a list of ids for a given action
@@ -212,7 +243,7 @@ appwrite client --reset --force
 By default, the CLI formats responses for quick reading. It summarizes long lists of enabled settings, adds readable hints to timestamps, durations, and byte sizes, and hides secret values. Use `--json` for filtered JSON or `--raw` for the complete API response when you need machine-readable output. Add `--show-secrets` only when you intentionally need secret values in the output.
 
 # All {% #all %}
-By default, when pushing or pulling resources, Appwrite CLI would ask you to select specific resources. Use the `--all` flag to select all available options.
+By default, the Appwrite CLI asks you to select specific resources when pushing or pulling. Use the `--all` flag to select all available resources. The same flag installs every available agent skill with `appwrite init skill --all`.
 
 ```sh
 appwrite pull functions --all
