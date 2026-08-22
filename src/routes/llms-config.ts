@@ -13,5 +13,10 @@ export const SPECIAL_PAGES = [
 
 Browse integrations by category including AI, Deployments, Messaging, Auth, Payments, Logging, MCP, Databases, Search, Sites, and Storage.`
     }
-    // Add more special pages here as needed
+    {
+        href: '/terminal',
+        title: 'Appwrite Terminal',
+        description:
+            'Interactive terminal-style overview of Appwrite — an open-source backend with auth, databases, storage, functions, realtime, messaging, and hosting. Includes product explanations, SDK examples, and developer easter eggs.'
+    }
 ] as const;
