@@ -126,6 +126,7 @@ type AppwriteAdditionalMethod = {
 
 export type AppwriteSchemaObject = OpenAPIV3.SchemaObject & {
     'x-example': string;
+    example?: OpenAPIV3.SchemaObject['example'];
 };
 
 export interface Property {
