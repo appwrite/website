@@ -1,0 +1,15 @@
+---
+layout: changelog
+title: The Appwrite CLI is now powered by Go
+date: 2026-08-09
+---
+
+The Appwrite CLI has been rewritten in Go, giving it a faster, more robust foundation while keeping the commands and workflows you already use. Startup is significantly faster, and standalone binaries remain available across macOS, Windows, and Linux.
+
+The first rollout updates also make installation and updates more reliable. Release candidates now stay on the prerelease channel when you run `appwrite update`, while stable releases continue to follow the stable channel. Function and site deployments can package source directories correctly, longer-running changes avoid premature timeouts, and `init function` no longer suggests an install step that is not required.
+
+Command input is smoother too. Repeated JSON flags now decode objects correctly for bulk operations, and GraphQL commands accept raw query and mutation documents in addition to JSON request objects and batches. For headless automation, `appwrite init skill` can select skills, agent directories, and the installation method without an interactive terminal.
+
+{% arrow_link href="/docs/tooling/command-line/installation#update-your-cli" %}
+Update the Appwrite CLI
+{% /arrow_link %}
