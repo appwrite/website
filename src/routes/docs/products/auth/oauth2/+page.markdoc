@@ -28,6 +28,10 @@ Before using OAuth 2 login, you need to enable and configure an OAuth 2 login pr
 
 To initialize the OAuth 2 login process, use the [Create OAuth 2 Session](/docs/references/cloud/client-web/account#createOAuth2Session) route.
 
+{% info title="Third‑Party cookies" %}
+Most browsers now block third‑party cookies by default, so `createOAuth2Session` may not set a session. Use the [token‑based flow](/docs/products/auth/server-side-rendering#oauth2) instead or set up a custom domain in Appwrite that matches your app’s origin so cookies are first‑party. Learn more here: [Fixing OAuth2 issues in Appwrite Cloud](/blog/post/fixing-oauth2-issues-in-appwrite-cloud).
+{% /info %}
+
 OAuth2 sessions allow you to specify the scope of the access you want to request from the OAuth2 provider.
 The requested scopes describe which resources a session can access.
 
