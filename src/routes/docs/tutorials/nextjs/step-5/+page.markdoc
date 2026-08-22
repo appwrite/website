@@ -11,7 +11,7 @@ We will use the `useAuth()` hook for information about the current user.
 With this piece of information we will show a login button when no user is logged in and a logout button when one is.
 We will also put the user's email address next to the logout button.
 
-Create a new file `src/components/Navbar.tsx` and add the code below.
+Create a new file called `src/components/Navbar.tsx` and add the following code.
 
 ```tsx
 // src/components/Navbar.tsx
