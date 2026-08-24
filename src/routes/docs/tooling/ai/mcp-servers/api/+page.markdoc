@@ -20,10 +20,10 @@ Here are some of the key benefits of using the MCP server:
 Before launching the MCP server, you must [set up an Appwrite project](https://cloud.appwrite.io) and create an **API key** with the necessary scopes enabled.
 
 {% only_light %}
-![Appwrite API key](/images/docs/mcp/appwrite/appwrite-api-secret.avif)
+![Appwrite API key](/images/docs/platform/create-api-key.avif)
 {% /only_light %}
 {% only_dark %}
-![Appwrite API key](/images/docs/mcp/appwrite/dark/appwrite-api-secret.avif)
+![Appwrite API key](/images/docs/platform/dark/create-api-key.avif)
 {% /only_dark %}
 
 Ensure you save the **API key** along with the **project ID**, **region** and **endpoint URL** from the Settings page of your project as you'll need them later.
