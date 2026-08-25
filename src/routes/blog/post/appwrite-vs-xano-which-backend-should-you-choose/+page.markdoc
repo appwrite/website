@@ -1,0 +1,168 @@
+---
+layout: post
+title: "Appwrite vs. Xano: Which backend should you choose?"
+description: See how Appwrite and Xano compare across development workflows, backend features, hosting, and scalability to find the right fit for your app.
+date: 2026-08-25
+cover: /images/blog/appwrite-vs-xano-which-backend-should-you-choose/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: comparisons
+featured: false
+faqs:
+  - question: Which is better for mobile apps, Appwrite or Xano?
+    answer: Appwrite is generally the stronger fit for mobile applications because it provides SDKs for Flutter, Apple, Android, and React Native, along with authentication, storage, databases, and realtime support. Xano can power mobile apps through REST APIs, but its client SDK coverage is more limited.
+  - question: Which is easier to self-host, Appwrite or Xano?
+    answer: Appwrite is easier to self-host because its open-source stack can run on Docker-compatible infrastructure without requiring an enterprise plan. Xano offers self-hosting and bring-your-own-cloud deployments through its Custom plan.
+  - question: Is Appwrite or Xano better for startups?
+    answer: Xano is well suited to startups that need to launch quickly without dedicated backend engineers. Appwrite is better for startups with developers who want faster development while retaining code ownership, SDK flexibility, and the option to self-host later.
+  - question: Is Appwrite better than Xano?
+    answer: Appwrite is better for development teams that want backend logic written in code, broad SDK support, open-source software, and flexible self-hosting. Xano is better for teams that want to build and modify backend workflows through a visual editor with minimal coding.
+---
+Choosing a backend usually comes down to one question: where does your business logic live? Xano puts it in a visual editor on top of a managed PostgreSQL database. Appwrite puts it in your codebase, behind APIs and SDKs you call from any language.
+
+Both platforms remove the same infrastructure work: servers, scaling, patching, backups. They just disagree about how you should build on top of that. This Appwrite vs Xano comparison covers what each platform actually ships, where they overlap, and which one fits the way your team works.
+
+# What is the difference between Appwrite and Xano?
+
+**Xano is a closed-source, visual-first backend platform.** You model tables in a managed Postgres database, then compose API endpoints and business logic in a visual function stack. **Appwrite is an open-source backend platform.** You consume Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites through REST, GraphQL, and SDKs, and you can self-host the entire stack.
+
+The practical split:
+
+* **Pick Xano** if you want to ship a backend without writing much code, and your team includes non-engineers who need to read and change API logic.
+* **Pick Appwrite** if your backend logic belongs in Git, you want SDKs in your app's language, and you care about self-hosting or avoiding a proprietary runtime.
+
+|                     | Appwrite                                                                                                | Xano                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Model               | Open-source backend platform with APIs and SDKs                                                         | Visual no-code backend builder                                                        |
+| Source availability | Open source, self-hostable                                                                              | Closed source, managed service                                                        |
+| Database            | [Appwrite Databases](/docs/products/databases) with tables, typed columns, rows, relationships, queries | Managed [PostgreSQL](https://www.postgresql.org/) with direct DB access on paid plans |
+| Backend logic       | [Functions](/docs/products/functions) in your language of choice, deployed from Git                     | Visual function stacks, XanoScript, JS/TS Lambdas                                     |
+| Primary interface   | Code, CLI, SDKs, console                                                                                | Visual editor, with CLI and VS Code as options                                        |
+| Frontend hosting    | [Appwrite Sites](/docs/products/sites)                                                                  | Static hosting                                                                        |
+| Self-hosting        | Any Docker-compatible infrastructure, all plans                                                         | Custom plan only, or BYOC on AWS/Azure/GCP                                            |
+
+# What is Xano and who is it for?
+
+[Xano](https://www.xano.com/) describes itself as "The Scalable No-Code Backend." You get a managed Postgres database, a visual API builder that produces auto-documented REST endpoints, and a workflow engine for background tasks, scheduled jobs, and triggers.
+
+What Xano ships:
+
+* **Visual function stacks** for building endpoint logic without writing code, with middleware for shared pre and post request logic.
+* [XanoScript](https://docs.xano.com/xanoscript/introduction), a proprietary domain-specific language that "combine\[s] the structure of JSON/XML/YAML with the flexibility of TypeScript." It is optional, and Xano notes "you never have to write XanoScript to use Xano."
+* [Lambda functions](https://docs.xano.com/the-function-stack/functions/apis-and-lambdas/lambda-functions) for running JavaScript or TypeScript inside a function stack, including NPM imports.
+* [Realtime](https://docs.xano.com/realtime/realtime-in-xano) over WebSockets, with channels, presence, and channel permissions. The JavaScript SDK is the primary supported client.
+* **File storage** with public and private buckets, plus static hosting for frontends.
+* **Auth and access control** including JWE tokens, RBAC, SSO, SAML, and OIDC.
+* **AI tooling** with an agent builder and a native MCP server that exposes APIs as governed AI tools.
+
+Xano is a strong fit for teams where the backend is a means to an end: internal tools, operations platforms, agency work with tight timelines, and products where a product manager or solutions engineer needs to change an endpoint without a deploy cycle.
+
+The trade-off is that the platform is the runtime. Your endpoint logic lives in Xano's visual graph or in XanoScript, neither of which runs anywhere else. Xano is not open source, and self-hosting sits on the Custom plan.
+
+# What is Appwrite and who is it for?
+
+Appwrite is an open-source backend platform. Every product is exposed over REST, GraphQL, and Realtime APIs, with [SDKs](/docs/sdks) for web, Flutter, Apple, Android, React Native, and server-side languages.
+
+What Appwrite ships:
+
+* [Auth](/docs/products/auth) with email and password, 30+ OAuth providers, phone and email OTP, magic URLs, anonymous sessions, MFA, and Teams for roles and permissions.
+* [Databases](/docs/products/databases) with tables, typed columns, rows, relationships, indexes, queries, transactions, and row-level permissions.
+* [Storage](/docs/products/storage) with buckets, permissions, antivirus scanning, encryption, and image transformations.
+* [Functions](/docs/products/functions) across [runtimes](/docs/products/functions/runtimes) including Node.js, Python, PHP, Ruby, Deno, Bun, Go, Dart, Java, Kotlin, Swift, and .NET, with event, HTTP, and CRON triggers.
+* [Realtime](/docs/apis/realtime) channels that subscribe to row changes, file events, and account events without polling.
+* [Sites](/docs/products/sites) for hosting frontends with Git-based deploys, custom domains, environment variables, rollbacks, and logs.
+* [Messaging](/docs/products/messaging) for email, SMS, and push notifications.
+* [MCP servers](/docs/tooling/ai/mcp-servers/api) and Agent Skills so coding agents can act on your backend from Claude Code, Cursor, and other MCP clients.
+
+Appwrite fits teams that already write code and want to stop writing the same auth, storage, and CRUD layers on every project. If you are still weighing whether to use a platform at all, our post on [BaaS vs custom backend](/blog/post/baas-vs-custom-backend) covers that decision separately.
+
+The trade-off is that Appwrite has no visual API builder. There is a console for managing data, permissions, and deployments, but composing request logic means writing a Function. Non-engineers cannot ship an endpoint on their own.
+
+# How do Appwrite and Xano compare feature by feature?
+
+Both platforms cover the core backend surface. The differences are in how each capability is exposed and how far it goes.
+
+| Capability       | Appwrite                                                                                        | Xano                                                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Database         | Tables with typed columns, relationships, indexes, queries, transactions, row-level permissions | Managed Postgres, visual schema editor, direct database access on Essential and above |
+| Query interface  | REST, GraphQL, SDK query builders                                                               | Auto-generated REST endpoints you define visually                                     |
+| Custom logic     | Functions in 12+ runtimes, deployed from Git                                                    | Visual function stacks, XanoScript, JS/TS Lambdas                                     |
+| Auth             | Email/password, 30+ OAuth providers, OTP, magic URL, anonymous, MFA, Teams                      | JWE tokens, RBAC, OAuth, SSO, SAML, OIDC                                              |
+| Realtime         | Channels for row, file, and account events across all client SDKs                               | WebSocket channels with presence, JavaScript SDK first                                |
+| File storage     | Buckets with permissions, antivirus, encryption, image transformations                          | Public and private file storage with static URLs                                      |
+| Frontend hosting | Sites with Git deploys, domains, rollbacks                                                      | Static hosting                                                                        |
+| Messaging        | Email, SMS, push as a first-party product                                                       | Via external integrations                                                             |
+| AI tooling       | API MCP, Docs MCP, Agent Skills, editor plugins                                                 | Xano MCP server, MCP builder, AI agent builder                                        |
+| Compliance       | GDPR, HIPAA, SOC 2                                                                              | SOC 2, ISO 27001, GDPR, HIPAA-ready                                                   |
+
+Two honest gaps worth naming. Xano gives you real Postgres with direct access on paid plans, so if you need raw SQL, existing Postgres tooling, or complex joins written by hand, Xano is closer to that. Appwrite Databases is its own API surface, which is a better fit for permission-driven app data than for analytical SQL.
+
+On the other side, Appwrite's realtime and SDK coverage spans mobile and native clients, while Xano's realtime story is currently strongest in JavaScript.
+
+# Which platform gives you more control over backend logic?
+
+**Appwrite, if control means owning the code.** A Function is a directory in your repository, written in a language you already use, deployed from Git, and testable locally. If you leave Appwrite, that code still runs.
+
+**Xano, if control means changing behavior quickly without a deploy.** A visual function stack is editable in the browser, visible to non-engineers, and immediately live. That is real control, just at a different layer.
+
+The question to ask your team is what happens in month 18. Visual logic is fast to write and harder to review, diff, and test as it grows. Code is slower to start and scales with the tooling you already have: pull requests, CI, and version history.
+
+# Can you self-host Appwrite or Xano?
+
+**Appwrite can be self-hosted on any Docker-compatible infrastructure on any plan, and it is open source.** The API surface is identical between [self-hosted Appwrite](/docs/advanced/self-hosting) and Appwrite Cloud, so moving between them does not require rewriting your app.
+
+**Xano offers self-hosting on its Custom plan**, along with BYOC deployments into your own AWS, Azure, or GCP account and dedicated single-tenant instances. That covers data residency and compliance requirements, but it is an enterprise-tier option rather than a default, and the platform itself remains closed source.
+
+If you are still deciding between running your own infrastructure and letting a vendor do it, our breakdown of [self-hosted vs managed backends](/blog/post/self-hosted-vs-managed-backends-a-practical-comparison) walks through the cost side of that choice.
+
+# How do Appwrite and Xano pricing models compare?
+
+Both platforms have a free tier, and both charge for production workloads. The shapes differ: Appwrite prices on usage, Xano prices on instance capacity.
+
+|                  | Appwrite                                                                                                                 | Xano                                                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| Free             | $0. 5GB bandwidth, 2GB storage, 750K executions, 75K monthly active users, 1 database and 1 bucket per project           | $0. 100K database records, 1GB database storage, 1GB watermarked file storage, rate limited to 10 requests per 20 seconds |
+| Entry paid       | Pro from $25/month. 2TB bandwidth, 150GB storage, 3.5M executions, 200K MAU, unlimited databases, buckets, and functions | Essential at $85/month billed annually. 3 workspaces, 5 seats, 10GB database storage, 100GB file storage                  |
+| Higher tier      | Scale from $599/month                                                                                                    | Pro at $224/month billed annually. 25GB database storage, 250GB file storage, 99.99% SLA                                  |
+| Enterprise       | Custom                                                                                                                   | Custom, includes self-hosting                                                                                             |
+| Self-hosted cost | Infrastructure only                                                                                                      | Custom plan required                                                                                                      |
+
+Two things stand out. Xano's free tier has a hard API rate limit of 10 requests per 20 seconds, which makes it a development tier rather than something you can soft-launch on. Appwrite's free tier has no such rate limit, but free projects pause after a week of inactivity.
+
+For real numbers, check the [Appwrite pricing page](/pricing) and [Xano's pricing page](https://www.xano.com/pricing/), since both change.
+
+# Which backend should you choose: Appwrite or Xano?
+
+Neither platform is a strict superset of the other. Match the choice to your team.
+
+**Choose Xano when:**
+
+* Your team is small on backend engineers and long on domain knowledge.
+* Non-engineers need to inspect or change API logic directly.
+* You want managed Postgres with direct SQL access and visual schema management.
+* You are building internal tools, operations backends, or client work on a fixed timeline.
+* Enterprise identity features like SAML and OIDC are a day-one requirement.
+
+**Choose Appwrite when:**
+
+* Your backend logic should live in Git, in a language your team already writes.
+* You want mobile and native SDKs with realtime support, not just JavaScript.
+* Self-hosting is a requirement now or a possibility later, and you want it on every plan.
+* You want auth, databases, storage, functions, realtime, messaging, and frontend hosting from one platform.
+* Open source matters to you, either for auditability or to avoid a proprietary runtime.
+
+If both fit, the deciding question is usually portability. Xano's speed comes from its visual layer, and that layer only runs on Xano. Appwrite's Functions and SDK calls are ordinary code, and self-hosting gives you an exit that does not involve a rewrite. That is worth something, or it is not, depending on your risk tolerance.
+
+# Getting started with Appwrite as your backend
+
+If Appwrite looks like the better fit, the fastest way to test that is to build one real feature. Sign up for Appwrite Cloud, wire up [Auth](/docs/products/auth), model your data in [Databases](/docs/products/databases), and deploy a [Function](/docs/products/functions) from your repo. That is enough to know whether the model suits your team, and the same code runs on a self-hosted instance if you move later.
+
+## Resources
+
+* [Appwrite documentation](/docs)
+* [Appwrite quick starts](/docs/quick-starts)
+* [Appwrite Databases](/docs/products/databases)
+* [Appwrite Functions runtimes](/docs/products/functions/runtimes)
+* [Self-hosting Appwrite](/docs/advanced/self-hosting)
+* [Appwrite pricing](/pricing)
+* [Join us on Discord](https://appwrite.io/discord)
