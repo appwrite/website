@@ -44,6 +44,48 @@
       }
     }
   }
+
+  &--init {
+    /* Init theme: black bar, white copy, brand underscore in wordmark */
+    background: #000;
+    padding-block: pxToRem(14);
+    padding-inline: pxToRem(20);
+
+    .#{$p}-top-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: pxToRem(8);
+      color: #fff;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: pxToRem(8);
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        .web-init-banner-logo {
+          block-size: pxToRem(22);
+          inline-size: auto;
+          flex-shrink: 0;
+        }
+
+        .web-init-banner-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: pxToRem(4);
+          white-space: nowrap;
+          border-block-end: 1px solid currentColor;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
 }
 
 .#{$p}-top-banner-2 {

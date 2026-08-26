@@ -17,6 +17,7 @@
     import ProductsMobileSubmenu from '$lib/components/ProductsMobileSubmenu.svelte';
     import { trackEvent } from '$lib/actions/analytics';
     import MainNav from '$lib/components/MainNav.svelte';
+    import InitAnnouncementBanner from '$lib/components/InitAnnouncementBanner.svelte';
     import { page } from '$app/stores';
     import { getAppwriteDashboardUrl } from '$lib/utils/dashboard';
     import { Button, Icon, InlineTag } from '$lib/components/ui';
@@ -180,6 +181,7 @@
 </script>
 
 <div class="relative contents h-full">
+    <InitAnnouncementBanner />
     <section
         class="web-mobile-header flex! xl:hidden! {resolvedTheme}"
         class:is-transparent={browser && !$isMobileNavOpen}
