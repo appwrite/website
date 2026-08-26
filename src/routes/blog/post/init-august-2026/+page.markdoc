@@ -1,0 +1,83 @@
+---
+layout: post
+title: "Announcing Init: Appwrite's launch week returns Aug 31"
+description: Appwrite Init returns from 31 August to 4 September 2026. Five days, one new launch a day, plus livestreams, Reddit AMAs, community events, and exciting prizes.
+date: 2026-08-26
+cover: /images/blog/init-august-2026/cover.avif
+timeToRead: 5
+author: aditya-oberai
+category: init, announcement
+featured: true
+callToAction: true
+faqs:
+  - question: "When is Appwrite Init 2026?"
+    answer: "Init runs from Monday 31 August to Friday 4 September 2026. A new product or feature is announced on each of the five days. [Grab your ticket](https://new.appwrite.io/init) to get every announcement as it lands."
+  - question: "What is Appwrite Init?"
+    answer: "Init is Appwrite's launch week. Instead of spreading releases across the year, we ship one significant product or feature per day for five days, each with a blog post, documentation, and a livestream. It is the moment each year when the biggest Appwrite releases go out."
+  - question: "How do I get an Init ticket?"
+    answer: "Register at [new.appwrite.io/init](https://new.appwrite.io/init). Your ticket gets you email updates for each day's announcement and entry into the giveaway for some exciting prizes."
+  - question: "Do I need to attend Init to use the new features?"
+    answer: "No. Everything announced during Init ships to [Appwrite Cloud](https://cloud.appwrite.io) and self-hosted Appwrite as it is announced, and every launch gets a blog post and full documentation the same day. The livestreams are where you get to ask the engineers questions directly, so they are worth catching live."
+  - question: "Is Init free?"
+    answer: "Yes. Init is a free online event. The announcements, livestreams, documentation, and community sessions are open to anyone, with or without an Appwrite account."
+  - question: "What did previous Appwrite Inits launch?"
+    answer: "The first Init in February 2024 launched [Appwrite Messaging](/docs/products/messaging) and improved server-side rendering support. Init in May 2025 launched [Appwrite Sites](/docs/products/sites), Flutter Web hosting, new [image formats](/docs/products/storage/images), and [file tokens](/docs/products/storage/file-tokens)."
+  - question: "Where are Init announcements published?"
+    answer: "Each day's launch gets a post on the Appwrite blog, an entry in the [changelog](/changelog), and full reference documentation. Livestreams run on the Appwrite YouTube channel, and community sessions run on Reddit and Discord."
+---
+
+Init is back. From **31 August to 4 September 2026**, we are shipping a new product or feature every day for five days.
+
+[Grab your Init ticket](https://new.appwrite.io/init) to get every announcement the moment it lands.
+
+# What Init is
+
+Init is Appwrite's launch week. Rather than spreading releases across the calendar, we hold the biggest work of the year and ship it across five consecutive days, one launch per day.
+
+Every launch comes with a blog post explaining what we built and why, complete reference documentation, a changelog entry, and a livestream where the engineers who built it walk through it and answer your questions. Everything ships to [Appwrite Cloud](https://cloud.appwrite.io) on the same day it is announced.
+
+# Five days, five launches
+
+Starting Monday 31 August, there is one announcement a day through Friday 4 September.
+
+We cannot disclose the lineup just yet. What we can say is that this Init continues the direction the last one set: fewer, larger pieces of infrastructure that remove a service you would otherwise have to run yourself.
+
+Every launch lands in the same places on the same day:
+
+- **The Appwrite blog**, with the reasoning behind the feature and how to use it
+- **The [changelog](/changelog)**, for the short version
+- **Full documentation**, published alongside the announcement
+- **A livestream** on the Appwrite YouTube channel covering the day's release
+- **A Reddit AMA** on the Appwrite subreddit, where we answer whatever you want to ask about it
+
+# What the last Inits shipped
+
+If you are new to Init, the last two give you a sense of the scale.
+
+The first Init, in February 2024, launched [Appwrite Messaging](/docs/products/messaging), bringing push notifications, transactional email, and SMS into the platform, alongside much better server-side rendering support across Next.js, SvelteKit, and Nuxt.
+
+The most recent Init, in May 2025, ran a launch a day for five days. The headline was [Appwrite Sites](/docs/products/sites), our open-source alternative to Vercel, which put frontend hosting in the same place as your backend instead of splitting it across two providers.
+
+All of it is in production and documented today. That is the bar for what goes into an Init week.
+
+# Livestreams and community events
+
+Each day of Init has a livestream on the [Appwrite YouTube channel](https://youtube.com/@Appwrite) covering that day's release, usually with the engineers who built it. Alongside the streams, there will be community AMAs on the [Appwrite subreddit](https://reddit.com/r/appwrite) through the week, ending with a closing party on the [Appwrite Discord server](https://appwrite.io/discord).
+
+# How to prepare for Init week
+
+If you already build on Appwrite, two things are worth doing before 31 August.
+
+**Update your SDKs.** Init launches ship with SDK support on day one, so being on the current major version means you can try a new feature the same day it is announced instead of working through an upgrade first.
+
+**Take stock of what you are currently working around.** Init releases tend to replace something people had been solving the hard way, whether that was a separate hosting provider, a third-party messaging service, or a custom function papering over a platform gap. Knowing where your own workarounds sit makes it obvious which announcements matter to you.
+
+# Grab your Init ticket
+
+New Init comes with a new ticket. The Appwrite team has put together a fresh design for this one, and your ticket is your entry into the giveaway for some exciting prizes.
+
+Signing up also gets you an email the moment each day's launch goes live, so you never have to go looking for it.
+
+[Grab your Init ticket](https://new.appwrite.io/init)
+
+**Init_ is the start of something new.**
