@@ -44,11 +44,13 @@ We cannot disclose the lineup just yet. What we can say is that this Init contin
 
 Every launch lands in the same places on the same day:
 
-- **The Appwrite blog**, with the reasoning behind the feature and how to use it
+- **The Appwrite [blog](/blog)**, with the reasoning behind the feature and how to use it
 - **The [changelog](/changelog)**, for the short version
-- **Full documentation**, published alongside the announcement
-- **A livestream** on the Appwrite YouTube channel covering the day's release
-- **A Reddit AMA** on the Appwrite subreddit, where we answer whatever you want to ask about it
+- **Full [documentation](/docs)**, published alongside the announcement
+- **A livestream** on the Appwrite [YouTube channel](https://youtube.com/@Appwrite) covering the day's release
+- **A Reddit AMA** on the Appwrite [subreddit](https://reddit.com/r/appwrite), where we answer whatever you want to ask about it
+
+At the end of the week, we will also host a community recap in the Appwrite [Discord server](https://appwrite.io/discord) to bring together Appwrite team members, community contributors, and developers to celebrate the launches.
 
 # What the last Inits shipped
 
@@ -59,10 +61,6 @@ The first Init, in February 2024, launched [Appwrite Messaging](/docs/products/m
 The most recent Init, in May 2025, ran a launch a day for five days. The headline was [Appwrite Sites](/docs/products/sites), our open-source alternative to Vercel, which put frontend hosting in the same place as your backend instead of splitting it across two providers.
 
 All of it is in production and documented today. That is the bar for what goes into an Init week.
-
-# Livestreams and community events
-
-Each day of Init has a livestream on the [Appwrite YouTube channel](https://youtube.com/@Appwrite) covering that day's release, usually with the engineers who built it. Alongside the streams, there will be community AMAs on the [Appwrite subreddit](https://reddit.com/r/appwrite) through the week, ending with a closing party on the [Appwrite Discord server](https://appwrite.io/discord).
 
 # How to prepare for Init week
 
@@ -78,6 +76,6 @@ New Init comes with a new ticket. The Appwrite team has put together a fresh des
 
 Signing up also gets you an email the moment each day's launch goes live, so you never have to go looking for it.
 
-[Grab your Init ticket](https://new.appwrite.io/init)
+[Grab your Init ticket](https://new.appwrite.io/init).
 
 **Init_ is the start of something new.**
