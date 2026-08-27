@@ -152,16 +152,16 @@
         >
             {#if layoutAside}
                 <HeroBanner
-                    title="State of Appwrite Cloud: Take the survey"
-                    href="https://forms.gle/5cvWxTwhonoDCWsi7"
-                    icon="sparkle"
+                    title="Init is happening August 31 - September 4"
+                    href="https://new.appwrite.io/init"
+                    icon="init"
                 />
             {:else}
                 <div class="flex w-full justify-center">
                     <HeroBanner
-                        title="State of Appwrite Cloud: Take the survey"
-                        href="https://forms.gle/5cvWxTwhonoDCWsi7"
-                        icon="sparkle"
+                        title="Init is happening August 31 - September 4"
+                        href="https://new.appwrite.io/init"
+                        icon="init"
                     />
                 </div>
             {/if}

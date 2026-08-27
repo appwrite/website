@@ -44,6 +44,52 @@
       }
     }
   }
+
+  &--init {
+    /* Init theme: new console dark grey bar, white copy, brand underscore in wordmark */
+    /* new console dark bg + separator */
+    background: #19191c;
+    border-block-end: 1px solid rgba(255, 255, 255, 0.12);
+    padding-block: pxToRem(14);
+    padding-inline: pxToRem(20);
+
+    .#{$p}-top-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: pxToRem(8);
+      color: oklch(0.705 0.015 286.067); /* new console --muted-foreground */
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: pxToRem(8);
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        .web-init-banner-logo {
+          block-size: pxToRem(22);
+          inline-size: auto;
+          flex-shrink: 0;
+          color: #fff;
+        }
+
+        .web-init-banner-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: pxToRem(4);
+          color: #fff;
+          white-space: nowrap;
+          border-block-end: 1px solid currentColor;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
 }
 
 .#{$p}-top-banner-2 {
