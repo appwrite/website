@@ -234,7 +234,7 @@ Zeabur deploys apps from Git or templates with one click. It handles databases, 
 | AWS Amplify           | Full-stack           | 15 GB served (12 months)  | AWS on-ramp                |
 | Surge.sh              | Static               | Unlimited publishes       | Quick demos                |
 | Val Town              | Serverless functions | 100K runs/day             | Automations                |
-| Oracle Cloud          | VMs                  | 24 GB RAM Arm always-free | Self-hosting               |
+| Oracle Cloud          | VMs                  | 12 GB RAM Arm always-free | Self-hosting               |
 | PythonAnywhere        | Python PaaS          | 100 CPU seconds/day       | Python devs                |
 | GitLab Pages          | Static + CI          | 400 compute minutes       | GitLab users               |
 | Sevalla               | Static (free) + apps | 100 GB bandwidth          | Static sites + edge        |
