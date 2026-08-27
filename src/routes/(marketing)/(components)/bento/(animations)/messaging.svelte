@@ -15,6 +15,12 @@
     let device: HTMLElement;
     let notification: HTMLElement;
 
+    // Motion's cleanups detach the pointer listener and the observer, but a sequence they
+    // already started keeps running against the card after it leaves the DOM. Only one
+    // can be in flight here — a new one supersedes the last — so holding the latest
+    // controls is enough to stop the work on teardown.
+    let animation: ReturnType<typeof animate> | undefined;
+
     onMount(() => {
         const from: AnimationSequence = [
             [notification, { opacity: 0, y: -30, filter: 'blur(4px)' }, { duration: 0.2 }],
@@ -30,10 +36,10 @@
             container,
             () => {
                 if (!isMobile()) return;
-                animate(to);
+                animation = animate(to);
 
                 return () => {
-                    animate(from);
+                    animation = animate(from);
                 };
             },
             { amount: 'all' }
@@ -41,16 +47,17 @@
 
         const stopHover = hover(container, () => {
             if (isMobile()) return;
-            animate(to);
+            animation = animate(to);
 
             return () => {
-                animate(from);
+                animation = animate(from);
             };
         });
 
         return () => {
             stopInView();
             stopHover();
+            animation?.stop();
         };
     });
 </script>

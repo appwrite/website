@@ -9,14 +9,24 @@
     let container: HTMLElement;
     let image: HTMLElement;
 
+    // Motion's cleanups detach the pointer listener and the observer, but an animation
+    // they already started keeps running against the card after it leaves the DOM. Only
+    // one can be in flight per element — a new one supersedes the last — so holding the
+    // latest controls is enough to stop the work on teardown.
+    let animation: ReturnType<typeof animate> | undefined;
+
     $effect(() => {
         const stopHover = hover(container, () => {
             if (isMobile()) return;
 
-            animate(image, { borderRadius: '24px', filter: 'grayscale(25%)' }, { duration: 0.2 });
+            animation = animate(
+                image,
+                { borderRadius: '24px', filter: 'grayscale(25%)' },
+                { duration: 0.2 }
+            );
 
             return () => {
-                animate(
+                animation = animate(
                     image,
                     {
                         borderRadius: '4px',
@@ -32,7 +42,7 @@
             () => {
                 if (!isMobile()) return;
 
-                animate(
+                animation = animate(
                     image,
                     {
                         borderRadius: '24px',
@@ -42,7 +52,7 @@
                 );
 
                 return () => {
-                    animate(
+                    animation = animate(
                         image,
                         { borderRadius: '4px', filter: 'grayscale(100%)' },
                         { duration: 0.2 }
@@ -57,6 +67,7 @@
         return () => {
             stopHover();
             stopInView();
+            animation?.stop();
         };
     });
 </script>

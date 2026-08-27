@@ -64,10 +64,16 @@
     let table: HTMLElement;
     let shouldAnimate = $state<boolean>(false);
 
+    // Motion's cleanups detach the pointer listener and the observer, but an animation
+    // they already started keeps running against the card after it leaves the DOM. Only
+    // one can be in flight per element — a new one supersedes the last — so holding the
+    // latest controls is enough to stop the work on teardown.
+    let animation: ReturnType<typeof animate> | undefined;
+
     $effect(() => {
         const stopHover = hover(container, () => {
             if (isMobile()) return;
-            animate(
+            animation = animate(
                 table,
                 {
                     x: [12, -5],
@@ -82,7 +88,7 @@
             shouldAnimate = true;
 
             return () => {
-                animate(
+                animation = animate(
                     table,
                     {
                         x: [-5, 12],
@@ -104,7 +110,7 @@
             () => {
                 if (!isMobile()) return;
 
-                animate(
+                animation = animate(
                     table,
                     {
                         x: [12, -5],
@@ -119,7 +125,7 @@
                 shouldAnimate = true;
 
                 return () => {
-                    animate(
+                    animation = animate(
                         table,
                         {
                             x: [-5, 12],
@@ -141,6 +147,7 @@
         return () => {
             stopHover();
             stopInView();
+            animation?.stop();
         };
     });
 </script>
