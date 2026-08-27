@@ -1,0 +1,16 @@
+---
+layout: changelog
+title: 'Appwrite Init returns 31 August to 4 September 2026'
+date: 2026-08-26
+cover: /images/blog/init-august-2026/cover.avif
+---
+
+Init, Appwrite's launch week, runs from Monday 31 August to Friday 4 September 2026. A new product or feature is announced on each of the five days, with a blog post, full documentation, a changelog entry, and a livestream landing the same day.
+
+Everything announced during the week ships to [Appwrite Cloud](https://cloud.appwrite.io) and self-hosted Appwrite on the schedule shared during the event. The last Init launched [Appwrite Sites](/docs/products/sites), new [image formats](/docs/products/storage/images), and [file tokens](/docs/products/storage/file-tokens).
+
+Sign up to get each announcement as it goes live, claim your Init ticket, and enter the giveaway for some exciting prizes.
+
+{% arrow_link href="https://new.appwrite.io/init" %}
+Sign up for Init
+{% /arrow_link %}
