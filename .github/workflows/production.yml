@@ -6,11 +6,6 @@ on:
     workflow_dispatch:
 
 env:
-    ENVIRONMENT: production
-    PROJECT: assets
-    APPLICATION: website
-    DECLARATIVE_OWNER: appwrite-labs
-    DECLARATIVE_REPOSITORY: application-configuration
     REGISTRY_GITHUB: ghcr.io
     REGISTRY_DOCKERHUB: docker.io
     IMAGE_NAME: appwrite/website
@@ -62,41 +57,3 @@ jobs:
                       "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}"
                       "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
                       "SENTRY_RELEASE=${{ github.event.release.tag_name }}"
-
-    deploy:
-        if: github.event_name != 'release' || !contains(github.event.release.tag_name, '-rc')
-        needs: build
-        runs-on: ubuntu-latest
-        concurrency:
-            group: declarative-deploy-website
-            cancel-in-progress: false
-        steps:
-            - name: Get token for ${{ env.DECLARATIVE_REPOSITORY }}
-              id: app-token
-              uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
-              with:
-                  app-id: ${{ vars.DECLARATIVE_DEPLOYMENT_GITHUB_APP_ID }}
-                  private-key: ${{ secrets.DECLARATIVE_DEPLOYMENT_GITHUB_APP_PRIVATE_KEY }}
-                  owner: ${{ env.DECLARATIVE_OWNER }}
-                  repositories: ${{ env.DECLARATIVE_REPOSITORY }}
-
-            - name: Checkout ${{ env.DECLARATIVE_REPOSITORY }}
-              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-              with:
-                  repository: ${{ env.DECLARATIVE_OWNER }}/${{ env.DECLARATIVE_REPOSITORY }}
-                  token: ${{ steps.app-token.outputs.token }}
-
-            - name: Update image tag
-              run: yq -i '.global.image.tag = strenv(TAG)' ${{ env.PROJECT }}/${{ env.ENVIRONMENT }}/${{ env.APPLICATION }}/default.yaml
-
-            - name: Commit and push
-              run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add ${{ env.PROJECT }}/${{ env.ENVIRONMENT }}/${{ env.APPLICATION }}/default.yaml
-                  if git diff --cached --quiet; then
-                    echo "No changes to commit"
-                  else
-                    git commit -m "chore(${{ env.ENVIRONMENT }}): ${{ env.APPLICATION }} image tag to ${{ env.TAG }}"
-                    git push
-                  fi
